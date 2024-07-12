@@ -1,16 +1,8 @@
 ---
-title: 游玩说明
-icon: info
+title: 游玩指南
+icon: book
+pageInfo: false
 ---
 
-## Highlight Features
 
-### Bar
-
-- [baz](bar/baz.md)
-- ...
-
-### Foo
-
-- [ray](foo/ray.md)
-- ...
+<Catalog />
