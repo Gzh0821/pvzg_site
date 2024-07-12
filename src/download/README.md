@@ -9,6 +9,20 @@ sidebar: false
 category:
   - Download
 ---
+
+<script setup>
+import axios from 'axios';
+import { reactive, onBeforeMount } from 'vue'
+const data = reactive({});
+
+onBeforeMount(() => {
+  axios.get('/jsons/gameinfo.json').then(res => {
+    data.value = res.data;
+  })
+})
+
+</script>
+
 > [!warning]
 > 请注意：本页面提供的下载链接仅供学习交流使用，不得用于商业用途，请于下载后24小时内删除。
 >
@@ -31,27 +45,38 @@ category:
 > 
 > Onedrive和Github下载方式可能由于网络环境问题无法访问，请自行搜索解决。
 
-当前最新的版本为 `preprepre-1.0.3`，请根据自己的需求选择下载。
+本站只提供最新正式版本的下载链接<span v-if="data.value?.Version">，当前最新的游戏版本为 {{ data.value.Version }}</span>。
+
 
 ## Onedrive链接 <Badge text="推荐" type="tip" />
 
-下载链接：[点击进入](https://xj2y2-my.sharepoint.com/:u:/g/personal/gaozih_xj2y2_onmicrosoft_com/EV-iQNaYWHhMk2rAucF0m_kBjiDMkLGA2NnGbgMeKnmKqw?e=01CW1F)
+下载链接：<span v-if="data.value?.Download.Onedrive">
+<a :href="data.value.Download.Onedrive">点击进入</a>
+</span><span v-else>暂无</span>
 
 ## 百度网盘
 
-下载链接：[点击进入](https://pan.baidu.com/s/1eIFm5loVnLqOd69sghAjHg?pwd=pvz2)
+下载链接：<span v-if="data.value?.Download.Baidu">
+<a :href="data.value.Download.Baidu">点击进入</a>
+</span><span v-else>暂无</span>
 
 ## 123网盘链接
 
-下载链接：[点击进入](https://www.123pan.com/s/xUemTd-zmZCh.html)
+下载链接：<span v-if="data.value?.Download.Pan123">
+<a :href="data.value.Download.Pan123">点击进入</a>
+</span><span v-else>暂无</span>
 
 ## 夸克网盘链接
 
-下载链接：[点击进入](https://pan.quark.cn/s/573e27228a45)
+下载链接：<span v-if="data.value?.Download.Quark">
+<a :href="data.value.Download.Quark">点击进入</a>
+</span><span v-else>暂无</span>
 
 ## Github链接
 
-暂无
+下载链接：<span v-if="data.value?.Download.Github">
+<a :href="data.value.Download.Github">点击进入</a>
+</span><span v-else>暂无</span>
 
 
 
