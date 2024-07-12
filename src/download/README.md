@@ -24,7 +24,18 @@ category:
 - 下载游戏客户端压缩包游玩，仅支持 `Windows 10/11`系统。
 - 在线游玩：[点击进入](https://pvz2-test.gaozih.com)
 
+> [!info]
+> 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。
+> 
+> 推荐使用Onedrive和Github下载方式，下载速度较快，且不需要网盘客户端。
+> 
+> Onedrive和Github下载方式可能由于网络环境问题无法访问，请自行搜索解决。
+
 当前最新的版本为 `preprepre-1.0.3`，请根据自己的需求选择下载。
+
+## Onedrive链接 <Badge text="推荐" type="tip" />
+
+下载链接：[点击进入](https://xj2y2-my.sharepoint.com/:u:/g/personal/gaozih_xj2y2_onmicrosoft_com/EV-iQNaYWHhMk2rAucF0m_kBjiDMkLGA2NnGbgMeKnmKqw?e=01CW1F)
 
 ## 百度网盘
 
@@ -42,10 +53,5 @@ category:
 
 暂无
 
-## Onedrive链接
 
-暂无
 
-## 注意事项
-
-Github/Onedrive可能由于网络环境问题无法访问，请自行搜索解决。
