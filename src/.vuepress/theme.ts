@@ -11,7 +11,11 @@ export default hopeTheme({
     url: "https://gaozih.com",
   },
 
+  license: "Apache 2.0",
+
   iconAssets: "fontawesome-with-brands",
+
+  favicon: "/favicon.ico",
 
   logo: "pvzg_nav.png",
 
