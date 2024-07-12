@@ -4,21 +4,26 @@ import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
+  hostname: "https://pvzg.gaozih.com",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mister-hope.com",
+    name: "LMYY",
+    url: "https://gaozih.com",
   },
 
   iconAssets: "fontawesome-with-brands",
 
   logo: "pvzg_nav.png",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "Gzh0821/pvzg_site",
+
+  repoDisplay: false,
 
   docsDir: "src",
 
+  lastUpdated: false,
+  // 是否展示贡献者
+  contributors: false,
   // 是否展示编辑链接
   editLink: false,
 
@@ -45,12 +50,12 @@ export default hopeTheme({
     "/": {
       // navbar
       navbar: zhNavbar,
-
+      navbarTitle: "",
       // sidebar
       sidebar: zhSidebar,
 
       footer: "游戏仅供学习交流，禁止商用，非授权禁止搬运",
-      copyright: "Copyright 2021-2024 Gaozih © All Rights Reserved.",
+      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved.",
       displayFooter: true,
 
       // page meta
@@ -79,12 +84,14 @@ export default hopeTheme({
     // },
     comment: false,
     
+    searchPro: true,
     components: {
       components: ["Badge", "VPCard"],
     },
 
     // All features are enabled for demo, only preserve features you need here
     mdEnhance: {
+      alert: true,
       align: true,
       attrs: true,
       codetabs: true,

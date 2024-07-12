@@ -10,10 +10,10 @@ heroImageStyle:
   backdrop-filter: "blur(10px)"
   background: "rgba(255, 255, 255, 0.1)"
 bgImage: /assets/image/background.jpeg
-bgImageDark: https://theme-hope-assets.vuejs.press/bg/6-dark.svg
 bgImageStyle:
   background-attachment: fixed
-  opacity: 0.4   
+  filter: brightness(60%)
+  opacity: 0.5 
 heroFullScreen: true
 heroText: PvZ2 Gardendless
 tagline: 完全重制的全平台PvZ2 mod.
@@ -23,8 +23,8 @@ actions:
     link: ./download/
     type: primary
 
-  - text: 说明文档
-    link: ./instructions/
+  - text: 游玩指南
+    link: ./guide/
 
 # highlights:
   # - header: 易于安装
@@ -323,6 +323,6 @@ actions:
   #       details: 让你的网站更像一个 APP
   #       link: https://theme-hope.vuejs.press/zh/guide/advanced/pwa.html
 
-copyright: "Copyright 2021-2024 Gaozih © All Rights Reserved."
-footer: "游戏仅供学习交流，禁止商用，非授权禁止搬运"
+# copyright: "Copyright 2021-2024 Gaozih © All Rights Reserved."
+# footer: "游戏仅供学习交流，禁止商用，非授权禁止搬运"
 ---

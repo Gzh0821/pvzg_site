@@ -9,15 +9,15 @@ export default defineUserConfig({
     ['link', { rel: 'stylesheet', href: '/styles/custom.css' }]
   ],
   locales: {
-    "/en/": {
-      lang: "en-US",
-      title: "Docs Demo",
-      description: "A docs demo for vuepress-theme-hope",
-    },
+    // "/en/": {
+    //   lang: "en-US",
+    //   title: "Docs Demo",
+    //   description: "A docs demo for vuepress-theme-hope",
+    // },
     "/": {
       lang: "zh-CN",
-      title: "",
-      description: "vuepress-theme-hope 的文档演示",
+      title: "PvZ2 Gardendless",
+      description: "PvZ2 Gardendless的官方网站",
     },
   },
 

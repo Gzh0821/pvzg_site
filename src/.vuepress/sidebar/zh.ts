@@ -3,8 +3,9 @@ import { sidebar } from "vuepress-theme-hope";
 export const zhSidebar = sidebar({
   "/download/": "structure",
   "/instructions/": "structure",
+  "/guide/": "structure",
   "/": [
-    "portfolio",
+    // "portfolio",
     // {
     //   text: "案例",
     //   icon: "laptop-code",
