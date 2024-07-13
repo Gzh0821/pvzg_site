@@ -11,7 +11,7 @@ pageInfo: false
 
 - **非商业性质声明**
 
-本游戏是由爱好者自主制作，完全免费发布，不涉及任何商业目的。所有收入和捐赠将用于游戏开发和服务器维护费用。
+本游戏是由爱好者自主制作，完全免费发布，不涉及任何商业目的。所有非商业性收入和捐赠将用于服务器维护和作品制作。
 
 - **版权声明**
 
@@ -43,7 +43,7 @@ This game is a non-commercial fan-made creation, created solely for entertainmen
 
 - Non-Commercial Nature
 
-This game is developed by enthusiasts and is distributed completely free of charge, with no commercial intent whatsoever. All donations and revenues received are strictly used for game development and server maintenance.
+This game is developed by enthusiasts and is distributed completely free of charge, with no commercial intent whatsoever. All non-commercial income and donations will be used for server maintenance and work production.
 
 - Copyright Statement
 
