@@ -61,6 +61,18 @@ onBeforeMount(() => {
 
 本站只提供最新正式版本的下载链接<span v-if="data?.Version">，当前最新的游戏版本为 {{ data.Version }}</span>。
 
+<span v-if="data?.Name">该游戏版本名称: {{ data.Name }}</span>
+
+## 更新日志
+
+<template v-if="data?.NewFeatures">
+
+- <li v-for="(item, index) in data.NewFeatures" :key="index">{{ item }}</li>
+
+</template>
+
+<template v-else>暂无</template>
+
 ## Onedrive 链接 <Badge text="推荐" type="tip" />
 
 下载链接：<span v-if="data?.Download.Onedrive">
