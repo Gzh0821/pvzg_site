@@ -90,7 +90,7 @@ export default hopeTheme({
     
     searchPro: true,
     components: {
-      components: ["Badge", "VPCard"],
+      components: ["Badge", "BiliBili", "VPCard"],
     },
 
     // All features are enabled for demo, only preserve features you need here
