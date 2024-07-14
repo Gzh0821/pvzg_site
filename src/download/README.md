@@ -54,10 +54,6 @@ onBeforeMount(() => {
 
 > [!info]
 > 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。
->
-> 推荐使用 Onedrive 和 Github 下载方式，下载速度较快，且不需要网盘客户端。
->
-> Onedrive 和 Github 下载方式可能由于网络环境问题无法访问，请自行搜索解决。
 
 本站只提供最新正式版本的下载链接<span v-if="data?.Version">，当前最新的游戏版本为 {{ data.Version }}</span>。
 
@@ -73,38 +69,66 @@ onBeforeMount(() => {
 
 <template v-else>暂无</template>
 
-## Onedrive 链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
+<template v-if="data?.Download.Onedrive">
 
-下载链接：<span v-if="data?.Download.Onedrive">
-<a :href="data.Download.Onedrive">点击进入</a>
-</span><span v-else>暂无</span>
+## Onedrive 链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
+
+下载链接：<a :href="data.Download.Onedrive">点击进入</a>
+
+</template>
+
+<template v-if="data?.Download.TmpLink">
 
 ## 钛盘链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
 
-下载链接：<span v-if="data?.Download.TmpLink">
-<a :href="data.Download.TmpLink">点击进入</a>
-</span><span v-else>暂无</span>
+下载链接：<a :href="data.Download.TmpLink">点击进入</a>
+
+</template>
+
+<template v-if="data?.Download.TmpLink">
 
 ## 百度网盘
 
-下载链接：<span v-if="data?.Download.Baidu">
-<a :href="data.Download.Baidu">点击进入</a>
-</span><span v-else>暂无</span>
+下载链接：<a :href="data.Download.Baidu">点击进入</a>
 
-## 123 网盘链接
+</template>
 
-下载链接：<span v-if="data?.Download.Pan123">
-<a :href="data.Download.Pan123">点击进入</a>
-</span><span v-else>暂无</span>
+<template v-if="data?.Download.Pan123">
 
-## 夸克网盘链接
+## 123 网盘
 
-下载链接：<span v-if="data?.Download.Quark">
-<a :href="data.Download.Quark">点击进入</a>
-</span><span v-else>暂无</span>
+下载链接：<a :href="data.Download.Pan123">点击进入</a>
 
-## Github 链接
+</template>
 
-下载链接：<span v-if="data?.Download.Github">
-<a :href="data.Download.Github">点击进入</a>
-</span><span v-else>暂无</span>
+<template v-if="data?.Download.Quark">
+
+## 夸克网盘
+
+下载链接：<a :href="data.Download.Quark">点击进入</a>
+
+</template>
+
+<template v-if="data?.Download.Mega">
+
+## MEGA 网盘 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
+
+下载链接：<a :href="data.Download.Mega">点击进入</a>
+
+</template>
+
+<template v-if="data?.Download.Feijipan">
+
+## 小飞机网盘 <Badge text="无需登录" type="info" />
+
+下载链接：<a :href="data.Download.Feijipan">点击进入</a>
+
+</template>
+
+<template v-if="data?.Download.Github">
+
+## Github
+
+下载链接：<a :href="data.Download.Github">点击进入</a>
+
+</template>

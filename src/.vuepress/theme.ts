@@ -4,7 +4,7 @@ import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://pvzg.gaozih.com",
+  hostname: "https://www.pvzge.com",
 
   author: {
     name: "LMYY",
@@ -20,8 +20,6 @@ export default hopeTheme({
   logo: "pvzg_nav.png",
 
   repo: "Gzh0821/pvzg_site",
-
-  repoDisplay: false,
 
   docsDir: "src",
 
