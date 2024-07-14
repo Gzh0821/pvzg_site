@@ -73,10 +73,16 @@ onBeforeMount(() => {
 
 <template v-else>暂无</template>
 
-## Onedrive 链接 <Badge text="推荐" type="tip" />
+## Onedrive 链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
 
 下载链接：<span v-if="data?.Download.Onedrive">
 <a :href="data.Download.Onedrive">点击进入</a>
+</span><span v-else>暂无</span>
+
+## 钛盘链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
+
+下载链接：<span v-if="data?.Download.TmpLink">
+<a :href="data.Download.TmpLink">点击进入</a>
 </span><span v-else>暂无</span>
 
 ## 百度网盘
