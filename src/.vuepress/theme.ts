@@ -56,7 +56,7 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "游戏仅供学习交流，禁止商用，非授权禁止搬运",
+      footer: "《PvZ2 Gardendless》官方网站: pvzge.com",
       copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved.",
       displayFooter: true,
 
