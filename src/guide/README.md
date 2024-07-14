@@ -4,4 +4,7 @@ icon: book
 pageInfo: false
 index: false
 ---
+
+<BiliBili bvid="BV1pS411A7qr"/>
+
 <Catalog />
