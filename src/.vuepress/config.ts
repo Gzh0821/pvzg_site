@@ -16,7 +16,7 @@ export default defineUserConfig({
     // },
     "/": {
       lang: "zh-CN",
-      title: "PvZ2 Gardendless",
+      title: "PvZ2 Gardendless 官方网站|完全重置的PVZ2体验",
       description: "《PvZ2 Gardendless》的官方网站。《PVZ2 Gardendless》是一款完全重制的《植物大战僵尸2》(Plants vs Zombies 2)游戏。",
     },
   },
