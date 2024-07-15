@@ -26,6 +26,10 @@ actions:
   - text: 游玩指南
     link: ./guide/
 
+  - text: 加入QQ群
+    icon: fa-brands fa-qq
+    link: ./contribution/
+
 # highlights:
   # - header: 易于安装
   #   image: /assets/image/box.svg
