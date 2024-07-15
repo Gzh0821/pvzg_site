@@ -163,7 +163,7 @@ export default hopeTheme({
       // Install sandpack-vue3 before enabling it
       // sandpack: true,
     },
-
+    sitemap: true,
     // Install @vuepress/plugin-pwa and uncomment these if you want a PWA
     // pwa: {
     //   favicon: "/favicon.ico",
