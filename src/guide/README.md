@@ -5,6 +5,6 @@ pageInfo: false
 index: false
 ---
 
-<BiliBili bvid="BV1pS411A7qr"/>
+<BiliBili bvid="BV1ti421Y7RR"/>
 
 <Catalog />
