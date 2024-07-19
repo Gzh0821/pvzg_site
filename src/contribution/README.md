@@ -25,4 +25,11 @@ pageInfo: false
     link="https://qm.qq.com/q/8LkQioyGI2"
     background="rgba(228, 0, 54, 0.15)"
   />
+  <VPCard
+    title="Github仓库"
+    desc="对于bug的反馈和功能的建议，可以在该仓库上提交issue"
+    logo="/assets/image/github-dark.svg"
+    link="https://github.com/Gzh0821/pvzg_site"
+    background="rgba(102, 204, 255, 0.15)"
+  />
 </div>
