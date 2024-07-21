@@ -5,6 +5,7 @@ icon: download
 pageInfo: false
 breadcrumb: false
 sidebar: false
+comment: false
 
 category:
   - Download

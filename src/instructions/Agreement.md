@@ -4,6 +4,7 @@ icon: handshake
 index: true
 order: 1
 pageInfo: false
+comment: false
 ---
 ## 《PvZ2 Gardendless》使用协议
 

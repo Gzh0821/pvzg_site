@@ -2,6 +2,7 @@
 title: 系统和环境要求
 icon: sliders
 pageInfo: false
+comment: false
 index: true
 order: 3
 ---

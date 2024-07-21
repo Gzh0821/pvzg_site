@@ -3,6 +3,7 @@ title: 协议和声明
 index: false
 icon: info
 pageInfo: false
+comment: false
 ---
 《PvZ2 Gardendless》使用，游玩相关协议和声明如下：
 

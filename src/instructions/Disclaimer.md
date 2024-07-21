@@ -4,6 +4,7 @@ icon: copyright
 index: true
 order: 2
 pageInfo: false
+comment: false
 ---
 ## 《PvZ2 Gardendless》免责声明
 

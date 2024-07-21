@@ -4,6 +4,7 @@ icon: circle-info
 index: true
 order: 4
 pageInfo: false
+comment: false
 ---
 ## 《植物大战僵尸》原版信息
 

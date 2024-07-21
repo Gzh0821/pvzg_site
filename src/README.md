@@ -1,6 +1,7 @@
 ---
 home: true
 icon: home
+comment: false
 title: 主页
 heroImage: /pvz_logo.png
 heroImageStyle:  

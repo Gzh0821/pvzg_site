@@ -4,6 +4,7 @@ icon: gavel
 index: true
 order: 3
 pageInfo: false
+comment: false
 ---
 ## 《PvZ2 Gardendless》官方网站开源声明
 
