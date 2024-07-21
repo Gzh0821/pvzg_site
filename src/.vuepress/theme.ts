@@ -84,8 +84,14 @@ export default hopeTheme({
     //   category: "Announcements",
     //   categoryId: "DIC_kwDOG_Pt2M4COD69",
     // },
-    comment: false,
-    
+    comment: {
+      provider: "Giscus",
+      repo: "Gzh0821/pvzg_site",
+      repoId: "R_kgDOMVGuyA",
+      category: "Announcements",
+      categoryId: "DIC_kwDOMVGuyM4ChC2W",
+    },
+
     searchPro: true,
     components: {
       components: ["Badge", "BiliBili", "VPCard"],

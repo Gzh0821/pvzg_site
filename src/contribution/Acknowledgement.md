@@ -2,6 +2,7 @@
 title: 鸣谢
 icon: heart
 pageInfo: false
+comment: false
 index: true
 order: 2
 ---
