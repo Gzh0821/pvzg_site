@@ -13,6 +13,8 @@ pageInfo: false
 
 > [!tip]
 > 评论系统正在试用，您可以在[问题反馈](feedback.md)的评论区反馈相关bug和其它问题，评论系统需要登录Github账号。
+>
+> 如果喜欢本网站和游戏，欢迎你在[Github](https://github.com/Gzh0821/pvzg_site)上收藏/Star本网站仓库！
 
 <div class="vp-card-container">
   <VPCard
@@ -31,7 +33,7 @@ pageInfo: false
   />
   <VPCard
     title="Github仓库"
-    desc="对于bug的反馈和功能的建议，可以在该仓库上提交issue"
+    desc="对于bug的反馈和功能的建议，可以在该仓库上提交issue，欢迎您Star本仓库！"
     logo="/assets/image/github-dark.svg"
     link="https://github.com/Gzh0821/pvzg_site"
     background="rgba(102, 204, 255, 0.15)"
