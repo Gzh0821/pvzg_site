@@ -15,9 +15,6 @@ importers:
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.14
         version: 2.0.0-rc.14(@types/node@20.14.11)(sass@1.77.8)
-      twikoo:
-        specifier: ^1.6.38
-        version: 1.6.38
       vue:
         specifier: ^3.4.33
         version: 3.4.33
@@ -3181,7 +3178,8 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
-  twikoo@1.6.38: {}
+  twikoo@1.6.38:
+    optional: true
 
   uc.micro@2.1.0: {}
 

@@ -10,6 +10,9 @@ pageInfo: false
 
 我们欢迎您加入我们的社区，一起为《PvZ2 Gardendless》的开发贡献力量，感谢您对社区建设的支持！
 
+> [!tip]
+> 评论系统正在试用，您可以在本页面的评论区反馈相关bug和其它问题，评论系统需要登录Github账号。
+
 <div class="vp-card-container">
   <VPCard
     title="QQ活跃聊天群"
