@@ -27,8 +27,8 @@ actions:
   - text: 游玩指南
     link: ./guide/
 
-  - text: 加入QQ群
-    icon: fa-brands fa-qq
+  - text: 社区及问题反馈
+    icon: comment
     link: ./contribution/
 
 # highlights:
