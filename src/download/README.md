@@ -89,7 +89,7 @@ onBeforeMount(() => {
 
 </template>
 
-<template v-if="gameInfoData?.Download.TmpLink">
+<template v-if="gameInfoData?.Download.Baidu">
 
 ## 百度网盘
 
