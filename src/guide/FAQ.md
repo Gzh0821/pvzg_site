@@ -2,10 +2,10 @@
 title: 常见问题FAQ
 icon: question
 pageInfo: false
+comment: false
 index: true
 order: 2
 ---
-
 ## 常见游玩问题
 
 > [!note]
@@ -91,15 +91,14 @@ pvz2 这个游戏是分国际服和国服的，国际服有民间的汉化，而
 
 ## 设置界面内容翻译
 
-| English | 中文 |
-| ------- | ---- |
-| Music   | 音乐 |
-| Sound FX | 音效 |
-| Resolution | 分辨率 |
-| Difficulty | 难度（A 最高 D 最低） |
-| Upper card layer | 将卡槽置顶，当植物卡槽被巨人僵尸等僵尸阻挡时使用 |
-| Allow cheat | 允许作弊（在游戏中可以点击加号自由增加叶绿素和阳光） |
-| Sandbox level | 沙盒关卡 |
-| Square tip mode | 切换种植的时候的十字或者每一个格子红绿色记号 |
-| Full screen | 全屏 |
-
+| English          | 中文                                                 |
+| ---------------- | ---------------------------------------------------- |
+| Music            | 音乐                                                 |
+| Sound FX         | 音效                                                 |
+| Resolution       | 分辨率                                               |
+| Difficulty       | 难度（A 最高 D 最低）                                |
+| Upper card layer | 将卡槽置顶，当植物卡槽被巨人僵尸等僵尸阻挡时使用     |
+| Allow cheat      | 允许作弊（在游戏中可以点击加号自由增加叶绿素和阳光） |
+| Sandbox level    | 沙盒关卡                                             |
+| Square tip mode  | 切换种植的时候的十字或者每一个格子红绿色记号         |
+| Full screen      | 全屏                                                 |
