@@ -3,6 +3,7 @@ title: 用户社区
 index: true
 order: 1
 icon: comment
+comment: false
 pageInfo: false
 ---
 我们深知，一个优秀的游戏开发项目离不开社区的支持。我们非常感谢所有为项目做出贡献的用户，
@@ -11,7 +12,7 @@ pageInfo: false
 我们欢迎您加入我们的社区，一起为《PvZ2 Gardendless》的开发贡献力量，感谢您对社区建设的支持！
 
 > [!tip]
-> 评论系统正在试用，您可以在本页面的评论区反馈相关bug和其它问题，评论系统需要登录Github账号。
+> 评论系统正在试用，您可以在[问题反馈](feedback.md)的评论区反馈相关bug和其它问题，评论系统需要登录Github账号。
 
 <div class="vp-card-container">
   <VPCard
