@@ -6,6 +6,13 @@ order: 4
 pageInfo: false
 comment: false
 ---
+
+> [!important]
+> 本网站，游戏和相关内容并未获得 EA 认可或与 EA 有合作关系。
+> 
+> This website, Game and related content are not endorsed by or affiliated with EA.
+
+
 ## 《植物大战僵尸》原版信息
 
 《植物大战僵尸2》及相关系列游戏是由Electronic Arts Inc.及其子公司PopCap Games开发与发行的，
