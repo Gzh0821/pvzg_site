@@ -6,19 +6,21 @@ icon: comment
 comment: false
 pageInfo: false
 ---
-我们深知，一个优秀的游戏开发项目离不开社区的支持。我们非常感谢所有为项目做出贡献的用户，
-无论是帮助查验代码、发现问题、提出建议、撰写文档、社区管理、参与讨论，还是分享经验。
+We know that an excellent game development project cannot be separated from the support of the community. 
 
-我们欢迎您加入我们的社区，一起为《PvZ2 Gardendless》的开发贡献力量，感谢您对社区建设的支持！
+We are very grateful to all users who have contributed to the project, whether it is helping to check the code, find problems, make suggestions, write documents, community management, participate in discussions, or share experiences. 
+
+We welcome you to join our community and contribute to the development of "PvZ2 Gardendless". Thank you for your support for community building!
+
 > [!important]
-> 我们目前为止没有建立任何官方的PvZ2 Gardendless的Discord群组和Youtube频道。如果有人向您推荐这些平台的链接，请注意确认其真实性。
-> 
-> 我们后续的社区活动和信息发布，包括建立的新官方频道和群组等，会在本网站上发布，请您时刻关注本网站和该页面。
+> We have not established any official PvZ2 Gardendless Discord groups or Youtube channels so far. If someone recommends you links to these platforms, please confirm their authenticity.
+>
+> Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please keep an eye on this website and this page.
 
 > [!tip]
-> 评论系统正在试用，您可以在[问题反馈](feedback.md)的评论区反馈相关bug和其它问题，评论系统需要登录Github账号。
+> The comment system is currently under trial. You can report related bugs and other issues in the comment area of ​​[Feedback](feedback.md). The comment system requires a Github account.
 >
-> 如果喜欢本网站和游戏，欢迎你在[Github](https://github.com/Gzh0821/pvzg_site)上收藏/Star本网站仓库！
+> If you like this website and the game, you are welcome to bookmark/Star this website repository on [Github](https://github.com/Gzh0821/pvzg_site)!
 
 <div class="vp-card-container">
   <VPCard
