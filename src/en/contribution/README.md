@@ -7,9 +7,11 @@ comment: false
 pageInfo: false
 ---
 > [!important]
-> We have not established any official PvZ2 Gardendless Discord groups or Youtube channels so far. If someone recommends you links to these platforms, please confirm their authenticity.
->
-> Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please keep an eye on this website and this page.
+> We have not established any official PvZ2 Gardendless Discord groups and Youtube channels so far. If someone recommends you links to these platforms, please confirm their authenticity.
+> 
+> This is the test [Discord](https://discord.gg/prhV9nkA) group established by the original author. Please note that the group is still under construction.
+> 
+> Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please always pay attention to this website and this page.
 
 We know that an excellent game development project cannot be separated from the support of the community. 
 

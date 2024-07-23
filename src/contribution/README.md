@@ -7,7 +7,9 @@ comment: false
 pageInfo: false
 ---
 > [!important]
-> 我们目前为止没有建立任何官方的PvZ2 Gardendless的Discord群组和Youtube频道。如果有人向您推荐这些平台的链接，请注意确认其真实性。
+> 我们目前为止没有建立任何官方的PvZ2 Gardendless的正式Discord群组和Youtube频道。如果有人向您推荐这些平台的链接，请注意确认其真实性。
+> 
+> 这里是原作者建立的测试[Discord](https://discord.gg/prhV9nkA)群组，请注意，该群组仍在建设中。
 > 
 > 我们后续的社区活动和信息发布，包括建立的新官方频道和群组等，会在本网站上发布，请您时刻关注本网站和该页面。
 
