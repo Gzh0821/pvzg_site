@@ -1,5 +1,5 @@
 ---
-title: 下载链接
+title: Download
 index: false
 icon: download
 pageInfo: false
@@ -39,17 +39,17 @@ onBeforeMount(() => {
 </script>
 
 > [!important]
-> 下载游玩时的相关问题 FAQ 请查看[这里](../guide/FAQ.md)，系统要求和推荐配置请查看[这里](../guide/requirement.md)
+> For FAQs related to downloading and playing, please see [here](../guide/FAQ.md), and for system requirements and recommended configurations, please see [here](../guide/requirement.md)
 
 > [!warning]
-> 请注意：本页面提供的下载链接仅供学习交流使用，不得用于商业用途，请于下载后 24 小时内删除。
+> Please note: The download link provided on this page is for learning and communication purposes only and may not be used for commercial purposes. Please delete it within 24 hours after downloading.
 >
-> 下载或在线游玩表示您已阅读并同意以下协议和声明：
+> Downloading or playing online means that you have read and agreed to the following agreements and statements:
 >
 > - 《PvZ2 Gardendless》使用协议
 > - 《PvZ2 Gardendless》免责声明
 >
-> 以上协议和声明的具体内容请查看[这里](../instructions/)
+> For the details of the above agreement and statement, please see [here](../instructions/)
 
 <!-- 当前游戏有两种游玩方式：
 
@@ -59,11 +59,11 @@ onBeforeMount(() => {
 > [!info]
 > 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。 -->
 
-本站只提供最新正式版本的下载链接<span v-if="gameInfoData?.Version">，当前最新的游戏版本为 {{ gameInfoData.Version }}</span>。
+This site only provides the latest official version download link<span v-if="gameInfoData?.Version">, The latest game version is {{ gameInfoData.Version }}</span>。
 
-<span v-if="gameInfoData?.Name">该游戏版本名称: {{ gameInfoData.Name }}</span>
+<span v-if="gameInfoData?.Name">The game version name:{{ gameInfoData.Name }}</span>
 
-## 更新日志
+## Changelog
 
 <template v-if="gameInfoData?.NewFeatures">
 
@@ -71,13 +71,21 @@ onBeforeMount(() => {
 
 </template>
 
-<template v-else>暂无</template>
+<template v-else>None</template>
 
 <template v-if="gameInfoData?.Download.Onedrive">
 
-## Onedrive 链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
+## Onedrive Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
 
-下载链接：<a :href="gameInfoData.Download.Onedrive">点击进入</a>
+Download Link: <a :href="gameInfoData.Download.Onedrive">click to enter</a>
+
+</template>
+
+<template v-if="gameInfoData?.Download.Mega">
+
+## MEGA Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+
+Download Link: <a :href="gameInfoData.Download.Mega">click to enter</a>
 
 </template>
 
@@ -85,7 +93,7 @@ onBeforeMount(() => {
 
 ## 钛盘链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
 
-下载链接：<a :href="gameInfoData.Download.TmpLink">点击进入</a>
+Download Link: <a :href="gameInfoData.Download.TmpLink">click to enter</a>
 
 </template>
 
@@ -93,7 +101,7 @@ onBeforeMount(() => {
 
 ## 百度网盘
 
-下载链接：<a :href="gameInfoData.Download.Baidu">点击进入</a>
+Download Link: <a :href="gameInfoData.Download.Baidu">click to enter</a>
 
 </template>
 
@@ -101,7 +109,7 @@ onBeforeMount(() => {
 
 ## 123 网盘
 
-下载链接：<a :href="gameInfoData.Download.Pan123">点击进入</a>
+Download Link: <a :href="gameInfoData.Download.Pan123">click to enter</a>
 
 </template>
 
@@ -110,14 +118,6 @@ onBeforeMount(() => {
 ## 夸克网盘
 
 下载链接：<a :href="gameInfoData.Download.Quark">点击进入</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Mega">
-
-## MEGA 网盘 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
-
-下载链接：<a :href="gameInfoData.Download.Mega">点击进入</a>
 
 </template>
 
