@@ -91,7 +91,7 @@ Download Link: <a :href="gameInfoData.Download.Mega">click to enter</a>
 
 <template v-if="gameInfoData?.Download.TmpLink">
 
-## 钛盘链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
+## TmpLink <Badge text="Only in Chinese" type="danger" /><Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" />
 
 Download Link: <a :href="gameInfoData.Download.TmpLink">click to enter</a>
 
@@ -99,7 +99,7 @@ Download Link: <a :href="gameInfoData.Download.TmpLink">click to enter</a>
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-## 百度网盘
+## Baidu Netdisk<Badge text="Only in Chinese" type="danger" />
 
 Download Link: <a :href="gameInfoData.Download.Baidu">click to enter</a>
 
@@ -107,7 +107,7 @@ Download Link: <a :href="gameInfoData.Download.Baidu">click to enter</a>
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-## 123 网盘
+## 123Pan <Badge text="Only in Chinese" type="danger" />
 
 Download Link: <a :href="gameInfoData.Download.Pan123">click to enter</a>
 
@@ -115,17 +115,17 @@ Download Link: <a :href="gameInfoData.Download.Pan123">click to enter</a>
 
 <template v-if="gameInfoData?.Download.Quark">
 
-## 夸克网盘
+## Quark <Badge text="Only in Chinese" type="danger" />
 
-下载链接：<a :href="gameInfoData.Download.Quark">点击进入</a>
+Download Link: <a :href="gameInfoData.Download.Quark">click to enter</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Feijipan">
 
-## 小飞机网盘 <Badge text="无需登录" type="info" />
+## LittlePlane <Badge text="Only in Chinese" type="danger" /><Badge text="No login required" type="info" />
 
-下载链接：<a :href="gameInfoData.Download.Feijipan">点击进入</a>
+Download Link: <a :href="gameInfoData.Download.Feijipan">click to enter</a>
 
 </template>
 
@@ -133,6 +133,6 @@ Download Link: <a :href="gameInfoData.Download.Pan123">click to enter</a>
 
 ## Github
 
-下载链接：<a :href="gameInfoData.Download.Github">点击进入</a>
+Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
 
 </template>
