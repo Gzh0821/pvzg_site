@@ -1,16 +1,11 @@
 ---
-title: 指南
-icon: lightbulb
+title: 游玩指南
+icon: book
+pageInfo: false
+comment: false
+index: false
 ---
 
-## 功能亮点
+<BiliBili bvid="BV1ti421Y7RR"/>
 
-### Bar
-
-- [baz](bar/baz.md)
-- ...
-
-### Foo
-
-- [ray](foo/ray.md)
-- ...
+<Catalog />
