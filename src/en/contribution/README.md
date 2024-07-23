@@ -6,16 +6,18 @@ icon: comment
 comment: false
 pageInfo: false
 ---
+> [!important]
+> We have not established any official PvZ2 Gardendless Discord groups or Youtube channels so far. If someone recommends you links to these platforms, please confirm their authenticity.
+>
+> Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please keep an eye on this website and this page.
+
 We know that an excellent game development project cannot be separated from the support of the community. 
 
 We are very grateful to all users who have contributed to the project, whether it is helping to check the code, find problems, make suggestions, write documents, community management, participate in discussions, or share experiences. 
 
 We welcome you to join our community and contribute to the development of "PvZ2 Gardendless". Thank you for your support for community building!
 
-> [!important]
-> We have not established any official PvZ2 Gardendless Discord groups or Youtube channels so far. If someone recommends you links to these platforms, please confirm their authenticity.
->
-> Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please keep an eye on this website and this page.
+
 
 > [!tip]
 > The comment system is currently under trial. You can report related bugs and other issues in the comment area of ​​[Feedback](feedback.md). The comment system requires a Github account.
