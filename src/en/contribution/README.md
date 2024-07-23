@@ -1,5 +1,5 @@
 ---
-title: 用户社区
+title: Community
 index: true
 order: 1
 icon: comment
