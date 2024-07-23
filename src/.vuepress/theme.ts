@@ -33,12 +33,12 @@ export default hopeTheme({
     "/en/": {
       // navbar
       navbar: enNavbar,
-
+      navbarTitle: "PvZ2 Gardendless",
       // sidebar
       sidebar: enSidebar,
 
-      footer: "Default footer",
-
+      footer: "Official website of PvZ2 Gardendless: pvzge.com",
+      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved.",
       displayFooter: true,
 
       metaLocales: {

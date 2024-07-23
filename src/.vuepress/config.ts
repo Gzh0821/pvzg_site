@@ -9,11 +9,11 @@ export default defineUserConfig({
     ['link', { rel: 'stylesheet', href: '/styles/custom.css' }]
   ],
   locales: {
-    // "/en/": {
-    //   lang: "en-US",
-    //   title: "Docs Demo",
-    //   description: "A docs demo for vuepress-theme-hope",
-    // },
+    "/en/": {
+      lang: "en-US",
+      title: "PvZ2 Gardendless Official Website|A completely remastered PVZ2 experience",
+      description: "Official website of PvZ2 Gardendless. PVZ2 Gardendless is a complete remake of Plants vs Zombies 2.",
+    },
     "/": {
       lang: "zh-CN",
       title: "PvZ2 Gardendless 官方网站|完全重置的PVZ2体验",

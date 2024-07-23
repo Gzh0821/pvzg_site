@@ -1,24 +1,35 @@
 ---
 home: true
 icon: home
-title: 项目主页
-heroImage: https://theme-hope-assets.vuejs.press/logo.svg
+comment: false
+title: Home Page
+heroImage: /pvz_logo.png
+heroImageStyle:  
+  border-radius: 20%
+  border: "5px solid rgba(255, 255, 255, 0.3)"
+  box-shadow: "0 0 12px rgba(0, 0, 0, 0.2)"
+  backdrop-filter: "blur(10px)"
+  background: "rgba(255, 255, 255, 0.1)"
 bgImage: /assets/image/background.jpeg
-bgImageDark: https://theme-hope-assets.vuejs.press/bg/6-dark.svg
 bgImageStyle:
   background-attachment: fixed
-  opacity: 0.5     
+  filter: brightness(60%)
+  opacity: 0.5 
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: 你可以在这里放置或是整个项目的描述。
+tagline: A completely remastered PvZ2 game for all platforms.
 actions:
-  - text: 使用指南
-    icon: lightbulb
-    link: ./demo/
+  - text: Download
+    icon: circle-down
+    link: ./download/
     type: primary
 
-  - text: 文档
+  - text: Guide
     link: ./guide/
+
+  - text: Community and feedback
+    icon: comment
+    link: ./contribution/
 
 # highlights:
   # - header: 易于安装
@@ -317,11 +328,6 @@ actions:
   #       details: 让你的网站更像一个 APP
   #       link: https://theme-hope.vuejs.press/zh/guide/advanced/pwa.html
 
-copyright: false
-footer: 使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 版权所有 © 2019-至今 Mr.Hope
+# copyright: "Copyright 2021-2024 Gaozih © All Rights Reserved."
+# footer: "游戏仅供学习交流，禁止商用，非授权禁止搬运"
 ---
-<!-- 这是项目主页的案例。你可以在这里放置你的主体内容。
-
-想要使用此布局，你需要在页面 front matter 中设置 `home: true`。
-
-配置项的相关说明详见 [项目主页配置](https://theme-hope.vuejs.press/zh/guide/layout/home/)。 -->
