@@ -65,9 +65,9 @@ This site only provides the latest official version download link<span v-if="gam
 
 ## Changelog
 
-<template v-if="gameInfoData?.NewFeatures">
+<template v-if="gameInfoData?.EnNewFeatures">
 
-- <li v-for="(item, index) in gameInfoData.NewFeatures" :key="index">{{ item }}</li>
+- <li v-for="(item, index) in gameInfoData.EnNewFeatures" :key="index">{{ item }}</li>
 
 </template>
 
