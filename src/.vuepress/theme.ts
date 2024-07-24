@@ -52,7 +52,7 @@ export default hopeTheme({
     "/": {
       // navbar
       navbar: zhNavbar,
-      navbarTitle: "",
+      navbarTitle: "PvZ2 Gardendless",
       // sidebar
       sidebar: zhSidebar,
 
