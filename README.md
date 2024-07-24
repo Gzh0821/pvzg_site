@@ -9,7 +9,7 @@ This is the open source repo of the official website of "PvZ2 Gardendless".
 
 "PvZ2 Gardendless" is a rewritten "Plants vs Zombies 2" entirely using only Web technologies(including the cocos engine)!
 
-Visit our [website](pvzge.com) for download links, game guides and more. You can also report bugs, make comments and suggestions in the feedback module of the website or in the issues and discussions of this project!
+Visit our [website](https://pvzge.com/en/) for download links, game guides and more. You can also report bugs, make comments and suggestions in the feedback module of the website or in the issues and discussions of this project!
 
 ## PvZ2 Gardendless 官方网站
 
@@ -17,6 +17,6 @@ Visit our [website](pvzge.com) for download links, game guides and more. You can
 
 “PvZ2 Gardendless”是完全使用 Web 技术（包括 cocos 引擎）重写的“植物大战僵尸 2”！
 
-访问我们的[网站](pvzge.com)获取下载链接、游戏指南等。您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论和建议！
+访问我们的[网站](https://pvzge.com)获取下载链接、游戏指南等。您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论和建议！
 
 ### Web Play
