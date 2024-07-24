@@ -10,8 +10,6 @@ pageInfo: false
 > [!important]
 > We have found some unofficial PvZ2 Gardendless Discord groups and Youtube channels. If someone recommends you links to these platforms, please confirm their authenticity.
 >
-> This is the test [Discord](https://discord.gg/prhV9nkA) group established by the original author. Please note that the group is still under construction.
->
 > This is the original author's [Youtube account](https://www.youtube.com/@Nan_Garden436).
 >
 > Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please keep an eye on this website and this page.
@@ -53,7 +51,7 @@ We welcome you to join our community and contribute to the development of "PvZ2 
     title="Discord Server"
     desc="Join our Discord server and connect with other players around the world!"
     logo="/assets/image/discord.svg"
-    link="https://discord.gg/prhV9nkA"
+    link="https://discord.gg/weSutNtf"
     background="rgba(102, 204, 255, 0.15)"
   />
 </div>
