@@ -10,8 +10,6 @@ pageInfo: false
 > [!important]
 > 我们发现了一些非官方的 PvZ2 Gardendless 的 Discord 群组和 Youtube 频道。如果有人向您推荐这些平台的链接，请注意确认其真实性。
 >
-> 这里是原作者建立的测试[Discord](https://discord.gg/prhV9nkA)群组，请注意，该群组仍在建设中。
->
 > 这里是原作者的[Youtube 账号](https://www.youtube.com/@Nan_Garden436)。
 >
 > 我们后续的社区活动和信息发布，包括建立的新官方频道和群组等，会在本网站上发布，请您时刻关注本网站和该页面。
@@ -52,7 +50,7 @@ pageInfo: false
     title="Discord服务器"
     desc="加入我们的Discord服务器，与全球其它玩家交流！"
     logo="/assets/image/discord.svg"
-    link="https://discord.gg/prhV9nkA"
+    link="https://discord.gg/weSutNtf"
     background="rgba(102, 204, 255, 0.15)"
   />
 </div>
