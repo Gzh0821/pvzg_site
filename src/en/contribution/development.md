@@ -1,5 +1,5 @@
 ---
-title: 协助开发
+title: Development Assistance
 icon: code
 pageInfo: false
 comment: false
@@ -7,20 +7,19 @@ index: true
 order: 3
 ---
 
-## 《PvZ2 Gardendless》官方网站开发
-本网站是一个开源项目，使用`Apache 2.0`协议开源，我们广泛地接受来自开源社区的反馈。
+## Official website development of PvZ2 Gardenless
 
+This website is an open source project, using the `Apache 2.0` protocol, and we widely accept feedback from the open source community.
 
-
-如果你愿意贡献你的代码，请阅读本页的TODO LIST，并提交PR到[项目仓库](https://github.com/Gzh0821/pvzg_site)。
+If you are willing to contribute your code, please read the TODO LIST on this page and submit a PR to the [project repository](https://github.com/Gzh0821/pvzg_site).
 
 #### TODO LIST
 
-- [ ] 优化网站性能
-- [ ] 优化网站UI
-- [ ] 优化网站交互
-- [ ] 增加植物和僵尸图鉴
-- [ ] 增加API接口
-- [ ] 增加高速下载链接
-- [ ] 标准化开发文档和开发流程
-- [ ] i18n国际化网站支持（英文翻译）
+- [ ] Optimize website performance
+- [ ] Optimize website UI
+- [ ] Optimize website interaction
+- [ ] Add plant and zombie illustrations
+- [ ] Add API interfaces
+- [ ] Add high-speed download links
+- [ ] Standardize development documents and development processes
+- [ ] i18n international website support (English translation)
