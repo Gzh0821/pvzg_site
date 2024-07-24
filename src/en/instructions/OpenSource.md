@@ -1,12 +1,12 @@
 ---
-title: 开源声明
+title: Opensource Agreement
 icon: gavel
 index: true
 order: 3
 pageInfo: false
 comment: false
 ---
-## 《PvZ2 Gardendless》官方网站开源声明
+## "PvZ2 Gardenless" Official Website Open Source Agreement
 
    Copyright [2024] [Gaozih/Gzh0821/LMYY and contributors]
 

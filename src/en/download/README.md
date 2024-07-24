@@ -46,8 +46,8 @@ onBeforeMount(() => {
 >
 > Downloading or playing online means that you have read and agreed to the following agreements and statements:
 >
-> - 《PvZ2 Gardendless》使用协议
-> - 《PvZ2 Gardendless》免责声明
+> - "PvZ2 Gardendless" Usage Agreement
+> - Disclaimer and Copyright Notice for "PvZ2 Gardendless"
 >
 > For the details of the above agreement and statement, please see [here](../instructions/)
 
@@ -59,9 +59,9 @@ onBeforeMount(() => {
 > [!info]
 > 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。 -->
 
-This site only provides the latest official version download link<span v-if="gameInfoData?.Version">, The latest game version is {{ gameInfoData.Version }}</span>。
+This site only provides the latest official version download link<span v-if="gameInfoData?.Version">, The latest game version is {{ gameInfoData.Version }}</span>.
 
-<span v-if="gameInfoData?.Name">The game version name:{{ gameInfoData.Name }}</span>
+<span v-if="gameInfoData?.Name">The game version name: {{ gameInfoData.Name }}</span>
 
 ## Changelog
 

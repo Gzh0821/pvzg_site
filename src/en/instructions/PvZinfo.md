@@ -1,5 +1,5 @@
 ---
-title: 原版信息
+title: Original Version
 icon: circle-info
 index: true
 order: 4
@@ -8,10 +8,21 @@ comment: false
 ---
 
 > [!important]
-> 本网站，游戏和相关内容并未获得 EA 认可或与 EA 有合作关系。
-> 
 > This website, Game and related content are not endorsed by or affiliated with EA.
+> 
+> 本网站，游戏和相关内容并未获得 EA 认可或与 EA 有合作关系。
 
+## Plants vs. Zombies Original Version Information
+
+Plants vs. Zombies 2 and related series games are developed and published by Electronic Arts Inc. and its subsidiary PopCap Games. All related copyrights and intellectual property rights belong to Electronic Arts and PopCap Games.
+
+The Chinese version of Plants vs. Zombies 2 is operated by the agent, Talkweb Game, and the copyright belongs to Talkweb Information System Co., Ltd.
+
+Please visit the official websites for more information about Plants vs. Zombies 2 and to download the original game:
+
+Plants vs. Zombies series website: [EA-PvZ](https://www.ea.com/ea-studios/popcap/plants-vs-zombies)
+
+Plants vs. Zombies 2 Chinese version official website: [植物大战僵尸2中文版](https://game.talkweb.com.cn/)
 
 ## 《植物大战僵尸》原版信息
 
@@ -26,14 +37,4 @@ comment: false
 
 《植物大战僵尸2中文版》官方网站：[植物大战僵尸2中文版](https://game.talkweb.com.cn/)
 
-## Plants vs. Zombies Original Version Information
 
-Plants vs. Zombies 2 and related series games are developed and published by Electronic Arts Inc. and its subsidiary PopCap Games. All related copyrights and intellectual property rights belong to Electronic Arts and PopCap Games.
-
-The Chinese version of Plants vs. Zombies 2 is operated by the agent, Talkweb Game, and the copyright belongs to Talkweb Information System Co., Ltd.
-
-Please visit the official websites for more information about Plants vs. Zombies 2 and to download the original game:
-
-Plants vs. Zombies series website: [EA-PvZ](https://www.ea.com/ea-studios/popcap/plants-vs-zombies)
-
-Plants vs. Zombies 2 Chinese version official website: [植物大战僵尸2中文版](https://game.talkweb.com.cn/)

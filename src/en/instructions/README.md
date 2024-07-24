@@ -1,19 +1,19 @@
 ---
-title: 协议和声明
+title: Agreement and Statement
 index: false
 icon: info
 pageInfo: false
 comment: false
 ---
-《PvZ2 Gardendless》使用，游玩相关协议和声明如下：
+The usage, play-related agreements and statements of PvZ2 Gardendless are as follows:
 
-- [《PvZ2 Gardendless》使用协议](Agreement.md)
-- [《PvZ2 Gardendless》免责声明](Disclaimer.md)
+- ["PvZ2 Gardendless" Usage Agreement](Agreement.md)
+- [Disclaimer and Copyright Notice for "PvZ2 Gardendless"](Disclaimer.md)
 
-本网站开放源代码协议如下：
+The open source agreement of this website is as follows:
 
-- [《PvZ2 Gardendless》官方网站开源声明](OpenSource.md)
+- [Official website of "PvZ2 Gardendless" open source agreement](OpenSource.md)
 
-原版植物大战僵尸(Plants vs Zombies)系列游戏信息如下：
+The original Plants vs Zombies game information is as follows:
 
-- [《植物大战僵尸》系列游戏信息](PvZinfo.md)
+- [Plants vs. Zombies Original Version Information](PvZinfo.md)
