@@ -1,11 +1,12 @@
 ---
-title: 游玩指南
+title: Guide
 icon: book
 pageInfo: false
 comment: false
 index: false
 ---
 
-<BiliBili bvid="BV1ti421Y7RR"/>
+<iframe src="https://www.youtube.com/embed/QHO1OeUj21o?si=l9bhx5Gdl_wJS4AH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 <Catalog />

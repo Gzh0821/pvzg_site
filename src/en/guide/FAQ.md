@@ -1,5 +1,5 @@
 ---
-title: 常见问题FAQ
+title: FAQ
 icon: question
 pageInfo: false
 comment: false
