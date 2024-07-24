@@ -1,5 +1,5 @@
 ---
-title: 赞助者
+title: Sponsor
 icon: fa-solid fa-hand-holding-heart
 pageInfo: false
 comment: false
@@ -7,13 +7,13 @@ index: true
 order: 3
 ---
 
-## 《PvZ2 Gardendless》官网的赞助者
+## Sponsors of the official website of PvZ2 Gardendless
 
-特别感谢 <HopeIcon icon="fa-brands fa-bilibili"/> [@普通的一名博客 plunt](https://space.bilibili.com/451272694) 赞助本网站域名。
+Special thanks to <HopeIcon icon="fa-brands fa-bilibili"/> [@普通的一名博客 plunt](https://space.bilibili.com/451272694) for sponsoring this website domain.
 
 <BiliBili bvid="BV1HE4m1d7nt"/>
 
-《PvZ2 Gardendless》游戏的开发者 <HopeIcon icon="fa-brands fa-bilibili"/> [@南Garden](https://space.bilibili.com/355909245)对本网站的开发和维护提供了大量的支持。
+<HopeIcon icon="fa-brands fa-bilibili"/> [@南Garden](https://space.bilibili.com/355909245),the developer of the game "PvZ2 Gardendless", has provided a lot of support for the development and maintenance of this website.
 
-感谢所有对《PvZ2 Gardendless》游戏和官网的支持！
+Thank you for all your support of the PvZ2 Gardendless game and website!
 
