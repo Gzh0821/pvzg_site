@@ -1,5 +1,5 @@
 ---
-title: 鸣谢
+title: Acknowledgement
 icon: heart
 pageInfo: false
 comment: false
