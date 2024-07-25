@@ -11,6 +11,12 @@ This is the open source repo of the official website of "PvZ2 Gardendless".
 
 Visit our [website](https://pvzge.com/en/) for download links, game guides and more. You can also report bugs, make comments and suggestions in the feedback module of the website or in the issues and discussions of this project!
 
+### Web Play
+
+Try PvZ2 Gardendless online in [here](https://pvz2-test.gaozih.com/) !
+
+- Note: The version for online play may not be the latest version and may load slowly. For more related issues, please refer to the relevant instructions on the official website
+
 ## PvZ2 Gardendless 官方网站
 
 这是“PvZ2 Gardendless”官方网站的开源仓库。
@@ -19,4 +25,7 @@ Visit our [website](https://pvzge.com/en/) for download links, game guides and m
 
 访问我们的[网站](https://pvzge.com)获取下载链接、游戏指南等。您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论和建议！
 
-### Web Play
+### 在线游玩
+在 [这里](https://pvz2-test.gaozih.com/) 在线游玩PvZ2 Gardendless!
+
+- 注意：在线游戏版本可能不是最新版本，且加载速度可能会比较慢，更多相关问题请参考官网相关说明
