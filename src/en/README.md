@@ -327,7 +327,4 @@ actions:
   #       icon: mobile-screen
   #       details: 让你的网站更像一个 APP
   #       link: https://theme-hope.vuejs.press/zh/guide/advanced/pwa.html
-
-# copyright: "Copyright 2021-2024 Gaozih © All Rights Reserved."
-# footer: "游戏仅供学习交流，禁止商用，非授权禁止搬运"
 ---
