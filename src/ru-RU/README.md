@@ -17,7 +17,7 @@ bgImageStyle:
   opacity: 0.5 
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: Полностью переработанная игра PvZ2 для всех платформ.
+tagline: Полностью переработанная PvZ2 для всех платформ.
 actions:
   - text: Скачать
     icon: circle-down
