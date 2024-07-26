@@ -26,6 +26,11 @@ Try PvZ2 Gardendless online in [here](https://pvz2-test.gaozih.com/) !
 访问我们的[网站](https://pvzge.com)获取下载链接、游戏指南等。您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论和建议！
 
 ### 在线游玩
+
 在 [这里](https://pvz2-test.gaozih.com/) 在线游玩PvZ2 Gardendless!
 
 - 注意：在线游戏版本可能不是最新版本，且加载速度可能会比较慢，更多相关问题请参考官网相关说明
+
+---
+
+![Star History Chart](https://api.star-history.com/svg?repos=Gzh0821/pvzg_site&type=Date)
