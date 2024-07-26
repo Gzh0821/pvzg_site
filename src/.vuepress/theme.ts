@@ -30,21 +30,6 @@ export default hopeTheme({
   editLink: false,
 
   locales: {
-    "/ru-RU/": {
-      // navbar
-      navbar: ruNavbar,
-      navbarTitle: "PvZ2 Gardendless",
-      // sidebar
-      sidebar: ruSidebar,
-
-      footer: "Official website of PvZ2 Gardendless: pvzge.com",
-      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved.",
-      displayFooter: true,
-
-      metaLocales: {
-        editLink: "Редактировать эту страницу на GitHub",
-      },
-    },
     "/en/": {
       // navbar
       navbar: enNavbar,
@@ -60,7 +45,21 @@ export default hopeTheme({
         editLink: "Edit this page on GitHub",
       },
     },
+    "/ru-RU/": {
+      // navbar
+      navbar: ruNavbar,
+      navbarTitle: "PvZ2 Gardendless",
+      // sidebar
+      sidebar: ruSidebar,
 
+      footer: "Official website of PvZ2 Gardendless: pvzge.com",
+      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved.",
+      displayFooter: true,
+
+      metaLocales: {
+        editLink: "Редактировать эту страницу на GitHub",
+      },
+    },
     /**
      * Chinese locale config
      */
