@@ -21,15 +21,15 @@ export default defineUserConfig({
     ],
   ],
   locales: {
-    "/ru-RU/": {
-      lang: "ru-RU",
-      title: "PvZ2 Gardendless Официальный сайт|Полностью переработанный опыт PVZ2",
-      description: "Официальный сайт PvZ2 Gardendless. PVZ2 Gardendless - это полная переработка Plants vs Zombies 2.",
-    },
     "/en/": {
       lang: "en-US",
       title: "PvZ2 Gardendless Official Website|A completely remastered PVZ2 experience",
       description: "Official website of PvZ2 Gardendless. PVZ2 Gardendless is a complete remake of Plants vs Zombies 2.",
+    },
+    "/ru-RU/": {
+      lang: "ru-RU",
+      title: "PvZ2 Gardendless Официальный сайт|Полностью переработанный опыт PVZ2",
+      description: "Официальный сайт PvZ2 Gardendless. PVZ2 Gardendless - это полная переработка Plants vs Zombies 2.",
     },
     "/": {
       lang: "zh-CN",
