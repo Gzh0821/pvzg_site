@@ -1,55 +1,54 @@
 ---
-title: Community
+title: Сообщество
 index: true
 order: 1
 icon: comment
 comment: false
 pageInfo: false
 ---
-
 > [!important]
-> We have found some unofficial PvZ2 Gardendless Discord groups and Youtube channels. If someone recommends you links to these platforms, please confirm their authenticity.
+> Мы нашли несколько неофициальных PvZ2 Gardendless серверов Discord и Youtube-каналов. Если кто-то порекомендует вам ссылки на эти платформы, пожалуйста, подтвердите их подлинность.
 >
-> This is the original author's [Youtube account](https://www.youtube.com/@Nan_Garden436).
+> Это оригинальный [Youtube аккаунт автора](https://www.youtube.com/@Nan_Garden436).
 >
-> Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please keep an eye on this website and this page.
+> Наши последующие мероприятия в сообществе и информационные выпуски, включая создание новых официальных каналов и групп, будут публиковаться на этом веб-сайте. Пожалуйста, следите за этим веб-сайтом.
 
-We know that an excellent game development project cannot be separated from the support of the community.
+Мы знаем, что отличный проект по разработке игр неотделим от поддержки сообщества.
 
-We are very grateful to all users who have contributed to the project, whether it is helping to check the code, find problems, make suggestions, write documents, community management, participate in discussions, or share experiences.
+Мы очень благодарны всем пользователям, которые внесли свой вклад в проект, будь то помощь в проверке кода, поиске багов, внесении предложений, написании документов, управлении сообществом, участии в обсуждениях или обмене опытом.
 
-We welcome you to join our community and contribute to the development of "PvZ2 Gardendless". Thank you for your support for community building!
+Мы приглашаем вас присоединиться к нашему сообществу и внести свой вклад в развитие "PvZ2 Gardendless". Спасибо вам за вашу поддержку в развитии сообщества!
 
 > [!tip]
-> The comment system is currently under trial. You can report related bugs and other issues in the comment area of ​​[Feedback](feedback.md). The comment system requires a Github account.
+> В настоящее время система комментариев находится в стадии тестирования. Вы можете сообщить о связанных с ней ошибках и других проблемах в разделе комментариев на [Обратная связь](feedback.md). Для работы с системой комментариев требуется учетная запись на Github.
 >
-> If you like this website and the game, you are welcome to bookmark/Star this website repository on [Github](https://github.com/Gzh0821/pvzg_site)!
+> Если вам нравится этот веб-сайт и игра, вы можете добавить этот репозиторий в закладки на сайте [Github](https://github.com/Gzh0821/pvzg_site)!
 
 <div class="vp-card-container">
   <VPCard
-    title="QQ active chat group"
-    desc="Group Number:980405270,for players who want to provide help, share strategies and participate in discussions"
+    title="QQ Группа для общения"
+    desc="Номер Группы:980405270,для игроков, которые хотят оказывать помощь, делиться стратегиями и участвовать в дискуссиях"
     logo="/assets/image/qq.svg"
     link="https://qm.qq.com/q/MIqVcRAg8u"
     background="rgba(245, 158, 0, 0.15)"
   />
   <VPCard
-    title="QQ Announcement Group-4"
-    desc="Group Number:981880465, for getting the latest information"
+    title="QQ Группа для новостей"
+    desc="Номер группы:981880465, для получения самой свежей информации"
     logo="/assets/image/qq.svg"
     link="https://qm.qq.com/q/8LkQioyGI2"
     background="rgba(228, 0, 54, 0.15)"
   />
   <VPCard
-    title="Github Repository"
-    desc="For bug feedback and feature suggestions, you can submit issues on this repository.Welcome to star this repository!"
+    title="Репозиторий Github"
+    desc="Для получения отзывов об ошибках и предложений по новым функциям вы можете отправлять сообщения о проблемах в этот репозиторий.Добро пожаловать в этот репозиторий!"
     logo="/assets/image/github-dark.svg"
     link="https://github.com/Gzh0821/pvzg_site"
     background="rgba(102, 204, 255, 0.15)"
   />
   <VPCard
-    title="Discord Server"
-    desc="Join our Discord server and connect with other players around the world!"
+    title="Discord сервер"
+    desc="Присоединяйтесь к нашему серверу Discord и общайтесь с другими игроками по всему миру!"
     logo="/assets/image/discord.svg"
     link="https://discord.gg/weSutNtf"
     background="rgba(102, 204, 255, 0.15)"

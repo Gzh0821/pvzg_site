@@ -1,5 +1,5 @@
 ---
-title: Development Help
+title: Помощь в разработке
 icon: code
 pageInfo: false
 comment: false
@@ -7,19 +7,19 @@ index: true
 order: 3
 ---
 
-## Official website development of PvZ2 Gardenless
+## Разработка официального сайта PvZ2 Gardenless
 
-This website is an open source project, using the `Apache 2.0` protocol, and we widely accept feedback from the open source community.
+Этот веб-сайт является проектом с исходным кодом, использующим протокол "Apache 2.0", И мы открыты для отзывов и различных идей.
 
-If you are willing to contribute your code, please read the TODO LIST on this page and submit a PR to the [project repository](https://github.com/Gzh0821/pvzg_site).
+Если вы готовы поделиться своим кодом, пожалуйста, ознакомьтесь со списком задач на этой странице и отправьте PR-сообщение в [репозиторий проекта](https://github.com/Gzh0821/pvzg_site).
 
-#### TODO LIST
+#### Список задач
 
-- [ ] Optimize website performance
-- [ ] Optimize website UI
-- [ ] Optimize website interaction
-- [ ] Add plant and zombie illustrations
-- [ ] Add API interfaces
-- [ ] Add high-speed download links
-- [ ] Standardize development documents and development processes
-- [ ] i18n international website support (English translation)
+- [ ] Оптимизировать производительность веб-сайта
+- [ ] Оптимизировать пользовательский интерфейс веб-сайта
+- [ ] Оптимизировать взаимодействие с веб-сайтом
+- [ ] Добавить иллюстрации растений и зомби
+- [ ] Добавление интерфейсов API
+- [ ] Добавить ссылки на высокоскоростную загрузку
+- [ ] Стандартизировать документы и процессы разработки
+- [ ] международная поддержка веб-сайта i18n (перевод на английский)
