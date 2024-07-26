@@ -5,21 +5,27 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'paris2024';
+    src: url('/fonts/Paris2024-Variable.woff2') format('woff2');
+    font-weight: 480;
+    font-style: normal;
+}
 
 #main-title {
-    font-family: 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
+    font-family: 'paris2024', 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
 }
 
 #main-description {
-    font-family: 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
+    font-family: 'paris2024', 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
 }
 
 .vp-card-container {
-    font-family: 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
+    font-family: 'paris2024', 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
 }
 
 .vp-site-name {
-    font-family: 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
+    font-family: 'paris2024', 'pvzgFont', "Noto Sans", "Roboto", "Arial", serif;
 }
 
 .youtube-video{
