@@ -1,5 +1,5 @@
 ---
-title: Download
+title: Скачивание
 index: false
 icon: download
 pageInfo: false
@@ -8,7 +8,7 @@ sidebar: false
 comment: false
 
 category:
-  - Download
+  - Скачивание
 ---
 
 <script setup>
@@ -39,17 +39,17 @@ onBeforeMount(() => {
 </script>
 
 > [!important]
-> For FAQs related to downloading and playing, please see [here](../guide/FAQ.md), and for system requirements and recommended configurations, please see [here](../guide/requirement.md)
+> Ответы на часто задаваемые вопросы, связанные со скачиванием и запуском, пожалуйста, смотрите [здесь](../guide/FAQ.md), а информацию о системных требованиях и рекомендуемых конфигурациях смотрите [тут](../guide/requirement.md)
 
 > [!warning]
-> Please note: The download link provided on this page is for learning and communication purposes only and may not be used for commercial purposes. Please delete it within 24 hours after downloading.
+> Пожалуйста, обратите внимание: ссылка на скачивание, указанная на этой странице, предназначена только для ознакомления и коммуникации и не может быть использована в коммерческих целях. Пожалуйста, удалите ее в течение 24 часов после загрузки.
 >
-> Downloading or playing online means that you have read and agreed to the following agreements and statements:
+> Загрузка или воспроизведение онлайн означает, что вы прочитали и согласились со следующими соглашениями и заявлениями:
 >
-> - "PvZ2 Gardendless" Usage Agreement
-> - Disclaimer and Copyright Notice for "PvZ2 Gardendless"
+> - Пользовательское соглашение "PvZ2 Gardendless"
+> - Отказ от ответственности и уведомление об авторских правах для "PvZ2 Gardendless"
 >
-> For the details of the above agreement and statement, please see [here](../instructions/)
+> Для получения подробной информации о вышеуказанном соглашении и заявлении, пожалуйста, ознакомьтесь с [этим](../instructions/)
 
 <!-- 当前游戏有两种游玩方式：
 
@@ -59,11 +59,11 @@ onBeforeMount(() => {
 > [!info]
 > 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。 -->
 
-This site only provides the latest official version download link<span v-if="gameInfoData?.Version">, The latest game version is {{ gameInfoData.Version }}</span>.
+Этот сайт предоставляет ссылку для скачивания только последней официальной версии<span v-if="gameInfoData?.Version">, Последняя версия игры - это {{ gameInfoData.Version }}</span>.
 
-<span v-if="gameInfoData?.Name">The game version name: {{ gameInfoData.Name }}</span>
+<span v-if="gameInfoData?.Name"> Название версии игры: {{ gameInfoData.Name }}</span>
 
-## Changelog
+## Журнал изменений
 
 <template v-if="gameInfoData?.EnNewFeatures">
 
@@ -75,57 +75,57 @@ This site only provides the latest official version download link<span v-if="gam
 
 <template v-if="gameInfoData?.Download.Onedrive">
 
-## Onedrive Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+## Ссылка Onedrive <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
-Download Link: <a :href="gameInfoData.Download.Onedrive">click to enter</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Onedrive">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Mega">
 
-## MEGA Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+## Cсылка MEGA <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
-Download Link: <a :href="gameInfoData.Download.Mega">click to enter</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Mega">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.TmpLink">
 
-## TmpLink <Badge text="Only in Chinese" type="danger" /><Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" />
+## TmpLink <Badge text="Только в Китае" type="danger" /><Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" />
 
-Download Link: <a :href="gameInfoData.Download.TmpLink">click to enter</a>
+Ссылка для скачивание: <a :href="gameInfoData.Download.TmpLink">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-## Baidu Netdisk<Badge text="Only in Chinese" type="danger" />
+## Baidu Netdisk<Badge text="Только в Китае" type="danger" />
 
-Download Link: <a :href="gameInfoData.Download.Baidu">click to enter</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Baidu">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-## 123Pan <Badge text="Only in Chinese" type="danger" />
+## 123Pan <Badge text="Только в Китае" type="danger" />
 
-Download Link: <a :href="gameInfoData.Download.Pan123">click to enter</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Pan123">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Quark">
 
-## Quark <Badge text="Only in Chinese" type="danger" />
+## Quark <Badge text="Только в Китае" type="danger" />
 
-Download Link: <a :href="gameInfoData.Download.Quark">click to enter</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Quark">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Feijipan">
 
-## LittlePlane <Badge text="Only in Chinese" type="danger" /><Badge text="No login required" type="info" />
+## LittlePlane <Badge text="Только в Китае" type="danger" /><Badge text="не требует входа" type="info" />
 
-Download Link: <a :href="gameInfoData.Download.Feijipan">click to enter</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Feijipan">нажмите чтобы открыть</a>
 
 </template>
 
@@ -133,6 +133,6 @@ Download Link: <a :href="gameInfoData.Download.Feijipan">click to enter</a>
 
 ## Github
 
-Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
 
 </template>
