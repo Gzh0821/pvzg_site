@@ -1,16 +1,18 @@
 // place your custom styles here
 @font-face {
-    font-family: 'pvzgFont';
-    src: url('/fonts/FBUSV8C5EI.woff2') format('woff2');
+    font-family: 'pvzgeFontEN';
+    src: url('/fonts/FBU-ENGRU.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'pvzgFont';
     src: url('/fonts/FBUSV8C5EI.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'paris2024';
     src: url('/fonts/Paris2024-Variable.woff2') format('woff2');
@@ -19,11 +21,11 @@
 }
 
 #main-title {
-    font-family: 'paris2024', 'pvzgFont', "Noto Sans", "ZCOOL KuaiLe", "Roboto", "Arial", serif;
+    font-family: 'paris2024', 'pvzgeFontEN', 'pvzgFont', "Noto Sans", "ZCOOL KuaiLe", "Roboto", "Arial", serif;
 }
 
 #main-description {
-    font-family: 'paris2024', "Noto Sans", "ZCOOL KuaiLe", "Roboto", "Arial", serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans", "ZCOOL KuaiLe", "Roboto", "Arial", serif;
 }
 
 .vp-card-container {
@@ -31,7 +33,7 @@
 }
 
 .vp-site-name {
-    font-family: 'paris2024', 'pvzgFont', "Noto Sans", "ZCOOL KuaiLe", "Roboto", "Arial", serif;
+    font-family: 'paris2024', 'pvzgeFontEN', 'pvzgFont', "Noto Sans", "ZCOOL KuaiLe", "Roboto", "Arial", serif;
 }
 
 .youtube-video {
