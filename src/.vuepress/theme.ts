@@ -1,7 +1,7 @@
 import { hopeTheme } from "vuepress-theme-hope";
 
-import { enNavbar, zhNavbar } from "./navbar/index.js";
-import { enSidebar, zhSidebar } from "./sidebar/index.js";
+import { enNavbar, ruNavbar, zhNavbar } from "./navbar/index.js";
+import { enSidebar, ruSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
   hostname: "https://www.pvzge.com",
@@ -30,6 +30,21 @@ export default hopeTheme({
   editLink: false,
 
   locales: {
+    "/ru-RU/": {
+      // navbar
+      navbar: ruNavbar,
+      navbarTitle: "PvZ2 Gardendless",
+      // sidebar
+      sidebar: ruSidebar,
+
+      footer: "Official website of PvZ2 Gardendless: pvzge.com",
+      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved.",
+      displayFooter: true,
+
+      metaLocales: {
+        editLink: "Редактировать эту страницу на GitHub",
+      },
+    },
     "/en/": {
       // navbar
       navbar: enNavbar,
