@@ -1,5 +1,5 @@
 ---
-title: Sponsor
+title: Спонсоры
 icon: fa-solid fa-hand-holding-heart
 pageInfo: false
 comment: false
@@ -7,12 +7,12 @@ index: true
 order: 4
 ---
 
-## Sponsors of the official website of PvZ2 Gardendless
+## Спонсоры оффициального сайта PvZ2 Gardendless
 
-Special thanks to <HopeIcon icon="fa-brands fa-bilibili"/> [@普通的一名博客 plunt](https://space.bilibili.com/451272694) for sponsoring this website domain.
+Отдельное спасибо <HopeIcon icon="fa-brands fa-bilibili"/> [@普通的一名博客 plunt](https://space.bilibili.com/451272694) за спонсирование домена этого веб-сайта.
 
 <iframe class="youtube-video" src="https://www.youtube.com/embed/FoluvQ-ADu4?si=54CVPSZK9RReEnaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<HopeIcon icon="fa-brands fa-bilibili"/> [@南 Garden](https://space.bilibili.com/355909245),the developer of the game "PvZ2 Gardendless", has provided a lot of support for the development and maintenance of this website.
+<HopeIcon icon="fa-brands fa-bilibili"/> [@南 Garden](https://space.bilibili.com/355909245), Разработчик игры "PvZ2 Gardendless", оказал большую поддержку в разработке и обслуживании этого веб-сайта.
 
-Thank you for all your support of the PvZ2 Gardendless game and website!
+Спасибо вам за всю вашу поддержку Игры и Веб-сайта PvZ2 Gardendless !
