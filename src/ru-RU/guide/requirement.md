@@ -40,7 +40,7 @@ order: 3
 
 ## <HopeIcon icon="fa-solid fa-earth-americas" size="1.7rem" /> Требования к онлайн-игре
 
-Мы рекомендуем вам использовать следующие типы браузеров для доступа к веб-версии "PvZ2 Gardendless".:
+Мы рекомендуем вам использовать следующие типы браузеров для доступа к веб-версии "PvZ2 Gardendless":
 | Browser                   | Introduction                                                             |
 | ---------------------- | ---------------------------------------------------------------- |
 | <HopeIcon icon="fa-brands fa-chrome"/> Chrome | Chrome 114 or higher is recommended |
