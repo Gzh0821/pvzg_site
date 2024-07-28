@@ -1,15 +1,15 @@
 ---
-title: System Requirements
+title: Системные Требования
 icon: sliders
 pageInfo: false
 comment: false
 index: true
 order: 3
 ---
-## <HopeIcon icon="gear" size="1.7rem" color="#585888" /> Configuration
-The minimum configuration requirement is the minimum configuration to run the game, and the recommended configuration is to get a standard gaming experience.
+## <HopeIcon icon="gear" size="1.7rem" color="#585888" /> Конфигурация
+Требования к минимальной конфигурации - это минимальная конфигурация для запуска игры, а рекомендуемая конфигурация предназначена для получения стандартного игрового опыта.
 
-#### Minimum Configuration：
+#### минимальные требования：
 | Requirement            | Specification            |
 | ---------------------- | ---------------------------------------------------------------- |
 | Processor | Intel Core i3-6100 / AMD Ryzen 3 1200 |
@@ -19,7 +19,7 @@ The minimum configuration requirement is the minimum configuration to run the ga
 | DirectX | DirectX 11 |
 | Resolution | 1280x720 |
 
-#### Recommended Configuration:
+#### рекомендуемые требования:
 | Requirement      | Specification                                 |
 | ---------------------- | ---------------------------------------------------------------- |
 | Processor | Intel Core i5-9400 / AMD Ryzen 5 3600 or higher performance|
@@ -29,7 +29,7 @@ The minimum configuration requirement is the minimum configuration to run the ga
 | DirectX | DirectX 12 |
 | Resolution | 1920x1080 |
 
-## <HopeIcon icon="fa-brands fa-windows" size="1.7rem" color="rgb(0, 168, 232)" /> Client System Requirements
+## <HopeIcon icon="fa-brands fa-windows" size="1.7rem" color="rgb(0, 168, 232)" /> Системные требования клиента
 
 | Requirement        | Specification                                                             |
 | ---------------------- | ---------------------------------------------------------------- |
@@ -38,9 +38,9 @@ The minimum configuration requirement is the minimum configuration to run the ga
 | **Necessary Components** | Windows Update                                    |
 | Optional Components | WebView2 Runtime        |
 
-## <HopeIcon icon="fa-solid fa-earth-americas" size="1.7rem" /> Online Play Requirements
+## <HopeIcon icon="fa-solid fa-earth-americas" size="1.7rem" /> Требования к онлайн-игре
 
-We recommend that you use the following browser types to access the web version of "PvZ2 Gardendless":
+Мы рекомендуем вам использовать следующие типы браузеров для доступа к веб-версии "PvZ2 Gardendless".:
 | Browser                   | Introduction                                                             |
 | ---------------------- | ---------------------------------------------------------------- |
 | <HopeIcon icon="fa-brands fa-chrome"/> Chrome | Chrome 114 or higher is recommended |
