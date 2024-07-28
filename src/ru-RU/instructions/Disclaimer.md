@@ -1,12 +1,11 @@
 ---
-title: Copyright Disclaimer
+title: отказ от авторских прав
 icon: copyright
 index: true
 order: 2
 pageInfo: false
 comment: false
 ---
-
 ## Disclaimer and Copyright Notice for "PvZ2 Gardendless"
 
 This game is a non-commercial fan-made creation, created solely for entertainment purposes and as a tribute to the original "Plants vs. Zombies 2" series. Please read the following important statements:
