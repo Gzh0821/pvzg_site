@@ -2,7 +2,7 @@
 home: true
 icon: home
 comment: false
-title: Home Page
+title: Домашняя страница
 heroImage: /pvz_logo.png
 heroImageStyle:  
   border-radius: 20%
