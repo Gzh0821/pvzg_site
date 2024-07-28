@@ -1,5 +1,5 @@
 ---
-title: Opensource Agreement
+title: Соглашение открытого исходного кода
 icon: gavel
 index: true
 order: 3
