@@ -6,6 +6,6 @@ comment: false
 index: false
 ---
 
-<BiliBili bvid="BV1ti421Y7RR"/>
+<BiliBili bvid="BV1eU411U72r"/>
 
 <Catalog />
