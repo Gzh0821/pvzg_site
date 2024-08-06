@@ -6,7 +6,7 @@ export const ruNavbar = navbar([
   "/ru-RU/guide/",
   "/ru-RU/instructions/",
   "/ru-RU/contribution/",
-  { text: "Онлайн-игра", link: "https://pvz2-test.gaozih.com", icon: "circle-play" },
+  { text: "Онлайн-игра", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",
   // "/portfolio",
   // "/demo/",
