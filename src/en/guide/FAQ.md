@@ -9,7 +9,7 @@ order: 2
 ## Frequently Asked Game Questions
 
 > [!note]
-> This FaQ is Valid till “WWP2” version
+> This FaQ is Valid till “PvZ2_Prepreprelease_AEP3” version
 >
 > Q&A by @索菲 sophine
 
