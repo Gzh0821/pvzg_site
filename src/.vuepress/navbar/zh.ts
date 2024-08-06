@@ -7,7 +7,7 @@ export const zhNavbar = navbar([
   "/instructions/",
   "/contribution/",
   "/devtool/",
-  { text: "在线游玩", link: "https://pvz2-test.gaozih.com", icon: "circle-play" },
+  { text: "在线游玩", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/demo/",
   // {
   //   text: "指南",
