@@ -50,7 +50,7 @@ pageInfo: false
     title="Discord сервер"
     desc="Присоединяйтесь к нашему серверу Discord и общайтесь с другими игроками по всему миру!"
     logo="/assets/image/discord.svg"
-    link="https://discord.gg/weSutNtf"
+    link="https://discord.gg/ZEfb2tBQFW"
     background="rgba(102, 204, 255, 0.15)"
   />
 </div>

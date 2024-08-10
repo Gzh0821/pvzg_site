@@ -51,7 +51,7 @@ We welcome you to join our community and contribute to the development of "PvZ2 
     title="Discord Server"
     desc="Join our Discord server and connect with other players around the world!"
     logo="/assets/image/discord.svg"
-    link="https://discord.gg/weSutNtf"
+    link="https://discord.gg/ZEfb2tBQFW"
     background="rgba(102, 204, 255, 0.15)"
   />
 </div>

@@ -50,7 +50,7 @@ pageInfo: false
     title="Discord服务器"
     desc="加入我们的Discord服务器，与全球其它玩家交流！"
     logo="/assets/image/discord.svg"
-    link="https://discord.gg/weSutNtf"
+    link="https://discord.gg/ZEfb2tBQFW"
     background="rgba(102, 204, 255, 0.15)"
   />
 </div>
