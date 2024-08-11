@@ -59,9 +59,13 @@ onBeforeMount(() => {
 > [!info]
 > 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。 -->
 
-本站只提供最新正式版本的下载链接<span v-if="gameInfoData?.Version">，当前最新的游戏版本为 {{ gameInfoData.Version }}</span>。
+本站只提供最新正式版本的下载链接<span v-if="gameInfoData?.Version">，当前最新的游戏版本为 {{ gameInfoData.Version }}</span>
 
 <span v-if="gameInfoData?.Name">该游戏版本名称: {{ gameInfoData.Name }}</span>
+
+<span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
+
+<span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
 
 ## 更新日志
 
