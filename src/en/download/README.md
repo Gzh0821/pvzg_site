@@ -63,6 +63,10 @@ This site only provides the latest official version download link<span v-if="gam
 
 <span v-if="gameInfoData?.Name">The game version name: {{ gameInfoData.Name }}</span>
 
+<span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
+
+<span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
+
 ## Changelog
 
 <template v-if="gameInfoData?.EnNewFeatures">

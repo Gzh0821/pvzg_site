@@ -63,6 +63,10 @@ onBeforeMount(() => {
 
 <span v-if="gameInfoData?.Name"> Название версии игры: {{ gameInfoData.Name }}</span>
 
+<span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
+
+<span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
+
 ## Журнал изменений
 
 <template v-if="gameInfoData?.EnNewFeatures">
