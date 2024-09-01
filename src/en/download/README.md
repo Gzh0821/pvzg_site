@@ -79,7 +79,7 @@ This site only provides the latest official version download link<span v-if="gam
 
 <template v-if="gameInfoData?.Download.Github">
 
-## Github
+## Github <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
 
 Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
 

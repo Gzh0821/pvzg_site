@@ -79,7 +79,7 @@ onBeforeMount(() => {
 
 <template v-if="gameInfoData?.Download.Github">
 
-## Github
+## Github <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
 

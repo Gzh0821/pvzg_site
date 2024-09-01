@@ -79,7 +79,7 @@ onBeforeMount(() => {
 
 <template v-if="gameInfoData?.Download.Github">
 
-## Github
+## Github <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
 
 下载链接：<a :href="gameInfoData.Download.Github">点击进入</a>
 
