@@ -77,6 +77,14 @@ onBeforeMount(() => {
 
 <template v-else>None</template>
 
+<template v-if="gameInfoData?.Download.Github">
+
+## Github
+
+Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
+
+</template>
+
 <template v-if="gameInfoData?.Download.Onedrive">
 
 ## Ссылка Onedrive <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
@@ -130,13 +138,5 @@ onBeforeMount(() => {
 ## LittlePlane <Badge text="Только в Китае" type="danger" /><Badge text="не требует входа" type="info" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Feijipan">нажмите чтобы открыть</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Github">
-
-## Github
-
-Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
 
 </template>

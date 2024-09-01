@@ -77,6 +77,14 @@ This site only provides the latest official version download link<span v-if="gam
 
 <template v-else>None</template>
 
+<template v-if="gameInfoData?.Download.Github">
+
+## Github
+
+Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
+
+</template>
+
 <template v-if="gameInfoData?.Download.Onedrive">
 
 ## Onedrive Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
@@ -130,13 +138,5 @@ Download Link: <a :href="gameInfoData.Download.Quark">click to enter</a>
 ## LittlePlane <Badge text="Only in Chinese" type="danger" /><Badge text="No login required" type="info" />
 
 Download Link: <a :href="gameInfoData.Download.Feijipan">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Github">
-
-## Github
-
-Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
 
 </template>
