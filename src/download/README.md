@@ -77,6 +77,14 @@ onBeforeMount(() => {
 
 <template v-else>暂无</template>
 
+<template v-if="gameInfoData?.Download.Github">
+
+## Github
+
+下载链接：<a :href="gameInfoData.Download.Github">点击进入</a>
+
+</template>
+
 <template v-if="gameInfoData?.Download.Onedrive">
 
 ## Onedrive 链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
@@ -130,13 +138,5 @@ onBeforeMount(() => {
 ## 小飞机网盘 <Badge text="无需登录" type="info" />
 
 下载链接：<a :href="gameInfoData.Download.Feijipan">点击进入</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Github">
-
-## Github
-
-下载链接：<a :href="gameInfoData.Download.Github">点击进入</a>
 
 </template>
