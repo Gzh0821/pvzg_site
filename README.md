@@ -34,5 +34,3 @@ Try PvZ2 Gardendless online in [here](https://pvz2-test.gaozih.com/) !
 ---
 
 Thanks to everyone who gave this repository a star！
-
-![Star History Chart](https://api.star-history.com/svg?repos=Gzh0821/pvzg_site&type=Date)
