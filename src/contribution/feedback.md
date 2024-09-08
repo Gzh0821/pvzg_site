@@ -6,10 +6,6 @@ index: true
 order: 5
 ---
 > [!tip]
-> 评论系统正在试用，您可以在本页面的评论区反馈相关bug和其它问题，评论系统需要登录Github账号。
->
-> 如果喜欢本网站和游戏，欢迎你在[Github](https://github.com/Gzh0821/pvzg_site)上收藏/Star本网站仓库！
+> 如果喜欢本网站和游戏，欢迎您在[Github](https://github.com/Gzh0821/pvzg_site)上收藏/Star本网站仓库！
 
 若您希望反馈游戏bug和提出建议，请[发送邮件](mailto:pr@ms.pvzge.com)至开发组邮箱：pr@ms.pvzge.com。
-
-

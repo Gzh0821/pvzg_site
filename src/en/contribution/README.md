@@ -7,13 +7,6 @@ comment: false
 pageInfo: false
 ---
 
-> [!important]
-> We have found some unofficial PvZ2 Gardendless Discord groups and Youtube channels. If someone recommends you links to these platforms, please confirm their authenticity.
->
-> This is the original author's [Youtube account](https://www.youtube.com/@Nan_Garden436).
->
-> Our subsequent community activities and information releases, including the establishment of new official channels and groups, will be published on this website. Please keep an eye on this website and this page.
-
 We know that an excellent game development project cannot be separated from the support of the community.
 
 We are very grateful to all users who have contributed to the project, whether it is helping to check the code, find problems, make suggestions, write documents, community management, participate in discussions, or share experiences.
@@ -21,7 +14,7 @@ We are very grateful to all users who have contributed to the project, whether i
 We welcome you to join our community and contribute to the development of "PvZ2 Gardendless". Thank you for your support for community building!
 
 > [!tip]
-> The comment system is currently under trial. You can report related bugs and other issues in the comment area of ​​[Feedback](feedback.md). The comment system requires a Github account.
+> You can find ways to report bugs and comments in [Feedback](feedback.md).
 >
 > If you like this website and the game, you are welcome to bookmark/Star this website repository on [Github](https://github.com/Gzh0821/pvzg_site)!
 
