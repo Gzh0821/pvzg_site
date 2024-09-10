@@ -17,7 +17,7 @@ bgImageStyle:
   opacity: 0.5 
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: A completely remastered PvZ2 implementation for all platforms.
+tagline: A completely remastered PvZ2 implementation for all desktop platforms.
 actions:
   - text: Download
     icon: circle-down
