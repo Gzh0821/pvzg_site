@@ -17,7 +17,7 @@ bgImageStyle:
   opacity: 0.5 
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: 完全重制的全平台PvZ2.
+tagline: 完全重制的全桌面平台PvZ2.
 actions:
   - text: 下载链接
     icon: circle-down
