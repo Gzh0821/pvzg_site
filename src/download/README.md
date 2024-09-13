@@ -13,7 +13,7 @@ category:
 
 <script setup>
 import axios from 'axios';
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount } from 'vue';
 
 // const dataFormat = {
 //     "Version": "",
@@ -37,7 +37,6 @@ onBeforeMount(() => {
 })
 
 </script>
-
 > [!important]
 > 下载游玩时的相关问题 FAQ 请查看[这里](../guide/FAQ.md)，系统要求和推荐配置请查看[这里](../guide/requirement.md)
 
