@@ -1,0 +1,13 @@
+interface Element {
+  [key: string]: number | string;
+}
+export interface KeyMap {
+  [key: string]: { zh: string, en: string, icon?: string };
+}
+export interface Plant {
+  elements: Element;
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+}
