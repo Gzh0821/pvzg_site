@@ -6,7 +6,7 @@ export const ruNavbar = navbar([
   "/ru-RU/guide/",
   "/ru-RU/instructions/",
   "/ru-RU/contribution/",
-  "/ru-RU/wiki/",
+  "/ru-RU/almanac/",
   { text: "Онлайн-игра", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",
   // "/portfolio",
