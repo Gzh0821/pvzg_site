@@ -6,6 +6,7 @@ export const enNavbar = navbar([
   "/en/guide/",
   "/en/instructions/",
   "/en/contribution/",
+  "/en/wiki/",
   { text: "Online Play", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",
   // "/portfolio",

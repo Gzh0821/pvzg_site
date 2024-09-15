@@ -8,6 +8,9 @@ export interface Plant {
   elements: Element;
   id: number;
   name: string;
+  enName: string;
   image: string;
   description: string;
+  chat: String;
+  special: Element;
 }
