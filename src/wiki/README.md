@@ -11,6 +11,8 @@ watermark: true
 ---
 > [!warning]
 > 图鉴功能正在测试阶段
+>
+> 使用浏览器的CTRL+F搜索功能快速查找植物
 
 <script setup>
     import { createApp,provide } from 'vue';
