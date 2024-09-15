@@ -24,8 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: Гид
-    link: ./guide/
+  - text: альманах
+    icon: book-open
+    link: ./wiki/
 
   - text: Сообщество и обратная связь
     icon: comment

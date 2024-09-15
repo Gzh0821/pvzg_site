@@ -24,8 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: Guide
-    link: ./guide/
+  - text: Almanac
+    icon: book-open
+    link: ./wiki/
 
   - text: Community and feedback
     icon: comment
