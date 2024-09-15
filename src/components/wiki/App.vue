@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <h1 v-if="i18nLanguage == 'zh'">PvZ2 Gardendless 植物图鉴</h1>
-        <h1 v-else>PvZ2 Gardendless Almanac</h1>
+        <h1 v-else>PvZ2 Gardendless Plants Almanac</h1>
         <div class="container">
             <div class="sidebar">
                 <PlantCatalog :plants="plants" @selectPlant="selectPlant" />
@@ -85,7 +85,6 @@ selectPlant(plants.value[0]);
 
 <style scoped>
 .app {
-    font-family: 'Arial', sans-serif;
     text-align: center;
     justify-content: center;
     align-items: center;

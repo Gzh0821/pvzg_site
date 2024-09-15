@@ -24,8 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: 游玩指南
-    link: ./guide/
+  - text: 图鉴
+    icon: book-open
+    link: ./wiki/
 
   - text: 社区及问题反馈
     icon: comment

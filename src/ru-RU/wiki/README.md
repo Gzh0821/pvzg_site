@@ -1,7 +1,7 @@
 ---
 title: альманах
 index: false
-icon: book
+icon: book-open
 pageInfo: false
 breadcrumb: false
 sidebar: false

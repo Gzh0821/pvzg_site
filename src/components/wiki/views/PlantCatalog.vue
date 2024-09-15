@@ -29,7 +29,7 @@ const selectPlant = (plant: Plant) => {
 <style scoped>
 p {
     line-height: 1em;
-    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
     font-size: large;
 }
 

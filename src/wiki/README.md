@@ -1,7 +1,7 @@
 ---
 title: 图鉴
 index: false
-icon: book
+icon: book-open
 pageInfo: false
 breadcrumb: false
 sidebar: false
@@ -9,7 +9,6 @@ comment: false
 toc: false
 watermark: true
 ---
-
 > [!warning]
 > 图鉴功能正在测试阶段
 
