@@ -9,6 +9,7 @@ export interface Plant {
   id: number;
   name: string;
   enName: string;
+  enFamily: string;
   image: string;
   description: string;
   chat: String;

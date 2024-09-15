@@ -40,6 +40,7 @@ const formatOriginPlant = (originPlant: any) => {
     const res: Plant = {
         elements: {},
         special: {},
+        enFamily: '',
         id: originPlant["ID"],
         name: originPlant["NAME"]?.[i18nLanguage],
         enName: originPlant["NAME"]?.["en"],
@@ -61,13 +62,12 @@ const formatOriginPlant = (originPlant: any) => {
                 value = originPlant["COOLDOWN"]
             } else if (TYPE == "FAMILY") {
                 value = familyNameMap[originPlant[TYPE]][i18nLanguage];
+                res.enFamily = familyNameMap[originPlant[TYPE]]['en'];
             }
             else {
                 value = originPlant[TYPE]; // 只有 TYPE 时，从原始数据中查找
             }
-
             res.elements[TYPE] = value;
-
         });
     }
     if (originPlant["ALMANAC"]?.["Special"]) {
