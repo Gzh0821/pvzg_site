@@ -1,6 +1,7 @@
 <template>
     <div class="app">
-        <h1>PvZ2 Gardendless 植物图鉴</h1>
+        <h1 v-if="i18nLanguage == 'zh'">PvZ2 Gardendless 植物图鉴</h1>
+        <h1 v-else>PvZ2 Gardendless Almanac</h1>
         <div class="container">
             <div class="sidebar">
                 <PlantCatalog :plants="plants" @selectPlant="selectPlant" />
@@ -13,61 +14,73 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted, inject } from 'vue';
 import PlantCatalog from './views/PlantCatalog.vue';
 import PlantDetail from './views/PlantDetail.vue';
 import type { Plant, KeyMap } from './types';
+
 import plantsJson from './plants.json';
 import i18nJson from './i18n.json';
 
-const keyMap: KeyMap = i18nJson?.Almanac;
 // 中文转换
+const keyMap: KeyMap = i18nJson?.Almanac;
+const familyNameMap = i18nJson?.PlantFamily;
+const i18nLanguage = inject('i18nLanguage', 'zh');
+
 // 定义响应式状态
 const plants = ref<Plant[]>([]);
 const selectedPlant = ref<Plant | null>(null);
 
-// 从 JSON 文件加载植物数据
-// onMounted(async () => {
-//   const response = await fetch('/src/data/plants.json');
-//   plants.value = await response.json();
-// });
-
-plants.value = plantsJson["PLANTS"].map((plant: any) => {
-    // 从原始数据中提取需要的字段并整理
-    const res: Plant = {
-        elements: {},
-        id: plant["ID"],
-        name: plant["NAME"]?.["zh"],
-        image: plant.image,
-        description: plant["ALMANAC"]?.["Introduction"]?.["zh"],
-    };
-    if (plant?.["ALMANAC"]?.["Elements"]) {
-        plant["ALMANAC"]["Elements"].forEach((element: any) => {
-            // 找到对应的值
-            const { TYPE, SORT, VALUE } = element;
-
-            let value;
-            if (SORT && SORT.zh) {
-                value = SORT.zh; // 有 SORT.zh 时，取 SORT.zh
-            } else if (VALUE) {
-                value = VALUE; // 没有 SORT.zh 时，取 VALUE
-            } else if (TYPE == "RECHARGE") {
-                value = plant["COOLDOWN"]
-            } else {
-                value = plant[TYPE]; // 只有 TYPE 时，从原始数据中查找
-            }
-
-            res.elements[TYPE] = value;
-        });
-    }
-    console.log(res);
-    return res;
-});
-selectedPlant.value = plants.value[0];
 // 选择植物
 const selectPlant = (plant: Plant) => {
     selectedPlant.value = plant;
 };
+const formatOriginPlant = (originPlant: any) => {
+    // 从原始数据中提取需要的字段并整理
+    const res: Plant = {
+        elements: {},
+        special: {},
+        id: originPlant["ID"],
+        name: originPlant["NAME"]?.[i18nLanguage],
+        enName: originPlant["NAME"]?.["en"],
+        image: originPlant.image,
+        description: originPlant["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
+        chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage]
+    };
+    if (originPlant?.["ALMANAC"]?.["Elements"]) {
+        originPlant["ALMANAC"]["Elements"].forEach((element) => {
+            // 找到对应的值
+            const { TYPE, SORT, VALUE } = element;
+
+            let value;
+            if (SORT && SORT[i18nLanguage]) {
+                value = SORT[i18nLanguage]; // 有 SORT 时，取 SORT
+            } else if (VALUE) {
+                value = VALUE; // 没有 SORT 时，取 VALUE
+            } else if (TYPE == "RECHARGE") {
+                value = originPlant["COOLDOWN"]
+            } else if (TYPE == "FAMILY") {
+                value = familyNameMap[originPlant[TYPE]][i18nLanguage];
+            }
+            else {
+                value = originPlant[TYPE]; // 只有 TYPE 时，从原始数据中查找
+            }
+
+            res.elements[TYPE] = value;
+
+        });
+    }
+    if (originPlant["ALMANAC"]?.["Special"]) {
+        originPlant["ALMANAC"]["Special"].forEach((element) => {
+            res.special[element["NAME"][i18nLanguage]] = element["DESCRIPTION"][i18nLanguage];
+        });
+    }
+    console.log(res);
+    return res;
+};
+
+plants.value = plantsJson["PLANTS"].map(formatOriginPlant);
+selectPlant(plants.value[0]);
 </script>
 
 <style scoped>
@@ -89,6 +102,9 @@ const selectPlant = (plant: Plant) => {
     background-color: #f8f9fa;
     max-height: 70vh;
     overflow-y: auto;
+    border-radius: 20px;
+    border: 5px solid #432b1a;
+    background-color: #ede5c4;
 }
 
 .content {
@@ -119,7 +135,7 @@ const selectPlant = (plant: Plant) => {
     .content {
         flex-basis: auto;
         width: 100%;
-        padding: var(--navbar-height) 10px;
+        padding: var(--navbar-height) 0;
     }
 
 

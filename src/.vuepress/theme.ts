@@ -1,5 +1,5 @@
 import { hopeTheme } from "vuepress-theme-hope";
-
+import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import { enNavbar, ruNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, ruSidebar, zhSidebar } from "./sidebar/index.js";
 
@@ -17,7 +17,7 @@ export default hopeTheme({
 
   favicon: "/favicon.ico",
 
-  logo: "pvzg_nav.png",
+  logo: "pvzg_nav.webp",
 
   repo: "Gzh0821/pvzg_site",
 
@@ -89,15 +89,7 @@ export default hopeTheme({
   },
 
   plugins: {
-    // Note: This is for testing ONLY!
-    // You MUST generate and use your own comment service in production.
-    // comment: {
-    //   provider: "Giscus",
-    //   repo: "vuepress-theme-hope/giscus-discussions",
-    //   repoId: "R_kgDOG_Pt2A",
-    //   category: "Announcements",
-    //   categoryId: "DIC_kwDOG_Pt2M4COD69",
-    // },
+
     comment: {
       provider: "Giscus",
       repo: "Gzh0821/pvzg_site",
@@ -182,6 +174,14 @@ export default hopeTheme({
 
       // Install sandpack-vue3 before enabling it
       // sandpack: true,
+    },
+    photoSwipe: false,
+    
+    watermark: {
+      enabled: false,
+      watermarkOptions: {
+        content: "PvZ2 Gardendless",
+      },
     },
     seo: true,
     sitemap: true,

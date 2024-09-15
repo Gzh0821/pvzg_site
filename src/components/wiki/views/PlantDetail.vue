@@ -4,36 +4,49 @@
     <p>{{ plant.description }}</p> -->
     <div class="details-container">
       <div class="plant-image">
-        <img src="https://static.wikia.nocookie.net/plantsvszombies/images/c/ca/Peashooter2.png" :alt="plant.name" />
-        <h3>{{ plant.name }}</h3>
+        <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
+          :alt="plant.name">
+        <p class="plant-title">{{ plant.name }}</p>
       </div>
       <div class="plant-stats">
         <table>
           <tbody>
             <tr v-for="(value, key) in plant.elements" :key="key">
-              
-              <td class="ability"><img :src="keyMap[key].icon"/> {{ keyMap[key].zh }}</td>
+
+              <td class="ability"><img :src="keyMap[key].icon" /> {{ keyMap[key][i18nLanguage] }}</td>
               <td class="value">{{ value }}</td>
             </tr>
           </tbody>
         </table>
       </div>
+
     </div>
-    <p class="description">{{ plant.description }}</p>
+    <div class="details-container">
+      <div class="plant-introduction">
+        <p class="description">{{ plant.description }}</p><br>
+        <p v-for="(value, key) in plant.special" :key="key" class="description">
+          <span class="descriptionKey">{{ key }}</span> : {{ value }}
+        </p><br>
+        <p class="description">{{ plant.chat }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+import { inject } from 'vue';
 import type { Plant, KeyMap } from '../types';
 
 
 // 接收 props
-defineProps<{ plant: Plant, keyMap: KeyMap }>();
+const props = defineProps<{ plant: Plant, keyMap: KeyMap }>();
+const i18nLanguage = inject('i18nLanguage', 'zh');
 </script>
 
 <style scoped>
 .plant-detail {
+  display: flex;
+  flex-direction: column;
   height: auto;
   margin-left: 20px;
 }
@@ -55,7 +68,7 @@ h3 {
   border-radius: 10px;
   background-color: #aa6f42;
   border: 2px solid rgba(0, 0, 0, 0.8);
-  box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px;
 }
 
 .plant-image {
@@ -67,14 +80,15 @@ h3 {
   margin-right: 10px;
   background-color: #ede5c4;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px;
+  align-items: center;
 }
 
 .plant-image img {
   width: 150px;
   height: 150px;
   border-radius: 40px;
-  border:3px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px
@@ -89,8 +103,18 @@ h3 {
   overflow: hidden;
   background-color: #ede5c4;
   box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px
-  /* 隐藏超出部分 */
+    /* 隐藏超出部分 */
+}
 
+.plant-introduction {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+  background-color: #ede5c4;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px;
 }
 
 table {
@@ -109,7 +133,7 @@ table tbody tr:nth-child(even) {
   background-color: #3a6e3d;
 }
 
-table tbody td img{
+table tbody td img {
   object-fit: contain;
   vertical-align: middle;
   height: 32px;
@@ -138,9 +162,24 @@ table tbody td.value {
   font-weight: bold;
 }
 
-.description {
-  font-size: 14px;
-  color: #bbb;
+p.description {
+  margin: 0.2em 0;
+  font-family: 'pvzgFont';
+  font-size: x-large;
+  color: #865600;
+  line-height: 1.2em;
+}
+
+p.plant-title {
+  font-family: 'pvzgFont';
+  font-size: xx-large;
+  color: white;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 2px -2px 0 #000, -1px 1px 0 #000, 5px 3px 5px rgba(0, 0, 0, 0.2);
+  line-height: 1.2em;
+}
+
+span.descriptionKey {
+  color: red;
 }
 
 @media (max-width: 768px) {
@@ -153,8 +192,13 @@ table tbody td.value {
     margin-right: 0;
     margin-bottom: 10px;
   }
+
   .plant-stats {
     padding-left: 0;
+  }
+
+  .plant-detail {
+    margin-left: 0;
   }
 }
 </style>
