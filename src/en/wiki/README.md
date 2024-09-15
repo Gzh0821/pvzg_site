@@ -12,6 +12,8 @@ watermark: true
 
 > [!warning]
 > Almanac function is in the testing stage
+>
+> Use your browser's CTRL+F search function to quickly find plants
 
 <script setup>
     import { createApp,provide } from 'vue';
