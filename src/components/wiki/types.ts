@@ -13,5 +13,5 @@ export interface Plant {
   image: string;
   description: string;
   chat: String;
-  special: Element;
+  special: [Element] | [];
 }

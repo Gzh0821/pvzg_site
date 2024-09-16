@@ -41,7 +41,7 @@ const formatOriginPlant = (originPlant: any) => {
     // 从原始数据中提取需要的字段并整理
     const res: Plant = {
         elements: {},
-        special: {},
+        special: [],
         enFamily: '',
         id: originPlant["ID"],
         name: originPlant["NAME"]?.[i18nLanguage],
@@ -73,9 +73,8 @@ const formatOriginPlant = (originPlant: any) => {
         });
     }
     if (originPlant?.["ALMANAC"]?.["Special"]) {
-        originPlant["ALMANAC"]["Special"].forEach((element) => {
-            res.special[element["NAME"][i18nLanguage]] = element["DESCRIPTION"][i18nLanguage];
-        });
+        res.special = originPlant["ALMANAC"]["Special"]
+
     }
     console.log(res);
     return res;
