@@ -26,7 +26,7 @@ actions:
 
   - text: 图鉴
     icon: book-open
-    link: ./wiki/
+    link: ./almanac/
 
   - text: 社区及问题反馈
     icon: comment

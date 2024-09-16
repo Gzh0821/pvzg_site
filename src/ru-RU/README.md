@@ -26,7 +26,7 @@ actions:
 
   - text: альманах
     icon: book-open
-    link: ./wiki/
+    link: ./almanac/
 
   - text: Сообщество и обратная связь
     icon: comment
