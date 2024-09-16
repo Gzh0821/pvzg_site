@@ -24,8 +24,9 @@
         <div class="details-container">
             <div class="plant-introduction">
                 <p class="description">{{ plant.description }}</p><br>
-                <p v-for="(value, key) in plant.special" :key="key" class="description">
-                    {{ key }}: <span class="descriptionKey">{{ value }}</span>
+                <p v-for="value in plant.special" :key="value['NAME'][i18nLanguage]" class="description">
+                    {{ value['NAME'][i18nLanguage] }}: <span class="descriptionKey">{{
+                        value['DESCRIPTION'][i18nLanguage] }}</span>
                 </p><br>
                 <p class="description">{{ plant.chat }}</p>
             </div>
