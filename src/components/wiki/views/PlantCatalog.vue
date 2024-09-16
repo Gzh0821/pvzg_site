@@ -31,6 +31,7 @@ p {
     line-height: 1em;
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
     font-size: large;
+    color: #432b1a;
 }
 
 ul {
