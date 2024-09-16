@@ -3,10 +3,10 @@ import { navbar } from "vuepress-theme-hope";
 export const enNavbar = navbar([
   "/en/",
   "/en/download/",
+  "/en/almanac/",
   "/en/guide/",
   "/en/instructions/",
   "/en/contribution/",
-  "/en/almanac/",
   { text: "Online Play", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",
   // "/portfolio",

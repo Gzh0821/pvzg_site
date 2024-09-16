@@ -3,11 +3,11 @@ import { navbar } from "vuepress-theme-hope";
 export const zhNavbar = navbar([
   "/",
   "/download/",
+  "/almanac/",
   "/guide/",
   "/instructions/",
   "/contribution/",
   "/devtool/",
-  "/almanac/",
   { text: "在线游玩", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/demo/",
   // {
