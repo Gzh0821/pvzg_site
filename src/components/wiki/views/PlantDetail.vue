@@ -8,7 +8,7 @@
                     :alt="plant.name">
                 <p class="plant-title">{{ plant.name }}</p>
                 <img v-if="plant.enFamily" :src="'/assets/wikicon/' + plant.enFamily + '_familyicon.webp'"
-                :alt="plant.enFamily" class="family-img">
+                    :alt="plant.enFamily" class="family-img">
             </div>
             <div class="plant-stats">
                 <table>
@@ -27,7 +27,7 @@
             <div class="plant-introduction">
                 <p class="description">{{ plant.description }}</p><br>
                 <p v-for="(value, key) in plant.special" :key="key" class="description">
-                    <span class="descriptionKey">{{ key }}</span> : {{ value }}
+                    {{ key }}: <span class="descriptionKey">{{ value }}</span>
                 </p><br>
                 <p class="description">{{ plant.chat }}</p>
             </div>
@@ -95,6 +95,7 @@ h3 {
     transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px
 }
+
 .plant-image img.family-img {
     width: 50px;
     height: 50px;
@@ -104,6 +105,7 @@ h3 {
     transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px
 }
+
 .plant-stats {
     display: flex;
     flex-direction: column;
