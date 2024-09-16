@@ -1,10 +1,10 @@
 {
-  "PLANTS":[
+  "PLANTS": [
     {
       "ID": 0,
       "NAME": {
-        "en" : "Peashooter",
-        "zh" : "豌豆射手"
+        "en": "Peashooter",
+        "zh": "豌豆射手"
       },
       "PLANTTYPE": "peashooter",
       "CODENAME": "peashooter",
@@ -12,22 +12,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "frontyard",
-
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots peas at the enemy",
-        "zh" : "向僵尸发射豌豆"
+        "en": "Shoots peas at the enemy",
+        "zh": "向僵尸发射豌豆"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -58,7 +54,7 @@
           "en": "Peashooters are your first line of defence. They Shoot peas at attacking zombies",
           "zh": "豌豆射手是你的第一道防线。他们会向僵尸发射豌豆。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "\"What is it like being famous?\"asked Peashooter while sipping his bottled water,\"I can't talk right now, I'm finishing my merchandising deal. Hold my fir coat.\"",
           "zh": "“成为名人是什么感觉？”豌豆射手问了一句，抿了一口自己的瓶装水，“我现在没法说话，我正在完成我的销售项目，帮我拿一下我的毛皮大衣。”"
@@ -68,8 +64,8 @@
     {
       "ID": 1,
       "NAME": {
-        "en" : "Sunflower",
-        "zh" : "向日葵"
+        "en": "Sunflower",
+        "zh": "向日葵"
       },
       "PLANTTYPE": "sunflower",
       "CODENAME": "sunflower",
@@ -77,23 +73,19 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0,
       "FAMILY": "Sun",
-
-      
-      "TYPE":["plant","sunProducer"],
-
+      "TYPE": [
+        "plant",
+        "sunProducer"
+      ],
       "OBTAINWORLD": "frontyard",
-
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Gives you additional sun",
-        "zh" : "提供额外的阳光"
+        "en": "Gives you additional sun",
+        "zh": "提供额外的阳光"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -120,7 +112,7 @@
           "en": "Sunflowers are essential for you to produce extra sun. Try planting as many as you can!",
           "zh": "向日葵为你提供额外的阳光。种得越多越好！"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "After the release of her first major YouTuber video \"Zombies On Your Lawn\", Sunflower's YouTube channel has been bursting with fun. She is currently putting the final touches on her reality show TV pitch \"Sunflower Thinks She Can Dance\".",
           "zh": "在发布了她的第一个油管视频 \"Zombies On Your Lawn\"，向日葵的油管频道充满了欢声笑语。她现在正在完善她的真人秀电视节目 \"Sunflower Thinks She Can Dance\" 的各种细节。"
@@ -130,8 +122,8 @@
     {
       "ID": 2,
       "NAME": {
-        "en" : "Wall-nut",
-        "zh" : "坚果墙"
+        "en": "Wall-nut",
+        "zh": "坚果墙"
       },
       "PLANTTYPE": "wallnut",
       "CODENAME": "wallnut",
@@ -139,22 +131,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Defence",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "frontyard",
-    
       "TOUGHNESS": 4000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Blocks off zombies and protects your other plants",
-        "zh" : "抵挡僵尸并保护身后的植物"
+        "en": "Blocks off zombies and protects your other plants",
+        "zh": "抵挡僵尸并保护身后的植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -181,7 +169,7 @@
           "en": "Wall-nuts have hard shells which you can use to protect your other plants.",
           "zh": "坚果墙利用自己坚硬的外壳保护其身后的植物。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Having retired from his days as a champion bowler in the Pro Leagues, Wall-nut is looking forward to a real challenge on the front lines of home defence. DEFENCE! DEFENCE!",
           "zh": "自从退休，坚果墙不再在专业团队中作为一个冠军保龄球选手，他正憧憬着面对真正的挑战————在他的前院作为防线。守卫！守卫！"
@@ -191,8 +179,8 @@
     {
       "ID": 3,
       "NAME": {
-        "en" : "Potato Mine",
-        "zh" : "土豆地雷"
+        "en": "Potato Mine",
+        "zh": "土豆地雷"
       },
       "PLANTTYPE": "potatomine",
       "CODENAME": "potatomine",
@@ -200,22 +188,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Explosive",
-
-      "TYPE":["potatomine"],
-    
+      "TYPE": [
+        "potatomine"
+      ],
       "OBTAINWORLD": "frontyard",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Explodes on contact, but takes time to arm itself",
-        "zh" : "种植一段时间后，在僵尸触碰时爆炸"
+        "en": "Explodes on contact, but takes time to arm itself",
+        "zh": "种植一段时间后，在僵尸触碰时爆炸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "solid"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -257,7 +241,7 @@
           "en": "Potato Mines explode on contact, but they take time to arm. Plant them ahead of zombies.",
           "zh": "土豆地雷在被僵尸接触时自爆，但是他们需要时间做准备。将他们种在僵尸的前方。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -288,8 +272,8 @@
     {
       "ID": 4,
       "NAME": {
-        "en" : "Cabbage-pult",
-        "zh" : "卷心菜投手"
+        "en": "Cabbage-pult",
+        "zh": "卷心菜投手"
       },
       "PLANTTYPE": "cabbagepult",
       "CODENAME": "cabbagepult",
@@ -297,22 +281,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Lobber",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "egypt",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Hurls cabbages over obstacles at the enemy",
-        "zh" : "向僵尸投掷能跨越障碍物的卷心菜"
+        "en": "Hurls cabbages over obstacles at the enemy",
+        "zh": "向僵尸投掷能跨越障碍物的卷心菜"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -350,7 +330,7 @@
           "en": "Cabbage-pults hurl cabbages at the enemy.",
           "zh": "卷心菜投手向敌人投掷卷心菜。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Cabbage-pult received his doctorate in pulting from Harvest University. He knows a thing or two about launching hit way to the top. He also makes a mean soup.",
           "zh": "卷心菜投手在哈丰大学的投掷专业获取了博士学位。他在投掷方面可谓登峰造极。他也懂得做出美味的热汤！"
@@ -360,8 +340,8 @@
     {
       "ID": 5,
       "NAME": {
-        "en" : "Bloomerang",
-        "zh" : "回旋镖射手"
+        "en": "Bloomerang",
+        "zh": "回旋镖射手"
       },
       "PLANTTYPE": "bloomerang",
       "CODENAME": "bloomerang",
@@ -369,22 +349,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Sharp",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "egypt",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Hits up to three targets in its lane, twice",
-        "zh" : "击打本行的三个目标，各两次"
+        "en": "Hits up to three targets in its lane, twice",
+        "zh": "击打本行的三个目标，各两次"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -415,7 +391,7 @@
           "en": "Bloomerangs can hit multiple targets in their lane, twice each coming and going!",
           "zh": "回旋镖射手可以每次击打本行的多个目标，回旋镖来回都能造成伤害！"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "As the first new member to your home defence team, Bloomerang enjoys long walkabouts with his friends, Koala Bear, and listening to his Bob Barley albums out back.",
           "zh": "由于他是植物队列里的第一位稀客，回旋镖射手非常享受与他的朋友考拉散步，并在回来的时候听鲍勃·大麦的专辑。"
@@ -425,8 +401,8 @@
     {
       "ID": 6,
       "NAME": {
-        "en" : "Iceberg Lettuce",
-        "zh" : "冰冻生菜"
+        "en": "Iceberg Lettuce",
+        "zh": "冰冻生菜"
       },
       "PLANTTYPE": "iceburg",
       "CODENAME": "iceburg",
@@ -434,22 +410,19 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Cold",
-
-      "TYPE":["plant","low"],
-    
+      "TYPE": [
+        "plant",
+        "low"
+      ],
       "OBTAINWORLD": "egypt",
-    
       "TOUGHNESS": 3.14159,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Freezes zombies that step on it, and extinguishes flames",
-        "zh" : "冻结接触到的僵尸，并熄灭火炬"
+        "en": "Freezes zombies that step on it, and extinguishes flames",
+        "zh": "冻结接触到的僵尸，并熄灭火炬"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -473,7 +446,7 @@
           "en": "Iceberg Lettuces freezes a zombie when stepped on.",
           "zh": "冰冻生菜会冻结一只踩中他的僵尸。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -504,8 +477,8 @@
     {
       "ID": 7,
       "NAME": {
-        "en" : "Bonk Choy",
-        "zh" : "菜问"
+        "en": "Bonk Choy",
+        "zh": "菜问"
       },
       "PLANTTYPE": "bonkchoy",
       "CODENAME": "bonkchoy",
@@ -513,22 +486,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Melee",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "egypt",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Rapidly punches enemies ahead or behind",
-        "zh" : "快速击打身前或身后的敌人"
+        "en": "Rapidly punches enemies ahead or behind",
+        "zh": "快速击打身前或身后的敌人"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -559,7 +528,7 @@
           "en": "Bonk Choys rapidly punch nearby enemies that are ahead or behind them.",
           "zh": "菜问快速击打身前或身后的敌人。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -580,8 +549,8 @@
     {
       "ID": 8,
       "NAME": {
-        "en" : "Repeater",
-        "zh" : "双重射手"
+        "en": "Repeater",
+        "zh": "双重射手"
       },
       "PLANTTYPE": "repeater",
       "CODENAME": "repeater",
@@ -589,22 +558,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "egypt",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots two peas at the enemy",
-        "zh" : "向敌人发射两颗豌豆"
+        "en": "Shoots two peas at the enemy",
+        "zh": "向敌人发射两颗豌豆"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -635,7 +600,7 @@
           "en": "Repeaters fire two peas at one time.",
           "zh": "双重射手每次发射两颗豌豆。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Firing Speed",
@@ -656,31 +621,27 @@
     {
       "ID": 9,
       "NAME": {
-        "en" : "Mega Gatling Pea",
-        "zh" : "超级机枪射手"
+        "en": "Mega Gatling Pea",
+        "zh": "超级机枪射手"
       },
-      "PLANTTYPE":"megagatlingpea",
+      "PLANTTYPE": "megagatlingpea",
       "CODENAME": "megagatling",
       "SUNCOST": 450,
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Fire 4 peas at a time",
-        "zh" : "向敌人发射 4 颗豌豆，概率释放叶绿素效果"
+        "en": "Fire 4 peas at a time",
+        "zh": "向敌人发射 4 颗豌豆，概率释放叶绿素效果"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -711,7 +672,7 @@
           "en": "Mega Gatling Peas fire 4 peas at one time.",
           "zh": "超级机枪豌豆射手每次发射 4 颗豌豆。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Firing Speed",
@@ -752,8 +713,8 @@
     {
       "ID": 10,
       "NAME": {
-        "en" : "Scaredy Shroom",
-        "zh" : "胆小菇"
+        "en": "Scaredy Shroom",
+        "zh": "胆小菇"
       },
       "PLANTTYPE": "scaredyShroom",
       "CODENAME": "scaredyshroom",
@@ -761,22 +722,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Poison",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "dark",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots spore projectiles at the zombies, but hides when they get too close",
-        "zh" : "向僵尸发射子弹，但是当僵尸靠近时躲避"
+        "en": "Shoots spore projectiles at the zombies, but hides when they get too close",
+        "zh": "向僵尸发射子弹，但是当僵尸靠近时躲避"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -807,7 +764,7 @@
           "en": "A timid mushroom that shoots spore projectiles at zombies in its lane, but hides when they get too close.",
           "zh": "向僵尸发射孢子的胆小的蘑菇，当僵尸靠近身边时躲避起来。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -828,8 +785,8 @@
     {
       "ID": 11,
       "NAME": {
-        "en" : "Fume Shroom",
-        "zh" : "大喷菇"
+        "en": "Fume Shroom",
+        "zh": "大喷菇"
       },
       "PLANTTYPE": "fumeshroom",
       "CODENAME": "fumeshroom",
@@ -837,22 +794,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Poison",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "dark",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots fumes that can damage all zombies in an area",
-        "zh" : "向范围内的所有僵尸发射孢子攻击"
+        "en": "Shoots fumes that can damage all zombies in an area",
+        "zh": "向范围内的所有僵尸发射孢子攻击"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -883,7 +836,7 @@
           "en": "Fume-shrooms shoot fumes that damage all zombies in an area.",
           "zh": "大喷菇向范围内所有僵尸发射孢子攻击。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "\"I think of myself as a pretty confident shroom and an all-around fungi,\"says Fume-shroom.\"But sometimes, when I'm eating Plant Food, I hear them chuckling. I hear them calling me 'Balloon-shroom'. I don't think they know how much that hurts.\"",
           "zh": "“我觉得自己是一只很自信而且全能型的大蘑菇，”大喷菇说，“但是有时候我释放叶绿素效果时听到别人偷笑，说我是‘气球菇’……我猜他们根本不知道这话多么伤人。”"
@@ -893,8 +846,8 @@
     {
       "ID": 12,
       "NAME": {
-        "en" : "Grave Buster",
-        "zh" : "噬碑藤"
+        "en": "Grave Buster",
+        "zh": "噬碑藤"
       },
       "PLANTTYPE": "gravebuster",
       "CODENAME": "gravebuster",
@@ -902,22 +855,19 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 1,
       "FAMILY": "Slow",
-
-      "TYPE":["gravebuster","lastStandDisallowed"],
-    
+      "TYPE": [
+        "gravebuster",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "egypt",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Plant it on a grave to remove the grave",
-        "zh" : "种植在墓碑上并移除这块墓碑"
+        "en": "Plant it on a grave to remove the grave",
+        "zh": "种植在墓碑上并移除这块墓碑"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "solid"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -937,7 +887,7 @@
           "en": "Grave Busters consume graves they're planted on.",
           "zh": "将噬碑藤种在墓碑上，他们会啃食掉这块墓碑。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -968,8 +918,8 @@
     {
       "ID": 13,
       "NAME": {
-        "en" : "Pumpkin",
-        "zh" : "南瓜头"
+        "en": "Pumpkin",
+        "zh": "南瓜头"
       },
       "PLANTTYPE": "pumpkinhead",
       "CODENAME": "pumpkin",
@@ -977,22 +927,18 @@
       "COOLDOWN": 30,
       "COOLDOWNFROM": 1,
       "FAMILY": "Defence",
-
-      "TYPE":["vine"],
-    
+      "TYPE": [
+        "vine"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 4000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Surrounds and protects",
-        "zh" : "保护本格的其他植物"
+        "en": "Surrounds and protects",
+        "zh": "保护本格的其他植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1019,7 +965,7 @@
           "en": "Pumpkins can be planted on top of other plants to provide a tough additional layer of armor.",
           "zh": "南瓜头可以被种植在其他植物的身上，作为保护他们的铠甲。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Pumpkin may be a hollowed-out shell, but he still has a rich inner life filled with feelings, fantasies and suprisingly disappointing opinions.",
           "zh": "南瓜头可能只是一颗被掏空的南瓜壳，但是他的内心仍然充满了感情、幻想以及让人非常失望的各种点子。"
@@ -1029,8 +975,8 @@
     {
       "ID": 14,
       "NAME": {
-        "en" : "Pea Vine",
-        "zh" : "豌豆藤蔓"
+        "en": "Pea Vine",
+        "zh": "豌豆藤蔓"
       },
       "PLANTTYPE": "peavine",
       "CODENAME": "pvine",
@@ -1038,22 +984,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["vine"],
-    
+      "TYPE": [
+        "vine"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Boosts Appease-mint plants",
-        "zh" : "加强本格的豌豆类植物和豌豆家族植物"
+        "en": "Boosts Appease-mint plants",
+        "zh": "加强本格的豌豆类植物和豌豆家族植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1085,7 +1027,7 @@
           "en": "Pea Vines planted on top of Appease-mint Family plants provide a significant damage boost to those plants.",
           "zh": "为豌豆家族植物套上豌豆藤蔓，他们会得到显著的伤害增益。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -1106,8 +1048,8 @@
     {
       "ID": 15,
       "NAME": {
-        "en" : "Floawer Pot",
-        "zh" : "飞天花盆"
+        "en": "Floawer Pot",
+        "zh": "飞天花盆"
       },
       "PLANTTYPE": "floawerPot",
       "CODENAME": "floawerPot",
@@ -1115,22 +1057,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 1,
       "FAMILY": "Nope",
-
-      "TYPE":["floawerPot"],
-    
+      "TYPE": [
+        "floawerPot"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Allows un-flyable plants to be planted in sky",
-        "zh" : "可以在空中种植不能飞行的植物"
+        "en": "Allows un-flyable plants to be planted in sky",
+        "zh": "可以在空中种植不能飞行的植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "fly"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1147,7 +1085,7 @@
           "en": "Floawer Pots let you plant un-flyable plants on top of them.",
           "zh": "飞天花盆允许你在天上或潮水上种植不会飞的植物。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -1168,8 +1106,8 @@
     {
       "ID": 16,
       "NAME": {
-        "en" : "Fire Peashooter",
-        "zh" : "火焰豌豆"
+        "en": "Fire Peashooter",
+        "zh": "火焰豌豆"
       },
       "PLANTTYPE": "firepeashooter",
       "CODENAME": "firepeashooter",
@@ -1177,22 +1115,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Fire",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots flaming peas and warms nearby plants",
-        "zh" : "发射火焰豌豆，并冰释身边的植物"
+        "en": "Shoots flaming peas and warms nearby plants",
+        "zh": "发射火焰豌豆，并冰释身边的植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1223,7 +1157,7 @@
           "en": "Fire Peashooters shoot flaming peas down the lane.",
           "zh": "火焰豌豆向本行发射火焰豌豆。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -1254,8 +1188,8 @@
     {
       "ID": 17,
       "NAME": {
-        "en" : "Threepeater",
-        "zh" : "三线射手"
+        "en": "Threepeater",
+        "zh": "三线射手"
       },
       "PLANTTYPE": "threepeater",
       "CODENAME": "threepeater",
@@ -1263,22 +1197,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots three peas in three lanes",
-        "zh" : "向三行发射豌豆"
+        "en": "Shoots three peas in three lanes",
+        "zh": "向三行发射豌豆"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1309,7 +1239,7 @@
           "en": "Threepeaters shoot peas in three lanes.",
           "zh": "三线射手向三行发射豌豆。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Range Details",
@@ -1330,8 +1260,8 @@
     {
       "ID": 18,
       "NAME": {
-        "en" : "Primal Peashooter",
-        "zh" : "原始豌豆射手"
+        "en": "Primal Peashooter",
+        "zh": "原始豌豆射手"
       },
       "PLANTTYPE": "primalpeashooter",
       "CODENAME": "primalpeashooter",
@@ -1339,22 +1269,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "dino",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots heavy stunning peas",
-        "zh" : "发射重型豌豆"
+        "en": "Shoots heavy stunning peas",
+        "zh": "发射重型豌豆"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1385,7 +1311,7 @@
           "en": "Primal Peashooters shoot heavy peas with a brief stun at zombies.",
           "zh": "原始豌豆射手发射沉重的大豌豆，对僵尸造成短暂的眩晕。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -1406,8 +1332,8 @@
     {
       "ID": 19,
       "NAME": {
-        "en" : "Rotobaga",
-        "zh" : "旋转芜菁"
+        "en": "Rotobaga",
+        "zh": "旋转芜菁"
       },
       "PLANTTYPE": "xshot",
       "CODENAME": "xshot",
@@ -1415,22 +1341,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["fly"],
-    
+      "TYPE": [
+        "fly"
+      ],
       "OBTAINWORLD": "ice",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots along the diagonal, up to four directions at a time",
-        "zh" : "向四个对角方向发射子弹"
+        "en": "Shoots along the diagonal, up to four directions at a time",
+        "zh": "向四个对角方向发射子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "fly"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1461,7 +1383,7 @@
           "en": "Rotobagas shoot projectiles along the four diagonals, in each direction that has a target.",
           "zh": "旋转芜菁向四个对角方向发射子弹"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Sometimes Rotobaga hears the other plants gossiping about each other. \"Did you notice that so-and-so has been putting on weight?\" they might say. Or, \"I hear that so-and-so is dating so-and-so. Can you believe it?\" But Rotobaga isn't the kind of plant to engage in idle gossiping. She's not interested in talking about anyone behind their leaves. She does her best to rise above it.",
           "zh": "有时候旋转芜菁会听到其他植物说别人闲话。比如说，“你发现那个谁谁谁又增重了吗？”又比如，“我听说谁谁谁和谁谁谁约上了呢。你能相信嘛？哈哈。”但是旋转芜菁不是那种喜欢参与闲聊的植物，她对在别人叶后说闲话不感兴趣。因此她总是尽可能“上升”到别的话题。"
@@ -1471,8 +1393,8 @@
     {
       "ID": 20,
       "NAME": {
-        "en" : "Homing Thistle",
-        "zh" : "导向蓟"
+        "en": "Homing Thistle",
+        "zh": "导向蓟"
       },
       "PLANTTYPE": "homingthistle",
       "CODENAME": "homingthistle",
@@ -1480,22 +1402,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Sharp",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Attacks farthest left target in any lane",
-        "zh" : "向场地最左侧目标发动攻击"
+        "en": "Attacks farthest left target in any lane",
+        "zh": "向场地最左侧目标发动攻击"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1526,7 +1444,7 @@
           "en": "Homing Thistles fire seeking shots at targets that are the closest to home.",
           "zh": "导向蓟会向离家最近的目标发射追踪子弹。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Don't even think about trying to pull one over on Homing Thistle. He's got a bead on you. He sees right through your facade. It's like he has a laser beam... aimed at your soul.",
           "zh": "别想着能欺骗导向蓟。他能一眼把你看穿，穿过你表露的假象，像是一道雷射光，精准地瞄着你的灵魂！"
@@ -1536,8 +1454,8 @@
     {
       "ID": 21,
       "NAME": {
-        "en" : "Starfruit",
-        "zh" : "星星果"
+        "en": "Starfruit",
+        "zh": "星星果"
       },
       "PLANTTYPE": "starfruit",
       "CODENAME": "starfruit",
@@ -1545,22 +1463,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots stars in 5 directions",
-        "zh" : "向五个方向发射星星"
+        "en": "Shoots stars in 5 directions",
+        "zh": "向五个方向发射星星"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1591,7 +1505,7 @@
           "en": "Starfruits shoot stars in 5 directions.",
           "zh": "星星果会向五个方向发射星星子弹。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Just a small town fruit that travelled to the big city and found his way to the future. His favorite modes of transportation: conveyor belts, hoverboards, and rockets. WEEEEE!",
           "zh": "只是一只乡下来的小小的水果，四处游荡，到了大城市，甚至找到了通向未来的路。他最喜欢的交通方式是：传送带、悬浮滑板，还有火箭。哇呼呼呼呼！"
@@ -1601,8 +1515,8 @@
     {
       "ID": 22,
       "NAME": {
-        "en" : "Shooting Starfruit",
-        "zh" : "流星果"
+        "en": "Shooting Starfruit",
+        "zh": "流星果"
       },
       "PLANTTYPE": "shootingstarfruit",
       "CODENAME": "shootingstarfruit",
@@ -1610,22 +1524,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["fly"],
-    
+      "TYPE": [
+        "fly"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots 5 stars along the lanes at a time",
-        "zh" : "沿五行发射星星"
+        "en": "Shoots 5 stars along the lanes at a time",
+        "zh": "沿五行发射星星"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "fly"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1656,7 +1566,7 @@
           "en": "Shooting Starfruits shoot stars in 5 lanes.",
           "zh": "流星果会沿着五个行发射星星子弹。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "When you see a Shooting Starfruit, make a wish, any wish! Any wish that involves takin' down Zombies, that is.",
           "zh": "当你遇见一只流星果，许愿，任何愿望！只要是关于打倒僵尸的愿望，他都会为你实现的！"
@@ -1666,8 +1576,8 @@
     {
       "ID": 23,
       "NAME": {
-        "en" : "Lily Pad",
-        "zh" : "莲叶"
+        "en": "Lily Pad",
+        "zh": "莲叶"
       },
       "PLANTTYPE": "lilypad",
       "CODENAME": "lilypad",
@@ -1675,22 +1585,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Nope",
-
-      "TYPE":["lilypad"],
-    
+      "TYPE": [
+        "lilypad"
+      ],
       "OBTAINWORLD": "water",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Let you plant non-aquatic plants on top of it",
-        "zh" : "允许在水面上种植非两栖植物"
+        "en": "Let you plant non-aquatic plants on top of it",
+        "zh": "允许在水面上种植非两栖植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "float"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1707,7 +1613,7 @@
           "en": "Lily Pads let you plant non-aquatic plants on top of them.",
           "zh": "你可以种植非水生植物在莲叶上"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -1728,8 +1634,8 @@
     {
       "ID": 24,
       "NAME": {
-        "en" : "Sun-shroom",
-        "zh" : "阳光菇"
+        "en": "Sun-shroom",
+        "zh": "阳光菇"
       },
       "PLANTTYPE": "sunshroom",
       "CODENAME": "sunshroom",
@@ -1737,22 +1643,19 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0,
       "FAMILY": "Sun",
-
-      "TYPE":["plant","sunProducer"],
-    
+      "TYPE": [
+        "plant",
+        "sunProducer"
+      ],
       "OBTAINWORLD": "dark",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Gives more sun over time",
-        "zh" : "随着生长产出更多的阳光"
+        "en": "Gives more sun over time",
+        "zh": "随着生长产出更多的阳光"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1779,18 +1682,7 @@
           "en": "Sun-shrooms give small suns at first, then normal suns, and finally large suns.",
           "zh": "阳光菇一开始提供小阳光，然后提供普通阳光，最后提供大阳光。"
         },
-        "Special":[
-          {
-            "NAME": {
-              "en": "Usage",
-              "zh": "用途"
-            },
-            "DESCRIPTION": {
-              "en": "can also be planted under non-aquatic plants",
-              "zh": "也可以种植在非水生植物的下方"
-            }
-          }
-        ],
+        "Special": [],
         "Chat": {
           "en": "Oh sure, Sun-shroom is known for his ever-present grin and sunny disposition. But truth be told, even he has his dark days. It ain't easy keeping things light when you live in the shadow.",
           "zh": "哦当然，阳光菇的性格可常常是出了名的积极阳光。但是实话说，即使是他也有不顺心的日子。生活在黑暗之中还能一直保持阳光可不是件容易的事。"
@@ -1800,8 +1692,8 @@
     {
       "ID": 25,
       "NAME": {
-        "en" : "Twin Sunflower",
-        "zh" : "双胞向日葵"
+        "en": "Twin Sunflower",
+        "zh": "双胞向日葵"
       },
       "PLANTTYPE": "twinsunflower",
       "CODENAME": "twinsunflower",
@@ -1809,22 +1701,19 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 1,
       "FAMILY": "Sun",
-
-      "TYPE":["plant","sunProducer"],
-    
+      "TYPE": [
+        "plant",
+        "sunProducer"
+      ],
       "OBTAINWORLD": "egypt",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Gives twice as much as a sunflower",
-        "zh" : "生产比向日葵更多的阳光"
+        "en": "Gives twice as much as a sunflower",
+        "zh": "生产比向日葵更多的阳光"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1851,7 +1740,7 @@
           "en": "Twin Sunflowers give twice as much sun as a normal sunflower.",
           "zh": "双胞向日葵提供向日葵两倍的阳光。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Sun Production",
@@ -1872,8 +1761,8 @@
     {
       "ID": 26,
       "NAME": {
-        "en" : "Dragon Bruit",
-        "zh" : "暴君火龙果"
+        "en": "Dragon Bruit",
+        "zh": "暴君火龙果"
       },
       "PLANTTYPE": "dragonbruit",
       "CODENAME": "dragonbruit",
@@ -1881,22 +1770,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Shadow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 350,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Launches 3 explosive seed pod projectiles at zombies across 3 adjacent lanes",
-        "zh" : "向三行的僵尸投掷爆裂子弹"
+        "en": "Launches 3 explosive seed pod projectiles at zombies across 3 adjacent lanes",
+        "zh": "向三行的僵尸投掷爆裂子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1920,7 +1805,7 @@
           "en": "Dragon Bruits launch 3 explosive seed pod projectiles at zombies across 3 adjacent lanes. When destroyed, Dragon Bruits will split into 3 smaller plants.",
           "zh": "暴君火龙果会向三相邻行的敌人发射三颗爆炸性子弹。被击败后，会分裂成三株小暴君火龙果。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -1941,8 +1826,8 @@
     {
       "ID": 27,
       "NAME": {
-        "en" : "Moonflower",
-        "zh" : "月光花"
+        "en": "Moonflower",
+        "zh": "月光花"
       },
       "PLANTTYPE": "moonflower",
       "CODENAME": "moonflower",
@@ -1950,22 +1835,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0,
       "FAMILY": "Shadow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "modern",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Gives suns and powers up adjacent shadow plants",
-        "zh" : "生产阳光并强化周围的暗影植物"
+        "en": "Gives suns and powers up adjacent shadow plants",
+        "zh": "生产阳光并强化周围的暗影植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -1992,7 +1873,7 @@
           "en": "Moonflowers radiate a glow that powers up adjacent shadow plant.",
           "zh": "月光花释放可以使周围暗影植物进入暗影状态的月光。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Sun Production",
@@ -2013,8 +1894,8 @@
     {
       "ID": 28,
       "NAME": {
-        "en" : "Snow Pea",
-        "zh" : "寒冰射手"
+        "en": "Snow Pea",
+        "zh": "寒冰射手"
       },
       "PLANTTYPE": "snowpea",
       "CODENAME": "snowpea",
@@ -2022,22 +1903,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Cold",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots frozen peas that damage and slow zombies",
-        "zh" : "向僵尸发射寒冰子弹"
+        "en": "Shoots frozen peas that damage and slow zombies",
+        "zh": "向僵尸发射寒冰子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2068,7 +1945,7 @@
           "en": "Snow Peas fire frozen peas making it hard for zombies to advance.",
           "zh": "寒冰射手发射寒冰子弹，能使僵尸前进变得缓慢。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -2099,8 +1976,8 @@
     {
       "ID": 29,
       "NAME": {
-        "en" : "Lightning Reed",
-        "zh" : "闪电芦苇"
+        "en": "Lightning Reed",
+        "zh": "闪电芦苇"
       },
       "PLANTTYPE": "lightningreed",
       "CODENAME": "lightningreed",
@@ -2108,22 +1985,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Electricity",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "cowboy",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Zaps several chickens or zombies per strike",
-        "zh" : "电击连续的几只僵尸或鸡"
+        "en": "Zaps several chickens or zombies per strike",
+        "zh": "电击连续的几只僵尸或鸡"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2161,7 +2034,7 @@
           "en": "Lightning Reeds shoot lightning at the nearest zombie up to one lane away. The bolt will then arc and hit other zombies.",
           "zh": "闪电芦苇对相邻行最近的目标发射闪电，击中时电弧会伤害周围的僵尸。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "This may come as a shock, but Lightning Reed has a serious passion for ham radio. His call sign is El3ctric H1ccup. You can tune in every Tuesday to hear him read the classics to elderly plants. This week: Seeds and Sensibility.",
           "zh": "令人大惊的是，闪电芦苇热衷于业余广播。他呼号“闪嗝”。你能在每周二在他的频道听到他读名著给老植物们听。本周内容：播种和感性。"
@@ -2171,8 +2044,8 @@
     {
       "ID": 30,
       "NAME": {
-        "en" : "Kernel-pult",
-        "zh" : "玉米投手"
+        "en": "Kernel-pult",
+        "zh": "玉米投手"
       },
       "PLANTTYPE": "kernelpult",
       "CODENAME": "kernelpult",
@@ -2180,22 +2053,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Lobber",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Flings corn kernels and butter at zombies",
-        "zh" : "向僵尸投掷黄油和玉米粒"
+        "en": "Flings corn kernels and butter at zombies",
+        "zh": "向僵尸投掷黄油和玉米粒"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2233,9 +2102,9 @@
           "en": "Kernel-pults fling corn kernels and butter at zombies.",
           "zh": "玉米投手向僵尸投掷玉米粒和黄油。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Damage Details",
               "zh": "具体伤害"
             },
@@ -2245,7 +2114,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -2264,8 +2133,8 @@
     {
       "ID": 31,
       "NAME": {
-        "en" : "Meteor Flower",
-        "zh" : "流星花"
+        "en": "Meteor Flower",
+        "zh": "流星花"
       },
       "PLANTTYPE": "meteorflower",
       "CODENAME": "meteorflower",
@@ -2273,22 +2142,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Fire",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Conjures meteor strikes from the sky that leaves molten tiles",
-        "zh" : "从空中召唤能融化地面的流星"
+        "en": "Conjures meteor strikes from the sky that leaves molten tiles",
+        "zh": "从空中召唤能融化地面的流星"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2319,7 +2184,7 @@
           "en": "Meteor Flower conjures meteor strikes from the sky that leave molten tiles.",
           "zh": "流星花从天上召唤流星，砸地时留下岩浆。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "\"Out of this world molten mayhem! But first... coffee!!\"",
           "zh": "“熔融的骚乱啊，滚出这个世界！但是在此之前……喝口咖啡！！”"
@@ -2329,8 +2194,8 @@
     {
       "ID": 32,
       "NAME": {
-        "en" : "Spring Bean",
-        "zh" : "弹簧豆"
+        "en": "Spring Bean",
+        "zh": "弹簧豆"
       },
       "PLANTTYPE": "springbean",
       "CODENAME": "springbean",
@@ -2338,22 +2203,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Slow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Bounces zombies back and into nearby water",
-        "zh" : "将僵尸向右侧弹开，或弹进周围的水里"
+        "en": "Bounces zombies back and into nearby water",
+        "zh": "将僵尸向右侧弹开，或弹进周围的水里"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2395,9 +2256,9 @@
           "en": "Spring Beans bounce back zombies that get too close. Will bounce them into water if nearby.",
           "zh": "弹簧豆会将接触的僵尸往回弹。当附近有水时，将他们弹进水里。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -2407,7 +2268,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Weakness",
               "zh": "弱点"
             },
@@ -2426,8 +2287,8 @@
     {
       "ID": 33,
       "NAME": {
-        "en" : "Umbrella Leaf",
-        "zh" : "伞叶"
+        "en": "Umbrella Leaf",
+        "zh": "伞叶"
       },
       "PLANTTYPE": "umbrella",
       "CODENAME": "umbrellaleaf",
@@ -2435,22 +2296,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Defence",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Protects plants from falling threats",
-        "zh" : "保护植物免受来自空中的威胁"
+        "en": "Protects plants from falling threats",
+        "zh": "保护植物免受来自空中的威胁"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2484,9 +2341,9 @@
           "en": "Umbrella Leaves protect plants from falling threats.",
           "zh": "伞叶保护植物免受来自空中的威胁。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -2496,7 +2353,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -2515,8 +2372,8 @@
     {
       "ID": 34,
       "NAME": {
-        "en" : "Melon-pult",
-        "zh" : "西瓜投手"
+        "en": "Melon-pult",
+        "zh": "西瓜投手"
       },
       "PLANTTYPE": "melonpult",
       "CODENAME": "melonpult",
@@ -2524,22 +2381,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Lobber",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "cowboy",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Does heavy damage to groups of zombies",
-        "zh" : "对一群僵尸造成大量伤害"
+        "en": "Does heavy damage to groups of zombies",
+        "zh": "对一群僵尸造成大量伤害"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2577,9 +2430,9 @@
           "en": "Melon-pults do heavy damage to groups of zombies.",
           "zh": "西瓜投手会对成群的僵尸造成大量伤害。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Firing Speed",
               "zh": "攻速"
             },
@@ -2598,8 +2451,8 @@
     {
       "ID": 35,
       "NAME": {
-        "en" : "Winter Melon",
-        "zh" : "冰西瓜"
+        "en": "Winter Melon",
+        "zh": "冰西瓜"
       },
       "PLANTTYPE": "wintermelon",
       "CODENAME": "wintermelon",
@@ -2607,22 +2460,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Cold",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "cowboy",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Does heavy damage and slows groups of zombies",
-        "zh" : "对一群僵尸造成大量伤害并减速"
+        "en": "Does heavy damage and slows groups of zombies",
+        "zh": "对一群僵尸造成大量伤害并减速"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2667,9 +2516,9 @@
           "en": "Melon-pults do heavy damage and slow to groups of zombies.",
           "zh": "西瓜投手会对成群的僵尸造成大量伤害，并使他们减速。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Firing Speed",
               "zh": "攻速"
             },
@@ -2688,8 +2537,8 @@
     {
       "ID": 36,
       "NAME": {
-        "en" : "Blover",
-        "zh" : "三叶草"
+        "en": "Blover",
+        "zh": "三叶草"
       },
       "PLANTTYPE": "blover",
       "CODENAME": "blover",
@@ -2697,22 +2546,19 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Slow",
-
-      "TYPE":["plant","lastStandDisallowed"],
-    
+      "TYPE": [
+        "plant",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "future",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Blows away all flying and floating zombies",
-        "zh" : "吹飞所有的飞行僵尸"
+        "en": "Blows away all flying and floating zombies",
+        "zh": "吹飞所有的飞行僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2733,9 +2579,9 @@
           "en": "Blovers blow away all zombies in the air.",
           "zh": "三叶草会吹飞空中的所有僵尸。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用途"
             },
@@ -2745,7 +2591,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -2764,8 +2610,8 @@
     {
       "ID": 37,
       "NAME": {
-        "en" : "Spikeweed",
-        "zh" : "地刺"
+        "en": "Spikeweed",
+        "zh": "地刺"
       },
       "PLANTTYPE": "spikeweed",
       "CODENAME": "spikeweed",
@@ -2773,22 +2619,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Sharp",
-
-      "TYPE":["spikeweed"],
-    
+      "TYPE": [
+        "spikeweed"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Breaks 1 rolling object, hurts zombies that step on it",
-        "zh" : "对走过的僵尸造成伤害，并破坏 1 个滚动的物体"
+        "en": "Breaks 1 rolling object, hurts zombies that step on it",
+        "zh": "对走过的僵尸造成伤害，并破坏 1 个滚动的物体"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2819,9 +2661,9 @@
           "en": "Spikeweeds destroy one rolling zombie and hurt any zombies that step on them.",
           "zh": "地刺摧毁一滚动前行的目标，并且对经过的僵尸造成伤害。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -2831,7 +2673,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Weakness",
               "zh": "弱点"
             },
@@ -2850,8 +2692,8 @@
     {
       "ID": 38,
       "NAME": {
-        "en" : "Spikerock",
-        "zh" : "钢地刺"
+        "en": "Spikerock",
+        "zh": "钢地刺"
       },
       "PLANTTYPE": "spikerock",
       "CODENAME": "spikerock",
@@ -2859,22 +2701,19 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Sharp",
-
-      "TYPE":["spikeweed","spikerock"],
-    
+      "TYPE": [
+        "spikeweed",
+        "spikerock"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 900,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Breaks 3 rolling object, hurts zombies that step on it",
-        "zh" : "对走过的僵尸造成伤害，并破坏 3 个滚动的物体"
+        "en": "Breaks 3 rolling object, hurts zombies that step on it",
+        "zh": "对走过的僵尸造成伤害，并破坏 3 个滚动的物体"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2905,9 +2744,9 @@
           "en": "Spikerocks destroy multiple rolling zombies and damage zombies that walk over them.",
           "zh": "钢地刺摧毁多个滚动前行的目标，并且对经过的僵尸造成伤害。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -2917,7 +2756,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Weakness",
               "zh": "弱点"
             },
@@ -2936,8 +2775,8 @@
     {
       "ID": 39,
       "NAME": {
-        "en" : "Chomper",
-        "zh" : "大嘴花"
+        "en": "Chomper",
+        "zh": "大嘴花"
       },
       "PLANTTYPE": "chomper",
       "CODENAME": "chomper",
@@ -2945,22 +2784,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Melee",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Devours 2 zombies, then chews on each for a while",
-        "zh" : "吃掉僵尸，并花费时间消化"
+        "en": "Devours 2 zombies, then chews on each for a while",
+        "zh": "吃掉僵尸，并花费时间消化"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -2987,9 +2822,9 @@
           "en": "Chompers can devour 2 zombies whole, but they are vulnerable while chewing.",
           "zh": "大嘴花可以完整地吃掉两只僵尸，但是他们在咀嚼时很脆弱。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -3008,8 +2843,8 @@
     {
       "ID": 40,
       "NAME": {
-        "en" : "Ice Shroom",
-        "zh" : "寒冰菇"
+        "en": "Ice Shroom",
+        "zh": "寒冰菇"
       },
       "PLANTTYPE": "glacierShroom",
       "CODENAME": "glaciershroom",
@@ -3017,22 +2852,18 @@
       "COOLDOWN": 30,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Cold",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 700,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Tap to freeze all zombies",
-        "zh" : "点击冻结所有的僵尸"
+        "en": "Tap to freeze all zombies",
+        "zh": "点击冻结所有的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3078,9 +2909,9 @@
           "en": "Click on Ice Shrooms to freeze and chill all zombies on the lawn.",
           "zh": "点击寒冰菇冻结全屏的僵尸，此后需要一段时间恢复。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用法"
             },
@@ -3090,7 +2921,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -3100,7 +2931,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -3119,8 +2950,8 @@
     {
       "ID": 41,
       "NAME": {
-        "en" : "Primal Wall-nut",
-        "zh" : "原始坚果墙"
+        "en": "Primal Wall-nut",
+        "zh": "原始坚果墙"
       },
       "PLANTTYPE": "primalwallnut",
       "CODENAME": "primalwallnut",
@@ -3128,22 +2959,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Defence",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "dino",
-    
       "TOUGHNESS": 4000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Quick-planting wall that blocks off zombies",
-        "zh" : "冷却时间更短的坚果墙"
+        "en": "Quick-planting wall that blocks off zombies",
+        "zh": "冷却时间更短的坚果墙"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3170,9 +2997,9 @@
           "en": "Primal Wall-nuts cost a bit more than typical Wall-nuts, but they can be planted much more quickly.",
           "zh": "原始坚果墙比普通坚果墙需要更多阳光，但是能被更快地种植。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -3191,8 +3018,8 @@
     {
       "ID": 42,
       "NAME": {
-        "en" : "Buttercup",
-        "zh" : "黄油毛茛"
+        "en": "Buttercup",
+        "zh": "黄油毛茛"
       },
       "PLANTTYPE": "buttercup",
       "CODENAME": "buttercup",
@@ -3200,22 +3027,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Slow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 900,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Butters attacking zombies",
-        "zh" : "向啃食她的僵尸投掷黄油"
+        "en": "Butters attacking zombies",
+        "zh": "向啃食她的僵尸投掷黄油"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3246,9 +3069,9 @@
           "en": "Buttercup butters butter onto attacking zombies, stunning them with butter. Butter!",
           "zh": "黄油毛茛向啃食她的僵尸投掷黄油，用黄油控制住他们。全是黄油！"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -3267,8 +3090,8 @@
     {
       "ID": 43,
       "NAME": {
-        "en" : "Banana Launcher",
-        "zh" : "香蕉火箭炮"
+        "en": "Banana Launcher",
+        "zh": "香蕉火箭炮"
       },
       "PLANTTYPE": "banana",
       "CODENAME": "banana",
@@ -3276,22 +3099,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Explosive",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "beach",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Click on banana, then a tile, to launch explosive banana",
-        "zh" : "点击后，选择一格发射爆炸香蕉子弹"
+        "en": "Click on banana, then a tile, to launch explosive banana",
+        "zh": "点击后，选择一格发射爆炸香蕉子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3322,9 +3141,9 @@
           "en": "Banana Launchers can fire explosive bananas at any tile on the lawn.",
           "zh": "香蕉火箭炮能向场内任意一格发射一枚爆炸性香蕉子弹。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用途"
             },
@@ -3334,7 +3153,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Range",
               "zh": "范围"
             },
@@ -3344,7 +3163,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -3363,8 +3182,8 @@
     {
       "ID": 44,
       "NAME": {
-        "en" : "Missile Toe",
-        "zh" : "榭寄冰仙子"
+        "en": "Missile Toe",
+        "zh": "榭寄冰仙子"
       },
       "PLANTTYPE": "missiletoe",
       "CODENAME": "missiletoe",
@@ -3372,22 +3191,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Cold",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Launches chilling blasts",
-        "zh" : "发射寒冰导弹"
+        "en": "Launches chilling blasts",
+        "zh": "发射寒冰导弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3425,9 +3240,9 @@
           "en": "Missile Toes launch cold blasts that damage, chill and slow zombies.",
           "zh": "榭寄冰仙子发射寒冰子弹，对僵尸造成伤害并减速。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用途"
             },
@@ -3437,7 +3252,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Range",
               "zh": "范围"
             },
@@ -3447,7 +3262,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -3466,8 +3281,8 @@
     {
       "ID": 45,
       "NAME": {
-        "en" : "Cherry Bomb",
-        "zh" : "樱桃炸弹"
+        "en": "Cherry Bomb",
+        "zh": "樱桃炸弹"
       },
       "PLANTTYPE": "cherribomb",
       "CODENAME": "cherry_bomb",
@@ -3475,22 +3290,19 @@
       "COOLDOWN": 35,
       "COOLDOWNFROM": 1,
       "FAMILY": "Explosive",
-
-      "TYPE":["plant","lastStandDisallowed"],
-    
+      "TYPE": [
+        "plant",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Blows up all zombies in a medium area",
-        "zh" : "爆炸并对范围内僵尸造成伤害"
+        "en": "Blows up all zombies in a medium area",
+        "zh": "爆炸并对范围内僵尸造成伤害"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3518,9 +3330,9 @@
           "en": "Cherry Bombs can blow up all zombies in an area. They have a short fuse so plant them near zombies.",
           "zh": "樱桃炸弹会爆炸并对范围内所有僵尸造成伤害。他们会立刻爆炸，将他们种在僵尸附近。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用途"
             },
@@ -3539,8 +3351,8 @@
     {
       "ID": 46,
       "NAME": {
-        "en" : "Doom Shroom",
-        "zh" : "毁灭菇"
+        "en": "Doom Shroom",
+        "zh": "毁灭菇"
       },
       "PLANTTYPE": "doomshroom",
       "CODENAME": "doomshroom",
@@ -3548,22 +3360,19 @@
       "COOLDOWN": 35,
       "COOLDOWNFROM": 1,
       "FAMILY": "Explosive",
-
-      "TYPE":["plant","lastStandDisallowed"],
-    
+      "TYPE": [
+        "plant",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Blows up all zombies in a huge area",
-        "zh" : "爆炸并对巨大范围内僵尸造成伤害"
+        "en": "Blows up all zombies in a huge area",
+        "zh": "爆炸并对巨大范围内僵尸造成伤害"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3591,9 +3400,9 @@
           "en": "Doom Shrooms can blow up all zombies in a huge area. Leaving a crackled tile.",
           "zh": "毁灭菇会爆炸并对范围内所有僵尸造成伤害，砸碎所在的格子，一段时间内无法种植植物。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用途"
             },
@@ -3612,8 +3421,8 @@
     {
       "ID": 47,
       "NAME": {
-        "en" : "Cran Jelly",
-        "zh" : "果冻蔓越莓"
+        "en": "Cran Jelly",
+        "zh": "果冻蔓越莓"
       },
       "PLANTTYPE": "cranjelly",
       "CODENAME": "cranjelly",
@@ -3621,22 +3430,20 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 1,
       "FAMILY": "Slow",
-
-      "TYPE":["plant","allowOverlap","lastStandDisallowed"],
-    
+      "TYPE": [
+        "plant",
+        "allowOverlap",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Crushes zombies in the lane under its girthy jellified mass",
-        "zh" : "碾压一行的僵尸"
+        "en": "Crushes zombies in the lane under its girthy jellified mass",
+        "zh": "碾压一行的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3660,9 +3467,9 @@
           "en": "Instant plant that crushes zombies in the lane under its girthy jellified mass. Leaves behind a pool of acidic goo that both slows and damages zombies when a zombie is crushed.",
           "zh": "立刻从本行左侧冲出，利用沉重的黏冻碾压一整行的僵尸。击败僵尸时留下一块能对僵尸造成伤害的果冻。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用途"
             },
@@ -3681,8 +3488,8 @@
     {
       "ID": 48,
       "NAME": {
-        "en" : "Baby Dragon Bruit",
-        "zh" : "小暴君火龙果"
+        "en": "Baby Dragon Bruit",
+        "zh": "小暴君火龙果"
       },
       "PLANTTYPE": "dragonbruitBaby",
       "CODENAME": "dragonbabybruit",
@@ -3690,22 +3497,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Shadow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "modern",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Launches an explosive seed pod projectile at zombies",
-        "zh" : "向僵尸投掷爆裂子弹"
+        "en": "Launches an explosive seed pod projectile at zombies",
+        "zh": "向僵尸投掷爆裂子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3736,7 +3539,7 @@
           "en": "Baby Dragon Bruits launch explosive seed pod projectiles at zombies.",
           "zh": "小暴君火龙果向僵尸投掷爆裂子弹。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -3757,8 +3560,8 @@
     {
       "ID": 49,
       "NAME": {
-        "en" : "Torchwood",
-        "zh" : "火炬树桩"
+        "en": "Torchwood",
+        "zh": "火炬树桩"
       },
       "PLANTTYPE": "torchwood",
       "CODENAME": "torchwood",
@@ -3766,22 +3569,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 2000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Turns peas into fireballs and does lanewide damage on defeat",
-        "zh" : "点燃经过的豌豆，死亡时对整行造成伤害"
+        "en": "Turns peas into fireballs and does lanewide damage on defeat",
+        "zh": "点燃经过的豌豆，死亡时对整行造成伤害"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3795,7 +3594,7 @@
           },
           {
             "TYPE": "DAMAGE",
-            "NAME":{
+            "NAME": {
               "en": "BURNING DAMAGE",
               "zh": "燃烧伤害"
             },
@@ -3820,7 +3619,7 @@
           "en": "Torchwoods turn peas that pass through them into fireballs that deal twice as much damage. They also deal close damage as well as lanewide flame damage on defeat.",
           "zh": "火炬树桩将经过的豌豆点燃，造成双倍伤害。他们也会对靠近的僵尸造成伤害，死亡时会在燃烧一整行的僵尸。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -3871,8 +3670,8 @@
     {
       "ID": 50,
       "NAME": {
-        "en" : "Jalapeno",
-        "zh" : "火爆辣椒"
+        "en": "Jalapeno",
+        "zh": "火爆辣椒"
       },
       "PLANTTYPE": "jalapeno",
       "CODENAME": "jalapeno",
@@ -3880,22 +3679,19 @@
       "COOLDOWN": 35,
       "COOLDOWNFROM": 1,
       "FAMILY": "Fire",
-
-      "TYPE":["plant","lastStandDisallowed"],
-    
+      "TYPE": [
+        "plant",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Destroys an entire lane of zombies",
-        "zh" : "燃烧摧毁一整行的僵尸"
+        "en": "Destroys an entire lane of zombies",
+        "zh": "燃烧摧毁一整行的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -3923,7 +3719,7 @@
           "en": "Jalapenos destroy an entire lane of zombies.",
           "zh": "火爆辣椒摧毁一整行的僵尸。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -3944,8 +3740,8 @@
     {
       "ID": 51,
       "NAME": {
-        "en" : "Puff-shroom",
-        "zh" : "小喷菇"
+        "en": "Puff-shroom",
+        "zh": "小喷菇"
       },
       "PLANTTYPE": "puffshroom",
       "CODENAME": "puffshroom",
@@ -3953,22 +3749,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Poison",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "dark",
-    
       "TOUGHNESS": 150,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Short-range shooter, lasts for a limited time",
-        "zh" : "射程短，并且一段时间后消失"
+        "en": "Short-range shooter, lasts for a limited time",
+        "zh": "射程短，并且一段时间后消失"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4006,7 +3798,7 @@
           "en": "Puff-shrooms are short-range shooters that last for a limited time.",
           "zh": "小喷菇射程短，一段时间后消失。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -4027,8 +3819,8 @@
     {
       "ID": 52,
       "NAME": {
-        "en" : "Gloom Vine",
-        "zh" : "忧郁藤蔓"
+        "en": "Gloom Vine",
+        "zh": "忧郁藤蔓"
       },
       "PLANTTYPE": "gloomvine",
       "CODENAME": "gloomvine",
@@ -4036,22 +3828,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Shadow",
-
-      "TYPE":["vine"],
-    
+      "TYPE": [
+        "vine"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 250,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots in 8 directions",
-        "zh" : "攻击自身为中心的范围内的僵尸"
+        "en": "Shoots in 8 directions",
+        "zh": "攻击自身为中心的范围内的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4082,7 +3870,7 @@
           "en": "Gloom Vines power individual shadow plants and shoot zombie-damaging gloom in eight directions.",
           "zh": "忧郁藤蔓使本格的暗影植物进入暗影状态。同时能向八个方向发射孢子，对僵尸造成伤害。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -4103,8 +3891,8 @@
     {
       "ID": 53,
       "NAME": {
-        "en" : "Vamporcini",
-        "zh" : "吸血牛肝菌"
+        "en": "Vamporcini",
+        "zh": "吸血牛肝菌"
       },
       "PLANTTYPE": "vamporcini",
       "CODENAME": "vamporcini",
@@ -4112,22 +3900,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 1,
       "FAMILY": "Poison",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 4000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Drains HP from surrounding zombies for a few seconds",
-        "zh" : "一段时间内吸收周围僵尸的血量"
+        "en": "Drains HP from surrounding zombies for a few seconds",
+        "zh": "一段时间内吸收周围僵尸的血量"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4154,7 +3938,7 @@
           "en": "Vamporcinis are defensive plants that drain HP from surrounding zombies for a few seconds.",
           "zh": "吸血牛肝菌是从周围的僵尸吸取血量以强化自身的防御型植物。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -4175,8 +3959,8 @@
     {
       "ID": 54,
       "NAME": {
-        "en" : "Primal Potato Mine",
-        "zh" : "原始土豆地雷"
+        "en": "Primal Potato Mine",
+        "zh": "原始土豆地雷"
       },
       "PLANTTYPE": "primalpotatomine",
       "CODENAME": "primalpotatomine",
@@ -4184,22 +3968,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Explosive",
-
-      "TYPE":["potatomine"],
-    
+      "TYPE": [
+        "potatomine"
+      ],
       "OBTAINWORLD": "dino",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Explodes and does area damage",
-        "zh" : "爆炸范围更大的土豆地雷"
+        "en": "Explodes and does area damage",
+        "zh": "爆炸范围更大的土豆地雷"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "solid"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4234,7 +4014,7 @@
           "en": "Primal Potato Mines cost more than regular Potato Mines, but they arm more quickly and do damage over a larger area.",
           "zh": "原始土豆地雷比普通的土豆地雷消耗更多的阳光，但是他们更快准备完毕，并且造成伤害的范围更广。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -4265,8 +4045,8 @@
     {
       "ID": 55,
       "NAME": {
-        "en" : "Cactus",
-        "zh" : "仙人掌"
+        "en": "Cactus",
+        "zh": "仙人掌"
       },
       "PLANTTYPE": "cactus",
       "CODENAME": "cactus",
@@ -4274,22 +4054,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Sharp",
-
-      "TYPE":["potatomine"],
-    
+      "TYPE": [
+        "potatomine"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Fires a penetrating thorn, hides for ground damage",
-        "zh" : "射出穿透性的刺，僵尸靠近时缩进地里攻击"
+        "en": "Fires a penetrating thorn, hides for ground damage",
+        "zh": "射出穿透性的刺，僵尸靠近时缩进地里攻击"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "solid"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4327,7 +4103,7 @@
           "en": "Cactus fires a penetrating thorn that can damage multiple enemies! Hides underground when zombies are close. Can pop balloon zombies.",
           "zh": "仙人掌发射能穿透击打多个目标的刺！在僵尸靠近时躲在地下。能直接扎破气球僵尸。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -4348,8 +4124,8 @@
     {
       "ID": 56,
       "NAME": {
-        "en" : "Power Lily",
-        "zh" : "能量花"
+        "en": "Power Lily",
+        "zh": "能量花"
       },
       "PLANTTYPE": "powerlily",
       "CODENAME": "powerlily",
@@ -4357,22 +4133,19 @@
       "COOLDOWN": 60,
       "COOLDOWNFROM": 1,
       "FAMILY": "Nope",
-
-      "TYPE":["plant","lastStandDisallowed"],
-    
+      "TYPE": [
+        "plant",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Creates one Plant Food for use",
-        "zh" : "产生一个叶绿素"
+        "en": "Creates one Plant Food for use",
+        "zh": "产生一个叶绿素"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4386,7 +4159,7 @@
           "en": "Power Lilies create one Plant Food out of thin air.",
           "zh": "能量花凭空变出一颗叶绿素。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -4417,8 +4190,8 @@
     {
       "ID": 57,
       "NAME": {
-        "en" : "Coconut Cannon",
-        "zh" : "椰子加农炮"
+        "en": "Coconut Cannon",
+        "zh": "椰子加农炮"
       },
       "PLANTTYPE": "coconutcannon",
       "CODENAME": "coconutcannon",
@@ -4426,22 +4199,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Lobber",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Tap on the cannon to fire an explosive coconut",
-        "zh" : "点击发射一颗爆炸性椰子炮弹"
+        "en": "Tap on the cannon to fire an explosive coconut",
+        "zh": "点击发射一颗爆炸性椰子炮弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4472,7 +4241,7 @@
           "en": "Coconut Cannons fire down a single lane, causing a medium explosion on impact.",
           "zh": "椰子加农炮沿着本行发射，炸裂时造成范围性伤害。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -4503,8 +4272,8 @@
     {
       "ID": 58,
       "NAME": {
-        "en" : "Pea Pod",
-        "zh" : "豌豆荚"
+        "en": "Pea Pod",
+        "zh": "豌豆荚"
       },
       "PLANTTYPE": "peapod",
       "CODENAME": "peapod",
@@ -4512,22 +4281,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "cowboy",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Plant multiple times on the same spot to multiply damage",
-        "zh" : "多次重叠种植提高攻击力"
+        "en": "Plant multiple times on the same spot to multiply damage",
+        "zh": "多次重叠种植提高攻击力"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4558,7 +4323,7 @@
           "en": "Pea Pods can be planted in the same space for up to 5 times the destruction.",
           "zh": "在同一格种植豌豆荚，能让他们的攻击力提升到至多 5 倍。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -4579,8 +4344,8 @@
     {
       "ID": 59,
       "NAME": {
-        "en" : "Snap Dragon",
-        "zh" : "火龙草"
+        "en": "Snap Dragon",
+        "zh": "火龙草"
       },
       "PLANTTYPE": "snapdragon",
       "CODENAME": "snapdragon",
@@ -4588,22 +4353,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Fire",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "pirate",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Breaths fire in an area in front of it",
-        "zh" : "向身前区域吐息"
+        "en": "Breaths fire in an area in front of it",
+        "zh": "向身前区域吐息"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4634,7 +4395,7 @@
           "en": "Snapdragons breathe fire that causes damage in 6 adjacent tiles.",
           "zh": "火龙草向毗邻的 6 格吐出有伤害的火焰。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Area",
@@ -4655,8 +4416,8 @@
     {
       "ID": 60,
       "NAME": {
-        "en" : "Gatling Pea",
-        "zh" : "机枪射手"
+        "en": "Gatling Pea",
+        "zh": "机枪射手"
       },
       "PLANTTYPE": "gatlingpea",
       "CODENAME": "gatling",
@@ -4664,22 +4425,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots 4 peas at a time",
-        "zh" : "向敌人发射 4 颗豌豆"
+        "en": "Shoots 4 peas at a time",
+        "zh": "向敌人发射 4 颗豌豆"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4710,7 +4467,7 @@
           "en": "Gatling Peas fire 4 peas at one time at a shorter shooting rate.",
           "zh": "机枪射手每次发射 4 豌豆，并且拥有更高的射速。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Firing Speed",
@@ -4731,8 +4488,8 @@
     {
       "ID": 61,
       "NAME": {
-        "en" : "Split Pea",
-        "zh" : "裂荚射手"
+        "en": "Split Pea",
+        "zh": "裂荚射手"
       },
       "PLANTTYPE": "splitpea",
       "CODENAME": "splitpea",
@@ -4740,22 +4497,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "cowboy",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Shoots peas forward and backward",
-        "zh" : "向身前和身后发射豌豆"
+        "en": "Shoots peas forward and backward",
+        "zh": "向身前和身后发射豌豆"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4786,7 +4539,7 @@
           "en": "Split Peas shoot peas forward and backwards.",
           "zh": "裂荚射手向前后方发射豌豆。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Firing Speed",
@@ -4807,8 +4560,8 @@
     {
       "ID": 62,
       "NAME": {
-        "en" : "Chili Bean",
-        "zh" : "巴豆"
+        "en": "Chili Bean",
+        "zh": "巴豆"
       },
       "PLANTTYPE": "chilibean",
       "CODENAME": "chilibean",
@@ -4816,22 +4569,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 1,
       "FAMILY": "Poison",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "cowboy",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Zombies that eat it are defeated and release gas",
-        "zh" : "僵尸吃下后死亡并释放眩晕气体"
+        "en": "Zombies that eat it are defeated and release gas",
+        "zh": "僵尸吃下后死亡并释放眩晕气体"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4876,7 +4625,7 @@
           "en": "Chili Beans deliver a crippling bout of gastrointestinal distress.",
           "zh": "巴豆会对吞食他的敌人施加致命的毒素攻击，并使其释放眩晕气体。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -4907,8 +4656,8 @@
     {
       "ID": 63,
       "NAME": {
-        "en" : "Tall-nut",
-        "zh" : "高坚果"
+        "en": "Tall-nut",
+        "zh": "高坚果"
       },
       "PLANTTYPE": "tallnut",
       "CODENAME": "tallnut",
@@ -4916,22 +4665,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 1,
       "FAMILY": "Defence",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "cowboy",
-    
       "TOUGHNESS": 8000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Heavy-duty wall that blocks low flying zombies",
-        "zh" : "血量更高的坚果墙，可以抵挡飞来的僵尸"
+        "en": "Heavy-duty wall that blocks low flying zombies",
+        "zh": "血量更高的坚果墙，可以抵挡飞来的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -4958,7 +4703,7 @@
           "en": "Tall-nuts are heavy-duty wall plants that block low flying zombies.",
           "zh": "高坚果是血量更厚的坚果墙，可以抵挡低空飞行的僵尸。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -4979,8 +4724,8 @@
     {
       "ID": 64,
       "NAME": {
-        "en" : "Hurrikale",
-        "zh" : "飓风甘蓝"
+        "en": "Hurrikale",
+        "zh": "飓风甘蓝"
       },
       "PLANTTYPE": "hurrikale",
       "CODENAME": "hurrikale",
@@ -4988,22 +4733,18 @@
       "COOLDOWN": 15,
       "COOLDOWNFROM": 1,
       "FAMILY": "Slow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Blows a chilling wind that pushes back zombies in lane",
-        "zh" : "吹出强寒风，推动本行的僵尸"
+        "en": "Blows a chilling wind that pushes back zombies in lane",
+        "zh": "吹出强寒风，推动本行的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5034,7 +4775,7 @@
           "en": "Hurrikales push back all zombies in their lane with a chilling wind.",
           "zh": "飓风甘蓝利用强风将本行所有的僵尸向后推。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -5075,8 +4816,8 @@
     {
       "ID": 65,
       "NAME": {
-        "en" : "Stallia",
-        "zh" : "眩晕雏菊"
+        "en": "Stallia",
+        "zh": "眩晕雏菊"
       },
       "PLANTTYPE": "stallia",
       "CODENAME": "stallia",
@@ -5084,22 +4825,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 1,
       "FAMILY": "Slow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "lostcity",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Slows zombies in nearby lanes",
-        "zh" : "减慢范围内的所有僵尸"
+        "en": "Slows zombies in nearby lanes",
+        "zh": "减慢范围内的所有僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5137,7 +4874,7 @@
           "en": "Stallias slow down zombies with a puff of perfume.",
           "zh": "眩晕雏菊利用一股毒气减慢僵尸的前进。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -5168,8 +4905,8 @@
     {
       "ID": 66,
       "NAME": {
-        "en" : "Electric Peashooter",
-        "zh" : "电能豌豆"
+        "en": "Electric Peashooter",
+        "zh": "电能豌豆"
       },
       "PLANTTYPE": "electricpeashooter",
       "CODENAME": "electricpeashooter",
@@ -5177,22 +4914,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Electricity",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Fires electric peas",
-        "zh" : "发射电能豌豆子弹"
+        "en": "Fires electric peas",
+        "zh": "发射电能豌豆子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5223,7 +4956,7 @@
           "en": "Electric Peashooters fire pea-like orbs that pass through zombies and crackle with electrical power, doing damage all the while.",
           "zh": "电能豌豆向僵尸发射穿透性球状闪电，并且伴随着电弧产生，对附近的目标造成伤害。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Electric Peashooter expects resistance, but he doesn't want to ohm anybody.",
           "zh": "电能豌豆希望遇到一个电阻相当的对手，但是他又不想跟他们一起算欧姆定律。"
@@ -5233,8 +4966,8 @@
     {
       "ID": 67,
       "NAME": {
-        "en" : "Squash",
-        "zh" : "倭瓜"
+        "en": "Squash",
+        "zh": "倭瓜"
       },
       "PLANTTYPE": "squash",
       "CODENAME": "squash",
@@ -5242,22 +4975,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 1,
       "FAMILY": "Melee",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Squashed zombies",
-        "zh" : "碾压一群僵尸"
+        "en": "Squashed zombies",
+        "zh": "碾压一群僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5281,7 +5010,7 @@
           "en": "Squashes will smash the first zombie that gets close.",
           "zh": "倭瓜会砸向第一只向他靠近的僵尸。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Area",
@@ -5302,8 +5031,8 @@
     {
       "ID": 68,
       "NAME": {
-        "en" : "Gloom Shroom",
-        "zh" : "忧郁菇"
+        "en": "Gloom Shroom",
+        "zh": "忧郁菇"
       },
       "PLANTTYPE": "gloomshroom",
       "CODENAME": "gloomshroom",
@@ -5311,22 +5040,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Shadow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Damages all zombies in a 3x3 area",
-        "zh" : "对 3x3 范围内所有僵尸造成伤害"
+        "en": "Damages all zombies in a 3x3 area",
+        "zh": "对 3x3 范围内所有僵尸造成伤害"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5353,7 +5078,7 @@
           "en": "Gloom Shrooms shoot zombie-damaging gloom in eight directions. When powered and shooting, they power near by shadow plants.",
           "zh": "忧郁菇向八个方向发射孢子，对僵尸造成伤害。在发射时如果被激活，也会激活附近的暗影植物。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -5374,8 +5099,8 @@
     {
       "ID": 69,
       "NAME": {
-        "en" : "Magnifying Grass",
-        "zh" : "棱镜草"
+        "en": "Magnifying Grass",
+        "zh": "棱镜草"
       },
       "PLANTTYPE": "magnifyinggrass",
       "CODENAME": "magnifyinggrass",
@@ -5383,22 +5108,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Electricity",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "future",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Tap to spend sun for a powerful attack",
-        "zh" : "点击后，花费阳光发射光能子弹"
+        "en": "Tap to spend sun for a powerful attack",
+        "zh": "点击后，花费阳光发射光能子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5422,7 +5143,7 @@
           "en": "Magnifying Grass turns sun into a bolt of colorful damage.",
           "zh": "棱镜草将阳光转换为高能的彩虹子弹。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -5443,8 +5164,8 @@
     {
       "ID": 70,
       "NAME": {
-        "en" : "Celery Stalker",
-        "zh" : "潜伏芹菜"
+        "en": "Celery Stalker",
+        "zh": "潜伏芹菜"
       },
       "PLANTTYPE": "celerystalker",
       "CODENAME": "celerystalker",
@@ -5452,22 +5173,18 @@
       "COOLDOWN": 15,
       "COOLDOWNFROM": 1,
       "FAMILY": "Melee",
-
-      "TYPE":["potatomine"],
-    
+      "TYPE": [
+        "potatomine"
+      ],
       "OBTAINWORLD": "stage",
-    
       "TOUGHNESS": 1200,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Pops up and bashes zombies from behind",
-        "zh" : "身后有僵尸时冒出并造成伤害"
+        "en": "Pops up and bashes zombies from behind",
+        "zh": "身后有僵尸时冒出并造成伤害"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "solid"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5498,7 +5215,7 @@
           "en": "Celery Stalkers wait until zombies pass, then pop up and bash them from behind.",
           "zh": "潜伏芹菜会等待僵尸走过，在他们走到身后时冒出并抽打他们。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Celery Stalker resents the implication that there's anything unsavory about his attack style. He simply believes that discretion is the better part of vegetation.",
           "zh": "潜伏芹菜非常讨厌别人说他的攻击方式没特色。他觉得保持低调对植物来说更重要。"
@@ -5508,8 +5225,8 @@
     {
       "ID": 71,
       "NAME": {
-        "en" : "Sap-fling",
-        "zh" : "树脂投手"
+        "en": "Sap-fling",
+        "zh": "树脂投手"
       },
       "PLANTTYPE": "sapfling",
       "CODENAME": "sapfling",
@@ -5517,22 +5234,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Slow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Creates zombies-slowing puddles of sap",
-        "zh" : "投掷释放树脂的子弹，使僵尸减速"
+        "en": "Creates zombies-slowing puddles of sap",
+        "zh": "投掷释放树脂的子弹，使僵尸减速"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5559,7 +5272,7 @@
           "en": "Sap-flings create zombie-slowing puddles of sap.",
           "zh": "树脂投手会在地上留下能让僵尸减速的树脂。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Damage Details",
@@ -5590,8 +5303,8 @@
     {
       "ID": 72,
       "NAME": {
-        "en" : "Parsnip",
-        "zh" : "防风草"
+        "en": "Parsnip",
+        "zh": "防风草"
       },
       "PLANTTYPE": "parsnip",
       "CODENAME": "parsnip",
@@ -5599,22 +5312,18 @@
       "COOLDOWN": 5,
       "COOLDOWNFROM": 1,
       "FAMILY": "Melee",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Snips zombies, than charges down lane",
-        "zh" : "夹击僵尸，被啃咬时冲出并攻击前方所有僵尸"
+        "en": "Snips zombies, than charges down lane",
+        "zh": "夹击僵尸，被啃咬时冲出并攻击前方所有僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "solid"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5645,7 +5354,7 @@
           "en": "Parsnips snip at zombies, then charge down the lane at the last moment.",
           "zh": "防风草掐伤身前的僵尸，被啃咬后冲出夹击本行前方的僵尸"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -5666,8 +5375,8 @@
     {
       "ID": 73,
       "NAME": {
-        "en" : "Explode-O-Nut",
-        "zh" : "爆炸坚果"
+        "en": "Explode-O-Nut",
+        "zh": "爆炸坚果"
       },
       "PLANTTYPE": "explodeonut",
       "CODENAME": "explodeonut",
@@ -5675,22 +5384,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Explosive",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 3000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Explodes when eaten",
-        "zh" : "被啃食后爆炸"
+        "en": "Explodes when eaten",
+        "zh": "被啃食后爆炸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5728,7 +5433,7 @@
           "en": "Explode-O-Nuts provide protection, and when their shells are eaten, they explode to blow up zombies.",
           "zh": "爆炸坚果保护身后的植物，当他们被吃掉时，炸死周围的僵尸。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "\"My only regret,\" says Explode-O-Nut, \"is that I have but one chewy center full of nitroglycerin to give in defense of this lawn.\"",
           "zh": "“唯一令我遗憾的是，”爆炸坚果说道，“我只有一颗能被咬爆的硝酸甘油核心。”"
@@ -5738,8 +5443,8 @@
     {
       "ID": 74,
       "NAME": {
-        "en" : "Grapeshot",
-        "zh" : "爆裂葡萄"
+        "en": "Grapeshot",
+        "zh": "爆裂葡萄"
       },
       "PLANTTYPE": "grapeshot",
       "CODENAME": "grapeshot",
@@ -5747,22 +5452,19 @@
       "COOLDOWN": 35,
       "COOLDOWNFROM": 1,
       "FAMILY": "Explosive",
-
-      "TYPE":["plant","lastStandDisallowed"],
-    
+      "TYPE": [
+        "plant",
+        "lastStandDisallowed"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Explodes and scatters bouncing projectiles",
-        "zh" : "爆炸并发射弹射子弹"
+        "en": "Explodes and scatters bouncing projectiles",
+        "zh": "爆炸并发射弹射子弹"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5790,9 +5492,9 @@
           "en": "Grapeshots explode and scatter bouncing projectiles in eight directions.",
           "zh": "爆裂葡萄爆炸后向 8 个方向发射弹性葡萄子弹。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Usage",
               "zh": "用途"
             },
@@ -5811,8 +5513,8 @@
     {
       "ID": 75,
       "NAME": {
-        "en" : "Plantern",
-        "zh" : "路灯花"
+        "en": "Plantern",
+        "zh": "路灯花"
       },
       "PLANTTYPE": "plantern",
       "CODENAME": "plantern",
@@ -5820,22 +5522,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 1,
       "FAMILY": "Sun",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Removes fog and reveals invisible zombies",
-        "zh" : "驱散迷雾，并显示隐形的僵尸"
+        "en": "Removes fog and reveals invisible zombies",
+        "zh": "驱散迷雾，并显示隐形的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5862,9 +5560,9 @@
           "en": "Planterns remove fog and reveal invisible zombies.",
           "zh": "路灯花会驱散迷雾，并使隐形的僵尸显现。"
         },
-        "Special":[
+        "Special": [
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -5874,7 +5572,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -5884,7 +5582,7 @@
             }
           },
           {
-            "NAME":{
+            "NAME": {
               "en": "Special",
               "zh": "特点"
             },
@@ -5903,8 +5601,8 @@
     {
       "ID": 76,
       "NAME": {
-        "en" : "Heavenly Peach",
-        "zh" : "仙桃"
+        "en": "Heavenly Peach",
+        "zh": "仙桃"
       },
       "PLANTTYPE": "heavenlypeach",
       "CODENAME": "peach",
@@ -5912,22 +5610,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 1,
       "FAMILY": "Defence",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "kongfu",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Heals plants in a 3x3 area",
-        "zh" : "治疗 3x3 范围内的植物"
+        "en": "Heals plants in a 3x3 area",
+        "zh": "治疗 3x3 范围内的植物"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -5948,7 +5642,7 @@
           },
           {
             "TYPE": "SPECIAL",
-            "NAME":{
+            "NAME": {
               "en": "HEALTH PER HEAL",
               "zh": "单次治疗血量"
             },
@@ -5962,7 +5656,7 @@
           "en": "Heavenly Peaches heal all surrounding plants, regaining their health.",
           "zh": "仙桃医治周围的植物，恢复他们的生命值。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "Her resume says that she was once a peach of Wangmu Niangniang for consumption, and became a medic after being demoted to mortal.",
           "zh": "仙桃的简历上写着白己本是王母娘娘的御用幡桃, 被贬下凡后做了战地医生。"
@@ -5972,8 +5666,8 @@
     {
       "ID": 77,
       "NAME": {
-        "en" : "Jack O' Lantern",
-        "zh" : "杰克南瓜"
+        "en": "Jack O' Lantern",
+        "zh": "杰克南瓜"
       },
       "PLANTTYPE": "jackolantern",
       "CODENAME": "jackolantern",
@@ -5981,22 +5675,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Fire",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Fires jets of flame over a short distance",
-        "zh" : "短距离内喷射火焰攻击"
+        "en": "Fires jets of flame over a short distance",
+        "zh": "短距离内喷射火焰攻击"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6023,7 +5713,7 @@
           "en": "Jack O' Lanterns spray fire down a lane, doing extensive burning damage over a short distance.",
           "zh": "杰克南瓜向本行前方喷射火焰，对短距离内的敌人造成灼烧伤害。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -6044,8 +5734,8 @@
     {
       "ID": 78,
       "NAME": {
-        "en" : "Dandelion",
-        "zh" : "蒲公英"
+        "en": "Dandelion",
+        "zh": "蒲公英"
       },
       "PLANTTYPE": "dandelion",
       "CODENAME": "dandelion",
@@ -6053,22 +5743,18 @@
       "COOLDOWN": 15,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Peashooter",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Attacks multiple lanes, one lane at a time",
-        "zh" : "攻击邻近行的僵尸"
+        "en": "Attacks multiple lanes, one lane at a time",
+        "zh": "攻击邻近行的僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6099,7 +5785,7 @@
           "en": "Dandelions send explosive seeds down three different lanes, one lane at a time.",
           "zh": "蒲公英向身前的三行中的一行发射爆炸性蒲公英子弹。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Range Details",
@@ -6130,8 +5816,8 @@
     {
       "ID": 79,
       "NAME": {
-        "en" : "Chard Guard",
-        "zh" : "甜菜护卫"
+        "en": "Chard Guard",
+        "zh": "甜菜护卫"
       },
       "PLANTTYPE": "chardguard",
       "CODENAME": "chardguard",
@@ -6139,22 +5825,18 @@
       "COOLDOWN": 15,
       "COOLDOWNFROM": 1,
       "FAMILY": "Defence",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "ice",
-    
       "TOUGHNESS": 1500,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Blocks and hurls zombies backwards",
-        "zh" : "阻挡并击退僵尸"
+        "en": "Blocks and hurls zombies backwards",
+        "zh": "阻挡并击退僵尸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6181,7 +5863,7 @@
           "en": "Chard Guards are defensive blockers that can hurl zombies backwards.",
           "zh": "甜菜护卫利用坚韧的身躯和菜叶将僵尸击退。"
         },
-        "Special":[],
+        "Special": [],
         "Chat": {
           "en": "You might remember Chard Guard from his days in the WWF (that's World Wrestling Foliage). When he was in the ring - boy-oh-boy - he was something to behold! His moves! His style! His attitude! The crowd loved him. He was quite the star for a while there. Sure, those days are behind him. But if you watch carefully, when Chard Guard is fighting zombies, you'll see him use the wrestling move he made famous. The ol' Knock 'Em Dead maneuver - it gets 'em every time.",
           "zh": "你也许还记得WWF里（世界蔬叶摔角大赛）甜菜护卫的闪光时刻。当时他获得“男仔中的男仔”金腰带，那真的是嗨翻全场，万众瞩目！他的动作！他的战风！他的气势！大家爱死他了。那个时候他确实是人气明星。当然，那也已经是之前的事情了。但是如今如果你仔细观察，当甜菜护卫和僵尸战斗的时候，你会看到他使用的正是看家招式————摔跤动作。称之为“一击入魂”的秘技……真是百用百中。"
@@ -6191,8 +5873,8 @@
     {
       "ID": 80,
       "NAME": {
-        "en" : "Hypno-shroom",
-        "zh" : "魅惑菇"
+        "en": "Hypno-shroom",
+        "zh": "魅惑菇"
       },
       "PLANTTYPE": "hypnoshroom",
       "CODENAME": "hypnoshroom",
@@ -6200,22 +5882,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Magic",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 50,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Makes a zombie fight for you",
-        "zh" : "让一名僵尸为你战斗"
+        "en": "Makes a zombie fight for you",
+        "zh": "让一名僵尸为你战斗"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6242,7 +5920,7 @@
           "en": "When zombies eat Hypno-shrooms, they will turn around and fight for you.",
           "zh": "当僵尸吃掉了魅惑菇，他们将会转身为你战斗。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -6273,8 +5951,8 @@
     {
       "ID": 81,
       "NAME": {
-        "en" : "Electric Currant",
-        "zh" : "电流醋栗"
+        "en": "Electric Currant",
+        "zh": "电流醋栗"
       },
       "PLANTTYPE": "electriccurrant",
       "CODENAME": "electriccurrant",
@@ -6282,22 +5960,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.001,
       "FAMILY": "Electricity",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "epic",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Creates electric fences",
-        "zh" : "链接电弧对僵尸造成伤害"
+        "en": "Creates electric fences",
+        "zh": "链接电弧对僵尸造成伤害"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6332,7 +6006,7 @@
           "en": "Electric Currants create electrical fences between ones planted on the same row or column.",
           "zh": "相同行或列的电流醋栗之间会产生电流线。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -6363,8 +6037,8 @@
     {
       "ID": 82,
       "NAME": {
-        "en" : "Escape Root",
-        "zh" : "逃脱树根"
+        "en": "Escape Root",
+        "zh": "逃脱树根"
       },
       "PLANTTYPE": "escaperoot",
       "CODENAME": "escaperoot",
@@ -6372,22 +6046,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0.75,
       "FAMILY": "Explosive",
-
-      "TYPE":["potatomine"],
-    
+      "TYPE": [
+        "potatomine"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Explodes and can be swapped with other plants",
-        "zh" : "能与其他植物换位，遇到僵尸时爆炸"
+        "en": "Explodes and can be swapped with other plants",
+        "zh": "能与其他植物换位，遇到僵尸时爆炸"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "solid"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6422,7 +6092,7 @@
           "en": "Escape Roots explode on contact, and can be swapped with other plants that are in danger.",
           "zh": "逃脱树根在接触敌人时爆炸，他可以和其他处境危险的植物交换位置。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -6443,8 +6113,8 @@
     {
       "ID": 83,
       "NAME": {
-        "en" : "Imitater",
-        "zh" : "变身茄子"
+        "en": "Imitater",
+        "zh": "变身茄子"
       },
       "PLANTTYPE": "imitator",
       "CODENAME": "imitater",
@@ -6452,22 +6122,18 @@
       "COOLDOWN": 20,
       "COOLDOWNFROM": 0,
       "FAMILY": "Nope",
-
-      "TYPE":["any"],
-    
+      "TYPE": [
+        "any"
+      ],
       "OBTAINWORLD": "market",
-    
       "TOUGHNESS": 30000,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Lets you have two of the same plant",
-        "zh" : "允许你同时选取两张相同的卡片"
+        "en": "Lets you have two of the same plant",
+        "zh": "允许你同时选取两张相同的卡片"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6481,7 +6147,7 @@
           "en": "Imitaters let you use two of the same plant during a level!",
           "zh": "变身茄子允许你同一个关卡携带两张相同的植物卡片！"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -6502,8 +6168,8 @@
     {
       "ID": 84,
       "NAME": {
-        "en" : "Shadow-shroom",
-        "zh" : "毒影菇"
+        "en": "Shadow-shroom",
+        "zh": "毒影菇"
       },
       "PLANTTYPE": "shadowshroom",
       "CODENAME": "shadowshroom",
@@ -6511,22 +6177,18 @@
       "COOLDOWN": 10,
       "COOLDOWNFROM": 0.5,
       "FAMILY": "Shadow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "modern",
-    
       "TOUGHNESS": 50,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Poisons zombies over time",
-        "zh" : "使僵尸获得一段时间的中毒效果"
+        "en": "Poisons zombies over time",
+        "zh": "使僵尸获得一段时间的中毒效果"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6557,7 +6219,7 @@
           "en": "Shadow-shrooms poison zombies who touch them, inflicting damage over time.",
           "zh": "毒影菇接触到僵尸时，对其施加毒性效果，中毒僵尸一段时间内持续受到伤害。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Usage",
@@ -6588,8 +6250,8 @@
     {
       "ID": 85,
       "NAME": {
-        "en" : "Magnet-shroom",
-        "zh" : "磁力菇"
+        "en": "Magnet-shroom",
+        "zh": "磁力菇"
       },
       "PLANTTYPE": "magnetshroom",
       "CODENAME": "magnetshroom",
@@ -6597,22 +6259,18 @@
       "COOLDOWN": 15,
       "COOLDOWNFROM": 0.667,
       "FAMILY": "Slow",
-
-      "TYPE":["plant"],
-    
+      "TYPE": [
+        "plant"
+      ],
       "OBTAINWORLD": "dark",
-    
       "TOUGHNESS": 300,
-
       "BRIEFINTRODUCTION": {
-        "en" : "Removes helmets and other metal objects from zombies",
-        "zh" : "吸走僵尸身上的金属盔甲和其他金属物品"
+        "en": "Removes helmets and other metal objects from zombies",
+        "zh": "吸走僵尸身上的金属盔甲和其他金属物品"
       },
-
       "ZENGARDEN": {
         "PlantPlace": "dirt"
       },
-
       "ALMANAC": {
         "Elements": [
           {
@@ -6646,7 +6304,7 @@
           "en": "Magnet-shrooms remove helmets and other metal objects from zombies.",
           "zh": "磁力菇会吸走僵尸的金属盔甲和其他金属物品。"
         },
-        "Special":[
+        "Special": [
           {
             "NAME": {
               "en": "Special",
@@ -6665,91 +6323,91 @@
       }
     }
   ],
-  "SEEDCHOOSERDEFAULTORDER":[
-      "sunflower",
-      "peashooter",
-      "wallnut",
-      "potatomine",
-      "cabbagepult",
-      "bloomerang",
-      "iceburg",
-      "gravebuster",
-      "twinsunflower",
-      "bonkchoy",
-      "repeater",
-      "snowpea",
-      "kernelpult",
-      "snapdragon",
-      "powerlily",
-      "spikeweed",
-      "coconutcannon",
-      "cherry_bomb",
-      "springbean",
-      "spikerock",
-      "threepeater",
-      "squash",
-      "splitpea",
-      "chilibean",
-      "torchwood",
-      "lightningreed",
-      "tallnut",
-      "jalapeno",
-      "peapod",
-      "melonpult",
-      "wintermelon",
-      "imitater",
-      "peach",
-      "blover",
-      "starfruit",
-      "shootingstarfruit",
-      "magnifyinggrass",
-      "hypnoshroom",
-      "sunshroom",
-      "puffshroom",
-      "fumeshroom",
-      "magnetshroom",
-      "scaredyshroom",
-      "plantern",
-      "lilypad",
-      "homingthistle",
-      "banana",
-      "chomper",
-      "sapfling",
-      "chardguard",
-      "firepeashooter",
-      "floawerPot",
-      "hurrikale",
-      "xshot",
-      "dandelion",
-      "stallia",
-      "celerystalker",
-      "cactus",
-      "jackolantern",
-      "grapeshot",
-      "primalpeashooter",
-      "primalwallnut",
-      "primalpotatomine",
-      "moonflower",
-      "shadowshroom",
-      "umbrellaleaf",
-      "escaperoot",
-      "electriccurrant",
-      "explodeonut",
-      "parsnip",
-      "missiletoe",
-      "electricpeashooter",
-      "pumpkin",
-      "gloomvine",
-      "gloomshroom",
-      "buttercup",
-      "gatling",
-      "megagatling",
-      "pvine",
-      "meteorflower",
-      "vamporcini",
-      "dragonbruit",
-      "glaciershroom",
-      "doomshroom",
-      "cranjelly"
+  "SEEDCHOOSERDEFAULTORDER": [
+    "sunflower",
+    "peashooter",
+    "wallnut",
+    "potatomine",
+    "cabbagepult",
+    "bloomerang",
+    "iceburg",
+    "gravebuster",
+    "twinsunflower",
+    "bonkchoy",
+    "repeater",
+    "snowpea",
+    "kernelpult",
+    "snapdragon",
+    "powerlily",
+    "spikeweed",
+    "coconutcannon",
+    "cherry_bomb",
+    "springbean",
+    "spikerock",
+    "threepeater",
+    "squash",
+    "splitpea",
+    "chilibean",
+    "torchwood",
+    "lightningreed",
+    "tallnut",
+    "jalapeno",
+    "peapod",
+    "melonpult",
+    "wintermelon",
+    "imitater",
+    "peach",
+    "blover",
+    "starfruit",
+    "shootingstarfruit",
+    "magnifyinggrass",
+    "hypnoshroom",
+    "sunshroom",
+    "puffshroom",
+    "fumeshroom",
+    "magnetshroom",
+    "scaredyshroom",
+    "plantern",
+    "lilypad",
+    "homingthistle",
+    "banana",
+    "chomper",
+    "sapfling",
+    "chardguard",
+    "firepeashooter",
+    "floawerPot",
+    "hurrikale",
+    "xshot",
+    "dandelion",
+    "stallia",
+    "celerystalker",
+    "cactus",
+    "jackolantern",
+    "grapeshot",
+    "primalpeashooter",
+    "primalwallnut",
+    "primalpotatomine",
+    "moonflower",
+    "shadowshroom",
+    "umbrellaleaf",
+    "escaperoot",
+    "electriccurrant",
+    "explodeonut",
+    "parsnip",
+    "missiletoe",
+    "electricpeashooter",
+    "pumpkin",
+    "gloomvine",
+    "gloomshroom",
+    "buttercup",
+    "gatling",
+    "megagatling",
+    "pvine",
+    "meteorflower",
+    "vamporcini",
+    "dragonbruit",
+    "glaciershroom",
+    "doomshroom",
+    "cranjelly"
   ]
 }

@@ -70,7 +70,7 @@ const formatOriginPlant = (originPlant: any) => {
             res.elements[TYPE] = value;
         });
     }
-    if (originPlant["ALMANAC"]?.["Special"]) {
+    if (originPlant?.["ALMANAC"]?.["Special"]) {
         originPlant["ALMANAC"]["Special"].forEach((element) => {
             res.special[element["NAME"][i18nLanguage]] = element["DESCRIPTION"][i18nLanguage];
         });
