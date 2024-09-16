@@ -41,7 +41,8 @@
           },
           {
             "TYPE": "DAMAGE",
-            "VALUE": 20 },
+            "VALUE": 20
+          },
           {
             "TYPE": "RANGE",
             "SORT": {
@@ -3579,7 +3580,7 @@
             "TYPE": "AREA",
             "SORT": {
               "en": "R3.5",
-              "zh": "半径3.5的圆"
+              "zh": "半径 3.5 的圆"
             }
           },
           {
@@ -6583,6 +6584,85 @@
           "zh": "尽管毒影菇是一种有毒且不容易食用的真菌，但他仍然是一道美味的食物。"
         }
       }
+    },
+    {
+      "ID": 85,
+      "NAME": {
+        "en" : "Magnet-shroom",
+        "zh" : "磁力菇"
+      },
+      "PLANTTYPE": "magnetshroom",
+      "CODENAME": "magnetshroom",
+      "SUNCOST": 100,
+      "COOLDOWN": 15,
+      "COOLDOWNFROM": 0.667,
+      "FAMILY": "Slow",
+
+      "TYPE":["plant"],
+    
+      "OBTAINWORLD": "dark",
+    
+      "TOUGHNESS": 300,
+
+      "BRIEFINTRODUCTION": {
+        "en" : "Removes helmets and other metal objects from zombies",
+        "zh" : "吸走僵尸身上的金属盔甲和其他金属物品"
+      },
+
+      "ZENGARDEN": {
+        "PlantPlace": "dirt"
+      },
+
+      "ALMANAC": {
+        "Elements": [
+          {
+            "TYPE": "SUNCOST"
+          },
+          {
+            "TYPE": "RECHARGE"
+          },
+          {
+            "TYPE": "TOUGHNESS"
+          },
+          {
+            "TYPE": "SPECIAL",
+            "SORT": {
+              "en": "Destroy Objects",
+              "zh": "吸走物品"
+            }
+          },
+          {
+            "TYPE": "RANGE",
+            "SORT": {
+              "en": "R2.5",
+              "zh": "半径 2.5 的圆"
+            }
+          },
+          {
+            "TYPE": "FAMILY"
+          }
+        ],
+        "Introduction": {
+          "en": "Magnet-shrooms remove helmets and other metal objects from zombies.",
+          "zh": "磁力菇会吸走僵尸的金属盔甲和其他金属物品。"
+        },
+        "Special":[
+          {
+            "NAME": {
+              "en": "Special",
+              "zh": "特点"
+            },
+            "DESCRIPTION": {
+              "en": "removes metal objects from zombies",
+              "zh": "吸走僵尸身上的金属物品"
+            }
+          }
+        ],
+        "Chat": {
+          "en": "Despite his unusual appearance, Magnet-shroom doesn't have a problem attracting girlfriends. But he does have a problem keeping them. It's the same thing every time. In the end, they always find him too clingy.",
+          "zh": "虽然磁力菇外形奇特，但是对找女朋友完全没有影响。可真谈了恋爱却都维持不长，每个姑娘都因为同一个理由和他分手：他太粘人了！"
+        }
+      }
     }
   ],
   "SEEDCHOOSERDEFAULTORDER":[
@@ -6627,6 +6707,7 @@
       "sunshroom",
       "puffshroom",
       "fumeshroom",
+      "magnetshroom",
       "scaredyshroom",
       "plantern",
       "lilypad",
