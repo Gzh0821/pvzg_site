@@ -31,6 +31,8 @@ const i18nLanguage = inject('i18nLanguage', 'zh');
 const plants = ref<Plant[]>([]);
 const selectedPlant = ref<Plant | null>(null);
 
+// 植物展示顺序
+const plantsOrder = plantsJson["SEEDCHOOSERDEFAULTORDER"].concat(plantsJson["ALMANACHIDDENORDER"]);
 // 选择植物
 const selectPlant = (plant: Plant) => {
     selectedPlant.value = plant;
@@ -79,7 +81,9 @@ const formatOriginPlant = (originPlant: any) => {
     return res;
 };
 
-plants.value = plantsJson["PLANTS"].map(formatOriginPlant);
+plants.value = plantsOrder.map((codename) => {
+    return plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename);
+}).map(formatOriginPlant);
 selectPlant(plants.value[0]);
 </script>
 

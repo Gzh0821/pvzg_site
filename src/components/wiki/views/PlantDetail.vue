@@ -1,7 +1,5 @@
 <template>
     <div class="plant-detail" v-if="plant">
-        <!-- <img :src="plant.image" :alt="plant.name" />
-    <p>{{ plant.description }}</p> -->
         <div class="details-container">
             <div class="plant-image">
                 <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
