@@ -1,10 +1,15 @@
 <template>
     <div class="app">
-        <h1 v-if="i18nLanguage == 'zh'">PvZ2 Gardendless 植物图鉴</h1>
-        <h1 v-else>PvZ2 Gardendless Plants Almanac</h1>
+        <div class="container">
+            <div class="filter">
+                <h1 v-if="i18nLanguage == 'zh'">PvZ2 Gardendless 植物图鉴</h1>
+                <h1 v-else>PvZ2 Gardendless Plants Almanac</h1>
+                <PlantFilter @filterPlants="filterPlants" />
+            </div>
+        </div>
         <div class="container">
             <div class="sidebar">
-                <PlantCatalog :plants="plants" @selectPlant="selectPlant" />
+                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" />
             </div>
             <div class="content">
                 <PlantDetail v-if="selectedPlant" :keyMap="keyMap" :plant="selectedPlant" />
@@ -17,6 +22,7 @@
 import { ref, computed, onMounted, inject } from 'vue';
 import PlantCatalog from './views/PlantCatalog.vue';
 import PlantDetail from './views/PlantDetail.vue';
+import PlantFilter from './views/PlantFilter.vue';
 import type { Plant, KeyMap } from './types';
 
 import plantsJson from './plants.json';
@@ -29,6 +35,7 @@ const i18nLanguage = inject('i18nLanguage', 'zh');
 
 // 定义响应式状态
 const plants = ref<Plant[]>([]);
+const filteredPlants = ref<Plant[]>([]);
 const selectedPlant = ref<Plant | null>(null);
 
 // 植物展示顺序
@@ -79,14 +86,39 @@ const formatOriginPlant = (originPlant: any) => {
     console.log(res);
     return res;
 };
+const filterPlants = (filter: { name: string; attribute: string }) => {
+    const { name, attribute } = filter;
+
+    filteredPlants.value = plants.value.filter(plant => {
+        // 根据名称筛选
+        const matchName = plant.name.toLowerCase().includes(name.toLowerCase()) ||
+            plant.enName.toLowerCase().includes(name.toLowerCase());
+
+        // 根据属性筛选（这里可以自定义属性逻辑）
+        // const matchAttribute = attribute
+        //     ? (attribute === 'sun' && plant.name.includes('向日葵')) ||
+        //     (attribute === 'shooter' && plant.name.includes('射手'))
+        //     : true;
+
+        // return matchName && matchAttribute;
+        return matchName;
+    });
+};
 
 plants.value = plantsOrder.map((codename) => {
     return plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename);
 }).map(formatOriginPlant);
-selectPlant(plants.value[0]);
+filteredPlants.value = plants.value;
+selectPlant(filteredPlants.value[0]);
+
 </script>
 
 <style scoped>
+h1 {
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-size: xx-large;
+}
+
 .app {
     text-align: center;
     justify-content: center;
@@ -102,11 +134,22 @@ selectPlant(plants.value[0]);
 .sidebar {
     min-width: 20%;
     background-color: #f8f9fa;
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: auto;
     border-radius: 20px;
     border: 5px solid #432b1a;
     background-color: #ede5c4;
+}
+
+.filter {
+    min-width: 100%;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+    border-radius: 20px;
+    border: 5px solid #432b1a;
+    background-color: #ede5c4;
+    margin: 0 0 5%;
+    padding: 10px 0;
 }
 
 .content {
@@ -137,7 +180,7 @@ selectPlant(plants.value[0]);
     .content {
         flex-basis: auto;
         width: 100%;
-        padding: var(--navbar-height) 0;
+        padding: 5% 0;
     }
 
 
