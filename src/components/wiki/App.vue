@@ -4,7 +4,7 @@
             <div class="filter">
                 <h1 v-if="i18nLanguage == 'zh'">PvZ2 Gardendless 植物图鉴</h1>
                 <h1 v-else>PvZ2 Gardendless Plants Almanac</h1>
-                <PlantFilter @filterPlants="filterPlants" />
+                <PlantFilter @filterPlants="filterPlants" :familyNameMap />
             </div>
         </div>
         <div class="container">
@@ -83,11 +83,10 @@ const formatOriginPlant = (originPlant: any) => {
         res.special = originPlant["ALMANAC"]["Special"]
 
     }
-    console.log(res);
     return res;
 };
-const filterPlants = (filter: { name: string; attribute: string }) => {
-    const { name, attribute } = filter;
+const filterPlants = (filter: { name: string; family: string }) => {
+    const { name, family } = filter;
 
     filteredPlants.value = plants.value.filter(plant => {
         // 根据名称筛选
@@ -95,13 +94,10 @@ const filterPlants = (filter: { name: string; attribute: string }) => {
             plant.enName.toLowerCase().includes(name.toLowerCase());
 
         // 根据属性筛选（这里可以自定义属性逻辑）
-        // const matchAttribute = attribute
-        //     ? (attribute === 'sun' && plant.name.includes('向日葵')) ||
-        //     (attribute === 'shooter' && plant.name.includes('射手'))
-        //     : true;
+        const matchAttribute = family == '' || plant.enFamily == family ||
+            (family == 'None' && plant.enFamily == '');
 
-        // return matchName && matchAttribute;
-        return matchName;
+        return matchName && matchAttribute;
     });
 };
 

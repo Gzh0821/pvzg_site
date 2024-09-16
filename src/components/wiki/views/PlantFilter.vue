@@ -9,22 +9,42 @@
             <option value="shooter">射手类</option>
         </select> -->
         </div>
+        <div class="filter-family-group">
+            <!-- <div class="filter-family-option" :class="{ selected: selectedAttribute === '' }"
+                @click="selectAttribute('')">
+                <p>All</p>
+            </div> -->
+            <template v-for="item in familyNameMap">
+                <div class="filter-family-option" :class="{ selected: selectedAttribute === item['en'] }"
+                    @click="selectAttribute(item['en'])">
+                    <img :src="'/assets/wikicon/' + item['en'] + '_familyicon.webp'" :alt="item['en']"
+                        :class="item['en'] === selectedAttribute ? 'selected' : ''" />
+                </div>
+            </template>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, inject, watch, computed } from 'vue';
 
+const props = defineProps<{ familyNameMap }>();
 // 父组件传递的属性过滤事件
 const emits = defineEmits(['filterPlants']);
 
 const searchTerm = ref(''); // 植物名称
 const selectedAttribute = ref(''); // 植物属性
 const i18nLanguage = inject('i18nLanguage', 'zh');
+
+const selectAttribute = (attribute: string) => {
+    selectedAttribute.value = selectedAttribute.value == attribute ? '' : attribute;
+    return handleFilter();
+};
 // 处理筛选逻辑
 const handleFilter = () => {
-    emits('filterPlants', { name: searchTerm.value, attribute: selectedAttribute.value });
+    emits('filterPlants', { name: searchTerm.value, family: selectedAttribute.value });
 };
+
 const placeholder = computed(() => {
     return i18nLanguage === 'zh' ? '输入植物名称' : 'Enter plant name';
 });
@@ -47,6 +67,39 @@ const placeholder = computed(() => {
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+.filter-family-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-family-group img {
+    width: 40px;
+    border-radius: 100%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    opacity: 0.5;
+}
+
+.filter-family-group img.selected {
+    border-color: black;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+    opacity: 1;
+}
+
+.filter-family-group p {
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-size: medium;
+}
+
+.filter-family-option {
+    cursor: pointer;
+    text-align: center;
 }
 
 .plant-filter input {
@@ -87,7 +140,8 @@ const placeholder = computed(() => {
     color: #333;
     padding: 10px;
 }
-.plant-filter label{
+
+.plant-filter label {
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
     font-size: x-large;
 }
