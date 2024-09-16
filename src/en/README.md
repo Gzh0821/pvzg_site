@@ -26,7 +26,7 @@ actions:
 
   - text: Almanac
     icon: book-open
-    link: ./wiki/
+    link: ./almanac/
 
   - text: Community and feedback
     icon: comment
