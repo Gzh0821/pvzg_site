@@ -13,7 +13,7 @@ Visit our [website](https://pvzge.com/en/) for download links, game guides and m
 
 ### Web Play
 
-Try PvZ2 Gardendless online in [here](https://pvz2-test.gaozih.com/) !
+Try PvZ2 Gardendless online in [here](https://play.pvzge.com/) !
 
 - Note: The version for online play may not be the latest version and may load slowly. For more related issues, please refer to the relevant instructions on the official website
 
@@ -27,7 +27,7 @@ Try PvZ2 Gardendless online in [here](https://pvz2-test.gaozih.com/) !
 
 ### 在线游玩
 
-在 [这里](https://pvz2-test.gaozih.com/) 在线游玩PvZ2 Gardendless!
+在 [这里](https://play.pvzge.com/) 在线游玩PvZ2 Gardendless!
 
 - 注意：在线游戏版本可能不是最新版本，且加载速度可能会比较慢，更多相关问题请参考官网相关说明
 
