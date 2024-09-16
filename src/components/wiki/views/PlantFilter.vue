@@ -104,6 +104,7 @@ const placeholder = computed(() => {
 
 .plant-filter input {
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    color: black;
     padding: 10px 15px;
     width: 100%;
     border: 2px solid #432b1a;
@@ -144,5 +145,6 @@ const placeholder = computed(() => {
 .plant-filter label {
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
     font-size: x-large;
+    color: #432b1a;
 }
 </style>

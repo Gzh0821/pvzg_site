@@ -110,11 +110,11 @@ selectPlant(filteredPlants.value[0]);
 </script>
 
 <style scoped>
-h1 {
+.filter h1 {
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
     font-size: xx-large;
+    color: #432b1a;
 }
-
 .app {
     text-align: center;
     justify-content: center;
