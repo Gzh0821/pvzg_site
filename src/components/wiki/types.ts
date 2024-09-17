@@ -13,5 +13,7 @@ export interface Plant {
   image: string;
   description: string;
   chat: String;
+  plantType: string;
+  frameWorld: string;
   special: [Element] | [];
 }

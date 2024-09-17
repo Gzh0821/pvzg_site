@@ -3,8 +3,15 @@
     <!-- <h2>植物列表</h2> -->
     <ul>
         <li v-for="plant in plants" :key="plant.id" @click="selectPlant(plant)">
-            <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
-                :alt="plant.name">
+            <!-- <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
+                :alt="plant.name"> -->
+            <div class="plant-image-frame">
+                <img class="plant-img" :src="'/assets/image/plants-tp/plants_' + plant.plantType + '_0.webp'"
+                    :alt="plant.name">
+                <img class="frame-img" :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
+                    :alt="plant.frameWorld">
+            </div>
+
             <p>{{ plant.name }}</p>
         </li>
     </ul>
@@ -27,6 +34,38 @@ const selectPlant = (plant: Plant) => {
 </script>
 
 <style scoped>
+.plant-image-frame {
+    margin: 0 10%;
+    position: relative;
+    height: 70px;
+}
+
+.plant-image-frame img.plant-img {
+    width: 100%;
+    object-fit: contain;
+    /* border: 3px solid rgba(255, 255, 255, 0.3); */
+    /* backdrop-filter: blur(10px); */
+    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px; */
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.plant-image-frame img.frame-img {
+    width: 100%;
+    object-fit: contain;
+    /* border: 3px solid rgba(255, 255, 255, 0.3); */
+    /* backdrop-filter: blur(10px); */
+    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px; */
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
 p {
     line-height: 1em;
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
@@ -46,16 +85,16 @@ li {
     text-align: center;
 }
 
-img {
-    width: 70px;
-    height: 70px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px;
-    border-radius: 70px;
-}
+
 
 @media (max-width: 768px) {
+
+    .plant-image-frame {
+        position: relative;
+        min-width: 120px;
+        margin: 10px 0 0;
+        height: 70px;
+    }
 
     /* 调整植物条目的横向排列方式 */
     ul {
@@ -63,7 +102,7 @@ img {
         flex-direction: row;
         justify-content: flex-start;
         list-style: none;
-        padding: 0;
+        padding: 0 10px;
         margin: 0;
     }
 
@@ -72,9 +111,5 @@ img {
         margin-right: 15px;
     }
 
-    img {
-        width: 60px;
-        height: 60px;
-    }
 }
 </style>
