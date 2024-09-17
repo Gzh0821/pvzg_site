@@ -44,6 +44,11 @@ const plantsOrder = plantsJson["SEEDCHOOSERDEFAULTORDER"].concat(plantsJson["ALM
 const selectPlant = (plant: Plant) => {
     selectedPlant.value = plant;
 };
+// 边框样式
+const frameMap = {
+    'water': 'beach',
+    'market': 'prenium',
+};
 const formatOriginPlant = (originPlant: any) => {
     // 从原始数据中提取需要的字段并整理
     const res: Plant = {
@@ -51,9 +56,11 @@ const formatOriginPlant = (originPlant: any) => {
         special: [],
         enFamily: '',
         id: originPlant["ID"],
+        plantType: originPlant["PLANTTYPE"],
         name: originPlant["NAME"]?.[i18nLanguage],
         enName: originPlant["NAME"]?.["en"],
         image: originPlant.image,
+        frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],
         description: originPlant["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
         chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage]
     };
@@ -115,6 +122,7 @@ selectPlant(filteredPlants.value[0]);
     font-size: xx-large;
     color: #432b1a;
 }
+
 .app {
     text-align: center;
     justify-content: center;
@@ -162,6 +170,7 @@ selectPlant(filteredPlants.value[0]);
     }
 
     .sidebar {
+        min-height: 0;
         flex-basis: auto;
         width: 100%;
         height: auto;

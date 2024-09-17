@@ -81,9 +81,11 @@ const placeholder = computed(() => {
 
 .filter-family-group img {
     width: 40px;
+    height: auto;
     border-radius: 100%;
     border: 3px solid rgba(255, 255, 255, 0.3);
     opacity: 0.5;
+    object-fit: contain;
 }
 
 .filter-family-group img.selected {
