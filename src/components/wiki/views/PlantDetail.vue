@@ -4,13 +4,15 @@
             <div class="plant-image">
                 <!-- <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
                     :alt="plant.name"> -->
-                <div class="plant-image-frame">
+                <!-- <div class="plant-image-frame">
                     <img class="plant-img" :src="'/assets/image/plants-tp/plants_' + plant.plantType + '_0.webp'"
                         :alt="plant.name">
                     <img class="frame-img"
                         :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
                         :alt="plant.frameWorld">
-                </div>
+                </div> -->
+                <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'"
+                    :alt="plant.name">
                 <p class="plant-title">{{ plant.name }}</p>
                 <img v-if="plant.enFamily" :src="'/assets/wikicon/' + plant.enFamily + '_familyicon.webp'"
                     :alt="plant.enFamily" class="family-img">
@@ -79,39 +81,27 @@ h3 {
     box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px;
 }
 
-.plant-image-frame {
+/* .plant-image-frame {
     margin: 0 10%;
     position: relative;
     display: flex;
-    width: 200px;
-    height: 120px;
-}
+    width: 240px;
+    height: 152px;
+} */
 
-.plant-image-frame img.plant-img {
+
+/* .plant-image-frame img.frame-img {
     width: 100%;
     object-fit: contain;
-    /* border: 3px solid rgba(255, 255, 255, 0.3); */
-    /* backdrop-filter: blur(10px); */
-    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px; */
-    border-radius: 5px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-}
-
-.plant-image-frame img.frame-img {
-    width: 100%;
-    object-fit: contain;
-    /* border: 3px solid rgba(255, 255, 255, 0.3); */
-    /* backdrop-filter: blur(10px); */
-    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px; */
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px;
     border-radius: 5px;
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 1;
-}
+} */
 
 .plant-image {
     display: flex;
