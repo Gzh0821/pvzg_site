@@ -131,6 +131,7 @@ selectPlant(filteredPlants.value[0]);
     min-width: 20%;
     background-color: #f8f9fa;
     max-height: 65vh;
+    min-height: 10rem;
     overflow-y: auto;
     border-radius: 20px;
     border: 5px solid #432b1a;
