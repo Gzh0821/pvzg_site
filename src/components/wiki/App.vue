@@ -188,7 +188,5 @@ selectPlant(filteredPlants.value[0]);
         width: 100%;
         padding: 5% 0;
     }
-
-
 }
 </style>
