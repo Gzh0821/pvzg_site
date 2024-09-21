@@ -4,7 +4,7 @@ import theme from "./theme.js";
 
 export default defineUserConfig({
   base: "/",
-
+  pagePatterns: ['**/*.md', '!.vuepress', '!node_modules', '!components'],
   head: [
     ['link', { rel: 'stylesheet', href: '/styles/custom.css' }],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
@@ -15,7 +15,7 @@ export default defineUserConfig({
     [
       "link",
       {
-        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Roboto&family=ZCOOL+KuaiLe&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Roboto&family=ZCOOL+KuaiLe&display=swap",
         rel: "stylesheet",
       },
     ],
