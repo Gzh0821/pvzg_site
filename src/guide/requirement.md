@@ -4,7 +4,7 @@ icon: sliders
 pageInfo: false
 comment: false
 index: true
-order: 3
+order: 4
 ---
 ## <HopeIcon icon="gear" size="1.7rem" color="#585888" /> 推荐配置
 最低配置要求是能够运行游戏的最低配置，推荐配置是为了获得标准的游戏体验。
