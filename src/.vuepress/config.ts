@@ -15,6 +15,13 @@ export default defineUserConfig({
     [
       "link",
       {
+        href: "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
+        rel: "stylesheet",
+      },
+    ],
+    [
+      "link",
+      {
         href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=ZCOOL+KuaiLe&display=swap",
         rel: "stylesheet",
       },
