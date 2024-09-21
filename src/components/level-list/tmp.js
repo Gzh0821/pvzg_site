@@ -1,6 +1,25 @@
 const data = {
     // 关卡标题
     "#comment": "~",
+    // 关卡的基本描述信息
+    "Information": {
+        // 关卡的作者
+        "Author": "LMYY",
+        // 作者的链接
+        "AuthorLink": "https://github.com/Gzh0821",
+        // 关卡的描述
+        "Introduction": "A level that is easy to play, but hard to win.",
+        // 关卡的版本
+        "Version": "1.0",
+        // 关卡的创建时间
+        "CreatedAt": "2022-03-08",
+        // 关卡的更新时间
+        "UpdatedAt": "2022-03-08",
+        // 关卡的难度，可选值有：Easy, Normal, Hard, Expert
+        "Difficulty": "Easy",
+        // 关卡的分类，可选值有：Survival, Tower Defense, Tower Defense Survival, Puzzle, Mini-game, Adventure, Other
+        "Category": "Survival",
+    },
     // 关卡的总列表，每个对象代表一个关卡配置项。
     "objects": [
         {
@@ -19,7 +38,7 @@ const data = {
                     "RTID(ZombiesDeadWinCon@LevelModules)",
                     "RTID(DefaultZombieWinCondition@LevelModules)",
                     "RTID(NewWaves@CurrentLevel)",
-                    
+
                     "RTID(StandardIntro@LevelModules)",
                     "RTID(ProtectThePlant@CurrentLevel)",
                     "RTID(SeedBank@CurrentLevel)",

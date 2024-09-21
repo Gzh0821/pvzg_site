@@ -4,7 +4,7 @@ icon: sliders
 pageInfo: false
 comment: false
 index: true
-order: 3
+order: 4
 ---
 ## <HopeIcon icon="gear" size="1.7rem" color="#585888" /> Configuration
 The minimum configuration requirement is the minimum configuration to run the game, and the recommended configuration is to get a standard gaming experience.

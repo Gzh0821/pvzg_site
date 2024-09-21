@@ -1,18 +1,12 @@
 ---
-title: 下载链接
+title: 自定义关卡
 index: false
-icon: download
+icon: feather
 pageInfo: false
 breadcrumb: false
 sidebar: false
 comment: false
-
-category:
-  - Download
 ---
 
-<script setup>
-import levelList from '@source/components/level-list/App.vue';
-</script>
+## 自定义关卡格式
 
-<levelList />
