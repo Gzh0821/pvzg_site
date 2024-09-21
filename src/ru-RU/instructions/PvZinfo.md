@@ -2,7 +2,7 @@
 title: Оригинальное Издание
 icon: circle-info
 index: true
-order: 4
+order: 5
 pageInfo: false
 comment: false
 ---
