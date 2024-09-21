@@ -7,15 +7,15 @@ export default defineUserConfig({
 
   head: [
     ['link', { rel: 'stylesheet', href: '/styles/custom.css' }],
-    // ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
-    // [
-    //   "link",
-    //   { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-    // ],
+    ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
+    [
+      "link",
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+    ],
     [
       "link",
       {
-        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Serif+SC&family=Roboto&family=ZCOOL+KuaiLe&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Roboto&family=ZCOOL+KuaiLe&display=swap",
         rel: "stylesheet",
       },
     ],
