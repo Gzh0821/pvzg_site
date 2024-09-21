@@ -1,5 +1,5 @@
 ---
-title: 游玩指南
+title: 教程和指南
 icon: book
 pageInfo: false
 comment: false
