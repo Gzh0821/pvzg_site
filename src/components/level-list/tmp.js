@@ -3,6 +3,8 @@ const data = {
     "#comment": "~",
     // 关卡的基本描述信息
     "Information": {
+        // 关卡的UUID
+        "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
         // 关卡的作者
         "Author": "LMYY",
         // 作者的链接
@@ -52,6 +54,7 @@ const data = {
                     "en": "Bank theft I",
                     "zh": "银行失窃I"
                 },
+                // 作者，建议与Author一致
                 "WritenBy": "保罗_刘",
                 // 无用：掉落相关
                 "NormalPresentTable": "egypt_normal_01",
@@ -61,96 +64,6 @@ const data = {
             }
         },
         // 每个玩法模式的配置:
-        {
-            "aliases": [
-                "SeedBank"
-            ],
-            "objclass": "SeedBankProperties",
-            "objdata": {
-                "PresetPlantList": [
-                    {
-                        "Level": -1,
-                        "PlantType": "iceburg"
-                    }
-                ],
-                "SelectionMethod": "preset"
-            }
-        },
-        {
-            "aliases": [
-                "ProtectThePlant"
-            ],
-            "objclass": "ProtectThePlantChallengeProperties",
-            "objdata": {
-                "MustProtectCount": 1,
-                "Plants": [
-                    {
-                        "GridX": 0,
-                        "GridY": 1,
-                        "PlantType": "escaperoot",
-                        "Level": -1
-                    }
-                ]
-            }
-        },
-        {
-            "aliases": [
-                "ForzenPlantPlacement"
-            ],
-            "objclass": "InitialPlantProperties",
-            "objdata": {
-                "InitialPlantPlacements": [
-                    {
-                        "GridX": 0,
-                        "GridY": 0,
-                        "TypeName": "peashooter",
-                        "Level": -1
-                    },
-                    {
-                        "GridX": 0,
-                        "GridY": 3,
-                        "TypeName": "peashooter",
-                        "Level": -1
-                    },
-                    {
-                        "GridX": 1,
-                        "GridY": 1,
-                        "TypeName": "peashooter",
-                        "Level": -1
-                    },
-                    {
-                        "GridX": 1,
-                        "GridY": 2,
-                        "TypeName": "peashooter",
-                        "Level": -1
-                    },
-                    {
-                        "GridX": 1,
-                        "GridY": 4,
-                        "TypeName": "peashooter",
-                        "Level": -1
-                    },
-                    {
-                        "GridX": 2,
-                        "GridY": 3,
-                        "TypeName": "repeater",
-                        "Level": -1
-                    },
-                    {
-                        "GridX": 2,
-                        "GridY": 0,
-                        "TypeName": "peashooter",
-                        "Level": -1
-                    },
-                    {
-                        "GridX": 2,
-                        "GridY": 2,
-                        "TypeName": "peashooter",
-                        "Level": -1
-                    }
-                ]
-            }
-        },
         {
             "aliases": [
                 "NewWaves"
@@ -246,6 +159,96 @@ const data = {
                     [
                         "RTID(Wave12@CurrentLevel)"
                     ]
+                ]
+            }
+        },
+        {
+            "aliases": [
+                "SeedBank"
+            ],
+            "objclass": "SeedBankProperties",
+            "objdata": {
+                "PresetPlantList": [
+                    {
+                        "Level": -1,
+                        "PlantType": "iceburg"
+                    }
+                ],
+                "SelectionMethod": "preset"
+            }
+        },
+        {
+            "aliases": [
+                "ProtectThePlant"
+            ],
+            "objclass": "ProtectThePlantChallengeProperties",
+            "objdata": {
+                "MustProtectCount": 1,
+                "Plants": [
+                    {
+                        "GridX": 0,
+                        "GridY": 1,
+                        "PlantType": "escaperoot",
+                        "Level": -1
+                    }
+                ]
+            }
+        },
+        {
+            "aliases": [
+                "ForzenPlantPlacement"
+            ],
+            "objclass": "InitialPlantProperties",
+            "objdata": {
+                "InitialPlantPlacements": [
+                    {
+                        "GridX": 0,
+                        "GridY": 0,
+                        "TypeName": "peashooter",
+                        "Level": -1
+                    },
+                    {
+                        "GridX": 0,
+                        "GridY": 3,
+                        "TypeName": "peashooter",
+                        "Level": -1
+                    },
+                    {
+                        "GridX": 1,
+                        "GridY": 1,
+                        "TypeName": "peashooter",
+                        "Level": -1
+                    },
+                    {
+                        "GridX": 1,
+                        "GridY": 2,
+                        "TypeName": "peashooter",
+                        "Level": -1
+                    },
+                    {
+                        "GridX": 1,
+                        "GridY": 4,
+                        "TypeName": "peashooter",
+                        "Level": -1
+                    },
+                    {
+                        "GridX": 2,
+                        "GridY": 3,
+                        "TypeName": "repeater",
+                        "Level": -1
+                    },
+                    {
+                        "GridX": 2,
+                        "GridY": 0,
+                        "TypeName": "peashooter",
+                        "Level": -1
+                    },
+                    {
+                        "GridX": 2,
+                        "GridY": 2,
+                        "TypeName": "peashooter",
+                        "Level": -1
+                    }
                 ]
             }
         },
