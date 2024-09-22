@@ -5,6 +5,7 @@ export const enSidebar = sidebar({
   "/en/instructions/": "structure",
   "/en/guide/": "structure",
   "/en/contribution/": "structure",
+  "/en/almanac/": "structure",
   "/en/": [
     // "",
     // "portfolio",

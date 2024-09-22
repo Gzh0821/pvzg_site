@@ -1,13 +1,12 @@
 ---
-title: альманах растений
-index: false
+title: Plants Almanac
 icon: book-open
 pageInfo: false
-breadcrumb: false
-sidebar: false
 comment: false
 toc: false
 watermark: true
+sidebar: false
+order: 2
 ---
 
 <script setup>
