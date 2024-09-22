@@ -8,5 +8,8 @@ sidebar: false
 comment: false
 ---
 
-## 自定义关卡格式
+<script setup>
+    import LevelList from '@source/components/level-list/App.vue';
+</script>
 
+<LevelList />

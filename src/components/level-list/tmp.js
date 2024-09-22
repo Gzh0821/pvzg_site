@@ -5,6 +5,8 @@ const data = {
     "Information": {
         // 关卡的UUID
         "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
+        // 关卡名字
+        "Name": "Bank theft 1",
         // 关卡的作者
         "Author": "LMYY",
         // 作者的链接
