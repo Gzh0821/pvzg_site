@@ -11,8 +11,7 @@
                         :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
                         :alt="plant.frameWorld">
                 </div> -->
-                <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'"
-                    :alt="plant.name">
+                <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
                 <p class="plant-title">{{ plant.name }}</p>
                 <img v-if="plant.enFamily" :src="'/assets/wikicon/' + plant.enFamily + '_familyicon.webp'"
                     :alt="plant.enFamily" class="family-img">
@@ -24,6 +23,10 @@
 
                             <td class="ability"><img :src="keyMap[key].icon" /> {{ keyMap[key][i18nLanguage] }}</td>
                             <td class="value">{{ value }}</td>
+                        </tr>
+                        <tr key="PlantType">
+                            <td class="ability"> PlantType </td>
+                            <td class="value">{{ plant.plantType }}</td>
                         </tr>
                     </tbody>
                 </table>
