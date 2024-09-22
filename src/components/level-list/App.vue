@@ -1,16 +1,14 @@
 <template>
-    <div>
-        <a-row :gutter="[16, 24]">
-            <a-col :span="8" v-for="level in paginatedLevels" :key="level.name">
-                <a-card :title="level.name" @click="downloadLevel(level)" hoverable>
-                    <p>Author: {{ level.author }}</p>
-                    <p>Author Info: {{ level.authorInfo }}</p>
-                </a-card>
-            </a-col>
-        </a-row>
-        <a-pagination :current="currentPage" :pageSize="pageSize" :total="levels.length" @change="handlePageChange"
-            style="margin-top: 20px;" />
-    </div>
+    <a-row :gutter="[16, 24]">
+        <a-col :span="8" v-for="level in paginatedLevels" :key="level.name">
+            <a-card :title="level.name" @click="downloadLevel(level)" hoverable>
+                <p>Author: {{ level.author }}</p>
+                <p>Author Info: {{ level.authorInfo }}</p>
+            </a-card>
+        </a-col>
+    </a-row>
+    <a-pagination :current="currentPage" :pageSize="pageSize" :total="levels.length" @change="handlePageChange"
+        style="margin-top: 20px;" />
 </template>
 
 <script setup lang="ts">
@@ -85,7 +83,10 @@ const paginatedLevels = computed(() => {
     const end = start + pageSize.value;
     return levels.value.slice(start, end);
 });
-fetchOfficialLevels();
+
+onBeforeMount(() => {
+    fetchOfficialLevels();
+});
 </script>
 
 <style scoped>
