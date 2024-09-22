@@ -1,19 +1,15 @@
 ---
-title: Plants Almanac
+title: Almanac
 index: false
-icon: book-open
+icon: book-atlas
 pageInfo: false
-breadcrumb: false
-sidebar: false
 comment: false
 toc: false
-watermark: true
 ---
 
-<script setup>
-    import { createApp,provide } from 'vue';
-    import Almanac from '@source/components/wiki/App.vue';
-    provide("i18nLanguage",'en');
-</script>
+> [!info]
+> Click the option in the sidebar to switch to the corresponding illustration page.
+>
+> In the custom level file, plants use `PlantType` as the name, and zombies use `CodeName` as the name.
 
-<Almanac />
+<Catalog />

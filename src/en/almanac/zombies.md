@@ -1,18 +1,16 @@
 ---
-title: альманах растений
-index: false
+title: Zombie Almanac
 icon: book-open
 pageInfo: false
-breadcrumb: false
-sidebar: false
 comment: false
 toc: false
+sidebar: false
 watermark: true
+order: 3
 ---
-
 <script setup>
     import { createApp,provide } from 'vue';
-    import Almanac from '@source/components/plantsAlmanac/App.vue';
+    import Almanac from '@source/components/zombiesAlmanac/App.vue';
     provide("i18nLanguage",'en');
 </script>
 
