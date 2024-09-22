@@ -12,4 +12,9 @@ comment: false
     import LevelList from '@source/components/level-list/App.vue';
 </script>
 
+> [!info]
+> This page is a list of custom levels. Click on the card to download the level file. Click `Play Local Level` in the game settings to import it and play. If the list is empty, please wait or try to refresh the page.
+>
+> For tutorials on writing custom levels, see [Custom Level Guide](/en/guide/level/)
+
 <LevelList />
