@@ -6321,6 +6321,74 @@
           "zh": "虽然磁力菇外形奇特，但是对找女朋友完全没有影响。可真谈了恋爱却都维持不长，每个姑娘都因为同一个理由和他分手：他太粘人了！"
         }
       }
+    },
+    {
+      "ID": 86,
+      "PLANTTYPE": "turnip",
+      "CODENAME": "turnip",
+      "SUNCOST": 50,
+      "COOLDOWN": 10,
+      "COOLDOWNFROM": 0.75,
+      "FAMILY": "Defence",
+      "OBTAINWORLD": "kongfu",
+      "TOUGHNESS": 2000,
+      "NAME": {
+        "en": "Resistant Radish",
+        "zh": "白萝卜"
+      },
+      "TYPE": [
+        "potatomine"
+      ],
+      "BRIEFINTRODUCTION": {
+        "en": "Stands firm and resists the magic from Qigong Zombies and Black Holes' suction",
+        "zh": "稳固地立在地上，抵抗气功僵尸的法术和时空黑洞的吞噬"
+      },
+      "ZENGARDEN": {
+        "PlantPlace": "solid"
+      },
+      "ALMANAC": {
+        "Elements": [
+          {
+            "TYPE": "SUNCOST"
+          },
+          {
+            "TYPE": "RECHARGE"
+          },
+          {
+            "TYPE": "TOUGHNESS"
+          },
+          {
+            "TYPE": "RANGE",
+            "SORT": {
+              "en": "Behind",
+              "zh": "身后植物"
+            }
+          },
+          {
+            "TYPE": "FAMILY"
+          }
+        ],
+        "Introduction": {
+          "en": "Resistant Radish stands firm and resists the magic from Qigong Zombies and Black Holes' suction.",
+          "zh": "白萝卜稳固地立在地上，抵抗气功僵尸的法术和时空黑洞的吞噬。"
+        },
+        "Special": [
+          {
+            "NAME": {
+              "en": "Special",
+              "zh": "特点"
+            },
+            "DESCRIPTION": {
+              "en": "protects plants from magical suctions",
+              "zh": "防止身后植物被法术抽吸"
+            }
+          }
+        ],
+        "Chat": {
+          "en": "Resistant Radish has studied qigong for many years, but he only learned one thing: stasis.",
+          "zh": "白萝卜学了很多年气功, 但他一直都只会一招: 纹丝不动。"
+        }
+      }
     }
   ],
   "SEEDCHOOSERDEFAULTORDER": [
@@ -6356,6 +6424,7 @@
     "melonpult",
     "wintermelon",
     "imitater",
+    "turnip",
     "peach",
     "blover",
     "starfruit",
