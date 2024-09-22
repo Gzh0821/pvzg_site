@@ -108,3 +108,100 @@ This field contains the following:
 
 `uuid` is the unique identifier of the level, used to distinguish different levels. Please ensure the uniqueness of your level `uuid`.
 To obtain a random `uuid`, you can use an online generation tool such as [UUID Generator](https://www.uuidgenerator.net/).
+
+## objects field
+
+objects is a list whose elements are each specific level setting. There are multiple objects in the list, each object corresponds to a configuration item. The following is an example of an objects list:
+
+```json
+"objects": [
+  {
+    // Configuration item: basic settings of the level
+    "objclass": "LevelDefinition",
+    // Basic settings of the level
+    "objdata": {
+      // Description of the level
+      "Description": "~",
+      // Level number, used in series of levels
+      "LevelNumber": 1,
+      // Keep the default
+      "Loot": "RTID(DefaultLoot@LevelModules)",
+      // Game mode of the level, the basic game mode is given
+      "Modules": [
+        "RTID(ZombiesDeadWinCon@LevelModules)",
+        "RTID(DefaultZombieWinCondition@LevelModules)",
+        "RTID(NewWaves@CurrentLevel)",
+        "RTID(SeedBank@CurrentLevel)"
+      ],
+      // Level name displayed in the game
+      "Name": "Bank theft 1",
+      // Optional: multi-language support
+      "NameMultiLanguage": {
+        "en": "Bank theft I",
+        "zh": "银行失窃I"
+      },
+      // Author, it is recommended to be consistent with Information.Author
+      "WritenBy": "保罗_刘",
+      // Currently useless: drop related
+      "NormalPresentTable": "egypt_normal_01",
+      "ShinyPresentTable": "egypt_shiny_01",
+      // Level scene, format: RTID(world name Stage@LevelModules)
+      "StageModule": "RTID(TutorialStage@LevelModules)"
+    }
+  },
+  // Configuration for each gameplay mode:
+  {
+    "aliases": [
+      "SeedBank"
+    ],
+    "objclass": "SeedBankProperties",
+    "objdata": {
+      "PresetPlantList": [
+        {
+          "Level": -1,
+          "PlantType": "peashooter"
+        }
+      ],
+      "SelectionMethod": "chooser"
+    }
+  },
+  {
+    "aliases": [
+      "NewWaves"
+    ],
+    "objclass": "WaveManagerModuleProperties",
+    "objdata": {
+      "WaveManagerProps": "RTID(WaveManagerProps@CurrentLevel)"
+    }
+  },
+  {
+    "aliases": [
+      "WaveManagerProps"
+    ],
+    "objclass": "WaveManagerProperties",
+    "objdata": {
+      "FlagWaveInterval": 1,
+      "WaveCount": 1,
+      "Waves": [
+        [
+          "RTID(Wave1@CurrentLevel)"
+        ]
+      ]
+    }
+  },
+  {
+    "aliases": [
+      "Wave1"
+    ],
+    "objclass": "SpawnZombiesJitteredWaveActionProps",
+    "objdata": {
+      "AdditionalPlantfood": 0,
+      "Zombies": [
+        {
+          "Type": "RTID(tutorial@ZombieTypes)"
+        }
+      ]
+    }
+  }
+]
+```
