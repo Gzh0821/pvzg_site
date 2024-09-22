@@ -1,20 +1,25 @@
 <template>
-    <a-row :gutter="[16, 24]">
-        <a-col :span="8" v-for="level in levels" :key="level.name">
-            <a-card :title="level.name" @click="downloadLevel(level)" hoverable>
-                <p>Author: {{ level.author }}</p>
-                <p>Author Info: {{ level.authorInfo }}</p>
-            </a-card>
-        </a-col>
-    </a-row>
+    <div>
+        <a-row :gutter="[16, 24]">
+            <a-col :span="8" v-for="level in paginatedLevels" :key="level.name">
+                <a-card :title="level.name" @click="downloadLevel(level)" hoverable>
+                    <p>Author: {{ level.author }}</p>
+                    <p>Author Info: {{ level.authorInfo }}</p>
+                </a-card>
+            </a-col>
+        </a-row>
+        <a-pagination :current="currentPage" :pageSize="pageSize" :total="levels.length" @change="handlePageChange"
+            style="margin-top: 20px;" />
+    </div>
 </template>
 
 <script setup lang="ts">
-import { Card as ACard, Row as ARow, Col as ACol, message } from 'ant-design-vue';
+import { Card as ACard, Row as ARow, Col as ACol, Pagination as APagination, message } from 'ant-design-vue';
 import axios from 'axios';
-import { ref, onBeforeMount } from 'vue';
-const levels: Any = ref([]);
-
+import { ref, onBeforeMount, computed } from 'vue';
+const levels: any = ref([]);
+const currentPage = ref(1);
+const pageSize = ref(9);
 // 获取官方作者及关卡信息
 const fetchOfficialLevels = async () => {
     try {
@@ -70,9 +75,17 @@ const downloadLevel = async (level) => {
         message.error('Failed to download level: ' + error.message);
     }
 };
-onBeforeMount(() => {
-    fetchOfficialLevels();
+// 处理页码变化
+const handlePageChange = (page) => {
+    currentPage.value = page;
+};
+
+const paginatedLevels = computed(() => {
+    const start = (currentPage.value - 1) * pageSize.value;
+    const end = start + pageSize.value;
+    return levels.value.slice(start, end);
 });
+fetchOfficialLevels();
 </script>
 
 <style scoped>
