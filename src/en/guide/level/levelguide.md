@@ -102,7 +102,16 @@ anotherKey: 42
 }
 ```
 
-### Newline in string
+### Flexible strings
+
+JSON5 supports both single-quoted and double-quoted strings.
+
+```json5
+{
+singleQuotes: 'This is a string',
+doubleQuotes: "This is also a string"
+}
+```
 
 JSON5 allows newline characters to be used in strings. Unlike JSON, it does not require the use of `\n` to represent newlines. At the same time, escape characters can also be used in strings.
 

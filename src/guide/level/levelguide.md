@@ -9,7 +9,7 @@ order: 1
 
 ## 自定义关卡
 
-《PvZ2 Gardendless》游戏的自定义关卡文件与原版类似，是一个以`.json`或`.json5`为后缀的JSON/JSON5文本文件，其中包含了关卡的所有信息，包括植物、僵尸、地形等。
+《PvZ2 Gardendless》游戏的自定义关卡文件与原版类似，是一个以`.json`或`.json5`为后缀的 JSON/JSON5 文本文件，其中包含了关卡的所有信息，包括植物、僵尸、地形等。
 相比原版，《PvZ2 Gardendless》的关卡文件增加了一些新的字段，来描述该关卡的基本信息。
 
 ## JSON 文件
@@ -33,13 +33,13 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 ```json5
 {
   // 使用json时，删除此注释
-  "name": "Alice",
-  "age": 25,
-  "isStudent": false,
-  "skills": ["JavaScript", "Python", "HTML"],
-  "address": {
-    "city": "New York",
-    "zipCode": "10001"
+  name: 'Alice',
+  age: 25,
+  isStudent: false,
+  skills: ['JavaScript', 'Python', 'HTML'],
+  address: {
+    city: 'New York',
+    zipCode: '10001'
   }
 }
 ```
@@ -49,7 +49,6 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 `name` 是字符串类型，`age` 是数字类型。`isStudent` 是布尔类型。`skills` 是一个字符串数组。`address` 是一个对象，包含 city 和 zipCode。
 
 想更深入的了解 JSON 格式，可以参考[这里](https://www.json.org/json-zh.html)。
-
 
 ## JSON5 文件
 
@@ -67,7 +66,7 @@ JSON5 引入了一些灵活性，使得配置文件或数据传输格式更易�
 ```json5
 {
   unquoted: 'This is allowed in JSON5',
-  'singleQuotes': "This is also allowed"
+  singleQuotes: 'This is also allowed'
 }
 ```
 
@@ -78,7 +77,7 @@ JSON5 引入了一些灵活性，使得配置文件或数据传输格式更易�
 ```json5
 {
   key: 'value',
-  anotherKey: 42, // 允许行末逗号
+  anotherKey: 42 // 允许行末逗号
 }
 ```
 
@@ -90,7 +89,7 @@ JSON5 支持单行和多行注释，类似于 JavaScript。标准的 JSON 不允
 {
   // 这是一个单行注释
   key: 'value',
-  
+
   /*
     这是一个多行注释
     可以解释复杂的配置
@@ -99,7 +98,16 @@ JSON5 支持单行和多行注释，类似于 JavaScript。标准的 JSON 不允
 }
 ```
 
-### 字符串中换行
+### 灵活的字符串
+
+JSON5 同时支持单引号和双引号字符串。
+
+```json5
+{
+  singleQuotes: 'This is a string',
+  doubleQuotes: "This is also a string"
+}
+```
 
 JSON5 允许在字符串中使用换行符，无需像 JSON 那样必须使用 `\n` 来表示换行，同时，还可以在字符串中使用转义字符。
 
@@ -117,7 +125,7 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
 ```json5
 {
   decimal: 123,
-  hexadecimal: 0x7B,
+  hexadecimal: 0x7b,
   infinity: Infinity,
   notANumber: NaN
 }
@@ -129,8 +137,8 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
 
 ```json5
 {
-  fractional: .5,  // 相当于 0.5
-  trailing: 2.,    // 相当于 2.0
+  fractional: 0.5, // 相当于 0.5
+  trailing: 2 // 相当于 2.0
 }
 ```
 
@@ -143,15 +151,15 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
 ```json5
 {
   // 关卡的标题
-  "#comment": "Sample Level",
+  '#comment': 'Sample Level',
   // 关卡的基本信息
-  "Information": {},
-  "objects": [
+  Information: {},
+  objects: [
     // 关卡设置的列表
     {},
     {}
   ],
-  "version": 1
+  version: 1
 }
 ```
 
@@ -190,7 +198,6 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
 
 `uuid`是关卡的唯一标识，用于区分不同的关卡。请确保您的关卡`uuid`的唯一性。
 要获取随机的`uuid`，可以使用在线生成工具，如[UUID Generator](https://www.uuidgenerator.net/)。
-
 
 ## objects 字段
 
