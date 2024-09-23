@@ -9,7 +9,7 @@ order: 1
 
 ## 自定义关卡
 
-《PvZ2 Gardendless》游戏的自定义关卡文件与原版类似，是一个以`.json`为后缀的文本文件，其中包含了关卡的所有信息，包括植物、僵尸、地形等。
+《PvZ2 Gardendless》游戏的自定义关卡文件与原版类似，是一个以`.json`或`.json5`为后缀的JSON/JSON5文本文件，其中包含了关卡的所有信息，包括植物、僵尸、地形等。
 相比原版，《PvZ2 Gardendless》的关卡文件增加了一些新的字段，来描述该关卡的基本信息。
 
 ## JSON 文件
@@ -26,13 +26,13 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 - null：表示空值。
 
 > [!info]
-> JSON 文件不支持注释，在您使用本网站提供的 JSON 代码时，请删除以 `//` 双斜杠开头的注释。
+> JSON 文件不支持注释，在您使用本网站提供的 JSON 代码时，请使用下文提到的`JSON5`格式，或删除以 `//` 双斜杠开头的注释。
 
 示例：
 
-```json
+```json5
 {
-  // 使用时，删除此注释
+  // 使用json时，删除此注释
   "name": "Alice",
   "age": 25,
   "isStudent": false,
@@ -50,11 +50,97 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 
 想更深入的了解 JSON 格式，可以参考[这里](https://www.json.org/json-zh.html)。
 
+
+## JSON5 文件
+
+> [!important]
+> 您可以在编写关卡文件时使用 JSON5 格式，请使用`.json5`作为关卡文件的后缀名以区分普通的`json`文件。
+
+JSON5 是一种基于 JSON（JavaScript Object Notation）的扩展，它旨在增强 JSON 的可读性和可用性，同时保持与 JSON 的兼容性。JSON5 允许开发者在不违反现有 JSON 标准的前提下使用更宽松的语法，适应更多场景。
+
+JSON5 引入了一些灵活性，使得配置文件或数据传输格式更易于书写和理解。以下是 JSON5 的主要特点：
+
+### 灵活的对象键名
+
+在标准 JSON 中，键名必须用双引号包裹，而在 JSON5 中，键名可以不加引号，甚至可以使用单引号。
+
+```json5
+{
+  unquoted: 'This is allowed in JSON5',
+  'singleQuotes': "This is also allowed"
+}
+```
+
+### 行末尾的逗号
+
+在 JSON5 中，可以在对象或数组的最后一项后面添加逗号，这在编辑时尤其方便。
+
+```json5
+{
+  key: 'value',
+  anotherKey: 42, // 允许行末逗号
+}
+```
+
+### 支持注释
+
+JSON5 支持单行和多行注释，类似于 JavaScript。标准的 JSON 不允许使用注释，而 JSON5 允许开发者在数据文件中添加额外的注解信息。
+
+```json5
+{
+  // 这是一个单行注释
+  key: 'value',
+  
+  /*
+    这是一个多行注释
+    可以解释复杂的配置
+  */
+  anotherKey: 42
+}
+```
+
+### 字符串中换行
+
+JSON5 允许在字符串中使用换行符，无需像 JSON 那样必须使用 `\n` 来表示换行，同时，还可以在字符串中使用转义字符。
+
+```json5
+{
+  longString: 'This is a very long string that \
+spans multiple lines\t'
+}
+```
+
+### 额外的数据类型
+
+JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷大值（`Infinity`），以及 `NaN`（Not-a-Number）。
+
+```json5
+{
+  decimal: 123,
+  hexadecimal: 0x7B,
+  infinity: Infinity,
+  notANumber: NaN
+}
+```
+
+### 更灵活的数值表示
+
+可以省略整数部分的零或小数部分的零。
+
+```json5
+{
+  fractional: .5,  // 相当于 0.5
+  trailing: 2.,    // 相当于 2.0
+}
+```
+
+想了解更多 JSON5 的内容，可以参考[这里](https://json5.org/)。
+
 ## 关卡文件结构
 
 《PvZ2 Gardendless》的关卡文件结构如下：
 
-```json
+```json5
 {
   // 关卡的标题
   "#comment": "Sample Level",
@@ -79,7 +165,7 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 
 这个字段包含了以下内容：
 
-```json
+```json5
 "Information": {
   // 关卡的UUID
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
@@ -104,6 +190,7 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 
 `uuid`是关卡的唯一标识，用于区分不同的关卡。请确保您的关卡`uuid`的唯一性。
 要获取随机的`uuid`，可以使用在线生成工具，如[UUID Generator](https://www.uuidgenerator.net/)。
+
 
 ## objects 字段
 
