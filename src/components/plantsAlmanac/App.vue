@@ -57,6 +57,7 @@ const formatOriginPlant = (originPlant: any) => {
         enFamily: '',
         id: originPlant["ID"],
         plantType: originPlant["PLANTTYPE"],
+        codename: originPlant["CODENAME"],
         name: originPlant["NAME"]?.[i18nLanguage],
         enName: originPlant["NAME"]?.["en"],
         frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],

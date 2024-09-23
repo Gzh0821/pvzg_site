@@ -24,9 +24,9 @@
                             <td class="ability"><img :src="keyMap[key].icon" /> {{ keyMap[key][i18nLanguage] }}</td>
                             <td class="value">{{ value }}</td>
                         </tr>
-                        <tr key="PlantType">
-                            <td class="ability"> PlantType </td>
-                            <td class="value">{{ plant.plantType }}</td>
+                        <tr key="CodeName">
+                            <td class="ability"> CodeName </td>
+                            <td class="value">{{ plant.codename }}</td>
                         </tr>
                     </tbody>
                 </table>
