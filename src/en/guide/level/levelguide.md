@@ -9,7 +9,7 @@ order: 1
 
 ## Custom Levels
 
-The custom level file of the game "PvZ2 Gardendless" is similar to the original version. It is a text file with the suffix `.json`, which contains all the information of the level, including plants, zombies, terrain, etc.
+The custom level file of the game "PvZ2 Gardendless" is similar to the original version. It is a JSON/JSON5 text file with the suffix `.json` or `json5`, which contains all the information of the level, including plants, zombies, terrain, etc.
 
 Compared with the original version, the level file of "PvZ2 Gardendless" adds some new fields to describe the basic information of the level.
 
@@ -53,6 +53,91 @@ In this example:
 `name` is a string type, and `age` is a number type. `isStudent` is a Boolean type. `skills` is an array of strings. `address` is an object containing city and zipCode.
 
 For a more in-depth understanding of the JSON format, you can refer to [here](https://www.json.org/json-en.html).
+
+## JSON5 File
+
+> [!important]
+> You can use JSON5 format when writing level files. Please use `.json5` as the suffix of the level file to distinguish it from the ordinary `json` file.
+
+JSON5 is an extension based on JSON (JavaScript Object Notation). It aims to enhance the readability and usability of JSON while maintaining compatibility with JSON. JSON5 allows developers to use more relaxed syntax and adapt to more scenarios without violating the existing JSON standard.
+
+JSON5 introduces some flexibility, making configuration files or data transmission formats easier to write and understand. The following are the main features of JSON5:
+
+### Flexible object key names
+
+In standard JSON, key names must be wrapped in double quotes, while in JSON5, key names can be unquoted or even single quotes can be used.
+
+```json5
+{
+unquoted: 'This is allowed in JSON5',
+'singleQuotes': "This is also allowed"
+}
+```
+
+### End of line comma
+
+In JSON5, you can add a comma after the last item of an object or array, which is especially convenient when editing.
+
+```json5
+{
+key: 'value',
+anotherKey: 42, // Allow end of line comma
+}
+```
+
+### Support comments
+
+JSON5 supports single-line and multi-line comments, similar to JavaScript. Standard JSON does not allow comments, while JSON5 allows developers to add additional annotation information in data files.
+
+```json5
+{
+// This is a single-line comment
+key: 'value',
+
+/*
+This is a multi-line comment
+Can explain complex configuration
+*/
+anotherKey: 42
+}
+```
+
+### Newline in string
+
+JSON5 allows newline characters to be used in strings. Unlike JSON, it does not require the use of `\n` to represent newlines. At the same time, escape characters can also be used in strings.
+
+```json5
+{
+longString: 'This is a very long string that \
+spans multiple lines\t'
+}
+```
+
+### Additional data types
+
+JSON5 supports more numeric formats, such as hexadecimal notation and positive and negative infinity values ​​(`Infinity`), as well as `NaN` (Not-a-Number).
+
+```json5
+{
+decimal: 123,
+hexadecimal: 0x7B,
+infinity: Infinity,
+notANumber: NaN
+}
+```
+
+### More flexible numeric representation
+
+You can omit zeros in the integer part or the fractional part.
+
+```json5
+{
+fractional: .5, // equivalent to 0.5
+trailing: 2., // equivalent to 2.0
+}
+```
+
+For more information about JSON5, you can refer to [here](https://json5.org/).
 
 ## Level file structure
 
