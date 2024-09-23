@@ -10,6 +10,7 @@ export interface Plant {
   name: string;
   enName: string;
   enFamily: string;
+  codename: string;
   description: string;
   chat: String;
   plantType: string;
