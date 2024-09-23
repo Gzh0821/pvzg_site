@@ -25,7 +25,7 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 - 数字：整数或浮点数。
 - null：表示空值。
 
-> [!info]
+> [!warning]
 > JSON 文件不支持注释，在您使用本网站提供的 JSON 代码时，请使用下文提到的`JSON5`格式，或删除以 `//` 双斜杠开头的注释。
 
 示例：
