@@ -29,8 +29,8 @@ JSON (JavaScript Object Notation) is a lightweight data exchange format that is 
 - Number: integer or floating point number.
 - null: represents a null value.
 
-> [!info]
-> JSON files do not support comments. When you use the JSON code provided by this website, please delete the comments starting with `//` double slashes.
+> [!warning]
+> JSON files do not support comments. When you use the JSON code provided on this website, please use the `JSON5` format mentioned below, or delete the comments starting with `//` double slashes.
 
 Example:
 
