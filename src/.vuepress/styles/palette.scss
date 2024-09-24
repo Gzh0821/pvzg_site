@@ -2,5 +2,11 @@
 // $theme-color: #096dd9;
 $theme-color: #00bc96;
 $font-family: '"Noto Sans SC", "Roboto", "Arial", sans-serif';
-$vp-c-control: #ffffff;
-$vp-c-control-hover: #f0f0f0;
+$vp-c-control: (
+    light: #ffffff,
+    dark: #000000,
+);
+$vp-c-control-hover: (
+    light: #f0f0f0,
+    dark: #333333,
+);
