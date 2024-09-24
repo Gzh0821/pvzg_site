@@ -102,18 +102,25 @@ export default hopeTheme({
     components: {
       components: ["Badge", "BiliBili", "VPCard", "VidStack",],
     },
-
+    markdownImage: {
+      figure: true,
+      lazyload: true,
+      size: true,
+    },
+    markdownHint: {
+      alert: true,
+    },
+    markdownTab: {
+      codeTabs: true,
+      tabs: true,
+    },
     // All features are enabled for demo, only preserve features you need here
     mdEnhance: {
-      alert: true,
+
       align: true,
       attrs: true,
-      codetabs: true,
       component: true,
       demo: true,
-      figure: true,
-      imgLazyload: true,
-      imgSize: true,
       include: true,
       mark: true,
       plantuml: true,
@@ -133,7 +140,6 @@ export default hopeTheme({
       ],
       sub: true,
       sup: true,
-      tabs: true,
       tasklist: true,
       vPre: true,
 
@@ -176,7 +182,7 @@ export default hopeTheme({
       // sandpack: true,
     },
     photoSwipe: false,
-    
+
     watermark: {
       enabled: false,
       watermarkOptions: {
