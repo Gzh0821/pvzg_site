@@ -161,10 +161,11 @@ Content...
 
 ### 6.2 Provide translations
 
-Under the `src` directory, you can find the `en` directory, which contains the English pages of this website.
+Under the `src` directory, you can find the `en` directory, which contains the English pages of this website. You can refer to the files in this directory and translate them into other languages.
 
-For translation work, you only need to modify the `.md` files in the corresponding language directory, such as `ru-RU`, `pt-BR`. For configuration items, only `title` needs to be modified, and for `HTML components`, it remains unchanged.
+For translation work, you only need to modify the `.md` files in the corresponding language directory, such as `ru-RU`, `pt-BR`. You need to keep the file structure and name in the directory consistent with `en`.
 
+For the configuration items in the `.md` file, only `title` needs to be modified, and for the `HTML component`, it can be left unchanged.
 It is recommended that you check whether the page is displayed correctly at any time when making changes.
 
 ## 7. Submit changes and initiate a Pull Request
