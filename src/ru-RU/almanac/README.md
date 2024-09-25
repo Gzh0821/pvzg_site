@@ -1,19 +1,15 @@
 ---
-title: альманах растений
+title: Альманах
 index: false
-icon: book-open
+icon: book-atlas
 pageInfo: false
-breadcrumb: false
-sidebar: false
 comment: false
 toc: false
-watermark: true
 ---
 
-<script setup>
-    import { createApp,provide } from 'vue';
-    import Almanac from '@source/components/plantsAlmanac/App.vue';
-    provide("i18nLanguage",'en');
-</script>
+> [!info]
+> Щелкните опцию на боковой панели, чтобы перейти на соответствующую страницу с иллюстрациями.
+>
+> В файлах пользовательских уровней и растения, и зомби используют `CodeName` в качестве своих имен.
 
-<Almanac />
+<Catalog />

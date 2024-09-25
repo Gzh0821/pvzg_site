@@ -1,12 +1,12 @@
 import { sidebar } from "vuepress-theme-hope";
 
-export const ruSidebar = sidebar({
-  "/ru-RU/download/": "structure",
-  "/ru-RU/instructions/": "structure",
-  "/ru-RU/guide/": "structure",
-  "/ru-RU/contribution/": "structure",
-  "/ru-RU/almanac/": "structure",
-  "/ru-RU/": [
+export const ptSidebar = sidebar({
+  "/pt-BR/download/": "structure",
+  "/pt-BR/instructions/": "structure",
+  "/pt-BR/guide/": "structure",
+  "/pt-BR/contribution/": "structure",
+  "/pt-BR/almanac/": "structure",
+  "/pt-BR/": [
     // "",
     // "portfolio",
     // {
