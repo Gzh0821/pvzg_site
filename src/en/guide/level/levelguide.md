@@ -69,8 +69,8 @@ In standard JSON, key names must be wrapped in double quotes, while in JSON5, ke
 
 ```json5
 {
-unquoted: 'This is allowed in JSON5',
-'singleQuotes': "This is also allowed"
+  unquoted: 'This is allowed in JSON5',
+  'singleQuotes': "This is also allowed"
 }
 ```
 
@@ -80,8 +80,8 @@ In JSON5, you can add a comma after the last item of an object or array, which i
 
 ```json5
 {
-key: 'value',
-anotherKey: 42, // Allow end of line comma
+  key: 'value',
+  anotherKey: 42, // Allow end of line comma
 }
 ```
 
@@ -91,14 +91,14 @@ JSON5 supports single-line and multi-line comments, similar to JavaScript. Stand
 
 ```json5
 {
-// This is a single-line comment
-key: 'value',
+  // This is a single-line comment
+  key: 'value',
 
-/*
-This is a multi-line comment
-Can explain complex configuration
-*/
-anotherKey: 42
+  /*
+  This is a multi-line comment
+  Can explain complex configuration
+  */
+  anotherKey: 42
 }
 ```
 
@@ -108,8 +108,8 @@ JSON5 supports both single-quoted and double-quoted strings.
 
 ```json5
 {
-singleQuotes: 'This is a string',
-doubleQuotes: "This is also a string"
+  singleQuotes: 'This is a string',
+  doubleQuotes: "This is also a string"
 }
 ```
 
@@ -117,8 +117,8 @@ JSON5 allows newline characters to be used in strings. Unlike JSON, it does not 
 
 ```json5
 {
-longString: 'This is a very long string that \
-spans multiple lines\t'
+  longString: 'This is a very long string that \
+  spans multiple lines\t'
 }
 ```
 
@@ -128,10 +128,10 @@ JSON5 supports more numeric formats, such as hexadecimal notation and positive a
 
 ```json5
 {
-decimal: 123,
-hexadecimal: 0x7B,
-infinity: Infinity,
-notANumber: NaN
+  decimal: 123,
+  hexadecimal: 0x7B,
+  infinity: Infinity,
+  notANumber: NaN
 }
 ```
 
@@ -141,8 +141,8 @@ You can omit zeros in the integer part or the fractional part.
 
 ```json5
 {
-fractional: .5, // equivalent to 0.5
-trailing: 2., // equivalent to 2.0
+  fractional: .5, // equivalent to 0.5
+  trailing: 2., // equivalent to 2.0
 }
 ```
 
