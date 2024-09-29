@@ -1,913 +1,1286 @@
 {
-  "ZOMBIES": [
-    {
-      "NAME": "Basic Zombie",
-      "ZOMBIETYPE": "tutorialbasic",
-      "CODENAME": "tutorial",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Conehead Zombie",
-      "ZOMBIETYPE": "tutorialarmor1",
-      "CODENAME": "tutorial_armor1",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Buckethead Zombie",
-      "ZOMBIETYPE": "tutorialarmor2",
-      "CODENAME": "tutorial_armor2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Brickhead Zombie",
-      "ZOMBIETYPE": "tutorialarmor4",
-      "CODENAME": "tutorial_armor4",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Flag Zombie",
-      "ZOMBIETYPE": "tutorialflag",
-      "CODENAME": "tutorial_flag",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Rally Zombie",
-      "ZOMBIETYPE": "tutorialrally",
-      "CODENAME": "tutorial_flag_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Imp",
-      "ZOMBIETYPE": "imp",
-      "CODENAME": "tutorial_imp",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Gargantuar",
-      "ZOMBIETYPE": "gargantuar",
-      "CODENAME": "tutorial_gargantuar",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1500,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Bobsled Zombie",
-      "ZOMBIETYPE": "bobsled",
-      "CODENAME": "bobsled",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Bobsled Team",
-      "ZOMBIETYPE": "bobsledteam",
-      "CODENAME": "bobsled_team",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Balloon Zombie",
-      "ZOMBIETYPE": "balloon",
-      "CODENAME": "tutorial_balloon",
-      "SUNCOST": 400,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "All-Star Zombie",
-      "ZOMBIETYPE": "allstar",
-      "CODENAME": "allstar",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1500,
-      "WEIGHT": 3500,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Zomboni",
-      "ZOMBIETYPE": "sleighcart",
-      "CODENAME": "sleighcart",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Catapult Zombie",
-      "ZOMBIETYPE": "catapult",
-      "CODENAME": "catapult",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "frontyard"
-    },
-    {
-      "NAME": "Mummy Zombie",
-      "ZOMBIETYPE": "egyptbasic",
-      "CODENAME": "mummy",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Conehead Mummy",
-      "ZOMBIETYPE": "egyptarmor1",
-      "CODENAME": "mummy_armor1",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Buckethead Mummy",
-      "ZOMBIETYPE": "egyptarmor2",
-      "CODENAME": "mummy_armor2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Pyramid-Head Mummy",
-      "ZOMBIETYPE": "egyptarmor4",
-      "CODENAME": "mummy_armor4",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Flag Mummy Zombie",
-      "ZOMBIETYPE": "egyptflag",
-      "CODENAME": "mummy_flag",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Egypt Rally Zombie",
-      "ZOMBIETYPE": "egyptrally",
-      "CODENAME": "mummy_flag_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Ra Zombie",
-      "ZOMBIETYPE": "egyptra",
-      "CODENAME": "ra",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 700,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombie",
-      "ZOMBIETYPE": "egyptcamel",
-      "CODENAME": "camel_segment",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcamelonehump",
-      "CODENAME": "camel_onehump",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 600,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcameltwohump",
-      "CODENAME": "camel_twohump",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 800,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcamelthreehump",
-      "CODENAME": "camel_threehump",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1000,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcamelmanyhump",
-      "CODENAME": "camel_manyhump",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombie",
-      "ZOMBIETYPE": "egyptcameltouch",
-      "CODENAME": "camel_segment_touch",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcamelonehumptouch",
-      "CODENAME": "camel_onehump_touch",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 600,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcameltwohumptouch",
-      "CODENAME": "camel_twohump_touch",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 800,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcamelthreehumptouch",
-      "CODENAME": "camel_threehump_touch",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1000,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Camel Zombies",
-      "ZOMBIETYPE": "egyptcamelmanyhumptouch",
-      "CODENAME": "camel_manyhump_touch",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Explorer Zombie",
-      "ZOMBIETYPE": "egyptexplorer",
-      "CODENAME": "explorer",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 250,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Torchlight Zombie",
-      "ZOMBIETYPE": "egypttorchlight",
-      "CODENAME": "explorer_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Tomb Raiser Zombie",
-      "ZOMBIETYPE": "egypttombraiser",
-      "CODENAME": "tomb_raiser",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 300,
-      "WEIGHT": 2000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Pharoah Inner Zombie",
-      "ZOMBIETYPE": "egyptpharaohinner",
-      "CODENAME": "pharaoh_inner",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 150,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Weaker Pharoah Zombie",
-      "ZOMBIETYPE": "egyptpharaohweak",
-      "CODENAME": "pharaoh_weak",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 450,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Pharoah Zombie",
-      "ZOMBIETYPE": "egyptpharaoh",
-      "CODENAME": "pharaoh",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 450,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Egypt Imp",
-      "ZOMBIETYPE": "egyptimp",
-      "CODENAME": "egypt_imp",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Mummified Gargantuar",
-      "ZOMBIETYPE": "egyptgargantuar",
-      "CODENAME": "egypt_gargantuar",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1500,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Zombot Sphinx-inator",
-      "ZOMBIETYPE": "egyptzomboss",
-      "CODENAME": "zombossmech_egypt",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Zombot Sphinx-inator",
-      "ZOMBIETYPE": "egyptzomboss",
-      "CODENAME": "zombossmech_egypt2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "egypt"
-    },
-    {
-      "NAME": "Pirate Zombie",
-      "ZOMBIETYPE": "piratebasic",
-      "CODENAME": "pirate",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Conehead Pirate",
-      "ZOMBIETYPE": "piratearmor1",
-      "CODENAME": "pirate_armor1",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Buckethead Pirate",
-      "ZOMBIETYPE": "piratearmor2",
-      "CODENAME": "pirate_armor2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Barrelhead Pirate",
-      "ZOMBIETYPE": "piratearmor4",
-      "CODENAME": "pirate_armor4",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Flag Pirate Zombie",
-      "ZOMBIETYPE": "pirateflag",
-      "CODENAME": "pirate_flag",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Pirate Rally Zombie",
-      "ZOMBIETYPE": "piraterally",
-      "CODENAME": "pirate_flag_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Swashbuckler Zombie",
-      "ZOMBIETYPE": "pirateswashbuckler",
-      "CODENAME": "swashbuckler",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 150,
-      "WEIGHT": 1500,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Seagull Zombie",
-      "ZOMBIETYPE": "pirateseagull",
-      "CODENAME": "seagull",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Pelican Zombie",
-      "ZOMBIETYPE": "piratepelican",
-      "CODENAME": "pelican",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 350,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Barrel Roller Zombie",
-      "ZOMBIETYPE": "piratebarrelpusher",
-      "CODENAME": "barrelroller",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 500,
-      "WEIGHT": 2000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Pirate Barrel",
-      "ZOMBIETYPE": "piratebarrel",
-      "CODENAME": "pirate_barrel",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Imp Cannon",
-      "ZOMBIETYPE": "pirateimpcannon",
-      "CODENAME": "cannon",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 1500,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Pirate Captain Zombie",
-      "ZOMBIETYPE": "piratecaptain",
-      "CODENAME": "pirate_captain",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 500,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Zombie Parrot",
-      "ZOMBIETYPE": "pirateparrot",
-      "CODENAME": "pirate_captain_parrot",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Imp Pirate Zombie",
-      "ZOMBIETYPE": "pirateimp",
-      "CODENAME": "pirate_imp",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Gargantuar Pirate",
-      "ZOMBIETYPE": "pirategargantuar",
-      "CODENAME": "pirate_gargantuar",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1500,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Zombot Plank Walker",
-      "ZOMBIETYPE": "piratezomboss",
-      "CODENAME": "zombossmech_pirate",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Zombot Plank Walker",
-      "ZOMBIETYPE": "piratezomboss",
-      "CODENAME": "zombossmech_pirate2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "pirate"
-    },
-    {
-      "NAME": "Cowboy Zombie",
-      "ZOMBIETYPE": "cowboybasic",
-      "CODENAME": "cowboy",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Conehead Cowboy",
-      "ZOMBIETYPE": "cowboyarmor1",
-      "CODENAME": "cowboy_armor1",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Buckethead Cowboy",
-      "ZOMBIETYPE": "cowboyarmor2",
-      "CODENAME": "cowboy_armor2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Cart-Head Cowboy",
-      "ZOMBIETYPE": "cowboyarmor4",
-      "CODENAME": "cowboy_armor4",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Flag Cowboy Zombie",
-      "ZOMBIETYPE": "cowboyflag",
-      "CODENAME": "cowboy_flag",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Cowboy Rally Zombie",
-      "ZOMBIETYPE": "cowboyrally",
-      "CODENAME": "cowboy_flag_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Prospector Zombie",
-      "ZOMBIETYPE": "cowboyprospector",
-      "CODENAME": "prospector",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Pianist Zombie",
-      "ZOMBIETYPE": "cowboypiano",
-      "CODENAME": "piano",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 450,
-      "WEIGHT": 2000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Poncho Zombie",
-      "ZOMBIETYPE": "cowboyponcho",
-      "CODENAME": "poncho",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 300,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Poncho Zombie",
-      "ZOMBIETYPE": "cowboyponchonoshield",
-      "CODENAME": "poncho_no_plate",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 150,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Poncho Zombie",
-      "ZOMBIETYPE": "cowboyponchoshield",
-      "CODENAME": "poncho_plate",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Chicken Wrangler Zombie",
-      "ZOMBIETYPE": "cowboychickenfarmer",
-      "CODENAME": "chicken_farmer",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 350,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Zombie Chicken",
-      "ZOMBIETYPE": "cowboychicken",
-      "CODENAME": "chicken",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 10,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Jack O'Chicken",
-      "ZOMBIETYPE": "cowboychickenpumpkin",
-      "CODENAME": "chicken_pumpkin",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 10,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "market"
-    },
-    {
-      "NAME": "Zombie Bull",
-      "ZOMBIETYPE": "cowboybull",
-      "CODENAME": "west_bull",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 600,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Rodeo Legend Zombie",
-      "ZOMBIETYPE": "cowboybullblack",
-      "CODENAME": "west_bull_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1000,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Zombie Bull Rider",
-      "ZOMBIETYPE": "cowboyimp",
-      "CODENAME": "west_bullrider",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Wild West Gargantuar",
-      "ZOMBIETYPE": "cowboygargantuar",
-      "CODENAME": "cowboy_gargantuar",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 1500,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Zombot War Wagon",
-      "ZOMBIETYPE": "cowboyzomboss",
-      "CODENAME": "zombossmech_cowboy",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Zombot War Wagon",
-      "ZOMBIETYPE": "cowboyzomboss",
-      "CODENAME": "zombossmech_cowboy2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 0,
-      "OBTAINWORLD": "cowboy"
-    },
-    {
-      "NAME": "Kongfu Zombie",
-      "ZOMBIETYPE": "kongfubasic",
-      "CODENAME": "kongfu",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Kongfu Conehead Zombie",
-      "ZOMBIETYPE": "kongfuarmor1",
-      "CODENAME": "kongfu_armor1",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Kongfu Kettlehead Zombie",
-      "ZOMBIETYPE": "kongfuarmor2",
-      "CODENAME": "kongfu_armor2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Kongfu Helmet Zombie",
-      "ZOMBIETYPE": "kongfuarmor3",
-      "CODENAME": "kongfu_armor3",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Flag Kongfu Zombie",
-      "ZOMBIETYPE": "kongfuflag",
-      "CODENAME": "kongfu_flag",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Kongfu Rally Zombie",
-      "ZOMBIETYPE": "kongfurally",
-      "CODENAME": "kongfu_flag_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Hammer Zombie",
-      "ZOMBIETYPE": "kongfuhammer",
-      "CODENAME": "kongfu_hammer",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 2000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Kongfu Torch Zombie",
-      "ZOMBIETYPE": "kongfutorch",
-      "CODENAME": "kongfu_torch",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 250,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Monk Zombie",
-      "ZOMBIETYPE": "monkbasic",
-      "CODENAME": "monk",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Monk Conehead Zombie",
-      "ZOMBIETYPE": "monkarmor1",
-      "CODENAME": "monk_armor1",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Monk Kettlehead Zombie",
-      "ZOMBIETYPE": "monkarmor2",
-      "CODENAME": "monk_armor2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Monk Helmet Zombie",
-      "ZOMBIETYPE": "monkarmor3",
-      "CODENAME": "monk_armor3",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Flag Monk Zombie",
-      "ZOMBIETYPE": "monkflag",
-      "CODENAME": "monk_flag",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Monk Rally Zombie",
-      "ZOMBIETYPE": "monkrally",
-      "CODENAME": "monk_flag_veteran",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
-      "WEIGHT": 100,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Nunchaku Monk Zombie",
-      "ZOMBIETYPE": "monknunchaku",
-      "CODENAME": "monk_nunchaku",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 2000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Torch Monk Zombie",
-      "ZOMBIETYPE": "monktorch",
-      "CODENAME": "monk_torch",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 250,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "kongfu"
-    },
-    {
-      "NAME": "Future Zombie",
-      "ZOMBIETYPE": "futurebasic",
-      "CODENAME": "future",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
-      "OBTAINWORLD": "future"
-    },
-    {
-      "NAME": "Future Conehead Zombie",
-      "ZOMBIETYPE": "futurearmor1",
-      "CODENAME": "future_armor1",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "future"
-    },
-    {
-      "NAME": "Future Buckethead Zombie",
-      "ZOMBIETYPE": "futurearmor2",
-      "CODENAME": "future_armor2",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 400,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "future"
-    },
-    {
-      "NAME": "Holo Head Zombie",
-      "ZOMBIETYPE": "futurearmor4",
-      "CODENAME": "future_armor4",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 700,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "future"
-    },
-    {
-      "NAME": "Jetpack Zombie",
-      "ZOMBIETYPE": "futurejetpack",
-      "CODENAME": "future_jetpack",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 150,
-      "WEIGHT": 4000,
-      "OBTAINWORLD": "future"
-    },
-    {
-      "NAME": "Relic Hunter Zombie",
-      "ZOMBIETYPE": "lostrelichunter",
-      "CODENAME": "lostcity_relichunter",
-      "SUNCOST": 100,
-      "WAVEPOINTCOST": 550,
-      "WEIGHT": 3000,
-      "OBTAINWORLD": "lostcity"
-    }
-  ]
+    "ZOMBIES": [
+        {
+            "NAME": "Basic Zombie",
+            "ZOMBIETYPE": "tutorialbasic",
+            "CODENAME": "tutorial",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Conehead Zombie",
+            "ZOMBIETYPE": "tutorialarmor1",
+            "CODENAME": "tutorial_armor1",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Buckethead Zombie",
+            "ZOMBIETYPE": "tutorialarmor2",
+            "CODENAME": "tutorial_armor2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Brickhead Zombie",
+            "ZOMBIETYPE": "tutorialarmor4",
+            "CODENAME": "tutorial_armor4",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {}
+        },
+        {
+            "NAME": "Flag Zombie",
+            "ZOMBIETYPE": "tutorialflag",
+            "CODENAME": "tutorial_flag",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Rally Zombie",
+            "ZOMBIETYPE": "tutorialrally",
+            "CODENAME": "tutorial_flag_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Imp",
+            "ZOMBIETYPE": "imp",
+            "CODENAME": "tutorial_imp",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Gargantuar",
+            "ZOMBIETYPE": "gargantuar",
+            "CODENAME": "tutorial_gargantuar",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1500,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Bobsled Zombie",
+            "ZOMBIETYPE": "bobsled",
+            "CODENAME": "bobsled",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Bobsled Team",
+            "ZOMBIETYPE": "bobsledteam",
+            "CODENAME": "bobsled_team",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Balloon Zombie",
+            "ZOMBIETYPE": "balloon",
+            "CODENAME": "tutorial_balloon",
+            "SUNCOST": 400,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "All-Star Zombie",
+            "ZOMBIETYPE": "allstar",
+            "CODENAME": "allstar",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1500,
+            "WEIGHT": 3500,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Zomboni",
+            "ZOMBIETYPE": "sleighcart",
+            "CODENAME": "sleighcart",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Catapult Zombie",
+            "ZOMBIETYPE": "catapult",
+            "CODENAME": "catapult",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "frontyard",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Mummy Zombie",
+            "ZOMBIETYPE": "egyptbasic",
+            "CODENAME": "mummy",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Conehead Mummy",
+            "ZOMBIETYPE": "egyptarmor1",
+            "CODENAME": "mummy_armor1",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Buckethead Mummy",
+            "ZOMBIETYPE": "egyptarmor2",
+            "CODENAME": "mummy_armor2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Pyramid-Head Mummy",
+            "ZOMBIETYPE": "egyptarmor4",
+            "CODENAME": "mummy_armor4",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Flag Mummy Zombie",
+            "ZOMBIETYPE": "egyptflag",
+            "CODENAME": "mummy_flag",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Egypt Rally Zombie",
+            "ZOMBIETYPE": "egyptrally",
+            "CODENAME": "mummy_flag_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Ra Zombie",
+            "ZOMBIETYPE": "egyptra",
+            "CODENAME": "ra",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 700,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombie",
+            "ZOMBIETYPE": "egyptcamel",
+            "CODENAME": "camel_segment",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcamelonehump",
+            "CODENAME": "camel_onehump",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 600,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcameltwohump",
+            "CODENAME": "camel_twohump",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 800,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcamelthreehump",
+            "CODENAME": "camel_threehump",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1000,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcamelmanyhump",
+            "CODENAME": "camel_manyhump",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombie",
+            "ZOMBIETYPE": "egyptcameltouch",
+            "CODENAME": "camel_segment_touch",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcamelonehumptouch",
+            "CODENAME": "camel_onehump_touch",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 300,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcameltwohumptouch",
+            "CODENAME": "camel_twohump_touch",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcamelthreehumptouch",
+            "CODENAME": "camel_threehump_touch",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 500,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Camel Zombies",
+            "ZOMBIETYPE": "egyptcamelmanyhumptouch",
+            "CODENAME": "camel_manyhump_touch",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 600,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Explorer Zombie",
+            "ZOMBIETYPE": "egyptexplorer",
+            "CODENAME": "explorer",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 250,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Torchlight Zombie",
+            "ZOMBIETYPE": "egypttorchlight",
+            "CODENAME": "explorer_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Tomb Raiser Zombie",
+            "ZOMBIETYPE": "egypttombraiser",
+            "CODENAME": "tomb_raiser",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 300,
+            "WEIGHT": 2000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Pharoah Inner Zombie",
+            "ZOMBIETYPE": "egyptpharaohinner",
+            "CODENAME": "pharaoh_inner",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 150,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Weaker Pharoah Zombie",
+            "ZOMBIETYPE": "egyptpharaohweak",
+            "CODENAME": "pharaoh_weak",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 450,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Pharoah Zombie",
+            "ZOMBIETYPE": "egyptpharaoh",
+            "CODENAME": "pharaoh",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 450,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Egypt Imp",
+            "ZOMBIETYPE": "egyptimp",
+            "CODENAME": "egypt_imp",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Mummified Gargantuar",
+            "ZOMBIETYPE": "egyptgargantuar",
+            "CODENAME": "egypt_gargantuar",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1500,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Zombot Sphinx-inator",
+            "ZOMBIETYPE": "egyptzomboss",
+            "CODENAME": "zombossmech_egypt",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Zombot Sphinx-inator",
+            "ZOMBIETYPE": "egyptzomboss",
+            "CODENAME": "zombossmech_egypt2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "egypt",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Pirate Zombie",
+            "ZOMBIETYPE": "piratebasic",
+            "CODENAME": "pirate",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Conehead Pirate",
+            "ZOMBIETYPE": "piratearmor1",
+            "CODENAME": "pirate_armor1",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Buckethead Pirate",
+            "ZOMBIETYPE": "piratearmor2",
+            "CODENAME": "pirate_armor2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Barrelhead Pirate",
+            "ZOMBIETYPE": "piratearmor4",
+            "CODENAME": "pirate_armor4",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Flag Pirate Zombie",
+            "ZOMBIETYPE": "pirateflag",
+            "CODENAME": "pirate_flag",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Pirate Rally Zombie",
+            "ZOMBIETYPE": "piraterally",
+            "CODENAME": "pirate_flag_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Swashbuckler Zombie",
+            "ZOMBIETYPE": "pirateswashbuckler",
+            "CODENAME": "swashbuckler",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 150,
+            "WEIGHT": 1500,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Seagull Zombie",
+            "ZOMBIETYPE": "pirateseagull",
+            "CODENAME": "seagull",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Pelican Zombie",
+            "ZOMBIETYPE": "piratepelican",
+            "CODENAME": "pelican",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 350,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Barrel Roller Zombie",
+            "ZOMBIETYPE": "piratebarrelpusher",
+            "CODENAME": "barrelroller",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 500,
+            "WEIGHT": 2000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Pirate Barrel",
+            "ZOMBIETYPE": "piratebarrel",
+            "CODENAME": "pirate_barrel",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Imp Cannon",
+            "ZOMBIETYPE": "pirateimpcannon",
+            "CODENAME": "cannon",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 1500,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Pirate Captain Zombie",
+            "ZOMBIETYPE": "piratecaptain",
+            "CODENAME": "pirate_captain",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 500,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Zombie Parrot",
+            "ZOMBIETYPE": "pirateparrot",
+            "CODENAME": "pirate_captain_parrot",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Imp Pirate Zombie",
+            "ZOMBIETYPE": "pirateimp",
+            "CODENAME": "pirate_imp",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Gargantuar Pirate",
+            "ZOMBIETYPE": "pirategargantuar",
+            "CODENAME": "pirate_gargantuar",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1500,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Zombot Plank Walker",
+            "ZOMBIETYPE": "piratezomboss",
+            "CODENAME": "zombossmech_pirate",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Zombot Plank Walker",
+            "ZOMBIETYPE": "piratezomboss",
+            "CODENAME": "zombossmech_pirate2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "pirate",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Cowboy Zombie",
+            "ZOMBIETYPE": "cowboybasic",
+            "CODENAME": "cowboy",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Conehead Cowboy",
+            "ZOMBIETYPE": "cowboyarmor1",
+            "CODENAME": "cowboy_armor1",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Buckethead Cowboy",
+            "ZOMBIETYPE": "cowboyarmor2",
+            "CODENAME": "cowboy_armor2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Cart-Head Cowboy",
+            "ZOMBIETYPE": "cowboyarmor4",
+            "CODENAME": "cowboy_armor4",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Flag Cowboy Zombie",
+            "ZOMBIETYPE": "cowboyflag",
+            "CODENAME": "cowboy_flag",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Cowboy Rally Zombie",
+            "ZOMBIETYPE": "cowboyrally",
+            "CODENAME": "cowboy_flag_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Prospector Zombie",
+            "ZOMBIETYPE": "cowboyprospector",
+            "CODENAME": "prospector",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Pianist Zombie",
+            "ZOMBIETYPE": "cowboypiano",
+            "CODENAME": "piano",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 450,
+            "WEIGHT": 2000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Poncho Zombie",
+            "ZOMBIETYPE": "cowboyponcho",
+            "CODENAME": "poncho",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 300,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Poncho Zombie",
+            "ZOMBIETYPE": "cowboyponchonoshield",
+            "CODENAME": "poncho_no_plate",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 150,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Poncho Zombie",
+            "ZOMBIETYPE": "cowboyponchoshield",
+            "CODENAME": "poncho_plate",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Chicken Wrangler Zombie",
+            "ZOMBIETYPE": "cowboychickenfarmer",
+            "CODENAME": "chicken_farmer",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 350,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Zombie Chicken",
+            "ZOMBIETYPE": "cowboychicken",
+            "CODENAME": "chicken",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 10,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Jack O'Chicken",
+            "ZOMBIETYPE": "cowboychickenpumpkin",
+            "CODENAME": "chicken_pumpkin",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 10,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "market",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Zombie Bull",
+            "ZOMBIETYPE": "cowboybull",
+            "CODENAME": "west_bull",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 600,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Rodeo Legend Zombie",
+            "ZOMBIETYPE": "cowboybullblack",
+            "CODENAME": "west_bull_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1000,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Zombie Bull Rider",
+            "ZOMBIETYPE": "cowboyimp",
+            "CODENAME": "west_bullrider",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Wild West Gargantuar",
+            "ZOMBIETYPE": "cowboygargantuar",
+            "CODENAME": "cowboy_gargantuar",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1500,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Zombot War Wagon",
+            "ZOMBIETYPE": "cowboyzomboss",
+            "CODENAME": "zombossmech_cowboy",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Zombot War Wagon",
+            "ZOMBIETYPE": "cowboyzomboss",
+            "CODENAME": "zombossmech_cowboy2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "cowboy",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Kongfu Zombie",
+            "ZOMBIETYPE": "kongfubasic",
+            "CODENAME": "kongfu",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Kongfu Conehead Zombie",
+            "ZOMBIETYPE": "kongfuarmor1",
+            "CODENAME": "kongfu_armor1",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Kongfu Kettlehead Zombie",
+            "ZOMBIETYPE": "kongfuarmor2",
+            "CODENAME": "kongfu_armor2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Kongfu Helmet Zombie",
+            "ZOMBIETYPE": "kongfuarmor3",
+            "CODENAME": "kongfu_armor3",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Flag Kongfu Zombie",
+            "ZOMBIETYPE": "kongfuflag",
+            "CODENAME": "kongfu_flag",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Kongfu Rally Zombie",
+            "ZOMBIETYPE": "kongfurally",
+            "CODENAME": "kongfu_flag_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Hammer Zombie",
+            "ZOMBIETYPE": "kongfuhammer",
+            "CODENAME": "kongfu_hammer",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 2000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Kongfu Torch Zombie",
+            "ZOMBIETYPE": "kongfutorch",
+            "CODENAME": "kongfu_torch",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 250,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Monk Zombie",
+            "ZOMBIETYPE": "monkbasic",
+            "CODENAME": "monk",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Monk Conehead Zombie",
+            "ZOMBIETYPE": "monkarmor1",
+            "CODENAME": "monk_armor1",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Monk Kettlehead Zombie",
+            "ZOMBIETYPE": "monkarmor2",
+            "CODENAME": "monk_armor2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Monk Helmet Zombie",
+            "ZOMBIETYPE": "monkarmor3",
+            "CODENAME": "monk_armor3",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Flag Monk Zombie",
+            "ZOMBIETYPE": "monkflag",
+            "CODENAME": "monk_flag",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Monk Rally Zombie",
+            "ZOMBIETYPE": "monkrally",
+            "CODENAME": "monk_flag_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Nunchaku Monk Zombie",
+            "ZOMBIETYPE": "monknunchaku",
+            "CODENAME": "monk_nunchaku",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 2000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Torch Monk Zombie",
+            "ZOMBIETYPE": "monktorch",
+            "CODENAME": "monk_torch",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 250,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "kongfu",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Future Zombie",
+            "ZOMBIETYPE": "futurebasic",
+            "CODENAME": "future",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 100,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Future Conehead Zombie",
+            "ZOMBIETYPE": "futurearmor1",
+            "CODENAME": "future_armor1",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 200,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Future Buckethead Zombie",
+            "ZOMBIETYPE": "futurearmor2",
+            "CODENAME": "future_armor2",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 400,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Holo Head Zombie",
+            "ZOMBIETYPE": "futurearmor4",
+            "CODENAME": "future_armor4",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 700,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Future Flag Zombie",
+            "ZOMBIETYPE": "futureflag",
+            "CODENAME": "future_flag",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Robo-Rally Zombie",
+            "ZOMBIETYPE": "futurerally",
+            "CODENAME": "future_flag_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 100,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Jetpack Zombie",
+            "ZOMBIETYPE": "futurejetpack",
+            "CODENAME": "future_jetpack",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 150,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Blastronaut Zombie",
+            "ZOMBIETYPE": "futurejetpackveteran",
+            "CODENAME": "future_jetpack_veteran",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 450,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Disco Jetpack Zombie",
+            "ZOMBIETYPE": "futurejetpackdisco",
+            "CODENAME": "future_jetpack_disco",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 150,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Robo-Cone Zombie",
+            "ZOMBIETYPE": "futuremechcone",
+            "CODENAME": "mech_cone",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 650,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Bug Bot Imp",
+            "ZOMBIETYPE": "futureimp",
+            "CODENAME": "future_imp",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 150,
+            "WEIGHT": 1000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
+            "NAME": "Relic Hunter Zombie",
+            "ZOMBIETYPE": "lostrelichunter",
+            "CODENAME": "lostcity_relichunter",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 550,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "lostcity",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        }
+    ]
 }
