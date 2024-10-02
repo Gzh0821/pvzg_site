@@ -10,6 +10,7 @@ export default defineUserConfig({
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7637695321442015',
       async: true, crossorigin: 'anonymous'
     }],
+    ['meta', { name: 'google-adsense-account', content: 'ca-pub-7637695321442015' }],
     ['link', { rel: 'stylesheet', href: '/styles/custom.css' }],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
     [

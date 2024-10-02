@@ -15,41 +15,25 @@ category:
 import axios from 'axios';
 import { ref, onBeforeMount, onMounted } from 'vue';
 
-// const dataFormat = {
-//     "Version": "",
-//     "InsideVersion": "",
-//     "Download": {
-//         "Baidu": "",
-//         "Pan123": "",
-//         "Quark": "",
-//         "Github": "",
-//         "Onedrive": "",
-//         "OnedriveOrigin": ""
-//     }
-// }
-
 const gameInfoData = ref(null);
-function loadAd() {
-  let adContainer = document.getElementById('ad-container'); 
+// function loadAd() {
+//   let adContainer = document.getElementById('ad-container'); 
 
-  let ins = document.createElement('ins');
-  ins.className = 'adsbygoogle';
-  ins.style.display = 'block';
-  ins.setAttribute('data-ad-client', 'ca-pub-7637695321442015');
-  ins.setAttribute('data-ad-slot', '7113006248');
-  ins.setAttribute('data-ad-format', 'auto');
-  ins.setAttribute('data-full-width-responsive', 'true');
-  adContainer.appendChild(ins);
+//   let ins = document.createElement('ins');
+//   ins.className = 'adsbygoogle';
+//   ins.style.display = 'block';
+//   ins.setAttribute('data-ad-client', 'ca-pub-7637695321442015');
+//   ins.setAttribute('data-ad-slot', '7113006248');
+//   ins.setAttribute('data-ad-format', 'auto');
+//   ins.setAttribute('data-full-width-responsive', 'true');
+//   adContainer.appendChild(ins);
 
-  (adsbygoogle = window.adsbygoogle || []).push({});
-}
+//   (adsbygoogle = window.adsbygoogle || []).push({});
+// }
 onBeforeMount(() => {
   axios.get('/jsons/gameinfo.json').then(res => {
     gameInfoData.value = res.data;
   });
-})
-onMounted(() => {
-  loadAd();
 })
 </script>
 
@@ -84,7 +68,6 @@ onMounted(() => {
 
   <!-- home -->
 
-<div id="ad-container"></div>
 
 ## 更新日志
 
