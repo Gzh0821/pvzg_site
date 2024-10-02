@@ -13,7 +13,7 @@ category:
 
 <script setup>
 import axios from 'axios';
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, onMounted } from 'vue';
 
 // const dataFormat = {
 //     "Version": "",
@@ -29,14 +29,30 @@ import { ref, onBeforeMount } from 'vue';
 // }
 
 const gameInfoData = ref(null);
+function loadAd() {
+  let adContainer = document.getElementById('ad-container'); 
 
+  let ins = document.createElement('ins');
+  ins.className = 'adsbygoogle';
+  ins.style.display = 'block';
+  ins.setAttribute('data-ad-client', 'ca-pub-7637695321442015');
+  ins.setAttribute('data-ad-slot', '7113006248');
+  ins.setAttribute('data-ad-format', 'auto');
+  ins.setAttribute('data-full-width-responsive', 'true');
+  adContainer.appendChild(ins);
+
+  (adsbygoogle = window.adsbygoogle || []).push({});
+}
 onBeforeMount(() => {
   axios.get('/jsons/gameinfo.json').then(res => {
     gameInfoData.value = res.data;
-  })
+  });
 })
-
+onMounted(() => {
+  loadAd();
+})
 </script>
+
 > [!important]
 > 下载游玩时的相关问题 FAQ 请查看[这里](../guide/FAQ.md)，系统要求和推荐配置请查看[这里](../guide/requirement.md)
 
@@ -65,6 +81,10 @@ onBeforeMount(() => {
 <span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
 
 <span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
+
+  <!-- home -->
+
+<div id="ad-container"></div>
 
 ## 更新日志
 
