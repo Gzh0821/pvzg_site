@@ -148,18 +148,18 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
 
 《PvZ2 Gardendless》的关卡文件结构如下：
 
-```json5
+```json
 {
   // 关卡的标题
-  '#comment': 'Sample Level',
+  "#comment": "Sample Level",
   // 关卡的基本信息
-  Information: {},
-  objects: [
+  "Information": {},
+  "objects": [
     // 关卡设置的列表
     {},
     {}
   ],
-  version: 1
+  "version": 1
 }
 ```
 
@@ -173,7 +173,7 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
 
 这个字段包含了以下内容：
 
-```json5
+```json
 "Information": {
   // 关卡的UUID
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
