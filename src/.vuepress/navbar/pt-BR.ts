@@ -7,7 +7,7 @@ export const ptNavbar = navbar([
   "/pt-BR/guide/",
   "/pt-BR/instructions/",
   "/pt-BR/contribution/",
-  { text: "Онлайн-игра", link: "https://play.pvzge.com", icon: "circle-play" },
+  { text: "Jogo online", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",
   // "/portfolio",
   // "/demo/",
