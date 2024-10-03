@@ -30,16 +30,16 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 
 示例：
 
-```json5
+```json
 {
   // 使用json时，删除此注释
-  name: 'Alice',
-  age: 25,
-  isStudent: false,
-  skills: ['JavaScript', 'Python', 'HTML'],
-  address: {
-    city: 'New York',
-    zipCode: '10001'
+  "name": "Alice",
+  "age": 25,
+  "isStudent": false,
+  "skills": ["JavaScript", "Python", "HTML"],
+  "address": {
+    "city": "New York",
+    "zipCode": "10001"
   }
 }
 ```
@@ -105,7 +105,7 @@ JSON5 同时支持单引号和双引号字符串。
 ```json5
 {
   singleQuotes: 'This is a string',
-  doubleQuotes: "This is also a string"
+  doubleQuotes: 'This is also a string'
 }
 ```
 
