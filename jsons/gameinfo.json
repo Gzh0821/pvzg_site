@@ -1,31 +1,46 @@
 {
-    "Name": "PvZ2_Prepreprelease_EMPeach_Fix",
-    "Version": "preprepre-1.1.3",
-    "InsideVersion": "0.1.1.3",
+    "Name": "PvZ2_Prepreprelease_FF_P1",
+    "Version": "v0.1.4",
+    "InsideVersion": "0.1.4",
+    "Updates": [
+        {
+            "en": "Added Far Future Worldmap",
+            "zh": "加入遥远未来地图"
+        },
+        {
+            "en": "Added Solar Tomato, Laser Bean",
+            "zh": "新增阳光番茄，激光豆"
+        },
+        {
+            "en": "Added Shield Zombie",
+            "zh": "新增电磁盾僵尸"
+        },
+        {
+            "en": "Level Files now strictly read aliases to register current level modules. Sun dropper now properly reads what is writen in LEVELMODULES",
+            "zh": "自制关卡方面，严格使用 aliases 注册关卡内容，阳光掉落严格读取 LEVELMODULES 的内容"
+        }
+    ],
     "NewFeatures": [
-        "木乃伊记忆无尽模式（浮岛贴图由 @索菲sophine 制作）",
-        "新增脉冲黄桃，充能柚子",
-        "新增机甲路障僵尸，未来小鬼僵尸，未来喷气背包变种，未来旗帜僵尸",
-        "新增冰车、机械牛眩晕动画",
-        "飞行器和未来小鬼的地下生成动画，由从天掉落替代"
+        "加入遥远未来地图",
+        "新增阳光番茄，激光豆",
+        "新增电磁盾僵尸（以及盾作为独立的僵尸）",
+        "自制关卡方面，严格使用 aliases 注册关卡内容，阳光掉落严格读取 LEVELMODULES 的内容"
     ],
     "EnNewFeatures": [
-        "Added Mummy Memory Dangerroom (Island Texture by @索菲sophine)",
-        "Added E.M.Peach, Citron",
-        "Added Robo-Cone Zombie, Bug Bot Imp, Jetpack Variants, Future Flag Zombies",
-        "Added Zomboni and Zombie Bull stunning animation",
-        "Modified dirt spawn animation of Jetpacks and Future Imps"
+        "Added Far Future Worldmap",
+        "Added Solar Tomato, Laser Bean",
+        "Added Shield Zombie",
+        "Level Files now strictly read aliases to register current level modules. Sun dropper now properly reads what is writen in LEVELMODULES"
     ],
     "Download": {
-        "Github": "https://github.com/Gzh0821/pvzg_site/releases/tag/0.1.1.3",
-        "Onedrive": "https://xj2y2-my.sharepoint.com/personal/pr_ms_pvzge_com1/_layouts/52/download.aspx?share=EevB643_yWZIh-XxsOqMvP8BscKH95ATNe-Xadxj2XX-fQ",
-        "OnedriveOrigin": "https://xj2y2-my.sharepoint.com/:u:/g/personal/pr_ms_pvzge_com1/EevB643_yWZIh-XxsOqMvP8BscKH95ATNe-Xadxj2XX-fQ?e=iNpWf3",
+        "Quark": "https://pan.quark.cn/s/151c3bcf8955",
+        "Pan123": "https://www.123pan.com/s/xUemTd-pHcCh",
+        "Baidu": "https://pan.baidu.com/s/1PN75B97eEcd41WEsnKZLtQ?pwd=pvz2",
+        "Github": "https://github.com/Gzh0821/pvzg_site/releases/tag/0.1.4",
+        "Onedrive": "https://xj2y2-my.sharepoint.com/personal/pr_ms_pvzge_com1/_layouts/52/download.aspx?share=EY7WT52vrElDnvMH-JU2CWABgW0R6MKzIlrCgHEtCCEmXw",
+        "OnedriveOrigin": "https://xj2y2-my.sharepoint.com/:u:/g/personal/pr_ms_pvzge_com1/EY7WT52vrElDnvMH-JU2CWABgW0R6MKzIlrCgHEtCCEmXw?e=mh6K4e",
         "TmpLink": "",
         "Mega": "",
         "Feijipan": ""
-    },
-    "Hash": {
-        "MD5": "c6977323469056fe48acfc7349fade62",
-        "SHA256": "3ef23378090fabfaf4600e3d06e7cee7a3d65efeb1ea653fe45f0587a2daf770"
     }
 }
