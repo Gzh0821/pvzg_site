@@ -1247,6 +1247,32 @@
             }
         },
         {
+            "NAME": "Shield Zombie",
+            "ZOMBIETYPE": "futureprotector",
+            "CODENAME": "future_protector",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 500,
+            "WEIGHT": 1500,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": true,
+                "ShieldRecoverTime": 5,
+                "ShieldKillStunTime": 2
+            }
+        },
+        {
+            "NAME": "Shield",
+            "ZOMBIETYPE": "futureprotectorshield",
+            "CODENAME": "future_protector_shield",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
             "NAME": "Robo-Cone Zombie",
             "ZOMBIETYPE": "futuremechcone",
             "CODENAME": "mech_cone",
