@@ -6476,7 +6476,7 @@
             "CODENAME": "citron",
             "SUNCOST": 350,
             "COOLDOWN": 5,
-            "COOLDOWNFROM": 0.5,
+            "COOLDOWNFROM": 1,
             "FAMILY": "Electricity",
             "TYPE": [
                 "plant"
@@ -6523,6 +6523,160 @@
                     "zh": "作为“再会，维生素”能量饮料的发明者和首位品尝者，充能柚子始终保持着精神，并时刻准备行动。“那就再来点维生素！！”"
                 }
             }
+        },
+        {
+            "ID": 89,
+            "NAME": {
+                "en": "Laser Bean",
+                "zh": "激光豆"
+            },
+            "PLANTTYPE": "laserbean",
+            "CODENAME": "laser_bean",
+            "SUNCOST": 200,
+            "COOLDOWN": 5,
+            "COOLDOWNFROM": 1,
+            "FAMILY": "Sharp",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "future",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Shoots a laser that pierces through zombies",
+                "zh": "发射穿透僵尸的激光"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 40
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Multi-hit",
+                            "zh": "多重打击"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Laser Beans fire down a lane, hitting all zombies ahead of it.",
+                    "zh": "激光豆向整条路线发射，打击他前面的所有僵尸。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Range",
+                            "zh": "范围"
+                        },
+                        "DESCRIPTION": {
+                            "en": "all zombies in a lane",
+                            "zh": "一行内的所有僵尸"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "After a laser eye surgery had gone horribly right, Laser Bean gained a sense of purpose and a new-found affinity for competitive staring contests.",
+                    "zh": "经过了激光眼科手术后，他获得了不可思议的能力。现在激光豆拥有了强大的能量，以及不眨眼游戏中的压倒性实力。"
+                }
+            }
+        },
+        {
+            "ID": 89,
+            "NAME": {
+                "en": "Solar Tomato",
+                "zh": "阳光番茄"
+            },
+            "PLANTTYPE": "solartomato",
+            "CODENAME": "solartomato",
+            "SUNCOST": 100,
+            "COOLDOWN": 25,
+            "COOLDOWNFROM": 0.8,
+            "FAMILY": "Sun",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed",
+                "sunProducer"
+            ],
+            "OBTAINWORLD": "market",
+            "TOUGHNESS": 3000,
+            "BRIEFINTRODUCTION": {
+                "en": "Stuns zombies into dropping suns",
+                "zh": "令僵尸眩晕，并使之掉落阳光"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 40
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Stun",
+                            "zh": "眩晕"
+                        }
+                    },
+                    {
+                        "TYPE": "SUNPRODUCTION",
+                        "VALUE": 50
+                    },
+                    {
+                        "TYPE": "AREA",
+                        "SORT": {
+                            "en": "3x3",
+                            "zh": "3x3 范围"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Solar Tomatoes stun zombies in a 3x3 area, causing each zombie to drop 50 sun.",
+                    "zh": "阳光番茄使 3x3 范围内僵尸眩晕，并使每只僵尸掉落 50 阳光。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use, instant",
+                            "zh": "一次性使用，立刻生效"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "Solar Tomato wishes folks would just stop and enjoy the sunshine sometimes.\n\"Stop,\" she says. \"Enjoy the sunshine. I said stop! Hold it right there! Don't move! I MEAN IT!!!\"",
+                    "zh": "阳光番茄希望忙碌的人们时常停下来享受阳光。\n“停下！”她叫嚷道，“享受一下阳光！我说了给我停下来！不许动！别动！我认真的！！！”。"
+                }
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -6560,6 +6714,7 @@
         "imitater",
         "turnip",
         "peach",
+        "laser_bean",
         "blover",
         "citron",
         "empea",
@@ -6600,6 +6755,7 @@
         "explodeonut",
         "parsnip",
         "missiletoe",
+        "solartomato",
         "electricpeashooter",
         "pumpkin",
         "gloomvine",
