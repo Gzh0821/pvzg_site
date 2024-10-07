@@ -6,6 +6,8 @@ pageInfo: false
 comment: false
 order: 1
 ---
+> [!info]
+> 前往[自定义关卡](/custom-level/)页面下载示例关卡文件！
 
 ## 自定义关卡
 
