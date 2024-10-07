@@ -6,6 +6,8 @@ pageInfo: false
 comment: false
 order: 1
 ---
+> [!info]
+> Go to the [Custom Level](/en/custom-level/) page to download sample level files!
 
 ## Custom Levels
 
