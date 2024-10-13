@@ -21,7 +21,7 @@ comment: false
 
 ### 2.开源授权
 
-您提交的自定义关卡内容自动遵循 Apache License 2.0 协议开源，允许团队及所有其他用户以开源协议中所定义的条款自由使用您的作品。
+您提交的自定义关卡内容自动遵循 MIT 许可证协议开源，允许团队及所有其他用户以开源协议中所定义的条款自由使用您的作品。
 您同意他人有权根据该协议的规定，复制、修改、合并、发布、发布衍生作品、分发、再许可和/或出售该内容。
 
 ### 3.保证与责任
@@ -40,3 +40,13 @@ comment: false
 通过提交自定义关卡，您即表明您已阅读并同意以上条款。
 
 **《PvZ2: Gardendless》开发团队**
+
+## Appendix: MIT License
+
+Copyright `<YEAR>` `<COPYRIGHT HOLDER>`
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
