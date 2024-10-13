@@ -1273,6 +1273,18 @@
             }
         },
         {
+            "NAME": "Infi-nut Shield",
+            "ZOMBIETYPE": "futureinfinutshield",
+            "CODENAME": "future_infinut_shield",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 0,
+            "WEIGHT": 0,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": false
+            }
+        },
+        {
             "NAME": "Robo-Cone Zombie",
             "ZOMBIETYPE": "futuremechcone",
             "CODENAME": "mech_cone",
@@ -1282,6 +1294,34 @@
             "OBTAINWORLD": "future",
             "objdata": {
                 "CannotBeTossedByCitron": true
+            }
+        },
+        {
+            "NAME": "Mecha-Football Zombie",
+            "ZOMBIETYPE": "futuremechfootball",
+            "CODENAME": "football_mech",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 1000,
+            "WEIGHT": 4000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": true,
+                "PushFailDamage": 400
+            }
+        },
+        {
+            "NAME": "Disco-tron 3000",
+            "ZOMBIETYPE": "futuremechdisco",
+            "CODENAME": "disco_mech",
+            "SUNCOST": 100,
+            "WAVEPOINTCOST": 800,
+            "WEIGHT": 3000,
+            "OBTAINWORLD": "future",
+            "objdata": {
+                "CannotBeTossedByCitron": true,
+                "SummonDuration": 3,
+                "DanceCountdown": 6,
+                "DanceDuration": 5
             }
         },
         {
