@@ -109,9 +109,17 @@ const filterPlants = (filter: { name: string; family: string }) => {
     });
 };
 
+
+// 瓷砖萝卜有五种，需要特殊处理
+let powerplantIndex = plantsOrder.indexOf("powerplant");
+if (powerplantIndex !== -1) {
+    // 用 "powerplant_alpha" 到 "powerplant_epsilon" 替换该位置及后续四项
+    plantsOrder.splice(powerplantIndex, 1, "powerplant_alpha", "powerplant_beta", "powerplant_gamma", "powerplant_delta", "powerplant_epsilon");
+};
+
 plants.value = plantsOrder.map((codename) => {
-    return plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename);
-}).map(formatOriginPlant);
+    return formatOriginPlant(plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename));
+});
 filteredPlants.value = plants.value;
 selectPlant(filteredPlants.value[0]);
 
