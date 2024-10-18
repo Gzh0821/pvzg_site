@@ -28,8 +28,8 @@
                         </a-row>
                     </template>
                     <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
+                    <p>{{ plant.name }}</p>
                 </a-popover>
-                <p>{{ plant.name }}</p>
             </template>
             <template v-else>
                 <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
