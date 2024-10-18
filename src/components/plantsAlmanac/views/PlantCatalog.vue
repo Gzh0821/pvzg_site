@@ -13,10 +13,11 @@
             </div> -->
             <template v-if="plant.subPlants">
                 <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
-                    @visible-change="visible[plant.codename] = $event"
-                    :overlayInnerStyle="{ border: '3px solid #432b1a', backgroundColor: '#ede5c4', textAlign: `center` }">
+                    @visible-change="visible[plant.codename] = $event" :overlayInnerStyle="{
+                        border: '3px solid #432b1a', backgroundColor: '#ede5c4', textAlign: 'center'
+                    }">
                     <template #content>
-                        <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]">
+                        <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
                             <template v-for="subPlant in plant.subPlants.map(getPlantByCodename)" :key="subPlant.id">
                                 <a-col @click="selectPlant(subPlant, plant)">
                                     <img :src="'/assets/image/plants/plants_' + subPlant.plantType + '_0.webp'"
@@ -91,7 +92,6 @@ const selectPlant = (plant: Plant, parPlant: Plant | undefined = undefined) => {
     left: 0;
     z-index: 1;
 }*/
-
 p {
     line-height: 1em;
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
