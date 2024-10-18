@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { Card as ACard, Row as ARow, Col as ACol, Pagination as APagination, message } from 'ant-design-vue';
+import { message } from 'ant-design-vue';
 import axios from 'axios';
 import { ref, onBeforeMount, computed } from 'vue';
 const levels: any = ref([]);

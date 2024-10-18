@@ -11,26 +11,53 @@
                 <img class="frame-img" :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
                     :alt="plant.frameWorld">
             </div> -->
-            <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
-            <p>{{ plant.name }}</p>
+            <template v-if="plant.subPlants">
+                <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
+                    @visible-change="visible[plant.codename] = $event"
+                    :overlayInnerStyle="{ border: '3px solid #432b1a', backgroundColor: '#ede5c4', textAlign: `center` }">
+                    <template #content>
+                        <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]">
+                            <template v-for="subPlant in plant.subPlants.map(getPlantByCodename)" :key="subPlant.id">
+                                <a-col @click="selectPlant(subPlant, plant)">
+                                    <img :src="'/assets/image/plants/plants_' + subPlant.plantType + '_0.webp'"
+                                        :alt="plant.name">
+                                    <p>{{ subPlant.name }}</p>
+                                </a-col>
+                            </template>
+                        </a-row>
+                    </template>
+                    <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
+                </a-popover>
+                <p>{{ plant.name }}</p>
+            </template>
+            <template v-else>
+                <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
+                <p>{{ plant.name }}</p>
+            </template>
         </li>
     </ul>
     <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
+import { theme } from 'ant-design-vue';
 import type { Plant } from '../types';
+import { ref } from 'vue';
 
 // 定义 props 类型
-const props = defineProps<{ plants: Plant[] }>();
+const props = defineProps<{ plants: Plant[], getPlantByCodename: (string) => Plant }>();
 
 // 定义 emits
 const emits = defineEmits(['selectPlant']);
-
+const visible = ref({});
 // 选择植物事件
-const selectPlant = (plant: Plant) => {
+const selectPlant = (plant: Plant, parPlant: Plant | undefined = undefined) => {
+    if (parPlant)
+        visible.value[parPlant.codename] = false;
+    console.log(visible.value)
     emits('selectPlant', plant);
 };
+
 </script>
 
 <style scoped>
@@ -65,7 +92,6 @@ const selectPlant = (plant: Plant) => {
     left: 0;
     z-index: 1;
 }*/
-
 
 p {
     line-height: 1em;

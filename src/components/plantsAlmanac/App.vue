@@ -9,7 +9,7 @@
         </div>
         <div class="container">
             <div class="sidebar">
-                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" />
+                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" :getPlantByCodename />
             </div>
             <div class="content">
                 <PlantDetail v-if="selectedPlant" :keyMap="keyMap" :plant="selectedPlant" />
@@ -62,7 +62,8 @@ const formatOriginPlant = (originPlant: any) => {
         enName: originPlant["NAME"]?.["en"],
         frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],
         description: originPlant["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
-        chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage]
+        chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage],
+        subPlants: originPlant["SubPlantList"]
     };
     if (originPlant?.["ALMANAC"]?.["Elements"]) {
         originPlant["ALMANAC"]["Elements"].forEach((element) => {
@@ -108,14 +109,11 @@ const filterPlants = (filter: { name: string; family: string }) => {
         return matchName && matchAttribute;
     });
 };
-
-
-// 瓷砖萝卜有五种，需要特殊处理
-let powerplantIndex = plantsOrder.indexOf("powerplant");
-if (powerplantIndex !== -1) {
-    // 用 "powerplant_alpha" 到 "powerplant_epsilon" 替换该位置及后续四项
-    plantsOrder.splice(powerplantIndex, 1, "powerplant_alpha", "powerplant_beta", "powerplant_gamma", "powerplant_delta", "powerplant_epsilon");
+const getPlantByCodename = (codename: string) => {
+    const res = plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename)
+    return formatOriginPlant(res);
 };
+
 
 plants.value = plantsOrder.map((codename) => {
     return formatOriginPlant(plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename));
