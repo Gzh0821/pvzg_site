@@ -6114,9 +6114,9 @@
                 "Chat": {
                     "en": "\"Electricity is all very well and fine as a phenomenon,\" says Electric Currant, \"but electromagnetism as a whole is where it's really at.\"",
                     "zh": "“闪电永远是最棒的自然现象，”电流醋栗说道，“但是电磁学这个整体才是它的灵魂所在。”"
-                },
-                "objdata": {}
-            }
+                }
+            },
+            "objdata": {}
         },
         {
             "ID": 82,
@@ -6772,8 +6772,8 @@
         {
             "ID": 91,
             "NAME": {
-                "en": "Tile Turnip α",
-                "zh": "瓷砖萝卜α"
+                "en": "Tile Turnip",
+                "zh": "瓷砖萝卜"
             },
             "PLANTTYPE": "powerplant_alpha",
             "CODENAME": "powerplant_alpha",
@@ -6853,8 +6853,8 @@
         {
             "ID": 92,
             "NAME": {
-                "en": "Tile Turnip β",
-                "zh": "瓷砖萝卜β"
+                "en": "Tile Turnip",
+                "zh": "瓷砖萝卜"
             },
             "PLANTTYPE": "powerplant_beta",
             "CODENAME": "powerplant_beta",
@@ -6934,8 +6934,8 @@
         {
             "ID": 93,
             "NAME": {
-                "en": "Tile Turnip γ",
-                "zh": "瓷砖萝卜γ"
+                "en": "Tile Turnip",
+                "zh": "瓷砖萝卜"
             },
             "PLANTTYPE": "powerplant_gamma",
             "CODENAME": "powerplant_gamma",
@@ -7015,8 +7015,8 @@
         {
             "ID": 94,
             "NAME": {
-                "en": "Tile Turnip δ",
-                "zh": "瓷砖萝卜δ"
+                "en": "Tile Turnip",
+                "zh": "瓷砖萝卜"
             },
             "PLANTTYPE": "powerplant_delta",
             "CODENAME": "powerplant_delta",
@@ -7096,8 +7096,8 @@
         {
             "ID": 95,
             "NAME": {
-                "en": "Tile Turnip ε",
-                "zh": "瓷砖萝卜ε"
+                "en": "Tile Turnip",
+                "zh": "瓷砖萝卜"
             },
             "PLANTTYPE": "powerplant_epsilon",
             "CODENAME": "powerplant_epsilon",
@@ -7245,6 +7245,444 @@
                 "DelayBeforeRegenFromDamage": 15,
                 "DelayBeforeRecoverFromDeath": 15
             }
+        },
+        {
+            "ID": 97,
+            "NAME": {
+                "en": "Tile Turnip",
+                "zh": "瓷砖萝卜"
+            },
+            "PLANTTYPE": "powerplant_epsilon",
+            "CODENAME": "powerplant",
+            "SUNCOST": 250,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.8,
+            "FAMILY": "Nope",
+            "TYPE": [
+                "powertile",
+                "tile"
+            ],
+            "OBTAINWORLD": "future",
+            "TOUGHNESS": 3000,
+            "BRIEFINTRODUCTION": {
+                "en": "Creates a Power Tile",
+                "zh": "放置一块强化瓷砖"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "SubPlantList": [
+                "powerplant_alpha",
+                "powerplant_beta",
+                "powerplant_gamma",
+                "powerplant_delta",
+                "powerplant_epsilon"
+            ],
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Free Tiles",
+                            "zh": "放置强化瓷砖"
+                        }
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Cost Multiplication",
+                            "zh": "阳光消耗翻倍"
+                        }
+                    }
+                ],
+                "Introduction": {
+                    "en": "Tile Turnips create a Power Tile on planting.",
+                    "zh": "瓷砖萝卜会在原地产生一块强化瓷砖。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use, instant",
+                            "zh": "一次性使用，立刻生效"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "DJ Tile Turnip changed dance floors with his underground hit \"Turnip the Beet.\" What's his latest mix? When he lays it down, you'll feel the power.",
+                    "zh": "播音员瓷砖萝卜的代表作《根着萝卜蹦！》逐渐在地下舞厅流行。他最新的作品是什么呢？他发布出来后，你保证会兴奋到开大的！"
+                }
+            },
+            "objdata": {
+                "SunCostList": [
+                    0,
+                    250,
+                    500,
+                    1000,
+                    2000,
+                    4000,
+                    8000
+                ]
+            }
+        },
+        {
+            "ID": 98,
+            "NAME": {
+                "en": "Marigold",
+                "zh": "金盏花"
+            },
+            "PLANTTYPE": "marigold",
+            "CODENAME": "marigold",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Slow",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "SubPlantList": [
+                "marigold_red",
+                "marigold_orange",
+                "marigold_yellow",
+                "marigold_green",
+                "marigold_blue",
+                "marigold_pink",
+                "marigold_purple"
+            ],
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    }
+                ],
+                "Introduction": {
+                    "en": "Marigolds give you coins over time.",
+                    "zh": "金盏花时常为您生产金币。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
+                }
+            },
+            "objdata": {}
+        },
+        {
+            "ID": 99,
+            "NAME": {
+                "en": "Red Marigold",
+                "zh": "火红金盏花"
+            },
+            "PLANTTYPE": "marigold_red",
+            "CODENAME": "marigold_red",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Fire",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {}
+        },
+        {
+            "ID": 100,
+            "NAME": {
+                "en": "Orange Marigold",
+                "zh": "爆裂金盏花"
+            },
+            "PLANTTYPE": "marigold_orange",
+            "CODENAME": "marigold_orange",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Explosive",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {}
+        },
+        {
+            "ID": 101,
+            "NAME": {
+                "en": "Yellow Marigold",
+                "zh": "耀黄金盏花"
+            },
+            "PLANTTYPE": "marigold_yellow",
+            "CODENAME": "marigold_yellow",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Sun",
+            "TYPE": [
+                "plant",
+                "sunProducer"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {}
+        },
+        {
+            "ID": 102,
+            "NAME": {
+                "en": "Green Marigold",
+                "zh": "豌豆金盏花"
+            },
+            "PLANTTYPE": "marigold_green",
+            "CODENAME": "marigold_green",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Peashooter",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {
+                "PeaCount": 12
+            }
+        },
+        {
+            "ID": 103,
+            "NAME": {
+                "en": "Blue Marigold",
+                "zh": "冰蓝金盏花"
+            },
+            "PLANTTYPE": "marigold_blue",
+            "CODENAME": "marigold_blue",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Cold",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {
+                "FreezeTime": 5
+            }
+        },
+        {
+            "ID": 104,
+            "NAME": {
+                "en": "Pink Marigold",
+                "zh": "魔力金盏花"
+            },
+            "PLANTTYPE": "marigold_pink",
+            "CODENAME": "marigold_pink",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Magic",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {
+                "PlantList": [
+                    "puffshroom",
+                    "fumeshroom",
+                    "scaredyshroom",
+                    "puffshroom",
+                    "fumeshroom",
+                    "scaredyshroom",
+                    "gloomvine",
+                    "hypnoshroom",
+                    "vamporcini"
+                ]
+            }
+        },
+        {
+            "ID": 105,
+            "NAME": {
+                "en": "Purple Marigold",
+                "zh": "紫毒金盏花"
+            },
+            "PLANTTYPE": "marigold_purple",
+            "CODENAME": "marigold_purple",
+            "SUNCOST": 50,
+            "COOLDOWN": 10,
+            "COOLDOWNFROM": 0.5,
+            "FAMILY": "Poison",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "frontyard",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Gives you coins over time",
+                "zh": "时常产生金币"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {
+                "PoisonDPS": 20,
+                "PoisonDuration": 10
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -7280,6 +7718,7 @@
         "melonpult",
         "wintermelon",
         "imitater",
+        "marigold",
         "turnip",
         "peach",
         "laser_bean",
@@ -7343,5 +7782,8 @@
     ],
     "ALMANACHIDDENORDER": [
         "dragonbabybruit"
+    ],
+    "SANDBOXEXCLUDELIST": [
+        "powerplant"
     ]
 }

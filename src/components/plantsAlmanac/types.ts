@@ -16,4 +16,5 @@ export interface Plant {
   plantType: string;
   frameWorld: string;
   special: [Element] | [];
+  subPlants: [string];
 }
