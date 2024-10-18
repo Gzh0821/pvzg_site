@@ -39,7 +39,7 @@ const filteredPlants = ref<Plant[]>([]);
 const selectedPlant = ref<Plant | null>(null);
 
 // 植物展示顺序
-const plantsOrder = plantsJson["SEEDCHOOSERDEFAULTORDER"].concat(plantsJson["ALMANACHIDDENORDER"]);
+const plantsOrder = plantsJson["SEEDCHOOSERDEFAULTORDER"];
 // 选择植物
 const selectPlant = (plant: Plant) => {
     selectedPlant.value = plant;
@@ -90,13 +90,13 @@ const formatOriginPlant = (originPlant: any) => {
     if (originPlant?.["ALMANAC"]?.["Special"]) {
         res.special = originPlant["ALMANAC"]["Special"]
     }
-    if(res.codename.startsWith("marigold_")){
-        const tmp = getPlantByCodename("marigold");
-        res.description = tmp.description;
-        res.chat = tmp.chat;
-        res.elements = tmp.elements;
-        console.log(res);
-    }
+    // if (res.codename.startsWith("marigold_")) {
+    //     const tmp = getPlantByCodename("marigold");
+    //     res.description = tmp.description;
+    //     res.chat = tmp.chat;
+    //     res.elements = tmp.elements;
+    //     console.log(res);
+    // }
     return res;
 };
 const filterPlants = (filter: { name: string; family: string }) => {

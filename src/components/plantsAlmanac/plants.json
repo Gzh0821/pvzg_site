@@ -1807,6 +1807,9 @@
                 "en": "Launches 3 explosive seed pod projectiles at zombies across 3 adjacent lanes",
                 "zh": "向三行的僵尸投掷爆裂子弹"
             },
+            "SubPlantList": [
+                "dragonbabybruit"
+            ],
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -7384,6 +7387,9 @@
                             "en": "Coin Producer",
                             "zh": "生产金币"
                         }
+                    },
+                    {
+                        "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
@@ -7425,20 +7431,38 @@
             "ALMANAC": {
                 "Elements": [
                     {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    },
+                    {
                         "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Red Marigolds give you coins over time, burn when defeated.",
+                    "zh": "火红金盏花时常为您生产金币，被打败时燃烧。"
                 },
                 "Special": [],
                 "Chat": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
                 }
             },
-            "objdata": {}
+            "objdata": {
+                "FireDamage": 150
+            }
         },
         {
             "ID": 100,
@@ -7467,20 +7491,38 @@
             "ALMANAC": {
                 "Elements": [
                     {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    },
+                    {
                         "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Orange Marigolds give you coins over time, explode when defeated.",
+                    "zh": "爆裂金盏花时常为您生产金币，被打败时爆炸。"
                 },
                 "Special": [],
                 "Chat": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
                 }
             },
-            "objdata": {}
+            "objdata": {
+                "ExplodeDamage": 400
+            }
         },
         {
             "ID": 101,
@@ -7510,20 +7552,38 @@
             "ALMANAC": {
                 "Elements": [
                     {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    },
+                    {
                         "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Yellow Marigolds give you coins over time, drop sun when defeated.",
+                    "zh": "耀黄金盏花时常为您生产金币，被打败时掉落阳光。"
                 },
                 "Special": [],
                 "Chat": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
                 }
             },
-            "objdata": {}
+            "objdata": {
+                "SunDropValue": 150
+            }
         },
         {
             "ID": 102,
@@ -7552,17 +7612,33 @@
             "ALMANAC": {
                 "Elements": [
                     {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    },
+                    {
                         "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Green Marigolds give you coins over time, drop sun when defeated.",
+                    "zh": "豌豆金盏花时常为您生产金币，被打败时发射豌豆。"
                 },
                 "Special": [],
                 "Chat": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
                 }
             },
             "objdata": {
@@ -7596,17 +7672,33 @@
             "ALMANAC": {
                 "Elements": [
                     {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    },
+                    {
                         "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Blue Marigolds give you coins over time, freeze nearby zombies when defeated.",
+                    "zh": "冰蓝金盏花时常为您生产金币，被打败时冻结身边僵尸。"
                 },
                 "Special": [],
                 "Chat": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
                 }
             },
             "objdata": {
@@ -7640,17 +7732,33 @@
             "ALMANAC": {
                 "Elements": [
                     {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    },
+                    {
                         "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Pink Marigolds give you coins over time, summon random mushrooms when defeated.",
+                    "zh": "魔力金盏花时常为您生产金币，被打败时召唤随机蘑菇。"
                 },
                 "Special": [],
                 "Chat": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
                 }
             },
             "objdata": {
@@ -7694,17 +7802,33 @@
             "ALMANAC": {
                 "Elements": [
                     {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Coin Producer",
+                            "zh": "生产金币"
+                        }
+                    },
+                    {
                         "TYPE": "FAMILY"
                     }
                 ],
                 "Introduction": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Purple Marigolds give you coins over time, poison nearby zombies when defeated.",
+                    "zh": "紫毒金盏花时常为您生产金币，被打败时使身边僵尸中毒。"
                 },
                 "Special": [],
                 "Chat": {
-                    "en": "",
-                    "zh": ""
+                    "en": "Marigold used to dedicate herself to the Zen lifestyle. She was a team player, and gave it her best there in the garden. But when she heard needed to confront zombies on the lawn again, she said she'd prepared for that!",
+                    "zh": "金盏花曾沉浸生活在禅境花园中。她在那表现得很棒，在花园中尽己所能。当她听到了自己又要面对草坪上的僵尸时，她表示早已做好准备！"
                 }
             },
             "objdata": {
