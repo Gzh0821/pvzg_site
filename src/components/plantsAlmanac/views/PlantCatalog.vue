@@ -54,7 +54,6 @@ const visible = ref({});
 const selectPlant = (plant: Plant, parPlant: Plant | undefined = undefined) => {
     if (parPlant)
         visible.value[parPlant.codename] = false;
-    console.log(visible.value)
     emits('selectPlant', plant);
 };
 

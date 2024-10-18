@@ -89,7 +89,13 @@ const formatOriginPlant = (originPlant: any) => {
     }
     if (originPlant?.["ALMANAC"]?.["Special"]) {
         res.special = originPlant["ALMANAC"]["Special"]
-
+    }
+    if(res.codename.startsWith("marigold_")){
+        const tmp = getPlantByCodename("marigold");
+        res.description = tmp.description;
+        res.chat = tmp.chat;
+        res.elements = tmp.elements;
+        console.log(res);
     }
     return res;
 };
