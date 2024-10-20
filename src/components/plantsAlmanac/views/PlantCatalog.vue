@@ -14,7 +14,9 @@
             <template v-if="plant.subPlants">
                 <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
                     @visible-change="visible[plant.codename] = $event" :overlayInnerStyle="{
-                        border: '3px solid #432b1a', backgroundColor: '#ede5c4', textAlign: 'center'
+                        border: $isDarkmode ? '3px solid #deb991' : '3px solid #432b1a',
+                        backgroundColor: $isDarkmode ? '#383011' : '#ede5c4',
+                        textAlign: 'center'
                     }">
                     <template #content>
                         <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
