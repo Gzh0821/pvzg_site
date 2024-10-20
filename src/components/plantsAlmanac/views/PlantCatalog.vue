@@ -18,7 +18,8 @@
                     }">
                     <template #content>
                         <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
-                            <template v-for="subPlant in plant.subPlants.map(getPlantByCodename)" :key="subPlant.id">
+                            <template v-for="subPlant in plant.subPlants.map((codename) => { return plantMap[codename] })"
+                                :key="subPlant.id">
                                 <a-col @click="selectPlant(subPlant, plant)">
                                     <img :src="'/assets/image/plants/plants_' + subPlant.plantType + '_0.webp'"
                                         :alt="plant.name">
@@ -46,7 +47,7 @@ import type { Plant } from '../types';
 import { ref } from 'vue';
 
 // 定义 props 类型
-const props = defineProps<{ plants: Plant[], getPlantByCodename: (string) => Plant }>();
+const props = defineProps<{ plants: Plant[], plantMap: { [key: string]: Plant } }>();
 
 // 定义 emits
 const emits = defineEmits(['selectPlant']);
