@@ -77,6 +77,11 @@ selectPlant(filteredPlants.value[0]);
     color: #432b1a;
 }
 
+[data-theme="dark"] .filter h1 {
+
+    color: #deb991;
+}
+
 .app {
     text-align: center;
     justify-content: center;
@@ -89,6 +94,11 @@ selectPlant(filteredPlants.value[0]);
     align-items: flex-start;
 }
 
+[data-theme="dark"] .sidebar {
+    border: 5px solid #deb991;
+    background-color: #383011;
+}
+
 .sidebar {
     min-width: 20%;
     background-color: #f8f9fa;
@@ -98,6 +108,11 @@ selectPlant(filteredPlants.value[0]);
     border-radius: 20px;
     border: 5px solid #432b1a;
     background-color: #ede5c4;
+}
+
+[data-theme="dark"] .filter {
+    border: 5px solid #deb991;
+    background-color: #383011;
 }
 
 .filter {

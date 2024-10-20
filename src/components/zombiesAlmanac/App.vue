@@ -133,6 +133,11 @@ selectZombie(filteredZombies.value[0]);
     color: #432b1a;
 }
 
+[data-theme="dark"] .filter h1 {
+
+    color: #deb991;
+}
+
 .app {
     text-align: center;
     justify-content: center;
@@ -145,9 +150,13 @@ selectZombie(filteredZombies.value[0]);
     align-items: flex-start;
 }
 
+[data-theme="dark"] .sidebar {
+    border: 5px solid #deb991;
+    background-color: #383011;
+}
+
 .sidebar {
     min-width: 20%;
-    background-color: #f8f9fa;
     max-height: 65vh;
     min-height: 10rem;
     overflow-y: auto;
@@ -156,9 +165,13 @@ selectZombie(filteredZombies.value[0]);
     background-color: #ede5c4;
 }
 
+[data-theme="dark"] .filter {
+    border: 5px solid #deb991;
+    background-color: #383011;
+}
+
 .filter {
     min-width: 100%;
-    background-color: #f8f9fa;
     overflow-y: auto;
     border-radius: 20px;
     border: 5px solid #432b1a;

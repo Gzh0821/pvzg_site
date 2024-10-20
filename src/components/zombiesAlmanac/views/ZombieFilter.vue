@@ -70,6 +70,10 @@ const placeholder = computed(() => {
     gap: 5px;
 }
 
+[data-theme="dark"] .filter-family-group img {
+    opacity: 0.3;
+}
+
 .filter-family-group img {
     width: 40px;
     height: auto;
@@ -93,6 +97,12 @@ const placeholder = computed(() => {
 .filter-family-option {
     cursor: pointer;
     text-align: center;
+}
+
+[data-theme="dark"] .zombie-filter input {
+    color: white;
+    border: 2px solid #deb991;
+    background-color: #1b1b1f;
 }
 
 .zombie-filter input {
@@ -133,6 +143,10 @@ const placeholder = computed(() => {
     background-color: #fff;
     color: #333;
     padding: 10px;
+}
+
+[data-theme="dark"] .zombie-filter label {
+    color: #deb991;
 }
 
 .zombie-filter label {

@@ -18,7 +18,8 @@
                     }">
                     <template #content>
                         <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
-                            <template v-for="subPlant in plant.subPlants.map((codename) => { return plantMap[codename] })"
+                            <template
+                                v-for="subPlant in plant.subPlants.map((codename) => { return plantMap[codename] })"
                                 :key="subPlant.id">
                                 <a-col @click="selectPlant(subPlant, plant)">
                                     <img :src="'/assets/image/plants/plants_' + subPlant.plantType + '_0.webp'"
@@ -93,6 +94,10 @@ const selectPlant = (plant: Plant, parPlant: Plant | undefined = undefined) => {
     left: 0;
     z-index: 1;
 }*/
+[data-theme="dark"] p {
+    color: #deb991;
+}
+
 p {
     line-height: 1em;
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";

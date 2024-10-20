@@ -65,7 +65,9 @@ const selectZombie = (zombie: Zombie) => {
     left: 0;
     z-index: 1;
 }*/
-
+[data-theme="dark"] p {
+    color: #deb991;
+}
 
 p {
     line-height: 1em;

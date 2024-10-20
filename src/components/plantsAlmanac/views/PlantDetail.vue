@@ -73,6 +73,12 @@ h3 {
     font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
 }
 
+[data-theme="dark"] .details-container {
+    background-color: #4d3b29;
+    border: 2px solid rgba(206, 206, 214, 0.8);
+    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px;
+}
+
 .details-container {
     display: flex;
     padding: 2%;
@@ -105,6 +111,10 @@ h3 {
     left: 0;
     z-index: 1;
 } */
+[data-theme="dark"] .plant-image {
+    background-color: #383011;
+    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px;
+}
 
 .plant-image {
     display: flex;
@@ -139,6 +149,11 @@ h3 {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px
 }
 
+[data-theme="dark"] .plant-stats {
+    background-color: #383011;
+    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px
+}
+
 .plant-stats {
     display: flex;
     flex-direction: column;
@@ -148,6 +163,11 @@ h3 {
     background-color: #ede5c4;
     box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px
         /* 隐藏超出部分 */
+}
+
+[data-theme="dark"] .plant-introduction {
+    background-color: #383011;
+    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px
 }
 
 .plant-introduction {
@@ -204,6 +224,10 @@ table tbody td.value {
 .ability {
     color: #80ea4c;
     font-weight: bold;
+}
+
+[data-theme="dark"] p.description {
+    color: #e2b000;
 }
 
 p.description {
