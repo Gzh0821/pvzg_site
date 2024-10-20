@@ -9,23 +9,23 @@
         </div>
         <div class="container">
             <div class="sidebar">
-                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" :getPlantByCodename />
+                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" :plantMap />
             </div>
             <div class="content">
-                <PlantDetail v-if="selectedPlant" :keyMap="keyMap" :plant="selectedPlant" />
+                <PlantDetail v-if="selectedPlant" :keyMap :plant="selectedPlant" />
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted, inject } from 'vue';
+import { ref, inject } from 'vue';
 import PlantCatalog from './views/PlantCatalog.vue';
 import PlantDetail from './views/PlantDetail.vue';
 import PlantFilter from './views/PlantFilter.vue';
 import type { Plant, KeyMap } from './types';
 
-import plantsJson from './plants.json';
+import { getPlantMap, plantsOrder } from './formatPlants';
 import i18nJson from './i18n.json';
 
 // 中文转换
@@ -35,63 +35,15 @@ const i18nLanguage = inject('i18nLanguage', 'zh');
 
 // 定义响应式状态
 const plants = ref<Plant[]>([]);
+const plantMap = getPlantMap(i18nLanguage);
+
 const filteredPlants = ref<Plant[]>([]);
 const selectedPlant = ref<Plant | null>(null);
-
-// 植物展示顺序
-const plantsOrder = plantsJson["SEEDCHOOSERDEFAULTORDER"];
 // 选择植物
 const selectPlant = (plant: Plant) => {
     selectedPlant.value = plant;
 };
-// 边框样式
-const frameMap = {
-    'water': 'beach',
-    'market': 'prenium',
-};
-const formatOriginPlant = (originPlant: any) => {
-    // 从原始数据中提取需要的字段并整理
-    const res: Plant = {
-        elements: {},
-        special: [],
-        enFamily: '',
-        id: originPlant["ID"],
-        plantType: originPlant["PLANTTYPE"],
-        codename: originPlant["CODENAME"],
-        name: originPlant["NAME"]?.[i18nLanguage],
-        enName: originPlant["NAME"]?.["en"],
-        frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],
-        description: originPlant["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
-        chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage],
-        subPlants: originPlant["SubPlantList"]
-    };
-    if (originPlant?.["ALMANAC"]?.["Elements"]) {
-        originPlant["ALMANAC"]["Elements"].forEach((element) => {
-            // 找到对应的值
-            const { TYPE, SORT, VALUE } = element;
 
-            let value;
-            if (SORT && SORT[i18nLanguage]) {
-                value = SORT[i18nLanguage]; // 有 SORT 时，取 SORT
-            } else if (VALUE) {
-                value = VALUE; // 没有 SORT 时，取 VALUE
-            } else if (TYPE == "RECHARGE") {
-                value = originPlant["COOLDOWN"]
-            } else if (TYPE == "FAMILY") {
-                value = familyNameMap[originPlant[TYPE]][i18nLanguage];
-                res.enFamily = familyNameMap[originPlant[TYPE]]['en'];
-            }
-            else {
-                value = originPlant[TYPE]; // 只有 TYPE 时，从原始数据中查找
-            }
-            res.elements[TYPE] = value;
-        });
-    }
-    if (originPlant?.["ALMANAC"]?.["Special"]) {
-        res.special = originPlant["ALMANAC"]["Special"]
-    }
-    return res;
-};
 const filterPlants = (filter: { name: string; family: string }) => {
     const { name, family } = filter;
 
@@ -101,21 +53,17 @@ const filterPlants = (filter: { name: string; family: string }) => {
             plant.enName.toLowerCase().includes(name.toLowerCase()) ||
             plant.plantType.toLowerCase().includes(name.toLowerCase());
 
-        // 根据属性筛选（这里可以自定义属性逻辑）
+        // 根据属性筛选
         const matchAttribute = family == '' || plant.enFamily == family ||
             (family == 'None' && plant.enFamily == '');
 
         return matchName && matchAttribute;
     });
 };
-const getPlantByCodename = (codename: string) => {
-    const res = plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename)
-    return formatOriginPlant(res);
-};
 
 
 plants.value = plantsOrder.map((codename) => {
-    return formatOriginPlant(plantsJson["PLANTS"].find((item) => item["CODENAME"] == codename));
+    return plantMap[codename];
 });
 filteredPlants.value = plants.value;
 selectPlant(filteredPlants.value[0]);
