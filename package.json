@@ -11,17 +11,18 @@
     "docs:update-package": "pnpm dlx vp-update"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.17",
-    "@vuepress/plugin-redirect": "2.0.0-rc.52",
+    "@vuepress/bundler-vite": "2.0.0-rc.18",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.57",
+    "@vuepress/plugin-redirect": "2.0.0-rc.57",
     "vue": "^3.5.12",
-    "vuepress": "2.0.0-rc.17",
+    "vuepress": "2.0.0-rc.18",
     "vuepress-plugin-search-pro": "2.0.0-rc.57",
-    "vuepress-theme-hope": "2.0.0-rc.58"
+    "vuepress-theme-hope": "2.0.0-rc.59"
   },
   "dependencies": {
-    "@vuepress/plugin-watermark": "2.0.0-rc.52",
+    "@vuepress/plugin-watermark": "2.0.0-rc.57",
     "ant-design-vue": "~4.2.5",
     "axios": "^1.7.7"
   },
-  "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
 }
