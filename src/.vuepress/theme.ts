@@ -113,7 +113,11 @@ export default hopeTheme({
       categoryId: "DIC_kwDOMVGuyM4ChC2W",
     },
 
-    searchPro: true,
+    docsearch: {
+      apiKey: "c26b5af40e8291b3dac90fd8682c3d18",
+      indexName: "pvzge",
+      appId: "F8XF44AIE6",
+    },
     components: {
       components: ["Badge", "BiliBili", "VPCard", "VidStack",],
     },
