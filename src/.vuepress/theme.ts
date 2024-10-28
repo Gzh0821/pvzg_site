@@ -114,7 +114,7 @@ export default hopeTheme({
     },
 
     docsearch: {
-      apiKey: "c26b5af40e8291b3dac90fd8682c3d18",
+      apiKey: "f1d18929d11103995bfbdf406605349a",
       indexName: "pvzge",
       appId: "F8XF44AIE6",
     },
