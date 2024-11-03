@@ -183,6 +183,8 @@ This field contains the following:
 "Information": {
   // Level UUID
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
+  // Level name
+  "name": "SampleLevel I",
   // Level author
   "Author": "LMYY",
   // Optional, author link
