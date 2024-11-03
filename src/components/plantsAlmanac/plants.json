@@ -3553,7 +3553,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "modern",
+            "OBTAINWORLD": "",
             "TOUGHNESS": 300,
             "BRIEFINTRODUCTION": {
                 "en": "Launches an explosive seed pod projectile at zombies",
@@ -7835,6 +7835,151 @@
                 "PoisonDPS": 20,
                 "PoisonDuration": 10
             }
+        },
+        {
+            "ID": 106,
+            "NAME": {
+                "en": "Apple Mortar",
+                "zh": "苹果迫击炮"
+            },
+            "PLANTTYPE": "applemortar",
+            "CODENAME": "applemortar",
+            "SUNCOST": 250,
+            "COOLDOWN": 8,
+            "COOLDOWNFROM": 1.25,
+            "FAMILY": "Lobber",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "market",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Lobs stunning cores down three lanes",
+                "zh": "向三行投射眩晕的苹果核"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 30
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Stun",
+                            "zh": "眩晕"
+                        }
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Multi-Lane",
+                            "zh": "多行"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Apple Mortars lob apple cores that damage and briefly stun zombies over three lanes.",
+                    "zh": "苹果迫击炮向邻近三行发射有轻微眩晕效果的苹果核子弹。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Apple Mortar stuns three zombies dead in their tracks. SPAF! That'll show 'em! That'll show ALL of them!",
+                    "zh": "苹果迫击炮让三个僵尸死死的定在原地。啪！这就是杀鸡儆猴！让别的僵尸好好看清楚我的威力！"
+                }
+            },
+            "objdata": {
+                "ShootInterval": 1.75,
+                "ShootIntervalAdditional": 0.25,
+                "StunDuration": 0.75,
+                "StunDurationPF": 1
+            }
+        },
+        {
+            "ID": 107,
+            "NAME": {
+                "en": "Red Stinger",
+                "zh": "红针花"
+            },
+            "PLANTTYPE": "redstinger",
+            "CODENAME": "redstinger",
+            "SUNCOST": 150,
+            "COOLDOWN": 5,
+            "COOLDOWNFROM": 1,
+            "FAMILY": "Peashooter",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "lostcity",
+            "TOUGHNESS": 300,
+            "BRIEFINTRODUCTION": {
+                "en": "Fires shots at full force when close to home and becomes more defensive further from it",
+                "zh": "离草坪左侧越远，攻击力越低，同时防御力越高"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 15
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Straight",
+                            "zh": "直线"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Red Stingers fire shots at full force when close to home, and become more defensive further from it.",
+                    "zh": "红针花靠近草坪左侧时集中火力发射子弹，远离则会提升防御力，降低火力。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Flexibility is of key importance to Red Stinger. \"I do stretching exercises every morning,\" he says. \"It's important to stay physically and mentally nimble.\"",
+                    "zh": "柔韧性对于红针花来说是非常重要的。“我每天早上都作拉伸练习，”他说。“这对精神与肉体时刻保持灵敏反应十分重要。”"
+                }
+            },
+            "objdata": {
+                "ShootInterval": 1.75,
+                "ShootIntervalAdditional": 0.25,
+                "DamageScale0": 1,
+                "DamageScale1": 0.3333333,
+                "DamageScale2": 0.2,
+                "PFDuration": 5,
+                "PFDPS": 138,
+                "ProjectileDamage": 20
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -7900,6 +8045,7 @@
         "hurrikale",
         "xshot",
         "dandelion",
+        "redstinger",
         "stallia",
         "celerystalker",
         "cactus",
@@ -7914,6 +8060,7 @@
         "escaperoot",
         "electriccurrant",
         "explodeonut",
+        "applemortar",
         "parsnip",
         "missiletoe",
         "solartomato",
