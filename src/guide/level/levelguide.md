@@ -180,6 +180,8 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
 "Information": {
   // 关卡的UUID
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
+  // 关卡名称
+  "name": "SampleLevel I",
   // 关卡的作者
   "Author": "LMYY",
   // 可选，作者的链接
