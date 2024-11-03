@@ -188,7 +188,10 @@ This field contains the following:
   // Optional, author link
   "AuthorLink": "https://github.com/Gzh0821",
   // Level description
-  "Introduction": "A level that is easy to play, but hard to win.",
+  "Introduction": {
+      "en": "This is a sample level.",
+      "zh-CN": "这是一个示例关卡。"
+  },
   // Level version
   "Version": "1.0",
   // Level creation time
