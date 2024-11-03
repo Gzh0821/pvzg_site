@@ -6,6 +6,7 @@ pageInfo: false
 comment: false
 order: 1
 ---
+
 > [!info]
 > 前往[自定义关卡](/custom-level/)页面下载示例关卡文件！
 
@@ -184,7 +185,10 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
   // 可选，作者的链接
   "AuthorLink": "https://github.com/Gzh0821",
   // 关卡的描述
-  "Introduction": "A level that is easy to play, but hard to win.",
+  "Introduction": {
+      "en": "This is a sample level.",
+      "zh-CN": "这是一个示例关卡。"
+  },
   // 关卡的版本
   "Version": "1.0",
   // 关卡的创建时间
