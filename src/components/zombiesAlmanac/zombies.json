@@ -1043,6 +1043,20 @@
       }
     },
     {
+      "NAME": "Chi Zombie",
+      "ZOMBIETYPE": "kongfuchi",
+      "CODENAME": "kongfu_chi",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 250,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "kongfu",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "ChiInterval": 7,
+        "ChiIntervalStart": 4
+      }
+    },
+    {
       "NAME": "Monk Zombie",
       "ZOMBIETYPE": "monkbasic",
       "CODENAME": "monk",
@@ -1112,6 +1126,19 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Blade Monk Zombie",
+      "ZOMBIETYPE": "monkblade",
+      "CODENAME": "monk_blade",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 1500,
+      "OBTAINWORLD": "kongfu",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "BladeDamage": 250
       }
     },
     {
