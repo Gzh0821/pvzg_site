@@ -51,7 +51,7 @@ const filterPlants = (filter: { name: string; family: string }) => {
         // 根据名称筛选
         const matchName = plant.name.toLowerCase().includes(name.toLowerCase()) ||
             plant.enName.toLowerCase().includes(name.toLowerCase()) ||
-            plant.plantType.toLowerCase().includes(name.toLowerCase());
+            plant.codename.toLowerCase().includes(name.toLowerCase());
 
         // 根据属性筛选
         const matchAttribute = family == '' || plant.enFamily == family ||

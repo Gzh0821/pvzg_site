@@ -26,7 +26,7 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
         special: [],
         enFamily: '',
         id: originPlant["ID"],
-        plantType: originPlant["PLANTTYPE"],
+        plantType: originPlant["_CARDSPRITENAME"],
         codename: originPlant["CODENAME"],
         name: originPlant["NAME"]?.[i18nLanguage],
         enName: originPlant["NAME"]?.["en"],
