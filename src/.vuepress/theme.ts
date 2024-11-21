@@ -13,8 +13,11 @@ export default hopeTheme({
 
   license: "Apache 2.0",
 
-  iconAssets: "fontawesome-with-brands",
+  iconAssets: ["https://cdn.bootcdn.net/ajax/libs/font-awesome/6.6.0/css/all.min.css",
+    "fontawesome"
+  ],
 
+  iconPrefix: "fas fa-",
   favicon: "/favicon.ico",
 
   logo: "pvzg_nav.webp",
