@@ -13,8 +13,8 @@ export default hopeTheme({
 
   license: "Apache 2.0",
 
-  iconAssets: ["https://cdn.bootcdn.net/ajax/libs/font-awesome/6.6.0/css/all.min.css",
-    "fontawesome"
+  iconAssets: ["https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.0/css/all.min.css",
+    "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.0/css/all.min.css"
   ],
 
   iconPrefix: "fas fa-",
