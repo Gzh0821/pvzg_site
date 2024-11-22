@@ -13,7 +13,7 @@ export default hopeTheme({
 
   license: "Apache 2.0",
 
-  iconAssets: ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"],
+  iconAssets: ["/assets/libs/font-awesome/css/all.min.css"],
 
   iconPrefix: "fas fa-",
   favicon: "/favicon.ico",
