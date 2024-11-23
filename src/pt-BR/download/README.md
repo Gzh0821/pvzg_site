@@ -13,20 +13,7 @@ category:
 
 <script setup>
 import axios from 'axios';
-import { ref, onBeforeMount } from 'vue'
-
-// const dataFormat = {
-//     "Version": "",
-//     "InsideVersion": "",
-//     "Download": {
-//         "Baidu": "",
-//         "Pan123": "",
-//         "Quark": "",
-//         "Github": "",
-//         "Onedrive": "",
-//         "OnedriveOrigin": ""
-//     }
-// }
+import { ref, onBeforeMount, onMounted } from 'vue'
 
 const gameInfoData = ref(null);
 
@@ -35,7 +22,9 @@ onBeforeMount(() => {
     gameInfoData.value = res.data;
   })
 })
-
+onMounted(() => {
+  (adsbygoogle = window.adsbygoogle || []).push({});
+})
 </script>
 
 > [!important]
@@ -50,14 +39,6 @@ onBeforeMount(() => {
 > - Disclaimer and Copyright Notice for "PvZ2 Gardendless"
 >
 > For the details of the above agreement and statement, please see [here](../instructions/)
-
-<!-- 当前游戏有两种游玩方式：
-
-- 下载游戏客户端压缩包游玩，仅支持 `Windows 10/11`系统。
-- 在线游玩：[点击进入](https://pvz2-test.gaozih.com)
-
-> [!info]
-> 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。 -->
 
 This site only provides the latest official version download link<span v-if="gameInfoData?.Version">, The latest game version is {{ gameInfoData.Version }}</span>.
 
@@ -77,6 +58,14 @@ This site only provides the latest official version download link<span v-if="gam
 
 <template v-else>None</template>
 
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7637695321442015"
+     data-ad-slot="7113006248"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>
+
 <template v-if="gameInfoData?.Download.Github">
 
 ## Github <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
@@ -90,22 +79,6 @@ Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
 ## Onedrive Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
 
 Download Link: <a :href="gameInfoData.Download.Onedrive">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Mega">
-
-## MEGA Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
-
-Download Link: <a :href="gameInfoData.Download.Mega">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.TmpLink">
-
-## TmpLink <Badge text="Only in Chinese" type="danger" /><Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" />
-
-Download Link: <a :href="gameInfoData.Download.TmpLink">click to enter</a>
 
 </template>
 
@@ -130,13 +103,5 @@ Download Link: <a :href="gameInfoData.Download.Pan123">click to enter</a>
 ## Quark <Badge text="Only in Chinese" type="danger" />
 
 Download Link: <a :href="gameInfoData.Download.Quark">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Feijipan">
-
-## LittlePlane <Badge text="Only in Chinese" type="danger" /><Badge text="No login required" type="info" />
-
-Download Link: <a :href="gameInfoData.Download.Feijipan">click to enter</a>
 
 </template>
