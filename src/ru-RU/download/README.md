@@ -13,20 +13,7 @@ category:
 
 <script setup>
 import axios from 'axios';
-import { ref, onBeforeMount } from 'vue'
-
-// const dataFormat = {
-//     "Version": "",
-//     "InsideVersion": "",
-//     "Download": {
-//         "Baidu": "",
-//         "Pan123": "",
-//         "Quark": "",
-//         "Github": "",
-//         "Onedrive": "",
-//         "OnedriveOrigin": ""
-//     }
-// }
+import { ref, onBeforeMount, onMounted } from 'vue'
 
 const gameInfoData = ref(null);
 
@@ -35,7 +22,9 @@ onBeforeMount(() => {
     gameInfoData.value = res.data;
   })
 })
-
+onMounted(() => {
+  (adsbygoogle = window.adsbygoogle || []).push({});
+})
 </script>
 
 > [!important]
@@ -50,14 +39,6 @@ onBeforeMount(() => {
 > - Отказ от ответственности и уведомление об авторских правах для "PvZ2 Gardendless"
 >
 > Для получения подробной информации о вышеуказанном соглашении и заявлении, пожалуйста, ознакомьтесь с [этим](../instructions/)
-
-<!-- 当前游戏有两种游玩方式：
-
-- 下载游戏客户端压缩包游玩，仅支持 `Windows 10/11`系统。
-- 在线游玩：[点击进入](https://pvz2-test.gaozih.com)
-
-> [!info]
-> 由于游戏资源文件较多，在线游玩可能会有加载速度较慢及卡顿现象，若需要快速加载，请选择下载游戏客户端压缩包游玩。 -->
 
 Этот сайт предоставляет ссылку для скачивания только последней официальной версии<span v-if="gameInfoData?.Version">, Последняя версия игры - это {{ gameInfoData.Version }}</span>.
 
@@ -77,6 +58,14 @@ onBeforeMount(() => {
 
 <template v-else>None</template>
 
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7637695321442015"
+     data-ad-slot="7113006248"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>
+
 <template v-if="gameInfoData?.Download.Github">
 
 ## Github <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
@@ -90,22 +79,6 @@ onBeforeMount(() => {
 ## Ссылка Onedrive <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Onedrive">нажмите чтобы открыть</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Mega">
-
-## Cсылка MEGA <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
-
-Ссылка для скачивания: <a :href="gameInfoData.Download.Mega">нажмите чтобы открыть</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.TmpLink">
-
-## TmpLink <Badge text="Только в Китае" type="danger" /><Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" />
-
-Ссылка для скачивание: <a :href="gameInfoData.Download.TmpLink">нажмите чтобы открыть</a>
 
 </template>
 
@@ -130,13 +103,5 @@ onBeforeMount(() => {
 ## Quark <Badge text="Только в Китае" type="danger" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Quark">нажмите чтобы открыть</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Feijipan">
-
-## LittlePlane <Badge text="Только в Китае" type="danger" /><Badge text="не требует входа" type="info" />
-
-Ссылка для скачивания: <a :href="gameInfoData.Download.Feijipan">нажмите чтобы открыть</a>
 
 </template>

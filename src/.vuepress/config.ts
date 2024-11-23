@@ -11,7 +11,6 @@ export default defineUserConfig({
       async: true, crossorigin: 'anonymous'
     }],
     ['meta', { name: 'google-adsense-account', content: 'ca-pub-7637695321442015' }],
-    ['link', { rel: 'stylesheet', href: '/styles/custom.css' }],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
     [
       "link",
