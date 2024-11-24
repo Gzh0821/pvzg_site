@@ -56,7 +56,7 @@ const formatOriginZombie = (originZombie: any) => {
         special: [],
         enFamily: '',
         id: originZombie["ID"],
-        zombieType: originZombie["ZOMBIETYPE"],
+        zombieType: originZombie["_CARDSPRITENAME"],
         codename: originZombie["CODENAME"],
         // zombie没有i18n，暂时只取name值
         // name: originPlant["NAME"]?.[i18nLanguage],
