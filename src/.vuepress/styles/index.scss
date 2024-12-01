@@ -1,4 +1,6 @@
 // place your custom styles here
+@use 'sass:math';
+
 @font-face {
     font-family: 'pvzgeFontEN';
     src: url('/fonts/FBU-ENGRU.woff2') format('woff2');
@@ -39,4 +41,19 @@
 .youtube-video {
     margin: 8px 0;
     border-radius: 8px;
+}
+
+// For Christmas
+
+
+.vp-navbar {
+    background: linear-gradient(to bottom, #a9dff7, #ffffff);
+}
+
+[data-theme="dark"] .vp-navbar {
+    background: linear-gradient(to bottom, #1a237e, #4a148c);
+}
+
+.vp-navbar::before {
+    content: "❄";
 }
