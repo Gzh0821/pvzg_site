@@ -133,7 +133,7 @@
     {
       "NAME": "All-Star Zombie",
       "_CARDSPRITENAME": "allstar",
-      "CODENAME": "allstar",
+      "CODENAME": "modern_allstar",
       "SUNCOST": 100,
       "WAVEPOINTCOST": 1500,
       "WEIGHT": 3500,
@@ -1496,6 +1496,117 @@
       "SUNCOST": 100,
       "WAVEPOINTCOST": 450,
       "WEIGHT": 3500,
+      "OBTAINWORLD": "dark",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Wizard Zombie",
+      "_CARDSPRITENAME": "darkwizard",
+      "CODENAME": "dark_wizard",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 800,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "dark",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "TimeBeforeFirst": 7,
+        "TimeBeforeFirstAdditional": 2,
+        "TimeBetween": 11,
+        "TimeBetweenAdditional": 3
+      }
+    },
+    {
+      "NAME": "Master Enchanter Zombie",
+      "_CARDSPRITENAME": "darkwizardveteran",
+      "CODENAME": "dark_wizard_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1200,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "dark",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "TimeBeforeFirst": 7,
+        "TimeBeforeFirstAdditional": 2,
+        "TimeBetween": 4,
+        "TimeBetweenAdditional": 1
+      }
+    },
+    {
+      "NAME": "Zombie King",
+      "_CARDSPRITENAME": "darkking",
+      "CODENAME": "dark_king",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 750,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "dark",
+      "objdata": {
+        "CannotBeTossedByCitron": true,
+        "PlantablePlants": [
+          "cherry_bomb",
+          "jalapeno",
+          "powerlily",
+          "iceburg",
+          "empea",
+          "powerplant",
+          "goldleaf",
+          "grapeshot"
+        ],
+        "KnightingAreaW": 4,
+        "DelayBetweenKnightings": 2.5,
+        "ValidKnightTargets": [
+          "dark",
+          "dark_armor1",
+          "dark_armor2",
+          "dark_armor3"
+        ]
+      }
+    },
+    {
+      "NAME": "Arthur King Zombie",
+      "_CARDSPRITENAME": "darkkingveteran",
+      "CODENAME": "dark_king_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1000,
+      "WEIGHT": 1800,
+      "OBTAINWORLD": "dark",
+      "objdata": {
+        "CannotBeTossedByCitron": true,
+        "PlantablePlants": [
+          "cherry_bomb",
+          "jalapeno",
+          "powerlily",
+          "iceburg",
+          "empea",
+          "powerplant",
+          "goldleaf",
+          "grapeshot"
+        ],
+        "KnightingAreaW": 2,
+        "DelayBetweenKnightings": 2.5,
+        "ValidKnightTargets": [
+          "zombossmech_egypt",
+          "zombossmech_egypt2",
+          "zombossmech_pirate",
+          "zombossmech_pirate2",
+          "zombossmech_cowboy",
+          "zombossmech_cowboy2",
+          "zombossmech_future",
+          "zombossmech_future2",
+          "dark_king",
+          "dark_king_veteran"
+        ],
+        "TargetListBecomesBlackList": true
+      }
+    },
+    {
+      "NAME": "Imp Dragon Zombie",
+      "_CARDSPRITENAME": "darkdragonimp",
+      "CODENAME": "dark_imp_dragon",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false

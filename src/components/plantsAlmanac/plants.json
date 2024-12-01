@@ -987,6 +987,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "CannotBePushedByFootballMech": true,
                 "BustTime": 4
             }
@@ -1187,6 +1188,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "ToughnessPlantfooded": 900,
                 "MoveToPosTime": 2.5
             }
@@ -1756,7 +1758,9 @@
                     "zh": "没多少人知道，莲叶真的很喜欢跳方块舞，我是指，在一个方块里跳舞。你看他又开始了，那株圆形的植物在方格舞池上滑行，把他自己变成方形。他很喜欢被方框压着边缘的感觉，能让他感到脱离了“单调的圈子”。"
                 }
             },
-            "objdata": {}
+            "objdata": {
+                "CannotBeSheepenedByWizard": true
+            }
         },
         {
             "ID": 24,
@@ -2818,6 +2822,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "BlowDuration": 3
             }
         },
@@ -3616,6 +3621,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "Damage": 1800
             }
         },
@@ -3689,6 +3695,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "Damage": 1800,
                 "TileCrackleDuration": 180
             }
@@ -3760,6 +3767,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "DPS": 3000,
                 "Velocity": 15
             }
@@ -4030,6 +4038,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "Damage": 1800,
                 "Duration": 5
             }
@@ -4517,6 +4526,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "ProduceCount": 1
             }
         },
@@ -5177,6 +5187,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "PushDuration": 3
             }
         },
@@ -5930,6 +5941,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "Damage": 1800
             }
         },
@@ -6625,7 +6637,9 @@
                     "zh": "变身茄子在法国进修过表演艺术，在街头表演中完善了他的最新节目“关在盒子里的茄子”。"
                 }
             },
-            "objdata": {}
+            "objdata": {
+                "CannotBeSheepenedByWizard": true
+            }
         },
         {
             "ID": 84,
@@ -6940,6 +6954,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "StunDuration": 10
             }
         },
@@ -7162,6 +7177,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "StunDuration": 8,
                 "SunValuePerZombie": 50
             }
@@ -7236,6 +7252,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "SunCostList": [
                     0,
                     250,
@@ -7317,6 +7334,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "SunCostList": [
                     0,
                     250,
@@ -7398,6 +7416,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "SunCostList": [
                     0,
                     250,
@@ -7479,6 +7498,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "SunCostList": [
                     0,
                     250,
@@ -7560,6 +7580,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "SunCostList": [
                     0,
                     250,
@@ -7720,6 +7741,7 @@
                 }
             },
             "objdata": {
+                "CannotBeSheepenedByWizard": true,
                 "SunCostList": [
                     0,
                     250,
@@ -8500,7 +8522,8 @@
             "COOLDOWNFROM": 0.75,
             "FAMILY": "Sun",
             "TYPE": [
-                "fly"
+                "plant",
+                "sunProducer"
             ],
             "OBTAINWORLD": "dark",
             "TOUGHNESS": 50,
@@ -8542,6 +8565,75 @@
             },
             "objdata": {
                 "SunPerHitpoint": 0.2
+            }
+        },
+        {
+            "ID": 110,
+            "NAME": {
+                "en": "Pea-nut",
+                "zh": "花生"
+            },
+            "_CARDSPRITENAME": "peanut",
+            "CODENAME": "peanut",
+            "SUNCOST": 150,
+            "COOLDOWN": 15,
+            "COOLDOWNFROM": 1,
+            "FAMILY": "Defence",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "market",
+            "TOUGHNESS": 4000,
+            "BRIEFINTRODUCTION": {
+                "en": "Shoots peanuts and blocks zombies",
+                "zh": "阻挡僵尸并发射花生"
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 20
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Straight",
+                            "zh": "直线"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Pea-nuts can shoot peanuts and block zombies.",
+                    "zh": "花生抵挡僵尸，并发射花生子弹。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Pea-nut knows that some folks have an aversion to him. He tries to be sensitive to their concerns and give them the space they need. Still, he can't help but miss the good old days - back when he was the most popular nut around.",
+                    "zh": "花生射手知道有些人对他挺“过敏”。他试着了解他们的顾虑，并且给予对方足够的空间。即便如此，他仍然会情不自禁地怀念以前的时光——回到那个人人爱花生的时代。"
+                }
+            },
+            "objdata": {
+                "ShootInterval": 1.35,
+                "ShootIntervalAdditional": 0.15,
+                "ShootIntervalSemi": 2.7,
+                "ShootIntervalSemiAdditional": 0.15,
+                "ArmorToughness": 4000,
+                "PlantfoodPeaCount": 60
             }
         }
     ],
@@ -8595,6 +8687,7 @@
         "puffshroom",
         "fumeshroom",
         "sunbean",
+        "peanut",
         "magnetshroom",
         "scaredyshroom",
         "plantern",
@@ -8649,5 +8742,117 @@
     ],
     "SANDBOXEXCLUDELIST": [
         "powerplant"
+    ],
+    "SANDBOX": [
+        "peashooter",
+        "sunflower",
+        "wallnut",
+        "potatomine",
+        "cabbagepult",
+        "bloomerang",
+        "iceburg",
+        "gravebuster",
+        "bonkchoy",
+        "repeater",
+        "twinsunflower",
+        "snowpea",
+        "kernelpult",
+        "snapdragon",
+        "spikeweed",
+        "spikerock",
+        "springbean",
+        "threepeater",
+        "coconutcannon",
+        "cherry_bomb",
+        "powerlily",
+        "splitpea",
+        "chilibean",
+        "lightningreed",
+        "tallnut",
+        "peapod",
+        "melonpult",
+        "wintermelon",
+        "squash",
+        "jalapeno",
+        "torchwood",
+        "imitater",
+        "marigold",
+        "marigold_red",
+        "marigold_orange",
+        "marigold_yellow",
+        "marigold_green",
+        "marigold_blue",
+        "marigold_pink",
+        "marigold_purple",
+        "turnip",
+        "peach",
+        "laser_bean",
+        "blover",
+        "empea",
+        "citron",
+        "holonut",
+        "magnifyinggrass",
+        "powerplant_alpha",
+        "powerplant_beta",
+        "powerplant_gamma",
+        "powerplant_delta",
+        "powerplant_epsilon",
+        "starfruit",
+        "shootingstarfruit",
+        "sunshroom",
+        "puffshroom",
+        "fumeshroom",
+        "sunbean",
+        "magnetshroom",
+        "scaredyshroom",
+        "peanut",
+        "hypnoshroom",
+        "glaciershroom",
+        "doomshroom",
+        "lilypad",
+        "banana",
+        "chomper",
+        "sapfling",
+        "homingthistle",
+        "chardguard",
+        "xshot",
+        "firepeashooter",
+        "hurrikale",
+        "redstinger",
+        "stallia",
+        "skyshooter",
+        "floawerPot",
+        "celerystalker",
+        "cactus",
+        "primalpeashooter",
+        "primalwallnut",
+        "primalpotatomine",
+        "grapeshot",
+        "moonflower",
+        "shadowshroom",
+        "escaperoot",
+        "electricpeashooter",
+        "pumpkin",
+        "pvine",
+        "gloomvine",
+        "gloomshroom",
+        "dragonbruit",
+        "dragonbabybruit",
+        "meteorflower",
+        "umbrellaleaf",
+        "buttercup",
+        "missiletoe",
+        "cranjelly",
+        "vamporcini",
+        "parsnip",
+        "explodeonut",
+        "plantern",
+        "jackolantern",
+        "dandelion",
+        "electriccurrant",
+        "solartomato",
+        "applemortar",
+        "gatling",
+        "megagatling"
     ]
 }
