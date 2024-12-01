@@ -9,7 +9,7 @@ toc: false
 
 > [!info]
 > 点击侧边栏的选项可以切换到对应的图鉴页面。
-> 
+>
 > 在自定义关卡文件中，植物和僵尸均使用`CodeName`作为名称。
 
 <script setup>
