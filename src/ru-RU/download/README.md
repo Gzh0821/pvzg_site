@@ -84,7 +84,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-## Baidu Netdisk<Badge text="Только в Китае" type="danger" />
+## Baidu Netdisk <Badge text="Только в Китае" type="danger" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Baidu">нажмите чтобы открыть</a>
 
