@@ -84,7 +84,7 @@ Download Link: <a :href="gameInfoData.Download.Onedrive">click to enter</a>
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-## Baidu Netdisk<Badge text="Only in Chinese" type="danger" />
+## Baidu Netdisk <Badge text="Only in Chinese" type="danger" />
 
 Download Link: <a :href="gameInfoData.Download.Baidu">click to enter</a>
 

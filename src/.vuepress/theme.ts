@@ -120,7 +120,7 @@ export default hopeTheme({
       appId: "F8XF44AIE6",
     },
     components: {
-      components: ["Badge", "BiliBili", "VPCard", "VidStack",],
+      components: ["Badge", "BiliBili", "VPCard", "VidStack", "Youtube"],
     },
     markdownImage: {
       figure: true,
