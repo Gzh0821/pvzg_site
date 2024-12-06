@@ -196,7 +196,7 @@ git commit -m "Describe your changes"
 git push origin main
 ```
 
-### 7.3 Initiate Pull Request
+### 7.2 Initiate Pull Request
 
 1. Go to your GitHub repository page.
 2. Click the `Compare & pull request` button at the top of the page.

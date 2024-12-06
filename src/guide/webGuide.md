@@ -196,7 +196,7 @@ git commit -m "描述您的修改内容"
 git push origin main
 ```
 
-### 7.3 发起 Pull Request
+### 7.2 发起 Pull Request
 
 1. 进入您的 GitHub 仓库页面。
 2. 点击页面上方的 `Compare & pull request` 按钮。

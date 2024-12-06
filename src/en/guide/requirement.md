@@ -29,7 +29,7 @@ The minimum configuration requirement is the minimum configuration to run the ga
 | DirectX | DirectX 12 |
 | Resolution | 1920x1080 |
 
-## <HopeIcon icon="fa-brands fa-windows" size="1.7rem" color="rgb(0, 168, 232)" /> Client System Requirements
+## <HopeIcon icon="brands fa-windows" size="1.7rem" color="rgb(0, 168, 232)" /> Client System Requirements
 
 | Requirement        | Specification                                                             |
 | ---------------------- | ---------------------------------------------------------------- |
@@ -38,12 +38,12 @@ The minimum configuration requirement is the minimum configuration to run the ga
 | **Necessary Components** | Windows Update                                    |
 | Optional Components | WebView2 Runtime        |
 
-## <HopeIcon icon="fa-solid fa-earth-americas" size="1.7rem" /> Online Play Requirements
+## <HopeIcon icon="solid fa-earth-americas" size="1.7rem" /> Online Play Requirements
 
 We recommend that you use the following browser types to access the web version of "PvZ2 Gardendless":
 | Browser                   | Introduction                                                             |
 | ---------------------- | ---------------------------------------------------------------- |
-| <HopeIcon icon="fa-brands fa-chrome"/> Chrome | Chrome 114 or higher is recommended |
-| <HopeIcon icon="fa-brands fa-edge"/> Microsoft Edge | Comes with Windows 10/11 |
-| <HopeIcon icon="fa-brands fa-firefox-browser"/>Firefox | May have some compatibility issues |
+| <HopeIcon icon="brands fa-chrome"/> Chrome | Chrome 114 or higher is recommended |
+| <HopeIcon icon="brands fa-edge"/> Microsoft Edge | Comes with Windows 10/11 |
+| <HopeIcon icon="brands fa-firefox-browser"/>Firefox | May have some compatibility issues |
 
