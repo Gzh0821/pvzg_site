@@ -8635,6 +8635,92 @@
                 "ArmorToughness": 4000,
                 "PlantfoodPeaCount": 60
             }
+        },
+        {
+            "ID": 111,
+            "NAME": {
+                "en": "Potion of Speed",
+                "zh": "速度药水"
+            },
+            "_CARDSPRITENAME": "potion_speed",
+            "CODENAME": "zombiepotion_speed",
+            "SUNCOST": 0,
+            "COOLDOWN": 0.01,
+            "COOLDOWNFROM": 1,
+            "FAMILY": "Nope",
+            "TYPE": [
+                "potion"
+            ],
+            "OBTAINWORLD": "",
+            "TOUGHNESS": 1,
+            "BRIEFINTRODUCTION": {
+                "en": "",
+                "zh": ""
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {
+                "CannotBePushedByFootballMech": true,
+                "CannotBeSheepenedByWizard": true,
+                "CannotBeDetectedByCatapult": true,
+                "MaxEnchantLevel": 3
+            }
+        },
+        {
+            "ID": 112,
+            "NAME": {
+                "en": "Potion of Toughness",
+                "zh": "健壮药水"
+            },
+            "_CARDSPRITENAME": "potion_toughness",
+            "CODENAME": "zombiepotion_toughness",
+            "SUNCOST": 0,
+            "COOLDOWN": 0.01,
+            "COOLDOWNFROM": 1,
+            "FAMILY": "Nope",
+            "TYPE": [
+                "potion"
+            ],
+            "OBTAINWORLD": "",
+            "TOUGHNESS": 1,
+            "BRIEFINTRODUCTION": {
+                "en": "",
+                "zh": ""
+            },
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                }
+            },
+            "objdata": {
+                "CannotBePushedByFootballMech": true,
+                "CannotBeSheepenedByWizard": true,
+                "CannotBeDetectedByCatapult": true,
+                "MaxEnchantLevel": 3
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -8809,6 +8895,8 @@
         "hypnoshroom",
         "glaciershroom",
         "doomshroom",
+        "zombiepotion_speed",
+        "zombiepotion_toughness",
         "lilypad",
         "banana",
         "chomper",
