@@ -4,6 +4,7 @@ export const ptSidebar = sidebar({
   "/pt-BR/download/": "structure",
   "/pt-BR/instructions/": "structure",
   "/pt-BR/guide/": "structure",
+  "/pt-BR/custom-level/": "structure",
   "/pt-BR/contribution/": "structure",
   "/pt-BR/almanac/": "structure",
   "/pt-BR/": [

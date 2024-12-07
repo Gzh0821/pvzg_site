@@ -5,6 +5,7 @@ export const ptNavbar = navbar([
   "/pt-BR/download/",
   "/pt-BR/almanac/",
   "/pt-BR/guide/",
+  "/pt-BR/custom-level/",
   "/pt-BR/instructions/",
   "/pt-BR/contribution/",
   { text: "Jogo online", link: "https://play.pvzge.com", icon: "circle-play" },
