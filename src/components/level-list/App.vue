@@ -1,47 +1,102 @@
 <template>
-    <a-row :gutter="[16, 24]">
+    <!-- <a-row :gutter="[16, 24]">
         <a-col :span="8" v-for="level in paginatedLevels" :key="level.name">
             <a-card :title="level.name" @click="downloadLevel(level)" hoverable>
-                <p>Author: {{ level.author }}</p>
-                <p>Author Info: {{ level.authorInfo }}</p>
+                <p v-if="level.author">Author: {{ level.author }}</p>
+                <p v-if="level.introduction">Introduction: {{ level.introduction }}</p>
             </a-card>
         </a-col>
     </a-row>
-    <a-pagination :current="currentPage" :pageSize="pageSize" :total="levels.length" @change="handlePageChange"
-        style="margin-top: 20px;" />
+ -->
+    <a-space direction="vertical" size="middle" style="width: 100%">
+        <a-input-search v-model:value.lazy="searchValue" placeholder="Search level..." enter-button />
+        <a-list item-layout="vertical" :data-source="filteredLevels" size="middle" header="PvZ2 Gardendless Levels"
+        :pagination="pagination" bordered>
+            <template #renderItem="{ item }">
+                <a-list-item>
+                    <template #actions>
+                        <span v-if="item.version">
+                            <HopeIcon icon="code-branch" /> {{ item.version }}
+                        </span>
+                        <span v-if="item.difficulty">
+                            <HopeIcon icon="fire" /> {{ item.difficulty }}
+                        </span>
+                        <span v-if="item.category">
+                            <HopeIcon icon="tag" /> {{ item.category }}
+                        </span>
+                        <span v-if="item.updatedAt">
+                            <HopeIcon icon="clock" /> {{ item.updatedAt }}
+                        </span>
+                    </template>
+                    <a-list-item-meta :description="item.introduction">
+                        <template #title>
+                            <a @click="downloadLevel(item)">{{ item.name }}</a>
+                            <span class="author-name"> by {{ item.author }}</span>
+                        </template>
+                    </a-list-item-meta>
+                </a-list-item>
+            </template>
+        </a-list>
+    </a-space>
 </template>
 
 <script setup lang="ts">
 import { message } from 'ant-design-vue';
 import axios from 'axios';
-import { ref, onBeforeMount, computed } from 'vue';
+import { ref, onBeforeMount, computed, inject } from 'vue';
+
+const props = defineProps<{ authorGroup: string }>();
+
 const levels: any = ref([]);
 const currentPage = ref(1);
 const pageSize = ref(9);
+const i18nLanguage = inject('i18nLanguage', 'en');
+const searchValue = ref('');
 // 获取官方作者及关卡信息
-const fetchOfficialLevels = async () => {
+const fetchLevels = async (authorGroup: string) => {
     try {
         // 第一步：获取根 links.json 文件
         const rootResponse = await axios.get('https://levelapi.pvzge.com/links.json');
-        const officialAuthors = rootResponse.data.official;
+        const authors = rootResponse.data[authorGroup];
 
-        // 遍历每个官方作者，获取他们的关卡信息
-        for (const author in officialAuthors) {
-            const authorLocation = officialAuthors[author].location;
+        // 遍历每个作者，获取他们的关卡信息
+        for (const author in authors) {
+            const authorLocation = authors[author].location;
             const authorResponse = await axios.get(`https://levelapi.pvzge.com${authorLocation}`);
 
             const authorData = authorResponse.data;
-            const authorInfo = authorData.AuthorInfo;
-            const authorName = authorData.Author;
+            const authorInfo = authorData.authorInfo;
+            const authorName = authorData.author;
 
             // 遍历每个关卡
-            authorData.levelList.forEach((levelName) => {
-                levels.value.push({
-                    name: levelName,
-                    author: authorName,
-                    authorInfo: authorInfo,
-                    url: `https://levelapi.pvzge.com/official/${authorName}/levels/${levelName}`,
-                });
+            authorData.levelList.forEach((level: string | { [key: string]: any }) => {
+                if (typeof level === 'string') {
+                    levels.value.push({
+                        name: level,
+                        author: authorName,
+                        introduction: authorInfo,
+                        url: `https://levelapi.pvzge.com/official/${authorName}/levels/${level}`,
+                    });
+                }
+                else {
+                    if (level.fileName && level.Information) {
+                        const levelInfo = level.Information;
+                        levels.value.push({
+                            name: typeof levelInfo.name === 'string' ?
+                                levelInfo.name : levelInfo.name[i18nLanguage] ?? levelInfo.name.en,
+                            introduction: typeof levelInfo.Introduction === 'string' ?
+                                levelInfo.Introduction : levelInfo.Introduction[i18nLanguage] ?? levelInfo.Introduction.en,
+                            author: authorName,
+                            gameVersion: levelInfo.GameVersion,
+                            version: levelInfo.Version,
+                            createdAt: levelInfo.CreatedAt,
+                            updatedAt: levelInfo.UpdatedAt,
+                            difficulty: levelInfo.Difficulty,
+                            category: levelInfo.Category,
+                            url: `https://levelapi.pvzge.com/official/${authorName}/levels/${level.fileName}`,
+                        });
+                    }
+                };
             });
         }
     } catch (error) {
@@ -73,24 +128,25 @@ const downloadLevel = async (level) => {
         message.error('Failed to download level: ' + error.message);
     }
 };
-// 处理页码变化
-const handlePageChange = (page) => {
-    currentPage.value = page;
+
+const pagination = {
+    pageSize: 6,
 };
 
-const paginatedLevels = computed(() => {
-    const start = (currentPage.value - 1) * pageSize.value;
-    const end = start + pageSize.value;
-    return levels.value.slice(start, end);
+const filteredLevels = computed(() => {
+    return levels.value.filter((level: any) => {
+        return level.name.toLowerCase().includes(searchValue.value.toLowerCase());
+    });
 });
 
 onBeforeMount(() => {
-    fetchOfficialLevels();
+    fetchLevels(props.authorGroup);
 });
 </script>
 
 <style scoped>
-a-card {
-    margin-bottom: 24px;
+.author-name {
+    font-size: small;
+    opacity: 0.7;
 }
 </style>
