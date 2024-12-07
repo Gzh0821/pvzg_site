@@ -6,6 +6,7 @@ pageInfo: false
 comment: false
 order: 1
 ---
+
 > [!info]
 > Go to the [Custom Level](/en/custom-level/) page to download sample level files!
 
@@ -72,7 +73,7 @@ In standard JSON, key names must be wrapped in double quotes, while in JSON5, ke
 ```json5
 {
   unquoted: 'This is allowed in JSON5',
-  'singleQuotes': "This is also allowed"
+  singleQuotes: 'This is also allowed'
 }
 ```
 
@@ -83,7 +84,7 @@ In JSON5, you can add a comma after the last item of an object or array, which i
 ```json5
 {
   key: 'value',
-  anotherKey: 42, // Allow end of line comma
+  anotherKey: 42 // Allow end of line comma
 }
 ```
 
@@ -111,7 +112,7 @@ JSON5 supports both single-quoted and double-quoted strings.
 ```json5
 {
   singleQuotes: 'This is a string',
-  doubleQuotes: "This is also a string"
+  doubleQuotes: 'This is also a string'
 }
 ```
 
@@ -131,7 +132,7 @@ JSON5 supports more numeric formats, such as hexadecimal notation and positive a
 ```json5
 {
   decimal: 123,
-  hexadecimal: 0x7B,
+  hexadecimal: 0x7b,
   infinity: Infinity,
   notANumber: NaN
 }
@@ -143,8 +144,8 @@ You can omit zeros in the integer part or the fractional part.
 
 ```json5
 {
-  fractional: .5, // equivalent to 0.5
-  trailing: 2., // equivalent to 2.0
+  fractional: 0.5, // equivalent to 0.5
+  trailing: 2 // equivalent to 2.0
 }
 ```
 
@@ -184,7 +185,10 @@ This field contains the following:
   // Level UUID
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
   // Level name
-  "name": "SampleLevel I",
+  "name": {
+      "en": "SampleLevel",
+      "zh-CN": "示例关卡"
+  },
   // Level author
   "Author": "LMYY",
   // Optional, author link
@@ -194,6 +198,8 @@ This field contains the following:
       "en": "This is a sample level.",
       "zh-CN": "这是一个示例关卡。"
   },
+  // Supported game version
+  "GameVersion": "0.1.1",
   // Level version
   "Version": "1.0",
   // Level creation time
