@@ -8,48 +8,50 @@
         </a-col>
     </a-row>
  -->
-    <a-space direction="vertical" size="middle" style="width: 100%">
-        <a-input-search v-model:value.lazy="searchValue" placeholder="Search level..." enter-button />
-        <a-list item-layout="vertical" :data-source="filteredLevels" size="middle" header="PvZ2 Gardendless Levels"
-        :pagination="pagination" bordered>
-            <template #renderItem="{ item }">
-                <a-list-item>
-                    <template #actions>
-                        <span v-if="item.version">
-                            <HopeIcon icon="code-branch" /> {{ item.version }}
-                        </span>
-                        <span v-if="item.difficulty">
-                            <HopeIcon icon="fire" /> {{ item.difficulty }}
-                        </span>
-                        <span v-if="item.category">
-                            <HopeIcon icon="tag" /> {{ item.category }}
-                        </span>
-                        <span v-if="item.updatedAt">
-                            <HopeIcon icon="clock" /> {{ item.updatedAt }}
-                        </span>
-                    </template>
-                    <a-list-item-meta :description="item.introduction">
-                        <template #title>
-                            <a @click="downloadLevel(item)">{{ item.name }}</a>
-                            <span class="author-name"> by {{ item.author }}</span>
+    <a-config-provider :theme="{
+        algorithm: $isDarkmode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+    }">
+        <a-space direction="vertical" size="middle" style="width: 100%" theme="dark">
+            <a-input-search v-model:value.lazy="searchValue" placeholder="Search level..." enter-button />
+            <a-list item-layout="vertical" :data-source="filteredLevels" size="middle" header="PvZ2 Gardendless Levels"
+                :pagination="pagination" bordered>
+                <template #renderItem="{ item }">
+                    <a-list-item>
+                        <template #actions>
+                            <span v-if="item.version">
+                                <HopeIcon icon="code-branch" /> {{ item.version }}
+                            </span>
+                            <span v-if="item.difficulty">
+                                <HopeIcon icon="fire" /> {{ item.difficulty }}
+                            </span>
+                            <span v-if="item.category">
+                                <HopeIcon icon="tag" /> {{ item.category }}
+                            </span>
+                            <span v-if="item.updatedAt">
+                                <HopeIcon icon="clock" /> {{ item.updatedAt }}
+                            </span>
                         </template>
-                    </a-list-item-meta>
-                </a-list-item>
-            </template>
-        </a-list>
-    </a-space>
+                        <a-list-item-meta :description="item.introduction">
+                            <template #title>
+                                <a @click="downloadLevel(item)">{{ item.name }}</a>
+                                <span class="author-name"> by {{ item.author }}</span>
+                            </template>
+                        </a-list-item-meta>
+                    </a-list-item>
+                </template>
+            </a-list>
+        </a-space>
+    </a-config-provider>
 </template>
 
 <script setup lang="ts">
-import { message } from 'ant-design-vue';
+import { message, theme } from 'ant-design-vue';
 import axios from 'axios';
 import { ref, onBeforeMount, computed, inject } from 'vue';
 
 const props = defineProps<{ authorGroup: string }>();
 
 const levels: any = ref([]);
-const currentPage = ref(1);
-const pageSize = ref(9);
 const i18nLanguage = inject('i18nLanguage', 'en');
 const searchValue = ref('');
 // 获取官方作者及关卡信息
