@@ -15,7 +15,7 @@ toc: false
 <script setup>
     import { onMounted } from 'vue';
     onMounted(() => {
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
     })
 </script>
 

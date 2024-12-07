@@ -51,7 +51,7 @@
       "_CARDSPRITENAME": "tutorialflag",
       "CODENAME": "tutorial_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
@@ -63,7 +63,7 @@
       "_CARDSPRITENAME": "tutorialrally",
       "CODENAME": "tutorial_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
@@ -121,12 +121,13 @@
     {
       "NAME": "Balloon Zombie",
       "_CARDSPRITENAME": "balloon",
-      "CODENAME": "tutorial_balloon",
+      "CODENAME": "modern_balloon",
       "SUNCOST": 400,
       "WAVEPOINTCOST": 200,
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -219,7 +220,7 @@
       "_CARDSPRITENAME": "egyptflag",
       "CODENAME": "mummy_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "egypt",
       "objdata": {
@@ -231,7 +232,7 @@
       "_CARDSPRITENAME": "egyptrally",
       "CODENAME": "mummy_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "egypt",
       "objdata": {
@@ -471,7 +472,7 @@
       "_CARDSPRITENAME": "egyptzomboss",
       "CODENAME": "zombossmech_egypt",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "egypt",
       "objdata": {
@@ -483,7 +484,7 @@
       "_CARDSPRITENAME": "egyptzomboss",
       "CODENAME": "zombossmech_egypt2",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "egypt",
       "objdata": {
@@ -543,7 +544,7 @@
       "_CARDSPRITENAME": "pirateflag",
       "CODENAME": "pirate_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "pirate",
       "objdata": {
@@ -555,7 +556,7 @@
       "_CARDSPRITENAME": "piraterally",
       "CODENAME": "pirate_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "pirate",
       "objdata": {
@@ -571,6 +572,7 @@
       "WEIGHT": 1500,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -583,6 +585,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -595,6 +598,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -631,6 +635,7 @@
       "WEIGHT": 1500,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": true
       }
     },
@@ -687,7 +692,7 @@
       "_CARDSPRITENAME": "piratezomboss",
       "CODENAME": "zombossmech_pirate",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "pirate",
       "objdata": {
@@ -699,7 +704,7 @@
       "_CARDSPRITENAME": "piratezomboss",
       "CODENAME": "zombossmech_pirate2",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "pirate",
       "objdata": {
@@ -759,7 +764,7 @@
       "_CARDSPRITENAME": "cowboyflag",
       "CODENAME": "cowboy_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "cowboy",
       "objdata": {
@@ -771,7 +776,7 @@
       "_CARDSPRITENAME": "cowboyrally",
       "CODENAME": "cowboy_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "cowboy",
       "objdata": {
@@ -927,7 +932,7 @@
       "_CARDSPRITENAME": "cowboyzomboss",
       "CODENAME": "zombossmech_cowboy",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "cowboy",
       "objdata": {
@@ -939,7 +944,7 @@
       "_CARDSPRITENAME": "cowboyzomboss",
       "CODENAME": "zombossmech_cowboy2",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "cowboy",
       "objdata": {
@@ -999,7 +1004,7 @@
       "_CARDSPRITENAME": "kongfuflag",
       "CODENAME": "kongfu_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
@@ -1011,7 +1016,7 @@
       "_CARDSPRITENAME": "kongfurally",
       "CODENAME": "kongfu_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
@@ -1109,7 +1114,7 @@
       "_CARDSPRITENAME": "monkflag",
       "CODENAME": "monk_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
@@ -1121,7 +1126,7 @@
       "_CARDSPRITENAME": "monkrally",
       "CODENAME": "monk_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
@@ -1218,7 +1223,7 @@
       "_CARDSPRITENAME": "futureflag",
       "CODENAME": "future_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "future",
       "objdata": {
@@ -1230,7 +1235,7 @@
       "_CARDSPRITENAME": "futurerally",
       "CODENAME": "future_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "future",
       "objdata": {
@@ -1246,6 +1251,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -1258,6 +1264,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -1270,6 +1277,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -1292,7 +1300,7 @@
       "_CARDSPRITENAME": "futureprotectorshield",
       "CODENAME": "future_protector_shield",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "future",
       "objdata": {
@@ -1304,7 +1312,7 @@
       "_CARDSPRITENAME": "futureinfinutshield",
       "CODENAME": "future_infinut_shield",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "future",
       "objdata": {
@@ -1386,7 +1394,7 @@
       "_CARDSPRITENAME": "futurezomboss",
       "CODENAME": "zombossmech_future",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "future",
       "objdata": {
@@ -1398,7 +1406,7 @@
       "_CARDSPRITENAME": "futurezomboss",
       "CODENAME": "zombossmech_future2",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
       "OBTAINWORLD": "future",
       "objdata": {
@@ -1470,7 +1478,7 @@
       "_CARDSPRITENAME": "darkflag",
       "CODENAME": "dark_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "dark",
       "objdata": {
@@ -1482,7 +1490,7 @@
       "_CARDSPRITENAME": "darkrally",
       "CODENAME": "dark_flag_veteran",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "dark",
       "objdata": {
@@ -1559,7 +1567,8 @@
           "dark",
           "dark_armor1",
           "dark_armor2",
-          "dark_armor3"
+          "dark_armor3",
+          "dark_armor4"
         ]
       }
     },
@@ -1595,7 +1604,9 @@
           "zombossmech_future",
           "zombossmech_future2",
           "dark_king",
-          "dark_king_veteran"
+          "dark_king_veteran",
+          "future_protector_shield",
+          "future_infinut_shield"
         ],
         "TargetListBecomesBlackList": true
       }
@@ -1605,8 +1616,8 @@
       "_CARDSPRITENAME": "darkdragonimp",
       "CODENAME": "dark_imp_dragon",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 100,
-      "WEIGHT": 1000,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 2000,
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false
@@ -1637,6 +1648,116 @@
       }
     },
     {
+      "NAME": "Pompadour Zombie",
+      "_CARDSPRITENAME": "beachbasic",
+      "CODENAME": "beach",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Pompadour Conehead",
+      "_CARDSPRITENAME": "beacharmor1",
+      "CODENAME": "beach_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Pompadour Buckethead",
+      "_CARDSPRITENAME": "beacharmor2",
+      "CODENAME": "beach_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Bikini Zombie",
+      "_CARDSPRITENAME": "beachfemale",
+      "CODENAME": "beach_fem",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Bikini Conehead",
+      "_CARDSPRITENAME": "beachfemalearmor1",
+      "CODENAME": "beach_fem_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Bikini Buckethead",
+      "_CARDSPRITENAME": "beachfemalearmor2",
+      "CODENAME": "beach_fem_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Beach Flag Zombie",
+      "_CARDSPRITENAME": "beachflag",
+      "CODENAME": "beach_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Imp Mermaid Zombie",
+      "_CARDSPRITENAME": "beachimp",
+      "CODENAME": "beach_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false
+      }
+    },
+    {
+      "NAME": "Deep Sea Gargantuar",
+      "_CARDSPRITENAME": "beachgargantuar",
+      "CODENAME": "beach_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": true,
+        "SpeedScaleOnLand": 0.9,
+        "TakingDamageScaleOnLand": 0.9
+      }
+    },
+    {
       "NAME": "Relic Hunter Zombie",
       "_CARDSPRITENAME": "lostrelichunter",
       "CODENAME": "lostcity_relichunter",
@@ -1645,6 +1766,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -1657,6 +1779,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -1669,6 +1792,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -1681,6 +1805,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     },
@@ -1689,10 +1814,11 @@
       "_CARDSPRITENAME": "skyflag",
       "CODENAME": "sky_flag",
       "SUNCOST": 100,
-      "WAVEPOINTCOST": 0,
+      "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false
       }
     }
