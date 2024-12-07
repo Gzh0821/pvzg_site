@@ -10,6 +10,8 @@ comment: false
 
 <script setup>
     import LevelList from '@source/components/level-list/App.vue';
+    import { provide } from 'vue';
+    provide("i18nLanguage",'en');
 </script>
 
 > [!info]
@@ -17,4 +19,4 @@ comment: false
 >
 > For tutorials on writing custom levels, see [Custom Level Guide](/en/guide/level/)
 
-<LevelList />
+<LevelList authorGroup = "official"/>
