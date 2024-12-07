@@ -184,7 +184,10 @@ This field contains the following:
   // Level UUID
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
   // Level name
-  "name": "SampleLevel I",
+  "name": {
+      "en": "SampleLevel",
+      "zh-CN": "示例关卡"
+  },
   // Level author
   "Author": "LMYY",
   // Optional, author link
@@ -194,6 +197,8 @@ This field contains the following:
       "en": "This is a sample level.",
       "zh-CN": "这是一个示例关卡。"
   },
+  // Supported game version
+  "GameVersion": "0.1.1",
   // Level version
   "Version": "1.0",
   // Level creation time

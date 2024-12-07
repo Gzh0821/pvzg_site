@@ -181,7 +181,10 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
   // 关卡的UUID
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
   // 关卡名称
-  "name": "SampleLevel I",
+  "name": {
+      "en": "SampleLevel I",
+      "zh-CN": "示例关卡1"
+  },
   // 关卡的作者
   "Author": "LMYY",
   // 可选，作者的链接
@@ -191,6 +194,8 @@ JSON5 支持更多的数值格式，比如十六进制表示法和正负无穷�
       "en": "This is a sample level.",
       "zh-CN": "这是一个示例关卡。"
   },
+  // 关卡支持的游戏版本
+  "GameVersion": "0.1.1",
   // 关卡的版本
   "Version": "1.0",
   // 关卡的创建时间
