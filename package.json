@@ -1,6 +1,6 @@
 {
   "name": "pvzg_site",
-  "version": "1.0.3",
+  "version": "0.1.13",
   "description": "A official website of PvZ-GE",
   "license": "Apache 2.0",
   "type": "module",
@@ -11,19 +11,18 @@
     "docs:update-package": "pnpm dlx vp-update"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.18",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.57",
-    "@vuepress/plugin-redirect": "2.0.0-rc.57",
+    "@vuepress/bundler-vite": "2.0.0-rc.19",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.65",
+    "@vuepress/plugin-redirect": "2.0.0-rc.65",
     "sass": "^1.82.0",
     "vue": "^3.5.13",
-    "vuepress": "2.0.0-rc.18",
-    "vuepress-plugin-search-pro": "2.0.0-rc.57",
-    "vuepress-theme-hope": "2.0.0-rc.59"
+    "vuepress": "2.0.0-rc.19",
+    "vuepress-theme-hope": "2.0.0-rc.63"
   },
   "dependencies": {
-    "@vuepress/plugin-watermark": "2.0.0-rc.57",
+    "@vuepress/plugin-watermark": "2.0.0-rc.65",
     "ant-design-vue": "~4.2.6",
     "axios": "^1.7.9"
   },
-  "packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387"
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
 }
