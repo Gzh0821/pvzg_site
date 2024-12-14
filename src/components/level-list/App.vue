@@ -68,7 +68,7 @@ const fetchLevels = async (authorGroup: string) => {
 
             const authorData = authorResponse.data;
             const authorInfo = authorData.authorInfo;
-            const authorName = author;
+            const authorName = authorData.author;
 
             // 遍历每个关卡
             authorData.levelList.forEach((level: string | { [key: string]: any }) => {
@@ -77,7 +77,7 @@ const fetchLevels = async (authorGroup: string) => {
                         name: level,
                         author: authorName,
                         introduction: authorInfo,
-                        url: `https://levelapi.pvzge.com/${authorGroup}/${authorName}/levels/${level}`,
+                        url: `https://levelapi.pvzge.com/${authorGroup}/${author}/levels/${level}`,
                     });
                 }
                 else {
@@ -95,7 +95,7 @@ const fetchLevels = async (authorGroup: string) => {
                             updatedAt: levelInfo.UpdatedAt,
                             difficulty: levelInfo.Difficulty,
                             category: levelInfo.Category,
-                            url: `https://levelapi.pvzge.com/${authorGroup}/${authorName}/levels/${level.fileName}`,
+                            url: `https://levelapi.pvzge.com/${authorGroup}/${author}/levels/${level.fileName}`,
                         });
                     }
                 };
