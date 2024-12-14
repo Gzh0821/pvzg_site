@@ -95,7 +95,7 @@ const fetchLevels = async (authorGroup: string) => {
                             updatedAt: levelInfo.UpdatedAt,
                             difficulty: levelInfo.Difficulty,
                             category: levelInfo.Category,
-                            url: `https://levelapi.pvzge.com/official/${authorName}/levels/${level.fileName}`,
+                            url: `https://levelapi.pvzge.com/${authorGroup}/${authorName}/levels/${level.fileName}`,
                         });
                     }
                 };
