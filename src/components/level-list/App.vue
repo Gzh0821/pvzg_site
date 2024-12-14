@@ -137,7 +137,8 @@ const pagination = {
 
 const filteredLevels = computed(() => {
     return levels.value.filter((level: any) => {
-        return level.name.toLowerCase().includes(searchValue.value.toLowerCase());
+        return level.name.toLowerCase().includes(searchValue.value.toLowerCase()) ||
+            level.author.toLowerCase().includes(searchValue.value.toLowerCase());
     });
 });
 
