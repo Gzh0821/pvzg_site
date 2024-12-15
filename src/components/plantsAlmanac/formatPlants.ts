@@ -20,6 +20,10 @@ export function getPlantMap(i18nLanguage: string) {
 }
 
 export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant {
+    const upperObjdata = {};
+    Object.keys(originPlant["objdata"]).forEach((key) => {
+        upperObjdata[key.toUpperCase()] = originPlant["objdata"][key];
+    });
     // 从原始数据中提取需要的字段并整理
     const res: Plant = {
         elements: {},
@@ -46,13 +50,13 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
             } else if (VALUE) {
                 value = VALUE; // 没有 SORT 时，取 VALUE
             } else if (TYPE == "RECHARGE") {
-                value = originPlant["COOLDOWN"]
+                value = upperObjdata["COOLDOWN"]
             } else if (TYPE == "FAMILY") {
-                value = familyNameMap[originPlant[TYPE]][i18nLanguage];
-                res.enFamily = familyNameMap[originPlant[TYPE]]['en'];
+                value = familyNameMap[upperObjdata[TYPE]][i18nLanguage];
+                res.enFamily = familyNameMap[upperObjdata[TYPE]]['en'];
             }
             else {
-                value = originPlant[TYPE]; // 只有 TYPE 时，从原始数据中查找
+                value = upperObjdata[TYPE]; // 只有 TYPE 时，从原始数据中查找
             }
             res.elements[TYPE] = value;
         });
