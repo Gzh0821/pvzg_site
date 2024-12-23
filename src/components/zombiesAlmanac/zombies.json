@@ -1573,6 +1573,8 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
+        "KnightingAreaW": 4,
+        "DelayBetweenKnightings": 2.5,
         "PlantablePlants": [
           "cherry_bomb",
           "jalapeno",
@@ -1583,8 +1585,6 @@
           "goldleaf",
           "grapeshot"
         ],
-        "KnightingAreaW": 4,
-        "DelayBetweenKnightings": 2.5,
         "ValidKnightTargets": [
           "dark",
           "dark_armor1",
@@ -1604,6 +1604,9 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
+        "KnightingAreaW": 2,
+        "DelayBetweenKnightings": 2.5,
+        "TargetListBecomesBlackList": true,
         "PlantablePlants": [
           "cherry_bomb",
           "jalapeno",
@@ -1614,8 +1617,6 @@
           "goldleaf",
           "grapeshot"
         ],
-        "KnightingAreaW": 2,
-        "DelayBetweenKnightings": 2.5,
         "ValidKnightTargets": [
           "zombossmech_egypt",
           "zombossmech_egypt2",
@@ -1629,8 +1630,7 @@
           "dark_king_veteran",
           "future_protector_shield",
           "future_infinut_shield"
-        ],
-        "TargetListBecomesBlackList": true
+        ]
       }
     },
     {
@@ -1785,6 +1785,41 @@
         "ZombieBlockers": [
           "future_protector_shield",
           "future_infinut_shield"
+        ]
+      }
+    },
+    {
+      "NAME": "Octopus Zombie",
+      "_CARDSPRITENAME": "beachoctopus",
+      "CODENAME": "beach_octopus",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 900,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "TimeBeforeFirst": 7,
+        "TimeBeforeFirstAdditional": 2,
+        "TimeBetween": 11,
+        "TimeBetweenAdditional": 3
+      }
+    },
+    {
+      "NAME": "Fisherman Zombie",
+      "_CARDSPRITENAME": "beachfisher",
+      "CODENAME": "beach_fisherman",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 2500,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "DelayBeforeReeling": 0.3,
+        "DelayBetweenCasting": 2.5,
+        "PlantablePlants": [
+          "tanglekelp",
+          "ghostpepper",
+          "guacodile"
         ]
       }
     },
