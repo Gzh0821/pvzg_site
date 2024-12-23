@@ -1573,8 +1573,6 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
-        "KnightingAreaW": 4,
-        "DelayBetweenKnightings": 2.5,
         "PlantablePlants": [
           "cherry_bomb",
           "jalapeno",
@@ -1585,6 +1583,8 @@
           "goldleaf",
           "grapeshot"
         ],
+        "KnightingAreaW": 4,
+        "DelayBetweenKnightings": 2.5,
         "ValidKnightTargets": [
           "dark",
           "dark_armor1",
@@ -1604,9 +1604,6 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
-        "KnightingAreaW": 2,
-        "DelayBetweenKnightings": 2.5,
-        "TargetListBecomesBlackList": true,
         "PlantablePlants": [
           "cherry_bomb",
           "jalapeno",
@@ -1617,6 +1614,8 @@
           "goldleaf",
           "grapeshot"
         ],
+        "KnightingAreaW": 2,
+        "DelayBetweenKnightings": 2.5,
         "ValidKnightTargets": [
           "zombossmech_egypt",
           "zombossmech_egypt2",
@@ -1630,7 +1629,8 @@
           "dark_king_veteran",
           "future_protector_shield",
           "future_infinut_shield"
-        ]
+        ],
+        "TargetListBecomesBlackList": true
       }
     },
     {
@@ -1814,13 +1814,13 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "DelayBeforeReeling": 0.3,
-        "DelayBetweenCasting": 2.5,
         "PlantablePlants": [
           "tanglekelp",
           "ghostpepper",
           "guacodile"
-        ]
+        ],
+        "DelayBeforeReeling": 0.3,
+        "DelayBetweenCasting": 2.5
       }
     },
     {
