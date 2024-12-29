@@ -5287,7 +5287,7 @@
             "_CARDSPRITENAME": "tallnut",
             "CODENAME": "tallnut",
             "TYPE": [
-                "plant"
+                "amphibious"
             ],
             "OBTAINWORLD": "cowboy",
             "ZENGARDEN": {
@@ -9670,6 +9670,443 @@
                 "ChildrenBiteDamage": 150,
                 "KnockbackDistance": 2
             }
+        },
+        {
+            "ID": 121,
+            "NAME": {
+                "en": "Bowling Wall-nut",
+                "zh": "坚果保龄球"
+            },
+            "_CARDSPRITENAME": "wallnut",
+            "CODENAME": "tool_projectile_bowling_wallnut",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed"
+            ],
+            "OBTAINWORLD": "",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                },
+                "BriefIntroduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 20,
+                "CooldownFrom": 1,
+                "SunCost": 200,
+                "Toughness": 1,
+                "Family": "Nope",
+                "StartingHeight": 0,
+                "SpeedX": 7
+            }
+        },
+        {
+            "ID": 122,
+            "NAME": {
+                "en": "Bowling Explode-O-Nut",
+                "zh": "爆炸坚果保龄球"
+            },
+            "_CARDSPRITENAME": "explodeonut",
+            "CODENAME": "tool_projectile_bowling_explodeonut",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed"
+            ],
+            "OBTAINWORLD": "",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                },
+                "BriefIntroduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 30,
+                "CooldownFrom": 1,
+                "SunCost": 200,
+                "Toughness": 1,
+                "Family": "Nope",
+                "StartingHeight": 0,
+                "SpeedX": 7
+            }
+        },
+        {
+            "ID": 123,
+            "NAME": {
+                "en": "Bowling Infi-nut",
+                "zh": "全息坚果保龄球"
+            },
+            "_CARDSPRITENAME": "holonut",
+            "CODENAME": "tool_projectile_bowling_holonut",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed"
+            ],
+            "OBTAINWORLD": "",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                },
+                "BriefIntroduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 30,
+                "CooldownFrom": 1,
+                "SunCost": 200,
+                "Toughness": 1,
+                "Family": "Nope",
+                "StartingHeight": 0,
+                "SpeedX": 7
+            }
+        },
+        {
+            "ID": 124,
+            "NAME": {
+                "en": "Bowling Primal Wall-nut",
+                "zh": "原始坚果保龄球"
+            },
+            "_CARDSPRITENAME": "primalwallnut",
+            "CODENAME": "tool_projectile_bowling_primalwallnut",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed"
+            ],
+            "OBTAINWORLD": "",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                },
+                "BriefIntroduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 20,
+                "CooldownFrom": 1,
+                "SunCost": 250,
+                "Toughness": 1,
+                "Family": "Nope",
+                "StartingHeight": 0,
+                "SpeedX": 7
+            }
+        },
+        {
+            "ID": 125,
+            "NAME": {
+                "en": "Iceberg Bowling",
+                "zh": "冰冻保龄球"
+            },
+            "_CARDSPRITENAME": "projectile_bowlingbulb_iceburg",
+            "CODENAME": "tool_projectile_bowlingbulb_iceburg",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed"
+            ],
+            "OBTAINWORLD": "",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                },
+                "BriefIntroduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 0.01,
+                "CooldownFrom": 1,
+                "SunCost": 50,
+                "Toughness": 1,
+                "Family": "Nope",
+                "StartingHeight": 30
+            }
+        },
+        {
+            "ID": 126,
+            "NAME": {
+                "en": "Bowling Tall-nut",
+                "zh": "高坚果保龄球"
+            },
+            "_CARDSPRITENAME": "tallnut",
+            "CODENAME": "tool_projectile_bowling_tallnut",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed"
+            ],
+            "OBTAINWORLD": "",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                },
+                "BriefIntroduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 20,
+                "CooldownFrom": 1,
+                "SunCost": 250,
+                "Toughness": 1,
+                "Family": "Nope",
+                "StartingHeight": 0,
+                "SpeedX": 6
+            }
+        },
+        {
+            "ID": 127,
+            "NAME": {
+                "en": "Ghost Pepper",
+                "zh": "幽灵辣椒"
+            },
+            "_CARDSPRITENAME": "ghostpepper",
+            "CODENAME": "ghostpepper",
+            "TYPE": [
+                "fly"
+            ],
+            "OBTAINWORLD": "market",
+            "ZENGARDEN": {
+                "PlantPlace": "fly"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 30
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Front & Back",
+                            "zh": "前后"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Ghost Peppers haunt zombies that pass by and explode after a limited time.",
+                    "zh": "幽灵辣椒惊吓路过的僵尸，并在一段时间后爆炸。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "You might not know it looking at her, but Ghost Pepper didn't always wear that white sheet everywhere she went. She first put it on as a lark for a Halloween party one year. Everyone else had these elaborate costumes, and she thought that it would be funny to dress like a plain ol' ghost. But she fell in love with that costume. It spoke to her. She'd found her calling.",
+                    "zh": "光是看她你可能不知道，实际上幽灵辣椒并不是一直在哪都穿着她的那块白布。她有年万圣节穿着这件去参加万圣节晚会，当时其他人都是打扮得花里胡哨，只有她觉得打扮成一只平凡古板的小幽灵会很好玩。但这之后她彻底喜欢上了这种穿搭。对她来说，就像是找到了她的归宿一般。"
+                },
+                "BriefIntroduction": {
+                    "en": "Haunts all zombies that pass by and explodes after a limited time",
+                    "zh": "惊吓路过的僵尸，并在一段时间后爆炸"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 15,
+                "CooldownFrom": 0.6667,
+                "SunCost": 75,
+                "Toughness": 300,
+                "Family": "Fire",
+                "GhostDamage": 30,
+                "GhostDamageCooldownTime": 0.5,
+                "PlantfoodDamageMult": 3,
+                "PlantfoodDuration": 3.5,
+                "ExplodeDamage": 450,
+                "Lifetime": 10
+            }
+        },
+        {
+            "ID": 128,
+            "NAME": {
+                "en": "Sweet Potato",
+                "zh": "甜薯"
+            },
+            "_CARDSPRITENAME": "sweetpotato",
+            "CODENAME": "sweetpotato",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "market",
+            "ZENGARDEN": {
+                "PlantPlace": "solid"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 30
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Front & Back",
+                            "zh": "前后"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Sweet Potatoes attract zombies from other lanes when they are close by.",
+                    "zh": "甜薯会将相邻行接近的僵尸吸引到本行。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Sweet Potato really is as sweet as she looks. Her favorite animal is the unicorn. Her favorite color is (and this is a direct quote) \"all the colors in the rainbow\". When she writes the letter \"i\", she draws a little heart where the dot belongs. Frankly, if it were anyone else, this amount of syrup would be sickening. But on her, well, it just seems right.",
+                    "zh": "甜薯真的和她看上去那样甜蜜。她最喜欢的动物是独角兽，最喜欢的颜色是（据她所说）“彩虹的颜色”。当她写字母“i”时，她会不自禁在那颗圆点的位置上画颗爱心。说实话，换作是别人像她那样在食物中加糖浆调味，估计会被呛坏，但是对她来说刚刚好。"
+                },
+                "BriefIntroduction": {
+                    "en": "Attracts zombies from other lanes when they are close",
+                    "zh": "吸引相邻行靠近的僵尸"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 20,
+                "CooldownFrom": 0.75,
+                "SunCost": 150,
+                "Toughness": 4000,
+                "Family": "Defence",
+                "PlantFoodDurationSeconds": 6,
+                "AttractExcludeList": [
+                    "west_bull",
+                    "west_bull_veteran",
+                    "pirate_barrel",
+                    "birthday_barrel",
+                    "barrelroller",
+                    "pirate_captain_parrot",
+                    "cannon",
+                    "future_jetpack",
+                    "future_jetpack_veteran",
+                    "future_jetpack_disco",
+                    "hero_barrel",
+                    "bighead_barrel",
+                    "sleighcart",
+                    "catapult",
+                    "roman_ballista"
+                ],
+                "PlantfoodAttractWidth": 4,
+                "NormalAttractWidth": 2,
+                "LaneChangeTime": 0.6,
+                "TimeBetweenLaneChanges": 5
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -9732,6 +10169,8 @@
         "homingthistle",
         "guacodile",
         "banana",
+        "ghostpepper",
+        "sweetpotato",
         "chomper",
         "sapfling",
         "chardguard",
@@ -9858,10 +10297,18 @@
         "chomper",
         "sapfling",
         "homingthistle",
+        "ghostpepper",
+        "sweetpotato",
         "tool_projectile_bowlingbulb1",
         "tool_projectile_bowlingbulb2",
         "tool_projectile_bowlingbulb3",
         "tool_projectile_bowlingbulb_explode",
+        "tool_projectile_bowlingbulb_iceburg",
+        "tool_projectile_bowling_wallnut",
+        "tool_projectile_bowling_explodeonut",
+        "tool_projectile_bowling_holonut",
+        "tool_projectile_bowling_primalwallnut",
+        "tool_projectile_bowling_tallnut",
         "chardguard",
         "xshot",
         "firepeashooter",
