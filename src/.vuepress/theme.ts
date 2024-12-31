@@ -39,7 +39,7 @@ export default hopeTheme({
       sidebar: enSidebar,
 
       footer: "Official website of PvZ2 Gardendless: pvzge.com",
-      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 
       metaLocales: {
@@ -54,7 +54,7 @@ export default hopeTheme({
       sidebar: ruSidebar,
 
       footer: "Official website of PvZ2 Gardendless: pvzge.com",
-      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 
       metaLocales: {
@@ -69,7 +69,7 @@ export default hopeTheme({
       sidebar: ptSidebar,
 
       footer: "Official website of PvZ2 Gardendless: pvzge.com",
-      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 
       metaLocales: {
@@ -87,7 +87,7 @@ export default hopeTheme({
       sidebar: zhSidebar,
 
       footer: "《PvZ2 Gardendless》官方网站: pvzge.com",
-      copyright: "Copyright 2021-2024 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 
       // page meta
