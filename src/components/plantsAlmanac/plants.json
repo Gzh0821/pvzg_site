@@ -534,7 +534,8 @@
                 "CooldownFrom": 0.75,
                 "SunCost": 0,
                 "Toughness": 3.14159,
-                "Family": "Cold"
+                "Family": "Cold",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -1041,7 +1042,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 0,
                 "Toughness": 300,
-                "Family": "Slow"
+                "Family": "Slow",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -1348,7 +1350,18 @@
                 "CooldownFrom": 1,
                 "SunCost": 175,
                 "Toughness": 300,
-                "Family": "Fire"
+                "Family": "Fire",
+                "ImmuneToIceblock": true,
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                },
+                "WarmingRadiusPlantfood": {
+                    "PulseInitialDelay": 0.25,
+                    "PulseCooldown": 1.5,
+                    "GridItemDamage": 100
+                }
             }
         },
         {
@@ -2269,7 +2282,8 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 150,
                 "Toughness": 300,
-                "Family": "Cold"
+                "Family": "Cold",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -2519,7 +2533,18 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 250,
                 "Toughness": 300,
-                "Family": "Fire"
+                "Family": "Fire",
+                "ImmuneToIceblock": true,
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                },
+                "WarmingRadiusPlantfood": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 1.5,
+                    "GridItemDamage": 200
+                }
             }
         },
         {
@@ -2892,7 +2917,8 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 500,
                 "Toughness": 300,
-                "Family": "Cold"
+                "Family": "Cold",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -3366,7 +3392,8 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 300,
                 "Toughness": 700,
-                "Family": "Cold"
+                "Family": "Cold",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -3808,7 +3835,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 150,
                 "Toughness": 300,
-                "Family": "Explosive"
+                "Family": "Explosive",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -3887,7 +3915,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 225,
                 "Toughness": 300,
-                "Family": "Explosive"
+                "Family": "Explosive",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -3963,7 +3992,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 75,
                 "Toughness": 300,
-                "Family": "Slow"
+                "Family": "Slow",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -4167,7 +4197,18 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 175,
                 "Toughness": 2000,
-                "Family": "Peashooter"
+                "Family": "Peashooter",
+                "ImmuneToIceblock": true,
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                },
+                "WarmingRadiusPlantfood": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 1.5,
+                    "GridItemDamage": 200
+                }
             }
         },
         {
@@ -4246,7 +4287,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 125,
                 "Toughness": 300,
-                "Family": "Fire"
+                "Family": "Fire",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -4846,7 +4888,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 400,
                 "Toughness": 300,
-                "Family": "Lobber"
+                "Family": "Lobber",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -5009,7 +5052,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 150,
                 "Toughness": 300,
-                "Family": "Fire"
+                "Family": "Fire",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -5450,7 +5494,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 100,
                 "Toughness": 300,
-                "Family": "Slow"
+                "Family": "Slow",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -6244,7 +6289,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 150,
                 "Toughness": 300,
-                "Family": "Explosive"
+                "Family": "Explosive",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -6493,7 +6539,13 @@
                 "CooldownFrom": 0.75,
                 "SunCost": 225,
                 "Toughness": 300,
-                "Family": "Fire"
+                "Family": "Fire",
+                "ImmuneToIceblock": true,
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                }
             }
         },
         {
@@ -6977,7 +7029,8 @@
                 "CooldownFrom": 0,
                 "SunCost": 0,
                 "Toughness": 30000,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -7310,7 +7363,8 @@
                 "CooldownFrom": 0.6,
                 "SunCost": 25,
                 "Toughness": 2000,
-                "Family": "Electricity"
+                "Family": "Electricity",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -7546,7 +7600,8 @@
                 "CooldownFrom": 0.8,
                 "SunCost": 100,
                 "Toughness": 3000,
-                "Family": "Sun"
+                "Family": "Sun",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -7632,7 +7687,8 @@
                 "CooldownFrom": 0.8,
                 "SunCost": 250,
                 "Toughness": 3000,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -7718,7 +7774,8 @@
                 "CooldownFrom": 0.8,
                 "SunCost": 250,
                 "Toughness": 3000,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -7804,7 +7861,8 @@
                 "CooldownFrom": 0.8,
                 "SunCost": 250,
                 "Toughness": 3000,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -7890,7 +7948,8 @@
                 "CooldownFrom": 0.8,
                 "SunCost": 250,
                 "Toughness": 3000,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -7976,7 +8035,8 @@
                 "CooldownFrom": 0.8,
                 "SunCost": 250,
                 "Toughness": 3000,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -8145,7 +8205,8 @@
                 "CooldownFrom": 0.8,
                 "SunCost": 250,
                 "Toughness": 3000,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -8290,7 +8351,13 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 50,
                 "Toughness": 300,
-                "Family": "Fire"
+                "Family": "Fire",
+                "ImmuneToIceblock": true,
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                }
             }
         },
         {
@@ -8358,7 +8425,13 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 50,
                 "Toughness": 300,
-                "Family": "Explosive"
+                "Family": "Explosive",
+                "ImmuneToIceblock": true,
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                }
             }
         },
         {
@@ -9127,7 +9200,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 0,
                 "Toughness": 1,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9174,7 +9248,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 0,
                 "Toughness": 1,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9221,7 +9296,8 @@
                 "CooldownFrom": 1,
                 "SunCost": 0,
                 "Toughness": 1,
-                "Family": "Nope"
+                "Family": "Nope",
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9307,7 +9383,8 @@
                 "Family": "Melee",
                 "MaxDraggedZombieCount": 1,
                 "MaxDraggedZombieCountPlantfood": 5,
-                "DamageWhenDragFailed": 400
+                "DamageWhenDragFailed": 400,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9446,7 +9523,8 @@
                 "SunCost": 0,
                 "Toughness": 1,
                 "Family": "Nope",
-                "StartingHeight": 30
+                "StartingHeight": 30,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9491,7 +9569,8 @@
                 "SunCost": 0,
                 "Toughness": 1,
                 "Family": "Nope",
-                "StartingHeight": 30
+                "StartingHeight": 30,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9536,7 +9615,8 @@
                 "SunCost": 0,
                 "Toughness": 1,
                 "Family": "Nope",
-                "StartingHeight": 30
+                "StartingHeight": 30,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9581,7 +9661,8 @@
                 "SunCost": 0,
                 "Toughness": 1,
                 "Family": "Nope",
-                "StartingHeight": 30
+                "StartingHeight": 30,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9720,7 +9801,8 @@
                 "Toughness": 1,
                 "Family": "Nope",
                 "StartingHeight": 0,
-                "SpeedX": 7
+                "SpeedX": 7,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9766,7 +9848,8 @@
                 "Toughness": 1,
                 "Family": "Nope",
                 "StartingHeight": 0,
-                "SpeedX": 7
+                "SpeedX": 7,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9812,7 +9895,8 @@
                 "Toughness": 1,
                 "Family": "Nope",
                 "StartingHeight": 0,
-                "SpeedX": 7
+                "SpeedX": 7,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9858,7 +9942,8 @@
                 "Toughness": 1,
                 "Family": "Nope",
                 "StartingHeight": 0,
-                "SpeedX": 7
+                "SpeedX": 7,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9903,7 +9988,8 @@
                 "SunCost": 50,
                 "Toughness": 1,
                 "Family": "Nope",
-                "StartingHeight": 30
+                "StartingHeight": 30,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -9949,7 +10035,8 @@
                 "Toughness": 1,
                 "Family": "Nope",
                 "StartingHeight": 0,
-                "SpeedX": 6
+                "SpeedX": 6,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -10113,6 +10200,192 @@
                 "LaneChangeTime": 0.6,
                 "TimeBetweenLaneChanges": 5
             }
+        },
+        {
+            "ID": 129,
+            "NAME": {
+                "en": "Pepper-pult",
+                "zh": "甜椒投手"
+            },
+            "_CARDSPRITENAME": "pepperpult",
+            "CODENAME": "pepperpult",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "ice",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 50
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Lobbed",
+                            "zh": "抛物线"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Pepper-pults lob flaming peppers at zombies and keep nearby plants warm.",
+                    "zh": "甜椒投手向僵尸投出火焰辣椒还能冰释其周围的植物。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "immune to frost",
+                            "zh": "不会被冻结"
+                        }
+                    },
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "warms nearby plants",
+                            "zh": "冰释周围的植物"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "Some say Pepper-pult is a hot head. Some find his fiery disposition off-putting. But the truth is, he's just very focused and determined. He loves what he does. He appreciates everything he has. \"I came from the weedy side of the lawn,\" Pepper-pult explains. \"I worked hard to pull myself up by my roots. I'm a self-made pepper and I don't take a single thing for granted.\"",
+                    "zh": "有人说，甜椒投手有点容易头脑发热。有些人觉得他火热的性格让人倒胃口。但事实是，他只是比较专注和执着而已。他爱他所做的事情。他感谢自己拥有的一切。 “我来自草坪的野草区，”辣椒投手解释。 “我努力扎根令自己立足。我是一个自力更生的辣椒，我认为任何事都不是理所当然的。”"
+                },
+                "BriefIntroduction": {
+                    "en": "Lobs flaming peppers at zombies and warms nearby plants",
+                    "zh": "向僵尸投掷燃烧的甜椒子弹，冰释身边的植物"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "ThrowInterval": 2.85,
+                "ThrowIntervalAdditional": 0.15,
+                "Cooldown": 20,
+                "CooldownFrom": 1,
+                "SunCost": 200,
+                "Toughness": 300,
+                "Family": "Fire",
+                "ImmuneToIceblock": true,
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                }
+            }
+        },
+        {
+            "ID": 130,
+            "NAME": {
+                "en": "Hot Potato",
+                "zh": "烤马铃薯"
+            },
+            "_CARDSPRITENAME": "hotpotato",
+            "CODENAME": "hotpotato",
+            "TYPE": [
+                "hotpotato"
+            ],
+            "OBTAINWORLD": "ice",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 50
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Lobbed",
+                            "zh": "抛物线"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Hot Potatoes melt the ice blocks they're planted on.",
+                    "zh": "烤马铃薯会将本格的冰块融化。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use",
+                            "zh": "一次性使用"
+                        }
+                    },
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "melts an ice block",
+                            "zh": "融化一块冰块"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "How does Hot Potato stay so positive and even-peeled all the time? Yoga, that's how. She never misses a class. Also, regular meditation. It's the only way she can handle the hard work of fighting zombies, day in and day out, without melting down.",
+                    "zh": "烤马铃薯即使在去皮时也能活得如此积极，为什么？瑜伽，这就是答案。她从来没有错过哪怕一堂瑜伽课。此外，还有定期冥想。这是她能够面对僵尸战斗，日复一日辛勤工作而没有倒下去的唯一方法。"
+                },
+                "BriefIntroduction": {
+                    "en": "Plant it on an ice block to melt the block",
+                    "zh": "种植在冰块上并融化这块冰块"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 20
+                }
+            },
+            "objdata": {
+                "Cooldown": 10,
+                "CooldownFrom": 1,
+                "SunCost": 0,
+                "Toughness": 300,
+                "Family": "Fire",
+                "ImmuneToIceblock": true,
+                "//": 60
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -10179,11 +10452,13 @@
         "sweetpotato",
         "chomper",
         "sapfling",
+        "hurrikale",
+        "hotpotato",
+        "pepperpult",
         "chardguard",
         "firepeashooter",
-        "floawerPot",
-        "hurrikale",
         "xshot",
+        "floawerPot",
         "dandelion",
         "redstinger",
         "stallia",
@@ -10315,6 +10590,8 @@
         "tool_projectile_bowling_holonut",
         "tool_projectile_bowling_primalwallnut",
         "tool_projectile_bowling_tallnut",
+        "hotpotato",
+        "pepperpult",
         "chardguard",
         "xshot",
         "firepeashooter",
