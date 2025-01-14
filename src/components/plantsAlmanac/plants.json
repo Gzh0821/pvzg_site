@@ -1931,10 +1931,14 @@
             "objdata": {
                 "PlantfoodTime": 3,
                 "SunValue": 25,
-                "ProduceInterval": 23.5,
-                "ProduceIntervalAdditional": 1.5,
+                "ProduceInterval": 32,
+                "ProduceIntervalAdditional": 4,
                 "ProduceCountdownStart": 5,
                 "ProduceCountdownStartAdditional": 5,
+                "ProduceInterval_AtNight": 23.5,
+                "ProduceIntervalAdditional_AtNight": 1.5,
+                "ProduceCountdownStart_AtNight": 5,
+                "ProduceCountdownStartAdditional_AtNight": 5,
                 "SunValueList": [
                     25,
                     50,
@@ -9309,7 +9313,8 @@
             "_CARDSPRITENAME": "tanglekelp",
             "CODENAME": "tanglekelp",
             "TYPE": [
-                "aquatic"
+                "aquatic",
+                "deepAquatic"
             ],
             "OBTAINWORLD": "water",
             "ZENGARDEN": {
@@ -10109,7 +10114,8 @@
                 "PlantfoodDamageMult": 3,
                 "PlantfoodDuration": 3.5,
                 "ExplodeDamage": 450,
-                "Lifetime": 10
+                "Lifetime": 10,
+                "ImmuneToIceblock": true
             }
         },
         {
@@ -10321,17 +10327,10 @@
                         "TYPE": "RECHARGE"
                     },
                     {
-                        "TYPE": "TOUGHNESS"
-                    },
-                    {
-                        "TYPE": "DAMAGE",
-                        "VALUE": 50
-                    },
-                    {
                         "TYPE": "RANGE",
                         "SORT": {
-                            "en": "Lobbed",
-                            "zh": "抛物线"
+                            "en": "Single",
+                            "zh": "单个"
                         }
                     },
                     {
@@ -10385,6 +10384,91 @@
                 "Family": "Fire",
                 "ImmuneToIceblock": true,
                 "//": 60
+            }
+        },
+        {
+            "ID": 131,
+            "NAME": {
+                "en": "Stunion",
+                "zh": "眩晕洋葱"
+            },
+            "_CARDSPRITENAME": "stunion",
+            "CODENAME": "stunion",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "ice",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Close",
+                            "zh": "靠近时"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Stunions breathe a stunning cloud of gas on nearby zombies in the lane.",
+                    "zh": "眩晕洋葱向本行靠近的僵尸吐出眩晕的气体。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use, activates when zombie is close",
+                            "zh": "一次性使用，僵尸靠近时触发"
+                        }
+                    },
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "stuns nearby zombies",
+                            "zh": "使靠近的僵尸眩晕"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "Oh sure, everyone knows Stunion as the battle-hardened warrior with the potent breath. But he's so much more than that. He's an accomplished pianist. He speaks five languages fluently. Heck, he's the leader of a Cub Shallots group in his spare time. Dude's got layers. Go on, peel 'em back. You'll see.",
+                    "zh": "哦，当然，每个人都知道眩晕洋葱作为战士以他强大的气团在战场上驰骋多年。但他可远不止这点本事。他是一个多才多艺的钢琴家。他会说五种流利的语言。哎呀，他在业余时间还是青葱年少组织的组长。这位老兄层次很多哦。来吧，一层层剥开，你就会看到。"
+                },
+                "BriefIntroduction": {
+                    "en": "Stuns nearby zombies in the lane",
+                    "zh": "使本行靠近的僵尸眩晕"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 20
+                }
+            },
+            "objdata": {
+                "Cooldown": 20,
+                "CooldownFrom": 0.75,
+                "SunCost": 25,
+                "Toughness": 300,
+                "Family": "Slow",
+                "DetectDistance": 1,
+                "DetectDistancePlantfood": 4,
+                "StunDuration": 12,
+                "StunDurationPlantfood": 18
             }
         }
     ],
@@ -10457,6 +10541,7 @@
         "pepperpult",
         "chardguard",
         "firepeashooter",
+        "stunion",
         "xshot",
         "floawerPot",
         "dandelion",
@@ -10593,6 +10678,7 @@
         "hotpotato",
         "pepperpult",
         "chardguard",
+        "stunion",
         "xshot",
         "firepeashooter",
         "hurrikale",
