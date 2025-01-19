@@ -1,6 +1,6 @@
 ---
 title: 赞助者
-icon: solid fa-hand-holding-heart
+icon: fa-solid fa-hand-holding-heart
 pageInfo: false
 comment: false
 index: true
