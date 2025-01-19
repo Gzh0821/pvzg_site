@@ -1,6 +1,6 @@
 ---
 title: Sponsor
-icon: solid fa-hand-holding-heart
+icon: fa-solid fa-hand-holding-heart
 pageInfo: false
 comment: false
 index: true
