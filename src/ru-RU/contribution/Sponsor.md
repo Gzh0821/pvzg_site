@@ -1,13 +1,11 @@
 ---
-title: Спонсоры
+title: Благодарности
 icon: fa-solid fa-hand-holding-heart
 pageInfo: false
 comment: false
 index: true
 order: 4
 ---
-
-## Спонсоры оффициального сайта PvZ2 Gardendless
 
 Отдельное спасибо [@普通的一名博客 plunt](https://space.bilibili.com/451272694) за спонсирование домена этого веб-сайта.
 
@@ -16,5 +14,7 @@ order: 4
 </div>
 
 [@南 Garden](https://space.bilibili.com/355909245), Разработчик игры "PvZ2 Gardendless", оказал большую поддержку в разработке и обслуживании этого веб-сайта.
+
+Этот веб-сайт разработан с использованием темы с открытым исходным кодом [VuePress Theme Hope](https://theme-hope-ru.vuejs.press/).
 
 Спасибо вам за всю вашу поддержку Игры и Веб-сайта PvZ2 Gardendless !
