@@ -24,10 +24,10 @@
                             <td class="ability"><img :src="keyMap[key].icon" /> {{ keyMap[key][i18nLanguage] }}</td>
                             <td class="value">{{ value }}</td>
                         </tr>
-                        <tr key="CodeName">
+                        <!-- <tr key="CodeName">
                             <td class="ability"> CodeName </td>
                             <td class="value">{{ zombie.codename }}</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -41,6 +41,11 @@
                         value['DESCRIPTION'][i18nLanguage] }}</span>
                 </p><br>
                 <p class="description">{{ zombie.chat }}</p>
+            </div>
+        </div>
+        <div class="details-container">
+            <div class="zombie-introduction">
+                <p class="description">Codename: <span class="descriptionKey">{{ zombie.codename }}</span></p>
             </div>
         </div>
     </div>
