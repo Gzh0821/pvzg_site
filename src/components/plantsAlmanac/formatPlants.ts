@@ -37,7 +37,8 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
         frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],
         description: originPlant["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
         chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage],
-        subPlants: originPlant["SubPlantList"]
+        subPlants: originPlant["SubPlantList"],
+        objdata: originPlant["objdata"],
     };
     if (originPlant?.["ALMANAC"]?.["Elements"]) {
         originPlant["ALMANAC"]["Elements"].forEach((element) => {
