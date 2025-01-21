@@ -17,4 +17,5 @@ export interface Plant {
   frameWorld: string;
   special: [Element] | [];
   subPlants: [string];
+  objdata: { [key: string]: number | string };
 }
