@@ -715,7 +715,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -1122,7 +1122,7 @@
             "TYPE": [
                 "vine"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -3486,7 +3486,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -4092,7 +4092,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -4980,7 +4980,7 @@
         {
             "ID": 59,
             "NAME": {
-                "en": "Snap Dragon",
+                "en": "Snapdragon",
                 "zh": "火龙草"
             },
             "_CARDSPRITENAME": "snapdragon",
@@ -5071,7 +5071,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -6563,7 +6563,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -10456,7 +10456,7 @@
                 },
                 "DisplayOffset": {
                     "x": 0,
-                    "y": 20
+                    "y": 0
                 }
             },
             "objdata": {
@@ -10485,6 +10485,8 @@
         "bonkchoy",
         "repeater",
         "snowpea",
+        "dandelion",
+        "pvine",
         "kernelpult",
         "snapdragon",
         "powerlily",
@@ -10494,10 +10496,10 @@
         "springbean",
         "spikerock",
         "threepeater",
+        "buttercup",
         "squash",
         "splitpea",
         "chilibean",
-        "torchwood",
         "lightningreed",
         "tallnut",
         "jalapeno",
@@ -10543,8 +10545,10 @@
         "firepeashooter",
         "stunion",
         "xshot",
+        "gatling",
+        "megagatling",
+        "torchwood",
         "floawerPot",
-        "dandelion",
         "redstinger",
         "stallia",
         "skyshooter",
@@ -10569,10 +10573,6 @@
         "pumpkin",
         "gloomvine",
         "gloomshroom",
-        "buttercup",
-        "gatling",
-        "megagatling",
-        "pvine",
         "meteorflower",
         "vamporcini",
         "dragonbruit",
@@ -10583,8 +10583,11 @@
     "ALMANACHIDDENORDER": [
         "dragonbabybruit"
     ],
-    "SANDBOXEXCLUDELIST": [
-        "powerplant"
+    "BASEUNLOCKLIST": [
+        "peashooter",
+        "sunflower",
+        "wallnut",
+        "potatomine"
     ],
     "SANDBOX": [
         "peashooter",
@@ -10599,6 +10602,8 @@
         "repeater",
         "twinsunflower",
         "snowpea",
+        "dandelion",
+        "pvine",
         "kernelpult",
         "snapdragon",
         "spikeweed",
@@ -10608,6 +10613,7 @@
         "coconutcannon",
         "cherry_bomb",
         "powerlily",
+        "buttercup",
         "splitpea",
         "chilibean",
         "lightningreed",
@@ -10617,7 +10623,6 @@
         "wintermelon",
         "squash",
         "jalapeno",
-        "torchwood",
         "imitater",
         "marigold",
         "marigold_red",
@@ -10682,6 +10687,9 @@
         "xshot",
         "firepeashooter",
         "hurrikale",
+        "gatling",
+        "megagatling",
+        "torchwood",
         "redstinger",
         "stallia",
         "skyshooter",
@@ -10697,14 +10705,12 @@
         "escaperoot",
         "electricpeashooter",
         "pumpkin",
-        "pvine",
         "gloomvine",
         "gloomshroom",
         "dragonbruit",
         "dragonbabybruit",
         "meteorflower",
         "umbrellaleaf",
-        "buttercup",
         "missiletoe",
         "cranjelly",
         "vamporcini",
@@ -10712,11 +10718,8 @@
         "explodeonut",
         "plantern",
         "jackolantern",
-        "dandelion",
         "electriccurrant",
         "solartomato",
-        "applemortar",
-        "gatling",
-        "megagatling"
+        "applemortar"
     ]
 }

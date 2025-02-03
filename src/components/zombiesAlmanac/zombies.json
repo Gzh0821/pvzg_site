@@ -87,6 +87,7 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
         "Toughness": 190
@@ -102,6 +103,7 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
         "Toughness": 190
@@ -117,6 +119,7 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
         "Toughness": 190
@@ -131,6 +134,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
         "Toughness": 190
@@ -145,6 +149,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ChooseToSpawnOnDeepWaterRows": true,
         "CannotBeTossedByCitron": false,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
@@ -160,6 +165,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ChooseToSpawnOnDeepWaterRows": true,
         "CannotBeTossedByCitron": false,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
@@ -1923,6 +1929,8 @@
           "zombossmech_cowboy2",
           "zombossmech_future",
           "zombossmech_future2",
+          "zombossmech_dark",
+          "zombossmech_dark2",
           "dark_king",
           "dark_king_veteran",
           "future_protector_shield",
@@ -1973,6 +1981,36 @@
         "Toughness": 190,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
+      }
+    },
+    {
+      "NAME": "Zombot Dark Dragon",
+      "_CARDSPRITENAME": "darkzomboss",
+      "CODENAME": "zombossmech_dark",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "dark",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "LivesInDeepWater": true,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Zombot Dark Dragon",
+      "_CARDSPRITENAME": "darkzomboss",
+      "CODENAME": "zombossmech_dark2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "dark",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "LivesInDeepWater": true,
+        "Toughness": 190
       }
     },
     {
@@ -2076,6 +2114,7 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "ChooseToSpawnOnDeepWaterRows": true,
         "LivesInDeepWater": true,
         "Toughness": 190
       }
@@ -2301,6 +2340,55 @@
         "ChillInsteadOfFreeze": true,
         "CannotBePushedBySliders": true,
         "Toughness": 490
+      }
+    },
+    {
+      "NAME": "Troglobite",
+      "_CARDSPRITENAME": "iceagetroglobite",
+      "CODENAME": "iceage_troglobite",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "ChillInsteadOfFreeze": true,
+        "Toughness": 470
+      }
+    },
+    {
+      "NAME": "Weasel Hoarder",
+      "_CARDSPRITENAME": "iceageweaselhoarder",
+      "CODENAME": "iceage_weaselhoarder",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "ice",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "ChillInsteadOfFreeze": true,
+        "Toughness": 190,
+        "WeaselTypeName": "iceage_weasel",
+        "WeaselingHealthPercentage": 0.8,
+        "WeaselingInterval": 0.3,
+        "WeaselingIntervalVariance": 0.1,
+        "WeaselingDuration": 2,
+        "WeaselingDurationVariance": 1
+      }
+    },
+    {
+      "NAME": "Ice Weasel",
+      "_CARDSPRITENAME": "iceageweasel",
+      "CODENAME": "iceage_weasel",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 10,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "ice",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "ChillInsteadOfFreeze": true,
+        "CannotBePushedBySliders": true,
+        "Toughness": 40
       }
     },
     {
