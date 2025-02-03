@@ -24,19 +24,19 @@
                                 v-for="subPlant in plant.subPlants.map((codename) => { return plantMap[codename] })"
                                 :key="subPlant.id">
                                 <a-col @click="selectPlant(subPlant, plant)">
-                                    <img :src="'/assets/image/plants/plants_' + subPlant.plantType + '_0.webp'"
+                                    <img :src="'/assets/image/plants/plants_' + subPlant.codename + '_c.webp'"
                                         :alt="plant.name">
                                     <p>{{ subPlant.name }}</p>
                                 </a-col>
                             </template>
                         </a-row>
                     </template>
-                    <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
+                    <img :src="'/assets/image/plants/plants_' + plant.codename + '_c.webp'" :alt="plant.name">
                 </a-popover>
                 <p>{{ plant.name }}</p>
             </template>
             <template v-else>
-                <img :src="'/assets/image/plants/plants_' + plant.plantType + '_0.webp'" :alt="plant.name">
+                <img :src="'/assets/image/plants/plants_' + plant.codename + '_c.webp'" :alt="plant.name">
                 <p>{{ plant.name }}</p>
             </template>
         </li>
