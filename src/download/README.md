@@ -33,7 +33,7 @@ onMounted(() => {
 > 想要一个全新的 json 游戏存档文件？点击此处[下载](https://xj2y2-my.sharepoint.com/personal/pr_ms_pvzge_com1/_layouts/52/download.aspx?share=EXUCAOJwJhBJn7BERF4tXsABzvcPDd_OoWAmTH5dUSEiFA)
 
 > [!warning]
-> 请注意：本页面提供的下载链接仅供学习交流使用，不得用于商业用途，请于下载后 24 小时内删除。
+> 请注意：本游戏仅供学习交流使用，不得用于商业用途。
 >
 > 下载或在线游玩表示您已阅读并同意以下协议和声明：
 >
