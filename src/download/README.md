@@ -30,7 +30,7 @@ onMounted(() => {
 > [!important]
 > 下载游玩时的相关问题 FAQ 请查看[这里](../guide/FAQ.md)，系统要求和推荐配置请查看[这里](../guide/requirement.md)
 >
-> 想要一个全新的 json 游戏存档文件？点击此处[下载](https://xj2y2-my.sharepoint.com/personal/pr_ms_pvzge_com1/_layouts/52/download.aspx?share=EXUCAOJwJhBJn7BERF4tXsABzvcPDd_OoWAmTH5dUSEiFA)
+> 想要一个全新的 json 游戏存档文件？点击此处[下载](https://github.com/Gzh0821/pvzg_site/releases/download/0.2.0/pp.json)
 
 > [!warning]
 > 请注意：本游戏仅供学习交流使用，不得用于商业用途。
