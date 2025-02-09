@@ -2139,7 +2139,8 @@
           "future_protector_shield",
           "future_infinut_shield"
         ],
-        "Toughness": 190
+        "Toughness": 190,
+        "ZombossLaneSummon": true
       }
     },
     {
@@ -2210,6 +2211,21 @@
         "LivesInDeepWater": true,
         "Toughness": 190,
         "NormalDeathWhenMowed": true
+      }
+    },
+    {
+      "NAME": "Zombot Sharktronic Sub",
+      "_CARDSPRITENAME": "beachzomboss",
+      "CODENAME": "zombossmech_beach",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "beach",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "LivesInDeepWater": true,
+        "Toughness": 190
       }
     },
     {
@@ -2427,8 +2443,60 @@
       }
     },
     {
+      "NAME": "Adventurer Zombie",
+      "_CARDSPRITENAME": "lostcitybasic",
+      "CODENAME": "lostcity",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Conehead Adventurer Zombie",
+      "_CARDSPRITENAME": "lostcityarmor1",
+      "CODENAME": "lostcity_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Buckethead Adventurer Zombie",
+      "_CARDSPRITENAME": "lostcityarmor2",
+      "CODENAME": "lostcity_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Flag Adventurer Zombie",
+      "_CARDSPRITENAME": "lostcityflag",
+      "CODENAME": "lostcity_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190
+      }
+    },
+    {
       "NAME": "Relic Hunter Zombie",
-      "_CARDSPRITENAME": "lostrelichunter",
+      "_CARDSPRITENAME": "lostcityrelichunter",
       "CODENAME": "lostcity_relichunter",
       "SUNCOST": 100,
       "WAVEPOINTCOST": 550,
@@ -2438,6 +2506,36 @@
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
         "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Lost City Imp Zombie",
+      "_CARDSPRITENAME": "lostcityimp",
+      "CODENAME": "lostcity_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Porter Gargantuar",
+      "_CARDSPRITENAME": "lostcitygargantuar",
+      "CODENAME": "lostcity_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "Toughness": 3600,
+        "LivesInDeepWater": true,
+        "NormalDeathWhenMowed": true,
+        "FireDamage": 1200
       }
     },
     {
