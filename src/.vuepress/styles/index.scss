@@ -38,7 +38,7 @@
     font-family: 'paris2024', 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", "ZCOOL KuaiLe", "Roboto", "Arial", serif;
 }
 
-div.video-container{
+div.video-container {
     position: relative;
     width: 100%;
     height: 0;
@@ -55,8 +55,19 @@ iframe.youtube-video {
     height: 100%;
 }
 
+.vp-hero-info {
+    display: block;
+    text-align: center;
 
-// For Christmas
+    .vp-hero-image {
+        max-height: 200px;
+        margin: 0 auto;
+    }
+}
+#main-description {
+    max-width: 100%;
+  }
+// For Special Event
 
 
 .vp-navbar {
