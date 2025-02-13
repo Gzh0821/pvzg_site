@@ -28,7 +28,7 @@ actions:
     icon: book-open
     link: ./almanac/
 
-  - text: Community and feedback
+  - text: Community
     icon: comment
     link: ./contribution/
 

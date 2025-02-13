@@ -28,7 +28,7 @@ actions:
     icon: book-open
     link: ./almanac/
 
-  - text: Сообщество и обратная связь
+  - text: Сообщество
     icon: comment
     link: ./contribution/
     
