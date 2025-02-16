@@ -46,6 +46,7 @@
         <div class="details-container">
             <div class="plant-introduction">
                 <p class="description">Codename: <span class="descriptionKey">{{ plant.codename }}</span></p>
+                <p class="description">PlantID: <span class="descriptionKey">{{ plant.id }}</span></p>
                 <!-- <br><p class="description">Objdata:{{ plant.objdata }}</p> -->
             </div>
         </div>
