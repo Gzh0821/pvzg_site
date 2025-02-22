@@ -76,11 +76,11 @@ onMounted(() => {
 
 </template>
 
-<template v-if="gameInfoData?.Download.Onedrive">
+<template v-if="gameInfoData?.Download.Storage">
 
-## Onedrive 链接 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
+## 本地下载 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
 
-下载链接：<a :href="gameInfoData.Download.Onedrive">点击进入</a>
+下载链接：<a :href="gameInfoData.Download.Storage">点击进入</a>
 
 </template>
 

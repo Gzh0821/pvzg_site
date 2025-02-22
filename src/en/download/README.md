@@ -76,11 +76,11 @@ Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
 
 </template>
 
-<template v-if="gameInfoData?.Download.Onedrive">
+<template v-if="gameInfoData?.Download.Storage">
 
-## Onedrive Link <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+## Local Download <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
 
-Download Link: <a :href="gameInfoData.Download.Onedrive">click to enter</a>
+Download Link: <a :href="gameInfoData.Download.Storage">click to enter</a>
 
 </template>
 
