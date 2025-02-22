@@ -8,7 +8,6 @@ export const zhNavbar = navbar([
   "/custom-level/",
   "/instructions/",
   "/contribution/",
-  "/devtool/",
   { text: "在线游玩", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/demo/",
   // {
