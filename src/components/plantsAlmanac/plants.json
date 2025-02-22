@@ -3254,7 +3254,7 @@
                     "zh": "大家都因大嘴花的事迹而钦佩他。他奇特的口味三番两次地拯救了他们。但是说实话，大嘴花的朋友们觉得吃僵尸很恶心。而且他口气很重！但是大家都不愿意告诉他这一点，即使送他一颗薄荷糖也不能让他意识到这一点。"
                 },
                 "BriefIntroduction": {
-                    "en": "Devours 2 zombies, then chews on each for a while",
+                    "en": "Devours zombies, then chews on each for a while",
                     "zh": "吃掉僵尸，并花费时间消化"
                 },
                 "DisplayOffset": {
@@ -3655,7 +3655,7 @@
                 "CooldownFrom": 0.5,
                 "SunCost": 500,
                 "Toughness": 300,
-                "Family": "Explosive"
+                "Family": "Lobber"
             }
         },
         {
@@ -3846,7 +3846,7 @@
         {
             "ID": 46,
             "NAME": {
-                "en": "Doom Shroom",
+                "en": "Doom-shroom",
                 "zh": "毁灭菇"
             },
             "_CARDSPRITENAME": "doomshroom",
@@ -5745,7 +5745,7 @@
         {
             "ID": 68,
             "NAME": {
-                "en": "Gloom Shroom",
+                "en": "Gloom-shroom",
                 "zh": "忧郁菇"
             },
             "_CARDSPRITENAME": "gloomshroom",
@@ -5985,7 +5985,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
             },
@@ -6443,7 +6443,7 @@
                 "Special": [],
                 "Chat": {
                     "en": "Her resume says that she was once a peach of Wangmu Niangniang for consumption, and became a medic after being demoted to mortal.",
-                    "zh": "仙桃的简历上写着白己本是王母娘娘的御用幡桃, 被贬下凡后做了战地医生。"
+                    "zh": "仙桃的简历上写着自己本是王母娘娘的御用幡桃, 被贬下凡后做了战地医生。"
                 },
                 "BriefIntroduction": {
                     "en": "Heals plants in a 3x3 area",
@@ -8282,6 +8282,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "ChanceToTurn": 0.5,
                 "Cooldown": 10,
                 "CooldownFrom": 0.5,
@@ -8350,6 +8351,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "FireDamage": 150,
                 "Cooldown": 10,
                 "CooldownFrom": 0.5,
@@ -8424,6 +8426,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "ExplodeDamage": 400,
                 "Cooldown": 10,
                 "CooldownFrom": 0.5,
@@ -8499,6 +8502,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "SunDropValue": 150,
                 "Cooldown": 10,
                 "CooldownFrom": 0.5,
@@ -8567,6 +8571,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "PeaCount": 12,
                 "Cooldown": 10,
                 "CooldownFrom": 0.5,
@@ -8635,6 +8640,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "FreezeTime": 5,
                 "Cooldown": 10,
                 "CooldownFrom": 0.5,
@@ -8703,6 +8709,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "PlantList": [
                     "puffshroom",
                     "fumeshroom",
@@ -8781,6 +8788,7 @@
                 "ProduceInterval": 23.5,
                 "ProduceIntervalAdditional": 1.5,
                 "ProduceCountdownStart": 5,
+                "ProduceCountdownStartAdditional": 5,
                 "PoisonDPS": 20,
                 "PoisonDuration": 10,
                 "Cooldown": 10,
@@ -10470,6 +10478,408 @@
                 "StunDuration": 12,
                 "StunDurationPlantfood": 18
             }
+        },
+        {
+            "ID": 132,
+            "NAME": {
+                "en": "Gold Leaf",
+                "zh": "黄金叶"
+            },
+            "_CARDSPRITENAME": "goldleaf",
+            "CODENAME": "goldleaf",
+            "TYPE": [
+                "tile",
+                "goldtile",
+                "sunProducer"
+            ],
+            "OBTAINWORLD": "lostcity",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Gold Leaves create a Gold Tile on planting.",
+                    "zh": "黄金叶在种植时放置一枚黄金地砖。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use, instant",
+                            "zh": "一次性使用，立刻生效"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "\"For a small initial investment, you too can generate huge sun,\" says Gold Leaf. She's a firm believer in solar markets.",
+                    "zh": "“即使开始投入一点点,你也能收获巨大阳光”, 黄金叶说。她是太阳能市场的死忠粉丝。"
+                },
+                "BriefIntroduction": {
+                    "en": "Creates Gold Tile on planting",
+                    "zh": "在种植时放置一枚黄金地砖"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 10,
+                "CooldownFrom": 0.5,
+                "SunCost": 50,
+                "Toughness": 300,
+                "Family": "Nope",
+                "SunCostIncrement": 25
+            }
+        },
+        {
+            "ID": 133,
+            "NAME": {
+                "en": "A.K.E.E.",
+                "zh": "AKEE"
+            },
+            "_CARDSPRITENAME": "akee",
+            "CODENAME": "akee",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "lostcity",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 60
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Lobbed",
+                            "zh": "抛物线"
+                        }
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Shot Bounces",
+                            "zh": "投掷物反弹"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "A.K.E.E.s lob projectiles that bounce from zombie to zombie.",
+                    "zh": "AKEE 喷射出能在僵尸之间弹跳的投掷物"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Autonomous Katapulting Ejectomatic Emitter is actively looking for a different acronym for A.K.E.E., because let's face it, \"Katapulting\" is just not working.",
+                    "zh": "AKEE，全名为全自动（autonomous）弹射（katapulting）喷射（ejectomatic）发射器（emitter），正在寻找一组新的高级词汇首字母凑成自己的名字。因为他也很清楚自己和“弹射”毫不沾边。"
+                },
+                "BriefIntroduction": {
+                    "en": "Lobs projectiles that bounce from zombie to zombie",
+                    "zh": "喷射出能在僵尸之间弹跳的投掷物"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "ThrowInterval": 2.85,
+                "ThrowIntervalAdditional": 0.15,
+                "Cooldown": 5,
+                "CooldownFrom": 1,
+                "SunCost": 175,
+                "Toughness": 300,
+                "Family": "Lobber"
+            }
+        },
+        {
+            "ID": 134,
+            "NAME": {
+                "en": "Endurian",
+                "zh": "榴莲"
+            },
+            "_CARDSPRITENAME": "endurian",
+            "CODENAME": "endurian",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "lostcity",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "PLANTFOOD",
+                        "SORT": {
+                            "en": "Armor",
+                            "zh": "盔甲"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Endurians are defensive plants that deal damage to zombies attacking them.",
+                    "zh": "榴莲既可以防御，也能对靠近的僵尸造成伤害。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "\"When other plants talk about me, they say I'm too gruff. They say I'm difficult to approach, that I'm afraid to let others get too close to me. Also, I smell terrible,\" said Endurian. But deep down inside, he knows that he's so much more than that. He's also short-tempered.",
+                    "zh": "“当其他植物提及我时，他们说我很暴躁。他们说我难以靠近，这使我很不情愿让别人离我太近。而且我的味道也很难闻。”榴莲说道。但在他内心深处，他很清楚自己不只是如此，他其实还是个很暴躁的家伙。"
+                },
+                "BriefIntroduction": {
+                    "en": "Blocks off zombies and protects your other plants",
+                    "zh": "防御的同时对靠近的僵尸造成伤害"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "ArmorToughness": 6000,
+                "Cooldown": 15,
+                "CooldownFrom": 1,
+                "SunCost": 100,
+                "Toughness": 3000,
+                "Family": "Defence",
+                "StabDamage": 10,
+                "StabDamagePFExtra": 5,
+                "StabInterval": 0.5
+            }
+        },
+        {
+            "ID": 135,
+            "NAME": {
+                "en": "Toadstool",
+                "zh": "金蟾菇"
+            },
+            "_CARDSPRITENAME": "toadstool",
+            "CODENAME": "toadstool",
+            "TYPE": [
+                "plant",
+                "sunProducer"
+            ],
+            "OBTAINWORLD": "market",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "SUNPRODUCTION",
+                        "SORT": {
+                            "en": "Variable",
+                            "zh": "多种"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Toadstools gulp down zombies whole, then produce sun.",
+                    "zh": "金蟾菇将僵尸整只吞下，并产出阳光。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Weakness",
+                            "zh": "弱点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "vulnerable while chewing",
+                            "zh": "咀嚼时毫无攻击力"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "Toadstool just can't stand being idle. \"I keep everything that I want to do on lists, and keep the lists where I can see them so that I'm always motivated!\" she said. Whenever there's work to be done, she's always the first to hop to it.",
+                    "zh": "金蟾菇不喜欢傻站着。“我把所有我想做的事都记在小本子上，并总把小本子放在我能看到的地方，这样我就能时刻保持动力！”她说。每当有工作需要完成，她总能第一个跳出来。"
+                },
+                "BriefIntroduction": {
+                    "en": "Gulps down zombies whole, then produce sun",
+                    "zh": "将僵尸整只吞下，并产出阳光"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 5,
+                "CooldownFrom": 1,
+                "SunCost": 200,
+                "Toughness": 300,
+                "Family": "Sun",
+                "TongueDistance": 3.5,
+                "TongueSlapDamage": 50,
+                "ChewTime": 30,
+                "SunProducePerZombie": 50,
+                "MaxZombieChewCount": 1,
+                "WaitTimePF": 6,
+                "TongueDistancePf": 4,
+                "TongueSlapDamagePF": 100,
+                "ChewTimePF": 3,
+                "SunProducePerZombiePF": 50,
+                "MaxZombieChewCountPF": 4
+            }
+        },
+        {
+            "ID": 136,
+            "NAME": {
+                "en": "Lava Guava",
+                "zh": "岩浆番石榴"
+            },
+            "_CARDSPRITENAME": "lavaguava",
+            "CODENAME": "lavaguava",
+            "TYPE": [
+                "plant",
+                "sunProducer"
+            ],
+            "OBTAINWORLD": "market",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 200
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Touch",
+                            "zh": "接触"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Lava Guavas erupt, creating a lava pool that burns zombies.",
+                    "zh": "岩浆番石榴喷发时在原地留下一滩岩浆，可以灼烧僵尸。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use, on contact",
+                            "zh": "一次性使用，接触型"
+                        }
+                    },
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "erupts, damaging nearby zombies",
+                            "zh": "喷发时，对四周的僵尸造成伤害"
+                        }
+                    },
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "creates a burning lava pool in its tile",
+                            "zh": "在原地留下一滩岩浆"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "Lava Guava frowns with barely-repressed rage. He's trying to keep it in check. He's trying so hard. But one day some zombie's going to push him too far and he can't be held responsible for the consequences.",
+                    "zh": "岩浆番石榴总是皱着眉头压抑着愤怒。他一直尽可能地保持冷静，他为此付出不少努力，但当僵尸对他得寸进尺时，这只僵尸就只能为他的行为付出代价了。"
+                },
+                "BriefIntroduction": {
+                    "en": "Erupts and leaves behind a burning lava pool",
+                    "zh": "喷发并留下一滩滚烫的岩浆"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 15,
+                "CooldownFrom": 0.667,
+                "SunCost": 75,
+                "Toughness": 300,
+                "Family": "Fire",
+                "WarmingRadius": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 6,
+                    "GridItemDamage": 200
+                },
+                "WarmingRadiusPlantfood": {
+                    "PulseInitialDelay": 0.5,
+                    "PulseCooldown": 1.5,
+                    "GridItemDamage": 100
+                },
+                "ExplosionDamage": 200,
+                "PlantFoodDurationSeconds": 10,
+                "PlantFoodDPS": 100
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -10507,6 +10917,7 @@
         "melonpult",
         "wintermelon",
         "imitater",
+        "sapfling",
         "marigold",
         "turnip",
         "peach",
@@ -10537,7 +10948,6 @@
         "ghostpepper",
         "sweetpotato",
         "chomper",
-        "sapfling",
         "hurrikale",
         "hotpotato",
         "pepperpult",
@@ -10549,8 +10959,13 @@
         "megagatling",
         "torchwood",
         "floawerPot",
+        "lavaguava",
         "redstinger",
+        "akee",
+        "endurian",
+        "toadstool",
         "stallia",
+        "goldleaf",
         "skyshooter",
         "celerystalker",
         "cactus",
@@ -10624,6 +11039,7 @@
         "squash",
         "jalapeno",
         "imitater",
+        "sapfling",
         "marigold",
         "marigold_red",
         "marigold_orange",
@@ -10666,7 +11082,6 @@
         "guacodile",
         "banana",
         "chomper",
-        "sapfling",
         "homingthistle",
         "ghostpepper",
         "sweetpotato",
@@ -10691,7 +11106,12 @@
         "megagatling",
         "torchwood",
         "redstinger",
+        "akee",
+        "endurian",
         "stallia",
+        "goldleaf",
+        "lavaguava",
+        "toadstool",
         "skyshooter",
         "floawerPot",
         "celerystalker",
