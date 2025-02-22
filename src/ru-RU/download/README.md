@@ -76,11 +76,11 @@ onMounted(() => {
 
 </template>
 
-<template v-if="gameInfoData?.Download.Onedrive">
+<template v-if="gameInfoData?.Download.Storage">
 
-## Ссылка Onedrive <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
+## Локальная скачать <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
-Ссылка для скачивания: <a :href="gameInfoData.Download.Onedrive">нажмите чтобы открыть</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Storage">нажмите чтобы открыть</a>
 
 </template>
 
