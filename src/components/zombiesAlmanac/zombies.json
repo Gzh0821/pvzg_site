@@ -377,6 +377,7 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "MaxAbsorbValue": 250,
         "Toughness": 190
       }
     },
@@ -2452,6 +2453,7 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "BugToughness": 0,
         "Toughness": 190
       }
     },
@@ -2465,6 +2467,7 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "BugToughness": 0,
         "Toughness": 190
       }
     },
@@ -2478,6 +2481,7 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "BugToughness": 0,
         "Toughness": 190
       }
     },
@@ -2495,6 +2499,91 @@
       }
     },
     {
+      "NAME": "Lost Pilot Zombie",
+      "_CARDSPRITENAME": "lostcitylostpilot",
+      "CODENAME": "lostcity_lostpilot",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 350
+      }
+    },
+    {
+      "NAME": "Excavator Zombie",
+      "_CARDSPRITENAME": "lostcityexcavator",
+      "CODENAME": "lostcity_excavator",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 350
+      }
+    },
+    {
+      "NAME": "Parasol Zombie",
+      "_CARDSPRITENAME": "lostcityjane",
+      "CODENAME": "lostcity_jane",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 350,
+        "ShovelDamage": 150
+      }
+    },
+    {
+      "NAME": "Bug Zombie",
+      "_CARDSPRITENAME": "lostcitybug",
+      "CODENAME": "lostcity_bug",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190,
+        "BugToughness": 350,
+        "BuggedSPS": 0.4
+      }
+    },
+    {
+      "NAME": "Conehead Bug Zombie",
+      "_CARDSPRITENAME": "lostcitybugarmor1",
+      "CODENAME": "lostcity_bug_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190,
+        "BugToughness": 350,
+        "BuggedSPS": 0.4
+      }
+    },
+    {
+      "NAME": "Buckethead Bug Zombie",
+      "_CARDSPRITENAME": "lostcitybugarmor2",
+      "CODENAME": "lostcity_bug_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 650,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 190,
+        "BugToughness": 350,
+        "BuggedSPS": 0.4
+      }
+    },
+    {
       "NAME": "Relic Hunter Zombie",
       "_CARDSPRITENAME": "lostcityrelichunter",
       "CODENAME": "lostcity_relichunter",
@@ -2505,7 +2594,39 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "Toughness": 700
+      }
+    },
+    {
+      "NAME": "Imp Porter Zombie",
+      "_CARDSPRITENAME": "lostcityimpporter",
+      "CODENAME": "lostcity_impporter",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 450,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "Toughness": 350
+      }
+    },
+    {
+      "NAME": "Turquoise Skull Zombie",
+      "_CARDSPRITENAME": "lostcitycrystalskull",
+      "CODENAME": "lostcity_crystalskull",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "MaxAbsorbValue": 250,
+        "Toughness": 250,
+        "LaserBeamDamage": 4001,
+        "LaserBeamLength": 220,
+        "LaserCooldownTime": 5,
+        "ChargingTime": 5,
+        "ChargingTimeDecrementPer50Sun": 0.2
       }
     },
     {
