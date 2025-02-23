@@ -46,7 +46,7 @@ const handleFilter = () => {
 };
 
 const placeholder = computed(() => {
-    return i18nLanguage === 'zh' ? '输入植物名称' : 'Enter plant name';
+    return i18nLanguage === 'zh' ? '输入植物名称或id' : 'Enter plant name or id';
 });
 </script>
 
