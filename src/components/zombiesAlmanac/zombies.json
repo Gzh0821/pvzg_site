@@ -2338,9 +2338,25 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
-        "Toughness": 190,
+        "Toughness": 700,
         "FarAttackRange": 4,
         "SnowballsPerBarrage": 3
+      }
+    },
+    {
+      "NAME": "Hunter Leader Zombie",
+      "_CARDSPRITENAME": "iceagehunterveteran",
+      "CODENAME": "iceage_hunter_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 2500,
+      "OBTAINWORLD": "ice",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "ChillInsteadOfFreeze": true,
+        "Toughness": 1100,
+        "LobInterval": 3,
+        "LobIntervalAdditional": 0.5
       }
     },
     {
@@ -2657,6 +2673,21 @@
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true,
         "FireDamage": 1200
+      }
+    },
+    {
+      "NAME": "Zombot Aerostatic Gondola",
+      "_CARDSPRITENAME": "lostcityzomboss",
+      "CODENAME": "zombossmech_lostcity",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "lostcity",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "LivesInDeepWater": true,
+        "Toughness": 190
       }
     },
     {
