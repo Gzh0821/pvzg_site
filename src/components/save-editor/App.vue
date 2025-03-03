@@ -39,7 +39,7 @@
         <a-page-header :title="t('title')" style="font-family: 'pvzgFont'">
             <template #extra>
                 <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
-                    <a-button type="primary"> <upload-outlined /> {{ t('upload save') }} </a-button>
+                    <a-button type="primary"> {{ t('upload save') }} </a-button>
                 </a-upload>
                 <a-button @click="newArchive">{{ t('new save') }}</a-button>
                 <a-button @click="clearArchive" danger>{{ t('clear save') }}</a-button>
@@ -165,7 +165,6 @@
 import { ref, reactive, computed, inject } from 'vue'
 import { message, theme } from 'ant-design-vue'
 import { useI18n } from 'vue-i18n'
-
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants.ts'
 
 import i18nJson from './vue-i18n.json'

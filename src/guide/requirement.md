@@ -6,7 +6,7 @@ comment: false
 index: true
 order: 4
 ---
-## <HopeIcon icon="gear" size="1.7rem" color="#585888" /> 推荐配置
+## 推荐配置
 最低配置要求是能够运行游戏的最低配置，推荐配置是为了获得标准的游戏体验。
 
 #### 最低配置：
@@ -28,7 +28,7 @@ order: 4
 | 存储 | 2GB 可用空间 |
 | DirectX | DirectX 12 |
 | 屏幕分辨率 | 1920x1080 |
-## <HopeIcon icon="brands fa-windows" size="1.7rem" color="rgb(0, 168, 232)" /> 客户端系统要求
+## 客户端系统要求
 
 | 要求                   | 规格                                                             |
 | ---------------------- | ---------------------------------------------------------------- |
@@ -37,12 +37,12 @@ order: 4
 | **必要组件** | Windows Update                                    |
 | 可选组件 | WebView2 Runtime                                                 |
 
-## <HopeIcon icon="solid fa-earth-americas" size="1.7rem" /> 网页版要求
+## 网页版要求
 
 我们建议您使用以下类型的浏览器访问网页版《PvZ2 Gardendless》：
 | 浏览器                   | 介绍                                                             |
 | ---------------------- | ---------------------------------------------------------------- |
-| <HopeIcon icon="brands fa-chrome"/> Chrome | 推荐使用 Chrome 114 或更高版本 |
-| <HopeIcon icon="brands fa-edge"/> Microsoft Edge | Windows 10/11系统自带的浏览器  |
-| <HopeIcon icon="brands fa-firefox-browser"/>Firefox | 可能存在部分兼容性问题 |
+| Chrome | 推荐使用 Chrome 114 或更高版本 |
+| Microsoft Edge | Windows 10/11系统自带的浏览器  |
+| Firefox | 可能存在部分兼容性问题 |
 

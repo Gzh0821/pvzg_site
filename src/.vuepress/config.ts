@@ -1,6 +1,9 @@
 import { defineUserConfig } from "vuepress";
-
+import { viteBundler } from "@vuepress/bundler-vite";
 import theme from "./theme.js";
+import vueI18n from '@intlify/unplugin-vue-i18n/vite'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 export default defineUserConfig({
   base: "/",
@@ -41,7 +44,15 @@ export default defineUserConfig({
       description: "《PvZ2 Gardendless》的官方网站。《PVZ2 Gardendless》是一款完全重制的，全PC平台的《植物大战僵尸2》(Plants vs Zombies 2)游戏。",
     },
   },
-
+  bundler: viteBundler({
+    viteOptions: {
+      plugins: [
+        vueI18n({
+          ssr: true
+        })
+      ],
+    }
+  }),
   theme,
 
   // Enable it with pwa
