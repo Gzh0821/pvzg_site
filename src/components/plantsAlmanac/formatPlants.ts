@@ -18,6 +18,12 @@ export function getPlantMap(i18nLanguage: string) {
         return acc;
     }, {});
 }
+export function getPlantIdMap(i18nLanguage: string) {
+    return plantsJson["PLANTS"].reduce((acc, plant) => {
+        acc[plant["ID"]] = formatOriginPlant(plant, i18nLanguage);
+        return acc;
+    }, {});
+}
 
 export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant {
     const upperObjdata = {};
