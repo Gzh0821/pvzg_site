@@ -3,7 +3,7 @@
         token: {
             colorPrimary: '#aa6f42'
         },
-        algorithm: $isDarkmode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {}
     }"></a-config-provider>
     <a-layout>
@@ -166,9 +166,11 @@ import { ref, reactive, computed, inject } from 'vue'
 import { message, theme } from 'ant-design-vue'
 import { useI18n } from 'vue-i18n'
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants.ts'
+import { useDarkMode } from "@vuepress/helper/client";
 
 import i18nJson from './vue-i18n.json'
 
+const isDarkMode = useDarkMode();
 const i18nLanguage = inject('i18nLanguage', 'en');
 const plantMap = getPlantIdMap(i18nLanguage);
 const pagination = {
