@@ -14,8 +14,8 @@
             <template v-if="plant.subPlants">
                 <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
                     @visible-change="visible[plant.codename] = $event" :overlayInnerStyle="{
-                        border: $isDarkmode ? '3px solid #deb991' : '3px solid #432b1a',
-                        backgroundColor: $isDarkmode ? '#383011' : '#ede5c4',
+                        border: isDarkMode ? '3px solid #deb991' : '3px solid #432b1a',
+                        backgroundColor: isDarkMode ? '#383011' : '#ede5c4',
                         textAlign: 'center'
                     }">
                     <template #content>
@@ -48,9 +48,10 @@
 import { theme } from 'ant-design-vue';
 import type { Plant } from '../types';
 import { ref } from 'vue';
-
+import { useDarkMode } from "@vuepress/helper/client";
 // 定义 props 类型
 const props = defineProps<{ plants: Plant[], plantMap: { [key: string]: Plant } }>();
+const isDarkMode = useDarkMode();
 
 // 定义 emits
 const emits = defineEmits(['selectPlant']);

@@ -9,7 +9,7 @@
     </a-row>
  -->
     <a-config-provider :theme="{
-        algorithm: $isDarkmode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
     }">
         <a-space direction="vertical" size="middle" style="width: 100%" theme="dark">
             <a-input-search v-model:value.lazy="searchValue" placeholder="Search level..." enter-button />
@@ -48,8 +48,10 @@
 import { message, theme } from 'ant-design-vue';
 import axios from 'axios';
 import { ref, onBeforeMount, computed, inject } from 'vue';
+import { useDarkMode } from "@vuepress/helper/client";
 
 const props = defineProps<{ authorGroup: string }>();
+const isDarkMode = useDarkMode();
 
 const levels: any = ref([]);
 const i18nLanguage = inject('i18nLanguage', 'en');
