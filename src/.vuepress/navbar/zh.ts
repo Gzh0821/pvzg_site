@@ -6,7 +6,7 @@ export const zhNavbar = navbar([
   "/almanac/",
   "/guide/",
   "/custom-level/",
-  "/devtool/",
+  "/useful-tool/",
   "/instructions/",
   "/contribution/",
   { text: "在线游玩", link: "https://play.pvzge.com", icon: "circle-play" },

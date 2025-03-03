@@ -5,7 +5,7 @@ export const enSidebar = sidebar({
   "/en/instructions/": "structure",
   "/en/guide/": "structure",
   "/en/custom-level/": "structure",
-  "/en/devtool/": "structure",
+  "/en/useful-tool/": "structure",
   "/en/contribution/": "structure",
   "/en/almanac/": "structure",
   "/en/": [
