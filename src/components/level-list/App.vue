@@ -19,16 +19,16 @@
                     <a-list-item>
                         <template #actions>
                             <span v-if="item.version">
-                                <HopeIcon icon="code-branch" /> {{ item.version }}
+                                <VPIcon icon="code-branch" /> {{ item.version }}
                             </span>
                             <span v-if="item.difficulty">
-                                <HopeIcon icon="fire" /> {{ item.difficulty }}
+                                <VPIcon icon="fire" /> {{ item.difficulty }}
                             </span>
                             <span v-if="item.category">
-                                <HopeIcon icon="tag" /> {{ item.category }}
+                                <VPIcon icon="tag" /> {{ item.category }}
                             </span>
                             <span v-if="item.updatedAt">
-                                <HopeIcon icon="clock" /> {{ item.updatedAt }}
+                                <VPIcon icon="clock" /> {{ item.updatedAt }}
                             </span>
                         </template>
                         <a-list-item-meta :description="item.introduction">
