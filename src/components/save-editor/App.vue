@@ -242,7 +242,8 @@ const selectPlantIndex = computed(() => {
 const addPlant = (selectPlantValue) => {
     archiveData.value.obtainedPlants.push({
         plantID: selectPlantValue,
-        progress: 0
+        progress: 0,
+        tutorialLevel: 0
     })
 }
 
