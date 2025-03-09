@@ -24,12 +24,34 @@ actions:
     link: ./download/
     type: primary
 
-  - text: 图鉴
-    icon: book-open
-    link: ./almanac/
-
   - text: 社区
     icon: comment
     link: ./contribution/
 
+highlights:
+  - bgImage: /assets/image/background.webp
+    bgImageStyle:
+      background-attachment: fixed
+      opacity: 0.5
+      filter: brightness(60%)
+    features:
+    - title: 在线图鉴
+      icon: book-atlas
+      details: 查找植物和僵尸,以及它们的 ID 和 CodeName
+      link: ./almanac/
+
+    - title: 存档编辑器
+      icon: floppy-disk
+      details: 修改Gardendless的游戏存档
+      link: ./useful-tools/save-editor
+
+    - title: 常见问题
+      icon: question
+      details: 查看常见问题和解决方案
+      link: ./guide/FAQ
+
+    - title: 推荐配置
+      icon: sliders
+      details: 查看游戏的推荐配置
+      link: ./guide/requirement
 ---

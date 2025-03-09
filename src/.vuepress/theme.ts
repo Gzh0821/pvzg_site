@@ -178,8 +178,8 @@ export default hopeTheme({
     },
 
     icon: {
-      assets: ["/assets/libs/font-awesome/css/all.min.css"],
-      prefix: "fas fa-",
+      assets: ["fontawesome","/assets/libs/font-awesome/css/all.min.css"],
+      prefix: "fa-solid fa-",
     },
 
     photoSwipe: false,
