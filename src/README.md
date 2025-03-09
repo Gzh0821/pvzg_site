@@ -43,7 +43,7 @@ highlights:
     - title: 存档编辑器
       icon: floppy-disk
       details: 修改Gardendless的游戏存档
-      link: ./useful-tools/save-editor
+      link: ./useful-tool/save-editor
 
     - title: 常见问题
       icon: question

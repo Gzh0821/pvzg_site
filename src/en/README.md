@@ -43,7 +43,7 @@ highlights:
     - title: Save Editor
       icon: floppy-disk
       details: Modify Gardendless game saves
-      link: ./useful-tools/save-editor
+      link: ./useful-tool/save-editor
 
     - title: FAQ
       icon: question
