@@ -24,12 +24,34 @@ actions:
     link: ./download/
     type: primary
 
-  - text: Almanac
-    icon: book-open
-    link: ./almanac/
-
   - text: Community
     icon: comment
     link: ./contribution/
 
+highlights:
+  - bgImage: /assets/image/background.webp
+    bgImageStyle:
+      background-attachment: fixed
+      opacity: 0.5
+      filter: brightness(60%)
+    features:
+    - title: Online Almanac
+      icon: book-atlas
+      details: Find plants and zombies, as well as their ID and CodeName
+      link: ./almanac/
+
+    - title: Save Editor
+      icon: floppy-disk
+      details: Modify Gardendless game saves
+      link: ./useful-tools/save-editor
+
+    - title: FAQ
+      icon: question
+      details: View common problems and solutions
+      link: ./guide/FAQ
+
+    - title: Recommended Configuration
+      icon: sliders
+      details: View the recommended configuration for the game
+      link: ./guide/requirement
 ---

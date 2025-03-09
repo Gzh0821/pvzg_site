@@ -24,10 +24,6 @@ actions:
     link: ./download/
     type: primary
 
-  - text: альманах
-    icon: book-open
-    link: ./almanac/
-
   - text: Сообщество
     icon: comment
     link: ./contribution/
