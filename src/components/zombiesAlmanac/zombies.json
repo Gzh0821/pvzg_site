@@ -10,7 +10,9 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "Toughness": 190,
+        "EatDPS": 100
       }
     },
     {
@@ -23,7 +25,12 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "Toughness": 190,
+        "EatDPS": 100,
+        "StartingArmors": [
+          "modern_armor1"
+        ]
       }
     },
     {
@@ -36,7 +43,12 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "Toughness": 190,
+        "EatDPS": 100,
+        "StartingArmors": [
+          "modern_armor2"
+        ]
       }
     },
     {
@@ -48,7 +60,13 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "Toughness": 190,
+        "EatDPS": 100,
+        "CannotCarryPlantfoodsInWaves": true,
+        "StartingArmors": [
+          "modern_armor4"
+        ]
       }
     },
     {
@@ -61,6 +79,8 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -74,6 +94,8 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
         "Toughness": 350
       }
     },
@@ -90,6 +112,8 @@
         "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.17,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -106,7 +130,12 @@
         "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
-        "Toughness": 190
+        "WalkSPS": 0.17,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "modern_armor1"
+        ]
       }
     },
     {
@@ -122,7 +151,12 @@
         "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
-        "Toughness": 190
+        "WalkSPS": 0.17,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "modern_armor2"
+        ]
       }
     },
     {
@@ -135,9 +169,15 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "ChooseToSpawnOnDeepWaterRows": true,
+        "CannotCarryPlantfoodsInWaves": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
-        "Toughness": 190
+        "WalkSPS": 0.17,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "modern_armor4"
+        ]
       }
     },
     {
@@ -151,8 +191,11 @@
       "objdata": {
         "ChooseToSpawnOnDeepWaterRows": true,
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -167,8 +210,11 @@
       "objdata": {
         "ChooseToSpawnOnDeepWaterRows": true,
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.38,
         "SpeedScaleInWater": 2,
         "LivesInDeepWater": true,
+        "EatDPS": 300,
         "Toughness": 350
       }
     },
@@ -182,6 +228,9 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -196,6 +245,10 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "SmashDamage": 1500,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 3600,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
@@ -211,6 +264,8 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "EatDPS": 100,
+        "WalkSPS": 0.185,
         "Toughness": 190
       }
     },
@@ -225,6 +280,9 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.3,
+        "EatDPS": 100,
         "Toughness": 390,
         "NormalDeathWhenMowed": true
       }
@@ -234,12 +292,15 @@
       "_CARDSPRITENAME": "balloon",
       "CODENAME": "modern_balloon",
       "SUNCOST": 400,
-      "WAVEPOINTCOST": 200,
-      "WEIGHT": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 3000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.25,
+        "BalloonWalkSPS": 0.4,
+        "EatDPS": 100,
         "Toughness": 190,
         "BalloonToughness": 270
       }
@@ -254,7 +315,11 @@
       "OBTAINWORLD": "frontyard",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "SmashDamage": 1500,
+        "WalkSPS": 0.16,
+        "EatDPS": 100,
+        "Toughness": 1100,
+        "RunningSpeedScale": 6
       }
     },
     {
@@ -268,6 +333,8 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
         "Toughness": 1100,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
@@ -284,9 +351,14 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "WalkSPS": 0.4,
+        "EatDPS": 100,
         "Toughness": 750,
         "LivesInDeepWater": true,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "LobInterval": 4,
+        "LobIntervalAdditional": 0.5,
+        "MaxBallCount": 20
       }
     },
     {
@@ -299,6 +371,8 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -312,7 +386,12 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "egypt_armor1"
+        ]
       }
     },
     {
@@ -325,7 +404,12 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "egypt_armor2"
+        ]
       }
     },
     {
@@ -338,7 +422,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "CannotCarryPlantfoodsInWaves": true,
+        "StartingArmors": [
+          "egypt_armor4"
+        ]
       }
     },
     {
@@ -351,6 +441,9 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -364,6 +457,9 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
         "Toughness": 350
       }
     },
@@ -378,6 +474,8 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "MaxAbsorbValue": 250,
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -391,8 +489,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          0
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -406,8 +509,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          3
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -421,8 +529,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          4
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -436,8 +549,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          5
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -451,8 +569,15 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          5,
+          6,
+          7
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -466,8 +591,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          0
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -481,8 +611,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          3
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -496,8 +631,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          4
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -511,8 +651,13 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          5
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -526,8 +671,15 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 250,
-        "ZombieInSide": "mummy",
+        "ZombieInside": "mummy",
+        "TeamMemberCount": [
+          5,
+          6,
+          7
+        ],
         "NormalDeathWhenMowed": true
       }
     },
@@ -541,6 +693,9 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.25,
+        "EatDPS": 100,
+        "FireDPS": 1000,
         "Toughness": 250
       }
     },
@@ -554,6 +709,9 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.5,
+        "EatDPS": 150,
+        "FireDPS": 1000,
         "Toughness": 650
       }
     },
@@ -567,6 +725,11 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "ThrowTimePerGroup": 2,
+        "TimeBetweenGroups": 6,
+        "TimeBetweenGroupsAdditional": 1,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 380
       }
     },
@@ -580,6 +743,8 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.5,
+        "EatDPS": 100,
         "Toughness": 290
       }
     },
@@ -593,7 +758,9 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "ZombieInSide": "pharaoh_inner",
+        "ZombieInside": "pharaoh_inner",
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 1200,
         "NormalDeathWhenMowed": true
       }
@@ -608,7 +775,10 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "ZombieInSide": "pharaoh_inner",
+        "ProtectsInside": true,
+        "ZombieInside": "pharaoh_inner",
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 1200,
         "DamageExtends": false,
         "NormalDeathWhenMowed": true
@@ -624,6 +794,8 @@
       "OBTAINWORLD": "egypt",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
         "Toughness": 190
       }
     },
@@ -638,8 +810,14 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "LivesInDeepWater": true,
+        "SmashDamage": 1500,
+        "CannotCarryPlantfoodsInWaves": true,
+        "EatDPS": 100,
         "Toughness": 3600,
-        "NormalDeathWhenMowed": true
+        "WalkSPS": 0.24,
+        "NormalDeathWhenMowed": true,
+        "ChanceToPharaoh": 0.75
       }
     },
     {
@@ -653,7 +831,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -668,7 +851,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -682,6 +870,8 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -695,7 +885,12 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "Toughness": 190,
+        "EatDPS": 100,
+        "StartingArmors": [
+          "pirate_armor1"
+        ]
       }
     },
     {
@@ -708,7 +903,12 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "pirate_armor2"
+        ]
       }
     },
     {
@@ -721,7 +921,13 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "pirate_armor4"
+        ]
       }
     },
     {
@@ -734,6 +940,9 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -747,7 +956,10 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
+        "Toughness": 350
       }
     },
     {
@@ -761,7 +973,12 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "LandingColumns": [
+          4
+        ]
       }
     },
     {
@@ -775,6 +992,8 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.355,
+        "EatDPS": 100,
         "Toughness": 270
       }
     },
@@ -789,6 +1008,8 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.6,
+        "EatDPS": 100,
         "Toughness": 270
       }
     },
@@ -802,6 +1023,8 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
         "Toughness": 190,
         "NormalDeathWhenMowed": true
       }
@@ -816,6 +1039,10 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 1100,
         "NormalDeathWhenMowed": true
       }
@@ -831,8 +1058,28 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 600,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "TimeBefore": 3,
+        "TimeBeforeAdditional": 1,
+        "ShootInterval": 7.5,
+        "ShootIntervalAdditional": 0.5,
+        "MaxImpCount": 5,
+        "MaxImpCountAdditional": 0,
+        "ShootColumns": [
+          5,
+          4
+        ],
+        "ExplodeColumns": [
+          5,
+          4,
+          3,
+          2
+        ],
+        "ExplodeImpCount": 5,
+        "ExplodeImpCountAdditional": 0
       }
     },
     {
@@ -845,7 +1092,11 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 420
+        "EatDPS": 100,
+        "Toughness": 420,
+        "WalkSPS": 0.15,
+        "ParrotCooldown": 7,
+        "ParrotRetryCooldown": 1
       }
     },
     {
@@ -858,8 +1109,12 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 1.4,
+        "EatDPS": 100,
         "Toughness": 300,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "FlyingSpeed": 1.4
       }
     },
     {
@@ -872,6 +1127,9 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -886,7 +1144,11 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "SmashDamage": 1500,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 3600,
         "NormalDeathWhenMowed": true
       }
@@ -902,7 +1164,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -917,7 +1184,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -931,6 +1203,9 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "DanceSPSScale": 1.2,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -944,7 +1219,13 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "DanceSPSScale": 1.2,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "cowboy_armor1"
+        ]
       }
     },
     {
@@ -957,7 +1238,13 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "DanceSPSScale": 1.2,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "cowboy_armor2"
+        ]
       }
     },
     {
@@ -970,7 +1257,14 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "DanceSPSScale": 1.2,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "cowboy_armor4"
+        ]
       }
     },
     {
@@ -983,6 +1277,10 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "DanceSPSScale": 1.2,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -996,7 +1294,11 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "DanceSPSScale": 1.2,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
+        "Toughness": 350
       }
     },
     {
@@ -1009,6 +1311,8 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.16,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1022,6 +1326,8 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.2,
+        "EatDPS": 4000,
         "Toughness": 840,
         "NormalDeathWhenMowed": true
       }
@@ -1036,6 +1342,8 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190,
         "ShieldToughness": 1100,
         "PonchoToughness": 60,
@@ -1052,6 +1360,8 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190,
         "ShieldToughness": 1100,
         "PonchoToughness": 60,
@@ -1068,6 +1378,8 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190,
         "ShieldToughness": 1100,
         "PonchoToughness": 60,
@@ -1084,7 +1396,14 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "ChickeningDuration": 2,
+        "ChickeningDurationVariance": 1,
+        "ChickeningHealthPercentage": 0.8,
+        "ChickeningInterval": 0.2,
+        "ChickeningIntervalVariance": 0.1
       }
     },
     {
@@ -1097,6 +1416,8 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 2,
+        "EatDPS": 50,
         "Toughness": 1,
         "NormalDeathWhenMowed": true
       }
@@ -1111,6 +1432,8 @@
       "OBTAINWORLD": "market",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 2,
+        "EatDPS": 50,
         "Toughness": 1,
         "NormalDeathWhenMowed": true
       }
@@ -1125,8 +1448,13 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "EatDPS": 100,
         "Toughness": 1300,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "BullRunAgainDelay": 5,
+        "WalkSPS": 0.2,
+        "RushSPS": 1,
+        "ImpThrowDistance": 4
       }
     },
     {
@@ -1139,8 +1467,14 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "EatDPS": 100,
         "Toughness": 1400,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "BullRunAgainDelay": 5,
+        "WalkSPS": 0.2,
+        "RushSPS": 2,
+        "BullRammingDamage": 2000,
+        "ImpThrowDistance": 4
       }
     },
     {
@@ -1153,6 +1487,9 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1167,7 +1504,11 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "SmashDamage": 1500,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 3600,
         "NormalDeathWhenMowed": true
       }
@@ -1183,7 +1524,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1198,7 +1544,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1212,6 +1563,8 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1225,7 +1578,12 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "kongfu_armor1"
+        ]
       }
     },
     {
@@ -1238,7 +1596,12 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "kongfu_armor2"
+        ]
       }
     },
     {
@@ -1251,7 +1614,12 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "kongfu_armor3"
+        ]
       }
     },
     {
@@ -1264,6 +1632,9 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1277,7 +1648,10 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
+        "Toughness": 350
       }
     },
     {
@@ -1290,7 +1664,11 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "HammerDuration": 3,
+        "RestDuration": 3,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 600
       }
     },
     {
@@ -1303,7 +1681,12 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "HammerDuration": 3,
+        "RestDuration": 0,
+        "WalkSPS": 0.25,
+        "EatDPS": 100,
+        "FireDPS": 1000,
+        "Toughness": 250
       }
     },
     {
@@ -1318,7 +1701,9 @@
         "CannotBeTossedByCitron": false,
         "ChiInterval": 7,
         "ChiIntervalStart": 4,
-        "Toughness": 190
+        "WalkSPS": 0.15,
+        "EatDPS": 100,
+        "Toughness": 300
       }
     },
     {
@@ -1331,6 +1716,8 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1344,7 +1731,12 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "kongfu_armor1"
+        ]
       }
     },
     {
@@ -1357,7 +1749,12 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "kongfu_armor2"
+        ]
       }
     },
     {
@@ -1370,7 +1767,12 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "kongfu_armor3"
+        ]
       }
     },
     {
@@ -1383,6 +1785,8 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.26,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1396,7 +1800,9 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.44,
+        "EatDPS": 300,
+        "Toughness": 350
       }
     },
     {
@@ -1410,7 +1816,9 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "BladeDamage": 250,
-        "Toughness": 190
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
+        "Toughness": 600
       }
     },
     {
@@ -1423,7 +1831,11 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "HammerDuration": 4,
+        "RestDuration": 0,
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
+        "Toughness": 600
       }
     },
     {
@@ -1436,7 +1848,10 @@
       "OBTAINWORLD": "kongfu",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.3,
+        "EatDPS": 100,
+        "FireDPS": 1000,
+        "Toughness": 270
       }
     },
     {
@@ -1449,6 +1864,8 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1462,7 +1879,12 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "future_armor1"
+        ]
       }
     },
     {
@@ -1475,7 +1897,12 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "future_armor2"
+        ]
       }
     },
     {
@@ -1488,7 +1915,13 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "future_armor4"
+        ]
       }
     },
     {
@@ -1501,6 +1934,9 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1514,7 +1950,10 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
+        "Toughness": 350
       }
     },
     {
@@ -1528,7 +1967,9 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190,
+        "WalkSPS": 0.3,
+        "EatDPS": 100,
+        "Toughness": 380,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1543,7 +1984,9 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190,
+        "WalkSPS": 0.75,
+        "EatDPS": 150,
+        "Toughness": 390,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1558,7 +2001,9 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190,
+        "WalkSPS": 0.3,
+        "EatDPS": 100,
+        "Toughness": 380,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1573,9 +2018,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "EMPStunTimeScale": 1,
         "ShieldRecoverTime": 5,
         "ShieldKillStunTime": 2,
-        "Toughness": 190,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 500,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
       }
@@ -1591,7 +2039,10 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0,
+        "EatDPS": 100,
+        "Toughness": 1200,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1606,7 +2057,10 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0,
+        "EatDPS": 100,
+        "Toughness": 10000,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1621,7 +2075,10 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
-        "Toughness": 190,
+        "EMPStunTimeScale": 1,
+        "WalkSPS": 0.16,
+        "EatDPS": 100,
+        "Toughness": 2500,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
       }
@@ -1638,7 +2095,10 @@
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "PushFailDamage": 400,
-        "Toughness": 190,
+        "EMPStunTimeScale": 1,
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
+        "Toughness": 2000,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
       }
@@ -1654,10 +2114,13 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "EMPStunTimeScale": 1,
         "SummonDuration": 3,
         "DanceCountdown": 6,
         "DanceDuration": 5,
-        "Toughness": 190,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 2000,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
       }
@@ -1672,7 +2135,11 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190,
+        "CannotCarryPlantfoodsInWaves": true,
+        "EMPStunTimeScale": 1,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
+        "Toughness": 270,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1687,13 +2154,17 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotCarryPlantfoodsInWaves": true,
         "EyeLaserDelayBetweenShots": 12.5,
         "EyeLaserMaxColumn": 5,
         "EyeLaserMinDistance": 1.5,
         "EyeLaserSweepLength": 1.5,
         "EyeLaserSweepTime": 1,
         "EyeLaserTotalDamage": 1000,
-        "Toughness": 190,
+        "SmashDamage": 1500,
+        "WalkSPS": 0.16,
+        "EatDPS": 100,
+        "Toughness": 3600,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
       }
@@ -1709,7 +2180,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1724,7 +2200,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1738,6 +2219,8 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1751,7 +2234,12 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "dark_armor1"
+        ]
       }
     },
     {
@@ -1764,7 +2252,12 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "dark_armor2"
+        ]
       }
     },
     {
@@ -1777,7 +2270,12 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "dark_armor3"
+        ]
       }
     },
     {
@@ -1790,7 +2288,13 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "dark_armor4"
+        ]
       }
     },
     {
@@ -1803,6 +2307,9 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1816,7 +2323,10 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
+        "Toughness": 350
       }
     },
     {
@@ -1829,7 +2339,9 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.2,
+        "EatDPS": 100,
+        "Toughness": 420
       }
     },
     {
@@ -1846,7 +2358,9 @@
         "TimeBeforeFirstAdditional": 2,
         "TimeBetween": 11,
         "TimeBetweenAdditional": 3,
-        "Toughness": 190
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
+        "Toughness": 490
       }
     },
     {
@@ -1863,7 +2377,9 @@
         "TimeBeforeFirstAdditional": 2,
         "TimeBetween": 4,
         "TimeBetweenAdditional": 1,
-        "Toughness": 190
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
+        "Toughness": 630
       }
     },
     {
@@ -1876,6 +2392,7 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
+        "CannotCarryPlantfoodsInWaves": true,
         "PlantablePlants": [
           "cherry_bomb",
           "jalapeno",
@@ -1895,7 +2412,9 @@
           "dark_armor3",
           "dark_armor4"
         ],
-        "Toughness": 190,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 1000,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1909,6 +2428,7 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
+        "CannotCarryPlantfoodsInWaves": true,
         "PlantablePlants": [
           "cherry_bomb",
           "jalapeno",
@@ -1938,7 +2458,9 @@
           "future_infinut_shield"
         ],
         "TargetListBecomesBlackList": true,
-        "Toughness": 190,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 1500,
         "NormalDeathWhenMowed": true
       }
     },
@@ -1952,6 +2474,8 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1965,6 +2489,9 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -1979,7 +2506,11 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
-        "Toughness": 190,
+        "CannotCarryPlantfoodsInWaves": true,
+        "SmashDamage": 1500,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
+        "Toughness": 3600,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
       }
@@ -1995,7 +2526,11 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2003,6 +2538,7 @@
       "NAME": "Zombot Dark Dragon",
       "_CARDSPRITENAME": "darkzomboss",
       "CODENAME": "zombossmech_dark2",
+      "CannotCarryPlantfoodsInWaves": true,
       "SUNCOST": 100,
       "WAVEPOINTCOST": 100,
       "WEIGHT": 0,
@@ -2010,7 +2546,11 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2024,6 +2564,8 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2037,7 +2579,12 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "beach_armor1"
+        ]
       }
     },
     {
@@ -2050,7 +2597,12 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "beach_armor2"
+        ]
       }
     },
     {
@@ -2063,6 +2615,8 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2076,7 +2630,12 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "beach_armor1"
+        ]
       }
     },
     {
@@ -2089,7 +2648,12 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "beach_armor2"
+        ]
       }
     },
     {
@@ -2102,6 +2666,9 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2117,7 +2684,9 @@
         "CannotBeTossedByCitron": false,
         "ChooseToSpawnOnDeepWaterRows": true,
         "LivesInDeepWater": true,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 350
       }
     },
     {
@@ -2140,7 +2709,9 @@
           "future_protector_shield",
           "future_infinut_shield"
         ],
-        "Toughness": 190,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 350,
         "ZombossLaneSummon": true
       }
     },
@@ -2159,7 +2730,9 @@
         "TimeBetween": 11,
         "TimeBetweenAdditional": 3,
         "LivesInDeepWater": true,
-        "Toughness": 190
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
+        "Toughness": 910
       }
     },
     {
@@ -2179,8 +2752,11 @@
         ],
         "DelayBeforeReeling": 0.3,
         "DelayBetweenCasting": 2.5,
+        "CannotCarryPlantfoodsInWaves": true,
         "LivesInDeepWater": true,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 1000
       }
     },
     {
@@ -2193,6 +2769,9 @@
       "OBTAINWORLD": "beach",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2209,8 +2788,12 @@
         "CannotBeTossedByCitron": true,
         "SpeedScaleOnLand": 0.8,
         "TakingDamageScaleOnLand": 0.9,
+        "CannotCarryPlantfoodsInWaves": true,
+        "SmashDamage": 1500,
         "LivesInDeepWater": true,
-        "Toughness": 190,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
+        "Toughness": 3600,
         "NormalDeathWhenMowed": true
       }
     },
@@ -2225,7 +2808,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
         "LivesInDeepWater": true,
+        "FoeEatDamageReflectPct": 0.5,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2240,6 +2828,8 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2254,7 +2844,12 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "iceage_armor1"
+        ]
       }
     },
     {
@@ -2268,7 +2863,12 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "iceage_armor2"
+        ]
       }
     },
     {
@@ -2282,7 +2882,12 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "iceage_armor3"
+        ]
       }
     },
     {
@@ -2296,7 +2901,13 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "iceage_armor4"
+        ]
       }
     },
     {
@@ -2310,6 +2921,9 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2324,7 +2938,10 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
-        "Toughness": 190
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.4,
+        "EatDPS": 300,
+        "Toughness": 350
       }
     },
     {
@@ -2338,6 +2955,8 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "WalkSPS": 0.12,
+        "EatDPS": 100,
         "Toughness": 700,
         "FarAttackRange": 4,
         "SnowballsPerBarrage": 3
@@ -2354,6 +2973,8 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "WalkSPS": 0.2,
+        "EatDPS": 150,
         "Toughness": 1100,
         "LobInterval": 3,
         "LobIntervalAdditional": 0.5
@@ -2372,6 +2993,8 @@
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "CannotBePushedBySliders": true,
+        "WalkSPS": 0.3,
+        "EatDPS": 100,
         "Toughness": 490
       }
     },
@@ -2386,7 +3009,32 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "ImpTypes": [
+          "iceage_imp"
+        ],
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 470
+      }
+    },
+    {
+      "NAME": "Troglobite Warchief",
+      "_CARDSPRITENAME": "iceagetroglobiteveteran",
+      "CODENAME": "iceage_troglobite_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 900,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "ChillInsteadOfFreeze": true,
+        "ImpTypes": [
+          "iceage_hunter",
+          "iceage_hunter_veteran"
+        ],
+        "WalkSPS": 0.16,
+        "EatDPS": 100,
+        "Toughness": 700
       }
     },
     {
@@ -2400,6 +3048,8 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190,
         "WeaselTypeName": "iceage_weasel",
         "WeaselingHealthPercentage": 0.8,
@@ -2421,6 +3071,8 @@
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "CannotBePushedBySliders": true,
+        "WalkSPS": 1.5,
+        "EatDPS": 75,
         "Toughness": 40
       }
     },
@@ -2435,6 +3087,9 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2450,13 +3105,57 @@
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "ChillInsteadOfFreeze": true,
+        "CannotCarryPlantfoodsInWaves": true,
         "HealthPercentThrowImp0": 0.8,
         "HealthPercentThrowImp1": 0.6,
         "HealthPercentThrowImp2": 0.4,
         "ChanceToReverseImp": 0.25,
-        "Toughness": 190,
+        "SmashDamage": 1500,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
+        "Toughness": 3600,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true
+      }
+    },
+    {
+      "NAME": "Zombot Tuskmaster 10,000 BC",
+      "_CARDSPRITENAME": "iceagezomboss",
+      "CODENAME": "zombossmech_iceage",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "ice",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "LivesInDeepWater": true,
+        "FoeEatDamageReflectPct": 0.5,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Zombot Tuskmaster 10,000 BC",
+      "_CARDSPRITENAME": "iceagezomboss",
+      "CODENAME": "zombossmech_iceage2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "ice",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "LivesInDeepWater": true,
+        "FoeEatDamageReflectPct": 0.5,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190
       }
     },
     {
@@ -2470,6 +3169,8 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "BugToughness": 0,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2484,7 +3185,12 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "BugToughness": 0,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "lostcity_armor1"
+        ]
       }
     },
     {
@@ -2498,7 +3204,12 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "BugToughness": 0,
-        "Toughness": 190
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "lostcity_armor2"
+        ]
       }
     },
     {
@@ -2511,6 +3222,9 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2524,6 +3238,9 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "HangingNoEatTimeUntilDrop": 6,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 350
       }
     },
@@ -2537,6 +3254,9 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "ShovelDamage": 150,
+        "WalkSPS": 0.3,
+        "EatDPS": 100,
         "Toughness": 350
       }
     },
@@ -2550,8 +3270,10 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
-        "Toughness": 350,
-        "ShovelDamage": 150
+        "CannotBeDetectedBySapfling": true,
+        "WalkSPS": 0.25,
+        "EatDPS": 100,
+        "Toughness": 350
       }
     },
     {
@@ -2564,6 +3286,8 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190,
         "BugToughness": 350,
         "BuggedSPS": 0.4
@@ -2579,9 +3303,14 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190,
         "BugToughness": 350,
-        "BuggedSPS": 0.4
+        "BuggedSPS": 0.4,
+        "StartingArmors": [
+          "lostcity_armor1"
+        ]
       }
     },
     {
@@ -2594,9 +3323,14 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190,
         "BugToughness": 350,
-        "BuggedSPS": 0.4
+        "BuggedSPS": 0.4,
+        "StartingArmors": [
+          "lostcity_armor2"
+        ]
       }
     },
     {
@@ -2610,7 +3344,14 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 700
+        "WalkSPS": 0.155,
+        "EatDPS": 100,
+        "Toughness": 760,
+        "LandingColumns": [
+          3,
+          4,
+          5
+        ]
       }
     },
     {
@@ -2623,6 +3364,8 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 350
       }
     },
@@ -2637,6 +3380,8 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "MaxAbsorbValue": 250,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 250,
         "LaserBeamDamage": 4001,
         "LaserBeamLength": 220,
@@ -2655,6 +3400,9 @@
       "OBTAINWORLD": "lostcity",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2669,9 +3417,13 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 3600,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "SmashDamage": 1500,
         "FireDamage": 1200
       }
     },
@@ -2686,7 +3438,12 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeDetectedBySapfling": true,
+        "CannotCarryPlantfoodsInWaves": true,
         "LivesInDeepWater": true,
+        "FoeEatDamageReflectPct": 0.5,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2701,6 +3458,8 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
         "Toughness": 190
       }
     },
@@ -2715,7 +3474,12 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "sky_armor1"
+        ]
       }
     },
     {
@@ -2729,7 +3493,12 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
-        "Toughness": 190
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "sky_armor2"
+        ]
       }
     },
     {
@@ -2743,6 +3512,9 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0.3,
+        "EatDPS": 100,
         "Toughness": 190
       }
     }
