@@ -46,6 +46,7 @@
             </template>
         </a-page-header>
         <a-layout-content v-if="Object.keys(archiveData).length" style="padding: 20px">
+            <a-alert v-if="isOldArchive" :message="t('old version warning')" type="warning" />
             <a-form layout="vertical">
                 <!-- 基础资源 -->
                 <a-divider orientation="left">{{ t('basic resources') }}</a-divider>
@@ -116,15 +117,15 @@
                                 <p class="plant-title">{{ plantMap[selectPlantValue].name }}</p>
                             </a-col>
                             <a-col :span="6">
-                                <template v-if="selectPlantIndex >= 0">
+                                <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
                                     <a-flex gap="small" wrap="wrap" justify="center">
-                                        <a-select v-model:value="archiveData.obtainedPlants[selectPlantIndex].progress"
+                                        <a-select v-model:value="archiveData.plantProps[selectPlantValue].progress"
                                             style="width:100%">
                                             <a-select-option :value="0">{{ t('locked') }}</a-select-option>
                                             <a-select-option :value="1">{{ t('available') }}</a-select-option>
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
-                                        <a-button danger @click="removePlant(selectPlantIndex)">{{ t('delete')
+                                        <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
                                         }}</a-button>
                                     </a-flex>
                                 </template>
@@ -140,7 +141,7 @@
                 </a-form-item>
 
                 <a-divider orientation="left">{{ t('world unlock') }}</a-divider>
-                <a-row>
+                <a-row v-if="archiveData.worldProgress">
                     <template v-for="(world, index) in archiveData.worldProgress" :key="world.worldID">
                         <a-col :span="6">
                             <a-checkbox v-model:checked="archiveData.worldProgress[index].unlocked">
@@ -161,7 +162,7 @@
     </a-layout>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, reactive, computed, inject } from 'vue'
 import { message, theme } from 'ant-design-vue'
 import { useI18n } from 'vue-i18n'
@@ -169,6 +170,8 @@ import { getPlantIdMap } from '../plantsAlmanac/formatPlants.ts'
 import { useDarkMode } from "@vuepress/helper/client";
 
 import i18nJson from './vue-i18n.json'
+
+import type { ArchiveData } from './types';
 
 const isDarkMode = useDarkMode();
 const i18nLanguage = inject('i18nLanguage', 'en');
@@ -192,7 +195,7 @@ const defaultArchive = {
     worldkey: 0,
     gem: 0,
     coin: 0,
-    obtainedPlants: [],
+    plantProps: {},
     worldProgress: Array.from({ length: worldAmount }, (_, i) => ({
         worldID: i + 1,
         unlocked: false
@@ -200,9 +203,10 @@ const defaultArchive = {
     // ...其他字段初始化
 };
 
-const archiveData = ref({})
+const archiveData = ref<ArchiveData>({})
 const otherData = ref({}) // 存储未处理的字段
 const selectPlantValue = ref(0);
+
 // 处理文件上传
 const handleUpload = file => {
     const reader = new FileReader()
@@ -215,7 +219,7 @@ const handleUpload = file => {
             otherData.value = Object.fromEntries(
                 Object.entries(data).filter(([key]) => !(key in defaultArchive))
             )
-        } catch (e) {
+        } catch (err) {
             message.error(t('parse error'))
         }
     }
@@ -235,26 +239,31 @@ const clearArchive = () => {
 }
 
 
-const selectPlantIndex = computed(() => {
-    return archiveData.value.obtainedPlants.findIndex(plant => plant.plantID === selectPlantValue.value)
-})
+// 判断是否为旧版存档
+const isOldArchive = computed(() => {
+    return archiveData.value.obtainedPlants && archiveData.value.obtainedPlants.length > 0;
+});
+
 // 植物操作
-const addPlant = (selectPlantValue) => {
-    archiveData.value.obtainedPlants.push({
-        plantID: selectPlantValue,
-        progress: 0,
-        tutorialLevel: 0
-    })
+const addPlant = (id) => {
+    if (!archiveData.value.plantProps) {
+        archiveData.value.plantProps = {};
+    }
+    if (!archiveData.value.plantProps[id]) {
+        archiveData.value.plantProps[id] = {
+            progress: 0,
+            tutorialLevel: 0
+        };
+    }
 }
 
-const removePlant = index => {
-    archiveData.value.obtainedPlants.splice(index, 1)
+const removePlant = (id) => {
+    delete archiveData.value.plantProps?.[id];
 }
 
 // 保存存档
 const saveArchive = () => {
-    archiveData.value.obtainedPlants.sort((a, b) => a.plantID - b.plantID);
-    archiveData.value.worldProgress.sort((a, b) => a.worldID - b.worldID);
+    archiveData.value.worldProgress?.sort((a, b) => a.worldID - b.worldID);
     const finalData = {
         ...archiveData.value,
         ...otherData.value
