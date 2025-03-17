@@ -232,6 +232,7 @@ const handleUpload = file => {
 // 新建存档
 const newArchive = () => {
     archiveData.value = { ...defaultArchive }
+    uploadVersion.value = gameVersion
     otherData.value = {}
 }
 // 清空存档
