@@ -126,13 +126,13 @@
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
                                         <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
@@ -141,11 +141,11 @@
                 </a-form-item>
 
                 <a-divider orientation="left">{{ t('world unlock') }}</a-divider>
-                <a-row v-if="archiveData.worldProgress">
-                    <template v-for="(world, index) in archiveData.worldProgress" :key="world.worldID">
-                        <a-col :span="6">
-                            <a-checkbox v-model:checked="archiveData.worldProgress[index].unlocked">
-                                {{ t('world ' + world.worldID) }}
+                <a-row v-if="archiveData.worldProps">
+                    <template v-for="(world, worldID) in archiveData.worldProps" :key="worldID">
+                        <a-col :span="6" v-if="world.hasOwnProperty('unlocked')">
+                            <a-checkbox v-model:checked="archiveData.worldProps[worldID]['unlocked']">
+                                {{ t('world ' + worldID) }}
                             </a-checkbox>
                         </a-col>
                     </template>
@@ -176,12 +176,10 @@ import type { ArchiveData } from './types';
 const isDarkMode = useDarkMode();
 const i18nLanguage = inject('i18nLanguage', 'en');
 const plantMap = getPlantIdMap(i18nLanguage);
-const pagination = {
-    pageSize: 8,
-    showSizeChanger: false
-};
+
 // 世界数量
-const worldAmount = 8
+const worldAmount = 10
+const gameVersion = '0.2.7'
 
 const { t, locale } = useI18n({
     locale: i18nLanguage,
@@ -196,16 +194,18 @@ const defaultArchive = {
     gem: 0,
     coin: 0,
     plantProps: {},
-    worldProgress: Array.from({ length: worldAmount }, (_, i) => ({
-        worldID: i + 1,
-        unlocked: false
-    }))
+    worldProps: {
+        ...Object.fromEntries(Array.from({ length: worldAmount }, (_, i) => [i, { unlocked: false, wmx: 0 }])),
+        ...{ currentWM: 0, worldChooserPos: 1 }
+    },
+    version: gameVersion,
     // ...其他字段初始化
 };
-
+console.log(defaultArchive)
 const archiveData = ref<ArchiveData>({})
 const otherData = ref({}) // 存储未处理的字段
-const selectPlantValue = ref(0);
+const selectPlantValue = ref(0)
+const uploadVersion = ref('')
 
 // 处理文件上传
 const handleUpload = file => {
@@ -214,6 +214,8 @@ const handleUpload = file => {
         try {
             const data = JSON.parse(e.target.result)
             // 合并用户数据和默认结构
+            uploadVersion.value = data.version
+            console.log(uploadVersion)
             archiveData.value = { ...defaultArchive, ...data }
             // 保存其他字段
             otherData.value = Object.fromEntries(
@@ -241,7 +243,8 @@ const clearArchive = () => {
 
 // 判断是否为旧版存档
 const isOldArchive = computed(() => {
-    return archiveData.value.obtainedPlants && archiveData.value.obtainedPlants.length > 0;
+    if (!uploadVersion.value) return true;
+    return uploadVersion.value !== gameVersion
 });
 
 // 植物操作
@@ -252,7 +255,9 @@ const addPlant = (id) => {
     if (!archiveData.value.plantProps[id]) {
         archiveData.value.plantProps[id] = {
             progress: 0,
-            tutorialLevel: 0
+            tutorialLevel: 0,
+            costume: -1,
+            costumes: []
         };
     }
 }
