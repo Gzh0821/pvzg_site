@@ -2,11 +2,9 @@ export interface ArchiveData {
     worldkey?: number;
     gem?: number;
     coin?: number;
-    plantProps?: {} | { [key: string]: PlantData };
-    worldProgress?: Array<{
-        worldID: number;
-        unlocked: boolean;
-    }>;
+    plantProps?: { [key: number]: PlantData };
+    worldProps?: { currentWM: number, worldChooserPos: number, [key: number]: WorldData };
+    version?: string;
     [key: string]: any;
 }
 
@@ -35,4 +33,12 @@ interface I18nJson {
 interface PlantData {
     progress: number,
     tutorialLevel: number
+    costume: number,
+    costumes: number[],
+}
+
+interface WorldData {
+    unlocked: boolean,
+    wmx: number,
+    [key: string]: any;
 }

@@ -976,6 +976,7 @@
         "WalkSPS": 0.185,
         "EatDPS": 100,
         "Toughness": 190,
+        "ChanceToFallIntoSea": 0.05,
         "LandingColumns": [
           4
         ]
@@ -1832,7 +1833,7 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "HammerDuration": 4,
-        "RestDuration": 0,
+        "RestDuration": 0.1,
         "WalkSPS": 0.2,
         "EatDPS": 100,
         "Toughness": 600
@@ -3516,6 +3517,108 @@
         "WalkSPS": 0.3,
         "EatDPS": 100,
         "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Neon Zombie",
+      "_CARDSPRITENAME": "eightiesbasic",
+      "CODENAME": "eighties",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "stage",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Neon Conehead",
+      "_CARDSPRITENAME": "eightiesarmor1",
+      "CODENAME": "eighties_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "stage",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "eighties_armor1"
+        ]
+      }
+    },
+    {
+      "NAME": "Neon Buckethead",
+      "_CARDSPRITENAME": "eightiesarmor2",
+      "CODENAME": "eighties_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "stage",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "eighties_armor2"
+        ]
+      }
+    },
+    {
+      "NAME": "Neon Flag Zombie",
+      "_CARDSPRITENAME": "eightiesflag",
+      "CODENAME": "eighties_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "stage",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Impunk",
+      "_CARDSPRITENAME": "eightiesimp",
+      "CODENAME": "eighties_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "stage",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "IgnoredInWaves": true,
+        "WalkSPS": 0.22,
+        "EatDPS": 100,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Hair Metal Gargantuar",
+      "_CARDSPRITENAME": "eightiesgargantuar",
+      "CODENAME": "eighties_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "stage",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": true,
+        "WalkSPS": 0.24,
+        "EatDPS": 100,
+        "Toughness": 3600,
+        "LivesInDeepWater": true,
+        "NormalDeathWhenMowed": true,
+        "CannotCarryPlantfoodsInWaves": true,
+        "SmashDamage": 1500
       }
     }
   ]
