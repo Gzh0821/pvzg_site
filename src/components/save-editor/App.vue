@@ -36,7 +36,7 @@
                 <a-button @click="newArchive">新建存档</a-button>
             </div>
         </div> -->
-        <a-page-header :title="t('title')" style="font-family: 'pvzgFont'">
+        <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgFont'">
             <template #extra>
                 <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
                     <a-button type="primary"> {{ t('upload save') }} </a-button>
