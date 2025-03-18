@@ -7,35 +7,6 @@
         components: {}
     }"></a-config-provider>
     <a-layout>
-        <!-- <div style="
-        display: flex;
-        background-color: #ede5c4;
-        border: 5px solid #432b1a;
-        border-radius: 5px;
-        padding: 0 20px;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-      ">
-            <p style="
-          display: flex;
-          font-family: 'pvzgFont';
-          color: #432b1a;
-          font-size: 24px;
-          flex: auto;
-          text-align: center;
-          width: 100%;
-          justify-content: center;
-        ">
-                存档编辑器
-            </p>
-            <div style="display: flex; gap: 10px; width: 100%;justify-content: center; margin: 10px;">
-                <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
-                    <a-button type="primary"> <upload-outlined /> 上传存档 </a-button>
-                </a-upload>
-                <a-button @click="newArchive">新建存档</a-button>
-            </div>
-        </div> -->
         <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgFont'">
             <template #extra>
                 <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
@@ -126,13 +97,13 @@
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
                                         <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                            }}</a-button>
+                                        }}</a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                            }}</a-button>
+                                        }}</a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
@@ -212,6 +183,7 @@ const handleUpload = file => {
     const reader = new FileReader()
     reader.onload = e => {
         try {
+            if (e.target === null || typeof e.target.result !== 'string') throw new Error('Invalid file')
             const data = JSON.parse(e.target.result)
             // 合并用户数据和默认结构
             uploadVersion.value = data.version
