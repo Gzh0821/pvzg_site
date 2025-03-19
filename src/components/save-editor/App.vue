@@ -97,13 +97,13 @@
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
                                         <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
@@ -137,6 +137,8 @@
 import { ref, reactive, computed, inject } from 'vue'
 import { message, theme } from 'ant-design-vue'
 import { useI18n } from 'vue-i18n'
+import JSON5 from 'json5'
+
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants.ts'
 import { useDarkMode } from "@vuepress/helper/client";
 
@@ -172,7 +174,7 @@ const defaultArchive = {
     version: gameVersion,
     // ...其他字段初始化
 };
-console.log(defaultArchive)
+
 const archiveData = ref<ArchiveData>({})
 const otherData = ref({}) // 存储未处理的字段
 const selectPlantValue = ref(0)
@@ -184,10 +186,9 @@ const handleUpload = file => {
     reader.onload = e => {
         try {
             if (e.target === null || typeof e.target.result !== 'string') throw new Error('Invalid file')
-            const data = JSON.parse(e.target.result)
+            const data = JSON5.parse(e.target.result)
             // 合并用户数据和默认结构
             uploadVersion.value = data.version
-            console.log(uploadVersion)
             archiveData.value = { ...defaultArchive, ...data }
             // 保存其他字段
             otherData.value = Object.fromEntries(
@@ -195,6 +196,7 @@ const handleUpload = file => {
             )
         } catch (err) {
             message.error(t('parse error'))
+            console.error(err)
         }
     }
     reader.readAsText(file)
