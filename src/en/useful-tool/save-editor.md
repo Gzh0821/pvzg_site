@@ -26,7 +26,7 @@ next: false
 >
 > To ensure the synchronization of the save version, please use the save file exported from the latest game version for editing. If you are using the save file of the old game version, please import it into the latest game version before exporting and editing.
 >
-> You can find the `plantID` for each plant in the [Almanac](/en/almanac/).
+> You can find the `plantID` for each plant in the [Almanac](../almanac/).
 >
 > The save editor will not modify the save data that does not appear below.
 
