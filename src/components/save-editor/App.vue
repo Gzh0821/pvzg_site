@@ -151,7 +151,7 @@ const i18nLanguage = inject('i18nLanguage', 'en');
 const plantMap = getPlantIdMap(i18nLanguage);
 
 // 世界数量
-const worldAmount = 10
+const worldAmount = 11
 const gameVersion = '0.2.8'
 
 const { t, locale } = useI18n({
