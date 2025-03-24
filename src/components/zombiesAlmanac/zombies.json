@@ -1511,7 +1511,9 @@
         "WalkSPS": 0.24,
         "EatDPS": 100,
         "Toughness": 3600,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "SplashDamageToZombies": 100,
+        "SplashDamageToPlants": 40
       }
     },
     {
@@ -3526,7 +3528,7 @@
       "SUNCOST": 100,
       "WAVEPOINTCOST": 100,
       "WEIGHT": 1000,
-      "OBTAINWORLD": "stage",
+      "OBTAINWORLD": "eighties",
       "objdata": {
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
@@ -3541,7 +3543,7 @@
       "SUNCOST": 100,
       "WAVEPOINTCOST": 200,
       "WEIGHT": 3000,
-      "OBTAINWORLD": "stage",
+      "OBTAINWORLD": "eighties",
       "objdata": {
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
@@ -3559,7 +3561,7 @@
       "SUNCOST": 100,
       "WAVEPOINTCOST": 400,
       "WEIGHT": 4000,
-      "OBTAINWORLD": "stage",
+      "OBTAINWORLD": "eighties",
       "objdata": {
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
@@ -3577,12 +3579,60 @@
       "SUNCOST": 100,
       "WAVEPOINTCOST": 100,
       "WEIGHT": 100,
-      "OBTAINWORLD": "stage",
+      "OBTAINWORLD": "eighties",
       "objdata": {
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.24,
         "EatDPS": 100,
         "Toughness": 190
+      }
+    },
+    {
+      "NAME": "Punk Zombie",
+      "_CARDSPRITENAME": "eightiespunk",
+      "CODENAME": "eighties_punk",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.23125,
+        "EatDPS": 100,
+        "Toughness": 250,
+        "PushCooldown": 2
+      }
+    },
+    {
+      "NAME": "Glitter Zombie",
+      "_CARDSPRITENAME": "eightiesglitter",
+      "CODENAME": "eighties_glitter",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.19,
+        "EatDPS": 100,
+        "Toughness": 490,
+        "RainbowTrailLength": 3.125
+      }
+    },
+    {
+      "NAME": "MC Zom-B",
+      "_CARDSPRITENAME": "eightiesmc",
+      "CODENAME": "eighties_mc",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.23125,
+        "EatDPS": 100,
+        "Toughness": 250,
+        "JamAttackDamage": 2001
       }
     },
     {
@@ -3592,7 +3642,7 @@
       "SUNCOST": 100,
       "WAVEPOINTCOST": 100,
       "WEIGHT": 1000,
-      "OBTAINWORLD": "stage",
+      "OBTAINWORLD": "eighties",
       "objdata": {
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
@@ -3608,7 +3658,7 @@
       "SUNCOST": 100,
       "WAVEPOINTCOST": 1500,
       "WEIGHT": 3000,
-      "OBTAINWORLD": "stage",
+      "OBTAINWORLD": "eighties",
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
