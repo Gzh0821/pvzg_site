@@ -70,7 +70,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Github">
 
-## Github <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
+## Github <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
 
@@ -78,7 +78,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Storage">
 
-## Локальная скачать <Badge text="не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
+## Локальная загрузка <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Storage">нажмите чтобы открыть</a>
 
