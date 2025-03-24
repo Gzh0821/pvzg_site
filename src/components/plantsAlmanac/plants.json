@@ -2733,7 +2733,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -2829,7 +2829,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -2917,7 +2917,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -3378,7 +3378,7 @@
                         },
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -3853,7 +3853,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -4482,7 +4482,7 @@
                         "TYPE": "RANGE",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -4561,7 +4561,7 @@
                         "TYPE": "RANGE",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -4649,7 +4649,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -4909,7 +4909,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -5613,7 +5613,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -5852,7 +5852,7 @@
                         "TYPE": "RANGE",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -5996,7 +5996,7 @@
             "TYPE": [
                 "potatomine"
             ],
-            "OBTAINWORLD": "stage",
+            "OBTAINWORLD": "eighties",
             "ZENGARDEN": {
                 "PlantPlace": "solid"
             },
@@ -6267,7 +6267,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -6336,7 +6336,7 @@
                         "TYPE": "AREA",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -6509,7 +6509,7 @@
                         "TYPE": "RANGE",
                         "SORT": {
                             "en": "3x3",
-                            "zh": "3x3范围"
+                            "zh": "3x3 范围"
                         }
                     },
                     {
@@ -7634,7 +7634,7 @@
                 "lastStandDisallowed",
                 "sunProducer"
             ],
-            "COSTUME": 1,
+            "COSTUME": 2,
             "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "dirt"
@@ -10215,7 +10215,7 @@
                 "fly"
             ],
             "COSTUME": 1,
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "fly"
             },
@@ -10941,8 +10941,7 @@
             "_CARDSPRITENAME": "lavaguava",
             "CODENAME": "lavaguava",
             "TYPE": [
-                "plant",
-                "sunProducer"
+                "plant"
             ],
             "OBTAINWORLD": "market",
             "ZENGARDEN": {
@@ -11042,6 +11041,272 @@
                 "PlantFoodDurationSeconds": 10,
                 "PlantFoodDPS": 100
             }
+        },
+        {
+            "ID": 137,
+            "NAME": {
+                "en": "Phat Beet",
+                "zh": "魔音甜菜"
+            },
+            "_CARDSPRITENAME": "phatbeet",
+            "CODENAME": "phatbeet",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "eighties",
+            "ZENGARDEN": {
+                "PlantPlace": "solid"
+            },
+            "COSTUME": 2,
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 15
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "3x3",
+                            "zh": "3x3 范围"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Phat Beets thump out damage every second.",
+                    "zh": "魔音甜菜每秒震出音波攻击僵尸。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Phat Beet has been known to drop sick rhymes, dope grooves, and highly satisfactory jams, often within seconds of each other.",
+                    "zh": "魔音甜菜拥有劲爆的节奏和韵律，还有令人沉迷的曲子，不过只有短短几秒。"
+                },
+                "BriefIntroduction": {
+                    "en": "Thumps out damage every few seconds",
+                    "zh": "每隔一段时间发动音波攻击"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 5,
+                "CooldownFrom": 1,
+                "SunCost": 150,
+                "Toughness": 300,
+                "Family": "Melee",
+                "Damage": 15,
+                "DamageHeavy": 45,
+                "TimesHeavy": 4,
+                "TimesHeavyAdditional": 2,
+                "AttackInterval": 1,
+                "PlantfoodDamageNear": 800,
+                "PlantfoodDamageFar": 200
+            }
+        },
+        {
+            "ID": 138,
+            "NAME": {
+                "en": "Strawburst",
+                "zh": "爆浆草莓"
+            },
+            "_CARDSPRITENAME": "strawburst",
+            "CODENAME": "strawburst",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "epic",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "COSTUME": 2,
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 15
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Lobbed",
+                            "zh": "抛物线"
+                        }
+                    },
+                    {
+                        "TYPE": "AREA",
+                        "SORT": {
+                            "en": "3x3",
+                            "zh": "3x3 范围"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Strawburst grows a berry for small, medium or huge damage!",
+                    "zh": "爆浆草莓随着成长，提供伤害不同的爆浆莓果！"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "tap to fire",
+                            "zh": "点击发射"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "\"Big is good,\" says Strawburst. \"Though small's pretty choice as well. And you should never discount medium. I just like sizes, really.\"",
+                    "zh": "“越大的东西越好，”爆浆草莓说道。“尽管小一点也很精致，中等大小的也不赖，我只是喜欢琳琅满目、大大小小的东西，说实话。”"
+                },
+                "BriefIntroduction": {
+                    "en": "Grows a berry for small, medium or huge damage",
+                    "zh": "随着成长，提供伤害不同的爆浆莓果"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 5,
+                "CooldownFrom": 1,
+                "SunCost": 400,
+                "Toughness": 300,
+                "Family": "Explosive",
+                "GrowTime0": 7.5,
+                "GrowTime1": 10,
+                "GrowTime2": 15,
+                "Damage0": 200,
+                "Damage1": 400,
+                "Damage2": 900,
+                "DamagePlantfood": 400
+            }
+        },
+        {
+            "ID": 139,
+            "NAME": {
+                "en": "Thyme Warp",
+                "zh": "逆时草"
+            },
+            "_CARDSPRITENAME": "thymewarp",
+            "CODENAME": "thymewarp",
+            "TYPE": [
+                "plant",
+                "lastStandDisallowed"
+            ],
+            "OBTAINWORLD": "eighties",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "COSTUME": 2,
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 15
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Lobbed",
+                            "zh": "抛物线"
+                        }
+                    },
+                    {
+                        "TYPE": "AREA",
+                        "SORT": {
+                            "en": "3x3",
+                            "zh": "3x3 范围"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Thyme Warps rewind time, sending zombies back where they started.",
+                    "zh": "逆时草能让时间回溯，使僵尸回退到初始状态。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use, instant",
+                            "zh": "一次性使用，立刻生效"
+                        }
+                    },
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特殊"
+                        },
+                        "DESCRIPTION": {
+                            "en": "rewound zombies have restored health",
+                            "zh": "被回溯的僵尸血量会回满"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "\"Possibilities other to open be to need we.\" Warp Thyme says, \"Limited too far was time to approach unidirectional the that felt always I've.\"",
+                    "zh": "“性能可的它其受接要需们我”逆时草说，“限局常非性向单的间时得觉直一我。”"
+                },
+                "BriefIntroduction": {
+                    "en": "Sends zombies back where they started",
+                    "zh": "将僵尸回退到他们出现的位置"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 60,
+                "CooldownFrom": 1,
+                "SunCost": 75,
+                "Toughness": 300,
+                "Family": "Nope",
+                "WarpTime": 5
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -11108,9 +11373,9 @@
         "homingthistle",
         "guacodile",
         "banana",
-        "ghostpepper",
         "sweetpotato",
         "chomper",
+        "ghostpepper",
         "hurrikale",
         "hotpotato",
         "pepperpult",
@@ -11130,8 +11395,11 @@
         "stallia",
         "goldleaf",
         "skyshooter",
-        "celerystalker",
+        "strawburst",
         "cactus",
+        "phatbeet",
+        "celerystalker",
+        "thymewarp",
         "jackolantern",
         "grapeshot",
         "primalpeashooter",
@@ -11247,8 +11515,8 @@
         "banana",
         "chomper",
         "homingthistle",
-        "ghostpepper",
         "sweetpotato",
+        "ghostpepper",
         "tool_projectile_bowlingbulb1",
         "tool_projectile_bowlingbulb2",
         "tool_projectile_bowlingbulb3",
@@ -11276,9 +11544,12 @@
         "goldleaf",
         "lavaguava",
         "toadstool",
+        "strawburst",
         "skyshooter",
         "floawerPot",
+        "phatbeet",
         "celerystalker",
+        "thymewarp",
         "cactus",
         "primalpeashooter",
         "primalwallnut",
