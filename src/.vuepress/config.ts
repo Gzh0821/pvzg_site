@@ -38,6 +38,11 @@ export default defineUserConfig({
       title: "PvZ2 Gardendless Официальный сайт",
       description: "«PVZ2 Gardendless» — это полностью переделанная платформенная игра Plants vs. Zombies 2 для ПК.",
     },
+    "/es-ES/": {
+      lang: "es-ES",
+      title: "Sitio web oficial de PvZ2 Gardendless",
+      description: "Sitio web oficial de PvZ2 Gardendless. PVZ2 Gardendless es una versión remasterizada y completa para PC de Plants vs. Zombies 2.",
+    },
     "/": {
       lang: "zh-CN",
       title: "PvZ2 Gardendless 官方网站",
