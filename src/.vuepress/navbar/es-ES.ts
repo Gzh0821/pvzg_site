@@ -1,15 +1,15 @@
 import { navbar } from "vuepress-theme-hope";
 
-export const ruNavbar = navbar([
-  "/ru-RU/",
-  "/ru-RU/download/",
-  "/ru-RU/almanac/",
-  "/ru-RU/guide/",
-  "/ru-RU/custom-level/",
-  "/ru-RU/useful-tool/",
-  "/ru-RU/instructions/",
-  "/ru-RU/contribution/",
-  { text: "Онлайн-игра", link: "https://play.pvzge.com", icon: "circle-play" },
+export const esNavbar = navbar([
+  "/es-ES/",
+  "/es-ES/download/",
+  "/es-ES/almanac/",
+  "/es-ES/guide/",
+  "/es-ES/custom-level/",
+  "/es-ES/useful-tool/",
+  "/es-ES/instructions/",
+  "/es-ES/contribution/",
+  { text: "Juego en línea", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",
   // "/portfolio",
   // "/demo/",
