@@ -15,6 +15,7 @@ export interface Plant {
   chat: String;
   plantType: string;
   frameWorld: string;
+  obtainWorld: string;
   special: [Element] | [];
   subPlants: [string];
   objdata: { [key: string]: number | string };

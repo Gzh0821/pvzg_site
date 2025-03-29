@@ -1,7 +1,7 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
-import { enNavbar, ruNavbar, zhNavbar } from "./navbar/index.js";
-import { enSidebar, ruSidebar, zhSidebar } from "./sidebar/index.js";
+import { enNavbar, esNavbar, ruNavbar, zhNavbar } from "./navbar/index.js";
+import { enSidebar, esSidebar, ruSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
   hostname: "https://www.pvzge.com",
@@ -58,9 +58,22 @@ export default hopeTheme({
         editLink: "Редактировать эту страницу на GitHub",
       },
     },
-    /**
-     * Chinese locale config
-     */
+    "/es-ES/": {
+      // navbar
+      navbar: esNavbar,
+      navbarTitle: "PvZ2 Gardendless",
+      // sidebar
+      sidebar: esSidebar,
+
+      footer: "Official website of PvZ2 Gardendless: pvzge.com",
+      copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      displayFooter: true,
+
+      // page meta
+      metaLocales: {
+        editLink: "Editar esta página en GitHub",
+      },
+    },
     "/": {
       // navbar
       navbar: zhNavbar,
@@ -178,7 +191,7 @@ export default hopeTheme({
     },
 
     icon: {
-      assets: ["fontawesome","/assets/libs/font-awesome/css/all.min.css"],
+      assets: ["fontawesome", "/assets/libs/font-awesome/css/all.min.css"],
       prefix: "fa-solid fa-",
     },
 
