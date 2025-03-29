@@ -85,7 +85,9 @@
                                     :src="'/assets/image/plants/plants_' + plantMap[selectPlantValue].codename + '_c.webp'" />
                             </a-col>
                             <a-col :span="12">
-                                <p class="plant-title">{{ plantMap[selectPlantValue].name }}</p>
+                                <p class="plant-title">{{
+                                    plantMap[selectPlantValue].name ? plantMap[selectPlantValue].name :plantMap[selectPlantValue].enName
+                                    }}</p>
                             </a-col>
                             <a-col :span="6">
                                 <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
@@ -97,13 +99,13 @@
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
                                         <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
