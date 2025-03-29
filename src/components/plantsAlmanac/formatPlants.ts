@@ -41,6 +41,7 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
         name: originPlant["NAME"]?.[i18nLanguage],
         enName: originPlant["NAME"]?.["en"],
         frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],
+        obtainWorld: originPlant["OBTAINWORLD"],
         description: originPlant["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
         chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage],
         subPlants: originPlant["SubPlantList"],

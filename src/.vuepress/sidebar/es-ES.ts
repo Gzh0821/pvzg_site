@@ -1,14 +1,14 @@
 import { sidebar } from "vuepress-theme-hope";
 
-export const ruSidebar = sidebar({
-  "/ru-RU/download/": "structure",
-  "/ru-RU/instructions/": "structure",
-  "/ru-RU/guide/": "structure",
-  "/ru-RU/custom-level/": "structure",
-  "/ru-RU/useful-tool/": "structure",
-  "/ru-RU/contribution/": "structure",
-  "/ru-RU/almanac/": "structure",
-  "/ru-RU/": [
+export const esSidebar = sidebar({
+  "/es-ES/download/": "structure",
+  "/es-ES/instructions/": "structure",
+  "/es-ES/guide/": "structure",
+  "/es-ES/custom-level/": "structure",
+  "/es-ES/useful-tool/": "structure",
+  "/es-ES/contribution/": "structure",
+  "/es-ES/almanac/": "structure",
+  "/es-ES/": [
     // "",
     // "portfolio",
     // {
