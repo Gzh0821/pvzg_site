@@ -1,5 +1,5 @@
 ---
-title: Save Editor
+title: Редактор Сохранений
 index: true
 order: 2
 icon: floppy-disk
@@ -14,7 +14,7 @@ next: false
     import Editor from '@source/components/save-editor/App.vue';
     import { provide } from 'vue';
     import { onMounted } from 'vue';
-    provide("i18nLanguage",'en');
+    provide("i18nLanguage",'ru');
 
     onMounted(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -22,13 +22,13 @@ next: false
 </script>
 
 > [!warning]
-> The save editor is in the testing phase. Using this tool may cause unknown problems in the save file. Please be sure to back up the original save file before using the save editor!
+> Редактор сохранений находится на фазе тестировки. Использование этого инструмента может привести к неизвестным проблемам в вашем файле сохранения. Пожалуйста, сохраните оригинальный файл сохранения перед тем, как использовать редактор сохранений!
 >
-> To ensure the synchronization of the save version, please use the save file exported from the latest game version for editing. If you are using the save file of the old game version, please import it into the latest game version before exporting and editing.
+> Чтобы обеспечить синхронизацию версии сохранения, пожалуйста используйте для редактирования файл сохранения, экспортированный из последней версии игры. Если вы используете файл сохранения старой версии игры, пожалуйста импортируйте его в последнюю версию игры перед экспортом и редактированием.
 >
-> You can find the `plantID` for each plant in the [Almanac](../almanac/).
+> Вы можете найти `plantID` каждого растения в [Альманахе](../almanac/).
 >
-> The save editor will not modify the save data that does not appear below.
+> Редактор сохранений не будет модифицировать сохраненные данные, которые не отображаются ниже.
 
 <Editor />
 
