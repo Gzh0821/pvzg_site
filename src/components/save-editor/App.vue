@@ -7,7 +7,7 @@
         components: {}
     }"></a-config-provider>
     <a-layout>
-        <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgFont'">
+        <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgeFontEN','pvzgFont'">
             <template #extra>
                 <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
                     <a-button type="primary"> {{ t('upload save') }} </a-button>
@@ -97,13 +97,13 @@
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
                                         <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                            }}</a-button>
+                                        }}</a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                            }}</a-button>
+                                        }}</a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
