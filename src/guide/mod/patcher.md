@@ -7,11 +7,11 @@ index: true
 order: 1
 ---
 
-<script>
-import { onMounted } from 'vue'
-onMounted(() => {
-  (window.adsbygoogle = window.adsbygoogle || []).push({});
-})
+<script setup>
+    import { onMounted } from 'vue';
+    onMounted(() => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    })
 </script>
 
 游戏内置了 GE Patcher 工具，可以通过该工具加载一些自定义的 JSON 资源和关卡。

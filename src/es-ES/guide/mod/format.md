@@ -7,11 +7,11 @@ index: true
 order: 2
 ---
 
-<script>  
-import { onMounted } from 'vue'  
-onMounted(() => {  
-  (window.adsbygoogle = window.adsbygoogle || []).push({});  
-})  
+<script setup>
+    import { onMounted } from 'vue';
+    onMounted(() => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    })
 </script>
 
 > [!important]  
