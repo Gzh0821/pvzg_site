@@ -127,7 +127,7 @@ Each object within the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array is merged into 
 
 - **Array Elements**: If the type of the attribute is an array, each value within the array will be merged in the order of the elements. If the values in the array are objects, they will be merged recursively. If the values in the array are of basic types, they will directly overwrite the values in the original JSON.
 - **Object Merging**: If the type of the attribute is an object, a recursive merge will be performed. If there are properties with the same key within the object, the values in the original JSON will be directly overwritten.
-- **Properties with the Same Name**: For properties with the same key, the values will be directly overwritten, that is, the values in the original JSON will be replaced.
+- **Basic Attributes**: For basic attributes with the same key, directly overwrite them, i.e., replace the value in the original JSON.
 
 For other fields, such as `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, etc., directly replace the original array.
 
