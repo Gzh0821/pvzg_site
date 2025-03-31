@@ -23,12 +23,12 @@ The game includes the GE Patcher tool, which allows loading custom JSON resource
 3. Understand JSON basics, such as syntax and data types.
 4. Familiarize yourself with the attribute structure of plants, zombies, etc., in JSON (refer to [Attribute Reference](format.md)).
 
-<ins class="adsbygoogle"  
-     style="display:block"  
-     data-ad-client="ca-pub-7637695321442015"  
-     data-ad-slot="7113006248"  
-     data-ad-format="auto"  
-     data-full-width-responsive="true">  
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7637695321442015"
+     data-ad-slot="3900516289"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
 </ins>
 
 ## GE Patcher Basics
