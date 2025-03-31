@@ -66,7 +66,7 @@ The following content is a sub-attribute of the plant's `ALMANAC`, containing th
 
 ### Gameplay Data (objdata)
 
-The following content is a sub-attribute of the plant's `objdata`, containing the game mechanics data of the plant. For valid objdata of each plant, please refer to the [Almanac](../almanac/):
+The following content is a sub-attribute of the plant's `objdata`, containing the game mechanics data of the plant. For valid objdata of each plant, please refer to the [Almanac](../../almanac/):
 
 | Attribute                     | Value/Example | Description                                                     |
 | ----------------------------- | ------------- | --------------------------------------------------------------- |

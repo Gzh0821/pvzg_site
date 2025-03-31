@@ -167,8 +167,6 @@ UpgradeFeatures.json 中的 `UPGRADES` 数组为升级的列表。
 }
 ```
 
-每个植物/僵尸的 `objdata` 字段为植物和僵尸的部分属性数据，包含了植物和僵尸一些可修改属性。可以在[图鉴](../almanac/)中查找原始值。
-
 ## 关卡修改
 
 将所有自定义关卡放入`patches/jsons/levels/[关卡名].json`目录中，以替换游戏内原始的关卡。
