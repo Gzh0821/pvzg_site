@@ -45,10 +45,10 @@ highlights:
       details: Modify Gardendless game saves
       link: ./useful-tool/save-editor
 
-    - title: FAQ
-      icon: question
-      details: View common problems and solutions
-      link: ./guide/FAQ
+    - title: MOD tutorial
+      icon: toolbox
+      details: Customize game resources using GE Patcher
+      link: ./guide/mod/
 
     - title: Recommended Configuration
       icon: sliders
