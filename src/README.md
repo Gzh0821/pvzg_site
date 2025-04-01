@@ -45,10 +45,10 @@ highlights:
       details: 修改Gardendless的游戏存档
       link: ./useful-tool/save-editor
 
-    - title: 常见问题
-      icon: question
-      details: 查看常见问题和解决方案
-      link: ./guide/FAQ
+    - title: MOD教程
+      icon: toolbox
+      details: 使用GE Patcher自定义游戏资源
+      link: ./guide/mod/
 
     - title: 推荐配置
       icon: sliders
