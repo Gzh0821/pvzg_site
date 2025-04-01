@@ -8,40 +8,41 @@ comment: false
 ---
 ## Player Submission Agreement for PvZ2 Gardendless
 
-Thank you for your enthusiasm and support for PvZ2: Gardendless! In order to better regulate the submission of player-created levels and ensure that the development team can use the content created by players in a compliant and safe manner, please read carefully and agree to the following terms. By uploading or submitting custom levels through official channels such as the official website/Discord server, you are deemed to have agreed to all the contents of this agreement.
+Thank you for your enthusiasm and support for PvZ2: Gardendless! To better regulate player submissions of custom levels and mods, and to ensure the development team can use player-created content compliantly and safely, please carefully read and agree to the following terms. By uploading or submitting custom levels and mods through official channels such as the official website or Discord server, you acknowledge your full acceptance of this agreement.
 
 ### 1. Authorization Statement
 
-You agree that any custom level uploaded or submitted to the PvZ2: Gardendless development team (hereinafter referred to as the "Team") automatically authorizes the Team and its partners to enjoy the following rights:
+You agree that any custom levels and mods uploaded or submitted to the PvZ2: Gardendless development team (hereinafter referred to as "the Team") automatically grant the Team and its partners the following rights:
 
-- Carry out any form of publicity, display and promotion, including but not limited to displaying your work through official websites, official Discord servers, social media, live broadcast platforms and other channels.
-- Freely use, modify, distribute and republish your levels without violating laws and regulations.
-- Apply your submitted levels to any functional modules in the game, including but not limited to level challenges, level creation tools and other gameplay extensions.
-- Display, publish, promote your content in any form, and share it with other players.
+- To publicize, display, and promote your work in any form, including but not limited to showcasing it on the official website, official Discord server, social media, livestream platforms, and other channels.
 
-### 2. Open Source Authorization
+- To freely use, modify, distribute, and republish your levels and mods, provided such actions comply with applicable laws and regulations.
 
-The custom level content you submit is automatically open sourced under the MIT License, allowing the team and all other users to freely use your work under the terms defined in the open source agreement.
+- To integrate your submitted levels and mods into any in-game features, including but not limited to level/mod challenges, level/mod creation tools, and other gameplay expansions.
 
-You agree that others have the right to copy, modify, merge, publish, publish derivative works, distribute, sublicense and/or sell the content in accordance with the provisions of the agreement.
+- To display, publish, promote, and share your creations with other players in any form.
 
-### 3. Guarantee and liability
+### 2. Open-Source Licensing
 
-You declare and guarantee that you own or have obtained all necessary rights to upload the level, and that the content of the level does not infringe the intellectual property rights, privacy rights or other legal rights of any third party.
-You shall bear full responsibility for any legal disputes or disputes arising from uploading custom levels, and agree to exempt the team and its partners from liability in such cases.
+Your submitted custom levels and mods will automatically be open-sourced under the MIT License, permitting the Team and all other users to freely use your work under the terms defined by the license.
+You agree that others may copy, modify, merge, publish, create derivative works, distribute, sublicense, and/or sell the content in accordance with the license.
 
-### 4. Modification and Termination
+### 3. Warranties and Liability
 
-The team reserves the right to modify this agreement and will notify players through appropriate channels after the modification. Players who continue to submit content are deemed to have accepted the modified agreement.
-You can stop submitting custom levels to the team at any time, but the submitted levels will still comply with the content of this agreement and the authorization is irrevocable.
+You represent and warrant that you own or have obtained all necessary rights to upload the levels and mods, and that the content does not infringe upon any third party’s intellectual property, privacy rights, or other legal rights.
+You assume full responsibility for any legal disputes or claims arising from your submissions and agree to indemnify and hold harmless the Team and its partners in such cases.
 
-### 5. Effectiveness of the Agreement
+### 4. Modifications and Termination
 
-This agreement will automatically take effect from the time you upload or submit the level and will continue to be effective.
+The Team reserves the right to modify this agreement and will notify players of changes through appropriate channels. Continued submissions after modifications constitute acceptance of the revised terms.
+You may cease submitting custom levels and mods to the Team at any time. However, previously submitted content remains subject to this agreement, and all granted authorizations are non-revocable.
 
-By submitting a custom level, you indicate that you have read and agreed to the above terms.
+### 5. Effective Date
 
-**PvZ2: Gardendless Development Team**
+This agreement takes effect automatically upon your submission of levels or mods and remains valid indefinitely.
+By submitting custom levels and mods, you confirm that you have read and agreed to the above terms.
+
+**The PvZ2: Gardendless Development Team**
 
 ## Appendix: MIT License
 
