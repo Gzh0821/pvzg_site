@@ -3136,6 +3136,7 @@
             },
             "objdata": {
                 "Damage": 10,
+                "ImmuneToBoomBox": true,
                 "AttackInterval": 0.5,
                 "PlantfoodDuration": 5,
                 "PlantfoodDPS": 400,
@@ -3231,6 +3232,7 @@
                 }
             },
             "objdata": {
+                "ImmuneToBoomBox": true,
                 "Damage": 20,
                 "AttackInterval": 0.5,
                 "PlantfoodDuration": 5,
@@ -3897,6 +3899,7 @@
                 "SunCost": 150,
                 "Toughness": 300,
                 "Family": "Explosive",
+                "ImmuneToBoomBox": true,
                 "ImmuneToIceblock": true
             }
         },
@@ -3970,6 +3973,7 @@
                 }
             },
             "objdata": {
+                "ImmuneToBoomBox": true,
                 "CannotBeSheepenedByWizard": true,
                 "Damage": 1800,
                 "TileCrackleDuration": 180,
@@ -4346,6 +4350,7 @@
                 }
             },
             "objdata": {
+                "ImmuneToBoomBox": true,
                 "CannotBeSheepenedByWizard": true,
                 "Damage": 1800,
                 "Duration": 5,
@@ -6373,6 +6378,7 @@
                 }
             },
             "objdata": {
+                "ImmuneToBoomBox": true,
                 "CannotBeSheepenedByWizard": true,
                 "Damage": 1800,
                 "Cooldown": 35,
@@ -6972,6 +6978,7 @@
                 }
             },
             "objdata": {
+                "ImmuneToBoomBox": true,
                 "Damage": 12,
                 "DamagePlantfood": 20,
                 "PlantfoodDuration": 5,
@@ -7072,7 +7079,7 @@
             "ID": 83,
             "NAME": {
                 "en": "Imitater",
-                "zh": "变身茄子"
+                "zh": "模仿者"
             },
             "_CARDSPRITENAME": "imitator",
             "CODENAME": "imitater",
@@ -10289,7 +10296,7 @@
             "TYPE": [
                 "plant"
             ],
-            "OBTAINWORLD": "market",
+            "OBTAINWORLD": "epic",
             "ZENGARDEN": {
                 "PlantPlace": "solid"
             },
@@ -11103,6 +11110,7 @@
                 }
             },
             "objdata": {
+                "ImmuneToBoomBox": true,
                 "Cooldown": 5,
                 "CooldownFrom": 1,
                 "SunCost": 150,
@@ -11307,6 +11315,439 @@
                 "Family": "Nope",
                 "WarpTime": 5
             }
+        },
+        {
+            "ID": 140,
+            "NAME": {
+                "en": "Rhythm Phat Beet",
+                "zh": "音游甜菜"
+            },
+            "_CARDSPRITENAME": "phatbeet",
+            "CODENAME": "phatbeet_rhythm",
+            "TYPE": [
+                "plant"
+            ],
+            "OBTAINWORLD": "",
+            "ZENGARDEN": {
+                "PlantPlace": "solid"
+            },
+            "COSTUME": 2,
+            "ALMANAC": {
+                "Elements": [],
+                "Introduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "",
+                    "zh": ""
+                },
+                "BriefIntroduction": {
+                    "en": "",
+                    "zh": ""
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 5,
+                "CooldownFrom": 1,
+                "SunCost": 150,
+                "Toughness": 300,
+                "Family": "Melee"
+            }
+        },
+        {
+            "ID": 141,
+            "NAME": {
+                "en": "Sea-shroom",
+                "zh": "海蘑菇"
+            },
+            "_CARDSPRITENAME": "seashroom",
+            "CODENAME": "seashroom",
+            "TYPE": [
+                "amphibious"
+            ],
+            "COSTUME": 0,
+            "OBTAINWORLD": "water",
+            "ZENGARDEN": {
+                "PlantPlace": "float"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 20
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "3 Tiles",
+                            "zh": "3 格"
+                        }
+                    },
+                    {
+                        "TYPE": "SPECIAL",
+                        "SORT": {
+                            "en": "Lifespan",
+                            "zh": "生命周期"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Sea-shrooms are short-range shooters that last for a limited time, longer in water.",
+                    "zh": "海蘑菇射程短，一段时间后消失，但能在海水中存活更久。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "lives for a limited time",
+                            "zh": "只能存活有限的时间"
+                        }
+                    },
+                    {
+                        "NAME": {
+                            "en": "Special",
+                            "zh": "特点"
+                        },
+                        "DESCRIPTION": {
+                            "en": "can be planted on water",
+                            "zh": "可种植在水中"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "Sea-shroom's celseliums have been carved with the feelings when he first met the ocean.",
+                    "zh": "海蘑菇第一次见到大海时的那种感觉已经刻进了他的菌丝。"
+                },
+                "BriefIntroduction": {
+                    "en": "Short-range shooter, lasts for a limited time but lives longer in water",
+                    "zh": "射程短，并且一段时间后消失，在水中能存活更久"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "ShootInterval": 1.35,
+                "ShootIntervalAdditional": 0.15,
+                "PlantfoodPeaCount": 30,
+                "LifeSpan": 50,
+                "Cooldown": 8,
+                "CooldownFrom": 1,
+                "SunCost": 0,
+                "Toughness": 150,
+                "Family": "Poison",
+                "FadeSpeedMultInWater": 0.5
+            }
+        },
+        {
+            "ID": 142,
+            "NAME": {
+                "en": "Garlic",
+                "zh": "大蒜"
+            },
+            "_CARDSPRITENAME": "garlic",
+            "CODENAME": "garlic",
+            "TYPE": [
+                "plant"
+            ],
+            "COSTUME": 2,
+            "OBTAINWORLD": "eighties",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "AREA",
+                        "SORT": {
+                            "en": "Single",
+                            "zh": "单体"
+                        }
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Touch",
+                            "zh": "接触"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Garlics divert zombies into other lanes.",
+                    "zh": "大蒜把僵尸分散到其他行。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Good against zombies, as well as proof against any vampires who might accidentally wander by.",
+                    "zh": "对付僵尸的好法宝，同时也饶不了周围闲逛的吸血鬼。"
+                },
+                "BriefIntroduction": {
+                    "en": "Diverts zombies into other lanes",
+                    "zh": "把僵尸分散到其他行"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 5,
+                "CooldownFrom": 1,
+                "SunCost": 50,
+                "Toughness": 900,
+                "Family": "Poison",
+                "ReceivesDamageWhenEaten": 150,
+                "LaneChangeDuration": 0.6,
+                "DisgustDuration": 1.5,
+                "StunDuration": 0,
+                "DisgustDurationPlantfood": 1.5,
+                "StunDurationPlantfood": 6
+            }
+        },
+        {
+            "ID": 143,
+            "NAME": {
+                "en": "Electric Blueberry",
+                "zh": "闪电蓝莓"
+            },
+            "_CARDSPRITENAME": "electricblueberry",
+            "CODENAME": "electricblueberry",
+            "TYPE": [
+                "plant"
+            ],
+            "COSTUME": 2,
+            "OBTAINWORLD": "market",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Full Board",
+                            "zh": "全屏"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Electric Blueberries randomly electrocute zombies every so often.",
+                    "zh": "闪电蓝莓每隔一段时间发射一团雷云，烧毁随机的僵尸。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "Electric Blueberry prides herself for being eclectic as well as electric. \"I like to keep'em guessing,\" she says. \"A zombie should always be like, 'Whoa, didn't see that coming,' when they're disintegrated.\"",
+                    "zh": "闪电蓝莓因她的不拘一格和易怒如雷的性格而自豪。“我想让他们一直好奇着，”她说。“僵尸在被解体时总会感到吃惊：‘喔！别人都说她很弱的啊！’”"
+                },
+                "BriefIntroduction": {
+                    "en": "Randomly electrocute zombies",
+                    "zh": "烧毁随机的僵尸"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 45,
+                "CooldownFrom": 0.3333,
+                "SunCost": 150,
+                "Toughness": 300,
+                "Family": "Electricity",
+                "PlantFoodCloudSpeed": 10,
+                "PlantFoodLightningBoltDamage": 5000,
+                "NormalCloudSpeed": 10,
+                "NormalLightningBoltDamage": 5000,
+                "WeightTargetNormalZombie": 55,
+                "WeightTargetGargantuarZombie": 5,
+                "WeightTargetOtherZombie": 40,
+                "AttackCooldownStart": 10,
+                "AttackCooldownStartAdditional": 0,
+                "AttackCooldownBetween": 12,
+                "AttackCooldownBetweenAdditional": 0
+            }
+        },
+        {
+            "ID": 144,
+            "NAME": {
+                "en": "Spore-shroom",
+                "zh": "孢子菇"
+            },
+            "_CARDSPRITENAME": "sporeshroom",
+            "CODENAME": "sporeshroom",
+            "TYPE": [
+                "plant"
+            ],
+            "COSTUME": 2,
+            "OBTAINWORLD": "eighties",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "TOUGHNESS"
+                    },
+                    {
+                        "TYPE": "DAMAGE",
+                        "VALUE": 50
+                    },
+                    {
+                        "TYPE": "RANGE",
+                        "SORT": {
+                            "en": "Lobbed",
+                            "zh": "抛物线"
+                        }
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Spore-shrooms fire spores that make zombies create new Spore-shrooms when defeated.",
+                    "zh": "孢子菇向僵尸发射能使僵尸被击败时产生孢子菇的子弹。"
+                },
+                "Special": [],
+                "Chat": {
+                    "en": "\"My favorite arithmetic operation?\" wonders Spore-shroom. \"I guess I'd have to say, um, addition. Hang on, no... multiplication.\"",
+                    "zh": "“我最喜欢的算术方式？”孢子菇想。“我猜应该是，嗯，加法！等等，不……是乘法。”"
+                },
+                "BriefIntroduction": {
+                    "en": "Spawns new Spore-shrooms from defeated zombies",
+                    "zh": "使僵尸被击败时能产生新的孢子菇"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 5,
+                "CooldownFrom": 1,
+                "SunCost": 150,
+                "Toughness": 300,
+                "Family": "Poison",
+                "ShootInterval": 2.85,
+                "ShootIntervalAdditional": 0.15
+            }
+        },
+        {
+            "ID": 145,
+            "NAME": {
+                "en": "Intensive Carrot",
+                "zh": "复活萝卜"
+            },
+            "_CARDSPRITENAME": "intensivecarrot",
+            "CODENAME": "intensivecarrot",
+            "TYPE": [
+                "deadPlant"
+            ],
+            "COSTUME": 2,
+            "OBTAINWORLD": "eighties",
+            "ZENGARDEN": {
+                "PlantPlace": "dirt"
+            },
+            "ALMANAC": {
+                "Elements": [
+                    {
+                        "TYPE": "SUNCOST"
+                    },
+                    {
+                        "TYPE": "RECHARGE"
+                    },
+                    {
+                        "TYPE": "FAMILY"
+                    }
+                ],
+                "Introduction": {
+                    "en": "Intensive Carrots bring eaten plants back to life.",
+                    "zh": "复活萝卜将被打败的植物复活。"
+                },
+                "Special": [
+                    {
+                        "NAME": {
+                            "en": "Usage",
+                            "zh": "用法"
+                        },
+                        "DESCRIPTION": {
+                            "en": "single use, instant",
+                            "zh": "一次性使用，立刻生效"
+                        }
+                    }
+                ],
+                "Chat": {
+                    "en": "\"How do I revive defeated plants?\" asks Intensive Carrot. \"In a word: Vitamins. Vitamins and sorcery.\"",
+                    "zh": "“猜猜我怎么让植物死而复生？”复活萝卜问道。“简言之，就是用维生素，维生素加上魔法。”"
+                },
+                "BriefIntroduction": {
+                    "en": "Brings eaten plants back to life",
+                    "zh": "将被打败的植物复活"
+                },
+                "DisplayOffset": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "objdata": {
+                "Cooldown": 20,
+                "CooldownFrom": 0.75,
+                "SunCost": 100,
+                "Toughness": 300,
+                "Family": "Magic",
+                "HealthReturns": 0.5
+            }
         }
     ],
     "SEEDCHOOSERDEFAULTORDER": [
@@ -11373,7 +11814,7 @@
         "homingthistle",
         "guacodile",
         "banana",
-        "sweetpotato",
+        "seashroom",
         "chomper",
         "ghostpepper",
         "hurrikale",
@@ -11383,6 +11824,7 @@
         "firepeashooter",
         "stunion",
         "xshot",
+        "sweetpotato",
         "gatling",
         "megagatling",
         "torchwood",
@@ -11400,6 +11842,10 @@
         "phatbeet",
         "celerystalker",
         "thymewarp",
+        "electricblueberry",
+        "garlic",
+        "sporeshroom",
+        "intensivecarrot",
         "jackolantern",
         "grapeshot",
         "primalpeashooter",
@@ -11513,9 +11959,9 @@
         "bowlingbulb",
         "guacodile",
         "banana",
+        "seashroom",
         "chomper",
         "homingthistle",
-        "sweetpotato",
         "ghostpepper",
         "tool_projectile_bowlingbulb1",
         "tool_projectile_bowlingbulb2",
@@ -11534,6 +11980,7 @@
         "xshot",
         "firepeashooter",
         "hurrikale",
+        "sweetpotato",
         "gatling",
         "megagatling",
         "torchwood",
@@ -11550,7 +11997,11 @@
         "phatbeet",
         "celerystalker",
         "thymewarp",
+        "garlic",
+        "sporeshroom",
+        "intensivecarrot",
         "cactus",
+        "electricblueberry",
         "primalpeashooter",
         "primalwallnut",
         "primalpotatomine",

@@ -9,6 +9,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "Toughness": 190,
@@ -24,6 +25,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "Toughness": 190,
@@ -42,6 +44,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "Toughness": 190,
@@ -60,6 +63,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "WalkSPS": 0.185,
         "Toughness": 190,
         "EatDPS": 100,
@@ -78,6 +82,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.24,
         "EatDPS": 100,
@@ -93,6 +98,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.4,
         "EatDPS": 300,
@@ -108,6 +114,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
@@ -126,6 +133,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
@@ -147,6 +155,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChooseToSpawnOnDeepWaterRows": true,
         "SpeedScaleInWater": 2,
@@ -168,6 +177,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "ChooseToSpawnOnDeepWaterRows": true,
         "CannotCarryPlantfoodsInWaves": true,
         "SpeedScaleInWater": 2,
@@ -189,6 +199,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "ChooseToSpawnOnDeepWaterRows": true,
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
@@ -208,6 +219,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "ChooseToSpawnOnDeepWaterRows": true,
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
@@ -227,6 +239,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -243,8 +256,10 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "SmashDamage": 1500,
         "WalkSPS": 0.24,
@@ -263,6 +278,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "frontyard",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "EatDPS": 100,
         "WalkSPS": 0.185,
@@ -280,11 +296,14 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
+        "ChiliStunDurationMult": 0,
         "WalkSPS": 0.3,
         "EatDPS": 100,
         "Toughness": 390,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -333,11 +352,14 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "WalkSPS": 0.2,
         "EatDPS": 100,
         "Toughness": 1100,
         "LivesInDeepWater": true,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ChiliStunDurationMult": 0,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -351,6 +373,7 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "WalkSPS": 0.4,
         "EatDPS": 100,
         "Toughness": 750,
@@ -358,7 +381,8 @@
         "NormalDeathWhenMowed": true,
         "LobInterval": 4,
         "LobIntervalAdditional": 0.5,
-        "MaxBallCount": 20
+        "MaxBallCount": 20,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -370,6 +394,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -385,6 +410,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -403,6 +429,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -421,6 +448,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -440,6 +468,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.24,
@@ -456,6 +485,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.4,
@@ -472,6 +502,7 @@
       "WEIGHT": 700,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "MaxAbsorbValue": 250,
         "WalkSPS": 0.2,
@@ -793,6 +824,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -808,8 +840,10 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "LivesInDeepWater": true,
         "SmashDamage": 1500,
         "CannotCarryPlantfoodsInWaves": true,
@@ -829,15 +863,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -849,15 +887,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "egypt",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -869,6 +911,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -884,6 +927,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "Toughness": 190,
@@ -902,6 +946,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -920,6 +965,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.185,
@@ -939,6 +985,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.24,
@@ -955,6 +1002,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.4,
@@ -1041,11 +1089,14 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
         "Toughness": 1100,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1059,6 +1110,7 @@
       "objdata": {
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
         "Toughness": 600,
@@ -1080,7 +1132,9 @@
           2
         ],
         "ExplodeImpCount": 5,
-        "ExplodeImpCountAdditional": 0
+        "ExplodeImpCountAdditional": 0,
+        "IgnoredByThymeWarp": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1110,12 +1164,14 @@
       "OBTAINWORLD": "pirate",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CanBeEasilySwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 1.4,
         "EatDPS": 100,
         "Toughness": 300,
         "NormalDeathWhenMowed": true,
-        "FlyingSpeed": 1.4
+        "FlyingSpeed": 1.4,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1127,6 +1183,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -1143,8 +1200,10 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "SmashDamage": 1500,
         "LivesInDeepWater": true,
@@ -1163,15 +1222,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1183,15 +1246,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "pirate",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1203,6 +1270,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "DanceSPSScale": 1.2,
         "WalkSPS": 0.185,
@@ -1219,6 +1287,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "DanceSPSScale": 1.2,
         "WalkSPS": 0.185,
@@ -1238,6 +1307,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "DanceSPSScale": 1.2,
         "WalkSPS": 0.185,
@@ -1257,6 +1327,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "DanceSPSScale": 1.2,
@@ -1277,6 +1348,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "DanceSPSScale": 1.2,
@@ -1294,6 +1366,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "DanceSPSScale": 1.2,
@@ -1330,7 +1403,8 @@
         "WalkSPS": 0.2,
         "EatDPS": 4000,
         "Toughness": 840,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1417,6 +1491,8 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CanBeEasilySwallowedByChomper": true,
+        "ImmuneToSporeShroom": true,
         "WalkSPS": 2,
         "EatDPS": 50,
         "Toughness": 1,
@@ -1433,6 +1509,8 @@
       "OBTAINWORLD": "market",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CanBeEasilySwallowedByChomper": true,
+        "ImmuneToSporeShroom": true,
         "WalkSPS": 2,
         "EatDPS": 50,
         "Toughness": 1,
@@ -1449,13 +1527,15 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotBeSwallowedByChomper": true,
         "EatDPS": 100,
         "Toughness": 1300,
         "NormalDeathWhenMowed": true,
         "BullRunAgainDelay": 5,
         "WalkSPS": 0.2,
         "RushSPS": 1,
-        "ImpThrowDistance": 4
+        "ImpThrowDistance": 4,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1468,6 +1548,7 @@
       "OBTAINWORLD": "cowboy",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "CannotBeSwallowedByChomper": true,
         "EatDPS": 100,
         "Toughness": 1400,
         "NormalDeathWhenMowed": true,
@@ -1475,7 +1556,8 @@
         "WalkSPS": 0.2,
         "RushSPS": 2,
         "BullRammingDamage": 2000,
-        "ImpThrowDistance": 4
+        "ImpThrowDistance": 4,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1487,6 +1569,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -1503,8 +1586,10 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "SmashDamage": 1500,
         "LivesInDeepWater": true,
@@ -1525,15 +1610,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1545,15 +1634,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "cowboy",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -1565,6 +1658,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -1580,6 +1674,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -1598,6 +1693,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -1616,6 +1712,7 @@
       "WEIGHT": 4500,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -1634,6 +1731,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.24,
@@ -1650,6 +1748,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.4,
@@ -1718,6 +1817,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.2,
         "EatDPS": 100,
@@ -1733,6 +1833,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.2,
         "EatDPS": 100,
@@ -1751,6 +1852,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.2,
         "EatDPS": 100,
@@ -1769,6 +1871,7 @@
       "WEIGHT": 4500,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.2,
         "EatDPS": 100,
@@ -1787,6 +1890,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.26,
         "EatDPS": 100,
@@ -1802,6 +1906,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "kongfu",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.44,
         "EatDPS": 300,
@@ -1866,6 +1971,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -1881,6 +1987,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -1899,6 +2006,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -1917,6 +2025,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.185,
@@ -1936,6 +2045,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.24,
@@ -1953,6 +2063,7 @@
       "OBTAINWORLD": "future",
       "objdata": {
         "CannotBeTossedByCitron": false,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.4,
         "EatDPS": 300,
@@ -2021,6 +2132,8 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "EMPStunTimeScale": 1,
         "ShieldRecoverTime": 5,
         "ShieldKillStunTime": 2,
@@ -2028,7 +2141,8 @@
         "EatDPS": 100,
         "Toughness": 500,
         "LivesInDeepWater": true,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2042,11 +2156,14 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": false,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0,
         "EatDPS": 100,
         "Toughness": 1200,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2060,11 +2177,35 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": false,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0,
         "EatDPS": 100,
         "Toughness": 10000,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
+      }
+    },
+    {
+      "NAME": "Moonflower Shield",
+      "_CARDSPRITENAME": "modernmoonflowershield",
+      "CODENAME": "modern_moonflower_shield",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "frontyard",
+      "objdata": {
+        "CannotBeDraggedByTangleKelp": true,
+        "CannotBeTossedByCitron": false,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
+        "CannotCarryPlantfoodsInWaves": true,
+        "WalkSPS": 0,
+        "EatDPS": 100,
+        "Toughness": 5000,
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2078,12 +2219,15 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "EMPStunTimeScale": 1,
         "WalkSPS": 0.16,
         "EatDPS": 100,
         "Toughness": 2500,
         "LivesInDeepWater": true,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2097,13 +2241,16 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "PushFailDamage": 400,
+        "ChiliStunDurationMult": 0,
         "EMPStunTimeScale": 1,
         "WalkSPS": 0.2,
         "EatDPS": 100,
         "Toughness": 2000,
         "LivesInDeepWater": true,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2117,6 +2264,8 @@
       "objdata": {
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "EMPStunTimeScale": 1,
         "SummonDuration": 3,
         "DanceCountdown": 6,
@@ -2125,7 +2274,8 @@
         "EatDPS": 100,
         "Toughness": 2000,
         "LivesInDeepWater": true,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2139,11 +2289,14 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "EMPStunTimeScale": 1,
         "WalkSPS": 0.22,
         "EatDPS": 100,
         "Toughness": 270,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2155,8 +2308,11 @@
       "WEIGHT": 2500,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "EyeLaserDelayBetweenShots": 12.5,
         "EyeLaserMaxColumn": 5,
@@ -2169,7 +2325,8 @@
         "EatDPS": 100,
         "Toughness": 3600,
         "LivesInDeepWater": true,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2181,15 +2338,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2201,15 +2362,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "future",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2221,6 +2386,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2236,6 +2402,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2254,6 +2421,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2272,6 +2440,7 @@
       "WEIGHT": 4500,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2290,6 +2459,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.185,
@@ -2309,6 +2479,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.24,
@@ -2325,6 +2496,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.4,
@@ -2395,6 +2567,7 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "PlantablePlants": [
           "cherry_bomb",
@@ -2418,7 +2591,8 @@
         "WalkSPS": 0.185,
         "EatDPS": 100,
         "Toughness": 1000,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2431,6 +2605,7 @@
       "OBTAINWORLD": "dark",
       "objdata": {
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "PlantablePlants": [
           "cherry_bomb",
@@ -2464,7 +2639,8 @@
         "WalkSPS": 0.185,
         "EatDPS": 100,
         "Toughness": 1500,
-        "NormalDeathWhenMowed": true
+        "NormalDeathWhenMowed": true,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2476,6 +2652,7 @@
       "WEIGHT": 2000,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.22,
         "EatDPS": 100,
@@ -2491,6 +2668,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -2507,8 +2685,10 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "SmashDamage": 1500,
         "WalkSPS": 0.22,
@@ -2527,14 +2707,18 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "FoeEatDamageReflectPct": 0.5,
         "LivesInDeepWater": true,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2547,14 +2731,18 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "dark",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
         "FoeEatDamageReflectPct": 0.5,
+        "ChiliStunDurationMult": 0,
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2566,6 +2754,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2581,6 +2770,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2599,6 +2789,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2617,6 +2808,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2632,6 +2824,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2650,6 +2843,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -2668,6 +2862,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.24,
@@ -2759,7 +2954,8 @@
         "LivesInDeepWater": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 1000
+        "Toughness": 1000,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2771,6 +2967,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -2787,8 +2984,10 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "SpeedScaleOnLand": 0.8,
         "TakingDamageScaleOnLand": 0.9,
         "CannotCarryPlantfoodsInWaves": true,
@@ -2809,15 +3008,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "beach",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "LivesInDeepWater": true,
         "FoeEatDamageReflectPct": 0.5,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -2829,6 +3032,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "WalkSPS": 0.185,
@@ -2845,6 +3049,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "WalkSPS": 0.185,
@@ -2864,6 +3069,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "WalkSPS": 0.185,
@@ -2883,6 +3089,7 @@
       "WEIGHT": 4500,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "WalkSPS": 0.185,
@@ -2902,6 +3109,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "CannotCarryPlantfoodsInWaves": true,
@@ -2922,6 +3130,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "CannotCarryPlantfoodsInWaves": true,
@@ -2939,6 +3148,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "CannotCarryPlantfoodsInWaves": true,
@@ -3015,6 +3225,27 @@
         "ImpTypes": [
           "iceage_imp"
         ],
+        "NumberOfIceblocksToSpawnWith": 1,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 470
+      }
+    },
+    {
+      "NAME": "Troglobite One Block",
+      "_CARDSPRITENAME": "iceagetroglobite",
+      "CODENAME": "iceage_troglobite_1block",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "frontyard",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "ChillInsteadOfFreeze": true,
+        "ImpTypes": [
+          "iceage_imp"
+        ],
+        "NumberOfIceblocksToSpawnWith": 1,
         "WalkSPS": 0.185,
         "EatDPS": 100,
         "Toughness": 470
@@ -3035,6 +3266,7 @@
           "iceage_hunter",
           "iceage_hunter_veteran"
         ],
+        "NumberOfIceblocksToSpawnWith": 3,
         "WalkSPS": 0.16,
         "EatDPS": 100,
         "Toughness": 700
@@ -3051,6 +3283,7 @@
       "objdata": {
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
+        "ImmuneToSporeShroom": true,
         "WalkSPS": 0.185,
         "EatDPS": 100,
         "Toughness": 190,
@@ -3074,6 +3307,7 @@
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "CannotBePushedBySliders": true,
+        "CanBeEasilySwallowedByChomper": true,
         "WalkSPS": 1.5,
         "EatDPS": 75,
         "Toughness": 40
@@ -3088,6 +3322,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "ChillInsteadOfFreeze": true,
         "IgnoredInWaves": true,
@@ -3105,9 +3340,11 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "ChillInsteadOfFreeze": true,
+        "CannotBeSwallowedByChomper": true,
         "CannotCarryPlantfoodsInWaves": true,
         "HealthPercentThrowImp0": 0.8,
         "HealthPercentThrowImp1": 0.6,
@@ -3130,15 +3367,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "LivesInDeepWater": true,
         "FoeEatDamageReflectPct": 0.5,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -3150,15 +3391,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "ice",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "LivesInDeepWater": true,
         "FoeEatDamageReflectPct": 0.5,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -3170,6 +3415,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "BugToughness": 0,
         "WalkSPS": 0.185,
@@ -3186,6 +3432,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "BugToughness": 0,
         "WalkSPS": 0.185,
@@ -3205,6 +3452,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "BugToughness": 0,
         "WalkSPS": 0.185,
@@ -3224,6 +3472,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
         "WalkSPS": 0.24,
@@ -3288,6 +3537,7 @@
       "WEIGHT": 2000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -3305,6 +3555,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -3325,6 +3576,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -3402,6 +3654,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -3418,8 +3671,10 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "WalkSPS": 0.24,
         "EatDPS": 100,
         "Toughness": 3600,
@@ -3439,15 +3694,19 @@
       "WEIGHT": 0,
       "OBTAINWORLD": "lostcity",
       "objdata": {
+        "ZombieSort": "Zomboss",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
         "CannotBeDetectedBySapfling": true,
+        "CannotBeSwallowedByChomper": true,
+        "ChiliStunDurationMult": 0,
         "CannotCarryPlantfoodsInWaves": true,
         "LivesInDeepWater": true,
         "FoeEatDamageReflectPct": 0.5,
         "WalkSPS": 0.185,
         "EatDPS": 100,
-        "Toughness": 190
+        "Toughness": 190,
+        "ImmuneToGarlic": true
       }
     },
     {
@@ -3459,6 +3718,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ZombieSort": "Normal",
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.24,
@@ -3475,6 +3735,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ZombieSort": "Normal",
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.24,
@@ -3494,6 +3755,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ZombieSort": "Normal",
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.24,
@@ -3513,6 +3775,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "sky",
       "objdata": {
+        "ZombieSort": "Normal",
         "ChooseToSpawnOnNonDeckRows": true,
         "CannotBeTossedByCitron": false,
         "CannotCarryPlantfoodsInWaves": true,
@@ -3530,6 +3793,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "eighties",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -3545,6 +3809,7 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "eighties",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -3563,6 +3828,7 @@
       "WEIGHT": 4000,
       "OBTAINWORLD": "eighties",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.185,
         "EatDPS": 100,
@@ -3581,6 +3847,7 @@
       "WEIGHT": 100,
       "OBTAINWORLD": "eighties",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "WalkSPS": 0.24,
         "EatDPS": 100,
@@ -3600,7 +3867,8 @@
         "WalkSPS": 0.23125,
         "EatDPS": 100,
         "Toughness": 250,
-        "PushCooldown": 2
+        "PushCooldown": 2,
+        "JamStyle": "jam_punk"
       }
     },
     {
@@ -3616,7 +3884,8 @@
         "WalkSPS": 0.19,
         "EatDPS": 100,
         "Toughness": 490,
-        "RainbowTrailLength": 3.125
+        "RainbowTrailLength": 3.125,
+        "JamStyle": "jam_pop"
       }
     },
     {
@@ -3632,7 +3901,115 @@
         "WalkSPS": 0.23125,
         "EatDPS": 100,
         "Toughness": 250,
-        "JamAttackDamage": 2001
+        "JamAttackDamage": 2001,
+        "JamStyle": "jam_rap"
+      }
+    },
+    {
+      "NAME": "Breakdancer Zombie",
+      "_CARDSPRITENAME": "eightiesbreakdancer",
+      "CODENAME": "eighties_breakdancer",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.23125,
+        "EatDPS": 100,
+        "Toughness": 250,
+        "JamWalkSpeedMult": 1.5,
+        "KickDistance": 1.5625,
+        "KickingTime": 0.5,
+        "JamStyle": "jam_rap"
+      }
+    },
+    {
+      "NAME": "Arcade Zombie",
+      "_CARDSPRITENAME": "eightiesarcade",
+      "CODENAME": "eighties_arcade",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "NumberOfArcadeCabinetsToSpawnWith": 1,
+        "WalkSPS": 0.19,
+        "EatDPS": 100,
+        "Toughness": 490,
+        "JamStyle": "jam_8bit"
+      }
+    },
+    {
+      "NAME": "8-Bit Zombie",
+      "_CARDSPRITENAME": "eighties8bitbasic",
+      "CODENAME": "eighties_8bit",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "ZombieSort": "Normal",
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190
+      }
+    },
+    {
+      "NAME": "8-Bit Conehead",
+      "_CARDSPRITENAME": "eighties8bitarmor1",
+      "CODENAME": "eighties_8bit_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "ZombieSort": "Normal",
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "eighties_8bit_armor1"
+        ]
+      }
+    },
+    {
+      "NAME": "8-Bit Buckethead",
+      "_CARDSPRITENAME": "eighties8bitarmor2",
+      "CODENAME": "eighties_8bit_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "ZombieSort": "Normal",
+        "CannotBeTossedByCitron": false,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 190,
+        "StartingArmors": [
+          "eighties_8bit_armor2"
+        ]
+      }
+    },
+    {
+      "NAME": "Boombox Zombie",
+      "_CARDSPRITENAME": "eightiesboombox",
+      "CODENAME": "eighties_boombox",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "objdata": {
+        "NumberOfArcadeCabinetsToSpawnWith": 1,
+        "WalkSPS": 0.185,
+        "EatDPS": 100,
+        "Toughness": 250,
+        "BoomBoxColumn": 5,
+        "BoomBoxDuration": 8,
+        "PlantFreezeRadius": 15
       }
     },
     {
@@ -3644,6 +4021,7 @@
       "WEIGHT": 1000,
       "OBTAINWORLD": "eighties",
       "objdata": {
+        "ZombieSort": "Normal",
         "CannotBeTossedByCitron": false,
         "IgnoredInWaves": true,
         "WalkSPS": 0.22,
@@ -3660,15 +4038,18 @@
       "WEIGHT": 3000,
       "OBTAINWORLD": "eighties",
       "objdata": {
+        "ZombieSort": "Gargantuar",
         "CannotBeDraggedByTangleKelp": true,
         "CannotBeTossedByCitron": true,
+        "CannotBeSwallowedByChomper": true,
         "WalkSPS": 0.24,
         "EatDPS": 100,
         "Toughness": 3600,
         "LivesInDeepWater": true,
         "NormalDeathWhenMowed": true,
         "CannotCarryPlantfoodsInWaves": true,
-        "SmashDamage": 1500
+        "SmashDamage": 1500,
+        "JamStyle": "jam_metal"
       }
     }
   ]
