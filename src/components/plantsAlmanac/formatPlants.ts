@@ -1,5 +1,9 @@
 import type { Plant } from './types';
-import plantsJson from './plants.json';
+
+import plantAlmanacJson from './PlantAlmanac.json';
+import plantFeaturesJson from './PlantFeatures.json';
+import plantPropsJson from './PlantProps.json';
+
 import i18nJson from './i18n.json';
 
 const frameMap = {
@@ -9,24 +13,48 @@ const frameMap = {
 
 const familyNameMap = i18nJson?.PlantFamily;
 
-export const plantsOrder = plantsJson["SEEDCHOOSERDEFAULTORDER"];
+const plantProps = plantPropsJson.objects.reduce((acc, item) => {
+    const key = item.aliases[0];
+    const value = item.objdata;
+
+    if (key != null) {
+        acc[key] = value;
+    }
+    return acc;
+}, {});
+
+const plantAlmanac = plantAlmanacJson.objects.reduce((acc, item) => {
+    const key = item.aliases[0];
+    const value = item.objdata;
+
+    if (key != null) {
+        acc[key] = value;
+    }
+    return acc;
+}, {});
+
+export const plantsOrder = plantFeaturesJson.SEEDCHOOSERDEFAULTORDER;
+
 export function getPlantMap(i18nLanguage: string) {
-    return plantsJson["PLANTS"].reduce((acc, plant) => {
+    return plantFeaturesJson["PLANTS"].reduce((acc, plant) => {
         acc[plant["CODENAME"]] = formatOriginPlant(plant, i18nLanguage);
         return acc;
     }, {});
 }
 export function getPlantIdMap(i18nLanguage: string) {
-    return plantsJson["PLANTS"].reduce((acc, plant) => {
+    return plantFeaturesJson["PLANTS"].reduce((acc, plant) => {
         acc[plant["ID"]] = formatOriginPlant(plant, i18nLanguage);
         return acc;
     }, {});
 }
 
 export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant {
-    const upperObjdata = {};
-    Object.keys(originPlant["objdata"]).forEach((key) => {
-        upperObjdata[key.toUpperCase()] = originPlant["objdata"][key];
+    const codename = originPlant["CODENAME"];
+    const propsObjdata = plantProps[codename] || {};
+    const almanacObjdata = plantAlmanac[codename] || {};
+    const upperPropsObjdata = {};
+    Object.keys(propsObjdata).forEach((key) => {
+        upperPropsObjdata[key.toUpperCase()] = propsObjdata[key];
     });
     // 从原始数据中提取需要的字段并整理
     const res: Plant = {
@@ -35,18 +63,18 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
         enFamily: '',
         id: originPlant["ID"],
         plantType: originPlant["_CARDSPRITENAME"],
-        codename: originPlant["CODENAME"],
+        codename: codename,
         name: originPlant["NAME"]?.[i18nLanguage],
         enName: originPlant["NAME"]?.["en"],
         frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],
         obtainWorld: originPlant["OBTAINWORLD"],
-        description: originPlant["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
-        chat: originPlant["ALMANAC"]?.["Chat"]?.[i18nLanguage],
+        description: almanacObjdata?.["Introduction"]?.[i18nLanguage],
+        chat: almanacObjdata?.["Chat"]?.[i18nLanguage],
         subPlants: originPlant["SubPlantList"],
-        objdata: originPlant["objdata"],
+        objdata: propsObjdata,
     };
-    if (originPlant?.["ALMANAC"]?.["Elements"]) {
-        originPlant["ALMANAC"]["Elements"].forEach((element) => {
+    if (almanacObjdata?.["Elements"]) {
+        almanacObjdata["Elements"].forEach((element) => {
             // 找到对应的值
             const { TYPE, SORT, VALUE } = element;
 
@@ -56,19 +84,19 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
             } else if (VALUE) {
                 value = VALUE; // 没有 SORT 时，取 VALUE
             } else if (TYPE == "RECHARGE") {
-                value = upperObjdata["COOLDOWN"]
+                value = upperPropsObjdata["COOLDOWN"]
             } else if (TYPE == "FAMILY") {
-                value = familyNameMap[upperObjdata[TYPE]][i18nLanguage];
-                res.enFamily = familyNameMap[upperObjdata[TYPE]]['en'];
+                value = familyNameMap[upperPropsObjdata[TYPE]][i18nLanguage];
+                res.enFamily = familyNameMap[upperPropsObjdata[TYPE]]['en'];
             }
             else {
-                value = upperObjdata[TYPE]; // 只有 TYPE 时，从原始数据中查找
+                value = upperPropsObjdata[TYPE]; // 只有 TYPE 时，从原始数据中查找
             }
             res.elements[TYPE] = value;
         });
     }
-    if (originPlant?.["ALMANAC"]?.["Special"]) {
-        res.special = originPlant["ALMANAC"]["Special"]
+    if (almanacObjdata?.["Special"]) {
+        res.special = almanacObjdata["Special"]
     }
     return res;
 };

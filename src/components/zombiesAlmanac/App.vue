@@ -9,7 +9,7 @@
         </div>
         <div class="container">
             <div class="sidebar">
-                <ZombieCatalog :zombies="filteredZombies" @selectZombie="selectZombie" :zombieMap/>
+                <ZombieCatalog :zombies="filteredZombies" @selectZombie="selectZombie" :zombieMap />
             </div>
             <div class="content">
                 <ZombieDetail v-if="selectedZombie" :keyMap="keyMap" :zombie="selectedZombie" />
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted, inject } from 'vue';
+import { ref, inject } from 'vue';
 import ZombieCatalog from './views/ZombieCatalog.vue';
 import ZombieDetail from './views/ZombieDetail.vue';
 import ZombieFilter from './views/ZombieFilter.vue';
@@ -54,11 +54,6 @@ const filterZombies = (filter: { name: string }) => {
             singleZombie.enName.toLowerCase().includes(name.toLowerCase()) ||
             singleZombie.codename.toLowerCase().includes(name.toLowerCase());
 
-        // 根据属性筛选（这里可以自定义属性逻辑）
-        // const matchAttribute = family == '' || singleZombie.enFamily == family ||
-        //     (family == 'None' && singleZombie.enFamily == '');
-
-        // return matchName && matchAttribute;
         return matchName;
     });
 };
@@ -67,7 +62,7 @@ const filterZombies = (filter: { name: string }) => {
 zombies.value = zombiesOrder.map((codename) => {
     return zombieMap[codename];
 });
-console.log(zombiesOrder)
+
 filteredZombies.value = zombies.value;
 selectZombie(filteredZombies.value[0]);
 
@@ -104,7 +99,7 @@ selectZombie(filteredZombies.value[0]);
 
 .sidebar {
     min-width: 20%;
-    max-height: 65vh;
+    max-height: 80vh;
     min-height: 10rem;
     overflow-y: auto;
     border-radius: 20px;

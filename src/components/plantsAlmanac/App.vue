@@ -103,7 +103,7 @@ selectPlant(filteredPlants.value[0]);
 .sidebar {
     min-width: 20%;
     background-color: #f8f9fa;
-    max-height: 65vh;
+    max-height: 80vh;
     min-height: 10rem;
     overflow-y: auto;
     border-radius: 20px;
