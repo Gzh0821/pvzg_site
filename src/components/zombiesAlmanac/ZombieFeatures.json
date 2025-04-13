@@ -1,0 +1,3311 @@
+{
+  "ZOMBIES": [
+    {
+      "NAME": {
+        "en": "Basic Zombie",
+        "zh": "普通僵尸"
+      },
+      "_CARDSPRITENAME": "tutorialbasic",
+      "CODENAME": "tutorial",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Zombie",
+        "zh": "路障僵尸"
+      },
+      "_CARDSPRITENAME": "tutorialarmor1",
+      "CODENAME": "tutorial_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Zombie",
+        "zh": "铁桶僵尸"
+      },
+      "_CARDSPRITENAME": "tutorialarmor2",
+      "CODENAME": "tutorial_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Brickhead Zombie",
+        "zh": "砖头僵尸"
+      },
+      "_CARDSPRITENAME": "tutorialarmor4",
+      "CODENAME": "tutorial_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Zombie",
+        "zh": "旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "tutorialflag",
+      "CODENAME": "tutorial_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial_flag@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Rally Zombie",
+        "zh": "大动员僵尸"
+      },
+      "_CARDSPRITENAME": "tutorialrally",
+      "CODENAME": "tutorial_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Ducky Tube",
+        "zh": "鸭子泳圈僵尸"
+      },
+      "_CARDSPRITENAME": "duckytubebasic",
+      "CODENAME": "duckytube",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "SubZombieList": [
+        "duckytube_armor1",
+        "duckytube_armor2",
+        "duckytube_armor4",
+        "duckytube_flag",
+        "duckytube_flag_veteran"
+      ],
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(duckytube@ZombieAlmanac)",
+      "PROPS": "RTID(duckytube@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Ducky Tube",
+        "zh": "路障泳圈僵尸"
+      },
+      "_CARDSPRITENAME": "duckytubearmor1",
+      "CODENAME": "duckytube_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(duckytube_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Ducky Tube",
+        "zh": "铁桶泳圈僵尸"
+      },
+      "_CARDSPRITENAME": "duckytubearmor2",
+      "CODENAME": "duckytube_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(duckytube_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Brickhead Ducky Tube Zombie",
+        "zh": "砖头泳圈僵尸"
+      },
+      "_CARDSPRITENAME": "duckytubearmor4",
+      "CODENAME": "duckytube_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(duckytube_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Ducky Tube Flag Zombie",
+        "zh": "泳圈旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "duckytubeflag",
+      "CODENAME": "duckytube_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(duckytube_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Ducky Tube Rally Zombie",
+        "zh": "泳圈大动员僵尸"
+      },
+      "_CARDSPRITENAME": "duckytuberally",
+      "CODENAME": "duckytube_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(duckytube_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp",
+        "zh": "小鬼"
+      },
+      "_CARDSPRITENAME": "imp",
+      "CODENAME": "tutorial_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial_imp@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Gargantuar",
+        "zh": "巨尸"
+      },
+      "_CARDSPRITENAME": "gargantuar",
+      "CODENAME": "tutorial_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(tutorial_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Vase Gargantuar",
+        "zh": "瓶中巨尸"
+      },
+      "_CARDSPRITENAME": "vasegargantuar",
+      "CODENAME": "vase_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(vase_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(vase_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombie Bobsled Crew",
+        "zh": "雪橇运动员僵尸"
+      },
+      "_CARDSPRITENAME": "bobsled",
+      "CODENAME": "bobsled",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(bobsled@ZombieAlmanac)",
+      "PROPS": "RTID(bobsled@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombie Bobsled Team",
+        "zh": "雪橇小队"
+      },
+      "_CARDSPRITENAME": "bobsledteam",
+      "CODENAME": "bobsled_team",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(bobsled_team@ZombieAlmanac)",
+      "PROPS": "RTID(bobsled_team@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Balloon Zombie",
+        "zh": "气球僵尸"
+      },
+      "_CARDSPRITENAME": "balloon",
+      "CODENAME": "modern_balloon",
+      "SUNCOST": 400,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(modern_balloon@ZombieAlmanac)",
+      "PROPS": "RTID(modern_balloon@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "All-Star Zombie",
+        "zh": "全明星僵尸"
+      },
+      "_CARDSPRITENAME": "allstar",
+      "CODENAME": "modern_allstar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(modern_allstar@ZombieAlmanac)",
+      "PROPS": "RTID(modern_allstar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zomboni",
+        "zh": "造冰车僵尸"
+      },
+      "_CARDSPRITENAME": "sleighcart",
+      "CODENAME": "zomboni",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(zomboni@ZombieAlmanac)",
+      "PROPS": "RTID(zomboni@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Catapult Zombie",
+        "zh": "投石车僵尸"
+      },
+      "_CARDSPRITENAME": "catapult",
+      "CODENAME": "catapult",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(catapult@ZombieAlmanac)",
+      "PROPS": "RTID(catapult@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Mummy Zombie",
+        "zh": "木乃伊僵尸"
+      },
+      "_CARDSPRITENAME": "egyptbasic",
+      "CODENAME": "mummy",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(mummy@ZombieAlmanac)",
+      "PROPS": "RTID(mummy@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Mummy",
+        "zh": "路障木乃伊"
+      },
+      "_CARDSPRITENAME": "egyptarmor1",
+      "CODENAME": "mummy_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(mummy_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(mummy_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Mummy",
+        "zh": "铁桶木乃伊"
+      },
+      "_CARDSPRITENAME": "egyptarmor2",
+      "CODENAME": "mummy_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(mummy_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(mummy_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pyramid-Head Mummy",
+        "zh": "金字塔头木乃伊"
+      },
+      "_CARDSPRITENAME": "egyptarmor4",
+      "CODENAME": "mummy_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(mummy_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(mummy_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Mummy Zombie",
+        "zh": "旗帜木乃伊"
+      },
+      "_CARDSPRITENAME": "egyptflag",
+      "CODENAME": "mummy_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(mummy_flag@ZombieAlmanac)",
+      "PROPS": "RTID(mummy_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Egypt Rally Zombie",
+        "zh": "大动员木乃伊"
+      },
+      "_CARDSPRITENAME": "egyptrally",
+      "CODENAME": "mummy_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(mummy_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(mummy_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Ra Zombie",
+        "zh": "太阳神僵尸"
+      },
+      "_CARDSPRITENAME": "egyptra",
+      "CODENAME": "ra",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 700,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(ra@ZombieAlmanac)",
+      "PROPS": "RTID(ra@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Zombie",
+        "zh": "骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcamel",
+      "CODENAME": "camel_segment",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_segment@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Zombies",
+        "zh": "骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcamelonehump",
+      "CODENAME": "camel_onehump",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "SubZombieList": [
+        "camel_segment",
+        "camel_twohump",
+        "camel_threehump",
+        "camel_manyhump",
+        "camel_segment_touch",
+        "camel_onehump_touch",
+        "camel_twohump_touch",
+        "camel_threehump_touch",
+        "camel_manyhump_touch"
+      ],
+      "ALMANAC": "RTID(camel_onehump@ZombieAlmanac)",
+      "PROPS": "RTID(camel_onehump@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Zombies",
+        "zh": "骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcameltwohump",
+      "CODENAME": "camel_twohump",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 800,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_twohump@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Zombies",
+        "zh": "骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcamelthreehump",
+      "CODENAME": "camel_threehump",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1000,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_threehump@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Zombies",
+        "zh": "骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcamelmanyhump",
+      "CODENAME": "camel_manyhump",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_manyhump@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Touch Zombie",
+        "zh": "记忆骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcameltouch",
+      "CODENAME": "camel_segment_touch",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_segment_touch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Touch Zombies",
+        "zh": "记忆骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcamelonehumptouch",
+      "CODENAME": "camel_onehump_touch",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_onehump_touch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Touch Zombies",
+        "zh": "记忆骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcameltwohumptouch",
+      "CODENAME": "camel_twohump_touch",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_twohump_touch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Touch Zombies",
+        "zh": "记忆骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcamelthreehumptouch",
+      "CODENAME": "camel_threehump_touch",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_threehump_touch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Camel Touch Zombies",
+        "zh": "记忆骆驼牌僵尸"
+      },
+      "_CARDSPRITENAME": "egyptcamelmanyhumptouch",
+      "CODENAME": "camel_manyhump_touch",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(camel_manyhump_touch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Explorer Zombie",
+        "zh": "探险家僵尸"
+      },
+      "_CARDSPRITENAME": "egyptexplorer",
+      "CODENAME": "explorer",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 250,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(explorer@ZombieAlmanac)",
+      "PROPS": "RTID(explorer@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Torchlight Zombie",
+        "zh": "火光僵尸"
+      },
+      "_CARDSPRITENAME": "egypttorchlight",
+      "CODENAME": "explorer_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(explorer_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(explorer_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Tomb Raiser Zombie",
+        "zh": "死神僵尸"
+      },
+      "_CARDSPRITENAME": "egypttombraiser",
+      "CODENAME": "tomb_raiser",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(tomb_raiser@ZombieAlmanac)",
+      "PROPS": "RTID(tomb_raiser@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pharoah",
+        "zh": "法老"
+      },
+      "_CARDSPRITENAME": "egyptpharaohinner",
+      "CODENAME": "pharaoh_inner",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(pharaoh_inner@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Weaker Pharoah Zombie",
+        "zh": "脆弱法老僵尸"
+      },
+      "_CARDSPRITENAME": "egyptpharaohweak",
+      "CODENAME": "pharaoh_weak",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 450,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(pharaoh_weak@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pharoah Zombie",
+        "zh": "法老僵尸"
+      },
+      "_CARDSPRITENAME": "egyptpharaoh",
+      "CODENAME": "pharaoh",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 450,
+      "WEIGHT": 100,
+      "SubZombieList": [
+        "pharaoh_inner",
+        "pharaoh_weak"
+      ],
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(pharaoh@ZombieAlmanac)",
+      "PROPS": "RTID(pharaoh@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp Mummy",
+        "zh": "木乃伊小鬼"
+      },
+      "_CARDSPRITENAME": "egyptimp",
+      "CODENAME": "egypt_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(egypt_imp@ZombieAlmanac)",
+      "PROPS": "RTID(egypt_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Mummified Gargantuar",
+        "zh": "木乃伊巨尸"
+      },
+      "_CARDSPRITENAME": "egyptgargantuar",
+      "CODENAME": "egypt_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(egypt_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(egypt_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Sphinx-inator",
+        "zh": "狮身人面降临者"
+      },
+      "_CARDSPRITENAME": "egyptzomboss",
+      "CODENAME": "zombossmech_egypt",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "SubZombieList": [
+        "zombossmech_egypt2"
+      ],
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(zombossmech_egypt@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_egypt@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Sphinx-inator",
+        "zh": "狮身人面降临者"
+      },
+      "_CARDSPRITENAME": "egyptzomboss",
+      "CODENAME": "zombossmech_egypt2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "egypt",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_egypt2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pirate Zombie",
+        "zh": "海盗僵尸"
+      },
+      "_CARDSPRITENAME": "piratebasic",
+      "CODENAME": "pirate",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate@ZombieAlmanac)",
+      "PROPS": "RTID(pirate@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Pirate",
+        "zh": "路障海盗"
+      },
+      "_CARDSPRITENAME": "piratearmor1",
+      "CODENAME": "pirate_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Pirate",
+        "zh": "铁桶海盗"
+      },
+      "_CARDSPRITENAME": "piratearmor2",
+      "CODENAME": "pirate_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Barrelhead Pirate",
+        "zh": "木桶头海盗"
+      },
+      "_CARDSPRITENAME": "piratearmor4",
+      "CODENAME": "pirate_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jolly Roger Zombie",
+        "zh": "海盗旗僵尸"
+      },
+      "_CARDSPRITENAME": "pirateflag",
+      "CODENAME": "pirate_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_flag@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Rally Roger Zombie",
+        "zh": "大动员海盗旗僵尸"
+      },
+      "_CARDSPRITENAME": "piraterally",
+      "CODENAME": "pirate_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Swashbuckler Zombie",
+        "zh": "荡索僵尸"
+      },
+      "_CARDSPRITENAME": "pirateswashbuckler",
+      "CODENAME": "swashbuckler",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 1500,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(swashbuckler@ZombieAlmanac)",
+      "PROPS": "RTID(swashbuckler@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Seagull Zombie",
+        "zh": "海鸥僵尸"
+      },
+      "_CARDSPRITENAME": "pirateseagull",
+      "CODENAME": "seagull",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(seagull@ZombieAlmanac)",
+      "PROPS": "RTID(seagull@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pelican Zombie",
+        "zh": "鹈鹕僵尸"
+      },
+      "_CARDSPRITENAME": "piratepelican",
+      "CODENAME": "pelican",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pelican@ZombieAlmanac)",
+      "PROPS": "RTID(pelican@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Barrel Roller Zombie",
+        "zh": "滚桶僵尸"
+      },
+      "_CARDSPRITENAME": "piratebarrelpusher",
+      "CODENAME": "barrelroller",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 2000,
+      "SubZombieList": [
+        "pirate_barrel"
+      ],
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(barrelroller@ZombieAlmanac)",
+      "PROPS": "RTID(barrelroller@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pirate Barrel",
+        "zh": "木桶"
+      },
+      "_CARDSPRITENAME": "piratebarrel",
+      "CODENAME": "pirate_barrel",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_barrel@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp Cannon",
+        "zh": "小鬼炮"
+      },
+      "_CARDSPRITENAME": "pirateimpcannon",
+      "CODENAME": "cannon",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 1500,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(cannon@ZombieAlmanac)",
+      "PROPS": "RTID(cannon@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pirate Captain Zombie",
+        "zh": "海盗船长僵尸"
+      },
+      "_CARDSPRITENAME": "piratecaptain",
+      "CODENAME": "pirate_captain",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_captain@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_captain@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombie Parrot",
+        "zh": "僵尸鹦鹉"
+      },
+      "_CARDSPRITENAME": "pirateparrot",
+      "CODENAME": "pirate_captain_parrot",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_captain_parrot@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_captain_parrot@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp Pirate Zombie",
+        "zh": "海盗小鬼"
+      },
+      "_CARDSPRITENAME": "pirateimp",
+      "CODENAME": "pirate_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_imp@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Gargantuar Pirate",
+        "zh": "海盗巨尸"
+      },
+      "_CARDSPRITENAME": "pirategargantuar",
+      "CODENAME": "pirate_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(pirate_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(pirate_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Plank Walker",
+        "zh": "甲板漫步者"
+      },
+      "_CARDSPRITENAME": "piratezomboss",
+      "CODENAME": "zombossmech_pirate",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "SubZombieList": [
+        "zombossmech_pirate2"
+      ],
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(zombossmech_pirate@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_pirate@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Plank Walker",
+        "zh": "甲板漫步者"
+      },
+      "_CARDSPRITENAME": "piratezomboss",
+      "CODENAME": "zombossmech_pirate2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "pirate",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_pirate2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cowboy Zombie",
+        "zh": "牛仔僵尸"
+      },
+      "_CARDSPRITENAME": "cowboybasic",
+      "CODENAME": "cowboy",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(cowboy@ZombieAlmanac)",
+      "PROPS": "RTID(cowboy@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Cowboy",
+        "zh": "路障牛仔"
+      },
+      "_CARDSPRITENAME": "cowboyarmor1",
+      "CODENAME": "cowboy_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(cowboy_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(cowboy_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Cowboy",
+        "zh": "铁桶牛仔"
+      },
+      "_CARDSPRITENAME": "cowboyarmor2",
+      "CODENAME": "cowboy_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(cowboy_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(cowboy_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cart-head Cowboy",
+        "zh": "矿车头牛仔"
+      },
+      "_CARDSPRITENAME": "cowboyarmor4",
+      "CODENAME": "cowboy_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(cowboy_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(cowboy_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Cowboy Zombie",
+        "zh": "旗帜牛仔"
+      },
+      "_CARDSPRITENAME": "cowboyflag",
+      "CODENAME": "cowboy_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(cowboy_flag@ZombieAlmanac)",
+      "PROPS": "RTID(cowboy_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cowboy Rally Zombie",
+        "zh": "大动员牛仔"
+      },
+      "_CARDSPRITENAME": "cowboyrally",
+      "CODENAME": "cowboy_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(cowboy_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(cowboy_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Prospector Zombie",
+        "zh": "炸矿僵尸"
+      },
+      "_CARDSPRITENAME": "cowboyprospector",
+      "CODENAME": "prospector",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(prospector@ZombieAlmanac)",
+      "PROPS": "RTID(prospector@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pianist Zombie",
+        "zh": "奏琴僵尸"
+      },
+      "_CARDSPRITENAME": "cowboypiano",
+      "CODENAME": "piano",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 450,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(piano@ZombieAlmanac)",
+      "PROPS": "RTID(piano@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Poncho Zombie",
+        "zh": "斗篷僵尸"
+      },
+      "_CARDSPRITENAME": "cowboyponcho",
+      "CODENAME": "poncho",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 4000,
+      "SubZombieList": [
+        "poncho_no_plate",
+        "poncho_plate"
+      ],
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(poncho@ZombieAlmanac)",
+      "PROPS": "RTID(poncho@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Poncho Zombie",
+        "zh": "斗篷僵尸"
+      },
+      "_CARDSPRITENAME": "cowboyponchonoshield",
+      "CODENAME": "poncho_no_plate",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(poncho_no_plate@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Poncho Zombie",
+        "zh": "斗篷僵尸"
+      },
+      "_CARDSPRITENAME": "cowboyponchoshield",
+      "CODENAME": "poncho_plate",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(poncho_plate@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Chicken Wrangler Zombie",
+        "zh": "牧鸡僵尸"
+      },
+      "_CARDSPRITENAME": "cowboychickenfarmer",
+      "CODENAME": "chicken_farmer",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(chicken_farmer@ZombieAlmanac)",
+      "PROPS": "RTID(chicken_farmer@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombie Chicken",
+        "zh": "僵尸鸡"
+      },
+      "_CARDSPRITENAME": "cowboychicken",
+      "CODENAME": "chicken",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 10,
+      "WEIGHT": 0,
+      "SubZombieList": [
+        "chicken_pumpkin"
+      ],
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(chicken@ZombieAlmanac)",
+      "PROPS": "RTID(chicken@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jack O'Chicken",
+        "zh": "南瓜鸡"
+      },
+      "_CARDSPRITENAME": "cowboychickenpumpkin",
+      "CODENAME": "chicken_pumpkin",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 10,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "market",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(chicken_pumpkin@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Machine Bull",
+        "zh": "机械牛"
+      },
+      "_CARDSPRITENAME": "cowboybull",
+      "CODENAME": "west_bull",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(west_bull@ZombieAlmanac)",
+      "PROPS": "RTID(west_bull@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Rodeo Legend",
+        "zh": "骑牛竞技传奇"
+      },
+      "_CARDSPRITENAME": "cowboybullblack",
+      "CODENAME": "west_bull_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1000,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(west_bull_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(west_bull_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombie Bull Rider",
+        "zh": "牛骑手"
+      },
+      "_CARDSPRITENAME": "cowboyimp",
+      "CODENAME": "west_bullrider",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(west_bullrider@ZombieAlmanac)",
+      "PROPS": "RTID(west_bullrider@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Wild West Gargantuar",
+        "zh": "西部巨尸"
+      },
+      "_CARDSPRITENAME": "cowboygargantuar",
+      "CODENAME": "cowboy_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(cowboy_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(cowboy_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot War Wagon",
+        "zh": "重型战马车"
+      },
+      "_CARDSPRITENAME": "cowboyzomboss",
+      "CODENAME": "zombossmech_cowboy",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "SubZombieList": [
+        "zombossmech_cowboy2"
+      ],
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(zombossmech_cowboy@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_cowboy@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot War Wagon",
+        "zh": "重型战马车"
+      },
+      "_CARDSPRITENAME": "cowboyzomboss",
+      "CODENAME": "zombossmech_cowboy2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "cowboy",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_cowboy2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Kongfu Zombie",
+        "zh": "武斗僵尸"
+      },
+      "_CARDSPRITENAME": "kongfubasic",
+      "CODENAME": "kongfu",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "kongfu",
+      "SubZombieList": [
+        "kongfu_armor3"
+      ],
+      "ALMANAC": "RTID(kongfu@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Kongfu Conehead Zombie",
+        "zh": "武斗路障僵尸"
+      },
+      "_CARDSPRITENAME": "kongfuarmor1",
+      "CODENAME": "kongfu_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Kongfu Kettlehead Zombie",
+        "zh": "武斗铁壶僵尸"
+      },
+      "_CARDSPRITENAME": "kongfuarmor2",
+      "CODENAME": "kongfu_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Kongfu Helmet Zombie",
+        "zh": "武斗铁盔僵尸"
+      },
+      "_CARDSPRITENAME": "kongfuarmor3",
+      "CODENAME": "kongfu_armor3",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 550,
+      "WEIGHT": 4500,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_armor3@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Kongfu Zombie",
+        "zh": "武斗旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "kongfuflag",
+      "CODENAME": "kongfu_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_flag@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Kongfu Rally Zombie",
+        "zh": "武斗大动员僵尸"
+      },
+      "_CARDSPRITENAME": "kongfurally",
+      "CODENAME": "kongfu_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Hammer Zombie",
+        "zh": "捶鼓僵尸"
+      },
+      "_CARDSPRITENAME": "kongfuhammer",
+      "CODENAME": "kongfu_hammer",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_hammer@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_hammer@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Expeditionist Zombie",
+        "zh": "远征习武僵尸"
+      },
+      "_CARDSPRITENAME": "kongfutorch",
+      "CODENAME": "kongfu_torch",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 250,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_torch@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_torch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Qigong Zombie",
+        "zh": "气功僵尸"
+      },
+      "_CARDSPRITENAME": "kongfuchi",
+      "CODENAME": "kongfu_chi",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 250,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_chi@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_chi@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Monk Zombie",
+        "zh": "武僧僵尸"
+      },
+      "_CARDSPRITENAME": "monkbasic",
+      "CODENAME": "monk",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "SubZombieList": [
+        "monk_armor3"
+      ],
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk@ZombieAlmanac)",
+      "PROPS": "RTID(monk@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Monk Conehead Zombie",
+        "zh": "武僧路障僵尸"
+      },
+      "_CARDSPRITENAME": "monkarmor1",
+      "CODENAME": "monk_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(monk_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Monk Kettlehead Zombie",
+        "zh": "武僧铁壶僵尸"
+      },
+      "_CARDSPRITENAME": "monkarmor2",
+      "CODENAME": "monk_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(monk_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Monk Helmet Zombie",
+        "zh": "武僧铁盔僵尸"
+      },
+      "_CARDSPRITENAME": "monkarmor3",
+      "CODENAME": "monk_armor3",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 550,
+      "WEIGHT": 4500,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(monk_armor3@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Monk Zombie",
+        "zh": "武僧旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "monkflag",
+      "CODENAME": "monk_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_flag@ZombieAlmanac)",
+      "PROPS": "RTID(monk_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Monk Rally Zombie",
+        "zh": "武僧大动员僵尸"
+      },
+      "_CARDSPRITENAME": "monkrally",
+      "CODENAME": "monk_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(monk_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Blade Monk Zombie",
+        "zh": "舞刀武僧"
+      },
+      "_CARDSPRITENAME": "monkblade",
+      "CODENAME": "monk_blade",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 1500,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_blade@ZombieAlmanac)",
+      "PROPS": "RTID(monk_blade@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Nunchaku Monk Zombie",
+        "zh": "双截棍武僧"
+      },
+      "_CARDSPRITENAME": "monknunchaku",
+      "CODENAME": "monk_nunchaku",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_nunchaku@ZombieAlmanac)",
+      "PROPS": "RTID(monk_nunchaku@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Torch Monk Zombie",
+        "zh": "火把武僧"
+      },
+      "_CARDSPRITENAME": "monktorch",
+      "CODENAME": "monk_torch",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 250,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_torch@ZombieAlmanac)",
+      "PROPS": "RTID(monk_torch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Future Zombie",
+        "zh": "未来僵尸"
+      },
+      "_CARDSPRITENAME": "futurebasic",
+      "CODENAME": "future",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future@ZombieAlmanac)",
+      "PROPS": "RTID(future@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Future Conehead Zombie",
+        "zh": "未来路障僵尸"
+      },
+      "_CARDSPRITENAME": "futurearmor1",
+      "CODENAME": "future_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(future_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Future Buckethead Zombie",
+        "zh": "未来铁桶僵尸"
+      },
+      "_CARDSPRITENAME": "futurearmor2",
+      "CODENAME": "future_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(future_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Holo Head Zombie",
+        "zh": "全息头僵尸"
+      },
+      "_CARDSPRITENAME": "futurearmor4",
+      "CODENAME": "future_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(future_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Future Flag Zombie",
+        "zh": "未来旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "futureflag",
+      "CODENAME": "future_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_flag@ZombieAlmanac)",
+      "PROPS": "RTID(future_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Robo-Rally Zombie",
+        "zh": "未来大动员僵尸"
+      },
+      "_CARDSPRITENAME": "futurerally",
+      "CODENAME": "future_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(future_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jetpack Zombie",
+        "zh": "喷气背包僵尸"
+      },
+      "_CARDSPRITENAME": "futurejetpack",
+      "CODENAME": "future_jetpack",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_jetpack@ZombieAlmanac)",
+      "PROPS": "RTID(future_jetpack@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Blastronaut Zombie",
+        "zh": "喷气宇航员僵尸"
+      },
+      "_CARDSPRITENAME": "futurejetpackveteran",
+      "CODENAME": "future_jetpack_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 450,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_jetpack_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(future_jetpack_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Disco Jetpack Zombie",
+        "zh": "喷气迪斯科僵尸"
+      },
+      "_CARDSPRITENAME": "futurejetpackdisco",
+      "CODENAME": "future_jetpack_disco",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_jetpack_disco@ZombieAlmanac)",
+      "PROPS": "RTID(future_jetpack_disco@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Force Shield Zombie",
+        "zh": "力场盾僵尸"
+      },
+      "_CARDSPRITENAME": "futureprotector",
+      "CODENAME": "future_protector",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 1500,
+      "SubZombieList": [
+        "future_protector_shield",
+        "future_infinut_shield",
+        "modern_moonflower_shield"
+      ],
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_protector@ZombieAlmanac)",
+      "PROPS": "RTID(future_protector@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Shield",
+        "zh": "防护盾"
+      },
+      "_CARDSPRITENAME": "futureprotectorshield",
+      "CODENAME": "future_protector_shield",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(future_protector_shield@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Infi-nut Shield",
+        "zh": "全息坚果防护盾"
+      },
+      "_CARDSPRITENAME": "futureinfinutshield",
+      "CODENAME": "future_infinut_shield",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(future_infinut_shield@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Moonflower Shield",
+        "zh": "月光花防护盾"
+      },
+      "_CARDSPRITENAME": "modernmoonflowershield",
+      "CODENAME": "modern_moonflower_shield",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(modern_moonflower_shield@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Robo-Cone Zombie",
+        "zh": "机甲路障僵尸"
+      },
+      "_CARDSPRITENAME": "futuremechcone",
+      "CODENAME": "mech_cone",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 650,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(mech_cone@ZombieAlmanac)",
+      "PROPS": "RTID(mech_cone@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Mecha-Football Zombie",
+        "zh": "机甲橄榄球盔僵尸"
+      },
+      "_CARDSPRITENAME": "futuremechfootball",
+      "CODENAME": "football_mech",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1000,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(football_mech@ZombieAlmanac)",
+      "PROPS": "RTID(football_mech@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Disco-tron 3000",
+        "zh": "迪斯科 3000"
+      },
+      "_CARDSPRITENAME": "futuremechdisco",
+      "CODENAME": "disco_mech",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 800,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(disco_mech@ZombieAlmanac)",
+      "PROPS": "RTID(disco_mech@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Bug Bot Imp",
+        "zh": "机械虫小鬼"
+      },
+      "_CARDSPRITENAME": "futureimp",
+      "CODENAME": "future_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_imp@ZombieAlmanac)",
+      "PROPS": "RTID(future_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Gargantuar Prime",
+        "zh": "巨尸统领者"
+      },
+      "_CARDSPRITENAME": "futuregargantuar",
+      "CODENAME": "future_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 2000,
+      "WEIGHT": 2500,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(future_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(future_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Tommorrow-tron",
+        "zh": "明日缔造者"
+      },
+      "_CARDSPRITENAME": "futurezomboss",
+      "CODENAME": "zombossmech_future",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "SubZombieList": [
+        "zombossmech_future2"
+      ],
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(zombossmech_future@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_future@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Tommorrow-tron",
+        "zh": "明日缔造者"
+      },
+      "_CARDSPRITENAME": "futurezomboss",
+      "CODENAME": "zombossmech_future2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "future",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_future2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Peasant Zombie",
+        "zh": "农夫僵尸"
+      },
+      "_CARDSPRITENAME": "darkbasic",
+      "CODENAME": "dark",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark@ZombieAlmanac)",
+      "PROPS": "RTID(dark@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Peasant",
+        "zh": "路障农夫"
+      },
+      "_CARDSPRITENAME": "darkarmor1",
+      "CODENAME": "dark_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(dark_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Peasant",
+        "zh": "铁桶农夫"
+      },
+      "_CARDSPRITENAME": "darkarmor2",
+      "CODENAME": "dark_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(dark_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Knight Zombie",
+        "zh": "骑士僵尸"
+      },
+      "_CARDSPRITENAME": "darkarmor3",
+      "CODENAME": "dark_armor3",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 550,
+      "WEIGHT": 4500,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_armor3@ZombieAlmanac)",
+      "PROPS": "RTID(dark_armor3@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Turret-headed Zombie",
+        "zh": "城堡头僵尸"
+      },
+      "_CARDSPRITENAME": "darkarmor4",
+      "CODENAME": "dark_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(dark_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Peasant Flag Zombie",
+        "zh": "旗帜农夫僵尸"
+      },
+      "_CARDSPRITENAME": "darkflag",
+      "CODENAME": "dark_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_flag@ZombieAlmanac)",
+      "PROPS": "RTID(dark_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Peasant Rally Zombie",
+        "zh": "农夫大动员僵尸"
+      },
+      "_CARDSPRITENAME": "darkrally",
+      "CODENAME": "dark_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(dark_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jester Zombie",
+        "zh": "弄臣僵尸"
+      },
+      "_CARDSPRITENAME": "darkjester",
+      "CODENAME": "dark_juggler",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 450,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_juggler@ZombieAlmanac)",
+      "PROPS": "RTID(dark_juggler@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Wizard Zombie",
+        "zh": "巫师僵尸"
+      },
+      "_CARDSPRITENAME": "darkwizard",
+      "CODENAME": "dark_wizard",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 800,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_wizard@ZombieAlmanac)",
+      "PROPS": "RTID(dark_wizard@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Master Enchanter Zombie",
+        "zh": "大法师僵尸"
+      },
+      "_CARDSPRITENAME": "darkwizardveteran",
+      "CODENAME": "dark_wizard_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1200,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_wizard_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(dark_wizard_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombie King",
+        "zh": "国王僵尸"
+      },
+      "_CARDSPRITENAME": "darkking",
+      "CODENAME": "dark_king",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 750,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_king@ZombieAlmanac)",
+      "PROPS": "RTID(dark_king@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Arthur King Zombie",
+        "zh": "亚瑟王僵尸"
+      },
+      "_CARDSPRITENAME": "darkkingveteran",
+      "CODENAME": "dark_king_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1000,
+      "WEIGHT": 1800,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_king_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(dark_king_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp Dragon Zombie",
+        "zh": "火龙小鬼"
+      },
+      "_CARDSPRITENAME": "darkdragonimp",
+      "CODENAME": "dark_imp_dragon",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 2000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_imp_dragon@ZombieAlmanac)",
+      "PROPS": "RTID(dark_imp_dragon@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp Monk Zombie",
+        "zh": "僧侣小鬼"
+      },
+      "_CARDSPRITENAME": "darkimp",
+      "CODENAME": "dark_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_imp@ZombieAlmanac)",
+      "PROPS": "RTID(dark_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Dark Ages Gargantuar",
+        "zh": "黑暗巨尸"
+      },
+      "_CARDSPRITENAME": "darkgargantuar",
+      "CODENAME": "dark_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(dark_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(dark_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Dark Dragon",
+        "zh": "巨龙驾驭者"
+      },
+      "_CARDSPRITENAME": "darkzomboss",
+      "CODENAME": "zombossmech_dark",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "SubZombieList": [
+        "zombossmech_dark2"
+      ],
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(zombossmech_dark@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_dark@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Dark Dragon",
+        "zh": "巨龙驾驭者"
+      },
+      "_CARDSPRITENAME": "darkzomboss",
+      "CODENAME": "zombossmech_dark2",
+      "CannotCarryPlantfoodsInWaves": true,
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "dark",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_dark2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pompadour Zombie",
+        "zh": "飞机头僵尸"
+      },
+      "_CARDSPRITENAME": "beachbasic",
+      "CODENAME": "beach",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach@ZombieAlmanac)",
+      "PROPS": "RTID(beach@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pompadour Conehead",
+        "zh": "路障飞机头"
+      },
+      "_CARDSPRITENAME": "beacharmor1",
+      "CODENAME": "beach_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(beach_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pompadour Buckethead",
+        "zh": "铁桶飞机头"
+      },
+      "_CARDSPRITENAME": "beacharmor2",
+      "CODENAME": "beach_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(beach_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Bikini Zombie",
+        "zh": "比基尼僵尸"
+      },
+      "_CARDSPRITENAME": "beachfemale",
+      "CODENAME": "beach_fem",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_fem@ZombieAlmanac)",
+      "PROPS": "RTID(beach_fem@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Bikini Conehead",
+        "zh": "路障比基尼"
+      },
+      "_CARDSPRITENAME": "beachfemalearmor1",
+      "CODENAME": "beach_fem_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_fem_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(beach_fem_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Bikini Buckethead",
+        "zh": "铁桶比基尼"
+      },
+      "_CARDSPRITENAME": "beachfemalearmor2",
+      "CODENAME": "beach_fem_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_fem_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(beach_fem_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Beach Flag Zombie",
+        "zh": "沙滩旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "beachflag",
+      "CODENAME": "beach_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_flag@ZombieAlmanac)",
+      "PROPS": "RTID(beach_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Snorkel Zombie",
+        "zh": "浮潜僵尸"
+      },
+      "_CARDSPRITENAME": "beachsnorkel",
+      "CODENAME": "beach_snorkel",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_snorkel@ZombieAlmanac)",
+      "PROPS": "RTID(beach_snorkel@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Surfer Zombie",
+        "zh": "冲浪僵尸"
+      },
+      "_CARDSPRITENAME": "beachsurfer",
+      "CODENAME": "beach_surfer",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_surfer@ZombieAlmanac)",
+      "PROPS": "RTID(beach_surfer@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Octopus Zombie",
+        "zh": "章鱼僵尸"
+      },
+      "_CARDSPRITENAME": "beachoctopus",
+      "CODENAME": "beach_octopus",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 900,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_octopus@ZombieAlmanac)",
+      "PROPS": "RTID(beach_octopus@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Fisherman Zombie",
+        "zh": "渔夫僵尸"
+      },
+      "_CARDSPRITENAME": "beachfisher",
+      "CODENAME": "beach_fisherman",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 2500,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_fisherman@ZombieAlmanac)",
+      "PROPS": "RTID(beach_fisherman@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp Mermaid Zombie",
+        "zh": "美人鱼小鬼"
+      },
+      "_CARDSPRITENAME": "beachimp",
+      "CODENAME": "beach_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_imp@ZombieAlmanac)",
+      "PROPS": "RTID(beach_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Deep Sea Gargantuar",
+        "zh": "深海巨尸"
+      },
+      "_CARDSPRITENAME": "beachgargantuar",
+      "CODENAME": "beach_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "beach",
+      "ALMANAC": "RTID(beach_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(beach_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Sharktronic Sub",
+        "zh": "巨鲨号深潜艇"
+      },
+      "_CARDSPRITENAME": "beachzomboss",
+      "CODENAME": "zombossmech_beach",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "water",
+      "ALMANAC": "RTID(zombossmech_beach@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_beach@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cave Zombie",
+        "zh": "洞窟僵尸"
+      },
+      "_CARDSPRITENAME": "iceagebasic",
+      "CODENAME": "iceage",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage@ZombieAlmanac)",
+      "PROPS": "RTID(iceage@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cave Conehead Zombie",
+        "zh": "洞窟路障僵尸"
+      },
+      "_CARDSPRITENAME": "iceagearmor1",
+      "CODENAME": "iceage_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cave Buckethead Zombie",
+        "zh": "洞窟铁桶僵尸"
+      },
+      "_CARDSPRITENAME": "iceagearmor2",
+      "CODENAME": "iceage_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Blockhead Zombie",
+        "zh": "冰砖头僵尸"
+      },
+      "_CARDSPRITENAME": "iceagearmor3",
+      "CODENAME": "iceage_armor3",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 550,
+      "WEIGHT": 4500,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_armor3@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_armor3@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Mammoth-headed Zombie",
+        "zh": "猛犸头僵尸"
+      },
+      "_CARDSPRITENAME": "iceagearmor4",
+      "CODENAME": "iceage_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cave Flag Zombie",
+        "zh": "洞窟旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "iceageflag",
+      "CODENAME": "iceage_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_flag@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Cave Rally Zombie",
+        "zh": "洞窟大动员僵尸"
+      },
+      "_CARDSPRITENAME": "iceagerally",
+      "CODENAME": "iceage_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Hunter Zombie",
+        "zh": "猎人僵尸"
+      },
+      "_CARDSPRITENAME": "iceagehunter",
+      "CODENAME": "iceage_hunter",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_hunter@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_hunter@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Hunter Leader Zombie",
+        "zh": "猎人领袖僵尸"
+      },
+      "_CARDSPRITENAME": "iceagehunterveteran",
+      "CODENAME": "iceage_hunter_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 2500,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_hunter_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_hunter_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Dodo Rider Zombie",
+        "zh": "渡渡鸟骑手"
+      },
+      "_CARDSPRITENAME": "iceagedodo",
+      "CODENAME": "iceage_dodo",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_dodo@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_dodo@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Troglobite",
+        "zh": "穴居僵尸"
+      },
+      "_CARDSPRITENAME": "iceagetroglobite",
+      "CODENAME": "iceage_troglobite",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "SubZombieList": [
+        "iceage_troglobite_1block",
+        "iceage_troglobite_2block"
+      ],
+      "ALMANAC": "RTID(iceage_troglobite@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_troglobite@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Troglobite One Block",
+        "zh": "穴居（一砖）僵尸"
+      },
+      "_CARDSPRITENAME": "iceagetroglobite",
+      "CODENAME": "iceage_troglobite_1block",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_troglobite_1block@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Troglobite Two Blocks",
+        "zh": "穴居（二砖）僵尸"
+      },
+      "_CARDSPRITENAME": "iceagetroglobite",
+      "CODENAME": "iceage_troglobite_2block",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_troglobite_2block@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Troglobite Warchief",
+        "zh": "穴居首领僵尸"
+      },
+      "_CARDSPRITENAME": "iceagetroglobiteveteran",
+      "CODENAME": "iceage_troglobite_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 900,
+      "WEIGHT": 3500,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_troglobite_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_troglobite_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Weasel Hoarder",
+        "zh": "囤鼬僵尸"
+      },
+      "_CARDSPRITENAME": "iceageweaselhoarder",
+      "CODENAME": "iceage_weaselhoarder",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_weaselhoarder@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_weaselhoarder@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Ice Weasel",
+        "zh": "冰鼬"
+      },
+      "_CARDSPRITENAME": "iceageweasel",
+      "CODENAME": "iceage_weasel",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 10,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_weasel@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_weasel@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Yeti Imp",
+        "zh": "雪人小鬼"
+      },
+      "_CARDSPRITENAME": "iceageimp",
+      "CODENAME": "iceage_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_imp@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Sloth Gargantuar",
+        "zh": "树懒皮巨尸"
+      },
+      "_CARDSPRITENAME": "iceagegargantuar",
+      "CODENAME": "iceage_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(iceage_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(iceage_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Tuskmaster 10,000 BC",
+        "zh": "獠牙征服者"
+      },
+      "_CARDSPRITENAME": "iceagezomboss",
+      "CODENAME": "zombossmech_iceage",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "SubZombieList": [
+        "zombossmech_iceage2"
+      ],
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(zombossmech_iceage@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_iceage@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Tuskmaster 10,000 BC",
+        "zh": "獠牙征服者"
+      },
+      "_CARDSPRITENAME": "iceagezomboss",
+      "CODENAME": "zombossmech_iceage2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "ice",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_iceage2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Adventurer Zombie",
+        "zh": "探宝僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitybasic",
+      "CODENAME": "lostcity",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Adventurer Zombie",
+        "zh": "路障探宝僵尸"
+      },
+      "_CARDSPRITENAME": "lostcityarmor1",
+      "CODENAME": "lostcity_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Adventurer Zombie",
+        "zh": "铁桶探宝僵尸"
+      },
+      "_CARDSPRITENAME": "lostcityarmor2",
+      "CODENAME": "lostcity_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Adventurer Zombie",
+        "zh": "旗帜探宝僵尸"
+      },
+      "_CARDSPRITENAME": "lostcityflag",
+      "CODENAME": "lostcity_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_flag@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lost Pilot Zombie",
+        "zh": "失事飞行员僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitylostpilot",
+      "CODENAME": "lostcity_lostpilot",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 150,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_lostpilot@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_lostpilot@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Excavator Zombie",
+        "zh": "发掘者僵尸"
+      },
+      "_CARDSPRITENAME": "lostcityexcavator",
+      "CODENAME": "lostcity_excavator",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_excavator@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_excavator@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Parasol Zombie",
+        "zh": "阳伞僵尸"
+      },
+      "_CARDSPRITENAME": "lostcityjane",
+      "CODENAME": "lostcity_jane",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_jane@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_jane@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Bug Zombie",
+        "zh": "蜻蜓僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitybug",
+      "CODENAME": "lostcity_bug",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 2000,
+      "SubZombieList": [
+        "lostcity_bug_armor1",
+        "lostcity_bug_armor2"
+      ],
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_bug@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_bug@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Bug Zombie",
+        "zh": "路障蜻蜓僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitybugarmor1",
+      "CODENAME": "lostcity_bug_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_bug_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Bug Zombie",
+        "zh": "铁桶蜻蜓僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitybugarmor2",
+      "CODENAME": "lostcity_bug_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 650,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_bug_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Relic Hunter Zombie",
+        "zh": "遗迹猎宝僵尸"
+      },
+      "_CARDSPRITENAME": "lostcityrelichunter",
+      "CODENAME": "lostcity_relichunter",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 550,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_relichunter@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_relichunter@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Imp Porter Zombie",
+        "zh": "搬运工小鬼"
+      },
+      "_CARDSPRITENAME": "lostcityimpporter",
+      "CODENAME": "lostcity_impporter",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 450,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_impporter@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_impporter@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Turquoise Skull Zombie",
+        "zh": "青骷髅头僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitycrystalskull",
+      "CODENAME": "lostcity_crystalskull",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_crystalskull@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_crystalskull@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lost City Imp Zombie",
+        "zh": "失落之城小鬼"
+      },
+      "_CARDSPRITENAME": "lostcityimp",
+      "CODENAME": "lostcity_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_imp@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Porter Gargantuar",
+        "zh": "搬运工巨尸"
+      },
+      "_CARDSPRITENAME": "lostcitygargantuar",
+      "CODENAME": "lostcity_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Aerostatic Gondola",
+        "zh": "热气球浮舰"
+      },
+      "_CARDSPRITENAME": "lostcityzomboss",
+      "CODENAME": "zombossmech_lostcity",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 0,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(zombossmech_lostcity@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_lostcity@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Pilot Zombie",
+        "zh": "飞行员僵尸"
+      },
+      "_CARDSPRITENAME": "skybasic",
+      "CODENAME": "sky",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky@ZombieAlmanac)",
+      "PROPS": "RTID(sky@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Pilot",
+        "zh": "路障飞行员"
+      },
+      "_CARDSPRITENAME": "skyarmor1",
+      "CODENAME": "sky_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(sky_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Pilot",
+        "zh": "铁桶飞行员"
+      },
+      "_CARDSPRITENAME": "skyarmor2",
+      "CODENAME": "sky_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(sky_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Pilot",
+        "zh": "旗帜飞行员"
+      },
+      "_CARDSPRITENAME": "skyflag",
+      "CODENAME": "sky_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_flag@ZombieAlmanac)",
+      "PROPS": "RTID(sky_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Neon Zombie",
+        "zh": "霓虹僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesbasic",
+      "CODENAME": "eighties",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties@ZombieAlmanac)",
+      "PROPS": "RTID(eighties@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Neon Conehead",
+        "zh": "霓虹路障僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesarmor1",
+      "CODENAME": "eighties_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Neon Buckethead",
+        "zh": "霓虹铁桶僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesarmor2",
+      "CODENAME": "eighties_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Neon Flag Zombie",
+        "zh": "霓虹旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesflag",
+      "CODENAME": "eighties_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_flag@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Punk Zombie",
+        "zh": "朋克僵尸"
+      },
+      "_CARDSPRITENAME": "eightiespunk",
+      "CODENAME": "eighties_punk",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_punk@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_punk@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Glitter Zombie",
+        "zh": "闪耀僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesglitter",
+      "CODENAME": "eighties_glitter",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_glitter@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_glitter@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "MC Zom-B",
+        "zh": "麦克说唱家"
+      },
+      "_CARDSPRITENAME": "eightiesmc",
+      "CODENAME": "eighties_mc",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 350,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_mc@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_mc@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Breakdancer Zombie",
+        "zh": "霹雳舞僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesbreakdancer",
+      "CODENAME": "eighties_breakdancer",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_breakdancer@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_breakdancer@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Arcade Zombie",
+        "zh": "街机僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesarcade",
+      "CODENAME": "eighties_arcade",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 600,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_arcade@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_arcade@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "8-Bit Zombie",
+        "zh": "像素僵尸"
+      },
+      "_CARDSPRITENAME": "eighties8bitbasic",
+      "CODENAME": "eighties_8bit",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "SubZombieList": [
+        "eighties_8bit_armor1",
+        "eighties_8bit_armor2"
+      ],
+      "ALMANAC": "RTID(eighties_8bit@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_8bit@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "8-Bit Conehead",
+        "zh": "像素路障僵尸"
+      },
+      "_CARDSPRITENAME": "eighties8bitarmor1",
+      "CODENAME": "eighties_8bit_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_8bit_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "8-Bit Buckethead",
+        "zh": "像素铁桶僵尸"
+      },
+      "_CARDSPRITENAME": "eighties8bitarmor2",
+      "CODENAME": "eighties_8bit_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_8bit_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Boombox Zombie",
+        "zh": "音箱僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesboombox",
+      "CODENAME": "eighties_boombox",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 300,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_boombox@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_boombox@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Impunk",
+        "zh": "朋克小鬼"
+      },
+      "_CARDSPRITENAME": "eightiesimp",
+      "CODENAME": "eighties_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_imp@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Hair Metal Gargantuar",
+        "zh": "重金属巨尸"
+      },
+      "_CARDSPRITENAME": "eightiesgargantuar",
+      "CODENAME": "eighties_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1500,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Zombie",
+        "zh": "侏罗纪僵尸"
+      },
+      "_CARDSPRITENAME": "dinobasic",
+      "CODENAME": "dino",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino@ZombieAlmanac)",
+      "PROPS": "RTID(dino@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Conehead",
+        "zh": "侏罗纪路障僵尸"
+      },
+      "_CARDSPRITENAME": "dinoarmor1",
+      "CODENAME": "dino_armor1",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 200,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(dino_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Buckethead",
+        "zh": "侏罗纪铁桶僵尸"
+      },
+      "_CARDSPRITENAME": "dinoarmor2",
+      "CODENAME": "dino_armor2",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 400,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(dino_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Fossilhead",
+        "zh": "侏罗纪龙骨头僵尸"
+      },
+      "_CARDSPRITENAME": "dinoarmor3",
+      "CODENAME": "dino_armor3",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 550,
+      "WEIGHT": 4500,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_armor3@ZombieAlmanac)",
+      "PROPS": "RTID(dino_armor3@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Amberhead Zombie",
+        "zh": "琥珀头僵尸"
+      },
+      "_CARDSPRITENAME": "dinoarmor4",
+      "CODENAME": "dino_armor4",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 700,
+      "WEIGHT": 4000,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(dino_armor4@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Flag Zombie",
+        "zh": "侏罗纪旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "dinoflag",
+      "CODENAME": "dino_flag",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_flag@ZombieAlmanac)",
+      "PROPS": "RTID(dino_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Rally Zombie",
+        "zh": "侏罗纪大动员僵尸"
+      },
+      "_CARDSPRITENAME": "dinorally",
+      "CODENAME": "dino_flag_veteran",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 100,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(dino_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Imp",
+        "zh": "侏罗纪小鬼"
+      },
+      "_CARDSPRITENAME": "dinoimp",
+      "CODENAME": "dino_imp",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 100,
+      "WEIGHT": 1000,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_imp@ZombieAlmanac)",
+      "PROPS": "RTID(dino_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Gargantuar",
+        "zh": "侏罗纪巨尸"
+      },
+      "_CARDSPRITENAME": "dinogargantuar",
+      "CODENAME": "dino_gargantuar",
+      "SUNCOST": 100,
+      "WAVEPOINTCOST": 1800,
+      "WEIGHT": 3000,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(dino_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(dino_gargantuar@ZombieProps)"
+    }
+  ],
+  "ALMANAC": [
+    "tutorial",
+    "tutorial_armor1",
+    "tutorial_armor2",
+    "tutorial_armor4",
+    "tutorial_flag",
+    "tutorial_flag_veteran",
+    "tutorial_imp",
+    "tutorial_gargantuar",
+    "vase_gargantuar",
+    "mummy",
+    "mummy_armor1",
+    "mummy_armor2",
+    "mummy_armor4",
+    "mummy_flag",
+    "mummy_flag_veteran",
+    "ra",
+    "camel_onehump",
+    "explorer",
+    "explorer_veteran",
+    "tomb_raiser",
+    "pharaoh",
+    "egypt_imp",
+    "egypt_gargantuar",
+    "zombossmech_egypt",
+    "pirate",
+    "pirate_armor1",
+    "pirate_armor2",
+    "pirate_armor4",
+    "pirate_flag",
+    "pirate_flag_veteran",
+    "swashbuckler",
+    "seagull",
+    "pelican",
+    "barrelroller",
+    "pirate_imp",
+    "cannon",
+    "pirate_captain",
+    "pirate_captain_parrot",
+    "pirate_gargantuar",
+    "zombossmech_pirate",
+    "cowboy",
+    "cowboy_armor1",
+    "cowboy_armor2",
+    "cowboy_armor4",
+    "cowboy_flag",
+    "cowboy_flag_veteran",
+    "prospector",
+    "piano",
+    "poncho",
+    "chicken_farmer",
+    "chicken",
+    "west_bull",
+    "west_bull_veteran",
+    "west_bullrider",
+    "cowboy_gargantuar",
+    "zombossmech_cowboy",
+    "future",
+    "future_armor1",
+    "future_armor2",
+    "future_armor4",
+    "future_flag",
+    "future_flag_veteran",
+    "future_jetpack",
+    "future_jetpack_veteran",
+    "future_jetpack_disco",
+    "future_protector",
+    "future_imp",
+    "mech_cone",
+    "disco_mech",
+    "football_mech",
+    "future_gargantuar",
+    "zombossmech_future",
+    "dark",
+    "dark_armor1",
+    "dark_armor2",
+    "dark_armor3",
+    "dark_armor4",
+    "dark_flag",
+    "dark_flag_veteran",
+    "dark_imp",
+    "dark_juggler",
+    "dark_gargantuar",
+    "dark_wizard",
+    "dark_wizard_veteran",
+    "dark_king",
+    "dark_king_veteran",
+    "dark_imp_dragon",
+    "zombossmech_dark",
+    "beach",
+    "beach_armor1",
+    "beach_armor2",
+    "beach_flag",
+    "beach_fem",
+    "beach_fem_armor1",
+    "beach_fem_armor2",
+    "beach_snorkel",
+    "beach_imp",
+    "beach_surfer",
+    "beach_gargantuar",
+    "beach_octopus",
+    "beach_fisherman",
+    "zombossmech_beach",
+    "iceage",
+    "iceage_armor1",
+    "iceage_armor2",
+    "iceage_armor3",
+    "iceage_armor4",
+    "iceage_flag",
+    "iceage_flag_veteran",
+    "iceage_hunter",
+    "iceage_hunter_veteran",
+    "iceage_imp",
+    "iceage_dodo",
+    "iceage_troglobite",
+    "iceage_troglobite_veteran",
+    "iceage_weaselhoarder",
+    "iceage_weasel",
+    "iceage_gargantuar",
+    "zombossmech_iceage",
+    "lostcity",
+    "lostcity_armor1",
+    "lostcity_armor2",
+    "lostcity_flag",
+    "lostcity_imp",
+    "lostcity_lostpilot",
+    "lostcity_excavator",
+    "lostcity_jane",
+    "lostcity_bug",
+    "lostcity_gargantuar",
+    "lostcity_impporter",
+    "lostcity_relichunter",
+    "lostcity_crystalskull",
+    "zombossmech_lostcity",
+    "sky",
+    "sky_armor1",
+    "sky_armor2",
+    "sky_flag",
+    "eighties",
+    "eighties_armor1",
+    "eighties_armor2",
+    "eighties_flag",
+    "eighties_punk",
+    "eighties_glitter",
+    "eighties_mc",
+    "eighties_imp",
+    "eighties_gargantuar",
+    "eighties_breakdancer",
+    "eighties_arcade",
+    "eighties_8bit",
+    "eighties_boombox",
+    "dino",
+    "dino_armor1",
+    "dino_armor2",
+    "dino_armor3",
+    "dino_armor4",
+    "dino_flag",
+    "dino_flag_veteran",
+    "dino_imp",
+    "dino_gargantuar",
+    "modern_balloon",
+    "modern_allstar",
+    "zomboni",
+    "bobsled_team",
+    "bobsled",
+    "catapult"
+  ]
+}

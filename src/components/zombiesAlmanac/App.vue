@@ -9,7 +9,7 @@
         </div>
         <div class="container">
             <div class="sidebar">
-                <ZombieCatalog :zombies="filteredZombies" @selectZombie="selectZombie" />
+                <ZombieCatalog :zombies="filteredZombies" @selectZombie="selectZombie" :zombieMap/>
             </div>
             <div class="content">
                 <ZombieDetail v-if="selectedZombie" :keyMap="keyMap" :zombie="selectedZombie" />
@@ -25,7 +25,7 @@ import ZombieDetail from './views/ZombieDetail.vue';
 import ZombieFilter from './views/ZombieFilter.vue';
 import type { Zombie, KeyMap } from './types';
 
-import zombiesJson from './zombies.json';
+import { getZombieMap, zombiesOrder } from './formatZombies';
 import i18nJson from './i18n.json';
 
 // 中文转换
@@ -35,68 +35,16 @@ const i18nLanguage = inject('i18nLanguage', 'zh');
 
 // 定义响应式状态
 const zombies = ref<Zombie[]>([]);
+const zombieMap = getZombieMap(i18nLanguage);
+
 const filteredZombies = ref<Zombie[]>([]);
 const selectedZombie = ref<Zombie | null>(null);
 
-// 植物展示顺序
-// const zombiesOrder = zombiesJson?.["SEEDCHOOSERDEFAULTORDER"].concat(zombiesJson?.["ALMANACHIDDENORDER"]);
 // 选择植物
 const selectZombie = (zombie: Zombie) => {
     selectedZombie.value = zombie;
 };
-// 边框样式
-const frameMap = {
-    'water': 'beach',
-    'market': 'prenium',
-};
-const formatOriginZombie = (originZombie: any) => {
-    // 从原始数据中提取需要的字段并整理
-    const res: Zombie = {
-        elements: {},
-        special: [],
-        enFamily: '',
-        id: originZombie["ID"],
-        zombieType: originZombie["_CARDSPRITENAME"],
-        codename: originZombie["CODENAME"],
-        // zombie没有i18n，暂时只取name值
-        // name: originPlant["NAME"]?.[i18nLanguage],
-        // enName: originPlant["NAME"]?.["en"],
-        name: originZombie["NAME"],
-        enName: originZombie["NAME"],
-        image: originZombie.image,
-        frameWorld: frameMap[originZombie["OBTAINWORLD"]] || originZombie["OBTAINWORLD"],
-        description: originZombie["ALMANAC"]?.["Introduction"]?.[i18nLanguage],
-        chat: originZombie["ALMANAC"]?.["Chat"]?.[i18nLanguage]
-    };
-    if (originZombie?.["ALMANAC"]?.["Elements"]) {
-        originZombie["ALMANAC"]["Elements"].forEach((element) => {
-            // 找到对应的值
-            const { TYPE, SORT, VALUE } = element;
 
-            let value;
-            if (SORT && SORT[i18nLanguage]) {
-                value = SORT[i18nLanguage]; // 有 SORT 时，取 SORT
-            } else if (VALUE) {
-                value = VALUE; // 没有 SORT 时，取 VALUE
-            } else if (TYPE == "RECHARGE") {
-                value = originZombie["COOLDOWN"]
-            } else if (TYPE == "FAMILY") {
-                value = familyNameMap[originZombie[TYPE]][i18nLanguage];
-                res.enFamily = familyNameMap[originZombie[TYPE]]['en'];
-            }
-            else {
-                value = originZombie[TYPE]; // 只有 TYPE 时，从原始数据中查找
-            }
-            if (res.elements)
-                res.elements[TYPE] = value;
-        });
-    }
-    if (originZombie?.["ALMANAC"]?.["Special"]) {
-        res.special = originZombie["ALMANAC"]["Special"]
-
-    }
-    return res;
-};
 const filterZombies = (filter: { name: string }) => {
     const { name } = filter;
 
@@ -115,12 +63,11 @@ const filterZombies = (filter: { name: string }) => {
     });
 };
 
-// 暂时没有使用zombiesOrder
-// zombies.value = zombiesOrder.map((codename) => {
-//     return zombiesJson["ZOMBIES"].find((item) => item["CODENAME"] == codename);
-// }).map(formatOriginZombie);
 
-zombies.value = zombiesJson["ZOMBIES"].map(formatOriginZombie);
+zombies.value = zombiesOrder.map((codename) => {
+    return zombieMap[codename];
+});
+console.log(zombiesOrder)
 filteredZombies.value = zombies.value;
 selectZombie(filteredZombies.value[0]);
 

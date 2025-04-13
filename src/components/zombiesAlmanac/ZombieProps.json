@@ -1,0 +1,3609 @@
+{
+	"#comment": "Zombie Properties!",
+	"version": 1,
+	"objects": [
+		{
+			"aliases": [
+				"tutorial"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100
+			}
+		},
+		{
+			"aliases": [
+				"tutorial_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"modern_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"tutorial_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"modern_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"tutorial_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"CannotCarryPlantfoodsInWaves": true,
+				"StartingArmors": [
+					"modern_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"tutorial_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"tutorial_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"duckytube"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"SpeedScaleInWater": 2,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.17,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"duckytube_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"SpeedScaleInWater": 2,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.17,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"modern_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"duckytube_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"SpeedScaleInWater": 2,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.17,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"modern_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"duckytube_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SpeedScaleInWater": 2,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.17,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"modern_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"duckytube_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SpeedScaleInWater": 2,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"duckytube_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.38,
+				"SpeedScaleInWater": 2,
+				"LivesInDeepWater": true,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"tutorial_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"tutorial_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"vase_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.15,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"bobsled"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"EatDPS": 100,
+				"WalkSPS": 0.185,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"bobsled_team"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"ChiliStunDurationMult": 0,
+				"WalkSPS": 0.3,
+				"EatDPS": 100,
+				"Toughness": 390,
+				"ImmuneToSporeShroom": true,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"modern_balloon"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.25,
+				"BalloonWalkSPS": 0.4,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BalloonToughness": 270
+			}
+		},
+		{
+			"aliases": [
+				"modern_allstar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 1100,
+				"RunningSpeedScale": 6
+			}
+		},
+		{
+			"aliases": [
+				"sleighcart"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 1100,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"ChiliStunDurationMult": 0,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"catapult"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 100,
+				"Toughness": 750,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"LobInterval": 4,
+				"LobIntervalAdditional": 0.5,
+				"MaxBallCount": 20,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"mummy"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"mummy_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"egypt_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"mummy_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"egypt_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"mummy_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"CannotCarryPlantfoodsInWaves": true,
+				"StartingArmors": [
+					"egypt_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"mummy_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"mummy_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"ra"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"MaxAbsorbValue": 250,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"camel_segment"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					0
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_onehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					3
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_twohump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					4
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_threehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					5
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_manyhump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					5,
+					6,
+					7
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_segment_touch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					0
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_onehump_touch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					3
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_twohump_touch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					4
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_threehump_touch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					5
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"camel_manyhump_touch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					5,
+					6,
+					7
+				],
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"explorer"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.25,
+				"EatDPS": 100,
+				"FireDPS": 1000,
+				"Toughness": 250
+			}
+		},
+		{
+			"aliases": [
+				"explorer_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.5,
+				"EatDPS": 150,
+				"FireDPS": 1000,
+				"Toughness": 650
+			}
+		},
+		{
+			"aliases": [
+				"tomb_raiser"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ThrowTimePerGroup": 2,
+				"TimeBetweenGroups": 6,
+				"TimeBetweenGroupsAdditional": 1,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 380
+			}
+		},
+		{
+			"aliases": [
+				"pharaoh_inner"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.5,
+				"EatDPS": 100,
+				"Toughness": 290
+			}
+		},
+		{
+			"aliases": [
+				"pharaoh_weak"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ZombieInside": "pharaoh_inner",
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 1200,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"pharaoh"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ProtectsInside": true,
+				"ZombieInside": "pharaoh_inner",
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 1200,
+				"DamageExtends": false,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"egypt_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"egypt_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"LivesInDeepWater": true,
+				"SmashDamage": 1500,
+				"CannotCarryPlantfoodsInWaves": true,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"WalkSPS": 0.24,
+				"NormalDeathWhenMowed": true,
+				"ChanceToPharaoh": 0.75
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_egypt"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_egypt2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"pirate"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"pirate_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"pirate_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"pirate_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"pirate_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"pirate_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"pirate_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"pirate_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"pirate_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"swashbuckler"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ChanceToFallIntoSea": 0.05,
+				"LandingColumns": [
+					4
+				]
+			}
+		},
+		{
+			"aliases": [
+				"seagull"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.355,
+				"EatDPS": 100,
+				"Toughness": 270
+			}
+		},
+		{
+			"aliases": [
+				"pelican"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.6,
+				"EatDPS": 100,
+				"Toughness": 270
+			}
+		},
+		{
+			"aliases": [
+				"barrelroller"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"pirate_barrel"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 1100,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"cannon"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 600,
+				"NormalDeathWhenMowed": true,
+				"TimeBefore": 3,
+				"TimeBeforeAdditional": 1,
+				"ShootInterval": 7.5,
+				"ShootIntervalAdditional": 0.5,
+				"MaxImpCount": 5,
+				"MaxImpCountAdditional": 0,
+				"ShootColumns": [
+					5,
+					4
+				],
+				"ExplodeColumns": [
+					5,
+					4,
+					3,
+					2
+				],
+				"ExplodeImpCount": 5,
+				"ExplodeImpCountAdditional": 0,
+				"IgnoredByThymeWarp": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"pirate_captain"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"EatDPS": 100,
+				"Toughness": 420,
+				"WalkSPS": 0.15,
+				"ParrotCooldown": 7,
+				"ParrotRetryCooldown": 1
+			}
+		},
+		{
+			"aliases": [
+				"pirate_captain_parrot"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CanBeEasilySwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 1.4,
+				"EatDPS": 100,
+				"Toughness": 300,
+				"NormalDeathWhenMowed": true,
+				"FlyingSpeed": 1.4,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"pirate_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"pirate_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_pirate"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_pirate2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"cowboy"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"DanceSPSScale": 1.2,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"cowboy_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"DanceSPSScale": 1.2,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"cowboy_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"cowboy_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"DanceSPSScale": 1.2,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"cowboy_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"cowboy_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"DanceSPSScale": 1.2,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"cowboy_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"cowboy_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"DanceSPSScale": 1.2,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"cowboy_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"DanceSPSScale": 1.2,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"prospector"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"piano"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.2,
+				"EatDPS": 4000,
+				"Toughness": 840,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"poncho"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ShieldToughness": 1100,
+				"PonchoToughness": 60,
+				"ChanceToPlate": 0.5
+			}
+		},
+		{
+			"aliases": [
+				"poncho_no_plate"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ShieldToughness": 1100,
+				"PonchoToughness": 60,
+				"ChanceToPlate": 0
+			}
+		},
+		{
+			"aliases": [
+				"poncho_plate"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ShieldToughness": 1100,
+				"PonchoToughness": 60,
+				"ChanceToPlate": 1
+			}
+		},
+		{
+			"aliases": [
+				"chicken_farmer"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ChickeningDuration": 2,
+				"ChickeningDurationVariance": 1,
+				"ChickeningHealthPercentage": 0.8,
+				"ChickeningInterval": 0.2,
+				"ChickeningIntervalVariance": 0.1
+			}
+		},
+		{
+			"aliases": [
+				"chicken"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CanBeEasilySwallowedByChomper": true,
+				"ImmuneToSporeShroom": true,
+				"WalkSPS": 2,
+				"EatDPS": 50,
+				"Toughness": 1,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"chicken_pumpkin"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CanBeEasilySwallowedByChomper": true,
+				"ImmuneToSporeShroom": true,
+				"WalkSPS": 2,
+				"EatDPS": 50,
+				"Toughness": 1,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"west_bull"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CannotBeSwallowedByChomper": true,
+				"EatDPS": 100,
+				"Toughness": 1300,
+				"NormalDeathWhenMowed": true,
+				"BullRunAgainDelay": 5,
+				"WalkSPS": 0.2,
+				"RushSPS": 1,
+				"ImpThrowDistance": 4,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"west_bull_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CannotBeSwallowedByChomper": true,
+				"EatDPS": 100,
+				"Toughness": 1400,
+				"NormalDeathWhenMowed": true,
+				"BullRunAgainDelay": 5,
+				"WalkSPS": 0.2,
+				"RushSPS": 2,
+				"BullRammingDamage": 2000,
+				"ImpThrowDistance": 4,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"west_bullrider"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"cowboy_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"NormalDeathWhenMowed": true,
+				"SplashDamageToZombies": 100,
+				"SplashDamageToPlants": 40
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_cowboy"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_cowboy2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"kongfu"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_armor3"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor3"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_hammer"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HammerDuration": 3,
+				"RestDuration": 3,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 600
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_torch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HammerDuration": 3,
+				"RestDuration": 0,
+				"WalkSPS": 0.25,
+				"EatDPS": 100,
+				"FireDPS": 1000,
+				"Toughness": 250
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_chi"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChiInterval": 7,
+				"ChiIntervalStart": 4,
+				"WalkSPS": 0.15,
+				"EatDPS": 100,
+				"Toughness": 300
+			}
+		},
+		{
+			"aliases": [
+				"monk"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"monk_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"monk_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"monk_armor3"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor3"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"monk_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.26,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"monk_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.44,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"monk_blade"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"BladeDamage": 250,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 600
+			}
+		},
+		{
+			"aliases": [
+				"monk_nunchaku"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HammerDuration": 4,
+				"RestDuration": 0.1,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 600
+			}
+		},
+		{
+			"aliases": [
+				"monk_torch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.3,
+				"EatDPS": 100,
+				"FireDPS": 1000,
+				"Toughness": 270
+			}
+		},
+		{
+			"aliases": [
+				"future"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"future_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"future_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"future_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"future_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"future_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"future_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"future_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"future_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"future_jetpack"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.3,
+				"EatDPS": 100,
+				"Toughness": 380,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"future_jetpack_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.75,
+				"EatDPS": 150,
+				"Toughness": 390,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"future_jetpack_disco"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.3,
+				"EatDPS": 100,
+				"Toughness": 380,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"future_protector"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"EMPStunTimeScale": 1,
+				"ShieldRecoverTime": 5,
+				"ShieldKillStunTime": 2,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 500,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"future_protector_shield"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": false,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0,
+				"EatDPS": 100,
+				"Toughness": 1200,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"future_infinut_shield"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": false,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0,
+				"EatDPS": 100,
+				"Toughness": 10000,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"modern_moonflower_shield"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": false,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0,
+				"EatDPS": 100,
+				"Toughness": 5000,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"mech_cone"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"EMPStunTimeScale": 1,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 2500,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"football_mech"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"PushFailDamage": 400,
+				"ChiliStunDurationMult": 0,
+				"EMPStunTimeScale": 1,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 2000,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"disco_mech"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"EMPStunTimeScale": 1,
+				"SummonDuration": 3,
+				"DanceCountdown": 6,
+				"DanceDuration": 5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 2000,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"future_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"EMPStunTimeScale": 1,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 270,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"future_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"EyeLaserDelayBetweenShots": 12.5,
+				"EyeLaserMaxColumn": 5,
+				"EyeLaserMinDistance": 1.5,
+				"EyeLaserSweepLength": 1.5,
+				"EyeLaserSweepTime": 1,
+				"EyeLaserTotalDamage": 1000,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_future"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_future2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"dark"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"dark_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dark_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dark_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dark_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dark_armor3"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dark_armor3"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dark_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dark_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dark_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"dark_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"dark_juggler"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 420
+			}
+		},
+		{
+			"aliases": [
+				"dark_wizard"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"TimeBeforeFirst": 7,
+				"TimeBeforeFirstAdditional": 2,
+				"TimeBetween": 11,
+				"TimeBetweenAdditional": 3,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 490
+			}
+		},
+		{
+			"aliases": [
+				"dark_wizard_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"TimeBeforeFirst": 7,
+				"TimeBeforeFirstAdditional": 2,
+				"TimeBetween": 4,
+				"TimeBetweenAdditional": 1,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 630
+			}
+		},
+		{
+			"aliases": [
+				"dark_king"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"PlantablePlants": [
+					"cherry_bomb",
+					"jalapeno",
+					"powerlily",
+					"iceburg",
+					"empea",
+					"powerplant",
+					"goldleaf",
+					"grapeshot"
+				],
+				"KnightingAreaW": 4,
+				"DelayBetweenKnightings": 2.5,
+				"ValidKnightTargets": [
+					"dark",
+					"dark_armor1",
+					"dark_armor2",
+					"dark_armor3",
+					"dark_armor4"
+				],
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 1000,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"dark_king_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"PlantablePlants": [
+					"cherry_bomb",
+					"jalapeno",
+					"powerlily",
+					"iceburg",
+					"empea",
+					"powerplant",
+					"goldleaf",
+					"grapeshot"
+				],
+				"KnightingAreaW": 2,
+				"DelayBetweenKnightings": 2.5,
+				"ValidKnightTargets": [
+					"zombossmech_egypt",
+					"zombossmech_egypt2",
+					"zombossmech_pirate",
+					"zombossmech_pirate2",
+					"zombossmech_cowboy",
+					"zombossmech_cowboy2",
+					"zombossmech_future",
+					"zombossmech_future2",
+					"zombossmech_dark",
+					"zombossmech_dark2",
+					"dark_king",
+					"dark_king_veteran",
+					"future_protector_shield",
+					"future_infinut_shield"
+				],
+				"TargetListBecomesBlackList": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 1500,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"dark_imp_dragon"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"dark_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"dark_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_dark"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_dark2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"ChiliStunDurationMult": 0,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"beach"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"beach_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"beach_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"beach_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"beach_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"beach_fem"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"beach_fem_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"beach_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"beach_fem_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"beach_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"beach_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"beach_snorkel"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"beach_surfer"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"BoardToughness": 700,
+				"DamageOnStabbing": 1500,
+				"SwimSpeedMultiplier": 3,
+				"PlantBlockers": [
+					"tallnut"
+				],
+				"ZombieBlockers": [
+					"future_protector_shield",
+					"future_infinut_shield"
+				],
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 350,
+				"ZombossLaneSummon": true
+			}
+		},
+		{
+			"aliases": [
+				"beach_octopus"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"TimeBeforeFirst": 7,
+				"TimeBeforeFirstAdditional": 2,
+				"TimeBetween": 11,
+				"TimeBetweenAdditional": 3,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 910
+			}
+		},
+		{
+			"aliases": [
+				"beach_fisherman"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"PlantablePlants": [
+					"tanglekelp",
+					"ghostpepper",
+					"guacodile"
+				],
+				"DelayBeforeReeling": 0.3,
+				"DelayBetweenCasting": 2.5,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 1000,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"beach_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"beach_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"SpeedScaleOnLand": 0.8,
+				"TakingDamageScaleOnLand": 0.9,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_beach"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"iceage"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"iceage_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"iceage_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"iceage_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"iceage_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"iceage_armor3"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"iceage_armor3"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"iceage_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"iceage_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"iceage_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"iceage_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"iceage_hunter"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 700,
+				"FarAttackRange": 4,
+				"SnowballsPerBarrage": 3
+			}
+		},
+		{
+			"aliases": [
+				"iceage_hunter_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"WalkSPS": 0.2,
+				"EatDPS": 150,
+				"Toughness": 1100,
+				"LobInterval": 3,
+				"LobIntervalAdditional": 0.5
+			}
+		},
+		{
+			"aliases": [
+				"iceage_dodo"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"CannotBePushedBySliders": true,
+				"WalkSPS": 0.3,
+				"EatDPS": 100,
+				"Toughness": 490
+			}
+		},
+		{
+			"aliases": [
+				"iceage_troglobite"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"ImpTypes": [
+					"iceage_imp"
+				],
+				"NumberOfIceblocksToSpawnWith": 3,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 470
+			}
+		},
+		{
+			"aliases": [
+				"iceage_troglobite_1block"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"ImpTypes": [
+					"iceage_imp"
+				],
+				"NumberOfIceblocksToSpawnWith": 1,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 470
+			}
+		},
+		{
+			"aliases": [
+				"iceage_troglobite_2block"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"ImpTypes": [
+					"iceage_imp"
+				],
+				"NumberOfIceblocksToSpawnWith": 2,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 470
+			}
+		},
+		{
+			"aliases": [
+				"iceage_troglobite_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"ImpTypes": [
+					"iceage_hunter",
+					"iceage_hunter_veteran"
+				],
+				"NumberOfIceblocksToSpawnWith": 3,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 700
+			}
+		},
+		{
+			"aliases": [
+				"iceage_weaselhoarder"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"ImmuneToSporeShroom": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WeaselTypeName": "iceage_weasel",
+				"WeaselingHealthPercentage": 0.8,
+				"WeaselingInterval": 0.3,
+				"WeaselingIntervalVariance": 0.1,
+				"WeaselingDuration": 2,
+				"WeaselingDurationVariance": 1
+			}
+		},
+		{
+			"aliases": [
+				"iceage_weasel"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"CannotBePushedBySliders": true,
+				"CanBeEasilySwallowedByChomper": true,
+				"WalkSPS": 1.5,
+				"EatDPS": 75,
+				"Toughness": 40
+			}
+		},
+		{
+			"aliases": [
+				"iceage_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"ChillInsteadOfFreeze": true,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"iceage_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"ChillInsteadOfFreeze": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"HealthPercentThrowImp0": 0.8,
+				"HealthPercentThrowImp1": 0.6,
+				"HealthPercentThrowImp2": 0.4,
+				"ChanceToReverseImp": 0.25,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_iceage"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_iceage2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"lostcity"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"BugToughness": 0,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"BugToughness": 0,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"lostcity_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"BugToughness": 0,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"lostcity_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HangingNoEatTimeUntilDrop": 6,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_excavator"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ShovelDamage": 150,
+				"WalkSPS": 0.3,
+				"EatDPS": 100,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_jane"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"CannotBeDetectedBySapfling": true,
+				"WalkSPS": 0.25,
+				"EatDPS": 100,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_bug"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BugToughness": 350,
+				"BuggedSPS": 0.4
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_bug_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BugToughness": 350,
+				"BuggedSPS": 0.4,
+				"StartingArmors": [
+					"lostcity_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_bug_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BugToughness": 350,
+				"BuggedSPS": 0.4,
+				"StartingArmors": [
+					"lostcity_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_relichunter"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.155,
+				"EatDPS": 100,
+				"Toughness": 760,
+				"LandingColumns": [
+					3,
+					4,
+					5
+				]
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_impporter"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_crystalskull"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"MaxAbsorbValue": 250,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"LaserBeamDamage": 4001,
+				"LaserBeamLength": 220,
+				"LaserCooldownTime": 5,
+				"ChargingTime": 5,
+				"ChargingTimeDecrementPer50Sun": 0.2
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"FireDamage": 1200
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_lostcity"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true
+			}
+		},
+		{
+			"aliases": [
+				"sky"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"sky_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"sky_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"sky_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"sky_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"sky_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.3,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"eighties"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"eighties_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"eighties_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"eighties_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"eighties_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"eighties_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"eighties_punk"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.23125,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"PushCooldown": 2,
+				"JamStyle": "jam_punk"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_glitter"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.19,
+				"EatDPS": 100,
+				"Toughness": 490,
+				"RainbowTrailLength": 3.125,
+				"JamStyle": "jam_pop"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_mc"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.23125,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"JamAttackDamage": 2001,
+				"JamStyle": "jam_rap"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_breakdancer"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.23125,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"JamWalkSpeedMult": 1.5,
+				"KickDistance": 1.5625,
+				"KickingTime": 0.5,
+				"JamStyle": "jam_rap"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_arcade"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"NumberOfArcadeCabinetsToSpawnWith": 1,
+				"WalkSPS": 0.19,
+				"EatDPS": 100,
+				"Toughness": 490,
+				"JamStyle": "jam_8bit"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_8bit"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"eighties_8bit_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"eighties_8bit_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"eighties_8bit_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"eighties_8bit_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"eighties_boombox"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"NumberOfArcadeCabinetsToSpawnWith": 1,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"BoomBoxColumn": 5,
+				"BoomBoxDuration": 8,
+				"PlantFreezeRadius": 15
+			}
+		},
+		{
+			"aliases": [
+				"eighties_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"eighties_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"JamStyle": "jam_metal"
+			}
+		},
+		{
+			"aliases": [
+				"dino"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.22,
+				"EatDPS": 150,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"dino_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.22,
+				"EatDPS": 150,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dino_armor1"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dino_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dino_armor2"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dino_armor3"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dino_armor3"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dino_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"dino_armor4"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"dino_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.25,
+				"EatDPS": 150,
+				"Toughness": 190
+			}
+		},
+		{
+			"aliases": [
+				"dino_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 400,
+				"Toughness": 350
+			}
+		},
+		{
+			"aliases": [
+				"dino_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.3,
+				"EatDPS": 200,
+				"Toughness": 95
+			}
+		},
+		{
+			"aliases": [
+				"dino_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 5400,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true
+			}
+		}
+	]
+}
