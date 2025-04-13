@@ -1,19 +1,10 @@
 <template>
-    <!-- <div class="plant-catalog"> -->
-    <!-- <h2>植物列表</h2> -->
     <ul>
         <li v-for="plant in plants" :key="plant.id" @click="selectPlant(plant)">
-            <!-- <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
-                :alt="plant.name"> -->
-            <!-- <div class="plant-image-frame">
-                <img class="plant-img" :src="'/assets/image/plants-tp/plants_' + plant.plantType + '_0.webp'"
-                    :alt="plant.name">
-                <img class="frame-img" :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
-                    :alt="plant.frameWorld">
-            </div> -->
+
             <template v-if="plant.subPlants">
                 <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
-                    @visible-change="visible[plant.codename] = $event" :overlayInnerStyle="{
+                    @open-change="visible[plant.codename] = $event" :overlayInnerStyle="{
                         border: isDarkMode ? '3px solid #deb991' : '3px solid #432b1a',
                         backgroundColor: isDarkMode ? '#383011' : '#ede5c4',
                         textAlign: 'center'
@@ -25,7 +16,7 @@
                                 :key="subPlant.id">
                                 <a-col @click="selectPlant(subPlant, plant)">
                                     <img :src="'/assets/image/plants/plants_' + subPlant.codename + '_c.webp'"
-                                        :alt="plant.name">
+                                        :alt="subPlant.name">
                                     <p>{{ subPlant.name }}</p>
                                 </a-col>
                             </template>
@@ -45,7 +36,6 @@
 </template>
 
 <script lang="ts" setup>
-import { theme } from 'ant-design-vue';
 import type { Plant } from '../types';
 import { ref } from 'vue';
 import { useDarkMode } from "@vuepress/helper/client";

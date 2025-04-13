@@ -1,5 +1,4 @@
-import type { Plant, KeyMap } from './types';
-import { ref, computed, onMounted, inject } from 'vue';
+import type { Plant } from './types';
 import plantsJson from './plants.json';
 import i18nJson from './i18n.json';
 
@@ -8,7 +7,6 @@ const frameMap = {
     'market': 'prenium',
 };
 
-const keyMap: KeyMap = i18nJson?.Almanac;
 const familyNameMap = i18nJson?.PlantFamily;
 
 export const plantsOrder = plantsJson["SEEDCHOOSERDEFAULTORDER"];

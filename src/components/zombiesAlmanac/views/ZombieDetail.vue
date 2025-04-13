@@ -46,6 +46,8 @@
         <div class="details-container">
             <div class="zombie-introduction">
                 <p class="description">Codename: <span class="descriptionKey">{{ zombie.codename }}</span></p>
+                <p class="description">OBTAINWORLD: <span class="descriptionKey">{{ zombie.obtainWorld }}</span></p>
+                <p class="description">Properties: <span class="descriptionKey">{{ zombie.objdata }}</span></p>
             </div>
         </div>
     </div>

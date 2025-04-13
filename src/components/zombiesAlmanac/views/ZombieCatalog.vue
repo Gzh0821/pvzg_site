@@ -1,18 +1,35 @@
 <template>
-    <!-- <div class="zombie-catalog"> -->
-    <!-- <h2>植物列表</h2> -->
     <ul>
-        <li v-for="zombie in zombies" :key="zombie.id" @click="selectZombie(zombie)">
-            <!-- <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
-                :alt="plant.name"> -->
-            <!-- <div class="zombie-image-frame">
-                <img class="zombie-img" :src="'/assets/image/plants-tp/plants_' + plant.plantType + '_0.webp'"
-                    :alt="plant.name">
-                <img class="frame-img" :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
-                    :alt="plant.frameWorld">
-            </div> -->
-            <img :src="'/assets/image/zombies/Zombie_' + zombie.zombieType + '_0.webp'" :alt="zombie.name">
-            <p>{{ zombie.name }}</p>
+        <li v-for="zombie in zombies" :key="zombie.codename" @click="selectZombie(zombie)">
+
+            <template v-if="zombie.subZombies">
+                <a-popover arrow-point-at-center trigger="hover" :open="visible[zombie.codename]"
+                    @open-change="visible[zombie.codename] = $event" :overlayInnerStyle="{
+                        border: isDarkMode ? '3px solid #deb991' : '3px solid #432b1a',
+                        backgroundColor: isDarkMode ? '#383011' : '#ede5c4',
+                        textAlign: 'center'
+                    }">
+                    <template #content>
+                        <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
+                            <template
+                                v-for="subZombie in zombie.subZombies.map((codename) => { return zombieMap[codename] })"
+                                :key="subZombie.codename">
+                                <a-col @click="selectZombie(subZombie, zombie)">
+                                    <img :src="'/assets/image/zombies/Zombie_' + subZombie.zombieType + '_0.webp'"
+                                        :alt="subZombie.name">
+                                    <p>{{ subZombie.name }}</p>
+                                </a-col>
+                            </template>
+                        </a-row>
+                    </template>
+                    <img :src="'/assets/image/zombies/Zombie_' + zombie.zombieType + '_0.webp'" :alt="zombie.name">
+                </a-popover>
+                <p>{{ zombie.name }}</p>
+            </template>
+            <template v-else>
+                <img :src="'/assets/image/zombies/Zombie_' + zombie.zombieType + '_0.webp'" :alt="zombie.name">
+                <p>{{ zombie.name }}</p>
+            </template>
         </li>
     </ul>
     <!-- </div> -->
@@ -20,15 +37,18 @@
 
 <script lang="ts" setup>
 import type { Zombie } from '../types';
-
+import { ref } from 'vue';
+import { useDarkMode } from "@vuepress/helper/client";
 // 定义 props 类型
-const props = defineProps<{ zombies: Zombie[] }>();
-
+const props = defineProps<{ zombies: Zombie[], zombieMap: { [key: string]: Zombie } }>();
+const isDarkMode = useDarkMode();
 // 定义 emits
 const emits = defineEmits(['selectZombie']);
+const visible = ref({});
 
-// 选择植物事件
-const selectZombie = (zombie: Zombie) => {
+const selectZombie = (zombie: Zombie, parZombie: Zombie | undefined = undefined) => {
+    if (parZombie)
+        visible.value[parZombie.codename] = false;
     emits('selectZombie', zombie);
 };
 </script>
