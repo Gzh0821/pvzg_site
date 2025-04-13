@@ -32,7 +32,7 @@ const zombieAlmanac = zombieAlmanacJson.objects.reduce((acc, item) => {
     return acc;
 }, {});
 
-export const zombiesOrder = zombieFeaturesJson.ALMANAC
+export const zombiesOrder = zombieFeaturesJson.ALMANAC;
 
 export function getZombieMap(i18nLanguage: string) {
     return zombieFeaturesJson["ZOMBIES"].reduce((acc, zombie) => {

@@ -1,0 +1,3126 @@
+{
+	"PLANTS": [
+		{
+			"ID": 0,
+			"NAME": {
+				"en": "Peashooter",
+				"zh": "豌豆射手"
+			},
+			"_CARDSPRITENAME": "peashooter",
+			"CODENAME": "peashooter",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 8,
+			"OBTAINWORLD": "frontyard",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(peashooter@PlantAlmanac)",
+			"PROPS": "RTID(peashooter@PlantProps)"
+		},
+		{
+			"ID": 1,
+			"NAME": {
+				"en": "Sunflower",
+				"zh": "向日葵"
+			},
+			"_CARDSPRITENAME": "sunflower",
+			"CODENAME": "sunflower",
+			"TYPE": [
+				"plant",
+				"sunProducer"
+			],
+			"COSTUME": 8,
+			"OBTAINWORLD": "frontyard",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(sunflower@PlantAlmanac)",
+			"PROPS": "RTID(sunflower@PlantProps)"
+		},
+		{
+			"ID": 2,
+			"NAME": {
+				"en": "Wall-nut",
+				"zh": "坚果墙"
+			},
+			"_CARDSPRITENAME": "wallnut",
+			"CODENAME": "wallnut",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 9,
+			"OBTAINWORLD": "frontyard",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(wallnut@PlantAlmanac)",
+			"PROPS": "RTID(wallnut@PlantProps)"
+		},
+		{
+			"ID": 3,
+			"NAME": {
+				"en": "Potato Mine",
+				"zh": "土豆地雷"
+			},
+			"_CARDSPRITENAME": "potatomine",
+			"CODENAME": "potatomine",
+			"TYPE": [
+				"potatomine"
+			],
+			"COSTUME": 3,
+			"OBTAINWORLD": "frontyard",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"ALMANAC": "RTID(potatomine@PlantAlmanac)",
+			"PROPS": "RTID(potatomine@PlantProps)"
+		},
+		{
+			"ID": 4,
+			"NAME": {
+				"en": "Cabbage-pult",
+				"zh": "卷心菜投手"
+			},
+			"_CARDSPRITENAME": "cabbagepult",
+			"CODENAME": "cabbagepult",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 5,
+			"OBTAINWORLD": "egypt",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(cabbagepult@PlantAlmanac)",
+			"PROPS": "RTID(cabbagepult@PlantProps)"
+		},
+		{
+			"ID": 5,
+			"NAME": {
+				"en": "Bloomerang",
+				"zh": "回旋镖射手"
+			},
+			"_CARDSPRITENAME": "bloomerang",
+			"CODENAME": "bloomerang",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 3,
+			"OBTAINWORLD": "egypt",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(bloomerang@PlantAlmanac)",
+			"PROPS": "RTID(bloomerang@PlantProps)"
+		},
+		{
+			"ID": 6,
+			"NAME": {
+				"en": "Iceberg Lettuce",
+				"zh": "冰冻生菜"
+			},
+			"_CARDSPRITENAME": "iceburg",
+			"CODENAME": "iceburg",
+			"TYPE": [
+				"plant",
+				"low"
+			],
+			"OBTAINWORLD": "egypt",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 5,
+			"ALMANAC": "RTID(iceburg@PlantAlmanac)",
+			"PROPS": "RTID(iceburg@PlantProps)"
+		},
+		{
+			"ID": 7,
+			"NAME": {
+				"en": "Bonk Choy",
+				"zh": "菜问"
+			},
+			"_CARDSPRITENAME": "bonkchoy",
+			"CODENAME": "bonkchoy",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 10,
+			"OBTAINWORLD": "egypt",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(bonkchoy@PlantAlmanac)",
+			"PROPS": "RTID(bonkchoy@PlantProps)"
+		},
+		{
+			"ID": 8,
+			"NAME": {
+				"en": "Repeater",
+				"zh": "双重射手"
+			},
+			"_CARDSPRITENAME": "repeater",
+			"CODENAME": "repeater",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 6,
+			"OBTAINWORLD": "egypt",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(repeater@PlantAlmanac)",
+			"PROPS": "RTID(repeater@PlantProps)"
+		},
+		{
+			"ID": 9,
+			"NAME": {
+				"en": "Mega Gatling Pea",
+				"zh": "超级机枪射手"
+			},
+			"_CARDSPRITENAME": "megagatlingpea",
+			"CODENAME": "megagatling",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(megagatling@PlantAlmanac)",
+			"PROPS": "RTID(megagatling@PlantProps)"
+		},
+		{
+			"ID": 10,
+			"NAME": {
+				"en": "Scaredy Shroom",
+				"zh": "胆小菇"
+			},
+			"_CARDSPRITENAME": "scaredyShroom",
+			"CODENAME": "scaredyshroom",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "dark",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(scaredyshroom@PlantAlmanac)",
+			"PROPS": "RTID(scaredyshroom@PlantProps)"
+		},
+		{
+			"ID": 11,
+			"NAME": {
+				"en": "Fume Shroom",
+				"zh": "大喷菇"
+			},
+			"_CARDSPRITENAME": "fumeshroom",
+			"CODENAME": "fumeshroom",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "dark",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(fumeshroom@PlantAlmanac)",
+			"PROPS": "RTID(fumeshroom@PlantProps)"
+		},
+		{
+			"ID": 12,
+			"NAME": {
+				"en": "Grave Buster",
+				"zh": "噬碑藤"
+			},
+			"_CARDSPRITENAME": "gravebuster",
+			"CODENAME": "gravebuster",
+			"TYPE": [
+				"gravebuster",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 3,
+			"OBTAINWORLD": "egypt",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"ALMANAC": "RTID(gravebuster@PlantAlmanac)",
+			"PROPS": "RTID(gravebuster@PlantProps)"
+		},
+		{
+			"ID": 13,
+			"NAME": {
+				"en": "Pumpkin",
+				"zh": "南瓜头"
+			},
+			"_CARDSPRITENAME": "pumpkinhead",
+			"CODENAME": "pumpkin",
+			"TYPE": [
+				"vine"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(pumpkin@PlantAlmanac)",
+			"PROPS": "RTID(pumpkin@PlantProps)"
+		},
+		{
+			"ID": 14,
+			"NAME": {
+				"en": "Pea Vine",
+				"zh": "豌豆藤蔓"
+			},
+			"_CARDSPRITENAME": "peavine",
+			"CODENAME": "pvine",
+			"TYPE": [
+				"vine"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(pvine@PlantAlmanac)",
+			"PROPS": "RTID(pvine@PlantProps)"
+		},
+		{
+			"ID": 15,
+			"NAME": {
+				"en": "Floawer Pot",
+				"zh": "飞天花盆"
+			},
+			"_CARDSPRITENAME": "floawerPot",
+			"CODENAME": "floawerPot",
+			"TYPE": [
+				"floawerPot"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(floawerPot@PlantAlmanac)",
+			"PROPS": "RTID(floawerPot@PlantProps)"
+		},
+		{
+			"ID": 16,
+			"NAME": {
+				"en": "Fire Peashooter",
+				"zh": "火焰豌豆"
+			},
+			"_CARDSPRITENAME": "firepeashooter",
+			"CODENAME": "firepeashooter",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(firepeashooter@PlantAlmanac)",
+			"PROPS": "RTID(firepeashooter@PlantProps)"
+		},
+		{
+			"ID": 17,
+			"NAME": {
+				"en": "Threepeater",
+				"zh": "三线射手"
+			},
+			"_CARDSPRITENAME": "threepeater",
+			"CODENAME": "threepeater",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 3,
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(threepeater@PlantAlmanac)",
+			"PROPS": "RTID(threepeater@PlantProps)"
+		},
+		{
+			"ID": 18,
+			"NAME": {
+				"en": "Primal Peashooter",
+				"zh": "原始豌豆射手"
+			},
+			"_CARDSPRITENAME": "primalpeashooter",
+			"CODENAME": "primalpeashooter",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "dino",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(primalpeashooter@PlantAlmanac)",
+			"PROPS": "RTID(primalpeashooter@PlantProps)"
+		},
+		{
+			"ID": 19,
+			"NAME": {
+				"en": "Rotobaga",
+				"zh": "旋转芜菁"
+			},
+			"_CARDSPRITENAME": "xshot",
+			"CODENAME": "xshot",
+			"TYPE": [
+				"fly"
+			],
+			"OBTAINWORLD": "ice",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(xshot@PlantAlmanac)",
+			"PROPS": "RTID(xshot@PlantProps)"
+		},
+		{
+			"ID": 20,
+			"NAME": {
+				"en": "Homing Thistle",
+				"zh": "导向蓟"
+			},
+			"_CARDSPRITENAME": "homingthistle",
+			"CODENAME": "homingthistle",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(homingthistle@PlantAlmanac)",
+			"PROPS": "RTID(homingthistle@PlantProps)"
+		},
+		{
+			"ID": 21,
+			"NAME": {
+				"en": "Starfruit",
+				"zh": "星星果"
+			},
+			"_CARDSPRITENAME": "starfruit",
+			"CODENAME": "starfruit",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(starfruit@PlantAlmanac)",
+			"PROPS": "RTID(starfruit@PlantProps)"
+		},
+		{
+			"ID": 22,
+			"NAME": {
+				"en": "Shooting Starfruit",
+				"zh": "流星果"
+			},
+			"_CARDSPRITENAME": "shootingstarfruit",
+			"CODENAME": "shootingstarfruit",
+			"TYPE": [
+				"fly"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(shootingstarfruit@PlantAlmanac)",
+			"PROPS": "RTID(shootingstarfruit@PlantProps)"
+		},
+		{
+			"ID": 23,
+			"NAME": {
+				"en": "Lily Pad",
+				"zh": "莲叶"
+			},
+			"_CARDSPRITENAME": "lilypad",
+			"CODENAME": "lilypad",
+			"TYPE": [
+				"lilypad"
+			],
+			"OBTAINWORLD": "water",
+			"ZENGARDEN": {
+				"PlantPlace": "float"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(lilypad@PlantAlmanac)",
+			"PROPS": "RTID(lilypad@PlantProps)"
+		},
+		{
+			"ID": 24,
+			"NAME": {
+				"en": "Sun-shroom",
+				"zh": "阳光菇"
+			},
+			"_CARDSPRITENAME": "sunshroom",
+			"CODENAME": "sunshroom",
+			"TYPE": [
+				"plant",
+				"sunProducer"
+			],
+			"OBTAINWORLD": "dark",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(sunshroom@PlantAlmanac)",
+			"PROPS": "RTID(sunshroom@PlantProps)"
+		},
+		{
+			"ID": 25,
+			"NAME": {
+				"en": "Twin Sunflower",
+				"zh": "双胞向日葵"
+			},
+			"_CARDSPRITENAME": "twinsunflower",
+			"CODENAME": "twinsunflower",
+			"TYPE": [
+				"plant",
+				"sunProducer"
+			],
+			"OBTAINWORLD": "egypt",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 8,
+			"ALMANAC": "RTID(twinsunflower@PlantAlmanac)",
+			"PROPS": "RTID(twinsunflower@PlantProps)"
+		},
+		{
+			"ID": 26,
+			"NAME": {
+				"en": "Dragon Bruit",
+				"zh": "暴君火龙果"
+			},
+			"_CARDSPRITENAME": "dragonbruit",
+			"CODENAME": "dragonbruit",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"SubPlantList": [
+				"dragonbabybruit"
+			],
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(dragonbruit@PlantAlmanac)",
+			"PROPS": "RTID(dragonbruit@PlantProps)"
+		},
+		{
+			"ID": 27,
+			"NAME": {
+				"en": "Moonflower",
+				"zh": "月光花"
+			},
+			"_CARDSPRITENAME": "moonflower",
+			"CODENAME": "moonflower",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "modern",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(moonflower@PlantAlmanac)",
+			"PROPS": "RTID(moonflower@PlantProps)"
+		},
+		{
+			"ID": 28,
+			"NAME": {
+				"en": "Snow Pea",
+				"zh": "寒冰射手"
+			},
+			"_CARDSPRITENAME": "snowpea",
+			"CODENAME": "snowpea",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 4,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(snowpea@PlantAlmanac)",
+			"PROPS": "RTID(snowpea@PlantProps)"
+		},
+		{
+			"ID": 29,
+			"NAME": {
+				"en": "Lightning Reed",
+				"zh": "闪电芦苇"
+			},
+			"_CARDSPRITENAME": "lightningreed",
+			"CODENAME": "lightningreed",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 5,
+			"OBTAINWORLD": "cowboy",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(lightningreed@PlantAlmanac)",
+			"PROPS": "RTID(lightningreed@PlantProps)"
+		},
+		{
+			"ID": 30,
+			"NAME": {
+				"en": "Kernel-pult",
+				"zh": "玉米投手"
+			},
+			"_CARDSPRITENAME": "kernelpult",
+			"CODENAME": "kernelpult",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 5,
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(kernelpult@PlantAlmanac)",
+			"PROPS": "RTID(kernelpult@PlantProps)"
+		},
+		{
+			"ID": 31,
+			"NAME": {
+				"en": "Meteor Flower",
+				"zh": "流星花"
+			},
+			"_CARDSPRITENAME": "meteorflower",
+			"CODENAME": "meteorflower",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(meteorflower@PlantAlmanac)",
+			"PROPS": "RTID(meteorflower@PlantProps)"
+		},
+		{
+			"ID": 32,
+			"NAME": {
+				"en": "Spring Bean",
+				"zh": "弹簧豆"
+			},
+			"_CARDSPRITENAME": "springbean",
+			"CODENAME": "springbean",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 3,
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(springbean@PlantAlmanac)",
+			"PROPS": "RTID(springbean@PlantProps)"
+		},
+		{
+			"ID": 33,
+			"NAME": {
+				"en": "Umbrella Leaf",
+				"zh": "伞叶"
+			},
+			"_CARDSPRITENAME": "umbrella",
+			"CODENAME": "umbrellaleaf",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(umbrellaleaf@PlantAlmanac)",
+			"PROPS": "RTID(umbrellaleaf@PlantProps)"
+		},
+		{
+			"ID": 34,
+			"NAME": {
+				"en": "Melon-pult",
+				"zh": "西瓜投手"
+			},
+			"_CARDSPRITENAME": "melonpult",
+			"CODENAME": "melonpult",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "cowboy",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"ALMANAC": "RTID(melonpult@PlantAlmanac)",
+			"PROPS": "RTID(melonpult@PlantProps)"
+		},
+		{
+			"ID": 35,
+			"NAME": {
+				"en": "Winter Melon",
+				"zh": "冰西瓜"
+			},
+			"_CARDSPRITENAME": "wintermelon",
+			"CODENAME": "wintermelon",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 4,
+			"OBTAINWORLD": "cowboy",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(wintermelon@PlantAlmanac)",
+			"PROPS": "RTID(wintermelon@PlantProps)"
+		},
+		{
+			"ID": 36,
+			"NAME": {
+				"en": "Blover",
+				"zh": "三叶草"
+			},
+			"_CARDSPRITENAME": "blover",
+			"CODENAME": "blover",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(blover@PlantAlmanac)",
+			"PROPS": "RTID(blover@PlantProps)"
+		},
+		{
+			"ID": 37,
+			"NAME": {
+				"en": "Spikeweed",
+				"zh": "地刺"
+			},
+			"_CARDSPRITENAME": "spikeweed",
+			"CODENAME": "spikeweed",
+			"TYPE": [
+				"spikeweed"
+			],
+			"COSTUME": 4,
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(spikeweed@PlantAlmanac)",
+			"PROPS": "RTID(spikeweed@PlantProps)"
+		},
+		{
+			"ID": 38,
+			"NAME": {
+				"en": "Spikerock",
+				"zh": "钢地刺"
+			},
+			"_CARDSPRITENAME": "spikerock",
+			"CODENAME": "spikerock",
+			"TYPE": [
+				"spikeweed",
+				"spikerock"
+			],
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(spikerock@PlantAlmanac)",
+			"PROPS": "RTID(spikerock@PlantProps)"
+		},
+		{
+			"ID": 39,
+			"NAME": {
+				"en": "Chomper",
+				"zh": "大嘴花"
+			},
+			"_CARDSPRITENAME": "chomper",
+			"CODENAME": "chomper",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(chomper@PlantAlmanac)",
+			"PROPS": "RTID(chomper@PlantProps)"
+		},
+		{
+			"ID": 40,
+			"NAME": {
+				"en": "Ice-shroom",
+				"zh": "寒冰菇"
+			},
+			"_CARDSPRITENAME": "glacierShroom",
+			"CODENAME": "glaciershroom",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(glaciershroom@PlantAlmanac)",
+			"PROPS": "RTID(glaciershroom@PlantProps)"
+		},
+		{
+			"ID": 41,
+			"NAME": {
+				"en": "Primal Wall-nut",
+				"zh": "原始坚果墙"
+			},
+			"_CARDSPRITENAME": "primalwallnut",
+			"CODENAME": "primalwallnut",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "dino",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(primalwallnut@PlantAlmanac)",
+			"PROPS": "RTID(primalwallnut@PlantProps)"
+		},
+		{
+			"ID": 42,
+			"NAME": {
+				"en": "Buttercup",
+				"zh": "黄油毛茛"
+			},
+			"_CARDSPRITENAME": "buttercup",
+			"CODENAME": "buttercup",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(buttercup@PlantAlmanac)",
+			"PROPS": "RTID(buttercup@PlantProps)"
+		},
+		{
+			"ID": 43,
+			"NAME": {
+				"en": "Banana Launcher",
+				"zh": "香蕉火箭炮"
+			},
+			"_CARDSPRITENAME": "banana",
+			"CODENAME": "banana",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "beach",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(banana@PlantAlmanac)",
+			"PROPS": "RTID(banana@PlantProps)"
+		},
+		{
+			"ID": 44,
+			"NAME": {
+				"en": "Missile Toe",
+				"zh": "榭寄冰仙子"
+			},
+			"_CARDSPRITENAME": "missiletoe",
+			"CODENAME": "missiletoe",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(missiletoe@PlantAlmanac)",
+			"PROPS": "RTID(missiletoe@PlantProps)"
+		},
+		{
+			"ID": 45,
+			"NAME": {
+				"en": "Cherry Bomb",
+				"zh": "樱桃炸弹"
+			},
+			"_CARDSPRITENAME": "cherribomb",
+			"CODENAME": "cherry_bomb",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 3,
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(cherry_bomb@PlantAlmanac)",
+			"PROPS": "RTID(cherry_bomb@PlantProps)"
+		},
+		{
+			"ID": 46,
+			"NAME": {
+				"en": "Doom-shroom",
+				"zh": "毁灭菇"
+			},
+			"_CARDSPRITENAME": "doomshroom",
+			"CODENAME": "doomshroom",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(doomshroom@PlantAlmanac)",
+			"PROPS": "RTID(doomshroom@PlantProps)"
+		},
+		{
+			"ID": 47,
+			"NAME": {
+				"en": "Cran Jelly",
+				"zh": "果冻蔓越莓"
+			},
+			"_CARDSPRITENAME": "cranjelly",
+			"CODENAME": "cranjelly",
+			"TYPE": [
+				"plant",
+				"allowOverlap",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(cranjelly@PlantAlmanac)",
+			"PROPS": "RTID(cranjelly@PlantProps)"
+		},
+		{
+			"ID": 48,
+			"NAME": {
+				"en": "Baby Dragon Bruit",
+				"zh": "小暴君火龙果"
+			},
+			"_CARDSPRITENAME": "dragonbruitBaby",
+			"CODENAME": "dragonbabybruit",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(dragonbabybruit@PlantAlmanac)",
+			"PROPS": "RTID(dragonbabybruit@PlantProps)"
+		},
+		{
+			"ID": 49,
+			"NAME": {
+				"en": "Torchwood",
+				"zh": "火炬树桩"
+			},
+			"_CARDSPRITENAME": "torchwood",
+			"CODENAME": "torchwood",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 4,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(torchwood@PlantAlmanac)",
+			"PROPS": "RTID(torchwood@PlantProps)"
+		},
+		{
+			"ID": 50,
+			"NAME": {
+				"en": "Jalapeno",
+				"zh": "火爆辣椒"
+			},
+			"_CARDSPRITENAME": "jalapeno",
+			"CODENAME": "jalapeno",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(jalapeno@PlantAlmanac)",
+			"PROPS": "RTID(jalapeno@PlantProps)"
+		},
+		{
+			"ID": 51,
+			"NAME": {
+				"en": "Puff-shroom",
+				"zh": "小喷菇"
+			},
+			"_CARDSPRITENAME": "puffshroom",
+			"CODENAME": "puffshroom",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "dark",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(puffshroom@PlantAlmanac)",
+			"PROPS": "RTID(puffshroom@PlantProps)"
+		},
+		{
+			"ID": 52,
+			"NAME": {
+				"en": "Gloom Vine",
+				"zh": "忧郁藤蔓"
+			},
+			"_CARDSPRITENAME": "gloomvine",
+			"CODENAME": "gloomvine",
+			"TYPE": [
+				"vine"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(gloomvine@PlantAlmanac)",
+			"PROPS": "RTID(gloomvine@PlantProps)"
+		},
+		{
+			"ID": 53,
+			"NAME": {
+				"en": "Vamporcini",
+				"zh": "吸血牛肝菌"
+			},
+			"_CARDSPRITENAME": "vamporcini",
+			"CODENAME": "vamporcini",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(vamporcini@PlantAlmanac)",
+			"PROPS": "RTID(vamporcini@PlantProps)"
+		},
+		{
+			"ID": 54,
+			"NAME": {
+				"en": "Primal Potato Mine",
+				"zh": "原始土豆地雷"
+			},
+			"_CARDSPRITENAME": "primalpotatomine",
+			"CODENAME": "primalpotatomine",
+			"TYPE": [
+				"potatomine"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "dino",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"ALMANAC": "RTID(primalpotatomine@PlantAlmanac)",
+			"PROPS": "RTID(primalpotatomine@PlantProps)"
+		},
+		{
+			"ID": 55,
+			"NAME": {
+				"en": "Cactus",
+				"zh": "仙人掌"
+			},
+			"_CARDSPRITENAME": "cactus",
+			"CODENAME": "cactus",
+			"TYPE": [
+				"potatomine"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"ALMANAC": "RTID(cactus@PlantAlmanac)",
+			"PROPS": "RTID(cactus@PlantProps)"
+		},
+		{
+			"ID": 56,
+			"NAME": {
+				"en": "Power Lily",
+				"zh": "能量花"
+			},
+			"_CARDSPRITENAME": "powerlily",
+			"CODENAME": "powerlily",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(powerlily@PlantAlmanac)",
+			"PROPS": "RTID(powerlily@PlantProps)"
+		},
+		{
+			"ID": 57,
+			"NAME": {
+				"en": "Coconut Cannon",
+				"zh": "椰子加农炮"
+			},
+			"_CARDSPRITENAME": "coconutcannon",
+			"CODENAME": "coconutcannon",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 3,
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(coconutcannon@PlantAlmanac)",
+			"PROPS": "RTID(coconutcannon@PlantProps)"
+		},
+		{
+			"ID": 58,
+			"NAME": {
+				"en": "Pea Pod",
+				"zh": "豌豆荚"
+			},
+			"_CARDSPRITENAME": "peapod",
+			"CODENAME": "peapod",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "cowboy",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(peapod@PlantAlmanac)",
+			"PROPS": "RTID(peapod@PlantProps)"
+		},
+		{
+			"ID": 59,
+			"NAME": {
+				"en": "Snapdragon",
+				"zh": "火龙草"
+			},
+			"_CARDSPRITENAME": "snapdragon",
+			"CODENAME": "snapdragon",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 5,
+			"OBTAINWORLD": "pirate",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(snapdragon@PlantAlmanac)",
+			"PROPS": "RTID(snapdragon@PlantProps)"
+		},
+		{
+			"ID": 60,
+			"NAME": {
+				"en": "Gatling Pea",
+				"zh": "机枪射手"
+			},
+			"_CARDSPRITENAME": "gatlingpea",
+			"CODENAME": "gatling",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(gatling@PlantAlmanac)",
+			"PROPS": "RTID(gatling@PlantProps)"
+		},
+		{
+			"ID": 61,
+			"NAME": {
+				"en": "Split Pea",
+				"zh": "裂荚射手"
+			},
+			"_CARDSPRITENAME": "splitpea",
+			"CODENAME": "splitpea",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "cowboy",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(splitpea@PlantAlmanac)",
+			"PROPS": "RTID(splitpea@PlantProps)"
+		},
+		{
+			"ID": 62,
+			"NAME": {
+				"en": "Chili Bean",
+				"zh": "巴豆"
+			},
+			"_CARDSPRITENAME": "chilibean",
+			"CODENAME": "chilibean",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "cowboy",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(chilibean@PlantAlmanac)",
+			"PROPS": "RTID(chilibean@PlantProps)"
+		},
+		{
+			"ID": 63,
+			"NAME": {
+				"en": "Tall-nut",
+				"zh": "高坚果"
+			},
+			"_CARDSPRITENAME": "tallnut",
+			"CODENAME": "tallnut",
+			"TYPE": [
+				"amphibious"
+			],
+			"OBTAINWORLD": "cowboy",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 6,
+			"ALMANAC": "RTID(tallnut@PlantAlmanac)",
+			"PROPS": "RTID(tallnut@PlantProps)"
+		},
+		{
+			"ID": 64,
+			"NAME": {
+				"en": "Hurrikale",
+				"zh": "飓风甘蓝"
+			},
+			"_CARDSPRITENAME": "hurrikale",
+			"CODENAME": "hurrikale",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(hurrikale@PlantAlmanac)",
+			"PROPS": "RTID(hurrikale@PlantProps)"
+		},
+		{
+			"ID": 65,
+			"NAME": {
+				"en": "Stallia",
+				"zh": "眩晕雏菊"
+			},
+			"_CARDSPRITENAME": "stallia",
+			"CODENAME": "stallia",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "lostcity",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(stallia@PlantAlmanac)",
+			"PROPS": "RTID(stallia@PlantProps)"
+		},
+		{
+			"ID": 66,
+			"NAME": {
+				"en": "Electric Peashooter",
+				"zh": "电能豌豆"
+			},
+			"_CARDSPRITENAME": "electricpeashooter",
+			"CODENAME": "electricpeashooter",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(electricpeashooter@PlantAlmanac)",
+			"PROPS": "RTID(electricpeashooter@PlantProps)"
+		},
+		{
+			"ID": 67,
+			"NAME": {
+				"en": "Squash",
+				"zh": "倭瓜"
+			},
+			"_CARDSPRITENAME": "squash",
+			"CODENAME": "squash",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(squash@PlantAlmanac)",
+			"PROPS": "RTID(squash@PlantProps)"
+		},
+		{
+			"ID": 68,
+			"NAME": {
+				"en": "Gloom-shroom",
+				"zh": "忧郁菇"
+			},
+			"_CARDSPRITENAME": "gloomshroom",
+			"CODENAME": "gloomshroom",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(gloomshroom@PlantAlmanac)",
+			"PROPS": "RTID(gloomshroom@PlantProps)"
+		},
+		{
+			"ID": 69,
+			"NAME": {
+				"en": "Magnifying Grass",
+				"zh": "棱镜草"
+			},
+			"_CARDSPRITENAME": "magnifyinggrass",
+			"CODENAME": "magnifyinggrass",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(magnifyinggrass@PlantAlmanac)",
+			"PROPS": "RTID(magnifyinggrass@PlantProps)"
+		},
+		{
+			"ID": 70,
+			"NAME": {
+				"en": "Celery Stalker",
+				"zh": "潜伏芹菜"
+			},
+			"_CARDSPRITENAME": "celerystalker",
+			"CODENAME": "celerystalker",
+			"TYPE": [
+				"potatomine"
+			],
+			"OBTAINWORLD": "eighties",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(celerystalker@PlantAlmanac)",
+			"PROPS": "RTID(celerystalker@PlantProps)"
+		},
+		{
+			"ID": 71,
+			"NAME": {
+				"en": "Sap-fling",
+				"zh": "树脂投手"
+			},
+			"_CARDSPRITENAME": "sapfling",
+			"CODENAME": "sapfling",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(sapfling@PlantAlmanac)",
+			"PROPS": "RTID(sapfling@PlantProps)"
+		},
+		{
+			"ID": 72,
+			"NAME": {
+				"en": "Parsnip",
+				"zh": "防风草"
+			},
+			"_CARDSPRITENAME": "parsnip",
+			"CODENAME": "parsnip",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"ALMANAC": "RTID(parsnip@PlantAlmanac)",
+			"PROPS": "RTID(parsnip@PlantProps)"
+		},
+		{
+			"ID": 73,
+			"NAME": {
+				"en": "Explode-O-Nut",
+				"zh": "爆炸坚果"
+			},
+			"_CARDSPRITENAME": "explodeonut",
+			"CODENAME": "explodeonut",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(explodeonut@PlantAlmanac)",
+			"PROPS": "RTID(explodeonut@PlantProps)"
+		},
+		{
+			"ID": 74,
+			"NAME": {
+				"en": "Grapeshot",
+				"zh": "爆裂葡萄"
+			},
+			"_CARDSPRITENAME": "grapeshot",
+			"CODENAME": "grapeshot",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(grapeshot@PlantAlmanac)",
+			"PROPS": "RTID(grapeshot@PlantProps)"
+		},
+		{
+			"ID": 75,
+			"NAME": {
+				"en": "Plantern",
+				"zh": "路灯花"
+			},
+			"_CARDSPRITENAME": "plantern",
+			"CODENAME": "plantern",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(plantern@PlantAlmanac)",
+			"PROPS": "RTID(plantern@PlantProps)"
+		},
+		{
+			"ID": 76,
+			"NAME": {
+				"en": "Heavenly Peach",
+				"zh": "仙桃"
+			},
+			"_CARDSPRITENAME": "heavenlypeach",
+			"CODENAME": "peach",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "kongfu",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(peach@PlantAlmanac)",
+			"PROPS": "RTID(peach@PlantProps)"
+		},
+		{
+			"ID": 77,
+			"NAME": {
+				"en": "Jack O' Lantern",
+				"zh": "杰克南瓜"
+			},
+			"COSTUME": 2,
+			"_CARDSPRITENAME": "jackolantern",
+			"CODENAME": "jackolantern",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(jackolantern@PlantAlmanac)",
+			"PROPS": "RTID(jackolantern@PlantProps)"
+		},
+		{
+			"ID": 78,
+			"NAME": {
+				"en": "Dandelion",
+				"zh": "蒲公英"
+			},
+			"_CARDSPRITENAME": "dandelion",
+			"CODENAME": "dandelion",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(dandelion@PlantAlmanac)",
+			"PROPS": "RTID(dandelion@PlantProps)"
+		},
+		{
+			"ID": 79,
+			"NAME": {
+				"en": "Chard Guard",
+				"zh": "甜菜护卫"
+			},
+			"_CARDSPRITENAME": "chardguard",
+			"CODENAME": "chardguard",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "ice",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(chardguard@PlantAlmanac)",
+			"PROPS": "RTID(chardguard@PlantProps)"
+		},
+		{
+			"ID": 80,
+			"NAME": {
+				"en": "Hypno-shroom",
+				"zh": "魅惑菇"
+			},
+			"_CARDSPRITENAME": "hypnoshroom",
+			"CODENAME": "hypnoshroom",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(hypnoshroom@PlantAlmanac)",
+			"PROPS": "RTID(hypnoshroom@PlantProps)"
+		},
+		{
+			"ID": 81,
+			"NAME": {
+				"en": "Electric Currant",
+				"zh": "电流醋栗"
+			},
+			"_CARDSPRITENAME": "electriccurrant",
+			"CODENAME": "electriccurrant",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(electriccurrant@PlantAlmanac)",
+			"PROPS": "RTID(electriccurrant@PlantProps)"
+		},
+		{
+			"ID": 82,
+			"NAME": {
+				"en": "Escape Root",
+				"zh": "逃脱树根"
+			},
+			"_CARDSPRITENAME": "escaperoot",
+			"CODENAME": "escaperoot",
+			"TYPE": [
+				"potatomine"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"ALMANAC": "RTID(escaperoot@PlantAlmanac)",
+			"PROPS": "RTID(escaperoot@PlantProps)"
+		},
+		{
+			"ID": 83,
+			"NAME": {
+				"en": "Imitater",
+				"zh": "模仿者"
+			},
+			"_CARDSPRITENAME": "imitator",
+			"CODENAME": "imitater",
+			"TYPE": [
+				"any"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(imitater@PlantAlmanac)",
+			"PROPS": "RTID(imitater@PlantProps)"
+		},
+		{
+			"ID": 84,
+			"NAME": {
+				"en": "Shadow-shroom",
+				"zh": "毒影菇"
+			},
+			"_CARDSPRITENAME": "shadowshroom",
+			"CODENAME": "shadowshroom",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "modern",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(shadowshroom@PlantAlmanac)",
+			"PROPS": "RTID(shadowshroom@PlantProps)"
+		},
+		{
+			"ID": 85,
+			"NAME": {
+				"en": "Magnet-shroom",
+				"zh": "磁力菇"
+			},
+			"_CARDSPRITENAME": "magnetshroom",
+			"CODENAME": "magnetshroom",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "dark",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(magnetshroom@PlantAlmanac)",
+			"PROPS": "RTID(magnetshroom@PlantProps)"
+		},
+		{
+			"ID": 86,
+			"NAME": {
+				"en": "Resistant Radish",
+				"zh": "白萝卜"
+			},
+			"_CARDSPRITENAME": "turnip",
+			"CODENAME": "turnip",
+			"TYPE": [
+				"potatomine"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "kongfu",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"ALMANAC": "RTID(turnip@PlantAlmanac)",
+			"PROPS": "RTID(turnip@PlantProps)"
+		},
+		{
+			"ID": 87,
+			"NAME": {
+				"en": "E.M. Peach",
+				"zh": "脉冲黄桃"
+			},
+			"_CARDSPRITENAME": "empeach",
+			"CODENAME": "empea",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(empea@PlantAlmanac)",
+			"PROPS": "RTID(empea@PlantProps)"
+		},
+		{
+			"ID": 88,
+			"NAME": {
+				"en": "Citron",
+				"zh": "充能柚子"
+			},
+			"_CARDSPRITENAME": "citron",
+			"CODENAME": "citron",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(citron@PlantAlmanac)",
+			"PROPS": "RTID(citron@PlantProps)"
+		},
+		{
+			"ID": 89,
+			"NAME": {
+				"en": "Laser Bean",
+				"zh": "激光豆"
+			},
+			"_CARDSPRITENAME": "laserbean",
+			"CODENAME": "laser_bean",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(laser_bean@PlantAlmanac)",
+			"PROPS": "RTID(laser_bean@PlantProps)"
+		},
+		{
+			"ID": 90,
+			"NAME": {
+				"en": "Solar Tomato",
+				"zh": "阳光番茄"
+			},
+			"_CARDSPRITENAME": "solartomato",
+			"CODENAME": "solartomato",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed",
+				"sunProducer"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(solartomato@PlantAlmanac)",
+			"PROPS": "RTID(solartomato@PlantProps)"
+		},
+		{
+			"ID": 91,
+			"NAME": {
+				"en": "Tile Turnip",
+				"zh": "瓷砖萝卜"
+			},
+			"_CARDSPRITENAME": "powerplant_alpha",
+			"CODENAME": "powerplant_alpha",
+			"TYPE": [
+				"powertile",
+				"tile"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"ALMANAC": "RTID(powerplant_alpha@PlantAlmanac)",
+			"PROPS": "RTID(powerplant_alpha@PlantProps)"
+		},
+		{
+			"ID": 92,
+			"NAME": {
+				"en": "Tile Turnip",
+				"zh": "瓷砖萝卜"
+			},
+			"_CARDSPRITENAME": "powerplant_beta",
+			"CODENAME": "powerplant_beta",
+			"TYPE": [
+				"powertile",
+				"tile"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"ALMANAC": "RTID(powerplant_beta@PlantAlmanac)",
+			"PROPS": "RTID(powerplant_beta@PlantProps)"
+		},
+		{
+			"ID": 93,
+			"NAME": {
+				"en": "Tile Turnip",
+				"zh": "瓷砖萝卜"
+			},
+			"_CARDSPRITENAME": "powerplant_gamma",
+			"CODENAME": "powerplant_gamma",
+			"TYPE": [
+				"powertile",
+				"tile"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"ALMANAC": "RTID(powerplant_gamma@PlantAlmanac)",
+			"PROPS": "RTID(powerplant_gamma@PlantProps)"
+		},
+		{
+			"ID": 94,
+			"NAME": {
+				"en": "Tile Turnip",
+				"zh": "瓷砖萝卜"
+			},
+			"_CARDSPRITENAME": "powerplant_delta",
+			"CODENAME": "powerplant_delta",
+			"TYPE": [
+				"powertile",
+				"tile"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"ALMANAC": "RTID(powerplant_delta@PlantAlmanac)",
+			"PROPS": "RTID(powerplant_delta@PlantProps)"
+		},
+		{
+			"ID": 95,
+			"NAME": {
+				"en": "Tile Turnip",
+				"zh": "瓷砖萝卜"
+			},
+			"_CARDSPRITENAME": "powerplant_epsilon",
+			"CODENAME": "powerplant_epsilon",
+			"TYPE": [
+				"powertile",
+				"tile"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"ALMANAC": "RTID(powerplant_epsilon@PlantAlmanac)",
+			"PROPS": "RTID(powerplant_epsilon@PlantProps)"
+		},
+		{
+			"ID": 96,
+			"NAME": {
+				"en": "Infi-nut",
+				"zh": "全息坚果"
+			},
+			"_CARDSPRITENAME": "holonut",
+			"CODENAME": "holonut",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(holonut@PlantAlmanac)",
+			"PROPS": "RTID(holonut@PlantProps)"
+		},
+		{
+			"ID": 97,
+			"NAME": {
+				"en": "Tile Turnip",
+				"zh": "瓷砖萝卜"
+			},
+			"_CARDSPRITENAME": "powerplant_epsilon",
+			"CODENAME": "powerplant",
+			"TYPE": [
+				"powertile",
+				"tile"
+			],
+			"OBTAINWORLD": "future",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"SubPlantList": [
+				"powerplant_alpha",
+				"powerplant_beta",
+				"powerplant_gamma",
+				"powerplant_delta",
+				"powerplant_epsilon"
+			],
+			"ALMANAC": "RTID(powerplant@PlantAlmanac)",
+			"PROPS": "RTID(powerplant@PlantProps)"
+		},
+		{
+			"ID": 98,
+			"NAME": {
+				"en": "Marigold",
+				"zh": "金盏花"
+			},
+			"_CARDSPRITENAME": "marigold",
+			"CODENAME": "marigold",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "frontyard",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"SubPlantList": [
+				"marigold_red",
+				"marigold_orange",
+				"marigold_yellow",
+				"marigold_green",
+				"marigold_blue",
+				"marigold_pink",
+				"marigold_purple"
+			],
+			"COSTUME": 2,
+			"ALMANAC": "RTID(marigold@PlantAlmanac)",
+			"PROPS": "RTID(marigold@PlantProps)"
+		},
+		{
+			"ID": 99,
+			"NAME": {
+				"en": "Red Marigold",
+				"zh": "火红金盏花"
+			},
+			"_CARDSPRITENAME": "marigold_red",
+			"CODENAME": "marigold_red",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(marigold_red@PlantAlmanac)",
+			"PROPS": "RTID(marigold_red@PlantProps)"
+		},
+		{
+			"ID": 100,
+			"NAME": {
+				"en": "Orange Marigold",
+				"zh": "爆裂金盏花"
+			},
+			"_CARDSPRITENAME": "marigold_orange",
+			"CODENAME": "marigold_orange",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(marigold_orange@PlantAlmanac)",
+			"PROPS": "RTID(marigold_orange@PlantProps)"
+		},
+		{
+			"ID": 101,
+			"NAME": {
+				"en": "Yellow Marigold",
+				"zh": "耀黄金盏花"
+			},
+			"_CARDSPRITENAME": "marigold_yellow",
+			"CODENAME": "marigold_yellow",
+			"TYPE": [
+				"plant",
+				"sunProducer"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(marigold_yellow@PlantAlmanac)",
+			"PROPS": "RTID(marigold_yellow@PlantProps)"
+		},
+		{
+			"ID": 102,
+			"NAME": {
+				"en": "Green Marigold",
+				"zh": "豌豆金盏花"
+			},
+			"_CARDSPRITENAME": "marigold_green",
+			"CODENAME": "marigold_green",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(marigold_green@PlantAlmanac)",
+			"PROPS": "RTID(marigold_green@PlantProps)"
+		},
+		{
+			"ID": 103,
+			"NAME": {
+				"en": "Blue Marigold",
+				"zh": "冰蓝金盏花"
+			},
+			"_CARDSPRITENAME": "marigold_blue",
+			"CODENAME": "marigold_blue",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(marigold_blue@PlantAlmanac)",
+			"PROPS": "RTID(marigold_blue@PlantProps)"
+		},
+		{
+			"ID": 104,
+			"NAME": {
+				"en": "Pink Marigold",
+				"zh": "魔力金盏花"
+			},
+			"_CARDSPRITENAME": "marigold_pink",
+			"CODENAME": "marigold_pink",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(marigold_pink@PlantAlmanac)",
+			"PROPS": "RTID(marigold_pink@PlantProps)"
+		},
+		{
+			"ID": 105,
+			"NAME": {
+				"en": "Purple Marigold",
+				"zh": "紫毒金盏花"
+			},
+			"_CARDSPRITENAME": "marigold_purple",
+			"CODENAME": "marigold_purple",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(marigold_purple@PlantAlmanac)",
+			"PROPS": "RTID(marigold_purple@PlantProps)"
+		},
+		{
+			"ID": 106,
+			"NAME": {
+				"en": "Apple Mortar",
+				"zh": "苹果迫击炮"
+			},
+			"_CARDSPRITENAME": "applemortar",
+			"CODENAME": "applemortar",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(applemortar@PlantAlmanac)",
+			"PROPS": "RTID(applemortar@PlantProps)"
+		},
+		{
+			"ID": 107,
+			"NAME": {
+				"en": "Red Stinger",
+				"zh": "红针花"
+			},
+			"_CARDSPRITENAME": "redstinger",
+			"CODENAME": "redstinger",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "lostcity",
+			"COSTUME": 2,
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(redstinger@PlantAlmanac)",
+			"PROPS": "RTID(redstinger@PlantProps)"
+		},
+		{
+			"ID": 108,
+			"NAME": {
+				"en": "Skyshooter",
+				"zh": "飞天射手"
+			},
+			"_CARDSPRITENAME": "skyshooter",
+			"CODENAME": "skyshooter",
+			"TYPE": [
+				"fly"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "sky",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(skyshooter@PlantAlmanac)",
+			"PROPS": "RTID(skyshooter@PlantProps)"
+		},
+		{
+			"ID": 109,
+			"NAME": {
+				"en": "Sun Bean",
+				"zh": "阳光豆"
+			},
+			"_CARDSPRITENAME": "sunbean",
+			"CODENAME": "sunbean",
+			"TYPE": [
+				"plant",
+				"sunProducer"
+			],
+			"OBTAINWORLD": "dark",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(sunbean@PlantAlmanac)",
+			"PROPS": "RTID(sunbean@PlantProps)"
+		},
+		{
+			"ID": 110,
+			"NAME": {
+				"en": "Pea-nut",
+				"zh": "花生"
+			},
+			"_CARDSPRITENAME": "peanut",
+			"CODENAME": "peanut",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(peanut@PlantAlmanac)",
+			"PROPS": "RTID(peanut@PlantProps)"
+		},
+		{
+			"ID": 111,
+			"NAME": {
+				"en": "Potion of Speed",
+				"zh": "速度药水"
+			},
+			"_CARDSPRITENAME": "potion_speed",
+			"CODENAME": "zombiepotion_speed",
+			"TYPE": [
+				"potion"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(zombiepotion_speed@PlantAlmanac)",
+			"PROPS": "RTID(zombiepotion_speed@PlantProps)"
+		},
+		{
+			"ID": 112,
+			"NAME": {
+				"en": "Potion of Toughness",
+				"zh": "健壮药水"
+			},
+			"_CARDSPRITENAME": "potion_toughness",
+			"CODENAME": "zombiepotion_toughness",
+			"TYPE": [
+				"potion"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(zombiepotion_toughness@PlantAlmanac)",
+			"PROPS": "RTID(zombiepotion_toughness@PlantProps)"
+		},
+		{
+			"ID": 113,
+			"NAME": {
+				"en": "Potion of Invisibility",
+				"zh": "隐身药水"
+			},
+			"_CARDSPRITENAME": "potion_invisibility",
+			"CODENAME": "zombiepotion_invisibility",
+			"TYPE": [
+				"potion"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(zombiepotion_invisibility@PlantAlmanac)",
+			"PROPS": "RTID(zombiepotion_invisibility@PlantProps)"
+		},
+		{
+			"ID": 114,
+			"NAME": {
+				"en": "Tangle Kelp",
+				"zh": "缠绕水草"
+			},
+			"_CARDSPRITENAME": "tanglekelp",
+			"CODENAME": "tanglekelp",
+			"TYPE": [
+				"aquatic",
+				"deepAquatic"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "water",
+			"ZENGARDEN": {
+				"PlantPlace": "float",
+				"Height": 20
+			},
+			"ALMANAC": "RTID(tanglekelp@PlantAlmanac)",
+			"PROPS": "RTID(tanglekelp@PlantProps)"
+		},
+		{
+			"ID": 115,
+			"NAME": {
+				"en": "Bowling Bulb",
+				"zh": "保龄泡泡"
+			},
+			"_CARDSPRITENAME": "bowlingbulb",
+			"CODENAME": "bowlingbulb",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "beach",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"SubPlantList": [
+				"tool_projectile_bowlingbulb1",
+				"tool_projectile_bowlingbulb2",
+				"tool_projectile_bowlingbulb3",
+				"tool_projectile_bowlingbulb_explode",
+				"tool_projectile_bowlingbulb_iceburg",
+				"tool_projectile_bowling_wallnut",
+				"tool_projectile_bowling_explodeonut",
+				"tool_projectile_bowling_holonut",
+				"tool_projectile_bowling_primalwallnut",
+				"tool_projectile_bowling_tallnut"
+			],
+			"COSTUME": 0,
+			"ALMANAC": "RTID(bowlingbulb@PlantAlmanac)",
+			"PROPS": "RTID(bowlingbulb@PlantProps)"
+		},
+		{
+			"ID": 116,
+			"NAME": {
+				"en": "Aquamarine Bowling",
+				"zh": "青色保龄球"
+			},
+			"_CARDSPRITENAME": "projectile_bowlingbulb1",
+			"CODENAME": "tool_projectile_bowlingbulb1",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(tool_projectile_bowlingbulb1@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowlingbulb1@PlantProps)"
+		},
+		{
+			"ID": 117,
+			"NAME": {
+				"en": "Blue Bowling",
+				"zh": "蓝色保龄球"
+			},
+			"_CARDSPRITENAME": "projectile_bowlingbulb2",
+			"CODENAME": "tool_projectile_bowlingbulb2",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(tool_projectile_bowlingbulb2@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowlingbulb2@PlantProps)"
+		},
+		{
+			"ID": 118,
+			"NAME": {
+				"en": "Orange Bowling",
+				"zh": "橙色保龄球"
+			},
+			"_CARDSPRITENAME": "projectile_bowlingbulb3",
+			"CODENAME": "tool_projectile_bowlingbulb3",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(tool_projectile_bowlingbulb3@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowlingbulb3@PlantProps)"
+		},
+		{
+			"ID": 119,
+			"NAME": {
+				"en": "Charged Bowling",
+				"zh": "充能保龄球"
+			},
+			"_CARDSPRITENAME": "projectile_bowlingbulb_explode",
+			"CODENAME": "tool_projectile_bowlingbulb_explode",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(tool_projectile_bowlingbulb_explode@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowlingbulb_explode@PlantProps)"
+		},
+		{
+			"ID": 120,
+			"NAME": {
+				"en": "Guacodile",
+				"zh": "鳄梨"
+			},
+			"_CARDSPRITENAME": "guacodile",
+			"CODENAME": "guacodile",
+			"TYPE": [
+				"amphibious"
+			],
+			"OBTAINWORLD": "beach",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(guacodile@PlantAlmanac)",
+			"PROPS": "RTID(guacodile@PlantProps)"
+		},
+		{
+			"ID": 121,
+			"NAME": {
+				"en": "Bowling Wall-nut",
+				"zh": "坚果保龄球"
+			},
+			"_CARDSPRITENAME": "wallnut",
+			"CODENAME": "tool_projectile_bowling_wallnut",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(tool_projectile_bowling_wallnut@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowling_wallnut@PlantProps)"
+		},
+		{
+			"ID": 122,
+			"NAME": {
+				"en": "Bowling Explode-O-Nut",
+				"zh": "爆炸坚果保龄球"
+			},
+			"_CARDSPRITENAME": "explodeonut",
+			"CODENAME": "tool_projectile_bowling_explodeonut",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(tool_projectile_bowling_explodeonut@PlantAlmanac)",
+			"COSTUME": 0,
+			"PROPS": "RTID(tool_projectile_bowling_explodeonut@PlantProps)"
+		},
+		{
+			"ID": 123,
+			"NAME": {
+				"en": "Bowling Infi-nut",
+				"zh": "全息坚果保龄球"
+			},
+			"_CARDSPRITENAME": "holonut",
+			"CODENAME": "tool_projectile_bowling_holonut",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(tool_projectile_bowling_holonut@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowling_holonut@PlantProps)"
+		},
+		{
+			"ID": 124,
+			"NAME": {
+				"en": "Bowling Primal Wall-nut",
+				"zh": "原始坚果保龄球"
+			},
+			"_CARDSPRITENAME": "primalwallnut",
+			"CODENAME": "tool_projectile_bowling_primalwallnut",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(tool_projectile_bowling_primalwallnut@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowling_primalwallnut@PlantProps)"
+		},
+		{
+			"ID": 125,
+			"NAME": {
+				"en": "Iceberg Bowling",
+				"zh": "冰冻保龄球"
+			},
+			"_CARDSPRITENAME": "projectile_bowlingbulb_iceburg",
+			"CODENAME": "tool_projectile_bowlingbulb_iceburg",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(tool_projectile_bowlingbulb_iceburg@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowlingbulb_iceburg@PlantProps)"
+		},
+		{
+			"ID": 126,
+			"NAME": {
+				"en": "Bowling Tall-nut",
+				"zh": "高坚果保龄球"
+			},
+			"_CARDSPRITENAME": "tallnut",
+			"CODENAME": "tool_projectile_bowling_tallnut",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(tool_projectile_bowling_tallnut@PlantAlmanac)",
+			"PROPS": "RTID(tool_projectile_bowling_tallnut@PlantProps)"
+		},
+		{
+			"ID": 127,
+			"NAME": {
+				"en": "Ghost Pepper",
+				"zh": "幽灵辣椒"
+			},
+			"_CARDSPRITENAME": "ghostpepper",
+			"CODENAME": "ghostpepper",
+			"TYPE": [
+				"fly"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"ALMANAC": "RTID(ghostpepper@PlantAlmanac)",
+			"PROPS": "RTID(ghostpepper@PlantProps)"
+		},
+		{
+			"ID": 128,
+			"NAME": {
+				"en": "Sweet Potato",
+				"zh": "甜薯"
+			},
+			"_CARDSPRITENAME": "sweetpotato",
+			"CODENAME": "sweetpotato",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(sweetpotato@PlantAlmanac)",
+			"PROPS": "RTID(sweetpotato@PlantProps)"
+		},
+		{
+			"ID": 129,
+			"NAME": {
+				"en": "Pepper-pult",
+				"zh": "甜椒投手"
+			},
+			"_CARDSPRITENAME": "pepperpult",
+			"CODENAME": "pepperpult",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "ice",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 4,
+			"ALMANAC": "RTID(pepperpult@PlantAlmanac)",
+			"PROPS": "RTID(pepperpult@PlantProps)"
+		},
+		{
+			"ID": 130,
+			"NAME": {
+				"en": "Hot Potato",
+				"zh": "烤马铃薯"
+			},
+			"_CARDSPRITENAME": "hotpotato",
+			"CODENAME": "hotpotato",
+			"TYPE": [
+				"hotpotato"
+			],
+			"OBTAINWORLD": "ice",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 1,
+			"ALMANAC": "RTID(hotpotato@PlantAlmanac)",
+			"PROPS": "RTID(hotpotato@PlantProps)"
+		},
+		{
+			"ID": 131,
+			"NAME": {
+				"en": "Stunion",
+				"zh": "眩晕洋葱"
+			},
+			"_CARDSPRITENAME": "stunion",
+			"CODENAME": "stunion",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "ice",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(stunion@PlantAlmanac)",
+			"PROPS": "RTID(stunion@PlantProps)"
+		},
+		{
+			"ID": 132,
+			"NAME": {
+				"en": "Gold Leaf",
+				"zh": "黄金叶"
+			},
+			"_CARDSPRITENAME": "goldleaf",
+			"CODENAME": "goldleaf",
+			"TYPE": [
+				"tile",
+				"goldtile",
+				"sunProducer"
+			],
+			"OBTAINWORLD": "lostcity",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 3,
+			"ALMANAC": "RTID(goldleaf@PlantAlmanac)",
+			"PROPS": "RTID(goldleaf@PlantProps)"
+		},
+		{
+			"ID": 133,
+			"NAME": {
+				"en": "A.K.E.E.",
+				"zh": "AKEE"
+			},
+			"_CARDSPRITENAME": "akee",
+			"CODENAME": "akee",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "lostcity",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(akee@PlantAlmanac)",
+			"PROPS": "RTID(akee@PlantProps)"
+		},
+		{
+			"ID": 134,
+			"NAME": {
+				"en": "Endurian",
+				"zh": "榴莲"
+			},
+			"_CARDSPRITENAME": "endurian",
+			"CODENAME": "endurian",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "lostcity",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(endurian@PlantAlmanac)",
+			"PROPS": "RTID(endurian@PlantProps)"
+		},
+		{
+			"ID": 135,
+			"NAME": {
+				"en": "Toadstool",
+				"zh": "金蟾菇"
+			},
+			"_CARDSPRITENAME": "toadstool",
+			"CODENAME": "toadstool",
+			"TYPE": [
+				"plant",
+				"sunProducer"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(toadstool@PlantAlmanac)",
+			"PROPS": "RTID(toadstool@PlantProps)"
+		},
+		{
+			"ID": 136,
+			"NAME": {
+				"en": "Lava Guava",
+				"zh": "岩浆番石榴"
+			},
+			"_CARDSPRITENAME": "lavaguava",
+			"CODENAME": "lavaguava",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(lavaguava@PlantAlmanac)",
+			"PROPS": "RTID(lavaguava@PlantProps)"
+		},
+		{
+			"ID": 137,
+			"NAME": {
+				"en": "Phat Beet",
+				"zh": "魔音甜菜"
+			},
+			"_CARDSPRITENAME": "phatbeet",
+			"CODENAME": "phatbeet",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "eighties",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(phatbeet@PlantAlmanac)",
+			"PROPS": "RTID(phatbeet@PlantProps)"
+		},
+		{
+			"ID": 138,
+			"NAME": {
+				"en": "Strawburst",
+				"zh": "爆浆草莓"
+			},
+			"_CARDSPRITENAME": "strawburst",
+			"CODENAME": "strawburst",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(strawburst@PlantAlmanac)",
+			"PROPS": "RTID(strawburst@PlantProps)"
+		},
+		{
+			"ID": 139,
+			"NAME": {
+				"en": "Thyme Warp",
+				"zh": "逆时草"
+			},
+			"_CARDSPRITENAME": "thymewarp",
+			"CODENAME": "thymewarp",
+			"TYPE": [
+				"plant",
+				"lastStandDisallowed"
+			],
+			"OBTAINWORLD": "eighties",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(thymewarp@PlantAlmanac)",
+			"PROPS": "RTID(thymewarp@PlantProps)"
+		},
+		{
+			"ID": 140,
+			"NAME": {
+				"en": "Rhythm Phat Beet",
+				"zh": "音游甜菜"
+			},
+			"_CARDSPRITENAME": "phatbeet",
+			"CODENAME": "phatbeet_rhythm",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"COSTUME": 2,
+			"ALMANAC": "RTID(phatbeet_rhythm@PlantAlmanac)",
+			"PROPS": "RTID(phatbeet_rhythm@PlantProps)"
+		},
+		{
+			"ID": 141,
+			"NAME": {
+				"en": "Sea-shroom",
+				"zh": "海蘑菇"
+			},
+			"_CARDSPRITENAME": "seashroom",
+			"CODENAME": "seashroom",
+			"TYPE": [
+				"amphibious"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "water",
+			"ZENGARDEN": {
+				"PlantPlace": "float"
+			},
+			"ALMANAC": "RTID(seashroom@PlantAlmanac)",
+			"PROPS": "RTID(seashroom@PlantProps)"
+		},
+		{
+			"ID": 142,
+			"NAME": {
+				"en": "Garlic",
+				"zh": "大蒜"
+			},
+			"_CARDSPRITENAME": "garlic",
+			"CODENAME": "garlic",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "eighties",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(garlic@PlantAlmanac)",
+			"PROPS": "RTID(garlic@PlantProps)"
+		},
+		{
+			"ID": 143,
+			"NAME": {
+				"en": "Electric Blueberry",
+				"zh": "闪电蓝莓"
+			},
+			"_CARDSPRITENAME": "electricblueberry",
+			"CODENAME": "electricblueberry",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(electricblueberry@PlantAlmanac)",
+			"PROPS": "RTID(electricblueberry@PlantProps)"
+		},
+		{
+			"ID": 144,
+			"NAME": {
+				"en": "Spore-shroom",
+				"zh": "孢子菇"
+			},
+			"_CARDSPRITENAME": "sporeshroom",
+			"CODENAME": "sporeshroom",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "eighties",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(sporeshroom@PlantAlmanac)",
+			"PROPS": "RTID(sporeshroom@PlantProps)"
+		},
+		{
+			"ID": 145,
+			"NAME": {
+				"en": "Intensive Carrot",
+				"zh": "复活萝卜"
+			},
+			"_CARDSPRITENAME": "intensivecarrot",
+			"CODENAME": "intensivecarrot",
+			"TYPE": [
+				"deadPlant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "eighties",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(intensivecarrot@PlantAlmanac)",
+			"PROPS": "RTID(intensivecarrot@PlantProps)"
+		}
+	],
+	"SEEDCHOOSERDEFAULTORDER": [
+		"sunflower",
+		"peashooter",
+		"wallnut",
+		"potatomine",
+		"cabbagepult",
+		"bloomerang",
+		"iceburg",
+		"gravebuster",
+		"twinsunflower",
+		"bonkchoy",
+		"repeater",
+		"snowpea",
+		"dandelion",
+		"pvine",
+		"kernelpult",
+		"snapdragon",
+		"powerlily",
+		"spikeweed",
+		"coconutcannon",
+		"cherry_bomb",
+		"springbean",
+		"spikerock",
+		"threepeater",
+		"buttercup",
+		"squash",
+		"splitpea",
+		"chilibean",
+		"lightningreed",
+		"tallnut",
+		"jalapeno",
+		"peapod",
+		"melonpult",
+		"wintermelon",
+		"imitater",
+		"sapfling",
+		"marigold",
+		"turnip",
+		"peach",
+		"laser_bean",
+		"blover",
+		"citron",
+		"empea",
+		"starfruit",
+		"holonut",
+		"shootingstarfruit",
+		"magnifyinggrass",
+		"powerplant",
+		"solartomato",
+		"hypnoshroom",
+		"sunshroom",
+		"puffshroom",
+		"fumeshroom",
+		"sunbean",
+		"peanut",
+		"magnetshroom",
+		"scaredyshroom",
+		"plantern",
+		"lilypad",
+		"tanglekelp",
+		"bowlingbulb",
+		"homingthistle",
+		"guacodile",
+		"banana",
+		"seashroom",
+		"chomper",
+		"ghostpepper",
+		"hurrikale",
+		"hotpotato",
+		"pepperpult",
+		"chardguard",
+		"firepeashooter",
+		"stunion",
+		"xshot",
+		"sweetpotato",
+		"gatling",
+		"megagatling",
+		"torchwood",
+		"floawerPot",
+		"lavaguava",
+		"redstinger",
+		"akee",
+		"endurian",
+		"toadstool",
+		"stallia",
+		"goldleaf",
+		"skyshooter",
+		"strawburst",
+		"cactus",
+		"phatbeet",
+		"celerystalker",
+		"thymewarp",
+		"electricblueberry",
+		"garlic",
+		"sporeshroom",
+		"intensivecarrot",
+		"jackolantern",
+		"grapeshot",
+		"primalpeashooter",
+		"primalwallnut",
+		"primalpotatomine",
+		"moonflower",
+		"shadowshroom",
+		"umbrellaleaf",
+		"escaperoot",
+		"electriccurrant",
+		"explodeonut",
+		"applemortar",
+		"parsnip",
+		"missiletoe",
+		"electricpeashooter",
+		"pumpkin",
+		"gloomvine",
+		"gloomshroom",
+		"meteorflower",
+		"vamporcini",
+		"dragonbruit",
+		"glaciershroom",
+		"doomshroom",
+		"cranjelly"
+	],
+	"ALMANACHIDDENORDER": [
+		"dragonbabybruit"
+	],
+	"BASEUNLOCKLIST": [
+		"peashooter",
+		"sunflower",
+		"wallnut",
+		"potatomine"
+	],
+	"SANDBOX": [
+		"peashooter",
+		"sunflower",
+		"wallnut",
+		"potatomine",
+		"cabbagepult",
+		"bloomerang",
+		"iceburg",
+		"gravebuster",
+		"bonkchoy",
+		"repeater",
+		"twinsunflower",
+		"snowpea",
+		"dandelion",
+		"pvine",
+		"kernelpult",
+		"snapdragon",
+		"spikeweed",
+		"spikerock",
+		"springbean",
+		"threepeater",
+		"coconutcannon",
+		"cherry_bomb",
+		"powerlily",
+		"buttercup",
+		"splitpea",
+		"chilibean",
+		"lightningreed",
+		"tallnut",
+		"peapod",
+		"melonpult",
+		"wintermelon",
+		"squash",
+		"jalapeno",
+		"imitater",
+		"sapfling",
+		"marigold",
+		"marigold_red",
+		"marigold_orange",
+		"marigold_yellow",
+		"marigold_green",
+		"marigold_blue",
+		"marigold_pink",
+		"marigold_purple",
+		"turnip",
+		"peach",
+		"laser_bean",
+		"blover",
+		"empea",
+		"citron",
+		"holonut",
+		"magnifyinggrass",
+		"powerplant_alpha",
+		"powerplant_beta",
+		"powerplant_gamma",
+		"powerplant_delta",
+		"powerplant_epsilon",
+		"starfruit",
+		"shootingstarfruit",
+		"solartomato",
+		"sunshroom",
+		"puffshroom",
+		"fumeshroom",
+		"sunbean",
+		"magnetshroom",
+		"scaredyshroom",
+		"peanut",
+		"hypnoshroom",
+		"glaciershroom",
+		"doomshroom",
+		"plantern",
+		"zombiepotion_speed",
+		"zombiepotion_toughness",
+		"zombiepotion_invisibility",
+		"lilypad",
+		"tanglekelp",
+		"bowlingbulb",
+		"guacodile",
+		"banana",
+		"seashroom",
+		"chomper",
+		"homingthistle",
+		"ghostpepper",
+		"tool_projectile_bowlingbulb1",
+		"tool_projectile_bowlingbulb2",
+		"tool_projectile_bowlingbulb3",
+		"tool_projectile_bowlingbulb_explode",
+		"tool_projectile_bowlingbulb_iceburg",
+		"tool_projectile_bowling_wallnut",
+		"tool_projectile_bowling_explodeonut",
+		"tool_projectile_bowling_holonut",
+		"tool_projectile_bowling_primalwallnut",
+		"tool_projectile_bowling_tallnut",
+		"hotpotato",
+		"pepperpult",
+		"chardguard",
+		"stunion",
+		"xshot",
+		"firepeashooter",
+		"hurrikale",
+		"sweetpotato",
+		"gatling",
+		"megagatling",
+		"torchwood",
+		"redstinger",
+		"akee",
+		"endurian",
+		"stallia",
+		"goldleaf",
+		"lavaguava",
+		"toadstool",
+		"strawburst",
+		"skyshooter",
+		"floawerPot",
+		"phatbeet",
+		"celerystalker",
+		"thymewarp",
+		"garlic",
+		"sporeshroom",
+		"intensivecarrot",
+		"cactus",
+		"electricblueberry",
+		"primalpeashooter",
+		"primalwallnut",
+		"primalpotatomine",
+		"grapeshot",
+		"moonflower",
+		"shadowshroom",
+		"escaperoot",
+		"electricpeashooter",
+		"pumpkin",
+		"gloomvine",
+		"gloomshroom",
+		"dragonbruit",
+		"dragonbabybruit",
+		"meteorflower",
+		"umbrellaleaf",
+		"missiletoe",
+		"cranjelly",
+		"vamporcini",
+		"parsnip",
+		"explodeonut",
+		"jackolantern",
+		"electriccurrant",
+		"applemortar"
+	]
+}
