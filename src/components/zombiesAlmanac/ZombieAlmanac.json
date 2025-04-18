@@ -4346,50 +4346,6 @@
 			}
 		},
 		{
-			"//": "rally",
-			"aliases": [
-				"tutorial_flag_veteran"
-			],
-			"objclass": "ZombieAlmanacProperties",
-			"objdata": {
-				"Elements": [
-					{
-						"TYPE": "TOUGHNESS",
-						"SORT": {
-							"en": "Protected",
-							"zh": "加强"
-						},
-						"PROGRESS": 0.5
-					},
-					{
-						"TYPE": "SPEED",
-						"SORT": {
-							"en": "Speedy",
-							"zh": "快速"
-						},
-						"PROGRESS": 0.85
-					}
-				],
-				"Introduction": {
-					"en": "Robo-Rally Zombie and his flag marks the arrival of an above-average number of zombies.",
-					"zh": "未来大动员僵尸和他的旗帜代表着异常多的一群僵尸的来临。"
-				},
-				"Special": [],
-				"Chat": {
-					"en": "If you look carefully, you'll notice that Robo-Rally Zombie's flag is a sophisticated piece of hovertech combined with a stick.",
-					"zh": "如果你仔细观察，就会发现未来大动员僵尸的旗帜是一个精密的悬浮技术与一根棍子的结合体。"
-				},
-				"DisplayOffset": {
-					"x": 30,
-					"y": 0
-				},
-				"DisplayScale": {
-					"x": 1,
-					"y": 1
-				}
-			}
-		},
-		{
 			"aliases": [
 				"future_jetpack"
 			],
@@ -5862,6 +5818,50 @@
 			}
 		},
 		{
+			"//": "armor4",
+			"aliases": [
+				"beach_armor4"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重装"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Crab-head Pompadour's crab exoskeleton provides tremendous protection.",
+					"zh": "螃蟹飞机头的螃蟹外骨骼提供了巨大的保护。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Another proof that Deep Sea Gargantuar is not a sea creature.",
+					"zh": "深海巨尸不是海洋生物的另一大证据。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"//": "basic",
 			"aliases": [
 				"beach_fem"
@@ -5994,6 +5994,50 @@
 			}
 		},
 		{
+			"//": "armor4",
+			"aliases": [
+				"beach_fem_armor4"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重装"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Crab-head Bikini's crab exoskeleton provides tremendous protection.",
+					"zh": "螃蟹比基尼的螃蟹外骨骼提供了巨大的保护。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Sometimes it's comfortable to feel the sense of security in others' safety-room like hermit crabs. In a word, long live bionics!",
+					"zh": "有时候体会寄居蟹那种寄人篱下的安全感也是很舒适的。总之，仿生学万岁！"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"//": "flag",
 			"aliases": [
 				"beach_flag"
@@ -6029,6 +6073,50 @@
 				},
 				"DisplayOffset": {
 					"x": 15,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "rally",
+			"aliases": [
+				"beach_flag_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.5
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Speedy",
+							"zh": "快速"
+						},
+						"PROGRESS": 0.85
+					}
+				],
+				"Introduction": {
+					"en": "Beach Rally Zombie and his flag marks the arrival of a floody \"wave\" of zombies.",
+					"zh": "沙滩大动员僵尸和他的旗帜代表着一大群僵尸如潮涌般袭来。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "He could have accelerated if he used his flag as a paddle.",
+					"zh": "要是他把他的旗帜当作桨来用的话还能走得更快。"
+				},
+				"DisplayOffset": {
+					"x": 30,
 					"y": 0
 				},
 				"DisplayScale": {
@@ -6837,60 +6925,6 @@
 				},
 				"DisplayOffset": {
 					"x": 15,
-					"y": 0
-				},
-				"DisplayScale": {
-					"x": 1,
-					"y": 1
-				}
-			}
-		},
-		{
-			"aliases": [
-				"iceage_hunter"
-			],
-			"objclass": "ZombieAlmanacProperties",
-			"objdata": {
-				"Elements": [
-					{
-						"TYPE": "TOUGHNESS",
-						"SORT": {
-							"en": "Dense",
-							"zh": "结实"
-						},
-						"PROGRESS": 0.6
-					},
-					{
-						"TYPE": "SPEED",
-						"SORT": {
-							"en": "Basic",
-							"zh": "普通"
-						},
-						"PROGRESS": 0.5
-					}
-				],
-				"Introduction": {
-					"en": "Zombie that can throw snow balls to the farthest target.",
-					"zh": "可以朝最远的目标投掷雪球。"
-				},
-				"Special": [
-					{
-						"NAME": {
-							"en": "Special",
-							"zh": "特点"
-						},
-						"DESCRIPTION": {
-							"en": "snow balls cool down plants until they freeze into blocks",
-							"zh": "雪球能冷冻植物，直到植物被冻成冰块"
-						}
-					}
-				],
-				"Chat": {
-					"en": "Hunter Leader Zombie became the chosen one because other zombies would never try hitting his awl-ful headwear.",
-					"zh": "猎人领袖僵尸之所以能成为领袖，其实是由于没人敢碰他那满是锥刺的头饰。"
-				},
-				"DisplayOffset": {
-					"x": 0,
 					"y": 0
 				},
 				"DisplayScale": {
