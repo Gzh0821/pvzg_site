@@ -39,6 +39,50 @@
 		},
 		{
 			"aliases": [
+				"primalsunflower"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"PlantfoodTime": 1,
+				"SunValue": 75,
+				"ProduceInterval": 23.5,
+				"ProduceIntervalAdditional": 1.5,
+				"ProduceCountdownStart": 5,
+				"ProduceCountdownStartAdditional": 5,
+				"Cooldown": 5,
+				"CooldownFrom": 0,
+				"SunCost": 75,
+				"Toughness": 300,
+				"Family": "Sun"
+			}
+		},
+		{
+			"aliases": [
+				"moonbean"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				
+				"Cooldown": 20,
+				"CooldownFrom": 0.375,
+				"SunCost": 25,
+				"Toughness": 150,
+
+				"PlantBombExplosionRadius": 40,
+				"ZombieBombExplosionRadius": 80,
+				"PlantDamage": 500,
+				"ZombieDamage": 900,
+
+				"PlantBombExplosionRadiusPlantfood": 25,
+				"ZombieBombExplosionRadiusPlantfood": 80,
+				"PlantDamagePlantfood": 0,
+				"ZombieDamagePlantfood": 1250,
+
+				"Family": "Sun"
+			}
+		},
+		{
+			"aliases": [
 				"wallnut"
 			],
 			"objclass": "PlantProperties",
@@ -828,7 +872,7 @@
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"CannotBeSheepenedByWizard": true,
-				"Damage": 1800,
+				"Damage": 2700,
 				"TileCrackleDuration": 180,
 				"Cooldown": 35,
 				"CooldownFrom": 1,
@@ -1070,6 +1114,29 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true
+			}
+		},
+		{
+			"aliases": [
+				"coldsnapdragon"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"AttackInterval": 1.85,
+				"AttackIntervalAdditional": 0.15,
+				"Damage": 30,
+				"DamagePlantfood": 1200,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 150,
+				"Toughness": 300,
+				"Family": "Cold",
+				"ImmuneToIceblock": true,
+
+				"ChillDuration": 10,
+				"FreezeDuration": 0,
+				"ChillDurationPlantfood": 10,
+				"FreezeDurationPlantfood": 10
 			}
 		},
 		{
