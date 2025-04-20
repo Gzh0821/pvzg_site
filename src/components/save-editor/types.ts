@@ -1,4 +1,5 @@
 export interface ArchiveData {
+    name?: string;
     worldkey?: number;
     gem?: number;
     coin?: number;
