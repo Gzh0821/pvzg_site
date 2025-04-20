@@ -1034,7 +1034,7 @@
 				"plant"
 			],
 			"COSTUME": 0,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -1396,7 +1396,7 @@
 				"plant"
 			],
 			"COSTUME": 2,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "solid"
 			},
@@ -2845,6 +2845,65 @@
 			},
 			"ALMANAC": "RTID(intensivecarrot@PlantAlmanac)",
 			"PROPS": "RTID(intensivecarrot@PlantProps)"
+		},
+		{
+			"ID": 146,
+			"NAME": {
+				"en": "Primal Sunflower",
+				"zh": "原始向日葵"
+			},
+			"_CARDSPRITENAME": "primalsunflower",
+			"CODENAME": "primalsunflower",
+			"TYPE": [
+				"plant",
+				"sunProducer"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "dino",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(primalsunflower@PlantAlmanac)",
+			"PROPS": "RTID(primalsunflower@PlantProps)"
+		},
+		{
+			"ID": 147,
+			"NAME": {
+				"en": "Moon Bean",
+				"zh": "月亮豆"
+			},
+			"_CARDSPRITENAME": "moonbean",
+			"CODENAME": "moonbean",
+			"TYPE": [
+				"fly",
+				"sunProducer"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "sky",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"ALMANAC": "RTID(moonbean@PlantAlmanac)",
+			"PROPS": "RTID(moonbean@PlantProps)"
+		},
+		{
+			"ID": 148,
+			"NAME": {
+				"en": "Cold Snapdragon",
+				"zh": "冰龙草"
+			},
+			"_CARDSPRITENAME": "coldsnapdragon",
+			"CODENAME": "coldsnapdragon",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(coldsnapdragon@PlantAlmanac)",
+			"PROPS": "RTID(coldsnapdragon@PlantProps)"
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -2883,6 +2942,7 @@
 		"wintermelon",
 		"imitater",
 		"sapfling",
+		"electriccurrant",
 		"marigold",
 		"turnip",
 		"peach",
@@ -2905,6 +2965,7 @@
 		"magnetshroom",
 		"scaredyshroom",
 		"plantern",
+		"vamporcini",
 		"lilypad",
 		"tanglekelp",
 		"bowlingbulb",
@@ -2914,6 +2975,7 @@
 		"seashroom",
 		"chomper",
 		"ghostpepper",
+		"parsnip",
 		"hurrikale",
 		"hotpotato",
 		"pepperpult",
@@ -2934,6 +2996,7 @@
 		"stallia",
 		"goldleaf",
 		"skyshooter",
+		"moonbean",
 		"strawburst",
 		"cactus",
 		"phatbeet",
@@ -2945,24 +3008,23 @@
 		"intensivecarrot",
 		"jackolantern",
 		"grapeshot",
+		"coldsnapdragon",
 		"primalpeashooter",
 		"primalwallnut",
+		"primalsunflower",
 		"primalpotatomine",
 		"moonflower",
 		"shadowshroom",
 		"umbrellaleaf",
 		"escaperoot",
-		"electriccurrant",
 		"explodeonut",
 		"applemortar",
-		"parsnip",
 		"missiletoe",
 		"electricpeashooter",
 		"pumpkin",
 		"gloomvine",
 		"gloomshroom",
 		"meteorflower",
-		"vamporcini",
 		"dragonbruit",
 		"glaciershroom",
 		"doomshroom",
@@ -3013,6 +3075,7 @@
 		"jalapeno",
 		"imitater",
 		"sapfling",
+		"electriccurrant",
 		"marigold",
 		"marigold_red",
 		"marigold_orange",
@@ -3045,9 +3108,10 @@
 		"scaredyshroom",
 		"peanut",
 		"hypnoshroom",
+		"plantern",
+		"vamporcini",
 		"glaciershroom",
 		"doomshroom",
-		"plantern",
 		"zombiepotion_speed",
 		"zombiepotion_toughness",
 		"zombiepotion_invisibility",
@@ -3060,6 +3124,7 @@
 		"chomper",
 		"homingthistle",
 		"ghostpepper",
+		"parsnip",
 		"tool_projectile_bowlingbulb1",
 		"tool_projectile_bowlingbulb2",
 		"tool_projectile_bowlingbulb3",
@@ -3090,6 +3155,7 @@
 		"toadstool",
 		"strawburst",
 		"skyshooter",
+		"moonbean",
 		"floawerPot",
 		"phatbeet",
 		"celerystalker",
@@ -3101,8 +3167,10 @@
 		"electricblueberry",
 		"primalpeashooter",
 		"primalwallnut",
+		"primalsunflower",
 		"primalpotatomine",
 		"grapeshot",
+		"coldsnapdragon",
 		"moonflower",
 		"shadowshroom",
 		"escaperoot",
@@ -3116,11 +3184,8 @@
 		"umbrellaleaf",
 		"missiletoe",
 		"cranjelly",
-		"vamporcini",
-		"parsnip",
 		"explodeonut",
 		"jackolantern",
-		"electriccurrant",
 		"applemortar"
 	]
 }

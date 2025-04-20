@@ -1435,6 +1435,52 @@
     },
     {
 		"aliases": [
+			"primalsunflower"
+		],
+		"objclass": "PlantAlmanacProperties",
+		"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "SUNPRODUCTION",
+						"SORT": {
+							"en": "Large",
+							"zh": "大量"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Primal Sunflowers pop out large suns instead of regular ones.",
+					"zh": "原始向日葵产出大型阳光，而不是普通的阳光。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Primal Sunflower is new to all this sun-giving business, so be patient with her. She's an early adopter of the all-you-can-stuff-yourself buffet style of sun production.",
+					"zh": "原始向日葵是阳光交易的新手，所以对她耐心点。她可是“想拿多少拿多少”自助阳光早期体验者之一。"
+				},
+				"BriefIntroduction": {
+					"en": "Gives large suns",
+					"zh": "提供巨大的阳光"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+		}
+    },
+    {
+		"aliases": [
 			"wallnut"
 		],
 		"objclass": "PlantAlmanacProperties",
@@ -3750,6 +3796,67 @@
 		"objclass": "PlantAlmanacProperties",
 		"aliases": [
 			"snapdragon"
+		]
+	},
+	{
+		"objdata": {
+			"Elements": [
+				{
+					"TYPE": "SUNCOST"
+				},
+				{
+					"TYPE": "RECHARGE"
+				},
+				{
+					"TYPE": "TOUGHNESS"
+				},
+				{
+					"TYPE": "DAMAGE",
+					"VALUE": 30
+				},
+				{
+					"TYPE": "RANGE",
+					"SORT": {
+						"en": "Close",
+						"zh": "接近"
+					}
+				},
+				{
+					"TYPE": "FAMILY"
+				}
+			],
+			"Introduction": {
+				"en": "Cold Snapdragons breathe icy mist into 6 adjacent tiles that both slows and damage zombies.",
+				"zh": "冰龙草向毗邻的 6 格吐出能够减慢僵尸并造成伤害的冰雾。"
+			},
+			"Special": [
+				{
+					"NAME": {
+						"en": "Area",
+						"zh": "范围"
+					},
+					"DESCRIPTION": {
+						"en": "damages and chills all zombies in the 6 tiles in front of it",
+						"zh": "对身前 6 个格子内的所有僵尸造成伤害并使他们减速"
+					}
+				}
+			],
+			"Chat": {
+				"en": "Cold Snapdragon gets chilly when anyone brings up his cousin Snapdragon. \"We just view temperature very differently, and I'd really rather not discuss it,\" he says. Yikes.",
+				"zh": "当有人提起他的堂兄火龙草时，冰龙草就会变得冷酷无情。他说：“我们对温度的看法很不一样，而且我真的不想讨论这个问题。”真是的。"
+			},
+			"BriefIntroduction": {
+				"en": "Breaths icy mist in an area in front of it",
+				"zh": "向身前区域吐出冰雾"
+			},
+			"DisplayOffset": {
+				"x": 0,
+				"y": 0
+			}
+		},
+		"objclass": "PlantAlmanacProperties",
+		"aliases": [
+			"coldsnapdragon"
 		]
 	},
 	{
@@ -6661,6 +6768,50 @@
 		"objclass": "PlantAlmanacProperties",
 		"aliases": [
 			"sunbean"
+		]
+	},
+	{
+		"objdata": {
+			"Elements": [
+				{
+					"TYPE": "SUNCOST"
+				},
+				{
+					"TYPE": "RECHARGE"
+				},
+				{
+					"TYPE": "DAMAGE",
+					"VALUE": 900
+				},
+				{
+					"TYPE": "SUNPRODUCTION",
+					"VALUE": 50
+				},
+				{
+					"TYPE": "FAMILY"
+				}
+			],
+			"Introduction": {
+				"en": "Moon Beans turn into s sunbomb when eaten.",
+				"zh": "月亮豆被吃掉后会变成太阳炸弹。"
+			},
+			"Special": [],
+			"Chat": {
+				"en": "She and Sunflower are besties. It's just too bad their schedules make it hard for them to get together.",
+				"zh": "她和向日葵是最好的闺蜜，只是可惜她们的生物钟导致她们很难聚在一起。"
+			},
+			"BriefIntroduction": {
+				"en": "Turn into s sunbomb when eaten",
+				"zh": "被吃掉后会变成太阳炸弹"
+			},
+			"DisplayOffset": {
+				"x": 0,
+				"y": 0
+			}
+		},
+		"objclass": "PlantAlmanacProperties",
+		"aliases": [
+			"moonbean"
 		]
 	},
 	{
