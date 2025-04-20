@@ -1,0 +1,1 @@
+import{f as a,a as o,x as r,y as u}from"./app-DtZzEskW.js";const t=()=>document.documentElement.getAttribute("data-theme")==="dark";let n=null;const s=()=>{const e=a(!1);return o(()=>{e.value=t(),r(document.documentElement,()=>{e.value=t()},{attributeFilter:["data-theme"],attributes:!0})}),u(e)},m=()=>n??(n=s());export{m as u};
