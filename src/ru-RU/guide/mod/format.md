@@ -14,6 +14,10 @@ order: 2
     })
 </script>
 
+> [!caution]
+> The following tutorial is not applicable to versions `0.3.0` and above.
+>
+
 > [!important]  
 > Attributes marked in _italics_ are not recommended for modification, as changes may cause game crashes or instability.
 
