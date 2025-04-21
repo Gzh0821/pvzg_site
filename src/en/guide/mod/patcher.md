@@ -14,6 +14,10 @@ order: 1
     })
 </script>
 
+> [!caution]
+> The following tutorial is not applicable to versions `0.3.0` and above.
+>
+
 The game includes the GE Patcher tool, which allows loading custom JSON resources and levels.
 
 ## Prerequisites
