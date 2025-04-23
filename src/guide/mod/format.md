@@ -1,5 +1,5 @@
 ---
-title: 属性参考
+title: 属性参考(0.2.X)
 icon: file-invoice
 pageInfo: false
 comment: false
@@ -15,8 +15,7 @@ order: 2
 </script>
 
 > [!caution]
-> 以下教程不适用于`0.3.0`及更高版本。
->
+> 以下教程仅适用于`0.2.8.1`-`0.2.9`版本。
 
 > [!important]
 > 表格中，斜体的属性为不建议修改的字段，修改后可能会导致游戏崩溃或无法正常运行。
