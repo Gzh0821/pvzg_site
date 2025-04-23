@@ -20,10 +20,6 @@ onMounted(() => {
 >
 > 开发组不保证未来版本会继续支持该功能，具体取决于游戏的更新和维护情况。
 
-> [!caution]
-> 以下教程不适用于`0.3.0`及更高版本。
->
-
 <Catalog />
 
 <ins class="adsbygoogle"

@@ -1,5 +1,5 @@
 ---
-title: Attribute Reference
+title: Attribute Reference(0.2.X)
 icon: file-invoice
 pageInfo: false
 comment: false
@@ -15,8 +15,7 @@ order: 2
 </script>
 
 > [!caution]
-> The following tutorial is not applicable to versions `0.3.0` and above.
->
+> The following tutorial is only applicable to versions `0.2.8.1`-`0.2.9`.
 
 > [!important]  
 > Attributes marked in _italics_ are not recommended for modification, as changes may cause game crashes or instability.

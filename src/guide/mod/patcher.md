@@ -1,5 +1,5 @@
 ---
-title: GE Patcher 使用教程
+title: GE Patcher 使用教程(0.2.X)
 icon: wrench
 pageInfo: false
 comment: false
@@ -15,8 +15,7 @@ order: 1
 </script>
 
 > [!caution]
-> 以下教程不适用于`0.3.0`及更高版本。
->
+> 以下教程仅适用于`0.2.8.1`-`0.2.9`版本。
 
 游戏内置了 GE Patcher 工具，可以通过该工具加载一些自定义的 JSON 资源和关卡。
 

@@ -1,5 +1,5 @@
 ---
-title: GE Patcher Tutorial
+title: GE Patcher Tutorial(0.2.X)
 icon: wrench
 pageInfo: false
 comment: false
@@ -15,8 +15,7 @@ order: 1
 </script>
 
 > [!caution]
-> The following tutorial is not applicable to versions `0.3.0` and above.
->
+> The following tutorial is only applicable to versions `0.2.8.1`-`0.2.9`.
 
 The game includes the GE Patcher tool, which allows loading custom JSON resources and levels.
 
