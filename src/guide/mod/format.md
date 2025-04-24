@@ -1,5 +1,5 @@
 ---
-title: 属性参考(0.2.X)
+title: 属性参考(latest)
 icon: file-invoice
 pageInfo: false
 comment: false
@@ -14,8 +14,8 @@ order: 2
     })
 </script>
 
-> [!caution]
-> 以下教程仅适用于`0.2.8.1`-`0.2.9`版本。
+> [!warning]
+> 以下教程仅适用于`0.3.X`版本。
 
 > [!important]
 > 表格中，斜体的属性为不建议修改的字段，修改后可能会导致游戏崩溃或无法正常运行。
@@ -28,9 +28,9 @@ order: 2
      data-full-width-responsive="true">
 </ins>
 
-## 植物属性
+## 植物文件
 
-以下是植物的基本属性和图鉴信息，此处以爆裂葡萄为例。
+以下是植物 JSON 文件的格式，此处以爆裂葡萄为例。
 
 多语言的属性不能删除或添加额外字段，格式必须如下:
 
@@ -41,7 +41,11 @@ order: 2
 }
 ```
 
-### 基础信息
+### PlantFeatures.json
+
+PlantFeatures.json 文件包含植物的基本特性。
+
+`PLANTS` 数组中的每个植物都包含以下基本特性字段:
 
 | 属性               | 示例内容                                  | 说明                                                                                  |
 | ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------- |
@@ -54,9 +58,19 @@ order: 2
 | **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | 禅境花园种植位置:<br>- `dirt`:普通土地                                                |
 | _COSTUME_          | 2                                         | 皮肤数量                                                                              |
 
-### 图鉴信息(ALMANAC)
+`SEEDCHOOSERDEFAULTORDER` 数组用于指定植物在选择界面中的默认顺序，每一项的值均为植物的`CODENAME`。
 
-以下内容是植物的`ALMANAC`的子属性，包含植物的图鉴信息:
+`BASEUNLOCKLIST` 数组包含所有指定初始解锁的植物，每一项的值均为植物的`CODENAME`。
+
+### PlantAlmanac.json
+
+PlantAlmanac.json 文件包含植物的图鉴信息。
+
+`objects` 数组中的每一项都包含 `aliases`, `objclass` 和 `objdata`。
+
+其中，`aliases` 数组包含植物的 `CODENAME` ，用于表示该项对应的植物。`objclass` 的值为 `PlantAlmanacProperties`， 表示该项为植物图鉴属性。
+
+`objdata` 包含以下图鉴信息字段:
 
 | 字段                  | 值/内容                                                                                                                                    | 说明                             |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------- |
@@ -67,9 +81,15 @@ order: 2
 | **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                      | 多语言，简短的功能摘要           |
 | **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                       | 显示位置偏移量(调整图鉴中的坐标) |
 
-### 游戏机制数据(objdata)
+### PlantProps.json
 
-以下内容是植物的`objdata`的子属性，包含植物的游戏机制数据，各个植物有效的 objdata 可查看[图鉴](../../almanac/):
+PlantProps.json 文件包含植物的数值属性。
+
+`objects` 数组中的每一项都包含 `aliases`, `objclass` 和 `objdata`。
+
+其中，`aliases` 数组包含植物的 `CODENAME` ，用于表示该项对应的植物。`objclass` 的值为 `PlantProperties`， 表示该项为植物数值属性。
+
+`objdata` 包含以下数值属性字段，各个植物有效的 Props 可查看[图鉴](../../almanac/):
 
 | 属性                          | 值/内容     | 说明                               |
 | ----------------------------- | ----------- | ---------------------------------- |
@@ -82,96 +102,13 @@ order: 2
 | **Family**                    | "Explosive" | 所属家族(可能影响家族增益效果)     |
 | **ImmuneToIceblock**          | true        | 免疫冰冻效果(如冰鼬僵尸的冰冻攻击) |
 
-### 原始 json
+## 商店文件
 
-爆裂葡萄的原始 json 如下:
+`StoreCommodityFeatures.json` 文件包含商店的商品信息，有`Plants`、`Upgrade`、`Gem` 和 `Coin` 四个数组，表示不同类型的商品信息。
 
-```json
-{
-    "ID": 74,
-    "NAME": {
-        "en": "Grapeshot",
-        "zh": "爆裂葡萄"
-    },
-    "_CARDSPRITENAME": "grapeshot",
-    "CODENAME": "grapeshot",
-    "TYPE": [
-        "plant",
-        "lastStandDisallowed"
-    ],
-    "OBTAINWORLD": "market",
-    "ZENGARDEN": {
-        "PlantPlace": "dirt"
-    },
-    "COSTUME": 2,
-    "ALMANAC": {
-        "Elements": [
-            {
-                "TYPE": "SUNCOST"
-            },
-            {
-                "TYPE": "RECHARGE"
-            },
-            {
-                "TYPE": "DAMAGE",
-                "VALUE": 1800
-            },
-            {
-                "TYPE": "AREA",
-                "SORT": {
-                    "en": "3x3",
-                    "zh": "3x3范围"
-                }
-            },
-            {
-                "TYPE": "FAMILY"
-            }
-        ],
-        "Introduction": {
-            "en": "Grapeshots explode and scatter bouncing projectiles in eight directions.",
-            "zh": "爆裂葡萄爆炸后向 8 个方向发射弹性葡萄子弹。"
-        },
-        "Special": [
-            {
-                "NAME": {
-                    "en": "Usage",
-                    "zh": "用途"
-                },
-                "DESCRIPTION": {
-                    "en": "single use, instant",
-                    "zh": "一次性使用，立刻触发"
-                }
-            }
-        ],
-        "Chat": {
-            "en": "\"Spa-BOOM!\" enthuses Grapeshot. \"You liked that? I got a million of 'em! Wa-POW! Buh-BLAM! Za-... um... Ker-... hmmm... Okay, I guess I've only got the three.\"",
-            "zh": "“唏——啪——！”爆裂葡萄激情地吼道。“你喜欢吗？我还有上万种这样的声音呢。哇——噗——！啪——砰——！咂——……！额……，轰——……！嗯嗯……，好吧，我想就这三种了。”"
-        },
-        "BriefIntroduction": {
-            "en": "Explodes and scatters bouncing projectiles",
-            "zh": "爆炸并发射弹射子弹"
-        },
-        "DisplayOffset": {
-            "x": 0,
-            "y": 0
-        }
-    },
-    "objdata": {
-        "CannotBeSheepenedByWizard": true,
-        "Damage": 1800,
-        "Cooldown": 35,
-        "CooldownFrom": 1,
-        "SunCost": 150,
-        "Toughness": 300,
-        "Family": "Explosive",
-        "ImmuneToIceblock": true
-    }
-},
-```
+### Plants
 
-## 商店属性
-
-### 植物商品
+`Plants` 数组包含植物商品的信息。
 
 | 字段                 | 类型   | 说明                    |
 | -------------------- | ------ | ----------------------- |
@@ -181,7 +118,7 @@ order: 2
 | **CurrencyRequired** | number | 需要支付的货币数量      |
 | _UnlockLevel_        | string | 在某个关卡解锁          |
 
-#### 示例:寒冰射手商品
+**示例:寒冰射手商品**
 
 ```json
 {
@@ -192,7 +129,9 @@ order: 2
 }
 ```
 
-### 升级项商品
+### Upgrade
+
+`Upgrade` 数组包含植物升级商品的信息。
 
 | 字段                 | 类型   | 说明                    |
 | -------------------- | ------ | ----------------------- |
@@ -201,7 +140,7 @@ order: 2
 | **CurrencyType**     | string | 货币类型("gem"或"coin") |
 | **CurrencyRequired** | number | 需要支付的货币数量      |
 
-#### 示例:铲子升级
+**示例:铲子升级**
 
 ```json
 {
@@ -212,7 +151,9 @@ order: 2
 }
 ```
 
-### 钻石商品(Gem)
+### Gem
+
+`Gem` 数组包含钻石商品的信息。
 
 | 字段                     | 说明                    |
 | ------------------------ | ----------------------- |
@@ -223,7 +164,7 @@ order: 2
 | _StackLevel_             | 商品包等级              |
 | **CommodityDisplayName** | 商品显示名称(多语言)    |
 
-#### 示例:调整钻石包
+**示例:调整钻石包**
 
 ```json
 {
@@ -239,7 +180,9 @@ order: 2
 }
 ```
 
-### 金币商品(Coin)
+### Coin
+
+`Coin` 数组包含金币商品的信息。
 
 | 字段                     | 说明                    |
 | ------------------------ | ----------------------- |
