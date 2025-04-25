@@ -349,7 +349,7 @@ Almanac 文件包含植物和僵尸的图鉴信息。文件结构如下：
 
 Props 修改规则适用于 `PlantProps` 和 `ZombieProps` 文件。Almanac 修改规则适用于 `PlantAlmanac` 和 `ZombieAlmanac` 文件。
 
-`"objects"` 数组中的每个对象通过 `aliases` 字段匹配后合并至原始 JSON 中，规则与 `Features` 文件相同。
+`objects` 数组中的每个对象通过 `aliases` 字段匹配后合并至原始 JSON 中，规则与 `Features` 文件相同。
 
 对于任何需要修改的植物/僵尸，需要在 `objects` 数组中添加一个对象，并且该对象的 `aliases` 数组的第一项必须是对应植物/僵尸的 `CODENAME`。
 对于不需要修改的植物/僵尸，则无需添加此对象。
@@ -387,8 +387,6 @@ Props 修改规则适用于 `PlantProps` 和 `ZombieProps` 文件。Almanac 修�
 
 1. 检查控制台加载过程中的错误。
 2. 常见错误：
-
-- ❌ `Failed to load...`：JSON 语法错误。
-- ❌ `Level file not found`：文件名不匹配。
-
+   - ❌ `Failed to load...`：JSON 语法错误。
+   - ❌ `Level file not found`：文件名不匹配。
 3. 使用 [JSONLint](https://jsonlint.com/) 等工具验证 JSON。
