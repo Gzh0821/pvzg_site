@@ -1,5 +1,5 @@
 ---
-title: Attribute Reference (latest)
+title: Attribute Reference(latest)
 icon: file-invoice
 pageInfo: false
 comment: false
