@@ -3,7 +3,7 @@
         token: {
             colorPrimary: '#aa6f42'
         },
-        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        algorithm: $isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {}
     }"></a-config-provider>
     <a-layout>
@@ -62,8 +62,8 @@
                             <a-col :span="12">
                                 <p class="plant-title">{{
                                     plantMap[selectPlantValue].name ? plantMap[selectPlantValue].name
-                                    : plantMap[selectPlantValue].enName
-                                    }}</p>
+                                        : plantMap[selectPlantValue].enName
+                                }}</p>
                             </a-col>
                             <a-col :span="6">
                                 <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
@@ -75,13 +75,13 @@
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
                                         <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                            }}</a-button>
+                                        }}</a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                            }}</a-button>
+                                        }}</a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
@@ -113,7 +113,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive, computed, inject } from 'vue'
-import { message, theme } from 'ant-design-vue'
+import { message, theme, ConfigProvider } from 'ant-design-vue'
 import { useI18n } from 'vue-i18n'
 import JSON5 from 'json5'
 
@@ -125,6 +125,7 @@ import i18nJson from './vue-i18n.json'
 import type { ArchiveData } from './types';
 
 const isDarkMode = useDarkMode();
+
 const i18nLanguage = inject('i18nLanguage', 'en');
 const plantMap = getPlantIdMap(i18nLanguage);
 
