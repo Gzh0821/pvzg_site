@@ -9,7 +9,7 @@
     </a-row>
  -->
     <a-config-provider :theme="{
-        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        algorithm: $isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
     }">
         <a-space direction="vertical" size="middle" style="width: 100%" theme="dark">
             <a-input-search v-model:value.lazy="searchValue" placeholder="Search level..." enter-button />

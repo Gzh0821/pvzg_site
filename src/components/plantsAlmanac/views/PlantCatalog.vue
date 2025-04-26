@@ -5,8 +5,8 @@
             <template v-if="plant.subPlants">
                 <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
                     @open-change="visible[plant.codename] = $event" :overlayInnerStyle="{
-                        border: isDarkMode ? '3px solid #deb991' : '3px solid #432b1a',
-                        backgroundColor: isDarkMode ? '#383011' : '#ede5c4',
+                        border: $isDarkMode ? '3px solid #deb991' : '3px solid #432b1a',
+                        backgroundColor: $isDarkMode ? '#383011' : '#ede5c4',
                         textAlign: 'center'
                     }">
                     <template #content>
