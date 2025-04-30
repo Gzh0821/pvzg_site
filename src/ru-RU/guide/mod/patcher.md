@@ -76,7 +76,7 @@ patches/
     │   ├── UpgradeFeatures.json
     │   └── StoreCommodityFeatures.json
     └── levels/
-        └── [关卡名].json
+        └── [LevelName].json
 ```
 
 The `features` directory contains `Features`, `Props`, and `Almanac` files for modifying plants, zombies, upgrades, the shop, etc.
