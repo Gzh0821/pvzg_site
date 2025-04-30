@@ -75,13 +75,13 @@
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
                                         <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                        }}</a-button>
+                                            }}</a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
@@ -199,7 +199,14 @@ const clearArchive = () => {
 // 判断是否为旧版存档
 const isOldArchive = computed(() => {
     if (!uploadVersion.value) return true;
-    return uploadVersion.value !== gameVersion
+    const [major, minor, patch] = uploadVersion.value.split('.').map(Number);
+    const [currentMajor, currentMinor, currentPatch] = gameVersion.split('.').map(Number);
+
+    if (major < currentMajor) return true;
+    if (major === currentMajor && minor < currentMinor) return true;
+    if (major === currentMajor && minor === currentMinor && patch < currentPatch) return true;
+
+    return false;
 });
 
 // 植物操作
