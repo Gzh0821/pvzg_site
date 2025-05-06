@@ -184,7 +184,8 @@ export default hopeTheme({
     comment: {
       provider: "Artalk",
       server: "https://artalk.pvzge.com",
-      site:"Gardendless",
+      useBackendConf: true,
+      site: "Gardendless",
       locale: "auto",
     },
 
