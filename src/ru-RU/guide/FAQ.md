@@ -2,7 +2,6 @@
 title: ЧаВо
 icon: question
 pageInfo: false
-comment: false
 index: true
 order: 2
 ---

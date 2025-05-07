@@ -2,7 +2,6 @@
 title: 属性参考(0.2.X)
 icon: file-invoice
 pageInfo: false
-comment: false
 index: true
 order: 12
 ---

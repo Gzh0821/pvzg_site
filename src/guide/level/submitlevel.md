@@ -3,7 +3,6 @@ title: 分享和投稿关卡
 index: true
 icon: share
 pageInfo: false
-comment: false
 order: 2
 ---
 

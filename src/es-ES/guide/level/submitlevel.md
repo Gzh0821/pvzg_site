@@ -3,7 +3,6 @@ title: Share and Contribute Levels
 index: true
 icon: share
 pageInfo: false
-comment: false
 order: 2
 ---
 

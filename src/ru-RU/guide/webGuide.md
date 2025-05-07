@@ -2,7 +2,6 @@
 title: Руководство по Разработке Веб-сайта
 icon: laptop-code
 pageInfo: false
-comment: false
 index: true
 order: 5
 ---

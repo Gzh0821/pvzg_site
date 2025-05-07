@@ -2,7 +2,6 @@
 title: 官网开发指南
 icon: laptop-code
 pageInfo: false
-comment: false
 index: true
 order: 5
 ---

@@ -2,7 +2,6 @@
 title: GE Patcher Tutorial(0.2.X)
 icon: wrench
 pageInfo: false
-comment: false
 index: true
 order: 11
 ---

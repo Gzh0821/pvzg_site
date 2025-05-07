@@ -2,7 +2,6 @@
 title: Attribute Reference(latest)
 icon: file-invoice
 pageInfo: false
-comment: false
 index: true
 order: 2
 ---
