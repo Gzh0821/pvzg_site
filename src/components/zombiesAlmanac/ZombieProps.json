@@ -12,7 +12,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"Toughness": 190,
-				"EatDPS": 100
+				"EatDPS": 100,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -28,7 +30,9 @@
 				"EatDPS": 100,
 				"StartingArmors": [
 					"modern_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -44,7 +48,9 @@
 				"EatDPS": 100,
 				"StartingArmors": [
 					"modern_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -60,7 +66,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"StartingArmors": [
 					"modern_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -73,7 +81,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -86,7 +96,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -102,7 +114,9 @@
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.17,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -121,7 +135,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"modern_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -140,7 +156,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"modern_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -159,7 +177,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"modern_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -176,7 +196,9 @@
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -193,7 +215,9 @@
 				"SpeedScaleInWater": 2,
 				"LivesInDeepWater": true,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -207,7 +231,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -217,6 +243,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -226,7 +254,9 @@
 				"EatDPS": 100,
 				"Toughness": 3600,
 				"LivesInDeepWater": true,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -236,6 +266,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -245,7 +277,9 @@
 				"EatDPS": 100,
 				"Toughness": 3600,
 				"LivesInDeepWater": true,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -258,7 +292,9 @@
 				"CannotBeTossedByCitron": false,
 				"EatDPS": 100,
 				"WalkSPS": 0.185,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -277,7 +313,9 @@
 				"Toughness": 390,
 				"ImmuneToSporeShroom": true,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 200,
+				"Weight": 100
 			}
 		},
 		{
@@ -292,7 +330,9 @@
 				"BalloonWalkSPS": 0.4,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"BalloonToughness": 270
+				"BalloonToughness": 270,
+				"WavePointCost": 400,
+				"Weight": 3000
 			}
 		},
 		{
@@ -306,12 +346,14 @@
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
 				"Toughness": 1100,
-				"RunningSpeedScale": 6
+				"RunningSpeedScale": 9,
+				"WavePointCost": 1500,
+				"Weight": 3500
 			}
 		},
 		{
 			"aliases": [
-				"sleighcart"
+				"zomboni"
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
@@ -319,12 +361,14 @@
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
 				"WalkSPS": 0.2,
-				"EatDPS": 100,
+				"EatDPS": 1000,
 				"Toughness": 1100,
 				"LivesInDeepWater": true,
 				"NormalDeathWhenMowed": true,
 				"ChiliStunDurationMult": 0,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 200,
+				"Weight": 100
 			}
 		},
 		{
@@ -344,7 +388,9 @@
 				"LobInterval": 4,
 				"LobIntervalAdditional": 0.5,
 				"MaxBallCount": 20,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 200,
+				"Weight": 100
 			}
 		},
 		{
@@ -357,7 +403,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -373,7 +421,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"egypt_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -389,7 +439,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"egypt_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -406,7 +458,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"StartingArmors": [
 					"egypt_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -420,7 +474,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -434,7 +490,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -448,7 +506,9 @@
 				"MaxAbsorbValue": 250,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 700
 			}
 		},
 		{
@@ -465,7 +525,9 @@
 				"TeamMemberCount": [
 					0
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -482,7 +544,9 @@
 				"TeamMemberCount": [
 					3
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 600,
+				"Weight": 3000
 			}
 		},
 		{
@@ -499,7 +563,9 @@
 				"TeamMemberCount": [
 					4
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 800,
+				"Weight": 3000
 			}
 		},
 		{
@@ -516,7 +582,9 @@
 				"TeamMemberCount": [
 					5
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1000,
+				"Weight": 3000
 			}
 		},
 		{
@@ -535,7 +603,9 @@
 					6,
 					7
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -552,7 +622,9 @@
 				"TeamMemberCount": [
 					0
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 100,
+				"Weight": 3000
 			}
 		},
 		{
@@ -569,7 +641,9 @@
 				"TeamMemberCount": [
 					3
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 300,
+				"Weight": 3000
 			}
 		},
 		{
@@ -586,7 +660,9 @@
 				"TeamMemberCount": [
 					4
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 400,
+				"Weight": 3000
 			}
 		},
 		{
@@ -603,7 +679,9 @@
 				"TeamMemberCount": [
 					5
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -622,7 +700,9 @@
 					6,
 					7
 				],
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 600,
+				"Weight": 3000
 			}
 		},
 		{
@@ -635,7 +715,9 @@
 				"WalkSPS": 0.25,
 				"EatDPS": 100,
 				"FireDPS": 1000,
-				"Toughness": 250
+				"Toughness": 250,
+				"WavePointCost": 250,
+				"Weight": 3000
 			}
 		},
 		{
@@ -648,7 +730,9 @@
 				"WalkSPS": 0.5,
 				"EatDPS": 150,
 				"FireDPS": 1000,
-				"Toughness": 650
+				"Toughness": 650,
+				"WavePointCost": 700,
+				"Weight": 3000
 			}
 		},
 		{
@@ -663,7 +747,9 @@
 				"TimeBetweenGroupsAdditional": 1,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 380
+				"Toughness": 380,
+				"WavePointCost": 300,
+				"Weight": 2000
 			}
 		},
 		{
@@ -675,7 +761,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.5,
 				"EatDPS": 100,
-				"Toughness": 290
+				"Toughness": 290,
+				"WavePointCost": 150,
+				"Weight": 3000
 			}
 		},
 		{
@@ -689,7 +777,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 1200,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 450,
+				"Weight": 100
 			}
 		},
 		{
@@ -705,7 +795,9 @@
 				"EatDPS": 100,
 				"Toughness": 1200,
 				"DamageExtends": false,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 450,
+				"Weight": 100
 			}
 		},
 		{
@@ -718,7 +810,9 @@
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -728,6 +822,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -738,7 +834,9 @@
 				"Toughness": 3600,
 				"WalkSPS": 0.24,
 				"NormalDeathWhenMowed": true,
-				"ChanceToPharaoh": 0.75
+				"ChanceToPharaoh": 0.75,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -748,6 +846,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -759,7 +858,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -769,6 +870,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -780,7 +882,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -793,7 +897,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -809,7 +915,9 @@
 				"EatDPS": 100,
 				"StartingArmors": [
 					"pirate_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -825,7 +933,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"pirate_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -842,7 +952,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"pirate_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -856,7 +968,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -870,7 +984,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -887,7 +1003,9 @@
 				"ChanceToFallIntoSea": 0.05,
 				"LandingColumns": [
 					4
-				]
+				],
+				"WavePointCost": 150,
+				"Weight": 1500
 			}
 		},
 		{
@@ -900,7 +1018,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.355,
 				"EatDPS": 100,
-				"Toughness": 270
+				"Toughness": 270,
+				"WavePointCost": 200,
+				"Weight": 4000
 			}
 		},
 		{
@@ -913,7 +1033,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.6,
 				"EatDPS": 100,
-				"Toughness": 270
+				"Toughness": 270,
+				"WavePointCost": 350,
+				"Weight": 4000
 			}
 		},
 		{
@@ -926,7 +1048,9 @@
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 500,
+				"Weight": 2000
 			}
 		},
 		{
@@ -944,7 +1068,9 @@
 				"EatDPS": 100,
 				"Toughness": 1100,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -979,7 +1105,9 @@
 				"ExplodeImpCount": 5,
 				"ExplodeImpCountAdditional": 0,
 				"IgnoredByThymeWarp": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 700,
+				"Weight": 1500
 			}
 		},
 		{
@@ -993,7 +1121,9 @@
 				"Toughness": 420,
 				"WalkSPS": 0.15,
 				"ParrotCooldown": 7,
-				"ParrotRetryCooldown": 1
+				"ParrotRetryCooldown": 1,
+				"WavePointCost": 500,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1010,7 +1140,9 @@
 				"Toughness": 300,
 				"NormalDeathWhenMowed": true,
 				"FlyingSpeed": 1.4,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 400,
+				"Weight": 0
 			}
 		},
 		{
@@ -1024,7 +1156,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1034,6 +1168,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -1043,7 +1179,9 @@
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 3600,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1053,6 +1191,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -1064,7 +1203,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -1074,6 +1215,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -1085,7 +1227,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -1099,7 +1243,9 @@
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1116,7 +1262,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"cowboy_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1133,7 +1281,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"cowboy_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1151,7 +1301,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"cowboy_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1166,7 +1318,9 @@
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1181,7 +1335,9 @@
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1193,7 +1349,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1207,7 +1365,9 @@
 				"EatDPS": 4000,
 				"Toughness": 840,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 450,
+				"Weight": 2000
 			}
 		},
 		{
@@ -1222,7 +1382,9 @@
 				"Toughness": 190,
 				"ShieldToughness": 1100,
 				"PonchoToughness": 60,
-				"ChanceToPlate": 0.5
+				"ChanceToPlate": 0.5,
+				"WavePointCost": 300,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1237,7 +1399,9 @@
 				"Toughness": 190,
 				"ShieldToughness": 1100,
 				"PonchoToughness": 60,
-				"ChanceToPlate": 0
+				"ChanceToPlate": 0,
+				"WavePointCost": 150,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1252,7 +1416,9 @@
 				"Toughness": 190,
 				"ShieldToughness": 1100,
 				"PonchoToughness": 60,
-				"ChanceToPlate": 1
+				"ChanceToPlate": 1,
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1269,7 +1435,9 @@
 				"ChickeningDurationVariance": 1,
 				"ChickeningHealthPercentage": 0.8,
 				"ChickeningInterval": 0.2,
-				"ChickeningIntervalVariance": 0.1
+				"ChickeningIntervalVariance": 0.1,
+				"WavePointCost": 350,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1282,9 +1450,13 @@
 				"CanBeEasilySwallowedByChomper": true,
 				"ImmuneToSporeShroom": true,
 				"WalkSPS": 2,
+				"WalkSPSVarience": 0,
 				"EatDPS": 50,
 				"Toughness": 1,
-				"NormalDeathWhenMowed": true
+				"DoesNotDamageHeavilyToGarlic": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 10,
+				"Weight": 0
 			}
 		},
 		{
@@ -1297,9 +1469,13 @@
 				"CanBeEasilySwallowedByChomper": true,
 				"ImmuneToSporeShroom": true,
 				"WalkSPS": 2,
+				"WalkSPSVarience": 0,
 				"EatDPS": 50,
 				"Toughness": 1,
-				"NormalDeathWhenMowed": true
+				"DoesNotDamageHeavilyToGarlic": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 10,
+				"Weight": 0
 			}
 		},
 		{
@@ -1317,7 +1493,9 @@
 				"WalkSPS": 0.2,
 				"RushSPS": 1,
 				"ImpThrowDistance": 4,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 600,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1336,7 +1514,9 @@
 				"RushSPS": 2,
 				"BullRammingDamage": 2000,
 				"ImpThrowDistance": 4,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 1000,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1350,7 +1530,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1360,6 +1542,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -1371,7 +1555,9 @@
 				"Toughness": 3600,
 				"NormalDeathWhenMowed": true,
 				"SplashDamageToZombies": 100,
-				"SplashDamageToPlants": 40
+				"SplashDamageToPlants": 40,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1381,6 +1567,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -1392,7 +1579,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -1402,6 +1591,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -1413,7 +1603,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -1426,7 +1618,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1442,7 +1636,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"kongfu_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1458,7 +1654,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"kongfu_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1474,7 +1672,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"kongfu_armor3"
-				]
+				],
+				"WavePointCost": 550,
+				"Weight": 4500
 			}
 		},
 		{
@@ -1488,7 +1688,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1502,7 +1704,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1516,7 +1720,9 @@
 				"RestDuration": 3,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 600
+				"Toughness": 600,
+				"WavePointCost": 200,
+				"Weight": 2000
 			}
 		},
 		{
@@ -1531,7 +1737,9 @@
 				"WalkSPS": 0.25,
 				"EatDPS": 100,
 				"FireDPS": 1000,
-				"Toughness": 250
+				"Toughness": 250,
+				"WavePointCost": 250,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1545,7 +1753,9 @@
 				"ChiIntervalStart": 4,
 				"WalkSPS": 0.15,
 				"EatDPS": 100,
-				"Toughness": 300
+				"Toughness": 300,
+				"WavePointCost": 250,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1558,7 +1768,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1574,7 +1786,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"kongfu_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1590,7 +1804,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"kongfu_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1606,7 +1822,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"kongfu_armor3"
-				]
+				],
+				"WavePointCost": 550,
+				"Weight": 4500
 			}
 		},
 		{
@@ -1619,7 +1837,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.26,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1632,7 +1852,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.44,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1645,7 +1867,9 @@
 				"BladeDamage": 250,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 600
+				"Toughness": 600,
+				"WavePointCost": 150,
+				"Weight": 1500
 			}
 		},
 		{
@@ -1659,7 +1883,9 @@
 				"RestDuration": 0.1,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
-				"Toughness": 600
+				"Toughness": 600,
+				"WavePointCost": 200,
+				"Weight": 2000
 			}
 		},
 		{
@@ -1672,7 +1898,9 @@
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
 				"FireDPS": 1000,
-				"Toughness": 270
+				"Toughness": 270,
+				"WavePointCost": 250,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1685,7 +1913,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1701,7 +1931,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"future_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1717,7 +1949,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"future_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1734,7 +1968,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"future_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1748,7 +1984,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1762,7 +2000,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -1776,7 +2016,9 @@
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
 				"Toughness": 380,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 150,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1790,7 +2032,9 @@
 				"WalkSPS": 0.75,
 				"EatDPS": 150,
 				"Toughness": 390,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 450,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1804,7 +2048,9 @@
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
 				"Toughness": 380,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 150,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1825,7 +2071,9 @@
 				"Toughness": 500,
 				"LivesInDeepWater": true,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 500,
+				"Weight": 1500
 			}
 		},
 		{
@@ -1843,7 +2091,9 @@
 				"EatDPS": 100,
 				"Toughness": 1200,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -1861,7 +2111,9 @@
 				"EatDPS": 100,
 				"Toughness": 10000,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -1879,7 +2131,9 @@
 				"EatDPS": 100,
 				"Toughness": 5000,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -1898,7 +2152,9 @@
 				"Toughness": 2500,
 				"LivesInDeepWater": true,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 650,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1918,7 +2174,9 @@
 				"Toughness": 2000,
 				"LivesInDeepWater": true,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 1000,
+				"Weight": 4000
 			}
 		},
 		{
@@ -1940,7 +2198,9 @@
 				"Toughness": 2000,
 				"LivesInDeepWater": true,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 800,
+				"Weight": 3000
 			}
 		},
 		{
@@ -1958,7 +2218,9 @@
 				"EatDPS": 100,
 				"Toughness": 270,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 150,
+				"Weight": 1000
 			}
 		},
 		{
@@ -1968,6 +2230,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -1985,7 +2249,9 @@
 				"Toughness": 3600,
 				"LivesInDeepWater": true,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 2000,
+				"Weight": 2500
 			}
 		},
 		{
@@ -1995,6 +2261,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -2006,7 +2273,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -2016,6 +2285,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -2027,7 +2297,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -2040,7 +2312,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2056,7 +2330,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dark_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2072,7 +2348,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dark_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2088,7 +2366,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dark_armor3"
-				]
+				],
+				"WavePointCost": 550,
+				"Weight": 4500
 			}
 		},
 		{
@@ -2105,7 +2385,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dark_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2119,7 +2401,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -2133,7 +2417,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -2145,7 +2431,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
-				"Toughness": 420
+				"Toughness": 420,
+				"WavePointCost": 450,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2161,7 +2449,9 @@
 				"TimeBetweenAdditional": 3,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
-				"Toughness": 490
+				"Toughness": 490,
+				"WavePointCost": 800,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2177,7 +2467,9 @@
 				"TimeBetweenAdditional": 1,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
-				"Toughness": 630
+				"Toughness": 630,
+				"WavePointCost": 1200,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2212,7 +2504,9 @@
 				"EatDPS": 100,
 				"Toughness": 1000,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 750,
+				"Weight": 2000
 			}
 		},
 		{
@@ -2257,7 +2551,9 @@
 				"EatDPS": 100,
 				"Toughness": 1500,
 				"NormalDeathWhenMowed": true,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 1000,
+				"Weight": 1800
 			}
 		},
 		{
@@ -2270,7 +2566,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 150,
+				"Weight": 2000
 			}
 		},
 		{
@@ -2284,7 +2582,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2294,6 +2594,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -2303,7 +2605,9 @@
 				"EatDPS": 100,
 				"Toughness": 3600,
 				"LivesInDeepWater": true,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2313,6 +2617,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -2323,7 +2628,9 @@
 				"LivesInDeepWater": true,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -2333,6 +2640,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -2343,7 +2651,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -2356,7 +2666,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2372,7 +2684,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"beach_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2388,7 +2702,28 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"beach_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
+			}
+		},
+		{
+			"aliases": [
+				"beach_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"CannotCarryPlantfoodsInWaves": true,
+				"StartingArmors": [
+					"beach_armor4"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2401,7 +2736,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2417,7 +2754,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"beach_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2433,7 +2772,28 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"beach_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
+			}
+		},
+		{
+			"aliases": [
+				"beach_fem_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"CannotCarryPlantfoodsInWaves": true,
+				"StartingArmors": [
+					"beach_armor4"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2447,7 +2807,25 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
+			}
+		},
+		{
+			"aliases": [
+				"beach_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -2461,7 +2839,9 @@
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2479,12 +2859,43 @@
 				],
 				"ZombieBlockers": [
 					"future_protector_shield",
-					"future_infinut_shield"
+					"future_infinut_shield",
+					"modern_moonflower_shield"
 				],
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 350,
-				"ZombossLaneSummon": true
+				"ZombossLaneSummon": true,
+				"WavePointCost": 700,
+				"Weight": 4000
+			}
+		},
+		{
+			"aliases": [
+				"beach_surfer_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"BoardToughness": 1100,
+				"DamageOnStabbing": 1500,
+				"SwimSpeedMultiplier": 7,
+				"StopsByEMPea": true,
+				"isVeteran": true,
+				"PlantBlockers": [
+					"tallnut"
+				],
+				"ZombieBlockers": [
+					"future_protector_shield",
+					"future_infinut_shield",
+					"modern_moonflower_shield"
+				],
+				"WalkSPS": 0.15,
+				"EatDPS": 100,
+				"Toughness": 350,
+				"ZombossLaneSummon": true,
+				"WavePointCost": 1400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2501,7 +2912,9 @@
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
-				"Toughness": 910
+				"Toughness": 910,
+				"WavePointCost": 900,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2523,7 +2936,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 1000,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 700,
+				"Weight": 2500
 			}
 		},
 		{
@@ -2537,7 +2952,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2547,6 +2964,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -2558,7 +2977,9 @@
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 3600,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2568,6 +2989,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -2579,7 +3001,33 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_beach2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -2593,7 +3041,9 @@
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2610,7 +3060,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"iceage_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2627,7 +3079,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"iceage_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2644,7 +3098,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"iceage_armor3"
-				]
+				],
+				"WavePointCost": 550,
+				"Weight": 4500
 			}
 		},
 		{
@@ -2662,7 +3118,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"iceage_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2677,7 +3135,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -2692,7 +3152,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -2707,7 +3169,9 @@
 				"EatDPS": 100,
 				"Toughness": 700,
 				"FarAttackRange": 4,
-				"SnowballsPerBarrage": 3
+				"SnowballsPerBarrage": 3,
+				"WavePointCost": 500,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2722,7 +3186,9 @@
 				"EatDPS": 150,
 				"Toughness": 1100,
 				"LobInterval": 3,
-				"LobIntervalAdditional": 0.5
+				"LobIntervalAdditional": 0.5,
+				"WavePointCost": 700,
+				"Weight": 2500
 			}
 		},
 		{
@@ -2737,7 +3203,9 @@
 				"CannotBePushedBySliders": true,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
-				"Toughness": 490
+				"Toughness": 490,
+				"WavePointCost": 600,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2754,7 +3222,9 @@
 				"NumberOfIceblocksToSpawnWith": 3,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 470
+				"Toughness": 470,
+				"WavePointCost": 600,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2771,7 +3241,9 @@
 				"NumberOfIceblocksToSpawnWith": 1,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 470
+				"Toughness": 470,
+				"WavePointCost": 400,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2788,7 +3260,9 @@
 				"NumberOfIceblocksToSpawnWith": 2,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 470
+				"Toughness": 470,
+				"WavePointCost": 400,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2806,7 +3280,9 @@
 				"NumberOfIceblocksToSpawnWith": 3,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
-				"Toughness": 700
+				"Toughness": 700,
+				"WavePointCost": 900,
+				"Weight": 3500
 			}
 		},
 		{
@@ -2826,7 +3302,9 @@
 				"WeaselingInterval": 0.3,
 				"WeaselingIntervalVariance": 0.1,
 				"WeaselingDuration": 2,
-				"WeaselingDurationVariance": 1
+				"WeaselingDurationVariance": 1,
+				"WavePointCost": 350,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2840,8 +3318,11 @@
 				"CannotBePushedBySliders": true,
 				"CanBeEasilySwallowedByChomper": true,
 				"WalkSPS": 1.5,
+				"DoesNotDamageHeavilyToGarlic": true,
 				"EatDPS": 75,
-				"Toughness": 40
+				"Toughness": 40,
+				"WavePointCost": 10,
+				"Weight": 0
 			}
 		},
 		{
@@ -2856,7 +3337,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2866,6 +3349,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"ChillInsteadOfFreeze": true,
@@ -2880,7 +3365,9 @@
 				"EatDPS": 100,
 				"Toughness": 3600,
 				"LivesInDeepWater": true,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2890,6 +3377,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -2901,7 +3389,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -2911,6 +3401,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -2922,7 +3413,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -2936,7 +3429,9 @@
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -2953,7 +3448,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"lostcity_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2970,7 +3467,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"lostcity_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -2984,7 +3483,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -2997,7 +3498,9 @@
 				"HangingNoEatTimeUntilDrop": 6,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 150,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3010,7 +3513,9 @@
 				"ShovelDamage": 150,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 300,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3023,7 +3528,9 @@
 				"CannotBeDetectedBySapfling": true,
 				"WalkSPS": 0.25,
 				"EatDPS": 100,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3038,7 +3545,9 @@
 				"EatDPS": 100,
 				"Toughness": 190,
 				"BugToughness": 350,
-				"BuggedSPS": 0.4
+				"BuggedSPS": 0.4,
+				"WavePointCost": 350,
+				"Weight": 2000
 			}
 		},
 		{
@@ -3056,7 +3565,9 @@
 				"BuggedSPS": 0.4,
 				"StartingArmors": [
 					"lostcity_armor1"
-				]
+				],
+				"WavePointCost": 500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3074,7 +3585,9 @@
 				"BuggedSPS": 0.4,
 				"StartingArmors": [
 					"lostcity_armor2"
-				]
+				],
+				"WavePointCost": 650,
+				"Weight": 4000
 			}
 		},
 		{
@@ -3092,7 +3605,9 @@
 					3,
 					4,
 					5
-				]
+				],
+				"WavePointCost": 550,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3104,7 +3619,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 450,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3122,7 +3639,9 @@
 				"LaserBeamLength": 220,
 				"LaserCooldownTime": 5,
 				"ChargingTime": 5,
-				"ChargingTimeDecrementPer50Sun": 0.2
+				"ChargingTimeDecrementPer50Sun": 0.2,
+				"WavePointCost": 500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3136,7 +3655,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3146,6 +3667,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -3156,7 +3679,9 @@
 				"NormalDeathWhenMowed": true,
 				"CannotCarryPlantfoodsInWaves": true,
 				"SmashDamage": 1500,
-				"FireDamage": 1200
+				"FireDamage": 1200,
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3166,6 +3691,7 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeDetectedBySapfling": true,
@@ -3177,7 +3703,9 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
-				"ImmuneToGarlic": true
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0
 			}
 		},
 		{
@@ -3191,7 +3719,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3208,7 +3738,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"sky_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3225,7 +3757,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"sky_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -3240,7 +3774,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -3253,7 +3789,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3269,7 +3807,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"eighties_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3285,7 +3825,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"eighties_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -3298,7 +3840,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -3312,7 +3856,9 @@
 				"EatDPS": 100,
 				"Toughness": 250,
 				"PushCooldown": 2,
-				"JamStyle": "jam_punk"
+				"JamStyle": "jam_punk",
+				"WavePointCost": 300,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3326,7 +3872,9 @@
 				"EatDPS": 100,
 				"Toughness": 490,
 				"RainbowTrailLength": 3.125,
-				"JamStyle": "jam_pop"
+				"JamStyle": "jam_pop",
+				"WavePointCost": 300,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3340,7 +3888,9 @@
 				"EatDPS": 100,
 				"Toughness": 250,
 				"JamAttackDamage": 2001,
-				"JamStyle": "jam_rap"
+				"JamStyle": "jam_rap",
+				"WavePointCost": 350,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3356,7 +3906,9 @@
 				"JamWalkSpeedMult": 1.5,
 				"KickDistance": 1.5625,
 				"KickingTime": 0.5,
-				"JamStyle": "jam_rap"
+				"JamStyle": "jam_rap",
+				"WavePointCost": 300,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3369,7 +3921,9 @@
 				"WalkSPS": 0.19,
 				"EatDPS": 100,
 				"Toughness": 490,
-				"JamStyle": "jam_8bit"
+				"JamStyle": "jam_8bit",
+				"WavePointCost": 600,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3382,7 +3936,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3398,7 +3954,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"eighties_8bit_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3414,7 +3972,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"eighties_8bit_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -3429,7 +3989,9 @@
 				"Toughness": 250,
 				"BoomBoxColumn": 5,
 				"BoomBoxDuration": 8,
-				"PlantFreezeRadius": 15
+				"PlantFreezeRadius": 15,
+				"WavePointCost": 300,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3443,7 +4005,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3453,6 +4017,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -3463,7 +4029,9 @@
 				"NormalDeathWhenMowed": true,
 				"CannotCarryPlantfoodsInWaves": true,
 				"SmashDamage": 1500,
-				"JamStyle": "jam_metal"
+				"JamStyle": "jam_metal",
+				"WavePointCost": 1500,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3476,7 +4044,9 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 150,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3492,7 +4062,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dino_armor1"
-				]
+				],
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -3508,7 +4080,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dino_armor2"
-				]
+				],
+				"WavePointCost": 400,
+				"Weight": 4000
 			}
 		},
 		{
@@ -3524,7 +4098,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dino_armor3"
-				]
+				],
+				"WavePointCost": 550,
+				"Weight": 4500
 			}
 		},
 		{
@@ -3541,7 +4117,9 @@
 				"Toughness": 190,
 				"StartingArmors": [
 					"dino_armor4"
-				]
+				],
+				"WavePointCost": 700,
+				"Weight": 4000
 			}
 		},
 		{
@@ -3555,7 +4133,9 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.25,
 				"EatDPS": 150,
-				"Toughness": 190
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100
 			}
 		},
 		{
@@ -3569,7 +4149,43 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 400,
-				"Toughness": 350
+				"Toughness": 350,
+				"WavePointCost": 100,
+				"Weight": 100
+			}
+		},
+		{
+			"aliases": [
+				"dino_bully"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 1100,
+				"CannotBeKnockedBackByProjectiles": true,
+				"SmashDamage": 0,
+				"CraterLifetime": 0,
+				"WavePointCost": 450,
+				"Weight": 4500
+			}
+		},
+		{
+			"aliases": [
+				"dino_bully_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 2470,
+				"CannotBeKnockedBackByProjectiles": true,
+				"SmashDamage": 1500,
+				"CraterLifetime": 25,
+				"WavePointCost": 1000,
+				"Weight": 4500
 			}
 		},
 		{
@@ -3583,7 +4199,9 @@
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.3,
 				"EatDPS": 200,
-				"Toughness": 95
+				"Toughness": 95,
+				"WavePointCost": 100,
+				"Weight": 1000
 			}
 		},
 		{
@@ -3593,6 +4211,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -3602,7 +4222,9 @@
 				"EatDPS": 100,
 				"Toughness": 5400,
 				"LivesInDeepWater": true,
-				"NormalDeathWhenMowed": true
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1800,
+				"Weight": 3000
 			}
 		}
 	]
