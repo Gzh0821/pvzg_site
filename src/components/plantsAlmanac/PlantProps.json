@@ -432,8 +432,8 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
-				"ShootInterval": 1.35,
-				"ShootIntervalAdditional": 0.15,
+				"ShootInterval": 0.9,
+				"ShootIntervalAdditional": 0.1,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 500,
@@ -580,7 +580,10 @@
 				"CooldownFrom": 0.5,
 				"SunCost": 125,
 				"Toughness": 300,
-				"Family": "Electricity"
+				"Family": "Electricity",
+
+				"RedAttackStunDuration": 0.5,
+				"CallsElectricCurrant": true
 			}
 		},
 		{
@@ -890,7 +893,7 @@
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"DPS": 3000,
-				"Velocity": 15,
+				"Velocity": 8,
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 75,
@@ -1128,7 +1131,7 @@
 				"DamagePlantfood": 1200,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
-				"SunCost": 150,
+				"SunCost": 225,
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true,
@@ -1244,7 +1247,10 @@
 				"CooldownFrom": 1,
 				"SunCost": 200,
 				"Toughness": 300,
-				"Family": "Electricity"
+				"Family": "Electricity",
+
+				"RedAttackStunDuration": 0.25,
+				"CallsElectricCurrant": true
 			}
 		},
 		{
@@ -1501,7 +1507,9 @@
 				"CooldownFrom": 0.001,
 				"SunCost": 150,
 				"Toughness": 300,
-				"Family": "Electricity"
+				"Family": "Electricity",
+
+				"CallsElectricCurrant": true
 			}
 		},
 		{
@@ -1777,7 +1785,9 @@
 				"CooldownFrom": 0.667,
 				"SunCost": 75,
 				"Toughness": 2000,
-				"Family": "Defence"
+				"Family": "Defence",
+
+				"CallsElectricCurrant": true
 			}
 		},
 		{
@@ -2247,7 +2257,7 @@
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
-				"SpeedX": 7,
+				"SpeedX": 4,
 				"ImmuneToIceblock": true
 			}
 		},
@@ -2263,7 +2273,7 @@
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
-				"SpeedX": 7,
+				"SpeedX": 4,
 				"ImmuneToIceblock": true
 			}
 		},
@@ -2279,7 +2289,7 @@
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
-				"SpeedX": 7,
+				"SpeedX": 4,
 				"ImmuneToIceblock": true
 			}
 		},
@@ -2295,7 +2305,7 @@
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
-				"SpeedX": 7,
+				"SpeedX": 4,
 				"ImmuneToIceblock": true
 			}
 		},
@@ -2326,7 +2336,7 @@
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
-				"SpeedX": 6,
+				"SpeedX": 3.5,
 				"ImmuneToIceblock": true
 			}
 		},
@@ -2661,7 +2671,10 @@
 				"AttackCooldownStart": 10,
 				"AttackCooldownStartAdditional": 0,
 				"AttackCooldownBetween": 12,
-				"AttackCooldownBetweenAdditional": 0
+				"AttackCooldownBetweenAdditional": 0,
+
+				"CallsElectricCurrant": true,
+				"RedAttackStunDuration": 1
 			}
 		},
 		{

@@ -146,7 +146,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -717,7 +717,7 @@
 				],
 				"Chat": {
 					"en": "All-Star Zombie is a third-round draft pick and shows a lot of promise, but come on, his salary demands are beyond ridiculous. Ten million brains per year? For FIFTY YEARS?",
-					"zh": "全明星僵尸通过了第三轮选秀，并且展现出了非凡的潜力。但是天啊，他提出的薪资简直是太夸张了。每年一千万脑子？或者每 50 年？"
+					"zh": "全明星僵尸通过了第三轮选秀，并且展现出了非凡的潜力。但是天啊，他提出的薪资简直是太夸张了。每年一千万脑子？而且持续整整 50 年？"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -997,7 +997,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -1768,7 +1768,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -2586,7 +2586,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -4225,7 +4225,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -4602,7 +4602,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -4645,7 +4645,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -4699,7 +4699,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -5060,7 +5060,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -5104,7 +5104,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -5829,7 +5829,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -6005,7 +6005,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -6222,6 +6222,70 @@
 				"Chat": {
 					"en": "Surfer Zombie took up surfing just last year. At first, he only did it because he thought it would make him look cool. But he was a natural. Now he can hang 10 with the best of them. Now he's headed to the pro circuit. Now he IS cool.",
 					"zh": "冲浪僵尸去年才开始学习冲浪。起初，他只是觉得冲浪会让他看起来很酷，但他很有天赋。现在，他可以和最好的冲浪手一起冲浪。好了不说了，他要参加职业巡回赛了，可酷了。"
+				},
+				"DisplayOffset": {
+					"x": 15,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"beach_surfer_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Dense",
+							"zh": "结实"
+						},
+						"PROGRESS": 0.6
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Flighty",
+							"zh": "飞速"
+						},
+						"PROGRESS": 1
+					}
+				],
+				"Introduction": {
+					"en": "Surfs past plants on the water at a higher speed, then carries board on land.",
+					"zh": "以更快的速度冲浪越过水上的植物，再举着冲浪板上岸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特殊"
+						},
+						"DESCRIPTION": {
+							"en": "can crush a plant with his board",
+							"zh": "可以用冲浪板摧毁一株植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "engines on his surfboard can be burnt by E.M. Peach",
+							"zh": "滑板引擎可以被脉冲黄桃烧毁"
+						}
+					}
+				],
+				"Chat": {
+					"en": "During that serious battle, most of the Surfer Zombies headed towards the plants without hesitation, while the rest hiding behind the shark-shaped machine doing researches about how it worked. Definitely NOT because of fear!",
+					"zh": "在那场大战中，大部分的冲浪僵尸冲锋陷阵，而还有一小部分躲在那只机械鲨鱼身后对它做着研究，但绝对不是因为怕死！"
 				},
 				"DisplayOffset": {
 					"x": 15,
@@ -6661,7 +6725,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -6705,7 +6769,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -9025,7 +9089,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -9069,7 +9133,7 @@
 						"TYPE": "TOUGHNESS",
 						"SORT": {
 							"en": "Machined",
-							"zh": "重装"
+							"zh": "重甲"
 						},
 						"PROGRESS": 0.8
 					},
@@ -9181,6 +9245,124 @@
 				},
 				"DisplayOffset": {
 					"x": 30,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dino_bully"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Stiff",
+							"zh": "迟钝"
+						},
+						"PROGRESS": 0.4
+					}
+				],
+				"Introduction": {
+					"en": "A trudging, damage-resistant zombie who is immune to Primal Peashooter's knockback.",
+					"zh": "一个蹒跚而行，却很抗打的僵尸，可免疫原始豌豆射手的击退效果。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "immune to Primal Peashooter's knockback",
+							"zh": "免疫原始豌豆射手的击退"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Jurassic Bully is slow, stupid, and smells bad. But hey, at least he's punctual.",
+					"zh": "侏罗纪野人僵尸又慢又笨，还臭得要命。不过，至少他很守时。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dino_bully_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Stiff",
+							"zh": "迟钝"
+						},
+						"PROGRESS": 0.4
+					}
+				],
+				"Introduction": {
+					"en": "Jurassic Rockpuncher pummels plants with rocks tied to his hands.",
+					"zh": "侏罗纪打火石野人用绑在手上的石头猛击植物。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Damage",
+							"zh": "攻击"
+						},
+						"DESCRIPTION": {
+							"en": "crushes plants with rocks tied to his hands",
+							"zh": "用绑在手上的打火石砸击植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "immune to Primal Peashooter's knockback",
+							"zh": "免疫原始豌豆射手的击退"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Somebody tied rocks to Jurassic Rockpuncher's hands. Being unable to remove them (because he had rocks tied to his hands), he was left with no choice but to roll with it.",
+					"zh": "有人把石头绑在了侏罗纪野人的手上。由于无法取下这些石头（因为他的手上绑着石头），他别无选择，只能拎着石头到处跑。"
+				},
+				"DisplayOffset": {
+					"x": 0,
 					"y": 0
 				},
 				"DisplayScale": {
