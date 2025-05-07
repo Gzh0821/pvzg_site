@@ -2,7 +2,6 @@
 title: GE Patcher 使用教程(latest)
 icon: wrench
 pageInfo: false
-comment: false
 index: true
 order: 1
 ---

@@ -2,7 +2,6 @@
 title: Website Development Guide
 icon: laptop-code
 pageInfo: false
-comment: false
 index: true
 order: 5
 ---

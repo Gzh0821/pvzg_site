@@ -3,7 +3,6 @@ title: Level Files
 index: true
 icon: feather
 pageInfo: false
-comment: false
 order: 1
 ---
 

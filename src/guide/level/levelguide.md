@@ -3,7 +3,6 @@ title: 关卡文件
 index: true
 icon: file-pen
 pageInfo: false
-comment: false
 order: 1
 ---
 

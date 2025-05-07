@@ -2,7 +2,6 @@
 title: 常见问题FAQ
 icon: question
 pageInfo: false
-comment: false
 index: true
 order: 2
 ---
