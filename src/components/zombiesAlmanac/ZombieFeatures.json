@@ -213,6 +213,30 @@
     },
     {
       "NAME": {
+        "en": "Newspaper Zombie",
+        "zh": "读报僵尸"
+      },
+      "_CARDSPRITENAME": "modernnewspaper",
+      "CODENAME": "modern_newspaper",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(newspaper@ZombieAlmanac)",
+      "PROPS": "RTID(newspaper@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Sunday Edition Zombie",
+        "zh": "周刊僵尸"
+      },
+      "_CARDSPRITENAME": "modernnewspaperveteran",
+      "CODENAME": "newspaper_veteran",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(newspaper_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(newspaper_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Balloon Zombie",
         "zh": "气球僵尸"
       },
@@ -234,6 +258,30 @@
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(modern_allstar@ZombieAlmanac)",
       "PROPS": "RTID(modern_allstar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Super-Fan Imp",
+        "zh": "狂热粉丝小鬼"
+      },
+      "_CARDSPRITENAME": "modernsuperfan",
+      "CODENAME": "modern_superfanimp",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(modern_superfanimp@ZombieAlmanac)",
+      "PROPS": "RTID(modern_superfanimp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lunar Super-Fan Imp",
+        "zh": "新年狂热粉丝小鬼"
+      },
+      "_CARDSPRITENAME": "modernsuperfanLNY",
+      "CODENAME": "lunar_superfanimp",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(modern_superfanimp@ZombieProps)"
     },
     {
       "NAME": {
@@ -2965,8 +3013,11 @@
     "dino_gargantuar",
     "dino_bully",
     "dino_bully_veteran",
+    "modern_newspaper",
+    "newspaper_veteran",
     "modern_balloon",
     "modern_allstar",
+    "modern_superfanimp",
     "zomboni",
     "bobsled_team",
     "bobsled",

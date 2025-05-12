@@ -337,6 +337,43 @@
 		},
 		{
 			"aliases": [
+				"newspaper"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 460,
+				"EnragedDamageScale": 4,
+				"EnragedSpeedScale": 4,
+				"NewspaperHealth": 800,
+				"WavePointCost": 700,
+				"Weight": 4000
+			}
+		},
+		{
+			"aliases": [
+				"newspaper_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChooseToSpawnOnNonDeckRows": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 490,
+				"EnragedDamageScale": 5,
+				"EnragedSpeedScale": 4,
+				"NewspaperHealth": 1800,
+				"NewspaperBowlingLevel": 2,
+				"WavePointCost": 1200,
+				"Weight": 4000
+			}
+		},
+		{
+			"aliases": [
 				"modern_allstar"
 			],
 			"objclass": "ZombieProperties",
@@ -349,6 +386,24 @@
 				"RunningSpeedScale": 9,
 				"WavePointCost": 1500,
 				"Weight": 3500
+			}
+		},
+		{
+			"aliases": [
+				"modern_superfanimp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ExplosionDamage": 301,
+				"MinTriggerColumn": 0,
+				"MaxTriggerColumn": 2,
+				"CanBeKickedByAllstar": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 270,
+				"WavePointCost": 200,
+				"Weight": 3000
 			}
 		},
 		{
@@ -2432,6 +2487,8 @@
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 420,
+				"MoveSpeedMultiplierWhileJuggling": 2,
+				"RotateDuration": 2,
 				"WavePointCost": 450,
 				"Weight": 3500
 			}
