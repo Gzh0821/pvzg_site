@@ -18,6 +18,21 @@ pageInfo: false
 >
 > Если вам нравится этот веб-сайт и игры, вы можете собрать/пометить этот веб-сайт на складе [Github](https://github.com/Gzh0821/pvzg_site)!
 
+<script setup>
+    import { onMounted } from 'vue';
+    onMounted(() => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    })
+</script>
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7637695321442015"
+     data-ad-slot="7113006248"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>
+
 <div class="vp-card-container">
   <VPCard
     title="QQ Группа для общения"
