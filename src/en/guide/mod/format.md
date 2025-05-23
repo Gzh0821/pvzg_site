@@ -1,5 +1,5 @@
 ---
-title: Attribute Reference (latest)
+title: Properties Reference (latest)
 icon: file-invoice
 pageInfo: false
 index: true
@@ -17,7 +17,7 @@ order: 2
 > The following tutorial only works for versions `0.3.X`.
 
 > [!important]
-> In the tables, attributes in _italics_ are fields that are not recommended to be modified. Modifying them may cause the game to crash or bug out.
+> In the tables, properties in _italics_ are properties that you probably shouldn't modify. Modifying them may cause the game to crash or bug out.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -31,7 +31,7 @@ order: 2
 
 Below is the format of the plant JSON files, using Grapeshot as an example.
 
-Attributes with multilingual values cannot be deleted or have extra fields added. The format must be as follows:
+Properties with multilingual values cannot be deleted or have extra fields added. The format must be as follows:
 
 ```json
 {
@@ -73,7 +73,7 @@ The `aliases` array contains the plant's `CODENAME`, used to indicate the corres
 
 | Property              | Value/Content                                                                                                                                                     | Description                                              |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| _Elements_            | Contains multiple attribute tags:<br>- `SUNCOST`:Sun cost<br>- `RECHARGE`:Cooldown<br>- `DAMAGE`:Damage value (1800)<br>- `AREA`:Range (3x3)<br>- `FAMILY`:Family | Key attribute tags shown in Almanac                      |
+| _Elements_            | Contains multiple properties:<br>- `SUNCOST`:Sun cost<br>- `RECHARGE`:Cooldown<br>- `DAMAGE`:Damage value (1800)<br>- `AREA`:Range (3x3)<br>- `FAMILY`:Family | Key property  tags shown in Almanac                      |
 | **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                      | Multilingual description of plant function               |
 | _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                     | Special mechanism description                            |
 | **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                         | Multilingual, plant's personality lines                  |
@@ -82,7 +82,7 @@ The `aliases` array contains the plant's `CODENAME`, used to indicate the corres
 
 ### PlantProps.json
 
-The PlantProps.json file contains gameplay attributes of plants.
+The PlantProps.json file contains gameplay properties of plants.
 
 Each item in the `objects` array includes `aliases`, `objclass`, and `objdata`, just like in `PlantAlmanac.json`.
 
