@@ -199,8 +199,7 @@ export default hopeTheme({
     },
 
     icon: {
-      assets: ["fontawesome", "/assets/libs/font-awesome/css/all.min.css"],
-      prefix: "fa-solid fa-",
+      assets: "fontawesome-with-brands",
     },
 
     photoSwipe: false,

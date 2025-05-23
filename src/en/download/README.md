@@ -68,13 +68,13 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-## Windows platform
+## ::brands:windows:: Windows platform
 
 All historical versions can be downloaded from [GE Drive](https://drive.pvzge.com/)
 
 <template v-if="gameInfoData?.Download.Github">
 
-### Github <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+### Github ::brands:github::
 
 Download Link: <a :href="gameInfoData.Download.Github" target="_blank">click to enter</a>
 
@@ -82,7 +82,7 @@ Download Link: <a :href="gameInfoData.Download.Github" target="_blank">click to 
 
 <template v-if="gameInfoData?.Download.Storage">
 
-### Local Download <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+### Local Download ::cloud-arrow-down::
 
 Download Link: <a :href="gameInfoData.Download.Storage" target="_blank">click to enter</a>
 
@@ -90,15 +90,14 @@ Download Link: <a :href="gameInfoData.Download.Storage" target="_blank">click to
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-### Baidu Netdisk <Badge text="Only in Chinese" type="danger" />
-
+### Baidu Netdisk ::cloud::
 Download Link: <a :href="gameInfoData.Download.Baidu" target="_blank">click to enter</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-### 123Pan <Badge text="Only in Chinese" type="danger" />
+### 123Pan ::cloud::
 
 Download Link: <a :href="gameInfoData.Download.Pan123" target="_blank">click to enter</a>
 
@@ -106,17 +105,17 @@ Download Link: <a :href="gameInfoData.Download.Pan123" target="_blank">click to 
 
 <template v-if="gameInfoData?.Download.Quark">
 
-### Quark <Badge text="Only in Chinese" type="danger" />
+### Quark ::cloud::
 
 Download Link: <a :href="gameInfoData.Download.Quark" target="_blank">click to enter</a>
 
 </template>
 
-## Linux/Other platforms
+## ::brands:linux:: Linux/Other platforms
 
 > [!info]
 > To play on Linux and other systems with x86_64 (amd64) architecture, you can use Docker images to deploy the web version locally.
 
-### Docker Hub
+### Docker Hub ::brands:docker::
 
 Image address: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">click to enter</a>
