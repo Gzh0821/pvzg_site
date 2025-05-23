@@ -42,7 +42,7 @@ onMounted(() => {
 >
 > Для получения подробной информации о вышеуказанном соглашении и заявлении, пожалуйста, ознакомьтесь с [этим](../instructions/)
 
-Этот сайт предоставляет ссылку для скачивания только последней официальной версии<span v-if="gameInfoData?.Version">, Последняя версия игры - это {{ gameInfoData.Version }}</span>.
+<span v-if="gameInfoData?.Version">Последняя версия игры - это {{ gameInfoData.Version }}.</span>
 
 <span v-if="gameInfoData?.Name"> Название версии игры: {{ gameInfoData.Name }}</span>
 
@@ -68,9 +68,13 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
+## Платформа Windows
+
+Все исторические версии можно загрузить с [GE Drive](https://drive.pvzge.com/)
+
 <template v-if="gameInfoData?.Download.Github">
 
-## Github <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
+### Github <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
 
@@ -78,7 +82,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Storage">
 
-## Локальная загрузка <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
+### Локальная загрузка <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Storage">нажмите чтобы открыть</a>
 
@@ -86,7 +90,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-## Baidu Netdisk <Badge text="Только в Китае" type="danger" />
+### Baidu Netdisk <Badge text="Только в Китае" type="danger" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Baidu">нажмите чтобы открыть</a>
 
@@ -94,7 +98,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-## 123Pan <Badge text="Только в Китае" type="danger" />
+### 123Pan <Badge text="Только в Китае" type="danger" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Pan123">нажмите чтобы открыть</a>
 
@@ -102,8 +106,17 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Quark">
 
-## Quark <Badge text="Только в Китае" type="danger" />
+### Quark <Badge text="Только в Китае" type="danger" />
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Quark">нажмите чтобы открыть</a>
 
 </template>
+
+## Linux/Другие платформы
+
+> [!info]
+> Для игры на Linux и других системах с архитектурой x86_64 (amd64) можно использовать образы Docker для локального развертывания веб-версии.
+
+### Docker Hub
+
+Адрес образа: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">нажмите для входа</a>

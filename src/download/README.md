@@ -30,7 +30,7 @@ onMounted(() => {
 > [!important]
 > 下载游玩时的相关问题 FAQ 请查看[这里](../guide/FAQ.md)，系统要求和推荐配置请查看[这里](../guide/requirement.md)
 >
-> 本游戏的官网版本与QQ群/国内网盘版本使用了不同的打包方式，存档不会自动继承。
+> 本游戏的官网版本与 QQ 群/国内网盘版本使用了不同的打包方式，存档不会自动继承。
 
 > [!warning]
 > 请注意：本游戏仅供学习交流使用，不得用于商业用途。
@@ -68,15 +68,15 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-<template v-if="gameInfoData?.Download.Github">
-
 ## Windows 平台
 
 所有历史版本均可在 [GE Drive](https://drive.pvzge.com/) 中下载
 
+<template v-if="gameInfoData?.Download.Github">
+
 ### Github <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
 
-下载链接：<a :href="gameInfoData.Download.Github">点击进入</a>
+下载链接：<a :href="gameInfoData.Download.Github" target="_blank">点击进入</a>
 
 </template>
 
@@ -84,7 +84,7 @@ onMounted(() => {
 
 ### 本地下载 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
 
-下载链接：<a :href="gameInfoData.Download.Storage">点击进入</a>
+下载链接：<a :href="gameInfoData.Download.Storage" target="_blank">点击进入</a>
 
 </template>
 
@@ -92,15 +92,15 @@ onMounted(() => {
 
 ### 百度网盘
 
-下载链接：<a :href="gameInfoData.Download.Baidu">点击进入</a>
+下载链接：<a :href="gameInfoData.Download.Baidu" target="_blank">点击进入</a>
 
 </template>
 
-<template v-if="gameInfoData?.Download.Pan123">
+<template v-if="gameInfoData?.Download.Pan123" target="_blank">
 
 ### 123 网盘
 
-下载链接：<a :href="gameInfoData.Download.Pan123">点击进入</a>
+下载链接：<a :href="gameInfoData.Download.Pan123" target="_blank">点击进入</a>
 
 </template>
 
@@ -108,6 +108,15 @@ onMounted(() => {
 
 ### 夸克网盘
 
-下载链接：<a :href="gameInfoData.Download.Quark">点击进入</a>
+下载链接：<a :href="gameInfoData.Download.Quark" target="_blank">点击进入</a>
 
 </template>
+
+## Linux/其它平台
+
+> [!info]
+> 要在 x86_64(amd64)架构的 Linux 和其它系统上游玩，可以使用 Docker 镜像在本地部署 Web 版本。
+
+### Docker Hub
+
+镜像地址：<a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">点击进入</a>
