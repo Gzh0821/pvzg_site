@@ -42,7 +42,7 @@ onMounted(() => {
 >
 > 以上协议和声明的具体内容请查看[这里](../instructions/)
 
-本站只提供最新正式版本的下载链接<span v-if="gameInfoData?.Version">，当前最新的游戏版本为 {{ gameInfoData.Version }}</span>
+<span v-if="gameInfoData?.Version">当前最新的游戏版本为 {{ gameInfoData.Version }}</span>
 
 <span v-if="gameInfoData?.Name">该游戏版本名称: {{ gameInfoData.Name }}</span>
 
@@ -70,7 +70,11 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Github">
 
-## Github <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
+## Windows 平台
+
+所有历史版本均可在 [GE Drive](https://drive.pvzge.com/) 中下载
+
+### Github <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
 
 下载链接：<a :href="gameInfoData.Download.Github">点击进入</a>
 
@@ -78,7 +82,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Storage">
 
-## 本地下载 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
+### 本地下载 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
 
 下载链接：<a :href="gameInfoData.Download.Storage">点击进入</a>
 
@@ -86,7 +90,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-## 百度网盘
+### 百度网盘
 
 下载链接：<a :href="gameInfoData.Download.Baidu">点击进入</a>
 
@@ -94,7 +98,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-## 123 网盘
+### 123 网盘
 
 下载链接：<a :href="gameInfoData.Download.Pan123">点击进入</a>
 
@@ -102,7 +106,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Quark">
 
-## 夸克网盘
+### 夸克网盘
 
 下载链接：<a :href="gameInfoData.Download.Quark">点击进入</a>
 
