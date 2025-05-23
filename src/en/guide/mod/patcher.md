@@ -1,5 +1,5 @@
 ---
-title: GE Patcher Tutorial(latest)
+title: GE Patcher Tutorial (latest)
 icon: wrench
 pageInfo: false
 index: true
