@@ -17,6 +17,10 @@ Try PvZ2 Gardendless online in [here](https://play.pvzge.com/) !
 
 - Note: The version for online play may not be the latest version and may load slowly. For more related issues, please refer to the relevant instructions on the official website
 
+### Using Docker
+
+Deploy the game locally by using [Docker image](https://hub.docker.com/r/gaozih/pvzge)
+
 ## PvZ2 Gardendless 官方网站
 
 这是“PvZ2 Gardendless”官方网站的开源仓库。
@@ -29,7 +33,11 @@ Try PvZ2 Gardendless online in [here](https://play.pvzge.com/) !
 
 在 [这里](https://play.pvzge.com/) 在线游玩PvZ2 Gardendless!
 
-- 注意：在线游戏版本可能不是最新版本，且加载速度可能会比较慢，更多相关问题请参考官网相关说明
+- 注意：在线游戏版本可能非最新版本，且加载速度较慢，更多问题请参阅官网说明
+
+### 使用Docker
+
+使用 [Docker 镜像](https://hub.docker.com/r/gaozih/pvzge) 在本地部署游戏
 
 ---
 
