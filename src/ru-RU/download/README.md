@@ -68,13 +68,13 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-## Платформа Windows
+## ::brands:windows:: Платформа Windows
 
 Все исторические версии можно загрузить с [GE Drive](https://drive.pvzge.com/)
 
 <template v-if="gameInfoData?.Download.Github">
 
-### Github <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
+### Github ::brands:github::
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
 
@@ -82,7 +82,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Storage">
 
-### Локальная загрузка <Badge text="Не требует входа" type="info" /><Badge text="Высокая скорость" type="tip" /><Badge text="Доступен для всех" type="warning" />
+### Локальная загрузка ::cloud-arrow-down::
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Storage">нажмите чтобы открыть</a>
 
@@ -90,7 +90,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-### Baidu Netdisk <Badge text="Только в Китае" type="danger" />
+### Baidu Netdisk ::cloud::
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Baidu">нажмите чтобы открыть</a>
 
@@ -98,7 +98,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-### 123Pan <Badge text="Только в Китае" type="danger" />
+### 123Pan ::cloud::
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Pan123">нажмите чтобы открыть</a>
 
@@ -106,17 +106,17 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Quark">
 
-### Quark <Badge text="Только в Китае" type="danger" />
+### Quark ::cloud::
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Quark">нажмите чтобы открыть</a>
 
 </template>
 
-## Linux/Другие платформы
+## ::brands:linux:: Linux/Другие платформы
 
 > [!info]
 > Для игры на Linux и других системах с архитектурой x86_64 (amd64) можно использовать образы Docker для локального развертывания веб-версии.
 
-### Docker Hub
+### Docker Hub ::brands:docker::
 
 Адрес образа: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">нажмите для входа</a>

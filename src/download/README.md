@@ -68,13 +68,13 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-## Windows 平台
+## ::brands:windows:: Windows 平台
 
 所有历史版本均可在 [GE Drive](https://drive.pvzge.com/) 中下载
 
 <template v-if="gameInfoData?.Download.Github">
 
-### Github <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" /><Badge text="海外" type="warning" />
+### Github ::brands:github::
 
 下载链接：<a :href="gameInfoData.Download.Github" target="_blank">点击进入</a>
 
@@ -82,7 +82,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Storage">
 
-### 本地下载 <Badge text="无需登录" type="info" /><Badge text="高速" type="tip" />
+### 本地下载 ::cloud-arrow-down::
 
 下载链接：<a :href="gameInfoData.Download.Storage" target="_blank">点击进入</a>
 
@@ -90,7 +90,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-### 百度网盘
+### 百度网盘 ::cloud::
 
 下载链接：<a :href="gameInfoData.Download.Baidu" target="_blank">点击进入</a>
 
@@ -98,7 +98,7 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Pan123" target="_blank">
 
-### 123 网盘
+### 123 网盘 ::cloud::
 
 下载链接：<a :href="gameInfoData.Download.Pan123" target="_blank">点击进入</a>
 
@@ -106,17 +106,17 @@ onMounted(() => {
 
 <template v-if="gameInfoData?.Download.Quark">
 
-### 夸克网盘
+### 夸克网盘 ::cloud::
 
 下载链接：<a :href="gameInfoData.Download.Quark" target="_blank">点击进入</a>
 
 </template>
 
-## Linux/其它平台
+## ::brands:linux:: Linux/其它平台
 
 > [!info]
 > 要在 x86_64(amd64)架构的 Linux 和其它系统上游玩，可以使用 Docker 镜像在本地部署 Web 版本。
 
-### Docker Hub
+### Docker Hub ::brands:docker::
 
 镜像地址：<a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">点击进入</a>
