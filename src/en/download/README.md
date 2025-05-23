@@ -42,7 +42,7 @@ onMounted(() => {
 >
 > For the details of the above agreement and statement, please see [here](../instructions/)
 
-This site only provides the latest official version download link<span v-if="gameInfoData?.Version">, The latest game version is {{ gameInfoData.Version }}</span>.
+<span v-if="gameInfoData?.Version">The latest game version is {{ gameInfoData.Version }}.</span>
 
 <span v-if="gameInfoData?.Name">The game version name: {{ gameInfoData.Name }}</span>
 
@@ -68,42 +68,55 @@ This site only provides the latest official version download link<span v-if="gam
      data-full-width-responsive="true">
 </ins>
 
+## Windows platform
+
+All historical versions can be downloaded from [GE Drive](https://drive.pvzge.com/)
+
 <template v-if="gameInfoData?.Download.Github">
 
-## Github <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+### Github <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
 
-Download Link: <a :href="gameInfoData.Download.Github">click to enter</a>
+Download Link: <a :href="gameInfoData.Download.Github" target="_blank">click to enter</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Storage">
 
-## Local Download <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
+### Local Download <Badge text="No login required" type="info" /><Badge text="high-speed" type="tip" /><Badge text="global" type="warning" />
 
-Download Link: <a :href="gameInfoData.Download.Storage">click to enter</a>
+Download Link: <a :href="gameInfoData.Download.Storage" target="_blank">click to enter</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Baidu">
 
-## Baidu Netdisk <Badge text="Only in Chinese" type="danger" />
+### Baidu Netdisk <Badge text="Only in Chinese" type="danger" />
 
-Download Link: <a :href="gameInfoData.Download.Baidu">click to enter</a>
+Download Link: <a :href="gameInfoData.Download.Baidu" target="_blank">click to enter</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-## 123Pan <Badge text="Only in Chinese" type="danger" />
+### 123Pan <Badge text="Only in Chinese" type="danger" />
 
-Download Link: <a :href="gameInfoData.Download.Pan123">click to enter</a>
+Download Link: <a :href="gameInfoData.Download.Pan123" target="_blank">click to enter</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Quark">
 
-## Quark <Badge text="Only in Chinese" type="danger" />
+### Quark <Badge text="Only in Chinese" type="danger" />
 
-Download Link: <a :href="gameInfoData.Download.Quark">click to enter</a>
+Download Link: <a :href="gameInfoData.Download.Quark" target="_blank">click to enter</a>
 
 </template>
+
+## Linux/Other platforms
+
+> [!info]
+> To play on Linux and other systems with x86_64 (amd64) architecture, you can use Docker images to deploy the web version locally.
+
+### Docker Hub
+
+Image address: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">click to enter</a>
