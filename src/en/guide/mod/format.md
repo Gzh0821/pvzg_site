@@ -44,9 +44,9 @@ Attributes with multilingual values cannot be deleted or have extra fields added
 
 The PlantFeatures.json file contains the basic characteristics of plants.
 
-Each plant in the `PLANTS` array includes the following basic characteristics fields:
+Each plant in the `PLANTS` array includes the following properties:
 
-| Attribute          | Sample Content                            | Description                                                                                            |
+| Property           | Example Content                           | Description                                                                                            |
 | ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | **ID**             | 74                                        | Unique ID value of the plant in the game                                                               |
 | **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Multilingual name, `en` for English name, `zh` for Chinese name                                        |
