@@ -70,7 +70,7 @@ patches/
 
 The `features` directory contains `Features`, `Props`, and `Almanac` files for modifying plants, zombies, upgrades, the shop, etc.
 
-Files under the `levels` directory are used to replace levels. If you want to get the original levels, try to find similar ones in vanilla PvZ2 (extracting PvZ2 files are out of the scope of this guide).
+Files under the `levels` directory are used to replace levels. If you want to get the original levels, try to find similar ones in vanilla PvZ2 (extracting PvZ2 files is out of the scope of this guide).
 
 Anything you don't modify will default to the base-game properties.
 
