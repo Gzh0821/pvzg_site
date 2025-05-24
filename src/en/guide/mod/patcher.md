@@ -339,8 +339,9 @@ Props modification rules apply to `PlantProps` and `ZombieProps` files. Almanac 
 
 Each object in the `objects` array is merged into the original JSON after being matched by the `aliases` field, using the same rules as for the `Features` files.
 
-For any plant/zombie you want to modify, you must add an object to the `objects` array. That object must have an `aliases` property with the plant/zombie you want to modify's codename.
-For plants/zombies that you don't want to change, you don't need to do anything - it'll default to vanilla properties.
++For any plant/zombie you want to modify, you must add an object to the `objects` array. That object must have an `aliases` property with the plant/zombie you want to modify's codename.
++**Note:** Only the first element of the `aliases` array is used to match the plant/zombie for modification.
++For plants/zombies that you don't want to change, you don't need to do anything - it'll default to vanilla properties.
 
 Within a single object, `objdata` contains the gameplay properties or Almanac information of the plant/zombie. Only the properties that need to be modified should be added. Properties not added will default to vanilla properties.
 
