@@ -7,14 +7,11 @@ comment: false
 pageInfo: false
 ---
 
-We know that an excellent game development project cannot be separated from the support of the community.
+We know that an excellent game development project cannot be separated from the support of the community. We are very grateful to all users who have contributed to the project.
 
-We are very grateful to all users who have contributed to the project, whether it is helping to check the code, find problems, make suggestions, write documents, community management, participate in discussions, or share experiences.
-
-We welcome you to join our community and contribute to the development of "PvZ2 Gardendless". Thank you for your support for community building!
-
+Welcome to join our community and contribute to the development of "PvZ2 Gardendless". Thank you for your support for community building!
 > [!tip]
-> You can find ways to report bugs and comments in [Feedback](feedback.md).
+> You can find ways to report bugs in [Feedback](feedback.md).
 >
 > If you like this website and the game, you are welcome to bookmark/Star this website repository on [Github](https://github.com/Gzh0821/pvzg_site)!
 
