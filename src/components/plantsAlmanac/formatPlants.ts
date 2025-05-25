@@ -50,8 +50,12 @@ export function getPlantIdMap(i18nLanguage: string) {
 
 export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant {
     const codename = originPlant["CODENAME"];
-    const propsObjdata = plantProps[codename] || {};
-    const almanacObjdata = plantAlmanac[codename] || {};
+    const propsName = originPlant["PROPS"].match(/RTID\((.*?)@PlantProps\)/)?.[1];
+    const almanacName = originPlant["ALMANAC"].match(/RTID\((.*?)@PlantAlmanac\)/)?.[1];
+
+    const propsObjdata = plantProps[propsName] || plantProps[codename] || {};
+    const almanacObjdata = plantAlmanac[almanacName] || plantAlmanac[codename] || {};
+    
     const upperPropsObjdata = {};
     Object.keys(propsObjdata).forEach((key) => {
         upperPropsObjdata[key.toUpperCase()] = propsObjdata[key];

@@ -43,8 +43,12 @@ export function getZombieMap(i18nLanguage: string) {
 
 export function formatOriginZombie(originZombie: any, i18nLanguage: string): Zombie {
     const codename = originZombie["CODENAME"];
-    const propsObjdata = zombieProps[codename] || {};
-    const almanacObjdata = zombieAlmanac[codename] || {};
+    const propsName = originZombie["PROPS"].match(/RTID\((.*?)@ZombieProps\)/)?.[1];
+    const almanacName = originZombie["ALMANAC"].match(/RTID\((.*?)@ZombieAlmanac\)/)?.[1];
+
+    const propsObjdata = zombieProps[propsName] || zombieProps[codename] || {};
+    const almanacObjdata = zombieAlmanac[almanacName] || zombieAlmanac[codename] || {};
+    
     const upperPropsObjdata = {};
     Object.keys(propsObjdata).forEach((key) => {
         upperPropsObjdata[key.toUpperCase()] = propsObjdata[key];
