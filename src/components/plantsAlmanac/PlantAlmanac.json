@@ -1638,6 +1638,135 @@
 		},
 		{
 			"aliases": [
+				"nightshade"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 200
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Straight",
+							"zh": "直线"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Nightshades are shadow plants that smack zombies with slappy leaves. Hurls and regrow its leaves when powered by other Shadow plants.",
+					"zh": "暗影龙葵是一种暗影植物，能用叶子猛烈地拍击僵尸。当其他阴影植物为其提供能量时，它的叶子会喷射并重新生长。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "hurls and regrows leaves when powered",
+							"zh": "得到暗影能量时能重新长出叶片，并远程抛出"
+						}
+					}
+				],
+				"Chat": {
+					"en": "For Nightshade, smacking is a duty and a privilege. He comes from a long line of ardent smackers, and his family counts three kings, four ambassadors and a president as among those proudly slapped around.",
+					"zh": "对暗影龙葵来说，扇耳光是一份义务，也是一种特权。他的家族有三位国王、四位大使和一位总统，他们都曾以导出扇别人耳光为荣。"
+				},
+				"BriefIntroduction": {
+					"en": "Smacks zombies with slappy leaves",
+					"zh": "用叶子猛烈地拍击僵尸"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dusklobber"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 30
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Lobbed",
+							"zh": "抛物线"
+						}
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "3x3",
+							"zh": "3x3 范围"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Dusk Lobbers are shadow plants that lob explosive buds down the lane. When powered Dusk Lobbers can lob buds down three lane.",
+					"zh": "幽暮投手沿着本行投掷炸裂性花蕾，也属于暗影植物。得到暗影能量时会沿着三行投掷。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "lob buds down 3 lanes when powered",
+							"zh": "得到暗影能量时能沿着三行投掷花蕾"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Lobbing comes easily for Dusk Lobber, but that's only because she's had extensive training and really enjoys parabolas.",
+					"zh": "对幽暮投手来说，投掷很容易，但这只是因为她受过大量的训练，而且非常喜欢抛物线。"
+				},
+				"BriefIntroduction": {
+					"en": "Lobs explosive buds",
+					"zh": "投掷炸裂性花蕾"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"snowpea"
 			],
 			"objclass": "PlantAlmanacProperties",

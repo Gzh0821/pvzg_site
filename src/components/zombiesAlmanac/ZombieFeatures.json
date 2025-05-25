@@ -309,6 +309,18 @@
     },
     {
       "NAME": {
+        "en": "Zombot Historical-tron",
+        "zh": "历史重塑者"
+      },
+      "_CARDSPRITENAME": "modernzomboss",
+      "CODENAME": "zombossmech_modern1",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_modern1@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Mummy Zombie",
         "zh": "木乃伊僵尸"
       },
@@ -1585,7 +1597,8 @@
       "CODENAME": "zombossmech_future",
       "SUNCOST": 100,
       "SubZombieList": [
-        "zombossmech_future2"
+        "zombossmech_future2",
+        "zombossmech_modern1"
       ],
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(zombossmech_future@ZombieAlmanac)",

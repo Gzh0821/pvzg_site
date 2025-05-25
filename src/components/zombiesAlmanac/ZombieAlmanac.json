@@ -667,6 +667,114 @@
 		},
 		{
 			"aliases": [
+				"newspaper"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "The newspaper protects zombie, who is then enraged when it is destroyed.",
+					"zh": "受到报纸保护的僵尸，当报纸被毁坏时将会发飙。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特殊"
+						},
+						"DESCRIPTION": {
+							"en": "becomes a flighty zombie once the newspaper is destroyed",
+							"zh": "一旦报纸被毁，将会成为发了疯似的向前冲去"
+						}
+					}
+				],
+				"Chat": {
+					"en": "You can't really blame him for getting so upset; he was THIS close to finishing the crossword (23 down was \"Brains\").",
+					"zh": "难怪他总是不高兴，他就差一点就能完成填字游戏了（23 列是单词 “Brains”）。"
+				},
+				"DisplayOffset": {
+					"x": 30,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"newspaper_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "The heavy magazine protects zombie, who is then enraged when it is destroyed.",
+					"zh": "受到厚重杂志保护的僵尸，当报纸被毁坏时将会发飙。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特殊"
+						},
+						"DESCRIPTION": {
+							"en": "becomes a flighty zombie once the magazine is destroyed",
+							"zh": "一旦杂志被毁，将会成为发了疯似的向前冲去"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Sunday Edition Zombie REALLY loves the comics section, which is why his rage is so all-consuming when it is torn to tatters before he's finished reading it.",
+					"zh": "周刊僵尸非常喜欢杂志里的漫画，这就是他还没看完漫画就被撕成碎片时怒不可遏的原因。"
+				},
+				"DisplayOffset": {
+					"x": 50,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
 				"modern_allstar"
 			],
 			"objclass": "ZombieAlmanacProperties",
@@ -718,6 +826,50 @@
 				"Chat": {
 					"en": "All-Star Zombie is a third-round draft pick and shows a lot of promise, but come on, his salary demands are beyond ridiculous. Ten million brains per year? For FIFTY YEARS?",
 					"zh": "全明星僵尸通过了第三轮选秀，并且展现出了非凡的潜力。但是天啊，他提出的薪资简直是太夸张了。每年一千万脑子？而且持续整整 50 年？"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "imp",
+			"aliases": [
+				"modern_superfanimp"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Solid",
+							"zh": "略强"
+						},
+						"PROGRESS": 0.4
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Speedy",
+							"zh": "快速"
+						},
+						"PROGRESS": 0.85
+					}
+				],
+				"Introduction": {
+					"en": "An all-too-enthusiastic imp who explodes with rah-rah-rah fervor.",
+					"zh": "一个过于狂热的小鬼粉丝，能让内心的狂热彻底爆发出来。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Super-Fan Imp has season tickets, subscribes to the team newsletter, and is super pumped about exploding on contact with fans of the opposing team.",
+					"zh": "狂热粉丝小鬼买到了季票，订阅了球队资讯，与对方球迷一接触就会爆发，完全无法自控。"
 				},
 				"DisplayOffset": {
 					"x": 0,

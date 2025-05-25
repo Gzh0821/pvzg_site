@@ -20,6 +20,22 @@
 		},
 		{
 			"aliases": [
+				"dusklobber"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ThrowInterval": 2.85,
+				"ThrowIntervalAdditional": 0.15,
+				"PlantfoodProjectilesToFire": 4,
+				"Cooldown": 10,
+				"CooldownFrom": 0.5,
+				"SunCost": 150,
+				"Toughness": 300,
+				"Family": "Shadow"
+			}
+		},
+		{
+			"aliases": [
 				"sunflower"
 			],
 			"objclass": "PlantProperties",
@@ -62,22 +78,18 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
-				
 				"Cooldown": 20,
 				"CooldownFrom": 0.375,
 				"SunCost": 25,
 				"Toughness": 150,
-
 				"PlantBombExplosionRadius": 40,
 				"ZombieBombExplosionRadius": 80,
 				"PlantDamage": 500,
 				"ZombieDamage": 900,
-
 				"PlantBombExplosionRadiusPlantfood": 25,
 				"ZombieBombExplosionRadiusPlantfood": 80,
 				"PlantDamagePlantfood": 0,
 				"ZombieDamagePlantfood": 1250,
-
 				"Family": "Sun"
 			}
 		},
@@ -526,7 +538,7 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
-				"PlantfoodTime": 3,
+				"PlantfoodTime": 1,
 				"SunValue": 25,
 				"ProduceInterval": 23.5,
 				"ProduceIntervalAdditional": 1.5,
@@ -541,6 +553,27 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0,
 				"SunCost": 50,
+				"Toughness": 300,
+				"Family": "Shadow"
+			}
+		},
+		{
+			"aliases": [
+				"nightshade"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"LeafRespawnCooldown": 5,
+				"ShootInterval": 2.7,
+				"ShootIntervalAdditional": 0,
+				"ShadowPoweredDamageScale": 0.5,
+				"DetectDistanceNormal": 1.5,
+				"DetectDistanceShadow": 9,
+				"MaxProjectiles": 3,
+				"PlantfoodTime": 3,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 75,
 				"Toughness": 300,
 				"Family": "Shadow"
 			}
@@ -581,8 +614,7 @@
 				"SunCost": 125,
 				"Toughness": 300,
 				"Family": "Electricity",
-
-				"RedAttackStunDuration": 0.5,
+				"RedAttackStunDuration": 0.25,
 				"CallsElectricCurrant": true
 			}
 		},
@@ -1135,7 +1167,6 @@
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true,
-
 				"ChillDuration": 10,
 				"FreezeDuration": 0,
 				"ChillDurationPlantfood": 10,
@@ -1182,8 +1213,8 @@
 			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodChildrenCount": 3,
-				"Cooldown": 10,
-				"CooldownFrom": 1,
+				"Cooldown": 20,
+				"CooldownFrom": 0.75,
 				"SunCost": 50,
 				"Toughness": 300,
 				"Family": "Poison"
@@ -1248,7 +1279,6 @@
 				"SunCost": 200,
 				"Toughness": 300,
 				"Family": "Electricity",
-
 				"RedAttackStunDuration": 0.25,
 				"CallsElectricCurrant": true
 			}
@@ -1508,7 +1538,6 @@
 				"SunCost": 150,
 				"Toughness": 300,
 				"Family": "Electricity",
-
 				"CallsElectricCurrant": true
 			}
 		},
@@ -1786,7 +1815,6 @@
 				"SunCost": 75,
 				"Toughness": 2000,
 				"Family": "Defence",
-
 				"CallsElectricCurrant": true
 			}
 		},
@@ -2672,7 +2700,6 @@
 				"AttackCooldownStartAdditional": 0,
 				"AttackCooldownBetween": 12,
 				"AttackCooldownBetweenAdditional": 0,
-
 				"CallsElectricCurrant": true,
 				"RedAttackStunDuration": 1
 			}
