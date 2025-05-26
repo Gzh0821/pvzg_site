@@ -2,7 +2,7 @@
     <div class="plant-filter">
         <div class="search-input-group">
             <label for="plant-search">Search:</label>
-            <input id="plant-search" type="text" v-model="searchTerm" :placeholder @input="handleFilter" />
+            <input id="plant-search" type="text" v-model="searchTerm" :placeholder @input="handleFilter"/>
             <!-- <select v-model="selectedAttribute" @change="handleFilter">
             <option value="">所有植物</option>
             <option value="sun">向日葵类</option>
@@ -16,9 +16,9 @@
             </div> -->
             <template v-for="item in familyNameMap">
                 <div class="filter-family-option" :class="{ selected: selectedAttribute === item['en'] }"
-                    @click="selectAttribute(item['en'])">
+                     @click="selectAttribute(item['en'])">
                     <img :src="'/assets/wikicon/' + item['en'] + '_familyicon.webp'" :alt="item['en']"
-                        :class="item['en'] === selectedAttribute ? 'selected' : ''" />
+                         :class="item['en'] === selectedAttribute ? 'selected' : ''"/>
                 </div>
             </template>
         </div>
@@ -26,9 +26,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, watch, computed } from 'vue';
+import {ref, inject, computed} from 'vue';
 
-const props = defineProps<{ familyNameMap }>();
+const props = defineProps<{ familyNameMap: Record<string, any> }>();
 // 父组件传递的属性过滤事件
 const emits = defineEmits(['filterPlants']);
 
@@ -42,7 +42,7 @@ const selectAttribute = (attribute: string) => {
 };
 // 处理筛选逻辑
 const handleFilter = () => {
-    emits('filterPlants', { name: searchTerm.value, family: selectedAttribute.value });
+    emits('filterPlants', {name: searchTerm.value, family: selectedAttribute.value});
 };
 
 const placeholder = computed(() => {
@@ -99,7 +99,7 @@ const placeholder = computed(() => {
 }
 
 .filter-family-group p {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: medium;
 }
 
@@ -115,7 +115,7 @@ const placeholder = computed(() => {
 }
 
 .plant-filter input {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     color: black;
     padding: 10px 15px;
     width: 100%;
@@ -159,7 +159,7 @@ const placeholder = computed(() => {
 }
 
 .plant-filter label {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: x-large;
     color: #432b1a;
 }

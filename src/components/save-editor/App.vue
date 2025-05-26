@@ -10,20 +10,20 @@
         <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgeFontEN','pvzgFont'">
             <template #extra>
                 <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
-                    <a-button type="primary"> {{ t('upload save') }} </a-button>
+                    <a-button type="primary"> {{ t('upload save') }}</a-button>
                 </a-upload>
                 <a-button @click="newArchive">{{ t('new save') }}</a-button>
                 <a-button @click="clearArchive" danger>{{ t('clear save') }}</a-button>
             </template>
         </a-page-header>
         <a-layout-content v-if="Object.keys(archiveData).length" style="padding: 20px">
-            <a-alert v-if="isOldArchive" :message="t('old version warning')" type="warning" />
+            <a-alert v-if="isOldArchive" :message="t('old version warning')" type="warning"/>
             <a-form layout="vertical">
 
                 <a-form-item>
                     <a-flex justify="center">
                         <a-input :addon-before="t('save name')" v-model:value="archiveData.name"
-                            :placeholder="t('enter name')" />
+                                 :placeholder="t('enter name')"/>
                     </a-flex>
                 </a-form-item>
                 <!-- 基础资源 -->
@@ -32,17 +32,17 @@
                     <a-col :span="8">
                         <a-form-item>
                             <a-input-number :addon-before="t('worldKey')" v-model:value="archiveData.worldkey"
-                                :min="0" />
+                                            :min="0"/>
                         </a-form-item>
                     </a-col>
                     <a-col :span="8">
                         <a-form-item>
-                            <a-input-number :addon-before="t('gem')" v-model:value="archiveData.gem" :min="0" />
+                            <a-input-number :addon-before="t('gem')" v-model:value="archiveData.gem" :min="0"/>
                         </a-form-item>
                     </a-col>
                     <a-col :span="8">
                         <a-form-item>
-                            <a-input-number :addon-before="t('coin')" v-model:value="archiveData.coin" :min="0" />
+                            <a-input-number :addon-before="t('coin')" v-model:value="archiveData.coin" :min="0"/>
                         </a-form-item>
                     </a-col>
                 </a-row>
@@ -51,37 +51,41 @@
                 <a-form-item>
                     <a-flex justify="center">
                         <a-input-number :addon-before="t('plant id')" id="inputNumber" v-model:value="selectPlantValue"
-                            :min="0" />
+                                        :min="0"/>
                     </a-flex>
                     <a-flex v-if="plantMap[selectPlantValue]">
                         <a-row :gutter="16" align="middle">
                             <a-col :span="6">
                                 <img width="900px" alt="logo"
-                                    :src="'/assets/image/plants/plants_' + plantMap[selectPlantValue].codename + '_c.webp'" />
+                                     :src="'/assets/image/plants/plants_' + plantMap[selectPlantValue].codename + '_c.webp'"/>
                             </a-col>
                             <a-col :span="12">
                                 <p class="plant-title">{{
-                                    plantMap[selectPlantValue].name ? plantMap[selectPlantValue].name
-                                        : plantMap[selectPlantValue].enName
-                                }}</p>
+                                        plantMap[selectPlantValue].name ? plantMap[selectPlantValue].name
+                                            : plantMap[selectPlantValue].enName
+                                    }}</p>
                             </a-col>
                             <a-col :span="6">
                                 <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
                                     <a-flex gap="small" wrap="wrap" justify="center">
                                         <a-select v-model:value="archiveData.plantProps[selectPlantValue].progress"
-                                            style="width:100%">
+                                                  style="width:100%">
                                             <a-select-option :value="0">{{ t('locked') }}</a-select-option>
                                             <a-select-option :value="1">{{ t('available') }}</a-select-option>
                                             <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                         </a-select>
-                                        <a-button danger @click="removePlant(selectPlantValue)">{{ t('delete')
-                                            }}</a-button>
+                                        <a-button danger @click="removePlant(selectPlantValue)">{{
+                                                t('delete')
+                                            }}
+                                        </a-button>
                                     </a-flex>
                                 </template>
                                 <template v-else>
                                     <a-flex gap="small" wrap="wrap" justify="center">
-                                        <a-button type="primary" @click="addPlant(selectPlantValue)">{{ t('add')
-                                            }}</a-button>
+                                        <a-button type="primary" @click="addPlant(selectPlantValue)">{{
+                                                t('add')
+                                            }}
+                                        </a-button>
                                     </a-flex>
                                 </template>
                             </a-col>
@@ -102,29 +106,26 @@
 
                 <a-form-item></a-form-item>
                 <a-divider></a-divider>
-                <a-button type="primary" @click="saveArchive"> {{ t('save to local') }} </a-button>
+                <a-button type="primary" @click="saveArchive"> {{ t('save to local') }}</a-button>
             </a-form>
         </a-layout-content>
         <a-layout-content v-else>
-            <a-empty :description="t('empty description')" />
+            <a-empty :description="t('empty description')"/>
         </a-layout-content>
     </a-layout>
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, computed, inject } from 'vue'
-import { message, theme, ConfigProvider } from 'ant-design-vue'
-import { useI18n } from 'vue-i18n'
+import {ref, computed, inject} from 'vue'
+import {message, theme} from 'ant-design-vue'
+import {useI18n} from 'vue-i18n'
 import JSON5 from 'json5'
 
-import { getPlantIdMap } from '../plantsAlmanac/formatPlants.ts'
-import { useDarkMode } from "@vuepress/helper/client";
+import {getPlantIdMap} from '../plantsAlmanac/formatPlants'
 
 import i18nJson from './vue-i18n.json'
 
-import type { ArchiveData } from './types';
-
-const isDarkMode = useDarkMode();
+import type {ArchiveData} from './types';
 
 const i18nLanguage = inject('i18nLanguage', 'en');
 const plantMap = getPlantIdMap(i18nLanguage);
@@ -133,7 +134,7 @@ const plantMap = getPlantIdMap(i18nLanguage);
 const worldAmount = 12
 const gameVersion = '0.3.3'
 
-const { t, locale } = useI18n({
+const {t, locale} = useI18n({
     locale: i18nLanguage,
     fallbackLocale: 'en',
     messages: i18nJson
@@ -148,8 +149,8 @@ const defaultArchive = {
     coin: 0,
     plantProps: {},
     worldProps: {
-        ...Object.fromEntries(Array.from({ length: worldAmount }, (_, i) => [i, { unlocked: false, wmx: 0 }])),
-        ...{ currentWM: 0, worldChooserPos: 1 }
+        ...Object.fromEntries(Array.from({length: worldAmount}, (_, i) => [i, {unlocked: false, wmx: 0}])),
+        ...{currentWM: 0, worldChooserPos: 1}
     },
     version: gameVersion,
     // ...其他字段初始化
@@ -169,7 +170,7 @@ const handleUpload = file => {
             const data = JSON5.parse(e.target.result)
             // 合并用户数据和默认结构
             uploadVersion.value = data.version
-            archiveData.value = { ...defaultArchive, ...data }
+            archiveData.value = {...defaultArchive, ...data}
             // 保存其他字段
             otherData.value = Object.fromEntries(
                 Object.entries(data).filter(([key]) => !(key in defaultArchive))
@@ -185,7 +186,7 @@ const handleUpload = file => {
 
 // 新建存档
 const newArchive = () => {
-    archiveData.value = { ...defaultArchive }
+    archiveData.value = {...defaultArchive}
     uploadVersion.value = gameVersion
     otherData.value = {}
 }
@@ -204,9 +205,7 @@ const isOldArchive = computed(() => {
 
     if (major < currentMajor) return true;
     if (major === currentMajor && minor < currentMinor) return true;
-    if (major === currentMajor && minor === currentMinor && patch < currentPatch) return true;
-
-    return false;
+    return major === currentMajor && minor === currentMinor && patch < currentPatch;
 });
 
 // 植物操作
@@ -252,7 +251,7 @@ const saveArchive = () => {
 </script>
 <style scoped>
 p.plant-title {
-    font-family: 'pvzgFont';
+    font-family: 'pvzgFont',sans-serif;
     font-size: x-large;
 }
 </style>

@@ -1,8 +1,8 @@
-import type { Plant } from './types';
+import type {Plant} from './types';
 
-import plantAlmanacJson from './PlantAlmanac.json';
-import plantFeaturesJson from './PlantFeatures.json';
-import plantPropsJson from './PlantProps.json';
+import plantAlmanacJson from './jsons/PlantAlmanac.json';
+import plantFeaturesJson from './jsons/PlantFeatures.json';
+import plantPropsJson from './jsons/PlantProps.json';
 
 import i18nJson from './i18n.json';
 
@@ -41,6 +41,7 @@ export function getPlantMap(i18nLanguage: string) {
         return acc;
     }, {});
 }
+
 export function getPlantIdMap(i18nLanguage: string) {
     return plantFeaturesJson["PLANTS"].reduce((acc, plant) => {
         acc[plant["ID"]] = formatOriginPlant(plant, i18nLanguage);
@@ -55,7 +56,7 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
 
     const propsObjdata = plantProps[propsName] || plantProps[codename] || {};
     const almanacObjdata = plantAlmanac[almanacName] || plantAlmanac[codename] || {};
-    
+
     const upperPropsObjdata = {};
     Object.keys(propsObjdata).forEach((key) => {
         upperPropsObjdata[key.toUpperCase()] = propsObjdata[key];
@@ -80,7 +81,7 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
     if (almanacObjdata?.["Elements"]) {
         almanacObjdata["Elements"].forEach((element) => {
             // 找到对应的值
-            const { TYPE, SORT, VALUE } = element;
+            const {TYPE, SORT, VALUE} = element;
 
             let value;
             if (SORT && SORT[i18nLanguage]) {
@@ -92,8 +93,7 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
             } else if (TYPE == "FAMILY") {
                 value = familyNameMap[upperPropsObjdata[TYPE]][i18nLanguage];
                 res.enFamily = familyNameMap[upperPropsObjdata[TYPE]]['en'];
-            }
-            else {
+            } else {
                 value = upperPropsObjdata[TYPE]; // 只有 TYPE 时，从原始数据中查找
             }
             res.elements[TYPE] = value;
@@ -103,5 +103,5 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
         res.special = almanacObjdata["Special"]
     }
     return res;
-};
+}
 

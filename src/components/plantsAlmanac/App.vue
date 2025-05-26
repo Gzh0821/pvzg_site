@@ -4,28 +4,28 @@
             <div class="filter">
                 <h1 v-if="i18nLanguage == 'zh'">PvZ2 Gardendless 植物图鉴</h1>
                 <h1 v-else>PvZ2 Gardendless Plants Almanac</h1>
-                <PlantFilter @filterPlants="filterPlants" :familyNameMap />
+                <PlantFilter @filterPlants="filterPlants" :familyNameMap="familyNameMap"/>
             </div>
         </div>
         <div class="container">
             <div class="sidebar">
-                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" :plantMap />
+                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" :plantMap/>
             </div>
             <div class="content">
-                <PlantDetail v-if="selectedPlant" :keyMap :plant="selectedPlant" />
+                <PlantDetail v-if="selectedPlant" :keyMap :plant="selectedPlant"/>
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, inject } from 'vue';
+import {ref, inject} from 'vue';
 import PlantCatalog from './views/PlantCatalog.vue';
 import PlantDetail from './views/PlantDetail.vue';
 import PlantFilter from './views/PlantFilter.vue';
-import type { Plant, KeyMap } from './types';
+import type {Plant, KeyMap} from './types';
 
-import { getPlantMap, plantsOrder } from './formatPlants';
+import {getPlantMap, plantsOrder} from './formatPlants';
 import i18nJson from './i18n.json';
 
 // 中文转换
@@ -45,7 +45,7 @@ const selectPlant = (plant: Plant) => {
 };
 
 const filterPlants = (filter: { name: string; family: string }) => {
-    const { name, family } = filter;
+    const {name, family} = filter;
 
     filteredPlants.value = plants.value.filter(plant => {
         // 根据名称筛选
@@ -73,7 +73,7 @@ selectPlant(filteredPlants.value[0]);
 
 <style scoped>
 .filter h1 {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: xx-large;
     color: #432b1a;
 }
@@ -102,7 +102,6 @@ selectPlant(filteredPlants.value[0]);
 
 .sidebar {
     min-width: 20%;
-    background-color: #f8f9fa;
     max-height: 80vh;
     min-height: 10rem;
     overflow-y: auto;
@@ -118,7 +117,6 @@ selectPlant(filteredPlants.value[0]);
 
 .filter {
     min-width: 100%;
-    background-color: #f8f9fa;
     overflow-y: auto;
     border-radius: 20px;
     border: 5px solid #432b1a;

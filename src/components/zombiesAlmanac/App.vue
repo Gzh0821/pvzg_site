@@ -19,13 +19,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject } from 'vue';
+import {inject, ref} from 'vue';
 import ZombieCatalog from './views/ZombieCatalog.vue';
 import ZombieDetail from './views/ZombieDetail.vue';
 import ZombieFilter from './views/ZombieFilter.vue';
-import type { Zombie, KeyMap } from './types';
+import type {KeyMap, Zombie} from './types';
 
-import { getZombieMap, zombiesOrder } from './formatZombies';
+import {getZombieMap, zombiesOrder} from './formatZombies';
 import i18nJson from './i18n.json';
 
 // 中文转换
@@ -50,11 +50,9 @@ const filterZombies = (filter: { name: string }) => {
 
     filteredZombies.value = zombies.value.filter(singleZombie => {
         // 根据名称筛选
-        const matchName = singleZombie.name.toLowerCase().includes(name.toLowerCase()) ||
+      return singleZombie.name.toLowerCase().includes(name.toLowerCase()) ||
             singleZombie.enName.toLowerCase().includes(name.toLowerCase()) ||
             singleZombie.codename.toLowerCase().includes(name.toLowerCase());
-
-        return matchName;
     });
 };
 
@@ -70,7 +68,7 @@ selectZombie(filteredZombies.value[0]);
 
 <style scoped>
 .filter h1 {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC",sans-serif;
     font-size: xx-large;
     color: #432b1a;
 }

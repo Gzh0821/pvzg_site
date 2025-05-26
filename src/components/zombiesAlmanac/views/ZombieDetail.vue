@@ -77,13 +77,13 @@ p {
 }
 
 h3 {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
 }
 
 [data-theme="dark"] .details-container {
     background-color: #4d3b29;
     border: 2px solid rgba(206, 206, 214, 0.8);
-    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px;
+    box-shadow: rgba(206, 206, 214, 0.8) 0 0 12px;
 }
 
 .details-container {
@@ -94,7 +94,7 @@ h3 {
     border-radius: 10px;
     background-color: #aa6f42;
     border: 2px solid rgba(0, 0, 0, 0.8);
-    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0 0 12px;
 }
 
 /* .zombie-image-frame {
@@ -120,7 +120,7 @@ h3 {
 } */
 [data-theme="dark"] .zombie-image {
     background-color: #383011;
-    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px;
+    box-shadow: rgba(206, 206, 214, 0.8) 0 0 12px;
 }
 
 .zombie-image {
@@ -132,7 +132,7 @@ h3 {
     margin-right: 10px;
     background-color: #ede5c4;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0 0 12px;
     align-items: center;
 }
 
@@ -153,12 +153,12 @@ h3 {
     border: 3px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 12px
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 12px
 }
 
 [data-theme="dark"] .zombie-stats {
     background-color: #383011;
-    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px
+    box-shadow: rgba(206, 206, 214, 0.8) 0 0 12px
 }
 
 .zombie-stats {
@@ -168,13 +168,13 @@ h3 {
     border-radius: 10px;
     overflow: hidden;
     background-color: #ede5c4;
-    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px
+    box-shadow: rgba(0, 0, 0, 0.8) 0 0 12px
         /* 隐藏超出部分 */
 }
 
 [data-theme="dark"] .zombie-introduction {
     background-color: #383011;
-    box-shadow: rgba(206, 206, 214, 0.8) 0px 0px 12px
+    box-shadow: rgba(206, 206, 214, 0.8) 0 0 12px
 }
 
 .zombie-introduction {
@@ -213,7 +213,7 @@ table tbody td img {
 table tbody td.ability {
     color: #d8d8d8;
     font-weight: bold;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: large;
     border-radius: 7% 0 0 7%;
     text-shadow: 0px -1px 1px black, 0px 1px 1px black, 1px 0px 1px black, -1px 0px 0px black, 1px 2px 1px black;
@@ -222,7 +222,7 @@ table tbody td.ability {
 table tbody td.value {
     color: white;
     font-weight: bold;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: larger;
     border-radius: 0 7% 7% 0;
     text-shadow: 0px -1px 1px black, 0px 1px 1px black, 1px 0px 1px black, -1px 0px 0px black, 1px 2px 1px black;
@@ -240,14 +240,14 @@ table tbody td.value {
 
 p.description {
     margin: 0.2em 0;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC",sans-serif;
     font-size: x-large;
     color: #865600;
     line-height: 1.2em;
 }
 
 p.zombie-title {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC",sans-serif;
     font-size: xx-large;
     color: white;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 2px -2px 0 #000, -1px 1px 0 #000, 5px 3px 5px rgba(0, 0, 0, 0.2);

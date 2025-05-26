@@ -38,10 +38,10 @@
 <script lang="ts" setup>
 import type { Zombie } from '../types';
 import { ref } from 'vue';
-import { useDarkMode } from "@vuepress/helper/client";
+
 // 定义 props 类型
 const props = defineProps<{ zombies: Zombie[], zombieMap: { [key: string]: Zombie } }>();
-const isDarkMode = useDarkMode();
+
 // 定义 emits
 const emits = defineEmits(['selectZombie']);
 const visible = ref({});
@@ -91,7 +91,7 @@ const selectZombie = (zombie: Zombie, parZombie: Zombie | undefined = undefined)
 
 p {
     line-height: 1em;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: large;
     color: #432b1a;
 }

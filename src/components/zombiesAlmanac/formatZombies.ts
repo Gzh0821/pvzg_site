@@ -1,7 +1,7 @@
 import type { Zombie } from './types';
-import zombieAlmanacJson from './ZombieAlmanac.json';
-import zombieFeaturesJson from './ZombieFeatures.json';
-import zombiePropsJson from './ZombieProps.json';
+import zombieAlmanacJson from './jsons/ZombieAlmanac.json';
+import zombieFeaturesJson from './jsons/ZombieFeatures.json';
+import zombiePropsJson from './jsons/ZombieProps.json';
 import i18nJson from './i18n.json';
 
 /**

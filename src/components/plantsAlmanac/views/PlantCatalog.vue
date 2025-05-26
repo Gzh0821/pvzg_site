@@ -4,7 +4,7 @@
 
             <template v-if="plant.subPlants">
                 <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
-                    @open-change="visible[plant.codename] = $event" :overlayInnerStyle="{
+                           @open-change="visible[plant.codename] = $event" :overlayInnerStyle="{
                         border: $isDarkMode ? '3px solid #deb991' : '3px solid #432b1a',
                         backgroundColor: $isDarkMode ? '#383011' : '#ede5c4',
                         textAlign: 'center'
@@ -16,7 +16,7 @@
                                 :key="subPlant.id">
                                 <a-col @click="selectPlant(subPlant, plant)">
                                     <img :src="'/assets/image/plants/plants_' + subPlant.codename + '_c.webp'"
-                                        :alt="subPlant.name">
+                                         :alt="subPlant.name">
                                     <p>{{ subPlant.name }}</p>
                                 </a-col>
                             </template>
@@ -36,12 +36,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { Plant } from '../types';
-import { ref } from 'vue';
-import { useDarkMode } from "@vuepress/helper/client";
+import type {Plant} from '../types';
+import {ref} from 'vue';
 // 定义 props 类型
 const props = defineProps<{ plants: Plant[], plantMap: { [key: string]: Plant } }>();
-const isDarkMode = useDarkMode();
 
 // 定义 emits
 const emits = defineEmits(['selectPlant']);
@@ -93,7 +91,7 @@ const selectPlant = (plant: Plant, parPlant: Plant | undefined = undefined) => {
 
 p {
     line-height: 1em;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: large;
     color: #432b1a;
 }

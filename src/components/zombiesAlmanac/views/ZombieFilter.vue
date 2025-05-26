@@ -2,7 +2,7 @@
     <div class="zombie-filter">
         <div class="search-input-group">
             <label for="zombie-search">Search:</label>
-            <input id="zombie-search" type="text" v-model="searchTerm" :placeholder @input="handleFilter" />
+            <input id="zombie-search" type="text" v-model="searchTerm" :placeholder @input="handleFilter"/>
         </div>
         <!-- <div class="filter-family-group">
             <template v-for="item in familyNameMap">
@@ -17,9 +17,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, watch, computed } from 'vue';
+import {ref, inject, computed} from 'vue';
 
-const props = defineProps<{ familyNameMap }>();
+const props = defineProps<{ familyNameMap: Record<string, any>[] }>();
 // 父组件传递的属性过滤事件
 const emits = defineEmits(['filterZombies']);
 
@@ -33,7 +33,7 @@ const selectAttribute = (attribute: string) => {
 };
 // 处理筛选逻辑
 const handleFilter = () => {
-    emits('filterZombies', { name: searchTerm.value });
+    emits('filterZombies', {name: searchTerm.value});
 };
 
 const placeholder = computed(() => {
@@ -90,7 +90,7 @@ const placeholder = computed(() => {
 }
 
 .filter-family-group p {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: medium;
 }
 
@@ -106,7 +106,7 @@ const placeholder = computed(() => {
 }
 
 .zombie-filter input {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     color: black;
     padding: 10px 15px;
     width: 100%;
@@ -150,7 +150,7 @@ const placeholder = computed(() => {
 }
 
 .zombie-filter label {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC";
+    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
     font-size: x-large;
     color: #432b1a;
 }

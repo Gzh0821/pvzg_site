@@ -48,10 +48,8 @@
 import { message, theme } from 'ant-design-vue';
 import axios from 'axios';
 import { ref, onBeforeMount, computed, inject } from 'vue';
-import { useDarkMode } from "@vuepress/helper/client";
 
 const props = defineProps<{ authorGroup: string }>();
-const isDarkMode = useDarkMode();
 
 const levels: any = ref([]);
 const i18nLanguage = inject('i18nLanguage', 'en');
@@ -100,7 +98,7 @@ const fetchLevels = async (authorGroup: string) => {
                             url: `https://levelapi.pvzge.com/${authorGroup}/${author}/levels/${level.fileName}`,
                         });
                     }
-                };
+                }
             });
         }
     } catch (error) {
