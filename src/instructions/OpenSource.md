@@ -6,7 +6,7 @@ order: 3
 pageInfo: false
 comment: false
 ---
-## 《PvZ2 Gardendless》官方网站开源声明
+## 《PvZ2 Gardendless》网站开源声明
 
    Copyright [2024] [Gaozih/Gzh0821/LMYY and contributors]
 

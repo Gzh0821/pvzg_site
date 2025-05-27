@@ -12,7 +12,7 @@ comment: false
 
 本网站开放源代码协议如下：
 
-- [《PvZ2 Gardendless》官方网站开源声明](OpenSource.md)
+- [《PvZ2 Gardendless》网站开源声明](OpenSource.md)
 
 原版植物大战僵尸(Plants vs Zombies)系列游戏信息如下：
 

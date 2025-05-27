@@ -6,7 +6,7 @@ order: 3
 pageInfo: false
 comment: false
 ---
-## "PvZ2 Gardenless" Official Website Open Source Agreement
+## "PvZ2 Gardenless" Website Open Source Agreement
 
    Copyright [2024] [Gaozih/Gzh0821/LMYY and contributors]
 

@@ -30,7 +30,7 @@ onMounted(() => {
 > [!important]
 > For FAQs related to downloading and playing, please see [here](../guide/FAQ.md), and for system requirements and recommended configurations, please see [here](../guide/requirement.md)
 >
-> The official website version and QQ group/Chinese netdisk version of this game use different packaging methods, and the archive files will not be automatically inherited.
+> The website version and QQ group/Chinese netdisk version of this game use different packaging methods, and the archive files will not be automatically inherited.
 
 > [!warning]
 > Please note: The download link provided on this page is for learning and communication purposes only and may not be used for commercial purposes.

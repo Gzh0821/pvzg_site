@@ -28,7 +28,7 @@ comment: false
 
 - 禁止修改后分发
 
-您可以将本游戏以官方发布的原始形式转发或分享，但不得对游戏文件进行任何形式的修改、编辑或重新打包。
+您可以将本游戏以制作组发布的原始形式转发或分享，但不得对游戏文件进行任何形式的修改、编辑或重新打包。
 
 严禁将本游戏的任何部分（包括但不限于游戏本体、资源文件、代码等）进行修改后再分发、传播或发布。严禁以任何形式进行商业化的二次分发或销售。
 
@@ -58,7 +58,7 @@ Without written permission from the copyright owner, commercial use of this game
 
 - Modification and distribution prohibited
 
-You may forward or share this game in its original official form, but you may not modify, edit or repackage the game files in any way.
+You may forward or share this game in its original form, but you may not modify, edit or repackage the game files in any way.
 
 It is strictly prohibited to modify any part of this game (including but not limited to the game itself, resource files, code, etc.) before distribution, dissemination or release. Any form of commercial secondary distribution or sale is strictly prohibited.
 

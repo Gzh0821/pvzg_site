@@ -8,13 +8,13 @@ comment: false
 ---
 ## Player Submission Agreement for PvZ2 Gardendless
 
-Thank you for your enthusiasm and support for PvZ2: Gardendless! To better regulate player submissions of custom levels and mods, and to ensure the development team can use player-created content compliantly and safely, please carefully read and agree to the following terms. By uploading or submitting custom levels and mods through official channels such as the official website or Discord server, you acknowledge your full acceptance of this agreement.
+Thank you for your enthusiasm and support for PvZ2: Gardendless! To better regulate player submissions of custom levels and mods, and to ensure the development team can use player-created content compliantly and safely, please carefully read and agree to the following terms. By uploading or submitting custom levels and mods through channels such as the website or Discord server, you acknowledge your full acceptance of this agreement.
 
 ### 1. Authorization Statement
 
 You agree that any custom levels and mods uploaded or submitted to the PvZ2: Gardendless development team (hereinafter referred to as "the Team") automatically grant the Team and its partners the following rights:
 
-- To publicize, display, and promote your work in any form, including but not limited to showcasing it on the official website, official Discord server, social media, livestream platforms, and other channels.
+- To publicize, display, and promote your work in any form, including but not limited to showcasing it on the website, Discord server, social media, livestream platforms, and other channels.
 
 - To freely use, modify, distribute, and republish your levels and mods, provided such actions comply with applicable laws and regulations.
 

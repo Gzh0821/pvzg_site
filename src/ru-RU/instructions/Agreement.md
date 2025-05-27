@@ -28,7 +28,7 @@ Without written permission from the copyright owner, commercial use of this game
 
 - Modification and distribution prohibited
 
-You may forward or share this game in its original official form, but you may not modify, edit or repackage the game files in any way.
+You may forward or share this game in its original form, but you may not modify, edit or repackage the game files in any way.
 
 It is strictly prohibited to modify any part of this game (including but not limited to the game itself, resource files, code, etc.) before distribution, dissemination or release. Any form of commercial secondary distribution or sale is strictly prohibited.
 

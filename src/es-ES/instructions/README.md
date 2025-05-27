@@ -12,7 +12,7 @@ The usage, play-related agreements and statements of PvZ2 Gardendless are as fol
 
 The open source agreement of this website is as follows:
 
-- [Official website of "PvZ2 Gardendless" open source agreement](OpenSource.md)
+- ["PvZ2 Gardendless" open source agreement](OpenSource.md)
 
 The original Plants vs Zombies game information is as follows:
 

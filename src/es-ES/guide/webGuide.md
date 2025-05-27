@@ -6,7 +6,7 @@ index: true
 order: 5
 ---
 
-Welcome to participate in the "PvZ2 Gardendless" official website open source project! Whether you are a novice developer or an experienced developer, we encourage you to contribute code, submit issues or suggestions.
+Welcome to participate in the "PvZ2 Gardendless" website open source project! Whether you are a novice developer or an experienced developer, we encourage you to contribute code, submit issues or suggestions.
 Below is a brief development guide to help zero-based users quickly participate in this project.
 
 ## 1. Preparation

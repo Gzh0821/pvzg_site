@@ -18,7 +18,7 @@ order: 1
 
 GE Patcher is a tool used to modify Plants vs. Zombies 2 Gardendless game data, supporting custom modifications to plants, zombies, upgrades, the shop, levels, and more.
 
-The version provided on the official website has the GE Patcher tool built-in to the PC build.
+The version provided on the website has the GE Patcher tool built-in to the PC build.
 
 ## Prerequisites
 

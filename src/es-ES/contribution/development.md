@@ -7,7 +7,7 @@ index: true
 order: 3
 ---
 
-## Official website development of PvZ2 Gardenless
+## Website development of PvZ2 Gardenless
 
 This website is an open source project, using the `Apache 2.0` protocol, and we widely accept feedback from the open source community.
 

@@ -35,7 +35,7 @@ export default hopeTheme({
       // sidebar
       sidebar: enSidebar,
 
-      footer: "Official website of PvZ2 Gardendless: pvzge.com",
+      footer: "Website of PvZ2 Gardendless: pvzge.com",
       copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 
@@ -50,7 +50,7 @@ export default hopeTheme({
       // sidebar
       sidebar: ruSidebar,
 
-      footer: "Official website of PvZ2 Gardendless: pvzge.com",
+      footer: "Website of PvZ2 Gardendless: pvzge.com",
       copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 
@@ -65,7 +65,7 @@ export default hopeTheme({
       // sidebar
       sidebar: esSidebar,
 
-      footer: "Official website of PvZ2 Gardendless: pvzge.com",
+      footer: "Website of PvZ2 Gardendless: pvzge.com",
       copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 
@@ -81,7 +81,7 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "《PvZ2 Gardendless》官方网站: pvzge.com",
+      footer: "《PvZ2 Gardendless》网站: pvzge.com",
       copyright: "Copyright 2021-2025 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
       displayFooter: true,
 

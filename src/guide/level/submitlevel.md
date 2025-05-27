@@ -18,12 +18,12 @@ order: 2
 
 要加入Discord服务器，请查看[用户社区页面](/contribution/)。
 
-## 2.提交到官方关卡库
+## 2.提交到关卡库
 
-如果你的关卡完成度较高，你可以提交到官方关卡库。你需要拥有Github账号，并能够使用Git工具。
+如果你的关卡完成度较高，你可以提交到关卡库。你需要拥有Github账号，并能够使用Git工具。
 
 Git的使用方法可参考[官网开发指南](/guide/webGuide)，请注意，官网的Git仓库与关卡库并不相同。
 
-官方关卡库的地址为：[pvzg_level](https://github.com/Gzh0821/pvzg_level)。
+关卡库的地址为：[pvzg_level](https://github.com/Gzh0821/pvzg_level)。
 
-请参阅官方关卡库的Readme文件了解提交关卡的详细步骤。
+请参阅关卡库的Readme文件了解提交关卡的详细步骤。
