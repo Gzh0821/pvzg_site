@@ -7,7 +7,7 @@
         components: {}
     }"></a-config-provider>
     <a-layout>
-        <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgeFontEN','pvzgFont'">
+        <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgeFontEN','pvzgFont',sans-serif">
             <template #extra>
                 <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
                     <a-button type="primary"> {{ t('upload save') }}</a-button>
