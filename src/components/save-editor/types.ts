@@ -5,6 +5,7 @@ export interface ArchiveData {
     coin?: number;
     plantProps?: { [key: number]: PlantData };
     worldProps?: { currentWM: number, worldChooserPos: number, [key: number]: WorldData };
+    upgradeProps?: { [key: number]: any };
     version?: string;
     [key: string]: any;
 }
