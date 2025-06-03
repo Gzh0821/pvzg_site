@@ -30,8 +30,6 @@ next: false
 >
 > Редактор сохранений не будет модифицировать сохраненные данные, которые не отображаются ниже.
 
-<Editor />
-
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7637695321442015"
@@ -39,3 +37,5 @@ next: false
      data-ad-format="auto"
      data-full-width-responsive="true">
 </ins>
+
+<Editor />
