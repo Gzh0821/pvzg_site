@@ -1314,7 +1314,7 @@
 			"TYPE": [
 				"plant"
 			],
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -2974,6 +2974,63 @@
 			},
 			"ALMANAC": "RTID(dusklobber@PlantAlmanac)",
 			"PROPS": "RTID(dusklobber@PlantProps)"
+		},
+		{
+			"ID": 151,
+			"NAME": {
+				"en": "Grimrose",
+				"zh": "暗樱草"
+			},
+			"_CARDSPRITENAME": "grimrose",
+			"CODENAME": "grimrose",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "modern",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(grimrose@PlantAlmanac)",
+			"PROPS": "RTID(grimrose@PlantProps)"
+		},
+		{
+			"ID": 152,
+			"NAME": {
+				"en": "Gold Bloom",
+				"zh": "黄金蓓蕾"
+			},
+			"_CARDSPRITENAME": "goldbloom",
+			"CODENAME": "goldbloom",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(goldbloom@PlantAlmanac)",
+			"PROPS": "RTID(goldbloom@PlantProps)"
+		},
+		{
+			"ID": 153,
+			"NAME": {
+				"en": "Blooming Heart",
+				"zh": "心蕊"
+			},
+			"_CARDSPRITENAME": "bloomingheart",
+			"CODENAME": "bloominghearts",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(bloominghearts@PlantAlmanac)",
+			"PROPS": "RTID(bloominghearts@PlantProps)"
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -2989,6 +3046,7 @@
 		"bonkchoy",
 		"repeater",
 		"snowpea",
+		"squash",
 		"dandelion",
 		"pvine",
 		"kernelpult",
@@ -3002,7 +3060,6 @@
 		"threepeater",
 		"escaperoot",
 		"buttercup",
-		"squash",
 		"splitpea",
 		"chilibean",
 		"lightningreed",
@@ -3094,11 +3151,14 @@
 		"moonflower",
 		"nightshade",
 		"shadowshroom",
+		"bloominghearts",
 		"dusklobber",
-		"umbrellaleaf",
-		"pumpkin",
+		"grimrose",
+		"goldbloom",
 		"gloomvine",
 		"gloomshroom",
+		"umbrellaleaf",
+		"pumpkin",
 		"dragonbruit",
 		"cranjelly"
 	],
@@ -3124,6 +3184,7 @@
 		"repeater",
 		"twinsunflower",
 		"snowpea",
+		"squash",
 		"dandelion",
 		"pvine",
 		"kernelpult",
@@ -3144,7 +3205,6 @@
 		"peapod",
 		"melonpult",
 		"wintermelon",
-		"squash",
 		"jalapeno",
 		"imitater",
 		"electricpeashooter",
@@ -3254,12 +3314,15 @@
 		"nightshade",
 		"shadowshroom",
 		"dusklobber",
+		"grimrose",
+		"bloominghearts",
+		"goldbloom",
+		"gloomshroom",
+		"umbrellaleaf",
 		"pumpkin",
 		"gloomvine",
-		"gloomshroom",
 		"dragonbruit",
 		"dragonbabybruit",
-		"umbrellaleaf",
 		"cranjelly"
 	]
 }

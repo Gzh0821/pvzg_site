@@ -4,6 +4,57 @@
 	"objects": [
 		{
 			"aliases": [
+				"goldbloom"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "SUNPRODUCTION",
+						"VALUE": 375
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Gold Blooms produce a burst of sun all at once.",
+					"zh": "黄金蓓蕾一次性爆射出大量阳光。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用法"
+						},
+						"DESCRIPTION": {
+							"en": "single use, instant",
+							"zh": "一次性使用，立刻生效"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"Your botanists were so preoccupied with whether they could,\" says Gold Bloom, about nothing and to nobody in particular, \"they didn't stop to think if they should.\"",
+					"zh": "“你们的植物学家一心只想着能不能做到,”黄金蓓蕾说,他表示自己不针对任何人和事,“他们没有停下来思考是否有这么做的必要。”"
+				},
+				"BriefIntroduction": {
+					"en": "Produces a burst of sun all at once",
+					"zh": "一次性爆射出大量阳光"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"twinsunflower"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -1228,7 +1279,7 @@
 					{
 						"TYPE": "PLANTFOOD",
 						"SORT": {
-							"en": "Cabbage Count",
+							"en": "Full-screen Cabbage",
 							"zh": "全屏卷心菜"
 						}
 					},
@@ -1248,6 +1299,56 @@
 				"BriefIntroduction": {
 					"en": "Hurls cabbages over obstacles at the enemy",
 					"zh": "向僵尸投掷能跨越障碍物的卷心菜"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bloominghearts"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 40
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Lobbed",
+							"zh": "抛物线"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Blooming Hearts lob projectiles that infatuate zombies, causing their defences reduced.",
+					"zh": "心蕊向僵尸投掷子弹，使之防御力下降。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Blooming Heart loves zombies. She gets guff from her fellow plants over it, but she stands firm. She's into zombies and makes no apologies about it.",
+					"zh": "心蕊喜欢僵尸，并因此受到植物同伴的嘲笑，但她依然坚持己见。她对僵尸情有独钟，而且毫无愧疚。"
+				},
+				"BriefIntroduction": {
+					"en": "Lobs projectiles that infatuate zombies, causing their defences reduced",
+					"zh": "向僵尸投掷子弹，使之防御力下降"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -1629,6 +1730,64 @@
 				"BriefIntroduction": {
 					"en": "Gives suns and powers up adjacent shadow plants",
 					"zh": "生产阳光并强化周围的暗影植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"grimrose"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 600
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Lane",
+							"zh": "整行"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Grimroses are shadow plants that behave like landbound Tangle Kelps, dragging up to 3 zombies into the dirt.",
+					"zh": "暗樱草是一种暗影植物，她就像是陆地上的缠绕水草，最多可将 3 个僵尸拖入地下。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "powered Grimroses can drag 3 zombies before expiring",
+							"zh": "得到暗影能量时才能发挥拖下 3 只僵尸的能力"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"When you think about it, the proper place for a zombie is in the ground,\" says Grimrose. \"So, really, I'm just expediting the process.\"",
+					"zh": "“仔细想想，僵尸本就该待在地里，”暗樱草说， “所以实际上，我只是在加速这个过程罢了。”"
+				},
+				"BriefIntroduction": {
+					"en": "Drags zombies into the ground",
+					"zh": "把僵尸拖入地底"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -4506,7 +4665,7 @@
 					"zh": "“倭瓜”其实是他的艺名，他的本名其实是“特雷西”。"
 				},
 				"BriefIntroduction": {
-					"en": "Squashed zombies",
+					"en": "Squashes zombies",
 					"zh": "碾压一群僵尸"
 				},
 				"DisplayOffset": {

@@ -125,6 +125,29 @@
 		},
 		{
 			"aliases": [
+				"bloominghearts"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"DefenceRateList": [
+					0.9
+				],
+				"DefenceRateListPlantfood": [
+					0.8,
+					0.8,
+					0.8
+				],
+				"ThrowInterval": 2.85,
+				"ThrowIntervalAdditional": 0.15,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 150,
+				"Toughness": 300,
+				"Family": "Poison"
+			}
+		},
+		{
+			"aliases": [
 				"cabbagepult"
 			],
 			"objclass": "PlantProperties",
@@ -559,6 +582,25 @@
 		},
 		{
 			"aliases": [
+				"grimrose"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"MaxKills": 1,
+				"MaxKillsPowered": 3,
+				"KillCountPlantfood": 3,
+				"KillCountPerAttack": 1,
+				"SlapDamage": 600,
+				"ReloadInterval": 10,
+				"Cooldown": 20,
+				"CooldownFrom": 0.75,
+				"SunCost": 75,
+				"Toughness": 300,
+				"Family": "Shadow"
+			}
+		},
+		{
+			"aliases": [
 				"nightshade"
 			],
 			"objclass": "PlantProperties",
@@ -895,6 +937,22 @@
 				"SunCost": 150,
 				"Toughness": 300,
 				"Family": "Explosive",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true
+			}
+		},
+		{
+			"aliases": [
+				"goldbloom"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 75,
+				"CooldownFrom": 0.0005,
+				"SunCost": 0,
+				"Toughness": 300,
+				"Family": "Sun",
 				"ImmuneToBoomBox": true,
 				"ImmuneToIceblock": true
 			}
