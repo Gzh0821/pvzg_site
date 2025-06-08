@@ -187,7 +187,7 @@ const plantMap = getPlantIdMap(i18nLanguage);
 
 // 世界数量
 const worldAmount = 13
-const gameVersion = '0.3.4'
+const gameVersion = '0.3.5'
 
 
 // 升级特性
