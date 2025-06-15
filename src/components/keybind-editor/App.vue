@@ -66,7 +66,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, computed, reactive, inject, watch } from 'vue';
-import { message,theme } from 'ant-design-vue';
+import { message, theme } from 'ant-design-vue';
 import { DeleteOutlined, SaveOutlined, ReloadOutlined, UploadOutlined, FileAddOutlined, UndoOutlined } from '@ant-design/icons-vue';
 import { useI18n } from 'vue-i18n';
 
