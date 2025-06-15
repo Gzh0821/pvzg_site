@@ -7,7 +7,7 @@ pageInfo: false
 comment: false
 ---
 > [!important]
-> This website, Game and related content are not endorsed by or affiliated with EA.。
+> This website, Game and related content are not endorsed by or affiliated with EA.
 
 ## Plants vs. Zombies Original Version Information
 
