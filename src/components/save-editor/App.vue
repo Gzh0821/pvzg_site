@@ -179,6 +179,7 @@ import { getPlantIdMap } from '../plantsAlmanac/formatPlants'
 
 import upgradeJson from './UpgradeFeatures.json'
 import i18nJson from './vue-i18n.json'
+import versionJson from '../version.json'
 
 import type { ArchiveData } from './types';
 
@@ -187,7 +188,7 @@ const plantMap = getPlantIdMap(i18nLanguage);
 
 // 世界数量
 const worldAmount = 13
-const gameVersion = '0.3.5'
+const gameVersion = versionJson.gameVersion
 
 
 // 升级特性
