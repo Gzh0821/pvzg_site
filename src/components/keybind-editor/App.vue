@@ -71,13 +71,13 @@ import { DeleteOutlined, SaveOutlined, ReloadOutlined, UploadOutlined, FileAddOu
 import { useI18n } from 'vue-i18n';
 
 import initialKeybindsFromFile from './KeyBinds.json';
-import emptyKeybinds from './KeyBinds-empty.json';
 import versionJson from '../version.json';
 import i18nJson from './vue-i18n.json';
 
 const i18nLanguage = inject('i18nLanguage', 'en');
 const gameVersion = versionJson.gameVersion;
 
+const emptyKeybinds = initialKeybindsFromFile
 // Store the original uploaded file content if a file is uploaded
 const uploadedKeybindsContent = ref<Record<string, string> | null>(null);
 // Store the state of keybinds at the beginning of the session or after an upload/new
