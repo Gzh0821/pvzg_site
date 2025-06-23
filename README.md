@@ -2,7 +2,7 @@
 
 <img width=20% src="/src/.vuepress/public/pvz_logo-round.webp" alt="">
 
-# PvZ2 Gardendless Website
+# PvZ2 Gardendless
 
 **An endless garden requires an endless defense!**
 
@@ -13,6 +13,8 @@
 
 
 </div>
+
+### Info
 This is the open source repo of the website of "PvZ2 Gardendless".
 
 "PvZ2 Gardendless" is a rewritten "Plants vs Zombies 2" entirely using only Web technologies(including the cocos engine)!
