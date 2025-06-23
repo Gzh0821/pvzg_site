@@ -9,8 +9,9 @@
 ![](https://img.shields.io/badge/author-Gaozih-%2366ccff)
 ![](https://img.shields.io/github/license/Gzh0821/pvzg_site)
 ![](https://img.shields.io/github/actions/workflow/status/Gzh0821/pvzg_site/pages%2Fpages-build-deployment)
+![](https://img.shields.io/docker/pulls/gaozih/pvzge)
+![](https://img.shields.io/discord/1265377295846346803?label=discord)
 ![](https://img.shields.io/github/stars/Gzh0821/pvzg_site)
-
 
 </div>
 
