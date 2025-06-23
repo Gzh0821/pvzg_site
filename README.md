@@ -1,10 +1,18 @@
+<div align="center">
+
+<img width=20% src="/src/.vuepress/public/pvz_logo-round.webp" alt="">
+
 # PvZ2 Gardendless Website
+
+**An endless garden requires an endless defense!**
 
 ![](https://img.shields.io/badge/author-Gaozih-%2366ccff)
 ![](https://img.shields.io/github/license/Gzh0821/pvzg_site)
 ![](https://img.shields.io/github/actions/workflow/status/Gzh0821/pvzg_site/pages%2Fpages-build-deployment)
 ![](https://img.shields.io/github/stars/Gzh0821/pvzg_site)
 
+
+</div>
 This is the open source repo of the website of "PvZ2 Gardendless".
 
 "PvZ2 Gardendless" is a rewritten "Plants vs Zombies 2" entirely using only Web technologies(including the cocos engine)!
