@@ -14,6 +14,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -30,6 +31,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 150,
+				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Shadow"
 			}
@@ -49,6 +51,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Sun"
 			}
@@ -68,6 +71,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0,
 				"SunCost": 75,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Sun"
 			}
@@ -81,6 +85,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.375,
 				"SunCost": 25,
+				"BeghouledCost": 500,
 				"Toughness": 150,
 				"PlantBombExplosionRadius": 40,
 				"ZombieBombExplosionRadius": 80,
@@ -103,6 +108,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 4000,
 				"Family": "Defence"
 			}
@@ -119,6 +125,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 25,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive"
 			}
@@ -137,11 +144,13 @@
 					0.8,
 					0.8
 				],
+				"ImmuneToBoomBox": true,
 				"ThrowInterval": 2.85,
 				"ThrowIntervalAdditional": 0.15,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Poison"
 			}
@@ -157,6 +166,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Lobber"
 			}
@@ -174,6 +184,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 175,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Sharp"
 			}
@@ -189,6 +200,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 0,
+				"BeghouledCost": 1000,
 				"Toughness": 3.14159,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
@@ -210,6 +222,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Melee"
 			}
@@ -226,6 +239,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -243,6 +257,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 450,
+				"BeghouledCost": 4000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -261,6 +276,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 25,
+				"BeghouledCost": 500,
 				"Toughness": 300,
 				"Family": "Poison"
 			}
@@ -282,6 +298,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 500,
 				"Toughness": 300,
 				"Family": "Poison"
 			}
@@ -298,6 +315,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow",
 				"ImmuneToIceblock": true
@@ -314,6 +332,7 @@
 				"Cooldown": 30,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 2000,
 				"Toughness": 4000,
 				"Family": "Defence"
 			}
@@ -330,6 +349,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -346,6 +366,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Nope"
 			}
@@ -364,6 +385,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 175,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
@@ -391,6 +413,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 300,
+				"BeghouledCost": 4000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -409,6 +432,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 175,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -425,6 +449,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -441,6 +466,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 250,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Sharp"
 			}
@@ -457,6 +483,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -472,6 +499,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 500,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -486,6 +514,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 25,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Nope"
 			}
@@ -516,6 +545,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0,
 				"SunCost": 25,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Sun"
 			}
@@ -535,6 +565,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Sun"
 			}
@@ -551,6 +582,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 200,
+				"BeghouledCost": 3000,
 				"Toughness": 350,
 				"Family": "Shadow"
 			}
@@ -576,6 +608,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0,
 				"SunCost": 50,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Shadow"
 			}
@@ -595,6 +628,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Shadow"
 			}
@@ -616,6 +650,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Shadow"
 			}
@@ -633,6 +668,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 150,
+				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
@@ -654,6 +690,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Electricity",
 				"RedAttackStunDuration": 0.25,
@@ -672,6 +709,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 100,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Lobber"
 			}
@@ -689,6 +727,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 250,
+				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
@@ -715,6 +754,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow"
 			}
@@ -728,6 +768,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Defence"
 			}
@@ -743,6 +784,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 325,
+				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Lobber"
 			}
@@ -758,6 +800,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 500,
+				"BeghouledCost": 5000,
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
@@ -774,6 +817,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 500,
 				"Toughness": 300,
 				"Family": "Slow"
 			}
@@ -794,6 +838,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Sharp"
 			}
@@ -815,6 +860,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 250,
+				"BeghouledCost": 1500,
 				"Toughness": 900,
 				"Family": "Sharp"
 			}
@@ -836,6 +882,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 150,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Melee"
 			}
@@ -857,6 +904,7 @@
 				"Cooldown": 30,
 				"CooldownFrom": 0.5,
 				"SunCost": 300,
+				"BeghouledCost": 4000,
 				"Toughness": 700,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
@@ -872,6 +920,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 75,
+				"BeghouledCost": 2000,
 				"Toughness": 4000,
 				"Family": "Defence"
 			}
@@ -891,6 +940,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 25,
+				"BeghouledCost": 1000,
 				"Toughness": 900,
 				"Family": "Slow"
 			}
@@ -905,6 +955,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 500,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Lobber"
 			}
@@ -919,6 +970,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 500,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
@@ -935,6 +987,7 @@
 				"Cooldown": 35,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive",
 				"ImmuneToBoomBox": true,
@@ -951,6 +1004,7 @@
 				"Cooldown": 75,
 				"CooldownFrom": 0.0005,
 				"SunCost": 0,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Sun",
 				"ImmuneToBoomBox": true,
@@ -970,6 +1024,7 @@
 				"Cooldown": 35,
 				"CooldownFrom": 1,
 				"SunCost": 225,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive",
 				"ImmuneToIceblock": true
@@ -987,6 +1042,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow",
 				"ImmuneToIceblock": true
@@ -1004,6 +1060,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Shadow"
 			}
@@ -1024,6 +1081,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 175,
+				"BeghouledCost": 2000,
 				"Toughness": 2000,
 				"Family": "Peashooter",
 				"ImmuneToIceblock": true,
@@ -1052,6 +1110,7 @@
 				"Cooldown": 35,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true
@@ -1070,6 +1129,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 300,
 				"Toughness": 150,
 				"Family": "Poison"
 			}
@@ -1087,6 +1147,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 2000,
 				"Toughness": 250,
 				"Family": "Shadow"
 			}
@@ -1105,6 +1166,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 100,
+				"BeghouledCost": 3000,
 				"Toughness": 4000,
 				"Family": "Poison"
 			}
@@ -1121,6 +1183,7 @@
 				"Cooldown": 25,
 				"CooldownFrom": 0.6,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive"
 			}
@@ -1141,8 +1204,26 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 175,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Sharp"
+			}
+		},
+		{
+			"aliases": [
+				"shrinkingviolet"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ShrinkTime": 1.5,
+				"DamageMultiplier": 2,
+				"SpeedScale": 0.75,
+				"Cooldown": 15,
+				"CooldownFrom": 0.3333,
+				"SunCost": 50,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Magic"
 			}
 		},
 		{
@@ -1156,6 +1237,7 @@
 				"Cooldown": 60,
 				"CooldownFrom": 1,
 				"SunCost": 175,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Nope"
 			}
@@ -1170,6 +1252,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 400,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Lobber",
 				"ImmuneToIceblock": true
@@ -1187,6 +1270,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -1204,6 +1288,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true
@@ -1222,6 +1307,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 225,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true,
@@ -1243,6 +1329,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 450,
+				"BeghouledCost": 4000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -1260,6 +1347,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -1274,6 +1362,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 50,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Poison"
 			}
@@ -1288,6 +1377,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 8000,
 				"Family": "Defence"
 			}
@@ -1303,6 +1393,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 1,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow",
 				"ImmuneToIceblock": true
@@ -1319,6 +1410,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 500,
 				"Toughness": 300,
 				"Family": "Slow"
 			}
@@ -1335,6 +1427,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Electricity",
 				"RedAttackStunDuration": 0.25,
@@ -1352,6 +1445,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Melee"
 			}
@@ -1370,6 +1464,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 250,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Shadow"
 			}
@@ -1395,6 +1490,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 50,
+				"BeghouledCost": 500,
 				"Toughness": 300,
 				"Family": "Electricity"
 			}
@@ -1411,6 +1507,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 1,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 1200,
 				"Family": "Melee"
 			}
@@ -1426,6 +1523,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow"
 			}
@@ -1442,6 +1540,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Melee"
 			}
@@ -1458,6 +1557,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 2000,
 				"Toughness": 3000,
 				"Family": "Explosive"
 			}
@@ -1474,6 +1574,7 @@
 				"Cooldown": 35,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive",
 				"ImmuneToIceblock": true
@@ -1488,6 +1589,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Sun"
 			}
@@ -1505,6 +1607,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Defence"
 			}
@@ -1524,6 +1627,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 225,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
@@ -1547,6 +1651,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 0.75,
 				"SunCost": 275,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -1562,6 +1667,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 1,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 1500,
 				"Family": "Defence"
 			}
@@ -1576,6 +1682,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 50,
 				"Family": "Magic"
 			}
@@ -1594,6 +1701,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.001,
 				"SunCost": 150,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Electricity",
 				"CallsElectricCurrant": true
@@ -1610,6 +1718,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive"
 			}
@@ -1624,6 +1733,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0,
 				"SunCost": 0,
+				"BeghouledCost": 0,
 				"Toughness": 30000,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -1640,6 +1750,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 50,
 				"Family": "Shadow"
 			}
@@ -1656,6 +1767,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 0.667,
 				"SunCost": 100,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Slow"
 			}
@@ -1670,6 +1782,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.75,
 				"SunCost": 50,
+				"BeghouledCost": 500,
 				"Toughness": 2000,
 				"Family": "Defence"
 			}
@@ -1685,6 +1798,7 @@
 				"Cooldown": 25,
 				"CooldownFrom": 0.6,
 				"SunCost": 25,
+				"BeghouledCost": 1000,
 				"Toughness": 2000,
 				"Family": "Electricity",
 				"ImmuneToIceblock": true
@@ -1702,6 +1816,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 350,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Electricity"
 			}
@@ -1719,6 +1834,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Sharp"
 			}
@@ -1735,6 +1851,7 @@
 				"Cooldown": 25,
 				"CooldownFrom": 0.8,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Sun",
 				"ImmuneToIceblock": true
@@ -1759,6 +1876,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.8,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -1783,6 +1901,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.8,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -1807,6 +1926,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.8,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -1831,6 +1951,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.8,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -1855,6 +1976,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.8,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -1871,6 +1993,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 0.667,
 				"SunCost": 75,
+				"BeghouledCost": 1500,
 				"Toughness": 2000,
 				"Family": "Defence",
 				"CallsElectricCurrant": true
@@ -1895,6 +2018,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.8,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -1915,6 +2039,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow"
 			}
@@ -1934,6 +2059,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
@@ -1959,6 +2085,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive",
 				"ImmuneToIceblock": true,
@@ -1984,6 +2111,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Sun"
 			}
@@ -2003,6 +2131,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -2022,6 +2151,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
@@ -2052,6 +2182,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Magic"
 			}
@@ -2072,6 +2203,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Poison"
 			}
@@ -2089,6 +2221,7 @@
 				"Cooldown": 8,
 				"CooldownFrom": 1.25,
 				"SunCost": 250,
+				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Lobber"
 			}
@@ -2111,6 +2244,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -2127,6 +2261,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Peashooter"
 			}
@@ -2141,6 +2276,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 50,
 				"Family": "Sun"
 			}
@@ -2160,6 +2296,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1500,
 				"Toughness": 4000,
 				"Family": "Defence"
 			}
@@ -2177,6 +2314,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 0,
 				"Toughness": 1,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -2195,6 +2333,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 0,
 				"Toughness": 1,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -2213,6 +2352,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 0,
 				"Toughness": 1,
 				"Family": "Nope",
 				"ImmuneToIceblock": true
@@ -2228,6 +2368,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 25,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Melee",
 				"MaxDraggedZombieCount": 1,
@@ -2245,6 +2386,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Peashooter",
 				"StartingHeight": 0,
@@ -2262,6 +2404,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 30,
@@ -2277,6 +2420,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 30,
@@ -2292,6 +2436,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 30,
@@ -2307,6 +2452,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 30,
@@ -2322,6 +2468,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
+				"BeghouledCost": 1000,
 				"Toughness": 50,
 				"Family": "Melee",
 				"ShootInterval": 1.35,
@@ -2340,6 +2487,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
@@ -2356,6 +2504,7 @@
 				"Cooldown": 30,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
@@ -2372,6 +2521,7 @@
 				"Cooldown": 30,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
@@ -2388,6 +2538,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
@@ -2404,6 +2555,7 @@
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 30,
@@ -2419,6 +2571,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 250,
+				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
 				"StartingHeight": 0,
@@ -2435,6 +2588,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 0.6667,
 				"SunCost": 75,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Fire",
 				"GhostDamage": 30,
@@ -2455,30 +2609,47 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 150,
+				"BeghouledCost": 1000,
 				"Toughness": 4000,
 				"Family": "Defence",
 				"PlantFoodDurationSeconds": 6,
-				"AttractExcludeList": [
-					"west_bull",
-					"west_bull_veteran",
-					"pirate_barrel",
-					"birthday_barrel",
-					"barrelroller",
-					"pirate_captain_parrot",
-					"cannon",
-					"future_jetpack",
-					"future_jetpack_veteran",
-					"future_jetpack_disco",
-					"hero_barrel",
-					"bighead_barrel",
-					"sleighcart",
-					"catapult",
-					"roman_ballista"
-				],
 				"PlantfoodAttractWidth": 4,
 				"NormalAttractWidth": 2,
 				"LaneChangeTime": 0.6,
-				"TimeBetweenLaneChanges": 5
+				"TimeBetweenLaneChanges": 5,
+				"AttractsEveryFrame": false
+			}
+		},
+		{
+			"aliases": [
+				"hotdate"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"FlameDamage": 1000,
+				"FlameDuration": 5,
+				"Cooldown": 25,
+				"CooldownFrom": 1,
+				"SunCost": 175,
+				"BeghouledCost": 1500,
+				"Toughness": 2000,
+				"Family": "Fire",
+				"PlantFoodDurationSeconds": 6,
+				"PlantfoodAttractWidth": 4,
+				"NormalAttractWidth": 2,
+				"LaneChangeTime": 0.6,
+				"TimeBetweenLaneChanges": 5,
+				"ImmuneToIceblock": true,
+				"WarmingRadius": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 6,
+					"GridItemDamage": 200
+				},
+				"WarmingRadiusPlantfood": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 1.5,
+					"GridItemDamage": 100
+				}
 			}
 		},
 		{
@@ -2492,13 +2663,14 @@
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
-					"PulseCooldown": 6,
-					"GridItemDamage": 200
+					"PulseCooldown": 3,
+					"GridItemDamage": 300
 				}
 			}
 		},
@@ -2511,6 +2683,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 0,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
@@ -2526,6 +2699,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 25,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow",
 				"DetectDistance": 1,
@@ -2543,6 +2717,7 @@
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
 				"SunCost": 50,
+				"BeghouledCost": 0,
 				"Toughness": 300,
 				"Family": "Nope",
 				"SunCostIncrement": 25
@@ -2559,6 +2734,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 175,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Lobber"
 			}
@@ -2573,6 +2749,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 1,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Defence",
 				"StabDamage": 10,
@@ -2589,6 +2766,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 200,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Sun",
 				"TongueDistance": 3.5,
@@ -2613,6 +2791,7 @@
 				"Cooldown": 15,
 				"CooldownFrom": 0.667,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
@@ -2641,6 +2820,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Melee",
 				"Damage": 15,
@@ -2661,6 +2841,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 400,
+				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Explosive",
 				"GrowTime0": 7.5,
@@ -2681,6 +2862,7 @@
 				"Cooldown": 60,
 				"CooldownFrom": 1,
 				"SunCost": 75,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Nope",
 				"WarpTime": 5
@@ -2695,6 +2877,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Melee"
 			}
@@ -2712,6 +2895,7 @@
 				"Cooldown": 8,
 				"CooldownFrom": 1,
 				"SunCost": 0,
+				"BeghouledCost": 300,
 				"Toughness": 150,
 				"Family": "Poison",
 				"FadeSpeedMultInWater": 0.5
@@ -2726,6 +2910,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 50,
+				"BeghouledCost": 1000,
 				"Toughness": 900,
 				"Family": "Poison",
 				"ReceivesDamageWhenEaten": 150,
@@ -2745,6 +2930,7 @@
 				"Cooldown": 45,
 				"CooldownFrom": 0.3333,
 				"SunCost": 150,
+				"BeghouledCost": 4500,
 				"Toughness": 300,
 				"Family": "Electricity",
 				"PlantFoodCloudSpeed": 10,
@@ -2771,6 +2957,7 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Poison",
 				"ShootInterval": 2.85,
@@ -2786,6 +2973,7 @@
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 100,
+				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Magic",
 				"HealthReturns": 0.5

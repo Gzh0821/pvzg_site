@@ -250,6 +250,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -310,6 +311,32 @@
 				"Weight": 3000,
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"summer_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)",
+				"HeatInterval": 1
 			}
 		},
 		{
@@ -375,11 +402,29 @@
 		},
 		{
 			"aliases": [
+				"beghouled_newspaper"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 325,
+				"EnragedDamageScale": 4,
+				"EnragedSpeedScale": 4,
+				"NewspaperHealth": 600,
+				"WavePointCost": 700,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"newspaper"
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"ChooseToSpawnOnNonDeckRows": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -403,11 +448,10 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 490,
-				"EnragedDamageScale": 5,
+				"Toughness": 460,
+				"EnragedDamageScale": 4,
 				"EnragedSpeedScale": 4,
-				"NewspaperHealth": 1800,
-				"NewspaperBowlingLevel": 2,
+				"NewspaperHealth": 800,
 				"WavePointCost": 1200,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
@@ -438,6 +482,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"ExplosionDamage": 301,
 				"MinTriggerColumn": 0,
@@ -458,6 +503,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -480,6 +526,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -961,6 +1008,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -1004,6 +1052,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -1227,6 +1277,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -1429,6 +1481,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -1820,6 +1874,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
@@ -1837,6 +1892,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"CannotBeDetectedBySapfling": true,
 				"CannotBeSwallowedByChomper": true,
@@ -1859,6 +1916,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ChooseToSpawnOnNonDeckRows": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
@@ -1916,6 +1975,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"KilledByShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"CanBeEasilySwallowedByChomper": true,
 				"CannotCarryPlantfoodsInWaves": true,
@@ -1937,6 +1998,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -1980,6 +2042,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -2166,6 +2230,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -2365,6 +2431,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -2785,6 +2853,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"CanBeEasilySwallowedByChomper": true,
 				"ImmuneToSporeShroom": true,
@@ -2806,6 +2875,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"CanBeEasilySwallowedByChomper": true,
 				"ImmuneToSporeShroom": true,
@@ -2827,6 +2897,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"CannotBeTossedByCitron": false,
 				"CannotBeSwallowedByChomper": true,
 				"EatDPS": 100,
@@ -2849,6 +2920,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"CannotBeTossedByCitron": false,
 				"CannotBeSwallowedByChomper": true,
 				"EatDPS": 100,
@@ -2872,6 +2944,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -2917,6 +2990,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -3104,6 +3179,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -3127,29 +3204,19 @@
 					{
 						"Actions": [
 							{
-								"actionName": "rush",
-								"summonProps": {
-									"zombieList": [],
-									"pointMin": 1000,
-									"pointMax": 2000
-								},
-								"weight": 5,
-								"repeatMax": 3,
-								"repeatMin": 2
-							},
-							{
 								"actionName": "summon",
 								"summonProps": {
 									"zombieList": [
-										"cowboy_armor4",
-										"cowboy_armor2",
-										"prospector"
+										"cowboy",
+										"cowboy_armor1",
+										"prospector",
+										"piano"
 									],
-									"pointMin": 2000,
-									"pointMax": 2500
+									"pointMin": 700,
+									"pointMax": 3200
 								},
-								"weight": 18,
-								"repeatMax": 3,
+								"weight": 10,
+								"repeatMax": 2,
 								"repeatMin": 2
 							},
 							{
@@ -3159,16 +3226,27 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 12,
+								"weight": 10,
 								"repeatMax": 2,
 								"repeatMin": 1
+							},
+							{
+								"actionName": "walk",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 5,
+								"repeatMax": 3,
+								"repeatMin": 2
 							}
 						],
 						"AnimRateModifier": 1,
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 0,
 						"DamageIndexHalf": 2,
-						"HitPoints": 6500,
+						"HitPoints": 10000,
 						"MaxIdleTime": 1,
 						"MinIdleTime": 0.5,
 						"StunDamageScale": 1.5,
@@ -3182,16 +3260,16 @@
 								"actionName": "summon",
 								"summonProps": {
 									"zombieList": [
-										"west_bull_veteran",
-										"cowboy_armor4",
-										"cowboy_armor2",
-										"chicken_farmer"
+										"cowboy_armor1",
+										"west_bullrider",
+										"poncho_plate",
+										"cowboy_gargantuar"
 									],
-									"pointMin": 3000,
-									"pointMax": 3500
+									"pointMin": 2500,
+									"pointMax": 4400
 								},
-								"weight": 18,
-								"repeatMax": 3,
+								"weight": 12,
+								"repeatMax": 2,
 								"repeatMin": 2
 							},
 							{
@@ -3201,8 +3279,8 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 5,
-								"repeatMax": 2,
+								"weight": 8,
+								"repeatMax": 1,
 								"repeatMin": 1
 							},
 							{
@@ -3221,7 +3299,7 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 3,
 						"DamageIndexHalf": 4,
-						"HitPoints": 10000,
+						"HitPoints": 15000,
 						"MaxIdleTime": 0.5,
 						"MinIdleTime": 0.3,
 						"StunDamageScale": 1.5,
@@ -3232,30 +3310,19 @@
 					{
 						"Actions": [
 							{
-								"actionName": "shoot",
-								"summonProps": {
-									"zombieList": [],
-									"pointMin": 1000,
-									"pointMax": 2000
-								},
-								"weight": 5,
-								"repeatMax": 3,
-								"repeatMin": 2
-							},
-							{
 								"actionName": "summon",
 								"summonProps": {
 									"zombieList": [
-										"cowboy_gargantuar",
+										"cowboy_armor2",
 										"chicken_farmer",
-										"cowboy_armor2"
+										"poncho_plate"
 									],
-									"pointMin": 3500,
-									"pointMax": 4500
+									"pointMin": 2800,
+									"pointMax": 4200
 								},
-								"weight": 18,
+								"weight": 12,
 								"repeatMax": 2,
-								"repeatMin": 1
+								"repeatMin": 2
 							},
 							{
 								"actionName": "rush",
@@ -3264,7 +3331,18 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 10,
+								"weight": 6,
+								"repeatMax": 2,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 8,
 								"repeatMax": 2,
 								"repeatMin": 1
 							}
@@ -3273,7 +3351,7 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 5,
 						"DamageIndexHalf": 6,
-						"HitPoints": 9000,
+						"HitPoints": 20000,
 						"MaxIdleTime": 0.5,
 						"MinIdleTime": 0.2,
 						"StunDamageScale": 1.5,
@@ -3290,6 +3368,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -3484,7 +3564,12 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"ZombieTypesToSummonBecomingFlag": [
+					"kongfu"
+				],
+				"ZombieCountToSummon": 3,
+				"ReckWarningRect": "RTID(KongfuReckWarningRect@RectangleProps)"
 			}
 		},
 		{
@@ -3624,6 +3709,23 @@
 		},
 		{
 			"aliases": [
+				"kongfu_bomb"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ExplodeDamage": 4001,
+				"WalkSPS": 0.335,
+				"EatDPS": 100,
+				"Toughness": 500,
+				"WavePointCost": 400,
+				"Weight": 800,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_chi"
 			],
 			"objclass": "ZombieProperties",
@@ -3642,6 +3744,103 @@
 		},
 		{
 			"aliases": [
+				"kongfu_drink"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ArmDroppingHealthPct": 0.25,
+				"DrinkHealthPct": 0.5,
+				"DrunkDamageMult": 0.5,
+				"DrunkEatingDamageScale": 2,
+				"DrunkWalkingSpeedScale": 2,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 600,
+				"WavePointCost": 400,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"monk_drink"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"ArmDroppingHealthPct": 0.25,
+				"DrinkHealthPct": 0.5,
+				"DrunkDamageMult": 0.5,
+				"DrunkEatingDamageScale": 2,
+				"DrunkWalkingSpeedScale": 2,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 600,
+				"HitDamage": 150,
+				"WavePointCost": 500,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(MonkDrinkAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_gong"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"SummonCount": {
+					"Min": 2,
+					"Max": 3
+				},
+				"TimeBeforeSummon": {
+					"Min": 9,
+					"Max": 12
+				},
+				"TimeBetweenSummon": {
+					"Min": 7,
+					"Max": 10
+				},
+				"ZombieSummonDistance": {
+					"Min": 0,
+					"Max": 1
+				},
+				"ZombiesToSummon": [
+					"kongfu_bomb"
+				],
+				"WalkSPS": 0.15,
+				"EatDPS": 100,
+				"Toughness": 300,
+				"WavePointCost": 250,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_rocket_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"KilledByShrinkingViolet": true,
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.4,
+				"WalkSpeedMultFlying": 7,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(ImpHitRect@RectangleProps)",
+				"AttackRect": "RTID(ImpAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"monk"
 			],
 			"objclass": "ZombieProperties",
@@ -3654,7 +3853,12 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"ZombieTypesToSummonBecomingFlag": [
+					"monk"
+				],
+				"ZombieCountToSummon": 3,
+				"ReckWarningRect": "RTID(KongfuReckWarningRect@RectangleProps)"
 			}
 		},
 		{
@@ -3926,6 +4130,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"ChooseToSpawnOnNonDeckRows": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.3,
@@ -3944,6 +4149,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"ChooseToSpawnOnNonDeckRows": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.75,
@@ -3962,6 +4168,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
 				"ChooseToSpawnOnNonDeckRows": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.3,
@@ -4144,6 +4351,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"CannotBeSwallowedByChomper": true,
@@ -4199,6 +4407,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -4411,6 +4621,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -4638,6 +4850,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -4868,6 +5082,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -5355,6 +5571,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToShrinkingViolet": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
 				"CannotCarryPlantfoodsInWaves": true,
@@ -5394,6 +5611,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToShrinkingViolet": true,
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
 				"CannotCarryPlantfoodsInWaves": true,
@@ -5449,6 +5667,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
@@ -5466,6 +5685,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -5509,6 +5729,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -5745,6 +5967,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -5981,6 +6205,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -6530,6 +6756,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -6575,6 +6802,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -6801,6 +7030,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -6847,7 +7078,8 @@
 										"beach_snorkel"
 									],
 									"pointMin": 900,
-									"pointMax": 2600
+									"pointMax": 2600,
+									"plantfoodchance": 0.5
 								},
 								"weight": 15,
 								"repeatMax": 2,
@@ -6912,7 +7144,8 @@
 										"beach_gargantuar"
 									],
 									"pointMin": 2000,
-									"pointMax": 3800
+									"pointMax": 3800,
+									"plantfoodchance": 0.5
 								},
 								"weight": 10,
 								"repeatMax": 2,
@@ -6977,7 +7210,8 @@
 										"beach_surfer"
 									],
 									"pointMin": 1800,
-									"pointMax": 2500
+									"pointMax": 2500,
+									"plantfoodchance": 0.5
 								},
 								"weight": 10,
 								"repeatMax": 2,
@@ -7027,6 +7261,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -7432,6 +7668,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ChooseToSpawnOnNonDeckRows": true,
 				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
@@ -7441,6 +7678,7 @@
 				"Toughness": 490,
 				"WavePointCost": 600,
 				"Weight": 3500,
+				"NormalDeathWhenMowed": true,
 				"HitRect": "RTID(IceageDodoHitRect@RectangleProps)",
 				"AttackRect": "RTID(IceageDodoAttackRect@RectangleProps)"
 			}
@@ -7560,6 +7798,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"CannotBePushedBySliders": true,
@@ -7570,6 +7809,7 @@
 				"Toughness": 40,
 				"WavePointCost": 10,
 				"Weight": 0,
+				"NormalDeathWhenMowed": true,
 				"HitRect": "RTID(CowboyChickenHitRect@RectangleProps)",
 				"AttackRect": "RTID(CowboyChickenAttackRect@RectangleProps)"
 			}
@@ -7580,6 +7820,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
@@ -7629,6 +7870,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -7659,9 +7902,9 @@
 									"pointMin": 1100,
 									"pointMax": 3000
 								},
-								"weight": 15,
-								"repeatMax": 2,
-								"repeatMin": 2
+								"weight": 5,
+								"repeatMax": 1,
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -7670,9 +7913,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 16,
+								"weight": 6,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							},
 							{
 								"actionName": "shoot",
@@ -7681,16 +7924,16 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 12,
+								"weight": 10,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							}
 						],
 						"AnimRateModifier": 1,
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 0,
 						"DamageIndexHalf": 0,
-						"HitPoints": 12000,
+						"HitPoints": 5000,
 						"MaxIdleTime": 2.5,
 						"MinIdleTime": 1.5,
 						"StunDamageScale": 1.25,
@@ -7704,12 +7947,12 @@
 								"actionName": "summon",
 								"summonProps": {
 									"zombieList": [],
-									"pointMin": 3000,
-									"pointMax": 4500
+									"pointMin": 1100,
+									"pointMax": 3000
 								},
-								"weight": 20,
-								"repeatMax": 2,
-								"repeatMin": 2
+								"weight": 5,
+								"repeatMax": 1,
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -7718,9 +7961,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 12,
+								"weight": 6,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							},
 							{
 								"actionName": "shoot",
@@ -7729,16 +7972,16 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 14,
+								"weight": 10,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							}
 						],
 						"AnimRateModifier": 1.1,
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 3,
 						"DamageIndexHalf": 3,
-						"HitPoints": 16000,
+						"HitPoints": 4000,
 						"MaxIdleTime": 2,
 						"MinIdleTime": 1,
 						"StunDamageScale": 1.25,
@@ -7752,12 +7995,12 @@
 								"actionName": "summon",
 								"summonProps": {
 									"zombieList": [],
-									"pointMin": 4000,
-									"pointMax": 5800
+									"pointMin": 1100,
+									"pointMax": 3000
 								},
-								"weight": 20,
-								"repeatMax": 2,
-								"repeatMin": 2
+								"weight": 5,
+								"repeatMax": 1,
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -7766,9 +8009,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 16,
-								"repeatMax": 2,
-								"repeatMin": 1
+								"weight": 6,
+								"repeatMax": 1,
+								"repeatMin": 2
 							},
 							{
 								"actionName": "shoot",
@@ -7777,16 +8020,16 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 16,
-								"repeatMax": 2,
-								"repeatMin": 1
+								"weight": 8,
+								"repeatMax": 1,
+								"repeatMin": 2
 							}
 						],
 						"AnimRateModifier": 1.25,
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 6,
 						"DamageIndexHalf": 6,
-						"HitPoints": 20000,
+						"HitPoints": 4000,
 						"MaxIdleTime": 1.5,
 						"MinIdleTime": 0.75,
 						"StunDamageScale": 1.25,
@@ -7804,6 +8047,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -7833,9 +8078,9 @@
 									"pointMin": 1100,
 									"pointMax": 3000
 								},
-								"weight": 15,
-								"repeatMax": 2,
-								"repeatMin": 2
+								"weight": 5,
+								"repeatMax": 1,
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -7844,9 +8089,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 16,
+								"weight": 6,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							},
 							{
 								"actionName": "shoot",
@@ -7855,9 +8100,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 12,
+								"weight": 10,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							}
 						],
 						"AnimRateModifier": 1,
@@ -7878,12 +8123,12 @@
 								"actionName": "summon",
 								"summonProps": {
 									"zombieList": [],
-									"pointMin": 3000,
-									"pointMax": 4500
+									"pointMin": 1100,
+									"pointMax": 3000
 								},
-								"weight": 20,
-								"repeatMax": 2,
-								"repeatMin": 2
+								"weight": 5,
+								"repeatMax": 1,
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -7892,9 +8137,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 12,
+								"weight": 6,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							},
 							{
 								"actionName": "shoot",
@@ -7903,9 +8148,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 14,
+								"weight": 10,
 								"repeatMax": 1,
-								"repeatMin": 1
+								"repeatMin": 2
 							}
 						],
 						"AnimRateModifier": 1.1,
@@ -7926,12 +8171,12 @@
 								"actionName": "summon",
 								"summonProps": {
 									"zombieList": [],
-									"pointMin": 4000,
-									"pointMax": 5800
+									"pointMin": 1100,
+									"pointMax": 3000
 								},
-								"weight": 20,
-								"repeatMax": 2,
-								"repeatMin": 2
+								"weight": 5,
+								"repeatMax": 1,
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -7940,9 +8185,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 16,
-								"repeatMax": 2,
-								"repeatMin": 1
+								"weight": 6,
+								"repeatMax": 1,
+								"repeatMin": 2
 							},
 							{
 								"actionName": "shoot",
@@ -7951,9 +8196,9 @@
 									"pointMin": 1000,
 									"pointMax": 2000
 								},
-								"weight": 20,
-								"repeatMax": 2,
-								"repeatMin": 1
+								"weight": 8,
+								"repeatMax": 1,
+								"repeatMin": 2
 							}
 						],
 						"AnimRateModifier": 1.25,
@@ -7978,6 +8223,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -8148,6 +8395,147 @@
 		},
 		{
 			"aliases": [
+				"summer"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"BugToughness": 0,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"summer_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"BugToughness": 0,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"summer_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"summer_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"BugToughness": 0,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"summer_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"summer_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"summer_bug"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BugToughness": 350,
+				"BuggedSPS": 0.4,
+				"WavePointCost": 350,
+				"Weight": 2000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"summer_bug_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BugToughness": 350,
+				"BuggedSPS": 0.4,
+				"StartingArmors": [
+					"summer_armor1"
+				],
+				"WavePointCost": 500,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"summer_bug_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BugToughness": 350,
+				"BuggedSPS": 0.4,
+				"StartingArmors": [
+					"summer_armor2"
+				],
+				"WavePointCost": 650,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"lostcity"
 			],
 			"objclass": "ZombieProperties",
@@ -8255,7 +8643,7 @@
 				"WavePointCost": 300,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
 				"HitRectWithShovel": "RTID(LostcityExcavatorWithShovelHitRect@RectangleProps)",
 				"AttackRectWithShovel": "RTID(LostcityExcavatorWithShovelAttackRect@RectangleProps)"
 			}
@@ -8368,6 +8756,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -8406,6 +8795,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -8450,6 +8840,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -8703,6 +9095,8 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -9276,6 +9670,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
@@ -9492,6 +9887,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"KilledByShrinkingViolet": true,
 				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,

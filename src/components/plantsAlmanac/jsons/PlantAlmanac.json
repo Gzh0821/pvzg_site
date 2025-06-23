@@ -854,7 +854,7 @@
 				],
 				"Introduction": {
 					"en": "Fume-shrooms shoot fumes that damage all zombies in an area.",
-					"zh": "大喷菇向范围内所有僵尸发射孢子攻击。"
+					"zh": "大喷菇向范围内所有僵尸发射气泡攻击。"
 				},
 				"Special": [],
 				"Chat": {
@@ -863,7 +863,7 @@
 				},
 				"BriefIntroduction": {
 					"en": "Shoots fumes that can damage all zombies in an area",
-					"zh": "向范围内的所有僵尸发射孢子攻击"
+					"zh": "向范围内的所有僵尸发射气泡攻击"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -1349,6 +1349,80 @@
 				"BriefIntroduction": {
 					"en": "Lobs projectiles that infatuate zombies, causing their defences reduced",
 					"zh": "向僵尸投掷子弹，使之防御力下降"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shrinkingviolet"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "3x3",
+							"zh": "3x3 范围"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Shrinking Violets shrinks zombies in an area, forcing them to take double damage and reducing the bite damage they inflict.",
+					"zh": "畏缩紫罗兰将范围内僵尸缩小，减少他们的啃咬速度，使他们承受两倍的攻击。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "single use, activates on contact",
+							"zh": "一次性使用，接触到僵尸时触发"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Range",
+							"zh": "范围"
+						},
+						"DESCRIPTION": {
+							"en": "affects zombies in surrounding tiles",
+							"zh": "缩小周围格子范围内的所有僵尸"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "shrinks imps to oblivion",
+							"zh": "使小鬼僵尸缩小至消失"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Shrinking Violet started out shy, but it's remarkable how a discovering a magical talent for zombie-reduction can change your whole outlook.",
+					"zh": "畏缩紫罗兰一开始很害羞，但当她发现自己在减少僵尸方面的神奇才能后，她的整个观念都发生了巨大的变化。"
+				},
+				"BriefIntroduction": {
+					"en": "Shrinks zombies and makes them weaker",
+					"zh": "缩小僵尸，使他们变弱"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -7839,8 +7913,8 @@
 							"zh": "特点"
 						},
 						"DESCRIPTION": {
-							"en": "warms nearby plants",
-							"zh": "冰释周围的植物"
+							"en": "warms nearby plants more frequently",
+							"zh": "更快地冰释周围的植物"
 						}
 					}
 				],
@@ -7851,6 +7925,77 @@
 				"BriefIntroduction": {
 					"en": "Lobs flaming peppers at zombies and warms nearby plants",
 					"zh": "向僵尸投掷燃烧的甜椒子弹，冰释身边的植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"hotdate"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 1000
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Multi-Lane",
+							"zh": "多行"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Hot Dates attract zombies from lanes above and below them, and then unleash a lane of flame when they're eaten.",
+					"zh": "热辣海枣吸引相邻行的僵尸，被啃食殆尽时焚烧一整行。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "unleash a lane of flame when eaten",
+							"zh": "被啃食完后燃烧整行"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "warms nearby plants",
+							"zh": "冰释周围的植物"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Hot Date's a charmer. He's polite, well-read, has lots of interesting opinions, and practices active listening. Zombies line up around the block to be incinerated by him.",
+					"zh": "热辣海枣很有魅力。他彬彬有礼，博览群书，有很多有趣的观点，并且善于倾听。僵尸们都要排着队等着被他烧死。"
+				},
+				"BriefIntroduction": {
+					"en": "Attracts and burns zombies",
+					"zh": "吸引僵尸并焚烧"
 				},
 				"DisplayOffset": {
 					"x": 0,

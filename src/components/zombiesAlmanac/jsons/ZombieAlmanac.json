@@ -648,7 +648,7 @@
 				],
 				"Introduction": {
 					"en": "Balloon carries zombies over barriers and ground defenses.",
-					"zh": "气球让僵尸能够跨越障碍物和地上的植物阵型。"
+					"zh": "气球使他能够跨越障碍物和地上的植物。"
 				},
 				"Special": [],
 				"Chat": {
@@ -701,7 +701,7 @@
 						},
 						"DESCRIPTION": {
 							"en": "becomes a flighty zombie once the newspaper is destroyed",
-							"zh": "一旦报纸被毁，将会成为发了疯似的向前冲去"
+							"zh": "一旦报纸被毁，将会发了疯似的向前冲去"
 						}
 					}
 				],
@@ -3779,6 +3779,272 @@
 		},
 		{
 			"aliases": [
+				"kongfu_drink"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Flighty",
+							"zh": "飞速"
+						},
+						"PROGRESS": 1
+					}
+				],
+				"Introduction": {
+					"en": "Becomes enraged after drinking",
+					"zh": "喝酒后，能进入狂暴状态。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "becomes resistant, powerful and speedy after drinking",
+							"zh": "喝酒后，抵抗力上升，伤害更高，走得更快"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "drinks when damaged",
+							"zh": "受重伤后饮酒"
+						}
+					}
+				],
+				"Chat": {
+					"en": "As a bad news, Drinking Zombie learned drunken boxing, while the good news is, that he only learned how to make a fist.",
+					"zh": "坏消息是，醉酒僵尸学过醉拳！好消息是，他只学会了握拳。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"monk_drink"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Flighty",
+							"zh": "飞速"
+						},
+						"PROGRESS": 1
+					}
+				],
+				"Introduction": {
+					"en": "Becomes enraged after drinking",
+					"zh": "喝酒后，能进入狂暴状态。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "becomes resistant, powerful and speedy after drinking",
+							"zh": "喝酒后，抵抗力上升，伤害更高，走得更快"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "drinks when damaged",
+							"zh": "受重伤后饮酒"
+						}
+					}
+				],
+				"Chat": {
+					"en": "As long as he's undefeatable, he can ignore any rules for monks.",
+					"zh": "实力够强则可无视戒规。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bomb"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Speedy",
+							"zh": "快速"
+						},
+						"PROGRESS": 0.85
+					}
+				],
+				"Introduction": {
+					"en": "Ignites the bomb on contact and explodes, dealing deadly damage to all plants in an area.",
+					"zh": "碰到植物后，能引爆手里的炸弹，对大范围植物造成致命伤害。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "explodes and damages heavily to nearby plants on contact",
+							"zh": "碰到植物自爆并对范围内植物造成巨量伤害"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "loses his bomb when his arm is broken",
+							"zh": "断手后丢掉炸弹"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "bomb expires when chilled",
+							"zh": "炸弹受冷后熄灭"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Bomb Zombie has little facilities in kongfu, makeing him embarrassed staying with other kongfu learners. He's humble until he found his talent in pyrotechnic.",
+					"zh": "自爆僵尸没有武功天分, 所以他一直很自卑地待在少林寺, 直到他发现了自己的火药天分后, 地位骤升。"
+				},
+				"DisplayOffset": {
+					"x": 15,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_gong"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Solid",
+							"zh": "略强"
+						},
+						"PROGRESS": 0.4
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Stiff",
+							"zh": "迟钝"
+						},
+						"PROGRESS": 0.4
+					}
+				],
+				"Introduction": {
+					"en": "Bangs his gong and summons Bomb Zombies.",
+					"zh": "敲击铜锣，召唤自爆僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "summons Bomb Zombies",
+							"zh": "召唤自爆僵尸"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "qigong can be canceled when a Resistant Radish is in its way",
+							"zh": "断手后不再能敲击铜锣"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Gong Zombie is Bomb Zombie's brother, neither of them has access to kongfu. But in difference, Gong Zombie have the talent to play the instruments.",
+					"zh": "铜锣僵尸本是自爆僵尸的兄弟，他们都不会功夫，不同的是，铜锣僵尸对乐器更有兴趣。"
+				},
+				"DisplayOffset": {
+					"x": 15,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_chi"
 			],
 			"objclass": "ZombieAlmanacProperties",
@@ -3830,6 +4096,71 @@
 				"Chat": {
 					"en": "When asked why he pulls the plants forward instead of pushing them away, \"Maybe our future generations will fulfill our need.\" Answered Qigong Zombie, \"Right now I shall focus on my own destiny.\"",
 					"zh": "当他被问起为什么要把植物拉过来而不是推出去，“也许我们的子孙后代能实现这一点。”气功僵尸回答道，“现在我们应该专注于我们的使命。”"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "imp",
+			"aliases": [
+				"kongfu_rocket_imp"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Average",
+							"zh": "一般"
+						},
+						"PROGRESS": 0.25
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Flighty",
+							"zh": "飞速"
+						},
+						"PROGRESS": 1
+					}
+				],
+				"Introduction": {
+					"en": "Rides a rocket towards your defence and lands on contacting.",
+					"zh": "骑着火箭径直冲向你的防线，碰到植物时落地。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "strikes into you lawn until blocked by a plant",
+							"zh": "突然冲进你的草坪，直到被植物挡住"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "chilly attacks force him to land, then fire attacks launch him away",
+							"zh": "火箭会被冷冻攻击打断，再被火焰攻击点燃时直接离场"
+						}
+					}
+				],
+				"Chat": {
+					"en": "He walks fast enough without a rocket, but you know, Imps just dislike regular entrance.",
+					"zh": "他不依靠火箭前进速度已经够快了，但是你懂的，小鬼僵尸很不喜欢以平庸的方式入场。"
 				},
 				"DisplayOffset": {
 					"x": 0,

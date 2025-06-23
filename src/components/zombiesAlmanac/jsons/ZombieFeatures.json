@@ -158,6 +158,9 @@
       },
       "_CARDSPRITENAME": "imp",
       "CODENAME": "tutorial_imp",
+      "SubZombieList": [
+        "summer_imp"
+      ],
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_imp@ZombieAlmanac)",
@@ -168,6 +171,9 @@
         "en": "Gargantuar",
         "zh": "巨尸"
       },
+      "SubZombieList": [
+        "summer_gargantuar"
+      ],
       "_CARDSPRITENAME": "gargantuar",
       "CODENAME": "tutorial_gargantuar",
       "SUNCOST": 100,
@@ -1234,6 +1240,42 @@
     },
     {
       "NAME": {
+        "en": "Bomb Zombie",
+        "zh": "自爆僵尸"
+      },
+      "_CARDSPRITENAME": "kongfubomb",
+      "CODENAME": "kongfu_bomb",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_bomb@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_bomb@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Gong Zombie",
+        "zh": "铜锣僵尸"
+      },
+      "_CARDSPRITENAME": "kongfugong",
+      "CODENAME": "kongfu_gong",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_gong@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_gong@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Drinking Zombie",
+        "zh": "醉酒僵尸"
+      },
+      "_CARDSPRITENAME": "kongfudrink",
+      "CODENAME": "kongfu_drink",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_drink@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_drink@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Qigong Zombie",
         "zh": "气功僵尸"
       },
@@ -1243,6 +1285,18 @@
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_chi@ZombieAlmanac)",
       "PROPS": "RTID(kongfu_chi@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Rocket Imp",
+        "zh": "火箭小鬼"
+      },
+      "_CARDSPRITENAME": "kongfurocketimp",
+      "CODENAME": "kongfu_rocket_imp",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_rocket_imp@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_rocket_imp@ZombieProps)"
     },
     {
       "NAME": {
@@ -1357,6 +1411,18 @@
     },
     {
       "NAME": {
+        "en": "Drinking Monk Zombie",
+        "zh": "醉酒武僧"
+      },
+      "_CARDSPRITENAME": "monkdrink",
+      "CODENAME": "monk_drink",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_drink@ZombieAlmanac)",
+      "PROPS": "RTID(monk_drink@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Future Zombie",
         "zh": "未来僵尸"
       },
@@ -1447,7 +1513,7 @@
       "_CARDSPRITENAME": "birthdayjetpack",
       "CODENAME": "birthday_jetpack",
       "SUNCOST": 100,
-      "OBTAINWORLD": "future",
+      "OBTAINWORLD": "homeless",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(future_jetpack@ZombieProps)"
     },
@@ -2308,6 +2374,11 @@
       "CODENAME": "lostcity",
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
+      "SubZombieList": [
+        "summer_armor1",
+        "summer_armor2",
+        "summer_flag"
+      ],
       "ALMANAC": "RTID(lostcity@ZombieAlmanac)",
       "PROPS": "RTID(lostcity@ZombieProps)"
     },
@@ -2393,7 +2464,9 @@
       "SUNCOST": 100,
       "SubZombieList": [
         "lostcity_bug_armor1",
-        "lostcity_bug_armor2"
+        "lostcity_bug_armor2",
+        "summer_bug_armor1",
+        "summer_bug_armor2"
       ],
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_bug@ZombieAlmanac)",
@@ -2494,6 +2567,114 @@
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(zombossmech_lostcity@ZombieAlmanac)",
       "PROPS": "RTID(zombossmech_lostcity@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Summer Night Zombie",
+        "zh": "仲夏夜僵尸"
+      },
+      "_CARDSPRITENAME": "summerbasic",
+      "CODENAME": "summer_basic",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Summer Night Zombie",
+        "zh": "仲夏夜路障"
+      },
+      "_CARDSPRITENAME": "summerarmor1",
+      "CODENAME": "summer_armor1",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Summer Night Zombie",
+        "zh": "仲夏夜铁桶"
+      },
+      "_CARDSPRITENAME": "summerarmor2",
+      "CODENAME": "summer_armor2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Summer Night Zombie",
+        "zh": "仲夏夜旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "summerflag",
+      "CODENAME": "summer_flag",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Firefly Zombie",
+        "zh": "萤火虫僵尸"
+      },
+      "_CARDSPRITENAME": "summerbug",
+      "CODENAME": "summer_bug",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer_bug@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Firefly",
+        "zh": "路障萤火虫"
+      },
+      "_CARDSPRITENAME": "summerbugarmor1",
+      "CODENAME": "summer_bug_armor1",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer_bug_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Firefly",
+        "zh": "铁桶萤火虫"
+      },
+      "_CARDSPRITENAME": "summerbugarmor2",
+      "CODENAME": "summer_bug_armor2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer_bug_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Sausage Imp",
+        "zh": "烤肠小鬼"
+      },
+      "_CARDSPRITENAME": "summerimp",
+      "CODENAME": "summer_imp",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Chef Gargantuar",
+        "zh": "厨师巨尸"
+      },
+      "_CARDSPRITENAME": "summergargantuar",
+      "CODENAME": "summer_gargantuar",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "homeless",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(summer_gargantuar@ZombieProps)"
     },
     {
       "NAME": {
