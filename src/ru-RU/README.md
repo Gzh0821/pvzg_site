@@ -16,8 +16,8 @@ bgImageStyle:
   filter: brightness(60%)
   opacity: 0.5 
 heroFullScreen: true
-heroText: PvZ2 Gardendless
-tagline: Полностью переработанная PvZ2 для всех платформ.
+heroText: PvZ2 Gardendless' Birthday
+tagline: Полностью переработанная PvZ2 для всех платформ (1-й юбилей!)
 actions:
   - text: Скачать
     icon: circle-down
