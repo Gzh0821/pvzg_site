@@ -42,7 +42,7 @@ onMounted(() => {
 >
 > Para el contenido específico de los acuerdos y declaraciones anteriores, consulte [aquí](../instructions/)
 
-<span v-if="gameInfoData?.Version">La última versión del juego es {{ gameInfoData.Version }}.</span>
+<span v-if="gameInfoData?.Version">La última versión del juego es la {{ gameInfoData.Version }}.</span>
 
 <span v-if="gameInfoData?.Name">El nombre de la versión del juego: {{ gameInfoData.Name }}</span>
 
