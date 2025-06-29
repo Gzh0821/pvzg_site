@@ -108,10 +108,11 @@ const displayableKeybinds = computed(() => {
 // Watch for changes in initialKeybindsFromFile to update sessionInitialKeybinds if needed,
 // though initialKeybindsFromFile itself is static after import.
 // More importantly, update sessionInitialKeybinds upon explicit actions like upload or new.
-watch(initialKeybindsFromFile, (newInitial) => {
-    Object.keys(sessionInitialKeybinds).forEach(key => delete sessionInitialKeybinds[key]);
-    Object.assign(sessionInitialKeybinds, newInitial);
-}, { deep: true, immediate: true });
+
+// watch(initialKeybindsFromFile, (newInitial) => {
+//     Object.keys(sessionInitialKeybinds).forEach(key => delete sessionInitialKeybinds[key]);
+//     Object.assign(sessionInitialKeybinds, newInitial);
+// }, { deep: true, immediate: true });
 
 
 const formatActionName = (action: string | null): string | undefined => {

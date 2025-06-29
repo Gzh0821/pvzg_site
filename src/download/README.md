@@ -70,8 +70,6 @@ onMounted(() => {
 
 ## ::brands:windows:: Windows 平台
 
-所有历史版本均可在 [GE Drive](https://drive.pvzge.com/) 中下载
-
 <template v-if="gameInfoData?.Download.Github">
 
 ### Github ::brands:github::
@@ -120,3 +118,7 @@ onMounted(() => {
 ### Docker Hub ::brands:docker::
 
 镜像地址：<a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">点击进入</a>
+
+## ::clock-rotate-left:: 历史版本/资源文件
+
+所有历史版本和`JSON`资源文件均可在 [GE Drive](https://drive.pvzge.com/) 中下载

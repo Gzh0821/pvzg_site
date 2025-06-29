@@ -20,7 +20,7 @@ const gameInfoData = ref(null);
 onBeforeMount(() => {
   axios.get('/jsons/gameinfo.json').then(res => {
     gameInfoData.value = res.data;
-  })
+  });
 })
 onMounted(() => {
   (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -70,8 +70,6 @@ onMounted(() => {
 
 ## ::brands:windows:: Windows platform
 
-All historical versions can be downloaded from [GE Drive](https://drive.pvzge.com/)
-
 <template v-if="gameInfoData?.Download.Github">
 
 ### Github ::brands:github::
@@ -119,3 +117,7 @@ Download Link: <a :href="gameInfoData.Download.Quark" target="_blank">click to e
 ### Docker Hub ::brands:docker::
 
 Image address: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">click to enter</a>
+
+## ::clock-rotate-left:: Historical Versions/Resource Files
+
+All historical versions and `JSON` resource files can be downloaded from [GE Drive](https://drive.pvzge.com/)

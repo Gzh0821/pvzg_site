@@ -20,7 +20,7 @@ const gameInfoData = ref(null);
 onBeforeMount(() => {
   axios.get('/jsons/gameinfo.json').then(res => {
     gameInfoData.value = res.data;
-  })
+  });
 })
 onMounted(() => {
   (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -33,24 +33,24 @@ onMounted(() => {
 > Официальная версия на сайте и версия QQ group/китайский сетевой диск этой игры используют разные методы упаковки, и файлы сохранения не будут автоматически унаследованы.
 
 > [!warning]
-> Пожалуйста, обратите внимание: ссылка на скачивание, указанная на этой странице, предназначена только для ознакомления и коммуникации и не может быть использована в коммерческих целях.
+> Пожалуйста, обратите внимание: Эта игра предназначена только для изучения и общения, не должна использоваться в коммерческих целях.
 >
 > Загрузка или воспроизведение онлайн означает, что вы прочитали и согласились со следующими соглашениями и заявлениями:
 >
 > - Пользовательское соглашение "PvZ2 Gardendless"
-> - Отказ от ответственности и уведомление об авторских правах для "PvZ2 Gardendless"
+> - Отказ от ответственности "PvZ2 Gardendless"
 >
 > Для получения подробной информации о вышеуказанном соглашении и заявлении, пожалуйста, ознакомьтесь с [этим](../instructions/)
 
-<span v-if="gameInfoData?.Version">Последняя версия игры - это {{ gameInfoData.Version }}.</span>
+<span v-if="gameInfoData?.Version">Текущая последняя версия игры {{ gameInfoData.Version }}</span>
 
-<span v-if="gameInfoData?.Name"> Название версии игры: {{ gameInfoData.Name }}</span>
+<span v-if="gameInfoData?.Name">Название этой версии игры: {{ gameInfoData.Name }}</span>
 
 <span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
 
 <span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
 
-## Журнал изменений
+## Журнал обновлений
 
 <template v-if="gameInfoData?.EnNewFeatures">
 
@@ -58,7 +58,7 @@ onMounted(() => {
 
 </template>
 
-<template v-else>None</template>
+<template v-else>Временно недоступно</template>
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -70,13 +70,11 @@ onMounted(() => {
 
 ## ::brands:windows:: Платформа Windows
 
-Все исторические версии можно загрузить с [GE Drive](https://drive.pvzge.com/)
-
 <template v-if="gameInfoData?.Download.Github">
 
 ### Github ::brands:github::
 
-Ссылка для скачивания: <a :href="gameInfoData.Download.Github">нажмите чтобы открыть</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Github" target="_blank">нажмите чтобы открыть</a>
 
 </template>
 
@@ -84,7 +82,7 @@ onMounted(() => {
 
 ### Локальная загрузка ::cloud-arrow-down::
 
-Ссылка для скачивания: <a :href="gameInfoData.Download.Storage">нажмите чтобы открыть</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Storage" target="_blank">нажмите чтобы открыть</a>
 
 </template>
 
@@ -92,23 +90,23 @@ onMounted(() => {
 
 ### Baidu Netdisk ::cloud::
 
-Ссылка для скачивания: <a :href="gameInfoData.Download.Baidu">нажмите чтобы открыть</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Baidu" target="_blank">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-### 123Pan ::cloud::
+### 123 Pan ::cloud::
 
-Ссылка для скачивания: <a :href="gameInfoData.Download.Pan123">нажмите чтобы открыть</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Pan123" target="_blank">нажмите чтобы открыть</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Quark">
 
-### Quark ::cloud::
+### Quark Netdisk ::cloud::
 
-Ссылка для скачивания: <a :href="gameInfoData.Download.Quark">нажмите чтобы открыть</a>
+Ссылка для скачивания: <a :href="gameInfoData.Download.Quark" target="_blank">нажмите чтобы открыть</a>
 
 </template>
 
@@ -120,3 +118,7 @@ onMounted(() => {
 ### Docker Hub ::brands:docker::
 
 Адрес образа: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">нажмите для входа</a>
+
+## ::clock-rotate-left:: Исторические версии/Файлы ресурсов
+
+Все исторические версии и файлы ресурсов `JSON` можно загрузить с [GE Drive](https://drive.pvzge.com/)

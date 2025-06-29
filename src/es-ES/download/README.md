@@ -1,5 +1,5 @@
 ---
-title: Download
+title: Descargar
 index: false
 icon: download
 pageInfo: false
@@ -20,7 +20,7 @@ const gameInfoData = ref(null);
 onBeforeMount(() => {
   axios.get('/jsons/gameinfo.json').then(res => {
     gameInfoData.value = res.data;
-  })
+  });
 })
 onMounted(() => {
   (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -28,29 +28,29 @@ onMounted(() => {
 </script>
 
 > [!important]
-> For FAQs related to downloading and playing, please see [here](../guide/FAQ.md), and for system requirements and recommended configurations, please see [here](../guide/requirement.md)
+> Para preguntas frecuentes relacionadas con la descarga y el juego, consulte [aquí](../guide/FAQ.md), y para los requisitos del sistema y configuraciones recomendadas, consulte [aquí](../guide/requirement.md)
 >
-> The website version and QQ group/Chinese netdisk version of this game use different packaging methods, and the archive files will not be automatically inherited.
+> La versión oficial del sitio web y la versión del grupo QQ/disco de red chino de este juego utilizan diferentes métodos de empaque, y los archivos de guardado no se heredarán automáticamente.
 
 > [!warning]
-> Please note: The download link provided on this page is for learning and communication purposes only and may not be used for commercial purposes.
+> Tenga en cuenta: Este juego es solo para uso de aprendizaje e intercambio, no debe utilizarse para fines comerciales.
 >
-> Downloading or playing online means that you have read and agreed to the following agreements and statements:
+> Descargar o jugar en línea significa que ha leído y aceptado los siguientes acuerdos y declaraciones:
 >
-> - "PvZ2 Gardendless" Usage Agreement
-> - Disclaimer and Copyright Notice for "PvZ2 Gardendless"
+> - Acuerdo de uso de "PvZ2 Gardendless"
+> - Declaración de exención de responsabilidad de "PvZ2 Gardendless"
 >
-> For the details of the above agreement and statement, please see [here](../instructions/)
+> Para el contenido específico de los acuerdos y declaraciones anteriores, consulte [aquí](../instructions/)
 
-<span v-if="gameInfoData?.Version">The latest game version is {{ gameInfoData.Version }}.</span>
+<span v-if="gameInfoData?.Version">La última versión del juego es {{ gameInfoData.Version }}.</span>
 
-<span v-if="gameInfoData?.Name">The game version name: {{ gameInfoData.Name }}</span>
+<span v-if="gameInfoData?.Name">El nombre de la versión del juego: {{ gameInfoData.Name }}</span>
 
 <span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
 
 <span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
 
-## Changelog
+## Registro de cambios
 
 <template v-if="gameInfoData?.EnNewFeatures">
 
@@ -58,7 +58,7 @@ onMounted(() => {
 
 </template>
 
-<template v-else>None</template>
+<template v-else>Ninguno</template>
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -68,23 +68,21 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-## ::brands:windows:: Windows platform
-
-All historical versions can be downloaded from [GE Drive](https://drive.pvzge.com/)
+## ::brands:windows:: Plataforma Windows
 
 <template v-if="gameInfoData?.Download.Github">
 
 ### Github ::brands:github::
 
-Download Link: <a :href="gameInfoData.Download.Github" target="_blank">click to enter</a>
+Enlace de descarga: <a :href="gameInfoData.Download.Github" target="_blank">haga clic para ingresar</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Storage">
 
-### Local Download ::cloud-arrow-down::
+### Descarga local ::cloud-arrow-down::
 
-Download Link: <a :href="gameInfoData.Download.Storage" target="_blank">click to enter</a>
+Enlace de descarga: <a :href="gameInfoData.Download.Storage" target="_blank">haga clic para ingresar</a>
 
 </template>
 
@@ -92,31 +90,35 @@ Download Link: <a :href="gameInfoData.Download.Storage" target="_blank">click to
 
 ### Baidu Netdisk ::cloud::
 
-Download Link: <a :href="gameInfoData.Download.Baidu" target="_blank">click to enter</a>
+Enlace de descarga: <a :href="gameInfoData.Download.Baidu" target="_blank">haga clic para ingresar</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Pan123">
 
-### 123Pan ::cloud::
+### 123 Pan ::cloud::
 
-Download Link: <a :href="gameInfoData.Download.Pan123" target="_blank">click to enter</a>
+Enlace de descarga: <a :href="gameInfoData.Download.Pan123" target="_blank">haga clic para ingresar</a>
 
 </template>
 
 <template v-if="gameInfoData?.Download.Quark">
 
-### Quark ::cloud::
+### Quark Netdisk ::cloud::
 
-Download Link: <a :href="gameInfoData.Download.Quark" target="_blank">click to enter</a>
+Enlace de descarga: <a :href="gameInfoData.Download.Quark" target="_blank">haga clic para ingresar</a>
 
 </template>
 
-## ::brands:linux:: Linux/Other platforms
+## ::brands:linux:: Linux/Otras plataformas
 
 > [!info]
-> To play on Linux and other systems with x86_64 (amd64) architecture, you can use Docker images to deploy the web version locally.
+> Para jugar en Linux y otros sistemas con arquitectura x86_64 (amd64), puede usar imágenes Docker para implementar localmente la versión web.
 
 ### Docker Hub ::brands:docker::
 
-Image address: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">click to enter</a>
+Dirección de la imagen: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">haga clic para ingresar</a>
+
+## ::clock-rotate-left:: Versiones históricas/Archivos de recursos
+
+Todas las versiones históricas y archivos de recursos `JSON` se pueden descargar desde [GE Drive](https://drive.pvzge.com/)
