@@ -73,21 +73,24 @@ iframe.youtube-video {
 
 .vp-navbar {
     // background: linear-gradient(to right, #a8edea, #fed6e3);
-    background: linear-gradient(to right, #ffe0e9, #fff0e0, #fff9d9, #e0f8ef, #e0efff, #eee5ff);
+    // background: linear-gradient(to right, #ffe0e9, #fff0e0, #fff9d9, #e0f8ef, #e0efff, #eee5ff);
+    background: linear-gradient(to right, #a8edea, #fed6e3);
 }
 
 [data-theme="dark"] .vp-navbar {
     // background: linear-gradient(to right, #2b5876, #4e4376);
-    background: linear-gradient(to right, #8c232c, #995000, #9a8e00, #2a5c43, #125699, #4c1d73);
+    // background: linear-gradient(to right, #8c232c, #995000, #9a8e00, #2a5c43, #125699, #4c1d73);
+    background: linear-gradient(to right, #2b5876, #4e4376);
 }
+
 
 .vp-navbar::before {
     // content: "🏝";
-    content: "🌈🎂";
+    content: "🎂";
 }
 
-.vp-hero-title {
-    background: linear-gradient(120deg, #e50000 30%, #ff8d00, #ffee00, #028121, #004cff, #770088 70%);
-    -webkit-background-clip: text;
-    background-clip: text;
-}
+// .vp-hero-title {
+//     background: linear-gradient(120deg, #e50000 30%, #ff8d00, #ffee00, #028121, #004cff, #770088 70%);
+//     -webkit-background-clip: text;
+//     background-clip: text;
+// }
