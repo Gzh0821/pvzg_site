@@ -8,7 +8,9 @@
     "docs:build": "vuepress-vite build src",
     "docs:clean-dev": "vuepress-vite dev src --clean-cache",
     "docs:dev": "vuepress-vite dev src",
-    "docs:update-package": "pnpm dlx vp-update"
+    "docs:update-package": "pnpm dlx vp-update",
+    "deploy": "pnpm docs:build && wrangler deploy",
+    "preview": "pnpm docs:build && wrangler dev"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.23",
@@ -19,7 +21,8 @@
     "sass": "^1.89.2",
     "vue": "^3.5.17",
     "vuepress": "2.0.0-rc.23",
-    "vuepress-theme-hope": "2.0.0-rc.93"
+    "vuepress-theme-hope": "2.0.0-rc.93",
+    "wrangler": "^4.0.0"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
