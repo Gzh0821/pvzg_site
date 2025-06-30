@@ -6,6 +6,8 @@
 
 **An endless garden requires an endless defense!**
 
+Thanks to everyone who has supported this project!
+
 ![](https://img.shields.io/badge/author-Gaozih-%2366ccff)
 ![](https://img.shields.io/github/license/Gzh0821/pvzg_site)
 ![](https://img.shields.io/github/actions/workflow/status/Gzh0821/pvzg_site/pages%2Fpages-build-deployment)
@@ -16,6 +18,7 @@
 </div>
 
 ### Info
+
 This is the open source repo of the website of "PvZ2 Gardendless".
 
 "PvZ2 Gardendless" is a rewritten "Plants vs Zombies 2" entirely using only Web technologies(including the cocos engine)!
@@ -42,19 +45,22 @@ Deploy the game locally by using [Docker image](https://hub.docker.com/r/gaozih/
 
 ### 在线游玩
 
-在 [这里](https://play.pvzge.com/) 在线游玩PvZ2 Gardendless!
+在 [这里](https://play.pvzge.com/) 在线游玩 PvZ2 Gardendless!
 
 - 注意：在线游戏版本可能非最新版本，且加载速度较慢，更多问题请参阅官网说明
 
-### 使用Docker
+### 使用 Docker
 
 使用 [Docker 镜像](https://hub.docker.com/r/gaozih/pvzge) 在本地部署游戏
 
----
+## Sponsors
 
-Thanks to everyone who gave this repository a star！
+<div align="center">
 
----
 CDN acceleration and security protection for this project are sponsored by Tencent EdgeOne.
 
-[![edgeone](https://edgeone.ai/media/34fe3a45-492d-4ea4-ae5d-ea1087ca7b4b.png)](https://edgeone.ai/)
+<a href="https://edgeone.ai/" target="_blank">
+    <img width=30% src="https://edgeone.ai/media/34fe3a45-492d-4ea4-ae5d-ea1087ca7b4b.png" alt="edgeone"/>
+</a>
+
+</div>
