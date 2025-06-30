@@ -30,7 +30,7 @@ onMounted(() => {
 > [!important]
 > Para preguntas frecuentes relacionadas con la descarga y el juego, consulte [aquí](../guide/FAQ.md), y para los requisitos del sistema y configuraciones recomendadas, consulte [aquí](../guide/requirement.md)
 >
-> La versión oficial del sitio web y la versión del grupo QQ/disco de red chino de este juego utilizan diferentes métodos de empaque, y los archivos de guardado no se heredarán automáticamente.
+> La versión oficial del sitio web y la versión del grupo QQ/discord de red chino de este juego utilizan diferentes métodos de empaque, y los archivos de guardado no se heredarán automáticamente.
 
 > [!warning]
 > Tenga en cuenta: Este juego es solo para uso de aprendizaje e intercambio, no debe utilizarse para fines comerciales.
