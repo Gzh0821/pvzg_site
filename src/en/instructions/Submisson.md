@@ -22,20 +22,19 @@ You agree that any custom levels and mods uploaded or submitted to the PvZ2: Gar
 
 ### 2. Open-Source Licensing
 
-Your submitted custom levels and mods will automatically be open-sourced under the MIT License, permitting the Team and all other users to freely use your work under the terms defined by the license.
-You agree that others may copy, modify, merge, publish, create derivative works, distribute, sublicense, and/or sell the content in accordance with the license.
-您同意他人有权根据该协议的规定，复制、修改、合并、发布、发布衍生作品、分发、再许可和/或出售该内容。
-
-### 3. Warranties and Liability
-
 您声明并保证，您拥有或已获得上传该关卡和模组的全部必要权利，并且该关卡和模组的内容不侵犯任何第三方的知识产权、隐私权或其他合法权益。
 You represent and warrant that you own or have obtained all necessary rights to upload the levels and mods, and that the content does not infringe upon any third party’s intellectual property, privacy rights, or other legal rights.
 You assume full responsibility for any legal disputes or claims arising from your submissions and agree to indemnify and hold harmless the Team and its partners in such cases.
 
+### 3. Warranties and Liability
+
+本协议自您上传或提交关卡和模组之时起自动生效，并持续有效。
+通过提交自定义关卡和模组，您即表明您已阅读并同意以上条款。
+
 ### 4. Modifications and Termination
 
 The Team reserves the right to modify this agreement and will notify players of changes through appropriate channels. Continued submissions after modifications constitute acceptance of the revised terms.
-You may cease submitting custom levels and mods to the Team at any time. However, previously submitted content remains subject to this agreement, and all granted authorizations are non-revocable.继续提交内容的玩家视为接受修改后的协议。
+You may cease submitting custom levels and mods to the Team at any time. However, previously submitted content remains subject to this agreement, and all granted authorizations are non-revocable.继续提交内容的玩家视为接受修改后的协议。继续提交内容的玩家视为接受修改后的协议。
 您可以随时停止向团队提交自定义关卡和模组，但已提交的关卡和模组仍将遵循本协议内容，且授权不可撤销。
 
 ### 5. Effective Date
