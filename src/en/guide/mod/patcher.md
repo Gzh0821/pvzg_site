@@ -35,7 +35,7 @@ data-full-width-responsive="true"> </ins>
 
 ## GE Patcher 基础知识
 
-Press `F12` when the game starts to open the developer console. In the Console tab, you should see something like this:在控制台选项卡中，会出现类似以下内容的输出：
+Press `F12` when the game starts to open the developer console. In the Console tab, you should see something like this:Press `F12` when the game starts to open the developer console. In the Console tab, you should see something like this:在控制台选项卡中，会出现类似以下内容的输出：
 
 ```
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
@@ -55,7 +55,7 @@ gePatcher.help()
 gePatcher.init()
 ```
 
-After modifying a JSON file, please **run this command again to apply the changes**.\*\*
+After modifying a JSON file, please **run this command again to apply the changes**.\*\*\*\*
 
 ## File Structure
 
@@ -87,7 +87,7 @@ Files under the `levels` directory are used to replace levels. If you want to ge
 
 ### Features File Structure
 
-Features files contain the basic properties of plants, zombies, and upgrades. The file structure is as follows:文件结构如下：
+Features files contain the basic properties of plants, zombies, and upgrades. The file structure is as follows:文件结构如下：文件结构如下：
 
 **PlantFeatures.json**
 
@@ -137,7 +137,7 @@ Features files contain the basic properties of plants, zombies, and upgrades. Th
 
 Features modification rules apply to `PlantFeatures`、`ZombieFeatures` and `UpgradeFeatures` files。
 
-Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:合并规则如下：
+Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:合并规则如下：合并规则如下：
 
 - **Array Elements**: If the property type is an array, each value in the array will be merged according to element order. If a value in the array is an object, it will be merged recursively. If a value in the array is a primitive type, it will directly overwrite the value in the original JSON.如果数组中的值是对象，则将递归合并。如果数组中的值是基本类型，则直接覆盖原始 JSON 中的值。
 - **对象合并**：如果属性类型为对象，则将进行递归合并。**Object Merging**: If the property type is an object, it will be merged recursively. If there are attributes with the same key within the object, the value in the original JSON will be directly overwritten.
@@ -145,15 +145,15 @@ Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into
 
 For other properties, such as `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, the original array is simply replaced.
 
-Therefore, for any plant/zombie that needs modification, you must add an object to the `PLANTS` (or `ZOMBIES`) array, and the `CODENAME` field of this object must match the original plant/zombie in the JSON. For plants/zombies that do not need modification, this object does not need to be added.
-对于不需要修改的植物/僵尸，则无需添加此对象。
+Within a single plant/zombie object, only the `CODENAME` needs to be filled. Other fields not filled will remain unchanged. If modification is needed, the corresponding fields must be added.其他字段未填写则保持不变。
+如果需要修改，则必须添加相应的字段。
 
 Within a single plant/zombie object, only the `CODENAME` needs to be filled. Other fields not filled will remain unchanged. If modification is needed, the corresponding fields must be added.其他字段未填写则保持不变。如果需要修改，则必须添加相应的字段。
 
 > [!important]
 >
 > - Avoid modifying critical properties like `ID` or `_CARDSPRITENAME` to prevent crashes or other unwanted bugs.
-> - **GE Patcher cannot create new plants, zombies, or anything like; it only modifies existing entities.**\*\*
+> - **GE Patcher cannot create new plants, zombies, or anything like; it only modifies existing entities.**\*\*\*\*
 
 **Example**
 
@@ -181,7 +181,7 @@ To change the Peashooter's background to "epic" and the Sunflower's name to "Hap
 
 ### Props File Structure
 
-Props files contain the gameplay properties of plants and zombies. The file structure is as follows:文件结构如下：
+Props files contain the gameplay properties of plants and zombies. The file structure is as follows:文件结构如下：文件结构如下：
 
 **PlantProps.json**
 
@@ -235,7 +235,7 @@ Props files contain the gameplay properties of plants and zombies. The file stru
 
 ### Almanac File Structure
 
-Almanac files contain the Almanac information for plants and zombies. The file structure is as follows:文件结构如下：
+Almanac files contain the Almanac information for plants and zombies. The file structure is as follows:文件结构如下：文件结构如下：
 
 **PlantAlmanac.json**
 
@@ -353,13 +353,14 @@ Each object in the `objects` array is merged into the original JSON after being 
 +**Note:** Only the first element of the `aliases` array is used to match the plant/zombie for modification.
 +For plants/zombies that you don't want to change, you don't need to do anything - it'll default to vanilla properties.
 对于不需要修改的植物/僵尸，则无需添加此对象。
+对于不需要修改的植物/僵尸，则无需添加此对象。
 
-Within a single object, `objdata` contains the gameplay properties or Almanac information of the plant/zombie. Only the properties that need to be modified should be added. Properties not added will default to vanilla properties.只需要填写需要修改的属性，未填写的属性将保持不变。
+Within a single object, `objdata` contains the gameplay properties or Almanac information of the plant/zombie. Only the properties that need to be modified should be added. Properties not added will default to vanilla properties.只需要填写需要修改的属性，未填写的属性将保持不变。只需要填写需要修改的属性，未填写的属性将保持不变。
 
 > [!important]
 >
 > - `Almanac` files are only used to modify the Almanac information of plants/zombies and do not affect the actual in-game stats of the plants.
-> - Array attributes in `objdata`, such as `Elements` in `Almanac` files, will be merged according to element order. To modify the value of an item in the original array, you need to make the modification at the same position in the array.若需修改原始数组中的某项的值，则需要在数组相同位置的值上进行修改。
+> - **Array Elements**: If the property type is an array, each value in the array will be merged according to element order. If a value in the array is an object, it will be merged recursively. If a value in the array is a primitive type, it will directly overwrite the value in the original JSON.如果数组中的值是对象，则将递归合并。如果数组中的值是基本类型，则直接覆盖原始 JSON 中的值。
 
 ## 关卡文件
 
