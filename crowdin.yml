@@ -1,33 +1,22 @@
-project_id: "pvzg_site"
-
-# 项目的根目录
-base_path: "."
-
-# 定义要上传到 Crowdin 进行翻译的文件
+project_id: pvzg_site
+base_path: .
 files:
-  # 翻译 Markdown 内容文件
-  - source: "/src/**/*.md"
-    translation: "/src/%locale%/**/%original_file_name%"
+  - source: /src/**/*.md
+    translation: /src/%locale%/**/%original_file_name%
     ignore:
-      - "/src/components/**/*.md"
-      - "/src/en/**/*.*"
-      - "/src/es-ES/**/*.*"
-      - "/src/ru-RU/**/*.*"
-      - "/src/fr-FR/**/*.*"
-      - "/src/ja-JP/**/*.*"
-      - "/src/ko-KR/**/*.*"
-      - "/src/pt-BR/**/*.*"
-      - "/src/de-DE/**/*.*"
-
+      - /src/components/**/*.md
+      - /src/en/**/*.*
+      - /src/es-ES/**/*.*
+      - /src/ru-RU/**/*.*
+      - /src/fr-FR/**/*.*
+      - /src/ja-JP/**/*.*
+      - /src/ko-KR/**/*.*
+      - /src/pt-BR/**/*.*
+      - /src/de-DE/**/*.*
     languages_mapping:
       locale:
-        en: "en"
-    source_language: "zh-CN"
-
-  # 翻译 Vue 组件中的 i18n JSON 文件
-  - source: "/src/components/**/locales/zh.json"
-    translation: "/src/components/**/locales/%two_letters_code%.json"
-
-  # 旧模式 (尚未迁移的组件)
-  - source: "/src/components/**/i18n.json"
-    translation: "/src/components/**/i18n/%two_letters_code%.json"
+        en: en
+  - source: /src/components/**/locales/zh.json
+    translation: /src/components/**/locales/%two_letters_code%.json
+  - source: /src/components/**/i18n.json
+    translation: /src/components/**/i18n/%two_letters_code%.json
