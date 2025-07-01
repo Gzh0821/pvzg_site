@@ -1,8 +1,8 @@
 ---
 title: Community
 index: true
-order: 1
-icon: comment
+order: 0
+icon: ""
 comment: false
 pageInfo: false
 ---
@@ -16,19 +16,9 @@ Welcome to join our community and contribute to the development of "PvZ2 Gardend
 >
 > If you like this website and the game, you are welcome to bookmark/Star this website repository on [Github](https://github.com/Gzh0821/pvzg_site)!
 
-<script setup>
-    import { onMounted } from 'vue';
-    onMounted(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
-</script>
+<script setup></script>
 
-<ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="7113006248"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+
 
 <div class="vp-card-container">
   <VPCard
