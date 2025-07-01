@@ -90,6 +90,7 @@ Once inside, there is a purple “i” button, click on it to get a description 
 ## The full screen resolution is so weird, what should I do?
 
 Initial launch of the game is fixed full screen, press F4 to cancel the full screen.
+Initial launch of the game is fixed full screen, press F4 to cancel the full screen.
 Currently the game has been UI adapted for 16:10 and 16:9 screens, if you have problems about screen display, please reflect them to
 the author and we will fix them as soon as possible.
 
@@ -100,7 +101,7 @@ If invalid, unfortunately this problem might be brought by the devices you are u
 
 ## Why is the plant all unlocked in the first place?
 
-The archive feature is still under development, that's why all the plants and levels are fully unlocked from the beginning, and we will add this feature in future versions.请您稍安勿躁。
+The archive feature is still under development, that's why all the plants and levels are fully unlocked from the beginning, and we will add this feature in future versions.请您稍安勿躁。请您稍安勿躁。
 
 In addition, clicking on the plus sign on the side of the gold and diamonds can directly increase their number, in the future, if you select [ALLOW CHEAT] in the Settings, this function will still be retained, if you do not allow cheating, this function will allow you to exchange gold and diamonds with each other.
 
