@@ -1,5 +1,5 @@
 ---
-title: Plants Almanac
+title: 植物图鉴
 icon: book-open
 pageInfo: false
 comment: false
