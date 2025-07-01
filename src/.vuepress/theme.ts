@@ -199,7 +199,8 @@ export default hopeTheme({
     },
 
     icon: {
-      assets: "fontawesome-with-brands",
+      assets: ["https://cdn.bootcdn.net/ajax/libs/font-awesome/6.7.2/js/all.min.js", "fontawesome-with-brands"],
+      type: "fontawesome"
     },
 
     photoSwipe: false,
