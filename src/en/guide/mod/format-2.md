@@ -16,18 +16,17 @@ order: 12
 > [!caution]
 > The following tutorial is only applicable to versions `0.2.8.1`-`0.2.9`.
 
-> [!important]  
-> Attributes marked in _italics_ are not recommended for modification, as changes may cause game crashes or instability.
+> [!important]
+> 表格中，斜体的属性为不建议修改的字段，修改后可能会导致游戏崩溃或无法正常运行。
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="3900516289"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="3900516289"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
 
-## Plant Attributes
+## 植物数据格式
 
 The following describes the base attributes and almanac information for plants, using Grapeshot as an example.
 
@@ -42,123 +41,65 @@ Multi-language fields must retain their structure and cannot be deleted or exten
 
 ### Base Information
 
-| Attribute          | Example Value                             | Description                                                                                            |
-| ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **ID**             | 74                                        | Unique in-game ID for the plant.                                                                       |
-| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Multi-language name. `en` for English, `zh` for Chinese.                                               |
-| _\_CARDSPRITENAME_ | "grapeshot"                               | Card icon resource name (corresponds to game asset files).                                             |
-| _CODENAME_         | "grapeshot"                               | Unique identifier for GE Patcher merging.                                                              |
-| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Plant type:<br>- `plant`: Standard plant<br>- `lastStandDisallowed`: Not allowed in "Last Stand" mode. |
-| **OBTAINWORLD**    | "market"                                  | World theme for the plant's background.                                                                |
-| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Zen Garden planting location:<br>- `dirt`: Regular soil.                                               |
-| _COSTUME_          | 2                                         | Number of available costumes.                                                                          |
+| Attribute     | Example Value                                | Description                                      |
+| ------------- | -------------------------------------------- | ------------------------------------------------ |
+| `ID`          | 1                                            | Unique in-game ID for the plant. |
+| _COSTUME_     | "grapeshot"                                  | `{ "PlantPlace": "dirt" }`                       |
+| **ID**        | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }` | 植物的多语言名称                                         |
+| `OBTAINWORLD` | "market"                                     | 植物的获取背景                                          |
+| _TYPE_        | `["plant", "lastStandDisallowed"]`           | Plant Attributes                                 |
 
-### Almanac Information (ALMANAC)
+### 图鉴信息
 
-The following content is a sub-attribute of the plant's `ALMANAC`, containing the plant's encyclopedia information:
-
-| Field                 | Value/Content                                                                                                                                                   | Description                                    |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| _Elements_            | Attributes displayed in almanac:<br>- `SUNCOST`: Sun cost<br>- `RECHARGE`: Cooldown<br>- `DAMAGE`: Damage (1800)<br>- `AREA`: Range (3x3)<br>- `FAMILY`: Family | Key attributes shown in the almanac.           |
-| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                    | Multi-language functional description.         |
-| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                   | Special mechanics explanation.                 |
-| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                       | Multi-language personality quotes.             |
-| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                           | Short multi-language summary of functionality. |
-| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                            | Position offset for almanac display.           |
+| _\_CARDSPRITENAME_ | Value/Content                         | Description                                          |
+| ---------------------------------------- | ------------------------------------- | ---------------------------------------------------- |
+| `ALMANAC`                                | `{"en":"...","zh":"..."}`             | 植物的图鉴信息                                              |
+| _Elements_                               | `["SUNCOST", "RECHARGE"]`             | Key attributes shown in the almanac. |
+| `Introduction`                           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | 图鉴中的功能描述                                             |
 
 ### Gameplay Data (objdata)
 
-The following content is a sub-attribute of the plant's `objdata`, containing the game mechanics data of the plant. For valid objdata of each plant, please refer to the [Almanac](../../almanac/):
+| Field     | Value/Example                      | Description |
+| --------- | ---------------------------------- | ----------- |
+| `objdata` | `{ "SUNCOST": 100, "DAMAGE": 20 }` | 游戏中的数值属性    |
 
-| Attribute                     | Value/Example | Description                                                     |
-| ----------------------------- | ------------- | --------------------------------------------------------------- |
-| **CannotBeSheepenedByWizard** | true          | Immune to Wizard Zombie's "Sheepify" ability.                   |
-| **Damage**                    | 1800          | Base damage value.                                              |
-| **Cooldown**                  | 35            | Cooldown time (seconds).                                        |
-| **CooldownFrom**              | 1             | Initial cooldown value.                                         |
-| **SunCost**                   | 150           | Sun cost to plant.                                              |
-| **Toughness**                 | 300           | Base health.                                                    |
-| **Family**                    | "Explosive"   | Family affiliation (affects family-based buffs).                |
-| **ImmuneToIceblock**          | true          | Immune to freezing effects (e.g., Ice Weasel Zombie's attacks). |
+## 僵尸数据格式
 
-### Original JSON for Grapeshot
+与植物数据格式类似，僵尸数据包含以下主要字段：
+
+- `ID`
+- _CODENAME_
+- **NAME**
+- `ALMANAC`
+- `objdata`
+
+## 示例
+
+以下是一个植物数据的完整示例：
 
 ```json
 {
-  "ID": 74,
+  "ID": 1,
+  "CODENAME": "peashooter",
   "NAME": {
-    "en": "Grapeshot",
-    "zh": "爆裂葡萄"
+    "en": "Peashooter",
+    "zh": "豌豆射手"
   },
-  "_CARDSPRITENAME": "grapeshot",
-  "CODENAME": "grapeshot",
-  "TYPE": ["plant", "lastStandDisallowed"],
   "OBTAINWORLD": "market",
-  "ZENGARDEN": {
-    "PlantPlace": "dirt"
-  },
-  "COSTUME": 2,
+  "TYPE": ["plant"],
   "ALMANAC": {
     "Elements": [
-      {
-        "TYPE": "SUNCOST"
-      },
-      {
-        "TYPE": "RECHARGE"
-      },
-      {
-        "TYPE": "DAMAGE",
-        "VALUE": 1800
-      },
-      {
-        "TYPE": "AREA",
-        "SORT": {
-          "en": "3x3",
-          "zh": "3x3范围"
-        }
-      },
-      {
-        "TYPE": "FAMILY"
-      }
+      { "TYPE": "SUNCOST", "VALUE": 100 },
+      { "TYPE": "RECHARGE", "VALUE": 5 }
     ],
     "Introduction": {
-      "en": "Grapeshots explode and scatter bouncing projectiles in eight directions.",
-      "zh": "爆裂葡萄爆炸后向 8 个方向发射弹性葡萄子弹。"
-    },
-    "Special": [
-      {
-        "NAME": {
-          "en": "Usage",
-          "zh": "用途"
-        },
-        "DESCRIPTION": {
-          "en": "single use, instant",
-          "zh": "一次性使用，立刻触发"
-        }
-      }
-    ],
-    "Chat": {
-      "en": "\"Spa-BOOM!\" enthuses Grapeshot. \"You liked that? I got a million of 'em! Wa-POW! Buh-BLAM! Za-... um... Ker-... hmmm... Okay, I guess I've only got the three.\"",
-      "zh": "“唏——啪——！”爆裂葡萄激情地吼道。“你喜欢吗？我还有上万种这样的声音呢。哇——噗——！啪——砰——！咂——……！额……，轰——……！嗯嗯……，好吧，我想就这三种了。”"
-    },
-    "BriefIntroduction": {
-      "en": "Explodes and scatters bouncing projectiles",
-      "zh": "爆炸并发射弹射子弹"
-    },
-    "DisplayOffset": {
-      "x": 0,
-      "y": 0
+      "en": "Shoots peas",
+      "zh": "发射豌豆"
     }
   },
   "objdata": {
-    "CannotBeSheepenedByWizard": true,
-    "Damage": 1800,
-    "Cooldown": 35,
-    "CooldownFrom": 1,
-    "SunCost": 150,
-    "Toughness": 300,
-    "Family": "Explosive",
-    "ImmuneToIceblock": true
+    "SUNCOST": 100,
+    "DAMAGE": 20
   }
 }
 ```
@@ -167,13 +108,13 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Plant Commodities
 
-| Field                | Type   | Description                      |
-| -------------------- | ------ | -------------------------------- |
-| _CommodityType_      | string | Fixed value: "plant".            |
-| **CommodityName**    | string | Plant's CODENAME.                |
+| Field                | Type   | Description                                                         |
+| -------------------- | ------ | ------------------------------------------------------------------- |
+| _CommodityType_      | string | Fixed value: "plant".               |
+| **CommodityName**    | string | Plant's CODENAME.                                   |
 | **CurrencyType**     | string | Currency type ("gem" or "coin"). |
-| **CurrencyRequired** | number | Required currency amount.        |
-| _UnlockLevel_        | string | Unlock level requirement.        |
+| **CurrencyRequired** | number | Required currency amount.                           |
+| _UnlockLevel_        | string | 在某个关卡解锁                                                             |
 
 #### Example: Snow Pea Commodity
 
@@ -188,12 +129,12 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Upgrade Commodities
 
-| Field                | Type   | Description                      |
-| -------------------- | ------ | -------------------------------- |
-| _CommodityType_      | string | Fixed value: "upgrade".          |
-| **CommodityName**    | string | Upgrade's CODENAME.              |
+| Field                | Type   | Description                                                         |
+| -------------------- | ------ | ------------------------------------------------------------------- |
+| _CommodityType_      | string | Fixed value: "upgrade".             |
+| **CommodityName**    | string | Upgrade's CODENAME.                                 |
 | **CurrencyType**     | string | Currency type ("gem" or "coin"). |
-| **CurrencyRequired** | number | Required currency amount.        |
+| **CurrencyRequired** | number | Required currency amount.                           |
 
 #### Example: Shovel Upgrade
 
@@ -208,14 +149,14 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Gem Commodities
 
-| Field                    | Description                      |
-| ------------------------ | -------------------------------- |
-| _CommodityType_          | Fixed value: "gem".              |
-| CommodityCount           | Number of gems obtained.         |
+| Field                    | Description                                                         |
+| ------------------------ | ------------------------------------------------------------------- |
+| _CommodityType_          | Fixed value: "gem".                 |
+| CommodityCount           | Number of gems obtained.                            |
 | **CurrencyType**         | Currency type ("gem" or "coin"). |
-| CurrencyRequired         | Required currency amount.        |
-| _StackLevel_             | Bundle tier.                     |
-| **CommodityDisplayName** | Multi-language display name.     |
+| CurrencyRequired         | Required currency amount.                           |
+| _StackLevel_             | 商品包等级                                                               |
+| **CommodityDisplayName** | Multi-language display name.                        |
 
 #### Example: Gem Bundle
 
@@ -235,11 +176,11 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Coin Commodities
 
-| Field                    | Description                      |
-| ------------------------ | -------------------------------- |
-| _CommodityType_          | Fixed value: "coin".             |
-| CommodityCount           | Number of coins obtained.        |
+| Field                    | Description                                                         |
+| ------------------------ | ------------------------------------------------------------------- |
+| _CommodityType_          | Fixed value: "coin".                |
+| CommodityCount           | Number of coins obtained.                           |
 | **CurrencyType**         | Currency type ("gem" or "coin"). |
-| CurrencyRequired         | Required currency amount.        |
-| _StackLevel_             | Bundle tier.                     |
-| **CommodityDisplayName** | Multi-language display name.     |
+| CurrencyRequired         | Required currency amount.                           |
+| _StackLevel_             | 商品包等级                                                               |
+| **CommodityDisplayName** | Multi-language display name.                        |
