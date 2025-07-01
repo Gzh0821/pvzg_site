@@ -1,8 +1,8 @@
 ---
 title: Community Level
 index: true
-order: 3
-icon: feather-pointed
+order: 0
+icon: ""
 pageInfo: false
 comment: false
 ---
