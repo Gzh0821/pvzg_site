@@ -20,11 +20,11 @@ order: 12
 > 表格中，斜体的属性为不建议修改的字段，修改后可能会导致游戏崩溃或无法正常运行。
 
 <ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="3900516289"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="3900516289"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
 
 ## 植物数据格式
 
