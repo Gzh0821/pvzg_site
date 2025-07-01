@@ -7,7 +7,8 @@
         components: {}
     }"></a-config-provider>
     <a-layout>
-        <a-page-header :title="t('title')" :sub-title="gameVersion" style="font-family: 'pvzgeFontEN','pvzgFont',sans-serif">
+        <a-page-header :title="t('title')" :sub-title="gameVersion"
+            style="font-family: 'pvzgeFontEN','pvzgFont',sans-serif">
             <template #extra>
                 <a-upload :before-upload="handleUpload" accept=".json" :showUploadList="false">
                     <a-button type="primary"> {{ t('upload save') }}</a-button>
@@ -178,10 +179,19 @@ import JSON5 from 'json5'
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants'
 
 import upgradeJson from './UpgradeFeatures.json'
-import i18nJson from './vue-i18n.json'
 import versionJson from '../version.json'
 
 import type { ArchiveData } from './types';
+
+// 动态导入所有语言文件
+const messages = Object.fromEntries(
+    Object.entries(import.meta.glob('./locales/*.json', { eager: true }))
+        .map(([key, value]) => {
+            const locale = key.match(/\/([a-zA-Z-]+)\.json$/)?.[1];
+            console.log(locale, value);
+            return [locale, (value as { default: any }).default];
+        })
+);
 
 const i18nLanguage = inject('i18nLanguage', 'en');
 const plantMap = getPlantIdMap(i18nLanguage);
@@ -197,7 +207,7 @@ const upgradeList = upgradeJson.UPGRADES
 const { t, locale } = useI18n({
     locale: i18nLanguage,
     fallbackLocale: 'en',
-    messages: i18nJson
+    messages: messages
 })
 
 locale.value = i18nLanguage

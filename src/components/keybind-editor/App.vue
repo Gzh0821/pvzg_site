@@ -72,7 +72,18 @@ import { useI18n } from 'vue-i18n';
 
 import initialKeybindsFromFile from './KeyBinds.json';
 import versionJson from '../version.json';
-import i18nJson from './vue-i18n.json';
+
+// 动态导入所有语言文件
+const messages = Object.fromEntries(
+    Object.entries(import.meta.glob('./locales/*.json', { eager: true }))
+        .map(([key, value]) => {
+            const match = key.match(/\/([a-zA-Z-]+)\.json$/);
+            if (!match) return [null, null];
+            const locale = match[1];
+            return [locale, (value as any).default];
+        })
+        .filter(([locale]) => locale)
+);
 
 const i18nLanguage = inject('i18nLanguage', 'en');
 const gameVersion = versionJson.gameVersion;
@@ -90,7 +101,7 @@ const isBinding = ref(false);
 const { t, locale } = useI18n({
     locale: i18nLanguage,
     fallbackLocale: 'en',
-    messages: i18nJson
+    messages
 });
 locale.value = i18nLanguage;
 

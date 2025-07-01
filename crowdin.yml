@@ -1,0 +1,22 @@
+project_id: pvzg_site
+base_path: .
+files:
+  - source: /src/**/*.md
+    translation: /src/%locale%/**/%original_file_name%
+    ignore:
+      - /src/components/**/*.md
+      - /src/en/**/*.*
+      - /src/es-ES/**/*.*
+      - /src/ru-RU/**/*.*
+      - /src/fr-FR/**/*.*
+      - /src/ja-JP/**/*.*
+      - /src/ko-KR/**/*.*
+      - /src/pt-BR/**/*.*
+      - /src/de-DE/**/*.*
+    languages_mapping:
+      locale:
+        en: en
+  - source: /src/components/**/locales/zh.json
+    translation: /src/components/**/locales/%two_letters_code%.json
+  - source: /src/components/**/i18n.json
+    translation: /src/components/**/i18n/%two_letters_code%.json
