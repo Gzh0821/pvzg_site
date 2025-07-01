@@ -1,46 +1,47 @@
 ---
-title: Submission Agreement
+title: 玩家投稿协议
 icon: hand-holding-hand
 index: true
 order: 4
 pageInfo: false
 comment: false
 ---
+
 ## Player Submission Agreement for PvZ2 Gardendless
 
-Thank you for your enthusiasm and support for PvZ2: Gardendless! To better regulate player submissions of custom levels and mods, and to ensure the development team can use player-created content compliantly and safely, please carefully read and agree to the following terms. By uploading or submitting custom levels and mods through channels such as the website or Discord server, you acknowledge your full acceptance of this agreement.
+Thank you for your enthusiasm and support for PvZ2: Gardendless! To better regulate player submissions of custom levels and mods, and to ensure the development team can use player-created content compliantly and safely, please carefully read and agree to the following terms. By uploading or submitting custom levels and mods through channels such as the website or Discord server, you acknowledge your full acceptance of this agreement.为了更好地规范玩家自定义关卡和模组的投稿行为，并确保开发团队能够合规、安全地使用玩家创作的内容，请仔细阅读并同意以下条款。您通过本网站/Discord服务器等渠道上传或提交自定义关卡和模组，即视为您同意本协议的全部内容。
 
 ### 1. Authorization Statement
 
 You agree that any custom levels and mods uploaded or submitted to the PvZ2: Gardendless development team (hereinafter referred to as "the Team") automatically grant the Team and its partners the following rights:
 
 - To publicize, display, and promote your work in any form, including but not limited to showcasing it on the website, Discord server, social media, livestream platforms, and other channels.
-
-- To freely use, modify, distribute, and republish your levels and mods, provided such actions comply with applicable laws and regulations.
-
+- 在不违反法律法规的前提下，自由地使用、修改、分发及再发布您的关卡和模组。
 - To integrate your submitted levels and mods into any in-game features, including but not limited to level/mod challenges, level/mod creation tools, and other gameplay expansions.
-
 - To display, publish, promote, and share your creations with other players in any form.
 
 ### 2. Open-Source Licensing
 
 Your submitted custom levels and mods will automatically be open-sourced under the MIT License, permitting the Team and all other users to freely use your work under the terms defined by the license.
 You agree that others may copy, modify, merge, publish, create derivative works, distribute, sublicense, and/or sell the content in accordance with the license.
+您同意他人有权根据该协议的规定，复制、修改、合并、发布、发布衍生作品、分发、再许可和/或出售该内容。
 
 ### 3. Warranties and Liability
 
+您声明并保证，您拥有或已获得上传该关卡和模组的全部必要权利，并且该关卡和模组的内容不侵犯任何第三方的知识产权、隐私权或其他合法权益。
 You represent and warrant that you own or have obtained all necessary rights to upload the levels and mods, and that the content does not infringe upon any third party’s intellectual property, privacy rights, or other legal rights.
 You assume full responsibility for any legal disputes or claims arising from your submissions and agree to indemnify and hold harmless the Team and its partners in such cases.
 
 ### 4. Modifications and Termination
 
 The Team reserves the right to modify this agreement and will notify players of changes through appropriate channels. Continued submissions after modifications constitute acceptance of the revised terms.
-You may cease submitting custom levels and mods to the Team at any time. However, previously submitted content remains subject to this agreement, and all granted authorizations are non-revocable.
+You may cease submitting custom levels and mods to the Team at any time. However, previously submitted content remains subject to this agreement, and all granted authorizations are non-revocable.继续提交内容的玩家视为接受修改后的协议。
+您可以随时停止向团队提交自定义关卡和模组，但已提交的关卡和模组仍将遵循本协议内容，且授权不可撤销。
 
 ### 5. Effective Date
 
-This agreement takes effect automatically upon your submission of levels or mods and remains valid indefinitely.
-By submitting custom levels and mods, you confirm that you have read and agreed to the above terms.
+本协议自您上传或提交关卡和模组之时起自动生效，并持续有效。
+通过提交自定义关卡和模组，您即表明您已阅读并同意以上条款。
 
 **The PvZ2: Gardendless Development Team**
 
