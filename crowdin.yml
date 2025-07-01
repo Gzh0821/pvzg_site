@@ -1,18 +1,8 @@
 project_id: pvzg_site
 base_path: .
 files:
-  - source: /src/**/*.md
+  - source: /src/en/**/*.md
     translation: /src/%locale%/**/%original_file_name%
-    ignore:
-      - /src/components/**/*.md
-      - /src/en/**/*.*
-      - /src/es-ES/**/*.*
-      - /src/ru-RU/**/*.*
-      - /src/fr-FR/**/*.*
-      - /src/ja-JP/**/*.*
-      - /src/ko-KR/**/*.*
-      - /src/pt-BR/**/*.*
-      - /src/de-DE/**/*.*
     languages_mapping:
       locale:
         en: en
