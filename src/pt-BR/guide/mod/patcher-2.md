@@ -26,11 +26,11 @@ order: 11
 4. 了解植物、僵尸等在 JSON 中的属性结构 (可参考[这里](format.md))
 
 <ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="3900516289"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="3900516289"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
 
 ## GE Patcher 基本教程
 
