@@ -24,16 +24,15 @@ next: false
 > [!warning]
 > The key binder is in the testing phase. Using this tool may cause unknown problems with the key configuration. Please be sure to back up the original key configuration before using it!
 >
-> Please use the archive exported from the latest game version for editing.
+> 请使用最新游戏版本导出的键位配置上传编辑。
 >
 > You can bind multiple functions to the same key, but please note that some functions may conflict or not work properly.
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="7113006248"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="7113006248"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
 
 <Editor />
