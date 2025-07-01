@@ -1,7 +1,7 @@
 ---
-title: 在线图鉴
+title: Online Almanac
 index: false
-icon: book-atlas
+icon: ""
 pageInfo: false
 comment: false
 toc: false
@@ -12,18 +12,6 @@ toc: false
 >
 > In custom level files, both plants and zombies use `CodeName` as their names.
 
-<script setup>
-    import { onMounted } from 'vue';
-    onMounted(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
-</script>
+<script setup></script>
 
 <Catalog />
-
-<ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="7113006248"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
