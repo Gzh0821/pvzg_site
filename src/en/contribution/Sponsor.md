@@ -1,10 +1,10 @@
 ---
-title: 鸣谢
-icon: fa-solid fa-hand-holding-heart
+title: Acknowledgements
+icon: ""
 pageInfo: false
 comment: false
 index: true
-order: 4
+order: 0
 ---
 
 Special thanks to [@普通的一名博客 plunt](https://space.bilibili.com/451272694) for sponsoring this website domain.
