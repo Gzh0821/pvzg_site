@@ -1,5 +1,5 @@
 ---
-title: Альманах
+title: 在线图鉴
 index: false
 icon: book-atlas
 pageInfo: false
@@ -8,7 +8,7 @@ toc: false
 ---
 
 > [!info]
-> Щелкните опцию на боковой панели, чтобы перейти на соответствующую страницу с иллюстрациями.
+> 点击侧边栏的选项可以切换到对应的图鉴页面。
 >
 > В файлах пользовательских уровней и растения, и зомби используют `CodeName` в качестве своих имен.
 
@@ -22,9 +22,8 @@ toc: false
 <Catalog />
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="7113006248"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="7113006248"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
