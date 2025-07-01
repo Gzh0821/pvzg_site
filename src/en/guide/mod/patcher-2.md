@@ -18,7 +18,7 @@ order: 11
 
 The game includes the GE Patcher tool, which allows loading custom JSON resources and levels.
 
-## Prerequisites
+## 准备工作
 
 1. Install a JSON editor (recommended: VSCode/Notepad++).
 2. Ensure the game version is ≥ 0.2.8.1.
@@ -26,12 +26,11 @@ The game includes the GE Patcher tool, which allows loading custom JSON resource
 4. Familiarize yourself with the attribute structure of plants, zombies, etc., in JSON (refer to [Attribute Reference](format.md)).
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="3900516289"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="3900516289"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
 
 ## GE Patcher Basics
 
@@ -55,7 +54,7 @@ gePatcher.init()
 
 **Re-execute this command after modifying JSON files to apply changes.**
 
-## File Structure
+## 文件路径
 
 Create a `patches` folder in `com.pvzge.app` with the following structure:
 
@@ -71,9 +70,9 @@ patches/
         └── [LevelName].json
 ```
 
-Omit files for unmodified features.
+若无需修改某类属性，则忽略对应的文件。
 
-## File Formats
+## File Structure
 
 **PlantFeatures.json**: Plant attributes (structure example):
 
@@ -89,7 +88,7 @@ Omit files for unmodified features.
 }
 ```
 
-**ZombieFeatures.json**: Zombie attributes (structure example):
+- **ZombieFeatures.json**: Zombie attributes (structure example):
 
 ```json
 {
@@ -101,7 +100,7 @@ Omit files for unmodified features.
 }
 ```
 
-**UpgradeFeatures.json**: Upgrade attributes (structure example):
+- **UpgradeFeatures.json**: Upgrade attributes (structure example):
 
 ```json
 {
@@ -113,13 +112,15 @@ Omit files for unmodified features.
 }
 ```
 
-**StoreCommodityFeatures.json**: Store item attributes.
+- **StoreCommodityFeatures.json**: Store item attributes.
 
-#### Key Notes:
+#### 要点:
 
-- `PLANTS`, `ZOMBIES`, and `UPGRADES` arrays define modifications for existing entities.
-- `SEEDCHOOSERDEFAULTORDER` sets the default plant order in the seed selector.
-- `BASEUNLOCKLIST` defines initially unlocked plants.
+PlantFeatures.json 和 ZombieFeatures.json 中的 `PLANTS` 和 `ZOMBIES` 数组为植物和僵尸的列表。
+
+植物属性中，`SEEDCHOOSERDEFAULTORDER`数组为植物在图鉴/选择界面的默认顺序，`BASEUNLOCKLIST`数组为初始解锁的植物。
+
+UpgradeFeatures.json 中的 `UPGRADES` 数组为升级的列表。
 
 ## Plants/Zombies/Upgrades Modifications
 
@@ -133,18 +134,16 @@ Each object within the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array is merged into 
 
 For other fields, such as `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, etc., directly replace the original array.
 
-Therefore, for any plant/zombie that you want to modify, you need to add an object within the `PLANTS` (`ZOMBIES`) array in the custom JSON file, and the `CODENAME` field of this object must be consistent with the original plant name in the JSON.
+In a single plant/zombie object, only `CODENAME` is required. If other fields are not filled in, they will remain unchanged. If they need to be modified, the corresponding fields must be added.
 
 For plants/zombies that do not require modification, there is no need to add this object.
 
-In a single plant/zombie object, only `CODENAME` is required. If other fields are not filled in, they will remain unchanged. If they need to be modified, the corresponding fields must be added.
+单个植物/僵尸对象中，只有`CODENAME`是必需的，其它字段若不填写则保持不变，若需更改则需要增加该字段。
 
 > [!important]
+> 请避免修改某些关键属性，如`ID`，`_CARDSPRITENAME`等，可能会导致游戏崩溃或无法正常运行。
 >
-> - Avoid modifying critical fields like `ID` or `_CARDSPRITENAME` to prevent crashes.
-> - **GE Patcher cannot create new entities; it only modifies existing ones.**
-
-#### Example:
+> 本工具无法创建新的植物/僵尸，只能修改已有的植物/僵尸。
 
 To modify Peashooter's family to "Fire", change its background to "epic", set Sunflower's cost to 25, and reduce cooldown to 1 second:
 
@@ -169,7 +168,7 @@ To modify Peashooter's family to "Fire", change its background to "epic", set Su
 }
 ```
 
-## Level Modifications
+## 关卡修改
 
 Place custom level files in `patches/jsons/levels/[LevelName].json`.
 
@@ -178,7 +177,7 @@ Place custom level files in `patches/jsons/levels/[LevelName].json`.
 
 ## Store Modifications
 
-`StoreCommodityFeatures.json` replaces in-game store categories:
+商店包含四大商品分类：
 
 ```json
 {
@@ -189,12 +188,12 @@ Place custom level files in `patches/jsons/levels/[LevelName].json`.
 }
 ```
 
-Omit categories you do not modify.
+GE Patcher 会使用自定义 JSON 文件`StoreCommodityFeatures.json`中的四个商品的数组替换原始数组。若自定义 JSON 文件中不包含某一商品分类，则该分类的商品将不会被替换。
 
-## Debugging
+## 调试与排错
 
 1. Check the console for errors during loading.
 2. Common errors:
-   - ❌ `Failed to load...`: JSON syntax error.
-   - ❌ `Level file not found`: Filename mismatch.
+  - ❌ `Failed to load...`: JSON syntax error.
+  - ❌ `Level file not found`: Filename mismatch.
 3. Validate JSON using tools like [JSONLint](https://jsonlint.com/).
