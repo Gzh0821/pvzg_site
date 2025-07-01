@@ -1,0 +1,21 @@
+
+project_id: "pvzg_site"
+
+# 项目的根目录
+base_path: "."
+
+# 定义要上传到 Crowdin 进行翻译的文件
+files:
+  # 翻译 Markdown 内容文件
+  - source: '/src/**/*.md'
+    translation: '/%locale%/**/%original_file_name%'
+    ignore:
+      - '/src/components/*.md'
+    # source_language: "zh-CN" 
+
+  # 翻译 Vue 组件中的 i18n JSON 文件
+  - source: '/src/components/**/vue-i18n.json'
+    translation: '/src/components/**/i18n/%locale%.json'
+
+  - source: '/src/components/**/i18n.json'
+    translation: '/src/components/**/i18n/%locale%.json'
