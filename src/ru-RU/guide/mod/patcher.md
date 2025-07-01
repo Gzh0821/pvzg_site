@@ -31,12 +31,11 @@ style="display:block"
 data-ad-client="ca-pub-7637695321442015"
 data-ad-slot="3900516289"
 data-ad-format="auto"
-data-full-width-responsive="true">
-</ins>
+data-full-width-responsive="true"> </ins>
 
 ## GE Patcher Basics
 
-Press "F12" when the game starts to open the developer console. In the Console tab, output similar to the following will appear:
+Press "F12" when the game starts to open the developer console. In the Console tab, output similar to the following will appear:在控制台选项卡中，会出现类似以下内容的输出：
 
 ```
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
@@ -56,7 +55,7 @@ After the game finishes loading, run the following command to load all custom JS
 gePatcher.init()
 ```
 
-**After modifying a JSON file, please re-execute this command to apply the changes.**
+**After modifying a JSON file, please re-execute this command to apply the changes.**\*\*
 
 ## File Structure
 
@@ -88,7 +87,7 @@ Files for original content that are not modified do not need to be created.
 
 ### Features File Structure
 
-Features files contain the basic attributes of plants, zombies, and upgrades. The file structure is as follows:
+Features files contain the basic attributes of plants, zombies, and upgrades. The file structure is as follows:文件结构如下：
 
 **PlantFeatures.json**：Plant basic characteristics (structure example)
 
@@ -138,22 +137,23 @@ Features files contain the basic attributes of plants, zombies, and upgrades. Th
 
 Features modification rules apply to `PlantFeatures`、`ZombieFeatures` and `UpgradeFeatures` files。
 
-Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:
+Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:合并规则如下：
 
-- **Array Elements**: If the attribute type is an array, each value in the array will be merged according to element order. If a value in the array is an object, it will be merged recursively. If a value in the array is a primitive type, it will directly overwrite the value in the original JSON.
-- **Object Merging**: If the attribute type is an object, it will be merged recursively. If there are attributes with the same key within the object, the value in the original JSON will be directly overwritten.
+- **Array Elements**: If the attribute type is an array, each value in the array will be merged according to element order. If a value in the array is an object, it will be merged recursively. If a value in the array is a primitive type, it will directly overwrite the value in the original JSON.如果数组中的值是对象，则将递归合并。如果数组中的值是基本类型，则直接覆盖原始 JSON 中的值。
+- **对象合并**：如果属性类型为对象，则将进行递归合并。**Object Merging**: If the attribute type is an object, it will be merged recursively. If there are attributes with the same key within the object, the value in the original JSON will be directly overwritten.
 - **Primitive Attributes**: For primitive attributes with the same key, they are directly overwritten, i.e., replacing the value in the original JSON.
 
 For other fields, such as `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, the original array is directly replaced.
 
 Therefore, for any plant/zombie that needs modification, you must add an object to the `PLANTS` (`ZOMBIES`) array, and the `CODENAME` field of this object must match the original plant/zombie in the JSON. For plants/zombies that do not need modification, this object does not need to be added.
+对于不需要修改的植物/僵尸，则无需添加此对象。
 
-Within a single plant/zombie object, only the `CODENAME` needs to be filled. Other fields not filled will remain unchanged. If modification is needed, the corresponding fields must be added.
+在单个植物/僵尸对象中，只需填写 `CODENAME`。其他字段未填写则保持不变。如果需要修改，则必须添加相应的字段。
 
 > [!important]
 >
 > - Avoid modifying critical fields like `ID` or `_CARDSPRITENAME` to prevent crashes.。
-> - **GE Patcher cannot create new entities; it only modifies existing ones.**
+> - **GE Patcher cannot create new entities; it only modifies existing ones.**\*\*
 
 **Example**
 
@@ -181,7 +181,7 @@ To change the Peashooter's background to "epic" and the Sunflower's name to "Hap
 
 ### Props File Structure
 
-Props files contain the numerical attributes of plants and zombies. The file structure is as follows:
+Props files contain the numerical attributes of plants and zombies. The file structure is as follows:文件结构如下：
 
 **PlantProps.json**：Plant numerical attributes (structure example)
 
@@ -235,7 +235,7 @@ Props files contain the numerical attributes of plants and zombies. The file str
 
 ### Almanac File Structure
 
-Almanac files contain the Almanac information for plants and zombies. The file structure is as follows:
+Almanac files contain the Almanac information for plants and zombies. The file structure is as follows:文件结构如下：
 
 **PlantAlmanac.json**：Plant Almanac information (structure example)
 
@@ -345,21 +345,22 @@ Almanac files contain the Almanac information for plants and zombies. The file s
 
 ### Props/Almanac Modification Rules
 
-Props modification rules apply to `PlantProps` and `ZombieProps` files. Almanac modification rules apply to `PlantAlmanac` and `ZombieAlmanac` files.
+Props 修改规则适用于 `PlantProps` 和 `ZombieProps` 文件。Props modification rules apply to `PlantProps` and `ZombieProps` files. Almanac modification rules apply to `PlantAlmanac` and `ZombieAlmanac` files.
 
 Each object in the `objects` array is merged into the original JSON after being matched by the `aliases` field, using the same rules as for `Features` files.
 
 For any plant/zombie that needs modification, you must add an object to the `objects` array, and the first item of that object's `aliases` array must be the `CODENAME` of the corresponding plant/zombie.
 For plants/zombies that do not need modification, this object does not need to be added.
+对于不需要修改的植物/僵尸，则无需添加此对象。
 
-Within a single object, `objdata` contains the numerical attributes or Almanac information of the plant/zombie. Only the attributes that need to be modified should be filled. Attributes not filled will remain unchanged.
+Within a single object, `objdata` contains the numerical attributes or Almanac information of the plant/zombie. Only the attributes that need to be modified should be filled. Attributes not filled will remain unchanged.只需要填写需要修改的属性，未填写的属性将保持不变。
 
 > [!important]
 >
 > - `Almanac` files are only used to modify the Almanac information of plants/zombies and do not affect the actual attributes of the plants.
-> - Array attributes in `objdata`, such as `Elements` in `Almanac` files, will be merged according to element order. To modify the value of an item in the original array, you need to make the modification at the same position in the array.
+> - Array attributes in `objdata`, such as `Elements` in `Almanac` files, will be merged according to element order. To modify the value of an item in the original array, you need to make the modification at the same position in the array.若需修改原始数组中的某项的值，则需要在数组相同位置的值上进行修改。
 
-## Level Files
+## 关卡文件
 
 Place custom level files in `patches/jsons/levels/[LevelName].json`.
 
@@ -381,10 +382,10 @@ Place custom level files in `patches/jsons/levels/[LevelName].json`.
 
 Omit categories you do not modify.
 
-## Debugging
+## 调试
 
 1. Check the console for errors during loading.
 2. Common errors:
-   - ❌ `Failed to load...`: JSON syntax error.
-   - ❌ `Level file not found`: Filename mismatch.
+  - ❌ `Failed to load...`: JSON syntax error.
+  - ❌ `Level file not found`: Filename mismatch.
 3. Validate JSON using tools like [JSONLint](https://jsonlint.com/).
