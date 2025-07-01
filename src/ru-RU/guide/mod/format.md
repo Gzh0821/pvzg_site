@@ -20,11 +20,11 @@ order: 2
 > In the tables, attributes in _italics_ are fields that are not recommended to be modified. Modifying them may cause the game to crash or not run properly.
 
 <ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="3900516289"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="3900516289"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
 
 ## Plant Files
 
