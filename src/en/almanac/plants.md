@@ -1,5 +1,5 @@
 ---
-title: 植物图鉴
+title: Plant Almanac
 icon: book-open
 pageInfo: false
 comment: false
@@ -9,7 +9,7 @@ sidebar: false
 order: 2
 ---
 
-<script setup>
+<script setup>    
     import { createApp,provide } from 'vue';
     import Almanac from '@source/components/plantsAlmanac/App.vue';
     provide("i18nLanguage",'en');
