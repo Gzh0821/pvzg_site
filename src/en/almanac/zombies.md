@@ -1,12 +1,12 @@
 ---
 title: Zombie Almanac
-icon: book-open
+icon: ""
 pageInfo: false
 comment: false
 toc: false
 watermark: true
 sidebar: false
-order: 3
+order: 0
 ---
 
 <script setup>
