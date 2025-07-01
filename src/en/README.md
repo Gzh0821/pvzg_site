@@ -1,57 +1,57 @@
 ---
 home: true
-icon: home
+icon: ""
 comment: false
 title: Home Page
-heroImage: /pvz_logo.webp
+heroImage: ""
 heroImageStyle:
-  border-radius: 20%
-  border: "5px solid rgba(255, 255, 255, 0.3)"
-  box-shadow: "0 0 12px rgba(0, 0, 0, 0.2)"
-  backdrop-filter: "blur(10px)"
-  background: "rgba(255, 255, 255, 0.1)"
-bgImage: /assets/image/background.webp
+  border-radius: ""
+  border: ""
+  box-shadow: ""
+  backdrop-filter: ""
+  background: ""
+bgImage: ""
 bgImageStyle:
-  background-attachment: fixed
-  filter: brightness(60%)
-  opacity: 0.5
+  background-attachment: ""
+  filter: ""
+  opacity: 0
 heroFullScreen: true
-heroText: PvZ2 Gardendless' Birthday
+heroText: ""
 tagline: A completely remastered PvZ2 for all desktop platforms (1st Anniversary!)
 actions:
   - text: Download
-    icon: circle-down
-    link: ./download/
-    type: primary
+    icon: ""
+    link: ""
+    type: ""
 
   - text: Community
-    icon: comment
-    link: ./contribution/
+    icon: ""
+    link: ""
 
 highlights:
-  - bgImage: /assets/image/background.webp
+  - bgImage: ""
     bgImageStyle:
-      background-attachment: fixed
-      opacity: 0.5
-      filter: brightness(60%)
+      background-attachment: ""
+      opacity: 0
+      filter: ""
     features:
-      - title: 在线图鉴
-        icon: book-atlas
+      - title: Online Almanac
+        icon: ""
         details: Find plants and zombies, as well as their ID and CodeName
-        link: ./almanac/
+        link: ""
 
       - title: Save Editor
-        icon: floppy-disk
+        icon: ""
         details: Modify Gardendless game saves
-        link: ./useful-tool/save-editor
+        link: ""
 
       - title: MOD tutorial
-        icon: toolbox
+        icon: ""
         details: Customize game resources using GE Patcher
-        link: ./guide/mod/
+        link: ""
 
       - title: Recommended Configuration
-        icon: sliders
+        icon: ""
         details: View the recommended configuration for the game
-        link: ./guide/requirement
+        link: ""
 ---
