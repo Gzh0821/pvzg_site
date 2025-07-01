@@ -13,12 +13,13 @@ order: 1
 
 The custom level file of the game "PvZ2 Gardendless" is similar to the original version. It is a JSON/JSON5 text file with the suffix `.json` or `json5`, which contains all the information of the level, including plants, zombies, terrain, etc.
 Compared with the original version, the level file of "PvZ2 Gardendless" adds some new fields to describe the basic information of the level.
+Compared with the original version, the level file of "PvZ2 Gardendless" adds some new fields to describe the basic information of the level.
 
 ## JSON File
 
 If you are already familiar with the JSON file format, you can skip this section directly.
 
-JSON (JavaScript Object Notation) is a lightweight data exchange format that is easy to read and write. It uses key-value pairs to represent data and is usually used to transmit data between clients and servers. The data structures in JSON include objects, arrays, strings, numbers, Boolean values, and null.它使用键值对来表示数据，通常用于客户端与服务器之间传输数据。JSON 中的数据结构包括对象、数组、字符串、数字、布尔值和 null。
+JSON (JavaScript Object Notation) is a lightweight data exchange format that is easy to read and write. It uses key-value pairs to represent data and is usually used to transmit data between clients and servers. The data structures in JSON include objects, arrays, strings, numbers, Boolean values, and null.它使用键值对来表示数据，通常用于客户端与服务器之间传输数据。它使用键值对来表示数据，通常用于客户端与服务器之间传输数据。JSON 中的数据结构包括对象、数组、字符串、数字、布尔值和 null。
 
 - Objects: wrapped in `{}`, containing key-value pairs.
 - Arrays: wrapped in `[]`, containing multiple values.
@@ -48,7 +49,7 @@ Example:
 
 In this example:
 
-`name` is a string type, and `age` is a number type. `isStudent` is a Boolean type. `skills` is an array of strings. `address` is an object containing city and zipCode.`isStudent` 是布尔类型。`skills` 是一个字符串数组。`address` 是一个对象，包含 city 和 zipCode。
+`name` is a string type, and `age` is a number type. `isStudent` is a Boolean type. `skills` is an array of strings. `address` is an object containing city and zipCode.`isStudent` 是布尔类型。`isStudent` 是布尔类型。`skills` 是一个字符串数组。`address` 是一个对象，包含 city 和 zipCode。
 
 For a more in-depth understanding of the JSON format, you can refer to [here](https://www.json.org/json-en.html).
 
@@ -57,9 +58,9 @@ For a more in-depth understanding of the JSON format, you can refer to [here](ht
 > [!important]
 > You can use JSON5 format when writing level files. Please use `.json5` as the suffix of the level file to distinguish it from the ordinary `json` file.
 
-JSON5 is an extension based on JSON (JavaScript Object Notation). It aims to enhance the readability and usability of JSON while maintaining compatibility with JSON. JSON5 allows developers to use more relaxed syntax and adapt to more scenarios without violating the existing JSON standard.JSON5 允许开发者在不违反现有 JSON 标准的前提下使用更宽松的语法，适应更多场景。
+JSON5 支持单行和多行注释，类似于 JavaScript。JSON5 supports single-line and multi-line comments, similar to JavaScript. Standard JSON does not allow comments, while JSON5 allows developers to add additional annotation information in data files.
 
-JSON5 introduces some flexibility, making configuration files or data transmission formats easier to write and understand. The following are the main features of JSON5:以下是 JSON5 的主要特点：
+JSON5 introduces some flexibility, making configuration files or data transmission formats easier to write and understand. The following are the main features of JSON5:以下是 JSON5 的主要特点：以下是 JSON5 的主要特点：
 
 ### Flexible object key names
 
@@ -85,7 +86,7 @@ In JSON5, you can add a comma after the last item of an object or array, which i
 
 ### Support comments
 
-JSON5 支持单行和多行注释，类似于 JavaScript。JSON5 supports single-line and multi-line comments, similar to JavaScript. Standard JSON does not allow comments, while JSON5 allows developers to add additional annotation information in data files.
+JSON5 支持单行和多行注释，类似于 JavaScript。JSON5 is an extension based on JSON (JavaScript Object Notation). It aims to enhance the readability and usability of JSON while maintaining compatibility with JSON. JSON5 allows developers to use more relaxed syntax and adapt to more scenarios without violating the existing JSON standard.JSON5 允许开发者在不违反现有 JSON 标准的前提下使用更宽松的语法，适应更多场景。
 
 ```json5
 {
@@ -166,13 +167,14 @@ The level file structure of "PvZ2 Gardendless" is as follows:
 ```
 
 The `#comment` field is the title of the level. When writing a level, please make sure that the title of your level is unique and not repeated.The `version` field is fixed to 1.
-Detailed descriptions of other fields are given below.`version`字段固定为 1。
+Detailed descriptions of other fields are given below.`version`字段固定为 1。`version`字段固定为 1。
 其它字段的详细说明见下文。
 
 ## Information field
 
 PvZ2 Gardendless adds the `Information` top-level field to describe basic information about the level.
 This field does not affect the functionality of the custom level in the game, but it can help players quickly understand the information of the level you wrote.
+该字段并不会影响自定义关卡在游戏内的功能，但能够帮助玩家快速了解您编写的关卡的信息。
 该字段并不会影响自定义关卡在游戏内的功能，但能够帮助玩家快速了解您编写的关卡的信息。
 
 This field contains the following:
