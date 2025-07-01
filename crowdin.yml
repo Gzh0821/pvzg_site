@@ -21,8 +21,8 @@ files:
 
   # 翻译 Vue 组件中的 i18n JSON 文件
   - source: "/src/components/**/locales/zh.json"
-    translation: "%original_path%/%two_letters_code%.json"
+    translation: "/src/components/**/locales/%two_letters_code%.json"
 
   # 旧模式 (尚未迁移的组件)
   - source: "/src/components/**/i18n.json"
-    translation: "%original_path%/%two_letters_code%.json"
+    translation: "/src/components/**/i18n/%two_letters_code%.json"
