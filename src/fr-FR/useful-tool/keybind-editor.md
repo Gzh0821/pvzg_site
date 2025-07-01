@@ -29,10 +29,10 @@ next: false
 > 您可以为同一个按键绑定多个功能，但请注意，某些功能可能会冲突或无法正常工作。
 
 <ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="7113006248"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="7113006248"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
 
 <Editor />
