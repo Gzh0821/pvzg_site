@@ -6,6 +6,37 @@ order: 1
 pageInfo: false
 comment: false
 ---
+
+## 《PvZ2 Gardendless》使用协议
+
+欢迎使用《PvZ2 Gardendless》！在下载、使用在线版或以任何形式使用本游戏及相关服务之前，请务必仔细阅读以下条款：
+
+- 使用许可
+
+本游戏仅供个人学习交流使用。未经版权所有者书面许可，不得以任何形式修改、复制、分发本游戏。
+
+- 免责声明
+
+游戏仅供娱乐和个人使用，制作者不对因使用本游戏而引起的任何直接或间接损失负责。
+
+- 知识产权
+
+游戏中所有植物、僵尸及相关素材属于其原创作者或版权所有者所有。
+
+- 禁止商业用途
+
+未经版权所有者书面许可，严禁将本游戏用于任何商业用途，包括但不限于销售、广告、赞助等。
+
+- 禁止修改后分发
+
+您可以将本游戏以制作组发布的原始形式转发或分享，但不得对游戏文件进行任何形式的修改、编辑或重新打包。
+
+严禁将本游戏的任何部分（包括但不限于游戏本体、资源文件、代码等）进行修改后再分发、传播或发布。严禁以任何形式进行商业化的二次分发或销售。
+
+- 其它协议
+
+如您下载、使用在线版或以任何形式使用本游戏，您需遵守本协议及可能涉及的其他相关协议。
+
 ## "PvZ2 Gardendless" Usage Agreement
 
 Welcome to "PvZ2 Gardendless"! Before downloading, using the online version, or using this game in any form, please read the following terms carefully:

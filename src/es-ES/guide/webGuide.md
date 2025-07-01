@@ -7,17 +7,18 @@ order: 5
 ---
 
 Welcome to participate in the "PvZ2 Gardendless" website open source project! Whether you are a novice developer or an experienced developer, we encourage you to contribute code, submit issues or suggestions.
-Below is a brief development guide to help zero-based users quickly participate in this project.
+Below is a brief development guide to help zero-based users quickly participate in this project.无论您是开发新手，还是有经验的开发者，我们都鼓励您贡献代码、提交问题或建议。
+下面是一个简要的开发指南，帮助零基础用户快速参与本项目。
 
 ## 1. Preparation
 
-Before you start, you need to complete some basic settings. For `Windows` systems, we recommend that you use `PowerShell` of `Windows Terminal` to run commands, which can be started through the right-click menu.
+在开始之前，您需要完成一些基础的设置。Before you start, you need to complete some basic settings. For `Windows` systems, we recommend that you use `PowerShell` of `Windows Terminal` to run commands, which can be started through the right-click menu.
 
 ### 1.1 Install VScode, Git and Node.js
 
 #### VScode
 
-VScode is a lightweight code editor that supports multiple programming languages. In project development, we recommend using VScode to edit code.
+VScode is a lightweight code editor that supports multiple programming languages. In project development, we recommend using VScode to edit code.在项目开发中，我们推荐使用 VScode 来编辑代码。
 
 - Download and install VScode: [VScode official website](https://code.visualstudio.com/)
 - Read the [VScode documentation](https://code.visualstudio.com/docs) to learn more about how to use it.
@@ -25,7 +26,7 @@ VScode is a lightweight code editor that supports multiple programming languages
 
 #### Git
 
-Git is a tool for managing project versions. In project development, we will use Git to pull code and submit modifications.
+Git is a tool for managing project versions. In project development, we will use Git to pull code and submit modifications.在项目开发中，我们会使用 Git 来拉取代码并提交修改。
 
 - Download and install Git: [Git official website](https://git-scm.com/), for Windows, it is recommended that you download `64-bit Git for Windows Setup`.
 - You can use the default settings during the installation process.
@@ -71,11 +72,11 @@ When participating in a project on GitHub, you can fork (copy a copy of the proj
 
 1. Visit the [pvzg_site project](https://github.com/Gzh0821/pvzg_site).
 2. Click the `Fork` button in the upper right corner of the page to copy the project to your own GitHub repository.
-3. Enter the project repository you forked.
+3. 进入您 Fork 后的项目仓库。
 
-## 3. Clone the project locally
+## 3) Clone the project locally
 
-After you fork the project, you need to clone the project code to your local computer. `VScode` provides the function of cloning repositories. You can check its documentation to learn more, or use the terminal:
+在您 Fork 项目后，需要将项目代码克隆到您的本地计算机上。After you fork the project, you need to clone the project code to your local computer. `VScode` provides the function of cloning repositories. You can check its documentation to learn more, or use the terminal:
 
 1. Open the terminal. For Windows, please use `Windows Terminal` or the terminal function included with `VScode`.
 
@@ -166,6 +167,7 @@ For translation work, you only need to modify the `.md` files in the correspondi
 
 For the configuration items in the `.md` file, only `title` needs to be modified, and for the `HTML component`, it can be left unchanged.
 It is recommended that you check whether the page is displayed correctly at any time when making changes.
+建议您在修改时，随时检查页面是否正确显示。
 
 ## 7. Submit changes and initiate a Pull Request
 
@@ -208,17 +210,14 @@ We will review your Pull Request as soon as possible and provide feedback or mer
 If you encounter problems during development, you can provide feedback through GitHub's Issues system.
 
 1. Visit the project's [Issues page](https://github.com/Gzh0821/pvzg_site/issues).
-
 2. Click the `New issue` button.
-
 3. Fill in the problem description and submit.
 
-## 9. Participate in discussions
+## 9) Participate in discussions
 
-We welcome all users to participate in the project's discussions! You can communicate with us in the following ways:
+We welcome all users to participate in the project's discussions! You can communicate with us in the following ways:您可以通过以下方式与我们交流：
 
 - Participate in Discussions on GitHub.
-
 - Participate in discussions on the Discord server.
 
 Thank you for your support and contribution to this project, and we look forward to working with you to improve this project!
