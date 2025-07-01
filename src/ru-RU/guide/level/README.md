@@ -5,7 +5,7 @@ icon: feather
 pageInfo: false
 comment: false
 dir:
-    order: 3
+  order: 3
 ---
 
 <Catalog />
