@@ -7,7 +7,7 @@ index: true
 order: 4
 ---
 
-## Configuration
+## 推荐配置
 
 The minimum configuration requirement is the minimum configuration to run the game, and the recommended configuration is to get a standard gaming experience.
 
@@ -42,11 +42,12 @@ The minimum configuration requirement is the minimum configuration to run the ga
 | **Necessary Components**       | Windows Update            |
 | Optional Components            | WebView2 Runtime          |
 
-## Online Play Requirements
+## 网页版要求
 
 We recommend that you use the following browser types to access the web version of "PvZ2 Gardendless":
-| Browser | Introduction |
-| ---------------------- | ---------------------------------------------------------------- |
-| Chrome | Chrome 114 or higher is recommended |
-| Microsoft Edge | Comes with Windows 10/11 |
-| Firefox | May have some compatibility issues |
+
+| Browser        | Introduction                        |
+| -------------- | ----------------------------------- |
+| Chrome         | Chrome 114 or higher is recommended |
+| Microsoft Edge | Comes with Windows 10/11            |
+| Firefox        | May have some compatibility issues  |
