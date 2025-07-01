@@ -6,8 +6,20 @@ order: 5
 pageInfo: false
 comment: false
 ---
+
 > [!important]
 > This website, Game and related content are not endorsed by or affiliated with EA.
+>
+> This website, Game and related content are not endorsed by or affiliated with EA.
+
+## 《植物大战僵尸》原版信息
+
+《植物大战僵尸2》及相关系列游戏是由Electronic Arts Inc.及其子公司PopCap Games开发与发行的，
+所有相关版权和知识产权归Electronic Arts及PopCap Games所有。
+
+请访问官方网站获取更多关于《植物大战僵尸2》的信息以及原版游戏的下载：
+
+《植物大战僵尸》系列游戏网站：[EA-PvZ](https://www.ea.com/ea-studios/popcap/plants-vs-zombies)
 
 ## Plants vs. Zombies Original Version Information
 
