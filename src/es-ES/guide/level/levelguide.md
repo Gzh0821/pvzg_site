@@ -28,7 +28,9 @@ JSON (JavaScript Object Notation) is a lightweight data exchange format that is 
 - Strings: wrapped in `""` double quotes.
 
 - Boolean values: `true` or `false`.
+
 - Number: integer or floating point number.
+
 - null: represents a null value.
 
 > [!warning]
