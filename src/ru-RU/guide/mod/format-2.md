@@ -16,16 +16,15 @@ order: 12
 > [!caution]
 > The following tutorial is only applicable to versions `0.2.8.1`-`0.2.9`.
 
-> [!important]  
+> [!important]\
 > Attributes marked in _italics_ are not recommended for modification, as changes may cause game crashes or instability.
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="3900516289"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="3900516289"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
 
 ## Plant Attributes
 
@@ -42,43 +41,43 @@ Multi-language fields must retain their structure and cannot be deleted or exten
 
 ### Base Information
 
-| Attribute          | Example Value                             | Description                                                                                            |
-| ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **ID**             | 74                                        | Unique in-game ID for the plant.                                                                       |
-| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Multi-language name. `en` for English, `zh` for Chinese.                                               |
-| _\_CARDSPRITENAME_ | "grapeshot"                               | Card icon resource name (corresponds to game asset files).                                             |
-| _CODENAME_         | "grapeshot"                               | Unique identifier for GE Patcher merging.                                                              |
-| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Plant type:<br>- `plant`: Standard plant<br>- `lastStandDisallowed`: Not allowed in "Last Stand" mode. |
-| **OBTAINWORLD**    | "market"                                  | World theme for the plant's background.                                                                |
-| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Zen Garden planting location:<br>- `dirt`: Regular soil.                                               |
-| _COSTUME_          | 2                                         | Number of available costumes.                                                                          |
+| Attribute                                | Example Value                         | Description                                                                                                                                                            |
+| ---------------------------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**                                   | 74                                    | Unique in-game ID for the plant.                                                                                                                       |
+| **NAME**                                 | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Multi-language name. `en` for English, `zh` for Chinese.                                                                               |
+| _\_CARDSPRITENAME_ | "grapeshot"                           | Card icon resource name (corresponds to game asset files).                                                                          |
+| _CODENAME_                               | "grapeshot"                           | Unique identifier for GE Patcher merging.                                                                                                              |
+| _TYPE_                                   | `["plant", "lastStandDisallowed"]`    | Plant type:<br>- `plant`: Standard plant<br>- `lastStandDisallowed`: Not allowed in "Last Stand" mode. |
+| **OBTAINWORLD**                          | "market"                              | World theme for the plant's background.                                                                                                                |
+| **ZENGARDEN**                            | `{ "PlantPlace": "dirt" }`            | Zen Garden planting location:<br>- `dirt`: Regular soil.                                                               |
+| _COSTUME_                                | 2                                     | Number of available costumes.                                                                                                                          |
 
 ### Almanac Information (ALMANAC)
 
 The following content is a sub-attribute of the plant's `ALMANAC`, containing the plant's encyclopedia information:
 
-| Field                 | Value/Content                                                                                                                                                   | Description                                    |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Field                 | Value/Content                                                                                                                                                                                                                                                                                         | Description                                                    |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | _Elements_            | Attributes displayed in almanac:<br>- `SUNCOST`: Sun cost<br>- `RECHARGE`: Cooldown<br>- `DAMAGE`: Damage (1800)<br>- `AREA`: Range (3x3)<br>- `FAMILY`: Family | Key attributes shown in the almanac.           |
-| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                    | Multi-language functional description.         |
-| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                   | Special mechanics explanation.                 |
-| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                       | Multi-language personality quotes.             |
-| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                           | Short multi-language summary of functionality. |
-| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                            | Position offset for almanac display.           |
+| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                                                                                                                                                                         | Multi-language functional description.         |
+| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                                                                                                                                                         | Special mechanics explanation.                 |
+| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                                                                                                                                                             | Multi-language personality quotes.             |
+| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                                                                                                                                                                          | Short multi-language summary of functionality. |
+| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                                                                                                                                                                  | Position offset for almanac display.           |
 
 ### Gameplay Data (objdata)
 
 The following content is a sub-attribute of the plant's `objdata`, containing the game mechanics data of the plant. For valid objdata of each plant, please refer to the [Almanac](../../almanac/):
 
-| Attribute                     | Value/Example | Description                                                     |
-| ----------------------------- | ------------- | --------------------------------------------------------------- |
-| **CannotBeSheepenedByWizard** | true          | Immune to Wizard Zombie's "Sheepify" ability.                   |
-| **Damage**                    | 1800          | Base damage value.                                              |
-| **Cooldown**                  | 35            | Cooldown time (seconds).                                        |
-| **CooldownFrom**              | 1             | Initial cooldown value.                                         |
-| **SunCost**                   | 150           | Sun cost to plant.                                              |
-| **Toughness**                 | 300           | Base health.                                                    |
-| **Family**                    | "Explosive"   | Family affiliation (affects family-based buffs).                |
+| Attribute                     | Value/Example | Description                                                                                                                        |
+| ----------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **CannotBeSheepenedByWizard** | true          | Immune to Wizard Zombie's "Sheepify" ability.                                                                      |
+| **Damage**                    | 1800          | Base damage value.                                                                                                 |
+| **Cooldown**                  | 35            | Cooldown time (seconds).                                                                        |
+| **CooldownFrom**              | 1             | Initial cooldown value.                                                                                            |
+| **SunCost**                   | 150           | Sun cost to plant.                                                                                                 |
+| **Toughness**                 | 300           | Base health.                                                                                                       |
+| **Family**                    | "Explosive"   | Family affiliation (affects family-based buffs).                                                |
 | **ImmuneToIceblock**          | true          | Immune to freezing effects (e.g., Ice Weasel Zombie's attacks). |
 
 ### Original JSON for Grapeshot
@@ -167,13 +166,13 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Plant Commodities
 
-| Field                | Type   | Description                      |
-| -------------------- | ------ | -------------------------------- |
-| _CommodityType_      | string | Fixed value: "plant".            |
-| **CommodityName**    | string | Plant's CODENAME.                |
+| Field                | Type   | Description                                                         |
+| -------------------- | ------ | ------------------------------------------------------------------- |
+| _CommodityType_      | string | Fixed value: "plant".               |
+| **CommodityName**    | string | Plant's CODENAME.                                   |
 | **CurrencyType**     | string | Currency type ("gem" or "coin"). |
-| **CurrencyRequired** | number | Required currency amount.        |
-| _UnlockLevel_        | string | Unlock level requirement.        |
+| **CurrencyRequired** | number | Required currency amount.                           |
+| _UnlockLevel_        | string | Unlock level requirement.                           |
 
 #### Example: Snow Pea Commodity
 
@@ -188,12 +187,12 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Upgrade Commodities
 
-| Field                | Type   | Description                      |
-| -------------------- | ------ | -------------------------------- |
-| _CommodityType_      | string | Fixed value: "upgrade".          |
-| **CommodityName**    | string | Upgrade's CODENAME.              |
+| Field                | Type   | Description                                                         |
+| -------------------- | ------ | ------------------------------------------------------------------- |
+| _CommodityType_      | string | Fixed value: "upgrade".             |
+| **CommodityName**    | string | Upgrade's CODENAME.                                 |
 | **CurrencyType**     | string | Currency type ("gem" or "coin"). |
-| **CurrencyRequired** | number | Required currency amount.        |
+| **CurrencyRequired** | number | Required currency amount.                           |
 
 #### Example: Shovel Upgrade
 
@@ -208,14 +207,14 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Gem Commodities
 
-| Field                    | Description                      |
-| ------------------------ | -------------------------------- |
-| _CommodityType_          | Fixed value: "gem".              |
-| CommodityCount           | Number of gems obtained.         |
+| Field                    | Description                                                         |
+| ------------------------ | ------------------------------------------------------------------- |
+| _CommodityType_          | Fixed value: "gem".                 |
+| CommodityCount           | Number of gems obtained.                            |
 | **CurrencyType**         | Currency type ("gem" or "coin"). |
-| CurrencyRequired         | Required currency amount.        |
-| _StackLevel_             | Bundle tier.                     |
-| **CommodityDisplayName** | Multi-language display name.     |
+| CurrencyRequired         | Required currency amount.                           |
+| _StackLevel_             | Bundle tier.                                        |
+| **CommodityDisplayName** | Multi-language display name.                        |
 
 #### Example: Gem Bundle
 
@@ -235,11 +234,11 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 
 ### Coin Commodities
 
-| Field                    | Description                      |
-| ------------------------ | -------------------------------- |
-| _CommodityType_          | Fixed value: "coin".             |
-| CommodityCount           | Number of coins obtained.        |
+| Field                    | Description                                                         |
+| ------------------------ | ------------------------------------------------------------------- |
+| _CommodityType_          | Fixed value: "coin".                |
+| CommodityCount           | Number of coins obtained.                           |
 | **CurrencyType**         | Currency type ("gem" or "coin"). |
-| CurrencyRequired         | Required currency amount.        |
-| _StackLevel_             | Bundle tier.                     |
-| **CommodityDisplayName** | Multi-language display name.     |
+| CurrencyRequired         | Required currency amount.                           |
+| _StackLevel_             | Bundle tier.                                        |
+| **CommodityDisplayName** | Multi-language display name.                        |
