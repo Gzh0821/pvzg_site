@@ -1,5 +1,5 @@
 ---
-title: Редактор Сохранений
+title: Save Editor
 index: true
 order: 2
 icon: floppy-disk
@@ -14,7 +14,7 @@ next: false
     import Editor from '@source/components/save-editor/App.vue';
     import { provide } from 'vue';
     import { onMounted } from 'vue';
-    provide("i18nLanguage",'ru');
+    provide("i18nLanguage",'en');
 
     onMounted(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -22,20 +22,19 @@ next: false
 </script>
 
 > [!warning]
-> Редактор сохранений находится на фазе тестировки. Использование этого инструмента может привести к неизвестным проблемам в вашем файле сохранения. Пожалуйста, сохраните оригинальный файл сохранения перед тем, как использовать редактор сохранений!
+> The save editor is in the testing phase. Using this tool may cause unknown problems in the save file. Please be sure to back up the original save file before using the save editor!
 >
-> Чтобы обеспечить синхронизацию версии сохранения, пожалуйста используйте для редактирования файл сохранения, экспортированный из последней версии игры. Если вы используете файл сохранения старой версии игры, пожалуйста импортируйте его в последнюю версию игры перед экспортом и редактированием.
+> To ensure the synchronization of the save version, please use the save file exported from the latest game version for editing. If you are using the save file of the old game version, please import it into the latest game version before exporting and editing.
 >
-> Вы можете найти `plantID` каждого растения в [Альманахе](../almanac/).
+> You can find the `plantID` for each plant in the [Almanac](../almanac/).
 >
-> Редактор сохранений не будет модифицировать сохраненные данные, которые не отображаются ниже.
+> The save editor will not modify the save data that does not appear below.
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="7113006248"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="7113006248"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
 
 <Editor />
