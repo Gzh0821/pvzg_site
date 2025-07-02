@@ -8,7 +8,6 @@ order: 2
 
 > [!important]
 > By sharing or contributing levels, you agree to the [Player Contribution Agreement](/en/instructions/Submisson).
->
 
 You can download level files made by community members on the [Community Level](/en/custom-level/) page. If you have your own levels, you can share them with other players in the following ways:
 
