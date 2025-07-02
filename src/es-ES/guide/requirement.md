@@ -45,8 +45,9 @@ The minimum configuration requirement is the minimum configuration to run the ga
 ## Online Play Requirements
 
 We recommend that you use the following browser types to access the web version of "PvZ2 Gardendless":
-| Browser | Introduction |
-| ---------------------- | ---------------------------------------------------------------- |
-| Chrome | Chrome 114 or higher is recommended |
-| Microsoft Edge | Comes with Windows 10/11 |
-| Firefox | May have some compatibility issues |
+
+| Browser        | Introduction                        |
+| -------------- | ----------------------------------- |
+| Chrome         | Chrome 114 or higher is recommended |
+| Microsoft Edge | Comes with Windows 10/11            |
+| Firefox        | May have some compatibility issues  |
