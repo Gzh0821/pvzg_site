@@ -24,17 +24,16 @@ The version provided on the website has the GE Patcher tool built-in.
 
 1. JSON editor (VSCode/Notepad++ recommended)
 2. Game version ≥ 0.3.0
-3. JSON attribute structures for elements like plants and zombies. Please refer to [Attribute Reference](format.md).
+3. Please refer to [Attribute Reference](format.md).
 
 <ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-7637695321442015"
 data-ad-slot="3900516289"
 data-ad-format="auto"
-data-full-width-responsive="true">
-</ins>
+data-full-width-responsive="true"> </ins>
 
-## GE Patcher Basics
+## The Basics
 
 Press "F12" when the game starts to open the developer console. In the Console tab, output similar to the following will appear:
 
@@ -42,19 +41,9 @@ Press "F12" when the game starts to open the developer console. In the Console t
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
 ```
 
-The path provided is the GE Patcher's main directory.
+The path provided is the GE Patcher's main directory. If you want to see _exactly_ where the files are loaded from, enter the command `gePatcher.help()`.
 
-Enter the following command to view in-game help, including the paths for custom JSON files:
-
-```javascript
-gePatcher.help()
-```
-
-After the game finishes loading, run the following command to load all custom JSON files:
-
-```javascript
-gePatcher.init()
-```
+Once you see the title screen, you can now load your patch. **Entering `gePatcher.init()` into the console will load your custom files.**
 
 **After modifying a JSON file, please re-execute this command to apply the changes.**
 
@@ -75,14 +64,14 @@ patches/
     │   ├── UpgradeFeatures.json
     │   └── StoreCommodityFeatures.json
     └── levels/
-        └── [LevelName].json
+        └── [LevelName].json (does not support JSON5)
 ```
 
 The `features` directory contains `Features`, `Props`, and `Almanac` files for modifying plants, zombies, upgrades, the shop, etc.
 
-Files under the `levels` directory are used to modify levels.
+Files under the `levels` directory are used to modify levels. If you want to get the original levels, try to find similar ones in vanilla PvZ2 (extracting PvZ2 files is out of the scope of this guide).
 
-Files for original content that are not modified do not need to be created.
+Anything you don't modify will default to the base-game properties.
 
 ## Features Files
 
@@ -131,7 +120,7 @@ Features files contain the basic attributes of plants, zombies, and upgrades. Th
 **Key Notes**
 
 - The `PLANTS`、`ZOMBIES` and `UPGRADES` arrays define modifications to existing entities.
-- `SEEDCHOOSERDEFAULTORDER` sets the default plant order in the seed chooser.
+- `SEEDCHOOSERDEFAULTORDER` sets the default plant order in the seed chooser. The order of the array is the order they appear in the almanac, seed chooser, etc.
 - `BASEUNLOCKLIST` defines initially unlocked plants.
 
 ### Features Modification Rules
@@ -349,8 +338,9 @@ Props modification rules apply to `PlantProps` and `ZombieProps` files. Almanac 
 
 Each object in the `objects` array is merged into the original JSON after being matched by the `aliases` field, using the same rules as for `Features` files.
 
-For any plant/zombie that needs modification, you must add an object to the `objects` array, and the first item of that object's `aliases` array must be the `CODENAME` of the corresponding plant/zombie.
-For plants/zombies that do not need modification, this object does not need to be added.
++For any plant/zombie you want to modify, you must add an object to the `objects` array. For any plant/zombie that needs modification, you must add an object to the `objects` array, and the first item of that object's `aliases` array must be the `CODENAME` of the corresponding plant/zombie.
++**Note:** Only the first element of the `aliases` array is used to match the plant/zombie for modification.
++For plants/zombies that you don't want to change, you don't need to do anything - it'll default to vanilla properties.
 
 Within a single object, `objdata` contains the numerical attributes or Almanac information of the plant/zombie. Only the attributes that need to be modified should be filled. Attributes not filled will remain unchanged.
 
@@ -365,6 +355,7 @@ Place custom level files in `patches/jsons/levels/[LevelName].json`.
 
 - Filenames must match the in-game level ID (e.g., `egypt1.json`).
 - Use `gePatcher.showLevels()` to view original level IDs (requires initializing GE Patcher first).
+- JSON5 levels are not supported and will not load.
 
 ## Store Files
 
@@ -379,12 +370,14 @@ Place custom level files in `patches/jsons/levels/[LevelName].json`.
 }
 ```
 
+_Note: comments are supported in JSON._
+
 Omit categories you do not modify.
 
 ## Debugging
 
 1. Check the console for errors during loading.
 2. Common errors:
-   - ❌ `Failed to load...`: JSON syntax error.
-   - ❌ `Level file not found`: Filename mismatch.
+  - ❌ `Failed to load...`: JSON syntax error.
+  - ❌ `Level file not found`: Filename mismatch.
 3. Validate JSON using tools like [JSONLint](https://jsonlint.com/).
