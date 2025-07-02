@@ -1,11 +1,12 @@
 ---
-title: Соглашение о представлении
+title: Submission Agreement
 icon: hand-holding-hand
 index: true
 order: 4
 pageInfo: false
 comment: false
 ---
+
 ## Player Submission Agreement for PvZ2 Gardendless
 
 Thank you for your enthusiasm and support for PvZ2: Gardendless! To better regulate player submissions of custom levels and mods, and to ensure the development team can use player-created content compliantly and safely, please carefully read and agree to the following terms. By uploading or submitting custom levels and mods through channels such as the website or Discord server, you acknowledge your full acceptance of this agreement.
