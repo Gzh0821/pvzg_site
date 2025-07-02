@@ -73,7 +73,7 @@ When participating in a project on GitHub, you can fork (copy a copy of the proj
 2. Click the `Fork` button in the upper right corner of the page to copy the project to your own GitHub repository.
 3. Enter the project repository you forked.
 
-## 3. Clone the project locally
+## 3) Clone the project locally
 
 After you fork the project, you need to clone the project code to your local computer. `VScode` provides the function of cloning repositories. You can check its documentation to learn more, or use the terminal:
 
@@ -213,7 +213,7 @@ If you encounter problems during development, you can provide feedback through G
 
 3. Fill in the problem description and submit.
 
-## 9. Participate in discussions
+## 9) Participate in discussions
 
 We welcome all users to participate in the project's discussions! You can communicate with us in the following ways:
 
