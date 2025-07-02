@@ -1,10 +1,11 @@
 ---
-title: Соглашение и заявление
+title: Agreement and Statement
 index: false
 icon: info
 pageInfo: false
 comment: false
 ---
+
 The usage, play-related agreements and statements of PvZ2 Gardendless are as follows:
 
 - ["PvZ2 Gardendless" Usage Agreement](Agreement.md)
