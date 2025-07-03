@@ -26,12 +26,11 @@ The game includes the GE Patcher tool, which allows loading custom JSON resource
 4. Familiarize yourself with the attribute structure of plants, zombies, etc., in JSON (refer to [Attribute Reference](format.md)).
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="3900516289"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="3900516289"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
 
 ## GE Patcher Basics
 
@@ -195,6 +194,6 @@ Omit categories you do not modify.
 
 1. Check the console for errors during loading.
 2. Common errors:
-   - ❌ `Failed to load...`: JSON syntax error.
-   - ❌ `Level file not found`: Filename mismatch.
+  - ❌ `Failed to load...`: JSON syntax error.
+  - ❌ `Level file not found`: Filename mismatch.
 3. Validate JSON using tools like [JSONLint](https://jsonlint.com/).
