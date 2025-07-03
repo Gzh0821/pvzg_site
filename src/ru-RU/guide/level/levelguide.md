@@ -1,5 +1,5 @@
 ---
-title: Level Files
+title: Файлы Уровней
 index: true
 icon: feather
 pageInfo: false
@@ -7,34 +7,36 @@ order: 1
 ---
 
 > [!info]
-> Go to the [Custom Level](../../custom-level/) page to download sample level files!
+> Перейдите на страницу [Пользовательский уровень](../../custom-level/), чтобы скачать пример файлов уровней!
 
-## Custom Levels
+## Пользовательские уровни
 
-The custom level file of the game "PvZ2 Gardendless" is similar to the original version. It is a JSON/JSON5 text file with the suffix `.json` or `json5`, which contains all the information of the level, including plants, zombies, terrain, etc.
+Файл пользовательского уровня игры "PvZ2 Gardendless" похож на оригинальную версию. Это текстовый файл в формате JSON/JSON5 с расширением `.json` или `json5`, который содержит всю информацию об уровне, включая растения, зомби, местность и т.д.
 
-Compared with the original version, the level file of "PvZ2 Gardendless" adds some new fields to describe the basic information of the level.
+По сравнению с оригинальной версией, файл уровня "PvZ2 Gardendless" добавляет несколько новых полей для описания основной информации уровня.
 
-## JSON File
+## Файл JSON
 
-If you are already familiar with the JSON file format, you can skip this section directly.
+Если вы уже знакомы с форматом файлов JSON, этот раздел можно сразу пропустить.
 
-JSON (JavaScript Object Notation) is a lightweight data exchange format that is easy to read and write. It uses key-value pairs to represent data and is usually used to transmit data between clients and servers. The data structures in JSON include objects, arrays, strings, numbers, Boolean values, and null.
+JSON (JavaScript Object Notation) - это легкий формат обмена данными, который легко читать и писать. Он использует пары ключ-значение для представления данных и обычно применяется для передачи данных между клиентами и серверами. Структуры данных в JSON включают объекты, массивы, строки, числа, булевы значения и null.
 
-- Objects: wrapped in `{}`, containing key-value pairs.
+- Объекты: обернутые в `{}`, содержащие пары ключ-значение.
 
-- Arrays: wrapped in `[]`, containing multiple values.
+- Массивы: обернутые в `[]`, содержащие несколько значений.
 
-- Strings: wrapped in `""` double quotes.
+- Строки: обернуты в `""` двойные кавычки.
 
-- Boolean values: `true` or `false`.
-- Number: integer or floating point number.
-- null: represents a null value.
+- Булевы значения: `true` или `false`.
+
+- Число: целое число или число с плавающей точкой.
+
+- null: представляет собой нулевое значение.
 
 > [!warning]
-> JSON files do not support comments. When you use the JSON code provided on this website, please use the `JSON5` format mentioned below, or delete the comments starting with `//` double slashes.
+> Файлы JSON не поддерживают комментарии. При использовании JSON-кода, представленного на этом сайте, пожалуйста, используйте формат `JSON5`, указанный ниже, или удалите комментарии, начинающиеся с двойных слешей `//`.
 
-Example:
+Пример:
 
 ```json
 {
@@ -50,24 +52,24 @@ Example:
 }
 ```
 
-In this example:
+В данном примере:
 
-`name` is a string type, and `age` is a number type. `isStudent` is a Boolean type. `skills` is an array of strings. `address` is an object containing city and zipCode.
+`name` - строковый тип, а `age` - числовой тип. `isStudent` - булево значение. `skills` - это массив строк. `address` - это объект, содержащий город и почтовый индекс.
 
-For a more in-depth understanding of the JSON format, you can refer to [here](https://www.json.org/json-en.html).
+Для более детального изучения формата JSON смотрите [здесь](https://www.json.org/json-en.html).
 
-## JSON5 File
+## Файл JSON5
 
 > [!important]
-> You can use JSON5 format when writing level files. Please use `.json5` as the suffix of the level file to distinguish it from the ordinary `json` file.
+> При написании файлов уровней можно использовать формат JSON5. Пожалуйста, используйте расширение `.json5`, чтобы отличать его от обычного `json`.
 
-JSON5 is an extension based on JSON (JavaScript Object Notation). It aims to enhance the readability and usability of JSON while maintaining compatibility with JSON. JSON5 allows developers to use more relaxed syntax and adapt to more scenarios without violating the existing JSON standard.
+JSON5 - это расширение, основанное на JSON (JavaScript Object Notation). Его цель - улучшить читаемость и удобство использования JSON, сохранив при этом совместимость с JSON. JSON5 позволяет использовать более гибкий синтаксис, не нарушая стандарт JSON.
 
-JSON5 introduces some flexibility, making configuration files or data transmission formats easier to write and understand. The following are the main features of JSON5:
+JSON5 добавляет гибкость и упрощает написание конфигурационных файлов или форматов обмена данными. Вот его основные возможности:
 
-### Flexible object key names
+### Гибкие имена ключей
 
-In standard JSON, key names must be wrapped in double quotes, while in JSON5, key names can be unquoted or even single quotes can be used.
+В стандартном JSON имена ключей должны быть заключены в двойные кавычки, в то время как в JSON5 имена ключей могут быть без кавычек или даже с одинарными кавычками.
 
 ```json5
 {
@@ -76,9 +78,9 @@ In standard JSON, key names must be wrapped in double quotes, while in JSON5, ke
 }
 ```
 
-### End of line comma
+### Запятая в конце строки
 
-In JSON5, you can add a comma after the last item of an object or array, which is especially convenient when editing.
+В JSON5 можно добавить запятую после последнего элемента объекта или массива, что особенно удобно при редактировании.
 
 ```json5
 {
@@ -87,9 +89,9 @@ In JSON5, you can add a comma after the last item of an object or array, which i
 }
 ```
 
-### Support comments
+### Поддержка комментариев
 
-JSON5 supports single-line and multi-line comments, similar to JavaScript. Standard JSON does not allow comments, while JSON5 allows developers to add additional annotation information in data files.
+JSON5 поддерживает однострочные и многострочные комментарии, как и JavaScript. Стандартный JSON не допускает комментариев, в то время как JSON5 позволяет разработчикам добавлять дополнительную аннотационную информацию в файлы данных.
 
 ```json5
 {
@@ -104,9 +106,9 @@ JSON5 supports single-line and multi-line comments, similar to JavaScript. Stand
 }
 ```
 
-### Flexible strings
+### Гибкие строки
 
-JSON5 supports both single-quoted and double-quoted strings.
+JSON5 поддерживает строки как с одинарными, так и с двойными кавычками.
 
 ```json5
 {
@@ -115,7 +117,7 @@ JSON5 supports both single-quoted and double-quoted strings.
 }
 ```
 
-JSON5 allows newline characters to be used in strings. Unlike JSON, it does not require the use of `\n` to represent newlines. At the same time, escape characters can also be used in strings.
+JSON5 позволяет использовать переносы строк внутри строк. В отличие от JSON, он не требует использования `\n` для представления новых строк. В то же время в строках можно использовать и управляющие символы.
 
 ```json5
 {
@@ -124,9 +126,9 @@ JSON5 allows newline characters to be used in strings. Unlike JSON, it does not 
 }
 ```
 
-### Additional data types
+### Дополнительные типы данных
 
-JSON5 supports more numeric formats, such as hexadecimal notation and positive and negative infinity values ​​(`Infinity`), as well as `NaN` (Not-a-Number).
+JSON5 поддерживает больше числовых форматов, таких как шестнадцатеричная нотация, положительные и отрицательные значения бесконечности (`Infinity`), а также `NaN` (Not-a-Number).
 
 ```json5
 {
@@ -137,9 +139,9 @@ JSON5 supports more numeric formats, such as hexadecimal notation and positive a
 }
 ```
 
-### More flexible numeric representation
+### Более гибкое представление чисел
 
-You can omit zeros in the integer part or the fractional part.
+Вы можете опустить нули в целой или дробной части.
 
 ```json5
 {
@@ -148,11 +150,11 @@ You can omit zeros in the integer part or the fractional part.
 }
 ```
 
-For more information about JSON5, you can refer to [here](https://json5.org/).
+Подробнее о JSON5 читайте [здесь](https://json5.org/).
 
-## Level file structure
+## Структура файла уровня
 
-The level file structure of "PvZ2 Gardendless" is as follows:
+Структура файла уровня "PvZ2 Gardendless" выглядит так:
 
 ```json
 {
@@ -169,15 +171,15 @@ The level file structure of "PvZ2 Gardendless" is as follows:
 }
 ```
 
-The `#comment` field is the title of the level. When writing a level, please make sure that the title of your level is unique and not repeated.The `version` field is fixed to 1.
-Detailed descriptions of other fields are given below.
+\#comment — это название уровня. При написании уровня убедитесь, что название вашего уровня уникально и не повторяется. Поле `version` имеет фиксированное значение 1.
+Подробное описание других полей приведено ниже.
 
-## Information field
+## Поле Information
 
-PvZ2 Gardendless adds the `Information` top-level field to describe basic information about the level.
-This field does not affect the functionality of the custom level in the game, but it can help players quickly understand the information of the level you wrote.
+PvZ2 Gardendless добавляет поле верхнего уровня `Information` для описания основной информации об уровне.
+Это поле не влияет на функциональность пользовательского уровня в игре, но оно может помочь игрокам быстро понять информацию об уровне, который вы написали.
 
-This field contains the following:
+Это поле содержит следующее:
 
 ```json
 "Information": {
@@ -212,12 +214,12 @@ This field contains the following:
 },
 ```
 
-`uuid` is the unique identifier of the level, used to distinguish different levels. Please ensure the uniqueness of your level `uuid`.
-To obtain a random `uuid`, you can use an online generation tool such as [UUID Generator](https://www.uuidgenerator.net/).
+`uuid` - уникальный идентификатор уровня, используемый для различения разных уровней. Пожалуйста, убедитесь в уникальности `uuid` вашего уровня.
+Чтобы получить случайный `uuid`, можно воспользоваться онлайн-инструментом генерации, например [UUID Generator](https://www.uuidgenerator.net/).
 
-## objects field
+## Поле objects
 
-objects is a list whose elements are each specific level setting. There are multiple objects in the list, each object corresponds to a configuration item. The following is an example of an objects list:
+objects - это список, элементами которого являются все настройки конкретного уровня. В списке есть несколько objects, каждый из которых соответствует элементу конфигурации. Ниже приведен пример списка objects:
 
 ```json
 "objects": [
