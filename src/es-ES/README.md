@@ -4,7 +4,7 @@ icon: home
 comment: false
 title: Home Page
 heroImage: /pvz_logo.webp
-heroImageStyle:  
+heroImageStyle:
   border-radius: 20%
   border: "5px solid rgba(255, 255, 255, 0.3)"
   box-shadow: "0 0 12px rgba(0, 0, 0, 0.2)"
@@ -14,7 +14,7 @@ bgImage: /assets/image/background.webp
 bgImageStyle:
   background-attachment: fixed
   filter: brightness(60%)
-  opacity: 0.5 
+  opacity: 0.5
 heroFullScreen: true
 heroText: PvZ2 Gardendless' Birthday
 tagline: A completely remastered PvZ2 for all desktop platforms (1st Anniversary!)
@@ -35,23 +35,23 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
-    - title: Online Almanac
-      icon: book-atlas
-      details: Find plants and zombies, as well as their ID and CodeName
-      link: ./almanac/
+      - title: Online Almanac
+        icon: book-atlas
+        details: Find plants and zombies, as well as their ID and CodeName
+        link: ./almanac/
 
-    - title: Save Editor
-      icon: floppy-disk
-      details: Modify Gardendless game saves
-      link: ./useful-tool/save-editor
+      - title: Save Editor
+        icon: floppy-disk
+        details: Modify Gardendless game saves
+        link: ./useful-tool/save-editor
 
-    - title: MOD tutorial
-      icon: toolbox
-      details: Customize game resources using GE Patcher
-      link: ./guide/mod/
+      - title: MOD tutorial
+        icon: toolbox
+        details: Customize game resources using GE Patcher
+        link: ./guide/mod/
 
-    - title: Recommended Configuration
-      icon: sliders
-      details: View the recommended configuration for the game
-      link: ./guide/requirement
+      - title: Recommended Configuration
+        icon: sliders
+        details: View the recommended configuration for the game
+        link: ./guide/requirement
 ---
