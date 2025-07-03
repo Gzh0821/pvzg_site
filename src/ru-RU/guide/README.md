@@ -1,5 +1,5 @@
 ---
-title: Гид
+title: Guide
 icon: book
 pageInfo: false
 comment: false
