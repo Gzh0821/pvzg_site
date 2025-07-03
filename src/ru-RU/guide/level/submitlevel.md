@@ -1,5 +1,5 @@
 ---
-title: Share and Contribute Levels
+title: Поделиться и внести вклад в Уровни
 index: true
 icon: share
 pageInfo: false
@@ -7,23 +7,22 @@ order: 2
 ---
 
 > [!important]
-> By sharing or contributing levels, you agree to the [Player Contribution Agreement](/en/instructions/Submisson).
->
+> Делясь уровнями или внося в них вклад, вы соглашаетесь с [Соглашением о вкладе игрока](/en/instructions/Submisson).
 
-You can download level files made by community members on the [Community Level](/en/custom-level/) page. If you have your own levels, you can share them with other players in the following ways:
+Вы можете скачать файлы уровней, созданные участниками сообщества, на странице [Уровни сообщества](/en/custom-level/). Если у вас есть свои собственные уровни, вы можете поделиться ими с другими игроками следующими способами:
 
-## 1. Discord Server
+## 1. Сервер Discord
 
-You can share your level files on the `#custom-level-share` channel of the Discord server. Please follow the server rules.
+Вы можете поделиться своими файлами уровней на канале `#custom-level-share` сервера Discord. Пожалуйста, соблюдайте правила сервера.
 
-To join the Discord server, please check the [User Community Page](/en/contribution/).
+Чтобы присоединиться к Discord-серверу, перейдите на [страницу пользовательского сообщества](/en/contribution/).
 
-## 2. Submit to the Level Library
+## 2. Отправка в Библиотеку Уровней
 
-If your level is highly completed, you can submit it to the level library. You need to have a Github account and be able to use Git tools.
+Если ваш уровень полностью готов, вы можете отправить его в библиотеку уровней. Вам нужно иметь аккаунт на Github и уметь пользоваться инструментами Git.
 
-For how to use Git, please refer to the [Development Guide](/en/guide/webGuide). Please note that the Git repository is different from the level library.
+О том, как использовать Git, читайте в [Руководстве по разработке](/en/guide/webGuide). Обратите внимание, что Git-репозиторий отличается от библиотеки уровней.
 
-The address of the level library is: [pvzg_level](https://github.com/Gzh0821/pvzg_level).
+Адрес библиотеки уровней: [pvzg_level](https://github.com/Gzh0821/pvzg_level).
 
-Please refer to the Readme file of the level library for detailed steps to submit a level.
+Пожалуйста, обратитесь к файлу Readme библиотеки уровней для получения подробной информации о том, как отправить уровень.
