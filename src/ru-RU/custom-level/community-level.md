@@ -1,5 +1,5 @@
 ---
-title: Community Level
+title: Уровни Сообщества
 index: true
 order: 3
 icon: feather-pointed
