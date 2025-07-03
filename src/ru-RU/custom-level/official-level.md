@@ -1,5 +1,5 @@
 ---
-title: Official Level
+title: Официальные Уровни
 index: true
 order: 2
 icon: pen-fancy
