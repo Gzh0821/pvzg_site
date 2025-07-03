@@ -10,6 +10,20 @@ export default defineUserConfig({
   pagePatterns: ['**/*.md', '!.vuepress', '!node_modules', '!components'],
   head: [
     ['script', {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-FNC28KV0ZR',
+      async: true
+    }],
+    [
+      "script",
+      {},
+      `\
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FNC28KV0ZR');
+      `,
+    ],
+    ['script', {
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7637695321442015',
       async: true, crossorigin: 'anonymous'
     }],
