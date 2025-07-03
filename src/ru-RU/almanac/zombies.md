@@ -1,5 +1,5 @@
 ---
-title: Альманах зомби
+title: Альманах Зомби
 icon: book-open
 pageInfo: false
 comment: false
@@ -8,6 +8,7 @@ sidebar: false
 watermark: true
 order: 3
 ---
+
 <script setup>
     import { createApp,provide } from 'vue';
     import Almanac from '@source/components/zombiesAlmanac/App.vue';
