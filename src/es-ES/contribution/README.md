@@ -10,6 +10,7 @@ pageInfo: false
 We know that an excellent game development project cannot be separated from the support of the community. We are very grateful to all users who have contributed to the project.
 
 Welcome to join our community and contribute to the development of "PvZ2 Gardendless". Thank you for your support for community building!
+
 > [!tip]
 > You can find ways to report bugs in [Feedback](feedback.md).
 >
@@ -23,12 +24,11 @@ Welcome to join our community and contribute to the development of "PvZ2 Gardend
 </script>
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="7113006248"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+  style="display:block"
+  data-ad-client="ca-pub-7637695321442015"
+  data-ad-slot="7113006248"
+  data-ad-format="auto"
+  data-full-width-responsive="true"> </ins>
 
 <div class="vp-card-container">
   <VPCard
