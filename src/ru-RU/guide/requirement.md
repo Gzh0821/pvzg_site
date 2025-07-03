@@ -1,52 +1,53 @@
 ---
-title: Системные Требования
+title: System Requirements
 icon: sliders
 pageInfo: false
 comment: false
 index: true
-order: 3
+order: 4
 ---
 
-## Конфигурация
+## Configuration
 
-Требования к минимальной конфигурации - это минимальная конфигурация для запуска игры, а рекомендуемая конфигурация предназначена для получения стандартного игрового опыта.
+The minimum configuration requirement is the minimum configuration to run the game, and the recommended configuration is to get a standard gaming experience.
 
-#### Минимальные требования：
+#### Minimum Configuration：
 
-| Требование         | Спецификация                                                  |
-| ------------------ | ------------------------------------------------------------- |
-| Процессор          | Intel Core i3-9100 / AMD Ryzen 5 1400                         |
-| Оперативная память | 12GB ОЗУ                                                      |
-| Видеокарта         | Nvidia GTX 950 / AMD Radeon R7 370 или эквалентная видеокарта |
-| Место на диске     | 2GB+                                                          |
-| DirectX            | DirectX 11                                                    |
-| Разрешение         | 1280x720                                                      |
+| Requirement | Specification                                                  |
+| ----------- | -------------------------------------------------------------- |
+| Processor   | Intel Core i3-9100 / AMD Ryzen 5 1400                          |
+| RAM         | 12GB RAM                                                       |
+| GPU         | Nvidia GTX 950 / AMD Radeon R7 370 or equivalent graphics card |
+| Storage     | 2GB+                                                           |
+| DirectX     | DirectX 11                                                     |
+| Resolution  | 1280x720                                                       |
 
-#### Рекомендуемые требования:
+#### Recommended Configuration:
 
-| Требование         | Спецификация                                                         |
-| ------------------ | -------------------------------------------------------------------- |
-| Процессор          | Intel Core i5-9400 / AMD Ryzen 5 3600 или более производительные     |
-| Оперативная память | 16GB ОЗУ или выше                                                    |
-| Видеокарта         | Nvidia GTX 1660 Super / AMD Radeon RX 590 или более производительные |
-| Место на диске     | 3GB+                                                                 |
-| DirectX            | DirectX 12                                                           |
-| Разрешение         | 1920x1080                                                            |
+| Requirement | Specification                                                   |
+| ----------- | --------------------------------------------------------------- |
+| Processor   | Intel Core i5-9400 / AMD Ryzen 5 3600 or higher performance     |
+| RAM         | 16GB RAM or higher                                              |
+| GPU         | Nvidia GTX 1660 Super / AMD Radeon RX 590 or higher performance |
+| Storage     | 3GB+                                                            |
+| DirectX     | DirectX 12                                                      |
+| Resolution  | 1920x1080                                                       |
 
-## Системные требования клиента
+## Client System Requirements
 
-| Требование                         | Спецификация             |
-| ---------------------------------- | ------------------------ |
-| **Минимальная Версия Системы**     | Windows 10 22H2 или выше |
-| **Рекомендованная Версия Системы** | Windows 11 23H2 или выше |
-| **Необходимые компоненты**         | Windows Update           |
-| Опциональные компоненты            | WebView2 Runtime         |
+| Requirement                    | Specification             |
+| ------------------------------ | ------------------------- |
+| **Minimum System Version**     | Windows 10 22H2 or higher |
+| **Recommended System Version** | Windows 11 23H2 or higher |
+| **Necessary Components**       | Windows Update            |
+| Optional Components            | WebView2 Runtime          |
 
-## Требования к онлайн-игре
+## Online Play Requirements
 
-Мы рекомендуем вам использовать следующие типы браузеров для доступа к веб-версии "PvZ2 Gardendless":
-| Браузер | Введение |
-| ---------------------- | ---------------------------------------------------------------- |
-| Chrome | Рекомендуется Chrome 114 или выше |
-| Microsoft Edge | Входит в Windows 10/11 |
-| Firefox | Могут возникнуть некоторые проблемы с совместимостью |
+We recommend that you use the following browser types to access the web version of "PvZ2 Gardendless":
+
+| Browser        | Introduction                        |
+| -------------- | ----------------------------------- |
+| Chrome         | Chrome 114 or higher is recommended |
+| Microsoft Edge | Comes with Windows 10/11            |
+| Firefox        | May have some compatibility issues  |

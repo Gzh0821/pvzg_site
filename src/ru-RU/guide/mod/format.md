@@ -1,5 +1,5 @@
 ---
-title: Attribute Reference(latest)
+title: Справочник Свойств (последняя версия)
 icon: file-invoice
 pageInfo: false
 index: true
@@ -14,24 +14,23 @@ order: 2
 </script>
 
 > [!warning]
-> The following tutorial is only applicable to version `0.3.X`.
+> Следующее руководство работает только для версий `0.3.X`.
 
 > [!important]
-> In the tables, attributes in _italics_ are fields that are not recommended to be modified. Modifying them may cause the game to crash or not run properly.
+> В таблицах, свойства выделенные _курсивом_, — это те, которые вам, вероятно, не стоит изменять. Их изменение может привести к сбою или ошибке в игре.
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="3900516289"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="3900516289"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
 
-## Plant Files
+## Файлы Растений
 
-Below is the format of the plant JSON files, using Grapeshot as an example.
+Ниже приведен формат JSON-файлов растений на примере Минограда.
 
-Attributes with multilingual values cannot be deleted or have extra fields added. The format must be as follows:
+Свойства с многоязычными значениями нельзя удалить или добавить для них дополнительные поля. Формат должен быть следующим:
 
 ```json
 {
@@ -42,82 +41,82 @@ Attributes with multilingual values cannot be deleted or have extra fields added
 
 ### PlantFeatures.json
 
-The PlantFeatures.json file contains the basic characteristics of plants.
+Файл PlantFeatures.json содержит основные характеристики растений.
 
-Each plant in the `PLANTS` array includes the following basic characteristics fields:
+Каждое растение в массиве `PLANTS` включает следующие свойства:
 
-| Attribute          | Sample Content                            | Description                                                                                            |
-| ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **ID**             | 74                                        | Unique ID value of the plant in the game                                                               |
-| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Multilingual name, `en` for English name, `zh` for Chinese name                                        |
-| _\_CARDSPRITENAME_ | "grapeshot"                               | Card icon resource name (corresponding to game resource files)                                         |
-| _CODENAME_         | "grapeshot"                               | Unique identifier for the plant (critical field, used for GE Patcher merging)                          |
-| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Plant type:<br>- `plant`: Normal plant<br>- `lastStandDisallowed`: Cannot be used in "Last Stand" mode |
-| **OBTAINWORLD**    | "market"                                  | The world where the background image is located                                                        |
-| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Zen Garden planting location:<br>- `dirt`: Normal soil                                                 |
-| _COSTUME_          | 2                                         | Number of costumes                                                                                     |
+| Свойство                                 | Пример Содержания                     | Описание                                                                                                                                                                  |
+| ---------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**                                   | 74                                    | Уникальное значение ID растения в игре                                                                                                                                    |
+| **NAME**                                 | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Мультиязычное название, `en` для английского, `zh` для китайского                                                                                                         |
+| _\_CARDSPRITENAME_ | "grapeshot"                           | Название ресурса иконки карты (соответствует файлам игровых ресурсов)                                                                                  |
+| _CODENAME_                               | "grapeshot"                           | Уникальный идентификатор растения (критическое поле, используемое для слияния GE Patcher)                                                              |
+| _TYPE_                                   | `["plant", "lastStandDisallowed"]`    | Тип растения:<br>- `plant`: Обычное растение<br>- `lastStandDisallowed`: Не может быть использовано в режиме "Last Stand" |
+| **OBTAINWORLD**                          | "market"                              | Мир, в котором находится изображение фона                                                                                                                                 |
+| **ZENGARDEN**                            | `{ "PlantPlace": "dirt" }`            | Место посадки Сада-Дзен:<br>- `dirt`: Обычная почва                                                                                       |
+| _COSTUME_                                | 2                                     | Количество костюмов                                                                                                                                                       |
 
-The `SEEDCHOOSERDEFAULTORDER` array is used to specify the default order of plants in the selection interface. Each item's value is the plant's `CODENAME`.
+Массив `SEEDCHOOSERDEFAULTORDER` используется для указания порядка растений по умолчанию в интерфейсе выбора. В нем должны быть только `CODENAME` растений, и порядок их расположения в массиве - это порядок, в котором они будут появляться в альманахе, при выборе семян и т.д.
 
-The `BASEUNLOCKLIST` array contains all plants designated for initial unlock. Each item's value is the plant's `CODENAME`.
+Массив `BASEUNLOCKLIST` содержит растения, которые по умолчанию доступны для впервые созданных профилей игроков. Он также использует `CODENAME` растений.
 
 ### PlantAlmanac.json
 
-The PlantAlmanac.json file contains the Almanac information for plants.
+Файл PlantAlmanac.json содержит информацию Альманаха для растений.
 
-Each item in the `objects` array includes `aliases`, `objclass`, and `objdata`.
+Каждый элемент в массиве `objects` должен содержать `aliases`, `objclass` и `objdata`, иначе он может не измениться в игре.
 
-The `aliases` array contains the plant's `CODENAME`, used to indicate the corresponding plant for this item. The value of `objclass` is `PlantAlmanacProperties`, indicating that this item is a plant almanac property.
+Массив `aliases` содержит `CODENAME` растения, используемое для указания соответствующего растения для данного объекта. На данный момент считывается только первый пункт. Значение `objclass` равно `PlantAlmanacProperties`, что указывает на то, что этот объект изменяет запись альманаха растений.
 
-`objdata` includes the following Almanac information fields:
+`objdata` включает следующие свойства Альманаха:
 
-| Field                 | Value/Content                                                                                                                                                     | Description                                              |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| _Elements_            | Contains multiple attribute tags:<br>- `SUNCOST`:Sun cost<br>- `RECHARGE`:Cooldown<br>- `DAMAGE`:Damage value (1800)<br>- `AREA`:Range (3x3)<br>- `FAMILY`:Family | Key attribute tags shown in Almanac                      |
-| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                      | Multilingual description of plant function               |
-| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                     | Special mechanism description                            |
-| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                         | Multilingual, plant's personality lines                  |
-| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                             | Multilingual, brief function summary                     |
-| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                              | Display position offset (adjusts coordinates in Almanac) |
+| Свойство              | Значение/Содержание                                                                                                                                                                                                                                                                                                  | Описание                                                                              |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| _Elements_            | Содержит несколько свойств:<br>- `SUNCOST`:Стоимость в солнцах<br>- `RECHARGE`:Перезарядка<br>- `DAMAGE`:Значение урона (1800)<br>- `AREA`:Дальность (3x3)<br>- `FAMILY`:Семья | Теги ключевых свойств, отображаемые в Альманахе                                       |
+| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                                                                                                                                                                                        | Мультиязычное описание функций растений                                               |
+| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                                                                                                                                                                        | Описания особых механик                                                               |
+| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                                                                                                                                                                            | Мультиязычные, реплики о личности растения                                            |
+| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                                                                                                                                                                                         | Мультиязычное, краткое описание функции                                               |
+| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                                                                                                                                                                                 | Смещение позиции отображения (корректирует координаты в Альманахе) |
 
 ### PlantProps.json
 
-The PlantProps.json file contains the numerical attributes of plants.
+Файл PlantProps.json содержит игровые свойства растений.
 
-Each item in the `objects` array includes `aliases`, `objclass`, and `objdata`.
+Каждый элемент в массиве `objects` включает `aliases`, `objclass` и `objdata`, как в файле `PlantAlmanac.json`.
 
-The `aliases` array contains the plant's `CODENAME`, used to indicate the corresponding plant for this item. The value of `objclass` is `PlantProperties`, indicating that this item is a plant numerical property.
+Массив `aliases` содержит `CODENAME` растения, используемое для указания соответствующего растения для данного объекта. Опять же, читается только первая запись. Значение `objclass` равно `PlantProperties`, что указывает на то, что этот объект изменяет игровые свойства растения.
 
-`objdata` includes the following numerical attribute fields. Valid Props for each plant can be viewed in the [Almanac](../../almanac/):
+`objdata` включает следующие свойства, но у некоторых растений они есть, а у других - нет. Действительные свойства каждого растения можно посмотреть в [Альманахе](../../almanac/).
 
-| Attribute                     | Value/Content | Description                                             |
-| ----------------------------- | ------------- | ------------------------------------------------------- |
-| **CannotBeSheepenedByWizard** | true          | Immune to Wizard Zombie's "sheep transformation" skill  |
-| **Damage**                    | 1800          | Base damage value                                       |
-| **Cooldown**                  | 35            | Cooldown time (unit: seconds)                           |
-| **CooldownFrom**              | 1             | Cooldown start time (represents initial cooldown value) |
-| **SunCost**                   | 150           | Sun required for planting                               |
-| **Toughness**                 | 300           | Base plant health points                                |
-| **Family**                    | "Explosive"   | Family (may affect family bonus effects)                |
-| **ImmuneToIceblock**          | true          | Immune to freezing effects (e.g., Ice Weasel Zombie)    |
+| Свойство                      | Значение/Содержание | Описание                                                                                         |
+| ----------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ |
+| **CannotBeSheepenedByWizard** | true                | Невосприимчив к умению волшебника-зомби "превращение в овцу".                    |
+| **Damage**                    | 1800                | Базовое значение урона                                                                           |
+| **Cooldown**                  | 35                  | Время перезарядки(единица измерения: секунды)                 |
+| **CooldownFrom**              | 1                   | Время начала перезарядки (представляет собой начальное значение перезарядки)  |
+| **SunCost**                   | 150                 | Солнце, необходимое для посадки                                                                  |
+| **Toughness**                 | 300                 | Базовые очки здоровья растений                                                                   |
+| **Family**                    | "Explosive"         | Семья (может влиять на бонусные эффекты семьи)                                |
+| **ImmuneToIceblock**          | true                | Невосприимчивость к замораживающим эффектам (например, к Зомби-Ледяной Ласке) |
 
-## Store Files
+## Файлы Магазина
 
-The `StoreCommodityFeatures.json` file contains store commodity information, including four arrays: `Plants`, `Upgrade`, `Gem`, and `Coin`, representing different types of commodity information.
+Файл `StoreCommodityFeatures.json` содержит информацию о товарах магазина, включая четыре массива: `Plants`, `Upgrade`, `Gem` и `Coin`, представляющие различные типы информации о товарах.
 
-### Plants
+### Растения
 
-The `Plants` array contains information about plant commodities.
+Массив `Plants` содержит информацию о растениях-товарах.
 
-| Field                | Type   | Description                     |
-| -------------------- | ------ | ------------------------------- |
-| _CommodityType_      | string | Fixed value "plant"             |
-| **CommodityName**    | string | Plant's CODENAME                |
-| **CurrencyType**     | string | Currency type ("gem" or "coin") |
-| **CurrencyRequired** | number | Amount of currency required     |
-| _UnlockLevel_        | string | Unlocks at a certain level      |
+| Свойство             | Тип    | Описание                                                |
+| -------------------- | ------ | ------------------------------------------------------- |
+| _CommodityType_      | string | Фиксированное значение "plant"                          |
+| **CommodityName**    | string | CODENAME растения                                       |
+| **CurrencyType**     | string | Тип валюты ("кристалл" или "монета") |
+| **CurrencyRequired** | number | Необходимое количество валюты                           |
+| _UnlockLevel_        | string | Открывается на определенном уровне                      |
 
-**Example: Snow Pea Commodity**
+**Пример: Товар "Снежный Горох"**
 
 ```json
 {
@@ -128,18 +127,18 @@ The `Plants` array contains information about plant commodities.
 }
 ```
 
-### Upgrade
+### Улучшения
 
-The `Upgrade` array contains information about plant upgrade commodities.
+Массив `Upgrade` содержит информацию о товарах для улучшения растений.
 
-| Field                | Type   | Description                     |
-| -------------------- | ------ | ------------------------------- |
-| _CommodityType_      | string | Fixed value "upgrade"           |
-| **CommodityName**    | string | CODENAME of the upgrade item    |
-| **CurrencyType**     | string | Currency type ("gem" or "coin") |
-| **CurrencyRequired** | number | Amount of currency required     |
+| Свойство             | Тип    | Описание                                                |
+| -------------------- | ------ | ------------------------------------------------------- |
+| _CommodityType_      | string | Фиксированное значение "upgrade"                        |
+| **CommodityName**    | string | CODENAME элемента улучшения                             |
+| **CurrencyType**     | string | Тип валюты ("кристалл" или "монета") |
+| **CurrencyRequired** | number | Необходимое количество валюты                           |
 
-**Example: Shovel Upgrade**
+**Пример: Улучшение Лопаты**
 
 ```json
 {
@@ -150,20 +149,20 @@ The `Upgrade` array contains information about plant upgrade commodities.
 }
 ```
 
-### Gem
+### Кристаллы
 
-The `Gem` array contains information about Gem commodities.
+Массив `Gem` содержит информацию о товарах Кристаллы.
 
-| Field                    | Description                           |
-| ------------------------ | ------------------------------------- |
-| _CommodityType_          | Fixed value "gem"                     |
-| CommodityCount           | Amount of Gems obtained               |
-| **CurrencyType**         | Currency type ("gem" or "coin")       |
-| CurrencyRequired         | Amount of currency required           |
-| _StackLevel_             | Commodity pack level                  |
-| **CommodityDisplayName** | Commodity display name (multilingual) |
+| Свойство                 | Описание                                                        |
+| ------------------------ | --------------------------------------------------------------- |
+| _CommodityType_          | Фиксированное значение "gem"                                    |
+| CommodityCount           | Количество полученных кристаллов                                |
+| **CurrencyType**         | Тип валюты ("кристалл" или "монета")         |
+| CurrencyRequired         | Необходимое количество валюты                                   |
+| _StackLevel_             | Уровень Товара-пака                                             |
+| **CommodityDisplayName** | Отображаемое название товара (мультиязычное) |
 
-**Example: Adjusting a Gem Pack**
+**Пример: Настройка пакета кристаллов**
 
 ```json
 {
@@ -179,15 +178,15 @@ The `Gem` array contains information about Gem commodities.
 }
 ```
 
-### Coin
+### Монеты
 
-The `Coin` array contains information about Coin commodities.
+Массив `Coin` содержит информацию о товарах Монеты.
 
-| Field                    | Description                           |
-| ------------------------ | ------------------------------------- |
-| _CommodityType_          | Fixed value "coin"                    |
-| CommodityCount           | Amount of Coins obtained              |
-| **CurrencyType**         | Currency type ("gem" or "coin")       |
-| CurrencyRequired         | Amount of currency required           |
-| _StackLevel_             | Commodity pack level                  |
-| **CommodityDisplayName** | Commodity display name (multilingual) |
+| Свойство                 | Описание                                                        |
+| ------------------------ | --------------------------------------------------------------- |
+| _CommodityType_          | Фиксированное значение "coin"                                   |
+| CommodityCount           | Количество полученных монет                                     |
+| **CurrencyType**         | Тип валюты ("кристалл" или "монета")         |
+| CurrencyRequired         | Необходимое количество валюты                                   |
+| _StackLevel_             | Уровень Товара-пака                                             |
+| **CommodityDisplayName** | Отображаемое название товара (мультиязычное) |

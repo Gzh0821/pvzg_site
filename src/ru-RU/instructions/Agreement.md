@@ -1,11 +1,12 @@
 ---
-title: Пользовательское соглашение
+title: Usage Agreement
 icon: handshake
 index: true
 order: 1
 pageInfo: false
 comment: false
 ---
+
 ## "PvZ2 Gardendless" Usage Agreement
 
 Welcome to "PvZ2 Gardendless"! Before downloading, using the online version, or using this game in any form, please read the following terms carefully:

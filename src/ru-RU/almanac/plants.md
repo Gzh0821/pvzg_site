@@ -1,5 +1,5 @@
 ---
-title: Альманах растений
+title: Альманах Растений
 icon: book-open
 pageInfo: false
 comment: false

@@ -1,11 +1,12 @@
 ---
-title: Оригинальное Издание
+title: Original Version
 icon: circle-info
 index: true
 order: 5
 pageInfo: false
 comment: false
 ---
+
 > [!important]
 > This website, Game and related content are not endorsed by or affiliated with EA.
 

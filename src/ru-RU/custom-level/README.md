@@ -1,5 +1,5 @@
 ---
-title: Custom Level
+title: Пользовательский Уровень
 index: true
 order: 1
 icon: feather
@@ -8,9 +8,9 @@ comment: false
 ---
 
 > [!info]
-> In the custom level list, click the entry title to download the level file, and click `Play Local Level` in the game settings to import it and play. If the list is empty, please wait or try to refresh the page.
+> В списке пользовательских уровней нажмите на название элемента, чтобы загрузить файл уровня, и нажмите `Play Local Level` в настройках игры, чтобы импортировать его и начать игру. Если список пуст, пожалуйста, подождите или попробуйте обновить страницу.
 >
-> The official levels is for levels written by the production team members, including sample level files. The community levels contains level files made by Discord and other community members.
-> For tutorials on writing custom levels, see [Custom Level Guide](../guide/level/).
+> Официальные уровни — это те уровни, созданные членами команды разработчиков, включая примеры файлов уровней. Уровни сообщества содержат файлы уровней, созданные участниками Discord и другими членами сообщества.
+> Для обучения созданию пользовательских уровней смотрите [Руководство по созданию уровней](../guide/level/).
 
 <Catalog />
