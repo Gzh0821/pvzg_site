@@ -197,7 +197,7 @@ const i18nLanguage = inject('i18nLanguage', 'en');
 const plantMap = getPlantIdMap(i18nLanguage);
 
 // 世界数量
-const worldAmount = 13
+const worldAmount = 14
 const gameVersion = versionJson.gameVersion
 
 
