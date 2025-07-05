@@ -63,4 +63,10 @@ CDN acceleration and security protection for this project are sponsored by Tence
     <img width=30% src="https://edgeone.ai/media/34fe3a45-492d-4ea4-ae5d-ea1087ca7b4b.png" alt="edgeone"/>
 </a>
 
+We use Crowdin to manage the localization of our project. We welcome contributions to help us translate our project.
+
+<a href="https://crowdin.com/project/pvzgsite" target="_blank">
+    <img width=30% src="https://support.crowdin.com/assets/badges/localization-at-transparent@1x.svg" alt="edgeone"/>
+</a>
+
 </div>
