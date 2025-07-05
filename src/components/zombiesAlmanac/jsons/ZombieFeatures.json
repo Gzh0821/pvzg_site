@@ -1423,6 +1423,42 @@
     },
     {
       "NAME": {
+        "en": "Bronze Statue",
+        "zh": "铜人雕像"
+      },
+      "_CARDSPRITENAME": "kongfubronzestatue",
+      "CODENAME": "kongfu_bronze_statue",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_bronze_statue@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Bronze of Toughness",
+        "zh": "大汉铜人"
+      },
+      "_CARDSPRITENAME": "kongfubronzestrong",
+      "CODENAME": "kongfu_bronze_strong",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_bronze_strong@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_bronze_strong@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Bronze of Qigong",
+        "zh": "气功铜人"
+      },
+      "_CARDSPRITENAME": "kongfubronzechi",
+      "CODENAME": "kongfu_bronze_chi",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_bronze_chi@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_bronze_chi@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Future Zombie",
         "zh": "未来僵尸"
       },
@@ -2375,6 +2411,7 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "SubZombieList": [
+        "summer_basic",
         "summer_armor1",
         "summer_armor2",
         "summer_flag"
@@ -2465,6 +2502,7 @@
       "SubZombieList": [
         "lostcity_bug_armor1",
         "lostcity_bug_armor2",
+        "summer_bug",
         "summer_bug_armor1",
         "summer_bug_armor2"
       ],
@@ -3119,6 +3157,8 @@
     "monk_torch",
     "monk_nunchaku",
     "monk_drink",
+    "kongfu_bronze_strong",
+    "kongfu_bronze_chi",
     "future",
     "future_armor1",
     "future_armor2",

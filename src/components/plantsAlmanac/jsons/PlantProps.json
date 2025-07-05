@@ -664,7 +664,7 @@
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 60,
-				"ChanceToFreeze": 0.2,
+				"ChanceToFreeze": 0,
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 150,
@@ -795,6 +795,7 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
+				"DetectsTNTSpark": true,
 				"ThrowInterval": 2.7,
 				"ThrowIntervalAdditional": 0.15,
 				"Cooldown": 5,
@@ -804,6 +805,41 @@
 				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
+			}
+		},
+		{
+			"aliases": [
+				"firegourd"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 200,
+				"BeghouledCost": 2500,
+				"Toughness": 300,
+				"Family": "Fire",
+				"ImmuneToIceblock": true,
+				"AttackDPS": 150,
+				"AttackDuration": 5,
+				"AttackDistanceMin": 1,
+				"AttackDistanceMax": 5,
+				"DamageScaleToRacks": 2,
+				"PlantfoodDPS": 300,
+				"PlantfoodDuration": 5,
+				"PlantfoodDistance": 12,
+				"ReloadingTime": 6,
+				"ChargingTime": 14,
+				"//WarmingRadius": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 6,
+					"GridItemDamage": 200
+				},
+				"//WarmingRadiusPlantfood": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 1.5,
+					"GridItemDamage": 100
+				}
 			}
 		},
 		{

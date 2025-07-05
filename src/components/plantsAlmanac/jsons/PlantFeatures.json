@@ -555,7 +555,7 @@
 				"plant"
 			],
 			"COSTUME": 4,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "kongfu",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -3075,6 +3075,25 @@
 			},
 			"ALMANAC": "RTID(hotdate@PlantAlmanac)",
 			"PROPS": "RTID(hotdate@PlantProps)"
+		},
+		{
+			"ID": 156,
+			"NAME": {
+				"en": "Fire Gourd",
+				"zh": "火葫芦"
+			},
+			"_CARDSPRITENAME": "firegourd",
+			"CODENAME": "firegourd",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "kongfu",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(firegourd@PlantAlmanac)",
+			"PROPS": "RTID(firegourd@PlantProps)"
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -3089,7 +3108,6 @@
 		"twinsunflower",
 		"bonkchoy",
 		"repeater",
-		"snowpea",
 		"squash",
 		"dandelion",
 		"pvine",
@@ -3117,6 +3135,8 @@
 		"sapfling",
 		"electriccurrant",
 		"marigold",
+		"firegourd",
+		"snowpea",
 		"turnip",
 		"peach",
 		"laser_bean",
@@ -3229,7 +3249,6 @@
 		"bonkchoy",
 		"repeater",
 		"twinsunflower",
-		"snowpea",
 		"squash",
 		"dandelion",
 		"pvine",
@@ -3264,6 +3283,8 @@
 		"marigold_blue",
 		"marigold_pink",
 		"marigold_purple",
+		"firegourd",
+		"snowpea",
 		"turnip",
 		"peach",
 		"laser_bean",

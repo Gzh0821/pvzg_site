@@ -1040,6 +1040,9 @@
 				"WalkSPS": 0.24,
 				"NormalDeathWhenMowed": true,
 				"ChanceToPharaoh": 0.75,
+				"PharaohTypes": [
+					"mummy"
+				],
 				"WavePointCost": 1500,
 				"Weight": 3000,
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
@@ -3677,6 +3680,7 @@
 				"CannotBeTossedByCitron": false,
 				"HammerDuration": 3,
 				"RestDuration": 3,
+				"ProjectileDamageMult": 3,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 600,
@@ -3751,6 +3755,7 @@
 				"CannotBeTossedByCitron": false,
 				"ArmDroppingHealthPct": 0.25,
 				"DrinkHealthPct": 0.5,
+				"DrinkingDamageMult": 0.25,
 				"DrunkDamageMult": 0.5,
 				"DrunkEatingDamageScale": 2,
 				"DrunkWalkingSpeedScale": 2,
@@ -3772,6 +3777,7 @@
 				"CannotBeTossedByCitron": false,
 				"ArmDroppingHealthPct": 0.25,
 				"DrinkHealthPct": 0.5,
+				"DrinkingDamageMult": 0.25,
 				"DrunkDamageMult": 0.5,
 				"DrunkEatingDamageScale": 2,
 				"DrunkWalkingSpeedScale": 2,
@@ -3783,6 +3789,117 @@
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(MonkDrinkAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_statue"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0,
+				"WalkSPSVarience": 0,
+				"EatDPS": 100,
+				"Toughness": 9000,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 2500,
+				"Weight": 2750,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)",
+				"LifeSpan": {
+					"Min": 25,
+					"Max": 35
+				},
+				"ZombiesToSpawn": [
+					"kongfu_bronze_strong",
+					"kongfu_bronze_chi"
+				]
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_strong"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 7000,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)",
+				"EnragedWalkingSpeedScale": 2.5,
+				"EnragedSmashingSpeedScale": 1.5,
+				"EnrageHealthPct": 0.3
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_chi"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.125,
+				"EatDPS": 100,
+				"Toughness": 7000,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)",
+				"TimeBetweenSkills": {
+					"Min": 16,
+					"Max": 24
+				},
+				"TimeBeforeSkills": {
+					"Min": 12,
+					"Max": 20
+				},
+				"ZombiesToSummon": [
+					"kongfu_hammer",
+					"kongfu_torch",
+					"kongfu_bomb",
+					"kongfu_drink",
+					"kongfu_drink",
+					"monk_blade",
+					"monk_torch",
+					"monk_nunchaku",
+					"monk_drink"
+				],
+				"SummonCount": 3,
+				"SummonColume": {
+					"Min": 6,
+					"Max": 7
+				},
+				"SummonTime": 2
 			}
 		},
 		{
@@ -3814,8 +3931,8 @@
 				"WalkSPS": 0.15,
 				"EatDPS": 100,
 				"Toughness": 300,
-				"WavePointCost": 250,
-				"Weight": 1000,
+				"WavePointCost": 300,
+				"Weight": 500,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -3982,6 +4099,7 @@
 				"CannotBeTossedByCitron": false,
 				"HammerDuration": 4,
 				"RestDuration": 0.1,
+				"ProjectileDamageMult": 3,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 600,
@@ -5387,7 +5505,7 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5407,7 +5525,7 @@
 				"WavePointCost": 200,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5427,7 +5545,7 @@
 				"WavePointCost": 400,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5447,7 +5565,7 @@
 				"WavePointCost": 550,
 				"Weight": 4500,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5468,7 +5586,7 @@
 				"WavePointCost": 700,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5486,7 +5604,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5504,7 +5622,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5522,7 +5640,7 @@
 				"WavePointCost": 450,
 				"Weight": 3500,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5542,7 +5660,7 @@
 				"WavePointCost": 800,
 				"Weight": 3500,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -5562,7 +5680,7 @@
 				"WavePointCost": 1200,
 				"Weight": 3500,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -7789,7 +7907,7 @@
 				"WavePointCost": 350,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8408,7 +8526,7 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8429,7 +8547,7 @@
 				"WavePointCost": 200,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8450,7 +8568,7 @@
 				"WavePointCost": 400,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8468,7 +8586,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8487,7 +8605,7 @@
 				"WavePointCost": 350,
 				"Weight": 2000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8509,7 +8627,7 @@
 				"WavePointCost": 500,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8531,7 +8649,7 @@
 				"WavePointCost": 650,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8549,7 +8667,7 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8570,7 +8688,7 @@
 				"WavePointCost": 200,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8591,7 +8709,7 @@
 				"WavePointCost": 400,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8609,7 +8727,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8626,7 +8744,7 @@
 				"WavePointCost": 150,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8681,7 +8799,7 @@
 				"WavePointCost": 350,
 				"Weight": 2000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8703,7 +8821,7 @@
 				"WavePointCost": 500,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8725,7 +8843,7 @@
 				"WavePointCost": 650,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8747,7 +8865,7 @@
 				"WavePointCost": 550,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -8786,7 +8904,7 @@
 				"WavePointCost": 500,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9359,7 +9477,7 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9380,7 +9498,7 @@
 				"WavePointCost": 200,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9401,7 +9519,7 @@
 				"WavePointCost": 400,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9420,7 +9538,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9437,7 +9555,7 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9457,7 +9575,7 @@
 				"WavePointCost": 200,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9477,7 +9595,7 @@
 				"WavePointCost": 400,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9494,7 +9612,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9512,7 +9630,7 @@
 				"WavePointCost": 300,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9530,7 +9648,7 @@
 				"WavePointCost": 300,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9548,7 +9666,7 @@
 				"WavePointCost": 350,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9568,7 +9686,7 @@
 				"WavePointCost": 300,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9602,7 +9720,7 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9622,7 +9740,7 @@
 				"WavePointCost": 200,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9642,7 +9760,7 @@
 				"WavePointCost": 400,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9661,7 +9779,7 @@
 				"WavePointCost": 300,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9723,7 +9841,7 @@
 				"WavePointCost": 100,
 				"Weight": 1000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9743,7 +9861,7 @@
 				"WavePointCost": 200,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9763,7 +9881,7 @@
 				"WavePointCost": 400,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9783,7 +9901,7 @@
 				"WavePointCost": 550,
 				"Weight": 4500,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9804,7 +9922,7 @@
 				"WavePointCost": 700,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9822,7 +9940,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -9840,7 +9958,7 @@
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonHitRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		},
 		{

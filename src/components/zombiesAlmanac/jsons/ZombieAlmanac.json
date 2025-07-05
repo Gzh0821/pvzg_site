@@ -3842,6 +3842,146 @@
 			}
 		},
 		{
+			"//": "gargantuar",
+			"aliases": [
+				"kongfu_bronze_strong"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Greatly Great",
+							"zh": "非常巨大"
+						},
+						"PROGRESS": 0.9
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "Gets enraged when damaged, making you pay for defying him.",
+					"zh": "重伤后会暴走，让你知道藐视他的代价。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Damage",
+							"zh": "攻击"
+						},
+						"DESCRIPTION": {
+							"en": "crushes plants with wolfsbane",
+							"zh": "用狼牙棒摧毁植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "enrages and speeds up when damaged",
+							"zh": "受重伤时暴怒并加速前进"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Bronze of Toughness is filled with endless power.",
+					"zh": "大汉铜人混身充满无尽的力量。"
+				},
+				"DisplayOffset": {
+					"x": 20,
+					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "gargantuar",
+			"aliases": [
+				"kongfu_bronze_chi"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Greatly Great",
+							"zh": "非常巨大"
+						},
+						"PROGRESS": 0.9
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Stiff",
+							"zh": "迟钝"
+						},
+						"PROGRESS": 0.4
+					}
+				],
+				"Introduction": {
+					"en": "Occasionally summons other kongfu zombies, or pulls all the plants ahead with qigong.",
+					"zh": "偶尔召唤其他功夫僵尸，或用气功拉动身前的植物。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Damage",
+							"zh": "攻击"
+						},
+						"DESCRIPTION": {
+							"en": "crushes plants with his Buddhist staff",
+							"zh": "用禅杖砸毁植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "uses qigong to pull all the plants ahead",
+							"zh": "能发动气功，吸收身前的所有植物。"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "summons kongfu zombies",
+							"zh": "召唤功夫僵尸。"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Bronze of Qigong acts like he's one of the eight Vajrapanis, due to his endeavor spending his whole life meditating.",
+					"zh": "气功铜人的表现已经达到八大金刚的级别，归功于他耗尽一生的冥想。"
+				},
+				"DisplayOffset": {
+					"x": 20,
+					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"aliases": [
 				"monk_drink"
 			],
@@ -9917,10 +10057,10 @@
 					{
 						"TYPE": "SPEED",
 						"SORT": {
-							"en": "Hungry",
-							"zh": "饥渴"
+							"en": "Stiff",
+							"zh": "迟钝"
 						},
-						"PROGRESS": 0.6
+						"PROGRESS": 0.4
 					}
 				],
 				"Introduction": {

@@ -2043,16 +2043,6 @@
 							"en": "chills and damages zombie on impact",
 							"zh": "子弹会对僵尸造成伤害并冰冻"
 						}
-					},
-					{
-						"NAME": {
-							"en": "Special",
-							"zh": "特点"
-						},
-						"DESCRIPTION": {
-							"en": "chills closely following zombies with no damage",
-							"zh": "子弹爆裂时对附近僵尸施加冰冻效果"
-						}
 					}
 				],
 				"Chat": {
@@ -3269,7 +3259,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 1800
+						"VALUE": 2700
 					},
 					{
 						"TYPE": "AREA",
@@ -3960,6 +3950,77 @@
 				"BriefIntroduction": {
 					"en": "Creates one Plant Food for use",
 					"zh": "产生一个叶绿素"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"firegourd"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 750
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "Straight",
+							"zh": "直线"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Fire Gourds charge for a while and breathes fire ahead, damage to zombies continuously and damage more to armor racks.",
+					"zh": "火葫芦蓄力后能朝前方吐火，造成持续火焰伤害，对付木制的兵器架特别有效。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "tap to fire",
+							"zh": "点击喷火"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "the longer he charges, the farther he breathes",
+							"zh": "蓄力时间越长，攻击距离越远"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Fire Gourd used to be a sidekick in an acrobatic class. But since he came to fight against zombies, he's found his unique value.",
+					"zh": "火葫芦原先只是个杂技班里的小配角, 但自从上了战场后, 他才发现自己真正的价值。"
+				},
+				"BriefIntroduction": {
+					"en": "Tap on the gourd to breathe fire ahead",
+					"zh": "点击向前喷射火焰"
 				},
 				"DisplayOffset": {
 					"x": 0,
