@@ -5,71 +5,94 @@ pageInfo: false
 index: true
 order: 2
 ---
+
 ## Frequently Asked Game Questions
 
 > [!note]
-> This FaQ is Valid till “PvZ2_Prepreprelease_AEP3” version
+> This FaQ is Valid till 0.3.7 version
 >
-> Q&A by @索菲 sophine
+> Q&A by @Mola Mola in Discord
 
+### How do i update?
 
-## What should I do if I get stuck with a white screen at startup?
+A: Download the new version from the official Gardendless' website. You can keep/delete the old one if you want to.
 
-The opening image of flaming EA is actually loading game resources, and the problem occurs at startup, mostly when it starts loading. 
-There are two possible explanations for this situation, either the rendering of the flames at the beginning tends to cause crashes, or the problem is caused by auto-adjustment of the resolution(invalid in latest version). 
-Many people who have encountered this problem have resolved it after several attempts, so we recommend that you try it again and again. In addition, most of the white screen cases we have recorded so far are using Lenovo laptops, so please refer to your computer configuration to make a judgement.
+### How do i transfer my progress between versions? (when updating)
 
-## Where are the sandbox levels?
+A: Your save files transfer between versions automatically. Download a new version and play!
 
-There is a “Sandbox Level” button on the game's settings screen. 
-Once inside, there is a purple “i” button, click on it to get a description of the keys.
+### Why is my game crashing/really  slow/doesn't run/laggy/has gray screens?
 
-| Functions              | Result                                                |
-| ---------------------- | ----------------------------------------------------  |
-| Tab                    | Switch Stage Effect                                   |
-| Backspace              | Spawn or Push the Tide(Totally)                       |
-| Enter                  | Pull the Tide(Totally)                                |
-| ←/→                    | Push or Pull the Tide by One Square Width             |
-| Scroll at the Cards    | Change Seedpackets                                    |
-| F5                     | Stop Gaming Update                                    |
-| F1                     | Spawn Random Zombies                                  |
-| Free plants            | Plant without Sun Cost                                |
-| Cooldown off           | Plant without Cooling Down                            |
-| Free Plantfood         | Free Plantfood Effect                                 |
-| Arrow near the 'i'     | Set the Spawn Style of Zombies from Seedpackets       |
+A: The game's optimization isn't the best at the moment. You can try closing tabs, but if nothing works, sadly, your device doesn't meet the requirements to run GE.
 
-The above is limited to sandbox levels, some shortcuts for normal mode are listed below:
-While the game is in progress, press [a] to collect sunlight, coins and diamonds.
-Right-click on a plant to play water animation.
-Middle-click on a plant in the field to trigger a plant food effect.
-Use the keyboard to automatically match the spare Banana Rocket or Missile Toe on the field.
-Use the [b] key for the former and the [n] key for the latter.
-Press [~] to hide UI. 
+### Is modding possible? What can you mod into the game?
 
-## Why is there no zombie in the zomboss level?
+A: With GEPatcher, modding IS possible, however, as of writing this, it's really limited. You cannot change core game features/add new plants, zombies or worlds.
 
-The Zomboss Mechs are still under development, patience is virtue. 
+### Is there an Android/IOS/Linux port of the game?
 
-## Why is there Tutorial Zombies in some of the World Levels? Or the level is not playable?
+A: There is currently a fresh Linux port of the game listed on the website. However, you cannot download it on Android/IOS.
 
-Tutorial Zombies and Peashooters are usually placeholders of the uncompleted Zombies or Plants. 
+### How do i spawn gravestones/minecarts/puddles/etc in Sandbox mode?
 
-They will be replaced by what they should have been in vanilla in the future.
+A: You can't. As of now, you can only spawn potions, plants and zombies in Sandbox mode.
 
-## The full screen resolution is so weird, what should I do?
+### How do i get plants with the purple night background?
 
-Initial launch of the game is fixed full screen, press F4 to cancel the full screen. 
+A: Those are Epic Quest plants, and can only be obtained through epic quests.
 
-Currently the game has been UI adapted for 16:10 and 16:9 screens, if you have problems about screen display, please reflect them to 
-the author and we will fix them as soon as possible.
+### How do i enter an epic quest?
 
-## Why are the UI gone?
+A: Inside of a world, there are often sublevels (ex. 14-1). Upon completing them, a portal will open leading to an Epic Quest.
 
-Press the [~] key to hide UI, please check if the UI is hidden by pressing this key by mistake.
-If invalid, unfortunately this problem might be brought by the devices you are using.
+### The audio is really buggy for me, what do i do?
 
-## Why is the plant all unlocked in the first place?
+A: There have been numerous attempts to fix it, but if you still have this issue, it may be because of your device specifications.
 
-The archive feature is still under development, that's why all the plants and levels are fully unlocked from the beginning, and we will add this feature in future versions.
+### Is the game a virus? Why is it triggering my firewall?
 
-In addition, clicking on the plus sign on the side of the gold and diamonds can directly increase their number, in the future, if you select [ALLOW CHEAT] in the Settings, this function will still be retained, if you do not allow cheating, this function will allow you to exchange gold and diamonds with each other.
+A: No, the game is not a virus, it triggers the firewall because it doesn't have a license. Just click "Read more" and "Run anyway".
+
+### What does the zen garden do?
+
+A: As of now, the Zen Garden does nothing and only exists to obtain marigold (by growing her in zen garden).
+
+### Why can i use the powerups/plantfood/maximize my sun for free?
+
+A: Then, the "Cheat" option in the settings is enabled for you. If you want an experience without these cheats, you can turn it off in the settings.
+
+### Why are some gem plants not in the shop? How do i get them?
+
+A: Some gem plants can only be bought from the shop after a certain level in some worlds.
+
+### Why do some sublevels (ex. 22-1) not have an Epic Quest portal?
+
+A: Those are just extra levels, they wont get you any plants.
+
+### Why is Ancient Egypt 25/26 suddenly so hard?
+
+A: Any level after the Zomboss fight is an expansion level. It's recommended to play them later when you have a sufficient amount of different plants.
+
+### Will leveling get added?
+
+A: No. Leveling won't be added to Gardendless.
+
+### Can Gardendless be played on Mac/Linux?
+
+A: Yes, you can play Gardendless on Mac/Linux using Winebottler or Docker.
+
+### How do i get my save data in Gardendless?
+
+A: To get your save data, you have to enter the game, in the main menu, click on your profile (your name), and click the button "Export".
+
+### What is the save editor? How do I access it?
+
+A: Save editor lets you change different values in your save file, such as coins, gems or unlocked plants. The save editor is located in the website, in useful tools category.
+
+## NOTES
+
+The game has 4 difficulties, A, B, C, D, going in order from A being the hardest to D being the easiest. If the game is weirdly hard for you, it may be because the default difficulty is A.
+
+If a level is missing some features/zomboss, then its because it's not fully developed yet.
+
+Some plants cannot be obtained without cheating right now: Resistant Radish, Heavenly Peach, Floawerpot, Skyshooter, Moonbean, Shooting Starfruit, Dragon Bruit.
