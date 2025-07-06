@@ -16,8 +16,8 @@ bgImageStyle:
   filter: brightness(60%)
   opacity: 0.5
 heroFullScreen: true
-heroText: PvZ2 Gardendless' Birthday
-tagline: A completely remastered PvZ2 for all desktop platforms (1st Anniversary!)
+heroText: PvZ2 Gardendless
+tagline: A completely remastered PvZ2 for all desktop platforms
 actions:
   - text: Download
     icon: circle-down

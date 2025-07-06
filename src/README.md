@@ -16,8 +16,8 @@ bgImageStyle:
   filter: brightness(60%)
   opacity: 0.5 
 heroFullScreen: true
-heroText: PvZ2 Gardendless' Birthday
-tagline: 完全重制的全桌面平台PvZ2（1周年！）
+heroText: PvZ2 Gardendless
+tagline: 完全重制的全桌面平台PvZ2
 actions:
   - text: 下载链接
     icon: circle-down
