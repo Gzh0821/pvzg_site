@@ -3,7 +3,7 @@ home: true
 icon: home
 comment: false
 title: 主页
-heroImage: /pvz_logo.webp
+heroImage: /pvz_logo@200.webp
 heroImageStyle:  
   border-radius: 20%
   border: "5px solid rgba(255, 255, 255, 0.3)"
