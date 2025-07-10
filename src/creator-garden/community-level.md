@@ -1,8 +1,8 @@
 ---
-title: Official Level
+title: 社区关卡
 index: true
-order: 2
-icon: pen-fancy
+order: 23
+icon: feather-pointed
 pageInfo: false
 comment: false
 ---
@@ -10,7 +10,7 @@ comment: false
 <script setup>
     import LevelList from '@source/components/level-list/App.vue';
     import { provide } from 'vue';
-    provide("i18nLanguage",'en');
+    provide("i18nLanguage",'zh-CN');
 </script>
 
-<LevelList authorGroup = "official"/>
+<LevelList authorGroup = "custom"/>

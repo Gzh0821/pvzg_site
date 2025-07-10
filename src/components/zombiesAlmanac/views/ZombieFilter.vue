@@ -19,12 +19,12 @@
 <script lang="ts" setup>
 import {ref, inject, computed} from 'vue';
 
-const props = defineProps<{ familyNameMap: Record<string, any>[] }>();
+const props = defineProps<{ familyNameMap: Record<string, any> }>();
 // 父组件传递的属性过滤事件
 const emits = defineEmits(['filterZombies']);
 
-const searchTerm = ref(''); // 植物名称
-const selectedAttribute = ref(''); // 植物属性
+const searchTerm = ref(''); // 僵尸名称
+const selectedAttribute = ref(''); // 僵尸属性
 const i18nLanguage = inject('i18nLanguage', 'zh');
 
 const selectAttribute = (attribute: string) => {

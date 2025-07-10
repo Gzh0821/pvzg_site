@@ -5,7 +5,7 @@ export const ruNavbar = navbar([
   "/ru-RU/download/",
   "/ru-RU/almanac/",
   "/ru-RU/guide/",
-  "/ru-RU/custom-level/",
+  "/ru-RU/creator-garden/",
   "/ru-RU/useful-tool/",
   "/ru-RU/instructions/",
   "/ru-RU/contribution/",

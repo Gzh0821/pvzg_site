@@ -40,7 +40,7 @@ const zombieMap = getZombieMap(i18nLanguage);
 const filteredZombies = ref<Zombie[]>([]);
 const selectedZombie = ref<Zombie | null>(null);
 
-// 选择植物
+// 选择僵尸
 const selectZombie = (zombie: Zombie) => {
     selectedZombie.value = zombie;
 };

@@ -5,7 +5,7 @@ export const zhNavbar = navbar([
   "/download/",
   "/almanac/",
   "/guide/",
-  "/custom-level/",
+  "/creator-garden/",
   "/useful-tool/",
   "/instructions/",
   "/contribution/",

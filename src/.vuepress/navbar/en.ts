@@ -5,7 +5,7 @@ export const enNavbar = navbar([
   "/en/download/",
   "/en/almanac/",
   "/en/guide/",
-  "/en/custom-level/",
+  "/en/creator-garden/",
   "/en/useful-tool/",
   "/en/instructions/",
   "/en/contribution/",

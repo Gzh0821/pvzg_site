@@ -4,7 +4,7 @@ export const esSidebar = sidebar({
   "/es-ES/download/": "structure",
   "/es-ES/instructions/": "structure",
   "/es-ES/guide/": "structure",
-  "/es-ES/custom-level/": "structure",
+  "/es-ES/creator-garden/": "structure",
   "/es-ES/useful-tool/": "structure",
   "/es-ES/contribution/": "structure",
   "/es-ES/almanac/": "structure",

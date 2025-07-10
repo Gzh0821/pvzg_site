@@ -1,7 +1,7 @@
 ---
 title: 官方关卡
 index: true
-order: 2
+order: 22
 icon: pen-fancy
 pageInfo: false
 comment: false

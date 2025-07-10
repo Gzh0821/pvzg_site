@@ -4,7 +4,7 @@ export const ruSidebar = sidebar({
   "/ru-RU/download/": "structure",
   "/ru-RU/instructions/": "structure",
   "/ru-RU/guide/": "structure",
-  "/ru-RU/custom-level/": "structure",
+  "/ru-RU/creator-garden/": "structure",
   "/ru-RU/useful-tool/": "structure",
   "/ru-RU/contribution/": "structure",
   "/ru-RU/almanac/": "structure",
