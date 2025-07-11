@@ -13,20 +13,21 @@
                 </div> -->
                 <img :src="'/assets/image/plants/plants_' + plant.codename + '_c.webp'" :alt="plant.name">
                 <p class="plant-title">{{ plant.name }}</p>
-                <img v-if="plant.enFamily" :src="'/assets/wikicon/' + plant.enFamily + '_familyicon.webp'"
-                     :alt="plant.enFamily" class="family-img">
+                <img v-if="plant.enFamily && plant.enFamily != 'None'"
+                    :src="'/assets/wikicon/' + plant.enFamily + '_familyicon.webp'" :alt="plant.enFamily"
+                    class="family-img">
             </div>
             <div class="plant-stats">
                 <table>
                     <tbody>
-                    <tr v-for="(value, key) in plant.elements" :key="key">
+                        <tr v-for="(value, key) in plant.elements" :key="key">
 
-                        <td class="ability"><img :src="keyMap[key].icon" :alt="keyMap[key][i18nLanguage]"/>
-                            {{ keyMap[key][i18nLanguage] }}
-                        </td>
-                        <td class="value">{{ value }}</td>
-                    </tr>
-                    <!-- <tr key="CodeName">
+                            <td class="ability"><img :src="keyMap[key].icon" :alt="keyMap[key][i18nLanguage]" />
+                                {{ keyMap[key][i18nLanguage] }}
+                            </td>
+                            <td class="value">{{ value }}</td>
+                        </tr>
+                        <!-- <tr key="CodeName">
                         <td class="ability"> CodeName </td>
                         <td class="value">{{ plant.codename }}</td>
                     </tr> -->
@@ -41,7 +42,7 @@
                 <p v-for="value in plant.special" :key="value['NAME'][i18nLanguage]" class="description">
                     {{ value['NAME'][i18nLanguage] }}: <span class="descriptionKey">{{
                         value['DESCRIPTION'][i18nLanguage]
-                    }}</span>
+                        }}</span>
                 </p><br>
                 <p class="description">{{ plant.chat }}</p>
             </div>
@@ -59,8 +60,8 @@
 </template>
 
 <script lang="ts" setup>
-import {inject} from 'vue';
-import type {Plant, KeyMap} from '../types';
+import { inject } from 'vue';
+import type { Plant, KeyMap } from '../types';
 
 
 // 接收 props
@@ -174,7 +175,7 @@ h3 {
     overflow: hidden;
     background-color: #ede5c4;
     box-shadow: rgba(0, 0, 0, 0.8) 0 0 12px
-    /* 隐藏超出部分 */
+        /* 隐藏超出部分 */
 }
 
 [data-theme="dark"] .plant-introduction {

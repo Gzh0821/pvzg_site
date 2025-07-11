@@ -65,7 +65,7 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
     const res: Plant = {
         elements: {},
         special: [],
-        enFamily: '',
+        enFamily: familyNameMap[upperPropsObjdata["FAMILY"]]['en'],
         id: originPlant["ID"],
         plantType: originPlant["_CARDSPRITENAME"],
         codename: codename,
@@ -92,7 +92,6 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
                 value = upperPropsObjdata["COOLDOWN"]
             } else if (TYPE == "FAMILY") {
                 value = familyNameMap[upperPropsObjdata[TYPE]][i18nLanguage];
-                res.enFamily = familyNameMap[upperPropsObjdata[TYPE]]['en'];
             } else {
                 value = upperPropsObjdata[TYPE]; // 只有 TYPE 时，从原始数据中查找
             }
