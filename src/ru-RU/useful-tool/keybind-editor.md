@@ -14,7 +14,7 @@ next: false
     import Editor from '@source/components/keybind-editor/App.vue';
     import { provide } from 'vue';
     import { onMounted } from 'vue';
-    provide("i18nLanguage",'en');
+    provide("i18nLanguage",'ru');
 
     onMounted(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
