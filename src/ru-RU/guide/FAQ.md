@@ -1,75 +1,98 @@
 ---
-title: FAQ
+title: ЧаВо
 icon: question
 pageInfo: false
 index: true
 order: 2
 ---
 
-## Frequently Asked Game Questions
+## Часто Задаваемые Вопросы по Игре
 
 > [!note]
-> This FaQ is Valid till “PvZ2_Prepreprelease_AEP3” version
+> Этот ЧаВо действителен до версии 0.3.7
 >
-> Q&A by @索菲 sophine
+> Вопросы и Ответы от @Mola Mola в Discord
 
-## What should I do if I get stuck with a white screen at startup?
+### Как мне обновить?
 
-The opening image of flaming EA is actually loading game resources, and the problem occurs at startup, mostly when it starts loading.
-There are two possible explanations for this situation, either the rendering of the flames at the beginning tends to cause crashes, or the problem is caused by auto-adjustment of the resolution(invalid in latest version).
-Many people who have encountered this problem have resolved it after several attempts, so we recommend that you try it again and again. In addition, most of the white screen cases we have recorded so far are using Lenovo laptops, so please refer to your computer configuration to make a judgement.
+О: Загрузите новую версию с официального сайта Gardendless. Вы можете сохранить/удалить старую, если хотите.
 
-## Where are the sandbox levels?
+### Как перенести прогресс между версиями? (при обновлении)
 
-There is a “Sandbox Level” button on the game's settings screen.
-Once inside, there is a purple “i” button, click on it to get a description of the keys.
+О: Ваши файлы сохранений переносятся между версиями автоматически. Скачайте новую версию и играйте!
 
-| Functions           | Result                                             |
-| ------------------- | -------------------------------------------------- |
-| Tab                 | Switch Stage Effect                                |
-| Backspace           | Spawn or Push the Tide(Totally) |
-| Enter               | Pull the Tide(Totally)          |
-| ←/→                 | Push or Pull the Tide by One Square Width          |
-| Scroll at the Cards | Change Seedpackets                                 |
-| F5                  | Stop Gaming Update                                 |
-| F1                  | Spawn Random Zombies                               |
-| Free plants         | Plant without Sun Cost                             |
-| Cooldown off        | Plant without Cooling Down                         |
-| Free Plantfood      | Free Plantfood Effect                              |
-| Arrow near the 'i'  | Set the Spawn Style of Zombies from Seedpackets    |
+### Почему моя игра сбоит/очень медленно работает/не запускается/лагает/имеет серые экраны?
 
-The above is limited to sandbox levels, some shortcuts for normal mode are listed below:
-While the game is in progress, press [a] to collect sunlight, coins and diamonds.
-Right-click on a plant to play water animation.
-Middle-click on a plant in the field to trigger a plant food effect.
-Use the keyboard to automatically match the spare Banana Rocket or Missile Toe on the field.
-Use the [b] key for the former and the [n] key for the latter.
-Press [~] to hide UI.
+О: Оптимизация игры на данный момент не самая лучшая. Вы можете попробовать закрыть вкладки, но если ничего не помогает, то, к сожалению, ваше устройство не соответствует требованиям для запуска GE.
 
-## Why is there no zombie in the zomboss level?
+### Возможен ли моддинг? Что можно добавить в игру?
 
-Зомботы всё ещё находятся в разработке, терпение — добродетель.
+О: С помощью GEPatcher моддинг возможен, однако, на момент написания этой статьи, он очень ограничен. Вы не можете изменять основные функции игры, добавлять новые растения, зомби или миры.
 
-## Why is there Tutorial Zombies in some of the World Levels? Or the level is not playable?
+### Существует ли порт игры для Android/IOS/Linux?
 
-Tutorial Zombies and Peashooters are usually placeholders of the uncompleted Zombies or Plants.
+О: В настоящее время на сайте представлен свежий порт игры для Linux. Однако вы не можете загрузить его на Андроид/IOS.
 
-They will be replaced by what they should have been in vanilla in the future.
+### Как спаунить надгробия/картины/лужи/и т.д. в режиме Песочницы?
 
-## The full screen resolution is so weird, what should I do?
+О: Никак. На данный момент в режиме "Песочница" можно спаунить только зелья, растения и зомби.
 
-Initial launch of the game is fixed full screen, press F4 to cancel the full screen.
+### Как получить растения с фиолетовым ночным фоном?
 
-Currently the game has been UI adapted for 16:10 and 16:9 screens, if you have problems about screen display, please reflect them to
-the author and we will fix them as soon as possible.
+О: Это растения Epic Quest, и получить их можно только в ходе выполнения эпических квестов.
 
-## Why are the UI gone?
+### Как зайти в эпический квест?
 
-Press the [~] key to hide UI, please check if the UI is hidden by pressing this key by mistake.
-If invalid, unfortunately this problem might be brought by the devices you are using.
+О: Внутри мира часто существуют подуровни (пример 14-1). После их выполнения откроется портал, ведущий к Эпическому Квесту.
 
-## Why is the plant all unlocked in the first place?
+### У меня звук очень глючит, что делать?
 
-The archive feature is still under development, that's why all the plants and levels are fully unlocked from the beginning, and we will add this feature in future versions.
+О: Было предпринято множество попыток решить эту проблему, но если она по-прежнему актуальна, возможно, дело в технических характеристиках вашего устройства.
 
-In addition, clicking on the plus sign on the side of the gold and diamonds can directly increase their number, in the future, if you select [ALLOW CHEAT] in the Settings, this function will still be retained, if you do not allow cheating, this function will allow you to exchange gold and diamonds with each other.
+### Является ли игра вирусом? Почему срабатывает брандмауэр?
+
+О: Нет, игра — не вирус, брандмауэр ругается на неё, потому что у неё нет лицензии. Просто нажмите "Читать дальше" и "Выполнить в любом случае".
+
+### Что делает Сад Дзен?
+
+О: На данный момент "Сад Дзен" ничего не делает и существует только для того, чтобы получить календулу (вырастив их в саду дзен).
+
+### Почему я могу использовать усилители/подкормку/максимизировать свое солнце бесплатно?
+
+О: Значит у вас включена опция "Cheat" в настройках. Если вы хотите получить опыт без этих читов, вы можете отключить их в настройках.
+
+### Почему некоторых растений за кристаллы нет в магазине? Как мне их получить?
+
+О: Некоторые растения за кристаллы можно купить в магазине только после определенного уровня в некоторых мирах.
+
+### Почему на некоторых подуровнях (например, 22-1) нет портала Epic Quest?
+
+О: Это просто дополнительные уровни, они не дадут вам никаких растений.
+
+### Почему Древний Египет 25/26 вдруг такой трудный?
+
+О: Любой уровень после боя с Зомбоссом - это расширенный уровень. Рекомендуется играть в них позже, когда у вас будет достаточное количество различных растений.
+
+### Будет ли добавлена система уровней?
+
+О: Нет. Уровни растений не будет добавлен в Gardendless.
+
+### Можно ли играть в Gardendless на Mac/Linux?
+
+О: Да, вы можете играть в Gardendless на Mac/Linux, используя Winebottler или Docker.
+
+### Как мне получить данные сохранения в Gardendless?
+
+О: Чтобы получить данные сохранения, зайдите в игру, в главном меню нажмите на свой профиль (имя) и выберите «Export».
+
+### Что такое редактор сохранений? Как получить к нему доступ?
+
+О: Редактор сохранений позволяет изменять различные значения в файле сохранения, такие как монеты, кристаллы или разблокированные растения. Редактор сохранений расположен на сайте в категории "Полезные Инструменты".
+
+## ПРИМЕЧАНИЯ
+
+В игре есть 4 сложности: A, B, C, D, которые идут в порядке от A - самой сложной до D - самой легкой. Если игра кажется вам слишком сложной, возможно, это из-за того, что по умолчанию выбрана сложность A.
+
+Если в уровне отсутствуют некоторые функции или Зомбосс, значит он ещё не полностью готов.
+
+Некоторые растения сейчас нельзя получить без читов: Resistant Radish, Heavenly Peach, Floawer Pot, Skyshooter, Moonbean, Shooting Starfruit, Dragon Bruit.
