@@ -1,5 +1,5 @@
 ---
-title: Keybind Editor
+title: Редактор Клавиш
 index: true
 order: 3
 icon: keyboard
@@ -22,17 +22,17 @@ next: false
 </script>
 
 > [!warning]
-> The key binder is in the testing phase. Using this tool may cause unknown problems with the key configuration. Please be sure to back up the original key configuration before using it!
+> Редактор Клавиш находится на стадии тестирования. Использование этого инструмента может вызвать неизвестные проблемы с конфигурацией клавиш. Обязательно создайте резервную копию оригинальной конфигурации клавиш перед использованием!
 >
-> Please use the archive exported from the latest game version for editing.
+> Пожалуйста, используйте архив, экспортированный из последней версии игры, для редактирования.
 >
-> You can bind multiple functions to the same key, but please note that some functions may conflict or not work properly.
+> Вы можете привязать несколько функций к одной клавише, однако учтите: некоторые из них могут конфликтовать или работать некорректно.
 
 <ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="7113006248"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="7113006248"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
 
 <Editor />
