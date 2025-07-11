@@ -2,7 +2,7 @@
 home: true
 icon: home
 comment: false
-title: Home Page
+title: Домашняя Страница
 heroImage: /pvz_logo@200.webp
 heroImageStyle:
   border-radius: 20%
@@ -17,14 +17,14 @@ bgImageStyle:
   opacity: 0.5
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: A completely remastered PvZ2 for all desktop platforms
+tagline: Полностью переделанная PvZ2 для всех настольных платформ
 actions:
-  - text: Download
+  - text: Скачать
     icon: circle-down
     link: ./download/
     type: primary
 
-  - text: Community
+  - text: Сообщество
     icon: comment
     link: ./contribution/
 
@@ -35,23 +35,23 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
-      - title: Online Almanac
+      - title: Онлайн-Альманах
         icon: book-atlas
-        details: Find plants and zombies, as well as their ID and CodeName
+        details: Найдите растения и зомби, а также их ID и CodeName
         link: ./almanac/
 
-      - title: Save Editor
+      - title: Редактор Сохранений
         icon: floppy-disk
-        details: Modify Gardendless game saves
+        details: Редактируйте сохранения Gardendless
         link: ./useful-tool/save-editor
 
-      - title: MOD tutorial
+      - title: Руководство по моддингу
         icon: toolbox
-        details: Customize game resources using GE Patcher
+        details: Изменяйте ресурсы игры используя GE Patcher
         link: ./guide/mod/
 
-      - title: Recommended Configuration
+      - title: Рекомендованная Конфигурация
         icon: sliders
-        details: View the recommended configuration for the game
+        details: Просмотр рекомендуемой конфигурации для игры
         link: ./guide/requirement
 ---
