@@ -1,5 +1,5 @@
 ---
-title: GE Patcher Tutorial (latest)
+title: Руководство по GE Patcher (последняя версия)
 icon: wrench
 pageInfo: false
 index: true
@@ -14,17 +14,17 @@ order: 1
 </script>
 
 > [!warning]
-> This tutorial is only works for versions `0.3.X`.
+> Это руководство работает только для версий `0.3.X`.
 
-GE Patcher is a tool used to modify Plants vs. Zombies 2 Gardendless game data, supporting custom modifications to plants, zombies, upgrades, the shop, levels, and more.
+GE Patcher - это инструмент для изменения данных игры Plants vs. Zombies 2 Gardendless, поддерживающий пользовательские модификации растений, зомби, улучшений, магазина, уровней и многого другого.
 
-The version provided on the website has the GE Patcher tool built-in to the PC build.
+В версии, представленной на сайте, инструмент GE Patcher встроен в сборку для ПК.
 
-## Prerequisites
+## Что нужно подготовить
 
-1. JSON editor (VSCode/Notepad++ recommended)
-2. Game version ≥ 0.3.0
-3. [Property Reference](format.md).
+1. Редактор JSON (рекомендуется VSCode/Notepad++)
+2. Версия игры ≥ 0.3.0
+3. [Руководство по Свойствам](format.md).
 
 <ins class="adsbygoogle"
 style="display:block"
@@ -33,23 +33,23 @@ data-ad-slot="3900516289"
 data-ad-format="auto"
 data-full-width-responsive="true"> </ins>
 
-## The Basics
+## Основы
 
-Press `F12` when the game starts to open the developer console. In the Console tab, you should see something like this:
+Нажмите `F12` при запуске игры, чтобы открыть консоль разработчика. На вкладке "Консоль" вы должны увидеть что-то вроде этого:
 
 ```
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
 ```
 
-This path is GE Patcher's main directory and where patch files are loaded from. If you want to see _exactly_ where the files are loaded from, enter the command `gePatcher.help()`.
+Этот путь - основной каталог GE Patcher, из которого загружаются файлы патчей. Если вы хотите увидеть, откуда _именно_ загружаются файлы, введите команду `gePatcher.help()`.
 
-Once you see the title screen, you can now load your patch. **Entering `gePatcher.init()` into the console will load your custom files.**
+Как только вы увидите титульный экран, вы можете загрузить свой патч. \*\* Введя в консоль `gePatcher.init()`, вы загрузите свои пользовательские файлы.\*\*
 
-After modifying a JSON file, please **run this command again to apply the changes**.
+После изменения JSON-файла, пожалуйста, **запустите эту команду снова, чтобы применить изменения**.
 
-## File Structure
+## Структура Файлов
 
-To start your patch, create a `patches` folder within `com.pvzge.app` with the following structure (not all files have to be present):
+Чтобы запустить свой патч, создайте папку `patches` внутри `com.pvzge.app` со следующей структурой (не все файлы обязаны присутствовать):
 
 ```
 patches/
@@ -67,17 +67,17 @@ patches/
         └── [LevelName].json (does not support JSON5)
 ```
 
-The `features` directory contains `Features`, `Props`, and `Almanac` files for modifying plants, zombies, upgrades, the shop, etc.
+Каталог `features` содержит файлы `Features`, `Props` и `Almanac` для модификации растений, зомби, улучшений, магазина и т.д.
 
-Files under the `levels` directory are used to replace levels. If you want to get the original levels, try to find similar ones in vanilla PvZ2 (extracting PvZ2 files is out of the scope of this guide).
+Файлы в каталоге `levels` используются для замены уровней. Если вы хотите получить оригинальные уровни, попробуйте найти похожие в ванильной PvZ2 (извлечение файлов PvZ2 выходит за рамки данного руководства).
 
-Anything you don't modify will default to the base-game properties.
+Все, что вы не измените, по умолчанию будет иметь свойства базовой игры.
 
-## Features Files
+## Файлы-Характеристики
 
-### Features File Structure
+### Структура Файлов Характеристик
 
-Features files contain the basic properties of plants, zombies, and upgrades. The file structure is as follows:
+Файлы характеристик содержат основные свойства растений, зомби и улучшений. Структура файлов выглядит следующим образом:
 
 **PlantFeatures.json**
 
@@ -117,36 +117,36 @@ Features files contain the basic properties of plants, zombies, and upgrades. Th
 }
 ```
 
-**Key Notes**
+**Ключевые заметки**
 
-- The `PLANTS`、`ZOMBIES` and `UPGRADES` arrays define modifications to existing entities.
-- `SEEDCHOOSERDEFAULTORDER` sets the order of plants. The order of the array is the order they appear in the almanac, seed chooser, etc.
-- `BASEUNLOCKLIST` defines plants unlocked by default on new player profiles.
+- Массивы `PLANTS`, `ZOMBIES` и `UPGRADES` определяют модификации существующих сущностей.
+- `SEEDCHOOSERDEFAULTORDER` устанавливает порядок растений. Порядок массива - это порядок, в котором они появляются в альманахе, выборе семян и т.д.
+- `BASEUNLOCKLIST` определяет растения, разблокированные по умолчанию в новых профилях игроков.
 
-### Features Modification Rules
+### Правила Модификаций Характеристик
 
-Features modification rules apply to `PlantFeatures`、`ZombieFeatures` and `UpgradeFeatures` files。
+Правила модификаций характеристик применяются к файлам `PlantFeatures`, `ZombieFeatures` и `UpgradeFeatures`.
 
-Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:
+Каждый объект в массиве `PLANTS` (или `ZOMBIES`, `UPGRADES`) будет объединен в исходный JSON после сопоставления по полю `CODENAME`. Правила объединения следующие:
 
-- **Array Elements**: If the property type is an array, each value in the array will be merged according to element order. If a value in the array is an object, it will be merged recursively. If a value in the array is a primitive type, it will directly overwrite the value in the original JSON.
-- **Object Merging**: If the property type is an object, it will be merged recursively. If there are attributes with the same key within the object, the value in the original JSON will be directly overwritten.
-- **Primitive Attributes**: For primitive attributes with the same key, they are directly overwritten, i.e., replacing the value in the original JSON.
+- **Элементы Массива**: Если тип свойства - массив, каждое значение в массиве будет объединено в соответствии с порядком элементов. Если значение в массиве является объектом, оно будет объединено рекурсивно. Если значение в массиве относится к примитивному типу, оно напрямую перезапишет значение в исходном JSON.
+- **Слияние Объектов**: Если тип свойства является объектом, он будет объединен рекурсивно. Если в объекте есть атрибуты с одинаковым ключом, значение в исходном JSON будет напрямую перезаписано.
+- **Примитивные Атрибуты**: Для примитивных атрибутов с одинаковым ключом они напрямую перезаписываются, т.е. заменяют значение в исходном JSON.
 
-For other properties, such as `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, the original array is simply replaced.
+Для других свойств, таких как `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, исходный массив просто заменяется.
 
-Therefore, for any plant/zombie that needs modification, you must add an object to the `PLANTS` (or `ZOMBIES`) array, and the `CODENAME` field of this object must match the original plant/zombie in the JSON. For plants/zombies that do not need modification, this object does not need to be added.
+Поэтому для любого растения/зомби, требующего модификации, вы должны добавить объект в массив `PLANTS` (или `ZOMBIES`), а поле `CODENAME` этого объекта должно соответствовать исходному растению/зомби в JSON. Для растений/зомби, которые не нуждаются в модификации, этот объект добавлять не нужно.
 
-Within a single plant/zombie object, only the `CODENAME` needs to be filled. Other fields not filled will remain unchanged. If modification is needed, the corresponding fields must be added.
+В пределах одного объекта растения/зомби необходимо заполнить только `CODENAME`. Другие незаполненные поля останутся без изменений. Если необходимо внести изменения, следует добавить соответствующие поля.
 
 > [!important]
 >
-> - Avoid modifying critical properties like `ID` or `_CARDSPRITENAME` to prevent crashes or other unwanted bugs.
-> - **GE Patcher cannot create new plants, zombies, or anything like; it only modifies existing entities.**
+> - Избегайте изменения таких критических свойств, как `ID` или `_CARDSPRITENAME`, чтобы избежать сбоев или других нежелательных ошибок.
+> - **GE Patcher не может создавать новые растения, зомби или что-то подобное; он только изменяет существующие сущности**.
 
-**Example**
+**Пример**
 
-To change the Peashooter's background to "epic" and the Sunflower's name to "Happy Flower":
+Чтобы изменить фон Горохострела на "epic", а имя Подсолнуха на "Happy Flower":
 
 ```json
 {
@@ -166,11 +166,11 @@ To change the Peashooter's background to "epic" and the Sunflower's name to "Hap
 }
 ```
 
-## Props/Almanac Files
+## Файлы Props/Almanac
 
-### Props File Structure
+### Структура Файлов Props
 
-Props files contain the gameplay properties of plants and zombies. The file structure is as follows:
+Файлы Props содержат игровые свойства растений и зомби. Структура файлов выглядит следующим образом:
 
 **PlantProps.json**
 
@@ -215,16 +215,16 @@ Props files contain the gameplay properties of plants and zombies. The file stru
 }
 ```
 
-**Key Notes**
+**Ключевые заметки**
 
-- The `objects` array defines the objects that modify existing plants/zombies.
-- The `aliases` array indicates which plant/zombie the object belongs to. Right now, GE Patcher only reads the first item of this array.
-- The `objclass` indicates the type of the object, and its value must be `PlantProperties` or `ZombieProperties` depending on what you're modifying.
-- `objdata` contains the gameplay properties of the plant/zombie.
+- Массив `objects` определяет объекты, которые изменяют существующие растения/зомби.
+- Массив `aliases` указывает, к какому растению/зомби принадлежит объект. Сейчас GE Patcher считывает только первый элемент этого массива.
+- Класс `objclass` указывает на тип объекта, и его значение должно быть `PlantProperties` или `ZombieProperties` в зависимости от того, что вы изменяете.
+- `objdata` содержит игровые свойства растения/зомби.
 
-### Almanac File Structure
+### Структура Файлов Almanac
 
-Almanac files contain the Almanac information for plants and zombies. The file structure is as follows:
+Файлы Almanac содержат информацию Альманаха для растений и зомби. Структура файлов выглядит следующим образом:
 
 **PlantAlmanac.json**
 
@@ -332,34 +332,34 @@ Almanac files contain the Almanac information for plants and zombies. The file s
 },
 ```
 
-### Props/Almanac Modification Rules
+### Правила Модификаций Props/Almanac
 
-Props modification rules apply to `PlantProps` and `ZombieProps` files. Almanac modification rules apply to `PlantAlmanac` and `ZombieAlmanac` files.
+Правила модификации Props применяются к файлам `PlantProps` и `ZombieProps`. Правила модификации Almanac применяются к файлам `PlantAlmanac` и `ZombieAlmanac`.
 
-Each object in the `objects` array is merged into the original JSON after being matched by the `aliases` field, using the same rules as for the `Features` files.
+Каждый объект в массиве `objects` объединяется с исходным JSON после сопоставления с полем `aliases`, используя те же правила, что и для файлов `Features`.
 
-+For any plant/zombie you want to modify, you must add an object to the `objects` array. That object must have an `aliases` property with the plant/zombie you want to modify's codename.
-+**Note:** Only the first element of the `aliases` array is used to match the plant/zombie for modification.
-+For plants/zombies that you don't want to change, you don't need to do anything - it'll default to vanilla properties.
++Для каждого растения/зомби, которое вы хотите изменить, вы должны добавить объект в массив `objects`. У этого объекта должно быть свойство `aliases` с кодовым именем растения/зомби, которое вы хотите изменить.
++**Примечание:** Только первый элемент массива `aliases` используется для подбора растения/зомби для модификации.
++Для растений/зомби, которые вы не хотите изменять, вам не нужно ничего делать - по умолчанию будут установлены ванильные свойства.
 
-Within a single object, `objdata` contains the gameplay properties or Almanac information of the plant/zombie. Only the properties that need to be modified should be added. Properties not added will default to vanilla properties.
+Внутри одного объекта `objdata` содержит игровые свойства или информацию Альманаха о растении/зомби. Добавлять следует только те свойства, которые необходимо изменить. Если свойства не добавлены, по умолчанию будут использоваться ванильные свойства.
 
 > [!important]
 >
-> - `Almanac` files are only used to modify the Almanac information of plants/zombies and do not affect the actual in-game stats of the plants.
-> - Array attributes in `objdata`, such as `Elements` in `Almanac` files, will be merged according to element order. To modify the value of an item in the original array, you need to make the modification at the same position in the array.
+> - Файлы `Almanac` используются только для изменения информации Альманаха растений/зомби и не влияют на реальную статистику растений в игре.
+> - Атрибуты массива в `objdata`, такие как `Elements` в файлах `Almanac`, будут объединены в соответствии с порядком элементов. Чтобы изменить значение элемента в исходном массиве, необходимо произвести модификацию в той же позиции массива.
 
-## Level Files
+## Файлы Уровней
 
-Place custom level files in `patches/jsons/levels/[LevelName].json`.
+Поместите файлы пользовательских уровней в `patches/jsons/levels/[LevelName].json`.
 
-- Filenames must match the in-game level ID (e.g., `egypt1.json`).
-- Use `gePatcher.showLevels()` to view original level IDs (requires initializing GE Patcher first).
-- JSON5 levels are not supported and will not load.
+- Имена файлов должны соответствовать внутриигровому ID уровня (например, `egypt1.json`).
+- Используйте `gePatcher.showLevels()` для просмотра оригинальных ID уровней (для этого требуется сначала инициализировать GE Patcher).
+- Уровни JSON5 не поддерживаются и не будут загружены.
 
-## Store Files
+## Файлы Магазина
 
-`StoreCommodityFeatures.json` replaces in-game store categories:
+`StoreCommodityFeatures.json` заменяет категории внутриигрового магазина:
 
 ```json
 {
@@ -370,14 +370,14 @@ Place custom level files in `patches/jsons/levels/[LevelName].json`.
 }
 ```
 
-_Note: comments are supported in JSON._
+_Примечание: комментарии поддерживаются в JSON._
 
-Omit categories you do not modify.
+Опустите категории, которые вы не будете изменять.
 
-## Debugging
+## Отладка
 
-1. Check the console for errors during loading.
-2. Common errors:
-  - ❌ `Failed to load...`: JSON syntax error.
-  - ❌ `Level file not found`: Filename mismatch.
-3. Validate JSONs with tools like [JSONLint](https://jsonlint.com/).
+1. Проверьте консоль на наличие ошибок во время загрузки.
+2. Распространенные ошибки:
+  - ❌ `Failed to load...`: JSON syntax error. (ошибка синтаксиса)
+  - ❌ `Level file not found`: Filename mismatch. (несоответствие имени файла)
+3. Проверяйте JSON с помощью таких инструментов, как [JSONLint](https://jsonlint.com/).
