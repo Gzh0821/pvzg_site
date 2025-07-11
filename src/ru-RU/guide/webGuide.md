@@ -1,37 +1,37 @@
 ---
-title: Website Development Guide
+title: Руководство по Разработке Веб-сайта
 icon: laptop-code
 pageInfo: false
 index: true
 order: 5
 ---
 
-Welcome to participate in the "PvZ2 Gardendless" website open source project! Whether you are a novice developer or an experienced developer, we encourage you to contribute code, submit issues or suggestions.
-Below is a brief development guide to help zero-based users quickly participate in this project.
+Добро пожаловать к участию в проекте с открытым исходным кодом сайта "PvZ2 Gardendless"! Независимо от того, являетесь ли вы начинающим или опытным разработчиком, мы призываем вас вносить свой код, отправлять проблемы и предложения.
+Ниже приведено краткое руководство по разработке, которое поможет пользователям нулевого уровня быстро принять участие в этом проекте.
 
-## 1. Preparation
+## 1. Подготовка
 
-Before you start, you need to complete some basic settings. For `Windows` systems, we recommend that you use `PowerShell` of `Windows Terminal` to run commands, which can be started through the right-click menu.
+Прежде чем приступить к работе, необходимо выполнить некоторые базовые настройки. Для систем `Windows` мы рекомендуем использовать `PowerShell` из `Windows Terminal` для запуска команд, которые можно запустить через меню правой кнопки мыши.
 
-### 1.1 Install VScode, Git and Node.js
+### 1.1 Установите VScode, Git и Node.js
 
 #### VScode
 
-VScode is a lightweight code editor that supports multiple programming languages. In project development, we recommend using VScode to edit code.
+VScode - это легкий редактор кода, поддерживающий множество языков программирования. При разработке проекта мы рекомендуем использовать VScode для редактирования кода.
 
-- Download and install VScode: [VScode official website](https://code.visualstudio.com/)
-- Read the [VScode documentation](https://code.visualstudio.com/docs) to learn more about how to use it.
-- It is recommended to install plugins: `Vue - Official`, `ESLint`, `GitLens`, etc. to improve development efficiency.
+- Скачайте и установите VScode: [Официальный сайт VScode](https://code.visualstudio.com/)
+- Прочитайте [документацию по VScode](https://code.visualstudio.com/docs), чтобы узнать больше о том, как его использовать.
+- Для повышения эффективности разработки рекомендуется установить плагины: `Vue - Official`, `ESLint`, `GitLens` и т.д.
 
 #### Git
 
-Git is a tool for managing project versions. In project development, we will use Git to pull code and submit modifications.
+Git - это инструмент для управления версиями проекта. При разработке проекта мы будем использовать Git для извлечения кода и внесения изменений.
 
-- Download and install Git: [Git official website](https://git-scm.com/), for Windows, it is recommended that you download `64-bit Git for Windows Setup`.
-- You can use the default settings during the installation process.
-- It is recommended to select `Use Visual Studio Code as Git's default editor` for the default editor.
-- It is recommended to select `Git from the command line and also from 3rd-party software` for environment variable configuration.
-- After the installation is complete, you can run the following command through the command line to confirm whether the installation is successful:
+- Скачайте и установите Git: [Официальный сайт Git](https://git-scm.com/), для Windows рекомендуется скачать `64-bit Git for Windows Setup`.
+- В процессе установки можно использовать настройки по умолчанию.
+- В качестве редактора по умолчанию рекомендуется выбрать `Use Visual Studio Code as Git's default editor`.
+- Рекомендуется выбрать `Git from the command line and also from 3rd-party software` для настройки переменных среды.
+- После завершения установки вы можете выполнить следующую команду в командной строке, чтобы убедиться, что установка прошла успешно:
 
 ```bash
 git --version
@@ -39,71 +39,71 @@ git --version
 
 #### Node.js
 
-VuePress is a static website generator based on Node.js, so you need to install Node.js.
+VuePress - это генератор статических сайтов, основанный на Node.js, поэтому вам необходимо установить Node.js.
 
-- Download and install Node.js: [Node.js official website](https://nodejs.org/)
-- After the installation is complete, you can run the following command to confirm whether the installation is successful:
+- Скачайте и установите Node.js: [Официальный веб-сайт Node.js](https://nodejs.org/)
+- После завершения установки вы можете выполнить следующую команду, чтобы подтвердить успешность установки:
 
 ```bash
 node --version
 npm --version
 ```
 
-### 1.2 Install Corepack
+### 1.2 Установите Corepack
 
-Corepack is a Node.js package manager that helps you install and manage project dependencies faster.
+Corepack - это менеджер пакетов Node.js, который помогает вам быстрее устанавливать и управлять зависимостями проекта.
 
-- Run the following command to activate Corepack:
+- Выполните следующую команду, чтобы активировать Corepack:
 
 ```bash
 corepack enable
 ```
 
-## 2. Fork the project
+## 2. Форк проекта
 
-### 2.1 Create a Github account
+### 2.1 Создайте аккаунт Github
 
-Before participating in the project, you need to register a GitHub account.
+Перед участием в проекте необходимо зарегистрировать аккаунт на GitHub.
 
-### 2.2 Fork the project
+### 2.2 Сделайте форк проекта
 
-When participating in a project on GitHub, you can fork (copy a copy of the project to your own account) to carry out development work.
+Участвуя в проекте на GitHub, вы можете сделать форк (скопировать копию проекта на свой аккаунт) для выполнения работ по разработке.
 
-1. Visit the [pvzg_site project](https://github.com/Gzh0821/pvzg_site).
-2. Click the `Fork` button in the upper right corner of the page to copy the project to your own GitHub repository.
-3. Enter the project repository you forked.
+1. Посетите [pvzg_site project](https://github.com/Gzh0821/pvzg_site).
+2. Нажмите кнопку `Fork` в правом верхнем углу страницы, чтобы скопировать проект в свой собственный репозиторий GitHub.
+3. Зайдите в репозиторий проекта, который вы форкнули.
 
-## 3) Clone the project locally
+## 3) Клонируйте проект локально
 
-After you fork the project, you need to clone the project code to your local computer. `VScode` provides the function of cloning repositories. You can check its documentation to learn more, or use the terminal:
+После форка проекта вам нужно клонировать код проекта на свой локальный компьютер. `VScode` предоставляет функцию клонирования репозиториев. Чтобы узнать больше, можно обратиться к документации или воспользоваться терминалом:
 
-1. Open the terminal. For Windows, please use `Windows Terminal` or the terminal function included with `VScode`.
+1. Откройте терминал. Для Windows используйте `Windows Terminal` или функцию терминала, входящую в состав `VScode`.
 
-2. In the path where you want to place this project, run the following command to clone the project locally:
+2. В каталоге, где вы хотите разместить этот проект, выполните следующую команду для клонирования проекта локально:
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/pvzg_site.git
 ```
 
-Please replace `YOUR_USERNAME` with your GitHub username.
+Пожалуйста, замените `YOUR_USERNAME` на ваше имя пользователя GitHub.
 
-3. Enter the project directory, which should contain the `package.json` file:
+3. Укажите каталог проекта, в котором должен находиться файл `package.json`:
 
 ```bash
 cd pvzg_site
 ```
 
-4. Open the project directory through `VScode`. After that, you can use `VScode` to enter commands and write files:
+4. Откройте каталог проекта через `VScode`. После этого вы можете использовать `VScode` для ввода команд и записи файлов:
 
 ```bash
 code .
 ```
 
-## 4. Install dependencies
+## 4. Установите зависимости
 
-After entering the project directory, you need to install the dependency packages required by the project. All subsequent commands must be entered in the project directory path.
+После входа в каталог проекта необходимо установить пакеты зависимостей, необходимые для проекта. Все последующие команды должны вводиться по пути к каталогу проекта.
 
-- Use `Corepack` to install `pnpm`, and use `pnpm` to install dependencies:
+- Используйте `Corepack` для установки `pnpm`, и используйте `pnpm` для установки зависимостей:
 
 ```bash
 corepack install
@@ -113,31 +113,31 @@ pnpm -v
 pnpm install
 ```
 
-## 5. Run the development environment
+## 5. Запустите среду разработки
 
-After installing the dependencies, you can start the development environment of the project and view the document website running locally.
+После установки зависимостей вы можете запустить среду разработки проекта и просмотреть сайт с документацией, работающий локально.
 
-- Use the following command to start the development server:
+- Используйте следующую команду для запуска сервера разработки:
 
 ```bash
 pnpm docs:dev
 ```
 
-After successful startup, you can visit `http://localhost:8080` in your browser to view the website in development.
+После успешного запуска вы можете посетить `http://localhost:8080` в вашем браузере, чтобы увидеть сайт в разработке.
 
-## 6. Start editing
+## 6. Начало Редактирования
 
-Now you can modify and optimize the code.
+Теперь вы можете изменять и оптимизировать код.
 
-### 6.1 Markdown file
+### 6.1 Файл Markdown
 
-Markdown is a lightweight markup language. You can learn more about it through [Markdown Guide](https://www.markdownguide.org/).
+Markdown - это легкий язык разметки. Вы можете узнать больше о нем в [Руководстве Markdown](https://www.markdownguide.org/).
 
-The page content of the project is mainly written in Markdown, with the suffix `.md`. You can find the page files of the project in the `src` directory.
+Содержание страниц проекта в основном написано в формате Markdown, с расширением `.md`. Файлы страниц проекта находятся в директории `src`.
 
-This project is developed using `Vuepress`. For the use of `Vuepress`, you can check [Vuepress official documentation](https://vuepress.vuejs.org/) to learn more.
+Этот проект разработан с использованием `Vuepress`. Для использования `Vuepress` можно ознакомиться с [официальной документацией Vuepress](https://vuepress.vuejs.org/).
 
-The format of `.md` files is as follows:
+Формат файлов `.md` следующий:
 
 ```markdown
 <!-- Configuration items -->
@@ -158,67 +158,67 @@ index: false
 Content...
 ```
 
-### 6.2 Provide translations
+### 6.2 Добавление переводов
 
-Under the `src` directory, you can find the `en` directory, which contains the English pages of this website. You can refer to the files in this directory and translate them into other languages.
+В каталоге `src` находится каталог `en`, содержащий англоязычные страницы этого сайта. Вы можете использовать его для перевода на другие языки.
 
-For translation work, you only need to modify the `.md` files in the corresponding language directory, such as `ru-RU`, `pt-BR`. You need to keep the file structure and name in the directory consistent with `en`.
+Для работы над переводом достаточно изменить файлы `.md` в соответствующем языковом каталоге, например `ru-RU`, `pt-BR`. Необходимо, чтобы структура файлов и имена в каталоге соответствовали `en`.
 
-For the configuration items in the `.md` file, only `title` needs to be modified, and for the `HTML component`, it can be left unchanged.
-It is recommended that you check whether the page is displayed correctly at any time when making changes.
+Для элементов конфигурации в файле `.md` необходимо изменить только `title`, а `компонент HTML` можно оставить без изменений.
+Рекомендуется проверять правильность отображения страницы в любое время при внесении изменений.
 
-## 7. Submit changes and initiate a Pull Request
+## 7. Отправка изменений и инициирование Pull Request
 
-When you have completed the code modification and tested successfully, you can submit your changes and initiate a Pull Request.
+Когда вы завершили модификацию кода и успешно протестировали его, вы можете отправить свои изменения и инициировать Pull Request.
 
-### 7.1 Submit changes and push to GitHub
+### 7.1 Коммит и отправка изменений
 
-We recommend that you use `VScode` to submit. Just fill in the submission information in `Source Control` on the left side of `VScode`, then click Submit, and click Synchronize Changes.
+Мы рекомендуем вам использовать `VScode` для отправки. Просто заполните информацию для отправки в `Source Control` слева от `VScode`, затем нажмите Submit, и нажмите Synchronize Changes.
 
-To submit using the terminal:
+Для отправки через терминал:
 
-1. Add the modified code to Git:
+1. Добавьте измененный код в Git:
 
 ```bash
 git add .
 ```
 
-2. Submit the changes:
+2. Отправьте изменения:
 
 ```bash
 git commit -m "Describe your changes"
 ```
 
-3. Push local changes to your own GitHub repository:
+3. Внесите локальные изменения в свой собственный репозиторий GitHub:
 
 ```bash
 git push origin main
 ```
 
-### 7.2 Initiate Pull Request
+### 7.2 Создание Pull Request
 
-1. Go to your GitHub repository page.
-2. Click the `Compare & pull request` button at the top of the page.
-3. Fill in the description of the changes and submit the Pull Request.
+1. Откройте страницу вашего репозитория на GitHub.
+2. Нажмите кнопку `Compare & pull request` в верхней части страницы.
+3. Заполните описание изменений и отправьте Pull Request.
 
-We will review your Pull Request as soon as possible and provide feedback or merge as needed.
+Мы рассмотрим ваш Pull Request как можно скорее и предоставим обратную связь или произведем слияние при необходимости.
 
-## 8. Submit Issues
+## 8. Сообщение о проблемах
 
-If you encounter problems during development, you can provide feedback through GitHub's Issues system.
+Если в процессе разработки у вас возникнут проблемы, вы можете оставить отзыв через систему Issues на GitHub.
 
-1. Visit the project's [Issues page](https://github.com/Gzh0821/pvzg_site/issues).
+1. Перейдите на [Issues проекта](https://github.com/Gzh0821/pvzg_site/issues).
 
-2. Click the `New issue` button.
+2. Нажмите `New issue`.
 
-3. Fill in the problem description and submit.
+3. Опишите проблему и отправьте.
 
-## 9) Participate in discussions
+## 9) Участие в обсуждениях
 
-We welcome all users to participate in the project's discussions! You can communicate with us in the following ways:
+Мы приглашаем всех пользователей принять участие в обсуждениях проекта! Вы можете общаться с нами следующими способами:
 
-- Participate in Discussions on GitHub.
+- Участвуйте в обсуждениях на GitHub.
 
-- Participate in discussions on the Discord server.
+- Участвуйте в обсуждениях на сервере Discord.
 
-Thank you for your support and contribution to this project, and we look forward to working with you to improve this project!
+Благодарим вас за поддержку и вклад в этот проект и надеемся на сотрудничество с вами для его улучшения!

@@ -1,5 +1,5 @@
 ---
-title: Useful Tools
+title: Полезные Инструменты
 index: false
 order: 1
 icon: screwdriver-wrench
@@ -8,6 +8,6 @@ comment: false
 ---
 
 > [!info]
-> Included here are some useful tools for PvZ2 Gardendless.
+> Здесь собраны некоторые полезные инструменты для PvZ2 Gardendless.
 
 <Catalog />

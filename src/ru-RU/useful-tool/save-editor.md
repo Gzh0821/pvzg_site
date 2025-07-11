@@ -1,5 +1,5 @@
 ---
-title: Save Editor
+title: Редактор Сохранений
 index: true
 order: 2
 icon: floppy-disk
@@ -22,19 +22,19 @@ next: false
 </script>
 
 > [!warning]
-> The save editor is in the testing phase. Using this tool may cause unknown problems in the save file. Please be sure to back up the original save file before using the save editor!
+> Редактор сохранений находится на стадии тестирования. Использование этого инструмента может вызвать неизвестные проблемы в файле сохранения. Перед использованием редактора сохранений обязательно сохраните резервную копию исходного файла сохранения!
 >
-> To ensure the synchronization of the save version, please use the save file exported from the latest game version for editing. If you are using the save file of the old game version, please import it into the latest game version before exporting and editing.
+> Чтобы обеспечить синхронизацию версии сохранения, используйте для редактирования файл сохранения, экспортированный из последней версии игры. Если вы используете файл сохранения старой версии игры, пожалуйста, импортируйте его в последнюю версию игры перед экспортом и редактированием.
 >
-> You can find the `plantID` for each plant in the [Almanac](../almanac/).
+> Вы можете найти `plantID` для каждого растения в [Альманахе](../almanac/).
 >
-> The save editor will not modify the save data that does not appear below.
+> Редактор сохранений не будет изменять данные сохранения, которые не указаны ниже.
 
 <ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="7113006248"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="7113006248"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
 
 <Editor />

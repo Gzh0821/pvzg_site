@@ -125,7 +125,7 @@ Features files contain the basic properties of plants, zombies, and upgrades. Th
 
 ### Features Modification Rules
 
-Features modification rules apply to `PlantFeatures`、`ZombieFeatures` and `UpgradeFeatures` files。
+Features modification rules apply to `PlantFeatures`、`ZombieFeatures` and `UpgradeFeatures` files.
 
 Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:
 
