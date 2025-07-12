@@ -329,7 +329,7 @@ const saveArchive = () => {
 </script>
 <style scoped>
 p.plant-title {
-    font-family: 'pvzgFont', sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', sans-serif;
     font-size: x-large;
 }
 

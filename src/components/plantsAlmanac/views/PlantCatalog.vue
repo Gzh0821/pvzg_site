@@ -91,7 +91,7 @@ const selectPlant = (plant: Plant, parPlant: Plant | undefined = undefined) => {
 
 p {
     line-height: 1em;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: large;
     color: #432b1a;
 }

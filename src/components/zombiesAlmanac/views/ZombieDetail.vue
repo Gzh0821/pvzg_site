@@ -77,7 +77,7 @@ p {
 }
 
 h3 {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
 }
 
 [data-theme="dark"] .details-container {
@@ -213,7 +213,7 @@ table tbody td img {
 table tbody td.ability {
     color: #d8d8d8;
     font-weight: bold;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: large;
     border-radius: 7% 0 0 7%;
     text-shadow: 0px -1px 1px black, 0px 1px 1px black, 1px 0px 1px black, -1px 0px 0px black, 1px 2px 1px black;
@@ -222,7 +222,7 @@ table tbody td.ability {
 table tbody td.value {
     color: white;
     font-weight: bold;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: larger;
     border-radius: 0 7% 7% 0;
     text-shadow: 0px -1px 1px black, 0px 1px 1px black, 1px 0px 1px black, -1px 0px 0px black, 1px 2px 1px black;
@@ -240,14 +240,14 @@ table tbody td.value {
 
 p.description {
     margin: 0.2em 0;
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC",sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC",sans-serif;
     font-size: x-large;
     color: #865600;
     line-height: 1.2em;
 }
 
 p.zombie-title {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC",sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC",sans-serif;
     font-size: xx-large;
     color: white;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 2px -2px 0 #000, -1px 1px 0 #000, 5px 3px 5px rgba(0, 0, 0, 0.2);

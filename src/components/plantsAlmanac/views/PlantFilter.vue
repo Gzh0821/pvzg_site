@@ -99,7 +99,7 @@ const placeholder = computed(() => {
 }
 
 .filter-family-group p {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: medium;
 }
 
@@ -115,7 +115,7 @@ const placeholder = computed(() => {
 }
 
 .plant-filter input {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     color: black;
     padding: 10px 15px;
     width: 100%;
@@ -159,7 +159,7 @@ const placeholder = computed(() => {
 }
 
 .plant-filter label {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: x-large;
     color: #432b1a;
 }

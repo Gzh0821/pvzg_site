@@ -9,12 +9,6 @@ pageInfo: false
 comment: false
 ---
 
-<script setup>
-    import { onMounted } from 'vue';
-    onMounted(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })</script>
-
 > [!info]
 > Здесь содержится версия Gardendless от сообщества, созданная и загруженная участниками сообщества. Команда разработчиков Gardendless не несёт ответственности за её содержание.
 
@@ -22,9 +16,15 @@ comment: false
     import { onMounted } from 'vue';
     onMounted(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })</script>
+    })
+</script>
 
 <Catalog />
 
-<0>
-</0>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7637695321442015"
+     data-ad-slot="7113006248"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>

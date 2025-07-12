@@ -389,7 +389,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .title {
-    font-family: 'pvzgFont', 'Noto Sans SC', 'Noto Sans', sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', 'Noto Sans', sans-serif;
 }
 
 .keybind-editor-container {

@@ -73,7 +73,7 @@ selectPlant(filteredPlants.value[0]);
 
 <style scoped>
 .filter h1 {
-    font-family: 'pvzgFont', 'pvzgeFontEN', "Noto Sans SC", sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: xx-large;
     color: #432b1a;
 }
