@@ -1,5 +1,5 @@
 ---
-title: Opensource Agreement
+title: Соглашение об Открытом Исходном Коде
 icon: gavel
 index: true
 order: 3
@@ -7,21 +7,18 @@ pageInfo: false
 comment: false
 ---
 
-## "PvZ2 Gardenless" Website Open Source Agreement
+## Соглашение об Открытом Исходном Коде Веб-сайта "PvZ2 Gardenless"
 
 Copyright [2024] [Gaozih/Gzh0821/LMYY and contributors]
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Лицензировано в соответствии с лицензией Apache версии 2.0 (далее — «Лицензия»);
+вы не можете использовать этот файл иначе, чем в соответствии с Лицензией.
+Вы можете получить копию Лицензии по адресу
 
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Если иное не требуется действующим законодательством или не согласовано в письменной форме, программное обеспечение, распространяемое в соответствии с Лицензией, предоставляется «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ ИЛИ УСЛОВИЙ, явных или подразумеваемых.
+См. Лицензию для получения конкретных положений, регулирующих разрешения и ограничения.
 
 ## Apache License 2.0
 

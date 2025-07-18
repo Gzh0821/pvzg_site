@@ -16,15 +16,13 @@ comment: false
     import { onMounted } from 'vue';
     onMounted(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
-</script>
+    })</script>
 
 <Catalog />
 
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="7113006248"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="7113006248"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>
