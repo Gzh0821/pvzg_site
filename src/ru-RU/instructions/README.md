@@ -1,20 +1,20 @@
 ---
-title: Agreement and Statement
+title: Соглашение и Заявление
 index: false
 icon: info
 pageInfo: false
 comment: false
 ---
 
-The usage, play-related agreements and statements of PvZ2 Gardendless are as follows:
+Соглашения по использованию, игре и заявления PvZ2 Gardendless следующие:
 
-- ["PvZ2 Gardendless" Usage Agreement](Agreement.md)
-- [Disclaimer and Copyright Notice for "PvZ2 Gardendless"](Disclaimer.md)
+- ["PvZ2 Gardendless" Соглашение об использовании](Agreement.md)
+- [Отказ от ответственности и уведомление об авторских правах на "PvZ2 Gardendless"](Disclaimer.md)
 
-The open source agreement of this website is as follows:
+Соглашение об открытом исходном коде этого сайта заключается в следующем:
 
-- ["PvZ2 Gardendless" open source agreement](OpenSource.md)
+- [Соглашение об открытом исходном коде "PvZ2 Gardendless"](OpenSource.md)
 
-The original Plants vs Zombies game information is as follows:
+Оригинальная информация об игре Plants vs Zombies выглядит следующим образом:
 
-- [Plants vs. Zombies Original Version Information](PvZinfo.md)
+- [Информация об оригинальной версии Plants vs. Zombies](PvZinfo.md)
