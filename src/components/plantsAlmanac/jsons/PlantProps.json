@@ -191,6 +191,27 @@
 		},
 		{
 			"aliases": [
+				"bambooshoot"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Damage": 20,
+				"DamagePlantfood": 100,
+				"PlantfoodKnockBackDistance": 1,
+				"PlantfoodTossChance": 0.3,
+				"AttackInterval": 0.3,
+				"AttackDistance": 4,
+				"PlantfoodDistance": 9,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 175,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Sharp"
+			}
+		},
+		{
+			"aliases": [
 				"iceburg"
 			],
 			"objclass": "PlantProperties",
@@ -712,6 +733,25 @@
 				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Lobber"
+			}
+		},
+		{
+			"aliases": [
+				"snowdrop"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"DetectsTNTSpark": true,
+				"ThrowInterval": 1.35,
+				"ThrowIntervalAdditional": 0.15,
+				"ChanceToButter": 0.2,
+				"Cooldown": 5,
+				"CooldownFrom": 0.5,
+				"SunCost": 200,
+				"BeghouledCost": 2500,
+				"Toughness": 300,
+				"Family": "Cold",
+				"ImmuneToIceblock": true
 			}
 		},
 		{

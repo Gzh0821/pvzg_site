@@ -421,7 +421,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 20
+						"VALUE": 50
 					},
 					{
 						"TYPE": "RANGE",
@@ -1242,6 +1242,56 @@
 				"BriefIntroduction": {
 					"en": "Hits up to three targets in its lane, twice",
 					"zh": "击打本行的三个目标，各两次"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bambooshoot"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 20
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Multi-hit",
+							"zh": "多重打击"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Bambooshoots dig back and forth on the ground, damaging zombies that step on them.",
+					"zh": "竹笋在地面上来回移动，对经过的僵尸造成伤害。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Bambooshoot learned Earth Traversal from Tu Xingsun. After years of grinding (literally), he got his \"Underground Degree\" in Tunnel Engineering.",
+					"zh": "竹笋从土行孙那里习得地行术功夫, 又经过不懈努力, 终于获得“钻头工程学院”学土学位。"
+				},
+				"BriefIntroduction": {
+					"en": "Digs back and forth and damages zombies that step on them",
+					"zh": "在地面上来回移动，对经过的僵尸造成伤害"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -2196,6 +2246,74 @@
 		},
 		{
 			"aliases": [
+				"snowdrop"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 20
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Lobbed",
+							"zh": "抛物线"
+						}
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Freeze",
+							"zh": "冻结"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Snowdrops throw chilly snow balls and freezy icicles at zombies.",
+					"zh": "雪滴花向僵尸投掷寒冷的雪球和结冰的冰锥。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "icicles freezes zombies",
+							"zh": "冰锥使僵尸冻结"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Zombies are always looking at her with a frozen expression.",
+					"zh": "僵尸看到她时心都凉了半截。"
+				},
+				"BriefIntroduction": {
+					"en": "Throw snow balls and icicles at zombies",
+					"zh": "向僵尸投掷雪球和冰锥"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"meteorflower"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -2562,6 +2680,9 @@
 							"en": "Full Board",
 							"zh": "全屏"
 						}
+					},
+					{
+						"TYPE": "FAMILY"
 					}
 				],
 				"Introduction": {
@@ -5319,7 +5440,10 @@
 							"en": "HEALTH PER HEAL",
 							"zh": "单次治疗血量"
 						},
-						"VALUE": 150
+						"SORT": {
+							"en": "150",
+							"zh": "150"
+						}
 					},
 					{
 						"TYPE": "FAMILY"
@@ -7057,7 +7181,10 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 15
+						"SORT": {
+							"en": "30/20",
+							"zh": "30/20"
+						}
 					},
 					{
 						"TYPE": "RANGE",
@@ -7889,10 +8016,6 @@
 						"TYPE": "TOUGHNESS"
 					},
 					{
-						"TYPE": "DAMAGE",
-						"VALUE": 30
-					},
-					{
 						"TYPE": "RANGE",
 						"SORT": {
 							"en": "Front & Back",
@@ -8609,21 +8732,10 @@
 						"TYPE": "TOUGHNESS"
 					},
 					{
-						"TYPE": "DAMAGE",
-						"VALUE": 15
-					},
-					{
-						"TYPE": "RANGE",
-						"SORT": {
-							"en": "Lobbed",
-							"zh": "抛物线"
-						}
-					},
-					{
 						"TYPE": "AREA",
 						"SORT": {
-							"en": "3x3",
-							"zh": "3x3 范围"
+							"en": "Full Board",
+							"zh": "全屏"
 						}
 					},
 					{

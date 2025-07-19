@@ -3718,7 +3718,8 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"CannotBeTossedByCitron": false,
-				"ExplodeDamage": 4001,
+				"ExplodeDamageToPlants": 4001,
+				"ExplodeDamageToZombies": 1800,
 				"WalkSPS": 0.335,
 				"EatDPS": 100,
 				"Toughness": 500,
@@ -3820,6 +3821,7 @@
 				},
 				"ZombiesToSpawn": [
 					"kongfu_bronze_strong",
+					"kongfu_bronze_hook",
 					"kongfu_bronze_chi"
 				]
 			}
@@ -3869,7 +3871,7 @@
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.125,
 				"EatDPS": 100,
-				"Toughness": 7000,
+				"Toughness": 4700,
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
@@ -3904,6 +3906,35 @@
 		},
 		{
 			"aliases": [
+				"kongfu_bronze_hook"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.16,
+				"EatDPS": 100,
+				"Toughness": 6400,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)",
+				"LeapInterval": {
+					"Min": 10,
+					"Max": 16
+				}
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_gong"
 			],
 			"objclass": "ZombieProperties",
@@ -3930,8 +3961,8 @@
 				],
 				"WalkSPS": 0.15,
 				"EatDPS": 100,
-				"Toughness": 300,
-				"WavePointCost": 300,
+				"Toughness": 250,
+				"WavePointCost": 350,
 				"Weight": 500,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
@@ -3944,13 +3975,349 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"KilledByShrinkingViolet": true,
-				"ZombieSort": "Normal",
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.4,
 				"WalkSpeedMultFlying": 7,
 				"EatDPS": 100,
 				"Toughness": 190,
 				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(ImpHitRect@RectangleProps)",
+				"AttackRect": "RTID(ImpAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_boss_explode"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
+				"ZombieSort": "Zomboss",
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"ZombossMechLevel": 0,
+				"SummonColumn": 6,
+				"ZombossStages": [
+					{
+						"Actions": [
+							{
+								"actionName": "jump",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 2,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"kongfu",
+										"kongfu_armor1",
+										"kongfu_torch",
+										"kongfu_hammer"
+									],
+									"pointMin": 600,
+									"pointMax": 1100
+								},
+								"weight": 20,
+								"repeatMax": 2,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "imps",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 4,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 0,
+						"HitPoints": 6000,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1.25,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 3,
+						"BombCount": {
+							"Min": 1,
+							"Max": 1
+						},
+						"ThrewImpCount": {
+							"Min": 1,
+							"Max": 2
+						},
+						"ThrewImpColumn": {
+							"Min": 5,
+							"Max": 6
+						},
+						"RocketImpCount": {
+							"Min": 3,
+							"Max": 3
+						}
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "jump",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"kongfu_armor1",
+										"kongfu_armor2",
+										"kongfu_hammer",
+										"kongfu_chi",
+										"kongfu_bomb",
+										"kongfu_gong"
+									],
+									"pointMin": 1200,
+									"pointMax": 2400
+								},
+								"weight": 20,
+								"repeatMax": 2,
+								"repeatMin": 2
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 6,
+								"repeatMax": 2,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 4,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "imps",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 8,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"AnimRateModifier": 1.1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 3,
+						"DamageIndexHalf": 3,
+						"HitPoints": 8000,
+						"MaxIdleTime": 3,
+						"MinIdleTime": 2,
+						"StunDamageScale": 1.25,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5,
+						"BombCount": {
+							"Min": 1,
+							"Max": 1
+						},
+						"ThrewImpCount": {
+							"Min": 4,
+							"Max": 4
+						},
+						"ThrewImpColumn": {
+							"Min": 4,
+							"Max": 5
+						},
+						"RocketImpCount": {
+							"Min": 3,
+							"Max": 3
+						}
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "jump",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"kongfu_armor1",
+										"kongfu_drink",
+										"kongfu_chi",
+										"kongfu_armor2",
+										"kongfu_bronze_strong"
+									],
+									"pointMin": 1600,
+									"pointMax": 3000
+								},
+								"weight": 25,
+								"repeatMax": 2,
+								"repeatMin": 2,
+								"plantfoodchance": 0.6
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 4,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 16,
+								"repeatMax": 2,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "imps",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 8,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"AnimRateModifier": 1.25,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 6,
+						"DamageIndexHalf": 6,
+						"HitPoints": 10000,
+						"MaxIdleTime": 2.5,
+						"MinIdleTime": 1.75,
+						"StunDamageScale": 1.25,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2,
+						"BombCount": {
+							"Min": 1,
+							"Max": 1
+						},
+						"ThrewImpCount": {
+							"Min": 4,
+							"Max": 5
+						},
+						"ThrewImpColumn": {
+							"Min": 4,
+							"Max": 5
+						},
+						"RocketImpCount": {
+							"Min": 3,
+							"Max": 3
+						}
+					}
+				]
+			}
+		},
+		{
+			"aliases": [
+				"monk_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"KilledByShrinkingViolet": true,
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.22,
+				"TimeBeforeFirst": {
+					"Min": 3,
+					"Max": 6
+				},
+				"TimeBetween": {
+					"Min": 5,
+					"Max": 7
+				},
+				"FlyDuration": {
+					"Min": 3,
+					"Max": 4
+				},
+				"LeapBackDistance": 0.5,
+				"FlyingSpeedScale": 4.5,
+				"PlantsThatBlock": [
+					"tallnut"
+				],
+				"ZombiesThatBlock": [
+					"future_protector_shield",
+					"modern_moonflower_shield",
+					"future_infinut_shield"
+				],
+				"EatDPS": 100,
+				"Toughness": 600,
+				"WavePointCost": 300,
 				"Weight": 1000,
 				"HitRect": "RTID(ImpHitRect@RectangleProps)",
 				"AttackRect": "RTID(ImpAttackRect@RectangleProps)"
@@ -5311,12 +5678,12 @@
 										"modern_balloon"
 									],
 									"pointMin": 3000,
-									"pointMax": 5500,
-									"plantfoodchance": 0.6
+									"pointMax": 5500
 								},
 								"weight": 12,
 								"repeatMax": 2,
-								"repeatMin": 2
+								"repeatMin": 2,
+								"plantfoodchance": 0.6
 							},
 							{
 								"actionName": "summon",
@@ -5752,6 +6119,7 @@
 					"zombossmech_pirate2",
 					"zombossmech_cowboy",
 					"zombossmech_cowboy2",
+					"kongfu_boss_explode",
 					"zombossmech_future",
 					"zombossmech_future2",
 					"zombossmech_dark",
