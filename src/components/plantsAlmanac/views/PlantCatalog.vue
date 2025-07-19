@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="plant in plants" :key="plant.id" @click="selectPlant(plant)">
+        <li v-for="plant in plants" :key="plant.codename" @click="selectPlant(plant)">
 
             <template v-if="plant.subPlants">
                 <a-popover arrow-point-at-center trigger="hover" :open="visible[plant.codename]"
@@ -13,7 +13,7 @@
                         <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
                             <template
                                 v-for="subPlant in plant.subPlants.map((codename) => { return plantMap[codename] })"
-                                :key="subPlant.id">
+                                :key="subPlant.codename">
                                 <a-col @click="selectPlant(subPlant, plant)">
                                     <img :src="'/assets/image/plants/plants_' + subPlant.codename + '_c.webp'"
                                          :alt="subPlant.name">
