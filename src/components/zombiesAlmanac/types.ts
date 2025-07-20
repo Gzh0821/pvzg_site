@@ -14,7 +14,6 @@ export interface Zombie {
   chat?: String;
   zombieType: string;
   codename: string
-  frameWorld: string;
   obtainWorld: string;
   special?: [Element] | [];
   subZombies?: [string];

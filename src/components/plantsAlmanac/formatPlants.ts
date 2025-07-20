@@ -1,15 +1,10 @@
-import type {Plant} from './types';
+import type { Plant } from './types';
 
 import plantAlmanacJson from './jsons/PlantAlmanac.json';
 import plantFeaturesJson from './jsons/PlantFeatures.json';
 import plantPropsJson from './jsons/PlantProps.json';
 
 import i18nJson from './i18n.json';
-
-const frameMap = {
-    'water': 'beach',
-    'market': 'prenium',
-};
 
 const familyNameMap = i18nJson?.PlantFamily;
 
@@ -71,7 +66,6 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
         codename: codename,
         name: originPlant["NAME"]?.[i18nLanguage],
         enName: originPlant["NAME"]?.["en"],
-        frameWorld: frameMap[originPlant["OBTAINWORLD"]] || originPlant["OBTAINWORLD"],
         obtainWorld: originPlant["OBTAINWORLD"],
         description: almanacObjdata?.["Introduction"]?.[i18nLanguage],
         chat: almanacObjdata?.["Chat"]?.[i18nLanguage],
@@ -81,7 +75,7 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
     if (almanacObjdata?.["Elements"]) {
         almanacObjdata["Elements"].forEach((element) => {
             // 找到对应的值
-            const {TYPE, SORT, VALUE} = element;
+            const { TYPE, SORT, VALUE } = element;
 
             let value;
             if (SORT && SORT[i18nLanguage]) {

@@ -2,15 +2,6 @@
     <div class="plant-detail" v-if="plant">
         <div class="details-container">
             <div class="plant-image">
-                <!-- <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
-                    :alt="plant.name"> -->
-                <!-- <div class="plant-image-frame">
-                    <img class="plant-img" :src="'/assets/image/plants-tp/plants_' + plant.plantType + '_0.webp'"
-                        :alt="plant.name">
-                    <img class="frame-img"
-                        :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
-                        :alt="plant.frameWorld">
-                </div> -->
                 <img :src="'/assets/image/plants/plants_' + plant.codename + '_c.webp'" :alt="plant.name">
                 <p class="plant-title">{{ plant.name }}</p>
                 <img v-if="plant.enFamily && plant.enFamily != 'None'"

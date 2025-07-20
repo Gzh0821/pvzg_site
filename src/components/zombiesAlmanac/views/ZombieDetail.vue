@@ -2,15 +2,6 @@
     <div class="zombie-detail" v-if="zombie">
         <div class="details-container">
             <div class="zombie-image">
-                <!-- <img :src="'/assets/wikiplants/' + plant.enName.replace(/\s+/g, '_').replace(/[\']/g, '') + '2.webp'"
-                    :alt="plant.name"> -->
-                <!-- <div class="zombie-image-frame">
-                    <img class="zombie-img" :src="'/assets/image/plants-tp/plants_' + plant.plantType + '_0.webp'"
-                        :alt="plant.name">
-                    <img class="frame-img"
-                        :src="'/assets/image/plants-frame/background_' + plant.frameWorld + '_0.webp'"
-                        :alt="plant.frameWorld">
-                </div> -->
                 <img :src="'/assets/image/zombies/Zombie_' + zombie.zombieType + '_0.webp'" :alt="zombie.name">
                 <p class="zombie-title">{{ zombie.name }}</p>
                 <!-- <img v-if="zombie.enFamily" :src="'/assets/wikicon/' + zombie.enFamily + '_familyicon.webp'"
@@ -240,14 +231,14 @@ table tbody td.value {
 
 p.description {
     margin: 0.2em 0;
-    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC",sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: x-large;
     color: #865600;
     line-height: 1.2em;
 }
 
 p.zombie-title {
-    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC",sans-serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
     font-size: xx-large;
     color: white;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 2px -2px 0 #000, -1px 1px 0 #000, 5px 3px 5px rgba(0, 0, 0, 0.2);

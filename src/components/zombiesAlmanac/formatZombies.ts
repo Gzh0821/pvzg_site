@@ -5,14 +5,6 @@ import zombiePropsJson from './jsons/ZombieProps.json';
 import i18nJson from './i18n.json';
 
 /**
- * 世界框架映射，将特定世界ID转换为显示名称
- */
-const FRAME_MAP: Record<string, string> = {
-    'water': 'beach',
-    'market': 'prenium',
-};
-
-/**
  * 僵尸家族名称映射
  */
 const familyNameMap = i18nJson?.PlantFamily;
@@ -96,7 +88,6 @@ export function formatOriginZombie(originZombie: any, i18nLanguage: string): Zom
         codename,
         name: originZombie.NAME?.[i18nLanguage],
         enName: originZombie.NAME?.en,
-        frameWorld: FRAME_MAP[originZombie.OBTAINWORLD] || originZombie.OBTAINWORLD,
         obtainWorld: originZombie.OBTAINWORLD,
         description: almanacObjdata?.Introduction?.[i18nLanguage],
         chat: almanacObjdata?.Chat?.[i18nLanguage],
