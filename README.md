@@ -14,7 +14,6 @@ Thanks to everyone who has supported this project!
 ![](https://img.shields.io/docker/pulls/gaozih/pvzge)
 ![](https://img.shields.io/discord/1265377295846346803?label=discord)
 ![](https://img.shields.io/github/stars/Gzh0821/pvzg_site)
-
 </div>
 
 ### Info

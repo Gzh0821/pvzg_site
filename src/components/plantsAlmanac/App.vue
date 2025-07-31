@@ -4,28 +4,28 @@
             <div class="filter">
                 <h1 v-if="i18nLanguage == 'zh'">PvZ2 Gardendless 植物图鉴</h1>
                 <h1 v-else>PvZ2 Gardendless Plants Almanac</h1>
-                <PlantFilter @filterPlants="filterPlants" :familyNameMap="familyNameMap"/>
+                <PlantFilter @filterPlants="filterPlants" :familyNameMap="familyNameMap" />
             </div>
         </div>
         <div class="container">
             <div class="sidebar">
-                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" :plantMap/>
+                <PlantCatalog :plants="filteredPlants" @selectPlant="selectPlant" :plantMap />
             </div>
             <div class="content">
-                <PlantDetail v-if="selectedPlant" :keyMap :plant="selectedPlant"/>
+                <PlantDetail v-if="selectedPlant" :keyMap :plant="selectedPlant" />
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import {ref, inject} from 'vue';
+import { ref, inject } from 'vue';
 import PlantCatalog from './views/PlantCatalog.vue';
 import PlantDetail from './views/PlantDetail.vue';
 import PlantFilter from './views/PlantFilter.vue';
-import type {Plant, KeyMap} from './types';
+import type { Plant, KeyMap } from './types';
 
-import {getPlantMap, plantsOrder} from './formatPlants';
+import { getPlantMap, plantsOrder } from './formatPlants';
 import i18nJson from './i18n.json';
 
 // 中文转换
@@ -43,9 +43,8 @@ const selectedPlant = ref<Plant | null>(null);
 const selectPlant = (plant: Plant) => {
     selectedPlant.value = plant;
 };
-
 const filterPlants = (filter: { name: string; family: string }) => {
-    const {name, family} = filter;
+    const { name, family } = filter;
 
     filteredPlants.value = plants.value.filter(plant => {
         // 根据名称筛选
