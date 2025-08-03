@@ -33,7 +33,7 @@ highlights:
     bgImageStyle:
       background-attachment: fixed
       opacity: 0.5
-      filter: brillo (60%)
+      filter: brightness(60%)
     features:
       - title: Almanaque en Línea
         icon: book-atlas
