@@ -11,4 +11,4 @@ order: 3
 
 Этот веб-сайт является open-source проектом, использующий протокол `Apache 2.0`, и мы активно принимаем обратную связь от open-source сообщества.
 
-Если вы хотите поучаствовать в разработке, пожалуйста, прочитайте [гайд по разработке веб-сайта](../guide/webGuide.md) и представьте на рассмотрение вашу анкету в [репозитории проекта](https://github.com/Gzh0821/pvzg_site).
+If you are willing to contribute your code, please read the [website development guide](../guide/webGuide.md) and submit a PR to the [project repository](https://github.com/Gzh0821/pvzg_site).

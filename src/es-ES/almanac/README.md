@@ -1,5 +1,5 @@
 ---
-title: Almanac
+title: Almanaque
 index: false
 icon: book-atlas
 pageInfo: false
@@ -8,9 +8,9 @@ toc: false
 ---
 
 > [!info]
-> Click the option in the sidebar to switch to the corresponding illustration page.
+> Haz click en las opciones de la izquierda para ver el almanaque correspondiente.
 >
-> In custom level files, both plants and zombies use `CodeName` as their names.
+> Para los niveles personalizados, las plantas y los zombis usan `CodeName` para sus nombres.
 
 <script setup>
     import { onMounted } from 'vue';
@@ -22,8 +22,8 @@ toc: false
 <Catalog />
 
 <ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="7113006248"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
+style="display:block"
+data-ad-client="ca-pub-7637695321442015"
+data-ad-slot="7113006248"
+data-ad-format="auto"
+data-full-width-responsive="true"> </ins>

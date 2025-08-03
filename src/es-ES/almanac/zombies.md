@@ -1,5 +1,5 @@
 ---
-title: Zombie Almanac
+title: Almanaque de Zombis
 icon: book-open
 pageInfo: false
 comment: false
