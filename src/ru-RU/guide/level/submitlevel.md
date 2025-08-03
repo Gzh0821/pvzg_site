@@ -7,21 +7,21 @@ order: 2
 ---
 
 > [!important]
-> Делясь уровнями или внося в них вклад, вы соглашаетесь с [Соглашением о вкладе игрока](/en/instructions/Submisson).
+> By sharing or contributing levels, you agree to the [Player Contribution Agreement](../../instructions/Submisson).
 
-Вы можете скачать файлы уровней, созданные участниками сообщества, на странице [Уровни сообщества](/en/custom-level/). Если у вас есть свои собственные уровни, вы можете поделиться ими с другими игроками следующими способами:
+You can download level files made by community members on the [Community Level](../../creator-garden/) page. Если у вас есть свои собственные уровни, вы можете поделиться ими с другими игроками следующими способами:
 
 ## 1. Сервер Discord
 
 Вы можете поделиться своими файлами уровней на канале `#custom-level-share` сервера Discord. Пожалуйста, соблюдайте правила сервера.
 
-Чтобы присоединиться к Discord-серверу, перейдите на [страницу пользовательского сообщества](/en/contribution/).
+To join the Discord server, please check the [User Community Page](../../contribution/).
 
 ## 2. Отправка в Библиотеку Уровней
 
 Если ваш уровень полностью готов, вы можете отправить его в библиотеку уровней. Вам нужно иметь аккаунт на Github и уметь пользоваться инструментами Git.
 
-О том, как использовать Git, читайте в [Руководстве по разработке](/en/guide/webGuide). Обратите внимание, что Git-репозиторий отличается от библиотеки уровней.
+For how to use Git, please refer to the [Development Guide](../../guide/webGuide). Обратите внимание, что Git-репозиторий отличается от библиотеки уровней.
 
 Адрес библиотеки уровней: [pvzg_level](https://github.com/Gzh0821/pvzg_level).
 
