@@ -612,7 +612,7 @@
 				"plant"
 			],
 			"COSTUME": 0,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -3132,6 +3132,46 @@
 			},
 			"ALMANAC": "RTID(snowdrop@PlantAlmanac)",
 			"PROPS": "RTID(snowdrop@PlantProps)"
+		},
+		{
+			"ID": 159,
+			"NAME": {
+				"en": "Lychee",
+				"zh": "荔枝"
+			},
+			"_CARDSPRITENAME": "lychee",
+			"CODENAME": "lychee",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "kongfu",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(lychee@PlantAlmanac)",
+			"PROPS": "RTID(lychee@PlantProps)"
+		},
+		{
+			"ID": 160,
+			"NAME": {
+				"en": "Perfume-shroom",
+				"zh": "香水菇"
+			},
+			"_CARDSPRITENAME": "perfumeshroom",
+			"CODENAME": "perfumeshroom",
+			"TYPE": [
+				"plant",
+				"losingPlant",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 2,
+			"OBTAINWORLD": "dino",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"ALMANAC": "RTID(perfumeshroom@PlantAlmanac)",
+			"PROPS": "RTID(perfumeshroom@PlantProps)"
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -3158,7 +3198,6 @@
 		"springbean",
 		"spikerock",
 		"threepeater",
-		"escaperoot",
 		"buttercup",
 		"splitpea",
 		"chilibean",
@@ -3237,6 +3276,7 @@
 		"turnip",
 		"peach",
 		"powerlily",
+		"lychee",
 		"cactus",
 		"phatbeet",
 		"celerystalker",
@@ -3247,9 +3287,10 @@
 		"intensivecarrot",
 		"bloominghearts",
 		"grapeshot",
-		"coldsnapdragon",
 		"primalpeashooter",
 		"primalwallnut",
+		"perfumeshroom",
+		"coldsnapdragon",
 		"primalsunflower",
 		"primalpotatomine",
 		"shrinkingviolet",
@@ -3261,6 +3302,7 @@
 		"dusklobber",
 		"grimrose",
 		"goldbloom",
+		"escaperoot",
 		"gloomvine",
 		"gloomshroom",
 		"umbrellaleaf",
@@ -3301,7 +3343,6 @@
 		"threepeater",
 		"coconutcannon",
 		"cherry_bomb",
-		"escaperoot",
 		"buttercup",
 		"splitpea",
 		"chilibean",
@@ -3400,6 +3441,7 @@
 		"bambooshoot",
 		"turnip",
 		"peach",
+		"lychee",
 		"powerlily",
 		"skyshooter",
 		"moonbean",
@@ -3415,6 +3457,7 @@
 		"bloominghearts",
 		"primalpeashooter",
 		"primalwallnut",
+		"perfumeshroom",
 		"primalsunflower",
 		"primalpotatomine",
 		"grapeshot",
@@ -3428,6 +3471,7 @@
 		"grimrose",
 		"shrinkingviolet",
 		"goldbloom",
+		"escaperoot",
 		"gloomshroom",
 		"umbrellaleaf",
 		"pumpkin",

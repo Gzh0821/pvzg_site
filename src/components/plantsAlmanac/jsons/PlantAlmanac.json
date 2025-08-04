@@ -1482,6 +1482,63 @@
 		},
 		{
 			"aliases": [
+				"lychee"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "3x3",
+							"zh": "3x3 范围"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Lychee hurts zombies in an area around it when attacked.",
+					"zh": "荔枝在受到伤害时对范围内的僵尸造成伤害。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "damages all zombies in a 3x3 area when attacked",
+							"zh": "受到伤害时对 3x3 范围内所有僵尸造成伤害"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Lychee knows gratitude, but bears any of his enemies a grudge. He always keep those in mind, \"Tit for tat is fair play. Receive drips of water when in need, and return the kindness with a spring.\"",
+					"zh": "荔枝懂得感恩，当然也会记仇，心中总是默念：“人不犯我，我不犯人；滴水之恩，涌泉相报！”"
+				},
+				"BriefIntroduction": {
+					"en": "Hurts zombies in an area when attacked",
+					"zh": "受伤时对范围内僵尸造成伤害"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"potatomine"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -2347,7 +2404,18 @@
 					"en": "Meteor Flower conjures meteor strikes from the sky that leave molten tiles.",
 					"zh": "流星花从天上召唤流星，砸地时留下岩浆。"
 				},
-				"Special": [],
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "meteors scare dinosaurs, forcing them to escape",
+							"zh": "流星惊吓恐龙，迫使它们逃跑"
+						}
+					}
+				],
 				"Chat": {
 					"en": "\"Out of this world molten mayhem! But first... coffee!!\"",
 					"zh": "“熔融的骚乱啊，滚出这个世界！但是在此之前……喝口咖啡！！”"
@@ -3688,6 +3756,67 @@
 				"BriefIntroduction": {
 					"en": "Destroys an entire lane of zombies",
 					"zh": "燃烧摧毁一整行的僵尸"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"perfumeshroom"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "Lane",
+							"zh": "整行"
+						}
+					}
+				],
+				"Introduction": {
+					"en": "Perfume-shrooms enchant dinosaurs and charm them into working against the zombies.",
+					"zh": "香水菇魅惑当行的恐龙，使它们帮上僵尸的倒忙。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "single use, instant",
+							"zh": "一次性使用，立刻触发"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "affects all dinosaurs in a lane",
+							"zh": "影响到整行的恐龙"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Perfume-shroom emits a pure, concentrated mist of aerosolized love.",
+					"zh": "香水菇释放出一股纯净且浓缩的雾状的爱。"
+				},
+				"BriefIntroduction": {
+					"en": "Charms dinosaurs against zombies",
+					"zh": "魅惑恐龙以僵尸为敌"
 				},
 				"DisplayOffset": {
 					"x": 0,

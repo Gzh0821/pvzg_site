@@ -4112,6 +4112,61 @@
 			}
 		},
 		{
+			"//": "zomboss",
+			"aliases": [
+				"kongfu_boss_blade"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Undying",
+							"zh": "不朽"
+						},
+						"PROGRESS": 1
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "The second of the Big Three to arrive at your lawn, leading an army of kongfu zombies.",
+					"zh": "第二位到访你的前院的武林巨头，引领着大量的武僧和武斗僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "blocks off all damages on while his blade is flying across your defence",
+							"zh": "在把大刀丢向你的防线期间，会将所有伤害吸收"
+						}
+					}
+				],
+				"Chat": {
+					"en": "As the second-in-command of the Big Three, Blade-Wielding Hero has a slight grasp of qigong. He often infuses his weapons with qigong to strengthen his control over them, acting like \"man and weapon in one\".",
+					"zh": "作为武林三巨头的二把手，持刀大侠稍微会一点气功。经常把气功注入到他的武器中加强自己对武器的掌控，到达“人兵合一”的领域。"
+				},
+				"DisplayOffset": {
+					"x": 20,
+					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"aliases": [
 				"monk_drink"
 			],
@@ -4533,7 +4588,7 @@
 					}
 				],
 				"Introduction": {
-					"en": "Regular professional Kongfu zombie.",
+					"en": "Regular but professional Kongfu zombie.",
 					"zh": "普通但精通武术的僵尸。"
 				},
 				"Special": [],
@@ -4891,6 +4946,226 @@
 				},
 				"DisplayOffset": {
 					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "basic",
+			"aliases": [
+				"abbot"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Solid",
+							"zh": "略强"
+						},
+						"PROGRESS": 0.4
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Regular zombie who has pursued advanced studies in Kongfu.",
+					"zh": "普通但已在功夫领域完成深造的僵尸。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Don't lump him together with that sloppy, perpetually drunk zombie.",
+					"zh": "不要将他和那个不注重打理还整天醉醺醺的家伙混为一谈。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "armor1",
+			"aliases": [
+				"abbot_armor1"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.5
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "His ink painting decorated cone makes him twice tougher than normal monks.",
+					"zh": "他的水墨画装饰路障使他变得比原先抗打两倍。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "He quick-wittedly uses his cone as a speaker to call his fallows, but he hilariously holds it backwards.",
+					"zh": "他很机智地用头上的路障当扩音器招呼同伴，却又很笨地拿反了。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "armor2",
+			"aliases": [
+				"abbot_armor2"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "His iron kettle headwear provides great protection from damage.",
+					"zh": "他的铁壶头盔使他极其抗揍。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "He filled the iron kettle with tea and clamped it on his head so that he could sometimes experience the dizzy drunk-feelings while drinking is prohibited.",
+					"zh": "饮酒是被禁止的，因此他将这个铁壶装满茶水后扣在头上，这样第二天早上也能因彻夜难眠体验到醉酒的眩晕感。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "flag",
+			"aliases": [
+				"abbot_flag"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Average",
+							"zh": "一般"
+						},
+						"PROGRESS": 0.25
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Marks the arrival of a huge noisy \"wave\" of zombies.",
+					"zh": "预示着一大波吵吵闹闹的僵尸的到来。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "The brain on his flag proclaimed him a shrewd leader ... at least in his own estimation.",
+					"zh": "旗帜上的大脑图案代表他是一名机智的领导者……至少他自己是这么认为的。"
+				},
+				"DisplayOffset": {
+					"x": 15,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "rally",
+			"aliases": [
+				"abbot_flag_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.5
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Speedy",
+							"zh": "快速"
+						},
+						"PROGRESS": 0.85
+					}
+				],
+				"Introduction": {
+					"en": "Abbot Rally Zombie and his flag marks the arrival of a large crew of skilled zombies.",
+					"zh": "住持大动员僵尸和他的旗帜代表着超大群身怀绝技僵尸的来临。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "The most terrible Rally Zombie you would ever witness!",
+					"zh": "这将是你遇到的最难解决的大动员僵尸！"
+				},
+				"DisplayOffset": {
+					"x": 30,
 					"y": 0
 				},
 				"DisplayScale": {

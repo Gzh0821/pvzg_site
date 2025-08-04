@@ -2692,6 +2692,81 @@
     },
     {
       "NAME": {
+        "en": "Abbot Zombie",
+        "zh": "住持僵尸"
+      },
+      "_CARDSPRITENAME": "abbotbasic",
+      "CODENAME": "abbot",
+      "SUNCOST": 100,
+      "SubZombieList": [
+        "abbot_armor3"
+      ],
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot@ZombieAlmanac)",
+      "PROPS": "RTID(abbot@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Abbot Conehead Zombie",
+        "zh": "住持路障僵尸"
+      },
+      "_CARDSPRITENAME": "abbotarmor1",
+      "CODENAME": "abbot_armor1",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_armor1@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Abbot Kettlehead Zombie",
+        "zh": "住持铁壶僵尸"
+      },
+      "_CARDSPRITENAME": "abbotarmor2",
+      "CODENAME": "abbot_armor2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_armor2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Abbot Helmet Zombie",
+        "zh": "住持铁盔僵尸"
+      },
+      "_CARDSPRITENAME": "abbotarmor3",
+      "CODENAME": "abbot_armor3",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_armor3@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Flag Abbot Zombie",
+        "zh": "住持旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "abbotflag",
+      "CODENAME": "abbot_flag",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_flag@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_flag@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Abbot Rally Zombie",
+        "zh": "住持大动员僵尸"
+      },
+      "_CARDSPRITENAME": "abbotrally",
+      "CODENAME": "abbot_flag_veteran",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_flag_veteran@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Bronze Statue",
         "zh": "铜人雕像"
       },
@@ -2758,6 +2833,18 @@
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_boss_explode@ZombieAlmanac)",
       "PROPS": "RTID(kongfu_boss_explode@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Blade-Wielding Hero",
+        "zh": "持刀大侠"
+      },
+      "_CARDSPRITENAME": "kongfubossblade",
+      "CODENAME": "kongfu_boss_blade",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_boss_blade@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_boss_blade@ZombieProps)"
     },
     {
       "NAME": {
@@ -3285,6 +3372,11 @@
     "monk_nunchaku",
     "monk_drink",
     "monk_imp",
+    "abbot",
+    "abbot_armor1",
+    "abbot_armor2",
+    "abbot_flag",
+    "abbot_flag_veteran",
     "kongfu_bronze_strong",
     "kongfu_bronze_hook",
     "kongfu_bronze_chi",

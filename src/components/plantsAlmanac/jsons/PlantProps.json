@@ -198,7 +198,7 @@
 				"Damage": 20,
 				"DamagePlantfood": 100,
 				"PlantfoodKnockBackDistance": 1,
-				"PlantfoodTossChance": 0.3,
+				"PlantfoodTossChance": 0.7,
 				"AttackInterval": 0.3,
 				"AttackDistance": 4,
 				"PlantfoodDistance": 9,
@@ -225,6 +225,25 @@
 				"Toughness": 3.14159,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
+			}
+		},
+		{
+			"aliases": [
+				"lychee"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"DamagePerHit": 20,
+				"DamagePerHitPlantfood": 40,
+				"PlantfoodDamageReceiveMult": 0.5,
+				"HealthBetweenHits": 100,
+				"HealthBetweenHitsPlantfood": 50,
+				"Cooldown": 20,
+				"CooldownFrom": 0.75,
+				"SunCost": 150,
+				"BeghouledCost": 2000,
+				"Toughness": 3000,
+				"Family": "Defence"
 			}
 		},
 		{
@@ -1171,6 +1190,24 @@
 					"PulseCooldown": 1.5,
 					"GridItemDamage": 200
 				}
+			}
+		},
+		{
+			"aliases": [
+				"perfumeshroom"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ImmuneToBoomBox": true,
+				"CannotBeSheepenedByWizard": true,
+				"Damage": 0,
+				"Duration": 9,
+				"Cooldown": 30,
+				"CooldownFrom": 0.666667,
+				"SunCost": 150,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Nope"
 			}
 		},
 		{
