@@ -3470,8 +3470,8 @@
 				},
 				"Special": [],
 				"Chat": {
-					"en": "Don't underestimate these Kongfu Zombies, they’ve been learning kongfu for years, having had it forgotten as zombies though.",
-					"zh": "别小看这些普通僵尸，他们好歹也学了许多年功夫，尽管变成僵尸后就全都忘了。"
+					"en": "Don't underestimate these Kongfu Zombies, they’ve been learning kongfu for years, having had it forgotten though.",
+					"zh": "别小看这些普通僵尸，他们好歹也学了许多年功夫，尽管已经全都忘了。"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -10566,6 +10566,61 @@
 				"DisplayOffset": {
 					"x": 20,
 					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "zomboss",
+			"aliases": [
+				"zombossmech_dino"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Undying",
+							"zh": "不朽"
+						},
+						"PROGRESS": 1
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "A mechanical means of dinosaurian destruction.",
+					"zh": "摧毁你前院的远古时期最凶狠的机械恶兽。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "summons zombies and dinosaurs",
+							"zh": "召唤僵尸时同时召唤恐龙"
+						}
+					}
+				],
+				"Chat": {
+					"en": "With flagrant disregard for temporal tidiness and simple good taste, Dr. Zomboss figured it would be a good idea to build a big metal dinosaur.",
+					"zh": "由于自身对时空秩序的蔑视与对基本审美的不屑，僵尸博士认为造个巨型金属恐龙是个绝妙的主意。"
+				},
+				"DisplayOffset": {
+					"x": -60,
+					"y": -100
 				},
 				"DisplayScale": {
 					"x": 1,

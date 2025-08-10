@@ -3209,6 +3209,33 @@
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_gargantuar@ZombieAlmanac)",
       "PROPS": "RTID(dino_gargantuar@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Dinotronic Mechasaur",
+        "zh": "恐龙支配者"
+      },
+      "_CARDSPRITENAME": "dinozomboss",
+      "CODENAME": "zombossmech_dino",
+      "SUNCOST": 100,
+      "SubZombieList": [
+        "zombossmech_dino2"
+      ],
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(zombossmech_dino@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_dino@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Dinotronic Mechasaur",
+        "zh": "恐龙支配者"
+      },
+      "_CARDSPRITENAME": "dinozomboss",
+      "CODENAME": "zombossmech_dino2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "dino",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_dino2@ZombieProps)"
     }
   ],
   "ALMANAC": [
@@ -3381,6 +3408,7 @@
     "kongfu_bronze_hook",
     "kongfu_bronze_chi",
     "kongfu_boss_explode",
+    "kongfu_boss_blade",
     "sky",
     "sky_armor1",
     "sky_armor2",
@@ -3405,10 +3433,11 @@
     "dino_armor4",
     "dino_flag",
     "dino_flag_veteran",
-    "dino_imp",
-    "dino_gargantuar",
     "dino_bully",
     "dino_bully_veteran",
+    "dino_imp",
+    "dino_gargantuar",
+    "zombossmech_dino",
     "modern_newspaper",
     "newspaper_veteran",
     "modern_balloon",
