@@ -26,7 +26,7 @@ Visit our [website](https://pvzge.com/en/) for download links, game guides and m
 
 ### Web Play
 
-Try PvZ2 Gardendless online in [here](https://play.pvzge.com/) !
+Find source code of the game in [Game repo](https://github.com/Gzh0821/pvzge_web). Try PvZ2 Gardendless online in [here](https://play.pvzge.com/) !
 
 - Note: The version for online play may not be the latest version and may load slowly. For more related issues, please refer to the relevant instructions on the website
 
