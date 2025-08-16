@@ -7,6 +7,9 @@ index: true
 order: 4
 ---
 
+如果您希望对本网站进行赞助(与Gardendless游戏无关)，可以通过以下方式支持我们：
+[Buy Me a Coffee](https://buymeacoffee.com/gaozih)
+
 特别感谢[@普通的一名博客 plunt](https://space.bilibili.com/451272694)赞助本网站域名。
 
 <BiliBili bvid="BV1HE4m1d7nt"/>
