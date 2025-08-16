@@ -28,6 +28,10 @@ actions:
     icon: comment
     link: ./contribution/
 
+  - text: Sponsor
+    icon: hand-holding-heart
+    link: ./contribution/Sponsor
+
 highlights:
   - bgImage: /assets/image/background.webp
     bgImageStyle:
