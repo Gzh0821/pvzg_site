@@ -1,5 +1,5 @@
 ---
-title: Acknowledgement
+title: Sponsor
 icon: fa-solid fa-hand-holding-heart
 pageInfo: false
 comment: false

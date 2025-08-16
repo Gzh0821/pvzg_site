@@ -1,5 +1,5 @@
 ---
-title: 鸣谢
+title: 赞助
 icon: fa-solid fa-hand-holding-heart
 pageInfo: false
 comment: false
