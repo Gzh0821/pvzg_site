@@ -8,7 +8,7 @@ order: 4
 ---
 
 If you would like to sponsor this website (not related to the Gardendless game), you can support us in the following ways:
-[Buy Me a Coffee](https://buymeacoffee.com/gaozih)
+[Buy Me a Coffee](https://buymeacoffee.com/gaozih)/[Github Sponsors](https://github.com/sponsors/Gzh0821)
 
 Special thanks to [@普通的一名博客 plunt](https://space.bilibili.com/451272694) for sponsoring this website domain.
 
