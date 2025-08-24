@@ -508,6 +508,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGrabbedByPtero": true,
 				"ImmuneToSweetPotato": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
@@ -531,6 +532,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGrabbedByPtero": true,
 				"ImmuneToSweetPotato": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
@@ -1929,6 +1931,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGrabbedByPtero": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ChooseToSpawnOnNonDeckRows": true,
@@ -4780,6 +4783,28 @@
 				"Weight": 2000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_torch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.25,
+				"EatDPS": 100,
+				"FireDPS": 1000,
+				"Toughness": 500,
+				"WavePointCost": 350,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"HitRectWithFire": "RTID(ExplorerWithFireHitRect@RectangleProps)",
+				"AttackRectWithFire": "RTID(ExplorerWithFireAttackRect@RectangleProps)",
+				"FlameDetectDistance": 2.5,
+				"FlameAttackDistance": 3,
+				"FireDuration": 3
 			}
 		},
 		{
@@ -10658,6 +10683,570 @@
 		},
 		{
 			"aliases": [
+				"zombossmech_eighties"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
+				"ZombieSort": "Zomboss",
+				"CannotBeGrabbedByPtero": true,
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0,
+				"HitRect": "RTID(EightiesZombossMechHitRect@RectangleProps)",
+				"AttackRect": "RTID(EightiesZombossMechHitRect@RectangleProps)",
+				"IdleColumn": 6,
+				"ZombossMechLevel": 0,
+				"ZombossStages": [
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_punk"
+									],
+									"pointMin": 300,
+									"pointMax": 1200,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties",
+										"eighties_armor1",
+										"eighties_armor2"
+									],
+									"pointMin": 100,
+									"pointMax": 800,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_punk",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 2500,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_glitter"
+									],
+									"pointMin": 900,
+									"pointMax": 1200,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_pop",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 3,
+						"DamageIndexHalf": 4,
+						"HitPoints": 3000,
+						"MaxIdleTime": 2,
+						"MinIdleTime": 1.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties",
+										"eighties_armor1",
+										"eighties_breakdancer"
+									],
+									"pointMin": 1000,
+									"pointMax": 1500,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_mc"
+									],
+									"pointMin": 300,
+									"pointMax": 900,
+									"columnOffset": -1
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 2,
+								"repeatMin": 3
+							}
+						],
+						"JamStyle": "jam_rap",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 5,
+						"DamageIndexHalf": 6,
+						"HitPoints": 3500,
+						"MaxIdleTime": 2,
+						"MinIdleTime": 1.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 1.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_arcade"
+									],
+									"pointMin": 900,
+									"pointMax": 1500,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_8bit",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 7,
+						"DamageIndexHalf": 8,
+						"HitPoints": 4000,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 3,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 3
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_gargantuar"
+									],
+									"pointMin": 2000,
+									"pointMax": 6000,
+									"columnOffset": -1,
+									"plantfoodchance": 0
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 3,
+								"repeatMin": 3
+							}
+						],
+						"JamStyle": "jam_metal",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 9,
+						"DamageIndexHalf": 10,
+						"HitPoints": 5500,
+						"MaxIdleTime": 5,
+						"MinIdleTime": 4.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 1.5
+					}
+				]
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_modern_eighties"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
+				"ZombieSort": "Zomboss",
+				"CannotBeGrabbedByPtero": true,
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0,
+				"HitRect": "RTID(EightiesZombossMechHitRect@RectangleProps)",
+				"AttackRect": "RTID(EightiesZombossMechHitRect@RectangleProps)",
+				"IdleColumn": 6,
+				"ZombossMechLevel": 0,
+				"ZombossStages": [
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_punk"
+									],
+									"pointMin": 300,
+									"pointMax": 1200,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties",
+										"eighties_armor1",
+										"eighties_armor2"
+									],
+									"pointMin": 100,
+									"pointMax": 800,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_punk",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 3500,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_glitter"
+									],
+									"pointMin": 900,
+									"pointMax": 1200,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_pop",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 3,
+						"DamageIndexHalf": 4,
+						"HitPoints": 4000,
+						"MaxIdleTime": 2,
+						"MinIdleTime": 1.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties",
+										"eighties_armor1",
+										"eighties_breakdancer"
+									],
+									"pointMin": 1000,
+									"pointMax": 1500,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_mc"
+									],
+									"pointMin": 300,
+									"pointMax": 900,
+									"columnOffset": -1
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 2,
+								"repeatMin": 3
+							}
+						],
+						"JamStyle": "jam_rap",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 5,
+						"DamageIndexHalf": 6,
+						"HitPoints": 4500,
+						"MaxIdleTime": 2,
+						"MinIdleTime": 1.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 1.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_arcade"
+									],
+									"pointMin": 900,
+									"pointMax": 1500,
+									"columnOffset": -1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_8bit",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 7,
+						"DamageIndexHalf": 8,
+						"HitPoints": 5000,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 3,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 3
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_gargantuar"
+									],
+									"pointMin": 2000,
+									"pointMax": 6000,
+									"columnOffset": -1,
+									"plantfoodchance": 0
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 3,
+								"repeatMin": 3
+							}
+						],
+						"JamStyle": "jam_metal",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 9,
+						"DamageIndexHalf": 10,
+						"HitPoints": 7000,
+						"MaxIdleTime": 5,
+						"MinIdleTime": 4.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 1.5
+					}
+				]
+			}
+		},
+		{
+			"aliases": [
 				"dino"
 			],
 			"objclass": "ZombieProperties",
@@ -11659,7 +12248,7 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 2,
 						"DamageIndexHalf": 3,
-						"HitPoints": 95000,
+						"HitPoints": 9500,
 						"MaxIdleTime": 1.5,
 						"MinIdleTime": 1,
 						"StunDamageScale": 1.25,

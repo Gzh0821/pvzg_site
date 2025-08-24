@@ -3779,6 +3779,80 @@
 		},
 		{
 			"aliases": [
+				"abbot_torch"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "Carries a torch that can instantly destroy your plants.",
+					"zh": "手持能秒杀你的植物的火把。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Damage",
+							"zh": "攻击"
+						},
+						"DESCRIPTION": {
+							"en": "torch destroys a plant on contact",
+							"zh": "火把迅速烧毁接触到的植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特殊"
+						},
+						"DESCRIPTION": {
+							"en": "breathes fire towards plants that are close enough, dealing deadly damages",
+							"zh": "向接近的植物吐出火焰，造成大量伤害"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "cold attacks extinguish torch",
+							"zh": "冰冻攻击能使火把熄灭"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Not even should the cook of the Kongfu Temple be underestimated.",
+					"zh": "即使他是少林寺的伙夫，其实力也不容小觑。"
+				},
+				"DisplayOffset": {
+					"x": 20,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_drink"
 			],
 			"objclass": "ZombieAlmanacProperties",
@@ -10031,6 +10105,61 @@
 				"DisplayOffset": {
 					"x": 20,
 					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "zomboss",
+			"aliases": [
+				"zombossmech_eighties"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Undying",
+							"zh": "不朽"
+						},
+						"PROGRESS": 1
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "An intimate evening with some of Dr. Zomboss' most recent and painful explorations.",
+					"zh": "与僵尸博士一起狂欢一晚吧，度过这场惊险旅行的休息时光。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "speakers do passive damage (except to ground plants and Phat Beet) and send out shockwave attacks",
+							"zh": "音响对近前的植物（除了地下植物和魔音甜菜）造成伤害，也会发射音波"
+						}
+					}
+				],
+				"Chat": {
+					"en": "In another world, in another time, Dr. Zomboss would receive the bounty of enthusiastic applause that is his due. Not here and now, though. Nope.",
+					"zh": "在另一个世界，另一个时空，僵尸博士本应收获如潮掌声——那是他应得的礼赞。可惜此时此刻，此地此景，并没有。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
 				},
 				"DisplayScale": {
 					"x": 1,

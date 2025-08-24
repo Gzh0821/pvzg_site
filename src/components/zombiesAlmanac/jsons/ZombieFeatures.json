@@ -2767,6 +2767,18 @@
     },
     {
       "NAME": {
+        "en": "Abbot Torch Zombie",
+        "zh": "住持火把僵尸"
+      },
+      "_CARDSPRITENAME": "abbottorch",
+      "CODENAME": "abbot_torch",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_torch@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_torch@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Bronze Statue",
         "zh": "铜人雕像"
       },
@@ -3080,6 +3092,18 @@
     },
     {
       "NAME": {
+        "en": "Zombot Multi-stage Masher",
+        "zh": "节奏引领者"
+      },
+      "_CARDSPRITENAME": "eightieszomboss",
+      "CODENAME": "zombossmech_eighties",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(zombossmech_eighties@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_eighties@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Jurassic Zombie",
         "zh": "侏罗纪僵尸"
       },
@@ -3236,6 +3260,90 @@
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(zombossmech_dino2@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lawn Basic Zombie",
+        "zh": "场地普通僵尸"
+      },
+      "_CARDSPRITENAME": "lawnbasic",
+      "CODENAME": "lawn",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lawn Conehead Zombie",
+        "zh": "场地路障僵尸"
+      },
+      "_CARDSPRITENAME": "lawnarmor1",
+      "CODENAME": "lawn_armor1",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lawn Buckethead Zombie",
+        "zh": "场地铁桶僵尸"
+      },
+      "_CARDSPRITENAME": "lawnarmor2",
+      "CODENAME": "lawn_armor2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lawn Helmet Zombie",
+        "zh": "场地铁盔僵尸"
+      },
+      "_CARDSPRITENAME": "lawnarmor3",
+      "CODENAME": "lawn_armor3",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lawn Brickhead Zombie",
+        "zh": "场地砖头僵尸"
+      },
+      "_CARDSPRITENAME": "lawnarmor4",
+      "CODENAME": "lawn_armor4",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lawn Flag Zombie",
+        "zh": "场地旗帜僵尸"
+      },
+      "_CARDSPRITENAME": "lawnflag",
+      "CODENAME": "lawn_flag",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Lawn Rally Zombie",
+        "zh": "场地大动员僵尸"
+      },
+      "_CARDSPRITENAME": "lawnrally",
+      "CODENAME": "lawn_flag_veteran",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial@ZombieProps)"
     }
   ],
   "ALMANAC": [
@@ -3404,6 +3512,7 @@
     "abbot_armor2",
     "abbot_flag",
     "abbot_flag_veteran",
+    "abbot_torch",
     "kongfu_bronze_strong",
     "kongfu_bronze_hook",
     "kongfu_bronze_chi",
@@ -3426,6 +3535,7 @@
     "eighties_arcade",
     "eighties_8bit",
     "eighties_boombox",
+    "zombossmech_eighties",
     "dino",
     "dino_armor1",
     "dino_armor2",
