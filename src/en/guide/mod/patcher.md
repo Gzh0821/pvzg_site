@@ -14,7 +14,7 @@ order: 1
 </script>
 
 > [!warning]
-> This tutorial is only works for versions `0.3.X`.
+> This tutorial is only works for versions `0.3.X`-`0.4.X`.
 
 GE Patcher is a tool used to modify Plants vs. Zombies 2 Gardendless game data, supporting custom modifications to plants, zombies, upgrades, the shop, levels, and more.
 

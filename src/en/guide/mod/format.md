@@ -14,7 +14,7 @@ order: 2
 </script>
 
 > [!warning]
-> The following tutorial only works for versions `0.3.X`.
+> The following tutorial only works for versions `0.3.X`-`0.4.X`.
 
 > [!important]
 > In the tables, properties in _italics_ are properties that you probably shouldn't modify. Modifying them may cause the game to crash or bug out.
