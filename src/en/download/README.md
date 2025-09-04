@@ -118,6 +118,6 @@ Download Link: <a :href="gameInfoData.Download.Quark" target="_blank">click to e
 
 Image address: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">click to enter</a>
 
-## ::clock-rotate-left:: Historical Versions/Resource Files
+## ::clock-rotate-left:: Historical Versions
 
-All historical versions and `JSON` resource files can be downloaded from [GE Drive](https://drive.pvzge.com/)
+All historical versions can be downloaded from [Github Release](https://github.com/Gzh0821/pvzg_site/releases)

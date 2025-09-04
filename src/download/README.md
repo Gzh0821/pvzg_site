@@ -119,6 +119,6 @@ onMounted(() => {
 
 镜像地址：<a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">点击进入</a>
 
-## ::clock-rotate-left:: 历史版本/资源文件
+## ::clock-rotate-left:: 历史版本
 
-所有历史版本和`JSON`资源文件均可在 [GE Drive](https://drive.pvzge.com/) 中下载
+所有历史版本和`JSON`资源文件均可在 [Github Release](https://github.com/Gzh0821/pvzg_site/releases) 中下载
