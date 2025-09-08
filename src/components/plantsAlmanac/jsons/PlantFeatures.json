@@ -854,7 +854,7 @@
 			"ID": 44,
 			"NAME": {
 				"en": "Missile Toe",
-				"zh": "榭寄冰仙子"
+				"zh": "槲寄冰仙子"
 			},
 			"_CARDSPRITENAME": "missiletoe",
 			"CODENAME": "missiletoe",
@@ -1779,7 +1779,8 @@
 			"CODENAME": "powerplant_alpha",
 			"TYPE": [
 				"powertile",
-				"tile"
+				"tile",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
@@ -1799,7 +1800,8 @@
 			"CODENAME": "powerplant_beta",
 			"TYPE": [
 				"powertile",
-				"tile"
+				"tile",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
@@ -1819,7 +1821,8 @@
 			"CODENAME": "powerplant_gamma",
 			"TYPE": [
 				"powertile",
-				"tile"
+				"tile",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
@@ -1839,7 +1842,8 @@
 			"CODENAME": "powerplant_delta",
 			"TYPE": [
 				"powertile",
-				"tile"
+				"tile",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
@@ -1859,7 +1863,8 @@
 			"CODENAME": "powerplant_epsilon",
 			"TYPE": [
 				"powertile",
-				"tile"
+				"tile",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
@@ -1898,7 +1903,8 @@
 			"CODENAME": "powerplant",
 			"TYPE": [
 				"powertile",
-				"tile"
+				"tile",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
@@ -2613,7 +2619,8 @@
 			"TYPE": [
 				"tile",
 				"goldtile",
-				"sunProducer"
+				"sunProducer",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "lostcity",
 			"ZENGARDEN": {
@@ -3172,6 +3179,68 @@
 			},
 			"ALMANAC": "RTID(perfumeshroom@PlantAlmanac)",
 			"PROPS": "RTID(perfumeshroom@PlantProps)"
+		},
+		{
+			"ID": 161,
+			"NAME": {
+				"en": "Solar Sage",
+				"zh": "阳光鼠尾草"
+			},
+			"_CARDSPRITENAME": "solarsage",
+			"CODENAME": "solarsage",
+			"TYPE": [
+				"sunProducer",
+				"losingPlant",
+				"fly"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "kongfu",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"ALMANAC": "RTID(solarsage@PlantAlmanac)",
+			"PROPS": "RTID(solarsage@PlantProps)"
+		},
+		{
+			"ID": 162,
+			"NAME": {
+				"en": "Bamboozle",
+				"zh": "整人竹"
+			},
+			"_CARDSPRITENAME": "bamboozle",
+			"CODENAME": "bamboozle",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"SubPlantList": [
+				"bamboobusket"
+			],
+			"COSTUME": 0,
+			"ALMANAC": "RTID(bamboozle@PlantAlmanac)",
+			"PROPS": "RTID(bamboozle@PlantProps)"
+		},
+		{
+			"ID": 163,
+			"NAME": {
+				"en": "Bamboo Busket",
+				"zh": "竹篮"
+			},
+			"_CARDSPRITENAME": "bamboobusket",
+			"CODENAME": "bamboobusket",
+			"TYPE": [
+				"vine"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"COSTUME": 0,
+			"ALMANAC": "RTID(empty@PlantAlmanac)",
+			"PROPS": "RTID(bamboobusket@PlantProps)"
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -3277,6 +3346,8 @@
 		"peach",
 		"powerlily",
 		"lychee",
+		"solarsage",
+		"bamboozle",
 		"cactus",
 		"phatbeet",
 		"celerystalker",
@@ -3442,7 +3513,10 @@
 		"turnip",
 		"peach",
 		"lychee",
+		"solarsage",
 		"powerlily",
+		"bamboozle",
+		"bamboobusket",
 		"skyshooter",
 		"moonbean",
 		"floawerPot",

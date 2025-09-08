@@ -21,6 +21,28 @@
 		},
 		{
 			"aliases": [
+				"solarsage"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"MaxAttackTime": 1,
+				"PlantfoodEnlightenCount": 3,
+				"EnlightenWalkSPS": 0.3,
+				"EnlightenChanceToInfect": 0.2,
+				"EnlightenProduceInterval": {
+					"Min": 10,
+					"Max": 14
+				},
+				"Cooldown": 20,
+				"CooldownFrom": 0.75,
+				"SunCost": 75,
+				"BeghouledCost": 500,
+				"Toughness": 300,
+				"Family": "Sun"
+			}
+		},
+		{
+			"aliases": [
 				"dusklobber"
 			],
 			"objclass": "PlantProperties",
@@ -374,6 +396,22 @@
 				"SunCost": 150,
 				"BeghouledCost": 2000,
 				"Toughness": 4000,
+				"Family": "Defence"
+			}
+		},
+		{
+			"aliases": [
+				"bamboobusket"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeKilledBySurfboard": true,
+				"ArmorToughness": 4000,
+				"Cooldown": 30,
+				"CooldownFrom": 1,
+				"SunCost": 75,
+				"BeghouledCost": 2000,
+				"Toughness": 2000,
 				"Family": "Defence"
 			}
 		},
@@ -761,9 +799,9 @@
 			"objclass": "PlantProperties",
 			"objdata": {
 				"DetectsTNTSpark": true,
-				"ThrowInterval": 1.35,
-				"ThrowIntervalAdditional": 0.15,
-				"ChanceToButter": 0.2,
+				"ThrowInterval": 2.025,
+				"ThrowIntervalAdditional": 0.225,
+				"ChanceToButter": 0.3,
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 200,
@@ -1053,6 +1091,20 @@
 				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Lobber"
+			}
+		},
+		{
+			"aliases": [
+				"bamboozle"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 15,
+				"CooldownFrom": 0.5,
+				"SunCost": 225,
+				"BeghouledCost": 2000,
+				"Toughness": 1000,
+				"Family": "Defence"
 			}
 		},
 		{
@@ -1891,7 +1943,9 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
+				"CannotBeGrabbedByParrot": true,
 				"CannotBePushedByFootballMech": true,
+				"ImmuneToSpeakerWave": true,
 				"Cooldown": 10,
 				"CooldownFrom": 0.75,
 				"SunCost": 50,
@@ -2930,6 +2984,7 @@
 			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
+				"ImmuneToSpeakerHit": true,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,

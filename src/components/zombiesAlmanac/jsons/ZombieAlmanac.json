@@ -3853,6 +3853,62 @@
 		},
 		{
 			"aliases": [
+				"abbot_chi"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					}
+				],
+				"Introduction": {
+					"en": "Fires Qigong blasts towards your plants.",
+					"zh": "向植物发动气功波。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "Qigong blast pushes your plants on contact",
+							"zh": "气功波会推开接触到的植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "Resistant Radishes block off Qigong blasts",
+							"zh": "白萝卜会抵挡气功波"
+						}
+					}
+				],
+				"Chat": {
+					"en": "As the true successor of The leader of the Big Three and inheritor of the Qigong Cult, he travels between different Kongfu Temples to teach Qigong, though he is often mistaken for a leaf-sweeping monk.",
+					"zh": "作为武林三巨头一把手的真传弟子，即气功教的传人，他在各个少林寺之间往返传授气功教，尽管经常被当成扫地僧去清扫落叶。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_drink"
 			],
 			"objclass": "ZombieAlmanacProperties",
@@ -4625,6 +4681,61 @@
 				"Chat": {
 					"en": "Qinggong mastery - light as a swallow.",
 					"zh": "掌握了轻功的精髓——身轻如燕。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "imp",
+			"aliases": [
+				"abbot_imp"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.5
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "A genius that learns Qigong well though he's really young.",
+					"zh": "年轻的天才，极大程度地掌握气功运用。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "swiftly enters your lawn and repels all projectiles",
+							"zh": "快速进入你的草坪，排开所有的弹射物"
+						}
+					}
+				],
+				"Chat": {
+					"en": "He was willing to stand on the front lines. Was it this spirit that made him a genius, or did such talent forge this spirit?",
+					"zh": "他甘愿站在前线，究竟是这种精神让他成为天才，还是他的天赋铸就这种精神？"
 				},
 				"DisplayOffset": {
 					"x": 0,

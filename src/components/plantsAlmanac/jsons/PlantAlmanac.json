@@ -1482,6 +1482,73 @@
 		},
 		{
 			"aliases": [
+				"solarsage"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "Tile",
+							"zh": "本格"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Solar Sages illuminate zombies, causing them to make better choices and depart, leaving behind a trail of sun.",
+					"zh": "阳光鼠尾草感化僵尸，使他们心甘情愿地离开，并沿路产出阳光。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "single use, activates on contact",
+							"zh": "一次性使用，接触到僵尸时触发"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "vulnerable to critters and mechs",
+							"zh": "在动物和机器面前十分脆弱"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"Ommm,\" Solar Sage hums softly to herself. But she's not kidding anybody. We all know her mind is filled with race cars and bulldozers.",
+					"zh": "“嗡——嗡——”阳光鼠尾草低声吟诵着。但谁都骗不了，大家都知道她满脑子跑车和推土机。"
+				},
+				"BriefIntroduction": {
+					"en": "Illuminates zombies for sun",
+					"zh": "感化僵尸，使之生产阳光"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"lychee"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -3269,7 +3336,7 @@
 						},
 						"DESCRIPTION": {
 							"en": "on impact, explodes in small area",
-							"zh": "场地内任意一格"
+							"zh": "子弹爆炸时，对小范围造成巨大伤害"
 						}
 					}
 				],
@@ -3280,6 +3347,70 @@
 				"BriefIntroduction": {
 					"en": "Click on banana, then a tile, to launch explosive banana",
 					"zh": "点击后，选择一格发射爆炸香蕉子弹"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bamboozle"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 600
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Bamboozles can fire 5 bamboo sticks at most.",
+					"zh": "整人竹可以发射最多 5 根竹竿。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "tap to arm, tap on target tile to fire",
+							"zh": "点击瞄准，再点击目标格子发射"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "bamboo sticks turn into bamboo buskets when hitting the floor",
+							"zh": "竹竿在砸到地面时会变成竹篮"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Only when confronting those skilled kongfu plants could you be defeated by a single straw.",
+					"zh": "唯有在技艺高超的武林植物面前，你才会连一根草都打不过。"
+				},
+				"BriefIntroduction": {
+					"en": "Click on bamboo, then a tile, to launch bamboo sticks",
+					"zh": "点击后，选择一格发射竹竿"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -3327,7 +3458,7 @@
 				],
 				"Introduction": {
 					"en": "Missile Toes launch cold blasts that damage, chill and slow zombies.",
-					"zh": "榭寄冰仙子发射寒冰子弹，对僵尸造成伤害并减速。"
+					"zh": "槲寄冰仙子发射寒冰子弹，对僵尸造成伤害并减速。"
 				},
 				"Special": [
 					{
@@ -3357,13 +3488,13 @@
 						},
 						"DESCRIPTION": {
 							"en": "on impact, explodes in small area",
-							"zh": "场地内任意一格"
+							"zh": "子弹爆炸时，对小范围造成巨大伤害"
 						}
 					}
 				],
 				"Chat": {
 					"en": "While she is called Missile Toe, Missile Toe has no toes and, properly speaking, lacks missiles. How'd she get her name? Nepotism! Pure favoritism.",
-					"zh": "榭寄冰仙子也被叫做指尖火箭炮，尽管她没有手指头，准确来讲，她也没有火箭炮。那么她为什么会被这么称呼？裙带关系！比起另一个火箭炮，大家更喜欢她罢了。"
+					"zh": "槲寄冰仙子也被叫做指尖火箭炮，尽管她没有手指头，准确来讲，她也没有火箭炮。那么她为什么会被这么称呼？裙带关系！比起另一个火箭炮，大家更喜欢她罢了。"
 				},
 				"BriefIntroduction": {
 					"en": "Launches chilling blasts",
@@ -8029,6 +8160,32 @@
 		{
 			"aliases": [
 				"tool_projectile_bowlingbulb_iceburg"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [],
+				"Introduction": {
+					"en": "",
+					"zh": ""
+				},
+				"Special": [],
+				"Chat": {
+					"en": "",
+					"zh": ""
+				},
+				"BriefIntroduction": {
+					"en": "",
+					"zh": ""
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"empty"
 			],
 			"objclass": "PlantAlmanacProperties",
 			"objdata": {

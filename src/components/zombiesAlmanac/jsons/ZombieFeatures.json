@@ -2779,6 +2779,30 @@
     },
     {
       "NAME": {
+        "en": "Qigong Abbot",
+        "zh": "气功住持"
+      },
+      "_CARDSPRITENAME": "abbotchi",
+      "CODENAME": "abbot_chi",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_chi@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_chi@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Abbot Imp",
+        "zh": "住持小鬼"
+      },
+      "_CARDSPRITENAME": "abbotimp",
+      "CODENAME": "abbot_imp",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_imp@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_imp@ZombieProps)"
+    },
+    {
+      "NAME": {
         "en": "Bronze Statue",
         "zh": "铜人雕像"
       },
@@ -3269,7 +3293,7 @@
       "_CARDSPRITENAME": "lawnbasic",
       "CODENAME": "lawn",
       "SUNCOST": 100,
-      "OBTAINWORLD": "frontyard",
+      "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)"
     },
@@ -3281,7 +3305,7 @@
       "_CARDSPRITENAME": "lawnarmor1",
       "CODENAME": "lawn_armor1",
       "SUNCOST": 100,
-      "OBTAINWORLD": "frontyard",
+      "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)"
     },
@@ -3293,7 +3317,7 @@
       "_CARDSPRITENAME": "lawnarmor2",
       "CODENAME": "lawn_armor2",
       "SUNCOST": 100,
-      "OBTAINWORLD": "frontyard",
+      "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)"
     },
@@ -3305,7 +3329,7 @@
       "_CARDSPRITENAME": "lawnarmor3",
       "CODENAME": "lawn_armor3",
       "SUNCOST": 100,
-      "OBTAINWORLD": "frontyard",
+      "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)"
     },
@@ -3317,7 +3341,7 @@
       "_CARDSPRITENAME": "lawnarmor4",
       "CODENAME": "lawn_armor4",
       "SUNCOST": 100,
-      "OBTAINWORLD": "frontyard",
+      "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)"
     },
@@ -3329,7 +3353,7 @@
       "_CARDSPRITENAME": "lawnflag",
       "CODENAME": "lawn_flag",
       "SUNCOST": 100,
-      "OBTAINWORLD": "frontyard",
+      "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)"
     },
@@ -3341,7 +3365,7 @@
       "_CARDSPRITENAME": "lawnrally",
       "CODENAME": "lawn_flag_veteran",
       "SUNCOST": 100,
-      "OBTAINWORLD": "frontyard",
+      "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)"
     }
@@ -3513,6 +3537,8 @@
     "abbot_flag",
     "abbot_flag_veteran",
     "abbot_torch",
+    "abbot_chi",
+    "abbot_imp",
     "kongfu_bronze_strong",
     "kongfu_bronze_hook",
     "kongfu_bronze_chi",
