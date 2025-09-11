@@ -7,7 +7,7 @@ order: 1
 ---
 
 > [!info]
-> Go to the [Custom Level](../../custom-level/) page to download sample level files!
+> Go to the [Creator's Garden](../../creator-garden/) page to download sample level files!
 
 ## Custom Levels
 
