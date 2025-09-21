@@ -6,12 +6,27 @@ index: true
 order: 2
 ---
 
+<script setup>
+    import { onMounted } from 'vue';
+    onMounted(() => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    })
+</script>
+
 ## Frequently Asked Game Questions
 
 > [!note]
-> This FaQ is Valid till 0.3.7 version
+> Please read the FaQ before playing or asking questions. This FaQ is Valid till 0.5.X version
 >
 > Q&A by @Mola Mola in Discord
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7637695321442015"
+     data-ad-slot="3900516289"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>
 
 ### How do i update?
 
