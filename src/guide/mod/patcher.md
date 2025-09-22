@@ -16,9 +16,9 @@ order: 1
 > [!warning]
 > 以下教程仅适用于`0.3.X`-`0.5.X`版本。
 
-GE Patcher 是一个用于修改 PvZ2 Gardendless 游戏数据的工具，支持对植物、僵尸、升级、商店和关卡等内容的自定义修改。
+GE Patcher 是一个用于修改 PvZ2 Gardendless 游戏数据的工具，支持对植物、僵尸、格子道具（GridItem）、弹道（Projectile）、升级、商店和关卡等内容的自定义修改。
 
-官网提供的版本已经内置了 GE Patcher 工具。
+推荐使用内置版本的 GE Patcher（官网发行版已包含）。
 
 ## 前提条件
 
@@ -38,29 +38,49 @@ data-full-width-responsive="true">
 
 在游戏启动时按“F12”打开开发者界面。在控制台选项卡中，会出现类似以下内容的输出：
 
-```
+```text
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
 ```
 
-给出的路径是 GE Patcher 的主目录。
-
-输入以下命令查看游戏内帮助，包括自定义 JSON 文件的路径：
+上述路径即为 GE Patcher 的主目录（示例）。运行以下命令可以在控制台查看帮助信息并输出补丁目录：
 
 ```javascript
 gePatcher.help()
 ```
 
-游戏加载完成后，运行以下命令加载所有自定义 JSON 文件：
+游戏加载完成后可以运行以下命令加载/应用补丁：
 
 ```javascript
+// 加载基础资源，不会加载补丁文件
+gePatcher.initBase()
+
+// 在调用 initBase 后，可以调用 initPatchs() 加载补丁文件
+// 在你更改 JSON 文件后，重新调用此函数以应用更改
+gePatcher.initPatchs()
+
+// 同时加载基础资源和补丁文件，等同于上面两步骤的组合
 gePatcher.init()
 ```
 
-**修改 JSON 文件后，请重新执行此命令以应用更改。**
+其他常用函数示例：
+
+```javascript
+// 列出游戏内原始关卡 ID
+gePatcher.showLevels()
+
+// 设置自定义帧率（危险操作，可能导致崩溃或性能问题）
+gePatcher.setFrameRate(30)
+
+// 修改单个实体的单个属性（示例）
+gePatcher.setPropsData('PlantProps', 'peashooter', 'ShootInterval', 1.2)
+
+// 合并多个属性（传入对象）
+gePatcher.setPropsData('PlantProps', 'peashooter', { ShootInterval: 1.2, SunCost: 75 })
+```
 
 ## 文件结构
 
-在 `com.pvzge.app` 中创建一个 `patches` 文件夹，其结构如下：
+在 `com.pvzge.app` 下创建 `patches` 文件夹，其结构如下：
 
 ```
 patches/
@@ -72,25 +92,31 @@ patches/
     │   ├── ZombieFeatures.json
     │   ├── ZombieProps.json
     │   ├── ZombieAlmanac.json
+    │   ├── GridItemFeatures.json
+    │   ├── GridItemProps.json
+    │   ├── GridItemTypes.json
+    │   ├── ProjectileProps.json
+    │   ├── ProjectileTypes.json
     │   ├── UpgradeFeatures.json
+    │   ├── PropertySheets.json
     │   └── StoreCommodityFeatures.json
     └── levels/
         └── [关卡名].json
 ```
 
-`features` 目录下包含 `Features` 文件，`Props` 文件和 `Almanac` 文件，用于修改植物、僵尸、升级和商店等内容。
+说明：
 
-`levels` 目录下的文件用于修改关卡。
-
-未修改原版内容的文件无需创建。
+- `features` 目录包含各种 Features/Props/Types/Almanac 文件，用于修改游戏实体的元数据和行为。
+- 新版本的 patcher 支持 GridItem（格子道具）和 Projectile（弹道/子弹）的 Props/Types 文件，此外可通过 `PropertySheets.json` 修改属性表。
+- 未修改原版内容的文件无需创建。
 
 ## Features 文件
 
-### Features 文件结构
+Features 文件用于对实体（植物、僵尸、格子道具、升级等）的元数据进行合并修改。
 
-Features 文件包含植物、僵尸和升级的基本属性。文件结构如下：
+### 常见 Features 示例
 
-**PlantFeatures.json**：植物基本特性（结构示例）
+**PlantFeatures.json**（示例）：
 
 ```json
 {
@@ -104,7 +130,7 @@ Features 文件包含植物、僵尸和升级的基本属性。文件结构如�
 }
 ```
 
-**ZombieFeatures.json**：僵尸基本特性（结构示例）
+**ZombieFeatures.json**（示例）：
 
 ```json
 {
@@ -116,7 +142,7 @@ Features 文件包含植物、僵尸和升级的基本属性。文件结构如�
 }
 ```
 
-**UpgradeFeatures.json**：升级属性（结构示例）
+**UpgradeFeatures.json**（示例）：
 
 ```json
 {
@@ -128,63 +154,27 @@ Features 文件包含植物、僵尸和升级的基本属性。文件结构如�
 }
 ```
 
-**重点说明**
+**GridItemFeatures.json / StoreCommodityFeatures.json** 等结构与上述类似，按游戏原始结构提供要修改条目的 CODENAME/标识。
 
-- `PLANTS`、`ZOMBIES` 和 `UPGRADES` 数组定义对现有实体的修改。
-- `SEEDCHOOSERDEFAULTORDER` 设置种子选择器中的默认植物顺序。
-- `BASEUNLOCKLIST` 定义初始解锁的植物。
+### Features 合并规则（摘要）
 
-### Features 修改规则
+- 按 CODENAME（或相应标识）匹配已有实体，找到后将用户提供的对象与原始对象合并。
+- 基本类型字段直接覆盖；对象类型递归合并；数组类型按元素顺序合并（若数组元素为基本类型则覆盖）。
+- 对于 `SEEDCHOOSERDEFAULTORDER`、`BASEUNLOCKLIST` 等顶级数组字段，会直接替换原数组。
 
-Features 修改规则适用于 `PlantFeatures`、`ZombieFeatures` 和 `UpgradeFeatures` 文件。
+重要提示：GE Patcher 仅修改已存在的实体，不会创建全新的实体条目。尽量避免修改关键标识（例如 `ID`、`_CARDSPRITENAME` 等）。
 
-`PLANTS`（或 `ZOMBIES`、`UPGRADES`）数组中的每个对象在通过 `CODENAME` 字段匹配后，都会合并到原始 JSON 中。合并规则如下：
+## Props / Almanac / Types 文件
 
-- **数组元素**：如果属性类型为数组，则数组中每个值将按元素顺序合并。如果数组中的值是对象，则将递归合并。如果数组中的值是基本类型，则直接覆盖原始 JSON 中的值。
-- **对象合并**：如果属性类型为对象，则将进行递归合并。如果对象中存在具有相同键的属性，则直接覆盖原始 JSON 中的值。
-- **基本属性**：对于具有相同键的基本属性，直接覆盖，即替换原始 JSON 中的值。
+这些文件用于修改实体的具体数值、图鉴信息或类型表：
 
-对于其他字段，例如 `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST` 等，则直接替换原始数组。
+- `PlantProps.json` / `ZombieProps.json`：修改数值属性（`PlantProperties` / `ZombieProperties`）。
+- `PlantAlmanac.json` / `ZombieAlmanac.json`：修改图鉴显示信息（不会改变实际战斗数值）。
+- `GridItemProps.json` / `GridItemTypes.json`：格子道具相关属性与类型定义。
+- `ProjectileProps.json` / `ProjectileTypes.json`：弹道/子弹相关属性与类型定义。
+- `PropertySheets.json`：覆盖或补充某些属性表。
 
-因此，对于任何需要修改的植物/僵尸，需要在 `PLANTS` (`ZOMBIES`) 数组中添加一个对象，并且该对象的 `CODENAME` 字段必须与 JSON 中的原始植物/僵尸一致。
-对于不需要修改的植物/僵尸，则无需添加此对象。
-
-在单个植物/僵尸对象中，只需填写 `CODENAME`。其他字段未填写则保持不变。如果需要修改，则必须添加相应的字段。
-
-> [!important]
->
-> - 避免修改 `ID` 或 `_CARDSPRITENAME` 等关键字段，以防止崩溃。
-> - **GE Patcher 无法创建新实体；它只会修改现有的。**
-
-**示例**
-
-要将豌豆射手的背景改为“史诗”，将向日葵的名称改为“Happy Flower”：
-
-```json
-{
-  "PLANTS": [
-    {
-      "CODENAME": "peashooter",
-      "OBTAINWORLD": "epic"
-    },
-    {
-      "CODENAME": "sunflower",
-      "NAME": {
-        "en": "Happy Flower",
-        "zh": "快乐花"
-      }
-    }
-  ]
-}
-```
-
-## Props/Almanac 文件
-
-### Props 文件结构
-
-Props 文件包含植物和僵尸的数值属性。文件结构如下：
-
-**PlantProps.json**：植物数值属性（结构示例）
+### Props 文件示例（PlantProps.json）
 
 ```json
 {
@@ -197,48 +187,15 @@ Props 文件包含植物和僵尸的数值属性。文件结构如下：
         "ShootIntervalAdditional": 0.15,
         "PlantfoodPeaCount": 60,
         "Cooldown": 5,
-        "CooldownFrom": 1,
         "SunCost": 100,
-        "Toughness": 300,
-        "Family": "Peashooter"
+        "Toughness": 300
       }
     }
   ]
 }
 ```
 
-**ZombieProps.json**：僵尸数值属性（结构示例）
-
-```json
-{
-  "objects": [
-    {
-      "aliases": ["tutorial"],
-      "objclass": "ZombieProperties",
-      "objdata": {
-        "ZombieSort": "Normal",
-        "CannotBeTossedByCitron": false,
-        "WalkSPS": 0.185,
-        "Toughness": 190,
-        "EatDPS": 100
-      }
-    }
-  ]
-}
-```
-
-**重点说明**
-
-- `objects` 数组定义对现有植物/僵尸的修改。
-- `aliases` 数组表示该对象属于哪个植物/僵尸，目前 GE Patcher 仅读取该数组的第一项。
-- `objclass` 表示该对象的类型，值必须为 `PlantProperties` 或 `ZombieProperties`。
-- `objdata` 包含植物/僵尸的数值属性。
-
-### Almanac 文件结构
-
-Almanac 文件包含植物和僵尸的图鉴信息。文件结构如下：
-
-**PlantAlmanac.json**：植物图鉴信息（结构示例）
+### Almanac 示例（PlantAlmanac.json）
 
 ```json
 {
@@ -248,144 +205,52 @@ Almanac 文件包含植物和僵尸的图鉴信息。文件结构如下：
       "objclass": "PlantAlmanacProperties",
       "objdata": {
         "Elements": [
-          {
-            "TYPE": "SUNCOST"
-          },
-          {
-            "TYPE": "RECHARGE"
-          },
-          {
-            "TYPE": "TOUGHNESS"
-          },
-          {
-            "TYPE": "DAMAGE",
-            "VALUE": 20
-          },
-          {
-            "TYPE": "RANGE",
-            "SORT": {
-              "en": "Straight",
-              "zh": "直线"
-            }
-          },
-          {
-            "TYPE": "FAMILY"
-          }
+          { "TYPE": "SUNCOST" },
+          { "TYPE": "DAMAGE", "VALUE": 20 }
         ],
-        "Introduction": {
-          "en": "Peashooters are your first line of defence. They shoot peas at attacking zombies",
-          "zh": "豌豆射手是你的第一道防线。他们会向僵尸发射豌豆。"
-        },
-        "Special": [],
-        "Chat": {
-          "en": "\"What is it like being famous?\"asked Peashooter while sipping his bottled water,\"I can't talk right now, I'm finishing my merchandising deal. Hold my fir coat.\"",
-          "zh": "“成为名人是什么感觉？”豌豆射手问了一句，抿了一口自己的瓶装水，“我现在没法说话，我正在完成我的销售项目，帮我拿一下我的毛皮大衣。”"
-        },
-        "DisplayOffset": {
-          "x": 0,
-          "y": 0
-        },
-        "BriefIntroduction": {
-          "en": "Shoots peas at the enemies",
-          "zh": "向僵尸发射豌豆子弹"
-        }
+        "Introduction": { "en": "Peashooters are...", "zh": "豌豆射手是..." }
       }
     }
   ]
 }
 ```
 
-**ZombieAlmanac.json**：僵尸图鉴信息（结构示例）
+### 合并规则
 
-```json
-{
-   "//": "basic",
-   "aliases": [
-      "tutorial"
-   ],
-   "objclass": "ZombieAlmanacProperties",
-   "objdata": {
-      "Elements": [
-         {
-            "TYPE": "TOUGHNESS",
-            "SORT": {
-               "en": "Average",
-               "zh": "一般"
-            },
-            "PROGRESS": 0.25
-         },
-         {
-            "TYPE": "SPEED",
-            "SORT": {
-               "en": "Basic",
-               "zh": "普通"
-            },
-            "PROGRESS": 0.5
-         }
-      ],
-      "Introduction": {
-         "en": "Regular Garden-variety zombie.",
-         "zh": "普普通通的前院僵尸。"
-      },
-      "Special": [],
-      "Chat": {
-         "en": "Basic Zombie hates the term \"Basic\". He doesn't consider himself some generic foe or common corpse. He's individual, darn it, and he's going to make a difference even if it kills you.",
-         "zh": "普通僵尸讨厌被称作“普通”。他不认为自己只是一个平凡的敌对者，甚至只是个随处可见的死尸。他可是很独立的，该死的，而且在你死之前他都会对局面造成影响。"
-      },
-      "DisplayOffset": {
-         "x": 0,
-         "y": 0
-      },
-      "DisplayScale": {
-         "x": 1,
-         "y": 1
-      }
-   }
-},
-```
-
-### Props/Almanac 修改规则
-
-Props 修改规则适用于 `PlantProps` 和 `ZombieProps` 文件。Almanac 修改规则适用于 `PlantAlmanac` 和 `ZombieAlmanac` 文件。
-
-`objects` 数组中的每个对象通过 `aliases` 字段匹配后合并至原始 JSON 中，规则与 `Features` 文件相同。
-
-对于任何需要修改的植物/僵尸，需要在 `objects` 数组中添加一个对象，并且该对象的 `aliases` 数组的第一项必须是对应植物/僵尸的 `CODENAME`。
-对于不需要修改的植物/僵尸，则无需添加此对象。
-
-在单个对象中，`objdata` 包含植物/僵尸的数值属性或图鉴信息。只需要填写需要修改的属性，未填写的属性将保持不变。
-
-> [!important]
->
-> - `Almanac` 文件仅仅用于修改植物/僵尸的图鉴信息，不会影响植物的实际属性。
-> - `objdata` 中的数组属性，如 `Almanac` 文件中的 `Elements`，将按元素顺序合并。若需修改原始数组中的某项的值，则需要在数组相同位置的值上进行修改。
+- 与 Features 相同：按 `aliases`（数组第一项）匹配目标实体，找到后对 `objdata` 进行递归合并。若只想修改部分字段，仅提供需要修改的属性。
 
 ## 关卡文件
 
-将自定义关卡文件放置在 `patches/jsons/levels/[LevelName].json` 中。
+自定义关卡放在 `patches/jsons/levels/[LevelName].json`。
 
-- 文件名必须与游戏内关卡 ID 匹配（例如，`egypt1.json`）。
-- 使用 `gePatcher.showLevels()` 查看原始关卡 ID（需要先初始化 GE Patcher）。
+- 文件名必须与游戏内关卡 ID 匹配（例如 `egypt1.json`）。
+- 使用 `gePatcher.showLevels()` 在控制台查看可用关卡 ID（需先初始化 GE Patcher）。
 
 ## 商店文件
 
-`StoreCommodityFeatures.json` 替换游戏内商店类别：
+`StoreCommodityFeatures.json` 用于替换/修改商店商品分类：
 
 ```json
 {
-  "Plants": [], // 植物
-  "Upgrade": [], // 升级
-  "Gem": [], // 宝石物品（使用金币购买）
-  "Coin": [] // 金币物品（使用宝石购买）
+  "Plants": [],
+  "Upgrade": [],
+  "Gem": [],
+  "Coin": []
 }
 ```
 
-省略不需要修改的类别。
+可省略不需要修改的类别。
 
-## 调试
+## 调试与常见故障排查
 
-1. 检查控制台加载过程中的错误。
+1. 检查控制台（F12）中的错误日志。
 2. 常见错误：
-   - ❌ `Failed to load...`：JSON 语法错误。
-   - ❌ `Level file not found`：文件名不匹配。
-3. 使用 [JSONLint](https://jsonlint.com/) 等工具验证 JSON。
+   - ❌ `Failed to load...`：通常为 JSON 语法错误。
+   - ❌ `Level file not found`：文件名或路径不匹配。
+3. 验证 JSON：使用 [JSONLint](https://jsonlint.com/) 或 VSCode JSON 校验插件。
+
+排查建议：
+
+- 先在控制台运行 `gePatcher.help()`，它会输出补丁基础目录（示例：`C:\Users\admin\AppData\Local\com.pvzge.app\patches`）以及支持的路径清单，确保文件放在正确位置。
+- 在游戏资源完全加载后再运行 `gePatcher.init()` 或先运行 `gePatcher.initBase()` 并等待加载完成（脚本会检查资源数量，提示未加载完）。
+- 若更改未生效，确认已重新执行 `gePatcher.init()` 或 `gePatcher.initPatchs()` 并查看控制台输出以定位错误。

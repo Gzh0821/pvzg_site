@@ -3,10 +3,10 @@
 	"version": 1,
 	"objects": [
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"peashooter"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
@@ -16,37 +16,41 @@
 				"SunCost": 100,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
 				"Family": "Peashooter"
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"solarsage"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"MaxAttackTime": 1,
 				"PlantfoodEnlightenCount": 3,
 				"EnlightenWalkSPS": 0.3,
 				"EnlightenChanceToInfect": 0.2,
-				"EnlightenProduceInterval": {
-					"Min": 10,
-					"Max": 14
-				},
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 75,
 				"BeghouledCost": 500,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"EnlightenProduceInterval": {
+					"Min": 10,
+					"Max": 14
+				}
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"dusklobber"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "dusklobber",
+				"CabbageTypePlantfood": "dusklobber_pf",
 				"ThrowInterval": 2.85,
 				"ThrowIntervalAdditional": 0.15,
 				"PlantfoodProjectilesToFire": 4,
@@ -59,10 +63,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"sunflower"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"SunValue": 50,
@@ -79,10 +83,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"primalsunflower"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 1,
 				"SunValue": 75,
@@ -99,10 +103,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"moonbean"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 20,
 				"CooldownFrom": 0.375,
@@ -121,10 +125,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"wallnut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ArmorToughness": 4000,
 				"Cooldown": 20,
@@ -136,10 +140,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"potatomine"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ChargeTime": 14,
 				"Damage": 1800,
@@ -153,19 +157,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"bloominghearts"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
-				"DefenceRateList": [
-					0.9
-				],
-				"DefenceRateListPlantfood": [
-					0.8,
-					0.8,
-					0.8
-				],
+				"CabbageType": "blooming_heart",
+				"CabbageTypePlantfood": "blooming_heart_pf",
 				"ImmuneToBoomBox": true,
 				"ThrowInterval": 2.85,
 				"ThrowIntervalAdditional": 0.15,
@@ -174,15 +172,25 @@
 				"SunCost": 150,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Poison"
+				"Family": "Poison",
+				"DefenceRateList": [
+					0.9
+				],
+				"DefenceRateListPlantfood": [
+					0.8,
+					0.8,
+					0.8
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"cabbagepult"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "cabbage",
+				"CabbageTypePlantfood": "cabbage_pf",
 				"ThrowInterval": 2.7,
 				"ThrowIntervalAdditional": 0.15,
 				"Cooldown": 5,
@@ -194,13 +202,14 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"bloomerang"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 2.7,
 				"ShootIntervalAdditional": 0.15,
+				"BoomerangType": "boomerang",
 				"PierceCount": 3,
 				"PlantfoodBoomerangCount": 16,
 				"Cooldown": 5,
@@ -212,10 +221,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"bambooshoot"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 20,
 				"DamagePlantfood": 100,
@@ -233,10 +242,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"iceburg"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"FreezeDuration": 10,
 				"ChillDuration": 0,
@@ -250,10 +259,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"lychee"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"DamagePerHit": 20,
 				"DamagePerHitPlantfood": 40,
@@ -269,10 +278,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"bonkchoy"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 15,
 				"DamageHeavy": 30,
@@ -290,13 +299,16 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"repeater"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
+				"PeaTypeMega": "pea_mega",
 				"PlantfoodPeaCount": 90,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -307,13 +319,15 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"megagatling"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
 				"PlantfoodPeaCount": 150,
 				"ChanceToPlantfood": 0.05,
 				"Cooldown": 5,
@@ -321,17 +335,24 @@
 				"SunCost": 450,
 				"BeghouledCost": 4000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"PeaTypesPlantfood": [
+					"pea",
+					"pea_flame_yellow",
+					"pea_flame_blue"
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"scaredyshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
+				"SporeType": "scaredyshroom_spore",
+				"SporeTypePlantfood": "scaredyshroom_spore2",
 				"PlantfoodSporeCount": 40,
 				"KnockbackChance": 0.2,
 				"KnockbackDistance": 0.2,
@@ -344,10 +365,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"fumeshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 40,
 				"ShootInterval": 2.4,
@@ -366,10 +387,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"gravebuster"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"CannotBePushedByFootballMech": true,
@@ -384,10 +405,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"pumpkin"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeKilledBySurfboard": true,
 				"ArmorToughness": 4000,
@@ -400,10 +421,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"bamboobusket"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeKilledBySurfboard": true,
 				"ArmorToughness": 4000,
@@ -416,13 +437,14 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"pvine"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea",
 				"PlantfoodPeaCount": 60,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -433,10 +455,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"floawerPot"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"ToughnessPlantfooded": 900,
@@ -450,13 +472,14 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"firepeashooter"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea_flame_yellow",
 				"PlantfoodDuration": 5,
 				"PlantfoodDamageInterval": 0.25,
 				"PlantfoodDamagePerHit": 80,
@@ -480,13 +503,15 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"threepeater"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
 				"PlantfoodPeaCount": 30,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -497,13 +522,15 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"primalpeashooter"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 2.85,
 				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea_primal",
+				"PeaTypePlantfood": "pea_primal",
 				"PlantfoodPeaCount": 5,
 				"KnockbackDistance": 1,
 				"KnockbackChance": 0.5,
@@ -516,13 +543,15 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"xshot"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
+				"PeaType": "rotobaga",
+				"PeaTypePlantfood": "rotobaga_pf",
 				"PlantfoodPeaCount": 60,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -533,11 +562,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"homingthistle"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "homing_thistle",
+				"PeaTypePlantfood": "homing_thistle_pf",
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 20,
@@ -550,10 +581,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"starfruit"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
@@ -563,14 +594,16 @@
 				"SunCost": 150,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
+				"PeaType": "star",
+				"PeaTypePlantfood": "star_pf",
 				"Family": "Peashooter"
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"shootingstarfruit"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 0.9,
 				"ShootIntervalAdditional": 0.1,
@@ -579,14 +612,16 @@
 				"SunCost": 500,
 				"BeghouledCost": 3000,
 				"Toughness": 300,
+				"PeaType": "shootingstar",
+				"PeaTypePlantfood": "shootingstar_pf",
 				"Family": "Peashooter"
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"lilypad"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"Cooldown": 5,
@@ -598,10 +633,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"sunshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"SunValue": 25,
@@ -613,11 +648,6 @@
 				"ProduceIntervalAdditional_AtNight": 1.5,
 				"ProduceCountdownStart_AtNight": 5,
 				"ProduceCountdownStartAdditional_AtNight": 5,
-				"SunValueList": [
-					25,
-					50,
-					75
-				],
 				"GrowTime0_1": 18,
 				"GrowTime1_2": 54,
 				"Cooldown": 5,
@@ -625,14 +655,19 @@
 				"SunCost": 25,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"SunValueList": [
+					25,
+					50,
+					75
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"twinsunflower"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"SunValue": 100,
@@ -649,11 +684,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"dragonbruit"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "dragonfruit",
+				"CabbageTypePlantfood": "dragonfruit_pf",
 				"ThrowInterval": 7,
 				"PoisonDPS": 40,
 				"PoisonDuration": 3,
@@ -666,10 +703,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"moonflower"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 1,
 				"SunValue": 25,
@@ -677,25 +714,25 @@
 				"ProduceIntervalAdditional": 1.5,
 				"ProduceCountdownStart": 5,
 				"ProduceCountdownStartAdditional": 5,
-				"SunValueList": [
-					25,
-					50,
-					75,
-					100
-				],
 				"Cooldown": 10,
 				"CooldownFrom": 0,
 				"SunCost": 50,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
-				"Family": "Shadow"
+				"Family": "Shadow",
+				"SunValueList": [
+					25,
+					50,
+					75,
+					100
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"grimrose"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"MaxKills": 1,
 				"MaxKillsPowered": 3,
@@ -712,10 +749,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"nightshade"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"LeafRespawnCooldown": 5,
 				"ShootInterval": 2.7,
@@ -734,11 +771,14 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"snowpea"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "pea_snow",
+				"PeaTypePlantfood": "pea_snow",
+				"PeaFreezeType": "pea_snow",
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 60,
@@ -753,10 +793,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"lightningreed"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 10,
 				"SplashDamage": 10,
@@ -776,11 +816,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"kernelpult"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "corn",
+				"CabbageTypePlantfood": "butter",
 				"ThrowInterval": 2.7,
 				"ThrowIntervalAdditional": 0.15,
 				"ChanceToButter": 0.3,
@@ -793,11 +835,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"snowdrop"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "snowdrop",
+				"CabbageTypePlantfood": "snowdrop_freeze",
 				"DetectsTNTSpark": true,
 				"ThrowInterval": 2.025,
 				"ThrowIntervalAdditional": 0.225,
@@ -812,11 +856,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"meteorflower"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"MeteorType": "meteor",
 				"SecondMeteorMissChance": 0.35,
 				"MeteorCountOnce": 2,
 				"RestTime": 7,
@@ -841,10 +886,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"springbean"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"KnockbackDistance": 1,
 				"RestTime": 10,
@@ -857,10 +902,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"umbrellaleaf"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
@@ -871,11 +916,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"melonpult"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "melon",
+				"CabbageTypePlantfood": "melon_pf",
 				"ThrowInterval": 2.7,
 				"ThrowIntervalAdditional": 0.15,
 				"Cooldown": 5,
@@ -887,11 +934,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"wintermelon"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "winter_melon",
+				"CabbageTypePlantfood": "winter_melon_pf",
 				"DetectsTNTSpark": true,
 				"ThrowInterval": 2.7,
 				"ThrowIntervalAdditional": 0.15,
@@ -905,10 +954,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"firegourd"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -940,10 +989,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"blover"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"BlowDuration": 3,
@@ -956,10 +1005,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"spikeweed"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 10,
 				"ImmuneToBoomBox": true,
@@ -977,10 +1026,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"spikerock"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"Damage": 20,
@@ -999,10 +1048,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"chomper"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"MaxContainZombieCount": 2,
 				"ChewTimePerZombie": 17,
@@ -1021,10 +1070,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"glaciershroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"FreezeDuration": 5,
 				"ChillDuration": 5,
@@ -1044,10 +1093,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"primalwallnut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ArmorToughness": 4000,
 				"Cooldown": 5,
@@ -1059,12 +1108,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"buttercup"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
-				"TileButterDuration": 120,
+				"ButterType": "buttercup_butter",
 				"ButterDamage": 100,
 				"TileButterDurationPlantfood": 150,
 				"ButterDamagePlantfood": 150,
@@ -1079,11 +1128,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"banana"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"BananaType": "banana",
 				"RestTime": 20,
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
@@ -1094,11 +1144,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"bamboozle"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"BambooshotType": "bamboozle",
 				"Cooldown": 15,
 				"CooldownFrom": 0.5,
 				"SunCost": 225,
@@ -1108,11 +1159,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"missiletoe"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"BananaType": "missiletoe",
 				"RestTime": 20,
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
@@ -1124,10 +1176,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"cherry_bomb"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"Damage": 1800,
@@ -1142,10 +1194,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"goldbloom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"Cooldown": 75,
@@ -1159,10 +1211,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"doomshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"CannotBeSheepenedByWizard": true,
@@ -1178,10 +1230,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"cranjelly"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"DPS": 3000,
@@ -1196,11 +1248,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"dragonbabybruit"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "dragonfruit",
+				"CabbageTypePlantfood": "dragonfruit_pf",
 				"ThrowInterval": 6,
 				"PoisonDPS": 40,
 				"PoisonDuration": 3,
@@ -1213,10 +1267,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"torchwood"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 6.25,
 				"DamageScale": 2,
@@ -1245,10 +1299,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"perfumeshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"CannotBeSheepenedByWizard": true,
@@ -1263,10 +1317,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"jalapeno"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"CannotBeSheepenedByWizard": true,
@@ -1282,11 +1336,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"puffshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "puffshroom_spore",
+				"PeaTypePlantfood": "puffshroom_spore",
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 30,
@@ -1300,10 +1356,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"gloomvine"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 45,
 				"AttackInterval": 2.7,
@@ -1318,13 +1374,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"vamporcini"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"MaxToughness": 6000,
-				"DPS": 20,
+				"DPS": 40,
 				"AttackDuration": 6,
 				"DPSPlantfood": 40,
 				"AttackDurationPlantfood": 10,
@@ -1337,10 +1393,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"primalpotatomine"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ChargeTime": 6,
 				"Damage": 2700,
@@ -1354,10 +1410,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"cactus"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
@@ -1375,10 +1431,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"shrinkingviolet"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShrinkTime": 1.5,
 				"DamageMultiplier": 2,
@@ -1392,10 +1448,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"powerlily"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"ProduceCount": 1,
@@ -1408,11 +1464,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"coconutcannon"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "coconut",
+				"PeaTypePlantfood": "coconut_pf",
 				"RestTime": 15,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -1424,11 +1482,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"peapod"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea_mega",
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 5,
@@ -1441,10 +1501,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"snapdragon"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"AttackInterval": 1.85,
 				"AttackIntervalAdditional": 0.15,
@@ -1460,10 +1520,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"coldsnapdragon"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"AttackInterval": 1.85,
 				"AttackIntervalAdditional": 0.15,
@@ -1483,10 +1543,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"gatling"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 0.9,
 				"ShootIntervalAdditional": 0.1,
@@ -1500,10 +1560,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"splitpea"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
@@ -1518,10 +1578,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"chilibean"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodChildrenCount": 3,
 				"Cooldown": 20,
@@ -1533,10 +1593,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tallnut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ArmorToughness": 6000,
 				"Cooldown": 20,
@@ -1548,10 +1608,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"hurrikale"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"PushDuration": 3,
@@ -1565,10 +1625,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"stallia"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PerfumeDuration": 12,
 				"PerfumeDurationPlantfood": 12,
@@ -1581,11 +1641,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"electricpeashooter"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "electricpea",
+				"PeaTypePlantfood": "electricpea_pf",
 				"ShootInterval": 2.7,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 5,
@@ -1600,10 +1662,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"squash"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodSmashTime": 2,
 				"SmashDamage": 1800,
@@ -1616,10 +1678,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"gloomshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"DPS": 100,
 				"ShootInterval": 1.5,
@@ -1635,19 +1697,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"magnifyinggrass"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootSunCost": 50,
-				"SunProducerList": [
-					"sunflower",
-					"twinsunflower",
-					"sunshroom",
-					"primalsunflower",
-					"moonflower"
-				],
+				"PeaType": "magnifying_grass",
 				"PlantfoodDuration": 3,
 				"PlantfoodDurationExtendPerProducer": 0.15,
 				"PlantfoodDPS": 200,
@@ -1657,14 +1713,21 @@
 				"SunCost": 50,
 				"BeghouledCost": 500,
 				"Toughness": 300,
-				"Family": "Electricity"
+				"Family": "Electricity",
+				"SunProducerList": [
+					"sunflower",
+					"twinsunflower",
+					"sunshroom",
+					"primalsunflower",
+					"moonflower"
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"celerystalker"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodChildrenCount": 3,
 				"RetractionDelay": 3,
@@ -1678,11 +1741,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"sapfling"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "sapfling",
+				"CabbageTypePlantfood": "sapfling",
 				"ThrowInterval": 2.85,
 				"ThrowIntervalAdditional": 0.15,
 				"Cooldown": 5,
@@ -1694,10 +1759,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"parsnip"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"AttackInterval": 0.8,
 				"DamagePerSnip": 70,
@@ -1711,10 +1776,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"explodeonut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ArmorToughness": 4000,
 				"Damage": 1800,
@@ -1728,10 +1793,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"grapeshot"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"CannotBeSheepenedByWizard": true,
@@ -1742,14 +1807,15 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"PeaType": "grapeshot"
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"plantern"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 10,
 				"CooldownFrom": 1,
@@ -1760,10 +1826,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"peach"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodDuration": 10,
 				"HealthPerHeal": 150,
@@ -1778,10 +1844,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"jackolantern"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"DPS": 300,
 				"DPSPlantfood": 300,
@@ -1804,11 +1870,14 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"dandelion"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "dandelion",
+				"PeaTypeBlew": "dandelion_blew",
+				"PeaTypePlantfood": "dandelion_pf",
 				"ShootInterval": 1.9,
 				"ShootIntervalAdditional": 0.2,
 				"BlowRecoverTime": 15,
@@ -1822,10 +1891,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"chardguard"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"MaxBounceTime": 3,
 				"BounceDistance": 3,
@@ -1838,10 +1907,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"hypnoshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"HypnoedZombieDamageScale": 0.95,
 				"Cooldown": 20,
@@ -1853,10 +1922,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"electriccurrant"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"Damage": 12,
@@ -1873,11 +1942,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"escaperoot"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"GrapeType": "grapeshot",
 				"ChargeTime": 10,
 				"Damage": 1800,
 				"Cooldown": 20,
@@ -1889,10 +1959,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"imitater"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"Cooldown": 20,
@@ -1905,10 +1975,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"shadowshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PoisonDuration": 30,
 				"PoisonDPS": 30,
@@ -1921,10 +1991,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"magnetshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"RestTime": 10,
 				"PlantfoodAbsorbDuration": 1.5,
@@ -1938,10 +2008,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"turnip"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeGrabbedByParrot": true,
 				"CannotBePushedByFootballMech": true,
@@ -1955,10 +2025,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"empea"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"StunDuration": 10,
@@ -1972,11 +2042,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"citron"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "citron",
+				"PeaTypePlantfood": "citron_pf",
 				"ChargeTime": 7,
 				"Damage": 800,
 				"DamagePlantfood": 2500,
@@ -1989,10 +2061,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"laser_bean"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Damage": 40,
 				"ShootInterval": 2.7,
@@ -2007,10 +2079,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"solartomato"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
 				"StunDuration": 8,
@@ -2025,12 +2097,19 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"powerplant_alpha"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 10,
+				"CooldownFrom": 0.8,
+				"SunCost": 250,
+				"BeghouledCost": 1000,
+				"Toughness": 3000,
+				"Family": "Nope",
+				"ImmuneToIceblock": true,
 				"SunCostList": [
 					0,
 					250,
@@ -2039,23 +2118,23 @@
 					2000,
 					4000,
 					8000
-				],
-				"Cooldown": 10,
-				"CooldownFrom": 0.8,
-				"SunCost": 250,
-				"BeghouledCost": 1000,
-				"Toughness": 3000,
-				"Family": "Nope",
-				"ImmuneToIceblock": true
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"powerplant_beta"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 10,
+				"CooldownFrom": 0.8,
+				"SunCost": 250,
+				"BeghouledCost": 1000,
+				"Toughness": 3000,
+				"Family": "Nope",
+				"ImmuneToIceblock": true,
 				"SunCostList": [
 					0,
 					250,
@@ -2064,23 +2143,23 @@
 					2000,
 					4000,
 					8000
-				],
-				"Cooldown": 10,
-				"CooldownFrom": 0.8,
-				"SunCost": 250,
-				"BeghouledCost": 1000,
-				"Toughness": 3000,
-				"Family": "Nope",
-				"ImmuneToIceblock": true
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"powerplant_gamma"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 10,
+				"CooldownFrom": 0.8,
+				"SunCost": 250,
+				"BeghouledCost": 1000,
+				"Toughness": 3000,
+				"Family": "Nope",
+				"ImmuneToIceblock": true,
 				"SunCostList": [
 					0,
 					250,
@@ -2089,23 +2168,23 @@
 					2000,
 					4000,
 					8000
-				],
-				"Cooldown": 10,
-				"CooldownFrom": 0.8,
-				"SunCost": 250,
-				"BeghouledCost": 1000,
-				"Toughness": 3000,
-				"Family": "Nope",
-				"ImmuneToIceblock": true
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"powerplant_delta"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 10,
+				"CooldownFrom": 0.8,
+				"SunCost": 250,
+				"BeghouledCost": 1000,
+				"Toughness": 3000,
+				"Family": "Nope",
+				"ImmuneToIceblock": true,
 				"SunCostList": [
 					0,
 					250,
@@ -2114,23 +2193,23 @@
 					2000,
 					4000,
 					8000
-				],
-				"Cooldown": 10,
-				"CooldownFrom": 0.8,
-				"SunCost": 250,
-				"BeghouledCost": 1000,
-				"Toughness": 3000,
-				"Family": "Nope",
-				"ImmuneToIceblock": true
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"powerplant_epsilon"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 10,
+				"CooldownFrom": 0.8,
+				"SunCost": 250,
+				"BeghouledCost": 1000,
+				"Toughness": 3000,
+				"Family": "Nope",
+				"ImmuneToIceblock": true,
 				"SunCostList": [
 					0,
 					250,
@@ -2139,21 +2218,14 @@
 					2000,
 					4000,
 					8000
-				],
-				"Cooldown": 10,
-				"CooldownFrom": 0.8,
-				"SunCost": 250,
-				"BeghouledCost": 1000,
-				"Toughness": 3000,
-				"Family": "Nope",
-				"ImmuneToIceblock": true
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"holonut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"DelayBeforeRegenFromDamage": 15,
 				"DelayBeforeRecoverFromDeath": 15,
@@ -2167,12 +2239,19 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"powerplant"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 10,
+				"CooldownFrom": 0.8,
+				"SunCost": 250,
+				"BeghouledCost": 1000,
+				"Toughness": 3000,
+				"Family": "Nope",
+				"ImmuneToIceblock": true,
 				"SunCostList": [
 					0,
 					250,
@@ -2181,21 +2260,14 @@
 					2000,
 					4000,
 					8000
-				],
-				"Cooldown": 10,
-				"CooldownFrom": 0.8,
-				"SunCost": 250,
-				"BeghouledCost": 1000,
-				"Toughness": 3000,
-				"Family": "Nope",
-				"ImmuneToIceblock": true
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 1,
 				"ProduceInterval": 23.5,
@@ -2212,10 +2284,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold_red"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"ProduceInterval": 23.5,
@@ -2238,10 +2310,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold_orange"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"ProduceInterval": 23.5,
@@ -2264,10 +2336,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold_yellow"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"ProduceInterval": 23.5,
@@ -2284,11 +2356,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold_green"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "pea",
 				"PlantfoodTime": 3,
 				"ProduceInterval": 23.5,
 				"ProduceIntervalAdditional": 1.5,
@@ -2304,10 +2377,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold_blue"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"ProduceInterval": 23.5,
@@ -2325,16 +2398,22 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold_pink"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"ProduceInterval": 23.5,
 				"ProduceIntervalAdditional": 1.5,
 				"ProduceCountdownStart": 5,
 				"ProduceCountdownStartAdditional": 5,
+				"Cooldown": 10,
+				"CooldownFrom": 0.5,
+				"SunCost": 50,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Magic",
 				"PlantList": [
 					"puffshroom",
 					"fumeshroom",
@@ -2345,20 +2424,14 @@
 					"gloomvine",
 					"hypnoshroom",
 					"vamporcini"
-				],
-				"Cooldown": 10,
-				"CooldownFrom": 0.5,
-				"SunCost": 50,
-				"BeghouledCost": 1000,
-				"Toughness": 300,
-				"Family": "Magic"
+				]
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"marigold_purple"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"PlantfoodTime": 3,
 				"ProduceInterval": 23.5,
@@ -2376,11 +2449,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"applemortar"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "apple",
+				"CabbageTypePlantfood": "apple_pf",
 				"ShootInterval": 1.75,
 				"ShootIntervalAdditional": 0.25,
 				"StunDuration": 0.75,
@@ -2394,10 +2469,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"redstinger"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ShootInterval": 1.75,
 				"ShootIntervalAdditional": 0.25,
@@ -2406,8 +2481,6 @@
 				"DamageScale2": 0.2,
 				"PFDuration": 5,
 				"PFDPS": 200,
-				"ProjectileDamage": 30,
-				"ProjectileDamageWeak": 20,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
@@ -2417,11 +2490,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"skyshooter"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "pea_sky",
+				"PeaTypePlantfood": "pea_sky",
 				"ShootInterval": 0.9,
 				"ShootIntervalAdditional": 0.1,
 				"PlantfoodPeaCount": 75,
@@ -2434,10 +2509,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"sunbean"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"SunPerHitpoint": 0.2,
 				"Cooldown": 20,
@@ -2449,11 +2524,12 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"peanut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "peanut",
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"ShootIntervalSemi": 2.7,
@@ -2469,10 +2545,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"zombiepotion_speed"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBePushedByFootballMech": true,
 				"CannotBeSheepenedByWizard": true,
@@ -2488,10 +2564,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"zombiepotion_toughness"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBePushedByFootballMech": true,
 				"CannotBeSheepenedByWizard": true,
@@ -2507,10 +2583,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"zombiepotion_invisibility"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBePushedByFootballMech": true,
 				"CannotBeSheepenedByWizard": true,
@@ -2526,10 +2602,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tanglekelp"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeDetectedByCatapult": true,
 				"Cooldown": 20,
@@ -2545,10 +2621,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"bowlingbulb"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -2559,14 +2635,18 @@
 				"StartingHeight": 0,
 				"AmmoRefreshTime": 4,
 				"RollOrder": "012",
-				"LoadOrder": "012"
+				"LoadOrder": "012",
+				"Bowling0": "bowling0",
+				"Bowling1": "bowling1",
+				"Bowling2": "bowling2",
+				"BowlingPlantfood": "bowling_pf"
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowlingbulb1"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
@@ -2574,15 +2654,16 @@
 				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
+				"ProjectileType": "bowling0",
 				"StartingHeight": 30,
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowlingbulb2"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
@@ -2590,15 +2671,16 @@
 				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
+				"ProjectileType": "bowling1",
 				"StartingHeight": 30,
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowlingbulb3"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
@@ -2606,15 +2688,16 @@
 				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
+				"ProjectileType": "bowling2",
 				"StartingHeight": 30,
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowlingbulb_explode"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
@@ -2622,16 +2705,19 @@
 				"BeghouledCost": 1000,
 				"Toughness": 1,
 				"Family": "Nope",
+				"ProjectileType": "bowling_pf",
 				"StartingHeight": 30,
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"guacodile"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "guacodile",
+				"PeaTypeChild": "guacodile_child",
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
@@ -2646,10 +2732,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowling_wallnut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 20,
 				"CooldownFrom": 1,
@@ -2659,14 +2745,15 @@
 				"Family": "Nope",
 				"StartingHeight": 0,
 				"SpeedX": 4,
+				"ProjectileType": "bowling_wallnut",
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowling_explodeonut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 30,
 				"CooldownFrom": 1,
@@ -2676,14 +2763,15 @@
 				"Family": "Nope",
 				"StartingHeight": 0,
 				"SpeedX": 4,
+				"ProjectileType": "bowling_explode_o_nut",
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowling_holonut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 30,
 				"CooldownFrom": 1,
@@ -2693,14 +2781,15 @@
 				"Family": "Nope",
 				"StartingHeight": 0,
 				"SpeedX": 4,
+				"ProjectileType": "bowling_infinut",
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowling_primalwallnut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 20,
 				"CooldownFrom": 1,
@@ -2710,30 +2799,32 @@
 				"Family": "Nope",
 				"StartingHeight": 0,
 				"SpeedX": 4,
+				"ProjectileType": "bowling_primal_wallnut",
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowlingbulb_iceburg"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 0.01,
 				"CooldownFrom": 1,
 				"SunCost": 50,
 				"BeghouledCost": 1000,
 				"Toughness": 1,
+				"ProjectileType": "bowling_iceberg",
 				"Family": "Nope",
 				"StartingHeight": 30,
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"tool_projectile_bowling_tallnut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 20,
 				"CooldownFrom": 1,
@@ -2743,14 +2834,15 @@
 				"Family": "Nope",
 				"StartingHeight": 0,
 				"SpeedX": 3.5,
+				"ProjectileType": "bowling_tallnut",
 				"ImmuneToIceblock": true
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"ghostpepper"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 15,
 				"CooldownFrom": 0.6667,
@@ -2768,10 +2860,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"sweetpotato"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
@@ -2788,10 +2880,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"hotdate"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"FlameDamage": 1000,
 				"FlameDuration": 5,
@@ -2820,11 +2912,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"pepperpult"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "pepper",
+				"CabbageTypePlantfood": "pepper_pf",
 				"ThrowInterval": 2.85,
 				"ThrowIntervalAdditional": 0.15,
 				"Cooldown": 20,
@@ -2842,10 +2936,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"hotpotato"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 10,
 				"CooldownFrom": 1,
@@ -2858,10 +2952,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"stunion"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
@@ -2876,10 +2970,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"goldleaf"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 10,
 				"CooldownFrom": 0.5,
@@ -2891,11 +2985,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"akee"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "akee",
+				"CabbageTypePlantfood": "akee_pf",
 				"ThrowInterval": 2.85,
 				"ThrowIntervalAdditional": 0.15,
 				"Cooldown": 5,
@@ -2907,10 +3003,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"endurian"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ArmorToughness": 6000,
 				"Cooldown": 15,
@@ -2925,10 +3021,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"toadstool"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -2950,10 +3046,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"lavaguava"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 15,
 				"CooldownFrom": 0.667,
@@ -2962,6 +3058,9 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"ExplosionDamage": 200,
+				"PlantFoodDurationSeconds": 10,
+				"PlantFoodDPS": 100,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 6,
@@ -2971,17 +3070,14 @@
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 1.5,
 					"GridItemDamage": 100
-				},
-				"ExplosionDamage": 200,
-				"PlantFoodDurationSeconds": 10,
-				"PlantFoodDPS": 100
+				}
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"phatbeet"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"ImmuneToBoomBox": true,
 				"ImmuneToSpeakerHit": true,
@@ -3001,11 +3097,14 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"strawburst"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType0": "strawburst0",
+				"CabbageType1": "strawburst1",
+				"CabbageType2": "strawburst2",
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 400,
@@ -3022,10 +3121,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"thymewarp"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 60,
 				"CooldownFrom": 1,
@@ -3037,10 +3136,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"phatbeet_rhythm"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -3051,11 +3150,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"seashroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "seashroom_spore",
+				"PeaTypePlantfood": "seashroom_spore",
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 30,
@@ -3070,10 +3171,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"garlic"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 5,
 				"CooldownFrom": 1,
@@ -3090,10 +3191,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"electricblueberry"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 45,
 				"CooldownFrom": 0.3333,
@@ -3117,11 +3218,13 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"sporeshroom"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
+				"CabbageType": "sporeshroom_spore",
+				"CabbageTypePlantfood": "sporeshroom_spore_pf",
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 150,
@@ -3133,10 +3236,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"intensivecarrot"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
