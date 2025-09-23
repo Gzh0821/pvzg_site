@@ -1,5 +1,5 @@
 ---
-title: Agreement and Statement
+title: Statement
 index: false
 icon: info
 pageInfo: false

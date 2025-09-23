@@ -1,5 +1,5 @@
 ---
-title: Useful Tools
+title: Tools
 index: false
 order: 1
 icon: screwdriver-wrench
