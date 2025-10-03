@@ -3853,6 +3853,60 @@
 		},
 		{
 			"aliases": [
+				"abbot_fan"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Stiff",
+							"zh": "迟钝"
+						},
+						"PROGRESS": 0.4
+					}
+				],
+				"Introduction": {
+					"en": "Fans out Qigong storms.",
+					"zh": "扇出气功飓风。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "Qigong storm pushes walking zombies forward",
+							"zh": "气功飓风会将行走的僵尸向前推"
+						}
+					}
+				],
+				"Chat": {
+					"en": "If utilized well, Qigong is a perfect transport method. Though it's much more tiring than carrying on their own...",
+					"zh": "合理利用的话，气功会是完美的运输手段。尽管这比用双手搬运累得多……"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
 				"abbot_chi"
 			],
 			"objclass": "ZombieAlmanacProperties",
@@ -4163,7 +4217,7 @@
 					}
 				],
 				"Chat": {
-					"en": "The hardest part of his practicing is untieing the chains quickly. He always broke them uo.",
+					"en": "The hardest part of his practicing is untying the chains quickly. He always broke them up.",
 					"zh": "他训练中最困难的一环是快速解开铁锁，他总是把铁链绷断。"
 				},
 				"DisplayOffset": {
@@ -5895,12 +5949,12 @@
 				],
 				"Introduction": {
 					"en": "The armor-plated cone offers phenomenal protection for its pilot.",
-					"zh": "全息头僵尸的头部周围的力场提供了超强保护。"
+					"zh": "由铁甲加固的大型路障为驾驶员提供了巨大的保护。"
 				},
 				"Special": [],
 				"Chat": {
-					"en": "The armor-plated cone offers phenomenal protection for its pilot.",
-					"zh": "镀甲的锥体可为驾驶员提供惊人的保护。"
+					"en": "Zombie engineers considered the orange cone the height of zombie protective technology. It wasn't until they perfected the design for the Robo-Cone that someone remembered the bucket.",
+					"zh": "僵尸工程师曾将橙色的路障视为僵尸防护技术的巅峰。直到他们完成了“机械路障”的设计后，才有人想起了铁桶的存在。"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -7209,7 +7263,7 @@
 					}
 				],
 				"Introduction": {
-					"en": "Her starfish cone gives her twice the toughness of a normal pompadour zombie.",
+					"en": "Her starfish cone gives her twice the toughness of a normal bikini zombie.",
 					"zh": "她黏上海星的路障使她变得比原先抗打两倍。"
 				},
 				"Special": [],

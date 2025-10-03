@@ -2767,7 +2767,7 @@
     },
     {
       "NAME": {
-        "en": "Abbot Torch Zombie",
+        "en": "Torch Abbot",
         "zh": "住持火把僵尸"
       },
       "_CARDSPRITENAME": "abbottorch",
@@ -2776,6 +2776,18 @@
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_torch@ZombieAlmanac)",
       "PROPS": "RTID(abbot_torch@ZombieProps)"
+    },
+    {
+      "NAME": {
+        "en": "Fan Swinging Abbot",
+        "zh": "舞扇住持僵尸"
+      },
+      "_CARDSPRITENAME": "abbotfan",
+      "CODENAME": "abbot_fan",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_fan@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_fan@ZombieProps)"
     },
     {
       "NAME": {
@@ -3537,6 +3549,7 @@
     "abbot_flag",
     "abbot_flag_veteran",
     "abbot_torch",
+    "abbot_fan",
     "abbot_chi",
     "abbot_imp",
     "kongfu_bronze_strong",

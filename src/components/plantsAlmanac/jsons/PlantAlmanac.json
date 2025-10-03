@@ -1575,7 +1575,7 @@
 					}
 				],
 				"Introduction": {
-					"en": "Lychee hurts zombies in an area around it when attacked.",
+					"en": "Lychees damage zombies in an area around it when attacked.",
 					"zh": "荔枝在受到伤害时对范围内的僵尸造成伤害。"
 				},
 				"Special": [
@@ -2386,7 +2386,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 20
+						"VALUE": 30
 					},
 					{
 						"TYPE": "RANGE",
@@ -2723,6 +2723,84 @@
 		},
 		{
 			"aliases": [
+				"cantaloupe"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 120
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Lobbed",
+							"zh": "抛物线"
+						}
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "3x3",
+							"zh": "3x3 范围"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Cantaloupe-pults heavily damages groups of zombies without smashing them.",
+					"zh": "哈密瓜投手会以不让子弹砸到僵尸的方式对他们造成大量伤害。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Firing Speed",
+							"zh": "攻速"
+						},
+						"DESCRIPTION": {
+							"en": "1/2x",
+							"zh": "豌豆射手的1/2"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "lobbed cantaloupes explode above zombies",
+							"zh": "子弹在僵尸上空爆裂"
+						}
+					}
+				],
+				"Chat": {
+					"en": "As one of the most heat-relieving fruits, Cantaloupe-pult hates those who claimed him to cause \"inner heat\". He directs this fury towards zombies and they hardly survive from this.",
+					"zh": "作为最解暑的水果之一，哈密瓜投手痛恨那些给自己扣上“上火”帽子的家伙，他把这股怒火用到了僵尸身上，效果拔群。"
+				},
+				"BriefIntroduction": {
+					"en": "Heavily damages groups of zombies without smashing them",
+					"zh": "不直接砸中，子弹在空中对成群僵尸造成大量伤害"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"wintermelon"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -2924,6 +3002,77 @@
 				"BriefIntroduction": {
 					"en": "Breaks 1 rolling object, hurts zombies that step on it",
 					"zh": "对走过的僵尸造成伤害，并破坏 1 个滚动的物体"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 10
+				}
+			}
+		},
+		{
+			"aliases": [
+				"iceweed"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 10
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "Tile",
+							"zh": "本格"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Iceweeds damage and chill zombies that walk over them.",
+					"zh": "冰地刺对经过的僵尸造成伤害，并使之冷冻。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "can't be eaten by zombies",
+							"zh": "不会被僵尸啃食"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "can take three hits from rolling zombies when fed with Plantfood",
+							"zh": "使用叶绿素后能承受滚动前行的僵尸三次打击"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Iceweed is excited to get the call-up to the big leagues and can't wait to start refrigerating zombies whilst inflicting damage on them. He insisted we say \"whilst.\"",
+					"zh": "冰地刺激动地收到了顶级联赛的召唤，迫不及待地想要开始让扎穿僵尸，冻时冷藏他们。他坚持要我们用“冻时”而不是“同时”。"
+				},
+				"BriefIntroduction": {
+					"en": "Hurts and chills zombies that step on it",
+					"zh": "对走过的僵尸造成伤害并使之冷冻"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -3764,13 +3913,6 @@
 					{
 						"TYPE": "DAMAGE",
 						"VALUE": 10
-					},
-					{
-						"TYPE": "RANGE",
-						"SORT": {
-							"en": "Lobbed",
-							"zh": "抛物线"
-						}
 					},
 					{
 						"TYPE": "FAMILY"
@@ -5436,7 +5578,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 80
+						"VALUE": 70
 					},
 					{
 						"TYPE": "RANGE",
@@ -5460,7 +5602,7 @@
 							"zh": "特点"
 						},
 						"DESCRIPTION": {
-							"en": "charges down the the lane when defeated and snips zombies in front",
+							"en": "charges down the lane when defeated and snips zombies in front",
 							"zh": "被啃食完毕后沿着本行冲出，掐前方的僵尸"
 						}
 					}
@@ -6125,7 +6267,7 @@
 				],
 				"Introduction": {
 					"en": "Imitaters let you use two of the same plant during a level!",
-					"zh": "变身茄子允许你同一个关卡携带两张相同的植物卡片！"
+					"zh": "模仿者允许你同一个关卡携带两张相同的植物卡片！"
 				},
 				"Special": [
 					{
@@ -6141,7 +6283,7 @@
 				],
 				"Chat": {
 					"en": "Having studied French Theater at Julienne, the Imitater went to the streets with his art, and has perfected his technique he calls \"Potato stuck in a box\".",
-					"zh": "变身茄子在法国进修过表演艺术，在街头表演中完善了他的最新节目“关在盒子里的茄子”。"
+					"zh": "模仿者在法国进修过表演艺术，在街头表演中完善了他的最新节目“关在盒子里的茄子”。"
 				},
 				"BriefIntroduction": {
 					"en": "Lets you have two of the same plant",
@@ -7662,7 +7804,7 @@
 				"Special": [],
 				"Chat": {
 					"en": "Pea-nut knows that some folks have an aversion to him. He tries to be sensitive to their concerns and give them the space they need. Still, he can't help but miss the good old days - back when he was the most popular nut around.",
-					"zh": "花生射手知道有些人对他挺“过敏”。他试着了解他们的顾虑，并且给予对方足够的空间。即便如此，他仍然会情不自禁地怀念以前的时光——回到那个人人爱花生的时代。"
+					"zh": "花生知道有些人对他挺“过敏”。他试着了解他们的顾虑，并且给予对方足够的空间。即便如此，他仍然会情不自禁地怀念以前的时光——回到那个人人爱花生的时代。"
 				},
 				"BriefIntroduction": {
 					"en": "Shoots peanuts and blocks zombies",
@@ -7880,110 +8022,6 @@
 		},
 		{
 			"aliases": [
-				"tool_projectile_bowlingbulb1"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowlingbulb2"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowlingbulb3"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowlingbulb_explode"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
 				"guacodile"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -8046,136 +8084,6 @@
 				"BriefIntroduction": {
 					"en": "Shoots seeds, will rush all zombies ahead of him when attacked",
 					"zh": "发射子弹，受到攻击时跳起并冲向前方的所有僵尸"
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowling_wallnut"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowling_explodeonut"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowling_holonut"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowling_primalwallnut"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
-				},
-				"DisplayOffset": {
-					"x": 0,
-					"y": 0
-				}
-			}
-		},
-		{
-			"aliases": [
-				"tool_projectile_bowlingbulb_iceburg"
-			],
-			"objclass": "PlantAlmanacProperties",
-			"objdata": {
-				"Elements": [],
-				"Introduction": {
-					"en": "",
-					"zh": ""
-				},
-				"Special": [],
-				"Chat": {
-					"en": "",
-					"zh": ""
-				},
-				"BriefIntroduction": {
-					"en": "",
-					"zh": ""
 				},
 				"DisplayOffset": {
 					"x": 0,

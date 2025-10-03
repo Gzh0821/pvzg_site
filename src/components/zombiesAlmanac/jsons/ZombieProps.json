@@ -456,10 +456,10 @@
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
-				"Toughness": 460,
-				"EnragedDamageScale": 4,
+				"Toughness": 490,
+				"EnragedDamageScale": 10,
 				"EnragedSpeedScale": 4,
-				"NewspaperHealth": 800,
+				"NewspaperHealth": 1800,
 				"WavePointCost": 1200,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
@@ -537,6 +537,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"BallType": "busketball",
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
 				"ImmuneToSweetPotato": true,
@@ -544,7 +545,7 @@
 				"CannotBeTossedByCitron": true,
 				"CannotBeSwallowedByChomper": true,
 				"WalkSPS": 0.4,
-				"EatDPS": 100,
+				"EatDPS": 1000,
 				"Toughness": 750,
 				"LivesInDeepWater": true,
 				"NormalDeathWhenMowed": true,
@@ -948,6 +949,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"BoneType": "tombraiser_bone",
 				"CannotBeTossedByCitron": false,
 				"ThrowTimePerGroup": 2,
 				"TimeBetweenGroups": 6,
@@ -1071,6 +1073,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_egypt",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -1298,6 +1301,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_egypt",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -1504,6 +1508,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_egypt2",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -2795,6 +2800,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeSwallowedByChomper": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
@@ -3040,6 +3046,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_cowboy",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -3231,6 +3238,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_cowboy",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -3422,6 +3430,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_cowboy",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -4056,6 +4065,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "kongfu_boss_explode_bomb",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -4356,6 +4366,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ChiType": "kongfu_boss_blade_chi",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -4712,8 +4723,37 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 700,
 				"Weight": 2500,
+				"ChiType": "abbot_chi",
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_fan"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.135,
+				"EatDPS": 100,
+				"Toughness": 550,
+				"WavePointCost": 300,
+				"Weight": 2000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"TimeBeforeFirst": {
+					"Min": 3,
+					"Max": 4
+				},
+				"TimeBetween": {
+					"Min": 5,
+					"Max": 6
+				},
+				"StormType": "abbot_fan_storm",
+				"StormMaxDistance": 5,
+				"StormMinColumn": 2,
+				"StormMovingTime": 2
 			}
 		},
 		{
@@ -5207,6 +5247,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGrabbedByPtero": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
@@ -5305,6 +5346,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGrabbedByPtero": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
@@ -5329,6 +5371,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGrabbedByPtero": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
@@ -5354,6 +5397,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGrabbedByPtero": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
@@ -5441,6 +5485,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_future",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -5657,6 +5702,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_future",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -5888,6 +5934,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_future",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -6122,6 +6169,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_future",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -6763,6 +6811,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dark",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -7003,6 +7052,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dark",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -7243,6 +7293,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dark",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -7749,6 +7800,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"OctopusType": "octopus",
 				"CannotBeTossedByCitron": false,
 				"TimeBeforeFirst": 7,
 				"TimeBeforeFirstAdditional": 2,
@@ -7847,6 +7899,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dark",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -8077,6 +8130,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dark",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -8310,6 +8364,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dark",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -8690,6 +8745,7 @@
 				"SnowballsPerBarrage": 3,
 				"WavePointCost": 500,
 				"Weight": 3500,
+				"SnowballType": "hunter_snowball",
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -8700,6 +8756,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"SnowballType": "hunter_snowball",
 				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.2,
@@ -8927,6 +8984,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_iceage",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -9145,6 +9203,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_iceage",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -9362,6 +9421,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_iceage",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -10024,6 +10084,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_lostcity_sandbag",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -10281,6 +10342,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_lostcity_sandbag",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -10894,6 +10956,7 @@
 				"CannotCarryPlantfoodsInWaves": true,
 				"SmashDamage": 1500,
 				"JamStyle": "jam_metal",
+				"WaveType": "eighties_gargantuar_wave",
 				"WavePointCost": 1500,
 				"Weight": 3000,
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
@@ -10906,6 +10969,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_egypt",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -11189,6 +11253,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_egypt",
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -11691,6 +11756,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dino",
 				"CannotBeEnlightenedBySolarSage": true,
 				"IdleColumn": 6,
 				"ImmuneToSweetPotato": true,
@@ -11989,6 +12055,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dino",
 				"CannotBeEnlightenedBySolarSage": true,
 				"IdleColumn": 6,
 				"ImmuneToSweetPotato": true,
@@ -12290,6 +12357,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"MissileType": "zomboss_missile_dino",
 				"CannotBeEnlightenedBySolarSage": true,
 				"IdleColumn": 6,
 				"ImmuneToSweetPotato": true,
