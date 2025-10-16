@@ -40,8 +40,8 @@ Welcome to join our community and contribute to the development of "PvZ2 Gardend
     background="rgba(245, 158, 0, 0.15)"
   />
   <VPCard
-    title="QQ Announcement Group-4"
-    desc="Group Number:981880465, for getting the latest information"
+    title="QQ Announcement Group-5"
+    desc="Group Number:834051839, for getting the latest information"
     logo="/assets/image/qq.svg"
     link="https://qm.qq.com/q/8LkQioyGI2"
     background="rgba(228, 0, 54, 0.15)"
