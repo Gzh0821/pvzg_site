@@ -29,7 +29,7 @@ GE Patcher 是一个用于修改 PvZ2 Gardendless 游戏数据的工具，支持
 <ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-2336226859954206"
-data-ad-slot="3900516289"
+data-ad-slot="6758794743"
 data-ad-format="auto"
 data-full-width-responsive="true">
 </ins>
