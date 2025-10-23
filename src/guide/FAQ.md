@@ -16,7 +16,7 @@ order: 2
 ## 游戏常见问题
 
 > [!note]
-> 请在游玩或提问前阅读此 FaQ，此 FaQ 适用于 0.5.X 版本
+> 请在游玩或提问前阅读此 FaQ，此 FaQ 适用于 0.6.X 版本
 >
 > Q&A by @Mola Mola in Discord
 

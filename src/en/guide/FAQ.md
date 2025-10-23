@@ -16,7 +16,7 @@ order: 2
 ## Frequently Asked Game Questions
 
 > [!note]
-> Please read the FaQ before playing or asking questions. This FaQ is Valid till 0.5.X version
+> Please read the FaQ before playing or asking questions. This FaQ is Valid till 0.6.X version
 >
 > Q&A by @Mola Mola in Discord
 
