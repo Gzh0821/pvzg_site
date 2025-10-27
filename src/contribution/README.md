@@ -31,13 +31,13 @@ pageInfo: false
 </ins>
 
 <div class="vp-card-container">
-  <VPCard
+  <!-- <VPCard
     title="QQ活跃聊天群"
     desc="群号：980405270，适合想提供帮助，分享攻略和参与讨论的玩家"
     logo="/assets/image/qq.svg"
     link="https://qm.qq.com/q/MIqVcRAg8u"
     background="rgba(245, 158, 0, 0.15)"
-  />
+  /> -->
   <VPCard
     title="QQ公告群-5"
     desc="群号：834051839，适合潜水和获取最新版本的信息"
