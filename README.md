@@ -56,6 +56,10 @@ Deploy the game locally by using [Docker image](https://hub.docker.com/r/gaozih/
 
 <div align="center">
 
+Support us in Buy Me a Coffee or Github Sponsors!
+
+<a href="https://www.buymeacoffee.com/gaozih" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 CDN acceleration and security protection for this project are sponsored by Tencent EdgeOne.
 
 <a href="https://edgeone.ai/" target="_blank">
