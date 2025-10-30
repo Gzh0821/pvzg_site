@@ -2,7 +2,7 @@
 home: true
 icon: home
 comment: false
-title: Home Page
+title: Home
 heroImage: /pvz_logo@200.webp
 heroImageStyle:  
   border-radius: 20%

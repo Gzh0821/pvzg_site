@@ -1,5 +1,5 @@
 ---
-title: 教程和指南
+title: 指南
 icon: book
 pageInfo: false
 comment: false
