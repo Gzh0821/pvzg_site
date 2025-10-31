@@ -10,7 +10,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -22,7 +23,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_armor1@ZombieProps)"
+      "PROPS": "RTID(tutorial_armor1@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -34,7 +36,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_armor2@ZombieProps)"
+      "PROPS": "RTID(tutorial_armor2@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -46,7 +49,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_armor4@ZombieProps)"
+      "PROPS": "RTID(tutorial_armor4@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -58,7 +62,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_flag@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_flag@ZombieProps)"
+      "PROPS": "RTID(tutorial_flag@ZombieProps)",
+      "RES": "BasicFlag"
     },
     {
       "NAME": {
@@ -70,7 +75,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(tutorial_flag_veteran@ZombieProps)",
+      "RES": "BasicRally"
     },
     {
       "NAME": {
@@ -89,7 +95,8 @@
       ],
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(duckytube@ZombieAlmanac)",
-      "PROPS": "RTID(duckytube@ZombieProps)"
+      "PROPS": "RTID(duckytube@ZombieProps)",
+      "RES": "DuckyTube"
     },
     {
       "NAME": {
@@ -101,7 +108,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(duckytube_armor1@ZombieProps)"
+      "PROPS": "RTID(duckytube_armor1@ZombieProps)",
+      "RES": "DuckyTube"
     },
     {
       "NAME": {
@@ -113,7 +121,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(duckytube_armor2@ZombieProps)"
+      "PROPS": "RTID(duckytube_armor2@ZombieProps)",
+      "RES": "DuckyTube"
     },
     {
       "NAME": {
@@ -125,7 +134,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(duckytube_armor4@ZombieProps)"
+      "PROPS": "RTID(duckytube_armor4@ZombieProps)",
+      "RES": "DuckyTube"
     },
     {
       "NAME": {
@@ -137,7 +147,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(duckytube_flag@ZombieProps)"
+      "PROPS": "RTID(duckytube_flag@ZombieProps)",
+      "RES": "DuckyTubeFlag"
     },
     {
       "NAME": {
@@ -149,7 +160,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(duckytube_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(duckytube_flag_veteran@ZombieProps)",
+      "RES": "DuckyTubeRally"
     },
     {
       "NAME": {
@@ -159,12 +171,14 @@
       "_CARDSPRITENAME": "imp",
       "CODENAME": "tutorial_imp",
       "SubZombieList": [
-        "summer_imp"
+        "summer_imp",
+        "halloween_imp"
       ],
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_imp@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_imp@ZombieProps)"
+      "PROPS": "RTID(tutorial_imp@ZombieProps)",
+      "RES": "Imp"
     },
     {
       "NAME": {
@@ -172,14 +186,16 @@
         "zh": "巨尸"
       },
       "SubZombieList": [
-        "summer_gargantuar"
+        "summer_gargantuar",
+        "halloween_gargantuar"
       ],
       "_CARDSPRITENAME": "gargantuar",
       "CODENAME": "tutorial_gargantuar",
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)"
+      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)",
+      "RES": "Gargantuar"
     },
     {
       "NAME": {
@@ -191,7 +207,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(vase_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(vase_gargantuar@ZombieProps)"
+      "PROPS": "RTID(vase_gargantuar@ZombieProps)",
+      "RES": "VaseGargantuar"
     },
     {
       "NAME": {
@@ -203,7 +220,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(bobsled@ZombieAlmanac)",
-      "PROPS": "RTID(bobsled@ZombieProps)"
+      "PROPS": "RTID(bobsled@ZombieProps)",
+      "RES": "BobSled"
     },
     {
       "NAME": {
@@ -215,7 +233,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(bobsled_team@ZombieAlmanac)",
-      "PROPS": "RTID(bobsled_team@ZombieProps)"
+      "PROPS": "RTID(bobsled_team@ZombieProps)",
+      "RES": "BobSledTeam"
     },
     {
       "NAME": {
@@ -227,7 +246,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(newspaper@ZombieAlmanac)",
-      "PROPS": "RTID(newspaper@ZombieProps)"
+      "PROPS": "RTID(newspaper@ZombieProps)",
+      "RES": "ModernNewspaper"
     },
     {
       "NAME": {
@@ -239,7 +259,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(newspaper_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(newspaper_veteran@ZombieProps)"
+      "PROPS": "RTID(newspaper_veteran@ZombieProps)",
+      "RES": "ModernNewspaperVeteran"
     },
     {
       "NAME": {
@@ -251,7 +272,8 @@
       "SUNCOST": 400,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(modern_balloon@ZombieAlmanac)",
-      "PROPS": "RTID(modern_balloon@ZombieProps)"
+      "PROPS": "RTID(modern_balloon@ZombieProps)",
+      "RES": "Balloon"
     },
     {
       "NAME": {
@@ -263,7 +285,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(modern_allstar@ZombieAlmanac)",
-      "PROPS": "RTID(modern_allstar@ZombieProps)"
+      "PROPS": "RTID(modern_allstar@ZombieProps)",
+      "RES": "Allstar"
     },
     {
       "NAME": {
@@ -275,7 +298,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(modern_superfanimp@ZombieAlmanac)",
-      "PROPS": "RTID(modern_superfanimp@ZombieProps)"
+      "PROPS": "RTID(modern_superfanimp@ZombieProps)",
+      "RES": "ModernSuperFan"
     },
     {
       "NAME": {
@@ -287,7 +311,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(modern_superfanimp@ZombieProps)"
+      "PROPS": "RTID(modern_superfanimp@ZombieProps)",
+      "RES": "LNYSuperFan"
     },
     {
       "NAME": {
@@ -299,7 +324,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(zomboni@ZombieAlmanac)",
-      "PROPS": "RTID(zomboni@ZombieProps)"
+      "PROPS": "RTID(zomboni@ZombieProps)",
+      "RES": "Zomboni"
     },
     {
       "NAME": {
@@ -311,7 +337,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(catapult@ZombieAlmanac)",
-      "PROPS": "RTID(catapult@ZombieProps)"
+      "PROPS": "RTID(catapult@ZombieProps)",
+      "RES": "Catapult"
     },
     {
       "NAME": {
@@ -323,7 +350,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_modern1@ZombieProps)"
+      "PROPS": "RTID(zombossmech_modern1@ZombieProps)",
+      "RES": "ModernZombossMech"
     },
     {
       "NAME": {
@@ -335,7 +363,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(mummy@ZombieAlmanac)",
-      "PROPS": "RTID(mummy@ZombieProps)"
+      "PROPS": "RTID(mummy@ZombieProps)",
+      "RES": "EgyptBasic"
     },
     {
       "NAME": {
@@ -347,7 +376,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(mummy_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(mummy_armor1@ZombieProps)"
+      "PROPS": "RTID(mummy_armor1@ZombieProps)",
+      "RES": "EgyptBasic"
     },
     {
       "NAME": {
@@ -359,7 +389,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(mummy_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(mummy_armor2@ZombieProps)"
+      "PROPS": "RTID(mummy_armor2@ZombieProps)",
+      "RES": "EgyptBasic"
     },
     {
       "NAME": {
@@ -371,7 +402,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(mummy_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(mummy_armor4@ZombieProps)"
+      "PROPS": "RTID(mummy_armor4@ZombieProps)",
+      "RES": "EgyptBasic"
     },
     {
       "NAME": {
@@ -383,7 +415,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(mummy_flag@ZombieAlmanac)",
-      "PROPS": "RTID(mummy_flag@ZombieProps)"
+      "PROPS": "RTID(mummy_flag@ZombieProps)",
+      "RES": "EgyptFlag"
     },
     {
       "NAME": {
@@ -395,7 +428,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(mummy_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(mummy_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(mummy_flag_veteran@ZombieProps)",
+      "RES": "EgyptRally"
     },
     {
       "NAME": {
@@ -407,7 +441,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(ra@ZombieAlmanac)",
-      "PROPS": "RTID(ra@ZombieProps)"
+      "PROPS": "RTID(ra@ZombieProps)",
+      "RES": "EgyptRa"
     },
     {
       "NAME": {
@@ -419,7 +454,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_segment@ZombieProps)"
+      "PROPS": "RTID(camel_segment@ZombieProps)",
+      "RES": "EgyptCamel"
     },
     {
       "NAME": {
@@ -442,7 +478,8 @@
         "camel_manyhump_touch"
       ],
       "ALMANAC": "RTID(camel_onehump@ZombieAlmanac)",
-      "PROPS": "RTID(camel_onehump@ZombieProps)"
+      "PROPS": "RTID(camel_onehump@ZombieProps)",
+      "RES": "EgyptCamel"
     },
     {
       "NAME": {
@@ -454,7 +491,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_twohump@ZombieProps)"
+      "PROPS": "RTID(camel_twohump@ZombieProps)",
+      "RES": "EgyptCamel"
     },
     {
       "NAME": {
@@ -466,7 +504,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_threehump@ZombieProps)"
+      "PROPS": "RTID(camel_threehump@ZombieProps)",
+      "RES": "EgyptCamel"
     },
     {
       "NAME": {
@@ -478,7 +517,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_manyhump@ZombieProps)"
+      "PROPS": "RTID(camel_manyhump@ZombieProps)",
+      "RES": "EgyptCamel"
     },
     {
       "NAME": {
@@ -490,7 +530,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_segment_touch@ZombieProps)"
+      "PROPS": "RTID(camel_segment_touch@ZombieProps)",
+      "RES": "EgyptCamelTouch"
     },
     {
       "NAME": {
@@ -502,7 +543,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_onehump_touch@ZombieProps)"
+      "PROPS": "RTID(camel_onehump_touch@ZombieProps)",
+      "RES": "EgyptCamelTouch"
     },
     {
       "NAME": {
@@ -514,7 +556,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_twohump_touch@ZombieProps)"
+      "PROPS": "RTID(camel_twohump_touch@ZombieProps)",
+      "RES": "EgyptCamelTouch"
     },
     {
       "NAME": {
@@ -526,7 +569,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_threehump_touch@ZombieProps)"
+      "PROPS": "RTID(camel_threehump_touch@ZombieProps)",
+      "RES": "EgyptCamelTouch"
     },
     {
       "NAME": {
@@ -538,7 +582,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(camel_manyhump_touch@ZombieProps)"
+      "PROPS": "RTID(camel_manyhump_touch@ZombieProps)",
+      "RES": "EgyptCamelTouch"
     },
     {
       "NAME": {
@@ -550,7 +595,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(explorer@ZombieAlmanac)",
-      "PROPS": "RTID(explorer@ZombieProps)"
+      "PROPS": "RTID(explorer@ZombieProps)",
+      "RES": "EgyptExplorer"
     },
     {
       "NAME": {
@@ -562,7 +608,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(explorer_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(explorer_veteran@ZombieProps)"
+      "PROPS": "RTID(explorer_veteran@ZombieProps)",
+      "RES": "EgyptTorchlight"
     },
     {
       "NAME": {
@@ -574,7 +621,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(tomb_raiser@ZombieAlmanac)",
-      "PROPS": "RTID(tomb_raiser@ZombieProps)"
+      "PROPS": "RTID(tomb_raiser@ZombieProps)",
+      "RES": "EgyptTombRaiser"
     },
     {
       "NAME": {
@@ -586,7 +634,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(pharaoh_inner@ZombieProps)"
+      "PROPS": "RTID(pharaoh_inner@ZombieProps)",
+      "RES": "EgyptPharaohInner"
     },
     {
       "NAME": {
@@ -598,7 +647,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(pharaoh_weak@ZombieProps)"
+      "PROPS": "RTID(pharaoh_weak@ZombieProps)",
+      "RES": "EgyptPharaohWeak"
     },
     {
       "NAME": {
@@ -614,7 +664,8 @@
       ],
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(pharaoh@ZombieAlmanac)",
-      "PROPS": "RTID(pharaoh@ZombieProps)"
+      "PROPS": "RTID(pharaoh@ZombieProps)",
+      "RES": "EgyptPharaoh"
     },
     {
       "NAME": {
@@ -626,7 +677,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(egypt_imp@ZombieAlmanac)",
-      "PROPS": "RTID(egypt_imp@ZombieProps)"
+      "PROPS": "RTID(egypt_imp@ZombieProps)",
+      "RES": "EgyptImp"
     },
     {
       "NAME": {
@@ -638,7 +690,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(egypt_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(egypt_gargantuar@ZombieProps)"
+      "PROPS": "RTID(egypt_gargantuar@ZombieProps)",
+      "RES": "EgyptGargantuar"
     },
     {
       "NAME": {
@@ -653,7 +706,8 @@
       ],
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(zombossmech_egypt@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_egypt@ZombieProps)"
+      "PROPS": "RTID(zombossmech_egypt@ZombieProps)",
+      "RES": "EgyptZombossMech"
     },
     {
       "NAME": {
@@ -665,7 +719,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "egypt",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_egypt2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_egypt2@ZombieProps)",
+      "RES": "EgyptZombossMech"
     },
     {
       "NAME": {
@@ -677,7 +732,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate@ZombieAlmanac)",
-      "PROPS": "RTID(pirate@ZombieProps)"
+      "PROPS": "RTID(pirate@ZombieProps)",
+      "RES": "PirateBasic"
     },
     {
       "NAME": {
@@ -689,7 +745,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_armor1@ZombieProps)"
+      "PROPS": "RTID(pirate_armor1@ZombieProps)",
+      "RES": "PirateBasic"
     },
     {
       "NAME": {
@@ -701,7 +758,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_armor2@ZombieProps)"
+      "PROPS": "RTID(pirate_armor2@ZombieProps)",
+      "RES": "PirateBasic"
     },
     {
       "NAME": {
@@ -713,7 +771,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_armor4@ZombieProps)"
+      "PROPS": "RTID(pirate_armor4@ZombieProps)",
+      "RES": "PirateBasic"
     },
     {
       "NAME": {
@@ -725,7 +784,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_flag@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_flag@ZombieProps)"
+      "PROPS": "RTID(pirate_flag@ZombieProps)",
+      "RES": "PirateFlag"
     },
     {
       "NAME": {
@@ -737,7 +797,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(pirate_flag_veteran@ZombieProps)",
+      "RES": "PirateRally"
     },
     {
       "NAME": {
@@ -749,7 +810,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(swashbuckler@ZombieAlmanac)",
-      "PROPS": "RTID(swashbuckler@ZombieProps)"
+      "PROPS": "RTID(swashbuckler@ZombieProps)",
+      "RES": "PirateSwashbuckler"
     },
     {
       "NAME": {
@@ -761,7 +823,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(seagull@ZombieAlmanac)",
-      "PROPS": "RTID(seagull@ZombieProps)"
+      "PROPS": "RTID(seagull@ZombieProps)",
+      "RES": "PirateSeagull"
     },
     {
       "NAME": {
@@ -773,7 +836,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pelican@ZombieAlmanac)",
-      "PROPS": "RTID(pelican@ZombieProps)"
+      "PROPS": "RTID(pelican@ZombieProps)",
+      "RES": "PiratePelican"
     },
     {
       "NAME": {
@@ -788,7 +852,8 @@
       ],
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(barrelroller@ZombieAlmanac)",
-      "PROPS": "RTID(barrelroller@ZombieProps)"
+      "PROPS": "RTID(barrelroller@ZombieProps)",
+      "RES": "PirateBarrelPusher"
     },
     {
       "NAME": {
@@ -800,7 +865,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_barrel@ZombieProps)"
+      "PROPS": "RTID(pirate_barrel@ZombieProps)",
+      "RES": "PirateBarrel"
     },
     {
       "NAME": {
@@ -812,7 +878,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(cannon@ZombieAlmanac)",
-      "PROPS": "RTID(cannon@ZombieProps)"
+      "PROPS": "RTID(cannon@ZombieProps)",
+      "RES": "PirateImpCannon"
     },
     {
       "NAME": {
@@ -824,7 +891,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_captain@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_captain@ZombieProps)"
+      "PROPS": "RTID(pirate_captain@ZombieProps)",
+      "RES": "PirateCaptain"
     },
     {
       "NAME": {
@@ -836,7 +904,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_captain_parrot@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_captain_parrot@ZombieProps)"
+      "PROPS": "RTID(pirate_captain_parrot@ZombieProps)",
+      "RES": "PirateCaptainParrot"
     },
     {
       "NAME": {
@@ -848,7 +917,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_imp@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_imp@ZombieProps)"
+      "PROPS": "RTID(pirate_imp@ZombieProps)",
+      "RES": "PirateImp"
     },
     {
       "NAME": {
@@ -860,7 +930,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(pirate_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(pirate_gargantuar@ZombieProps)"
+      "PROPS": "RTID(pirate_gargantuar@ZombieProps)",
+      "RES": "PirateGargantuar"
     },
     {
       "NAME": {
@@ -875,7 +946,8 @@
       ],
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(zombossmech_pirate@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_pirate@ZombieProps)"
+      "PROPS": "RTID(zombossmech_pirate@ZombieProps)",
+      "RES": "PirateZombossMech"
     },
     {
       "NAME": {
@@ -887,7 +959,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "pirate",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_pirate2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_pirate2@ZombieProps)",
+      "RES": "PirateZombossMech"
     },
     {
       "NAME": {
@@ -899,7 +972,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(cowboy@ZombieAlmanac)",
-      "PROPS": "RTID(cowboy@ZombieProps)"
+      "PROPS": "RTID(cowboy@ZombieProps)",
+      "RES": "CowboyBasic"
     },
     {
       "NAME": {
@@ -911,7 +985,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(cowboy_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(cowboy_armor1@ZombieProps)"
+      "PROPS": "RTID(cowboy_armor1@ZombieProps)",
+      "RES": "CowboyBasic"
     },
     {
       "NAME": {
@@ -923,7 +998,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(cowboy_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(cowboy_armor2@ZombieProps)"
+      "PROPS": "RTID(cowboy_armor2@ZombieProps)",
+      "RES": "CowboyBasic"
     },
     {
       "NAME": {
@@ -935,7 +1011,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(cowboy_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(cowboy_armor4@ZombieProps)"
+      "PROPS": "RTID(cowboy_armor4@ZombieProps)",
+      "RES": "CowboyBasic"
     },
     {
       "NAME": {
@@ -947,7 +1024,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(cowboy_flag@ZombieAlmanac)",
-      "PROPS": "RTID(cowboy_flag@ZombieProps)"
+      "PROPS": "RTID(cowboy_flag@ZombieProps)",
+      "RES": "CowboyFlag"
     },
     {
       "NAME": {
@@ -959,7 +1037,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(cowboy_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(cowboy_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(cowboy_flag_veteran@ZombieProps)",
+      "RES": "CowboyRally"
     },
     {
       "NAME": {
@@ -971,7 +1050,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(prospector@ZombieAlmanac)",
-      "PROPS": "RTID(prospector@ZombieProps)"
+      "PROPS": "RTID(prospector@ZombieProps)",
+      "RES": "CowboyProspector"
     },
     {
       "NAME": {
@@ -983,7 +1063,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(piano@ZombieAlmanac)",
-      "PROPS": "RTID(piano@ZombieProps)"
+      "PROPS": "RTID(piano@ZombieProps)",
+      "RES": "CowboyPiano"
     },
     {
       "NAME": {
@@ -999,7 +1080,8 @@
       ],
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(poncho@ZombieAlmanac)",
-      "PROPS": "RTID(poncho@ZombieProps)"
+      "PROPS": "RTID(poncho@ZombieProps)",
+      "RES": "CowboyPoncho"
     },
     {
       "NAME": {
@@ -1011,7 +1093,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(poncho_no_plate@ZombieProps)"
+      "PROPS": "RTID(poncho_no_plate@ZombieProps)",
+      "RES": "CowboyPoncho"
     },
     {
       "NAME": {
@@ -1023,7 +1106,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(poncho_plate@ZombieProps)"
+      "PROPS": "RTID(poncho_plate@ZombieProps)",
+      "RES": "CowboyPoncho"
     },
     {
       "NAME": {
@@ -1035,7 +1119,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(chicken_farmer@ZombieAlmanac)",
-      "PROPS": "RTID(chicken_farmer@ZombieProps)"
+      "PROPS": "RTID(chicken_farmer@ZombieProps)",
+      "RES": "CowboyChickenFarmer"
     },
     {
       "NAME": {
@@ -1050,7 +1135,8 @@
       ],
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(chicken@ZombieAlmanac)",
-      "PROPS": "RTID(chicken@ZombieProps)"
+      "PROPS": "RTID(chicken@ZombieProps)",
+      "RES": "CowboyChicken"
     },
     {
       "NAME": {
@@ -1062,7 +1148,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "market",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(chicken_pumpkin@ZombieProps)"
+      "PROPS": "RTID(chicken_pumpkin@ZombieProps)",
+      "RES": "CowboyChickenPumpkin"
     },
     {
       "NAME": {
@@ -1074,7 +1161,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(west_bull@ZombieAlmanac)",
-      "PROPS": "RTID(west_bull@ZombieProps)"
+      "PROPS": "RTID(west_bull@ZombieProps)",
+      "RES": "CowboyBull"
     },
     {
       "NAME": {
@@ -1086,7 +1174,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(west_bull_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(west_bull_veteran@ZombieProps)"
+      "PROPS": "RTID(west_bull_veteran@ZombieProps)",
+      "RES": "CowboyBlackBull"
     },
     {
       "NAME": {
@@ -1098,7 +1187,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(west_bullrider@ZombieAlmanac)",
-      "PROPS": "RTID(west_bullrider@ZombieProps)"
+      "PROPS": "RTID(west_bullrider@ZombieProps)",
+      "RES": "CowboyImp"
     },
     {
       "NAME": {
@@ -1110,7 +1200,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(cowboy_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(cowboy_gargantuar@ZombieProps)"
+      "PROPS": "RTID(cowboy_gargantuar@ZombieProps)",
+      "RES": "CowboyGargantuar"
     },
     {
       "NAME": {
@@ -1125,7 +1216,8 @@
       ],
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(zombossmech_cowboy@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_cowboy@ZombieProps)"
+      "PROPS": "RTID(zombossmech_cowboy@ZombieProps)",
+      "RES": "CowboyZombossMech"
     },
     {
       "NAME": {
@@ -1137,7 +1229,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "cowboy",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_cowboy2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_cowboy2@ZombieProps)",
+      "RES": "CowboyZombossMech"
     },
     {
       "NAME": {
@@ -1149,7 +1242,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future@ZombieAlmanac)",
-      "PROPS": "RTID(future@ZombieProps)"
+      "PROPS": "RTID(future@ZombieProps)",
+      "RES": "FutureBasic"
     },
     {
       "NAME": {
@@ -1161,7 +1255,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(future_armor1@ZombieProps)"
+      "PROPS": "RTID(future_armor1@ZombieProps)",
+      "RES": "FutureBasic"
     },
     {
       "NAME": {
@@ -1173,7 +1268,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(future_armor2@ZombieProps)"
+      "PROPS": "RTID(future_armor2@ZombieProps)",
+      "RES": "FutureBasic"
     },
     {
       "NAME": {
@@ -1185,7 +1281,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(future_armor4@ZombieProps)"
+      "PROPS": "RTID(future_armor4@ZombieProps)",
+      "RES": "FutureBasic"
     },
     {
       "NAME": {
@@ -1197,7 +1294,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_flag@ZombieAlmanac)",
-      "PROPS": "RTID(future_flag@ZombieProps)"
+      "PROPS": "RTID(future_flag@ZombieProps)",
+      "RES": "FutureFlag"
     },
     {
       "NAME": {
@@ -1209,7 +1307,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(future_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(future_flag_veteran@ZombieProps)",
+      "RES": "FutureRally"
     },
     {
       "NAME": {
@@ -1221,7 +1320,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_jetpack@ZombieAlmanac)",
-      "PROPS": "RTID(future_jetpack@ZombieProps)"
+      "PROPS": "RTID(future_jetpack@ZombieProps)",
+      "RES": "FutureJetpack"
     },
     {
       "NAME": {
@@ -1233,7 +1333,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "homeless",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(future_jetpack@ZombieProps)"
+      "PROPS": "RTID(future_jetpack@ZombieProps)",
+      "RES": "FutureJetpackBirthday"
     },
     {
       "NAME": {
@@ -1245,7 +1346,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_jetpack_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(future_jetpack_veteran@ZombieProps)"
+      "PROPS": "RTID(future_jetpack_veteran@ZombieProps)",
+      "RES": "FutureJetpackVeteran"
     },
     {
       "NAME": {
@@ -1257,7 +1359,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_jetpack_disco@ZombieAlmanac)",
-      "PROPS": "RTID(future_jetpack_disco@ZombieProps)"
+      "PROPS": "RTID(future_jetpack_disco@ZombieProps)",
+      "RES": "FutureJetpackDisco"
     },
     {
       "NAME": {
@@ -1274,7 +1377,8 @@
       ],
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_protector@ZombieAlmanac)",
-      "PROPS": "RTID(future_protector@ZombieProps)"
+      "PROPS": "RTID(future_protector@ZombieProps)",
+      "RES": "FutureProtector"
     },
     {
       "NAME": {
@@ -1286,7 +1390,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(future_protector_shield@ZombieProps)"
+      "PROPS": "RTID(future_protector_shield@ZombieProps)",
+      "RES": "FutureProtectorShield"
     },
     {
       "NAME": {
@@ -1298,7 +1403,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(future_infinut_shield@ZombieProps)"
+      "PROPS": "RTID(future_infinut_shield@ZombieProps)",
+      "RES": "FutureInfiNutShield"
     },
     {
       "NAME": {
@@ -1310,7 +1416,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(modern_moonflower_shield@ZombieProps)"
+      "PROPS": "RTID(modern_moonflower_shield@ZombieProps)",
+      "RES": "ModernMoonflowerShield"
     },
     {
       "NAME": {
@@ -1322,7 +1429,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(mech_cone@ZombieAlmanac)",
-      "PROPS": "RTID(mech_cone@ZombieProps)"
+      "PROPS": "RTID(mech_cone@ZombieProps)",
+      "RES": "FutureMechCone"
     },
     {
       "NAME": {
@@ -1334,7 +1442,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(football_mech@ZombieAlmanac)",
-      "PROPS": "RTID(football_mech@ZombieProps)"
+      "PROPS": "RTID(football_mech@ZombieProps)",
+      "RES": "FutureMechFootball"
     },
     {
       "NAME": {
@@ -1346,7 +1455,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(disco_mech@ZombieAlmanac)",
-      "PROPS": "RTID(disco_mech@ZombieProps)"
+      "PROPS": "RTID(disco_mech@ZombieProps)",
+      "RES": "FutureMechDisco"
     },
     {
       "NAME": {
@@ -1358,7 +1468,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_imp@ZombieAlmanac)",
-      "PROPS": "RTID(future_imp@ZombieProps)"
+      "PROPS": "RTID(future_imp@ZombieProps)",
+      "RES": "FutureImp"
     },
     {
       "NAME": {
@@ -1370,7 +1481,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(future_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(future_gargantuar@ZombieProps)"
+      "PROPS": "RTID(future_gargantuar@ZombieProps)",
+      "RES": "FutureGargantuar"
     },
     {
       "NAME": {
@@ -1386,7 +1498,8 @@
       ],
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(zombossmech_future@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_future@ZombieProps)"
+      "PROPS": "RTID(zombossmech_future@ZombieProps)",
+      "RES": "FutureZombossMech"
     },
     {
       "NAME": {
@@ -1398,7 +1511,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "future",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_future2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_future2@ZombieProps)",
+      "RES": "FutureZombossMech"
     },
     {
       "NAME": {
@@ -1410,7 +1524,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark@ZombieAlmanac)",
-      "PROPS": "RTID(dark@ZombieProps)"
+      "PROPS": "RTID(dark@ZombieProps)",
+      "RES": "DarkBasic"
     },
     {
       "NAME": {
@@ -1422,7 +1537,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(dark_armor1@ZombieProps)"
+      "PROPS": "RTID(dark_armor1@ZombieProps)",
+      "RES": "DarkBasic"
     },
     {
       "NAME": {
@@ -1434,7 +1550,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(dark_armor2@ZombieProps)"
+      "PROPS": "RTID(dark_armor2@ZombieProps)",
+      "RES": "DarkBasic"
     },
     {
       "NAME": {
@@ -1446,7 +1563,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_armor3@ZombieAlmanac)",
-      "PROPS": "RTID(dark_armor3@ZombieProps)"
+      "PROPS": "RTID(dark_armor3@ZombieProps)",
+      "RES": "DarkBasic"
     },
     {
       "NAME": {
@@ -1458,7 +1576,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(dark_armor4@ZombieProps)"
+      "PROPS": "RTID(dark_armor4@ZombieProps)",
+      "RES": "DarkBasic"
     },
     {
       "NAME": {
@@ -1470,7 +1589,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_flag@ZombieAlmanac)",
-      "PROPS": "RTID(dark_flag@ZombieProps)"
+      "PROPS": "RTID(dark_flag@ZombieProps)",
+      "RES": "DarkFlag"
     },
     {
       "NAME": {
@@ -1482,7 +1602,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(dark_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(dark_flag_veteran@ZombieProps)",
+      "RES": "DarkRally"
     },
     {
       "NAME": {
@@ -1494,7 +1615,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_juggler@ZombieAlmanac)",
-      "PROPS": "RTID(dark_juggler@ZombieProps)"
+      "PROPS": "RTID(dark_juggler@ZombieProps)",
+      "RES": "DarkJester"
     },
     {
       "NAME": {
@@ -1506,7 +1628,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_wizard@ZombieAlmanac)",
-      "PROPS": "RTID(dark_wizard@ZombieProps)"
+      "PROPS": "RTID(dark_wizard@ZombieProps)",
+      "RES": "DarkWizard"
     },
     {
       "NAME": {
@@ -1518,7 +1641,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_wizard_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(dark_wizard_veteran@ZombieProps)"
+      "PROPS": "RTID(dark_wizard_veteran@ZombieProps)",
+      "RES": "DarkWizardVeteran"
     },
     {
       "NAME": {
@@ -1530,7 +1654,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_king@ZombieAlmanac)",
-      "PROPS": "RTID(dark_king@ZombieProps)"
+      "PROPS": "RTID(dark_king@ZombieProps)",
+      "RES": "DarkKing"
     },
     {
       "NAME": {
@@ -1542,7 +1667,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_king_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(dark_king_veteran@ZombieProps)"
+      "PROPS": "RTID(dark_king_veteran@ZombieProps)",
+      "RES": "DarkKingVeteran"
     },
     {
       "NAME": {
@@ -1554,7 +1680,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_imp_dragon@ZombieAlmanac)",
-      "PROPS": "RTID(dark_imp_dragon@ZombieProps)"
+      "PROPS": "RTID(dark_imp_dragon@ZombieProps)",
+      "RES": "DragonImp"
     },
     {
       "NAME": {
@@ -1566,7 +1693,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_imp@ZombieAlmanac)",
-      "PROPS": "RTID(dark_imp@ZombieProps)"
+      "PROPS": "RTID(dark_imp@ZombieProps)",
+      "RES": "DarkImp"
     },
     {
       "NAME": {
@@ -1578,7 +1706,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(dark_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(dark_gargantuar@ZombieProps)"
+      "PROPS": "RTID(dark_gargantuar@ZombieProps)",
+      "RES": "DarkGargantuar"
     },
     {
       "NAME": {
@@ -1593,7 +1722,8 @@
       ],
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(zombossmech_dark@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_dark@ZombieProps)"
+      "PROPS": "RTID(zombossmech_dark@ZombieProps)",
+      "RES": "DarkZombossMech"
     },
     {
       "NAME": {
@@ -1606,7 +1736,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dark",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_dark2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_dark2@ZombieProps)",
+      "RES": "DarkZombossMech"
     },
     {
       "NAME": {
@@ -1618,7 +1749,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach@ZombieAlmanac)",
-      "PROPS": "RTID(beach@ZombieProps)"
+      "PROPS": "RTID(beach@ZombieProps)",
+      "RES": "BeachBasic"
     },
     {
       "NAME": {
@@ -1630,7 +1762,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(beach_armor1@ZombieProps)"
+      "PROPS": "RTID(beach_armor1@ZombieProps)",
+      "RES": "BeachBasic"
     },
     {
       "NAME": {
@@ -1642,7 +1775,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(beach_armor2@ZombieProps)"
+      "PROPS": "RTID(beach_armor2@ZombieProps)",
+      "RES": "BeachBasic"
     },
     {
       "NAME": {
@@ -1654,7 +1788,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(beach_armor4@ZombieProps)"
+      "PROPS": "RTID(beach_armor4@ZombieProps)",
+      "RES": "BeachBasic"
     },
     {
       "NAME": {
@@ -1666,7 +1801,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_fem@ZombieAlmanac)",
-      "PROPS": "RTID(beach_fem@ZombieProps)"
+      "PROPS": "RTID(beach_fem@ZombieProps)",
+      "RES": "BeachFemale"
     },
     {
       "NAME": {
@@ -1678,7 +1814,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_fem_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(beach_fem_armor1@ZombieProps)"
+      "PROPS": "RTID(beach_fem_armor1@ZombieProps)",
+      "RES": "BeachFemale"
     },
     {
       "NAME": {
@@ -1690,7 +1827,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_fem_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(beach_fem_armor2@ZombieProps)"
+      "PROPS": "RTID(beach_fem_armor2@ZombieProps)",
+      "RES": "BeachFemale"
     },
     {
       "NAME": {
@@ -1702,7 +1840,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_fem_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(beach_fem_armor4@ZombieProps)"
+      "PROPS": "RTID(beach_fem_armor4@ZombieProps)",
+      "RES": "BeachFemale"
     },
     {
       "NAME": {
@@ -1714,7 +1853,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_flag@ZombieAlmanac)",
-      "PROPS": "RTID(beach_flag@ZombieProps)"
+      "PROPS": "RTID(beach_flag@ZombieProps)",
+      "RES": "BeachFlag"
     },
     {
       "NAME": {
@@ -1726,7 +1866,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(beach_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(beach_flag_veteran@ZombieProps)",
+      "RES": "BeachRally"
     },
     {
       "NAME": {
@@ -1738,7 +1879,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_snorkel@ZombieAlmanac)",
-      "PROPS": "RTID(beach_snorkel@ZombieProps)"
+      "PROPS": "RTID(beach_snorkel@ZombieProps)",
+      "RES": "BeachSnorkel"
     },
     {
       "NAME": {
@@ -1750,7 +1892,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_surfer@ZombieAlmanac)",
-      "PROPS": "RTID(beach_surfer@ZombieProps)"
+      "PROPS": "RTID(beach_surfer@ZombieProps)",
+      "RES": "BeachSurfer"
     },
     {
       "NAME": {
@@ -1762,7 +1905,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_surfer_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(beach_surfer_veteran@ZombieProps)"
+      "PROPS": "RTID(beach_surfer_veteran@ZombieProps)",
+      "RES": "BeachSurferVeteran"
     },
     {
       "NAME": {
@@ -1774,7 +1918,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_octopus@ZombieAlmanac)",
-      "PROPS": "RTID(beach_octopus@ZombieProps)"
+      "PROPS": "RTID(beach_octopus@ZombieProps)",
+      "RES": "BeachOctopus"
     },
     {
       "NAME": {
@@ -1786,7 +1931,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_fisherman@ZombieAlmanac)",
-      "PROPS": "RTID(beach_fisherman@ZombieProps)"
+      "PROPS": "RTID(beach_fisherman@ZombieProps)",
+      "RES": "BeachFisher"
     },
     {
       "NAME": {
@@ -1798,7 +1944,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_imp@ZombieAlmanac)",
-      "PROPS": "RTID(beach_imp@ZombieProps)"
+      "PROPS": "RTID(beach_imp@ZombieProps)",
+      "RES": "BeachImp"
     },
     {
       "NAME": {
@@ -1810,7 +1957,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "beach",
       "ALMANAC": "RTID(beach_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(beach_gargantuar@ZombieProps)"
+      "PROPS": "RTID(beach_gargantuar@ZombieProps)",
+      "RES": "BeachGargantuar"
     },
     {
       "NAME": {
@@ -1822,7 +1970,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "water",
       "ALMANAC": "RTID(zombossmech_beach@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_beach@ZombieProps)"
+      "PROPS": "RTID(zombossmech_beach@ZombieProps)",
+      "RES": "BeachZombossMech"
     },
     {
       "NAME": {
@@ -1834,7 +1983,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "water",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_beach2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_beach2@ZombieProps)",
+      "RES": "BeachZombossMech"
     },
     {
       "NAME": {
@@ -1846,7 +1996,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage@ZombieAlmanac)",
-      "PROPS": "RTID(iceage@ZombieProps)"
+      "PROPS": "RTID(iceage@ZombieProps)",
+      "RES": "IceageBasic"
     },
     {
       "NAME": {
@@ -1858,7 +2009,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_armor1@ZombieProps)"
+      "PROPS": "RTID(iceage_armor1@ZombieProps)",
+      "RES": "IceageBasic"
     },
     {
       "NAME": {
@@ -1870,7 +2022,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_armor2@ZombieProps)"
+      "PROPS": "RTID(iceage_armor2@ZombieProps)",
+      "RES": "IceageBasic"
     },
     {
       "NAME": {
@@ -1882,7 +2035,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_armor3@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_armor3@ZombieProps)"
+      "PROPS": "RTID(iceage_armor3@ZombieProps)",
+      "RES": "IceageBasic"
     },
     {
       "NAME": {
@@ -1894,7 +2048,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_armor4@ZombieProps)"
+      "PROPS": "RTID(iceage_armor4@ZombieProps)",
+      "RES": "IceageBasic"
     },
     {
       "NAME": {
@@ -1906,7 +2061,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_flag@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_flag@ZombieProps)"
+      "PROPS": "RTID(iceage_flag@ZombieProps)",
+      "RES": "IceageFlag"
     },
     {
       "NAME": {
@@ -1918,7 +2074,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(iceage_flag_veteran@ZombieProps)",
+      "RES": "IceageRally"
     },
     {
       "NAME": {
@@ -1930,7 +2087,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_hunter@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_hunter@ZombieProps)"
+      "PROPS": "RTID(iceage_hunter@ZombieProps)",
+      "RES": "IceageHunter"
     },
     {
       "NAME": {
@@ -1942,7 +2100,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_hunter_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_hunter_veteran@ZombieProps)"
+      "PROPS": "RTID(iceage_hunter_veteran@ZombieProps)",
+      "RES": "IceageHunterVeteran"
     },
     {
       "NAME": {
@@ -1954,7 +2113,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_dodo@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_dodo@ZombieProps)"
+      "PROPS": "RTID(iceage_dodo@ZombieProps)",
+      "RES": "IceageDodoRider"
     },
     {
       "NAME": {
@@ -1970,7 +2130,8 @@
         "iceage_troglobite_2block"
       ],
       "ALMANAC": "RTID(iceage_troglobite@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_troglobite@ZombieProps)"
+      "PROPS": "RTID(iceage_troglobite@ZombieProps)",
+      "RES": "IceageTroglobite"
     },
     {
       "NAME": {
@@ -1982,7 +2143,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_troglobite_1block@ZombieProps)"
+      "PROPS": "RTID(iceage_troglobite_1block@ZombieProps)",
+      "RES": "IceageTroglobite"
     },
     {
       "NAME": {
@@ -1994,7 +2156,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_troglobite_2block@ZombieProps)"
+      "PROPS": "RTID(iceage_troglobite_2block@ZombieProps)",
+      "RES": "IceageTroglobite"
     },
     {
       "NAME": {
@@ -2006,7 +2169,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_troglobite_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_troglobite_veteran@ZombieProps)"
+      "PROPS": "RTID(iceage_troglobite_veteran@ZombieProps)",
+      "RES": "IceageTroglobiteVeteran"
     },
     {
       "NAME": {
@@ -2018,7 +2182,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_weaselhoarder@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_weaselhoarder@ZombieProps)"
+      "PROPS": "RTID(iceage_weaselhoarder@ZombieProps)",
+      "RES": "IceageWeaselHoarder"
     },
     {
       "NAME": {
@@ -2030,7 +2195,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_weasel@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_weasel@ZombieProps)"
+      "PROPS": "RTID(iceage_weasel@ZombieProps)",
+      "RES": "IceageWeasel"
     },
     {
       "NAME": {
@@ -2042,7 +2208,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_imp@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_imp@ZombieProps)"
+      "PROPS": "RTID(iceage_imp@ZombieProps)",
+      "RES": "IceageImp"
     },
     {
       "NAME": {
@@ -2054,7 +2221,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(iceage_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(iceage_gargantuar@ZombieProps)"
+      "PROPS": "RTID(iceage_gargantuar@ZombieProps)",
+      "RES": "IceageGargantuar"
     },
     {
       "NAME": {
@@ -2069,7 +2237,8 @@
       ],
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(zombossmech_iceage@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_iceage@ZombieProps)"
+      "PROPS": "RTID(zombossmech_iceage@ZombieProps)",
+      "RES": "IceageZombossMech"
     },
     {
       "NAME": {
@@ -2081,7 +2250,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "ice",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_iceage2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_iceage2@ZombieProps)",
+      "RES": "IceageZombossMech"
     },
     {
       "NAME": {
@@ -2099,7 +2269,8 @@
         "summer_flag"
       ],
       "ALMANAC": "RTID(lostcity@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity@ZombieProps)"
+      "PROPS": "RTID(lostcity@ZombieProps)",
+      "RES": "LostcityBasic"
     },
     {
       "NAME": {
@@ -2111,7 +2282,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_armor1@ZombieProps)"
+      "PROPS": "RTID(lostcity_armor1@ZombieProps)",
+      "RES": "LostcityBasic"
     },
     {
       "NAME": {
@@ -2123,7 +2295,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_armor2@ZombieProps)"
+      "PROPS": "RTID(lostcity_armor2@ZombieProps)",
+      "RES": "LostcityBasic"
     },
     {
       "NAME": {
@@ -2135,7 +2308,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_flag@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_flag@ZombieProps)"
+      "PROPS": "RTID(lostcity_flag@ZombieProps)",
+      "RES": "LostcityFlag"
     },
     {
       "NAME": {
@@ -2147,7 +2321,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_lostpilot@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_lostpilot@ZombieProps)"
+      "PROPS": "RTID(lostcity_lostpilot@ZombieProps)",
+      "RES": "LostcityLostPilot"
     },
     {
       "NAME": {
@@ -2159,7 +2334,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_excavator@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_excavator@ZombieProps)"
+      "PROPS": "RTID(lostcity_excavator@ZombieProps)",
+      "RES": "LostcityExcavator"
     },
     {
       "NAME": {
@@ -2171,7 +2347,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_jane@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_jane@ZombieProps)"
+      "PROPS": "RTID(lostcity_jane@ZombieProps)",
+      "RES": "LostcityJane"
     },
     {
       "NAME": {
@@ -2190,7 +2367,8 @@
       ],
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_bug@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_bug@ZombieProps)"
+      "PROPS": "RTID(lostcity_bug@ZombieProps)",
+      "RES": "LostcityBasic"
     },
     {
       "NAME": {
@@ -2202,7 +2380,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_bug_armor1@ZombieProps)"
+      "PROPS": "RTID(lostcity_bug_armor1@ZombieProps)",
+      "RES": "LostcityBasic"
     },
     {
       "NAME": {
@@ -2214,7 +2393,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_bug_armor2@ZombieProps)"
+      "PROPS": "RTID(lostcity_bug_armor2@ZombieProps)",
+      "RES": "LostcityBasic"
     },
     {
       "NAME": {
@@ -2226,7 +2406,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_relichunter@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_relichunter@ZombieProps)"
+      "PROPS": "RTID(lostcity_relichunter@ZombieProps)",
+      "RES": "LostcityRelicHunter"
     },
     {
       "NAME": {
@@ -2238,7 +2419,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_impporter@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_impporter@ZombieProps)"
+      "PROPS": "RTID(lostcity_impporter@ZombieProps)",
+      "RES": "LostcityImpPorter"
     },
     {
       "NAME": {
@@ -2250,7 +2432,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_crystalskull@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_crystalskull@ZombieProps)"
+      "PROPS": "RTID(lostcity_crystalskull@ZombieProps)",
+      "RES": "LostcityCrystalSkull"
     },
     {
       "NAME": {
@@ -2262,7 +2445,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_imp@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_imp@ZombieProps)"
+      "PROPS": "RTID(lostcity_imp@ZombieProps)",
+      "RES": "LostcityImp"
     },
     {
       "NAME": {
@@ -2274,7 +2458,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(lostcity_gargantuar@ZombieProps)"
+      "PROPS": "RTID(lostcity_gargantuar@ZombieProps)",
+      "RES": "LostcityGargantuar"
     },
     {
       "NAME": {
@@ -2286,7 +2471,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(zombossmech_lostcity@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_lostcity@ZombieProps)"
+      "PROPS": "RTID(zombossmech_lostcity@ZombieProps)",
+      "RES": "LostcityZombossMech"
     },
     {
       "NAME": {
@@ -2296,9 +2482,10 @@
       "_CARDSPRITENAME": "summerbasic",
       "CODENAME": "summer_basic",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer@ZombieProps)"
+      "PROPS": "RTID(summer@ZombieProps)",
+      "RES": "SummerBasic"
     },
     {
       "NAME": {
@@ -2308,9 +2495,10 @@
       "_CARDSPRITENAME": "summerarmor1",
       "CODENAME": "summer_armor1",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer_armor1@ZombieProps)"
+      "PROPS": "RTID(summer_armor1@ZombieProps)",
+      "RES": "SummerBasic"
     },
     {
       "NAME": {
@@ -2320,9 +2508,10 @@
       "_CARDSPRITENAME": "summerarmor2",
       "CODENAME": "summer_armor2",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer_armor2@ZombieProps)"
+      "PROPS": "RTID(summer_armor2@ZombieProps)",
+      "RES": "SummerBasic"
     },
     {
       "NAME": {
@@ -2332,9 +2521,10 @@
       "_CARDSPRITENAME": "summerflag",
       "CODENAME": "summer_flag",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer_flag@ZombieProps)"
+      "PROPS": "RTID(summer_flag@ZombieProps)",
+      "RES": "SummerFlag"
     },
     {
       "NAME": {
@@ -2344,9 +2534,10 @@
       "_CARDSPRITENAME": "summerbug",
       "CODENAME": "summer_bug",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer_bug@ZombieProps)"
+      "PROPS": "RTID(summer_bug@ZombieProps)",
+      "RES": "SummerBasic"
     },
     {
       "NAME": {
@@ -2356,9 +2547,10 @@
       "_CARDSPRITENAME": "summerbugarmor1",
       "CODENAME": "summer_bug_armor1",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer_bug_armor1@ZombieProps)"
+      "PROPS": "RTID(summer_bug_armor1@ZombieProps)",
+      "RES": "SummerBasic"
     },
     {
       "NAME": {
@@ -2368,9 +2560,10 @@
       "_CARDSPRITENAME": "summerbugarmor2",
       "CODENAME": "summer_bug_armor2",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer_bug_armor2@ZombieProps)"
+      "PROPS": "RTID(summer_bug_armor2@ZombieProps)",
+      "RES": "SummerBasic"
     },
     {
       "NAME": {
@@ -2380,9 +2573,10 @@
       "_CARDSPRITENAME": "summerimp",
       "CODENAME": "summer_imp",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_imp@ZombieProps)"
+      "PROPS": "RTID(tutorial_imp@ZombieProps)",
+      "RES": "SummerImp"
     },
     {
       "NAME": {
@@ -2392,9 +2586,88 @@
       "_CARDSPRITENAME": "summergargantuar",
       "CODENAME": "summer_gargantuar",
       "SUNCOST": 100,
-      "OBTAINWORLD": "homeless",
+      "OBTAINWORLD": "summer",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(summer_gargantuar@ZombieProps)"
+      "PROPS": "RTID(summer_gargantuar@ZombieProps)",
+      "RES": "SummerGargantuar"
+    },
+    {
+      "NAME": {
+        "en": "Skeleton-costume Zombie",
+        "zh": "骷髅装僵尸"
+      },
+      "_CARDSPRITENAME": "halloweenbasic",
+      "CODENAME": "halloween_basic",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "halloween",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(halloween@ZombieProps)",
+      "RES": "HalloweenBasic"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Skeleton-costume",
+        "zh": "路障骷髅装"
+      },
+      "_CARDSPRITENAME": "halloweenarmor1",
+      "CODENAME": "halloween_armor1",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "halloween",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(halloween_armor1@ZombieProps)",
+      "RES": "HalloweenBasic"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Skeleton-costume",
+        "zh": "铁桶骷髅装"
+      },
+      "_CARDSPRITENAME": "halloweenarmor2",
+      "CODENAME": "halloween_armor2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "halloween",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(halloween_armor2@ZombieProps)",
+      "RES": "HalloweenBasic"
+    },
+    {
+      "NAME": {
+        "en": "Flag Scarecrow",
+        "zh": "旗帜稻草人"
+      },
+      "_CARDSPRITENAME": "halloweenflag",
+      "CODENAME": "halloween_flag",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "halloween",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(halloween_flag@ZombieProps)",
+      "RES": "HalloweenFlag"
+    },
+    {
+      "NAME": {
+        "en": "Halloween Imp Mummy",
+        "zh": "万圣节木乃伊小鬼"
+      },
+      "_CARDSPRITENAME": "halloweenimp",
+      "CODENAME": "halloween_imp",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "halloween",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_imp@ZombieProps)",
+      "RES": "HalloweenImp"
+    },
+    {
+      "NAME": {
+        "en": "Frankenstein's Gargantuar",
+        "zh": "弗兰肯斯坦巨尸"
+      },
+      "_CARDSPRITENAME": "halloweengargantuar",
+      "CODENAME": "halloween_gargantuar",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "halloween",
+      "ALMANAC": "RTID(halloween_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(halloween_gargantuar@ZombieProps)",
+      "RES": "HalloweenGargantuar"
     },
     {
       "NAME": {
@@ -2409,7 +2682,8 @@
         "kongfu_armor3"
       ],
       "ALMANAC": "RTID(kongfu@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu@ZombieProps)"
+      "PROPS": "RTID(kongfu@ZombieProps)",
+      "RES": "KongfuBasic"
     },
     {
       "NAME": {
@@ -2421,7 +2695,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_armor1@ZombieProps)"
+      "PROPS": "RTID(kongfu_armor1@ZombieProps)",
+      "RES": "KongfuBasic"
     },
     {
       "NAME": {
@@ -2433,7 +2708,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_armor2@ZombieProps)"
+      "PROPS": "RTID(kongfu_armor2@ZombieProps)",
+      "RES": "KongfuBasic"
     },
     {
       "NAME": {
@@ -2445,7 +2721,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_armor3@ZombieProps)"
+      "PROPS": "RTID(kongfu_armor3@ZombieProps)",
+      "RES": "KongfuBasic"
     },
     {
       "NAME": {
@@ -2457,7 +2734,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_flag@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_flag@ZombieProps)"
+      "PROPS": "RTID(kongfu_flag@ZombieProps)",
+      "RES": "KongfuFlag"
     },
     {
       "NAME": {
@@ -2469,7 +2747,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(kongfu_flag_veteran@ZombieProps)",
+      "RES": "KongfuRally"
     },
     {
       "NAME": {
@@ -2481,7 +2760,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_hammer@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_hammer@ZombieProps)"
+      "PROPS": "RTID(kongfu_hammer@ZombieProps)",
+      "RES": "KongfuHammer"
     },
     {
       "NAME": {
@@ -2493,7 +2773,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_torch@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_torch@ZombieProps)"
+      "PROPS": "RTID(kongfu_torch@ZombieProps)",
+      "RES": "KongfuTorch"
     },
     {
       "NAME": {
@@ -2505,7 +2786,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_bomb@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_bomb@ZombieProps)"
+      "PROPS": "RTID(kongfu_bomb@ZombieProps)",
+      "RES": "KongfuBomb"
     },
     {
       "NAME": {
@@ -2517,7 +2799,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_gong@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_gong@ZombieProps)"
+      "PROPS": "RTID(kongfu_gong@ZombieProps)",
+      "RES": "KongfuGong"
     },
     {
       "NAME": {
@@ -2529,7 +2812,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_drink@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_drink@ZombieProps)"
+      "PROPS": "RTID(kongfu_drink@ZombieProps)",
+      "RES": "KongfuDrink"
     },
     {
       "NAME": {
@@ -2541,7 +2825,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_chi@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_chi@ZombieProps)"
+      "PROPS": "RTID(kongfu_chi@ZombieProps)",
+      "RES": "KongfuChi"
     },
     {
       "NAME": {
@@ -2553,7 +2838,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_rocket_imp@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_rocket_imp@ZombieProps)"
+      "PROPS": "RTID(kongfu_rocket_imp@ZombieProps)",
+      "RES": "RocketImp"
     },
     {
       "NAME": {
@@ -2568,7 +2854,8 @@
       ],
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk@ZombieAlmanac)",
-      "PROPS": "RTID(monk@ZombieProps)"
+      "PROPS": "RTID(monk@ZombieProps)",
+      "RES": "MonkBasic"
     },
     {
       "NAME": {
@@ -2580,7 +2867,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(monk_armor1@ZombieProps)"
+      "PROPS": "RTID(monk_armor1@ZombieProps)",
+      "RES": "MonkBasic"
     },
     {
       "NAME": {
@@ -2592,7 +2880,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(monk_armor2@ZombieProps)"
+      "PROPS": "RTID(monk_armor2@ZombieProps)",
+      "RES": "MonkBasic"
     },
     {
       "NAME": {
@@ -2604,7 +2893,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(monk_armor3@ZombieProps)"
+      "PROPS": "RTID(monk_armor3@ZombieProps)",
+      "RES": "MonkBasic"
     },
     {
       "NAME": {
@@ -2616,7 +2906,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_flag@ZombieAlmanac)",
-      "PROPS": "RTID(monk_flag@ZombieProps)"
+      "PROPS": "RTID(monk_flag@ZombieProps)",
+      "RES": "MonkFlag"
     },
     {
       "NAME": {
@@ -2628,7 +2919,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(monk_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(monk_flag_veteran@ZombieProps)",
+      "RES": "MonkRally"
     },
     {
       "NAME": {
@@ -2640,7 +2932,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_blade@ZombieAlmanac)",
-      "PROPS": "RTID(monk_blade@ZombieProps)"
+      "PROPS": "RTID(monk_blade@ZombieProps)",
+      "RES": "MonkBlade"
     },
     {
       "NAME": {
@@ -2652,7 +2945,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_nunchaku@ZombieAlmanac)",
-      "PROPS": "RTID(monk_nunchaku@ZombieProps)"
+      "PROPS": "RTID(monk_nunchaku@ZombieProps)",
+      "RES": "MonkNunchaku"
     },
     {
       "NAME": {
@@ -2664,7 +2958,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_torch@ZombieAlmanac)",
-      "PROPS": "RTID(monk_torch@ZombieProps)"
+      "PROPS": "RTID(monk_torch@ZombieProps)",
+      "RES": "MonkTorch"
     },
     {
       "NAME": {
@@ -2676,7 +2971,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_drink@ZombieAlmanac)",
-      "PROPS": "RTID(monk_drink@ZombieProps)"
+      "PROPS": "RTID(monk_drink@ZombieProps)",
+      "RES": "MonkDrink"
     },
     {
       "NAME": {
@@ -2688,7 +2984,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(monk_imp@ZombieAlmanac)",
-      "PROPS": "RTID(monk_imp@ZombieProps)"
+      "PROPS": "RTID(monk_imp@ZombieProps)",
+      "RES": "KongfuMonkImp"
     },
     {
       "NAME": {
@@ -2703,7 +3000,8 @@
       ],
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot@ZombieAlmanac)",
-      "PROPS": "RTID(abbot@ZombieProps)"
+      "PROPS": "RTID(abbot@ZombieProps)",
+      "RES": "AbbotBasic"
     },
     {
       "NAME": {
@@ -2715,7 +3013,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_armor1@ZombieProps)"
+      "PROPS": "RTID(abbot_armor1@ZombieProps)",
+      "RES": "AbbotBasic"
     },
     {
       "NAME": {
@@ -2727,7 +3026,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_armor2@ZombieProps)"
+      "PROPS": "RTID(abbot_armor2@ZombieProps)",
+      "RES": "AbbotBasic"
     },
     {
       "NAME": {
@@ -2739,7 +3039,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_armor3@ZombieProps)"
+      "PROPS": "RTID(abbot_armor3@ZombieProps)",
+      "RES": "AbbotBasic"
     },
     {
       "NAME": {
@@ -2751,7 +3052,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_flag@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_flag@ZombieProps)"
+      "PROPS": "RTID(abbot_flag@ZombieProps)",
+      "RES": "AbbotFlag"
     },
     {
       "NAME": {
@@ -2763,7 +3065,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(abbot_flag_veteran@ZombieProps)",
+      "RES": "AbbotRally"
     },
     {
       "NAME": {
@@ -2775,7 +3078,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_torch@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_torch@ZombieProps)"
+      "PROPS": "RTID(abbot_torch@ZombieProps)",
+      "RES": "AbbotTorch"
     },
     {
       "NAME": {
@@ -2787,7 +3091,21 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_fan@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_fan@ZombieProps)"
+      "PROPS": "RTID(abbot_fan@ZombieProps)",
+      "RES": "AbbotFan"
+    },
+    {
+      "NAME": {
+        "en": "Three-section Staff Abbot",
+        "zh": "三节棍住持僵尸"
+      },
+      "_CARDSPRITENAME": "abbot3sectionstaff",
+      "CODENAME": "abbot_3section_staff",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_3section_staff@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_3section_staff@ZombieProps)",
+      "RES": "Abbot3SectionStaff"
     },
     {
       "NAME": {
@@ -2799,7 +3117,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_chi@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_chi@ZombieProps)"
+      "PROPS": "RTID(abbot_chi@ZombieProps)",
+      "RES": "AbbotChi"
     },
     {
       "NAME": {
@@ -2811,7 +3130,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(abbot_imp@ZombieAlmanac)",
-      "PROPS": "RTID(abbot_imp@ZombieProps)"
+      "PROPS": "RTID(abbot_imp@ZombieProps)",
+      "RES": "AbbotImp"
     },
     {
       "NAME": {
@@ -2823,7 +3143,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_bronze_statue@ZombieProps)"
+      "PROPS": "RTID(kongfu_bronze_statue@ZombieProps)",
+      "RES": "KongfuBronzeStatue"
     },
     {
       "NAME": {
@@ -2838,7 +3159,8 @@
         "kongfu_bronze_statue"
       ],
       "ALMANAC": "RTID(kongfu_bronze_strong@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_bronze_strong@ZombieProps)"
+      "PROPS": "RTID(kongfu_bronze_strong@ZombieProps)",
+      "RES": "KongfuBronzeStrong"
     },
     {
       "NAME": {
@@ -2853,7 +3175,8 @@
         "kongfu_bronze_statue"
       ],
       "ALMANAC": "RTID(kongfu_bronze_hook@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_bronze_hook@ZombieProps)"
+      "PROPS": "RTID(kongfu_bronze_hook@ZombieProps)",
+      "RES": "KongfuBronzeHook"
     },
     {
       "NAME": {
@@ -2868,7 +3191,8 @@
         "kongfu_bronze_statue"
       ],
       "ALMANAC": "RTID(kongfu_bronze_chi@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_bronze_chi@ZombieProps)"
+      "PROPS": "RTID(kongfu_bronze_chi@ZombieProps)",
+      "RES": "KongfuBronzeChi"
     },
     {
       "NAME": {
@@ -2880,7 +3204,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_boss_explode@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_boss_explode@ZombieProps)"
+      "PROPS": "RTID(kongfu_boss_explode@ZombieProps)",
+      "RES": "KongfuBossExplode"
     },
     {
       "NAME": {
@@ -2892,7 +3217,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(kongfu_boss_blade@ZombieAlmanac)",
-      "PROPS": "RTID(kongfu_boss_blade@ZombieProps)"
+      "PROPS": "RTID(kongfu_boss_blade@ZombieProps)",
+      "RES": "KongfuBossBlade"
     },
     {
       "NAME": {
@@ -2904,7 +3230,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "sky",
       "ALMANAC": "RTID(sky@ZombieAlmanac)",
-      "PROPS": "RTID(sky@ZombieProps)"
+      "PROPS": "RTID(sky@ZombieProps)",
+      "RES": "SkyBasic"
     },
     {
       "NAME": {
@@ -2916,7 +3243,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "sky",
       "ALMANAC": "RTID(sky_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(sky_armor1@ZombieProps)"
+      "PROPS": "RTID(sky_armor1@ZombieProps)",
+      "RES": "SkyBasic"
     },
     {
       "NAME": {
@@ -2928,7 +3256,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "sky",
       "ALMANAC": "RTID(sky_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(sky_armor2@ZombieProps)"
+      "PROPS": "RTID(sky_armor2@ZombieProps)",
+      "RES": "SkyBasic"
     },
     {
       "NAME": {
@@ -2940,7 +3269,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "sky",
       "ALMANAC": "RTID(sky_flag@ZombieAlmanac)",
-      "PROPS": "RTID(sky_flag@ZombieProps)"
+      "PROPS": "RTID(sky_flag@ZombieProps)",
+      "RES": "SkyFlag"
     },
     {
       "NAME": {
@@ -2952,7 +3282,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties@ZombieAlmanac)",
-      "PROPS": "RTID(eighties@ZombieProps)"
+      "PROPS": "RTID(eighties@ZombieProps)",
+      "RES": "EightiesBasic"
     },
     {
       "NAME": {
@@ -2964,7 +3295,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_armor1@ZombieProps)"
+      "PROPS": "RTID(eighties_armor1@ZombieProps)",
+      "RES": "EightiesBasic"
     },
     {
       "NAME": {
@@ -2976,7 +3308,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_armor2@ZombieProps)"
+      "PROPS": "RTID(eighties_armor2@ZombieProps)",
+      "RES": "EightiesBasic"
     },
     {
       "NAME": {
@@ -2988,7 +3321,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_flag@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_flag@ZombieProps)"
+      "PROPS": "RTID(eighties_flag@ZombieProps)",
+      "RES": "EightiesFlag"
     },
     {
       "NAME": {
@@ -3000,7 +3334,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_punk@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_punk@ZombieProps)"
+      "PROPS": "RTID(eighties_punk@ZombieProps)",
+      "RES": "EightiesPunk"
     },
     {
       "NAME": {
@@ -3012,7 +3347,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_glitter@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_glitter@ZombieProps)"
+      "PROPS": "RTID(eighties_glitter@ZombieProps)",
+      "RES": "EightiesGlitter"
     },
     {
       "NAME": {
@@ -3024,7 +3360,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_mc@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_mc@ZombieProps)"
+      "PROPS": "RTID(eighties_mc@ZombieProps)",
+      "RES": "EightiesMC"
     },
     {
       "NAME": {
@@ -3036,7 +3373,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_breakdancer@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_breakdancer@ZombieProps)"
+      "PROPS": "RTID(eighties_breakdancer@ZombieProps)",
+      "RES": "EightiesBreakDancer"
     },
     {
       "NAME": {
@@ -3048,7 +3386,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_arcade@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_arcade@ZombieProps)"
+      "PROPS": "RTID(eighties_arcade@ZombieProps)",
+      "RES": "EightiesArcade"
     },
     {
       "NAME": {
@@ -3064,7 +3403,8 @@
         "eighties_8bit_armor2"
       ],
       "ALMANAC": "RTID(eighties_8bit@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_8bit@ZombieProps)"
+      "PROPS": "RTID(eighties_8bit@ZombieProps)",
+      "RES": "Eighties8Bit"
     },
     {
       "NAME": {
@@ -3076,7 +3416,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_8bit_armor1@ZombieProps)"
+      "PROPS": "RTID(eighties_8bit_armor1@ZombieProps)",
+      "RES": "Eighties8Bit"
     },
     {
       "NAME": {
@@ -3088,7 +3429,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_8bit_armor2@ZombieProps)"
+      "PROPS": "RTID(eighties_8bit_armor2@ZombieProps)",
+      "RES": "Eighties8Bit"
     },
     {
       "NAME": {
@@ -3100,7 +3442,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_boombox@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_boombox@ZombieProps)"
+      "PROPS": "RTID(eighties_boombox@ZombieProps)",
+      "RES": "EightiesBoomBox"
     },
     {
       "NAME": {
@@ -3112,7 +3455,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_imp@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_imp@ZombieProps)"
+      "PROPS": "RTID(eighties_imp@ZombieProps)",
+      "RES": "EightiesImp"
     },
     {
       "NAME": {
@@ -3124,7 +3468,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(eighties_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(eighties_gargantuar@ZombieProps)"
+      "PROPS": "RTID(eighties_gargantuar@ZombieProps)",
+      "RES": "EightiesGargantuar"
     },
     {
       "NAME": {
@@ -3136,7 +3481,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "eighties",
       "ALMANAC": "RTID(zombossmech_eighties@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_eighties@ZombieProps)"
+      "PROPS": "RTID(zombossmech_eighties@ZombieProps)",
+      "RES": "EightiesZombossMech"
     },
     {
       "NAME": {
@@ -3148,7 +3494,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino@ZombieAlmanac)",
-      "PROPS": "RTID(dino@ZombieProps)"
+      "PROPS": "RTID(dino@ZombieProps)",
+      "RES": "DinoBasic"
     },
     {
       "NAME": {
@@ -3160,7 +3507,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(dino_armor1@ZombieProps)"
+      "PROPS": "RTID(dino_armor1@ZombieProps)",
+      "RES": "DinoBasic"
     },
     {
       "NAME": {
@@ -3172,7 +3520,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(dino_armor2@ZombieProps)"
+      "PROPS": "RTID(dino_armor2@ZombieProps)",
+      "RES": "DinoBasic"
     },
     {
       "NAME": {
@@ -3184,7 +3533,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_armor3@ZombieAlmanac)",
-      "PROPS": "RTID(dino_armor3@ZombieProps)"
+      "PROPS": "RTID(dino_armor3@ZombieProps)",
+      "RES": "DinoBasic"
     },
     {
       "NAME": {
@@ -3196,7 +3546,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_armor4@ZombieAlmanac)",
-      "PROPS": "RTID(dino_armor4@ZombieProps)"
+      "PROPS": "RTID(dino_armor4@ZombieProps)",
+      "RES": "DinoBasic"
     },
     {
       "NAME": {
@@ -3208,7 +3559,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_flag@ZombieAlmanac)",
-      "PROPS": "RTID(dino_flag@ZombieProps)"
+      "PROPS": "RTID(dino_flag@ZombieProps)",
+      "RES": "DinoFlag"
     },
     {
       "NAME": {
@@ -3220,7 +3572,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_flag_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(dino_flag_veteran@ZombieProps)"
+      "PROPS": "RTID(dino_flag_veteran@ZombieProps)",
+      "RES": "DinoRally"
     },
     {
       "NAME": {
@@ -3232,7 +3585,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_bully@ZombieAlmanac)",
-      "PROPS": "RTID(dino_bully@ZombieProps)"
+      "PROPS": "RTID(dino_bully@ZombieProps)",
+      "RES": "DinoBully"
     },
     {
       "NAME": {
@@ -3244,7 +3598,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_bully_veteran@ZombieAlmanac)",
-      "PROPS": "RTID(dino_bully_veteran@ZombieProps)"
+      "PROPS": "RTID(dino_bully_veteran@ZombieProps)",
+      "RES": "DinoBullyVeteran"
     },
     {
       "NAME": {
@@ -3256,7 +3611,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_imp@ZombieAlmanac)",
-      "PROPS": "RTID(dino_imp@ZombieProps)"
+      "PROPS": "RTID(dino_imp@ZombieProps)",
+      "RES": "DinoImp"
     },
     {
       "NAME": {
@@ -3268,7 +3624,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(dino_gargantuar@ZombieAlmanac)",
-      "PROPS": "RTID(dino_gargantuar@ZombieProps)"
+      "PROPS": "RTID(dino_gargantuar@ZombieProps)",
+      "RES": "DinoGargantuar"
     },
     {
       "NAME": {
@@ -3283,7 +3640,8 @@
       ],
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(zombossmech_dino@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_dino@ZombieProps)"
+      "PROPS": "RTID(zombossmech_dino@ZombieProps)",
+      "RES": "DinoZombossMech"
     },
     {
       "NAME": {
@@ -3295,7 +3653,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "dino",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(zombossmech_dino2@ZombieProps)"
+      "PROPS": "RTID(zombossmech_dino2@ZombieProps)",
+      "RES": "DinoZombossMech"
     },
     {
       "NAME": {
@@ -3305,9 +3664,13 @@
       "_CARDSPRITENAME": "lawnbasic",
       "CODENAME": "lawn",
       "SUNCOST": 100,
+      "SubZombieList": [
+        "halloween"
+      ],
       "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -3318,8 +3681,12 @@
       "CODENAME": "lawn_armor1",
       "SUNCOST": 100,
       "OBTAINWORLD": "",
+      "SubZombieList": [
+        "halloween_armor1"
+      ],
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -3330,8 +3697,12 @@
       "CODENAME": "lawn_armor2",
       "SUNCOST": 100,
       "OBTAINWORLD": "",
+      "SubZombieList": [
+        "halloween_armor2"
+      ],
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -3343,7 +3714,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -3355,7 +3727,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -3366,8 +3739,12 @@
       "CODENAME": "lawn_flag",
       "SUNCOST": 100,
       "OBTAINWORLD": "",
+      "SubZombieList": [
+        "halloween_flag"
+      ],
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     },
     {
       "NAME": {
@@ -3379,7 +3756,8 @@
       "SUNCOST": 100,
       "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial@ZombieProps)"
+      "PROPS": "RTID(tutorial@ZombieProps)",
+      "RES": "Basic"
     }
   ],
   "ALMANAC": [
@@ -3551,6 +3929,7 @@
     "abbot_torch",
     "abbot_fan",
     "abbot_chi",
+    "abbot_3section_staff",
     "abbot_imp",
     "kongfu_bronze_strong",
     "kongfu_bronze_hook",

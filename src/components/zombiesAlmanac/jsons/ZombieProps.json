@@ -441,6 +441,7 @@
 				"EnragedSpeedScale": 4,
 				"NewspaperHealth": 800,
 				"WavePointCost": 700,
+				"NewspaperBowlingLevel": 1,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
@@ -460,6 +461,7 @@
 				"EnragedDamageScale": 10,
 				"EnragedSpeedScale": 4,
 				"NewspaperHealth": 1800,
+				"NewspaperBowlingLevel": 2,
 				"WavePointCost": 1200,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
@@ -3756,6 +3758,38 @@
 		},
 		{
 			"aliases": [
+				"abbot_3section_staff"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HammerDuration": 4,
+				"RestDuration": 0,
+				"ProjectileDamageMult": 1,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 900,
+				"WavePointCost": 400,
+				"Weight": 2000,
+				"ProjectileDetectRadius": 160,
+				"Hit1Damage": 200,
+				"Hit2Damage": 400,
+				"LeapForwardDistance": 1.45,
+				"BlockBackwardDistance": 1,
+				"PlantBlockers": [
+					"tallnut"
+				],
+				"ZombieBlockers": [
+					"future_protector_shield",
+					"modern_moonflower_shield",
+					"future_infinut_shield"
+				],
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(Abbot3SectionStaffAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_torch"
 			],
 			"objclass": "ZombieProperties",
@@ -6693,6 +6727,7 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 750,
 				"Weight": 2000,
+				"ArmorToGive": "dark_armor3",
 				"HitRect": "RTID(DarkKingHitRect@RectangleProps)",
 				"AttackRect": "RTID(DarkKingAttackRect@RectangleProps)"
 			}
@@ -6735,6 +6770,7 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 1000,
 				"Weight": 1800,
+				"ArmorToGive": "dark_armor3",
 				"HitRect": "RTID(DarkKingHitRect@RectangleProps)",
 				"AttackRect": "RTID(DarkKingAttackRect@RectangleProps)"
 			}
@@ -9631,6 +9667,113 @@
 						"iceage_dodo"
 					]
 				]
+			}
+		},
+		{
+			"aliases": [
+				"halloween"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"halloween_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"halloween_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"halloween_armor3"
+				],
+				"WavePointCost": 100,
+				"Weight": 100,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"ZombieSort": "Gargantuar",
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"FireDamage": 1200,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ElectricityStunDuration": 1,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
 		},
 		{

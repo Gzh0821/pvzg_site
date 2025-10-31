@@ -3907,6 +3907,90 @@
 		},
 		{
 			"aliases": [
+				"abbot_3section_staff"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "Leaps above your defences and returns most of the projectiles in an area.",
+					"zh": "越过你的防线，并且将周围的子弹尽数反弹。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "leaps above the plants that survive from his staff-attack",
+							"zh": "承受住其棍击的植物会被他越过"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "can be blocked by Tall-nuts",
+							"zh": "会被高坚果阻挡"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "returns projectiles in an area across 3 lanes",
+							"zh": "反弹三行范围内自身附近的所有子弹"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "cannot reach the projectiles from Cantaloupe-pults",
+							"zh": "无法够到哈密瓜投手的子弹"
+						}
+					}
+				],
+				"Chat": {
+					"en": "You thought that the Abbots are only capable with Qigong? Stop underestimating them!",
+					"zh": "以为住持们只会玩弄气功吗？太轻敌了！"
+				},
+				"DisplayOffset": {
+					"x": 30,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
 				"abbot_chi"
 			],
 			"objclass": "ZombieAlmanacProperties",
@@ -4727,7 +4811,7 @@
 							"zh": "弱点"
 						},
 						"DESCRIPTION": {
-							"en": "can be blocked by Tall-nut while flying",
+							"en": "can be blocked by Tall-nuts while flying",
 							"zh": "飞行时会被高坚果阻挡"
 						}
 					}
