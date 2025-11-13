@@ -28,7 +28,7 @@ It is recommended to use the official build with GE Patcher already included.
 
 <ins class="adsbygoogle"
 style="display:block"
-data-ad-client="ca-pub-7637695321442015"
+data-ad-client="ca-pub-2336226859954206"
 data-ad-slot="7113006248"
 data-ad-format="auto"
 data-full-width-responsive="true">
