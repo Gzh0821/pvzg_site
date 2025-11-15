@@ -45,6 +45,44 @@
 		},
 		{
 			"aliases": [
+				"zoybeanpod"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 20,
+				"CooldownFrom": 0.5,
+				"SunCost": 200,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Magic",
+				"GrowthInterval": {
+					"Min": 3.5,
+					"Max": 4
+				},
+				"SummonType": [
+					{
+						"Weight": 50,
+						"Type": "zoybean"
+					},
+					{
+						"Weight": 30,
+						"Type": "zoybean_armor1"
+					},
+					{
+						"Weight": 20,
+						"Type": "zoybean_armor2"
+					}
+				],
+				"SummonTypePlantfood": [
+					{
+						"Weight": 1,
+						"Type": "zoybean_gargantuar"
+					}
+				]
+			}
+		},
+		{
+			"aliases": [
 				"dusklobber"
 			],
 			"objclass": "PlantProperties",
@@ -253,7 +291,7 @@
 				"CooldownFrom": 0.75,
 				"SunCost": 0,
 				"BeghouledCost": 1000,
-				"Toughness": 3.14159,
+				"Toughness": 300,
 				"Family": "Cold",
 				"ImmuneToIceblock": true
 			}
@@ -328,11 +366,6 @@
 				"ShootIntervalAdditional": 0.15,
 				"PeaType": "pea",
 				"PeaTypePlantfood": "pea",
-				"PeaTypesPlantfood": [
-					"pea",
-					"pea_flame_yellow",
-					"pea_flame_blue"
-				],
 				"PlantfoodPeaCount": 150,
 				"ChanceToPlantfood": 0.05,
 				"Cooldown": 5,
@@ -601,6 +634,25 @@
 		},
 		{
 			"aliases": [
+				"pinkstarfruit"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PlantfoodPeaCount": 20,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 225,
+				"BeghouledCost": 1500,
+				"Toughness": 300,
+				"PeaType": "pinkstar",
+				"PeaTypePlantfood": "pinkstar_pf",
+				"Family": "Peashooter"
+			}
+		},
+		{
+			"aliases": [
 				"shootingstarfruit"
 			],
 			"objclass": "PlantProperties",
@@ -822,7 +874,8 @@
 			"objclass": "PlantProperties",
 			"objdata": {
 				"CabbageType": "corn",
-				"CabbageTypePlantfood": "butter",
+				"ButterType": "butter",
+				"CabbageTypePlantfood": "butter2",
 				"ThrowInterval": 2.7,
 				"ThrowIntervalAdditional": 0.15,
 				"ChanceToButter": 0.3,
@@ -841,6 +894,7 @@
 			"objclass": "PlantProperties",
 			"objdata": {
 				"CabbageType": "snowdrop",
+				"ButterType": "snowdrop_freeze",
 				"CabbageTypePlantfood": "snowdrop_freeze",
 				"DetectsTNTSpark": true,
 				"ThrowInterval": 2.025,
@@ -995,12 +1049,12 @@
 				"PlantfoodDistance": 12,
 				"ReloadingTime": 6,
 				"ChargingTime": 14,
-				"//WarmingRadius": {
+				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 6,
 					"GridItemDamage": 200
 				},
-				"//WarmingRadiusPlantfood": {
+				"WarmingRadiusPlantfood": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 1.5,
 					"GridItemDamage": 100
@@ -1029,6 +1083,7 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
+				"ImmuneToIceblock": true,
 				"Damage": 10,
 				"DamagePowered": 20,
 				"ImmuneToBoomBox": true,
@@ -1251,7 +1306,33 @@
 				"Toughness": 300,
 				"Family": "Sun",
 				"ImmuneToBoomBox": true,
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"ProduceValue0": 100,
+				"ProduceValue1": 125,
+				"ProduceValue2": 150
+			}
+		},
+		{
+			"aliases": [
+				"icebloom"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 30,
+				"CooldownFrom": 0.5,
+				"SunCost": 200,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Cold",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"HypnotizingProjectileCount": 4,
+				"HypnotizingProjectileType": "icebloom",
+				"FreezeDuration": 10,
+				"ChillDuration": 5,
+				"DamageFullBoard": 50,
+				"Damage3x3": 200
 			}
 		},
 		{
@@ -1594,6 +1675,13 @@
 			"objdata": {
 				"ShootInterval": 0.9,
 				"ShootIntervalAdditional": 0.1,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
+				"PeaTypesPlantfood": [
+					"pea",
+					"pea_flame_yellow",
+					"pea_flame_blue"
+				],
 				"PlantfoodPeaCount": 60,
 				"Cooldown": 5,
 				"CooldownFrom": 1,

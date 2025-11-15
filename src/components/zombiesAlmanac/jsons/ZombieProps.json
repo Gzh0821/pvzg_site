@@ -369,6 +369,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeDraggedByTangleKelp": true,
 				"CannotBeTossedByCitron": true,
@@ -514,6 +515,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
 				"ImmuneToSweetPotato": true,
@@ -913,6 +915,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeCarriedByFanStorm": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.25,
 				"EatDPS": 100,
@@ -932,6 +935,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeCarriedByFanStorm": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.5,
 				"EatDPS": 150,
@@ -1924,6 +1928,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
@@ -2792,6 +2797,8 @@
 				"Toughness": 190,
 				"WavePointCost": 200,
 				"Weight": 3000,
+				"LandingStunnTime": 2.5,
+				"ExplodeCountdown": 10,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -3794,6 +3801,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeCarriedByFanStorm": true,
 				"CannotBeTossedByCitron": false,
 				"HammerDuration": 3,
 				"RestDuration": 0,
@@ -3896,6 +3904,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"ZombieSort": "Gargantuar",
 				"CannotBeGrabbedByPtero": true,
@@ -3997,6 +4006,56 @@
 					"kongfu_drink",
 					"monk_blade",
 					"monk_torch",
+					"monk_nunchaku",
+					"monk_drink"
+				],
+				"SummonCount": 3,
+				"SummonColume": {
+					"Min": 6,
+					"Max": 7
+				},
+				"SummonTime": 2
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_chi_without_torch"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"ZombieSort": "Gargantuar",
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.125,
+				"EatDPS": 100,
+				"Toughness": 4700,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)",
+				"TimeBetweenSkills": {
+					"Min": 16,
+					"Max": 24
+				},
+				"TimeBeforeSkills": {
+					"Min": 12,
+					"Max": 20
+				},
+				"ZombiesToSummon": [
+					"kongfu_hammer",
+					"kongfu_bomb",
+					"kongfu_drink",
+					"kongfu_drink",
+					"monk_blade",
 					"monk_nunchaku",
 					"monk_drink"
 				],
@@ -4973,6 +5032,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeCarriedByFanStorm": true,
 				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
@@ -6695,6 +6755,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeGrabbedByPtero": true,
 				"ImmuneToShrinkingViolet": true,
 				"CannotBeTossedByCitron": true,
@@ -6738,6 +6799,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeGrabbedByPtero": true,
 				"ImmuneToShrinkingViolet": true,
 				"CannotBeTossedByCitron": true,
@@ -7858,6 +7920,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeTossedByCitron": false,
 				"PlantablePlants": [
@@ -8823,6 +8886,23 @@
 				"Toughness": 490,
 				"WavePointCost": 600,
 				"Weight": 3500,
+				"PlantsToFlyOver": [
+					"iceweed",
+					"spikeweed",
+					"spikerock",
+					"iceburg",
+					"wallnut",
+					"potatomine",
+					"lavaguava",
+					"endurian",
+					"cactus",
+					"primalwallnut",
+					"primalpotatomine",
+					"escaperoot",
+					"murkadamia",
+					"tombtangler",
+					"vamporcini"
+				],
 				"NormalDeathWhenMowed": true,
 				"HitRect": "RTID(IceageDodoHitRect@RectangleProps)",
 				"AttackRect": "RTID(IceageDodoAttackRect@RectangleProps)"
@@ -9671,6 +9751,91 @@
 		},
 		{
 			"aliases": [
+				"zoybean"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 300,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"zoybean_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 300,
+				"StartingArmors": [
+					"zoybean_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"zoybean_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 300,
+				"StartingArmors": [
+					"zoybean_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"zoybean_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"ZombieSort": "Gargantuar",
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 4000,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"FireDamage": 1200,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"halloween"
 			],
 			"objclass": "ZombieProperties",
@@ -9979,6 +10144,27 @@
 		},
 		{
 			"aliases": [
+				"lostcity_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"BugToughness": 0,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"lostcity_armor4"
+				],
+				"WavePointCost": 700,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"lostcity_flag"
 			],
 			"objclass": "ZombieProperties",
@@ -9989,6 +10175,24 @@
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350,
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
@@ -10009,7 +10213,96 @@
 				"WavePointCost": 150,
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
-				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"ZombiesToBringWith": []
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HangingNoEatTimeUntilDrop": 3,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 500,
+				"WavePointCost": 250,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"ZombiesToBringWith": []
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot_veteran_with_zombies"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HangingNoEatTimeUntilDrop": 3,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 500,
+				"WavePointCost": 250,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"ZombiesToBringWith": [
+					{
+						"Type": "lostcity",
+						"Weight": 10
+					},
+					{
+						"Type": "lostcity_armor1",
+						"Weight": 5
+					},
+					{
+						"Type": "lostcity_armor2",
+						"Weight": 2
+					},
+					{
+						"Type": "lostcity_armor4",
+						"Weight": 0.1
+					}
+				]
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot_veteran_for_zomboss"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": false,
+				"HangingNoEatTimeUntilDrop": 3,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 500,
+				"WavePointCost": 250,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"ZombiesToBringWith": [
+					{
+						"Type": "lostcity",
+						"Weight": 5
+					},
+					{
+						"Type": "lostcity_armor1",
+						"Weight": 5
+					},
+					{
+						"Type": "lostcity_armor2",
+						"Weight": 3
+					},
+					{
+						"Type": "lostcity_armor4",
+						"Weight": 2
+					}
+				]
 			}
 		},
 		{
@@ -10106,6 +10399,28 @@
 					"lostcity_armor2"
 				],
 				"WavePointCost": 650,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_bug_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotBeTossedByCitron": false,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"BugToughness": 350,
+				"BuggedSPS": 0.4,
+				"StartingArmors": [
+					"lostcity_armor4"
+				],
+				"WavePointCost": 950,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
@@ -10324,7 +10639,8 @@
 						"ParachuteColumn": {
 							"Max": 5,
 							"Min": 4
-						}
+						},
+						"ParachuteType": "lostcity_lostpilot"
 					},
 					{
 						"Actions": [
@@ -10399,7 +10715,8 @@
 						"ParachuteColumn": {
 							"Max": 4,
 							"Min": 2
-						}
+						},
+						"ParachuteType": "lostcity_lostpilot"
 					},
 					{
 						"Actions": [
@@ -10474,7 +10791,226 @@
 						"ParachuteColumn": {
 							"Max": 3,
 							"Min": 2
-						}
+						},
+						"ParachuteType": "lostcity_lostpilot"
+					}
+				]
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_lostcity2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"MissileType": "zomboss_lostcity_sandbag",
+				"CannotBeEnlightenedBySolarSage": true,
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
+				"ZombieSort": "Zomboss",
+				"CannotBeGrabbedByPtero": true,
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 0.5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0,
+				"IdleColumn": 6,
+				"HitRect": "RTID(LostcityZombossMechHitRect@RectangleProps)",
+				"AttackRect": "RTID(LostcityZombossMechAttackRect@RectangleProps)",
+				"ZombossMechLevel": 1,
+				"ZombossStages": [
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"lostcity_armor4",
+										"lostcity_armor2",
+										"lostcity_imp",
+										"lostcity_jane"
+									],
+									"pointMin": 1500,
+									"pointMax": 3500
+								},
+								"weight": 10,
+								"repeatMax": 2,
+								"repeatMin": 1,
+								"plantfoodchance": 0.1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"lostcity_armor4",
+										"lostcity_armor2",
+										"lostcity_imp",
+										"lostcity_excavator"
+									],
+									"pointMin": 1500,
+									"pointMax": 2500
+								},
+								"weight": 10,
+								"repeatMax": 2,
+								"repeatMin": 1,
+								"plantfoodchance": 0.1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 5000,
+						"MaxIdleTime": 2.5,
+						"MinIdleTime": 2,
+						"StunDamageScale": 1.5,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5,
+						"ParachuteCount": {
+							"Max": 3,
+							"Min": 3
+						},
+						"ParachuteColumn": {
+							"Max": 5,
+							"Min": 4
+						},
+						"ParachuteType": "lostcity_lostpilot_veteran_for_zomboss"
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"lostcity_crystalskull",
+										"lostcity_bug_armor2",
+										"lostcity_bug_armor4"
+									],
+									"pointMin": 2500,
+									"pointMax": 3500
+								},
+								"weight": 20,
+								"repeatMax": 3,
+								"repeatMin": 1,
+								"plantfoodchance": 0.2
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 2500,
+									"pointMax": 4500
+								},
+								"weight": 15,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"AnimRateModifier": 1.1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 3,
+						"DamageIndexHalf": 4,
+						"HitPoints": 15000,
+						"MaxIdleTime": 1.5,
+						"MinIdleTime": 1,
+						"StunDamageScale": 1.5,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 3,
+						"ParachuteCount": {
+							"Max": 4,
+							"Min": 3
+						},
+						"ParachuteColumn": {
+							"Max": 5,
+							"Min": 3
+						},
+						"ParachuteType": "lostcity_lostpilot_veteran_for_zomboss"
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"lostcity_armor2",
+										"lostcity_gargantuar",
+										"lostcity_crystalskull",
+										"lostcity_jane"
+									],
+									"pointMin": 3500,
+									"pointMax": 4500
+								},
+								"weight": 20,
+								"repeatMax": 2,
+								"repeatMin": 1,
+								"plantfoodchance": 0.1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 7,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 8,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"AnimRateModifier": 1.25,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 5,
+						"DamageIndexHalf": 6,
+						"HitPoints": 35000,
+						"MaxIdleTime": 1,
+						"MinIdleTime": 0.5,
+						"StunDamageScale": 1.5,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 1.5,
+						"ParachuteCount": {
+							"Max": 4,
+							"Min": 3
+						},
+						"ParachuteColumn": {
+							"Max": 4,
+							"Min": 2
+						},
+						"ParachuteType": "lostcity_lostpilot_veteran_for_zomboss"
 					}
 				]
 			}
@@ -10582,7 +11118,8 @@
 						"ParachuteColumn": {
 							"Max": 5,
 							"Min": 4
-						}
+						},
+						"ParachuteType": "lostcity_lostpilot"
 					},
 					{
 						"Actions": [
@@ -10657,7 +11194,8 @@
 						"ParachuteColumn": {
 							"Max": 4,
 							"Min": 2
-						}
+						},
+						"ParachuteType": "lostcity_lostpilot"
 					},
 					{
 						"Actions": [
@@ -10732,7 +11270,8 @@
 						"ParachuteColumn": {
 							"Max": 3,
 							"Min": 2
-						}
+						},
+						"ParachuteType": "lostcity_lostpilot"
 					}
 				]
 			}

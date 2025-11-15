@@ -8,6 +8,10 @@
       "_CARDSPRITENAME": "tutorialbasic",
       "CODENAME": "tutorial",
       "SUNCOST": 100,
+      "SubZombieList": [
+        "halloween",
+        "zoybean"
+      ],
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)",
@@ -21,6 +25,10 @@
       "_CARDSPRITENAME": "tutorialarmor1",
       "CODENAME": "tutorial_armor1",
       "SUNCOST": 100,
+      "SubZombieList": [
+        "halloween_armor1",
+        "zoybean_armor1"
+      ],
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_armor1@ZombieAlmanac)",
       "PROPS": "RTID(tutorial_armor1@ZombieProps)",
@@ -34,6 +42,10 @@
       "_CARDSPRITENAME": "tutorialarmor2",
       "CODENAME": "tutorial_armor2",
       "SUNCOST": 100,
+      "SubZombieList": [
+        "halloween_armor2",
+        "zoybean_armor2"
+      ],
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_armor2@ZombieAlmanac)",
       "PROPS": "RTID(tutorial_armor2@ZombieProps)",
@@ -60,6 +72,9 @@
       "_CARDSPRITENAME": "tutorialflag",
       "CODENAME": "tutorial_flag",
       "SUNCOST": 100,
+      "SubZombieList": [
+        "halloween_flag"
+      ],
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_flag@ZombieAlmanac)",
       "PROPS": "RTID(tutorial_flag@ZombieProps)",
@@ -187,7 +202,9 @@
       },
       "SubZombieList": [
         "summer_gargantuar",
-        "halloween_gargantuar"
+        "halloween_gargantuar",
+        "birthday_gargantuar",
+        "zoybean_gargantuar"
       ],
       "_CARDSPRITENAME": "gargantuar",
       "CODENAME": "tutorial_gargantuar",
@@ -209,6 +226,19 @@
       "ALMANAC": "RTID(vase_gargantuar@ZombieAlmanac)",
       "PROPS": "RTID(vase_gargantuar@ZombieProps)",
       "RES": "VaseGargantuar"
+    },
+    {
+      "NAME": {
+        "en": "Surprise Gargantuar",
+        "zh": "惊喜巨尸"
+      },
+      "_CARDSPRITENAME": "birthdaygargantuar",
+      "CODENAME": "birthday_gargantuar",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "frontyard",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)",
+      "RES": "BirthdayGargantuar"
     },
     {
       "NAME": {
@@ -2274,8 +2304,8 @@
     },
     {
       "NAME": {
-        "en": "Conehead Adventurer Zombie",
-        "zh": "路障探宝僵尸"
+        "en": "Conehead Adventurer",
+        "zh": "路障探宝家"
       },
       "_CARDSPRITENAME": "lostcityarmor1",
       "CODENAME": "lostcity_armor1",
@@ -2287,8 +2317,8 @@
     },
     {
       "NAME": {
-        "en": "Buckethead Adventurer Zombie",
-        "zh": "铁桶探宝僵尸"
+        "en": "Buckethead Adventurer",
+        "zh": "铁桶探宝家"
       },
       "_CARDSPRITENAME": "lostcityarmor2",
       "CODENAME": "lostcity_armor2",
@@ -2300,8 +2330,21 @@
     },
     {
       "NAME": {
-        "en": "Flag Adventurer Zombie",
-        "zh": "旗帜探宝僵尸"
+        "en": "Tent-headed Adventurer",
+        "zh": "帐篷头探宝家"
+      },
+      "_CARDSPRITENAME": "lostcityarmor4",
+      "CODENAME": "lostcity_armor4",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_armor4@ZombieProps)",
+      "RES": "LostcityBasic"
+    },
+    {
+      "NAME": {
+        "en": "Flag Adventurer",
+        "zh": "旗帜探宝家"
       },
       "_CARDSPRITENAME": "lostcityflag",
       "CODENAME": "lostcity_flag",
@@ -2310,6 +2353,19 @@
       "ALMANAC": "RTID(lostcity_flag@ZombieAlmanac)",
       "PROPS": "RTID(lostcity_flag@ZombieProps)",
       "RES": "LostcityFlag"
+    },
+    {
+      "NAME": {
+        "en": "Rally Adventurer",
+        "zh": "大动员探宝家"
+      },
+      "_CARDSPRITENAME": "lostcityrally",
+      "CODENAME": "lostcity_flag_veteran",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_flag_veteran@ZombieProps)",
+      "RES": "LostcityRally"
     },
     {
       "NAME": {
@@ -2323,6 +2379,19 @@
       "ALMANAC": "RTID(lostcity_lostpilot@ZombieAlmanac)",
       "PROPS": "RTID(lostcity_lostpilot@ZombieProps)",
       "RES": "LostcityLostPilot"
+    },
+    {
+      "NAME": {
+        "en": "Rescue Pilot Zombie",
+        "zh": "救援飞行员僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitylostpilotveteran",
+      "CODENAME": "lostcity_lostpilot_veteran",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(lostcity_lostpilot_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_lostpilot_veteran@ZombieProps)",
+      "RES": "LostcityLostPilotVeteran"
     },
     {
       "NAME": {
@@ -2363,7 +2432,8 @@
         "lostcity_bug_armor2",
         "summer_bug",
         "summer_bug_armor1",
-        "summer_bug_armor2"
+        "summer_bug_armor2",
+        "summer_bug_armor4"
       ],
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(lostcity_bug@ZombieAlmanac)",
@@ -2394,6 +2464,19 @@
       "OBTAINWORLD": "lostcity",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(lostcity_bug_armor2@ZombieProps)",
+      "RES": "LostcityBasic"
+    },
+    {
+      "NAME": {
+        "en": "Tent-headed Bug Zombie",
+        "zh": "帐篷头蜻蜓僵尸"
+      },
+      "_CARDSPRITENAME": "lostcitybugarmor4",
+      "CODENAME": "lostcity_bug_armor4",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(lostcity_bug_armor4@ZombieProps)",
       "RES": "LostcityBasic"
     },
     {
@@ -2473,6 +2556,71 @@
       "ALMANAC": "RTID(zombossmech_lostcity@ZombieAlmanac)",
       "PROPS": "RTID(zombossmech_lostcity@ZombieProps)",
       "RES": "LostcityZombossMech"
+    },
+    {
+      "NAME": {
+        "en": "Zombot Aerostatic Gondola",
+        "zh": "热气球浮舰"
+      },
+      "_CARDSPRITENAME": "lostcityzomboss",
+      "CODENAME": "zombossmech_lostcity2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "lostcity",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zombossmech_lostcity2@ZombieProps)",
+      "RES": "LostcityZombossMech"
+    },
+    {
+      "NAME": {
+        "en": "Zomboid",
+        "zh": "豆腐僵尸"
+      },
+      "_CARDSPRITENAME": "zoybeanbasic",
+      "CODENAME": "zoybean",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "zoybean",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zoybean@ZombieProps)",
+      "RES": "ZoybeanBasic"
+    },
+    {
+      "NAME": {
+        "en": "Carrot-head Zomboid",
+        "zh": "胡萝卜豆腐僵尸"
+      },
+      "_CARDSPRITENAME": "zoybeanarmor1",
+      "CODENAME": "zoybean_armor1",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "zoybean",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zoybean_armor1@ZombieProps)",
+      "RES": "ZoybeanBasic"
+    },
+    {
+      "NAME": {
+        "en": "Melonhead Zomboid",
+        "zh": "瓜瓢豆腐僵尸"
+      },
+      "_CARDSPRITENAME": "zoybeanarmor2",
+      "CODENAME": "zoybean_armor2",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "zoybean",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zoybean_armor2@ZombieProps)",
+      "RES": "ZoybeanBasic"
+    },
+    {
+      "NAME": {
+        "en": "Gargantuar Zomboid",
+        "zh": "豆腐巨尸"
+      },
+      "_CARDSPRITENAME": "zoybeangargantuar",
+      "CODENAME": "zoybean_gargantuar",
+      "SUNCOST": 100,
+      "OBTAINWORLD": "zoybean",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(zoybean_gargantuar@ZombieProps)",
+      "RES": "ZoybeanGargantuar"
     },
     {
       "NAME": {
@@ -3664,9 +3812,6 @@
       "_CARDSPRITENAME": "lawnbasic",
       "CODENAME": "lawn",
       "SUNCOST": 100,
-      "SubZombieList": [
-        "halloween"
-      ],
       "OBTAINWORLD": "",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)",
@@ -3681,9 +3826,6 @@
       "CODENAME": "lawn_armor1",
       "SUNCOST": 100,
       "OBTAINWORLD": "",
-      "SubZombieList": [
-        "halloween_armor1"
-      ],
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)",
       "RES": "Basic"
@@ -3697,9 +3839,6 @@
       "CODENAME": "lawn_armor2",
       "SUNCOST": 100,
       "OBTAINWORLD": "",
-      "SubZombieList": [
-        "halloween_armor2"
-      ],
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)",
       "RES": "Basic"
@@ -3739,9 +3878,6 @@
       "CODENAME": "lawn_flag",
       "SUNCOST": 100,
       "OBTAINWORLD": "",
-      "SubZombieList": [
-        "halloween_flag"
-      ],
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(tutorial@ZombieProps)",
       "RES": "Basic"
@@ -3888,9 +4024,12 @@
     "lostcity",
     "lostcity_armor1",
     "lostcity_armor2",
+    "lostcity_armor4",
     "lostcity_flag",
+    "lostcity_flag_veteran",
     "lostcity_imp",
     "lostcity_lostpilot",
+    "lostcity_lostpilot_veteran",
     "lostcity_excavator",
     "lostcity_jane",
     "lostcity_bug",

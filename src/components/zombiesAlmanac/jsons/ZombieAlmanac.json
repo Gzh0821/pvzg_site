@@ -8950,6 +8950,50 @@
 			}
 		},
 		{
+			"//": "armor4",
+			"aliases": [
+				"lostcity_armor4"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "His resin-covered tent provides incredible protection.",
+					"zh": "他那粘满树脂的帐篷为他提供无以伦比的保护。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Tent-headed Adventurer loves to lie in bed and is reluctant to leave his tent... Now he's got the solution!",
+					"zh": "帐篷头探险家特别喜欢赖床，迟迟不肯离开自己的帐篷……现在他彻底解决了这个问题！"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"//": "flag",
 			"aliases": [
 				"lostcity_flag"
@@ -8985,6 +9029,50 @@
 				},
 				"DisplayOffset": {
 					"x": 15,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "rally",
+			"aliases": [
+				"lostcity_flag_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.5
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Speedy",
+							"zh": "快速"
+						},
+						"PROGRESS": 0.85
+					}
+				],
+				"Introduction": {
+					"en": "Rally Adventurer marks the arrival of large group of adventurers.",
+					"zh": "大动员探宝家的出现代表了一大群探宝者的到来。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "He can't help himself from rushing towards the treasure along all zombie civilization - BRAINZ.",
+					"zh": "他已经迫不及待夺取整个僵尸文明最崇尚的瑰宝——大脑。"
+				},
+				"DisplayOffset": {
+					"x": 30,
 					"y": 0
 				},
 				"DisplayScale": {
@@ -9036,6 +9124,70 @@
 				"Chat": {
 					"en": "He faked his pilot's license and figured nobody would notice. But they did.",
 					"zh": "他伪造了自己的飞行证，还以为大家没注意到，实际上所有人都很清楚。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Drops in and brings adventurers in to your defences.",
+					"zh": "掉入你的防御中心，并带来探宝僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "drops in and hangs for a moment between your lawn",
+							"zh": "坠入并在草坪中央悬挂一段时间"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "brings adventurers with armors",
+							"zh": "携带探宝僵尸入场"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Even without knowing how to fly a plane, ensuring passengers' safety truly takes skill.",
+					"zh": "即使不会开飞机也能保证乘客的安全，也算是真本事了。"
 				},
 				"DisplayOffset": {
 					"x": 0,

@@ -34,6 +34,36 @@
 		},
 		{
 			"aliases": [
+				"beghouled"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial@ZombieProps)",
+				"ZombieBasedOn": "tutorial"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_armor1@ZombieProps)",
+				"ZombieBasedOn": "tutorial_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_armor2@ZombieProps)",
+				"ZombieBasedOn": "tutorial_armor2"
+			}
+		},
+		{
+			"aliases": [
 				"tutorial_armor4"
 			],
 			"objclass": "ZombieType",
@@ -144,6 +174,16 @@
 		},
 		{
 			"aliases": [
+				"birthday_gargantuar"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_gargantuar@ZombieProps)",
+				"ZombieBasedOn": "birthday_gargantuar"
+			}
+		},
+		{
+			"aliases": [
 				"vase_gargantuar"
 			],
 			"objclass": "ZombieType",
@@ -189,6 +229,16 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(newspaper@ZombieProps)",
+				"ZombieBasedOn": "modern_newspaper"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_newspaper"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(beghouled_newspaper@ZombieProps)",
 				"ZombieBasedOn": "modern_newspaper"
 			}
 		},
@@ -250,6 +300,36 @@
 			"objdata": {
 				"Properties": "RTID(catapult@ZombieProps)",
 				"ZombieBasedOn": "catapult"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_mmummy"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(mummy@ZombieProps)",
+				"ZombieBasedOn": "mummy"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_mmummy_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(mummy_armor1@ZombieProps)",
+				"ZombieBasedOn": "mummy_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_mmummy_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(mummy_armor2@ZombieProps)",
+				"ZombieBasedOn": "mummy_armor2"
 			}
 		},
 		{
@@ -534,6 +614,36 @@
 		},
 		{
 			"aliases": [
+				"beghouled_pirate"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(pirate@ZombieProps)",
+				"ZombieBasedOn": "pirate"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_pirate_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(pirate_armor1@ZombieProps)",
+				"ZombieBasedOn": "pirate_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_pirate_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(pirate_armor2@ZombieProps)",
+				"ZombieBasedOn": "pirate_armor2"
+			}
+		},
+		{
+			"aliases": [
 				"pirate"
 			],
 			"objclass": "ZombieType",
@@ -720,6 +830,36 @@
 			"objdata": {
 				"Properties": "RTID(zombossmech_pirate2@ZombieProps)",
 				"ZombieBasedOn": "zombossmech_pirate2"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_cowboy"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(cowboy@ZombieProps)",
+				"ZombieBasedOn": "cowboy"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_cowboy_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(cowboy_armor1@ZombieProps)",
+				"ZombieBasedOn": "cowboy_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_cowboy_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(cowboy_armor2@ZombieProps)",
+				"ZombieBasedOn": "cowboy_armor2"
 			}
 		},
 		{
@@ -1014,12 +1154,183 @@
 		},
 		{
 			"aliases": [
+				"kongfu_gong"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_gong@ZombieProps)",
+				"ZombieBasedOn": "kongfu_gong"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bomb"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_bomb@ZombieProps)",
+				"ZombieBasedOn": "kongfu_bomb"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_drink"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_drink@ZombieProps)",
+				"ZombieBasedOn": "kongfu_drink"
+			}
+		},
+		{
+			"aliases": [
+				"monk_drink"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(monk_drink@ZombieProps)",
+				"ZombieBasedOn": "monk_drink"
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_chi"
 			],
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(kongfu_chi@ZombieProps)",
 				"ZombieBasedOn": "kongfu_chi"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_statue"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_bronze_statue@ZombieProps)",
+				"ZombieBasedOn": "kongfu_bronze_statue"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_strong"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_bronze_strong@ZombieProps)",
+				"ZombieBasedOn": "kongfu_bronze_strong"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_hook"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_bronze_hook@ZombieProps)",
+				"ZombieBasedOn": "kongfu_bronze_hook"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_chi"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"//": "Use 'kongfu_bronze_chi_without_torch' with 'abbot_fan'!!",
+				"Properties": "RTID(kongfu_bronze_chi@ZombieProps)",
+				"ZombieBasedOn": "kongfu_bronze_chi"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_bronze_chi_without_torch"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_bronze_chi_without_torch@ZombieProps)",
+				"ZombieBasedOn": "kongfu_bronze_chi"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_rocket_imp"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_rocket_imp@ZombieProps)",
+				"ZombieBasedOn": "kongfu_rocket_imp"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_boss_explode"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_boss_explode@ZombieProps)",
+				"ZombieBasedOn": "kongfu_boss_explode"
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_boss_blade"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(kongfu_boss_blade@ZombieProps)",
+				"ZombieBasedOn": "kongfu_boss_blade"
+			}
+		},
+		{
+			"aliases": [
+				"monk_imp"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(monk_imp@ZombieProps)",
+				"ZombieBasedOn": "monk_imp"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_fan"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_fan@ZombieProps)",
+				"ZombieBasedOn": "abbot_fan"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_3section_staff"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_3section_staff@ZombieProps)",
+				"ZombieBasedOn": "abbot_3section_staff"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_chi"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_chi@ZombieProps)",
+				"ZombieBasedOn": "abbot_chi"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_imp"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_imp@ZombieProps)",
+				"ZombieBasedOn": "abbot_imp"
 			}
 		},
 		{
@@ -1110,6 +1421,106 @@
 			"objdata": {
 				"Properties": "RTID(monk_torch@ZombieProps)",
 				"ZombieBasedOn": "monk_torch"
+			}
+		},
+		{
+			"aliases": [
+				"abbot"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot@ZombieProps)",
+				"ZombieBasedOn": "abbot"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_armor1@ZombieProps)",
+				"ZombieBasedOn": "abbot_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_armor2@ZombieProps)",
+				"ZombieBasedOn": "abbot_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_armor3"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_armor3@ZombieProps)",
+				"ZombieBasedOn": "abbot_armor3"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_flag"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_flag@ZombieProps)",
+				"ZombieBasedOn": "abbot_flag"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_flag_veteran"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_flag_veteran@ZombieProps)",
+				"ZombieBasedOn": "abbot_flag_veteran"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_torch"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(abbot_torch@ZombieProps)",
+				"ZombieBasedOn": "abbot_torch"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_future"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(future@ZombieProps)",
+				"ZombieBasedOn": "future"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_future_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(future_armor1@ZombieProps)",
+				"ZombieBasedOn": "future_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_future_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(future_armor2@ZombieProps)",
+				"ZombieBasedOn": "future_armor2"
 			}
 		},
 		{
@@ -1344,6 +1755,36 @@
 		},
 		{
 			"aliases": [
+				"beghouled_dark"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(dark@ZombieProps)",
+				"ZombieBasedOn": "dark"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_dark_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(dark_armor1@ZombieProps)",
+				"ZombieBasedOn": "dark_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_dark_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(dark_armor2@ZombieProps)",
+				"ZombieBasedOn": "dark_armor2"
+			}
+		},
+		{
+			"aliases": [
 				"dark_armor1"
 			],
 			"objclass": "ZombieType",
@@ -1514,6 +1955,36 @@
 		},
 		{
 			"aliases": [
+				"beghouled_beach"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(beach@ZombieProps)",
+				"ZombieBasedOn": "beach"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_beach_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(beach_armor1@ZombieProps)",
+				"ZombieBasedOn": "beach_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_beach_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(beach_armor2@ZombieProps)",
+				"ZombieBasedOn": "beach_armor2"
+			}
+		},
+		{
+			"aliases": [
 				"beach"
 			],
 			"objclass": "ZombieType",
@@ -1550,6 +2021,36 @@
 			"objdata": {
 				"Properties": "RTID(beach_armor4@ZombieProps)",
 				"ZombieBasedOn": "beach_armor4"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_beach_fem"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(beach_fem@ZombieProps)",
+				"ZombieBasedOn": "beach_fem"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_beach_fem_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(beach_fem_armor1@ZombieProps)",
+				"ZombieBasedOn": "beach_fem_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_beach_fem_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(beach_fem_armor2@ZombieProps)",
+				"ZombieBasedOn": "beach_fem_armor2"
 			}
 		},
 		{
@@ -1710,6 +2211,36 @@
 			"objdata": {
 				"Properties": "RTID(zombossmech_beach2@ZombieProps)",
 				"ZombieBasedOn": "zombossmech_beach2"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_iceage"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(iceage@ZombieProps)",
+				"ZombieBasedOn": "iceage"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_iceage_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(iceage_armor1@ZombieProps)",
+				"ZombieBasedOn": "iceage_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_iceage_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(iceage_armor2@ZombieProps)",
+				"ZombieBasedOn": "iceage_armor2"
 			}
 		},
 		{
@@ -1924,6 +2455,226 @@
 		},
 		{
 			"aliases": [
+				"zoybean"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zoybean@ZombieProps)",
+				"ZombieBasedOn": "zoybean"
+			}
+		},
+		{
+			"aliases": [
+				"zoybean_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zoybean_armor1@ZombieProps)",
+				"ZombieBasedOn": "zoybean_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"zoybean_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zoybean_armor2@ZombieProps)",
+				"ZombieBasedOn": "zoybean_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"zoybean_gargantuar"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zoybean_gargantuar@ZombieProps)",
+				"ZombieBasedOn": "zoybean_gargantuar"
+			}
+		},
+		{
+			"aliases": [
+				"halloween"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(halloween@ZombieProps)",
+				"ZombieBasedOn": "halloween"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(halloween_armor1@ZombieProps)",
+				"ZombieBasedOn": "halloween_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(halloween_armor2@ZombieProps)",
+				"ZombieBasedOn": "halloween_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_flag"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(halloween_flag@ZombieProps)",
+				"ZombieBasedOn": "halloween_flag"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_imp"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(halloween_imp@ZombieProps)",
+				"ZombieBasedOn": "halloween_imp"
+			}
+		},
+		{
+			"aliases": [
+				"halloween_gargantuar"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(halloween_gargantuar@ZombieProps)",
+				"ZombieBasedOn": "halloween_gargantuar"
+			}
+		},
+		{
+			"aliases": [
+				"summer_basic"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer@ZombieProps)",
+				"ZombieBasedOn": "summer_basic"
+			}
+		},
+		{
+			"aliases": [
+				"summer_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer_armor1@ZombieProps)",
+				"ZombieBasedOn": "summer_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"summer_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer_armor2@ZombieProps)",
+				"ZombieBasedOn": "summer_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"summer_flag"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer_flag@ZombieProps)",
+				"ZombieBasedOn": "summer_flag"
+			}
+		},
+		{
+			"aliases": [
+				"summer_bug"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer_bug@ZombieProps)",
+				"ZombieBasedOn": "summer_bug"
+			}
+		},
+		{
+			"aliases": [
+				"summer_bug_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer_bug_armor1@ZombieProps)",
+				"ZombieBasedOn": "summer_bug_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"summer_bug_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer_bug_armor2@ZombieProps)",
+				"ZombieBasedOn": "summer_bug_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"summer_imp"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_imp@ZombieProps)",
+				"ZombieBasedOn": "summer_imp"
+			}
+		},
+		{
+			"aliases": [
+				"summer_gargantuar"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(summer_gargantuar@ZombieProps)",
+				"ZombieBasedOn": "summer_gargantuar"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_lostcity"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity@ZombieProps)",
+				"ZombieBasedOn": "lostcity"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_lostcity_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_armor1@ZombieProps)",
+				"ZombieBasedOn": "lostcity_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"beghouled_lostcity_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_armor2@ZombieProps)",
+				"ZombieBasedOn": "lostcity_armor2"
+			}
+		},
+		{
+			"aliases": [
 				"lostcity"
 			],
 			"objclass": "ZombieType",
@@ -1954,6 +2705,16 @@
 		},
 		{
 			"aliases": [
+				"lostcity_armor4"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_armor4@ZombieProps)",
+				"ZombieBasedOn": "lostcity_armor4"
+			}
+		},
+		{
+			"aliases": [
 				"lostcity_flag"
 			],
 			"objclass": "ZombieType",
@@ -1964,12 +2725,52 @@
 		},
 		{
 			"aliases": [
+				"lostcity_flag_veteran"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_flag_veteran@ZombieProps)",
+				"ZombieBasedOn": "lostcity_flag_veteran"
+			}
+		},
+		{
+			"aliases": [
 				"lostcity_lostpilot"
 			],
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(lostcity_lostpilot@ZombieProps)",
 				"ZombieBasedOn": "lostcity_lostpilot"
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot_veteran"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_lostpilot_veteran@ZombieProps)",
+				"ZombieBasedOn": "lostcity_lostpilot_veteran"
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot_veteran_with_zombies"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_lostpilot_veteran_with_zombies@ZombieProps)",
+				"ZombieBasedOn": "lostcity_lostpilot_veteran"
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_lostpilot_veteran_for_zomboss"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_lostpilot_veteran_for_zomboss@ZombieProps)",
+				"ZombieBasedOn": "lostcity_lostpilot_veteran"
 			}
 		},
 		{
@@ -2020,6 +2821,16 @@
 			"objdata": {
 				"Properties": "RTID(lostcity_bug_armor2@ZombieProps)",
 				"ZombieBasedOn": "lostcity_bug_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"lostcity_bug_armor4"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(lostcity_bug_armor4@ZombieProps)",
+				"ZombieBasedOn": "lostcity_bug_armor4"
 			}
 		},
 		{
@@ -2080,6 +2891,16 @@
 			"objdata": {
 				"Properties": "RTID(zombossmech_lostcity@ZombieProps)",
 				"ZombieBasedOn": "zombossmech_lostcity"
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_lostcity2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zombossmech_lostcity2@ZombieProps)",
+				"ZombieBasedOn": "zombossmech_lostcity2"
 			}
 		},
 		{
@@ -2284,6 +3105,26 @@
 		},
 		{
 			"aliases": [
+				"zombossmech_eighties"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zombossmech_eighties@ZombieProps)",
+				"ZombieBasedOn": "zombossmech_eighties"
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_modern_eighties"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zombossmech_modern_eighties@ZombieProps)",
+				"ZombieBasedOn": "zombossmech_eighties"
+			}
+		},
+		{
+			"aliases": [
 				"dino"
 			],
 			"objclass": "ZombieType",
@@ -2390,6 +3231,36 @@
 			"objdata": {
 				"Properties": "RTID(dino_gargantuar@ZombieProps)",
 				"ZombieBasedOn": "dino_gargantuar"
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_dino"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zombossmech_dino@ZombieProps)",
+				"ZombieBasedOn": "zombossmech_dino"
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_modern_dino"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zombossmech_modern_dino@ZombieProps)",
+				"ZombieBasedOn": "zombossmech_dino"
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_dino2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(zombossmech_dino2@ZombieProps)",
+				"ZombieBasedOn": "zombossmech_dino2"
 			}
 		}
 	]

@@ -4,6 +4,107 @@
 	"objects": [
 		{
 			"aliases": [
+				"zoybeanpod"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "GROWTIME",
+						"VALUE": 18
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Zoybean Pods grow from sprouts to full pods, then split open to release helpful plant \"zomboids\" which attack zombies.",
+					"zh": "豆腐尸荚生长成为硕大的豆荚，并释放一只“豆腐僵尸”为你战斗。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "\"Developing plant zomboids in eerie mimicry of zombie life is well within the boundaries of human experience,\" Zoybean Pod insists with a calm, unvarying steadiness.",
+					"zh": "“以诡异的方式模仿僵尸生命来培育豆腐僵尸，这其实完全在人们经验的范畴之内。”豆腐尸荚坚持道，语气带着一种平静而恒定的沉稳。"
+				},
+				"BriefIntroduction": {
+					"en": "Grows helpful zomboids",
+					"zh": "生成为我们战斗的豆腐僵尸"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"icebloom"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 50
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Ice Blooms freeze, chill, and damage all zombies on the board, and more so in a 3x3 area around where they're planted.",
+					"zh": "寒冰蓓蕾冻结、减速，并伤害全屏的僵尸，尤其是 3x3 范围内的僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用法"
+						},
+						"DESCRIPTION": {
+							"en": "single use, instant",
+							"zh": "一次性使用，立刻生效"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特殊"
+						},
+						"DESCRIPTION": {
+							"en": "turns several of the most dangerous zombies into ice sculptures, obstructing other zombies",
+							"zh": "使场内几名较危险的僵尸变为冰雕，使之阻碍其他僵尸前进"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"The last time Ice Bloom had pancakes for breakfast, she wasn't satisfied. She can't say why, exactly, but there was something subtly wrong with them. The shocking reason? Substandard maple syrup.\"",
+					"zh": "“上次寒冰蓓蕾早餐吃煎饼，她不是很满意，但又说不出为什么，但是那些煎饼确实有些不对劲。结果你知道为什么？加了劣质枫糖浆。”"
+				},
+				"BriefIntroduction": {
+					"en": "Freezes and damages zombies, turning some of which into ice sculptures",
+					"zh": "冰冻并伤害僵尸，将其中几名僵尸变作冰雕"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"goldbloom"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -277,7 +378,7 @@
 						"TYPE": "RANGE",
 						"SORT": {
 							"en": "5 Way",
-							"zh": "五个方向"
+							"zh": "5 个方向"
 						}
 					},
 					{
@@ -296,6 +397,67 @@
 				"BriefIntroduction": {
 					"en": "Shoots stars in 5 directions",
 					"zh": "向五个方向发射星星"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pinkstarfruit"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 30
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "10 Way",
+							"zh": "10 个方向"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Angel Starfruits adjust the angles and then shoot stars in 5 directions.",
+					"zh": "天使星星果会调整角度，随后向五个方向发射星星子弹。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "changes shooting directions according to zombies' coordinates",
+							"zh": "根据僵尸的位置改变发射的方向"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Princess Angel Starfruit is far more energetic than Starfruit from a small town. Starfruit can't even be bothered to rotate himself a little.",
+					"zh": "天使星星果公主比来自乡下的星星果有活力多了，星星果甚至连转个身都不愿意。"
+				},
+				"BriefIntroduction": {
+					"en": "Adjusts the angle and shoots stars in 5 directions",
+					"zh": "调整角度并向五个方向发射星星"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -421,7 +583,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 50
+						"VALUE": 60
 					},
 					{
 						"TYPE": "RANGE",
@@ -1181,7 +1343,7 @@
 						},
 						"DESCRIPTION": {
 							"en": "explodes, temporarily freezing a zombie",
-							"zh": "接触时爆裂，一段时间内冻结一只僵尸"
+							"zh": "接触时爆裂，使一只僵尸冻结一段时间"
 						}
 					}
 				],
@@ -2739,7 +2901,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 120
+						"VALUE": 100
 					},
 					{
 						"TYPE": "RANGE",
