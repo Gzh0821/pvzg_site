@@ -12,11 +12,16 @@
                 <table>
                     <tbody>
                         <tr v-for="(value, key) in plant.elements" :key="key">
-
-                            <td class="ability"><img :src="keyMap[key].icon" :alt="keyMap[key][i18nLanguage]" />
-                                {{ keyMap[key][i18nLanguage] }}
-                            </td>
-                            <td class="value">{{ value }}</td>
+                            <template v-if="keyMap[key]">
+                                <td class="ability"><img :src="keyMap[key].icon" :alt="keyMap[key][i18nLanguage]" />
+                                    {{ keyMap[key][i18nLanguage] }}
+                                </td>
+                                <td class="value">{{ value }}</td>
+                            </template>
+                            <template v-else>
+                                <td class="ability">{{ key }}</td>
+                                <td class="value">{{ value }}</td>
+                            </template>
                         </tr>
                         <!-- <tr key="CodeName">
                         <td class="ability"> CodeName </td>

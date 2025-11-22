@@ -11,9 +11,14 @@
                 <table>
                     <tbody>
                         <tr v-for="(value, key) in zombie.elements" :key="key">
-
-                            <td class="ability"><img :src="keyMap[key].icon" /> {{ keyMap[key][i18nLanguage] }}</td>
-                            <td class="value">{{ value }}</td>
+                            <template v-if="keyMap[key]">
+                                <td class="ability"><img :src="keyMap[key].icon" /> {{ keyMap[key][i18nLanguage] }}</td>
+                                <td class="value">{{ value }}</td>
+                            </template>
+                            <template v-else>
+                                <td class="ability">{{ key }}</td>
+                                <td class="value">{{ value }}</td>
+                            </template>
                         </tr>
                         <!-- <tr key="CodeName">
                             <td class="ability"> CodeName </td>
