@@ -12,7 +12,7 @@
                     <template #content>
                         <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
                             <template
-                                v-for="subZombie in zombie.subZombies.map((codename) => { return zombieMap[codename] })"
+                                v-for="subZombie in zombie.subZombies.map((codename) => { return zombieMap[codename] }).filter((z) => z)"
                                 :key="subZombie.codename">
                                 <a-col @click="selectZombie(subZombie, zombie)">
                                     <img :src="'/assets/image/zombies/Zombie_' + subZombie.zombieType + '_0.webp'"

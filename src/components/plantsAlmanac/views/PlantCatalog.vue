@@ -12,7 +12,7 @@
                     <template #content>
                         <a-row :gutter="[16, { xs: 8, sm: 16, md: 24, lg: 32 }]" justify="center">
                             <template
-                                v-for="subPlant in plant.subPlants.map((codename) => { return plantMap[codename] })"
+                                v-for="subPlant in plant.subPlants.map((codename) => { return plantMap[codename] }).filter((p) => p)"
                                 :key="subPlant.codename">
                                 <a-col @click="selectPlant(subPlant, plant)">
                                     <img :src="'/assets/image/plants/plants_' + subPlant.codename + '_c.webp'"
