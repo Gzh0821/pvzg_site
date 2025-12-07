@@ -1574,7 +1574,8 @@
 			"CODENAME": "hurrikale",
 			"TYPE": [
 				"plant",
-				"losingPlant"
+				"losingPlant",
+				"lastStandDisallowed"
 			],
 			"COSTUME": 1,
 			"OBTAINWORLD": "market",
@@ -1886,7 +1887,7 @@
 				"en": "Jack O' Lantern",
 				"zh": "杰克南瓜"
 			},
-			"COSTUME": 2,
+			"COSTUME": 3,
 			"_CARDSPRITENAME": "jackolantern",
 			"CODENAME": "jackolantern",
 			"TYPE": [
@@ -4148,7 +4149,7 @@
 				"lastStandDisallowed"
 			],
 			"COSTUME": 0,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -4176,12 +4177,140 @@
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
-			"BOOST": 0,
+			"BOOST": 2,
 			"ALMANAC": "RTID(zoybeanpod@PlantAlmanac)",
 			"PROPS": "RTID(zoybeanpod@PlantProps)",
 			"RES": {
 				"Disabled": "ZoybeanPod",
 				"Plant": "ZoybeanPod"
+			}
+		},
+		{
+			"ID": 169,
+			"NAME": {
+				"en": "Atomic Bombegranate",
+				"zh": "原子石榴弹"
+			},
+			"_CARDSPRITENAME": "atombomb",
+			"CODENAME": "atombomb",
+			"TYPE": [
+				"plant",
+				"losingPlant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(empty@PlantAlmanac)",
+			"PROPS": "RTID(atombomb@PlantProps)",
+			"RES": {
+				"Disabled": "AtomBomb",
+				"Plant": "AtomBomb"
+			}
+		},
+		{
+			"ID": 170,
+			"NAME": {
+				"en": "Seedling",
+				"zh": "小种子"
+			},
+			"_CARDSPRITENAME": "seedling",
+			"CODENAME": "seedling",
+			"TYPE": [
+				"plant",
+				"losingPlant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 0,
+			"ALMANAC": "RTID(empty@PlantAlmanac)",
+			"PROPS": "RTID(seedling@PlantProps)",
+			"RES": {
+				"Disabled": "Seedling",
+				"Plant": "Seedling"
+			}
+		},
+		{
+			"ID": 171,
+			"NAME": {
+				"en": "Pyre Vine",
+				"zh": "柴火藤蔓"
+			},
+			"COSTUME": 0,
+			"_CARDSPRITENAME": "pyrevine",
+			"CODENAME": "pyrevine",
+			"TYPE": [
+				"vine"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(pyrevine@PlantAlmanac)",
+			"PROPS": "RTID(pyrevine@PlantProps)",
+			"RES": {
+				"Disabled": "PyreVine",
+				"Plant": "PyreVine"
+			}
+		},
+		{
+			"ID": 172,
+			"NAME": {
+				"en": "Shine Vine",
+				"zh": "闪耀藤蔓"
+			},
+			"COSTUME": 0,
+			"_CARDSPRITENAME": "shinevine",
+			"CODENAME": "shinevine",
+			"TYPE": [
+				"vine",
+				"sunProducer"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(shinevine@PlantAlmanac)",
+			"PROPS": "RTID(shinevine@PlantProps)",
+			"RES": {
+				"Disabled": "ShineVine",
+				"Plant": "ShineVine"
+			}
+		},
+		{
+			"ID": 173,
+			"NAME": {
+				"en": "Atomic Bombegranate",
+				"zh": "原子石榴弹"
+			},
+			"_CARDSPRITENAME": "atombomb",
+			"CODENAME": "atombomb_seedling",
+			"TYPE": [
+				"plant",
+				"losingPlant"
+			],
+			"SubPlantList": [
+				"atombomb",
+				"seedling"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(atombomb@PlantAlmanac)",
+			"PROPS": "RTID(seedling@PlantProps)",
+			"RES": {
+				"Disabled": "AtomBomb",
+				"Plant": "Seedling"
 			}
 		}
 	],
@@ -4259,6 +4388,7 @@
 		"missiletoe",
 		"ghostpepper",
 		"parsnip",
+		"icebloom",
 		"hurrikale",
 		"hotpotato",
 		"pepperpult",
@@ -4266,6 +4396,7 @@
 		"firepeashooter",
 		"stunion",
 		"xshot",
+		"pyrevine",
 		"jackolantern",
 		"sweetpotato",
 		"hotdate",
@@ -4281,6 +4412,7 @@
 		"stallia",
 		"goldleaf",
 		"zoybeanpod",
+		"shinevine",
 		"skyshooter",
 		"moonbean",
 		"strawburst",
@@ -4294,6 +4426,7 @@
 		"solarsage",
 		"cantaloupe",
 		"bamboozle",
+		"atombomb_seedling",
 		"cactus",
 		"phatbeet",
 		"celerystalker",
@@ -4324,7 +4457,6 @@
 		"gloomshroom",
 		"umbrellaleaf",
 		"pumpkin",
-		"icebloom",
 		"dragonbruit",
 		"cranjelly"
 	],
@@ -4425,6 +4557,7 @@
 		"missiletoe",
 		"ghostpepper",
 		"parsnip",
+		"icebloom",
 		"tool_projectile_bowlingbulb1",
 		"tool_projectile_bowlingbulb2",
 		"tool_projectile_bowlingbulb3",
@@ -4442,6 +4575,7 @@
 		"xshot",
 		"firepeashooter",
 		"hurrikale",
+		"pyrevine",
 		"jackolantern",
 		"sweetpotato",
 		"hotdate",
@@ -4456,6 +4590,7 @@
 		"lavaguava",
 		"toadstool",
 		"zoybeanpod",
+		"shinevine",
 		"strawburst",
 		"firegourd",
 		"snowpea",
@@ -4468,6 +4603,8 @@
 		"powerlily",
 		"bamboozle",
 		"bamboobusket",
+		"atombomb_seedling",
+		"seedling",
 		"skyshooter",
 		"moonbean",
 		"floawerPot",
@@ -4500,7 +4637,6 @@
 		"gloomshroom",
 		"umbrellaleaf",
 		"pumpkin",
-		"icebloom",
 		"gloomvine",
 		"dragonbruit",
 		"dragonbabybruit",

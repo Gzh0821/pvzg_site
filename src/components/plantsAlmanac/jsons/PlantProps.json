@@ -23,6 +23,65 @@
 		},
 		{
 			"aliases": [
+				"atombomb"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 20,
+				"CooldownFrom": 0.75,
+				"SunCost": 275,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Explosive",
+				"ExplodeDamage": 1800,
+				"ExplodeSeedlingCount": 2,
+				"ExplodeProjectileType": "atombomb",
+				"SeedlingType": "seedling",
+				"PlantfoodCallingType": [
+					"atombomb",
+					"seedling"
+				],
+				"ImmuneToIceblock": true,
+				"WarmingRadius": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 6,
+					"GridItemDamage": 200
+				},
+				"WarmingRadiusPlantfood": {
+					"PulseInitialDelay": 0.25,
+					"PulseCooldown": 1.5,
+					"GridItemDamage": 100
+				}
+			}
+		},
+		{
+			"aliases": [
+				"seedling"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 20,
+				"CooldownFrom": 0.75,
+				"SunCost": 225,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Explosive",
+				"Explode0Damage": 600,
+				"Explode0SeedlingCount": 0,
+				"Explode1Damage": 1200,
+				"Explode1SeedlingCount": 1,
+				"GrowingTime": 24,
+				"GrowUpType": "atombomb",
+				"ExplodeProjectileType": "atombomb",
+				"SeedlingType": "seedling",
+				"PlantfoodCallingType": [
+					"atombomb",
+					"seedling"
+				]
+			}
+		},
+		{
+			"aliases": [
 				"solarsage"
 			],
 			"objclass": "PlantProperties",
@@ -116,6 +175,32 @@
 				"CooldownFrom": 0,
 				"SunCost": 50,
 				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Sun"
+			}
+		},
+		{
+			"aliases": [
+				"shinevine"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"AttackInterval": 3,
+				"AttackStunDuration": 2,
+				"AttackDamage": 10,
+				"AttackSunValuePerZombie": 5,
+				"PlantfoodStunDuration": 10,
+				"PlantfoodDamage": 20,
+				"PlantfoodSunValuePerZombie": 5,
+				"ProduceSunValue": 50,
+				"ProduceInterval": 23.5,
+				"ProduceIntervalAdditional": 1.5,
+				"ProduceCountdownStart": 5,
+				"ProduceCountdownStartAdditional": 5,
+				"Cooldown": 5,
+				"CooldownFrom": 0,
+				"SunCost": 75,
+				"BeghouledCost": 1500,
 				"Toughness": 300,
 				"Family": "Sun"
 			}
@@ -1847,6 +1932,8 @@
 				"PlantfoodDurationExtendPerProducer": 0.15,
 				"PlantfoodDPS": 200,
 				"ShootInterval": 0.333,
+				"ShineVineShootInterval": 12,
+				"ShineVineShootIntervalAdditional": 4,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 50,
@@ -1997,6 +2084,31 @@
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 6,
+					"GridItemDamage": 200
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pyrevine"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"DPS": 20,
+				"DPSPlantfood": 600,
+				"FireExtraDuration": 1.5,
+				"PlantfoodDuration": 3,
+				"FireDistance": 2,
+				"Cooldown": 12,
+				"CooldownFrom": 0.833,
+				"SunCost": 125,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Fire",
+				"ImmuneToIceblock": true,
+				"WarmingRadius": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 3,
 					"GridItemDamage": 200
 				}
 			}
@@ -3096,6 +3208,7 @@
 				"Toughness": 300,
 				"Family": "Slow",
 				"DetectDistance": 1,
+				"StunDistance": 1.5,
 				"DetectDistancePlantfood": 4,
 				"StunDuration": 12,
 				"StunDurationPlantfood": 18

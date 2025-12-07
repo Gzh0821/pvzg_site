@@ -4,12 +4,151 @@
 	"objects": [
 		{
 			"aliases": [
+				"feastivus"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"feastivus_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"feastivus_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"foodfight_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"foodfight_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_flag"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"tutorial"
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"Toughness": 190,
 				"EatDPS": 100,
@@ -26,7 +165,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"Toughness": 190,
 				"EatDPS": 100,
@@ -46,7 +184,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"Toughness": 190,
 				"EatDPS": 100,
@@ -86,7 +223,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -103,7 +239,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
 				"Toughness": 350,
@@ -120,7 +255,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChooseToSpawnOnDeepWaterRows": true,
 				"SpeedScaleInWater": 2,
 				"LivesInDeepWater": true,
@@ -140,7 +274,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChooseToSpawnOnDeepWaterRows": true,
 				"SpeedScaleInWater": 2,
 				"LivesInDeepWater": true,
@@ -163,7 +296,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChooseToSpawnOnDeepWaterRows": true,
 				"SpeedScaleInWater": 2,
 				"LivesInDeepWater": true,
@@ -210,7 +342,6 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnDeepWaterRows": true,
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"SpeedScaleInWater": 2,
 				"LivesInDeepWater": true,
@@ -231,7 +362,6 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnDeepWaterRows": true,
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.38,
 				"SpeedScaleInWater": 2,
@@ -253,7 +383,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -334,7 +463,7 @@
 				"CannotBeSwallowedByChomper": true,
 				"CannotCarryPlantfoodsInWaves": true,
 				"SmashDamage": 1500,
-				"WalkSPS": 0.24,
+				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 3600,
 				"LivesInDeepWater": true,
@@ -353,7 +482,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"EatDPS": 100,
 				"WalkSPS": 0.185,
 				"Toughness": 190,
@@ -395,7 +523,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.4,
 				"BalloonWalkSPS": 0.4,
 				"EatDPS": 100,
@@ -415,7 +542,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
 				"Toughness": 325,
@@ -434,7 +560,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
 				"Toughness": 460,
@@ -455,7 +580,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
 				"Toughness": 490,
@@ -475,7 +599,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"SmashDamage": 1500,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
@@ -494,7 +617,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"KilledByShrinkingViolet": true,
-				"CannotBeTossedByCitron": false,
 				"CannotBeGrabbedByPtero": true,
 				"ExplosionDamage": 301,
 				"MinTriggerColumn": 0,
@@ -570,7 +692,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -587,7 +708,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -607,7 +727,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -627,7 +746,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -648,7 +766,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -666,7 +783,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
@@ -684,7 +800,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"MaxAbsorbValue": 250,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
@@ -701,7 +816,28 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
+				"TeammateType": "camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					0
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_segment"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "feastivus_camel_segment",
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -722,7 +858,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
+				"TeammateType": "camel_segment",
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -743,7 +879,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
+				"TeammateType": "camel_segment",
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -764,7 +900,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
+				"TeammateType": "camel_segment",
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -785,7 +921,93 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
+				"TeammateType": "camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					5,
+					6,
+					7
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1200,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_onehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "feastivus_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					3
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 600,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_twohump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "feastivus_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					4
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 800,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_threehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "feastivus_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					5
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1000,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_manyhump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "feastivus_camel_segment",
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -808,7 +1030,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -829,7 +1050,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -850,7 +1070,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -871,7 +1090,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -892,7 +1110,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -916,7 +1133,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"CannotBeCarriedByFanStorm": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.25,
 				"EatDPS": 100,
 				"FireDPS": 1000,
@@ -936,7 +1152,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"CannotBeCarriedByFanStorm": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.5,
 				"EatDPS": 150,
 				"FireDPS": 1000,
@@ -956,7 +1171,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"BoneType": "tombraiser_bone",
-				"CannotBeTossedByCitron": false,
 				"ThrowTimePerGroup": 2,
 				"TimeBetweenGroups": 6,
 				"TimeBetweenGroupsAdditional": 1,
@@ -975,7 +1189,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.5,
 				"EatDPS": 100,
 				"Toughness": 290,
@@ -991,7 +1204,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ZombieInside": "pharaoh_inner",
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -1009,7 +1221,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ProtectsInside": true,
 				"ZombieInside": "pharaoh_inner",
 				"WalkSPS": 0.185,
@@ -1032,7 +1243,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"Toughness": 190,
@@ -1742,7 +1952,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -1759,7 +1968,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"Toughness": 190,
 				"EatDPS": 100,
@@ -1779,7 +1987,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -1799,7 +2006,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -1820,7 +2026,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -1838,7 +2043,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
@@ -1856,7 +2060,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -1877,7 +2080,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.355,
 				"EatDPS": 100,
 				"Toughness": 270,
@@ -1894,7 +2096,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.6,
 				"EatDPS": 100,
 				"Toughness": 270,
@@ -1911,7 +2112,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ImmuneToSweetPotato": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -1932,7 +2132,6 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
-				"CannotBeTossedByCitron": false,
 				"CannotBeDetectedBySapfling": true,
 				"CannotBeSwallowedByChomper": true,
 				"ChiliStunDurationMult": 0,
@@ -1954,6 +2153,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
 				"ImmuneToSweetPotato": true,
@@ -1997,7 +2197,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"EatDPS": 100,
 				"Toughness": 420,
 				"WalkSPS": 0.15,
@@ -2015,10 +2214,10 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"KilledByShrinkingViolet": true,
-				"CannotBeTossedByCitron": false,
 				"CanBeEasilySwallowedByChomper": true,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 1.4,
@@ -2042,7 +2241,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -2672,13 +2870,13 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
 				"WavePointCost": 100,
 				"Weight": 1000,
+				"CowboyPianoActionInterval": 7,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -2690,7 +2888,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -2711,7 +2908,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -2732,7 +2928,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.185,
@@ -2754,7 +2949,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.24,
@@ -2773,7 +2967,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"DanceSPSScale": 1.2,
 				"WalkSPS": 0.4,
@@ -2791,7 +2984,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -2811,7 +3003,6 @@
 			"objdata": {
 				"CannotBeSwallowedByChomper": true,
 				"CannotBeEnlightenedBySolarSage": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 4000,
 				"Toughness": 840,
@@ -2829,7 +3020,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -2848,7 +3038,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -2867,7 +3056,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -2886,10 +3074,31 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
+				"ChickenTypeName": "chicken_ge",
+				"ChickeningDuration": 2,
+				"ChickeningDurationVariance": 1,
+				"ChickeningHealthPercentage": 0.8,
+				"ChickeningInterval": 0.2,
+				"ChickeningIntervalVariance": 0.1,
+				"WavePointCost": 350,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_gobbler_king"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ChickenTypeName": "foodfight_turkey",
 				"ChickeningDuration": 2,
 				"ChickeningDurationVariance": 1,
 				"ChickeningHealthPercentage": 0.8,
@@ -2910,7 +3119,29 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
+				"CanBeEasilySwallowedByChomper": true,
+				"ImmuneToSporeShroom": true,
+				"WalkSPS": 2,
+				"WalkSPSVarience": 0,
+				"EatDPS": 50,
+				"Toughness": 1,
+				"DoesNotDamageHeavilyToGarlic": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 10,
+				"Weight": 0,
+				"HitRect": "RTID(CowboyChickenHitRect@RectangleProps)",
+				"AttackRect": "RTID(CowboyChickenAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_turkey"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"KilledByShrinkingViolet": true,
+				"CannotBeGrabbedByPtero": true,
 				"CanBeEasilySwallowedByChomper": true,
 				"ImmuneToSporeShroom": true,
 				"WalkSPS": 2,
@@ -2934,7 +3165,6 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"CanBeEasilySwallowedByChomper": true,
 				"ImmuneToSporeShroom": true,
 				"WalkSPS": 2,
@@ -2957,7 +3187,6 @@
 			"objdata": {
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
-				"CannotBeTossedByCitron": false,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeSwallowedByChomper": true,
 				"EatDPS": 100,
@@ -2982,7 +3211,6 @@
 			"objdata": {
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
-				"CannotBeTossedByCitron": false,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeSwallowedByChomper": true,
 				"EatDPS": 100,
@@ -3009,7 +3237,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -3631,7 +3858,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -3655,7 +3881,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -3675,7 +3900,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -3695,7 +3919,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -3715,7 +3938,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -3733,7 +3955,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
@@ -3750,7 +3971,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"HammerDuration": 3,
 				"RestDuration": 3,
 				"ProjectileDamageMult": 3,
@@ -3769,7 +3989,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"HammerDuration": 4,
 				"RestDuration": 0,
 				"ProjectileDamageMult": 1,
@@ -3802,7 +4021,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"CannotBeCarriedByFanStorm": true,
-				"CannotBeTossedByCitron": false,
 				"HammerDuration": 3,
 				"RestDuration": 0,
 				"WalkSPS": 0.25,
@@ -3823,7 +4041,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ExplodeDamageToPlants": 4001,
 				"ExplodeDamageToZombies": 1800,
 				"WalkSPS": 0.335,
@@ -3841,7 +4058,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChiInterval": 7,
 				"ChiIntervalStart": 4,
 				"WalkSPS": 0.15,
@@ -3859,7 +4075,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ArmDroppingHealthPct": 0.25,
 				"DrinkHealthPct": 0.5,
 				"DrinkingDamageMult": 0.25,
@@ -3881,7 +4096,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ArmDroppingHealthPct": 0.25,
 				"DrinkHealthPct": 0.5,
 				"DrinkingDamageMult": 0.25,
@@ -4104,7 +4318,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"SummonCount": {
 					"Min": 2,
 					"Max": 3
@@ -4141,7 +4354,6 @@
 			"objdata": {
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.4,
 				"WalkSpeedMultFlying": 7,
 				"EatDPS": 100,
@@ -4734,7 +4946,6 @@
 			"objdata": {
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"TimeBeforeFirst": {
 					"Min": 3,
@@ -4774,7 +4985,6 @@
 			"objdata": {
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
 				"Toughness": 600,
@@ -4802,7 +5012,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"PlantablePlants": [
 					"solarsage",
 					"cherry_bomb"
@@ -4827,7 +5036,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.135,
 				"EatDPS": 100,
 				"Toughness": 550,
@@ -4856,7 +5064,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -4880,7 +5087,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -4900,7 +5106,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -4920,7 +5125,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -4940,7 +5144,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.26,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -4957,7 +5160,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.44,
 				"EatDPS": 300,
 				"Toughness": 350,
@@ -4973,7 +5175,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"BladeDamage": 250,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -4991,7 +5192,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"HammerDuration": 4,
 				"RestDuration": 0.1,
 				"ProjectileDamageMult": 3,
@@ -5010,7 +5210,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.25,
 				"EatDPS": 100,
 				"FireDPS": 1000,
@@ -5033,7 +5232,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"CannotBeCarriedByFanStorm": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
 				"FireDPS": 1000,
@@ -5053,7 +5251,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -5070,7 +5267,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -5094,7 +5290,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -5114,7 +5309,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -5134,7 +5328,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -5154,7 +5347,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.26,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -5171,7 +5363,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.44,
 				"EatDPS": 300,
 				"Toughness": 400,
@@ -5188,7 +5379,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -5208,7 +5398,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -5228,7 +5417,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -5249,7 +5437,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -5266,7 +5453,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChiliStunDurationMult": 0,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
@@ -5286,7 +5472,6 @@
 			"objdata": {
 				"ImmuneToSweetPotato": true,
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
 				"Toughness": 380,
@@ -5305,7 +5490,6 @@
 			"objdata": {
 				"ImmuneToSweetPotato": true,
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.75,
 				"EatDPS": 150,
 				"Toughness": 390,
@@ -5324,7 +5508,6 @@
 			"objdata": {
 				"ImmuneToSweetPotato": true,
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
 				"Toughness": 380,
@@ -5368,10 +5551,10 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDraggedByTangleKelp": true,
-				"CannotBeTossedByCitron": false,
 				"CannotBeSwallowedByChomper": true,
 				"ChiliStunDurationMult": 0,
 				"CannotCarryPlantfoodsInWaves": true,
@@ -5392,10 +5575,10 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDraggedByTangleKelp": true,
-				"CannotBeTossedByCitron": false,
 				"CannotBeSwallowedByChomper": true,
 				"ChiliStunDurationMult": 0,
 				"CannotCarryPlantfoodsInWaves": true,
@@ -5416,10 +5599,10 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDraggedByTangleKelp": true,
-				"CannotBeTossedByCitron": false,
 				"CannotBeSwallowedByChomper": true,
 				"ChiliStunDurationMult": 0,
 				"CannotCarryPlantfoodsInWaves": true,
@@ -5521,8 +5704,8 @@
 			"objdata": {
 				"CannotBeEnlightenedBySolarSage": true,
 				"KilledByShrinkingViolet": true,
+				"IgnoredInWaves": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"CannotBeSwallowedByChomper": true,
 				"ChiliStunDurationMult": 0,
@@ -6564,7 +6747,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -6581,7 +6763,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -6601,7 +6782,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -6621,7 +6801,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -6641,7 +6820,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -6662,7 +6840,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -6680,7 +6857,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
@@ -6697,7 +6873,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
 				"Toughness": 420,
@@ -6715,7 +6890,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"TimeBeforeFirst": 7,
 				"TimeBeforeFirstAdditional": 2,
 				"TimeBetween": 11,
@@ -6735,7 +6909,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"TimeBeforeFirst": 7,
 				"TimeBeforeFirstAdditional": 2,
 				"TimeBetween": 4,
@@ -6846,7 +7019,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -6865,7 +7037,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -7631,7 +7802,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7648,7 +7818,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7668,7 +7837,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7688,7 +7856,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7709,7 +7876,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7726,7 +7892,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7746,7 +7911,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7766,7 +7930,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -7787,7 +7950,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -7805,7 +7967,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
@@ -7822,7 +7983,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChooseToSpawnOnDeepWaterRows": true,
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.185,
@@ -7840,7 +8000,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"BoardToughness": 700,
 				"DamageOnStabbing": 1500,
 				"SwimSpeedMultiplier": 3,
@@ -7868,7 +8027,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"BoardToughness": 1100,
 				"DamageOnStabbing": 1500,
 				"SwimSpeedMultiplier": 7,
@@ -7899,7 +8057,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"OctopusType": "octopus",
-				"CannotBeTossedByCitron": false,
 				"TimeBeforeFirst": 7,
 				"TimeBeforeFirstAdditional": 2,
 				"TimeBetween": 11,
@@ -7922,7 +8079,6 @@
 			"objdata": {
 				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"PlantablePlants": [
 					"tanglekelp",
 					"ghostpepper",
@@ -7952,7 +8108,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -8695,7 +8850,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -8713,7 +8867,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -8734,7 +8887,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -8755,7 +8907,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -8776,7 +8927,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.185,
@@ -8798,7 +8948,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
@@ -8817,7 +8966,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
@@ -8835,7 +8983,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.12,
 				"EatDPS": 100,
@@ -8856,7 +9003,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"SnowballType": "hunter_snowball",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"WalkSPS": 0.2,
 				"EatDPS": 150,
@@ -8878,7 +9024,6 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"KilledByShrinkingViolet": true,
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"CannotBePushedBySliders": true,
 				"WalkSPS": 0.3,
@@ -8914,7 +9059,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"ImpTypes": [
 					"iceage_imp"
@@ -8935,7 +9079,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"ImpTypes": [
 					"iceage_imp"
@@ -8956,7 +9099,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"ImpTypes": [
 					"iceage_imp"
@@ -8977,7 +9119,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"ImpTypes": [
 					"iceage_hunter",
@@ -8999,7 +9140,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"ImmuneToSporeShroom": true,
 				"WalkSPS": 0.185,
@@ -9026,7 +9166,6 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"CannotBePushedBySliders": true,
 				"CanBeEasilySwallowedByChomper": true,
@@ -9050,7 +9189,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"ChillInsteadOfFreeze": true,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
@@ -9756,7 +9894,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 300,
@@ -9773,7 +9910,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 300,
@@ -9793,7 +9929,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 300,
@@ -9841,7 +9976,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -9858,7 +9992,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -9878,7 +10011,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -9898,7 +10030,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -9948,7 +10079,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -9966,7 +10096,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -9987,7 +10116,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10008,7 +10136,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -10026,7 +10153,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -10045,7 +10171,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -10067,7 +10192,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -10089,7 +10213,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10107,7 +10230,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10128,7 +10250,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10149,7 +10270,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"BugToughness": 0,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10170,7 +10290,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
@@ -10188,7 +10307,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 300,
@@ -10205,7 +10323,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"HangingNoEatTimeUntilDrop": 6,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10223,7 +10340,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"HangingNoEatTimeUntilDrop": 3,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10241,7 +10357,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"HangingNoEatTimeUntilDrop": 3,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10276,7 +10391,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"HangingNoEatTimeUntilDrop": 3,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10311,7 +10425,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"ShovelDamage": 150,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
@@ -10330,7 +10443,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"CannotBeDetectedBySapfling": true,
 				"WalkSPS": 0.25,
 				"EatDPS": 100,
@@ -10348,7 +10460,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -10367,7 +10478,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -10389,7 +10499,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -10411,7 +10520,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -10433,7 +10541,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.155,
 				"EatDPS": 100,
 				"Toughness": 760,
@@ -10456,7 +10563,6 @@
 			"objdata": {
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 350,
@@ -10472,7 +10578,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"MaxAbsorbValue": 250,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -10497,7 +10602,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -10841,12 +10945,12 @@
 										"lostcity_jane"
 									],
 									"pointMin": 1500,
-									"pointMax": 3500
+									"pointMax": 3500,
+									"plantfoodchance": 0.1
 								},
 								"weight": 10,
 								"repeatMax": 2,
-								"repeatMin": 1,
-								"plantfoodchance": 0.1
+								"repeatMin": 1
 							},
 							{
 								"actionName": "summon",
@@ -10858,12 +10962,12 @@
 										"lostcity_excavator"
 									],
 									"pointMin": 1500,
-									"pointMax": 2500
+									"pointMax": 2500,
+									"plantfoodchance": 0.1
 								},
 								"weight": 10,
 								"repeatMax": 2,
-								"repeatMin": 1,
-								"plantfoodchance": 0.1
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -10881,7 +10985,7 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 0,
 						"DamageIndexHalf": 2,
-						"HitPoints": 5000,
+						"HitPoints": 15000,
 						"MaxIdleTime": 2.5,
 						"MinIdleTime": 2,
 						"StunDamageScale": 1.5,
@@ -10909,12 +11013,12 @@
 										"lostcity_bug_armor4"
 									],
 									"pointMin": 2500,
-									"pointMax": 3500
+									"pointMax": 3500,
+									"plantfoodchance": 0
 								},
 								"weight": 20,
 								"repeatMax": 3,
-								"repeatMin": 1,
-								"plantfoodchance": 0.2
+								"repeatMin": 1
 							},
 							{
 								"actionName": "shoot",
@@ -10932,9 +11036,9 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 3,
 						"DamageIndexHalf": 4,
-						"HitPoints": 15000,
-						"MaxIdleTime": 1.5,
-						"MinIdleTime": 1,
+						"HitPoints": 35000,
+						"MaxIdleTime": 1,
+						"MinIdleTime": 0.5,
 						"StunDamageScale": 1.5,
 						"StunStaggerBackMovement": 1,
 						"StunStaggerBackTime": 0.4,
@@ -10958,15 +11062,15 @@
 										"lostcity_armor2",
 										"lostcity_gargantuar",
 										"lostcity_crystalskull",
-										"lostcity_jane"
+										"lostcity_impporter"
 									],
 									"pointMin": 3500,
-									"pointMax": 4500
+									"pointMax": 4500,
+									"plantfoodchance": 0.1
 								},
 								"weight": 20,
 								"repeatMax": 2,
-								"repeatMin": 1,
-								"plantfoodchance": 0.1
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -10995,9 +11099,9 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 5,
 						"DamageIndexHalf": 6,
-						"HitPoints": 35000,
-						"MaxIdleTime": 1,
-						"MinIdleTime": 0.5,
+						"HitPoints": 135000,
+						"MaxIdleTime": 0.7,
+						"MinIdleTime": 0.3,
 						"StunDamageScale": 1.5,
 						"StunStaggerBackMovement": 1,
 						"StunStaggerBackTime": 0.4,
@@ -11284,7 +11388,6 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11302,7 +11405,6 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11323,7 +11425,6 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11344,7 +11445,6 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.3,
 				"EatDPS": 100,
@@ -11362,7 +11462,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11379,7 +11478,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11399,7 +11497,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11419,7 +11516,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11435,7 +11531,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.23125,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -11453,7 +11548,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.19,
 				"EatDPS": 100,
 				"Toughness": 490,
@@ -11471,7 +11565,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.23125,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -11489,7 +11582,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.23125,
 				"EatDPS": 100,
 				"Toughness": 250,
@@ -11527,7 +11619,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11544,7 +11635,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11564,7 +11654,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -11605,7 +11694,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.22,
 				"EatDPS": 100,
@@ -12220,7 +12308,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 150,
 				"Toughness": 190,
@@ -12237,7 +12324,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.22,
 				"EatDPS": 150,
 				"Toughness": 190,
@@ -12257,7 +12343,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -12277,7 +12362,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 190,
@@ -12297,7 +12381,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
@@ -12318,7 +12401,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.25,
 				"EatDPS": 150,
@@ -12336,7 +12418,6 @@
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"CannotCarryPlantfoodsInWaves": true,
 				"WalkSPS": 0.4,
 				"EatDPS": 400,
@@ -12353,7 +12434,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
 				"Toughness": 1100,
@@ -12372,7 +12452,6 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeTossedByCitron": false,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
 				"Toughness": 2470,
@@ -12394,7 +12473,6 @@
 				"KilledByShrinkingViolet": true,
 				"CannotBeGrabbedByPtero": true,
 				"ZombieSort": "Normal",
-				"CannotBeTossedByCitron": false,
 				"IgnoredInWaves": true,
 				"WalkSPS": 0.3,
 				"EatDPS": 200,

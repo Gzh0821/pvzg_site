@@ -1768,6 +1768,105 @@
 		},
 		{
 			"aliases": [
+				"atombomb"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 1800
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "5x5",
+							"zh": "5x5 范围"
+						}
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Duplication",
+							"zh": "分身"
+						}
+					},
+					{
+						"TYPE": "GROWTIME",
+						"VALUE": 24
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Atomic Bombegranates explode on contact, dealing heavy damages in a huge area and spawning Seedlings around them.",
+					"zh": "原子石榴弹在被僵尸接触时自爆，生成小种子。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "single use, on contact",
+							"zh": "一次性使用，接触到僵尸时触发"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Range",
+							"zh": "范围"
+						},
+						"DESCRIPTION": {
+							"en": "5x5",
+							"zh": "5x5 范围"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "starts with Seedling",
+							"zh": "种下时是小种子"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "Seedlings around will grow up into new bombegranates",
+							"zh": "在周围产生的小种子长大后会变成新的原子石榴弹"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Remember: Never ever EVER split a fruit. Oh, hold on, actually fruits are ok, just never split an atom.",
+					"zh": "记住，永远不要，千万不要切开一个水果。哦，不对，切开水果没关系，不要切开原子就行。"
+				},
+				"BriefIntroduction": {
+					"en": "Explodes on contact, spawning Seedlings around",
+					"zh": "在僵尸触碰时爆炸，并在周围生成小种子"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"potatomine"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -1937,6 +2036,52 @@
 				"BriefIntroduction": {
 					"en": "Gives you additional sun",
 					"zh": "提供额外的阳光"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shinevine"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "SUNPRODUCTION",
+						"SORT": {
+							"en": "Normal",
+							"zh": "正常"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Shine Vines are vine plants that amplify the sun production of sun producer plants, except Moonflower, create some sun on their own, and use a sun-stun burst as a last second defense when attacked.",
+					"zh": "闪耀藤蔓能促进其依附的阳光植物的生产，使它们在生产时产出更多的阳光，月光花除外。在受到威胁的时候用阳光闪晕身边的僵尸作为防御。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "\"Peek-a-boo!\" giggles Shine Vine, staring directly at you, the player. \"Consider that fourth wall SHATTERED!\"",
+					"zh": "“躲猫猫！” 闪耀藤蔓咯咯笑着，直勾勾地盯着屏幕前的你。“就当这第四面墙已经碎了吧！”"
+				},
+				"BriefIntroduction": {
+					"en": "Increases sun production",
+					"zh": "促进阳光的生产"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -6082,6 +6227,52 @@
 				"BriefIntroduction": {
 					"en": "Fires jets of flame over a short distance",
 					"zh": "短距离内喷射火焰攻击"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pyrevine"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "2 Tiles",
+							"zh": "2 格"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Pyre Vines can be planted on top of other plants to provide protection from cold plus an additional close range flame attack.",
+					"zh": "柴火藤蔓可以被种植在其他植物上，使本格的植物免受寒冻，对短距离内的敌人造成灼烧伤害。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Pyre Vine considers his holdings, his fortune, his vast hoard of wealth. He feels it should please him, and yet nevertheless he is anxious and fearful.",
+					"zh": "柴火藤蔓审视着他的地产、财富和庞大的宝库。他觉得这些理应让自己满足，然而他依然感到焦虑和恐惧。"
+				},
+				"BriefIntroduction": {
+					"en": "Warms and flames",
+					"zh": "温暖四周并喷火"
 				},
 				"DisplayOffset": {
 					"x": 0,
