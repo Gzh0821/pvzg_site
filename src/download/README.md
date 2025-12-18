@@ -37,8 +37,7 @@ onMounted(() => {
 >
 > 下载或在线游玩表示您已阅读并同意以下协议和声明：
 >
-> - 《PvZ2 Gardendless》使用协议
-> - 《PvZ2 Gardendless》免责声明
+> - 《PvZ2 Gardendless》用户协议与免责声明
 >
 > 以上协议和声明的具体内容请查看[这里](../instructions/)
 

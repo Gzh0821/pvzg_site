@@ -7,8 +7,7 @@ comment: false
 ---
 《PvZ2 Gardendless》使用，游玩相关协议和声明如下：
 
-- [《PvZ2 Gardendless》使用协议](Agreement.md)
-- [《PvZ2 Gardendless》免责声明](Disclaimer.md)
+- [《PvZ2 Gardendless》用户协议与免责声明](Agreement.md)
 
 本网站开放源代码协议如下：
 

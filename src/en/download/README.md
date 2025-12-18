@@ -37,8 +37,7 @@ onMounted(() => {
 >
 > Downloading or playing online means that you have read and agreed to the following agreements and statements:
 >
-> - "PvZ2 Gardendless" Usage Agreement
-> - Disclaimer and Copyright Notice for "PvZ2 Gardendless"
+> - "PvZ2 Gardendless" User Agreement and Disclaimer
 >
 > For the details of the above agreement and statement, please see [here](../instructions/)
 

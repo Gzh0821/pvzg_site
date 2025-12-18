@@ -1,67 +1,64 @@
 ---
-title: 使用协议
-icon: handshake
+title: 用户协议与免责声明
+icon: balance-scale
 index: true
 order: 1
 pageInfo: false
 comment: false
 ---
-## 《PvZ2 Gardendless》使用协议
 
-欢迎使用《PvZ2 Gardendless》！在下载、使用在线版或以任何形式使用本游戏及相关服务之前，请务必仔细阅读以下条款：
+## 《PvZ2 Gardendless》用户协议与免责声明
 
-- 使用许可
+欢迎访问《PvZ2 Gardendless》（以下简称“本项目”）。在您下载、安装、运行或以任何方式使用本项目之前，请务必仔细阅读并充分理解本《用户协议与免责声明》（以下简称“本协议”）。您的使用行为将被视为对本协议全部条款的认可与接受。
 
-本游戏仅供个人学习交流使用。未经版权所有者书面许可，不得以任何形式修改、复制、分发本游戏。
+### 一、 项目性质与宗旨
 
-- 免责声明
+1.  **非官方性质**
+    本项目是由《植物大战僵尸2》爱好者社群自主发起并制作的同人衍生作品，**非** Electronic Arts (EA) 或 PopCap Games 官方开发、授权或发行的产品。
 
-游戏仅供娱乐和个人使用，制作者不对因使用本游戏而引起的任何直接或间接损失负责。
+2.  **非商业用途**
+    本项目仅供学习、交流及个人娱乐使用，不用于任何商业盈利目的。
 
-- 知识产权
+### 二、 知识产权声明
 
-游戏中所有植物、僵尸及相关素材属于其原创作者或版权所有者所有。
+1.  **素材版权**
+    本项目中包含的所有美术资源、音乐、音效、角色形象（植物、僵尸等）及相关设计元素，其知识产权均归属于原版权方 **Electronic Arts / PopCap Games** 及其他相关权利人所有。本项目仅出于致敬与非商业目的进行引用。
 
-- 禁止商业用途
+2.  **代码版权**
+    本游戏的 Web 构建版本内容遵循 **GNU General Public License v3.0 (GPL-3.0)** 协议开源。在遵守该协议的前提下，您可以自由获取、修改和分发代码。**其它版本（如Windows桌面版等）不在此开源协议范围内。**
 
-未经版权所有者书面许可，严禁将本游戏用于任何商业用途，包括但不限于销售、广告、赞助等。
+### 三、 使用许可与限制
 
-- 禁止修改后分发
+1.  **个人使用许可**
+    您被授予非排他性、不可转让的许可，仅限在个人设备上下载、安装和运行本项目用于非商业娱乐。
 
-您可以将本游戏以制作组发布的原始形式转发或分享，但不得对游戏文件进行任何形式的修改、编辑或重新打包。
+2.  **商业禁令**
+    严禁将本项目（特别是包含受版权保护素材的完整版本）用于任何形式的商业活动，包括但不限于：
+    -   销售、租赁或付费下载；
+    -   在游戏中植入广告或商业赞助；
+    -   将游戏素材提取后用于其他商业项目。
 
-严禁将本游戏的任何部分（包括但不限于游戏本体、资源文件、代码等）进行修改后再分发、传播或发布。严禁以任何形式进行商业化的二次分发或销售。
+3.  **修改与分发规则**
+    -   **构建版本代码**：您可以依据 GPL-3.0 协议修改和分发 Web 构建版本内容，但必须保留原版权声明，并同样以 GPL-3.0 协议开源。
+    -   **游戏素材**：严禁未经授权单独分发、销售游戏内的专有素材。
+    -   **修改版发布**：若您发布基于 Web 构建的修改版本，必须明确标注为“非官方修改版”，不得使用可能引起误导的官方标识，且必须严格遵守上述商业禁令。
 
-- 其它协议
+### 四、 免责声明
 
-如您下载、使用在线版或以任何形式使用本游戏，您需遵守本协议及可能涉及的其他相关协议。
+1.  **无担保声明**
+    本项目按“现状”提供，开发团队不提供任何明示或暗示的保证，包括但不限于适销性、特定用途适用性或不侵权。
 
-## "PvZ2 Gardendless" Usage Agreement
+2.  **责任限制**
+    在法律允许的范围内，开发团队不对因使用或无法使用本项目而导致的任何直接、间接、意外、特殊或后果性的损失（包括但不限于数据丢失、设备损坏）承担责任。
 
-Welcome to "PvZ2 Gardendless"! Before downloading, using the online version, or using this game in any form, please read the following terms carefully:
+3.  **版权合规与处理**
+    本项目无意侵犯任何第三方的知识产权。若原版权方或权利人认为本项目侵犯了其合法权益，请通过下方联系方式通知我们，我们将立即采取措施（包括但不限于移除相关内容或停止分发）予以纠正。
 
-- License Agreement
+### 五、 附则
 
-This game is only for personal learning and communication. Without written permission from the copyright owner, you may not modify, copy, distribute, or use this game in any form.
+1.  **支持正版**
+    我们深知原作的价值，强烈建议并鼓励所有用户支持正版《植物大战僵尸2》系列游戏。
 
-- Disclaimer
-
-The game is provided for entertainment and personal use only. The creators are not responsible for any direct or indirect losses caused by the use of this game.
-
-- Intellectual Property
-
-All plants, zombies, and related materials in the game belong to their original creators or copyright owners.
-
-- Prohibition of Commercial Use
-
-Without written permission from the copyright owner, commercial use of this game, including but not limited to sales, advertising, sponsorship, etc., is strictly prohibited.
-
-- Modification and distribution prohibited
-
-You may forward or share this game in its original form, but you may not modify, edit or repackage the game files in any way.
-
-It is strictly prohibited to modify any part of this game (including but not limited to the game itself, resource files, code, etc.) before distribution, dissemination or release. Any form of commercial secondary distribution or sale is strictly prohibited.
-
-- Other Agreements
-
-If you download, use the online version, or use this game in any form, you agree to comply with this agreement and any other relevant agreements.
+2.  **联系方式**
+    如有任何疑问、建议或版权反馈，请联系：
+    -   Bilibili: [南Garden](https://space.bilibili.com/355909245)

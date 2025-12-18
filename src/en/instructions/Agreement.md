@@ -1,38 +1,64 @@
 ---
-title: Usage Agreement
-icon: handshake
+title: User Agreement and Disclaimer
+icon: balance-scale
 index: true
 order: 1
 pageInfo: false
 comment: false
 ---
 
-## "PvZ2 Gardendless" Usage Agreement
+## "PvZ2 Gardendless" User Agreement and Disclaimer
 
-Welcome to "PvZ2 Gardendless"! Before downloading, using the online version, or using this game in any form, please read the following terms carefully:
+Welcome to "PvZ2 Gardendless" (hereinafter referred to as "this Project"). Before you download, install, run, or use this Project in any way, please be sure to carefully read and fully understand this "User Agreement and Disclaimer" (hereinafter referred to as "this Agreement"). Your use of this Project constitutes your acceptance and recognition of all terms of this Agreement.
 
-- License Agreement
+### I. Nature and Purpose of the Project
 
-This game is only for personal learning and communication. Without written permission from the copyright owner, you may not modify, copy, distribute, or use this game in any form.
+1.  **Unofficial Nature**
+    This Project is a fan-made derivative work initiated and created independently by the "Plants vs. Zombies 2" enthusiast community. It is **NOT** developed, authorized, or published by Electronic Arts (EA) or PopCap Games.
 
-- Disclaimer
+2.  **Non-Commercial Use**
+    This Project is intended solely for learning, communication, and personal entertainment, and is not used for any commercial profit-making purposes.
 
-The game is provided for entertainment and personal use only. The creators are not responsible for any direct or indirect losses caused by the use of this game.
+### II. Intellectual Property Statement
 
-- Intellectual Property
+1.  **Asset Copyright**
+    All art resources, music, sound effects, character images (plants, zombies, etc.), and related design elements contained in this Project belong to the original copyright holders, **Electronic Arts / PopCap Games**, and other relevant rights holders. This Project cites them solely for tribute and non-commercial purposes.
 
-All plants, zombies, and related materials in the game belong to their original creators or copyright owners.
+2.  **Code Copyright**
+    The Web build version content of this game is open-sourced under the **GNU General Public License v3.0 (GPL-3.0)**. You may freely access, modify, and distribute the code subject to compliance with this license. **Other versions (such as the Windows desktop version, etc.) are not covered by this open source license.**
 
-- Prohibition of Commercial Use
+### III. License and Restrictions
 
-Without written permission from the copyright owner, commercial use of this game, including but not limited to sales, advertising, sponsorship, etc., is strictly prohibited.
+1.  **Personal Use License**
+    You are granted a non-exclusive, non-transferable license to download, install, and run this Project on your personal device solely for non-commercial entertainment.
 
-- Modification and distribution prohibited
+2.  **Commercial Prohibition**
+    It is strictly prohibited to use this Project (especially complete versions containing copyright-protected assets) for any form of commercial activity, including but not limited to:
+    -   Selling, renting, or paid downloading;
+    -   Embedding advertisements or commercial sponsorships within the game;
+    -   Extracting game assets for use in other commercial projects.
 
-You may forward or share this game in its original form, but you may not modify, edit or repackage the game files in any way.
+3.  **Modification and Distribution Rules**
+    -   **Build Version Code**: You may modify and distribute the Web build version content under the GPL-3.0 license, but you must retain the original copyright notice and open source it under the same GPL-3.0 license.
+    -   **Game Assets**: Unauthorized separate distribution or sale of proprietary assets within the game is strictly prohibited.
+    -   **Release of Modified Versions**: If you release a modified version based on the Web build, it must be clearly marked as an "Unofficial Modified Version", must not use official logos that may cause misleading endorsement, and must strictly comply with the commercial prohibitions mentioned above.
 
-It is strictly prohibited to modify any part of this game (including but not limited to the game itself, resource files, code, etc.) before distribution, dissemination or release. Any form of commercial secondary distribution or sale is strictly prohibited.
+### IV. Disclaimer
 
-- Other Agreements
+1.  **No Warranty**
+    This Project is provided "AS IS", without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
 
-If you download, use the online version, or use this game in any form, you agree to comply with this agreement and any other relevant agreements.
+2.  **Limitation of Liability**
+    To the fullest extent permitted by law, the development team shall not be liable for any direct, indirect, incidental, special, or consequential damages (including but not limited to data loss or device damage) resulting from the use or inability to use this Project.
+
+3.  **Copyright Compliance and Takedown**
+    This Project has no intention of infringing upon any third-party intellectual property rights. If the original copyright holder or rights holder believes that this Project infringes upon their legitimate rights and interests, please notify us via the contact information below, and we will immediately take measures (including but not limited to removing relevant content or stopping distribution) to correct it.
+
+### V. Miscellaneous
+
+1.  **Support the Official Release**
+    We deeply recognize the value of the original work and strongly recommend and encourage all users to support the official "Plants vs. Zombies 2" series games.
+
+2.  **Contact Information**
+    If you have any questions, suggestions, or copyright feedback, please contact:
+    -   Bilibili: [南Garden](https://space.bilibili.com/355909245)
