@@ -1429,7 +1429,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 20
+						"VALUE": 30
 					},
 					{
 						"TYPE": "RANGE",
@@ -2399,7 +2399,7 @@
 				],
 				"Chat": {
 					"en": "For Nightshade, smacking is a duty and a privilege. He comes from a long line of ardent smackers, and his family counts three kings, four ambassadors and a president as among those proudly slapped around.",
-					"zh": "对暗影龙葵来说，扇耳光是一份义务，也是一种特权。他的家族有三位国王、四位大使和一位总统，他们都曾以导出扇别人耳光为荣。"
+					"zh": "对暗影龙葵来说，扇耳光是一份义务，也是一种特权。他的家族有三位国王、四位大使和一位总统，他们都曾以到处扇别人耳光为荣。"
 				},
 				"BriefIntroduction": {
 					"en": "Smacks zombies with slappy leaves",
@@ -3876,6 +3876,169 @@
 		},
 		{
 			"aliases": [
+				"gumnut"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Gumnuts pop sticky gum onto zombies, pinning them in place and causing them to block other zombies behind them.",
+					"zh": "香果胶向僵尸喷溅口香糖，把他们定在原地，并拦住其身后的僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "stronger zombies form stronger barriers",
+							"zh": "口香糖的强度与僵尸的强度有关"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "best used against Gargantuars & Football Mechs",
+							"zh": "最好用于巨尸和机甲橄榄"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"I only chew ham-flavored gum,\" exudes Gumnut. \"Ham and salt.\"",
+					"zh": "“我只嚼火腿口味的口香糖，” 香果胶自信地说着，“必须是火腿加盐味的。”"
+				},
+				"BriefIntroduction": {
+					"en": "Creates gum barriers",
+					"zh": "制造口香糖障碍"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"aloe"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Aloes heal injured plants to their immediate right, keeping them healthy as possible.",
+					"zh": "芦荟对其右边的植物进行治疗，使之尽可能保持完好。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Aloe likes to soothe. He likes to alleviate, he likes to restore, he likes to mend. But don't ask him to revive. He's touchy about revival.",
+					"zh": "芦荟喜欢安抚。他喜欢缓解痛苦，乐于修复创伤，擅长弥合伤痕。但别让他去复活生命——他对“复活”这个词格外敏感。"
+				},
+				"BriefIntroduction": {
+					"en": "Heals rightward plants",
+					"zh": "治疗右边的植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"hollyknight"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 20
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Holly Knight deals damage to zombies attacking him, and can launch 3 prickly barrier leaves to knock back and damage zombies.",
+					"zh": "冬青骑士对身边的僵尸造成伤害，还能发射三株带刺的障碍来击退并伤害僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "tap to arm, tap on target tile to fire",
+							"zh": "点击瞄准，再点击目标格子发射"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "projectiles become prickly barriers when hitting the floor",
+							"zh": "子弹砸中地面时生成带刺的障碍"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Holly Knight would like to advise folks not to eat his berries. \"It's rude to eat somebody's berries without asking,\" he says. \"In addition, they are highly toxic.\"",
+					"zh": "冬青骑士会告诫大伙不要吃他身上的莓果。“不提前打声招呼就吃别人身上的莓果是很无礼的，”他说。“另外，他们是剧毒的。”"
+				},
+				"BriefIntroduction": {
+					"en": "Damages attacking zombies, tap to launch barriers",
+					"zh": "伤害身边的僵尸，点击发射障碍"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"missiletoe"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -4013,6 +4176,53 @@
 				"BriefIntroduction": {
 					"en": "Blows up all zombies in a medium area",
 					"zh": "爆炸并对范围内僵尸造成伤害"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"reinforcemint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 8
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "KnockBack",
+							"zh": "击退"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Reinforce-mints push all zombies back and provide a temporary boost to all Reinforce-mint Family plants on the lawn.",
+					"zh": "防御薄荷将所有僵尸击退，并为草坪上所有防御家族植物带来强化效果。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Reinforce-mint isn't scowling. He's just workshopping defense strategies, doing what he can to support the team. Maybe he's scowling just a little bit. Fine.",
+					"zh": "防御薄荷没有皱着眉头，他只是在反复推敲防御策略，尽其所能支援团队。好吧，也许……他确实皱了一点点眉头。行吧。"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts defence plants",
+					"zh": "强化防御植物"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -9488,6 +9698,63 @@
 		},
 		{
 			"aliases": [
+				"caulipower"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Full Board",
+							"zh": "全屏"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Caulipowers use their mental powers to hypnotize random zombies and turn them against their former friends.",
+					"zh": "超能花菜利用他们的心灵控制能力来魅惑随机的僵尸，使之以他们的同类为敌。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "hovers above ground or water",
+							"zh": "能飘浮于水面上"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Caulipower's eyes spin with distress. He's just thought of a really great ending for his novel, but he's afraid his cousin won't understand it.",
+					"zh": "超能花菜压力很大，双眼晕眩地转了起来。他只是想为自己的小说写个大结局，但是他很担心自己的表弟读不懂。"
+				},
+				"BriefIntroduction": {
+					"en": "Hypnotizes electrocute zombies",
+					"zh": "魅惑随机的僵尸"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"electricblueberry"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -9524,7 +9791,7 @@
 				},
 				"BriefIntroduction": {
 					"en": "Randomly electrocute zombies",
-					"zh": "烧毁随机的僵尸"
+					"zh": "电击烧毁随机的僵尸"
 				},
 				"DisplayOffset": {
 					"x": 0,

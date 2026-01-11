@@ -2304,7 +2304,7 @@
 						},
 						"DESCRIPTION": {
 							"en": "explodes into a shower of imps if not destroyed quickly",
-							"zh": "未被即使处理则会炸膛迸发出一群小鬼"
+							"zh": "未被及时处理则会炸膛迸发出一群小鬼"
 						}
 					}
 				],
@@ -6092,7 +6092,7 @@
 				],
 				"Chat": {
 					"en": "Now past his prime, Mecha-Football Zombie is ready to be put back into the game. Until he gets some brains, concussions aren't a concern.",
-					"zh": "即使已经过气，机甲橄榄球盔僵尸还是准备重返游戏。在他得到脑子之前，不会出现脑震荡并的问题。"
+					"zh": "即使已经过气，机甲橄榄球盔僵尸还是准备重返游戏。在他得到脑子之前，不会再出现脑震荡的问题。"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -7128,7 +7128,7 @@
 				],
 				"Introduction": {
 					"en": "Regular beach bum zombie.",
-					"zh": "普通的在海滩游荡的僵尸"
+					"zh": "普通的在海滩游荡的僵尸。"
 				},
 				"Special": [],
 				"Chat": {
@@ -7985,7 +7985,7 @@
 				],
 				"Chat": {
 					"en": "The Zombot Sharktronic Sub is a true labor of love. Dr. Zomboss obsessed over every detail of the aquatic mechanism of doom as he worked on it day in and day out from the wee hours of the morning until well after dark. He carefully handcrafted the shark's nearly impenetrable skin. He shaved each razor-sharp tooth to a point by hand. And he painstakingly installed the lethal plant-consuming fan inside the machines' horrific maw all by himself. Zomboss shed more than one tear of joy when his masterpiece was complete. Say what you will about the evil genius, but he is quite passionate about his projects.",
-					"zh": "巨鲨号深潜艇是充满爱的劳动成果。僵尸博士日复一日地工作，从凌晨一直工作到天黑，痴迷于这个水下杀手的每一个细节。他小心翼翼地手工制作鲨鱼几乎坚不可摧的皮肤，亲手将每一颗锋利的牙齿剃成尖角，还独自一人费尽心机地在机器可怕的大嘴里安装了致命的涡轮发动机。当他的杰作完成时，僵尸博士流下了禁不住潸然泪下。不得不承认这是一位邪恶的天才，但他对自己的作品充满热情。"
+					"zh": "巨鲨号深潜艇是充满爱的劳动成果。僵尸博士日复一日地工作，从凌晨一直工作到天黑，痴迷于这个水下杀手的每一个细节。他小心翼翼地手工制作鲨鱼几乎坚不可摧的皮肤，亲手将每一颗锋利的牙齿剃成尖角，还独自一人费尽心机地在机器可怕的大嘴里安装了致命的涡轮发动机。当他的杰作完成时，僵尸博士禁不住潸然泪下。不得不承认这是一位邪恶的天才，但他对自己的作品充满热情。"
 				},
 				"DisplayOffset": {
 					"x": -60,
@@ -8244,7 +8244,7 @@
 				],
 				"Introduction": {
 					"en": "Marks the arrival of a huge frosty \"wave\" of zombies.",
-					"zh": "预示着一大波乘着冰风僵尸的到来。"
+					"zh": "预示着一大波乘着冰风的僵尸的到来。"
 				},
 				"Special": [],
 				"Chat": {
@@ -9419,7 +9419,7 @@
 				],
 				"Introduction": {
 					"en": "Drops pack on Gold Tile.",
-					"zh": "将背包丢在黄金地砖上"
+					"zh": "将背包丢在黄金地砖上。"
 				},
 				"Special": [
 					{
@@ -9984,6 +9984,50 @@
 			}
 		},
 		{
+			"//": "armor4",
+			"aliases": [
+				"eighties_armor4"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Spotlight Neon Zombie's metal shell provides thorough eye-catching toughness.",
+					"zh": "聚光灯霓虹僵尸的金属外壳提供了引人注目的保护。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "He always longed to play a major role under the spotlight — now his chance has arrived.",
+					"zh": "他总是期待能在聚光灯下发挥巨大的作用，现在他的机会来了。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"//": "flag",
 			"aliases": [
 				"eighties_flag"
@@ -10073,6 +10117,50 @@
 				},
 				"DisplayOffset": {
 					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "rally",
+			"aliases": [
+				"eighties_flag_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.5
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Speedy",
+							"zh": "快速"
+						},
+						"PROGRESS": 0.85
+					}
+				],
+				"Introduction": {
+					"en": "Neon Rally Zombie leads a great parade of wildly dancing zombies.",
+					"zh": "霓虹大动员僵尸会引领着一大群游行的狂舞僵尸到来。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Learnig to dance is an extremely demanding part. In comparison, building physical strength and leading the charge seem easier — far more dangerous though.",
+					"zh": "练习舞蹈是非常辛苦的一环，相比之下强身健体带头冲锋似乎还更轻松，只不过更危险罢了。"
+				},
+				"DisplayOffset": {
+					"x": 30,
 					"y": 0
 				},
 				"DisplayScale": {

@@ -503,6 +503,16 @@
 		},
 		{
 			"aliases": [
+				"reinforcemint"
+			],
+			"objclass": "PlantType",
+			"objdata": {
+				"PlantBasedOn": "reinforcemint",
+				"Properties": "RTID(reinforcemint@PlantProps)"
+			}
+		},
+		{
+			"aliases": [
 				"doomshroom"
 			],
 			"objclass": "PlantType",
@@ -1038,7 +1048,7 @@
 			"objclass": "PlantType",
 			"objdata": {
 				"PlantBasedOn": "powerplant",
-				"Properties": "RTID(powerplant@PlantProps)"
+				"Properties": "RTID(powerplant_epsilon@PlantProps)"
 			}
 		},
 		{
@@ -1503,6 +1513,26 @@
 		},
 		{
 			"aliases": [
+				"caulipower"
+			],
+			"objclass": "PlantType",
+			"objdata": {
+				"PlantBasedOn": "caulipower",
+				"Properties": "RTID(caulipower@PlantProps)"
+			}
+		},
+		{
+			"aliases": [
+				"gumnut"
+			],
+			"objclass": "PlantType",
+			"objdata": {
+				"PlantBasedOn": "gumnut",
+				"Properties": "RTID(gumnut@PlantProps)"
+			}
+		},
+		{
+			"aliases": [
 				"sporeshroom"
 			],
 			"objclass": "PlantType",
@@ -1689,6 +1719,46 @@
 			"objdata": {
 				"PlantBasedOn": "bamboozle",
 				"Properties": "RTID(bamboozle@PlantProps)"
+			}
+		},
+		{
+			"aliases": [
+				"aloe"
+			],
+			"objclass": "PlantType",
+			"objdata": {
+				"PlantBasedOn": "aloe",
+				"Properties": "RTID(aloe@PlantProps)"
+			}
+		},
+		{
+			"aliases": [
+				"hollyknight"
+			],
+			"objclass": "PlantType",
+			"objdata": {
+				"PlantBasedOn": "hollyknight",
+				"Properties": "RTID(hollyknight@PlantProps)"
+			}
+		},
+		{
+			"aliases": [
+				"hollybarrierleaf"
+			],
+			"objclass": "PlantType",
+			"objdata": {
+				"PlantBasedOn": "hollybarrierleaf",
+				"Properties": "RTID(hollybarrierleaf@PlantProps)"
+			}
+		},
+		{
+			"aliases": [
+				"hollybarrierleafplantfood"
+			],
+			"objclass": "PlantType",
+			"objdata": {
+				"PlantBasedOn": "hollybarrierleafplantfood",
+				"Properties": "RTID(hollybarrierleafplantfood@PlantProps)"
 			}
 		},
 		{

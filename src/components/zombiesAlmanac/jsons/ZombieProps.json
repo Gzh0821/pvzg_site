@@ -399,6 +399,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CowboyPianoDancingSpeedScale": 0.7,
 				"ZombieSort": "Gargantuar",
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
@@ -497,6 +498,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGummedByGumnut": true,
 				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -637,7 +639,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
-				"CannotBeHypnotizedByProjectiles": true,
+				"CannotBeGummedByGumnut": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
 				"ImmuneToSweetPotato": true,
@@ -663,6 +665,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"CannotBeGummedByGumnut": true,
 				"BallType": "busketball",
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
@@ -4168,7 +4171,7 @@
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
-				"Toughness": 7000,
+				"Toughness": 6000,
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
@@ -4224,7 +4227,7 @@
 					"monk_drink"
 				],
 				"SummonCount": 3,
-				"SummonColume": {
+				"SummonColumn": {
 					"Min": 6,
 					"Max": 7
 				},
@@ -4274,7 +4277,7 @@
 					"monk_drink"
 				],
 				"SummonCount": 3,
-				"SummonColume": {
+				"SummonColumn": {
 					"Min": 6,
 					"Max": 7
 				},
@@ -4300,7 +4303,7 @@
 				"LivesInDeepWater": true,
 				"WalkSPS": 0.16,
 				"EatDPS": 100,
-				"Toughness": 6400,
+				"Toughness": 5500,
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
@@ -4593,12 +4596,12 @@
 										"kongfu_bronze_strong"
 									],
 									"pointMin": 1600,
-									"pointMax": 3000
+									"pointMax": 3000,
+									"plantfoodchance": 0.6
 								},
 								"weight": 25,
 								"repeatMax": 2,
-								"repeatMin": 2,
-								"plantfoodchance": 0.6
+								"repeatMin": 2
 							},
 							{
 								"actionName": "rush",
@@ -4877,12 +4880,12 @@
 										"kongfu_bronze_hook"
 									],
 									"pointMin": 1600,
-									"pointMax": 3000
+									"pointMax": 3000,
+									"plantfoodchance": 0.6
 								},
 								"weight": 30,
 								"repeatMax": 2,
-								"repeatMin": 1,
-								"plantfoodchance": 0.6
+								"repeatMin": 1
 							},
 							{
 								"actionName": "rush",
@@ -6484,12 +6487,12 @@
 										"modern_newspaper"
 									],
 									"pointMin": 2000,
-									"pointMax": 2800
+									"pointMax": 2800,
+									"plantfoodchance": 0.6
 								},
 								"weight": 14,
 								"repeatMax": 2,
-								"repeatMin": 2,
-								"plantfoodchance": 0.6
+								"repeatMin": 2
 							},
 							{
 								"actionName": "walk",
@@ -6560,12 +6563,12 @@
 										"modern_balloon"
 									],
 									"pointMin": 3000,
-									"pointMax": 5500
+									"pointMax": 5500,
+									"plantfoodchance": 0.6
 								},
 								"weight": 12,
 								"repeatMax": 2,
-								"repeatMin": 2,
-								"plantfoodchance": 0.6
+								"repeatMin": 2
 							},
 							{
 								"actionName": "summon",
@@ -7197,7 +7200,8 @@
 										"dark_gargantuar"
 									],
 									"pointMin": 2600,
-									"pointMax": 3700
+									"pointMax": 3700,
+									"plantfoodchance": 0.7
 								},
 								"weight": 20,
 								"repeatMax": 2,
@@ -7438,7 +7442,8 @@
 										"dark_gargantuar"
 									],
 									"pointMin": 2600,
-									"pointMax": 3700
+									"pointMax": 3700,
+									"plantfoodchance": 0.7
 								},
 								"weight": 20,
 								"repeatMax": 2,
@@ -9055,6 +9060,27 @@
 		},
 		{
 			"aliases": [
+				"feastivus_troglobite"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChillInsteadOfFreeze": true,
+				"ImpTypes": [
+					"feastivus_imp",
+					"holiday_imp"
+				],
+				"NumberOfIceblocksToSpawnWith": 3,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 470,
+				"WavePointCost": 600,
+				"Weight": 3500,
+				"HitRect": "RTID(BullyHitRect@RectangleProps)",
+				"AttackRect": "RTID(BullyAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"iceage_troglobite"
 			],
 			"objclass": "ZombieProperties",
@@ -9075,6 +9101,27 @@
 		},
 		{
 			"aliases": [
+				"feastivus_troglobite_1block"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChillInsteadOfFreeze": true,
+				"ImpTypes": [
+					"feastivus_imp",
+					"holiday_imp"
+				],
+				"NumberOfIceblocksToSpawnWith": 1,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 470,
+				"WavePointCost": 400,
+				"Weight": 3500,
+				"HitRect": "RTID(BullyHitRect@RectangleProps)",
+				"AttackRect": "RTID(BullyAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"iceage_troglobite_1block"
 			],
 			"objclass": "ZombieProperties",
@@ -9084,6 +9131,27 @@
 					"iceage_imp"
 				],
 				"NumberOfIceblocksToSpawnWith": 1,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 470,
+				"WavePointCost": 400,
+				"Weight": 3500,
+				"HitRect": "RTID(BullyHitRect@RectangleProps)",
+				"AttackRect": "RTID(BullyAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_troglobite_2block"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ChillInsteadOfFreeze": true,
+				"ImpTypes": [
+					"feastivus_imp",
+					"holiday_imp"
+				],
+				"NumberOfIceblocksToSpawnWith": 2,
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 470,
@@ -11511,6 +11579,25 @@
 		},
 		{
 			"aliases": [
+				"eighties_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"eighties_armor4"
+				],
+				"WavePointCost": 700,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"eighties_flag"
 			],
 			"objclass": "ZombieProperties",
@@ -11519,6 +11606,23 @@
 				"WalkSPS": 0.24,
 				"EatDPS": 100,
 				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 100,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_flag_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0.4,
+				"EatDPS": 300,
+				"Toughness": 350,
 				"WavePointCost": 100,
 				"Weight": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",

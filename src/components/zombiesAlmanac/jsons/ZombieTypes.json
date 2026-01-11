@@ -9,7 +9,21 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(tutorial@ZombieProps)",
-				"ZombieBasedOn": "tutorial"
+				"ZombieBasedOn": "tutorial",
+				"//ZombieRedirection": [
+					{
+						"Type": "tutorial_armor1",
+						"Weight": 1
+					},
+					{
+						"Type": "tutorial_armor2",
+						"Weight": 1
+					},
+					{
+						"Type": "tutorial_armor4",
+						"Weight": 1
+					}
+				]
 			}
 		},
 		{
@@ -30,6 +44,66 @@
 			"objdata": {
 				"Properties": "RTID(tutorial_armor2@ZombieProps)",
 				"ZombieBasedOn": "tutorial_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus@ZombieProps)",
+				"ZombieBasedOn": "feastivus"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_armor1@ZombieProps)",
+				"ZombieBasedOn": "feastivus_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_armor2@ZombieProps)",
+				"ZombieBasedOn": "feastivus_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_flag"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_flag@ZombieProps)",
+				"ZombieBasedOn": "feastivus_flag"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_gargantuar"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_gargantuar@ZombieProps)",
+				"ZombieBasedOn": "feastivus_gargantuar"
+			}
+		},
+		{
+			"aliases": [
+				"holiday_gargantuar"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_gargantuar@ZombieProps)",
+				"ZombieBasedOn": "holiday_gargantuar"
 			}
 		},
 		{
@@ -164,6 +238,26 @@
 		},
 		{
 			"aliases": [
+				"feastivus_imp"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_imp@ZombieProps)",
+				"ZombieBasedOn": "feastivus_imp"
+			}
+		},
+		{
+			"aliases": [
+				"holiday_imp"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(tutorial_imp@ZombieProps)",
+				"ZombieBasedOn": "holiday_imp"
+			}
+		},
+		{
+			"aliases": [
 				"tutorial_gargantuar"
 			],
 			"objclass": "ZombieType",
@@ -180,6 +274,46 @@
 			"objdata": {
 				"Properties": "RTID(tutorial_gargantuar@ZombieProps)",
 				"ZombieBasedOn": "birthday_gargantuar"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(foodfight@ZombieProps)",
+				"ZombieBasedOn": "foodfight"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_armor1"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(foodfight_armor1@ZombieProps)",
+				"ZombieBasedOn": "foodfight_armor1"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_armor2"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(foodfight_armor2@ZombieProps)",
+				"ZombieBasedOn": "foodfight_armor2"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_flag"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(foodfight_flag@ZombieProps)",
+				"ZombieBasedOn": "foodfight_flag"
 			}
 		},
 		{
@@ -419,7 +553,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_onehump@ZombieProps)",
-				"ZombieBasedOn": "camel_onehump"
+				"ZombieBasedOn": "camel_segment"
 			}
 		},
 		{
@@ -429,7 +563,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_twohump@ZombieProps)",
-				"ZombieBasedOn": "camel_twohump"
+				"ZombieBasedOn": "camel_segment"
 			}
 		},
 		{
@@ -439,7 +573,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_threehump@ZombieProps)",
-				"ZombieBasedOn": "camel_threehump"
+				"ZombieBasedOn": "camel_segment"
 			}
 		},
 		{
@@ -449,7 +583,57 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_manyhump@ZombieProps)",
-				"ZombieBasedOn": "camel_manyhump"
+				"ZombieBasedOn": "camel_segment"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_segment"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_camel_segment@ZombieProps)",
+				"ZombieBasedOn": "feastivus_camel_segment"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_onehump"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_camel_onehump@ZombieProps)",
+				"ZombieBasedOn": "feastivus_camel_segment"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_twohump"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_camel_twohump@ZombieProps)",
+				"ZombieBasedOn": "feastivus_camel_segment"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_threehump"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_camel_threehump@ZombieProps)",
+				"ZombieBasedOn": "feastivus_camel_segment"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_camel_manyhump"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_camel_manyhump@ZombieProps)",
+				"ZombieBasedOn": "feastivus_camel_segment"
 			}
 		},
 		{
@@ -469,7 +653,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_onehump_touch@ZombieProps)",
-				"ZombieBasedOn": "camel_onehump_touch"
+				"ZombieBasedOn": "camel_segment_touch"
 			}
 		},
 		{
@@ -479,7 +663,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_twohump_touch@ZombieProps)",
-				"ZombieBasedOn": "camel_twohump_touch"
+				"ZombieBasedOn": "camel_segment_touch"
 			}
 		},
 		{
@@ -489,7 +673,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_threehump_touch@ZombieProps)",
-				"ZombieBasedOn": "camel_threehump_touch"
+				"ZombieBasedOn": "camel_segment_touch"
 			}
 		},
 		{
@@ -499,7 +683,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(camel_manyhump_touch@ZombieProps)",
-				"ZombieBasedOn": "camel_manyhump_touch"
+				"ZombieBasedOn": "camel_segment_touch"
 			}
 		},
 		{
@@ -710,6 +894,16 @@
 			"objdata": {
 				"Properties": "RTID(swashbuckler@ZombieProps)",
 				"ZombieBasedOn": "swashbuckler"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_swashbuckler"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(swashbuckler@ZombieProps)",
+				"ZombieBasedOn": "feastivus_swashbuckler"
 			}
 		},
 		{
@@ -944,6 +1138,16 @@
 		},
 		{
 			"aliases": [
+				"feastivus_piano"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(piano@ZombieProps)",
+				"ZombieBasedOn": "feastivus_piano"
+			}
+		},
+		{
+			"aliases": [
 				"poncho"
 			],
 			"objclass": "ZombieType",
@@ -974,12 +1178,80 @@
 		},
 		{
 			"aliases": [
+				"feastivus_poncho"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(poncho@ZombieProps)",
+				"ZombieBasedOn": "feastivus_poncho"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_poncho_no_plate"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(poncho_no_plate@ZombieProps)",
+				"ZombieBasedOn": "feastivus_poncho_no_plate"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_poncho_plate"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(poncho_plate@ZombieProps)",
+				"ZombieBasedOn": "feastivus_poncho_plate"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_turkey"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(foodfight_turkey@ZombieProps)",
+				"ZombieBasedOn": "foodfight_turkey"
+			}
+		},
+		{
+			"aliases": [
+				"foodfight_gobbler_king"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(foodfight_gobbler_king@ZombieProps)",
+				"ZombieBasedOn": "foodfight_gobbler_king"
+			}
+		},
+		{
+			"aliases": [
 				"chicken_farmer"
 			],
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(chicken_farmer@ZombieProps)",
 				"ZombieBasedOn": "chicken_farmer"
+			}
+		},
+		{
+			"aliases": [
+				"chicken_ge"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"ZombieRedirection": [
+					{
+						"Type": "chicken",
+						"Weight": 100
+					},
+					{
+						"Type": "chicken_pumpkin",
+						"Weight": 1
+					}
+				]
 			}
 		},
 		{
@@ -1855,6 +2127,16 @@
 		},
 		{
 			"aliases": [
+				"foodfight_chefster"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(dark_juggler@ZombieProps)",
+				"ZombieBasedOn": "foodfight_chefster"
+			}
+		},
+		{
+			"aliases": [
 				"dark_wizard"
 			],
 			"objclass": "ZombieType",
@@ -2360,7 +2642,7 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(iceage_troglobite_1block@ZombieProps)",
-				"ZombieBasedOn": "iceage_troglobite_1block"
+				"ZombieBasedOn": "iceage_troglobite"
 			}
 		},
 		{
@@ -2370,7 +2652,37 @@
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(iceage_troglobite_2block@ZombieProps)",
-				"ZombieBasedOn": "iceage_troglobite_2block"
+				"ZombieBasedOn": "iceage_troglobite"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_troglobite"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_troglobite@ZombieProps)",
+				"ZombieBasedOn": "iceage_troglobite"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_troglobite_1block"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_troglobite_1block@ZombieProps)",
+				"ZombieBasedOn": "iceage_troglobite"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_troglobite_2block"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(feastivus_troglobite_2block@ZombieProps)",
+				"ZombieBasedOn": "iceage_troglobite"
 			}
 		},
 		{
@@ -2539,7 +2851,7 @@
 			],
 			"objclass": "ZombieType",
 			"objdata": {
-				"Properties": "RTID(halloween_imp@ZombieProps)",
+				"Properties": "RTID(tutorial_imp@ZombieProps)",
 				"ZombieBasedOn": "halloween_imp"
 			}
 		},
@@ -2985,12 +3297,32 @@
 		},
 		{
 			"aliases": [
+				"eighties_armor4"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(eighties_armor4@ZombieProps)",
+				"ZombieBasedOn": "eighties_armor4"
+			}
+		},
+		{
+			"aliases": [
 				"eighties_flag"
 			],
 			"objclass": "ZombieType",
 			"objdata": {
 				"Properties": "RTID(eighties_flag@ZombieProps)",
 				"ZombieBasedOn": "eighties_flag"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_flag_veteran"
+			],
+			"objclass": "ZombieType",
+			"objdata": {
+				"Properties": "RTID(eighties_flag_veteran@ZombieProps)",
+				"ZombieBasedOn": "eighties_flag_veteran"
 			}
 		},
 		{

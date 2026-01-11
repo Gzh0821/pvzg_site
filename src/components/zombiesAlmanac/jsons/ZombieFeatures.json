@@ -10,6 +10,7 @@
       "SubZombieList": [
         "halloween",
         "foodfight",
+        "feastivus",
         "zoybean"
       ],
       "OBTAINWORLD": "frontyard",
@@ -27,6 +28,7 @@
       "SubZombieList": [
         "halloween_armor1",
         "foodfight_armor1",
+        "feastivus_armor1",
         "zoybean_armor1"
       ],
       "OBTAINWORLD": "frontyard",
@@ -44,6 +46,7 @@
       "SubZombieList": [
         "halloween_armor2",
         "foodfight_armor2",
+        "feastivus_armor2",
         "zoybean_armor2"
       ],
       "OBTAINWORLD": "frontyard",
@@ -72,7 +75,8 @@
       "CODENAME": "tutorial_flag",
       "SubZombieList": [
         "halloween_flag",
-        "foodfight_flag"
+        "foodfight_flag",
+        "feastivus_flag"
       ],
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_flag@ZombieAlmanac)",
@@ -179,7 +183,9 @@
       "CODENAME": "tutorial_imp",
       "SubZombieList": [
         "summer_imp",
-        "halloween_imp"
+        "halloween_imp",
+        "feastivus_imp",
+        "holiday_imp"
       ],
       "OBTAINWORLD": "frontyard",
       "ALMANAC": "RTID(tutorial_imp@ZombieAlmanac)",
@@ -195,6 +201,8 @@
         "summer_gargantuar",
         "halloween_gargantuar",
         "birthday_gargantuar",
+        "feastivus_gargantuar",
+        "holiday_gargantuar",
         "zoybean_gargantuar"
       ],
       "_CARDSPRITENAME": "gargantuar",
@@ -1330,6 +1338,54 @@
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(poncho_plate@ZombieProps)",
       "RES": "HolidayPoncho"
+    },
+    {
+      "NAME": {
+        "en": "Feastivus Imp",
+        "zh": "圣诞小鬼"
+      },
+      "_CARDSPRITENAME": "holidayimp",
+      "CODENAME": "feastivus_imp",
+      "OBTAINWORLD": "feastivus",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_imp@ZombieProps)",
+      "RES": "HolidayImp"
+    },
+    {
+      "NAME": {
+        "en": "Holiday Imp",
+        "zh": "节庆小鬼"
+      },
+      "_CARDSPRITENAME": "holidayimp2",
+      "CODENAME": "holiday_imp",
+      "OBTAINWORLD": "feastivus",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_imp@ZombieProps)",
+      "RES": "HolidayImp2"
+    },
+    {
+      "NAME": {
+        "en": "Feastivus Gargantuar",
+        "zh": "圣诞巨尸"
+      },
+      "_CARDSPRITENAME": "holidaygargantuar",
+      "CODENAME": "feastivus_gargantuar",
+      "OBTAINWORLD": "feastivus",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)",
+      "RES": "HolidayGargantuar"
+    },
+    {
+      "NAME": {
+        "en": "Holiday Gargantuar",
+        "zh": "节庆巨尸"
+      },
+      "_CARDSPRITENAME": "holidaygargantuar2",
+      "CODENAME": "holiday_gargantuar",
+      "OBTAINWORLD": "feastivus",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)",
+      "RES": "HolidayGargantuar2"
     },
     {
       "NAME": {
@@ -2694,8 +2750,8 @@
     },
     {
       "NAME": {
-        "en": "Chef Gargantuar",
-        "zh": "厨师巨尸"
+        "en": "King of the Grill",
+        "zh": "烧烤之王"
       },
       "_CARDSPRITENAME": "summergargantuar",
       "CODENAME": "summer_gargantuar",
@@ -3372,6 +3428,18 @@
     },
     {
       "NAME": {
+        "en": "Spotlight Neon Zombie",
+        "zh": "聚光灯霓虹僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesarmor4",
+      "CODENAME": "eighties_armor4",
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_armor4@ZombieProps)",
+      "RES": "EightiesBasic"
+    },
+    {
+      "NAME": {
         "en": "Neon Flag Zombie",
         "zh": "霓虹旗帜僵尸"
       },
@@ -3381,6 +3449,18 @@
       "ALMANAC": "RTID(eighties_flag@ZombieAlmanac)",
       "PROPS": "RTID(eighties_flag@ZombieProps)",
       "RES": "EightiesFlag"
+    },
+    {
+      "NAME": {
+        "en": "Neon Rally Zombie",
+        "zh": "霓虹大动员僵尸"
+      },
+      "_CARDSPRITENAME": "eightiesrally",
+      "CODENAME": "eighties_flag_veteran",
+      "OBTAINWORLD": "eighties",
+      "ALMANAC": "RTID(eighties_flag_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(eighties_flag_veteran@ZombieProps)",
+      "RES": "EightiesRally"
     },
     {
       "NAME": {
@@ -3960,7 +4040,9 @@
     "eighties",
     "eighties_armor1",
     "eighties_armor2",
+    "eighties_armor4",
     "eighties_flag",
+    "eighties_flag_veteran",
     "eighties_punk",
     "eighties_glitter",
     "eighties_mc",

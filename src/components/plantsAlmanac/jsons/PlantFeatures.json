@@ -329,7 +329,7 @@
 			"TYPE": [
 				"vine"
 			],
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -819,7 +819,7 @@
 				"PlantPlace": "dirt"
 			},
 			"BOOST": 3,
-			"COSTUME": 0,
+			"COSTUME": 1,
 			"ALMANAC": "RTID(umbrellaleaf@PlantAlmanac)",
 			"PROPS": "RTID(umbrellaleaf@PlantProps)",
 			"RES": {
@@ -2406,7 +2406,7 @@
 				"powerplant_epsilon"
 			],
 			"ALMANAC": "RTID(powerplant@PlantAlmanac)",
-			"PROPS": "RTID(powerplant@PlantProps)",
+			"PROPS": "RTID(powerplant_epsilon@PlantProps)",
 			"RES": {
 				"Disabled": "TileTurnipEpsilon",
 				"Plant": "TileTurnipEpsilon"
@@ -4272,7 +4272,7 @@
 				"vine",
 				"sunProducer"
 			],
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -4311,6 +4311,182 @@
 			"RES": {
 				"Disabled": "AtomBomb",
 				"Plant": "Seedling"
+			}
+		},
+		{
+			"ID": 174,
+			"NAME": {
+				"en": "Holly Knight",
+				"zh": "冬青骑士"
+			},
+			"_CARDSPRITENAME": "hollybarrier",
+			"CODENAME": "hollyknight",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"SubPlantList": [
+				"hollybarrierleaf",
+				"hollybarrierleafplantfood"
+			],
+			"BOOST": 2,
+			"COSTUME": 1,
+			"ALMANAC": "RTID(hollyknight@PlantAlmanac)",
+			"PROPS": "RTID(hollyknight@PlantProps)",
+			"RES": {
+				"Disabled": "HollyKnight",
+				"Plant": "HollyKnight"
+			}
+		},
+		{
+			"ID": 175,
+			"NAME": {
+				"en": "Holly Barrier Leaf",
+				"zh": "冬青骑士障碍"
+			},
+			"_CARDSPRITENAME": "hollyleaf",
+			"CODENAME": "hollybarrierleaf",
+			"TYPE": [
+				"amphibious"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(empty@PlantAlmanac)",
+			"PROPS": "RTID(hollybarrierleaf@PlantProps)",
+			"RES": {
+				"Disabled": "HollyBarrier",
+				"Plant": "HollyBarrier"
+			}
+		},
+		{
+			"ID": 176,
+			"NAME": {
+				"en": "Plantfood Holly Barrier Leaf",
+				"zh": "叶绿素冬青骑士障碍"
+			},
+			"_CARDSPRITENAME": "hollyleaf_pf",
+			"CODENAME": "hollybarrierleafplantfood",
+			"TYPE": [
+				"amphibious"
+			],
+			"OBTAINWORLD": "",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(empty@PlantAlmanac)",
+			"PROPS": "RTID(hollybarrierleafplantfood@PlantProps)",
+			"RES": {
+				"Disabled": "HollyBarrierFood",
+				"Plant": "HollyBarrierFood"
+			}
+		},
+		{
+			"ID": 177,
+			"NAME": {
+				"en": "Aloe",
+				"zh": "芦荟"
+			},
+			"_CARDSPRITENAME": "aloe",
+			"CODENAME": "aloe",
+			"TYPE": [
+				"plant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"COSTUME": 2,
+			"ALMANAC": "RTID(aloe@PlantAlmanac)",
+			"PROPS": "RTID(aloe@PlantProps)",
+			"RES": {
+				"Disabled": "Aloe",
+				"Plant": "Aloe"
+			}
+		},
+		{
+			"ID": 178,
+			"NAME": {
+				"en": "Caulipower",
+				"zh": "超能花菜"
+			},
+			"_CARDSPRITENAME": "caulipower",
+			"CODENAME": "caulipower",
+			"TYPE": [
+				"fly"
+			],
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"BOOST": 2,
+			"COSTUME": 1,
+			"ALMANAC": "RTID(caulipower@PlantAlmanac)",
+			"PROPS": "RTID(caulipower@PlantProps)",
+			"RES": {
+				"Disabled": "Caulipower",
+				"Plant": "Caulipower"
+			}
+		},
+		{
+			"ID": 179,
+			"NAME": {
+				"en": "Gumnut",
+				"zh": "香果胶"
+			},
+			"_CARDSPRITENAME": "gumnut",
+			"CODENAME": "gumnut",
+			"TYPE": [
+				"plant",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"COSTUME": 1,
+			"ALMANAC": "RTID(gumnut@PlantAlmanac)",
+			"PROPS": "RTID(gumnut@PlantProps)",
+			"RES": {
+				"Disabled": "Gumnut",
+				"Plant": "Gumnut"
+			}
+		},
+		{
+			"ID": 180,
+			"NAME": {
+				"en": "Reinforce-mint",
+				"zh": "防御薄荷"
+			},
+			"_CARDSPRITENAME": "mint_defence",
+			"CODENAME": "reinforcemint",
+			"TYPE": [
+				"plant",
+				"mint",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(reinforcemint@PlantAlmanac)",
+			"PROPS": "RTID(reinforcemint@PlantProps)",
+			"RES": {
+				"Disabled": "ReinforceMint",
+				"Plant": "ReinforceMint"
 			}
 		}
 	],
@@ -4365,6 +4541,9 @@
 		"powerplant",
 		"applemortar",
 		"solartomato",
+		"pumpkin",
+		"hollyknight",
+		"gumnut",
 		"hypnoshroom",
 		"sunshroom",
 		"puffshroom",
@@ -4403,7 +4582,6 @@
 		"gatling",
 		"megagatling",
 		"torchwood",
-		"floawerPot",
 		"lavaguava",
 		"redstinger",
 		"akee",
@@ -4412,10 +4590,11 @@
 		"stallia",
 		"goldleaf",
 		"zoybeanpod",
+		"aloe",
 		"shinevine",
 		"skyshooter",
 		"moonbean",
-		"strawburst",
+		"floawerPot",
 		"firegourd",
 		"snowpea",
 		"bambooshoot",
@@ -4427,6 +4606,7 @@
 		"cantaloupe",
 		"bamboozle",
 		"atombomb_seedling",
+		"strawburst",
 		"cactus",
 		"phatbeet",
 		"celerystalker",
@@ -4435,6 +4615,7 @@
 		"garlic",
 		"sporeshroom",
 		"intensivecarrot",
+		"caulipower",
 		"bloominghearts",
 		"grapeshot",
 		"primalpeashooter",
@@ -4456,9 +4637,9 @@
 		"gloomvine",
 		"gloomshroom",
 		"umbrellaleaf",
-		"pumpkin",
 		"dragonbruit",
-		"cranjelly"
+		"cranjelly",
+		"reinforcemint"
 	],
 	"ALMANACHIDDENORDER": [
 		"dragonbabybruit"
@@ -4531,6 +4712,11 @@
 		"shootingstarfruit",
 		"applemortar",
 		"solartomato",
+		"pumpkin",
+		"hollyknight",
+		"hollybarrierleaf",
+		"hollybarrierleafplantfood",
+		"gumnut",
 		"sunshroom",
 		"puffshroom",
 		"fumeshroom",
@@ -4590,8 +4776,8 @@
 		"lavaguava",
 		"toadstool",
 		"zoybeanpod",
+		"aloe",
 		"shinevine",
-		"strawburst",
 		"firegourd",
 		"snowpea",
 		"bambooshoot",
@@ -4604,7 +4790,7 @@
 		"bamboozle",
 		"bamboobusket",
 		"atombomb_seedling",
-		"seedling",
+		"atombomb",
 		"skyshooter",
 		"moonbean",
 		"floawerPot",
@@ -4616,6 +4802,8 @@
 		"intensivecarrot",
 		"cactus",
 		"electricblueberry",
+		"caulipower",
+		"strawburst",
 		"bloominghearts",
 		"primalpeashooter",
 		"primalwallnut",
@@ -4636,10 +4824,10 @@
 		"escaperoot",
 		"gloomshroom",
 		"umbrellaleaf",
-		"pumpkin",
 		"gloomvine",
 		"dragonbruit",
 		"dragonbabybruit",
-		"cranjelly"
+		"cranjelly",
+		"reinforcemint"
 	]
 }
