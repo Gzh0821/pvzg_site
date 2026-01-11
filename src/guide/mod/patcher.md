@@ -48,6 +48,8 @@ data-full-width-responsive="true">
 gePatcher.help()
 ```
 
+GE Patcher 还会自动加载云存档模块（`window.cloudSaver`）。
+
 游戏加载完成后可以运行以下命令加载/应用补丁：
 
 ```javascript
@@ -76,6 +78,12 @@ gePatcher.setPropsData('PlantProps', 'peashooter', 'ShootInterval', 1.2)
 
 // 合并多个属性（传入对象）
 gePatcher.setPropsData('PlantProps', 'peashooter', { ShootInterval: 1.2, SunCost: 75 })
+
+// 数据管理与导出
+gePatcher.listOrigins()             // 列出已保存的原版JSON数据
+gePatcher.exportJson('PlantFeatures', false) // 导出当前 PlantFeatures 数据（第二个参数为 true 则导出原版JSON数据，第三个参数为true则下载对应文件，为false则仅在控制台输出）
+gePatcher.restoreOriginal('PlantFeatures')   // 还原 PlantFeatures 为原版JSON数据
+gePatcher.restoreAll()              // 还原所有数据
 ```
 
 ## 文件结构
@@ -89,16 +97,17 @@ patches/
     │   ├── PlantFeatures.json
     │   ├── PlantProps.json
     │   ├── PlantAlmanac.json
+    │   ├── PlantTypes.json
     │   ├── ZombieFeatures.json
     │   ├── ZombieProps.json
     │   ├── ZombieAlmanac.json
-    │   ├── GridItemFeatures.json
-    │   ├── GridItemProps.json
-    │   ├── GridItemTypes.json
+    │   ├── ZombieTypes.json
+    │   ├── BoardGridMaps.json
     │   ├── ProjectileProps.json
     │   ├── ProjectileTypes.json
     │   ├── UpgradeFeatures.json
     │   ├── PropertySheets.json
+    │   ├── NarrativeList.json
     │   └── StoreCommodityFeatures.json
     └── levels/
         └── [关卡名].json
@@ -107,7 +116,6 @@ patches/
 说明：
 
 - `features` 目录包含各种 Features/Props/Types/Almanac 文件，用于修改游戏实体的元数据和行为。
-- 新版本的 patcher 支持 GridItem（格子道具）和 Projectile（弹道/子弹）的 Props/Types 文件，此外可通过 `PropertySheets.json` 修改属性表。
 - 未修改原版内容的文件无需创建。
 
 ## Features 文件
@@ -170,8 +178,9 @@ Features 文件用于对实体（植物、僵尸、格子道具、升级等）�
 
 - `PlantProps.json` / `ZombieProps.json`：修改数值属性（`PlantProperties` / `ZombieProperties`）。
 - `PlantAlmanac.json` / `ZombieAlmanac.json`：修改图鉴显示信息（不会改变实际战斗数值）。
-- `GridItemProps.json` / `GridItemTypes.json`：格子道具相关属性与类型定义。
+- `PlantTypes.json` / `ZombieTypes.json`：定义植物/僵尸的类型数据。
 - `ProjectileProps.json` / `ProjectileTypes.json`：弹道/子弹相关属性与类型定义。
+- `NarrativeList.json`：修改剧情对话列表。
 - `PropertySheets.json`：覆盖或补充某些属性表。
 
 ### Props 文件示例（PlantProps.json）
@@ -248,6 +257,7 @@ Features 文件用于对实体（植物、僵尸、格子道具、升级等）�
    - ❌ `Failed to load...`：通常为 JSON 语法错误。
    - ❌ `Level file not found`：文件名或路径不匹配。
 3. 验证 JSON：使用 [JSONLint](https://jsonlint.com/) 或 VSCode JSON 校验插件。
+4. 获取参考：使用 `gePatcher.exportJson('PlantProps', true)` 等命令导出游戏原版数据，对比结构差异。
 
 排查建议：
 
