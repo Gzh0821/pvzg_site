@@ -1,7 +1,7 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
-import { enNavbar, esNavbar, ruNavbar, zhNavbar } from "./navbar/index.js";
-import { enSidebar, esSidebar, ruSidebar, zhSidebar } from "./sidebar/index.js";
+import { enNavbar, esNavbar, ruNavbar, zhNavbar, viNavbar } from "./navbar/index.js";
+import { enSidebar, esSidebar, ruSidebar, zhSidebar, viSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
   hostname: "https://www.pvzge.com",
@@ -72,6 +72,22 @@ export default hopeTheme({
       // page meta
       metaLocales: {
         editLink: "Editar esta página en GitHub",
+      },
+    },
+    "/vi-VN/": {
+      // navbar
+      navbar: viNavbar,
+      navbarTitle: "PvZ2 Gardendless",
+      // sidebar
+      sidebar: viSidebar,
+
+      footer: "Website chính thức của PvZ2 Gardendless: pvzge.com",
+      copyright: "Copyright 2021-2026 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Chính sách bảo mật</a>",
+      displayFooter: true,
+
+      // page meta
+      metaLocales: {
+        editLink: "Chỉnh sửa trang này trên GitHub",
       },
     },
     "/": {
