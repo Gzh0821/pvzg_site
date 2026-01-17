@@ -1,5 +1,5 @@
 ---
-title: Tải xuống
+title: Tải Xuống
 index: false
 icon: download
 pageInfo: false
@@ -28,14 +28,14 @@ onMounted(() => {
 </script>
 
 > [!important]
-> Câu hỏi thường gặp về tải và chơi game xem [tại đây](../guide/FAQ.md). Cấu hình máy khuyến nghị xem [tại đây](../guide/requirement.md).
+> Các câu hỏi thường gặp về tải và chơi game xem [tại đây](../guide/FAQ.md). Cấu hình máy khuyến nghị xem [tại đây](../guide/requirement.md).
 >
-> Phiên bản website và phiên bản từ nhóm QQ/netdisk Trung Quốc dùng cách đóng gói khác nhau, file save sẽ KHÔNG tự động kế thừa.
+> Phiên bản website và phiên bản từ nhóm QQ/netdisk Trung Quốc dùng cách đóng gói khác nhau, file save sẽ KHÔNG tự động chuyển qua được nha.
 
 > [!warning]
-> **Lưu ý:** Link tải trên trang này chỉ dành cho mục đích học tập và giao lưu, KHÔNG được sử dụng cho mục đích thương mại.
+> **Lưu ý:** Link tải trên trang này chỉ dành cho mục đích học tập và giao lưu, KHÔNG được dùng cho mục đích thương mại.
 >
-> Việc tải xuống hoặc chơi online đồng nghĩa với việc bạn đã đọc và đồng ý các điều khoản sau:
+> Việc tải xuống hoặc chơi online đồng nghĩa bạn đã đọc và đồng ý các điều khoản sau:
 >
 > - Thỏa thuận Người dùng và Tuyên bố Miễn trừ Trách nhiệm của "PvZ2 Gardendless"
 >
@@ -49,7 +49,7 @@ onMounted(() => {
 
 <span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
 
-## Changelog
+## Có gì mới
 
 <template v-if="gameInfoData?.EnNewFeatures">
 
@@ -111,9 +111,9 @@ Link tải: <a :href="gameInfoData.Download.Quark" target="_blank">nhấn vào �
 ## ::brands:linux:: Linux và các nền tảng khác
 
 > [!info]
-> Để chơi trên Linux và các hệ thống có kiến trúc x86_64 (amd64), bạn có thể dùng Docker image để deploy phiên bản web cục bộ.
+> Để chơi trên Linux và các hệ thống x86_64 (amd64), bạn có thể dùng Docker image để deploy phiên bản web local.
 >
-> **Mẹo cho Linux users:** Cách đơn giản nhất là dùng Docker, chạy một dòng lệnh là xong, không cần cài đặt phức tạp!
+> **Mẹo cho Linux users:** Cách ez nhất là dùng Docker, chạy một dòng lệnh là xong, không cần setup phức tạp!
 
 ### Docker Hub ::brands:docker::
 

@@ -1,5 +1,5 @@
 ---
-title: Share and Contribute Levels
+title: Chia sẻ và Đóng góp Level
 index: true
 icon: share
 pageInfo: false
@@ -7,23 +7,23 @@ order: 2
 ---
 
 > [!important]
-> By sharing or contributing levels, you agree to the [Player Contribution Agreement](../../instructions/Submisson).
+> Khi chia sẻ hoặc đóng góp level, bạn đồng ý với [Thỏa thuận Đóng góp của Người chơi](../../instructions/Submisson).
 >
 
-You can download level files made by community members on the [Community Level](../../creator-garden/) page. If you have your own levels, you can share them with other players in the following ways:
+Bạn có thể tải các file level do cộng đồng tạo ở trang [Level Cộng đồng](../../creator-garden/). Nếu bạn có level của riêng mình, bạn có thể share với các player khác theo những cách sau:
 
 ## 1. Discord Server
 
-You can share your level files on the `#custom-level-share` channel of the Discord server. Please follow the server rules.
+Bạn có thể share file level của mình trên kênh `#custom-level-share` của Discord server. Nhớ tuân thủ rules của server nhé.
 
-To join the Discord server, please check the [User Community Page](../../contribution/).
+Để join Discord server, check trang [Cộng đồng Người dùng](../../contribution/).
 
-## 2. Submit to the Level Library
+## 2. Submit lên Level Library
 
-If your level is highly completed, you can submit it to the level library. You need to have a Github account and be able to use Git tools.
+Nếu level của bạn đã hoàn thiện, bạn có thể submit lên level library. Bạn cần có tài khoản Github và biết sử dụng Git.
 
-For how to use Git, please refer to the [Development Guide](../../guide/webGuide). Please note that the Git repository is different from the level library.
+Về cách dùng Git, tham khảo [Hướng dẫn Phát triển](../../guide/webGuide). Lưu ý rằng Git repository khác với level library nhé.
 
-The address of the level library is: [pvzg_level](https://github.com/Gzh0821/pvzg_level).
+Địa chỉ level library: [pvzg_level](https://github.com/Gzh0821/pvzg_level).
 
-Please refer to the Readme file of the level library for detailed steps to submit a level.
+Xem file Readme của level library để biết chi tiết các bước submit level.

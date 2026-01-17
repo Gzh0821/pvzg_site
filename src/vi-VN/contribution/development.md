@@ -1,5 +1,5 @@
 ---
-title: Development Help
+title: Hỗ Trợ Phát Triển
 icon: code
 pageInfo: false
 comment: false
@@ -7,8 +7,8 @@ index: true
 order: 3
 ---
 
-## Website development of PvZ2 Gardenless
+## Phát triển website PvZ2 Gardendless
 
-This website is an open source project, using the `Apache 2.0` protocol, and we widely accept feedback from the open source community.
+Website này là một dự án open source, sử dụng giấy phép `Apache 2.0`, và tụi mình rất welcome mọi đóng góp từ cộng đồng.
 
-If you are willing to contribute your code, please read the [website development guide](../guide/webGuide.md) and submit a PR to the [project repository](https://github.com/Gzh0821/pvzg_site).
+Nếu bạn muốn contribute code của mình, hãy đọc [hướng dẫn phát triển website](../guide/webGuide.md) và submit PR tới [repository của dự án](https://github.com/Gzh0821/pvzg_site) nhé!

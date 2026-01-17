@@ -1,5 +1,5 @@
 ---
-title: Plants Almanac
+title: Sổ Tay Cây Trồng
 icon: book-open
 pageInfo: false
 comment: false
@@ -12,7 +12,7 @@ order: 2
 <script setup>
     import { createApp,provide } from 'vue';
     import Almanac from '@source/components/plantsAlmanac/App.vue';
-    provide("i18nLanguage",'en');
+    provide("i18nLanguage",'vi');
 </script>
 
 <Almanac />

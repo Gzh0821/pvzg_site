@@ -1,5 +1,5 @@
 ---
-title: MOD tutorial
+title: Hướng dẫn MOD
 index: true
 icon: toolbox
 pageInfo: false
@@ -16,8 +16,8 @@ onMounted(() => {
 </script>
 
 > [!tip]
-> Starting from version `0.2.8.1`, PvZ2 Gardendless supports partial Patch functionality. You can use the built-in GE Patcher in the game to modify JSON files to customize plants, zombies, the store, and levels. This feature is not available in the online version.
+> Từ version `0.2.8.1` trở đi, PvZ2 Gardendless đã support tính năng Patch một phần. Bạn có thể dùng GE Patcher có sẵn trong game để modify các file JSON, customize cây cối, zombie, cửa hàng và màn chơi theo ý thích. Tính năng này không available trên bản online nhé.
 >
-> The development team does not guarantee that this feature will be supported in future versions, which depends on the game's updates and maintenance.
+> Team dev không đảm bảo tính năng này sẽ được support ở các version sau, tùy thuộc vào việc update và maintain game.
 
 <Catalog />

@@ -6,18 +6,17 @@ pageInfo: false
 comment: true
 ---
 
-"Rock!" Texture Pack, replaces some in-game textures with stone.
+Texture Pack "Rock!" - thay đổi một số texture trong game thành đá.
 
-### Version Information
+### Thông tin phiên bản
 
-- Author: ¿
-- Community: QQ
-- Version: 0.3.7
-- Release Date: 2025.07.10
+- Tác giả: ¿
+- Cộng đồng: QQ
+- Phiên bản: 0.3.7
+- Ngày phát hành: 2025.07.10
 
 ![](/assets/image/creator-garden/custom-version/rock-0.3.7-1.png)
 
-### Download
+### Tải xuống
 
 ::brands:google-drive:: [Google Drive](https://drive.google.com/file/d/1lqnbuSqXpzBJ1J0kE71FvFCh-4zkN68G/view?usp=sharing)
-

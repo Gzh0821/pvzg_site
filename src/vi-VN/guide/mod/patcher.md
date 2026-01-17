@@ -1,5 +1,5 @@
 ---
-title: GE Patcher Tutorial (latest)
+title: Hướng dẫn GE Patcher (mới nhất)
 icon: wrench
 pageInfo: false
 index: true
@@ -14,17 +14,17 @@ order: 1
 </script>
 
 > [!warning]
-> The following tutorial applies only to versions `0.3.X`-`0.6.X`.
+> Tutorial dưới đây chỉ áp dụng cho các version `0.3.X`-`0.6.X`.
 
-GE Patcher is a tool used to modify game data for PvZ2 Gardendless, supporting custom modifications for plants, zombies, grid items (GridItem), projectiles (Projectile), upgrades, store commodities, and levels.
+GE Patcher là tool dùng để modify game data của PvZ2 Gardendless, support custom cây cối, zombie, grid items (GridItem), đạn (Projectile), upgrades, hàng trong shop và level.
 
-It is recommended to use the built-in version of GE Patcher (included in the official release).
+Recommend dùng bản GE Patcher có sẵn (đã include trong bản release chính thức).
 
-## Prerequisites
+## Yêu cầu
 
-1. JSON Editor (VSCode/Notepad++ recommended)
+1. JSON Editor (recommend VSCode/Notepad++)
 2. Game Version ≥ 0.3.0
-3. For JSON property structures of plants, zombies, etc., please refer to [Property Reference](format.md)
+3. Về cấu trúc JSON properties của cây, zombie, v.v., xem [Tham khảo Properties](format.md)
 
 <ins class="adsbygoogle"
 style="display:block"
@@ -34,61 +34,61 @@ data-ad-format="auto"
 data-full-width-responsive="true">
 </ins>
 
-## GE Patcher Basics
+## GE Patcher cơ bản
 
-Open the developer interface by pressing "F12" when the game starts. In the Console tab, you will see output similar to the following:
+Mở developer interface bằng cách nhấn "F12" khi game khởi động. Trong tab Console, bạn sẽ thấy output kiểu như sau:
 
 ```text
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
 ```
 
-The path above is the main directory for GE Patcher (example). Run the following command in the console to view help information and output the patches directory:
+Path trên là thư mục chính của GE Patcher (ví dụ). Chạy command sau trong console để xem help và output patches directory:
 
 ```javascript
 gePatcher.help()
 ```
 
-GE Patcher also automatically loads the cloud save module (`window.cloudSaver`).
+GE Patcher cũng tự động load module cloud save (`window.cloudSaver`).
 
-After the game finishes loading, run the following commands to load/apply patches:
+Sau khi game load xong, chạy các command sau để load/apply patches:
 
 ```javascript
-// Load base assets, does not load patch files
+// Load base assets, không load patch files
 gePatcher.initBase()
 
-// After calling initBase, you can call initPatchs() to load patch files
-// Call this function again to apply changes after modifying JSON files
+// Sau khi gọi initBase, bạn có thể gọi initPatchs() để load patch files
+// Gọi lại function này để apply changes sau khi modify file JSON
 gePatcher.initPatchs()
 
-// Load both base assets and patch files, equivalent to combining the two steps above
+// Load cả base assets và patch files, tương đương gộp 2 bước trên
 gePatcher.init()
 ```
 
-Other common function examples:
+Các function phổ biến khác:
 
 ```javascript
-// List original level IDs in the game
+// List các level ID gốc trong game
 gePatcher.showLevels()
 
-// Set custom frame rate (dangerous operation, may cause crashes or performance issues)
+// Set custom frame rate (thao tác nguy hiểm, có thể gây crash hoặc lag)
 gePatcher.setFrameRate(30)
 
-// Modify a single property of a single entity (example)
+// Modify một property của một entity (ví dụ)
 gePatcher.setPropsData('PlantProps', 'peashooter', 'ShootInterval', 1.2)
 
-// Merge multiple properties (pass an object)
+// Merge nhiều properties (pass object)
 gePatcher.setPropsData('PlantProps', 'peashooter', { ShootInterval: 1.2, SunCost: 75 })
 
-// Data management and export
-gePatcher.listOrigins()             // List saved original JSON data
-gePatcher.exportJson('PlantFeatures', false) // Export current PlantFeatures data (second arg true exports original JSON, third arg true downloads file, false outputs to console)
-gePatcher.restoreOriginal('PlantFeatures')   // Restore PlantFeatures to original JSON data
-gePatcher.restoreAll()              // Restore all data
+// Quản lý và export data
+gePatcher.listOrigins()             // List các JSON data gốc đã lưu
+gePatcher.exportJson('PlantFeatures', false) // Export data PlantFeatures hiện tại (arg thứ 2 true export JSON gốc, arg thứ 3 true download file, false output ra console)
+gePatcher.restoreOriginal('PlantFeatures')   // Restore PlantFeatures về JSON data gốc
+gePatcher.restoreAll()              // Restore tất cả data
 ```
 
-## File Structure
+## Cấu trúc file
 
-Create a `patches` folder under `com.pvzge.app` with the following structure:
+Tạo folder `patches` trong `com.pvzge.app` với cấu trúc như sau:
 
 ```
 patches/
@@ -113,18 +113,18 @@ patches/
         └── [LevelName].json
 ```
 
-Description:
+Mô tả:
 
-- The `features` directory contains various Features/Props/Types/Almanac files for modifying metadata and behavior of game entities.
-- Files for modifying original content do not need to be created if unchanged.
+- Folder `features` chứa các file Features/Props/Types/Almanac để modify metadata và behavior của các entity trong game.
+- Các file modify nội dung gốc không cần tạo nếu không thay đổi gì.
 
-## Features Files
+## Files Features
 
-Features files are used for merging metadata modifications for entities (plants, zombies, grid items, upgrades, etc.).
+Files Features dùng để merge các thay đổi metadata cho entities (cây, zombie, grid items, upgrades, v.v.).
 
-### Common Features Examples
+### Ví dụ Features phổ biến
 
-**PlantFeatures.json** (Example):
+**PlantFeatures.json** (Ví dụ):
 
 ```json
 {
@@ -138,7 +138,7 @@ Features files are used for merging metadata modifications for entities (plants,
 }
 ```
 
-**ZombieFeatures.json** (Example):
+**ZombieFeatures.json** (Ví dụ):
 
 ```json
 {
@@ -150,7 +150,7 @@ Features files are used for merging metadata modifications for entities (plants,
 }
 ```
 
-**UpgradeFeatures.json** (Example):
+**UpgradeFeatures.json** (Ví dụ):
 
 ```json
 {
@@ -162,28 +162,28 @@ Features files are used for merging metadata modifications for entities (plants,
 }
 ```
 
-**GridItemFeatures.json / StoreCommodityFeatures.json**, etc., have similar structures, providing the CODENAME/Identifier of the item to be modified according to the original game structure.
+**GridItemFeatures.json / StoreCommodityFeatures.json**, v.v., có cấu trúc tương tự, cung cấp CODENAME/Identifier của item cần modify theo cấu trúc game gốc.
 
-### Features Merging Rules (Summary)
+### Quy tắc merge Features (Tóm tắt)
 
-- Match existing entities by CODENAME (or corresponding identifier), then merge the user-provided object with the original object.
-- Primitive type fields are overwritten directly; object types are merged recursively; array types are merged by element order (if array elements are primitive types, they are overwritten).
-- For top-level array fields like `SEEDCHOOSERDEFAULTORDER`, `BASEUNLOCKLIST`, the original array will be replaced directly.
+- Match entities hiện có bằng CODENAME (hoặc identifier tương ứng), sau đó merge object user cung cấp với object gốc.
+- Các field kiểu primitive sẽ bị overwrite trực tiếp; kiểu object sẽ merge recursive; kiểu array sẽ merge theo thứ tự element (nếu element trong array là primitive, chúng sẽ bị overwrite).
+- Với các field array top-level như `SEEDCHOOSERDEFAULTORDER`, `BASEUNLOCKLIST`, array gốc sẽ bị replace trực tiếp.
 
-Important: GE Patcher only modifies existing entities and does not create brand new entity entries. Try to avoid modifying key identifiers (e.g., `ID`, `_CARDSPRITENAME`, etc.).
+Quan trọng: GE Patcher chỉ modify entities có sẵn và không tạo entity mới. Cố gắng tránh modify các identifier quan trọng (vd: `ID`, `_CARDSPRITENAME`, v.v.).
 
-## Props / Almanac / Types Files
+## Files Props / Almanac / Types
 
-These files are used to modify specific numerical values, almanac information, or type tables for entities:
+Các file này dùng để modify các giá trị số, thông tin almanac, hoặc bảng type cho entities:
 
-- `PlantProps.json` / `ZombieProps.json`: Modify numerical properties (`PlantProperties` / `ZombieProperties`).
-- `PlantAlmanac.json` / `ZombieAlmanac.json`: Modify almanac display information (does not change actual combat stats).
-- `PlantTypes.json` / `ZombieTypes.json`: Define type data for plants/zombies.
-- `ProjectileProps.json` / `ProjectileTypes.json`: Projectile/bullet related properties and type definitions.
-- `NarrativeList.json`: Modify storyline dialogue lists.
-- `PropertySheets.json`: Overwrite or supplement certain property sheets.
+- `PlantProps.json` / `ZombieProps.json`: Modify các properties số (`PlantProperties` / `ZombieProperties`).
+- `PlantAlmanac.json` / `ZombieAlmanac.json`: Modify thông tin hiển thị almanac (không ảnh hưởng stats chiến đấu thực tế).
+- `PlantTypes.json` / `ZombieTypes.json`: Define type data cho cây/zombie.
+- `ProjectileProps.json` / `ProjectileTypes.json`: Properties và định nghĩa type liên quan đến đạn/bullet.
+- `NarrativeList.json`: Modify danh sách dialogue cốt truyện.
+- `PropertySheets.json`: Overwrite hoặc bổ sung một số property sheets.
 
-### Props File Example (PlantProps.json)
+### Ví dụ file Props (PlantProps.json)
 
 ```json
 {
@@ -204,7 +204,7 @@ These files are used to modify specific numerical values, almanac information, o
 }
 ```
 
-### Almanac Example (PlantAlmanac.json)
+### Ví dụ Almanac (PlantAlmanac.json)
 
 ```json
 {
@@ -224,20 +224,20 @@ These files are used to modify specific numerical values, almanac information, o
 }
 ```
 
-### Merging Rules
+### Quy tắc merge
 
-- Same as Features: Match target entity by `aliases` (first item in array), then recursively merge `objdata`. If you only want to modify certain fields, provide only the properties that need modification.
+- Giống như Features: Match entity đích bằng `aliases` (item đầu tiên trong array), sau đó merge recursive `objdata`. Nếu bạn chỉ muốn modify một số field, chỉ cần cung cấp các properties cần thay đổi.
 
-## Level Files
+## Files Level
 
-Custom levels are placed in `patches/jsons/levels/[LevelName].json`.
+Custom levels được đặt trong `patches/jsons/levels/[LevelName].json`.
 
-- The filename must match the in-game level ID (e.g., `egypt1.json`).
-- Use `gePatcher.showLevels()` in the console to view available level IDs (requires initializing GE Patcher first).
+- Tên file phải khớp với level ID trong game (vd: `egypt1.json`).
+- Dùng `gePatcher.showLevels()` trong console để xem các level ID có sẵn (cần init GE Patcher trước).
 
-## Store Files
+## Files Store
 
-`StoreCommodityFeatures.json` is used to replace/modify store item categories:
+`StoreCommodityFeatures.json` dùng để replace/modify các category hàng trong shop:
 
 ```json
 {
@@ -248,20 +248,19 @@ Custom levels are placed in `patches/jsons/levels/[LevelName].json`.
 }
 ```
 
-Categories not needing modification can be omitted.
+Các category không cần modify có thể bỏ qua.
 
-## Debugging and Common Troubleshooting
+## Debug và khắc phục lỗi thường gặp
 
-1. Check error logs in the console (F12).
-2. Common errors:
-   - ❌ `Failed to load...`: Usually a JSON syntax error.
-   - ❌ `Level file not found`: Filename or path mismatch.
-3. Verify JSON: Use [JSONLint](https://jsonlint.com/) or VSCode JSON validation plugin.
-4. Get reference: Use commands like `gePatcher.exportJson('PlantProps', true)` to export original game data and compare structural differences.
+1. Check error logs trong console (F12).
+2. Các lỗi phổ biến:
+   - ❌ `Failed to load...`: Thường là lỗi JSON syntax.
+   - ❌ `Level file not found`: Tên file hoặc path không khớp.
+3. Validate JSON: Dùng [JSONLint](https://jsonlint.com/) hoặc plugin JSON validation của VSCode.
+4. Lấy reference: Dùng các command như `gePatcher.exportJson('PlantProps', true)` để export data game gốc và so sánh sự khác biệt cấu trúc.
 
-Troubleshooting suggestions:
+Gợi ý troubleshooting:
 
-- First run `gePatcher.help()` in the console to output the base patch directory (example: `C:\Users\admin\AppData\Local\com.pvzge.app\patches`) and the list of supported paths to ensure files are in the correct location.
-- Run `gePatcher.init()` only after game resources are fully loaded, or run `gePatcher.initBase()` first and wait for completion (the script checks resource count and warns if not loaded).
-- If changes do not take effect, confirm that you have re-executed `gePatcher.init()` or `gePatcher.initPatchs()` and check console output to locate errors.
-
+- Đầu tiên chạy `gePatcher.help()` trong console để output base patch directory (ví dụ: `C:\Users\admin\AppData\Local\com.pvzge.app\patches`) và danh sách các path được support để đảm bảo file đang ở đúng vị trí.
+- Chỉ chạy `gePatcher.init()` sau khi game resources đã load xong, hoặc chạy `gePatcher.initBase()` trước và đợi hoàn tất (script sẽ check số lượng resource và warn nếu chưa load).
+- Nếu changes không có effect, confirm rằng bạn đã re-execute `gePatcher.init()` hoặc `gePatcher.initPatchs()` và check console output để locate errors.

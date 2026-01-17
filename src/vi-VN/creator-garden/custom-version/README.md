@@ -1,5 +1,5 @@
 ---
-title: Community Version
+title: Phiên Bản Cộng Đồng
 index: true
 order: 1
 dir:
@@ -10,7 +10,7 @@ comment: false
 ---
 
 > [!info]
-> This contains the community version of Gardendless, which is made and uploaded by community members. The Gardendless development team is not responsible for its content.
+> Đây là các phiên bản custom của Gardendless, được tạo và upload bởi các thành viên cộng đồng. Team phát triển Gardendless không chịu trách nhiệm về nội dung các phiên bản này nha.
 
 <script setup>
     import { onMounted } from 'vue';

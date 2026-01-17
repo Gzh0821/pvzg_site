@@ -1,5 +1,5 @@
 ---
-title: Almanac
+title: Sổ Tay
 index: false
 icon: book-atlas
 pageInfo: false
@@ -8,9 +8,9 @@ toc: false
 ---
 
 > [!info]
-> Click vào mục trong sidebar để chuyển đến trang minh họa tương ứng.
+> Click vào mục ở sidebar để chuyển sang trang minh họa tương ứng nha!
 >
-> Trong các file level tùy chỉnh, cả cây và zombie đều sử dụng `CodeName` làm tên.
+> Trong các file level custom, cả cây lẫn zombie đều dùng `CodeName` làm tên nhé.
 
 <script setup>
     import { onMounted } from 'vue';

@@ -1,37 +1,37 @@
 ---
-title: Website Development Guide
+title: Hướng Dẫn Phát Triển Website
 icon: laptop-code
 pageInfo: false
 index: true
 order: 5
 ---
 
-Welcome to participate in the "PvZ2 Gardendless" website open source project! Whether you are a novice developer or an experienced developer, we encourage you to contribute code, submit issues or suggestions.
-Below is a brief development guide to help zero-based users quickly participate in this project.
+Chào mừng bạn đến với dự án mã nguồn mở "PvZ2 Gardendless"! Dù bạn là dev mới vào nghề hay đã cày code lâu năm, chúng mình đều hoan nghênh bạn đóng góp code, gửi issues hoặc góp ý kiến.
+Dưới đây là hướng dẫn phát triển nhanh gọn, giúp các bạn newbie có thể nhảy vào dự án ngay.
 
-## 1. Preparation
+## 1. Chuẩn Bị
 
-Before you start, you need to complete some basic settings. For `Windows` systems, we recommend that you use `PowerShell` of `Windows Terminal` to run commands, which can be started through the right-click menu.
+Trước khi bắt đầu, bạn cần setup một số thứ cơ bản. Với hệ điều hành `Windows`, mình khuyên bạn dùng `PowerShell` trong `Windows Terminal` để chạy lệnh, có thể mở bằng click chuột phải.
 
-### 1.1 Install VScode, Git and Node.js
+### 1.1 Cài đặt VScode, Git và Node.js
 
 #### VScode
 
-VScode is a lightweight code editor that supports multiple programming languages. In project development, we recommend using VScode to edit code.
+VScode là một trình soạn thảo code nhẹ nhàng, hỗ trợ nhiều ngôn ngữ lập trình. Trong phát triển dự án, mình recommend dùng VScode để viết code.
 
-- Download and install VScode: [VScode official website](https://code.visualstudio.com/)
-- Read the [VScode documentation](https://code.visualstudio.com/docs) to learn more about how to use it.
-- It is recommended to install plugins: `Vue - Official`, `ESLint`, `GitLens`, etc. to improve development efficiency.
+- Tải và cài VScode: [Trang chủ VScode](https://code.visualstudio.com/)
+- Đọc [tài liệu VScode](https://code.visualstudio.com/docs) để tìm hiểu thêm cách sử dụng.
+- Nên cài các plugin: `Vue - Official`, `ESLint`, `GitLens`... để code nhanh hơn.
 
 #### Git
 
-Git is a tool for managing project versions. In project development, we will use Git to pull code and submit modifications.
+Git là công cụ quản lý phiên bản dự án. Trong phát triển, chúng ta sẽ dùng Git để pull code và push các thay đổi.
 
-- Download and install Git: [Git official website](https://git-scm.com/), for Windows, it is recommended that you download `64-bit Git for Windows Setup`.
-- You can use the default settings during the installation process.
-- It is recommended to select `Use Visual Studio Code as Git's default editor` for the default editor.
-- It is recommended to select `Git from the command line and also from 3rd-party software` for environment variable configuration.
-- After the installation is complete, you can run the following command through the command line to confirm whether the installation is successful:
+- Tải và cài Git: [Trang chủ Git](https://git-scm.com/), với Windows, mình recommend tải `64-bit Git for Windows Setup`.
+- Trong quá trình cài đặt, bạn có thể để mặc định.
+- Nên chọn `Use Visual Studio Code as Git's default editor` cho editor mặc định.
+- Nên chọn `Git from the command line and also from 3rd-party software` cho cấu hình biến môi trường.
+- Sau khi cài xong, chạy lệnh sau trong terminal để check cài đặt thành công chưa:
 
 ```bash
 git --version
@@ -39,110 +39,110 @@ git --version
 
 #### Node.js
 
-VuePress is a static website generator based on Node.js, so you need to install Node.js.
+VuePress là một static website generator dựa trên Node.js, nên bạn cần cài Node.js.
 
-- Download and install Node.js: [Node.js official website](https://nodejs.org/)
-- After the installation is complete, you can run the following command to confirm whether the installation is successful:
+- Tải và cài Node.js: [Trang chủ Node.js](https://nodejs.org/)
+- Sau khi cài xong, chạy lệnh sau để confirm cài đặt thành công:
 
 ```bash
 node --version
 npm --version
 ```
 
-### 1.2 Install Corepack
+### 1.2 Cài đặt Corepack
 
-Corepack is a Node.js package manager that helps you install and manage project dependencies faster.
+Corepack là một package manager của Node.js, giúp bạn cài và quản lý dependencies nhanh hơn.
 
-- Run the following command to activate Corepack:
+- Chạy lệnh sau để kích hoạt Corepack:
 
 ```bash
 corepack enable
 ```
 
-## 2. Fork the project
+## 2. Fork dự án
 
-### 2.1 Create a Github account
+### 2.1 Tạo tài khoản GitHub
 
-Before participating in the project, you need to register a GitHub account.
+Trước khi tham gia dự án, bạn cần đăng ký một tài khoản GitHub.
 
-### 2.2 Fork the project
+### 2.2 Fork dự án
 
-When participating in a project on GitHub, you can fork (copy a copy of the project to your own account) to carry out development work.
+Khi tham gia dự án trên GitHub, bạn có thể fork (copy một bản của dự án về tài khoản của mình) để phát triển.
 
-1. Visit the [pvzg_site project](https://github.com/Gzh0821/pvzg_site).
-2. Click the `Fork` button in the upper right corner of the page to copy the project to your own GitHub repository.
-3. Enter the project repository you forked.
+1. Truy cập [dự án pvzg_site](https://github.com/Gzh0821/pvzg_site).
+2. Click nút `Fork` ở góc trên bên phải của trang để copy dự án về repo GitHub của bạn.
+3. Vào repo dự án mà bạn vừa fork.
 
-## 3. Clone the project locally
+## 3. Clone dự án về máy
 
-After you fork the project, you need to clone the project code to your local computer. `VScode` provides the function of cloning repositories. You can check its documentation to learn more, or use the terminal:
+Sau khi fork dự án, bạn cần clone code dự án về máy tính local. `VScode` có tính năng clone repositories. Bạn có thể check tài liệu của nó để biết thêm, hoặc dùng terminal:
 
-1. Open the terminal. For Windows, please use `Windows Terminal` or the terminal function included with `VScode`.
+1. Mở terminal. Với Windows, hãy dùng `Windows Terminal` hoặc terminal có sẵn trong `VScode`.
 
-2. In the path where you want to place this project, run the following command to clone the project locally:
+2. Ở đường dẫn bạn muốn đặt dự án, chạy lệnh sau để clone dự án về local:
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/pvzg_site.git
 ```
 
-Please replace `YOUR_USERNAME` with your GitHub username.
+Nhớ thay `YOUR_USERNAME` bằng username GitHub của bạn nha.
 
-3. Enter the project directory, which should contain the `package.json` file:
+3. Vào thư mục dự án, trong đó phải có file `package.json`:
 
 ```bash
 cd pvzg_site
 ```
 
-4. Open the project directory through `VScode`. After that, you can use `VScode` to enter commands and write files:
+4. Mở thư mục dự án bằng `VScode`. Sau đó, bạn có thể dùng `VScode` để nhập lệnh và viết file:
 
 ```bash
 code .
 ```
 
-## 4. Install dependencies
+## 4. Cài đặt dependencies
 
-After entering the project directory, you need to install the dependency packages required by the project. All subsequent commands must be entered in the project directory path.
+Sau khi vào thư mục dự án, bạn cần cài các package dependencies mà dự án yêu cầu. Tất cả các lệnh tiếp theo phải được nhập trong đường dẫn thư mục dự án.
 
-- Use `Corepack` to install `pnpm`, and use `pnpm` to install dependencies:
+- Dùng `Corepack` để cài `pnpm`, và dùng `pnpm` để cài dependencies:
 
 ```bash
 corepack install
-# Check if pnpm is correctly installed in the project
+# Check xem pnpm đã được cài đúng trong dự án chưa
 pnpm -v
-# Install dependencies
+# Cài dependencies
 pnpm install
 ```
 
-## 5. Run the development environment
+## 5. Chạy môi trường development
 
-After installing the dependencies, you can start the development environment of the project and view the document website running locally.
+Sau khi cài xong dependencies, bạn có thể start môi trường development của dự án và xem website chạy trên local.
 
-- Use the following command to start the development server:
+- Dùng lệnh sau để start development server:
 
 ```bash
 pnpm docs:dev
 ```
 
-After successful startup, you can visit `http://localhost:8080` in your browser to view the website in development.
+Sau khi start thành công, bạn có thể truy cập `http://localhost:8080` trong browser để xem website đang development.
 
-## 6. Start editing
+## 6. Bắt đầu chỉnh sửa
 
-Now you can modify and optimize the code.
+Giờ bạn có thể sửa và tối ưu code rồi đấy.
 
-### 6.1 Markdown file
+### 6.1 File Markdown
 
-Markdown is a lightweight markup language. You can learn more about it through [Markdown Guide](https://www.markdownguide.org/).
+Markdown là một ngôn ngữ markup nhẹ nhàng. Bạn có thể tìm hiểu thêm qua [Markdown Guide](https://www.markdownguide.org/).
 
-The page content of the project is mainly written in Markdown, with the suffix `.md`. You can find the page files of the project in the `src` directory.
+Nội dung trang của dự án chủ yếu được viết bằng Markdown, với đuôi `.md`. Bạn có thể tìm các file trang của dự án trong thư mục `src`.
 
-This project is developed using `Vuepress`. For the use of `Vuepress`, you can check [Vuepress official documentation](https://vuepress.vuejs.org/) to learn more.
+Dự án này được phát triển bằng `Vuepress`. Về cách dùng `Vuepress`, bạn có thể check [tài liệu chính thức Vuepress](https://vuepress.vuejs.org/) để biết thêm.
 
-The format of `.md` files is as follows:
+Format của file `.md` như sau:
 
 ```markdown
-<!-- Configuration items -->
+<!-- Các mục cấu hình -->
 ---
-title: page title
+title: tiêu đề trang
 index: false
 ...
 ---
@@ -151,74 +151,74 @@ index: false
 <Catalog />
 
 > [!info]
-> info here...
+> thông tin ở đây...
 
-### Title
+### Tiêu đề
 
-Content...
+Nội dung...
 ```
 
-### 6.2 Provide translations
+### 6.2 Cung cấp bản dịch
 
-Under the `src` directory, you can find the `en` directory, which contains the English pages of this website. You can refer to the files in this directory and translate them into other languages.
+Trong thư mục `src`, bạn có thể tìm thấy thư mục `en`, chứa các trang tiếng Anh của website này. Bạn có thể tham khảo các file trong thư mục này và dịch sang ngôn ngữ khác.
 
-For translation work, you only need to modify the `.md` files in the corresponding language directory, such as `ru-RU`, `pt-BR`. You need to keep the file structure and name in the directory consistent with `en`.
+Với công việc dịch thuật, bạn chỉ cần sửa các file `.md` trong thư mục ngôn ngữ tương ứng, như `ru-RU`, `pt-BR`. Bạn cần giữ cấu trúc file và tên trong thư mục nhất quán với `en`.
 
-For the configuration items in the `.md` file, only `title` needs to be modified, and for the `HTML component`, it can be left unchanged.
-It is recommended that you check whether the page is displayed correctly at any time when making changes.
+Với các mục cấu hình trong file `.md`, chỉ cần sửa `title`, còn `HTML component` thì giữ nguyên không đổi.
+Mình khuyên bạn nên check xem trang hiển thị đúng không mỗi khi thay đổi nha.
 
-## 7. Submit changes and initiate a Pull Request
+## 7. Submit thay đổi và tạo Pull Request
 
-When you have completed the code modification and tested successfully, you can submit your changes and initiate a Pull Request.
+Khi bạn đã hoàn thành sửa code và test thành công, bạn có thể submit thay đổi và tạo Pull Request.
 
-### 7.1 Submit changes and push to GitHub
+### 7.1 Submit thay đổi và push lên GitHub
 
-We recommend that you use `VScode` to submit. Just fill in the submission information in `Source Control` on the left side of `VScode`, then click Submit, and click Synchronize Changes.
+Mình recommend bạn dùng `VScode` để submit. Chỉ cần điền thông tin commit trong `Source Control` ở bên trái `VScode`, rồi click Submit, và click Synchronize Changes.
 
-To submit using the terminal:
+Để submit bằng terminal:
 
-1. Add the modified code to Git:
+1. Add code đã sửa vào Git:
 
 ```bash
 git add .
 ```
 
-2. Submit the changes:
+2. Commit thay đổi:
 
 ```bash
-git commit -m "Describe your changes"
+git commit -m "Mô tả thay đổi của bạn"
 ```
 
-3. Push local changes to your own GitHub repository:
+3. Push thay đổi local lên repo GitHub của bạn:
 
 ```bash
 git push origin main
 ```
 
-### 7.2 Initiate Pull Request
+### 7.2 Tạo Pull Request
 
-1. Go to your GitHub repository page.
-2. Click the `Compare & pull request` button at the top of the page.
-3. Fill in the description of the changes and submit the Pull Request.
+1. Vào trang repo GitHub của bạn.
+2. Click nút `Compare & pull request` ở trên đầu trang.
+3. Điền mô tả thay đổi và submit Pull Request.
 
-We will review your Pull Request as soon as possible and provide feedback or merge as needed.
+Chúng mình sẽ review Pull Request của bạn sớm nhất có thể và phản hồi hoặc merge theo nhu cầu.
 
 ## 8. Submit Issues
 
-If you encounter problems during development, you can provide feedback through GitHub's Issues system.
+Nếu bạn gặp vấn đề trong quá trình phát triển, bạn có thể feedback qua hệ thống Issues của GitHub.
 
-1. Visit the project's [Issues page](https://github.com/Gzh0821/pvzg_site/issues).
+1. Truy cập [trang Issues của dự án](https://github.com/Gzh0821/pvzg_site/issues).
 
-2. Click the `New issue` button.
+2. Click nút `New issue`.
 
-3. Fill in the problem description and submit.
+3. Điền mô tả vấn đề và submit.
 
-## 9. Participate in discussions
+## 9. Tham gia thảo luận
 
-We welcome all users to participate in the project's discussions! You can communicate with us in the following ways:
+Chúng mình hoan nghênh tất cả mọi người tham gia thảo luận dự án! Bạn có thể liên lạc với chúng mình theo các cách sau:
 
-- Participate in Discussions on GitHub.
+- Tham gia Discussions trên GitHub.
 
-- Participate in discussions on the Discord server.
+- Tham gia thảo luận trên server Discord.
 
-Thank you for your support and contribution to this project, and we look forward to working with you to improve this project!
+Cảm ơn bạn đã ủng hộ và đóng góp cho dự án này, chúng mình rất mong được hợp tác cùng bạn để cải thiện dự án!

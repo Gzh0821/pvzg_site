@@ -1,5 +1,5 @@
 ---
-title: Level Files
+title: Cấu trúc File Level
 index: true
 icon: feather
 pageInfo: false
@@ -7,38 +7,38 @@ order: 1
 ---
 
 > [!info]
-> Go to the [Creator's Garden](../../creator-garden/) page to download sample level files!
+> Ghé qua trang [Vườn Sáng Tạo](../../creator-garden/) để tải các file level mẫu nhé!
 
-## Custom Levels
+## Custom Level
 
-The custom level file of the game "PvZ2 Gardendless" is similar to the original version. It is a JSON/JSON5 text file with the suffix `.json` or `json5`, which contains all the information of the level, including plants, zombies, terrain, etc.
+File custom level của game "PvZ2 Gardendless" khá giống với bản gốc. Đây là file text JSON/JSON5 với đuôi `.json` hoặc `.json5`, chứa toàn bộ thông tin của level, bao gồm cây, zombie, địa hình, v.v.
 
-Compared with the original version, the level file of "PvZ2 Gardendless" adds some new fields to describe the basic information of the level.
+So với bản gốc, file level của "PvZ2 Gardendless" có thêm một số field mới để mô tả thông tin cơ bản của level.
 
-## JSON File
+## File JSON
 
-If you are already familiar with the JSON file format, you can skip this section directly.
+Nếu bạn đã quen với format JSON rồi thì skip phần này luôn nhé.
 
-JSON (JavaScript Object Notation) is a lightweight data exchange format that is easy to read and write. It uses key-value pairs to represent data and is usually used to transmit data between clients and servers. The data structures in JSON include objects, arrays, strings, numbers, Boolean values, and null.
+JSON (JavaScript Object Notation) là một format trao đổi dữ liệu nhẹ, dễ đọc và viết. Nó sử dụng các cặp key-value để biểu diễn data và thường dùng để truyền dữ liệu giữa client và server. Các cấu trúc dữ liệu trong JSON bao gồm object, array, string, number, boolean và null.
 
-- Objects: wrapped in `{}`, containing key-value pairs.
+- Object: được bọc trong `{}`, chứa các cặp key-value.
 
-- Arrays: wrapped in `[]`, containing multiple values.
+- Array: được bọc trong `[]`, chứa nhiều giá trị.
 
-- Strings: wrapped in `""` double quotes.
+- String: được bọc trong dấu ngoặc kép `""`.
 
-- Boolean values: `true` or `false`.
-- Number: integer or floating point number.
-- null: represents a null value.
+- Boolean: `true` hoặc `false`.
+- Number: số nguyên hoặc số thập phân.
+- null: đại diện cho giá trị rỗng.
 
 > [!warning]
-> JSON files do not support comments. When you use the JSON code provided on this website, please use the `JSON5` format mentioned below, or delete the comments starting with `//` double slashes.
+> File JSON không support comment. Khi bạn sử dụng code JSON trên website này, hãy dùng format `JSON5` được đề cập bên dưới, hoặc xóa các comment bắt đầu bằng `//`.
 
-Example:
+Ví dụ:
 
 ```json
 {
-  // Delete this comment when using the JSON code
+  // Xóa comment này khi sử dụng code JSON
   "name": "Alice",
   "age": 25,
   "isStudent": false,
@@ -50,83 +50,83 @@ Example:
 }
 ```
 
-In this example:
+Trong ví dụ này:
 
-`name` is a string type, and `age` is a number type. `isStudent` is a Boolean type. `skills` is an array of strings. `address` is an object containing city and zipCode.
+`name` là kiểu string, `age` là kiểu number. `isStudent` là kiểu boolean. `skills` là array của string. `address` là object chứa city và zipCode.
 
-For a more in-depth understanding of the JSON format, you can refer to [here](https://www.json.org/json-en.html).
+Để hiểu sâu hơn về format JSON, bạn có thể tham khảo [tại đây](https://www.json.org/json-en.html).
 
-## JSON5 File
+## File JSON5
 
 > [!important]
-> You can use JSON5 format when writing level files. Please use `.json5` as the suffix of the level file to distinguish it from the ordinary `json` file.
+> Bạn có thể dùng format JSON5 khi viết file level. Hãy dùng đuôi `.json5` cho file level để phân biệt với file `json` thường.
 
-JSON5 is an extension based on JSON (JavaScript Object Notation). It aims to enhance the readability and usability of JSON while maintaining compatibility with JSON. JSON5 allows developers to use more relaxed syntax and adapt to more scenarios without violating the existing JSON standard.
+JSON5 là phiên bản mở rộng dựa trên JSON (JavaScript Object Notation). Mục tiêu là tăng tính dễ đọc và tiện dụng của JSON trong khi vẫn tương thích với JSON. JSON5 cho phép dev dùng cú pháp linh hoạt hơn mà không vi phạm chuẩn JSON hiện có.
 
-JSON5 introduces some flexibility, making configuration files or data transmission formats easier to write and understand. The following are the main features of JSON5:
+JSON5 mang đến một số điểm linh hoạt, giúp file config hoặc format truyền data dễ viết và dễ hiểu hơn. Sau đây là các tính năng chính của JSON5:
 
-### Flexible object key names
+### Key name linh hoạt
 
-In standard JSON, key names must be wrapped in double quotes, while in JSON5, key names can be unquoted or even single quotes can be used.
+Trong JSON chuẩn, tên key phải được bọc trong dấu ngoặc kép, còn trong JSON5, tên key có thể không cần quote hoặc dùng dấu nháy đơn.
 
 ```json5
 {
-  unquoted: 'This is allowed in JSON5',
-  singleQuotes: 'This is also allowed'
+  unquoted: 'Cái này hợp lệ trong JSON5',
+  singleQuotes: 'Cái này cũng được'
 }
 ```
 
-### End of line comma
+### Dấu phẩy cuối dòng
 
-In JSON5, you can add a comma after the last item of an object or array, which is especially convenient when editing.
+Trong JSON5, bạn có thể thêm dấu phẩy sau item cuối cùng của object hoặc array, khá tiện khi edit.
 
 ```json5
 {
   key: 'value',
-  anotherKey: 42 // Allow end of line comma
+  anotherKey: 42 // Cho phép dấu phẩy cuối dòng
 }
 ```
 
-### Support comments
+### Support Comment
 
-JSON5 supports single-line and multi-line comments, similar to JavaScript. Standard JSON does not allow comments, while JSON5 allows developers to add additional annotation information in data files.
+JSON5 support cả comment một dòng và nhiều dòng, giống JavaScript. JSON chuẩn không cho phép comment, còn JSON5 cho phép dev thêm annotation trong file data.
 
 ```json5
 {
-  // This is a single-line comment
+  // Đây là comment một dòng
   key: 'value',
 
   /*
-  This is a multi-line comment
-  Can explain complex configuration
+  Đây là comment nhiều dòng
+  Có thể giải thích config phức tạp
   */
   anotherKey: 42
 }
 ```
 
-### Flexible strings
+### String linh hoạt
 
-JSON5 supports both single-quoted and double-quoted strings.
-
-```json5
-{
-  singleQuotes: 'This is a string',
-  doubleQuotes: 'This is also a string'
-}
-```
-
-JSON5 allows newline characters to be used in strings. Unlike JSON, it does not require the use of `\n` to represent newlines. At the same time, escape characters can also be used in strings.
+JSON5 support cả string dùng nháy đơn và nháy kép.
 
 ```json5
 {
-  longString: 'This is a very long string that \
-  spans multiple lines\t'
+  singleQuotes: 'Đây là string',
+  doubleQuotes: 'Đây cũng là string'
 }
 ```
 
-### Additional data types
+JSON5 cho phép dùng ký tự xuống dòng trong string. Khác với JSON, bạn không cần dùng `\n` để xuống dòng. Đồng thời, escape character cũng có thể dùng trong string.
 
-JSON5 supports more numeric formats, such as hexadecimal notation and positive and negative infinity values ​​(`Infinity`), as well as `NaN` (Not-a-Number).
+```json5
+{
+  longString: 'Đây là một string rất dài \
+  trải qua nhiều dòng\t'
+}
+```
+
+### Kiểu dữ liệu bổ sung
+
+JSON5 support thêm nhiều format số, như ký hiệu hex và giá trị vô cực (`Infinity`), cũng như `NaN` (Not-a-Number).
 
 ```json5
 {
@@ -137,31 +137,31 @@ JSON5 supports more numeric formats, such as hexadecimal notation and positive a
 }
 ```
 
-### More flexible numeric representation
+### Biểu diễn số linh hoạt hơn
 
-You can omit zeros in the integer part or the fractional part.
+Bạn có thể bỏ số 0 ở phần nguyên hoặc phần thập phân.
 
 ```json5
 {
-  fractional: 0.5, // equivalent to 0.5
-  trailing: 2 // equivalent to 2.0
+  fractional: 0.5, // tương đương 0.5
+  trailing: 2 // tương đương 2.0
 }
 ```
 
-For more information about JSON5, you can refer to [here](https://json5.org/).
+Để biết thêm về JSON5, check [tại đây](https://json5.org/).
 
-## Level file structure
+## Cấu trúc file Level
 
-The level file structure of "PvZ2 Gardendless" is as follows:
+Cấu trúc file level của "PvZ2 Gardendless" như sau:
 
 ```json
 {
-  // Level title
+  // Tiêu đề level
   "#comment": "Sample Level",
-  // Basic information of the level
+  // Thông tin cơ bản của level
   "Information": {},
   "objects": [
-    // List of level settings
+    // Danh sách các setting của level
     {},
     {}
   ],
@@ -169,93 +169,93 @@ The level file structure of "PvZ2 Gardendless" is as follows:
 }
 ```
 
-The `#comment` field is the title of the level. When writing a level, please make sure that the title of your level is unique and not repeated.The `version` field is fixed to 1.
-Detailed descriptions of other fields are given below.
+Field `#comment` là tiêu đề của level. Khi viết level, hãy đảm bảo tiêu đề level của bạn là duy nhất, không trùng lặp. Field `version` cố định là 1.
+Mô tả chi tiết các field khác ở bên dưới.
 
-## Information field
+## Field Information
 
-PvZ2 Gardendless adds the `Information` top-level field to describe basic information about the level.
-This field does not affect the functionality of the custom level in the game, but it can help players quickly understand the information of the level you wrote.
+PvZ2 Gardendless thêm field top-level `Information` để mô tả thông tin cơ bản về level.
+Field này không ảnh hưởng đến chức năng của custom level trong game, nhưng giúp player nhanh chóng hiểu thông tin level bạn viết.
 
-This field contains the following:
+Field này chứa những thông tin sau:
 
 ```json
 "Information": {
-  // Level UUID
+  // UUID của level
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
-  // Level name
+  // Tên level
   "name": {
       "en": "SampleLevel",
       "zh-CN": "示例关卡"
   },
-  // Level author
+  // Tác giả level
   "Author": "LMYY",
-  // Optional, author link
+  // Optional, link tác giả
   "AuthorLink": "https://github.com/Gzh0821",
-  // Level description
+  // Mô tả level
   "Introduction": {
       "en": "This is a sample level.",
       "zh-CN": "这是一个示例关卡。"
   },
-  // Supported game version
+  // Phiên bản game hỗ trợ
   "GameVersion": "0.1.1",
-  // Level version
+  // Phiên bản level
   "Version": "1.0",
-  // Level creation time
+  // Thời gian tạo level
   "CreatedAt": "2022-03-08",
-  // Level update time
+  // Thời gian update level
   "UpdatedAt": "2022-03-08",
-  // Level difficulty, optional values ​​are: Easy, Normal, Hard, Expert
+  // Độ khó level, các giá trị: Easy, Normal, Hard, Expert
   "Difficulty": "Easy",
-  // Level category
+  // Thể loại level
   "Category": "Survival"
 },
 ```
 
-`uuid` is the unique identifier of the level, used to distinguish different levels. Please ensure the uniqueness of your level `uuid`.
-To obtain a random `uuid`, you can use an online generation tool such as [UUID Generator](https://www.uuidgenerator.net/).
+`uuid` là định danh duy nhất của level, dùng để phân biệt các level khác nhau. Hãy đảm bảo `uuid` của level bạn là unique.
+Để lấy `uuid` ngẫu nhiên, bạn có thể dùng tool online như [UUID Generator](https://www.uuidgenerator.net/).
 
-## objects field
+## Field objects
 
-objects is a list whose elements are each specific level setting. There are multiple objects in the list, each object corresponds to a configuration item. The following is an example of an objects list:
+objects là một list mà mỗi element là một setting cụ thể của level. Có nhiều object trong list, mỗi object tương ứng với một config item. Sau đây là ví dụ về list objects:
 
 ```json
 "objects": [
   {
-    // Configuration item: basic settings of the level
+    // Config item: setting cơ bản của level
     "objclass": "LevelDefinition",
-    // Basic settings of the level
+    // Setting cơ bản của level
     "objdata": {
-      // Description of the level
+      // Mô tả level
       "Description": "~",
-      // Level number, used in series of levels
+      // Số thứ tự level, dùng trong series level
       "LevelNumber": 1,
-      // Keep the default
+      // Giữ mặc định
       "Loot": "RTID(DefaultLoot@LevelModules)",
-      // Game mode of the level, the basic game mode is given
+      // Game mode của level, đây là game mode cơ bản
       "Modules": [
         "RTID(ZombiesDeadWinCon@LevelModules)",
         "RTID(DefaultZombieWinCondition@LevelModules)",
         "RTID(NewWaves@CurrentLevel)",
         "RTID(SeedBank@CurrentLevel)"
       ],
-      // Level name displayed in the game
+      // Tên level hiển thị trong game
       "Name": "Bank theft 1",
-      // Optional: multi-language support
+      // Optional: hỗ trợ đa ngôn ngữ
       "NameMultiLanguage": {
         "en": "Bank theft I",
         "zh": "银行失窃I"
       },
-      // Author, it is recommended to be consistent with Information.Author
+      // Tác giả, recommend giống với Information.Author
       "WritenBy": "保罗_刘",
-      // Currently useless: drop related
+      // Hiện tại chưa dùng: liên quan đến drop
       "NormalPresentTable": "egypt_normal_01",
       "ShinyPresentTable": "egypt_shiny_01",
-      // Level scene, format: RTID(world name Stage@LevelModules)
+      // Scene của level, format: RTID(tên world Stage@LevelModules)
       "StageModule": "RTID(TutorialStage@LevelModules)"
     }
   },
-  // Configuration for each gameplay mode:
+  // Config cho từng gameplay mode:
   {
     "aliases": [
       "SeedBank"

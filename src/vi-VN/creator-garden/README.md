@@ -1,5 +1,5 @@
 ---
-title: Vườn Sáng tạo
+title: Vườn Sáng Tạo
 index: true
 order: 1
 icon: feather
@@ -9,11 +9,11 @@ comment: false
 
 > [!info]
 >
-> Chào mừng đến với Vườn Sáng tạo! Đây là nơi tập trung sự sáng tạo của người chơi - bạn có thể tìm thấy các level, mod, và pack được tạo bởi đội ngũ chính thức lẫn cộng đồng.
+> Chào mừng bạn đến với Vườn Sáng Tạo! Đây là hub dành cho sự sáng tạo của các player, nơi bạn có thể tìm thấy các level, mod và pack được tạo bởi team chính thức lẫn cộng đồng.
 >
-> Trong danh sách level tùy chỉnh, click vào tiêu đề để tải file level, rồi click `Play Local Level` trong cài đặt game để import và chơi. Nếu danh sách trống, vui lòng chờ hoặc refresh lại trang.
+> Trong danh sách custom level, click vào tiêu đề để download file level, sau đó click `Play Local Level` trong settings game để import và chơi thôi. Nếu list trống thì chờ xíu hoặc refresh lại trang nha.
 >
-> Official levels là các level do thành viên đội phát triển viết, bao gồm cả file level mẫu. Community levels chứa các file level do thành viên Discord và cộng đồng tạo ra.
-> Hướng dẫn viết level tùy chỉnh xem tại [Custom Level Guide](../guide/level/).
+> Official levels là các level do thành viên team dev viết, bao gồm cả các file level mẫu. Community levels chứa các file level do anh em Discord và cộng đồng tạo ra.
+> Muốn học cách viết custom level thì xem [Hướng Dẫn Custom Level](../guide/level/) nè.
 
 <Catalog />

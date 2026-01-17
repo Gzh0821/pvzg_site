@@ -1,5 +1,5 @@
 ---
-title: Zombie Almanac
+title: Sổ Tay Zombie
 icon: book-open
 pageInfo: false
 comment: false
@@ -11,7 +11,7 @@ order: 3
 <script setup>
     import { createApp,provide } from 'vue';
     import Almanac from '@source/components/zombiesAlmanac/App.vue';
-    provide("i18nLanguage",'en');
+    provide("i18nLanguage",'vi');
 </script>
 
 <Almanac />

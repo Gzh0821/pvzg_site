@@ -1,5 +1,5 @@
 ---
-title: Properties Reference (latest)
+title: Tham khảo Properties (mới nhất)
 icon: file-invoice
 pageInfo: false
 index: true
@@ -7,17 +7,17 @@ order: 2
 ---
 
 <script setup>
-    import { onMounted } from 'vue';
-    onMounted(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
+    import { onMounted } from 'vue';
+    onMounted(() => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    })
 </script>
 
 > [!warning]
-> The following tutorial only works for versions `0.3.X`-`0.6.X`.
+> Tutorial dưới đây chỉ hoạt động với các version `0.3.X`-`0.6.X`.
 
 > [!important]
-> In the tables, properties in _italics_ are properties that you probably shouldn't modify. Modifying them may cause the game to crash or bug out.
+> Trong các bảng, các properties in _nghiêng_ là những properties bạn không nên modify. Thay đổi chúng có thể làm game crash hoặc bug.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -27,11 +27,11 @@ order: 2
      data-full-width-responsive="true">
 </ins>
 
-## Plant Files
+## Files Cây
 
-Below is the format of the plant JSON files, using Grapeshot as an example.
+Dưới đây là format của các file JSON cây, lấy Grapeshot làm ví dụ.
 
-Properties with multilingual values cannot be deleted or have extra fields added. The format must be as follows:
+Các properties có giá trị đa ngôn ngữ không được xóa hoặc thêm field. Format phải như sau:
 
 ```json
 {
@@ -42,82 +42,82 @@ Properties with multilingual values cannot be deleted or have extra fields added
 
 ### PlantFeatures.json
 
-The PlantFeatures.json file contains the basic characteristics of plants.
+File PlantFeatures.json chứa các đặc điểm cơ bản của cây.
 
-Each plant in the `PLANTS` array includes the following properties:
+Mỗi cây trong array `PLANTS` bao gồm các properties sau:
 
-| Property           | Example Content                           | Description                                                                                            |
-| ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **ID**             | 74                                        | Unique ID value of the plant in the game                                                               |
-| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Multilingual name, `en` for English name, `zh` for Chinese name                                        |
-| _\_CARDSPRITENAME_ | "grapeshot"                               | Card icon resource name (corresponding to game resource files)                                         |
-| _CODENAME_         | "grapeshot"                               | Unique identifier for the plant (critical field, used for GE Patcher merging)                          |
-| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Plant type:<br>- `plant`: Normal plant<br>- `lastStandDisallowed`: Cannot be used in "Last Stand" mode |
-| **OBTAINWORLD**    | "market"                                  | The world where the background image is located                                                        |
-| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Zen Garden planting location:<br>- `dirt`: Normal soil                                                 |
-| _COSTUME_          | 2                                         | Number of costumes                                                                                     |
+| Property           | Nội dung ví dụ                            | Mô tả                                                                                                    |
+| ------------------ | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| **ID**             | 74                                        | Giá trị ID unique của cây trong game                                                                     |
+| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Tên đa ngôn ngữ, `en` cho tiếng Anh, `zh` cho tiếng Trung                                                |
+| _\_CARDSPRITENAME_ | "grapeshot"                               | Tên resource icon thẻ (tương ứng với file resource game)                                                 |
+| _CODENAME_         | "grapeshot"                               | Identifier unique cho cây (field quan trọng, dùng cho GE Patcher merge)                                  |
+| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Loại cây:<br>- `plant`: Cây thường<br>- `lastStandDisallowed`: Không thể dùng trong mode "Last Stand"    |
+| **OBTAINWORLD**    | "market"                                  | World nơi background image nằm                                                                           |
+| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Vị trí trồng trong Zen Garden:<br>- `dirt`: Đất thường                                                   |
+| _COSTUME_          | 2                                         | Số lượng costume                                                                                         |
 
-The `SEEDCHOOSERDEFAULTORDER` array is used to specify the default order of plants in the selection interface. It should only have plants' `CODENAME` and the order they are in the array is the order they will appear in the almanac, seed chooser, etc.
+Array `SEEDCHOOSERDEFAULTORDER` dùng để chỉ định thứ tự mặc định của cây trong giao diện chọn. Nó chỉ nên có `CODENAME` của cây và thứ tự trong array là thứ tự chúng sẽ xuất hiện trong almanac, seed chooser, v.v.
 
-The `BASEUNLOCKLIST` array contains plants newly created player profiles have by default. It also uses plants' `CODENAME`.
+Array `BASEUNLOCKLIST` chứa các cây mà player profile mới tạo có sẵn. Nó cũng dùng `CODENAME` của cây.
 
 ### PlantAlmanac.json
 
-The PlantAlmanac.json file contains the Almanac information for plants.
+File PlantAlmanac.json chứa thông tin Almanac cho cây.
 
-Each item in the `objects` array should include `aliases`, `objclass`, and `objdata`, or else it may not change in-game.
+Mỗi item trong array `objects` nên include `aliases`, `objclass`, và `objdata`, nếu không có thể không thay đổi trong game.
 
-The `aliases` array contains the plant's `CODENAME`, used to indicate the corresponding plant for this object. Only the first item is read from at the moment. The value of `objclass` is `PlantAlmanacProperties`, indicating that this object modifies a plant almanac entry.
+Array `aliases` chứa `CODENAME` của cây, dùng để chỉ định cây tương ứng cho object này. Hiện tại chỉ item đầu tiên được đọc. Giá trị của `objclass` là `PlantAlmanacProperties`, cho biết object này modify một entry almanac cây.
 
-`objdata` includes the following Almanac properties:
+`objdata` bao gồm các properties Almanac sau:
 
-| Property              | Value/Content                                                                                                                                                     | Description                                              |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| _Elements_            | Contains multiple properties:<br>- `SUNCOST`:Sun cost<br>- `RECHARGE`:Cooldown<br>- `DAMAGE`:Damage value (1800)<br>- `AREA`:Range (3x3)<br>- `FAMILY`:Family | Key property  tags shown in Almanac                      |
-| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                      | Multilingual description of plant function               |
-| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                     | Special mechanism description                            |
-| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                         | Multilingual, plant's personality lines                  |
-| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                             | Multilingual, brief function summary                     |
-| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                              | Display position offset (adjusts coordinates in Almanac) |
+| Property              | Giá trị/Nội dung                                                                                                                                            | Mô tả                                          |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| _Elements_            | Chứa nhiều properties:<br>- `SUNCOST`:Chi phí sun<br>- `RECHARGE`:Cooldown<br>- `DAMAGE`:Giá trị damage (1800)<br>- `AREA`:Phạm vi (3x3)<br>- `FAMILY`:Gia đình | Các tag property chính hiển thị trong Almanac |
+| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                 | Mô tả đa ngôn ngữ về chức năng cây             |
+| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                               | Mô tả cơ chế đặc biệt                          |
+| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                   | Đa ngôn ngữ, các câu nói tính cách của cây     |
+| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                        | Đa ngôn ngữ, tóm tắt ngắn về chức năng         |
+| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                        | Offset vị trí hiển thị (điều chỉnh tọa độ trong Almanac) |
 
 ### PlantProps.json
 
-The PlantProps.json file contains gameplay properties of plants.
+File PlantProps.json chứa các properties gameplay của cây.
 
-Each item in the `objects` array includes `aliases`, `objclass`, and `objdata`, just like in `PlantAlmanac.json`.
+Mỗi item trong array `objects` bao gồm `aliases`, `objclass`, và `objdata`, giống như trong `PlantAlmanac.json`.
 
-The `aliases` array contains the plant's `CODENAME`, used to indicate the corresponding plant for this object. Again, only the first entry is read. The value of `objclass` is `PlantProperties`, indicating that this object modifies a plant's gameplay properties.
+Array `aliases` chứa `CODENAME` của cây, dùng để chỉ định cây tương ứng cho object này. Một lần nữa, chỉ entry đầu tiên được đọc. Giá trị của `objclass` là `PlantProperties`, cho biết object này modify các properties gameplay của cây.
 
-`objdata` includes the following properties, but some plants have properties others don't. Valid properties for each plant can be viewed in the [Almanac](../../almanac/).
+`objdata` bao gồm các properties sau, nhưng một số cây có properties mà cây khác không có. Các properties hợp lệ cho mỗi cây có thể xem trong [Almanac](../../almanac/).
 
-| Property                      | Value/Content | Description                                             |
-| ----------------------------- | ------------- | ------------------------------------------------------- |
-| **CannotBeSheepenedByWizard** | true          | Immune to Wizard Zombie's "sheep transformation" skill  |
-| **Damage**                    | 1800          | Base damage value                                       |
-| **Cooldown**                  | 35            | Cooldown time (unit: seconds)                           |
-| **CooldownFrom**              | 1             | Cooldown start time (represents initial cooldown value) |
-| **SunCost**                   | 150           | Sun required for planting                               |
-| **Toughness**                 | 300           | Base plant health points                                |
-| **Family**                    | "Explosive"   | Family (may affect family bonus effects)                |
-| **ImmuneToIceblock**          | true          | Immune to freezing effects (e.g., Ice Weasel Zombie)    |
+| Property                      | Giá trị/Nội dung | Mô tả                                                   |
+| ----------------------------- | ---------------- | ------------------------------------------------------- |
+| **CannotBeSheepenedByWizard** | true             | Miễn nhiễm skill "biến thành cừu" của Wizard Zombie     |
+| **Damage**                    | 1800             | Giá trị damage cơ bản                                   |
+| **Cooldown**                  | 35               | Thời gian cooldown (đơn vị: giây)                       |
+| **CooldownFrom**              | 1                | Thời gian bắt đầu cooldown (giá trị cooldown ban đầu)   |
+| **SunCost**                   | 150              | Sun cần để trồng                                        |
+| **Toughness**                 | 300              | Điểm máu cơ bản của cây                                 |
+| **Family**                    | "Explosive"      | Gia đình (có thể ảnh hưởng hiệu ứng bonus gia đình)     |
+| **ImmuneToIceblock**          | true             | Miễn nhiễm hiệu ứng đóng băng (vd: Ice Weasel Zombie)   |
 
-## Store Files
+## Files Store
 
-The `StoreCommodityFeatures.json` file contains store commodity information, including four arrays: `Plants`, `Upgrade`, `Gem`, and `Coin`, representing different types of commodity information.
+File `StoreCommodityFeatures.json` chứa thông tin hàng hóa trong store, bao gồm 4 array: `Plants`, `Upgrade`, `Gem`, và `Coin`, đại diện cho các loại thông tin hàng hóa khác nhau.
 
 ### Plants
 
-The `Plants` array contains information about plant commodities.
+Array `Plants` chứa thông tin về hàng hóa cây.
 
-| Property             | Type   | Description                     |
-| -------------------- | ------ | ------------------------------- |
-| _CommodityType_      | string | Fixed value "plant"             |
-| **CommodityName**    | string | Plant's CODENAME                |
-| **CurrencyType**     | string | Currency type ("gem" or "coin") |
-| **CurrencyRequired** | number | Amount of currency required     |
-| _UnlockLevel_        | string | Unlocks at a certain level      |
+| Property             | Type   | Mô tả                            |
+| -------------------- | ------ | -------------------------------- |
+| _CommodityType_      | string | Giá trị cố định "plant"          |
+| **CommodityName**    | string | CODENAME của cây                 |
+| **CurrencyType**     | string | Loại tiền tệ ("gem" hoặc "coin") |
+| **CurrencyRequired** | number | Số lượng tiền tệ cần             |
+| _UnlockLevel_        | string | Unlock ở một level nhất định     |
 
-**Example: Snow Pea Commodity**
+**Ví dụ: Hàng hóa Snow Pea**
 
 ```json
 {
@@ -130,16 +130,16 @@ The `Plants` array contains information about plant commodities.
 
 ### Upgrade
 
-The `Upgrade` array contains information about plant upgrade commodities.
+Array `Upgrade` chứa thông tin về hàng hóa upgrade cây.
 
-| Property             | Type   | Description                     |
-| -------------------- | ------ | ------------------------------- |
-| _CommodityType_      | string | Fixed value "upgrade"           |
-| **CommodityName**    | string | CODENAME of the upgrade item    |
-| **CurrencyType**     | string | Currency type ("gem" or "coin") |
-| **CurrencyRequired** | number | Amount of currency required     |
+| Property             | Type   | Mô tả                            |
+| -------------------- | ------ | -------------------------------- |
+| _CommodityType_      | string | Giá trị cố định "upgrade"        |
+| **CommodityName**    | string | CODENAME của upgrade item        |
+| **CurrencyType**     | string | Loại tiền tệ ("gem" hoặc "coin") |
+| **CurrencyRequired** | number | Số lượng tiền tệ cần             |
 
-**Example: Shovel Upgrade**
+**Ví dụ: Shovel Upgrade**
 
 ```json
 {
@@ -152,18 +152,18 @@ The `Upgrade` array contains information about plant upgrade commodities.
 
 ### Gem
 
-The `Gem` array contains information about Gem commodities.
+Array `Gem` chứa thông tin về hàng hóa Gem.
 
-| Property                 | Description                           |
-| ------------------------ | ------------------------------------- |
-| _CommodityType_          | Fixed value "gem"                     |
-| CommodityCount           | Amount of Gems obtained               |
-| **CurrencyType**         | Currency type ("gem" or "coin")       |
-| CurrencyRequired         | Amount of currency required           |
-| _StackLevel_             | Commodity pack level                  |
-| **CommodityDisplayName** | Commodity display name (multilingual) |
+| Property                 | Mô tả                                |
+| ------------------------ | ------------------------------------ |
+| _CommodityType_          | Giá trị cố định "gem"                |
+| CommodityCount           | Số lượng Gem nhận được               |
+| **CurrencyType**         | Loại tiền tệ ("gem" hoặc "coin")     |
+| CurrencyRequired         | Số lượng tiền tệ cần                 |
+| _StackLevel_             | Level gói hàng                       |
+| **CommodityDisplayName** | Tên hiển thị hàng hóa (đa ngôn ngữ)  |
 
-**Example: Adjusting a Gem Pack**
+**Ví dụ: Điều chỉnh Gem Pack**
 
 ```json
 {
@@ -181,13 +181,13 @@ The `Gem` array contains information about Gem commodities.
 
 ### Coin
 
-The `Coin` array contains information about Coin commodities.
+Array `Coin` chứa thông tin về hàng hóa Coin.
 
-| Property                 | Description                           |
-| ------------------------ | ------------------------------------- |
-| _CommodityType_          | Fixed value "coin"                    |
-| CommodityCount           | Amount of Coins obtained              |
-| **CurrencyType**         | Currency type ("gem" or "coin")       |
-| CurrencyRequired         | Amount of currency required           |
-| _StackLevel_             | Commodity pack level                  |
-| **CommodityDisplayName** | Commodity display name (multilingual) |
+| Property                 | Mô tả                                |
+| ------------------------ | ------------------------------------ |
+| _CommodityType_          | Giá trị cố định "coin"               |
+| CommodityCount           | Số lượng Coin nhận được              |
+| **CurrencyType**         | Loại tiền tệ ("gem" hoặc "coin")     |
+| CurrencyRequired         | Số lượng tiền tệ cần                 |
+| _StackLevel_             | Level gói hàng                       |
+| **CommodityDisplayName** | Tên hiển thị hàng hóa (đa ngôn ngữ)  |
