@@ -14,17 +14,17 @@ order: 1
 </script>
 
 > [!warning]
-> The following tutorial applies only to versions `0.3.X`-`0.6.X`.
+> This tutorial applies to versions `0.3.X` - `0.6.X`.
 
-GE Patcher is a tool used to modify game data for PvZ2 Gardendless, supporting custom modifications for plants, zombies, grid items (GridItem), projectiles (Projectile), upgrades, store commodities, and levels.
-
-It is recommended to use the built-in version of GE Patcher (included in the official release).
+GE Patcher is the built-in modding tool for PvZ2 Gardendless. It allows you to customize plants, zombies, projectiles, upgrades, store items, and levels by editing JSON files.
 
 ## Prerequisites
 
-1. JSON Editor (VSCode/Notepad++ recommended)
-2. Game Version ≥ 0.3.0
-3. For JSON property structures of plants, zombies, etc., please refer to [Property Reference](format.md)
+Before you start:
+
+- **JSON Editor**: [VS Code](https://code.visualstudio.com/) (recommended) or Notepad++
+- **Game Version**: 0.3.0 or higher
+- **Basic JSON knowledge**: Understanding of JSON syntax (objects, arrays, key-value pairs)
 
 <ins class="adsbygoogle"
 style="display:block"
@@ -34,156 +34,145 @@ data-ad-format="auto"
 data-full-width-responsive="true">
 </ins>
 
-## GE Patcher Basics
+## Step 1: Find Your Patch Directory
 
-Open the developer interface by pressing "F12" when the game starts. In the Console tab, you will see output similar to the following:
+1. Launch the game
+2. Press **F12** to open Developer Console
+3. Look for this line:
 
 ```text
-[GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
+[GE Patcher] BaseDir: C:\Users\YourName\AppData\Local\com.pvzge.app
 ```
 
-The path above is the main directory for GE Patcher (example). Run the following command in the console to view help information and output the patches directory:
+4. Run `gePatcher.help()` for more info and to confirm the patches directory
 
-```javascript
-gePatcher.help()
+> [!tip]
+> **Common Locations:**
+> - Windows: `C:\Users\YourName\AppData\Local\com.pvzge.app`
+> - Mac (Docker): Check Docker container logs
+> - Linux (Docker): Check Docker container logs
+
+## Step 2: Create Folder Structure
+
+Navigate to your BaseDir and create this structure:
+
+```
+com.pvzge.app/
+└── patches/
+    └── jsons/
+        ├── features/           ← Entity metadata (plants, zombies, etc.)
+        │   ├── PlantFeatures.json
+        │   ├── PlantProps.json
+        │   ├── PlantAlmanac.json
+        │   ├── ZombieFeatures.json
+        │   ├── ZombieProps.json
+        │   └── ... (more files)
+        └── levels/             ← Custom level files
+            └── egypt1.json     ← Filename = level ID
 ```
 
-GE Patcher also automatically loads the cloud save module (`window.cloudSaver`).
+> [!important]
+> Only create files you need to modify. Empty or unchanged files are not required.
 
-After the game finishes loading, run the following commands to load/apply patches:
+## Step 3: Load and Apply Patches
+
+After the game **fully loads** (you see the main menu), run commands in the console:
 
 ```javascript
-// Load base assets, does not load patch files
-gePatcher.initBase()
-
-// After calling initBase, you can call initPatchs() to load patch files
-// Call this function again to apply changes after modifying JSON files
-gePatcher.initPatchs()
-
-// Load both base assets and patch files, equivalent to combining the two steps above
+// Option 1: Load everything at once (recommended)
 gePatcher.init()
+
+// Option 2: Load in steps
+gePatcher.initBase()    // Load base assets first
+gePatcher.initPatchs()  // Then load your patches
 ```
 
-Other common function examples:
+> [!warning]
+> Always wait for the game to fully load before running these commands. Running too early will cause errors.
+
+## Step 4: Reload After Changes
+
+After editing your JSON files:
 
 ```javascript
-// List original level IDs in the game
+// Reload patches without restarting the game
+gePatcher.initPatchs()
+```
+
+## Useful Commands Reference
+
+### View Available Data
+
+```javascript
+// List all level IDs in the game
 gePatcher.showLevels()
 
-// Set custom frame rate (dangerous operation, may cause crashes or performance issues)
+// List saved original JSON data
+gePatcher.listOrigins()
+```
+
+### Export Original Data (for reference)
+
+```javascript
+// Export to console (view structure)
+gePatcher.exportJson('PlantProps', true)
+
+// Export and download as file
+gePatcher.exportJson('PlantProps', true, true)
+
+// Available data types:
+// PlantFeatures, PlantProps, PlantAlmanac, PlantTypes
+// ZombieFeatures, ZombieProps, ZombieAlmanac, ZombieTypes
+// ProjectileProps, ProjectileTypes, UpgradeFeatures
+// StoreCommodityFeatures, NarrativeList, PropertySheets
+```
+
+### Quick Modifications (without JSON files)
+
+```javascript
+// Modify a single property
+gePatcher.setPropsData('PlantProps', 'peashooter', 'SunCost', 50)
+
+// Modify multiple properties at once
+gePatcher.setPropsData('PlantProps', 'peashooter', {
+  SunCost: 50,
+  Damage: 40,
+  Cooldown: 3
+})
+```
+
+### Restore Original Data
+
+```javascript
+// Restore a specific data type
+gePatcher.restoreOriginal('PlantFeatures')
+
+// Restore everything to original
+gePatcher.restoreAll()
+```
+
+### Advanced
+
+```javascript
+// Set custom frame rate (use with caution!)
 gePatcher.setFrameRate(30)
-
-// Modify a single property of a single entity (example)
-gePatcher.setPropsData('PlantProps', 'peashooter', 'ShootInterval', 1.2)
-
-// Merge multiple properties (pass an object)
-gePatcher.setPropsData('PlantProps', 'peashooter', { ShootInterval: 1.2, SunCost: 75 })
-
-// Data management and export
-gePatcher.listOrigins()             // List saved original JSON data
-gePatcher.exportJson('PlantFeatures', false) // Export current PlantFeatures data (second arg true exports original JSON, third arg true downloads file, false outputs to console)
-gePatcher.restoreOriginal('PlantFeatures')   // Restore PlantFeatures to original JSON data
-gePatcher.restoreAll()              // Restore all data
 ```
 
-## File Structure
+## File Types Explained
 
-Create a `patches` folder under `com.pvzge.app` with the following structure:
+| File | Purpose | Key Field |
+|------|---------|-----------|
+| `*Features.json` | Entity metadata, unlock order | `CODENAME` |
+| `*Props.json` | Gameplay stats (damage, cost, etc.) | `aliases` |
+| `*Almanac.json` | Almanac display info | `aliases` |
+| `*Types.json` | Type definitions | varies |
+| `levels/*.json` | Level wave data | filename |
 
-```
-patches/
-└── jsons/
-    ├── features/
-    │   ├── PlantFeatures.json
-    │   ├── PlantProps.json
-    │   ├── PlantAlmanac.json
-    │   ├── PlantTypes.json
-    │   ├── ZombieFeatures.json
-    │   ├── ZombieProps.json
-    │   ├── ZombieAlmanac.json
-    │   ├── ZombieTypes.json
-    │   ├── BoardGridMaps.json
-    │   ├── ProjectileProps.json
-    │   ├── ProjectileTypes.json
-    │   ├── UpgradeFeatures.json
-    │   ├── PropertySheets.json
-    │   ├── NarrativeList.json
-    │   └── StoreCommodityFeatures.json
-    └── levels/
-        └── [LevelName].json
-```
+## Example: Modify Peashooter
 
-Description:
+### Goal: Make Peashooter cheaper and stronger
 
-- The `features` directory contains various Features/Props/Types/Almanac files for modifying metadata and behavior of game entities.
-- Files for modifying original content do not need to be created if unchanged.
-
-## Features Files
-
-Features files are used for merging metadata modifications for entities (plants, zombies, grid items, upgrades, etc.).
-
-### Common Features Examples
-
-**PlantFeatures.json** (Example):
-
-```json
-{
-  "PLANTS": [
-    {
-      "CODENAME": "peashooter"
-    }
-  ],
-  "SEEDCHOOSERDEFAULTORDER": ["peashooter", "sunflower"],
-  "BASEUNLOCKLIST": ["peashooter", "sunflower"]
-}
-```
-
-**ZombieFeatures.json** (Example):
-
-```json
-{
-  "ZOMBIES": [
-    {
-      "CODENAME": "tutorial"
-    }
-  ]
-}
-```
-
-**UpgradeFeatures.json** (Example):
-
-```json
-{
-  "UPGRADES": [
-    {
-      "CODENAME": "upgrade_starting_sun_lvl1"
-    }
-  ]
-}
-```
-
-**GridItemFeatures.json / StoreCommodityFeatures.json**, etc., have similar structures, providing the CODENAME/Identifier of the item to be modified according to the original game structure.
-
-### Features Merging Rules (Summary)
-
-- Match existing entities by CODENAME (or corresponding identifier), then merge the user-provided object with the original object.
-- Primitive type fields are overwritten directly; object types are merged recursively; array types are merged by element order (if array elements are primitive types, they are overwritten).
-- For top-level array fields like `SEEDCHOOSERDEFAULTORDER`, `BASEUNLOCKLIST`, the original array will be replaced directly.
-
-Important: GE Patcher only modifies existing entities and does not create brand new entity entries. Try to avoid modifying key identifiers (e.g., `ID`, `_CARDSPRITENAME`, etc.).
-
-## Props / Almanac / Types Files
-
-These files are used to modify specific numerical values, almanac information, or type tables for entities:
-
-- `PlantProps.json` / `ZombieProps.json`: Modify numerical properties (`PlantProperties` / `ZombieProperties`).
-- `PlantAlmanac.json` / `ZombieAlmanac.json`: Modify almanac display information (does not change actual combat stats).
-- `PlantTypes.json` / `ZombieTypes.json`: Define type data for plants/zombies.
-- `ProjectileProps.json` / `ProjectileTypes.json`: Projectile/bullet related properties and type definitions.
-- `NarrativeList.json`: Modify storyline dialogue lists.
-- `PropertySheets.json`: Overwrite or supplement certain property sheets.
-
-### Props File Example (PlantProps.json)
+**File: `patches/jsons/features/PlantProps.json`**
 
 ```json
 {
@@ -192,76 +181,109 @@ These files are used to modify specific numerical values, almanac information, o
       "aliases": ["peashooter"],
       "objclass": "PlantProperties",
       "objdata": {
-        "ShootInterval": 1.35,
-        "ShootIntervalAdditional": 0.15,
-        "PlantfoodPeaCount": 60,
-        "Cooldown": 5,
-        "SunCost": 100,
-        "Toughness": 300
+        "SunCost": 50,
+        "Damage": 40,
+        "Cooldown": 3,
+        "Toughness": 600
       }
     }
   ]
 }
 ```
 
-### Almanac Example (PlantAlmanac.json)
+**What this does:**
+- Sun cost: 100 → 50
+- Damage: 20 → 40 (double damage)
+- Cooldown: 5s → 3s (faster recharge)
+- Health: 300 → 600 (survives longer)
+
+## Example: Change Store Prices
+
+**File: `patches/jsons/features/StoreCommodityFeatures.json`**
 
 ```json
 {
-  "objects": [
+  "Plants": [
     {
-      "aliases": ["peashooter"],
-      "objclass": "PlantAlmanacProperties",
-      "objdata": {
-        "Elements": [
-          { "TYPE": "SUNCOST" },
-          { "TYPE": "DAMAGE", "VALUE": 20 }
-        ],
-        "Introduction": { "en": "Peashooters are...", "zh": "豌豆射手是..." }
-      }
+      "CommodityType": "plant",
+      "CommodityName": "snowpea",
+      "CurrencyType": "coin",
+      "CurrencyRequired": 1000
     }
   ]
 }
 ```
 
-### Merging Rules
+**What this does:**
+- Snow Pea now costs 1000 coins instead of gems
 
-- Same as Features: Match target entity by `aliases` (first item in array), then recursively merge `objdata`. If you only want to modify certain fields, provide only the properties that need modification.
+## Merging Rules
 
-## Level Files
+GE Patcher uses **smart merging** - you only need to specify what you want to change:
 
-Custom levels are placed in `patches/jsons/levels/[LevelName].json`.
+| Data Type | Merge Behavior |
+|-----------|----------------|
+| Primitives (string, number) | Replaced entirely |
+| Objects | Merged recursively |
+| Arrays | Merged by index (first element matches first element) |
+| Top-level arrays (`SEEDCHOOSERDEFAULTORDER`, etc.) | Replaced entirely |
 
-- The filename must match the in-game level ID (e.g., `egypt1.json`).
-- Use `gePatcher.showLevels()` in the console to view available level IDs (requires initializing GE Patcher first).
+> [!important]
+> **Limitations:**
+> - GE Patcher only **modifies existing entities** - you cannot add new plants/zombies
+> - Avoid changing key identifiers (`ID`, `_CARDSPRITENAME`, `CODENAME`)
 
-## Store Files
+## Troubleshooting
 
-`StoreCommodityFeatures.json` is used to replace/modify store item categories:
+### "Failed to load..." error
 
-```json
-{
-  "Plants": [],
-  "Upgrade": [],
-  "Gem": [],
-  "Coin": []
-}
+**Cause:** JSON syntax error
+
+**Fix:**
+1. Validate your JSON at [jsonlint.com](https://jsonlint.com/)
+2. Check for missing commas, brackets, or quotes
+3. Ensure proper escaping of special characters
+
+### "Level file not found" error
+
+**Cause:** Filename doesn't match level ID
+
+**Fix:**
+1. Run `gePatcher.showLevels()` to see valid level IDs
+2. Rename your file to match exactly (e.g., `egypt1.json`, not `Egypt1.json`)
+
+### Changes don't appear in-game
+
+**Cause:** Patches not reloaded
+
+**Fix:**
+1. Run `gePatcher.initPatchs()` after saving changes
+2. Check console for error messages
+3. Verify file is in correct directory (`patches/jsons/features/`)
+
+### Game crashes after applying patch
+
+**Cause:** Invalid data structure or values
+
+**Fix:**
+1. Remove your patch files
+2. Run `gePatcher.restoreAll()`
+3. Export original data: `gePatcher.exportJson('PlantProps', true)`
+4. Compare your JSON structure with the original
+5. Start with minimal changes and test incrementally
+
+### Properties not listed in documentation
+
+**Fix:** Export original data to discover all available properties:
+
+```javascript
+gePatcher.exportJson('PlantProps', true)
+gePatcher.exportJson('ZombieProps', true)
 ```
 
-Categories not needing modification can be omitted.
+## Next Steps
 
-## Debugging and Common Troubleshooting
-
-1. Check error logs in the console (F12).
-2. Common errors:
-   - ❌ `Failed to load...`: Usually a JSON syntax error.
-   - ❌ `Level file not found`: Filename or path mismatch.
-3. Verify JSON: Use [JSONLint](https://jsonlint.com/) or VSCode JSON validation plugin.
-4. Get reference: Use commands like `gePatcher.exportJson('PlantProps', true)` to export original game data and compare structural differences.
-
-Troubleshooting suggestions:
-
-- First run `gePatcher.help()` in the console to output the base patch directory (example: `C:\Users\admin\AppData\Local\com.pvzge.app\patches`) and the list of supported paths to ensure files are in the correct location.
-- Run `gePatcher.init()` only after game resources are fully loaded, or run `gePatcher.initBase()` first and wait for completion (the script checks resource count and warns if not loaded).
-- If changes do not take effect, confirm that you have re-executed `gePatcher.init()` or `gePatcher.initPatchs()` and check console output to locate errors.
+- See [Properties Reference](format.md) for complete property documentation
+- Check the [Almanac](../../almanac/) for valid property values per plant
+- Join the [Discord](https://discord.gg/m84nmRMFuf) for modding help
 
