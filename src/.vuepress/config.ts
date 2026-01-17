@@ -57,6 +57,11 @@ export default defineUserConfig({
       title: "Sitio web oficial de PvZ2 Gardendless",
       description: "Sitio web de PvZ2 Gardendless. PVZ2 Gardendless es una versión remasterizada y completa para PC de Plants vs. Zombies 2.",
     },
+    "/vi-VN/": {
+      lang: "vi-VN",
+      title: "PvZ2 Gardendless - Trang chủ chính thức",
+      description: "Website chính thức của PvZ2 Gardendless. PVZ2 Gardendless là bản làm lại hoàn chỉnh của Plants vs. Zombies 2 cho PC.",
+    },
     "/": {
       lang: "zh-CN",
       title: "PvZ2 Gardendless 官方网站",
