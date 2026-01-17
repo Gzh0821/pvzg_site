@@ -1,5 +1,5 @@
 ---
-title: GE Patcher Tutorial(0.2.X)
+title: Hướng dẫn GE Patcher (0.2.X)
 icon: wrench
 pageInfo: false
 index: true
@@ -14,16 +14,16 @@ order: 11
 </script>
 
 > [!caution]
-> The following tutorial is only applicable to versions `0.2.8.1`-`0.2.9`.
+> Tutorial dưới đây chỉ áp dụng cho các version `0.2.8.1`-`0.2.9`.
 
-The game includes the GE Patcher tool, which allows loading custom JSON resources and levels.
+Game có sẵn tool GE Patcher, cho phép load custom JSON resources và levels.
 
-## Prerequisites
+## Yêu cầu
 
-1. Install a JSON editor (recommended: VSCode/Notepad++).
-2. Ensure the game version is ≥ 0.2.8.1.
-3. Understand JSON basics, such as syntax and data types.
-4. Familiarize yourself with the attribute structure of plants, zombies, etc., in JSON (refer to [Attribute Reference](format.md)).
+1. Cài đặt JSON editor (recommend: VSCode/Notepad++).
+2. Đảm bảo game version ≥ 0.2.8.1.
+3. Hiểu cơ bản về JSON, như syntax và data types.
+4. Làm quen với cấu trúc thuộc tính của cây, zombie, v.v. trong JSON (xem [Tham khảo Thuộc tính](format.md)).
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -33,31 +33,31 @@ The game includes the GE Patcher tool, which allows loading custom JSON resource
      data-full-width-responsive="true">
 </ins>
 
-## GE Patcher Basics
+## GE Patcher cơ bản
 
-Press `F12` during game startup to open the developer interface. In the console tab, you will see output similar to:
+Nhấn `F12` khi game khởi động để mở developer interface. Trong tab console, bạn sẽ thấy output kiểu như:
 
 ```
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
 ```
 
-Enter the following command to view in-game help, including paths for custom JSON files:
+Nhập command sau để xem help trong game, bao gồm paths cho custom JSON files:
 
 ```javascript
 gePatcher.help()
 ```
 
-After the game finishes loading, run this command to load all custom JSON files:
+Sau khi game load xong, chạy command này để load tất cả custom JSON files:
 
 ```javascript
 gePatcher.init()
 ```
 
-**Re-execute this command after modifying JSON files to apply changes.**
+**Chạy lại command này sau khi modify JSON files để apply changes.**
 
-## File Structure
+## Cấu trúc file
 
-Create a `patches` folder in `com.pvzge.app` with the following structure:
+Tạo folder `patches` trong `com.pvzge.app` với cấu trúc sau:
 
 ```
 patches/
@@ -71,11 +71,11 @@ patches/
         └── [LevelName].json
 ```
 
-Omit files for unmodified features.
+Bỏ qua các file cho features không modify.
 
-## File Formats
+## Formats file
 
-**PlantFeatures.json**: Plant attributes (structure example):
+**PlantFeatures.json**: Thuộc tính cây (ví dụ cấu trúc):
 
 ```json
 {
@@ -89,7 +89,7 @@ Omit files for unmodified features.
 }
 ```
 
-**ZombieFeatures.json**: Zombie attributes (structure example):
+**ZombieFeatures.json**: Thuộc tính zombie (ví dụ cấu trúc):
 
 ```json
 {
@@ -101,7 +101,7 @@ Omit files for unmodified features.
 }
 ```
 
-**UpgradeFeatures.json**: Upgrade attributes (structure example):
+**UpgradeFeatures.json**: Thuộc tính upgrade (ví dụ cấu trúc):
 
 ```json
 {
@@ -113,40 +113,40 @@ Omit files for unmodified features.
 }
 ```
 
-**StoreCommodityFeatures.json**: Store item attributes.
+**StoreCommodityFeatures.json**: Thuộc tính store items.
 
-#### Key Notes:
+#### Lưu ý quan trọng:
 
-- `PLANTS`, `ZOMBIES`, and `UPGRADES` arrays define modifications for existing entities.
-- `SEEDCHOOSERDEFAULTORDER` sets the default plant order in the seed selector.
-- `BASEUNLOCKLIST` defines initially unlocked plants.
+- Các array `PLANTS`, `ZOMBIES`, và `UPGRADES` define modifications cho entities có sẵn.
+- `SEEDCHOOSERDEFAULTORDER` set thứ tự cây mặc định trong seed selector.
+- `BASEUNLOCKLIST` define các cây được unlock sẵn.
 
-## Plants/Zombies/Upgrades Modifications
+## Modify Plants/Zombies/Upgrades
 
-For `PlantFeatures`, `ZombieFeatures`, and `UpgradeFeatures`, GE Patcher follows the following rules for processing.
+Với `PlantFeatures`, `ZombieFeatures`, và `UpgradeFeatures`, GE Patcher áp dụng các quy tắc xử lý sau.
 
-Each object within the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array is merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:
+Mỗi object trong array `PLANTS` (hoặc `ZOMBIES`, `UPGRADES`) được merge vào JSON gốc sau khi match bằng field `CODENAME`. Quy tắc merge như sau:
 
-- **Array Elements**: If the type of the attribute is an array, each value within the array will be merged in the order of the elements. If the values in the array are objects, they will be merged recursively. If the values in the array are of basic types, they will directly overwrite the values in the original JSON.
-- **Object Merging**: If the type of the attribute is an object, a recursive merge will be performed. If there are properties with the same key within the object, the values in the original JSON will be directly overwritten.
-- **Basic Attributes**: For basic attributes with the same key, directly overwrite them, i.e., replace the value in the original JSON.
+- **Array Elements**: Nếu type của thuộc tính là array, mỗi giá trị trong array sẽ được merge theo thứ tự elements. Nếu values trong array là objects, chúng sẽ được merge recursive. Nếu values trong array là basic types, chúng sẽ trực tiếp overwrite values trong JSON gốc.
+- **Object Merging**: Nếu type của thuộc tính là object, sẽ thực hiện recursive merge. Nếu có properties với key giống nhau trong object, values trong JSON gốc sẽ bị overwrite trực tiếp.
+- **Basic Attributes**: Với basic attributes có key giống nhau, overwrite trực tiếp, tức là replace value trong JSON gốc.
 
-For other fields, such as `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, etc., directly replace the original array.
+Với các fields khác, như `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, v.v., replace trực tiếp array gốc.
 
-Therefore, for any plant/zombie that you want to modify, you need to add an object within the `PLANTS` (`ZOMBIES`) array in the custom JSON file, and the `CODENAME` field of this object must be consistent with the original plant name in the JSON.
+Do đó, với bất kỳ cây/zombie nào bạn muốn modify, bạn cần thêm một object trong array `PLANTS` (`ZOMBIES`) trong custom JSON file, và field `CODENAME` của object này phải khớp với tên cây gốc trong JSON.
 
-For plants/zombies that do not require modification, there is no need to add this object.
+Với các cây/zombie không cần modify, không cần thêm object này.
 
-In a single plant/zombie object, only `CODENAME` is required. If other fields are not filled in, they will remain unchanged. If they need to be modified, the corresponding fields must be added.
+Trong một object cây/zombie, chỉ `CODENAME` là bắt buộc. Nếu các fields khác không điền, chúng sẽ giữ nguyên. Nếu cần modify, phải thêm các fields tương ứng.
 
 > [!important]
 >
-> - Avoid modifying critical fields like `ID` or `_CARDSPRITENAME` to prevent crashes.
-> - **GE Patcher cannot create new entities; it only modifies existing ones.**
+> - Tránh modify các fields quan trọng như `ID` hoặc `_CARDSPRITENAME` để tránh crash.
+> - **GE Patcher không thể tạo entities mới; nó chỉ modify các entities có sẵn.**
 
-#### Example:
+#### Ví dụ:
 
-To modify Peashooter's family to "Fire", change its background to "epic", set Sunflower's cost to 25, and reduce cooldown to 1 second:
+Để modify family của Peashooter thành "Fire", đổi background thành "epic", set cost của Sunflower thành 25, và giảm cooldown xuống 1 giây:
 
 ```json
 {
@@ -169,32 +169,32 @@ To modify Peashooter's family to "Fire", change its background to "epic", set Su
 }
 ```
 
-## Level Modifications
+## Modify Levels
 
-Place custom level files in `patches/jsons/levels/[LevelName].json`.
+Đặt custom level files trong `patches/jsons/levels/[LevelName].json`.
 
-- Filenames must match the in-game level ID (e.g., `egypt1.json`).
-- Use `gePatcher.showLevels()` to view original level IDs (requires initializing GE Patcher first).
+- Tên file phải khớp với level ID trong game (vd: `egypt1.json`).
+- Dùng `gePatcher.showLevels()` để xem level IDs gốc (cần init GE Patcher trước).
 
-## Store Modifications
+## Modify Store
 
-`StoreCommodityFeatures.json` replaces in-game store categories:
+`StoreCommodityFeatures.json` replace các category store trong game:
 
 ```json
 {
   "Plants": [], // Plants
   "Upgrade": [], // Upgrades
-  "Gem": [], // Gem items (purchased with coins)
-  "Coin": [] // Coin items (purchased with gems)
+  "Gem": [], // Gem items (mua bằng coins)
+  "Coin": [] // Coin items (mua bằng gems)
 }
 ```
 
-Omit categories you do not modify.
+Bỏ qua các category không modify.
 
-## Debugging
+## Debug
 
-1. Check the console for errors during loading.
-2. Common errors:
-   - ❌ `Failed to load...`: JSON syntax error.
-   - ❌ `Level file not found`: Filename mismatch.
-3. Validate JSON using tools like [JSONLint](https://jsonlint.com/).
+1. Check console để tìm errors trong quá trình loading.
+2. Các lỗi phổ biến:
+   - ❌ `Failed to load...`: Lỗi JSON syntax.
+   - ❌ `Level file not found`: Tên file không khớp.
+3. Validate JSON dùng tools như [JSONLint](https://jsonlint.com/).

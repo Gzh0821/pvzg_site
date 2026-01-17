@@ -1,5 +1,5 @@
 ---
-title: Attribute Reference(0.2.X)
+title: Tham khảo Thuộc tính (0.2.X)
 icon: file-invoice
 pageInfo: false
 index: true
@@ -14,10 +14,10 @@ order: 12
 </script>
 
 > [!caution]
-> The following tutorial is only applicable to versions `0.2.8.1`-`0.2.9`.
+> Tutorial dưới đây chỉ áp dụng cho các version `0.2.8.1`-`0.2.9`.
 
 > [!important]  
-> Attributes marked in _italics_ are not recommended for modification, as changes may cause game crashes or instability.
+> Các thuộc tính in _nghiêng_ không recommend modify, vì thay đổi có thể gây crash game hoặc không ổn định.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -27,11 +27,11 @@ order: 12
      data-full-width-responsive="true">
 </ins>
 
-## Plant Attributes
+## Thuộc tính Cây
 
-The following describes the base attributes and almanac information for plants, using Grapeshot as an example.
+Phần sau mô tả các thuộc tính cơ bản và thông tin almanac cho cây, lấy Grapeshot làm ví dụ.
 
-Multi-language fields must retain their structure and cannot be deleted or extended. Example format:
+Các fields đa ngôn ngữ phải giữ nguyên cấu trúc và không được xóa hoặc mở rộng. Format ví dụ:
 
 ```json
 {
@@ -40,48 +40,48 @@ Multi-language fields must retain their structure and cannot be deleted or exten
 }
 ```
 
-### Base Information
+### Thông tin cơ bản
 
-| Attribute          | Example Value                             | Description                                                                                            |
-| ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **ID**             | 74                                        | Unique in-game ID for the plant.                                                                       |
-| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Multi-language name. `en` for English, `zh` for Chinese.                                               |
-| _\_CARDSPRITENAME_ | "grapeshot"                               | Card icon resource name (corresponds to game asset files).                                             |
-| _CODENAME_         | "grapeshot"                               | Unique identifier for GE Patcher merging.                                                              |
-| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Plant type:<br>- `plant`: Standard plant<br>- `lastStandDisallowed`: Not allowed in "Last Stand" mode. |
-| **OBTAINWORLD**    | "market"                                  | World theme for the plant's background.                                                                |
-| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Zen Garden planting location:<br>- `dirt`: Regular soil.                                               |
-| _COSTUME_          | 2                                         | Number of available costumes.                                                                          |
+| Thuộc tính         | Giá trị ví dụ                             | Mô tả                                                                                                        |
+| ------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **ID**             | 74                                        | ID unique trong game cho cây.                                                                                |
+| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Tên đa ngôn ngữ. `en` cho tiếng Anh, `zh` cho tiếng Trung.                                                   |
+| _\_CARDSPRITENAME_ | "grapeshot"                               | Tên resource icon thẻ (tương ứng với game asset files).                                                      |
+| _CODENAME_         | "grapeshot"                               | Identifier unique cho GE Patcher merging.                                                                    |
+| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Loại cây:<br>- `plant`: Cây tiêu chuẩn<br>- `lastStandDisallowed`: Không được phép trong mode "Last Stand".  |
+| **OBTAINWORLD**    | "market"                                  | World theme cho background của cây.                                                                          |
+| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Vị trí trồng trong Zen Garden:<br>- `dirt`: Đất thường.                                                      |
+| _COSTUME_          | 2                                         | Số lượng costumes có sẵn.                                                                                    |
 
-### Almanac Information (ALMANAC)
+### Thông tin Almanac (ALMANAC)
 
-The following content is a sub-attribute of the plant's `ALMANAC`, containing the plant's encyclopedia information:
+Nội dung sau là sub-attribute của `ALMANAC` của cây, chứa thông tin encyclopedia của cây:
 
-| Field                 | Value/Content                                                                                                                                                   | Description                                    |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| _Elements_            | Attributes displayed in almanac:<br>- `SUNCOST`: Sun cost<br>- `RECHARGE`: Cooldown<br>- `DAMAGE`: Damage (1800)<br>- `AREA`: Range (3x3)<br>- `FAMILY`: Family | Key attributes shown in the almanac.           |
-| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                    | Multi-language functional description.         |
-| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                   | Special mechanics explanation.                 |
-| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                       | Multi-language personality quotes.             |
-| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                           | Short multi-language summary of functionality. |
-| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                            | Position offset for almanac display.           |
+| Field                 | Giá trị/Nội dung                                                                                                                                             | Mô tả                                           |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| _Elements_            | Các thuộc tính hiển thị trong almanac:<br>- `SUNCOST`: Chi phí sun<br>- `RECHARGE`: Cooldown<br>- `DAMAGE`: Damage (1800)<br>- `AREA`: Phạm vi (3x3)<br>- `FAMILY`: Gia đình | Các thuộc tính chính hiển thị trong almanac.    |
+| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                  | Mô tả chức năng đa ngôn ngữ.                    |
+| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                                | Giải thích cơ chế đặc biệt.                     |
+| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                    | Quotes tính cách đa ngôn ngữ.                   |
+| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                         | Tóm tắt ngắn đa ngôn ngữ về chức năng.          |
+| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                         | Offset vị trí để hiển thị trong almanac.        |
 
 ### Gameplay Data (objdata)
 
-The following content is a sub-attribute of the plant's `objdata`, containing the game mechanics data of the plant. For valid objdata of each plant, please refer to the [Almanac](../../almanac/):
+Nội dung sau là sub-attribute của `objdata` của cây, chứa game mechanics data của cây. Với objdata hợp lệ của mỗi cây, xem [Almanac](../../almanac/):
 
-| Attribute                     | Value/Example | Description                                                     |
-| ----------------------------- | ------------- | --------------------------------------------------------------- |
-| **CannotBeSheepenedByWizard** | true          | Immune to Wizard Zombie's "Sheepify" ability.                   |
-| **Damage**                    | 1800          | Base damage value.                                              |
-| **Cooldown**                  | 35            | Cooldown time (seconds).                                        |
-| **CooldownFrom**              | 1             | Initial cooldown value.                                         |
-| **SunCost**                   | 150           | Sun cost to plant.                                              |
-| **Toughness**                 | 300           | Base health.                                                    |
-| **Family**                    | "Explosive"   | Family affiliation (affects family-based buffs).                |
-| **ImmuneToIceblock**          | true          | Immune to freezing effects (e.g., Ice Weasel Zombie's attacks). |
+| Thuộc tính                    | Giá trị/Ví dụ | Mô tả                                                        |
+| ----------------------------- | ------------- | ------------------------------------------------------------ |
+| **CannotBeSheepenedByWizard** | true          | Miễn nhiễm ability "Sheepify" của Wizard Zombie.             |
+| **Damage**                    | 1800          | Giá trị damage cơ bản.                                       |
+| **Cooldown**                  | 35            | Thời gian cooldown (giây).                                   |
+| **CooldownFrom**              | 1             | Giá trị cooldown ban đầu.                                    |
+| **SunCost**                   | 150           | Chi phí sun để trồng.                                        |
+| **Toughness**                 | 300           | Máu cơ bản.                                                  |
+| **Family**                    | "Explosive"   | Thuộc gia đình (ảnh hưởng buffs dựa trên gia đình).          |
+| **ImmuneToIceblock**          | true          | Miễn nhiễm hiệu ứng đóng băng (vd: attacks của Ice Weasel Zombie). |
 
-### Original JSON for Grapeshot
+### JSON gốc cho Grapeshot
 
 ```json
 {
@@ -139,7 +139,7 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
     ],
     "Chat": {
       "en": "\"Spa-BOOM!\" enthuses Grapeshot. \"You liked that? I got a million of 'em! Wa-POW! Buh-BLAM! Za-... um... Ker-... hmmm... Okay, I guess I've only got the three.\"",
-      "zh": "“唏——啪——！”爆裂葡萄激情地吼道。“你喜欢吗？我还有上万种这样的声音呢。哇——噗——！啪——砰——！咂——……！额……，轰——……！嗯嗯……，好吧，我想就这三种了。”"
+      "zh": ""唏——啪——！"爆裂葡萄激情地吼道。"你喜欢吗？我还有上万种这样的声音呢。哇——噗——！啪——砰——！咂——……！额……，轰——……！嗯嗯……，好吧，我想就这三种了。""
     },
     "BriefIntroduction": {
       "en": "Explodes and scatters bouncing projectiles",
@@ -163,19 +163,19 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 }
 ```
 
-## Store Attributes
+## Thuộc tính Store
 
-### Plant Commodities
+### Hàng hóa Cây
 
-| Field                | Type   | Description                      |
+| Field                | Type   | Mô tả                            |
 | -------------------- | ------ | -------------------------------- |
-| _CommodityType_      | string | Fixed value: "plant".            |
-| **CommodityName**    | string | Plant's CODENAME.                |
-| **CurrencyType**     | string | Currency type ("gem" or "coin"). |
-| **CurrencyRequired** | number | Required currency amount.        |
-| _UnlockLevel_        | string | Unlock level requirement.        |
+| _CommodityType_      | string | Giá trị cố định: "plant".        |
+| **CommodityName**    | string | CODENAME của cây.                |
+| **CurrencyType**     | string | Loại tiền tệ ("gem" hoặc "coin").|
+| **CurrencyRequired** | number | Số lượng tiền tệ cần.            |
+| _UnlockLevel_        | string | Yêu cầu unlock level.            |
 
-#### Example: Snow Pea Commodity
+#### Ví dụ: Hàng hóa Snow Pea
 
 ```json
 {
@@ -186,16 +186,16 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 }
 ```
 
-### Upgrade Commodities
+### Hàng hóa Upgrade
 
-| Field                | Type   | Description                      |
+| Field                | Type   | Mô tả                            |
 | -------------------- | ------ | -------------------------------- |
-| _CommodityType_      | string | Fixed value: "upgrade".          |
-| **CommodityName**    | string | Upgrade's CODENAME.              |
-| **CurrencyType**     | string | Currency type ("gem" or "coin"). |
-| **CurrencyRequired** | number | Required currency amount.        |
+| _CommodityType_      | string | Giá trị cố định: "upgrade".      |
+| **CommodityName**    | string | CODENAME của Upgrade.            |
+| **CurrencyType**     | string | Loại tiền tệ ("gem" hoặc "coin").|
+| **CurrencyRequired** | number | Số lượng tiền tệ cần.            |
 
-#### Example: Shovel Upgrade
+#### Ví dụ: Shovel Upgrade
 
 ```json
 {
@@ -206,18 +206,18 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 }
 ```
 
-### Gem Commodities
+### Hàng hóa Gem
 
-| Field                    | Description                      |
+| Field                    | Mô tả                            |
 | ------------------------ | -------------------------------- |
-| _CommodityType_          | Fixed value: "gem".              |
-| CommodityCount           | Number of gems obtained.         |
-| **CurrencyType**         | Currency type ("gem" or "coin"). |
-| CurrencyRequired         | Required currency amount.        |
-| _StackLevel_             | Bundle tier.                     |
-| **CommodityDisplayName** | Multi-language display name.     |
+| _CommodityType_          | Giá trị cố định: "gem".          |
+| CommodityCount           | Số gems nhận được.               |
+| **CurrencyType**         | Loại tiền tệ ("gem" hoặc "coin").|
+| CurrencyRequired         | Số lượng tiền tệ cần.            |
+| _StackLevel_             | Tier bundle.                     |
+| **CommodityDisplayName** | Tên hiển thị đa ngôn ngữ.        |
 
-#### Example: Gem Bundle
+#### Ví dụ: Gem Bundle
 
 ```json
 {
@@ -233,13 +233,13 @@ The following content is a sub-attribute of the plant's `objdata`, containing th
 }
 ```
 
-### Coin Commodities
+### Hàng hóa Coin
 
-| Field                    | Description                      |
+| Field                    | Mô tả                            |
 | ------------------------ | -------------------------------- |
-| _CommodityType_          | Fixed value: "coin".             |
-| CommodityCount           | Number of coins obtained.        |
-| **CurrencyType**         | Currency type ("gem" or "coin"). |
-| CurrencyRequired         | Required currency amount.        |
-| _StackLevel_             | Bundle tier.                     |
-| **CommodityDisplayName** | Multi-language display name.     |
+| _CommodityType_          | Giá trị cố định: "coin".         |
+| CommodityCount           | Số coins nhận được.              |
+| **CurrencyType**         | Loại tiền tệ ("gem" hoặc "coin").|
+| CurrencyRequired         | Số lượng tiền tệ cần.            |
+| _StackLevel_             | Tier bundle.                     |
+| **CommodityDisplayName** | Tên hiển thị đa ngôn ngữ.        |

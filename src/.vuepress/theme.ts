@@ -85,6 +85,12 @@ export default hopeTheme({
       copyright: "Copyright 2021-2026 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Chính sách bảo mật</a>",
       displayFooter: true,
 
+      // Override default i18n to show "Tiếng Việt" instead of "Ngôn ngữ"
+      navbarLocales: {
+        langName: "Tiếng Việt",
+        selectLangAriaLabel: "Chọn ngôn ngữ",
+      },
+
       // page meta
       metaLocales: {
         editLink: "Chỉnh sửa trang này trên GitHub",
