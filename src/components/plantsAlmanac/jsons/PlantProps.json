@@ -18,7 +18,12 @@
 				"Toughness": 300,
 				"PeaType": "pea",
 				"PeaTypePlantfood": "pea",
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -77,6 +82,7 @@
 				"SeedlingType": "seedling",
 				"PlantfoodCallingType": [
 					"atombomb",
+					"atombomb_seedling",
 					"seedling"
 				]
 			}
@@ -90,6 +96,7 @@
 				"MaxAttackTime": 1,
 				"PlantfoodEnlightenCount": 3,
 				"EnlightenWalkSPS": 0.3,
+				"EnlightenSunValue": 50,
 				"EnlightenChanceToInfect": 0.2,
 				"EnlightenProduceInterval": {
 					"Min": 10,
@@ -100,7 +107,13 @@
 				"SunCost": 75,
 				"BeghouledCost": 500,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -177,7 +190,13 @@
 				"SunCost": 50,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -203,7 +222,13 @@
 				"SunCost": 75,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -223,7 +248,13 @@
 				"SunCost": 75,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -246,7 +277,13 @@
 				"ZombieBombExplosionRadiusPlantfood": 80,
 				"PlantDamagePlantfood": 0,
 				"ZombieDamagePlantfood": 1250,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -347,7 +384,12 @@
 				"SunCost": 175,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Sharp"
+				"Family": "Sharp",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -368,7 +410,13 @@
 				"SunCost": 175,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Sharp"
+				"Family": "Sharp",
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -385,7 +433,14 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Cold",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintFreezeDurationFactor": 4,
+				"Mint3x3Freezing": true,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -450,7 +505,12 @@
 				"SunCost": 200,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -470,7 +530,12 @@
 				"SunCost": 450,
 				"BeghouledCost": 4000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -685,7 +750,12 @@
 				"SunCost": 125,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -752,7 +822,12 @@
 				"SunCost": 300,
 				"BeghouledCost": 4000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -773,7 +848,12 @@
 				"SunCost": 175,
 				"BeghouledCost": 3000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -792,7 +872,12 @@
 				"SunCost": 150,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -811,7 +896,12 @@
 				"SunCost": 250,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Sharp"
+				"Family": "Sharp",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -830,7 +920,12 @@
 				"Toughness": 300,
 				"PeaType": "star",
 				"PeaTypePlantfood": "star_pf",
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -849,7 +944,12 @@
 				"Toughness": 300,
 				"PeaType": "pinkstar",
 				"PeaTypePlantfood": "pinkstar_pf",
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -867,7 +967,12 @@
 				"Toughness": 300,
 				"PeaType": "shootingstar",
 				"PeaTypePlantfood": "shootingstar_pf",
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -913,7 +1018,13 @@
 				"SunCost": 25,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 5,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -933,7 +1044,13 @@
 				"SunCost": 125,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -1042,7 +1159,12 @@
 				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Cold",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1107,7 +1229,13 @@
 				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Cold",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintChanceToButterFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1191,7 +1319,12 @@
 				"SunCost": 325,
 				"BeghouledCost": 2500,
 				"Toughness": 300,
-				"Family": "Lobber"
+				"Family": "Lobber",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1210,7 +1343,12 @@
 				"BeghouledCost": 2500,
 				"Toughness": 300,
 				"Family": "Lobber",
-				"ExtraHeightAboveTargets": 200
+				"ExtraHeightAboveTargets": 200,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1230,7 +1368,12 @@
 				"BeghouledCost": 5000,
 				"Toughness": 300,
 				"Family": "Cold",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1307,7 +1450,13 @@
 				"Family": "Cold",
 				"ChillDuration": 3,
 				"FreezeDuration": 0,
-				"PlantfoodDamageReceiveMult": 0.2
+				"PlantfoodDamageReceiveMult": 0.2,
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1328,7 +1477,13 @@
 				"SunCost": 100,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Sharp"
+				"Family": "Sharp",
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1350,7 +1505,13 @@
 				"SunCost": 250,
 				"BeghouledCost": 1500,
 				"Toughness": 900,
-				"Family": "Sharp"
+				"Family": "Sharp",
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1395,7 +1556,14 @@
 				"BeghouledCost": 4000,
 				"Toughness": 700,
 				"Family": "Cold",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintDamageFactor": 5,
+				"MintFreezeDurationFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1452,7 +1620,12 @@
 				"SunCost": 500,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Lobber"
+				"Family": "Lobber",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 4,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1514,7 +1687,12 @@
 				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Cold",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 4,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1542,7 +1720,6 @@
 			"objclass": "PlantProperties",
 			"objdata": {
 				"CannotBeSheepenedByWizard": true,
-				"Damage": 1800,
 				"Cooldown": 85,
 				"CooldownFrom": 0,
 				"SunCost": 0,
@@ -1553,6 +1730,104 @@
 				"ImmuneToIceblock": true,
 				"Lifespan": 15,
 				"KnockBackDistance": 1.4,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"enlightenmint"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 85,
+				"CooldownFrom": 0,
+				"SunCost": 0,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Sun",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"Lifespan": 10,
+				"SunProduction": 150,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"wintermint"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 85,
+				"CooldownFrom": 0,
+				"SunCost": 0,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Cold",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"Lifespan": 10,
+				"ZombieChillDuration": 10,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"spearmint"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 85,
+				"CooldownFrom": 0,
+				"SunCost": 0,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Sharp",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"Lifespan": 18,
+				"SawType": "spearmint_saw",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"appeasemint"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 85,
+				"CooldownFrom": 0,
+				"SunCost": 0,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Peashooter",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"Lifespan": 12,
+				"PeaType": "pea_mega_mint",
+				"PeaCount": 6,
+				"PeaInterval": 0.25,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 1,
@@ -1577,7 +1852,13 @@
 				"ImmuneToIceblock": true,
 				"ProduceValue0": 100,
 				"ProduceValue1": 125,
-				"ProduceValue2": 150
+				"ProduceValue2": 150,
+				"MintProductionFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1600,7 +1881,14 @@
 				"FreezeDuration": 10,
 				"ChillDuration": 5,
 				"DamageFullBoard": 50,
-				"Damage3x3": 200
+				"Damage3x3": 200,
+				"MintDamageFactor": 3,
+				"MintChillDurationFactor": 4,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1688,6 +1976,11 @@
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 1.5,
 					"GridItemDamage": 200
+				},
+				"MintBoostedProps": {
+					"ResistanceMult": 2,
+					"SpeedMult": 1,
+					"Plantfood": true
 				}
 			}
 		},
@@ -1808,6 +2101,8 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
+				"PeaType": "cactus",
+				"PeaTypePlantfood": "cactus_pf",
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"StabInterval": 0.5,
@@ -1820,7 +2115,13 @@
 				"SunCost": 175,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Sharp"
+				"Family": "Sharp",
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1890,7 +2191,12 @@
 				"SunCost": 125,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1932,7 +2238,13 @@
 				"ChillDuration": 10,
 				"FreezeDuration": 0,
 				"ChillDurationPlantfood": 10,
-				"FreezeDurationPlantfood": 10
+				"FreezeDurationPlantfood": 10,
+				"MintDamageFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1956,7 +2268,12 @@
 				"SunCost": 450,
 				"BeghouledCost": 4000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1974,7 +2291,12 @@
 				"SunCost": 125,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2129,7 +2451,12 @@
 				"SunCost": 50,
 				"BeghouledCost": 500,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 10,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2232,7 +2559,13 @@
 				"SunCost": 75,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -2327,7 +2660,12 @@
 				"SunCost": 275,
 				"BeghouledCost": 3000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2529,7 +2867,13 @@
 				"SunCost": 200,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Sharp"
+				"Family": "Sharp",
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2547,7 +2891,13 @@
 				"BeghouledCost": 1000,
 				"Toughness": 3000,
 				"Family": "Sun",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2817,7 +3167,13 @@
 				"SunCost": 50,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2838,7 +3194,12 @@
 				"SunCost": 50,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2859,7 +3220,13 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Cold",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintFreezeDurationFactor": 4,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2951,7 +3318,13 @@
 				"SunCost": 150,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintPlantfoodDPSMult": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2970,7 +3343,12 @@
 				"SunCost": 150,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
-				"Family": "Peashooter"
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2986,7 +3364,13 @@
 				"SunCost": 50,
 				"BeghouledCost": 1000,
 				"Toughness": 50,
-				"Family": "Sun"
+				"Family": "Sun",
+				"MintProductionFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -3110,7 +3494,12 @@
 				"Bowling0": "bowling0",
 				"Bowling1": "bowling1",
 				"Bowling2": "bowling2",
-				"BowlingPlantfood": "bowling_pf"
+				"BowlingPlantfood": "bowling_pf",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 6,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -3525,7 +3914,13 @@
 				"TongueSlapDamagePF": 100,
 				"ChewTimePF": 3,
 				"SunProducePerZombiePF": 50,
-				"MaxZombieChewCountPF": 4
+				"MaxZombieChewCountPF": 4,
+				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 5,
+					"Plantfood": false
+				}
 			}
 		},
 		{

@@ -2240,7 +2240,7 @@
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "solid"
 			},
 			"BOOST": 0,
 			"COSTUME": 4,
@@ -2267,7 +2267,7 @@
 			"BOOST": 0,
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "solid"
 			},
 			"COSTUME": 4,
 			"ALMANAC": "RTID(powerplant_beta@PlantAlmanac)",
@@ -2293,7 +2293,7 @@
 			"BOOST": 0,
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "solid"
 			},
 			"COSTUME": 4,
 			"ALMANAC": "RTID(powerplant_gamma@PlantAlmanac)",
@@ -2319,7 +2319,7 @@
 			"BOOST": 0,
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "solid"
 			},
 			"COSTUME": 4,
 			"ALMANAC": "RTID(powerplant_delta@PlantAlmanac)",
@@ -2345,7 +2345,7 @@
 			"BOOST": 0,
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "solid"
 			},
 			"COSTUME": 4,
 			"ALMANAC": "RTID(powerplant_epsilon@PlantAlmanac)",
@@ -2394,9 +2394,9 @@
 			],
 			"OBTAINWORLD": "future",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "solid"
 			},
-			"BOOST": 2,
+			"BOOST": 0,
 			"COSTUME": 4,
 			"SubPlantList": [
 				"powerplant_alpha",
@@ -2825,7 +2825,7 @@
 			"OBTAINWORLD": "water",
 			"ZENGARDEN": {
 				"PlantPlace": "float",
-				"Height": 20
+				"Height": 40
 			},
 			"BOOST": 2,
 			"ALMANAC": "RTID(tanglekelp@PlantAlmanac)",
@@ -2885,7 +2885,7 @@
 			],
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"COSTUME": 0,
@@ -2910,7 +2910,7 @@
 			],
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"COSTUME": 0,
@@ -2935,7 +2935,7 @@
 			],
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"COSTUME": 0,
@@ -2960,7 +2960,7 @@
 			],
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"COSTUME": 0,
@@ -3010,7 +3010,7 @@
 			],
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"COSTUME": 0,
@@ -3035,7 +3035,7 @@
 			],
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"ALMANAC": "RTID(empty@PlantAlmanac)",
@@ -3060,7 +3060,7 @@
 			],
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"COSTUME": 0,
@@ -3087,7 +3087,7 @@
 			"COSTUME": 0,
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"ALMANAC": "RTID(empty@PlantAlmanac)",
 			"PROPS": "RTID(tool_projectile_bowling_primalwallnut@PlantProps)",
@@ -3112,7 +3112,7 @@
 			"COSTUME": 0,
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"ALMANAC": "RTID(empty@PlantAlmanac)",
 			"PROPS": "RTID(tool_projectile_bowlingbulb_iceburg@PlantProps)",
@@ -3136,7 +3136,7 @@
 			"COSTUME": 0,
 			"OBTAINWORLD": "",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "none"
 			},
 			"BOOST": 0,
 			"ALMANAC": "RTID(empty@PlantAlmanac)",
@@ -3285,7 +3285,7 @@
 			],
 			"OBTAINWORLD": "lostcity",
 			"ZENGARDEN": {
-				"PlantPlace": "dirt"
+				"PlantPlace": "solid"
 			},
 			"BOOST": 0,
 			"COSTUME": 3,
@@ -4488,6 +4488,114 @@
 				"Disabled": "ReinforceMint",
 				"Plant": "ReinforceMint"
 			}
+		},
+		{
+			"ID": 181,
+			"NAME": {
+				"en": "Enlighten-mint",
+				"zh": "启明薄荷"
+			},
+			"_CARDSPRITENAME": "mint_sun",
+			"CODENAME": "enlightenmint",
+			"TYPE": [
+				"plant",
+				"mint",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(enlightenmint@PlantAlmanac)",
+			"PROPS": "RTID(enlightenmint@PlantProps)",
+			"RES": {
+				"Disabled": "EnlightenMint",
+				"Plant": "EnlightenMint"
+			}
+		},
+		{
+			"ID": 182,
+			"NAME": {
+				"en": "Winter-mint",
+				"zh": "寒冻薄荷"
+			},
+			"_CARDSPRITENAME": "mint_cold",
+			"CODENAME": "wintermint",
+			"TYPE": [
+				"plant",
+				"mint",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(wintermint@PlantAlmanac)",
+			"PROPS": "RTID(wintermint@PlantProps)",
+			"RES": {
+				"Disabled": "WinterMint",
+				"Plant": "WinterMint"
+			}
+		},
+		{
+			"ID": 183,
+			"NAME": {
+				"en": "Spear-mint",
+				"zh": "穿刺薄荷"
+			},
+			"_CARDSPRITENAME": "mint_sharp",
+			"CODENAME": "spearmint",
+			"TYPE": [
+				"plant",
+				"mint",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(spearmint@PlantAlmanac)",
+			"PROPS": "RTID(spearmint@PlantProps)",
+			"RES": {
+				"Disabled": "SpearMint",
+				"Plant": "SpearMint"
+			}
+		},
+		{
+			"ID": 184,
+			"NAME": {
+				"en": "Appease-mint",
+				"zh": "平射薄荷"
+			},
+			"_CARDSPRITENAME": "mint_peashooter",
+			"CODENAME": "appeasemint",
+			"TYPE": [
+				"plant",
+				"mint",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(appeasemint@PlantAlmanac)",
+			"PROPS": "RTID(appeasemint@PlantProps)",
+			"RES": {
+				"Disabled": "AppeaseMint",
+				"Plant": "AppeaseMint"
+			}
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -4639,7 +4747,11 @@
 		"umbrellaleaf",
 		"dragonbruit",
 		"cranjelly",
-		"reinforcemint"
+		"appeasemint",
+		"enlightenmint",
+		"reinforcemint",
+		"spearmint",
+		"wintermint"
 	],
 	"ALMANACHIDDENORDER": [
 		"dragonbabybruit"
@@ -4828,6 +4940,10 @@
 		"dragonbruit",
 		"dragonbabybruit",
 		"cranjelly",
-		"reinforcemint"
+		"appeasemint",
+		"enlightenmint",
+		"reinforcemint",
+		"spearmint",
+		"wintermint"
 	]
 }

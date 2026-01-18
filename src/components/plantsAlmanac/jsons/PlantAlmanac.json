@@ -3144,7 +3144,7 @@
 						"TYPE": "SPECIAL",
 						"SORT": {
 							"en": "Chill",
-							"zh": "冻结"
+							"zh": "冷冻"
 						}
 					},
 					{
@@ -4198,7 +4198,7 @@
 					},
 					{
 						"TYPE": "DURATION",
-						"VALUE": 8
+						"VALUE": 16
 					},
 					{
 						"TYPE": "SPECIAL",
@@ -4223,6 +4223,194 @@
 				"BriefIntroduction": {
 					"en": "Boosts defence plants",
 					"zh": "强化防御植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"enlightenmint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 10
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Sun Production",
+							"zh": "阳光生产"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Enlighten-mints give a burst of sun when planted, and provide an additional temporary boost to Enlighten-mint Family plants.",
+					"zh": "启明薄荷在种植时产生一沓阳光，并为启明家族植物带来额外的能量。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Enlighten-mint wants to stress that while \"enlightenment\" is properly understood as \"full comprehension of a situation,\" she herself frequently likes to ask follow-up questions just to be sure.",
+					"zh": "启明薄荷想强调，虽然“启明”的正确理解是“对处境的完全领悟”，但她本人经常喜欢多问几个后续问题，只为图个安心。"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts sun plants",
+					"zh": "强化阳光植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"wintermint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 10
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Chill",
+							"zh": "冷冻"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Winter-mints chill all zombies on the board when planted and provide a temporary boost to all Winter-mint Family plants on the lawn.",
+					"zh": "寒冻薄荷在种植时使全场僵尸进入冷冻状态，并为所有寒冻家族植物带来增益效果。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Winter-mint has advanced degrees in cryonics and cryogenics, is a master builder of snowmen, and subscribes to season passes at three different ski resorts. He does think it's a little chilly in here, though.",
+					"zh": "寒冻薄荷拥有低温学和人体冷冻学的高级学位，是堆雪人的大师，还订阅了三家不同滑雪场的季票。不过，他确实觉得那儿有点冷飕飕的。"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts cold plants",
+					"zh": "强化寒冻植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"spearmint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 18
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Saw Attack",
+							"zh": "锯齿攻击"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Spear-mints generate a column of saws from the house and provide a temporary boost to all Spear-mint Family plants on the lawn.",
+					"zh": "穿刺薄荷在种植时从草坪左侧产生一列锋利的圆锯，并为所有穿刺家族植物带来增益效果。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "\"Slash!\" Spear-mint enthuses. \"Slishy-slashy-slice!\" she adds, wanting to make sure she's getting her point across. She wants to be very clear on this.",
+					"zh": "“斩！” 穿刺薄荷激昂道。“唰唰嚓嚓——切！”她补充道，为了确保自己的意思传达到位，并且表达得极其明确。"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts piercing plants",
+					"zh": "强化穿刺植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"appeasemint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 12
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Giant Pea Attack",
+							"zh": "巨型豌豆攻击"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Appease-mints fire a volley of huge peas that break into smaller peas and provide a temporary boost to all Appease-mint Family plants on the lawn.",
+					"zh": "平射薄荷在种植时发射一打能分裂的巨型豌豆，并为所有平射家族植物带来增益效果。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Appease-mint takes great umbrage at the notion that he might back down from a fight. \"Yes, my name is 'Appease-mint,' but that has more to do with my affinity towards peas than any disinclination to stand up for my beliefs. Rescind your vile calumny this instant, lest I compose a blistering letter of outrage!\"",
+					"zh": "平射薄荷对于自己可能在争斗中退缩的说法感到极为愤慨。“没错，我叫“平射薄荷”，但这是因为我希望大家能平稳地射出子弹，而不是不愿坚持我的信念。立刻收回你那恶毒的诽谤，否则我就写一封言辞激烈的谴责信！”"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts straight shooters",
+					"zh": "强化直射子弹的植物"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -5289,6 +5477,13 @@
 						}
 					},
 					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Chill",
+							"zh": "冷冻"
+						}
+					},
+					{
 						"TYPE": "FAMILY"
 					}
 				],
@@ -5603,7 +5798,7 @@
 						"TYPE": "SPECIAL",
 						"SORT": {
 							"en": "Chill",
-							"zh": "冻结"
+							"zh": "冷冻"
 						}
 					},
 					{
