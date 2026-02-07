@@ -4435,6 +4435,61 @@
 			}
 		},
 		{
+			"//": "zomboss",
+			"aliases": [
+				"kongfu_boss_chi"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Undying",
+							"zh": "不朽"
+						},
+						"PROGRESS": 1
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "The third and the last of the Big Three to arrive at your lawn, leading an army of abbot zombies.",
+					"zh": "第三位到访你的前院的武林巨头，也是最后一位，引领着大量的住持僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "on recovering from stun effect, uses Golden Bell Shield to protect himself for a while.",
+							"zh": "在眩晕结束后，会使用金钟罩保护自己一段时间"
+						}
+					}
+				],
+				"Chat": {
+					"en": "As the top leader of the Big Three, Qigong Master laid the foundation for the entire kongfu area. Mastering Qigong is the ultimate realm of learning kongfu, while Qigong Master grasped this early on, founding the Qigong Sect! As the sect spread, abbots and bronzes gradually became undefeated powerhouses all over China.",
+					"zh": "作为武林三巨头的一把手，气功教主奠定了整个功夫界的根基。掌握气功本就是学习功夫的最终境地，气功教主却很早就领悟这一点并开创了气功教！随着气功教的传播，住持僵尸和铜人也逐渐成为了打遍天下无敌手的存在。"
+				},
+				"DisplayOffset": {
+					"x": 20,
+					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"aliases": [
 				"monk_drink"
 			],
