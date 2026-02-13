@@ -51,6 +51,13 @@ Deploy the game locally by using [Docker image](https://hub.docker.com/r/gaozih/
 ### 使用 Docker
 
 使用 [Docker 镜像](https://hub.docker.com/r/gaozih/pvzge) 在本地部署游戏
+## Star History
+
+<div align="center">
+    
+![Star History Chart](https://api.star-history.com/svg?repos=Gzh0821/pvzg_site&type=date&legend=top-left)
+
+</div>
 
 ## Sponsors
 
