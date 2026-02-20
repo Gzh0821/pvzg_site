@@ -1,0 +1,23 @@
+name: "Close stale issues"
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write # only for delete-branch option
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/stale@v10
+        with:
+            days-before-stale: 30
+            days-before-close: 7
+            stale-issue-message: 'This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs.'
+            stale-pr-message: 'This pull request has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs.'
+            close-issue-message: 'This issue was closed because it has been inactive for more than 7 days since being marked stale.'
+            close-pr-message: 'This pull request was closed because it has been inactive for more than 7 days since being marked stale.'
