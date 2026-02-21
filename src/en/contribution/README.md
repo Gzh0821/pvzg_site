@@ -33,13 +33,6 @@ Welcome to join our community and contribute to the development of "PvZ2 Gardend
 
 <div class="vp-card-container">
   <VPCard
-    title="QQ active chat group"
-    desc="Group Number:980405270,for players who want to provide help, share strategies and participate in discussions"
-    logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/q/MIqVcRAg8u"
-    background="rgba(245, 158, 0, 0.15)"
-  />
-  <VPCard
     title="QQ Announcement Group-5"
     desc="Group Number:834051839, for getting the latest information"
     logo="/assets/image/qq.svg"
