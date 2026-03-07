@@ -1372,7 +1372,7 @@
       "CODENAME": "feastivus_gargantuar",
       "OBTAINWORLD": "feastivus",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)",
+      "PROPS": "RTID(feastivus_gargantuar@ZombieProps)",
       "RES": "HolidayGargantuar"
     },
     {
@@ -1384,7 +1384,7 @@
       "CODENAME": "holiday_gargantuar",
       "OBTAINWORLD": "feastivus",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
-      "PROPS": "RTID(tutorial_gargantuar@ZombieProps)",
+      "PROPS": "RTID(holiday_gargantuar@ZombieProps)",
       "RES": "HolidayGargantuar2"
     },
     {
@@ -2885,6 +2885,18 @@
     },
     {
       "NAME": {
+        "en": "Kongfu Censer-headed Zombie",
+        "zh": "武斗香炉僵尸"
+      },
+      "_CARDSPRITENAME": "kongfuarmor4",
+      "CODENAME": "kongfu_armor4",
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(kongfu_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(kongfu_armor4@ZombieProps)",
+      "RES": "KongfuBasic"
+    },
+    {
+      "NAME": {
         "en": "Flag Kongfu Zombie",
         "zh": "武斗旗帜僵尸"
       },
@@ -3044,6 +3056,18 @@
     },
     {
       "NAME": {
+        "en": "Monk Censer-headed Zombie",
+        "zh": "武僧香炉僵尸"
+      },
+      "_CARDSPRITENAME": "monkarmor4",
+      "CODENAME": "monk_armor4",
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(monk_armor4@ZombieProps)",
+      "RES": "MonkBasic"
+    },
+    {
+      "NAME": {
         "en": "Flag Monk Zombie",
         "zh": "武僧旗帜僵尸"
       },
@@ -3116,6 +3140,18 @@
     },
     {
       "NAME": {
+        "en": "Pitch-pot Monk Zombie",
+        "zh": "投壶武僧"
+      },
+      "_CARDSPRITENAME": "monkdrinkveteran",
+      "CODENAME": "monk_drink_veteran",
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(monk_drink_veteran@ZombieAlmanac)",
+      "PROPS": "RTID(monk_drink_veteran@ZombieProps)",
+      "RES": "MonkDrinkVeteran"
+    },
+    {
+      "NAME": {
         "en": "Kongfu Monk Imp",
         "zh": "武僧小鬼"
       },
@@ -3175,6 +3211,18 @@
       "OBTAINWORLD": "kongfu",
       "ALMANAC": "RTID(empty@ZombieAlmanac)",
       "PROPS": "RTID(abbot_armor3@ZombieProps)",
+      "RES": "AbbotBasic"
+    },
+    {
+      "NAME": {
+        "en": "Abbot Censer-headed Zombie",
+        "zh": "住持香炉僵尸"
+      },
+      "_CARDSPRITENAME": "abbotarmor4",
+      "CODENAME": "abbot_armor4",
+      "OBTAINWORLD": "kongfu",
+      "ALMANAC": "RTID(abbot_armor4@ZombieAlmanac)",
+      "PROPS": "RTID(abbot_armor4@ZombieProps)",
       "RES": "AbbotBasic"
     },
     {
@@ -4011,6 +4059,7 @@
     "kongfu",
     "kongfu_armor1",
     "kongfu_armor2",
+    "kongfu_armor4",
     "kongfu_flag",
     "kongfu_flag_veteran",
     "kongfu_torch",
@@ -4023,16 +4072,19 @@
     "monk",
     "monk_armor1",
     "monk_armor2",
+    "monk_armor4",
     "monk_flag",
     "monk_flag_veteran",
     "monk_blade",
     "monk_torch",
     "monk_nunchaku",
     "monk_drink",
+    "monk_drink_veteran",
     "monk_imp",
     "abbot",
     "abbot_armor1",
     "abbot_armor2",
+    "abbot_armor4",
     "abbot_flag",
     "abbot_flag_veteran",
     "abbot_torch",

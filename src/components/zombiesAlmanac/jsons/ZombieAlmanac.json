@@ -2964,7 +2964,7 @@
 				],
 				"Chat": {
 					"en": "Pianist Zombie only knows two songs, and they're both groaners.",
-					"zh": "奏琴僵尸只知道两手曲子，而且歌词都是吼叫。"
+					"zh": "奏琴僵尸只知道两首曲子，而且歌词都是吼叫。"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -3560,6 +3560,50 @@
 				"Chat": {
 					"en": "Don't get it wrong, he just used to try performing acrobatics involving a kettle on the head.",
 					"zh": "不要误会，他原本只是想尝试头顶茶壶的杂技。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "armor4",
+			"aliases": [
+				"kongfu_armor4"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Kongfu Censer-headed Zombie wears a hard-tiled censer, providing sturdy protection.",
+					"zh": "武斗香炉僵尸的头戴坚硬的瓦制香炉，得到了厚实的防护。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "In order to wear this censer, he specially learned the Bone-contraction Skill.",
+					"zh": "为了戴上这个香炉，他特意学会了缩骨功。"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -4555,6 +4599,80 @@
 		},
 		{
 			"aliases": [
+				"monk_drink_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Flighty",
+							"zh": "飞速"
+						},
+						"PROGRESS": 1
+					}
+				],
+				"Introduction": {
+					"en": "Becomes enraged after drinking",
+					"zh": "喝酒后，能进入狂暴状态。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "damages plants in nearby lanes",
+							"zh": "可以打击相邻行的植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "becomes resistant, powerful and speedy after drinking",
+							"zh": "喝酒后，抵抗力上升，伤害更高，走得更快"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "drinks when damaged",
+							"zh": "受重伤后饮酒"
+						}
+					}
+				],
+				"Chat": {
+					"en": "As known for all, \"pitch-pot\" is a game where literati throw arrows into a pot. However, the Pitch-pot Monk Zombie is definitely no literatus.",
+					"zh": "众所周知，“投壶”是文人把箭投进壶里的游戏。然而，投壶武僧僵尸明显不是文人。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_bomb"
 			],
 			"objclass": "ZombieAlmanacProperties",
@@ -5073,6 +5191,50 @@
 			}
 		},
 		{
+			"//": "armor4",
+			"aliases": [
+				"monk_armor4"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Monk Censer-headed Zombie wears a hard-tiled censer, providing sturdy protection.",
+					"zh": "武僧香炉僵尸的头戴坚硬的瓦制香炉，得到了厚实的防护。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "In order to wear this censer, he specially learned the skill to hold his breath permanently. Though, it's not necessary for him to breathe.",
+					"zh": "为了戴上这个香炉，他特意学会了永久憋气的功法。实际上他本来就不需要呼吸。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"//": "flag",
 			"aliases": [
 				"monk_flag"
@@ -5453,6 +5615,50 @@
 				"Chat": {
 					"en": "He filled the iron kettle with tea and clamped it on his head so that he could sometimes experience the dizzy drunk-feelings while drinking is prohibited.",
 					"zh": "饮酒是被禁止的，因此他将这个铁壶装满茶水后扣在头上，这样第二天早上也能因彻夜难眠体验到醉酒的眩晕感。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "armor4",
+			"aliases": [
+				"abbot_armor4"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Monk Censer-headed Zombie wears a hard-tiled censer, providing sturdy protection.",
+					"zh": "武僧香炉僵尸的头戴坚硬的瓦制香炉，得到了厚实的防护。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "In order to wear this censer, he secretly used qigong to make it expand with heat and contract with cold.",
+					"zh": "为了戴上这个香炉，他偷偷地用气功让香炉“热胀冷缩”。"
 				},
 				"DisplayOffset": {
 					"x": 0,

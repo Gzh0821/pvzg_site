@@ -1348,7 +1348,7 @@
 					}
 				],
 				"Chat": {
-					"en": "Don't get lost staring into Iceberg's adoably cute eyes. If you do, it will be your last step... but only if you're a zombie.",
+					"en": "Don't get lost staring into Iceberg's adorably cute eyes. If you do, it will be your last step... but only if you're a zombie.",
 					"zh": "不要因为盯着他过分可爱的双眼而迷失自我。不然的话你将没法迈出下一步……除非你不是一只僵尸。"
 				},
 				"BriefIntroduction": {
@@ -1979,7 +1979,7 @@
 					}
 				],
 				"Introduction": {
-					"en": "Peashooters are your first line of defence. They shoot peas at attacking zombies",
+					"en": "Peashooters are your first line of defence. They shoot peas at attacking zombies.",
 					"zh": "豌豆射手是你的第一道防线。他们会向僵尸发射豌豆。"
 				},
 				"Special": [],
@@ -1994,6 +1994,188 @@
 				"BriefIntroduction": {
 					"en": "Shoots peas at the enemies",
 					"zh": "向僵尸发射豌豆子弹"
+				}
+			}
+		},
+		{
+			"aliases": [
+				"snappea"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 400
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Straight",
+							"zh": "直线"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Snap Peas dive underground, burrow towards zombies, then pop up underneath to swallow them in one gulp. Snap Peas then return to their starting spot, chew on the entire matter for a while, and finally spit the zombies' heads out at attackers.",
+					"zh": "大嘴豌豆会钻入地下，朝僵尸掘进，然后从下方猛然冒出，一口将僵尸吞下。随后会返回并咀嚼，最后将僵尸的头颅吐向敌人。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "\"I'm a picky eater, I'll admit it,\" admits Snap Pea casually. \"I'll eat a zombie, no problem, but there's just something about heads. I feel like they're looking at me.\"",
+					"zh": "“我承认，我吃东西挺挑剔的，”大嘴豌豆随口承认道。“吃个僵尸没问题，但就是觉得脑袋这东西吧……总感觉它们在看着我。”"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"BriefIntroduction": {
+					"en": "Eats zombies and spits out their heads",
+					"zh": "吃掉僵尸并吐出他们的头颅"
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shadowpeashooter"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 20
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Straight/Piercing",
+							"zh": "直线/穿透"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Shadow Peashooters are shadow plants that fire piercing shadowy peas at zombies.",
+					"zh": "暗影豌豆属于暗影植物，得到暗影强化时能穿透整行僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "fires piercing, slowing bolts when powered",
+							"zh": "暗影状态下，发射穿透的、减速效果的电光"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "hides and swallows zombies that approach",
+							"zh": "能隐蔽自身并吞噬靠近的僵尸"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"Phoot, \" Shadow Peashooter says, emitting a shadowy, ah, hmmm, I guess you could call it a pea, at a distant zombie. \"Uph!\" gasps the zombie in the evident surprise. There's a lot going on under the surface between these two.",
+					"zh": "“噗。”暗影豌豆说着，朝远处的僵尸射出了一枚暗影般的……呃……嗯……大概可以称之为豌豆的东西吧。“呃啊！”那僵尸显然吃了一惊，倒吸一口气。此时，暗流在这两者之间涌动。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"BriefIntroduction": {
+					"en": "Fires piercing slowing bolts",
+					"zh": "向僵尸发射穿透且使之减速的光束"
+				}
+			}
+		},
+		{
+			"aliases": [
+				"seashooter"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 30
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Rightward",
+							"zh": "右侧"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Seashooters are amphibious and shoot in three directions while staying in water.",
+					"zh": "海豌豆是两栖植物，在水中时可以向三个方向发射。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "shoots sea-peas in water",
+							"zh": "在水中时发射海洋子弹"
+						}
+					}
+				],
+				"Chat": {
+					"en": "While helping her niece in school, Dave accidentally left Peashooters on a Lilypad near the school's pool. Four years later, Dave returned to his niece's graduation and found it had mutated into a totally different plant. \"No beach pass? No entry!\" says Seashooter while personally throwing zombies out of the water. \"H2-OH-NO you don't!\" exclaims Seashooter to the zombies entering the lawn or the pool on its watch.",
+					"zh": "有天戴夫帮侄女处理学校的事，不小心把一群豌豆射手落在学校泳池边的荷叶上。四年后，戴夫回来参加侄女的毕业典礼，发现他已经突变成完全不同的植物。“没海滩通行证？不许进！” 海豌豆一边说，一边把僵尸从水里轰出去。“别想沾上一滴水！” 海豌豆对着胆敢在他眼皮底下闯入草坪或泳池的僵尸厉声喝道。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"BriefIntroduction": {
+					"en": "Amphibious plant that shoots 3 peas at the enemies",
+					"zh": "向僵尸发射 3 颗豌豆，两栖"
 				}
 			}
 		},
@@ -2074,7 +2256,28 @@
 					"en": "Shine Vines are vine plants that amplify the sun production of sun producer plants, except Moonflower, create some sun on their own, and use a sun-stun burst as a last second defense when attacked.",
 					"zh": "闪耀藤蔓能促进其依附的阳光植物的生产，使它们在生产时产出更多的阳光，月光花除外。在受到威胁的时候用阳光闪晕身边的僵尸作为防御。"
 				},
-				"Special": [],
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用法"
+						},
+						"DESCRIPTION": {
+							"en": "best used on sun producer plants",
+							"zh": "最好种植在生产植物上"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "doesn't amplify Moonflower sun production",
+							"zh": "不会促进月光花的生产"
+						}
+					}
+				],
 				"Chat": {
 					"en": "\"Peek-a-boo!\" giggles Shine Vine, staring directly at you, the player. \"Consider that fourth wall SHATTERED!\"",
 					"zh": "“躲猫猫！” 闪耀藤蔓咯咯笑着，直勾勾地盯着屏幕前的你。“就当这第四面墙已经碎了吧！”"
@@ -2174,6 +2377,63 @@
 				"BriefIntroduction": {
 					"en": "Blocks off zombies and protects your other plants",
 					"zh": "抵挡僵尸并保护身后的植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"murkadamia"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "PLANTFOOD",
+						"SORT": {
+							"en": "Armor",
+							"zh": "盔甲"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Murkadamia Nuts are defensive shadow plants who, when powered, grow jelly murk to damage attacking zombies.",
+					"zh": "暗影夏威夷果是一种防御型暗影植物，被暗影强化时能生成胶体，对啃食他的僵尸造成伤害。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "damaged murk regrows over time",
+							"zh": "受损的胶体随时间修复"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"Some say that encasing yourself in gelatin is no way to conduct an offense, \" says Murkadamia Nut with an infectious twinkle. \"I say they just haven't planted ME yet!\"",
+					"zh": "“有人说把自己裹在明胶里根本不是进攻之道，”暗影夏威夷果眼中闪着极具感染力的光芒说道，“要我说，那是因为他们还没试试我！”"
+				},
+				"BriefIntroduction": {
+					"en": "Powered murk damages zombies",
+					"zh": "供能时的胶体会对僵尸造成伤害"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -4185,6 +4445,84 @@
 		},
 		{
 			"aliases": [
+				"noctarine"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 20
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "3x3",
+							"zh": "3x3 范围"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Noctarines are shadow plants that explode and create clouds of damaging and slowing gas.",
+					"zh": "暗影油桃属于暗影植物，在种植时制造能够减速并且造成伤害的毒气。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "single use, instant",
+							"zh": "一次性使用，立刻触发"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "Noctarine gas can power shadow plants",
+							"zh": "油桃的毒气能使暗影植物充能"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "powered Noctarine gas slows zombies",
+							"zh": "充能的油桃能使僵尸减速"
+						}
+					}
+				],
+				"Chat": {
+					"en": "For a plant churning with internal gases, Noctarine's opinions are shockingly conventional. \"Jaws is a good movie, \" he says. Like, NO KIDDING, Noctarine!",
+					"zh": "作为一株体内翻腾着气体的植物，暗影油桃的见解却出奇地循规蹈矩。“《大白鲨》是部好电影，”他说。拜托，我认真的，我可是暗影油桃！"
+				},
+				"BriefIntroduction": {
+					"en": "Explodes to make gas cloud",
+					"zh": "爆炸并产生毒雾"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"reinforcemint"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -4364,6 +4702,147 @@
 				"BriefIntroduction": {
 					"en": "Boosts piercing plants",
 					"zh": "强化穿刺植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"armamint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 12
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Projectile Rain",
+							"zh": "子弹攻击"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Arma-mints launch a volley of heavy stunning artillery projectiles and provide a temporary boost to all Arma-mint Family plants on the lawn.",
+					"zh": "军械薄荷在种植时投射带有眩晕效果的子弹，并为所有军械家族植物带来增益效果。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "\"Lobbing projectiles, for me, has always been a very personal endeavor,\" says Arma-mint. \"It's a great way for me to express myself, my identity, and my preference that zombies can be defeated in large groups.\"",
+					"zh": "“对我而言，投掷子弹一直是一件非常个人化的追求，”军械薄荷说道。“这是表达自我、身份认同以及我个人偏好的绝佳方式——让僵尸成群结队地被击败。”"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts cannon and lobbing plants",
+					"zh": "强化炮类和投掷类植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"containmint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 16
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Stun",
+							"zh": "眩晕"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Contain-mints stun all zombies on the board and provide a temporary boost to all Contain-mint Family plants on the lawn.",
+					"zh": "滞缓薄荷在种植时眩晕全场的僵尸，并为所有滞缓家族植物带来增益效果。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "\"Go easy, there,\" says Contain-mint. \"No need to be in such a rush all the time. Movement is totally overrated.\"",
+					"zh": "“放轻松，别着急，”滞缓薄荷说道。“没必要总是这么赶，行动什么的，完全被高估了。”"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts slowing plants",
+					"zh": "强化滞缓植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"filamint"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 12
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Electric Attack",
+							"zh": "电能攻击"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Fila-mints do electric damage and provide a temporary boost to all Fila-mint Family plants on the lawn.",
+					"zh": "电能薄荷在种植时电击全场的敌人，并为所有电能家族植物带来增益效果。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Fila-mint hovers enigmatically and electrically over the lawn, surveying his surroundings. He nods, once. It is good.",
+					"zh": "电能薄荷神奇地、带电地悬浮在草坪上空，审视着四周。他点了下头，一下，情况不错。"
+				},
+				"BriefIntroduction": {
+					"en": "Boosts electricity plants",
+					"zh": "强化带电植物"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -9899,7 +10378,7 @@
 					},
 					{
 						"TYPE": "DAMAGE",
-						"VALUE": 15
+						"VALUE": 900
 					},
 					{
 						"TYPE": "RANGE",

@@ -399,6 +399,34 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ImpType": "tutorial_imp",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"holiday_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
 				"CowboyPianoDancingSpeedScale": 0.7,
 				"ZombieSort": "Gargantuar",
 				"CannotBeEnlightenedBySolarSage": true,
@@ -417,6 +445,36 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "holiday_imp",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"feastivus_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CowboyPianoDancingSpeedScale": 0.7,
+				"ZombieSort": "Gargantuar",
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ImpType": "feastivus_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -444,6 +502,7 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "tutorial_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -471,6 +530,7 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "summer_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)",
 				"HeatInterval": 1
@@ -1280,6 +1340,7 @@
 				"PharaohTypes": [
 					"mummy"
 				],
+				"ImpType": "egypt_imp",
 				"WavePointCost": 1500,
 				"Weight": 3000,
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
@@ -1296,6 +1357,7 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
+				"IgnoredBySnapPea": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
@@ -1524,6 +1586,7 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
+				"IgnoredBySnapPea": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
@@ -1731,6 +1794,7 @@
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
+				"IgnoredBySnapPea": true,
 				"ZombieSort": "Zomboss",
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
@@ -2131,6 +2195,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"IgnoredBySnapPea": true,
 				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"ImmuneToSweetPotato": true,
@@ -2146,6 +2211,7 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 100,
 				"Weight": 0,
+				"ImpType": "pirate_imp",
 				"HitRect": "RTID(PirateBarrelHitRect@RectangleProps)",
 				"AttackRect": "RTID(PirateBarrelAttackRect@RectangleProps)"
 			}
@@ -2167,6 +2233,7 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 600,
+				"ImpType": "pirate_imp",
 				"NormalDeathWhenMowed": true,
 				"TimeBefore": 3,
 				"TimeBeforeAdditional": 1,
@@ -2277,6 +2344,7 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "pirate_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -2291,6 +2359,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -2481,6 +2550,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -2684,6 +2754,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -3202,6 +3273,7 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 600,
 				"Weight": 1000,
+				"ImpType": "west_bullrider",
 				"HitRect": "RTID(CowboyBullHitRect@RectangleProps)",
 				"AttackRect": "RTID(CowboyBullAttackRect@RectangleProps)"
 			}
@@ -3227,6 +3299,33 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 1000,
 				"Weight": 1000,
+				"ImpType": "west_bullrider",
+				"HitRect": "RTID(CowboyBullHitRect@RectangleProps)",
+				"AttackRect": "RTID(CowboyBullAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"west_bull_veteran_plantern_5"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"ImmuneToSweetPotato": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotBeSwallowedByChomper": true,
+				"EatDPS": 100,
+				"Toughness": 1400,
+				"NormalDeathWhenMowed": true,
+				"BullRunAgainDelay": 0.5,
+				"WalkSPS": 0.5,
+				"RushSPS": 2,
+				"BullRammingDamage": 2000,
+				"ImpThrowDistance": 5,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 1000,
+				"Weight": 1000,
+				"ImpType": "west_bullrider",
 				"HitRect": "RTID(CowboyBullHitRect@RectangleProps)",
 				"AttackRect": "RTID(CowboyBullAttackRect@RectangleProps)"
 			}
@@ -3275,6 +3374,7 @@
 				"SplashDamageToPlants": 40,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "west_bullrider",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -3290,6 +3390,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -3482,6 +3583,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -3674,6 +3776,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -3936,6 +4039,25 @@
 		},
 		{
 			"aliases": [
+				"kongfu_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor4"
+				],
+				"WavePointCost": 700,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"kongfu_flag"
 			],
 			"objclass": "ZombieProperties",
@@ -4113,6 +4235,28 @@
 				"Weight": 3000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(MonkDrinkAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"monk_drink_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ArmDroppingHealthPct": 0.25,
+				"DrinkHealthPct": 0.5,
+				"DrinkingDamageMult": 0.25,
+				"DrunkDamageMult": 0.5,
+				"DrunkEatingDamageScale": 2,
+				"DrunkWalkingSpeedScale": 3,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 600,
+				"HitDamage": 250,
+				"WavePointCost": 700,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(MonkDrinkVeteranAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -4378,6 +4522,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -4679,6 +4824,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -4951,6 +5097,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -5065,7 +5212,6 @@
 									"zombieList": [
 										"abbot_armor1",
 										"abbot_armor2",
-										"abbot_armor3",
 										"kongfu_gong",
 										"abbot_fan",
 										"abbot_torch"
@@ -5159,13 +5305,12 @@
 									"zombieList": [
 										"abbot_armor1",
 										"abbot_3section_staff",
-										"kongfu_chi",
 										"abbot_armor2",
-										"kongfu_bronze_chi"
+										"kongfu_bronze_chi",
+										"abbot_torch"
 									],
 									"pointMin": 2000,
-									"pointMax": 4000,
-									"plantfoodchance": 0.6
+									"pointMax": 4000
 								},
 								"weight": 30,
 								"repeatMax": 2,
@@ -5439,6 +5584,25 @@
 		},
 		{
 			"aliases": [
+				"monk_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"StartingArmors": [
+					"kongfu_armor4"
+				],
+				"WavePointCost": 700,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"monk_flag"
 			],
 			"objclass": "ZombieProperties",
@@ -5636,6 +5800,25 @@
 				],
 				"WavePointCost": 550,
 				"Weight": 4500,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"abbot_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"StartingArmors": [
+					"kongfu_armor4"
+				],
+				"WavePointCost": 700,
+				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -5851,6 +6034,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"IgnoredBySnapPea": true,
 				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
@@ -5875,6 +6059,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"IgnoredBySnapPea": true,
 				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
@@ -5899,6 +6084,7 @@
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"IgnoredBySnapPea": true,
 				"CannotBeHypnotizedByProjectiles": true,
 				"CannotBeEnlightenedBySolarSage": true,
 				"CannotBeGrabbedByPtero": true,
@@ -6052,6 +6238,7 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 2000,
 				"Weight": 2500,
+				"ImpType": "future_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -6067,6 +6254,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -6290,6 +6478,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -6522,6 +6711,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -6757,6 +6947,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -7376,6 +7567,7 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "dark_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -7391,6 +7583,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -7633,6 +7826,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -7875,6 +8069,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -8451,6 +8646,7 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "beach_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -8466,6 +8662,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -8697,6 +8894,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -8931,6 +9129,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -9599,6 +9798,7 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "iceage_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -9614,6 +9814,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -9833,6 +10034,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -10051,6 +10253,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -10336,6 +10539,7 @@
 				"FireDamage": 1200,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -10439,6 +10643,7 @@
 				"WavePointCost": 1500,
 				"Weight": 3000,
 				"ElectricityStunDuration": 1,
+				"ImpType": "halloween_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -11007,6 +11212,7 @@
 				"FireDamage": 1200,
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "lostcity_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -11022,6 +11228,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -11283,6 +11490,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -11501,6 +11709,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -12136,6 +12345,7 @@
 				"WaveType": "eighties_gargantuar_wave",
 				"WavePointCost": 1500,
 				"Weight": 3000,
+				"ImpType": "eighties_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -12151,6 +12361,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -12435,6 +12646,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -12913,6 +13125,7 @@
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 1800,
 				"Weight": 3000,
+				"ImpType": "dino_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -12929,6 +13142,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -13228,6 +13442,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,
@@ -13530,6 +13745,7 @@
 				"ImmuneToSweetPotato": true,
 				"ImmuneToShrinkingViolet": true,
 				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
 				"CannotBeGrabbedByPtero": true,
 				"CannotBeDetectedByPowerToss": true,
 				"CannotBeDraggedByTangleKelp": true,

@@ -1286,7 +1286,7 @@
 				"vine"
 			],
 			"COSTUME": 0,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -4174,7 +4174,7 @@
 				"losingPlant",
 				"lastStandDisallowed"
 			],
-			"COSTUME": 0,
+			"COSTUME": 1,
 			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
@@ -4796,6 +4796,212 @@
 				"Disabled": "EnchantMint",
 				"Plant": "EnchantMint"
 			}
+		},
+		{
+			"ID": 191,
+			"NAME": {
+				"en": "Fila-mint",
+				"zh": "电能薄荷"
+			},
+			"_CARDSPRITENAME": "mint_electric",
+			"CODENAME": "filamint",
+			"TYPE": [
+				"fly",
+				"mint",
+				"lastStandDisallowed",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(filamint@PlantAlmanac)",
+			"PROPS": "RTID(filamint@PlantProps)",
+			"RES": {
+				"Disabled": "FilaMint",
+				"Plant": "FilaMint"
+			}
+		},
+		{
+			"ID": 192,
+			"NAME": {
+				"en": "Contain-mint",
+				"zh": "滞缓薄荷"
+			},
+			"_CARDSPRITENAME": "mint_slow",
+			"CODENAME": "containmint",
+			"TYPE": [
+				"plant",
+				"mint",
+				"lastStandDisallowed",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(containmint@PlantAlmanac)",
+			"PROPS": "RTID(containmint@PlantProps)",
+			"RES": {
+				"Disabled": "ContainMint",
+				"Plant": "ContainMint"
+			}
+		},
+		{
+			"ID": 193,
+			"NAME": {
+				"en": "Arma-mint",
+				"zh": "军械薄荷"
+			},
+			"_CARDSPRITENAME": "mint_lobber",
+			"CODENAME": "armamint",
+			"TYPE": [
+				"plant",
+				"mint",
+				"lastStandDisallowed",
+				"imitateDisallowed",
+				"losingPlant"
+			],
+			"OBTAINWORLD": "mint",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 0,
+			"COSTUME": 0,
+			"ALMANAC": "RTID(armamint@PlantAlmanac)",
+			"PROPS": "RTID(armamint@PlantProps)",
+			"RES": {
+				"Disabled": "ArmaMint",
+				"Plant": "ArmaMint"
+			}
+		},
+		{
+			"ID": 194,
+			"NAME": {
+				"en": "Seashooter",
+				"zh": "海豌豆"
+			},
+			"_CARDSPRITENAME": "seashooter",
+			"CODENAME": "seashooter",
+			"TYPE": [
+				"amphibious"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(seashooter@PlantAlmanac)",
+			"PROPS": "RTID(seashooter@PlantProps)",
+			"RES": {
+				"Disabled": "Seashooter",
+				"Plant": "Seashooter"
+			}
+		},
+		{
+			"ID": 195,
+			"NAME": {
+				"en": "Shadow Peashooter",
+				"zh": "暗影豌豆"
+			},
+			"_CARDSPRITENAME": "shadowpeashooter",
+			"CODENAME": "shadowpeashooter",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(shadowpeashooter@PlantAlmanac)",
+			"PROPS": "RTID(shadowpeashooter@PlantProps)",
+			"RES": {
+				"Disabled": "ShadowPeashooter",
+				"Plant": "ShadowPeashooter"
+			}
+		},
+		{
+			"ID": 196,
+			"NAME": {
+				"en": "Murkadamia Nut",
+				"zh": "暗影夏威夷果"
+			},
+			"_CARDSPRITENAME": "murkadamianut",
+			"CODENAME": "murkadamia",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(murkadamia@PlantAlmanac)",
+			"PROPS": "RTID(murkadamia@PlantProps)",
+			"RES": {
+				"Disabled": "MurkadamiaNut",
+				"Plant": "MurkadamiaNut"
+			}
+		},
+		{
+			"ID": 197,
+			"NAME": {
+				"en": "Noctarine",
+				"zh": "暗影油桃"
+			},
+			"_CARDSPRITENAME": "noctarine",
+			"CODENAME": "noctarine",
+			"TYPE": [
+				"plant",
+				"losingPlant",
+				"lastStandDisallowed"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "epic",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 0,
+			"ALMANAC": "RTID(noctarine@PlantAlmanac)",
+			"PROPS": "RTID(noctarine@PlantProps)",
+			"RES": {
+				"Disabled": "Noctarine",
+				"Plant": "Noctarine"
+			}
+		},
+		{
+			"ID": 198,
+			"NAME": {
+				"en": "Snap Pea",
+				"zh": "大嘴豌豆"
+			},
+			"_CARDSPRITENAME": "snappea",
+			"CODENAME": "snappea",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(snappea@PlantAlmanac)",
+			"PROPS": "RTID(snappea@PlantProps)",
+			"RES": {
+				"Disabled": "SnapPea",
+				"Plant": "SnapPea"
+			}
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -4873,6 +5079,7 @@
 		"seashroom",
 		"chomper",
 		"missiletoe",
+		"seashooter",
 		"ghostpepper",
 		"parsnip",
 		"icebloom",
@@ -4942,22 +5149,28 @@
 		"grimrose",
 		"goldbloom",
 		"escaperoot",
+		"murkadamia",
+		"shadowpeashooter",
+		"noctarine",
 		"gloomvine",
 		"gloomshroom",
 		"umbrellaleaf",
-		"dragonbruit",
+		"snappea",
 		"cranjelly",
 		"appeasemint",
 		"enlightenmint",
 		"reinforcemint",
 		"bombardmint",
+		"armamint",
 		"spearmint",
 		"wintermint",
 		"enforcemint",
 		"peppermint",
 		"ailmint",
+		"filamint",
 		"enchantmint",
-		"concealmint"
+		"concealmint",
+		"containmint"
 	],
 	"ALMANACHIDDENORDER": [
 		"dragonbabybruit"
@@ -5059,6 +5272,7 @@
 		"chomper",
 		"homingthistle",
 		"missiletoe",
+		"seashooter",
 		"ghostpepper",
 		"parsnip",
 		"icebloom",
@@ -5142,20 +5356,25 @@
 		"escaperoot",
 		"gloomshroom",
 		"umbrellaleaf",
+		"murkadamia",
+		"shadowpeashooter",
+		"noctarine",
 		"gloomvine",
-		"dragonbruit",
-		"dragonbabybruit",
+		"snappea",
 		"cranjelly",
 		"appeasemint",
 		"enlightenmint",
 		"reinforcemint",
 		"bombardmint",
+		"armamint",
 		"spearmint",
 		"wintermint",
 		"enforcemint",
 		"peppermint",
 		"ailmint",
+		"filamint",
 		"enchantmint",
-		"concealmint"
+		"concealmint",
+		"containmint"
 	]
 }

@@ -28,6 +28,90 @@
 		},
 		{
 			"aliases": [
+				"snappea"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 10,
+				"CooldownFrom": 0.5,
+				"SunCost": 200,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"PeaType": "pea_snap",
+				"HeadDamage": 400,
+				"ChewTimePerZombie": 20,
+				"MaxContainZombieCount": 1,
+				"PlantfoodSwallowCount": 4,
+				"Family": "Melee",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shadowpeashooter"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"RayInterval": 2.3,
+				"RayIntervalAdditional": 0.2,
+				"RayDamage0": 40,
+				"RayDamage1": 70,
+				"PlantfoodPeaCount": 60,
+				"Cooldown": 10,
+				"CooldownFrom": 1,
+				"SunCost": 225,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"PeaType": "pea_shadow",
+				"PeaTypePlantfood0": "pea_shadow_pf_0",
+				"PeaTypePlantfood1": "pea_shadow_pf_1",
+				"PeaTypePlantfood2": "pea_shadow_pf_2",
+				"Family": "Shadow",
+				"PerfumeBuffDuration": 3,
+				"MintDamageFactor": 5,
+				"ZombiesToDrag": 1,
+				"ZombiesToDragShadowPowered": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"seashooter"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PlantfoodPeaCount": 60,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 275,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
+				"PeaTypeSea": "sea_pea",
+				"PeaTypeSeaPlantfood": "sea_pea",
+				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
 				"atombomb"
 			],
 			"objclass": "PlantProperties",
@@ -331,6 +415,32 @@
 		},
 		{
 			"aliases": [
+				"murkadamia"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ShieldToughness": 2000,
+				"JellyToughness": 2500,
+				"JellyCooldown": 5,
+				"JellyInitialPct": 0.6,
+				"JellyRecoveryHPS": 100,
+				"FoeEatDamageReflectPct": 0.25,
+				"MintDamageFactor": 8,
+				"Cooldown": 13,
+				"CooldownFrom": 0.77,
+				"SunCost": 100,
+				"BeghouledCost": 1000,
+				"Toughness": 2500,
+				"Family": "Shadow",
+				"MintBoostedProps": {
+					"ResistanceMult": 3,
+					"SpeedMult": 4,
+					"Plantfood": true
+				}
+			}
+		},
+		{
+			"aliases": [
 				"potatomine"
 			],
 			"objclass": "PlantProperties",
@@ -391,7 +501,12 @@
 				"SunCost": 100,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Lobber"
+				"Family": "Lobber",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -639,7 +754,12 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1257,7 +1377,13 @@
 				"Toughness": 300,
 				"Family": "Electricity",
 				"RedAttackStunDuration": 0.25,
-				"CallsElectricCurrant": true
+				"CallsElectricCurrant": true,
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1277,7 +1403,13 @@
 				"SunCost": 100,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
-				"Family": "Lobber"
+				"Family": "Lobber",
+				"MintChanceToButterFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1358,7 +1490,13 @@
 				"SunCost": 50,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Slow"
+				"Family": "Slow",
+				"MintKnockBackDistanceFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 5,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1506,7 +1644,13 @@
 				"SunCost": 50,
 				"BeghouledCost": 500,
 				"Toughness": 300,
-				"Family": "Slow"
+				"Family": "Slow",
+				"MintDurationFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1692,7 +1836,12 @@
 				"SunCost": 25,
 				"BeghouledCost": 1000,
 				"Toughness": 900,
-				"Family": "Slow"
+				"Family": "Slow",
+				"MintBoostedProps": {
+					"ResistanceMult": 3,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -1799,6 +1948,35 @@
 				"Family": "Explosive",
 				"ImmuneToBoomBox": true,
 				"ImmuneToIceblock": true,
+				"MintDamageFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"noctarine"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 15,
+				"CooldownFrom": 1,
+				"SunCost": 150,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Shadow",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"NormalAttackInterval": 0.5,
+				"NormalAttackDamage": 20,
+				"NormalLifespan": 20,
+				"ShadowAttackInterval": 0.5,
+				"ShadowAttackDamage": 30,
+				"ShadowLifespan": 25,
 				"MintDamageFactor": 3,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
@@ -1955,6 +2133,58 @@
 		},
 		{
 			"aliases": [
+				"armamint"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 85,
+				"CooldownFrom": 0,
+				"SunCost": 0,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Lobber",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"Lifespan": 12,
+				"ProjectileType": "armamint",
+				"ProjectileCount": 5,
+				"ProjectileInterval": 0.25,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"filamint"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 85,
+				"CooldownFrom": 0,
+				"SunCost": 0,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Electricity",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"Lifespan": 12,
+				"Damage": 400,
+				"CallsElectricCurrant": true,
+				"RedAttackStunDuration": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
 				"ailmint"
 			],
 			"objclass": "PlantProperties",
@@ -1996,6 +2226,30 @@
 				"ExplosionTime": 3,
 				"ExplosionInterval": 0.25,
 				"ExplosionDamage": 1800,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"containmint"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Cooldown": 85,
+				"CooldownFrom": 0,
+				"SunCost": 0,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Slow",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"Lifespan": 16,
+				"StunDuration": 10,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 1,
@@ -2175,7 +2429,13 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintDamageFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2463,7 +2723,12 @@
 				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"Family": "Lobber",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2654,7 +2919,13 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Slow",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintDurationFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2670,7 +2941,13 @@
 				"SunCost": 0,
 				"BeghouledCost": 500,
 				"Toughness": 300,
-				"Family": "Slow"
+				"Family": "Slow",
+				"MintKnockBackDistance": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2691,7 +2968,12 @@
 				"Toughness": 300,
 				"Family": "Electricity",
 				"RedAttackStunDuration": 0.25,
-				"CallsElectricCurrant": true
+				"CallsElectricCurrant": true,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -2816,7 +3098,13 @@
 				"SunCost": 75,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Slow"
+				"Family": "Slow",
+				"MintKnockBackDistance": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -3084,7 +3372,13 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Electricity",
-				"CallsElectricCurrant": true
+				"CallsElectricCurrant": true,
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": true
+				}
 			}
 		},
 		{
@@ -3164,7 +3458,12 @@
 				"SunCost": 100,
 				"BeghouledCost": 1500,
 				"Toughness": 300,
-				"Family": "Slow"
+				"Family": "Slow",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 5,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -3203,7 +3502,13 @@
 				"BeghouledCost": 1000,
 				"Toughness": 2000,
 				"Family": "Electricity",
-				"ImmuneToIceblock": true
+				"ImmuneToIceblock": true,
+				"MintStunDurationFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -3216,15 +3521,18 @@
 				"PeaTypePlantfood": "citron_pf",
 				"CallsElectricCurrant": true,
 				"ChargeTime": 7,
-				"Damage": 800,
-				"DamagePlantfood": 2500,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 350,
 				"BeghouledCost": 3000,
 				"Toughness": 300,
 				"RedStunDuration": 5,
-				"Family": "Electricity"
+				"Family": "Electricity",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -3470,7 +3778,12 @@
 				"SunCost": 50,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
-				"Family": "Slow"
+				"Family": "Slow",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -3695,7 +4008,12 @@
 				"SunCost": 250,
 				"BeghouledCost": 2500,
 				"Toughness": 300,
-				"Family": "Lobber"
+				"Family": "Lobber",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -4264,7 +4582,13 @@
 				"StunDistance": 1.5,
 				"DetectDistancePlantfood": 4,
 				"StunDuration": 12,
-				"StunDurationPlantfood": 18
+				"StunDurationPlantfood": 18,
+				"MintPoisonDPS": 60,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -4298,7 +4622,12 @@
 				"SunCost": 175,
 				"BeghouledCost": 3000,
 				"Toughness": 300,
-				"Family": "Lobber"
+				"Family": "Lobber",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
 			}
 		},
 		{
@@ -4599,7 +4928,13 @@
 				"AttackCooldownBetween": 12,
 				"AttackCooldownBetweenAdditional": 0,
 				"CallsElectricCurrant": true,
-				"RedAttackStunDuration": 1
+				"RedAttackStunDuration": 1,
+				"MintDamageFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 4,
+					"Plantfood": false
+				}
 			}
 		},
 		{
