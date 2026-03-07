@@ -78,8 +78,10 @@ iframe.youtube-video {
     // background: linear-gradient(to right, #87CEEB, #F0E68C);
     // background: url('/assets/texture/asfalt-light.png'),
     //     linear-gradient(90deg, #E0EAFC 0%, #CFDEF3 100%);
-    background: linear-gradient(90deg, #ffecd2 0%, #fcb69f 100%);
+    // background: linear-gradient(90deg, #ffecd2 0%, #fcb69f 100%);
     //     linear-gradient(to right, #A7BFE8, #6190E8);
+    // Spring green — light mode: pale yellow-green → lime → mint
+    background: linear-gradient(to right, #f0fdf4 0%, #d9f99d 30%, #bbf7d0 65%, #a7f3d0 100%);
 }
 
 [data-theme="dark"] .vp-navbar {
@@ -87,27 +89,33 @@ iframe.youtube-video {
     // background: linear-gradient(to right, #00223A, #00768C);
     // background: url('/assets/texture/asfalt-light.png'),
     //     linear-gradient(90deg, #141E30 0%, #243B55 100%);
-    background: linear-gradient(90deg, #240b36 0%, #c31432 100%);
+    // background: linear-gradient(90deg, #240b36 0%, #c31432 100%);
     // background: url('/assets/texture/asfalt-light.png'),
     //     linear-gradient(to right, #0B1C36, #4A4E69);
+    // Spring green — dark mode: deep forest → dark teal-green
+    background: linear-gradient(to right, #052e16 0%, #064e3b 55%, #022c22 100%);
 }
 
 
 .vp-navbar::before {
-    content: "🏮";
+    content: "🌱";
 }
 
 .vp-hero-title {
-    background: linear-gradient(to right, #D32F2F 35%, #FFD700 50%, #D32F2F 65%);
-    filter: drop-shadow(0 2px 2px rgba(255, 0, 0, 0.2));
+    // background: linear-gradient(to right, #D32F2F 35%, #FFD700 50%, #D32F2F 65%);
     // background: linear-gradient(to right, #D32F2F 40%, #cbcbcb 50%, #388E3C 70%);
     // background: linear-gradient(120deg, #e50000 30%, #ff8d00, #ffee00, #028121, #004cff, #770088 70%);
+    // Spring green — light mode: deep forest → vivid green → lime
+    background: linear-gradient(135deg, #14532d 20%, #16a34a 50%, #65a30d 80%);
+    filter: drop-shadow(0 2px 2px rgba(22, 101, 52, 0.25));
     -webkit-background-clip: text;
     background-clip: text;
 }
 
 [data-theme="dark"] .vp-hero-title {
-    background: linear-gradient(to right, #FF512F 35%, #FFFFFF 50%, #DD2476 65%);
+    // background: linear-gradient(to right, #FF512F 35%, #FFFFFF 50%, #DD2476 65%);
+    // Spring green — dark mode: bright green → mint → lime-yellow
+    background: linear-gradient(135deg, #4ade80 20%, #a7f3d0 55%, #bef264 80%);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
     -webkit-background-clip: text;
     background-clip: text;
