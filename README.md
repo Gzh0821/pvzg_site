@@ -70,7 +70,7 @@ Support us in Buy Me a Coffee or Github Sponsors!
 CDN acceleration and security protection for this project are sponsored by Tencent EdgeOne.
 
 <a href="https://edgeone.ai/" target="_blank">
-    <img width=30% src="https://edgeone.ai/media/34fe3a45-492d-4ea4-ae5d-ea1087ca7b4b.png" alt="edgeone"/>
+    <img width=30% src="https://edgeone.ai/_next/static/media/headLogo.daeb48ad.png" alt="edgeone"/>
 </a>
 
 We use Crowdin to manage the localization of our project. We welcome contributions to help us translate our project.
