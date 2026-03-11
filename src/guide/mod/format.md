@@ -1,5 +1,5 @@
 ---
-title: 属性参考(Old Format)
+title: 属性参考
 icon: file-invoice
 pageInfo: false
 index: true
@@ -12,9 +12,6 @@ order: 4
         (window.adsbygoogle = window.adsbygoogle || []).push({});
     })
 </script>
-
-> [!warning]
-> 以下教程的旧版属性参考仅适用于 `0.3.X`-`0.7.1` 版本。如果是 0.7.1 及以上版本，请使用全新的 `GP-Next`，参考[这里](gp-next.md)。
 
 > [!important]
 > 表格中，斜体的属性为不建议修改的字段，修改后可能会导致游戏崩溃或无法正常运行。

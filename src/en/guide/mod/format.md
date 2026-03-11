@@ -1,5 +1,5 @@
 ---
-title: Properties Reference(Old Format)
+title: Properties Reference
 icon: file-invoice
 pageInfo: false
 index: true
@@ -12,9 +12,6 @@ order: 4
         (window.adsbygoogle = window.adsbygoogle || []).push({});
     })
 </script>
-
-> [!warning]
-> The old property formatting in this tutorial applies only to versions `0.3.X`-`0.7.1`. For version 0.7.1 and above, please use the new `GP-Next`. See [here](gp-next.md).
 
 > [!important]
 > In the tables, properties in _italics_ are properties that you probably shouldn't modify. Modifying them may cause the game to crash or bug out.

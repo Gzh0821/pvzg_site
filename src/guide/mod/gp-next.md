@@ -43,7 +43,7 @@ GP-Next 的文件合并按照以下优先级顺序进行（编号越后优先级
 3. **手动编辑（数据面板）**：你在游戏内 GP-Next 【数据】面板中手动执行的各项数值修改会归档为 `__gpn_edits`，它们拥有**最高优先级**，永远覆盖所有的 packs 和 patches。
 
 ```text
-AppData/Local/com.pvzge.app/
+com.pvzge.app/
 └── gp-next/
     ├── packs/
     │   ├── MyPack/         ← 文件夹格式的数据包
@@ -77,9 +77,16 @@ AppData/Local/com.pvzge.app/
 }
 ```
 
-- **uuid**: 必须提供唯一的标识符（用于记忆你在控制面板中保存的列表开启与排序状态）。你可以前往游戏内的 GP-Next 指南面板中一键生成 uuid 并复制。
-- **priority**: 加载的默认优先级。
-- **thumbnail.png**: 你可以在包名同级目录下放一张 16:9 的 `thumbnail.png`，它会在管理器界面作为模组的封面展示。
+- **uuid**: 必须提供唯一的标识符（用于记忆你在控制面板中保存的配置与排序状态）。你可以前往游戏内的 GP-Next 指南面板中一键生成 uuid 并复制。
+- **name**: 模组在管理器内显示的名称。
+- **version**: 模组的版本号。
+- **priority**: 加载的默认优先级（越小越优先加载）。
+- **description**: 模组的详细介绍信息。
+- **author**: 模组作者的名字。
+- **formatVersion**: 数据包格式版本（当前规范为 1）。
+- **gameVersion**: 该模组指定兼容的游戏版本号（如：`0.7.1`）。
+- **gpNextVersion**: 该模组所需兼容的最低 GP-Next 版本限制（如：`>=1.0.0`）。
+- **thumbnail.png / thumbnail.ico**: 你可以在包名同级目录下放一张 1:1（正方形）的图片作为模组的封面展示。图片尺寸必须小于 128x128，支持 `.png` 和 `.ico` 格式。
 
 ## 手动编辑与数据层管理
 

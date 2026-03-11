@@ -43,7 +43,7 @@ The loading priority is as follows (highest number / last step wins):
 3. **Manual Edits (Data Tab)**: Any real-time modifications made via the GP-Next **Data** tab are saved as `__gpn_edits` and will **always** override all other packs and patches.
 
 ```text
-AppData/Local/com.pvzge.app/
+com.pvzge.app/
 └── gp-next/
     ├── packs/
     │   ├── MyPack/         ← Folder format datapack
@@ -78,9 +78,16 @@ To create a datapack, place a folder inside `packs/` and include a `pack.json` f
 }
 ```
 
-- **uuid**: A unique identifier. You can generate one from the GP-Next **Guide** tab in the game.
+- **uuid**: A required unique identifier (used to persist your loaded mods list and order). You can generate one from the GP-Next **Guide** tab in the game.
+- **name**: Display name of your mod.
+- **version**: Version string of your mod.
 - **priority**: Determines load order (lower numbers = loaded first).
-- **thumbnail.png**: Placing a 16:9 thumbnail image in the root directory will display it as the mod's cover image in the game.
+- **description**: A short description of the mod.
+- **author**: Author's name.
+- **formatVersion**: The format version of the datapack. (Currently 1).
+- **gameVersion**: Targeted compatible game version (e.g., `0.7.1`).
+- **gpNextVersion**: Required GP-Next version to run the mod (e.g., `>=1.0.0`).
+- **thumbnail.png / thumbnail.ico**: Placing a 1:1 (square) image in the root directory will display it as the mod's cover image. The size must be less than 128x128. Both `.png` and `.ico` formats are supported.
 
 ## Manual Edits and The Data Tab
 
