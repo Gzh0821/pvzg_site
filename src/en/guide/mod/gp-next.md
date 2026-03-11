@@ -18,6 +18,8 @@ order: 1
 
 GP-Next is a powerful, next-generation tool built into PvZ2 Gardendless for modifying game data. It supports modifying plants, zombies, grid items, upgrades, store items, levels, and more using JSON files. It also offers an in-game Trainer (Cheats) and a Data Browser for on-the-fly manual tweaks.
 
+The website release version already includes GP-Next (the cloud drive version does not yet have it). Please press `F10` in the game or click the button in the upper left corner to access the GP-Next panel.
+
 ## Prerequisites
 
 1. JSON Editor (VSCode / Notepad++ recommended).

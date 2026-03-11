@@ -16,7 +16,9 @@ order: 1
 > [!tip]
 > 以下教程适用于 `0.7.1` 及以上版本的游戏。对于更早的版本，请参考 gePatcher 教程。
 
-GP-Next 是 PvZ2 Gardendless 游戏内置的全新强大的数据调试与 Mod 工具。它支持通过 JSON 对植物、僵尸、地图、商店商品和关卡等游戏资源进行模块化定制。相比旧版的 gePatcher，它带来了数据包管理（Datapacks）、内置修改器（Trainer）和实时数据编辑（Data Browser）等高级功能。
+GP-Next 是 PvZ2 Gardendless 的全新强大的数据调试与 Mod 工具。它支持通过 JSON 对植物、僵尸、地图、商店商品和关卡等游戏资源进行模块化定制。相比旧版的 gePatcher，它带来了数据包管理（Datapacks）、内置修改器（Trainer）和实时数据编辑（Data Browser）等高级功能。
+
+官网的发布版本已经内置了 GP-Next（网盘版本暂无），请在游戏内按 `F10` 或点击左上角的按钮进入 GP-Next 面板。
 
 ## 前提条件
 
