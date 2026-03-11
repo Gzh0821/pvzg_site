@@ -59,6 +59,41 @@ com.pvzge.app/
             └── levels/
 ```
 
+### 文件夹职能说明
+
+- **`features/` 目录**：用于放置 `PlantFeatures.json`、`ZombieFeatures.json` 等文件。这些文件主要用于植物/僵尸的元数据（属性基类、世界解锁、家族等）。
+- **`objects/` 目录**：用于放置 `PlantProps.json`、`ZombieProps.json`、`PlantAlmanac.json`、`StoreCommodityFeatures.json` 等文件。这些通常涉及战斗数值（血量、伤害、冷却等）、图鉴展示描述以及商店商品列表。
+- **`levels/` 目录**：用于放置关卡文件，文件名必须与游戏内关卡 ID 一致（例如 `egypt1.json`）。
+
+## 数据合并逻辑
+
+部分开发者习惯把整个源文件内容全部复制过来，这非常容易因为游戏更新而导致其他字段丢失。
+
+GP-Next 采用了深度合并（Deep Merge）机制。**只需要在 JSON 中写出你要修改的字段即可(部分值为列表的字段可能需要提供完整列表才能正确覆盖)**，其余未提及的字段将保持不变。
+
+- **对于 Features (`PlantFeatures`, `ZombieFeatures` 等)**：通过你在 JSON 中提供的 `CODENAME` 来定位实体，只覆盖你填写的对应的值。
+- **对于 Objects (`PlantProps`, `PlantAlmanac` 等)**：通过你在 JSON 数组里填写的第一个 `aliases` 来定位实体，只覆盖你填写的对应的值。
+- **对于 商店 (`StoreCommodityFeatures`)**：按照商品分类浅层合并。
+- **对于 关卡 (`levels/*.json`)**：这是一个例外，关卡文件采取**完全替换**逻辑.
+
+**示例：只修改豌豆射手阳光和冷却**
+
+`PlantProps.json`:
+```json
+{
+  "objects": [
+    {
+      "aliases": ["peashooter"],
+      "objclass": "PlantProperties",
+      "objdata": {
+        "SunCost": 50,
+        "Cooldown": 2
+      }
+    }
+  ]
+}
+```
+
 ## 数据包规范 (`pack.json`)
 
 制作一个数据包，你只需在 `packs/` 下新建一个文件夹，并在其根目录提供 `pack.json`，它的格式如下：
@@ -87,6 +122,17 @@ com.pvzge.app/
 - **gameVersion**: 该模组指定兼容的游戏版本号（如：`0.7.1`）。
 - **gpNextVersion**: 该模组所需兼容的最低 GP-Next 版本限制（如：`>=1.0.0`）。
 - **thumbnail.png / thumbnail.ico**: 你可以在包名同级目录下放一张 1:1（正方形）的图片作为模组的封面展示。图片尺寸必须小于 128x128，支持 `.png` 和 `.ico` 格式。
+
+### 制作数据包的完整流程
+
+如果你想把自己的修改做成一个独立的数据包分享给其他人，请遵循以下步骤：
+
+1. **创建模组文件夹**：在游戏数据目录的 `packs/` 文件夹下新建一个文件夹，如 `MyFirstMod`。
+2. **编写 `pack.json`**：在 `MyFirstMod` 文件夹内新建 `pack.json` 文件。复制上方的模板，把 `name` 和 `author` 改成你的信息。在游戏里的 GP-Next 的“指南”界面生成一个 UUID 并填入 `uuid` 字段。
+3. **添加修改目录**：在 `MyFirstMod` 内新建 `jsons` 文件夹。然后在 `jsons` 下创建 `features`、`objects` 或 `levels` 子文件夹。
+4. **写入数据**：将你要修改的内容（例如 `PlantProps.json`）按照“只保留需要修改的字段”原则写入对应的子文件夹中。
+5. **添加封面（可选）**：将一张小于 128x128 的正方形图片重命名为 `thumbnail.png`(或`thumbnail.ico`)，放入 `MyFirstMod` 文件夹下。
+6. **打包与分享（可选）**：右键点击 `MyFirstMod` 文件夹，将其压缩为 `MyFirstMod.zip`（确保压缩包**内**直接包含 `pack.json` 而不是再套一层文件夹）。现在你可以将这个 `.zip` 文件分享给其他玩家，而玩家只需把这个 ZIP 放进他们的 `packs/` 目录即可游玩。
 
 ## 手动编辑与数据层管理
 

@@ -59,9 +59,43 @@ com.pvzge.app/
             └── levels/
 ```
 
+### Directory Roles
+
+- **`features/` directory**: Put files like `PlantFeatures.json`, `ZombieFeatures.json`, etc., here. These usually handle metadata like families, base unlocks, etc.
+- **`objects/` directory**: Put files like `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, `StoreCommodityFeatures.json`, etc., here. These files usually handle actual combat values (HP, damage, cooldown), almanac descriptions, and store lists.
+- **`levels/` directory**: Put custom levels here. The filename must match the in-game level ID exactly (e.g., `egypt1.json`).
+
+## JSON Merge Logic
+
+Some developers are accustomed to copying the *entire* source file content, which can easily lead to the loss of other fields due to game updates.
+
+GP-Next uses a deep merge mechanism. **You only need to write the fields you want to modify in the JSON (for some fields with list values, you may need to provide the complete list for correct overwriting)**, and the remaining unmentioned fields will remain unchanged.
+
+- **For Features (`PlantFeatures`, `ZombieFeatures`, etc.)**: Entities are matched by `CODENAME`. Only the properties you provide will overwrite the vanilla ones.
+- **For Objects (`PlantProps`, `PlantAlmanac`, etc.)**: Entities are matched by the first entry in their `aliases` array. Only the properties you provide inside `objdata` will overwrite the vanilla ones.
+- **For the Store (`StoreCommodityFeatures`)**: This uses a shallow merge to replace the store category arrays.
+- **For Levels (`levels/*.json`)**: This is the exception. Level files are always **completely replaced**.
+
+**Example: Safely modifying Peashooter's SunCost and Cooldown only**
+`PlantProps.json`:
+```json
+{
+  "objects": [
+    {
+      "aliases": ["peashooter"],
+      "objclass": "PlantProperties",
+      "objdata": {
+        "SunCost": 50,
+        "Cooldown": 2
+      }
+    }
+  ]
+}
+```
+
 ## Datapacks (`pack.json`)
 
-To create a datapack, place a folder inside `packs/` and include a `pack.json` file at its root. 
+To create a datapack, place a folder inside `packs/` and include a `pack.json` file at its root.
 
 **pack.json format:**
 ```json
@@ -89,9 +123,20 @@ To create a datapack, place a folder inside `packs/` and include a `pack.json` f
 - **gpNextVersion**: Required GP-Next version to run the mod (e.g., `>=1.0.0`).
 - **thumbnail.png / thumbnail.ico**: Placing a 1:1 (square) image in the root directory will display it as the mod's cover image. The size must be less than 128x128. Both `.png` and `.ico` formats are supported.
 
+### Step-by-Step: Creating a Datapack
+
+If you want to package your mod to share with others, follow these simple steps:
+
+1. **Create the Mod Folder**: Go to the GP-Next `packs/` directory and create a new folder, e.g., `MyFirstMod`.
+2. **Create `pack.json`**: Make a `pack.json` file inside `MyFirstMod`. Copy the template shown above and fill in your `name` and `author`. Generate a unique `uuid` using the UUID Generator in the GP-Next **Guide** tab in the game.
+3. **Structure Your Mod**: Create a `jsons` folder inside `MyFirstMod`. Then create `features`, `objects`, or `levels` subfolders inside `jsons` based on what you are changing.
+4. **Write the Data**: Create your JSON files (e.g., `PlantProps.json` inside the `objects` folder). Remember the deep merge rule: **only write the specific entity and the exact fields you want to change**.
+5. **Add a Cover Image (Optional)**: Put a square image under 128x128 named `thumbnail.png` (or `thumbnail.ico`) inside the `MyFirstMod` folder next to `pack.json`.
+6. **Zip and Share (Optional)**: Right-click the `MyFirstMod` folder and compress it into `MyFirstMod.zip` (Ensure the zip directly contains `pack.json` without nested root folders). You can now share this `.zip` file, and other players just need to put the zip into their `packs/` directory.
+
 ## Manual Edits and The Data Tab
 
-GP-Next includes a **Data** tab that allows you to browse all in-game data (such as `PlantProps`, `ZombieProps`, etc.) in real-time. 
+GP-Next includes a **Data** tab that allows you to browse all in-game data (such as `PlantProps`, `ZombieProps`, etc.) in real-time.
 
 You can make direct modifications to any entity directly from this menu. These modifications are recorded as "Manual Edits" (`__gpn_edits`) and will persist across game sessions.
 
