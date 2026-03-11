@@ -1,9 +1,9 @@
 ---
-title: GE Patcher Tutorial (latest)
+title: GE Patcher Tutorial(Old Format) 
 icon: wrench
 pageInfo: false
 index: true
-order: 1
+order: 3
 ---
 
 <script setup>
@@ -14,7 +14,7 @@ order: 1
 </script>
 
 > [!warning]
-> The following tutorial applies only to versions `0.3.X`-`0.7.X`.
+> The gePatcher introduced in this tutorial applies only to versions `0.3.X`-`0.7.1`. For version 0.7.1 and above, please use the more powerful `GP-Next`. See [here](gp-next.md).
 
 GE Patcher is a tool used to modify game data for PvZ2 Gardendless, supporting custom modifications for plants, zombies, grid items (GridItem), projectiles (Projectile), upgrades, store commodities, and levels.
 

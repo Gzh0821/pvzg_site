@@ -1,9 +1,9 @@
 ---
-title: Properties Reference (latest)
+title: Properties Reference(Old Format)
 icon: file-invoice
 pageInfo: false
 index: true
-order: 2
+order: 4
 ---
 
 <script setup>
@@ -14,7 +14,7 @@ order: 2
 </script>
 
 > [!warning]
-> The following tutorial only works for versions `0.3.X`-`0.7.X`.
+> The old property formatting in this tutorial applies only to versions `0.3.X`-`0.7.1`. For version 0.7.1 and above, please use the new `GP-Next`. See [here](gp-next.md).
 
 > [!important]
 > In the tables, properties in _italics_ are properties that you probably shouldn't modify. Modifying them may cause the game to crash or bug out.

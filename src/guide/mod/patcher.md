@@ -1,9 +1,9 @@
 ---
-title: GE Patcher 使用教程(latest)
+title: GE Patcher 使用教程(Old Format)
 icon: wrench
 pageInfo: false
 index: true
-order: 1
+order: 3
 ---
 
 <script setup>
@@ -14,7 +14,7 @@ order: 1
 </script>
 
 > [!warning]
-> 以下教程仅适用于`0.3.X`-`0.7.X`版本。
+> 以下教程中的 gePatcher 仅适用于 `0.3.X`-`0.7.1` 版本。如果是 0.7.1 及以上版本，请使用更强大的 `GP-Next`，参考[这里](gp-next.md)。
 
 GE Patcher 是一个用于修改 PvZ2 Gardendless 游戏数据的工具，支持对植物、僵尸、格子道具（GridItem）、弹道（Projectile）、升级、商店和关卡等内容的自定义修改。
 
