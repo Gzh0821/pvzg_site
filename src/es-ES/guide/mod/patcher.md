@@ -1,85 +1,130 @@
 ---
-title: GE Patcher Tutorial (latest)
+title: Tutorial de GE Patcher (formato antiguo)
 icon: wrench
 pageInfo: false
 index: true
-order: 1
+order: 3
 ---
 
 <script setup>
-    import { onMounted } from 'vue';
-    onMounted(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
+    import { onMounted } from 'vue';
+    onMounted(() => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    })
 </script>
 
 > [!warning]
-> This tutorial is only works for versions `0.3.X`.
+> El gePatcher de este tutorial aplica solo a versiones `0.3.X`-`0.7.1`. Para version `0.7.1` o superior, usa `GP-Next`. Consulta [aqui](gp-next.md).
 
-GE Patcher is a tool used to modify Plants vs. Zombies 2 Gardendless game data, supporting custom modifications to plants, zombies, upgrades, the shop, levels, and more.
+GE Patcher es una herramienta para modificar datos de PvZ2 Gardendless. Permite personalizar plantas, zombis, grid items (GridItem), proyectiles (Projectile), mejoras, tienda y niveles.
 
-The version provided on the website has the GE Patcher tool built-in to the PC build.
+Se recomienda usar la version integrada de GE Patcher (incluida en la version oficial).
 
-## Prerequisites
+## Requisitos previos
 
-1. JSON editor (VSCode/Notepad++ recommended)
-2. Game version ≥ 0.3.0
-3. [Property Reference](format.md).
+1. Editor JSON (recomendado VSCode/Notepad++).
+2. Version del juego >= 0.3.0.
+3. Para estructuras JSON de plantas, zombis, etc., consulta [Referencia de propiedades](format.md).
 
 <ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-7637695321442015"
 data-ad-slot="7113006248"
 data-ad-format="auto"
-data-full-width-responsive="true"> </ins>
+data-full-width-responsive="true">
+</ins>
 
-## The Basics
+## Conceptos basicos de GE Patcher
 
-Press `F12` when the game starts to open the developer console. In the Console tab, you should see something like this:
+Abre la interfaz de desarrollador con `F12` al iniciar el juego. En la pestana Console veras algo similar a:
 
-```
+```text
 [GE Patcher] BaseDir: C:\Users\admin\AppData\Local\com.pvzge.app
 ```
 
-This path is GE Patcher's main directory and where patch files are loaded from. If you want to see _exactly_ where the files are loaded from, enter the command `gePatcher.help()`.
+La ruta anterior es el directorio principal de GE Patcher (ejemplo). Ejecuta este comando para ver ayuda y la ruta de parches:
 
-Once you see the title screen, you can now load your patch. **Entering `gePatcher.init()` into the console will load your custom files.**
-
-After modifying a JSON file, please **run this command again to apply the changes**.
-
-## File Structure
-
-To start your patch, create a `patches` folder within `com.pvzge.app` with the following structure (not all files have to be present):
-
+```javascript
+gePatcher.help()
 ```
+
+GE Patcher tambien carga automaticamente el modulo de guardado en la nube (`window.cloudSaver`).
+
+Cuando el juego termine de cargar, usa estos comandos para cargar/aplicar parches:
+
+```javascript
+// Carga recursos base, no carga archivos de parche
+gePatcher.initBase()
+
+// Despues de initBase(), usa initPatchs() para cargar archivos de parche
+// Vuelve a ejecutar tras modificar JSON para aplicar cambios
+gePatcher.initPatchs()
+
+// Carga recursos base y parches; equivalente a las dos llamadas anteriores
+gePatcher.init()
+```
+
+Otros ejemplos utiles:
+
+```javascript
+// Lista IDs de niveles originales
+gePatcher.showLevels()
+
+// Fija FPS personalizados (operacion peligrosa)
+gePatcher.setFrameRate(30)
+
+// Modifica una propiedad de una entidad
+gePatcher.setPropsData('PlantProps', 'peashooter', 'ShootInterval', 1.2)
+
+// Fusiona varias propiedades
+gePatcher.setPropsData('PlantProps', 'peashooter', { ShootInterval: 1.2, SunCost: 75 })
+
+// Gestion y exportacion de datos
+gePatcher.listOrigins()             // Lista JSON originales guardados
+gePatcher.exportJson('PlantFeatures', false) // Exporta PlantFeatures actual
+gePatcher.restoreOriginal('PlantFeatures')   // Restaura PlantFeatures original
+gePatcher.restoreAll()              // Restaura todo
+```
+
+## Estructura de archivos
+
+Crea una carpeta `patches` dentro de `com.pvzge.app` con esta estructura:
+
+```text
 patches/
 └── jsons/
     ├── features/
     │   ├── PlantFeatures.json
     │   ├── PlantProps.json
     │   ├── PlantAlmanac.json
+    │   ├── PlantTypes.json
     │   ├── ZombieFeatures.json
     │   ├── ZombieProps.json
     │   ├── ZombieAlmanac.json
+    │   ├── ZombieTypes.json
+    │   ├── BoardGridMaps.json
+    │   ├── ProjectileProps.json
+    │   ├── ProjectileTypes.json
     │   ├── UpgradeFeatures.json
+    │   ├── PropertySheets.json
+    │   ├── NarrativeList.json
     │   └── StoreCommodityFeatures.json
     └── levels/
-        └── [LevelName].json (does not support JSON5)
+        └── [LevelName].json
 ```
 
-The `features` directory contains `Features`, `Props`, and `Almanac` files for modifying plants, zombies, upgrades, the shop, etc.
+Descripcion:
 
-Files under the `levels` directory are used to replace levels. If you want to get the original levels, try to find similar ones in vanilla PvZ2 (extracting PvZ2 files is out of the scope of this guide).
+- El directorio `features` contiene archivos Features/Props/Types/Almanac para modificar metadatos y comportamiento.
+- No es necesario crear archivos para contenido que no modifiques.
 
-Anything you don't modify will default to the base-game properties.
+## Archivos Features
 
-## Features Files
+Los archivos Features se usan para fusionar metadatos de entidades (plantas, zombis, grid items, mejoras, etc.).
 
-### Features File Structure
+### Ejemplos de Features
 
-Features files contain the basic properties of plants, zombies, and upgrades. The file structure is as follows:
-
-**PlantFeatures.json**
+**PlantFeatures.json** (ejemplo):
 
 ```json
 {
@@ -93,7 +138,7 @@ Features files contain the basic properties of plants, zombies, and upgrades. Th
 }
 ```
 
-**ZombieFeatures.json**
+**ZombieFeatures.json** (ejemplo):
 
 ```json
 {
@@ -105,7 +150,7 @@ Features files contain the basic properties of plants, zombies, and upgrades. Th
 }
 ```
 
-**UpgradeFeatures.json**
+**UpgradeFeatures.json** (ejemplo):
 
 ```json
 {
@@ -117,62 +162,30 @@ Features files contain the basic properties of plants, zombies, and upgrades. Th
 }
 ```
 
-**Key Notes**
+`GridItemFeatures.json` / `StoreCommodityFeatures.json` y similares usan una estructura parecida.
 
-- The `PLANTS`、`ZOMBIES` and `UPGRADES` arrays define modifications to existing entities.
-- `SEEDCHOOSERDEFAULTORDER` sets the order of plants. The order of the array is the order they appear in the almanac, seed chooser, etc.
-- `BASEUNLOCKLIST` defines plants unlocked by default on new player profiles.
+### Reglas de merge para Features (resumen)
 
-### Features Modification Rules
+- Se busca cada entidad por `CODENAME` (o identificador equivalente) y se fusiona con el objeto original.
+- Campos primitivos se sobreescriben directamente.
+- Objetos se fusionan recursivamente.
+- Arrays se fusionan por orden de elementos (si son primitivos, se sobreescriben).
+- Arrays de nivel superior como `SEEDCHOOSERDEFAULTORDER` y `BASEUNLOCKLIST` se reemplazan por completo.
 
-Features modification rules apply to `PlantFeatures`、`ZombieFeatures` and `UpgradeFeatures` files.
+Importante: GE Patcher solo modifica entidades existentes; no crea entidades nuevas. Evita cambiar identificadores clave (como `ID`, `_CARDSPRITENAME`, etc.).
 
-Each object in the `PLANTS` (or `ZOMBIES`, `UPGRADES`) array will be merged into the original JSON after matching by the `CODENAME` field. The merging rules are as follows:
+## Archivos Props / Almanac / Types
 
-- **Array Elements**: If the property type is an array, each value in the array will be merged according to element order. If a value in the array is an object, it will be merged recursively. If a value in the array is a primitive type, it will directly overwrite the value in the original JSON.
-- **Object Merging**: If the property type is an object, it will be merged recursively. If there are attributes with the same key within the object, the value in the original JSON will be directly overwritten.
-- **Primitive Attributes**: For primitive attributes with the same key, they are directly overwritten, i.e., replacing the value in the original JSON.
+Estos archivos se usan para modificar valores numericos, informacion de almanaque o tablas de tipos:
 
-For other properties, such as `SEEDCHOOSERDEFAULTORDER`/`BASEUNLOCKLIST`, the original array is simply replaced.
+- `PlantProps.json` / `ZombieProps.json`: propiedades numericas (`PlantProperties` / `ZombieProperties`).
+- `PlantAlmanac.json` / `ZombieAlmanac.json`: informacion de visualizacion del almanaque.
+- `PlantTypes.json` / `ZombieTypes.json`: datos de tipos.
+- `ProjectileProps.json` / `ProjectileTypes.json`: propiedades y tipos de proyectiles.
+- `NarrativeList.json`: listas de dialogos.
+- `PropertySheets.json`: sobrescribe/complementa hojas de propiedades.
 
-Therefore, for any plant/zombie that needs modification, you must add an object to the `PLANTS` (or `ZOMBIES`) array, and the `CODENAME` field of this object must match the original plant/zombie in the JSON. For plants/zombies that do not need modification, this object does not need to be added.
-
-Within a single plant/zombie object, only the `CODENAME` needs to be filled. Other fields not filled will remain unchanged. If modification is needed, the corresponding fields must be added.
-
-> [!important]
->
-> - Avoid modifying critical properties like `ID` or `_CARDSPRITENAME` to prevent crashes or other unwanted bugs.
-> - **GE Patcher cannot create new plants, zombies, or anything like; it only modifies existing entities.**
-
-**Example**
-
-To change the Peashooter's background to "epic" and the Sunflower's name to "Happy Flower":
-
-```json
-{
-  "PLANTS": [
-    {
-      "CODENAME": "peashooter",
-      "OBTAINWORLD": "epic"
-    },
-    {
-      "CODENAME": "sunflower",
-      "NAME": {
-        "en": "Happy Flower",
-        "zh": "快乐花"
-      }
-    }
-  ]
-}
-```
-
-## Props/Almanac Files
-
-### Props File Structure
-
-Props files contain the gameplay properties of plants and zombies. The file structure is as follows:
-
-**PlantProps.json**
+### Ejemplo de Props (PlantProps.json)
 
 ```json
 {
@@ -185,48 +198,15 @@ Props files contain the gameplay properties of plants and zombies. The file stru
         "ShootIntervalAdditional": 0.15,
         "PlantfoodPeaCount": 60,
         "Cooldown": 5,
-        "CooldownFrom": 1,
         "SunCost": 100,
-        "Toughness": 300,
-        "Family": "Peashooter"
+        "Toughness": 300
       }
     }
   ]
 }
 ```
 
-**ZombieProps.json**
-
-```json
-{
-  "objects": [
-    {
-      "aliases": ["tutorial"],
-      "objclass": "ZombieProperties",
-      "objdata": {
-        "ZombieSort": "Normal",
-        "CannotBeTossedByCitron": false,
-        "WalkSPS": 0.185,
-        "Toughness": 190,
-        "EatDPS": 100
-      }
-    }
-  ]
-}
-```
-
-**Key Notes**
-
-- The `objects` array defines the objects that modify existing plants/zombies.
-- The `aliases` array indicates which plant/zombie the object belongs to. Right now, GE Patcher only reads the first item of this array.
-- The `objclass` indicates the type of the object, and its value must be `PlantProperties` or `ZombieProperties` depending on what you're modifying.
-- `objdata` contains the gameplay properties of the plant/zombie.
-
-### Almanac File Structure
-
-Almanac files contain the Almanac information for plants and zombies. The file structure is as follows:
-
-**PlantAlmanac.json**
+### Ejemplo de Almanac (PlantAlmanac.json)
 
 ```json
 {
@@ -236,148 +216,53 @@ Almanac files contain the Almanac information for plants and zombies. The file s
       "objclass": "PlantAlmanacProperties",
       "objdata": {
         "Elements": [
-          {
-            "TYPE": "SUNCOST"
-          },
-          {
-            "TYPE": "RECHARGE"
-          },
-          {
-            "TYPE": "TOUGHNESS"
-          },
-          {
-            "TYPE": "DAMAGE",
-            "VALUE": 20
-          },
-          {
-            "TYPE": "RANGE",
-            "SORT": {
-              "en": "Straight",
-              "zh": "直线"
-            }
-          },
-          {
-            "TYPE": "FAMILY"
-          }
+          { "TYPE": "SUNCOST" },
+          { "TYPE": "DAMAGE", "VALUE": 20 }
         ],
-        "Introduction": {
-          "en": "Peashooters are your first line of defence. They shoot peas at attacking zombies",
-          "zh": "豌豆射手是你的第一道防线。他们会向僵尸发射豌豆。"
-        },
-        "Special": [],
-        "Chat": {
-          "en": "\"What is it like being famous?\"asked Peashooter while sipping his bottled water,\"I can't talk right now, I'm finishing my merchandising deal. Hold my fir coat.\"",
-          "zh": "“成为名人是什么感觉？”豌豆射手问了一句，抿了一口自己的瓶装水，“我现在没法说话，我正在完成我的销售项目，帮我拿一下我的毛皮大衣。”"
-        },
-        "DisplayOffset": {
-          "x": 0,
-          "y": 0
-        },
-        "BriefIntroduction": {
-          "en": "Shoots peas at the enemies",
-          "zh": "向僵尸发射豌豆子弹"
-        }
+        "Introduction": { "en": "Peashooters are...", "zh": "豌豆射手是..." }
       }
     }
   ]
 }
 ```
 
-**ZombieAlmanac.json**
+### Reglas de merge
+
+- Igual que en Features: se encuentra la entidad por `aliases` (primer elemento), y luego se fusiona `objdata` de forma recursiva. Si solo quieres modificar algunos campos, incluye solo esos campos.
+
+## Archivos de nivel
+
+Los niveles personalizados van en `patches/jsons/levels/[LevelName].json`.
+
+- El nombre del archivo debe coincidir con el ID de nivel del juego (por ejemplo, `egypt1.json`).
+- Usa `gePatcher.showLevels()` para listar IDs disponibles (requiere inicializar GE Patcher antes).
+
+## Archivos de tienda
+
+`StoreCommodityFeatures.json` se usa para reemplazar/modificar categorias de la tienda:
 
 ```json
 {
-   "//": "basic",
-   "aliases": [
-      "tutorial"
-   ],
-   "objclass": "ZombieAlmanacProperties",
-   "objdata": {
-      "Elements": [
-         {
-            "TYPE": "TOUGHNESS",
-            "SORT": {
-               "en": "Average",
-               "zh": "一般"
-            },
-            "PROGRESS": 0.25
-         },
-         {
-            "TYPE": "SPEED",
-            "SORT": {
-               "en": "Basic",
-               "zh": "普通"
-            },
-            "PROGRESS": 0.5
-         }
-      ],
-      "Introduction": {
-         "en": "Regular Garden-variety zombie.",
-         "zh": "普普通通的前院僵尸。"
-      },
-      "Special": [],
-      "Chat": {
-         "en": "Basic Zombie hates the term \"Basic\". He doesn't consider himself some generic foe or common corpse. He's individual, darn it, and he's going to make a difference even if it kills you.",
-         "zh": "普通僵尸讨厌被称作“普通”。他不认为自己只是一个平凡的敌对者，甚至只是个随处可见的死尸。他可是很独立的，该死的，而且在你死之前他都会对局面造成影响。"
-      },
-      "DisplayOffset": {
-         "x": 0,
-         "y": 0
-      },
-      "DisplayScale": {
-         "x": 1,
-         "y": 1
-      }
-   }
-},
-```
-
-### Props/Almanac Modification Rules
-
-Props modification rules apply to `PlantProps` and `ZombieProps` files. Almanac modification rules apply to `PlantAlmanac` and `ZombieAlmanac` files.
-
-Each object in the `objects` array is merged into the original JSON after being matched by the `aliases` field, using the same rules as for the `Features` files.
-
-+For any plant/zombie you want to modify, you must add an object to the `objects` array. That object must have an `aliases` property with the plant/zombie you want to modify's codename.
-+**Note:** Only the first element of the `aliases` array is used to match the plant/zombie for modification.
-+For plants/zombies that you don't want to change, you don't need to do anything - it'll default to vanilla properties.
-
-Within a single object, `objdata` contains the gameplay properties or Almanac information of the plant/zombie. Only the properties that need to be modified should be added. Properties not added will default to vanilla properties.
-
-> [!important]
->
-> - `Almanac` files are only used to modify the Almanac information of plants/zombies and do not affect the actual in-game stats of the plants.
-> - Array attributes in `objdata`, such as `Elements` in `Almanac` files, will be merged according to element order. To modify the value of an item in the original array, you need to make the modification at the same position in the array.
-
-## Level Files
-
-Place custom level files in `patches/jsons/levels/[LevelName].json`.
-
-- Filenames must match the in-game level ID (e.g., `egypt1.json`).
-- Use `gePatcher.showLevels()` to view original level IDs (requires initializing GE Patcher first).
-- JSON5 levels are not supported and will not load.
-
-## Store Files
-
-`StoreCommodityFeatures.json` replaces in-game store categories:
-
-```json
-{
-  "Plants": [], // Plants
-  "Upgrade": [], // Upgrades
-  "Gem": [], // Gem items (purchased with coins)
-  "Coin": [] // Coin items (purchased with gems)
+  "Plants": [],
+  "Upgrade": [],
+  "Gem": [],
+  "Coin": []
 }
 ```
 
-_Note: comments are supported in JSON._
+Las categorias que no modifiques pueden omitirse.
 
-Omit categories you do not modify.
+## Depuracion y solucion de problemas
 
-## Debugging
+1. Revisa errores en la consola (F12).
+2. Errores comunes:
+   - ❌ `Failed to load...`: suele ser error de sintaxis JSON.
+   - ❌ `Level file not found`: nombre de archivo o ruta no coinciden.
+3. Verifica JSON con [JSONLint](https://jsonlint.com/) o validacion JSON de VSCode.
+4. Referencia de estructura: usa `gePatcher.exportJson('PlantProps', true)` para exportar datos originales y comparar.
 
-1. Check the console for errors during loading.
-2. Common errors:
-  - ❌ `Failed to load...`: JSON syntax error.
-  - ❌ `Level file not found`: Filename mismatch.
-3. Validate JSONs with tools like [JSONLint](https://jsonlint.com/).
+Sugerencias:
+
+- Ejecuta `gePatcher.help()` para ver el directorio base de parches y confirmar rutas.
+- Ejecuta `gePatcher.init()` solo cuando los recursos del juego hayan terminado de cargar.
+- Si los cambios no se aplican, vuelve a ejecutar `gePatcher.init()` o `gePatcher.initPatchs()` y revisa la salida en consola.

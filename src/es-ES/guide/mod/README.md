@@ -1,5 +1,5 @@
 ---
-title: MOD tutorial
+title: Guia de MOD
 index: true
 icon: toolbox
 pageInfo: false
@@ -16,15 +16,8 @@ onMounted(() => {
 </script>
 
 > [!tip]
-> Starting from version `0.2.8.1`, PvZ2 Gardendless supports partial Patch functionality. You can use the built-in GE Patcher in the game to modify JSON files to customize plants, zombies, the store, and levels. This feature is not available in the online version.
+> A partir de la version `0.7.1`, PvZ2 Gardendless integra una nueva y potente herramienta de modding llamada `GP-Next`. Ofrece funciones mejoradas y una experiencia mas amigable que el antiguo `gePatcher`. Si usas la version `0.7.1` o superior, recomendamos encarecidamente usar `GP-Next`.
 >
-> The development team does not guarantee that this feature will be supported in future versions, which depends on the game's updates and maintenance.
+> El equipo de desarrollo no garantiza que esta funcion siga estando soportada en versiones futuras, ya que depende de las actualizaciones y el mantenimiento del juego.
 
 <Catalog />
-
-<ins class="adsbygoogle"
-  style="display:block"
-  data-ad-client="ca-pub-7637695321442015"
-  data-ad-slot="7113006248"
-  data-ad-format="auto"
-  data-full-width-responsive="true"> </ins>
