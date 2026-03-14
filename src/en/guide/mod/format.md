@@ -100,7 +100,7 @@ The `aliases` array contains the plant's `CODENAME`, used to indicate the corres
 
 ## Store Files
 
-The `StoreCommodityFeatures.json` file contains store commodity information, including four arrays: `Plants`, `Upgrade`, `Gem`, and `Coin`, representing different types of commodity information.
+The `StoreCommodityFeatures.json` file contains store commodity information, including five arrays: `Plants`, `Upgrade`, `Gem`, `Coin`, and `Zen`, representing different types of commodity information.
 
 ### Plants
 
@@ -184,6 +184,19 @@ The `Coin` array contains information about Coin commodities.
 | ------------------------ | ------------------------------------- |
 | _CommodityType_          | Fixed value "coin"                    |
 | CommodityCount           | Amount of Coins obtained              |
+| **CurrencyType**         | Currency type ("gem" or "coin")       |
+| CurrencyRequired         | Amount of currency required           |
+| _StackLevel_             | Commodity pack level                  |
+| **CommodityDisplayName** | Commodity display name (multilingual) |
+
+### Zen
+
+The `Zen` array contains information about Zen Garden commodities. Its structure is identical to `Gem`/`Coin`.
+
+| Property                 | Description                           |
+| ------------------------ | ------------------------------------- |
+| _CommodityType_          | Fixed value "zen"                     |
+| CommodityCount           | Amount of Zen Garden resources obtained |
 | **CurrencyType**         | Currency type ("gem" or "coin")       |
 | CurrencyRequired         | Amount of currency required           |
 | _StackLevel_             | Commodity pack level                  |

@@ -58,6 +58,7 @@ com.pvzge.app/
     └── patches/            ← Single file patches
         └── jsons/
             ├── features/
+            ├── objects/
             └── levels/
 ```
 
@@ -73,7 +74,7 @@ Some developers are accustomed to copying the *entire* source file content, whic
 
 GP-Next uses a deep merge mechanism. **You only need to write the fields you want to modify**, and the remaining unmentioned fields will remain unchanged. Notably, **array fields in your patch always fully replace the target array** — they are not merged by index. If you need to change an array field (e.g. the zombie pool `Basic_Zombie`, or the `PLANTS` unlock list), provide the complete new array.
 
-- **For Features (`PlantFeatures`, `ZombieFeatures`, `StoreCommodityFeatures`, etc.)**: Entities are matched by an identifier field. Most Features files use `CODENAME`; `StoreCommodityFeatures` uses `CommodityName`; `MintObtainRoute` uses `Family`. Only the properties you provide will overwrite the vanilla ones.
+- **For Features (`PlantFeatures`, `ZombieFeatures`, `StoreCommodityFeatures`, etc.)**: Entities are matched by an identifier field. Most Features files use `CODENAME`; `StoreCommodityFeatures`'s `Plants`/`Upgrade` sections use `CommodityName` for per-entry merging, while `Gem`/`Coin`/`Zen` sections are **fully replaced**; `MintObtainRoute` uses `Family`. Only the properties you provide will overwrite the vanilla ones.
 - **For Objects (`PlantProps`, `PlantAlmanac`, etc.)**: Entities are matched by the first entry in their `aliases` array. Only the properties you provide inside `objdata` will overwrite the vanilla ones.
 - **For Levels (`levels/*.json`)**: This is the exception. Level files are always **completely replaced**.
 
@@ -151,5 +152,5 @@ If you wish to remove your manual edits, you can do so by right-clicking the ite
 GP-Next offers an in-game **Trainer** tab. To use it, you must first enable "Cheat" in the standard in-game Settings menu.
 
 - **In-Game Scene**: Modify Sun, toggle Game Speed, enable No Cooldown / Instant Win / Invincibility, etc. Free Plant/Buy functions and auto-collection are also supported.
-- **World Map Scheme**: Modify Coins and Gems freely.
+- **World Map Scene**: Modify Coins and Gems freely.
 - **Sandbox Mode**: Sandbox Mode settings are fully synced with the Trainer toggles. Note that in Sandbox Mode, certain functions (like Instant Win) are locked to maintain stability.
