@@ -1,5 +1,5 @@
 ---
-title: Community Level
+title: Niveles de la comunidad
 index: true
 order: 3
 icon: feather-pointed

@@ -6,9 +6,9 @@ pageInfo: false
 comment: true
 ---
 
-"Rock!" Texture Pack, replaces some in-game textures with stone.
+Paquete de texturas "Rock!", reemplaza algunas texturas del juego por estilo de piedra.
 
-### Version Information
+### Informacion de version
 
 - Author: ¿
 - Community: QQ
@@ -17,7 +17,7 @@ comment: true
 
 ![](/assets/image/creator-garden/custom-version/rock-0.3.7-1.png)
 
-### Download
+### Descarga
 
 ::brands:google-drive:: [Google Drive](https://drive.google.com/file/d/1lqnbuSqXpzBJ1J0kE71FvFCh-4zkN68G/view?usp=sharing)
 

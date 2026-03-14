@@ -1,5 +1,5 @@
 ---
-title: Keybind Editor
+title: Editor de teclas
 index: true
 order: 3
 icon: keyboard
@@ -22,11 +22,11 @@ next: false
 </script>
 
 > [!warning]
-> The key binder is in the testing phase. Using this tool may cause unknown problems with the key configuration. Please be sure to back up the original key configuration before using it!
+> El editor de teclas esta en fase de pruebas. Usar esta herramienta puede causar problemas desconocidos en la configuracion de teclas. Asegurate de hacer una copia de seguridad de la configuracion original antes de usarla.
 >
-> Please use the archive exported from the latest game version for editing.
+> Usa para editar el archivo exportado desde la version mas reciente del juego.
 >
-> You can bind multiple functions to the same key, but please note that some functions may conflict or not work properly.
+> Puedes asignar varias funciones a la misma tecla, pero ten en cuenta que algunas funciones pueden entrar en conflicto o no funcionar correctamente.
 
 <ins class="adsbygoogle"
   style="display:block"

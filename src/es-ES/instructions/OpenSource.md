@@ -1,5 +1,5 @@
 ---
-title: Opensource Agreement
+title: Acuerdo de codigo abierto
 icon: gavel
 index: true
 order: 3
@@ -7,7 +7,7 @@ pageInfo: false
 comment: false
 ---
 
-## "PvZ2 Gardenless" Website Open Source Agreement
+## Acuerdo de codigo abierto del sitio web "PvZ2 Gardenless"
 
 Copyright [2024] [Gaozih/Gzh0821/LMYY and contributors]
 

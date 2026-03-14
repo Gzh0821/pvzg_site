@@ -1,5 +1,5 @@
 ---
-title: Privacy Policy
+title: Politica de privacidad
 icon: user-shield
 index: true
 order: 6
@@ -9,16 +9,16 @@ prev: false
 next: false
 ---
 
-**Last updated December 29, 2024**
+**Ultima actualizacion: 29 de diciembre de 2024**
 
-This Privacy Policy for PvZ Gardendless ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:
+Esta Politica de privacidad de PvZ Gardendless ("we," "us," o "our") describe como y por que podemos acceder, recopilar, almacenar, usar y/o compartir ("process") tu informacion personal cuando utilizas nuestros servicios ("Services"), incluyendo cuando:
 
 - Visit our website at pvzge.com, or any website of ours that links to this Privacy Notice
 - Engage with us in other related ways, including any sales, marketing, or events
 
-**Questions or concerns?** Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at pr@ms.pvzge.com.
+**Preguntas o inquietudes?** Leer este aviso te ayudara a entender tus derechos y opciones de privacidad. Somos responsables de las decisiones sobre el tratamiento de tus datos personales. Si no estas de acuerdo con nuestras politicas y practicas, no uses nuestros servicios. Si aun tienes dudas, contactanos en pr@ms.pvzge.com.
 
-### **SUMMARY OF KEY POINTS**
+### **RESUMEN DE PUNTOS CLAVE**
 
 _**This summary provides key points from our Privacy Notice, but you can find out more details about any of these topics by using our table of contents to find the section you are looking for.**_
 

@@ -1,5 +1,5 @@
 ---
-title: Usage Agreement
+title: Acuerdo de uso
 icon: handshake
 index: true
 order: 1
@@ -7,9 +7,9 @@ pageInfo: false
 comment: false
 ---
 
-## "PvZ2 Gardendless" Usage Agreement
+## Acuerdo de uso de "PvZ2 Gardendless"
 
-Welcome to "PvZ2 Gardendless"! Before downloading, using the online version, or using this game in any form, please read the following terms carefully:
+Bienvenido a "PvZ2 Gardendless". Antes de descargar, usar la version online o utilizar este juego en cualquier forma, lee cuidadosamente los siguientes terminos.
 
 - License Agreement
 

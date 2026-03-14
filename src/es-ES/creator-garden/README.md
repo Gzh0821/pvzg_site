@@ -1,5 +1,5 @@
 ---
-title: Custom Level
+title: Niveles personalizados
 index: true
 order: 1
 icon: feather
@@ -8,9 +8,9 @@ comment: false
 ---
 
 > [!info]
-> In the custom level list, click the entry title to download the level file, and click `Play Local Level` in the game settings to import it and play. If the list is empty, please wait or try to refresh the page.
+> En la lista de niveles personalizados, haz clic en el titulo para descargar el archivo del nivel. Luego, en la configuracion del juego, usa `Play Local Level` para importarlo y jugarlo. Si la lista aparece vacia, espera un momento o recarga la pagina.
 >
-> The official levels is for levels written by the production team members, including sample level files. The community levels contains level files made by Discord and other community members.
-> For tutorials on writing custom levels, see [Custom Level Guide](../guide/level/).
+> Los niveles oficiales son creados por el equipo de desarrollo e incluyen archivos de ejemplo. Los niveles de la comunidad contienen niveles creados por miembros de Discord y otros usuarios.
+> Para aprender a crear niveles personalizados, consulta [Custom Level Guide](../guide/level/).
 
 <Catalog />

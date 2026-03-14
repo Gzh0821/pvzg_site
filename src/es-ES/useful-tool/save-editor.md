@@ -1,5 +1,5 @@
 ---
-title: Save Editor
+title: Editor de guardado
 index: true
 order: 2
 icon: floppy-disk
@@ -22,13 +22,13 @@ next: false
 </script>
 
 > [!warning]
-> The save editor is in the testing phase. Using this tool may cause unknown problems in the save file. Please be sure to back up the original save file before using the save editor!
+> El editor de guardado esta en fase de pruebas. Usar esta herramienta puede causar problemas desconocidos en el archivo de guardado. Asegurate de hacer una copia de seguridad del archivo original antes de usar el editor.
 >
-> To ensure the synchronization of the save version, please use the save file exported from the latest game version for editing. If you are using the save file of the old game version, please import it into the latest game version before exporting and editing.
+> Para asegurar la sincronizacion de version del guardado, usa el archivo de guardado exportado desde la version mas reciente del juego. Si estas usando un guardado de una version antigua, importalo primero en la version mas reciente antes de exportar y editar.
 >
-> You can find the `plantID` for each plant in the [Almanac](../almanac/).
+> Puedes encontrar el `plantID` de cada planta en el [Almanaque](../almanac/).
 >
-> The save editor will not modify the save data that does not appear below.
+> El editor de guardado no modificara los datos de guardado que no aparezcan abajo.
 
 <ins class="adsbygoogle"
   style="display:block"

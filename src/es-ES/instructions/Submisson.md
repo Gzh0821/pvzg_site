@@ -1,5 +1,5 @@
 ---
-title: Submission Agreement
+title: Acuerdo de envio
 icon: hand-holding-hand
 index: true
 order: 4
@@ -7,9 +7,9 @@ pageInfo: false
 comment: false
 ---
 
-## Player Submission Agreement for PvZ2 Gardendless
+## Acuerdo de envio de jugadores para PvZ2 Gardendless
 
-Thank you for your enthusiasm and support for PvZ2: Gardendless! To better regulate player submissions of custom levels and mods, and to ensure the development team can use player-created content compliantly and safely, please carefully read and agree to the following terms. By uploading or submitting custom levels and mods through channels such as the website or Discord server, you acknowledge your full acceptance of this agreement.
+Gracias por tu entusiasmo y apoyo a PvZ2: Gardendless. Para regular mejor el envio de niveles personalizados y mods, y para asegurar un uso conforme y seguro del contenido enviado por jugadores, lee y acepta los terminos siguientes. Al subir o enviar niveles/mods por canales como el sitio web o el servidor de Discord, confirmas tu aceptacion total de este acuerdo.
 
 ### 1. Authorization Statement
 

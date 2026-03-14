@@ -1,5 +1,5 @@
 ---
-title: Level Files
+title: Archivos de nivel
 index: true
 icon: feather
 pageInfo: false
@@ -7,40 +7,40 @@ order: 1
 ---
 
 > [!info]
-> Go to the [Custom Level](../../custom-level/) page to download sample level files!
+> Ve a la pagina de [Creator's Garden](../../creator-garden/) para descargar archivos de nivel de ejemplo.
 
-## Custom Levels
+## Niveles personalizados
 
-The custom level file of the game "PvZ2 Gardendless" is similar to the original version. It is a JSON/JSON5 text file with the suffix `.json` or `json5`, which contains all the information of the level, including plants, zombies, terrain, etc.
+El archivo de nivel personalizado del juego "PvZ2 Gardendless" es similar al de la version original. Es un archivo de texto JSON/JSON5 con sufijo `.json` o `json5`, que contiene toda la informacion del nivel, incluyendo plantas, zombis, terreno, etc.
 
-Compared with the original version, the level file of "PvZ2 Gardendless" adds some new fields to describe the basic information of the level.
+Comparado con la version original, el archivo de nivel de "PvZ2 Gardendless" agrega algunos campos nuevos para describir la informacion basica del nivel.
 
-## JSON File
+## Archivo JSON
 
-If you are already familiar with the JSON file format, you can skip this section directly.
+Si ya conoces el formato de archivo JSON, puedes saltar esta seccion.
 
-JSON (JavaScript Object Notation) is a lightweight data exchange format that is easy to read and write. It uses key-value pairs to represent data and is usually used to transmit data between clients and servers. The data structures in JSON include objects, arrays, strings, numbers, Boolean values, and null.
+JSON (JavaScript Object Notation) es un formato ligero de intercambio de datos, facil de leer y escribir. Usa pares clave-valor para representar datos y normalmente se utiliza para transmitir informacion entre cliente y servidor. Las estructuras de datos en JSON incluyen objetos, arreglos, cadenas, numeros, valores booleanos y null.
 
-- Objects: wrapped in `{}`, containing key-value pairs.
+- Objetos: se escriben entre `{}` y contienen pares clave-valor.
 
-- Arrays: wrapped in `[]`, containing multiple values.
+- Arreglos: se escriben entre `[]` y contienen multiples valores.
 
-- Strings: wrapped in `""` double quotes.
+- Cadenas: se escriben entre comillas dobles `""`.
 
-- Boolean values: `true` or `false`.
+- Valores booleanos: `true` o `false`.
 
-- Number: integer or floating point number.
+- Numero: entero o decimal.
 
-- null: represents a null value.
+- null: representa un valor nulo.
 
 > [!warning]
-> JSON files do not support comments. When you use the JSON code provided on this website, please use the `JSON5` format mentioned below, or delete the comments starting with `//` double slashes.
+> Los archivos JSON no admiten comentarios. Cuando uses el codigo JSON proporcionado en este sitio, usa el formato `JSON5` mencionado abajo o elimina los comentarios que empiezan con `//`.
 
-Example:
+Ejemplo:
 
 ```json
 {
-  // Delete this comment when using the JSON code
+  // Elimina este comentario al usar el codigo JSON
   "name": "Alice",
   "age": 25,
   "isStudent": false,
@@ -52,83 +52,83 @@ Example:
 }
 ```
 
-In this example:
+En este ejemplo:
 
-`name` is a string type, and `age` is a number type. `isStudent` is a Boolean type. `skills` is an array of strings. `address` is an object containing city and zipCode.
+`name` es de tipo cadena, y `age` es de tipo numero. `isStudent` es de tipo booleano. `skills` es un arreglo de cadenas. `address` es un objeto que contiene city y zipCode.
 
-For a more in-depth understanding of the JSON format, you can refer to [here](https://www.json.org/json-en.html).
+Para una explicacion mas detallada del formato JSON, consulta [aqui](https://www.json.org/json-en.html).
 
-## JSON5 File
+## Archivo JSON5
 
 > [!important]
-> You can use JSON5 format when writing level files. Please use `.json5` as the suffix of the level file to distinguish it from the ordinary `json` file.
+> Puedes usar el formato JSON5 al escribir archivos de nivel. Usa `.json5` como sufijo del archivo para distinguirlo del archivo `json` normal.
 
-JSON5 is an extension based on JSON (JavaScript Object Notation). It aims to enhance the readability and usability of JSON while maintaining compatibility with JSON. JSON5 allows developers to use more relaxed syntax and adapt to more scenarios without violating the existing JSON standard.
+JSON5 es una extension basada en JSON (JavaScript Object Notation). Su objetivo es mejorar la legibilidad y facilidad de uso de JSON manteniendo la compatibilidad. JSON5 permite usar una sintaxis mas flexible y adaptarse a mas escenarios sin romper el estandar existente.
 
-JSON5 introduces some flexibility, making configuration files or data transmission formats easier to write and understand. The following are the main features of JSON5:
+JSON5 introduce cierta flexibilidad para que los archivos de configuracion o formatos de intercambio de datos sean mas faciles de escribir y entender. Estas son sus principales caracteristicas:
 
-### Flexible object key names
+### Nombres de clave mas flexibles
 
-In standard JSON, key names must be wrapped in double quotes, while in JSON5, key names can be unquoted or even single quotes can be used.
+En JSON estandar, las claves deben ir entre comillas dobles; en JSON5, las claves pueden ir sin comillas o incluso usar comillas simples.
 
 ```json5
 {
-  unquoted: 'This is allowed in JSON5',
-  singleQuotes: 'This is also allowed'
+  unquoted: 'Esto esta permitido en JSON5',
+  singleQuotes: 'Esto tambien esta permitido'
 }
 ```
 
-### End of line comma
+### Coma final
 
-In JSON5, you can add a comma after the last item of an object or array, which is especially convenient when editing.
+En JSON5, puedes agregar una coma despues del ultimo elemento de un objeto o arreglo, lo cual es muy comodo al editar.
 
 ```json5
 {
   key: 'value',
-  anotherKey: 42 // Allow end of line comma
+  anotherKey: 42 // Permite coma final
 }
 ```
 
-### Support comments
+### Soporte de comentarios
 
-JSON5 supports single-line and multi-line comments, similar to JavaScript. Standard JSON does not allow comments, while JSON5 allows developers to add additional annotation information in data files.
+JSON5 admite comentarios de una linea y de multiples lineas, similar a JavaScript. JSON estandar no permite comentarios, mientras que JSON5 permite agregar anotaciones adicionales en los archivos de datos.
 
 ```json5
 {
-  // This is a single-line comment
+  // Este es un comentario de una linea
   key: 'value',
 
   /*
-  This is a multi-line comment
-  Can explain complex configuration
+  Este es un comentario multilinea
+  Puede explicar una configuracion compleja
   */
   anotherKey: 42
 }
 ```
 
-### Flexible strings
+### Cadenas flexibles
 
-JSON5 supports both single-quoted and double-quoted strings.
-
-```json5
-{
-  singleQuotes: 'This is a string',
-  doubleQuotes: 'This is also a string'
-}
-```
-
-JSON5 allows newline characters to be used in strings. Unlike JSON, it does not require the use of `\n` to represent newlines. At the same time, escape characters can also be used in strings.
+JSON5 admite cadenas con comillas simples y con comillas dobles.
 
 ```json5
 {
-  longString: 'This is a very long string that \
-  spans multiple lines\t'
+  singleQuotes: 'Esta es una cadena',
+  doubleQuotes: 'Esta tambien es una cadena'
 }
 ```
 
-### Additional data types
+JSON5 permite usar saltos de linea en cadenas. A diferencia de JSON, no exige usar `\n` para representar nuevas lineas. Al mismo tiempo, tambien se pueden usar caracteres de escape en las cadenas.
 
-JSON5 supports more numeric formats, such as hexadecimal notation and positive and negative infinity values ​​(`Infinity`), as well as `NaN` (Not-a-Number).
+```json5
+{
+  longString: 'Esta es una cadena muy larga que \
+  ocupa multiples lineas\t'
+}
+```
+
+### Tipos de datos adicionales
+
+JSON5 soporta mas formatos numericos, como notacion hexadecimal y valores de infinito positivo o negativo (`Infinity`), ademas de `NaN` (Not-a-Number).
 
 ```json5
 {
@@ -139,31 +139,31 @@ JSON5 supports more numeric formats, such as hexadecimal notation and positive a
 }
 ```
 
-### More flexible numeric representation
+### Representacion numerica mas flexible
 
-You can omit zeros in the integer part or the fractional part.
+Puedes omitir ceros en la parte entera o en la parte decimal.
 
 ```json5
 {
-  fractional: 0.5, // equivalent to 0.5
-  trailing: 2 // equivalent to 2.0
+  fractional: 0.5, // equivalente a 0.5
+  trailing: 2 // equivalente a 2.0
 }
 ```
 
-For more information about JSON5, you can refer to [here](https://json5.org/).
+Para mas informacion sobre JSON5, consulta [aqui](https://json5.org/).
 
-## Level file structure
+## Estructura del archivo de nivel
 
-The level file structure of "PvZ2 Gardendless" is as follows:
+La estructura del archivo de nivel de "PvZ2 Gardendless" es la siguiente:
 
 ```json
 {
-  // Level title
-  "#comment": "Sample Level",
-  // Basic information of the level
+  // Titulo del nivel
+  "#comment": "Nivel de ejemplo",
+  // Informacion basica del nivel
   "Information": {},
   "objects": [
-    // List of level settings
+    // Lista de configuraciones del nivel
     {},
     {}
   ],
@@ -171,93 +171,93 @@ The level file structure of "PvZ2 Gardendless" is as follows:
 }
 ```
 
-The `#comment` field is the title of the level. When writing a level, please make sure that the title of your level is unique and not repeated.The `version` field is fixed to 1.
-Detailed descriptions of other fields are given below.
+El campo `#comment` es el titulo del nivel. Al escribir un nivel, asegurate de que su titulo sea unico y no repetido. El campo `version` esta fijo en 1.
+Abajo se muestran descripciones detalladas de otros campos.
 
-## Information field
+## Campo Information
 
-PvZ2 Gardendless adds the `Information` top-level field to describe basic information about the level.
-This field does not affect the functionality of the custom level in the game, but it can help players quickly understand the information of the level you wrote.
+PvZ2 Gardendless agrega el campo de nivel superior `Information` para describir la informacion basica del nivel.
+Este campo no afecta la funcionalidad del nivel personalizado en el juego, pero puede ayudar a los jugadores a entender rapidamente la informacion del nivel que escribiste.
 
-This field contains the following:
+Este campo contiene lo siguiente:
 
 ```json
 "Information": {
-  // Level UUID
+  // UUID del nivel
   "uuid": "c58a208a-a5e3-4cfa-9bc3-cc7fbb08c2e3",
-  // Level name
+  // Nombre del nivel
   "name": {
       "en": "SampleLevel",
       "zh-CN": "示例关卡"
   },
-  // Level author
+  // Autor del nivel
   "Author": "LMYY",
-  // Optional, author link
+  // Opcional, enlace del autor
   "AuthorLink": "https://github.com/Gzh0821",
-  // Level description
+  // Descripcion del nivel
   "Introduction": {
       "en": "This is a sample level.",
       "zh-CN": "这是一个示例关卡。"
   },
-  // Supported game version
+  // Version del juego compatible
   "GameVersion": "0.1.1",
-  // Level version
+  // Version del nivel
   "Version": "1.0",
-  // Level creation time
+  // Fecha de creacion del nivel
   "CreatedAt": "2022-03-08",
-  // Level update time
+  // Fecha de actualizacion del nivel
   "UpdatedAt": "2022-03-08",
-  // Level difficulty, optional values ​​are: Easy, Normal, Hard, Expert
+  // Dificultad del nivel, valores opcionales: Easy, Normal, Hard, Expert
   "Difficulty": "Easy",
-  // Level category
+  // Categoria del nivel
   "Category": "Survival"
 },
 ```
 
-`uuid` is the unique identifier of the level, used to distinguish different levels. Please ensure the uniqueness of your level `uuid`.
-To obtain a random `uuid`, you can use an online generation tool such as [UUID Generator](https://www.uuidgenerator.net/).
+`uuid` es el identificador unico del nivel y se usa para distinguir distintos niveles. Asegura la unicidad del `uuid` de tu nivel.
+Para obtener un `uuid` aleatorio, puedes usar una herramienta en linea como [UUID Generator](https://www.uuidgenerator.net/).
 
-## objects field
+## Campo objects
 
-objects is a list whose elements are each specific level setting. There are multiple objects in the list, each object corresponds to a configuration item. The following is an example of an objects list:
+objects es una lista en la que cada elemento representa una configuracion concreta del nivel. Hay multiples objetos en la lista y cada objeto corresponde a un item de configuracion. A continuacion se muestra un ejemplo de lista objects:
 
 ```json
 "objects": [
   {
-    // Configuration item: basic settings of the level
+    // Item de configuracion: ajustes basicos del nivel
     "objclass": "LevelDefinition",
-    // Basic settings of the level
+    // Ajustes basicos del nivel
     "objdata": {
-      // Description of the level
+      // Descripcion del nivel
       "Description": "~",
-      // Level number, used in series of levels
+      // Numero de nivel, usado en series de niveles
       "LevelNumber": 1,
-      // Keep the default
+      // Mantener el valor por defecto
       "Loot": "RTID(DefaultLoot@LevelModules)",
-      // Game mode of the level, the basic game mode is given
+      // Modo de juego del nivel, aqui se da el modo basico
       "Modules": [
         "RTID(ZombiesDeadWinCon@LevelModules)",
         "RTID(DefaultZombieWinCondition@LevelModules)",
         "RTID(NewWaves@CurrentLevel)",
         "RTID(SeedBank@CurrentLevel)"
       ],
-      // Level name displayed in the game
+      // Nombre del nivel mostrado en el juego
       "Name": "Bank theft 1",
-      // Optional: multi-language support
+      // Opcional: soporte multilenguaje
       "NameMultiLanguage": {
         "en": "Bank theft I",
         "zh": "银行失窃I"
       },
-      // Author, it is recommended to be consistent with Information.Author
+      // Autor, se recomienda que coincida con Information.Author
       "WritenBy": "保罗_刘",
-      // Currently useless: drop related
+      // Actualmente sin uso: relacionado con drops
       "NormalPresentTable": "egypt_normal_01",
       "ShinyPresentTable": "egypt_shiny_01",
-      // Level scene, format: RTID(world name Stage@LevelModules)
+      // Escenario del nivel, formato: RTID(nombre del mundo Stage@LevelModules)
       "StageModule": "RTID(TutorialStage@LevelModules)"
     }
   },
-  // Configuration for each gameplay mode:
+  // Configuracion para cada modo de juego:
   {
     "aliases": [
       "SeedBank"

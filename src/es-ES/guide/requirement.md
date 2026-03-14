@@ -1,5 +1,5 @@
 ---
-title: System Requirements
+title: Requisitos del sistema
 icon: sliders
 pageInfo: false
 comment: false
@@ -7,47 +7,47 @@ index: true
 order: 4
 ---
 
-## Configuration
+## Configuracion
 
-The minimum configuration requirement is the minimum configuration to run the game, and the recommended configuration is to get a standard gaming experience.
+La configuracion minima es la necesaria para ejecutar el juego, y la configuracion recomendada sirve para obtener una experiencia de juego estandar.
 
-#### Minimum Configuration：
+#### Configuracion minima:
 
-| Requirement | Specification                                                  |
-| ----------- | -------------------------------------------------------------- |
-| Processor   | Intel Core i3-9100 / AMD Ryzen 5 1400                          |
-| RAM         | 12GB RAM                                                       |
-| GPU         | Nvidia GTX 950 / AMD Radeon R7 370 or equivalent graphics card |
-| Storage     | 2GB+                                                           |
-| DirectX     | DirectX 11                                                     |
-| Resolution  | 1280x720                                                       |
+| Requisito | Especificacion                                                 |
+| --------- | -------------------------------------------------------------- |
+| Procesador | Intel Core i3-9100 / AMD Ryzen 5 1400                         |
+| RAM       | 12GB RAM                                                       |
+| GPU       | Nvidia GTX 950 / AMD Radeon R7 370 o tarjeta grafica equivalente |
+| Almacenamiento | 2GB+                                                       |
+| DirectX   | DirectX 11                                                     |
+| Resolucion | 1280x720                                                      |
 
-#### Recommended Configuration:
+#### Configuracion recomendada:
 
-| Requirement | Specification                                                   |
-| ----------- | --------------------------------------------------------------- |
-| Processor   | Intel Core i5-9400 / AMD Ryzen 5 3600 or higher performance     |
-| RAM         | 16GB RAM or higher                                              |
-| GPU         | Nvidia GTX 1660 Super / AMD Radeon RX 590 or higher performance |
-| Storage     | 3GB+                                                            |
-| DirectX     | DirectX 12                                                      |
-| Resolution  | 1920x1080                                                       |
+| Requisito | Especificacion                                                    |
+| --------- | ---------------------------------------------------------------- |
+| Procesador | Intel Core i5-9400 / AMD Ryzen 5 3600 o superior                |
+| RAM       | 16GB RAM o superior                                              |
+| GPU       | Nvidia GTX 1660 Super / AMD Radeon RX 590 o superior            |
+| Almacenamiento | 3GB+                                                         |
+| DirectX   | DirectX 12                                                       |
+| Resolucion | 1920x1080                                                       |
 
-## Client System Requirements
+## Requisitos del sistema del cliente
 
-| Requirement                    | Specification             |
-| ------------------------------ | ------------------------- |
-| **Minimum System Version**     | Windows 10 22H2 or higher |
-| **Recommended System Version** | Windows 11 23H2 or higher |
-| **Necessary Components**       | Windows Update            |
-| Optional Components            | WebView2 Runtime          |
+| Requisito                       | Especificacion            |
+| ------------------------------- | ------------------------- |
+| **Version minima del sistema**  | Windows 10 22H2 o superior |
+| **Version recomendada del sistema** | Windows 11 23H2 o superior |
+| **Componentes necesarios**      | Windows Update            |
+| Componentes opcionales          | WebView2 Runtime          |
 
-## Online Play Requirements
+## Requisitos para jugar en linea
 
-We recommend that you use the following browser types to access the web version of "PvZ2 Gardendless":
+Recomendamos usar los siguientes navegadores para acceder a la version web de "PvZ2 Gardendless":
 
-| Browser        | Introduction                        |
-| -------------- | ----------------------------------- |
-| Chrome         | Chrome 114 or higher is recommended |
-| Microsoft Edge | Comes with Windows 10/11            |
-| Firefox        | May have some compatibility issues  |
+| Navegador      | Introduccion                         |
+| -------------- | ------------------------------------ |
+| Chrome         | Se recomienda Chrome 114 o superior  |
+| Microsoft Edge | Incluido en Windows 10/11            |
+| Firefox        | Puede presentar algunos problemas de compatibilidad |

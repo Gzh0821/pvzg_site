@@ -1,5 +1,5 @@
 ---
-title: Community Version
+title: Versiones de la comunidad
 index: true
 order: 1
 dir:
@@ -10,7 +10,7 @@ comment: false
 ---
 
 > [!info]
-> This contains the community version of Gardendless, which is made and uploaded by community members. The Gardendless development team is not responsible for its content.
+> Esta seccion contiene versiones comunitarias de Gardendless, creadas y publicadas por miembros de la comunidad. El equipo de desarrollo de Gardendless no se hace responsable del contenido.
 
 <script setup>
     import { onMounted } from 'vue';

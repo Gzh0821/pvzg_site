@@ -1,5 +1,5 @@
 ---
-title: Share and Contribute Levels
+title: Compartir y contribuir niveles
 index: true
 icon: share
 pageInfo: false
@@ -7,22 +7,22 @@ order: 2
 ---
 
 > [!important]
-> By sharing or contributing levels, you agree to the [Player Contribution Agreement](../../instructions/Submisson).
+> Al compartir o contribuir niveles, aceptas el [Acuerdo de contribucion de jugadores](../../instructions/Submisson).
 
-You can download level files made by community members on the [Community Level](../../creator-garden/) page. If you have your own levels, you can share them with other players in the following ways:
+Puedes descargar archivos de niveles creados por la comunidad en la pagina [Community Level](../../creator-garden/). Si tienes tus propios niveles, puedes compartirlos con otros jugadores de las siguientes formas:
 
-## 1. Discord Server
+## 1. Servidor de Discord
 
-You can share your level files on the `#custom-level-share` channel of the Discord server. Please follow the server rules.
+Puedes compartir tus archivos de nivel en el canal `#custom-level-share` del servidor de Discord. Sigue las reglas del servidor.
 
-To join the Discord server, please check the [User Community Page](../../contribution/).
+Para unirte al servidor de Discord, consulta la [pagina de comunidad de usuarios](../../contribution/).
 
-## 2. Submit to the Level Library
+## 2. Enviar a la biblioteca de niveles
 
-If your level is highly completed, you can submit it to the level library. You need to have a Github account and be able to use Git tools.
+Si tu nivel esta bastante completo, puedes enviarlo a la biblioteca de niveles. Necesitas una cuenta de GitHub y saber usar herramientas Git.
 
-For how to use Git, please refer to the [Development Guide](../../guide/webGuide). Please note that the Git repository is different from the level library.
+Para aprender a usar Git, consulta la [guia de desarrollo](../../guide/webGuide). Ten en cuenta que el repositorio Git es distinto de la biblioteca de niveles.
 
-The address of the level library is: [pvzg_level](https://github.com/Gzh0821/pvzg_level).
+La direccion de la biblioteca de niveles es: [pvzg_level](https://github.com/Gzh0821/pvzg_level).
 
-Please refer to the Readme file of the level library for detailed steps to submit a level.
+Consulta el archivo Readme de la biblioteca para ver los pasos detallados de envio.

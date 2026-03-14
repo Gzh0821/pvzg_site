@@ -1,37 +1,37 @@
 ---
-title: Website Development Guide
+title: Guia de desarrollo del sitio web
 icon: laptop-code
 pageInfo: false
 index: true
 order: 5
 ---
 
-Welcome to participate in the "PvZ2 Gardendless" website open source project! Whether you are a novice developer or an experienced developer, we encourage you to contribute code, submit issues or suggestions.
-Below is a brief development guide to help zero-based users quickly participate in this project.
+Bienvenido a participar en el proyecto de codigo abierto del sitio web de "PvZ2 Gardendless". Tanto si eres principiante como desarrollador con experiencia, te animamos a aportar codigo, reportar issues o compartir sugerencias.
+Abajo tienes una guia breve para que usuarios sin experiencia puedan participar rapidamente.
 
-## 1. Preparation
+## 1. Preparacion
 
-Before you start, you need to complete some basic settings. For `Windows` systems, we recommend that you use `PowerShell` of `Windows Terminal` to run commands, which can be started through the right-click menu.
+Antes de empezar, completa algunas configuraciones basicas. En `Windows` recomendamos usar `PowerShell` dentro de `Windows Terminal` para ejecutar comandos.
 
-### 1.1 Install VScode, Git and Node.js
+### 1.1 Instalar VScode, Git y Node.js
 
 #### VScode
 
-VScode is a lightweight code editor that supports multiple programming languages. In project development, we recommend using VScode to edit code.
+VScode es un editor ligero que soporta varios lenguajes. Para este proyecto recomendamos usar VScode.
 
-- Download and install VScode: [VScode official website](https://code.visualstudio.com/)
-- Read the [VScode documentation](https://code.visualstudio.com/docs) to learn more about how to use it.
-- It is recommended to install plugins: `Vue - Official`, `ESLint`, `GitLens`, etc. to improve development efficiency.
+- Descarga e instala VScode: [Sitio oficial de VScode](https://code.visualstudio.com/)
+- Lee la [documentacion de VScode](https://code.visualstudio.com/docs) para conocer su uso.
+- Plugins recomendados: `Vue - Official`, `ESLint`, `GitLens`, etc.
 
 #### Git
 
-Git is a tool for managing project versions. In project development, we will use Git to pull code and submit modifications.
+Git es una herramienta para gestionar versiones. La usaremos para clonar, actualizar y enviar cambios.
 
-- Download and install Git: [Git official website](https://git-scm.com/), for Windows, it is recommended that you download `64-bit Git for Windows Setup`.
-- You can use the default settings during the installation process.
-- It is recommended to select `Use Visual Studio Code as Git's default editor` for the default editor.
-- It is recommended to select `Git from the command line and also from 3rd-party software` for environment variable configuration.
-- After the installation is complete, you can run the following command through the command line to confirm whether the installation is successful:
+- Descarga e instala Git: [Sitio oficial de Git](https://git-scm.com/). En Windows se recomienda `64-bit Git for Windows Setup`.
+- Durante la instalacion puedes usar opciones por defecto.
+- Recomendado: `Use Visual Studio Code as Git's default editor`.
+- Recomendado: `Git from the command line and also from 3rd-party software`.
+- Tras instalar, ejecuta este comando para confirmar:
 
 ```bash
 git --version
@@ -39,186 +39,186 @@ git --version
 
 #### Node.js
 
-VuePress is a static website generator based on Node.js, so you need to install Node.js.
+VuePress es un generador de sitios estaticos basado en Node.js, por eso necesitas instalar Node.js.
 
-- Download and install Node.js: [Node.js official website](https://nodejs.org/)
-- After the installation is complete, you can run the following command to confirm whether the installation is successful:
+- Descarga e instala Node.js: [Sitio oficial de Node.js](https://nodejs.org/)
+- Tras instalar, ejecuta para verificar:
 
 ```bash
 node --version
 npm --version
 ```
 
-### 1.2 Install Corepack
+### 1.2 Instalar Corepack
 
-Corepack is a Node.js package manager that helps you install and manage project dependencies faster.
+Corepack ayuda a instalar y gestionar gestores de paquetes del proyecto.
 
-- Run the following command to activate Corepack:
+- Ejecuta el siguiente comando para activarlo:
 
 ```bash
 corepack enable
 ```
 
-## 2. Fork the project
+## 2. Hacer fork del proyecto
 
-### 2.1 Create a Github account
+### 2.1 Crear una cuenta de GitHub
 
-Before participating in the project, you need to register a GitHub account.
+Antes de participar, necesitas una cuenta de GitHub.
 
-### 2.2 Fork the project
+### 2.2 Realizar el fork
 
-When participating in a project on GitHub, you can fork (copy a copy of the project to your own account) to carry out development work.
+Para contribuir en GitHub, haz fork (una copia del proyecto en tu cuenta) para trabajar sobre tu repositorio.
 
-1. Visit the [pvzg_site project](https://github.com/Gzh0821/pvzg_site).
-2. Click the `Fork` button in the upper right corner of the page to copy the project to your own GitHub repository.
-3. Enter the project repository you forked.
+1. Visita el proyecto [pvzg_site](https://github.com/Gzh0821/pvzg_site).
+2. Pulsa `Fork` arriba a la derecha para copiar el proyecto a tu cuenta.
+3. Entra en tu repositorio forkeado.
 
-## 3) Clone the project locally
+## 3) Clonar el proyecto en local
 
-After you fork the project, you need to clone the project code to your local computer. `VScode` provides the function of cloning repositories. You can check its documentation to learn more, or use the terminal:
+Despues del fork, clona el codigo en tu equipo local. `VScode` permite clonar repositorios, o puedes usar terminal:
 
-1. Open the terminal. For Windows, please use `Windows Terminal` or the terminal function included with `VScode`.
+1. Abre una terminal. En Windows usa `Windows Terminal` o la terminal integrada de `VScode`.
 
-2. In the path where you want to place this project, run the following command to clone the project locally:
+2. En la ruta donde quieras guardar el proyecto, ejecuta:
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/pvzg_site.git
 ```
 
-Please replace `YOUR_USERNAME` with your GitHub username.
+Reemplaza `YOUR_USERNAME` por tu usuario de GitHub.
 
-3. Enter the project directory, which should contain the `package.json` file:
+3. Entra en el directorio del proyecto, donde debe existir `package.json`:
 
 ```bash
 cd pvzg_site
 ```
 
-4. Open the project directory through `VScode`. After that, you can use `VScode` to enter commands and write files:
+4. Abre el directorio con `VScode`. Desde ahi puedes ejecutar comandos y editar archivos:
 
 ```bash
 code .
 ```
 
-## 4. Install dependencies
+## 4. Instalar dependencias
 
-After entering the project directory, you need to install the dependency packages required by the project. All subsequent commands must be entered in the project directory path.
+Tras entrar al directorio del proyecto, instala las dependencias necesarias. Todos los comandos siguientes deben ejecutarse dentro de este directorio.
 
-- Use `Corepack` to install `pnpm`, and use `pnpm` to install dependencies:
+- Usa `Corepack` para instalar `pnpm`, y luego instala dependencias con `pnpm`:
 
 ```bash
 corepack install
-# Check if pnpm is correctly installed in the project
+# Verifica si pnpm esta disponible en el proyecto
 pnpm -v
-# Install dependencies
+# Instala dependencias
 pnpm install
 ```
 
-## 5. Run the development environment
+## 5. Ejecutar el entorno de desarrollo
 
-After installing the dependencies, you can start the development environment of the project and view the document website running locally.
+Tras instalar dependencias, puedes iniciar el entorno de desarrollo y ver el sitio en local.
 
-- Use the following command to start the development server:
+- Usa este comando para iniciar el servidor de desarrollo:
 
 ```bash
 pnpm docs:dev
 ```
 
-After successful startup, you can visit `http://localhost:8080` in your browser to view the website in development.
+Cuando inicie correctamente, abre `http://localhost:8080` en tu navegador.
 
-## 6. Start editing
+## 6. Empezar a editar
 
-Now you can modify and optimize the code.
+Ahora ya puedes modificar y mejorar el codigo.
 
 ### 6.1 Markdown file
 
-Markdown is a lightweight markup language. You can learn more about it through [Markdown Guide](https://www.markdownguide.org/).
+Markdown es un lenguaje de marcado ligero. Puedes aprender mas en [Markdown Guide](https://www.markdownguide.org/).
 
-The page content of the project is mainly written in Markdown, with the suffix `.md`. You can find the page files of the project in the `src` directory.
+El contenido de las paginas esta escrito principalmente en Markdown (`.md`). Los archivos estan en el directorio `src`.
 
-This project is developed using `Vuepress`. For the use of `Vuepress`, you can check [Vuepress official documentation](https://vuepress.vuejs.org/) to learn more.
+Este proyecto usa `Vuepress`. Consulta la [documentacion oficial de Vuepress](https://vuepress.vuejs.org/).
 
-The format of `.md` files is as follows:
+El formato de los archivos `.md` es el siguiente:
 
 ```markdown
-<!-- Configuration items -->
+<!-- Configuracion -->
 ---
-title: page title
+title: titulo de la pagina
 index: false
 ...
 ---
-<!-- HTML components -->
+<!-- Componentes HTML -->
 <script />
 <Catalog />
 
 > [!info]
-> info here...
+> informacion aqui...
 
-### Title
+### Titulo
 
-Content...
+Contenido...
 ```
 
-### 6.2 Provide translations
+### 6.2 Aportar traducciones
 
-Under the `src` directory, you can find the `en` directory, which contains the English pages of this website. You can refer to the files in this directory and translate them into other languages.
+Dentro de `src` encontraras el directorio `en`, que contiene las paginas en ingles. Puedes usar esos archivos como referencia para traducir a otros idiomas.
 
-For translation work, you only need to modify the `.md` files in the corresponding language directory, such as `ru-RU`, `pt-BR`. You need to keep the file structure and name in the directory consistent with `en`.
+Para traducir, solo modifica archivos `.md` del idioma correspondiente (por ejemplo `ru-RU`, `pt-BR`). Debes mantener la misma estructura y nombres de archivo que en `en`.
 
-For the configuration items in the `.md` file, only `title` needs to be modified, and for the `HTML component`, it can be left unchanged.
-It is recommended that you check whether the page is displayed correctly at any time when making changes.
+En la configuracion del `.md`, normalmente solo necesitas traducir `title`; los componentes `HTML` pueden dejarse igual.
+Se recomienda revisar continuamente que la pagina se vea bien durante la edicion.
 
-## 7. Submit changes and initiate a Pull Request
+## 7. Enviar cambios y abrir un Pull Request
 
-When you have completed the code modification and tested successfully, you can submit your changes and initiate a Pull Request.
+Cuando termines los cambios y todo funcione, puedes enviar tus cambios y crear un Pull Request.
 
-### 7.1 Submit changes and push to GitHub
+### 7.1 Hacer commit y push a GitHub
 
-We recommend that you use `VScode` to submit. Just fill in the submission information in `Source Control` on the left side of `VScode`, then click Submit, and click Synchronize Changes.
+Recomendamos usar `VScode`. Completa el mensaje en `Source Control`, haz commit y luego sincroniza cambios.
 
-To submit using the terminal:
+Para enviar por terminal:
 
-1. Add the modified code to Git:
+1. Agrega los cambios a Git:
 
 ```bash
 git add .
 ```
 
-2. Submit the changes:
+2. Crea el commit:
 
 ```bash
 git commit -m "Describe your changes"
 ```
 
-3. Push local changes to your own GitHub repository:
+3. Sube tus cambios al repositorio remoto:
 
 ```bash
 git push origin main
 ```
 
-### 7.2 Initiate Pull Request
+### 7.2 Abrir Pull Request
 
-1. Go to your GitHub repository page.
-2. Click the `Compare & pull request` button at the top of the page.
-3. Fill in the description of the changes and submit the Pull Request.
+1. Ve a la pagina de tu repositorio en GitHub.
+2. Pulsa `Compare & pull request`.
+3. Completa la descripcion y envia el Pull Request.
 
-We will review your Pull Request as soon as possible and provide feedback or merge as needed.
+Revisaremos tu Pull Request lo antes posible y daremos feedback o fusionaremos cuando corresponda.
 
-## 8. Submit Issues
+## 8. Enviar Issues
 
-If you encounter problems during development, you can provide feedback through GitHub's Issues system.
+Si encuentras problemas durante el desarrollo, puedes reportarlos en Issues de GitHub.
 
-1. Visit the project's [Issues page](https://github.com/Gzh0821/pvzg_site/issues).
+1. Visita la [pagina de Issues](https://github.com/Gzh0821/pvzg_site/issues) del proyecto.
 
-2. Click the `New issue` button.
+2. Pulsa el boton `New issue`.
 
-3. Fill in the problem description and submit.
+3. Describe el problema y envia.
 
-## 9) Participate in discussions
+## 9) Participar en discusiones
 
-We welcome all users to participate in the project's discussions! You can communicate with us in the following ways:
+Damos la bienvenida a todos los usuarios para participar en las discusiones del proyecto. Puedes comunicarte con nosotros de estas formas:
 
-- Participate in Discussions on GitHub.
+- Participar en Discussions de GitHub.
 
-- Participate in discussions on the Discord server.
+- Participar en el servidor de Discord.
 
-Thank you for your support and contribution to this project, and we look forward to working with you to improve this project!
+Gracias por tu apoyo y contribucion. Esperamos colaborar contigo para mejorar este proyecto.

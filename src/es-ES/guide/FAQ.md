@@ -6,93 +6,108 @@ index: true
 order: 2
 ---
 
-## Frequently Asked Game Questions
+<script setup>
+	import { onMounted } from 'vue';
+	onMounted(() => {
+		(window.adsbygoogle = window.adsbygoogle || []).push({});
+	})
+</script>
+
+## Preguntas frecuentes del juego
 
 > [!note]
-> This FaQ is Valid till 0.3.7 version
+> Por favor, lee este FAQ antes de jugar o hacer preguntas. Este FAQ es valido hasta la version 0.7.X.
 >
-> Q&A by @Mola Mola in Discord
+> Preguntas y respuestas por @Mola Mola en Discord
 
-### How do i update?
+<ins class="adsbygoogle"
+	 style="display:block"
+	 data-ad-client="ca-pub-7637695321442015"
+	 data-ad-slot="7113006248"
+	 data-ad-format="auto"
+	 data-full-width-responsive="true">
+</ins>
 
-A: Download the new version from the official Gardendless' website. You can keep/delete the old one if you want to.
+### Como actualizo?
 
-### How do i transfer my progress between versions? (when updating)
+R: Descarga la nueva version desde el sitio oficial de Gardendless. Puedes conservar o borrar la version anterior si quieres.
 
-A: Your save files transfer between versions automatically. Download a new version and play!
+### Como transfiero mi progreso entre versiones? (al actualizar)
 
-### Why is my game crashing/really  slow/doesn't run/laggy/has gray screens?
+R: Tus archivos de guardado se transfieren automaticamente entre versiones. Descarga la nueva version y listo.
 
-A: The game's optimization isn't the best at the moment. You can try closing tabs, but if nothing works, sadly, your device doesn't meet the requirements to run GE.
+### Por que el juego se cierra, va lento, no arranca, se traba o muestra pantallas grises?
 
-### Is modding possible? What can you mod into the game?
+R: La optimizacion del juego aun no es la mejor. Puedes intentar cerrar otras aplicaciones o pestanas, pero si no mejora, es posible que tu dispositivo no cumpla los requisitos para ejecutar GE.
 
-A: With GEPatcher, modding IS possible, however, as of writing this, it's really limited. You cannot change core game features/add new plants, zombies or worlds.
+### Se puede modear? Que cosas se pueden modificar?
 
-### Is there an Android/IOS/Linux port of the game?
+R: Con GEPatcher si es posible modear, pero por ahora es limitado. No puedes cambiar funciones centrales del juego ni agregar plantas, zombis o mundos nuevos.
 
-A: There is currently a fresh Linux port of the game listed on the website. However, you cannot download it on Android/IOS.
+### Hay version para Android/IOS/Linux?
 
-### How do i spawn gravestones/minecarts/puddles/etc in Sandbox mode?
+R: Actualmente hay un port reciente para Linux listado en el sitio web. No hay descarga para Android/IOS.
 
-A: You can't. As of now, you can only spawn potions, plants and zombies in Sandbox mode.
+### Como genero lapidas, vagonetas, charcos, etc. en modo Sandbox?
 
-### How do i get plants with the purple night background?
+R: No se puede. Por ahora en Sandbox solo puedes generar pociones, plantas y zombis.
 
-A: Those are Epic Quest plants, and can only be obtained through epic quests.
+### Como consigo plantas con fondo morado nocturno?
 
-### How do i enter an epic quest?
+R: Son plantas de Epic Quest y solo se consiguen en esas misiones.
 
-A: Inside of a world, there are often sublevels (ex. 14-1). Upon completing them, a portal will open leading to an Epic Quest.
+### Como entro a una Epic Quest?
 
-### The audio is really buggy for me, what do i do?
+R: Dentro de cada mundo suele haber subniveles (por ejemplo, 14-1). Al completarlos, se abre un portal hacia una Epic Quest.
 
-A: There have been numerous attempts to fix it, but if you still have this issue, it may be because of your device specifications.
+### El audio me falla mucho, que puedo hacer?
 
-### Is the game a virus? Why is it triggering my firewall?
+R: Ya se han intentado varias correcciones, pero si el problema continua, puede deberse a las especificaciones de tu dispositivo.
 
-A: No, the game is not a virus, it triggers the firewall because it doesn't have a license. Just click "Read more" and "Run anyway".
+### El juego es un virus? Por que activa el firewall?
 
-### What does the zen garden do?
+R: No, el juego no es un virus. El aviso del firewall aparece porque no tiene firma/licencia reconocida. Pulsa "Read more" y luego "Run anyway".
 
-A: As of now, the Zen Garden does nothing and only exists to obtain marigold (by growing her in zen garden).
+### Para que sirve el Zen Garden?
 
-### Why can i use the powerups/plantfood/maximize my sun for free?
+R: Por ahora el Zen Garden no tiene funcion amplia y existe sobre todo para obtener marigold al cultivarla alli.
 
-A: Then, the "Cheat" option in the settings is enabled for you. If you want an experience without these cheats, you can turn it off in the settings.
+### Por que puedo usar powerups/plantfood/maximizar sol gratis?
 
-### Why are some gem plants not in the shop? How do i get them?
+R: Porque tienes activada la opcion "Cheat" en ajustes. Si quieres una experiencia sin trampas, desactivalo en configuracion.
 
-A: Some gem plants can only be bought from the shop after a certain level in some worlds.
+### Por que algunas plantas de gemas no estan en la tienda? Como se consiguen?
 
-### Why do some sublevels (ex. 22-1) not have an Epic Quest portal?
+R: Algunas plantas de gemas solo aparecen en tienda despues de alcanzar cierto nivel en algunos mundos.
 
-A: Those are just extra levels, they wont get you any plants.
+### Por que algunos subniveles (ej. 22-1) no tienen portal de Epic Quest?
 
-### Why is Ancient Egypt 25/26 suddenly so hard?
+R: Esos son niveles extra; no otorgan plantas.
 
-A: Any level after the Zomboss fight is an expansion level. It's recommended to play them later when you have a sufficient amount of different plants.
+### Por que Ancient Egypt 25/26 se vuelve tan dificil de repente?
 
-### Will leveling get added?
+R: Los niveles despues del combate contra Zomboss son niveles de expansion. Se recomienda jugarlos mas tarde, cuando tengas una variedad mayor de plantas.
 
-A: No. Leveling won't be added to Gardendless.
+### Se va a anadir sistema de niveles?
 
-### Can Gardendless be played on Mac/Linux?
+R: No. Gardendless no tendra sistema de leveo.
 
-A: Yes, you can play Gardendless on Mac/Linux using Winebottler or Docker.
+### Se puede jugar Gardendless en Mac/Linux?
 
-### How do i get my save data in Gardendless?
+R: Si, puedes jugar en Mac/Linux usando Winebottler o Docker.
 
-A: To get your save data, you have to enter the game, in the main menu, click on your profile (your name), and click the button "Export".
+### Como obtengo mis datos de guardado en Gardendless?
 
-### What is the save editor? How do I access it?
+R: Entra al juego, en el menu principal abre tu perfil (tu nombre) y pulsa el boton "Export".
 
-A: Save editor lets you change different values in your save file, such as coins, gems or unlocked plants. The save editor is located in the website, in useful tools category.
+### Que es el save editor? Como accedo?
 
-## NOTES
+R: El save editor permite cambiar valores del guardado, como monedas, gemas o plantas desbloqueadas. Se encuentra en el sitio web, dentro de la categoria de herramientas utiles.
 
-The game has 4 difficulties, A, B, C, D, going in order from A being the hardest to D being the easiest. If the game is weirdly hard for you, it may be because the default difficulty is A.
+## NOTAS
 
-If a level is missing some features/zomboss, then its because it's not fully developed yet.
+El juego tiene 4 dificultades: A, B, C y D. A es la mas dificil y D la mas facil. Si el juego te parece demasiado dificil, probablemente estes en dificultad A por defecto.
 
-Some plants cannot be obtained without cheating right now: Resistant Radish, Heavenly Peach, Floawerpot, Skyshooter, Moonbean, Shooting Starfruit, Dragon Bruit.
+Si a un nivel le faltan funciones o combate de Zomboss, es porque aun no esta completamente desarrollado.
+
+Actualmente algunas plantas no se pueden obtener sin trampas: Resistant Radish, Heavenly Peach, Floawerpot, Skyshooter, Moonbean, Shooting Starfruit, Dragon Bruit.
