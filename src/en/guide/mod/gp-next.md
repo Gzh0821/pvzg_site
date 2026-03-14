@@ -63,19 +63,18 @@ com.pvzge.app/
 
 ### Directory Roles
 
-- **`features/` directory**: Put files like `PlantFeatures.json`, `ZombieFeatures.json`, etc., here. These usually handle metadata like families, base unlocks, etc.
-- **`objects/` directory**: Put files like `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, `StoreCommodityFeatures.json`, etc., here. These files usually handle actual combat values (HP, damage, cooldown), almanac descriptions, and store lists.
+- **`features/` directory**: Put files like `PlantFeatures.json`, `ZombieFeatures.json`, `StoreCommodityFeatures.json`, `MintObtainRoute.json`, `WorldmapFeatures.json`, etc., here. These handle entity metadata such as families, base unlocks, worlds, and store item pricing.
+- **`objects/` directory**: Put files like `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, etc., here. These files handle actual combat values (HP, damage, cooldown) and almanac descriptions.
 - **`levels/` directory**: Put custom levels here. The filename must match the in-game level ID exactly (e.g., `egypt1.json`).
 
 ## JSON Merge Logic
 
 Some developers are accustomed to copying the *entire* source file content, which can easily lead to the loss of other fields due to game updates.
 
-GP-Next uses a deep merge mechanism. **You only need to write the fields you want to modify in the JSON (for some fields with list values, you may need to provide the complete list for correct overwriting)**, and the remaining unmentioned fields will remain unchanged.
+GP-Next uses a deep merge mechanism. **You only need to write the fields you want to modify**, and the remaining unmentioned fields will remain unchanged. Notably, **array fields in your patch always fully replace the target array** — they are not merged by index. If you need to change an array field (e.g. the zombie pool `Basic_Zombie`, or the `PLANTS` unlock list), provide the complete new array.
 
-- **For Features (`PlantFeatures`, `ZombieFeatures`, etc.)**: Entities are matched by `CODENAME`. Only the properties you provide will overwrite the vanilla ones.
+- **For Features (`PlantFeatures`, `ZombieFeatures`, `StoreCommodityFeatures`, etc.)**: Entities are matched by an identifier field. Most Features files use `CODENAME`; `StoreCommodityFeatures` uses `CommodityName`; `MintObtainRoute` uses `Family`. Only the properties you provide will overwrite the vanilla ones.
 - **For Objects (`PlantProps`, `PlantAlmanac`, etc.)**: Entities are matched by the first entry in their `aliases` array. Only the properties you provide inside `objdata` will overwrite the vanilla ones.
-- **For the Store (`StoreCommodityFeatures`)**: This uses a shallow merge to replace the store category arrays.
 - **For Levels (`levels/*.json`)**: This is the exception. Level files are always **completely replaced**.
 
 **Example: Safely modifying Peashooter's SunCost and Cooldown only**

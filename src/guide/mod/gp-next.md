@@ -63,19 +63,18 @@ com.pvzge.app/
 
 ### 文件夹职能说明
 
-- **`features/` 目录**：用于放置 `PlantFeatures.json`、`ZombieFeatures.json` 等文件。这些文件主要用于植物/僵尸的元数据（属性基类、世界解锁、家族等）。
-- **`objects/` 目录**：用于放置 `PlantProps.json`、`ZombieProps.json`、`PlantAlmanac.json`、`StoreCommodityFeatures.json` 等文件。这些通常涉及战斗数值（血量、伤害、冷却等）、图鉴展示描述以及商店商品列表。
+- **`features/` 目录**：用于放置 `PlantFeatures.json`、`ZombieFeatures.json`、`StoreCommodityFeatures.json`、`MintObtainRoute.json`、`WorldmapFeatures.json` 等文件。这些文件主要用于植物/僵尸的元数据（属性基类、世界解锁、家族等），以及商店商品的定价配置。
+- **`objects/` 目录**：用于放置 `PlantProps.json`、`ZombieProps.json`、`PlantAlmanac.json` 等文件。这些通常涉及战斗数值（血量、伤害、冷却等）以及图鉴展示描述。
 - **`levels/` 目录**：用于放置关卡文件，文件名必须与游戏内关卡 ID 一致（例如 `egypt1.json`）。
 
 ## 数据合并逻辑
 
 部分开发者习惯把整个源文件内容全部复制过来，这非常容易因为游戏更新而导致其他字段丢失。
 
-GP-Next 采用了深度合并（Deep Merge）机制。**只需要在 JSON 中写出你要修改的字段即可(部分值为列表的字段可能需要提供完整列表才能正确覆盖)**，其余未提及的字段将保持不变。
+GP-Next 采用了深度合并（Deep Merge）机制。**只需要在 JSON 中写出你要修改的字段即可**，其余未提及的字段将保持不变。特别地，**JSON 中包含的数组类型字段会被完整替换**，而非按索引合并——如果需要修改某个数组字段（例如僵尸池 `Basic_Zombie`、植物解锁列表 `PLANTS`），需提供完整的新数组。
 
-- **对于 Features (`PlantFeatures`, `ZombieFeatures` 等)**：通过你在 JSON 中提供的 `CODENAME` 来定位实体，只覆盖你填写的对应的值。
+- **对于 Features (`PlantFeatures`, `ZombieFeatures`, `StoreCommodityFeatures` 等)**：通过标识符字段定位条目，只覆盖你填写的字段。大多数 Features 文件使用 `CODENAME` 作为标识符；`StoreCommodityFeatures` 使用 `CommodityName`；`MintObtainRoute` 使用 `Family`。
 - **对于 Objects (`PlantProps`, `PlantAlmanac` 等)**：通过你在 JSON 数组里填写的第一个 `aliases` 来定位实体，只覆盖你填写的对应的值。
-- **对于 商店 (`StoreCommodityFeatures`)**：按照商品分类浅层合并。
 - **对于 关卡 (`levels/*.json`)**：这是一个例外，关卡文件采取**完全替换**逻辑.
 
 **示例：只修改豌豆射手阳光和冷却**
