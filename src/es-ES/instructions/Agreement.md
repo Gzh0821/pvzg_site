@@ -11,28 +11,28 @@ comment: false
 
 Bienvenido a "PvZ2 Gardendless". Antes de descargar, usar la version online o utilizar este juego en cualquier forma, lee cuidadosamente los siguientes terminos.
 
-- License Agreement
+- Acuerdo de licencia
 
-This game is only for personal learning and communication. Without written permission from the copyright owner, you may not modify, copy, distribute, or use this game in any form.
+Este juego es solo para aprendizaje personal e intercambio entre usuarios. Sin autorizacion escrita del titular de derechos, no puedes modificar, copiar, distribuir ni usar este juego en ninguna forma.
 
-- Disclaimer
+- Exencion de responsabilidad
 
-The game is provided for entertainment and personal use only. The creators are not responsible for any direct or indirect losses caused by the use of this game.
+El juego se proporciona unicamente para entretenimiento y uso personal. Los creadores no se hacen responsables por perdidas directas o indirectas causadas por el uso de este juego.
 
-- Intellectual Property
+- Propiedad intelectual
 
-All plants, zombies, and related materials in the game belong to their original creators or copyright owners.
+Todas las plantas, zombis y materiales relacionados del juego pertenecen a sus creadores originales o titulares de derechos.
 
-- Prohibition of Commercial Use
+- Prohibicion de uso comercial
 
-Without written permission from the copyright owner, commercial use of this game, including but not limited to sales, advertising, sponsorship, etc., is strictly prohibited.
+Sin autorizacion escrita del titular de derechos, esta estrictamente prohibido el uso comercial de este juego, incluyendo, entre otros, venta, publicidad, patrocinio, etc.
 
-- Modification and distribution prohibited
+- Prohibicion de modificacion y redistribucion
 
-You may forward or share this game in its original form, but you may not modify, edit or repackage the game files in any way.
+Puedes reenviar o compartir este juego en su forma original, pero no puedes modificar, editar ni reempaquetar los archivos del juego de ninguna manera.
 
-It is strictly prohibited to modify any part of this game (including but not limited to the game itself, resource files, code, etc.) before distribution, dissemination or release. Any form of commercial secondary distribution or sale is strictly prohibited.
+Esta estrictamente prohibido modificar cualquier parte de este juego (incluyendo, entre otros, el propio juego, archivos de recursos, codigo, etc.) antes de su distribucion, difusion o publicacion. Cualquier forma de redistribucion o venta comercial secundaria esta estrictamente prohibida.
 
-- Other Agreements
+- Otros acuerdos
 
-If you download, use the online version, or use this game in any form, you agree to comply with this agreement and any other relevant agreements.
+Si descargas, usas la version en linea o utilizas este juego en cualquier forma, aceptas cumplir este acuerdo y cualquier otro acuerdo relacionado.

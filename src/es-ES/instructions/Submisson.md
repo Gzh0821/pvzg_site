@@ -11,46 +11,46 @@ comment: false
 
 Gracias por tu entusiasmo y apoyo a PvZ2: Gardendless. Para regular mejor el envio de niveles personalizados y mods, y para asegurar un uso conforme y seguro del contenido enviado por jugadores, lee y acepta los terminos siguientes. Al subir o enviar niveles/mods por canales como el sitio web o el servidor de Discord, confirmas tu aceptacion total de este acuerdo.
 
-### 1. Authorization Statement
+### 1. Declaracion de autorizacion
 
-You agree that any custom levels and mods uploaded or submitted to the PvZ2: Gardendless development team (hereinafter referred to as "the Team") automatically grant the Team and its partners the following rights:
+Aceptas que cualquier nivel personalizado y mod que subas o envies al equipo de desarrollo de PvZ2: Gardendless (en adelante, "el Equipo") otorga automaticamente al Equipo y a sus socios los siguientes derechos:
 
-- To publicize, display, and promote your work in any form, including but not limited to showcasing it on the website, Discord server, social media, livestream platforms, and other channels.
+- Publicar, mostrar y promocionar tu trabajo en cualquier forma, incluyendo, entre otros, su presentacion en el sitio web, servidor de Discord, redes sociales, plataformas de streaming y otros canales.
 
-- To freely use, modify, distribute, and republish your levels and mods, provided such actions comply with applicable laws and regulations.
+- Usar, modificar, distribuir y volver a publicar libremente tus niveles y mods, siempre que dichas acciones cumplan con las leyes y regulaciones aplicables.
 
-- To integrate your submitted levels and mods into any in-game features, including but not limited to level/mod challenges, level/mod creation tools, and other gameplay expansions.
+- Integrar los niveles y mods enviados en funciones del juego, incluyendo, entre otros, desafios de nivel/mod, herramientas de creacion de niveles/mods y otras expansiones de jugabilidad.
 
-- To display, publish, promote, and share your creations with other players in any form.
+- Mostrar, publicar, promocionar y compartir tus creaciones con otros jugadores en cualquier forma.
 
-### 2. Open-Source Licensing
+### 2. Licenciamiento de codigo abierto
 
-Your submitted custom levels and mods will automatically be open-sourced under the MIT License, permitting the Team and all other users to freely use your work under the terms defined by the license.
-You agree that others may copy, modify, merge, publish, create derivative works, distribute, sublicense, and/or sell the content in accordance with the license.
+Tus niveles y mods enviados se abriran automaticamente bajo la licencia MIT, permitiendo al Equipo y a otros usuarios usar libremente tu trabajo segun los terminos de dicha licencia.
+Aceptas que otros puedan copiar, modificar, fusionar, publicar, crear obras derivadas, distribuir, sublicenciar y/o vender el contenido conforme a la licencia.
 
-### 3. Warranties and Liability
+### 3. Garantias y responsabilidad
 
-You represent and warrant that you own or have obtained all necessary rights to upload the levels and mods, and that the content does not infringe upon any third party’s intellectual property, privacy rights, or other legal rights.
-You assume full responsibility for any legal disputes or claims arising from your submissions and agree to indemnify and hold harmless the Team and its partners in such cases.
+Declaras y garantizas que posees u obtuviste todos los derechos necesarios para subir niveles y mods, y que el contenido no infringe la propiedad intelectual, privacidad u otros derechos legales de terceros.
+Asumes plena responsabilidad por cualquier disputa o reclamacion legal derivada de tus envios, y aceptas eximir de responsabilidad e indemnizar al Equipo y sus socios en tales casos.
 
-### 4. Modifications and Termination
+### 4. Modificaciones y terminacion
 
-The Team reserves the right to modify this agreement and will notify players of changes through appropriate channels. Continued submissions after modifications constitute acceptance of the revised terms.
-You may cease submitting custom levels and mods to the Team at any time. However, previously submitted content remains subject to this agreement, and all granted authorizations are non-revocable.
+El Equipo se reserva el derecho de modificar este acuerdo y notificara a los jugadores sobre los cambios por canales apropiados. Continuar enviando contenido despues de una modificacion constituye aceptacion de los terminos revisados.
+Puedes dejar de enviar niveles personalizados y mods al Equipo en cualquier momento. Sin embargo, el contenido enviado previamente seguira sujeto a este acuerdo, y todas las autorizaciones otorgadas seran irrevocables.
 
-### 5. Effective Date
+### 5. Fecha de entrada en vigor
 
-This agreement takes effect automatically upon your submission of levels or mods and remains valid indefinitely.
-By submitting custom levels and mods, you confirm that you have read and agreed to the above terms.
+Este acuerdo entra en vigor automaticamente al enviar niveles o mods y permanece vigente de forma indefinida.
+Al enviar niveles personalizados y mods, confirmas que has leido y aceptado los terminos anteriores.
 
-**The PvZ2: Gardendless Development Team**
+**Equipo de desarrollo de PvZ2: Gardendless**
 
-## Appendix: MIT License
+## Anexo: Licencia MIT
 
 Copyright `<YEAR>` `<COPYRIGHT HOLDER>`
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Por la presente se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de este software y de los archivos de documentacion asociados (el "Software"), para usar el Software sin restriccion, incluyendo sin limitacion los derechos de usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y/o vender copias del Software, y permitir a las personas a quienes se les proporcione el Software hacer lo mismo, sujeto a las siguientes condiciones:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+El aviso de copyright anterior y este aviso de permiso deben incluirse en todas las copias o partes sustanciales del Software.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+EL SOFTWARE SE PROPORCIONA "AS IS", SIN GARANTIA DE NINGUN TIPO, EXPRESA O IMPLICITA, INCLUYENDO, ENTRE OTRAS, GARANTIAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPOSITO PARTICULAR Y NO INFRACCION. EN NINGUN CASO LOS AUTORES O TITULARES DEL COPYRIGHT SERAN RESPONSABLES DE NINGUNA RECLAMACION, DANOS U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCION CONTRACTUAL, EXTRACONTRACTUAL O DE CUALQUIER OTRO TIPO, DERIVADA DE, O RELACIONADA CON, EL SOFTWARE O EL USO U OTROS TRATOS DEL SOFTWARE.

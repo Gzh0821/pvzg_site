@@ -13,46 +13,46 @@ next: false
 
 Esta Politica de privacidad de PvZ Gardendless ("we," "us," o "our") describe como y por que podemos acceder, recopilar, almacenar, usar y/o compartir ("process") tu informacion personal cuando utilizas nuestros servicios ("Services"), incluyendo cuando:
 
-- Visit our website at pvzge.com, or any website of ours that links to this Privacy Notice
-- Engage with us in other related ways, including any sales, marketing, or events
+- Visitas nuestro sitio web en pvzge.com, o cualquier otro sitio nuestro que enlace a este aviso de privacidad.
+- Interactuas con nosotros de otras formas relacionadas, incluyendo ventas, marketing o eventos.
 
 **Preguntas o inquietudes?** Leer este aviso te ayudara a entender tus derechos y opciones de privacidad. Somos responsables de las decisiones sobre el tratamiento de tus datos personales. Si no estas de acuerdo con nuestras politicas y practicas, no uses nuestros servicios. Si aun tienes dudas, contactanos en pr@ms.pvzge.com.
 
 ### **RESUMEN DE PUNTOS CLAVE**
 
-_**This summary provides key points from our Privacy Notice, but you can find out more details about any of these topics by using our table of contents to find the section you are looking for.**_
+_**Este resumen presenta puntos clave de nuestro aviso de privacidad, pero puedes encontrar mas detalles de cada tema usando la tabla de contenidos para ir a la seccion correspondiente.**_
 
-**What personal information do we process?** When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use.
+**Que informacion personal procesamos?** Cuando visitas, usas o navegas nuestros Services, podemos procesar informacion personal segun como interactues con nosotros y con los Services, las decisiones que tomes y los productos y funciones que utilices.
 
-**Do we process any sensitive personal information?** Some of the information may be considered "special" or "sensitive" in certain jurisdictions, for example your racial or ethnic origins, sexual orientation, and religious beliefs. We do not process sensitive personal information.
+**Procesamos informacion personal sensible?** Parte de la informacion puede considerarse "especial" o "sensible" en ciertas jurisdicciones, por ejemplo origen racial o etnico, orientacion sexual y creencias religiosas. No procesamos informacion personal sensible.
 
-**Do we collect any information from third parties?** We do not collect any information from third parties.
+**Recopilamos informacion de terceros?** No recopilamos informacion de terceros.
 
-**How do we process your information?** We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so.
+**Como procesamos tu informacion?** Procesamos tu informacion para prestar, mejorar y administrar nuestros Services, comunicarnos contigo, prevenir fraude y cumplir la ley. Tambien podemos procesarla para otros fines con tu consentimiento. Solo procesamos tu informacion cuando tenemos una base legal valida.
 
-**In what situations and with which types of parties do we share personal information?** We may share information in specific situations and with specific categories of third parties.
+**En que situaciones y con que tipos de partes compartimos informacion personal?** Podemos compartir informacion en situaciones especificas y con categorias concretas de terceros.
 
-**How do we keep your information safe?** We have adequate organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information.
+**Como mantenemos segura tu informacion?** Contamos con procesos y procedimientos tecnicos y organizativos adecuados para proteger tu informacion personal. Sin embargo, ninguna transmision electronica por internet ni tecnologia de almacenamiento puede garantizar seguridad al 100%, por lo que no podemos prometer que hackers, ciberdelincuentes u otros terceros no autorizados no puedan vulnerar nuestra seguridad y recopilar, acceder, robar o modificar indebidamente tu informacion.
 
-**What are your rights?** Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information..
+**Cuales son tus derechos?** Segun tu ubicacion geografica, la normativa aplicable de privacidad puede otorgarte determinados derechos respecto de tu informacion personal.
 
-**How do you exercise your rights?** The easiest way to exercise your rights is by submitting a data subject access request, or by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.
+**Como ejercer tus derechos?** La forma mas sencilla de ejercer tus derechos es enviar una solicitud de acceso del titular de datos o ponerte en contacto con nosotros. Revisaremos y atenderemos cualquier solicitud conforme a las leyes aplicables de proteccion de datos.
 
-## WHAT INFORMATION DO WE COLLECT?
+## QUE INFORMACION RECOPILAMOS?
 
-#### Personal information you disclose to us
+#### Informacion personal que nos proporcionas
 
-_**In Short:** We collect personal information that you provide to us._
+_**En resumen:** Recopilamos la informacion personal que nos proporcionas._
 
-We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.
+Recopilamos informacion personal que nos proporcionas voluntariamente cuando muestras interes en obtener informacion sobre nosotros o nuestros productos y Services, cuando participas en actividades de los Services o cuando nos contactas por cualquier otro medio.
 
-**Sensitive Information.** We do not process sensitive information.
+**Informacion sensible.** No procesamos informacion sensible.
 
-All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.
+Toda la informacion personal que nos proporciones debe ser veraz, completa y precisa, y debes notificarnos cualquier cambio en dicha informacion.
 
-#### Information automatically collected
+#### Informacion recopilada automaticamente
 
-_**In Short:** Some information — such as your Internet Protocol (IP) address and/or browser and device characteristics — is collected automatically when you visit our Services._
+_**En resumen:** Parte de la informacion, como tu direccion de Protocolo de Internet (IP) y/o caracteristicas del navegador y dispositivo, se recopila automaticamente cuando visitas nuestros Services._
 
 We automatically collect certain information when you visit, use, or navigate the Services. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services, and other technical information. This information is primarily needed to maintain the security and operation of our Services, and for our internal analytics and reporting purposes.
 

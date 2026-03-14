@@ -11,4 +11,4 @@ order: 3
 
 Esta página web es un proyecto de código abierto que usa el protocolo `Apache 2.0`, aceptamos todo tipo de ayuda y comentarios por parte de la comunidad.
 
-If you are willing to contribute your code, please read the [website development guide](../guide/webGuide.md) and submit a PR to the [project repository](https://github.com/Gzh0821/pvzg_site).
+Si deseas contribuir con tu codigo, por favor lee la [guia de desarrollo del sitio web](../guide/webGuide.md) y envia un PR al [repositorio del proyecto](https://github.com/Gzh0821/pvzg_site).
