@@ -109,6 +109,25 @@ onMounted(() => {
 
 </template>
 
+## ::brands:apple:: macOS 平台
+
+> [!warning]
+> 该版本仅支持 Apple Silicon (arm64) 设备，且需要 macOS 11.0 及以上系统。如果 macOS 提示“XXX 已损坏，无法打开。您应该将它移到废纸篓。”，可按以下步骤处理：
+>
+> 1. 先在终端输入（不要立即执行）：<code>sudo xattr -r -d com.apple.quarantine </code>
+> 2. 将游戏程序拖拽到终端窗口，让系统自动补全应用路径。
+> 3. 确认路径无误后按回车执行。
+>
+> 若仍无法打开，可在“系统设置 > 隐私与安全性”中允许该应用后再试。
+
+<template v-if="gameInfoData?.MacOSDownload?.Storage">
+
+### 本地下载 ::cloud-arrow-down::
+
+下载链接：<a :href="gameInfoData.MacOSDownload.Storage" target="_blank">点击进入</a>
+
+</template>
+
 ## ::brands:linux:: Linux/其它平台
 
 > [!info]

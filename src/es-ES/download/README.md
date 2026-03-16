@@ -110,6 +110,25 @@ Enlace de descarga: <a :href="gameInfoData.Download.Quark" target="_blank">haga 
 
 </template>
 
+## ::brands:apple:: Plataforma macOS
+
+> [!warning]
+> Esta versión solo es compatible con dispositivos Apple Silicon (arm64) y requiere macOS 11.0 o superior. Si macOS muestra "XXX está dañado y no se puede abrir. Deberías moverlo a la Papelera.", siga estos pasos:
+>
+> 1. Primero escriba esto en Terminal (todavía no lo ejecute): <code>sudo xattr -r -d com.apple.quarantine </code>
+> 2. Arrastre la app del juego a la ventana de Terminal para autocompletar la ruta.
+> 3. Verifique la ruta y pulse Enter para ejecutar.
+>
+> Si aún no abre, permita la app en "Configuración del sistema > Privacidad y seguridad" y vuelva a intentarlo.
+
+<template v-if="gameInfoData?.MacOSDownload?.Storage">
+
+### Descarga local ::cloud-arrow-down::
+
+Enlace de descarga: <a :href="gameInfoData.MacOSDownload.Storage" target="_blank">haga clic para ingresar</a>
+
+</template>
+
 ## ::brands:linux:: Linux/Otras plataformas
 
 > [!info]
