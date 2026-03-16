@@ -183,6 +183,9 @@ MyFirstMod/
 > [!tip]
 > `lang.json` 与其它补丁一样支持深度合并。你只需要提供要覆盖的文本节点，不需要复制全部语言数据。
 
+> [!note]
+> 不仅是 `jsons/lang/lang.json`，其它 patch JSON 里原本就带多语言文本结构的字段（例如 `objects/PlantAlmanac.json` 中的词条文本）也可以直接增加对应语言字段（如 `es`、`ru`、`ja`）来实现翻译。
+
 ## 手动编辑与数据层管理
 
 GP-Next 提供了一个强大的**数据（Data）**面板。通过它，你可以在游戏运行时实时查阅所有的游戏内部数据结构（例如 `PlantProps`、`ZombieProps`），甚至可以直接点击编辑。

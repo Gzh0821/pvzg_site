@@ -184,6 +184,9 @@ MyFirstMod/
 > [!tip]
 > `lang.json` usa la misma logica de merge profundo que otros parches. Solo necesitas incluir los nodos de texto que quieras sobrescribir.
 
+> [!note]
+> Esto no se limita a `jsons/lang/lang.json`. Si otros patch JSON ya contienen nodos de texto multilingue (por ejemplo textos de entradas en `objects/PlantAlmanac.json`), tambien puedes agregar alli campos de idiomas adicionales (`es`, `ru`, `ja`, etc.) para traducir.
+
 ## Ediciones manuales y pestana Data
 
 GP-Next incluye la pestana **Data** para explorar datos del juego en tiempo real.

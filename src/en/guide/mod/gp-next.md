@@ -183,6 +183,10 @@ MyFirstMod/
 > [!tip]
 > `lang.json` follows the same deep-merge behavior as other patches. You only need to provide the text nodes you want to override.
 
+> [!note]
+> This is not limited to `jsons/lang/lang.json`. If other patch JSON files already contain multilingual text nodes (for example entry text in `objects/PlantAlmanac.json`), you can also add extra language fields (`es`, `ru`, `ja`, etc.) directly there for translation.
+
+
 ## Manual Edits and The Data Tab
 
 GP-Next includes a **Data** tab that allows you to browse all in-game data (such as `PlantProps`, `ZombieProps`, etc.) in real-time.
