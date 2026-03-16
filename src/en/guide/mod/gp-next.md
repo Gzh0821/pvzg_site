@@ -136,6 +136,53 @@ If you want to package your mod to share with others, follow these simple steps:
 5. **Add a Cover Image (Optional)**: Put a square image under 128x128 named `thumbnail.png` (or `thumbnail.ico`) inside the `MyFirstMod` folder next to `pack.json`.
 6. **Zip and Share (Optional)**: Right-click the `MyFirstMod` folder and compress it into `MyFirstMod.zip` (Ensure the zip directly contains `pack.json` without nested root folders). You can now share this `.zip` file, and other players just need to put the zip into their `packs/` directory.
 
+## Multi-language Setup (Language Pack)
+
+If you want one mod to provide multiple languages (for example Chinese, English, Spanish, and Russian), add `jsons/lang/lang.json` (or `lang.json5`) to your datapack.
+
+### Directory Location
+
+```text
+MyFirstMod/
+├── pack.json
+└── jsons/
+    └── lang/
+        └── lang.json
+```
+
+### Minimal Example
+
+```json
+{
+  "_languages": [
+    { "code": "es", "name": "Español", "isCJK": false },
+    { "code": "ru", "name": "Русский", "isCJK": false }
+  ],
+  "LoadingTips": [
+    {
+      "en": "Sun is your core resource.",
+      "zh": "Sun is your core resource.",
+      "es": "El sol es tu recurso principal.",
+      "ru": "Солнце - ваш основной ресурс."
+    }
+  ]
+}
+```
+
+- `_languages`: Optional. Registers extra language options in game settings (in addition to default `en` / `zh`).
+- Text nodes: Put `en`, `zh`, `es`, `ru`, etc. side by side in the same entry.
+- Language code: Use standard codes such as `es`, `ru`, `ja`.
+
+### Apply Steps
+
+1. Place the datapack containing `jsons/lang/lang.json` into `gp-next/packs/`.
+2. Open the in-game GP-Next panel, go to **Patcher**, then click **Save & Reload** (or restart the game).
+3. Open game settings and switch language to one of the languages declared in `_languages`.
+4. Return to the game and verify text rendering.
+
+> [!tip]
+> `lang.json` follows the same deep-merge behavior as other patches. You only need to provide the text nodes you want to override.
+
 ## Manual Edits and The Data Tab
 
 GP-Next includes a **Data** tab that allows you to browse all in-game data (such as `PlantProps`, `ZombieProps`, etc.) in real-time.

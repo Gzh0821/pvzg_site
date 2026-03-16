@@ -136,6 +136,53 @@ GP-Next 采用了深度合并（Deep Merge）机制。**只需要在 JSON 中写
 5. **添加封面（可选）**：将一张小于 128x128 的正方形图片重命名为 `thumbnail.png`(或`thumbnail.ico`)，放入 `MyFirstMod` 文件夹下。
 6. **打包与分享（可选）**：右键点击 `MyFirstMod` 文件夹，将其压缩为 `MyFirstMod.zip`（确保压缩包**内**直接包含 `pack.json` 而不是再套一层文件夹）。现在你可以将这个 `.zip` 文件分享给其他玩家，而玩家只需把这个 ZIP 放进他们的 `packs/` 目录即可游玩。
 
+## 设置多语言（Language Pack）
+
+如果你希望给同一个 Mod 同时提供多种语言文本（例如中文、英文、西语、俄语），请在数据包中加入 `jsons/lang/lang.json`（或 `lang.json5`）文件。
+
+### 目录位置
+
+```text
+MyFirstMod/
+├── pack.json
+└── jsons/
+    └── lang/
+        └── lang.json
+```
+
+### 最小示例
+
+```json
+{
+  "_languages": [
+    { "code": "es", "name": "Español", "isCJK": false },
+    { "code": "ru", "name": "Русский", "isCJK": false }
+  ],
+  "LoadingTips": [
+    {
+      "en": "Sun is your core resource.",
+      "zh": "阳光是你的核心资源。",
+      "es": "El sol es tu recurso principal.",
+      "ru": "Солнце - ваш основной ресурс."
+    }
+  ]
+}
+```
+
+- `_languages`：可选。用于在游戏设置里注册额外语言（除了默认的 `en` / `zh`）。
+- 文本节点：在同一个条目下并列填写 `en`、`zh`、`es`、`ru` 等字段。
+- 语言码：建议使用标准代码（如 `es`、`ru`、`ja`）。
+
+### 生效步骤
+
+1. 将包含 `jsons/lang/lang.json` 的数据包放入 `gp-next/packs/`。
+2. 打开游戏内 GP-Next 面板，进入 **Patcher**，点击 **Save & Reload**（或重新启动游戏）。
+3. 进入游戏设置中的语言选项，切换到你在 `_languages` 中声明的语言。
+4. 回到游戏验证文本是否按预期显示。
+
+> [!tip]
+> `lang.json` 与其它补丁一样支持深度合并。你只需要提供要覆盖的文本节点，不需要复制全部语言数据。
+
 ## 手动编辑与数据层管理
 
 GP-Next 提供了一个强大的**数据（Data）**面板。通过它，你可以在游戏运行时实时查阅所有的游戏内部数据结构（例如 `PlantProps`、`ZombieProps`），甚至可以直接点击编辑。

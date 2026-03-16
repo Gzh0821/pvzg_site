@@ -137,6 +137,53 @@ Para crear un datapack, crea una carpeta dentro de `packs/` e incluye un `pack.j
 5. (Opcional) Agrega `thumbnail.png` o `thumbnail.ico`.
 6. (Opcional) Comprime a `MyFirstMod.zip` y compartelo.
 
+## Configurar varios idiomas (Language Pack)
+
+Si quieres que un mismo mod incluya varios idiomas (por ejemplo chino, ingles, espanol y ruso), agrega `jsons/lang/lang.json` (o `lang.json5`) dentro del datapack.
+
+### Ubicacion de archivos
+
+```text
+MyFirstMod/
+├── pack.json
+└── jsons/
+    └── lang/
+        └── lang.json
+```
+
+### Ejemplo minimo
+
+```json
+{
+  "_languages": [
+    { "code": "es", "name": "Español", "isCJK": false },
+    { "code": "ru", "name": "Русский", "isCJK": false }
+  ],
+  "LoadingTips": [
+    {
+      "en": "Sun is your core resource.",
+      "zh": "阳光是你的核心资源。",
+      "es": "El sol es tu recurso principal.",
+      "ru": "Солнце - ваш основной ресурс."
+    }
+  ]
+}
+```
+
+- `_languages`: opcional. Registra idiomas adicionales en la configuracion del juego (ademas de `en` / `zh`).
+- Nodos de texto: en la misma entrada, agrega campos `en`, `zh`, `es`, `ru`, etc.
+- Codigo de idioma: usa codigos estandar como `es`, `ru`, `ja`.
+
+### Pasos para aplicar
+
+1. Coloca el datapack que contiene `jsons/lang/lang.json` dentro de `gp-next/packs/`.
+2. Abre el panel GP-Next en el juego, ve a **Patcher** y pulsa **Save & Reload** (o reinicia el juego).
+3. En los ajustes del juego, cambia el idioma a uno de los idiomas declarados en `_languages`.
+4. Vuelve al juego y verifica la visualizacion del texto.
+
+> [!tip]
+> `lang.json` usa la misma logica de merge profundo que otros parches. Solo necesitas incluir los nodos de texto que quieras sobrescribir.
+
 ## Ediciones manuales y pestana Data
 
 GP-Next incluye la pestana **Data** para explorar datos del juego en tiempo real.
