@@ -24,9 +24,17 @@ actions:
     link: ./download/
     type: primary
 
+  - text: Играть онлайн
+    icon: circle-play
+    link: https://play.pvzge.com
+
   - text: Сообщество
     icon: comment
     link: ./contribution/
+
+  - text: Поддержать
+    icon: hand-holding-heart
+    link: ./contribution/Sponsor
 
 highlights:
   - bgImage: /assets/image/background.webp

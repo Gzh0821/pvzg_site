@@ -28,6 +28,12 @@ next: false
 >
 > 您可以为同一个按键绑定多个功能，但请注意，某些功能可能会冲突或无法正常工作。
 
+## 相关工具与教程
+
+- 存档编辑与资源修改：[存档编辑器](./save-editor.md)
+- 植物与僵尸 ID 查询：[在线图鉴](../almanac/)
+- 补丁与数据包制作：[MOD 教程](../guide/mod/)
+
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7637695321442015"

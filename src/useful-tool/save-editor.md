@@ -30,6 +30,12 @@ next: false
 >
 > 存档编辑器不会修改未在下方出现的存档数据。
 
+## 相关工具与教程
+
+- 键位调整工具：[键位绑定器](./keybind-editor.md)
+- 植物与僵尸 ID 查询：[在线图鉴](../almanac/)
+- 补丁与数据包制作：[MOD 教程](../guide/mod/)
+
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7637695321442015"

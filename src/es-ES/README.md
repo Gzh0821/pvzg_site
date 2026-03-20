@@ -24,9 +24,17 @@ actions:
     link: ./download/
     type: primary
 
+  - text: Jugar en linea
+    icon: circle-play
+    link: https://play.pvzge.com
+
   - text: Comunidad
     icon: comment
     link: ./contribution/
+
+  - text: Patrocinar
+    icon: hand-holding-heart
+    link: ./contribution/Sponsor
 
 highlights:
   - bgImage: /assets/image/background.webp

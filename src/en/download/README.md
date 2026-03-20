@@ -49,6 +49,14 @@ onMounted(() => {
 
 <span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
 
+## Recommended Next Steps
+
+- Troubleshooting and common issues: [FAQ](../guide/FAQ.md)
+- System requirements and best settings: [Recommended Configuration](../guide/requirement.md)
+- Find plant/zombie IDs and codenames: [Online Almanac](../almanac/)
+- Learn patching and localization: [MOD Guide](../guide/mod/)
+- Download official/community levels: [Creator's Garden](../creator-garden/)
+
 ## Changelog
 
 <template v-if="gameInfoData?.EnNewFeatures">

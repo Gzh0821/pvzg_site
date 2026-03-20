@@ -49,6 +49,14 @@ onMounted(() => {
 
 <span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
 
+## 下载后下一步推荐
+
+- 新手问题排查：[FAQ](../guide/FAQ.md)
+- 系统要求与推荐配置：[推荐配置](../guide/requirement.md)
+- 查植物与僵尸信息：[在线图鉴](../almanac/)
+- 学习打补丁与多语言：[MOD 教程](../guide/mod/)
+- 下载社区/官方关卡：[创意花园](../creator-garden/)
+
 ## 更新日志
 
 <template v-if="gameInfoData?.NewFeatures">

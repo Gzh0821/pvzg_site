@@ -30,6 +30,12 @@ next: false
 >
 > The save editor will not modify the save data that does not appear below.
 
+## Related Tools and Guides
+
+- Adjust key configuration: [Keybind Editor](./keybind-editor.md)
+- Check plant and zombie IDs: [Online Almanac](../almanac/)
+- Learn datapacks and patching: [MOD Guide](../guide/mod/)
+
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7637695321442015"

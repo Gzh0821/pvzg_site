@@ -30,6 +30,12 @@ next: false
 >
 > El editor de guardado no modificara los datos de guardado que no aparezcan abajo.
 
+## Herramientas y guias relacionadas
+
+- Ajustar teclas: [Editor de teclas](./keybind-editor.md)
+- Consultar IDs de plantas y zombis: [Almanaque en linea](../almanac/)
+- Aprender parches y datapacks: [Guia de MOD](../guide/mod/)
+
 <ins class="adsbygoogle"
   style="display:block"
   data-ad-client="ca-pub-7637695321442015"

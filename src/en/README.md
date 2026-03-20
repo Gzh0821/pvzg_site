@@ -24,6 +24,10 @@ actions:
     link: ./download/
     type: primary
 
+  - text: Online Play
+    icon: circle-play
+    link: https://play.pvzge.com
+
   - text: Community
     icon: comment
     link: ./contribution/

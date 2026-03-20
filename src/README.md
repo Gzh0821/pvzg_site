@@ -24,6 +24,10 @@ actions:
     link: ./download/
     type: primary
 
+  - text: 在线游玩
+    icon: circle-play
+    link: https://play.pvzge.com
+
   - text: 社区
     icon: comment
     link: ./contribution/

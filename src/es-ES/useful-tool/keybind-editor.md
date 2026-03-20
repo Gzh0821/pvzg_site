@@ -28,6 +28,12 @@ next: false
 >
 > Puedes asignar varias funciones a la misma tecla, pero ten en cuenta que algunas funciones pueden entrar en conflicto o no funcionar correctamente.
 
+## Herramientas y guias relacionadas
+
+- Editar progreso y guardado: [Editor de guardado](./save-editor.md)
+- Consultar IDs de plantas y zombis: [Almanaque en linea](../almanac/)
+- Aprender parches y datapacks: [Guia de MOD](../guide/mod/)
+
 <ins class="adsbygoogle"
   style="display:block"
   data-ad-client="ca-pub-7637695321442015"
