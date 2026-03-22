@@ -52,12 +52,14 @@ com.pvzge.app/
     │   │   ├── pack.json   ← 必须存在的描述清单
     │   │   └── jsons/
     │   │       ├── features/
+    │   │       ├── lang/
     │   │       ├── objects/
     │   │       └── levels/
     │   └── AnotherPack.zip ← ZIP 格式的数据包
     └── patches/            ← 单文件旧式补丁
         └── jsons/
             ├── features/
+            ├── lang/
             ├── objects/
             └── levels/
 ```
@@ -65,6 +67,7 @@ com.pvzge.app/
 ### 文件夹职能说明
 
 - **`features/` 目录**：用于放置 `PlantFeatures.json`、`ZombieFeatures.json`、`StoreCommodityFeatures.json`、`MintObtainRoute.json`、`WorldmapFeatures.json` 等文件。这些文件主要用于植物/僵尸的元数据（属性基类、世界解锁、家族等），以及商店商品的定价配置。
+- **`lang/` 目录**：用于放置 `lang.json` 或 `lang.json5` 等多语言文本文件，为 Mod 提供额外语言注册和文本翻译覆盖。
 - **`objects/` 目录**：用于放置 `PlantProps.json`、`ZombieProps.json`、`PlantAlmanac.json` 等文件。这些通常涉及战斗数值（血量、伤害、冷却等）以及图鉴展示描述。
 - **`levels/` 目录**：用于放置关卡文件，文件名必须与游戏内关卡 ID 一致（例如 `egypt1.json`）。
 

@@ -52,12 +52,14 @@ com.pvzge.app/
     │   │   ├── pack.json   ← Required manifest file
     │   │   └── jsons/
     │   │       ├── features/
+    │   │       ├── lang/
     │   │       ├── objects/
     │   │       └── levels/
     │   └── AnotherPack.zip ← ZIP format datapack
     └── patches/            ← Single file patches
         └── jsons/
             ├── features/
+            ├── lang/
             ├── objects/
             └── levels/
 ```
@@ -65,6 +67,7 @@ com.pvzge.app/
 ### Directory Roles
 
 - **`features/` directory**: Put files like `PlantFeatures.json`, `ZombieFeatures.json`, `StoreCommodityFeatures.json`, `MintObtainRoute.json`, `WorldmapFeatures.json`, etc., here. These handle entity metadata such as families, base unlocks, worlds, and store item pricing.
+- **`lang/` directory**: Put `lang.json` or `lang.json5` multilingual text files here to register extra languages and override translated text for your mod.
 - **`objects/` directory**: Put files like `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, etc., here. These files handle actual combat values (HP, damage, cooldown) and almanac descriptions.
 - **`levels/` directory**: Put custom levels here. The filename must match the in-game level ID exactly (e.g., `egypt1.json`).
 

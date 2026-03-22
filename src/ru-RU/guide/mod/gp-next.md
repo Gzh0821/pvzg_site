@@ -52,12 +52,14 @@ com.pvzge.app/
     │   │   ├── pack.json   ← Обязательный манифест
     │   │   └── jsons/
     │   │       ├── features/
+    │   │       ├── lang/
     │   │       ├── objects/
     │   │       └── levels/
     │   └── AnotherPack.zip ← Datapack в ZIP
     └── patches/            ← Одиночные патчи
         └── jsons/
             ├── features/
+            ├── lang/
             ├── objects/
             └── levels/
 ```
@@ -65,6 +67,7 @@ com.pvzge.app/
 ### Назначение каталогов
 
 - **`features/`**: `PlantFeatures.json`, `ZombieFeatures.json`, `StoreCommodityFeatures.json`, `MintObtainRoute.json`, `WorldmapFeatures.json` и т.д. Здесь хранятся метаданные сущностей.
+- **`lang/`**: сюда помещаются `lang.json` или `lang.json5` с многоязычными текстами для регистрации дополнительных языков и переопределения переводов мода.
 - **`objects/`**: `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json` и т.д. Здесь редактируются боевые значения (HP, damage, cooldown) и тексты альманаха.
 - **`levels/`**: кастомные уровни. Имя файла должно точно совпадать с ID уровня в игре (например `egypt1.json`).
 

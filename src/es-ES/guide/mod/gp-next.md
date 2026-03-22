@@ -52,12 +52,14 @@ com.pvzge.app/
     │   │   ├── pack.json   ← Manifest obligatorio
     │   │   └── jsons/
     │   │       ├── features/
+    │   │       ├── lang/
     │   │       ├── objects/
     │   │       └── levels/
     │   └── AnotherPack.zip ← Datapack en ZIP
     └── patches/            ← Parches de archivo unico
         └── jsons/
             ├── features/
+            ├── lang/
             ├── objects/
             └── levels/
 ```
@@ -65,6 +67,7 @@ com.pvzge.app/
 ### Rol de cada directorio
 
 - **`features/`**: Coloca `PlantFeatures.json`, `ZombieFeatures.json`, `StoreCommodityFeatures.json`, `MintObtainRoute.json`, `WorldmapFeatures.json`, etc. Maneja metadatos de entidades.
+- **`lang/`**: Coloca `lang.json` o `lang.json5` para registrar idiomas adicionales y sobrescribir textos traducidos del mod.
 - **`objects/`**: Coloca `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, etc. Maneja valores de combate (HP, damage, cooldown) y descripciones del almanaque.
 - **`levels/`**: Coloca niveles personalizados. El nombre del archivo debe coincidir exactamente con el ID del nivel (por ejemplo `egypt1.json`).
 
