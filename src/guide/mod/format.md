@@ -108,14 +108,6 @@ PlantProps.json 文件包含植物的数值属性。
 | **Family**                    | "Explosive" | 所属家族(可能影响家族增益效果)     |
 | **ImmuneToIceblock**          | true        | 免疫冰冻效果(如冰鼬僵尸的冰冻攻击) |
 
-## 这些文件通常有什么区别
-
-- `PlantFeatures.json`：偏“身份信息”和展示信息，例如名称、排序、卡牌资源名、皮肤数量
-- `PlantProps.json`：偏数值和机制参数，例如阳光、冷却、生命值、伤害
-- `PlantAlmanac.json`：偏图鉴显示内容，例如简介、标签、聊天文本
-
-实际修改时，通常是先导出原始 JSON，看目标植物已经有哪些字段，再决定是改 `Features`、`Props` 还是 `Almanac`。
-
 ## 商店相关文件
 
 `StoreCommodityFeatures.json` 文件包含商店的商品信息，有`Plants`、`Upgrade`、`Gem`、`Coin` 和 `Zen` 五个数组，表示不同类型的商品信息。

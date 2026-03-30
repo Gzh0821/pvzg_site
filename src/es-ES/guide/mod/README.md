@@ -8,16 +8,19 @@ dir:
   order: 6
 ---
 
-<script>
-import { onMounted } from 'vue'
-onMounted(() => {
-  (window.adsbygoogle = window.adsbygoogle || []).push({});
-})
-</script>
+# GP-Next
 
-> [!tip]
-> A partir de la version `0.7.1`, PvZ2 Gardendless integra una nueva y potente herramienta de modding llamada `GP-Next`. Ofrece funciones mejoradas y una experiencia mas amigable que el antiguo `gePatcher`. Si usas la version `0.7.1` o superior, recomendamos encarecidamente usar `GP-Next`.
->
-> El equipo de desarrollo no garantiza que esta funcion siga estando soportada en versiones futuras, ya que depende de las actualizaciones y el mantenimiento del juego.
+GP-Next es la herramienta principal de modding y depuracion de PvZ2 Gardendless. Puedes usarla para:
 
-<Catalog />
+- gestionar datapacks y parches de un solo archivo
+- explorar y editar datos del juego en tiempo real
+- crear paquetes de idioma y parches de niveles
+- usar funciones en tiempo de ejecucion como Trainer, HP Overlay y Runtime Extensions
+- llamar funciones expuestas por `window.gpNext` desde la consola
+
+## Orden de lectura
+
+- Para empezar: "Introduccion a GP-Next" -> "Estructura" -> "Datapacks y `pack.json`"
+- Para cambiar valores: "Reglas de fusion" -> "Datos originales" -> "Tipos y campos"
+- Para traducir texto: "Paquetes de idioma y `lang.json`"
+- Para comandos de consola: "API de consola"

@@ -1,233 +1,90 @@
 ---
-title: GP-Next Usage Guide
+title: GP-Next Overview
 icon: toolbox
 pageInfo: false
 index: true
 order: 1
 ---
 
-<script setup>
-    import { onMounted } from 'vue';
-    onMounted(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
-</script>
-
 > [!tip]
-> This guide applies to game version `0.7.1` and above.
+> This page applies to official releases starting from version `0.7.1`.
 
-GP-Next is a powerful, next-generation tool built into PvZ2 Gardendless for modifying game data. It supports modifying plants, zombies, grid items, upgrades, store items, levels, and more using JSON files. It also offers an in-game Trainer (Cheats) and a Data Browser for on-the-fly manual tweaks.
+# GP-Next
 
-The website release version already includes GP-Next (the cloud drive version does not yet have it). Please press `F10` in the game or click the button in the upper left corner to access the GP-Next panel.
+GP-Next is the built-in modding, debugging, and runtime utility panel in PvZ2 Gardendless. The following features are integrated into the same interface:
 
-## Current Built-in Features
+- **Patcher**: manages `packs/`, `patches/`, manual edits, and patch reloads
+- **Data**: browses, compares, exports, restores, and edits live game data
+- **Trainer**: provides modifier features in battle, world map, and sandbox scenes
+- **Cloud**: uploads, downloads, and compares cloud saves
+- **Settings**: includes language, frame rate, scroll tweaks, Runtime Extensions, HP Overlay, and more
+- **Guide / About / Log**: built-in docs, console command references, and runtime logs
 
-The current GP-Next panel mainly includes:
+If you installed an official release, GP-Next is already included. In game, press `F10` or click the top-left button to open the panel.
 
-- **Patcher**: manage `packs/`, `patches/`, and manual edits; open the data folder; save order; reload patches.
-- **Data**: browse live game data, export, compare, manually edit, and restore a single entry or an entire type.
-- **Trainer**: in-game cheats for battle scenes, the world map, and sandbox-related flows.
-- **Settings**: language, frame rate, debug options, scrolling optimization, Runtime Extensions, and HP Overlay toggles.
-- **Guide / About / Log**: built-in documentation, command/API reference, and a runtime log viewer.
+## What You Need
 
-## Prerequisites
+1. A JSON editor, such as VSCode or Notepad++
+2. Basic familiarity with JSON structure
 
-1. JSON Editor (VSCode / Notepad++ recommended).
-2. Game Version ≥ 0.7.1.
-3. Basic understanding of JSON structures. See [Property Reference](format.md) for details on attributes.
+If you plan to edit plants, zombies, store data, or language content, it is useful to keep these two pages open:
 
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="7113006248"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+- [Source Data](./gp-next-json.md)
+- [Types & Fields](./format.md)
 
-## Directory Structure and Priority
+## Quick Start
 
-GP-Next loads patches from the `gp-next` folder inside the game's data directory. You can find this directory by clicking **Open Folder** in the GP-Next Patcher tab.
+### 1. Open the Panel
 
-The loading priority is as follows (highest number / last step wins):
+- enter the game
+- press `F10`
+- open the **Patcher** page
 
-1. **packs/ Directory (Datapacks)**: You can place complete mod packs here (either as folders or `.zip` files). Datapacks are applied in ascending order of their `priority` defined in their `pack.json`.
-2. **patches/ Directory (Single-file patches)**: Directly placing JSON files here works like the older gePatcher. These have a higher priority than packs and act as a compatibility layer.
-3. **Manual Edits (Data Tab)**: Any real-time modifications made via the GP-Next **Data** tab are saved as `__gpn_edits` and will **always** override all other packs and patches.
+### 2. Open the Folder
 
-```text
-com.pvzge.app/
-└── gp-next/
-    ├── settings.json        ← GP-Next local settings for pack order / disabled state
-    ├── packs/
-    │   ├── MyPack/         ← Folder format datapack
-    │   │   ├── pack.json   ← Required manifest file
-    │   │   └── jsons/
-    │   │       ├── features/
-    │   │       ├── lang/
-    │   │       ├── objects/
-    │   │       └── levels/
-    │   └── AnotherPack.zip ← ZIP format datapack
-    └── patches/            ← Single file patches
-        └── jsons/
-            ├── features/
-            ├── lang/
-            ├── objects/
-            └── levels/
-    └── __gpn_edits/        ← Saved manual edits from the Data tab (highest priority)
-```
+In the **Patcher** page, click "Open Folder" to enter the `gp-next/` folder inside the game data directory.
 
-### Directory Roles
+### 3. Create a Datapack
 
-- **`features/` directory**: Put files like `PlantFeatures.json`, `ZombieFeatures.json`, `StoreCommodityFeatures.json`, `MintObtainRoute.json`, `WorldmapFeatures.json`, etc., here. These handle entity metadata such as families, base unlocks, worlds, and store item pricing.
-- **`lang/` directory**: Put `lang.json` or `lang.json5` multilingual text files here to register extra languages and override translated text for your mod.
-- **`objects/` directory**: Put files like `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, etc., here. These files handle actual combat values (HP, damage, cooldown) and almanac descriptions.
-- **`levels/` directory**: Put custom levels here. The filename must match the in-game level ID exactly (e.g., `egypt1.json`).
-- **`settings.json`**: GP-Next's own local settings file, used to persist pack order, disabled state, and related panel configuration.
-- **`__gpn_edits/`**: Stores real-time manual edits made from the **Data** tab. These edits always override normal datapacks and single-file patches.
+The recommended workflow is to put your changes into `packs/your-mod-name/pack.json` and `jsons/`, instead of scattering loose JSON files everywhere.
 
-## JSON Merge Logic
+### 4. Reload Patches
 
-Some developers are accustomed to copying the *entire* source file content, which can easily lead to the loss of other fields due to game updates.
+Go back to the in-game **Patcher** page and click **Save & Reload**, or restart the game.
 
-GP-Next uses a deep merge mechanism. **You only need to write the fields you want to modify**, and the remaining unmentioned fields will remain unchanged. Notably, **array fields in your patch always fully replace the target array** — they are not merged by index. If you need to change an array field (e.g. the zombie pool `Basic_Zombie`, or the `PLANTS` unlock list), provide the complete new array.
+### 5. Verify the Result
 
-- **For Features (`PlantFeatures`, `ZombieFeatures`, `StoreCommodityFeatures`, etc.)**: Entities are matched by an identifier field. Most Features files use `CODENAME`; `StoreCommodityFeatures`'s `Plants`/`Upgrade` sections use `CommodityName` for per-entry merging, while `Gem`/`Coin`/`Zen` sections are **fully replaced**; `MintObtainRoute` uses `Family`. Only the properties you provide will overwrite the vanilla ones.
-- **For Objects (`PlantProps`, `PlantAlmanac`, etc.)**: Entities are matched by the first entry in their `aliases` array. Only the properties you provide inside `objdata` will overwrite the vanilla ones.
-- **For Levels (`levels/*.json`)**: This is the exception. Level files are always **completely replaced**.
+If you are not sure whether the patch worked, open the **Data** page, locate the target entry, and inspect the current runtime data directly.
 
-**Example: Safely modifying Peashooter's SunCost and Cooldown only**
-`PlantProps.json`:
-```json
-{
-  "objects": [
-    {
-      "aliases": ["peashooter"],
-      "objclass": "PlantProperties",
-      "objdata": {
-        "SunCost": 50,
-        "Cooldown": 2
-      }
-    }
-  ]
-}
-```
+## What To Read Next
 
-## Datapacks (`pack.json`)
+The GP-Next docs are split by topic:
 
-To create a datapack, place a folder inside `packs/` and include a `pack.json` file at its root.
+- first read [Structure and Priority](./gp-next-files.md)
+- then read [Merge Rules](./gp-next-merge.md)
+- then read [Datapacks and `pack.json`](./gp-next-datapack.md)
 
-**pack.json format:**
-```json
-{
-  "uuid": "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",
-  "name": "My Custom Mod",
-  "version": "1.0.0",
-  "priority": 100,
-  "description": "Optional description for your mod.",
-  "author": "Your Name",
-  "formatVersion": 1,
-  "gameVersion": "0.7.1",
-  "gpNextVersion": ">=1.0.0"
-}
-```
+If you are building a translation pack, continue with [Language Packs and `lang.json`](./gp-next-language.md).
 
-- **uuid**: A required unique identifier (used to persist your loaded mods list and order). You can generate one from the GP-Next **Guide** tab in the game.
-- **name**: Display name of your mod.
-- **version**: Version string of your mod.
-- **priority**: Determines load order (lower numbers = loaded first).
-- **description**: A short description of the mod.
-- **author**: Author's name.
-- **formatVersion**: The format version of the datapack. (Currently 1).
-- **gameVersion**: Targeted compatible game version (e.g., `0.7.1`).
-- **gpNextVersion**: Required GP-Next version to run the mod (e.g., `>=1.0.0`).
-- **thumbnail.png / thumbnail.ico**: Placing a 1:1 (square) image in the root directory will display it as the mod's cover image. The size must be less than 128x128. Both `.png` and `.ico` formats are supported.
+If you care more about in-game operations than file structure, go directly to:
 
-### Step-by-Step: Creating a Datapack
+- [Data and Trainer](./gp-next-tools.md)
+- [Settings & Extensions](./gp-next-settings.md)
+- [Console API](./gp-next-console.md)
 
-If you want to package your mod to share with others, follow these simple steps:
+## Key Points
 
-1. **Create the Mod Folder**: Go to the GP-Next `packs/` directory and create a new folder, e.g., `MyFirstMod`.
-2. **Create `pack.json`**: Make a `pack.json` file inside `MyFirstMod`. Copy the template shown above and fill in your `name` and `author`. Generate a unique `uuid` using the UUID Generator in the GP-Next **Guide** tab in the game.
-3. **Structure Your Mod**: Create a `jsons` folder inside `MyFirstMod`. Then create `features`, `objects`, or `levels` subfolders inside `jsons` based on what you are changing.
-4. **Write the Data**: Create your JSON files (e.g., `PlantProps.json` inside the `objects` folder). Remember the deep merge rule: **only write the specific entity and the exact fields you want to change**.
-5. **Add a Cover Image (Optional)**: Put a square image under 128x128 named `thumbnail.png` (or `thumbnail.ico`) inside the `MyFirstMod` folder next to `pack.json`.
-6. **Zip and Share (Optional)**: Right-click the `MyFirstMod` folder and compress it into `MyFirstMod.zip` (Ensure the zip directly contains `pack.json` without nested root folders). You can now share this `.zip` file, and other players just need to put the zip into their `packs/` directory.
+- `packs/` supports both **folders** and **`.zip`**
+- `patches/` still exists mainly for compatibility with older single-file workflows
+- manual edits from the Data page are written into `__gpn_edits/`, which has the highest priority
+- arrays in GP-Next are **replaced as a whole** by default, not merged by index
+- `reloadPatches()` is often enough for many runtime extensions; a full restart is not always required
+- the footer shows the GP-Next version and can check for updates from the official site
 
-## Multi-language Setup (Language Pack)
+If you still do not know what the original JSON of a type looks like, read [Source Data](./gp-next-json.md) first. That page is the best place to inspect structure before coming back for field details.
 
-If you want one mod to provide multiple languages (for example Chinese, English, Spanish, and Russian), add `jsons/lang/lang.json` (or `lang.json5`) to your datapack.
+## Next
 
-### Directory Location
-
-```text
-MyFirstMod/
-├── pack.json
-└── jsons/
-    └── lang/
-        └── lang.json
-```
-
-### Minimal Example
-
-```json
-{
-  "_languages": [
-    { "code": "es", "name": "Español", "isCJK": false },
-    { "code": "ru", "name": "Русский", "isCJK": false }
-  ],
-  "LoadingTips": [
-    {
-      "en": "Sun is your core resource.",
-      "zh": "Sun is your core resource.",
-      "es": "El sol es tu recurso principal.",
-      "ru": "Солнце - ваш основной ресурс."
-    }
-  ]
-}
-```
-
-- `_languages`: Optional. Registers extra language options in game settings (in addition to default `en` / `zh`).
-- Text nodes: Put `en`, `zh`, `es`, `ru`, etc. side by side in the same entry.
-- Language code: Use standard codes such as `es`, `ru`, `ja`.
-
-### Apply Steps
-
-1. Place the datapack containing `jsons/lang/lang.json` into `gp-next/packs/`.
-2. Open the in-game GP-Next panel, go to **Patcher**, then click **Save & Reload** (or restart the game).
-3. Open game settings and switch language to one of the languages declared in `_languages`.
-4. Return to the game and verify text rendering.
-
-> [!tip]
-> `lang.json` follows the same deep-merge behavior as other patches. You only need to provide the text nodes you want to override.
-
-> [!note]
-> This is not limited to `jsons/lang/lang.json`. If other patch JSON files already contain multilingual text nodes (for example entry text in `objects/PlantAlmanac.json`), you can also add extra language fields (`es`, `ru`, `ja`, etc.) directly there for translation.
-
-## Settings, Runtime Extensions, and Utility Features
-
-Besides patch loading itself, GP-Next also ships with several runtime-side utilities:
-
-- **Scrolling Optimization**: lets you tune continuous wheel/scroll scaling and the minimum interval for discrete selector switching. This affects places such as settings pages, almanac-style scrolling, the world chooser, sandbox plant/zombie selectors, and some sandbox wheel-switch flows.
-- **Runtime Extensions**: currently includes `Dynamic Plant Registry`, which gives datapacks that add or clone plants a more reliable runtime identity mapping. Reloading patches is usually enough; a full game restart is optional.
-- **HP Overlay**: can show real-time HP for plants, zombies, and Tomb-type ground objects during battle. Entities with shell/armor-style extra layers can also show the extra damage-bearing layer.
-- **Update Check and Logs**: the footer shows version/update state, and the **Log** tab exposes GP-Next runtime logs for troubleshooting.
-
-
-## Manual Edits and The Data Tab
-
-GP-Next includes a **Data** tab that allows you to browse all in-game data (such as `PlantProps`, `ZombieProps`, etc.) in real-time.
-
-You can make direct modifications to any entity directly from this menu. These modifications are recorded as "Manual Edits" (`__gpn_edits`) and will persist across game sessions.
-
-> [!important]
-> Manual edits are intended for **quick tweaking and debugging**. If you are building a stable or shareable mod, it is highly recommended to package your changes into a structured Datapack inside the `packs/` folder instead.
-
-If you wish to remove your manual edits, you can do so by right-clicking the item or type in the Data tab and selecting "Restore".
-
-## Trainer (Cheats)
-
-GP-Next offers an in-game **Trainer** tab. To use it, you must first enable "Cheat" in the standard in-game Settings menu.
-
-- **In-Game Scene**: Modify Sun, toggle Game Speed, enable No Cooldown / Instant Win / Invincibility, etc. Free Plant/Buy functions and auto-collection are also supported.
-- **World Map Scene**: Modify Coins and Gems freely.
-- **Sandbox Mode**: Sandbox Mode settings are fully synced with the Trainer toggles. Note that in Sandbox Mode, certain functions (like Instant Win) are locked to maintain stability.
+- [Structure and Priority](./gp-next-files.md)
+- [Merge Rules](./gp-next-merge.md)
+- [Datapacks and `pack.json`](./gp-next-datapack.md)

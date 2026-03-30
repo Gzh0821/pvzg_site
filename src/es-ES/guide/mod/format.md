@@ -1,5 +1,5 @@
 ---
-title: Referencia de propiedades
+title: Tipos y campos
 icon: file-invoice
 pageInfo: false
 index: true
@@ -14,7 +14,7 @@ order: 4
 </script>
 
 > [!important]
-> En las tablas, las propiedades en _cursiva_ son campos que probablemente no deberias modificar. Cambiarlos puede provocar errores o cierres del juego.
+> Las propiedades en cursiva de las tablas son campos que normalmente no deberias modificar. Cambiarlos puede provocar cierres inesperados u otros problemas.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -24,11 +24,22 @@ order: 4
      data-full-width-responsive="true">
 </ins>
 
-## Archivos de plantas
+## Como usar esta pagina
 
-Abajo se muestra el formato de los archivos JSON de plantas, usando Grapeshot como ejemplo.
+Esta no es una introduccion para crear un mod desde cero. Es una pagina de referencia de campos.
+Resulta mas util cuando:
 
-Las propiedades multilenguaje no pueden eliminarse ni ampliarse con campos extra. El formato debe ser:
+- ya sabes que tipo de datos quieres editar, pero no conoces el nombre del campo
+- ya exportaste un JSON del juego y quieres revisar para que sirve cada campo
+- quieres ver que campos suelen aparecer en archivos comunes de `Features` o `Props`
+
+Si aun no exportaste el JSON original, empieza por [Datos originales](./gp-next-json.md).
+
+## Archivos relacionados con plantas
+
+Los ejemplos siguientes usan Grapeshot para explicar la estructura de los JSON de plantas.
+
+Los campos multilingues no deberian quitar claves de idioma necesarias ni anadir estructuras irrelevantes. El formato debe verse asi:
 
 ```json
 {
@@ -39,82 +50,82 @@ Las propiedades multilenguaje no pueden eliminarse ni ampliarse con campos extra
 
 ### PlantFeatures.json
 
-El archivo PlantFeatures.json contiene las caracteristicas basicas de las plantas.
+`PlantFeatures.json` contiene los datos basicos de caracteristicas de una planta.
 
-Cada planta en el array `PLANTS` incluye las siguientes propiedades:
+Cada planta dentro del array `PLANTS` suele incluir campos como estos:
 
-| Propiedad          | Contenido de ejemplo                    | Descripcion                                                                                              |
-| ------------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| **ID**             | 74                                      | ID unico de la planta en el juego                                                                        |
-| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Nombre multilenguaje, `en` para ingles y `zh` para chino                                                 |
-| _\_CARDSPRITENAME_ | "grapeshot"                             | Nombre del recurso del icono de carta                                                                    |
-| _CODENAME_         | "grapeshot"                             | Identificador unico de la planta (campo critico para merge en GE Patcher)                               |
-| _TYPE_             | `["plant", "lastStandDisallowed"]`      | Tipo de planta:<br>- `plant`: planta normal<br>- `lastStandDisallowed`: no disponible en modo Last Stand |
-| **OBTAINWORLD**    | "market"                                | Mundo donde se ubica la imagen de fondo                                                                  |
-| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`            | Ubicacion de siembra en Zen Garden                                                                       |
-| _COSTUME_          | 2                                       | Numero de disfraces                                                                                      |
+| Propiedad          | Ejemplo                                   | Descripcion                                                     |
+| ------------------ | ----------------------------------------- | --------------------------------------------------------------- |
+| **ID**             | 74                                        | ID unico de la planta dentro del juego                          |
+| **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | Nombre multilingue                                              |
+| _\_CARDSPRITENAME_ | "grapeshot"                               | Nombre del recurso del icono de la carta                        |
+| _CODENAME_         | "grapeshot"                               | Identificador unico usado por GP-Next para localizar y fusionar |
+| _TYPE_             | `["plant", "lastStandDisallowed"]`        | Etiquetas de tipo de planta                                     |
+| **OBTAINWORLD**    | "market"                                  | Mundo usado para la imagen de fondo                             |
+| **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | Configuracion de colocacion en Zen Garden                       |
+| _COSTUME_          | 2                                         | Numero de apariencias                                           |
 
-El array `SEEDCHOOSERDEFAULTORDER` define el orden por defecto de plantas en el selector. Solo debe contener `CODENAME`.
+El array `SEEDCHOOSERDEFAULTORDER` define el orden por defecto de las plantas en la interfaz de seleccion. Cada elemento es un `CODENAME`.
 
-El array `BASEUNLOCKLIST` contiene las plantas desbloqueadas por defecto para perfiles nuevos. Tambien usa `CODENAME`.
+El array `BASEUNLOCKLIST` contiene las plantas desbloqueadas por defecto. Cada elemento es un `CODENAME`.
 
 ### PlantAlmanac.json
 
-El archivo PlantAlmanac.json contiene informacion del almanaque de plantas.
+`PlantAlmanac.json` contiene la informacion del almanaque de plantas.
 
-Cada elemento en `objects` debe incluir `aliases`, `objclass` y `objdata`; de lo contrario puede que no se aplique en el juego.
+Cada entrada dentro del array `objects` contiene `aliases`, `objclass` y `objdata`.
 
-`aliases` contiene el `CODENAME` de la planta. Actualmente solo se usa el primer elemento. `objclass` debe ser `PlantAlmanacProperties`.
+El array `aliases` contiene el `CODENAME` de la planta, que identifica a la planta objetivo. El valor de `objclass` es `PlantAlmanacProperties`.
 
-`objdata` incluye propiedades del almanaque:
+`objdata` puede incluir campos como estos:
 
-| Propiedad             | Valor/Contenido                                                                                                                                                     | Descripcion                                               |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| _Elements_            | Incluye varias propiedades:<br>- `SUNCOST` costo de sol<br>- `RECHARGE` recarga<br>- `DAMAGE` dano (1800)<br>- `AREA` alcance (3x3)<br>- `FAMILY` familia         | Etiquetas clave mostradas en el almanaque                |
-| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                                                    | Descripcion multilenguaje de la funcion                   |
-| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                                  | Descripcion de mecanicas especiales                       |
-| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                                                   | Frases de personalidad multilenguaje                      |
-| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                                                           | Resumen corto multilenguaje                               |
-| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                                                            | Desplazamiento de posicion en el almanaque                |
+| Campo                 | Ejemplo / contenido                                                                                                           | Descripcion                      |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| _Elements_            | Multiples etiquetas como `SUNCOST`, `RECHARGE`, `DAMAGE`, `AREA`, `FAMILY`                                                   | Etiquetas clave del almanaque    |
+| **Introduction**      | `{ "en": "...", "zh": "爆炸后向 8 个方向发射弹性葡萄子弹" }`                                                                  | Introduccion multilingue         |
+| _Special_             | `{ "NAME": {"en":"...","zh":"..."}, "DESCRIPTION": {"en":"...","zh":"..."} }`                                                | Descripcion de mecanica especial |
+| **Chat**              | `{"en":"...","zh":"..."}`                                                                                                     | Frase de personalidad            |
+| **BriefIntroduction** | `{ "en": "Explodes...", "zh": "爆炸并发射弹射子弹" }`                                                                         | Resumen corto                    |
+| **DisplayOffset**     | `{ "x": 0, "y": 0 }`                                                                                                          | Desplazamiento visual            |
 
 ### PlantProps.json
 
-El archivo PlantProps.json contiene propiedades de jugabilidad de plantas.
+`PlantProps.json` contiene los valores de propiedades de la planta.
 
-Cada elemento en `objects` incluye `aliases`, `objclass` y `objdata`, igual que en `PlantAlmanac.json`.
+Cada entrada dentro del array `objects` contiene `aliases`, `objclass` y `objdata`.
 
-`aliases` contiene el `CODENAME` de la planta y solo se usa el primer elemento. `objclass` debe ser `PlantProperties`.
+El array `aliases` contiene el `CODENAME` de la planta, que identifica a la planta objetivo. El valor de `objclass` es `PlantProperties`.
 
-`objdata` incluye propiedades de jugabilidad. No todas las plantas tienen las mismas propiedades. Puedes consultar propiedades validas en [Almanac](../../almanac/).
+`objdata` puede incluir campos como los siguientes. Tambien puedes consultar los Props efectivos de una planta en el [Almanaque](../../almanac/):
 
-| Propiedad                     | Valor/Contenido | Descripcion                                              |
-| ---------------------------- | -------------- | -------------------------------------------------------- |
-| **CannotBeSheepenedByWizard**| true           | Inmune a la habilidad de transformacion en oveja         |
-| **Damage**                   | 1800           | Dano base                                                 |
-| **Cooldown**                 | 35             | Tiempo de recarga (segundos)                             |
-| **CooldownFrom**             | 1              | Inicio de la recarga                                     |
-| **SunCost**                  | 150            | Sol requerido para plantar                               |
-| **Toughness**                | 300            | Vida base de la planta                                   |
-| **Family**                   | "Explosive"    | Familia (puede afectar bonos de familia)                 |
-| **ImmuneToIceblock**         | true           | Inmune a congelacion (por ejemplo Ice Weasel Zombie)     |
+| Propiedad                     | Ejemplo     | Descripcion                        |
+| ----------------------------- | ----------- | ---------------------------------- |
+| **CannotBeSheepenedByWizard** | true        | Inmunidad al efecto oveja del mago |
+| **Damage**                    | 1800        | Dano base                          |
+| **Cooldown**                  | 35          | Enfriamiento en segundos           |
+| **CooldownFrom**              | 1           | Valor inicial de enfriamiento      |
+| **SunCost**                   | 150         | Coste de sol                       |
+| **Toughness**                 | 300         | Vida base                          |
+| **Family**                    | "Explosive" | Familia                            |
+| **ImmuneToIceblock**          | true        | Inmunidad a congelacion / hielo    |
 
-## Archivos de tienda
+## Archivos relacionados con la tienda
 
-`StoreCommodityFeatures.json` contiene informacion de la tienda, incluyendo cinco arrays: `Plants`, `Upgrade`, `Gem`, `Coin` y `Zen`.
+`StoreCommodityFeatures.json` contiene la informacion de productos de la tienda. Incluye cinco arrays: `Plants`, `Upgrade`, `Gem`, `Coin` y `Zen`.
 
 ### Plants
 
-El array `Plants` contiene informacion de articulos de plantas.
+El array `Plants` contiene entradas de productos de plantas.
 
-| Propiedad            | Tipo   | Descripcion                            |
-| -------------------- | ------ | -------------------------------------- |
-| _CommodityType_      | string | Valor fijo "plant"                    |
-| **CommodityName**    | string | CODENAME de la planta                  |
-| **CurrencyType**     | string | Tipo de moneda ("gem" o "coin")     |
-| **CurrencyRequired** | number | Cantidad de moneda requerida           |
-| _UnlockLevel_        | string | Se desbloquea en cierto nivel          |
+| Campo                | Tipo   | Descripcion                     |
+| -------------------- | ------ | ------------------------------- |
+| _CommodityType_      | string | Valor fijo `"plant"`            |
+| **CommodityName**    | string | `CODENAME` de la planta         |
+| **CurrencyType**     | string | Tipo de moneda (`gem` o `coin`) |
+| **CurrencyRequired** | number | Cantidad de moneda necesaria    |
+| _UnlockLevel_        | string | Nivel de desbloqueo             |
 
-**Ejemplo: articulo de Snow Pea**
+**Ejemplo: producto de Snow Pea**
 
 ```json
 {
@@ -127,14 +138,14 @@ El array `Plants` contiene informacion de articulos de plantas.
 
 ### Upgrade
 
-El array `Upgrade` contiene informacion de articulos de mejoras.
+El array `Upgrade` contiene entradas de mejoras.
 
-| Propiedad            | Tipo   | Descripcion                            |
-| -------------------- | ------ | -------------------------------------- |
-| _CommodityType_      | string | Valor fijo "upgrade"                  |
-| **CommodityName**    | string | CODENAME del item de mejora            |
-| **CurrencyType**     | string | Tipo de moneda ("gem" o "coin")     |
-| **CurrencyRequired** | number | Cantidad de moneda requerida           |
+| Campo                | Tipo   | Descripcion                     |
+| -------------------- | ------ | ------------------------------- |
+| _CommodityType_      | string | Valor fijo `"upgrade"`          |
+| **CommodityName**    | string | `CODENAME` de la mejora         |
+| **CurrencyType**     | string | Tipo de moneda (`gem` o `coin`) |
+| **CurrencyRequired** | number | Cantidad de moneda necesaria    |
 
 **Ejemplo: mejora de pala**
 
@@ -149,18 +160,18 @@ El array `Upgrade` contiene informacion de articulos de mejoras.
 
 ### Gem
 
-El array `Gem` contiene informacion de paquetes de gemas.
+El array `Gem` contiene productos de gemas.
 
-| Propiedad               | Descripcion                                 |
-| ----------------------- | ------------------------------------------- |
-| _CommodityType_         | Valor fijo "gem"                            |
-| CommodityCount          | Cantidad de gemas obtenidas                 |
-| **CurrencyType**        | Tipo de moneda ("gem" o "coin")           |
-| CurrencyRequired        | Cantidad de moneda requerida                |
-| _StackLevel_            | Nivel del paquete                           |
-| **CommodityDisplayName**| Nombre mostrado del articulo (multilenguaje)|
+| Campo                    | Descripcion                      |
+| ------------------------ | -------------------------------- |
+| _CommodityType_          | Valor fijo `"gem"`               |
+| CommodityCount           | Numero de gemas entregadas       |
+| **CurrencyType**         | Tipo de moneda (`gem` o `coin`)  |
+| CurrencyRequired         | Cantidad de moneda necesaria     |
+| _StackLevel_             | Nivel del paquete                |
+| **CommodityDisplayName** | Nombre visible (multilingue)     |
 
-**Ejemplo: ajustar un paquete de gemas**
+**Ejemplo: paquete de gemas personalizado**
 
 ```json
 {
@@ -178,26 +189,26 @@ El array `Gem` contiene informacion de paquetes de gemas.
 
 ### Coin
 
-El array `Coin` contiene informacion de paquetes de monedas.
+El array `Coin` contiene productos de monedas.
 
-| Propiedad               | Descripcion                                 |
-| ----------------------- | ------------------------------------------- |
-| _CommodityType_         | Valor fijo "coin"                           |
-| CommodityCount          | Cantidad de monedas obtenidas               |
-| **CurrencyType**        | Tipo de moneda ("gem" o "coin")           |
-| CurrencyRequired        | Cantidad de moneda requerida                |
-| _StackLevel_            | Nivel del paquete                           |
-| **CommodityDisplayName**| Nombre mostrado del articulo (multilenguaje)|
+| Campo                    | Descripcion                      |
+| ------------------------ | -------------------------------- |
+| _CommodityType_          | Valor fijo `"coin"`              |
+| CommodityCount           | Numero de monedas entregadas     |
+| **CurrencyType**         | Tipo de moneda (`gem` o `coin`)  |
+| CurrencyRequired         | Cantidad de moneda necesaria     |
+| _StackLevel_             | Nivel del paquete                |
+| **CommodityDisplayName** | Nombre visible (multilingue)     |
 
 ### Zen
 
-El array `Zen` contiene informacion de recursos de Zen Garden. Su estructura es igual a `Gem`/`Coin`.
+El array `Zen` contiene productos de Zen Garden y tiene la misma estructura que `Gem` / `Coin`.
 
-| Propiedad               | Descripcion                                 |
-| ----------------------- | ------------------------------------------- |
-| _CommodityType_         | Valor fijo "zen"                            |
-| CommodityCount          | Cantidad de recursos de Zen Garden          |
-| **CurrencyType**        | Tipo de moneda ("gem" o "coin")           |
-| CurrencyRequired        | Cantidad de moneda requerida                |
-| _StackLevel_            | Nivel del paquete                           |
-| **CommodityDisplayName**| Nombre mostrado del articulo (multilenguaje)|
+| Campo                    | Descripcion                       |
+| ------------------------ | --------------------------------- |
+| _CommodityType_          | Valor fijo `"zen"`                |
+| CommodityCount           | Cantidad del recurso de Zen Garden |
+| **CurrencyType**         | Tipo de moneda (`gem` o `coin`)   |
+| CurrencyRequired         | Cantidad de moneda necesaria      |
+| _StackLevel_             | Nivel del paquete                 |
+| **CommodityDisplayName** | Nombre visible (multilingue)      |
