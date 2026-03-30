@@ -20,6 +20,16 @@ GP-Next is a powerful, next-generation tool built into PvZ2 Gardendless for modi
 
 The website release version already includes GP-Next (the cloud drive version does not yet have it). Please press `F10` in the game or click the button in the upper left corner to access the GP-Next panel.
 
+## Current Built-in Features
+
+The current GP-Next panel mainly includes:
+
+- **Patcher**: manage `packs/`, `patches/`, and manual edits; open the data folder; save order; reload patches.
+- **Data**: browse live game data, export, compare, manually edit, and restore a single entry or an entire type.
+- **Trainer**: in-game cheats for battle scenes, the world map, and sandbox-related flows.
+- **Settings**: language, frame rate, debug options, scrolling optimization, Runtime Extensions, and HP Overlay toggles.
+- **Guide / About / Log**: built-in documentation, command/API reference, and a runtime log viewer.
+
 ## Prerequisites
 
 1. JSON Editor (VSCode / Notepad++ recommended).
@@ -47,6 +57,7 @@ The loading priority is as follows (highest number / last step wins):
 ```text
 com.pvzge.app/
 └── gp-next/
+    ├── settings.json        ← GP-Next local settings for pack order / disabled state
     ├── packs/
     │   ├── MyPack/         ← Folder format datapack
     │   │   ├── pack.json   ← Required manifest file
@@ -62,6 +73,7 @@ com.pvzge.app/
             ├── lang/
             ├── objects/
             └── levels/
+    └── __gpn_edits/        ← Saved manual edits from the Data tab (highest priority)
 ```
 
 ### Directory Roles
@@ -70,6 +82,8 @@ com.pvzge.app/
 - **`lang/` directory**: Put `lang.json` or `lang.json5` multilingual text files here to register extra languages and override translated text for your mod.
 - **`objects/` directory**: Put files like `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, etc., here. These files handle actual combat values (HP, damage, cooldown) and almanac descriptions.
 - **`levels/` directory**: Put custom levels here. The filename must match the in-game level ID exactly (e.g., `egypt1.json`).
+- **`settings.json`**: GP-Next's own local settings file, used to persist pack order, disabled state, and related panel configuration.
+- **`__gpn_edits/`**: Stores real-time manual edits made from the **Data** tab. These edits always override normal datapacks and single-file patches.
 
 ## JSON Merge Logic
 
@@ -188,6 +202,15 @@ MyFirstMod/
 
 > [!note]
 > This is not limited to `jsons/lang/lang.json`. If other patch JSON files already contain multilingual text nodes (for example entry text in `objects/PlantAlmanac.json`), you can also add extra language fields (`es`, `ru`, `ja`, etc.) directly there for translation.
+
+## Settings, Runtime Extensions, and Utility Features
+
+Besides patch loading itself, GP-Next also ships with several runtime-side utilities:
+
+- **Scrolling Optimization**: lets you tune continuous wheel/scroll scaling and the minimum interval for discrete selector switching. This affects places such as settings pages, almanac-style scrolling, the world chooser, sandbox plant/zombie selectors, and some sandbox wheel-switch flows.
+- **Runtime Extensions**: currently includes `Dynamic Plant Registry`, which gives datapacks that add or clone plants a more reliable runtime identity mapping. Reloading patches is usually enough; a full game restart is optional.
+- **HP Overlay**: can show real-time HP for plants, zombies, and Tomb-type ground objects during battle. Entities with shell/armor-style extra layers can also show the extra damage-bearing layer.
+- **Update Check and Logs**: the footer shows version/update state, and the **Log** tab exposes GP-Next runtime logs for troubleshooting.
 
 
 ## Manual Edits and The Data Tab

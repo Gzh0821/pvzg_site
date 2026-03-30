@@ -20,6 +20,16 @@ GP-Next es una herramienta de nueva generacion integrada en PvZ2 Gardendless par
 
 La version publicada en el sitio ya incluye GP-Next (la version de nube aun no). Pulsa `F10` en el juego o haz clic en el boton de la esquina superior izquierda para abrir el panel de GP-Next.
 
+## Resumen de funciones integradas
+
+El panel actual de GP-Next incluye principalmente:
+
+- **Patcher**: gestionar `packs/`, `patches/` y ediciones manuales; abrir la carpeta de datos; guardar el orden; recargar parches.
+- **Data**: explorar datos del juego en tiempo real, exportar, comparar, editar manualmente y restaurar una entrada o un tipo completo.
+- **Trainer**: funciones de cheat para combates, mapa del mundo y flujos relacionados con sandbox.
+- **Settings**: idioma, frame rate, debug, optimizacion de scroll, Runtime Extensions y opciones de HP Overlay.
+- **Guide / About / Log**: documentacion integrada, referencia de comandos/API y visor de logs en tiempo real.
+
 ## Requisitos previos
 
 1. Editor JSON (recomendado VSCode / Notepad++).
@@ -47,6 +57,7 @@ La prioridad de carga es la siguiente (gana el ultimo paso):
 ```text
 com.pvzge.app/
 └── gp-next/
+    ├── settings.json        ← Ajustes locales de GP-Next para orden / estado deshabilitado
     ├── packs/
     │   ├── MyPack/         ← Datapack en carpeta
     │   │   ├── pack.json   ← Manifest obligatorio
@@ -62,6 +73,7 @@ com.pvzge.app/
             ├── lang/
             ├── objects/
             └── levels/
+    └── __gpn_edits/        ← Ediciones manuales guardadas desde Data (maxima prioridad)
 ```
 
 ### Rol de cada directorio
@@ -70,6 +82,8 @@ com.pvzge.app/
 - **`lang/`**: Coloca `lang.json` o `lang.json5` para registrar idiomas adicionales y sobrescribir textos traducidos del mod.
 - **`objects/`**: Coloca `PlantProps.json`, `ZombieProps.json`, `PlantAlmanac.json`, etc. Maneja valores de combate (HP, damage, cooldown) y descripciones del almanaque.
 - **`levels/`**: Coloca niveles personalizados. El nombre del archivo debe coincidir exactamente con el ID del nivel (por ejemplo `egypt1.json`).
+- **`settings.json`**: archivo de configuracion local de GP-Next, usado para guardar el orden de los datapacks, el estado deshabilitado y configuraciones relacionadas del panel.
+- **`__gpn_edits/`**: guarda los cambios manuales hechos desde la pestana **Data**. Estas ediciones siempre sobrescriben datapacks normales y parches de archivo unico.
 
 ## Logica de merge JSON
 
@@ -189,6 +203,15 @@ MyFirstMod/
 
 > [!note]
 > Esto no se limita a `jsons/lang/lang.json`. Si otros patch JSON ya contienen nodos de texto multilingue (por ejemplo textos de entradas en `objects/PlantAlmanac.json`), tambien puedes agregar alli campos de idiomas adicionales (`es`, `ru`, `ja`, etc.) para traducir.
+
+## Ajustes, Runtime Extensions y funciones auxiliares
+
+Ademas de cargar parches, GP-Next tambien incluye varias utilidades en tiempo de ejecucion:
+
+- **Scrolling Optimization**: permite ajustar por separado el escalado del wheel/scroll continuo y el intervalo minimo para cambios discretos en selectores. Afecta lugares como ajustes, pantallas tipo almanaque, el world chooser, los selectores sandbox de plantas/zombis y algunos flujos de cambio por rueda en sandbox.
+- **Runtime Extensions**: actualmente incluye `Dynamic Plant Registry`, que da una identidad en runtime mas estable a los datapacks que agregan o clonan plantas. Normalmente basta con recargar parches; reiniciar el juego es opcional.
+- **HP Overlay**: puede mostrar la vida en tiempo real de plantas, zombis y objetos de suelo tipo Tomb durante la batalla. Las entidades con capas extra tipo shell/armor tambien pueden mostrar esa capa adicional.
+- **Update Check y Logs**: el pie del panel muestra la version y el estado de actualizacion, y la pestana **Log** expone los logs de GP-Next para diagnostico.
 
 ## Ediciones manuales y pestana Data
 

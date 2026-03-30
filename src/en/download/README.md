@@ -16,10 +16,14 @@ import axios from 'axios';
 import { ref, onBeforeMount, onMounted } from 'vue'
 
 const gameInfoData = ref(null);
+const gpNextInfoData = ref(null);
 
 onBeforeMount(() => {
   axios.get('/jsons/gameinfo.json').then(res => {
     gameInfoData.value = res.data;
+  });
+  axios.get('/jsons/gp-next-info.json').then(res => {
+    gpNextInfoData.value = res.data;
   });
 })
 onMounted(() => {
@@ -48,6 +52,8 @@ onMounted(() => {
 <span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
 
 <span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
+
+<span v-if="gpNextInfoData?.version">The latest GP-Next tool version is {{ gpNextInfoData.version }}</span>
 
 ## Recommended Next Steps
 
