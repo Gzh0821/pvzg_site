@@ -1,5 +1,5 @@
 ---
-title: 属性参考
+title: 类型与字段
 icon: file-invoice
 pageInfo: false
 index: true
@@ -24,7 +24,17 @@ order: 4
      data-full-width-responsive="true">
 </ins>
 
-## 植物文件
+## 这页怎么用
+
+这页不是“从零开始写模组”的入门页，而是一份字段参考。更适合在下面这些场景里配合使用：
+
+- 你已经知道自己想改哪一类数据，但还不清楚字段名
+- 你已经从游戏里导出了某个 JSON，想对照字段作用来看
+- 你想确认某个常见 `Features` / `Props` 文件里通常有哪些内容
+
+如果你还没有拿到原始 JSON，可以先看 [导出游戏数据参考](./gp-next-json.md)。
+
+## 植物相关文件
 
 以下是植物 JSON 文件的格式，此处以爆裂葡萄为例。
 
@@ -48,7 +58,7 @@ PlantFeatures.json 文件包含植物的基本特性。
 | **ID**             | 74                                        | 植物在游戏内的唯一 id 值                                                              |
 | **NAME**           | `{ "en": "Grapeshot", "zh": "爆裂葡萄" }` | 多语言名称，`en`为英文名，`zh`为中文名                                                |
 | _\_CARDSPRITENAME_ | "grapeshot"                               | 卡牌图标资源名称(对应游戏资源文件)                                                    |
-| _CODENAME_         | "grapeshot"                               | 植物的唯一标识符(关键字段，用于 GE Patcher 合并)                                      |
+| _CODENAME_         | "grapeshot"                               | 植物的唯一标识符(关键字段，用于 GP-Next 匹配与合并)                                  |
 | _TYPE_             | `["plant", "lastStandDisallowed"]`        | 植物类型:<br>- `plant`:普通植物<br>- `lastStandDisallowed`:不可在"最终防线"模式中使用 |
 | **OBTAINWORLD**    | "market"                                  | 背景图片所在的世界                                                                    |
 | **ZENGARDEN**      | `{ "PlantPlace": "dirt" }`                | 禅境花园种植位置:<br>- `dirt`:普通土地                                                |
@@ -98,7 +108,15 @@ PlantProps.json 文件包含植物的数值属性。
 | **Family**                    | "Explosive" | 所属家族(可能影响家族增益效果)     |
 | **ImmuneToIceblock**          | true        | 免疫冰冻效果(如冰鼬僵尸的冰冻攻击) |
 
-## 商店文件
+## 这些文件通常有什么区别
+
+- `PlantFeatures.json`：偏“身份信息”和展示信息，例如名称、排序、卡牌资源名、皮肤数量
+- `PlantProps.json`：偏数值和机制参数，例如阳光、冷却、生命值、伤害
+- `PlantAlmanac.json`：偏图鉴显示内容，例如简介、标签、聊天文本
+
+实际修改时，通常是先导出原始 JSON，看目标植物已经有哪些字段，再决定是改 `Features`、`Props` 还是 `Almanac`。
+
+## 商店相关文件
 
 `StoreCommodityFeatures.json` 文件包含商店的商品信息，有`Plants`、`Upgrade`、`Gem`、`Coin` 和 `Zen` 五个数组，表示不同类型的商品信息。
 

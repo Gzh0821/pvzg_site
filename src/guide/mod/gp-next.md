@@ -1,231 +1,90 @@
 ---
-title: GP-Next 使用教程
+title: GP-Next 简介
 icon: toolbox
 pageInfo: false
 index: true
 order: 1
 ---
 
-<script setup>
-    import { onMounted } from 'vue';
-    onMounted(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    })
-</script>
-
 > [!tip]
-> 以下教程适用于 `0.7.1` 及以上版本的游戏。对于更早的版本，请参考 gePatcher 教程。
+> 本页适用于 官网发布(非网盘链接)的 `0.7.1` 及以上版本。
 
-GP-Next 是 PvZ2 Gardendless 的全新强大的数据调试与 Mod 工具。它支持通过 JSON 对植物、僵尸、地图、商店商品和关卡等游戏资源进行模块化定制。相比旧版的 gePatcher，它带来了数据包管理（Datapacks）、内置修改器（Trainer）和实时数据编辑（Data Browser）等高级功能。
+# GP-Next
 
-官网的发布版本已经内置了 GP-Next（网盘版本暂无），请在游戏内按 `F10` 或点击左上角的按钮进入 GP-Next 面板。
+GP-Next 是 PvZ2 Gardendless 当前内置的模组、调试与运行时辅助工具，以下能力统一集成在同一个面板中：
 
-## 当前内置能力概览
+- **Patcher**：管理 `packs/`、`patches/`、手动编辑与补丁重载
+- **Data**：浏览、对比、导出、还原和编辑游戏内数据
+- **Trainer**：在战斗、世界地图和沙盒场景中提供修改器功能
+- **Cloud**：云存档上传、下载、比较
+- **Settings**：语言、帧率、滚动优化、Runtime Extensions、HP Overlay 等设置
+- **Guide / About / Log**：内置文档、控制台命令说明、运行日志
 
-当前版本的 GP-Next 面板主要包含这些部分：
+如果你安装的是官网发布版，GP-Next 已经内置在游戏里。进入游戏后按 `F10`，或点击左上角按钮即可打开面板。
 
-- **Patcher**：管理 `packs/`、`patches/`、手动编辑数据，并支持打开目录、保存排序、重新加载补丁。
-- **Data**：实时浏览游戏数据，支持导出、对比、手动编辑、还原单条或整类数据。
-- **Trainer**：在战斗、世界地图和沙盒等场景下提供修改器功能。
-- **Settings**：提供语言、帧率、调试、滚动优化、Runtime Extensions、HP Overlay 等开关。
-- **Guide / About / Log**：内置指南、命令/API 说明，以及运行日志查看器。
+## 前提
 
-## 前提条件
+1. 一个 JSON 编辑器，推荐 VSCode / Notepad++
+2. 一点基础 JSON 结构知识
 
-1. JSON 编辑器（推荐使用 VSCode/Notepad++）
-2. 游戏版本 ≥ 0.7.1
-3. 理解基本的 JSON 数据结构。有关植物和僵尸的具体可用属性参考，请查阅[属性参考](format.md)。
+如果你准备修改植物、僵尸、商店或语言，最好同时打开这两页：
 
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7637695321442015"
-     data-ad-slot="7113006248"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
+- [导出游戏数据参考](./gp-next-json.md)
+- [类型与字段参考](./format.md)
 
-## 目录结构与合并优先级
+## 快速开始
 
-GP-Next 的模组目录统一放置在游戏数据目录的 `gp-next` 文件夹下。你可以在游戏的 GP-Next 面板按 **"打开目录"** 直接定位到该路径。
+### 1. 打开面板
 
-GP-Next 的文件合并按照以下优先级顺序进行（编号越后优先级越高，即后续覆盖前面）：
+- 进入游戏
+- 按 `F10`
+- 打开 **Patcher** 页
 
-1. **packs/ 目录（数据包 Datapacks）**：这里存放文件夹或 `.zip` 格式的完整模组包。各个包之间会根据各自清单中定义的 `priority`（优先级数值，越小越先加载）进行升序加载。
-2. **patches/ 目录（单文件补丁）**：类似于旧版的 gePatcher，直接存在此目录的散装 JSON 拥有比所有数据包更高的优先级，起到向下兼容的作用。
-3. **手动编辑（数据面板）**：你在游戏内 GP-Next 【数据】面板中手动执行的各项数值修改会归档为 `__gpn_edits`，它们拥有**最高优先级**，永远覆盖所有的 packs 和 patches。
+### 2. 打开目录
 
-```text
-com.pvzge.app/
-└── gp-next/
-    ├── settings.json        ← GP-Next 自身的包顺序/禁用状态持久化
-    ├── packs/
-    │   ├── MyPack/         ← 文件夹格式的数据包
-    │   │   ├── pack.json   ← 必须存在的描述清单
-    │   │   └── jsons/
-    │   │       ├── features/
-    │   │       ├── lang/
-    │   │       ├── objects/
-    │   │       └── levels/
-    │   └── AnotherPack.zip ← ZIP 格式的数据包
-    └── patches/            ← 单文件旧式补丁
-        └── jsons/
-            ├── features/
-            ├── lang/
-            ├── objects/
-            └── levels/
-    └── __gpn_edits/        ← 数据面板手动编辑写入的位置（最高优先级）
-```
+在 **Patcher** 页点击“打开目录”，进入游戏数据目录下的 `gp-next/` 文件夹。
 
-### 文件夹职能说明
+### 3. 创建数据包
 
-- **`features/` 目录**：用于放置 `PlantFeatures.json`、`ZombieFeatures.json`、`StoreCommodityFeatures.json`、`MintObtainRoute.json`、`WorldmapFeatures.json` 等文件。这些文件主要用于植物/僵尸的元数据（属性基类、世界解锁、家族等），以及商店商品的定价配置。
-- **`lang/` 目录**：用于放置 `lang.json` 或 `lang.json5` 等多语言文本文件，为 Mod 提供额外语言注册和文本翻译覆盖。
-- **`objects/` 目录**：用于放置 `PlantProps.json`、`ZombieProps.json`、`PlantAlmanac.json` 等文件。这些通常涉及战斗数值（血量、伤害、冷却等）以及图鉴展示描述。
-- **`levels/` 目录**：用于放置关卡文件，文件名必须与游戏内关卡 ID 一致（例如 `egypt1.json`）。
-- **`settings.json`**：GP-Next 自己的本地设置文件，用于保存数据包顺序、禁用状态等面板配置。
-- **`__gpn_edits/`**：用于保存你在【数据】面板里做出的实时手动修改，优先级高于普通数据包和单文件补丁。
+最推荐的方式是把修改写进 `packs/你的模组名/pack.json` 和 `jsons/` 目录，而不是直接堆散装 JSON。
 
-## 数据合并逻辑
+### 4. 重载补丁
 
-部分开发者习惯把整个源文件内容全部复制过来，这非常容易因为游戏更新而导致其他字段丢失。
+回到游戏中的 **Patcher** 页，点击 **Save & Reload**，或者重启游戏。
 
-GP-Next 采用了深度合并（Deep Merge）机制。**只需要在 JSON 中写出你要修改的字段即可**，其余未提及的字段将保持不变。特别地，**JSON 中包含的数组类型字段会被完整替换**，而非按索引合并——如果需要修改某个数组字段（例如僵尸池 `Basic_Zombie`、植物解锁列表 `PLANTS`），需提供完整的新数组。
+### 5. 验证结果
 
-- **对于 Features (`PlantFeatures`, `ZombieFeatures`, `StoreCommodityFeatures` 等)**：通过标识符字段定位条目，只覆盖你填写的字段。大多数 Features 文件使用 `CODENAME` 作为标识符；`StoreCommodityFeatures` 的 `Plants`/`Upgrade` 子段使用 `CommodityName` 按条目合并，`Gem`/`Coin`/`Zen` 子段则**整体替换**；`MintObtainRoute` 使用 `Family`。
-- **对于 Objects (`PlantProps`, `PlantAlmanac` 等)**：通过你在 JSON 数组里填写的第一个 `aliases` 来定位实体，只覆盖你填写的对应的值。
-- **对于 关卡 (`levels/*.json`)**：这是一个例外，关卡文件采取**完全替换**逻辑.
+如果你不确定补丁有没有生效，可以打开 **Data** 页，找到对应条目，直接看当前运行中的数据。
 
-**示例：只修改豌豆射手阳光和冷却**
+## 接下来读什么
 
-`PlantProps.json`:
-```json
-{
-  "objects": [
-    {
-      "aliases": ["peashooter"],
-      "objclass": "PlantProperties",
-      "objdata": {
-        "SunCost": 50,
-        "Cooldown": 2
-      }
-    }
-  ]
-}
-```
+GP-Next 文档已经按主题拆开：
 
-## 数据包规范 (`pack.json`)
+- 先理解 [目录结构与加载优先级](./gp-next-files.md)
+- 再理解 [JSON 合并规则](./gp-next-merge.md)
+- 然后阅读 [Datapack 与 `pack.json`](./gp-next-datapack.md)
 
-制作一个数据包，你只需在 `packs/` 下新建一个文件夹，并在其根目录提供 `pack.json`，它的格式如下：
+如果你要做翻译包，继续看 [多语言与 `lang.json`](./gp-next-language.md)。
 
-```json
-{
-  "uuid": "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",
-  "name": "我的自定义模组",
-  "version": "1.0.0",
-  "priority": 100,
-  "description": "模组的介绍信息",
-  "author": "你的名字",
-  "formatVersion": 1,
-  "gameVersion": "0.7.1",
-  "gpNextVersion": ">=1.0.0"
-}
-```
+如果你更关注游戏内操作而不是文件结构，可以直接阅读：
 
-- **uuid**: 必须提供唯一的标识符（用于记忆你在控制面板中保存的配置与排序状态）。你可以前往游戏内的 GP-Next 指南面板中一键生成 uuid 并复制。
-- **name**: 模组在管理器内显示的名称。
-- **version**: 模组的版本号。
-- **priority**: 加载的默认优先级（越小越优先加载）。
-- **description**: 模组的详细介绍信息。
-- **author**: 模组作者的名字。
-- **formatVersion**: 数据包格式版本（当前规范为 1）。
-- **gameVersion**: 该模组指定兼容的游戏版本号（如：`0.7.1`）。
-- **gpNextVersion**: 该模组所需兼容的最低 GP-Next 版本限制（如：`>=1.0.0`）。
-- **thumbnail.png / thumbnail.ico**: 你可以在包名同级目录下放一张 1:1（正方形）的图片作为模组的封面展示。图片尺寸必须小于 128x128，支持 `.png` 和 `.ico` 格式。
+- [数据面板、手动编辑与 Trainer](./gp-next-tools.md)
+- [设置、Runtime Extensions 与辅助功能](./gp-next-settings.md)
+- [控制台命令 / API](./gp-next-console.md)
 
-### 制作数据包的完整流程
+## 关键点
 
-如果你想把自己的修改做成一个独立的数据包分享给其他人，请遵循以下步骤：
+- `packs/` 支持 **文件夹** 和 **`.zip`**
+- `patches/` 仍然保留，主要用于兼容旧式单文件补丁
+- Data 页的手动修改会写到 `__gpn_edits/`，并且优先级最高
+- 数组字段在 GP-Next 中默认是**整体替换**，不是按索引合并
+- `reloadPatches()` 通常足够让大多数运行时扩展重新生效，不一定必须重启
+- 页脚会显示 GP-Next 版本，并能检查官网是否有更新
 
-1. **创建模组文件夹**：在游戏数据目录的 `packs/` 文件夹下新建一个文件夹，如 `MyFirstMod`。
-2. **编写 `pack.json`**：在 `MyFirstMod` 文件夹内新建 `pack.json` 文件。复制上方的模板，把 `name` 和 `author` 改成你的信息。在游戏里的 GP-Next 的“指南”界面生成一个 UUID 并填入 `uuid` 字段。
-3. **添加修改目录**：在 `MyFirstMod` 内新建 `jsons` 文件夹。然后在 `jsons` 下创建 `features`、`objects` 或 `levels` 子文件夹。
-4. **写入数据**：将你要修改的内容（例如 `PlantProps.json`）按照“只保留需要修改的字段”原则写入对应的子文件夹中。
-5. **添加封面（可选）**：将一张小于 128x128 的正方形图片重命名为 `thumbnail.png`(或`thumbnail.ico`)，放入 `MyFirstMod` 文件夹下。
-6. **打包与分享（可选）**：右键点击 `MyFirstMod` 文件夹，将其压缩为 `MyFirstMod.zip`（确保压缩包**内**直接包含 `pack.json` 而不是再套一层文件夹）。现在你可以将这个 `.zip` 文件分享给其他玩家，而玩家只需把这个 ZIP 放进他们的 `packs/` 目录即可游玩。
+如果你还不知道某个类型的原始 JSON 长什么样，先去看 [导出游戏数据参考](./gp-next-json.md)。那一页更适合在动手前先查结构，再回来看具体字段。
 
-## 设置多语言（Language Pack）
+## 下一步
 
-如果你希望给同一个 Mod 同时提供多种语言文本（例如中文、英文、西语、俄语），请在数据包中加入 `jsons/lang/lang.json`（或 `lang.json5`）文件。
-
-### 目录位置
-
-```text
-MyFirstMod/
-├── pack.json
-└── jsons/
-    └── lang/
-        └── lang.json
-```
-
-### 最小示例
-
-```json
-{
-  "_languages": [
-    { "code": "es", "name": "Español", "isCJK": false },
-    { "code": "ru", "name": "Русский", "isCJK": false }
-  ],
-  "LoadingTips": [
-    {
-      "en": "Sun is your core resource.",
-      "zh": "阳光是你的核心资源。",
-      "es": "El sol es tu recurso principal.",
-      "ru": "Солнце - ваш основной ресурс."
-    }
-  ]
-}
-```
-
-- `_languages`：可选。用于在游戏设置里注册额外语言（除了默认的 `en` / `zh`）。
-- 文本节点：在同一个条目下并列填写 `en`、`zh`、`es`、`ru` 等字段。
-- 语言码：建议使用标准代码（如 `es`、`ru`、`ja`）。
-
-### 生效步骤
-
-1. 将包含 `jsons/lang/lang.json` 的数据包放入 `gp-next/packs/`。
-2. 打开游戏内 GP-Next 面板，进入 **Patcher**，点击 **Save & Reload**（或重新启动游戏）。
-3. 进入游戏设置中的语言选项，切换到你在 `_languages` 中声明的语言。
-4. 回到游戏验证文本是否按预期显示。
-
-> [!tip]
-> `lang.json` 与其它补丁一样支持深度合并。你只需要提供要覆盖的文本节点，不需要复制全部语言数据。
-
-> [!note]
-> 不仅是 `jsons/lang/lang.json`，其它 patch JSON 里原本就带多语言文本结构的字段（例如 `objects/PlantAlmanac.json` 中的词条文本）也可以直接增加对应语言字段（如 `es`、`ru`、`ja`）来实现翻译。
-
-## 设置、运行时扩展与辅助功能
-
-除了补丁加载本身，GP-Next 还接管了一部分实用的运行时功能：
-
-- **滚动优化（Scrolling Optimization）**：可分别调节连续滚轮/滚动灵敏度，以及离散选择栏切换的最小间隔。它会影响设置页、图鉴、世界选择器、沙盒植物/僵尸栏，以及部分沙盒滚轮切换入口。
-- **Runtime Extensions**：当前主要包含 `Dynamic Plant Registry`，用于让新增/克隆植物的数据包在运行时获得更稳定的植物身份映射。通常重新加载补丁即可生效，不一定非要重启游戏。
-- **HP Overlay**：可在战斗中显示植物、僵尸和 Tomb 系地物的实时血量；对于带外壳/护甲的对象，还会显示额外承伤层。
-- **更新检查与日志**：页脚会显示版本和更新状态；`Log` 页可直接查看 GP-Next 的运行日志，便于排查问题。
-
-## 手动编辑与数据层管理
-
-GP-Next 提供了一个强大的**数据（Data）**面板。通过它，你可以在游戏运行时实时查阅所有的游戏内部数据结构（例如 `PlantProps`、`ZombieProps`），甚至可以直接点击编辑。
-
-所有在数据面板进行的临时调整，都会被系统持久化保存，并且永久覆盖其他 Mod 包的定义！
-> [!important]
-> 手动编辑的设计初衷是用于**快速微调和测试纠错**。如果你打算制作一个完整稳定的修改内容或需要分享给他人，请务必将其封装为 `packs/` 下的独立数据包。
-
-如果你需要撤销这些临时修改，只需在数据面板中对应条目的右侧菜单点击“还原（Restore）”即可。
-
-## 修改器与沙盒 (Trainer)
-
-通过游戏内菜单打开“允许作弊（Cheat）”后，GP-Next 将激活专门的修改器功能。
-
-- **关卡内模式**：支持修改阳光数量、切换游戏速度（1× / 1.5×）、开启植物无敌/无冷却/免费种植、一键过关等实用功能，也可自动收集掉落物。
-- **世界地图模式**：允许你自由写入金币和钻石。
-- **沙盒互动**：修改器的功能与游戏原生的“沙盒模式”深度绑定。在沙盒模式下，修改器的操作会与沙盒指令互相映射与同步（同时，类似一键过关类的功能在沙盒模式下将被锁定禁用以保证稳定性）。
+- [目录结构与加载优先级](./gp-next-files.md)
+- [JSON 合并规则](./gp-next-merge.md)
+- [Datapack 与 `pack.json`](./gp-next-datapack.md)
