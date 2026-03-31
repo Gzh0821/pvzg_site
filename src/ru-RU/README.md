@@ -17,7 +17,8 @@ bgImageStyle:
   opacity: 0.5
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: Полностью переделанная PvZ2 для всех настольных платформ
+# tagline: Полностью переделанная PvZ2 для всех настольных платформ
+tagline: <a href="https://youtu.be/dQw4w9WgXcQ">Never Gonna Give You Up</a>
 actions:
   - text: Скачать
     icon: circle-down

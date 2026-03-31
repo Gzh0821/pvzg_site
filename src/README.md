@@ -17,7 +17,8 @@ bgImageStyle:
   opacity: 0.5 
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: 完全重制的全桌面平台PvZ2
+# tagline: 完全重制的全桌面平台PvZ2
+tagline: <a href="https://www.bilibili.com/video/BV1GJ411x7h7">Never Gonna Give You Up</a>
 actions:
   - text: 下载链接
     icon: circle-down

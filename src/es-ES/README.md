@@ -17,7 +17,8 @@ bgImageStyle:
   opacity: 0.5
 heroFullScreen: true
 heroText: PvZ2 Gardendless
-tagline: Un PvZ2 completamente remasterizado para todas las plataformas de escritorio
+# tagline: Un PvZ2 completamente remasterizado para todas las plataformas de escritorio
+tagline: <a href="https://youtu.be/dQw4w9WgXcQ">Never Gonna Give You Up</a>
 actions:
   - text: Descargar
     icon: circle-down
