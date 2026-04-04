@@ -3309,7 +3309,7 @@
 			"OBTAINWORLD": "lostcity",
 			"ZENGARDEN": {
 				"FixedWeight": 1,
-				"PlantPlace": "solid"
+				"PlantPlace": "dirt"
 			},
 			"BOOST": 0,
 			"COSTUME": 3,
@@ -5002,6 +5002,78 @@
 				"Disabled": "SnapPea",
 				"Plant": "SnapPea"
 			}
+		},
+		{
+			"ID": 199,
+			"NAME": {
+				"en": "Asparagus",
+				"zh": "芦笋战机"
+			},
+			"_CARDSPRITENAME": "asparagus",
+			"CODENAME": "asparagus",
+			"TYPE": [
+				"fly"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(asparagus@PlantAlmanac)",
+			"PROPS": "RTID(asparagus@PlantProps)",
+			"RES": {
+				"Disabled": "Asparagus",
+				"Plant": "Asparagus"
+			}
+		},
+		{
+			"ID": 200,
+			"NAME": {
+				"en": "Pineapple",
+				"zh": "旋转菠萝"
+			},
+			"_CARDSPRITENAME": "pineapple",
+			"CODENAME": "pineapple",
+			"TYPE": [
+				"fly"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "sky",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(pineapple@PlantAlmanac)",
+			"PROPS": "RTID(pineapple@PlantProps)",
+			"RES": {
+				"Disabled": "Pineapple",
+				"Plant": "Pineapple"
+			}
+		},
+		{
+			"ID": 201,
+			"NAME": {
+				"en": "Anthurium",
+				"zh": "电离红掌"
+			},
+			"_CARDSPRITENAME": "anthurium",
+			"CODENAME": "anthurium",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "sky",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(anthurium@PlantAlmanac)",
+			"PROPS": "RTID(anthurium@PlantProps)",
+			"RES": {
+				"Disabled": "Anthurium",
+				"Plant": "Anthurium"
+			}
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -5107,9 +5179,6 @@
 		"zoybeanpod",
 		"aloe",
 		"shinevine",
-		"skyshooter",
-		"moonbean",
-		"floawerPot",
 		"firegourd",
 		"snowpea",
 		"bambooshoot",
@@ -5142,6 +5211,12 @@
 		"shrinkingviolet",
 		"meteorflower",
 		"explodeonut",
+		"skyshooter",
+		"pineapple",
+		"moonbean",
+		"anthurium",
+		"asparagus",
+		"floawerPot",
 		"moonflower",
 		"nightshade",
 		"shadowshroom",
@@ -5323,9 +5398,6 @@
 		"bamboobusket",
 		"atombomb_seedling",
 		"atombomb",
-		"skyshooter",
-		"moonbean",
-		"floawerPot",
 		"phatbeet",
 		"celerystalker",
 		"thymewarp",
@@ -5346,6 +5418,12 @@
 		"coldsnapdragon",
 		"explodeonut",
 		"meteorflower",
+		"skyshooter",
+		"pineapple",
+		"moonbean",
+		"anthurium",
+		"asparagus",
+		"floawerPot",
 		"moonflower",
 		"nightshade",
 		"shadowshroom",

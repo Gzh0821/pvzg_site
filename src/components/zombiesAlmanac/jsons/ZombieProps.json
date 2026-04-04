@@ -7660,7 +7660,7 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 0,
 						"DamageIndexHalf": 0,
-						"HitPoints": 11000,
+						"HitPoints": 7000,
 						"MaxIdleTime": 2.5,
 						"MinIdleTime": 1.5,
 						"StunDamageScale": 1.25,
@@ -7730,7 +7730,7 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 3,
 						"DamageIndexHalf": 3,
-						"HitPoints": 13000,
+						"HitPoints": 9000,
 						"MaxIdleTime": 2,
 						"MinIdleTime": 1,
 						"StunDamageScale": 1.25,
@@ -7800,7 +7800,7 @@
 						"ChilledDurationFromFrozen": 10,
 						"DamageIndexFull": 6,
 						"DamageIndexHalf": 6,
-						"HitPoints": 15000,
+						"HitPoints": 11000,
 						"MaxIdleTime": 1.5,
 						"MinIdleTime": 0.75,
 						"StunDamageScale": 1.25,
@@ -11962,17 +11962,53 @@
 		},
 		{
 			"aliases": [
+				"sky_electric"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 700,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"SkyCityShipDetectXOffsetFiring": -60,
+				"SkyCityShipDetectXOffset": -40,
+				"ShipDPS": 100,
+				"PositiveBoltType": "sky_bolt_positive",
+				"NegativeBoltType": "sky_bolt_negative",
+				"TimeBeforeFirst": {
+					"Min": 1,
+					"Max": 2
+				},
+				"TimeBetween": {
+					"Min": 4,
+					"Max": 5
+				},
+				"ProjectileCountPerShot": 1,
+				"ProjectileAngle": 0,
+				"ShootsTowardsAirRaidPlant": false,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"sky"
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
-				"WalkSPS": 0.24,
+				"WalkSPS": 0.27,
 				"EatDPS": 100,
 				"Toughness": 190,
 				"WavePointCost": 100,
 				"Weight": 1000,
+				"SkyCityShipDetectXOffsetFiring": -60,
+				"SkyCityShipDetectXOffset": -40,
+				"ShipDPS": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -11985,7 +12021,7 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
-				"WalkSPS": 0.24,
+				"WalkSPS": 0.27,
 				"EatDPS": 100,
 				"Toughness": 190,
 				"StartingArmors": [
@@ -11993,6 +12029,9 @@
 				],
 				"WavePointCost": 200,
 				"Weight": 3000,
+				"SkyCityShipDetectXOffsetFiring": -60,
+				"SkyCityShipDetectXOffset": -40,
+				"ShipDPS": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -12005,7 +12044,7 @@
 			"objdata": {
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
-				"WalkSPS": 0.24,
+				"WalkSPS": 0.27,
 				"EatDPS": 100,
 				"Toughness": 190,
 				"StartingArmors": [
@@ -12013,6 +12052,9 @@
 				],
 				"WavePointCost": 400,
 				"Weight": 4000,
+				"SkyCityShipDetectXOffsetFiring": -60,
+				"SkyCityShipDetectXOffset": -40,
+				"ShipDPS": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -12026,13 +12068,247 @@
 				"ZombieSort": "Normal",
 				"ChooseToSpawnOnNonDeckRows": true,
 				"CannotCarryPlantfoodsInWaves": true,
-				"WalkSPS": 0.3,
+				"WalkSPS": 0.32,
 				"EatDPS": 100,
 				"Toughness": 190,
 				"WavePointCost": 100,
 				"Weight": 100,
+				"SkyCityShipDetectXOffsetFiring": -60,
+				"SkyCityShipDetectXOffset": -40,
+				"ShipDPS": 100,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_battleplane"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 1000,
+				"ImpToughness": 390,
+				"BulletType": "sky_battleplane_bullet",
+				"CrashDamage": 1200,
+				"CrashDamageToShip": 1200,
+				"ImpDeathSpeedMult": 2,
+				"ArmDroppingHealthPct": -100,
+				"ImpArmDroppingHealthPct": 0.5,
+				"WavePointCost": 700,
+				"Weight": 4000,
+				"SkyCityShipDetectXOffset": -60,
+				"HitRect": "RTID(SkyBattlePlaneHitRect@RectangleProps)",
+				"AttackRect": "RTID(SkyBattlePlaneAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_twin_upper"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"ImmuneToSweetPotato": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.4,
+				"KnockBackDistanceScale": 0.5,
+				"WalkSPSParalyzed": 0.67,
+				"EatDPS": 1000,
+				"Toughness": 1500,
+				"CrashDamageToShip": 2000,
+				"WavePointCost": 900,
+				"Weight": 3000,
+				"ParalyzedDamageToPartnerScale": 0.5,
+				"CrashBackwardTime": 0.4,
+				"CrashForwardTime": 0.2,
+				"SkyCityShipDetectXOffset": -80,
+				"HitRect": "RTID(SkyTwinHitRect@RectangleProps)",
+				"AttackRect": "RTID(SkyTwinAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_twin_lower"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"ImmuneToSweetPotato": true,
+				"PartnerType": "",
+				"KnockBackDistanceScale": 0.5,
+				"CannotBeSwallowedByChomper": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.4,
+				"WalkSPSParalyzed": 0.67,
+				"EatDPS": 1000,
+				"Toughness": 1500,
+				"CrashDamageToShip": 2000,
+				"WavePointCost": 900,
+				"Weight": 3000,
+				"CrashBackwardTime": 0.4,
+				"CrashForwardTime": 0.2,
+				"ParalyzedDamageToPartnerScale": 0.5,
+				"SkyCityShipDetectXOffset": -80,
+				"HitRect": "RTID(SkyTwinHitRect@RectangleProps)",
+				"AttackRect": "RTID(SkyTwinAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_twin"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"SuppressedSpawningLanes": [
+					0
+				],
+				"CannotBeTossedByCitron": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"ImmuneToSweetPotato": true,
+				"KnockBackDistanceScale": 0.5,
+				"PartnerType": "sky_twin_upper",
+				"CannotBeSwallowedByChomper": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.4,
+				"WalkSPSParalyzed": 0.67,
+				"EatDPS": 1000,
+				"Toughness": 1500,
+				"CrashDamageToShip": 2000,
+				"WavePointCost": 1200,
+				"Weight": 3000,
+				"CrashBackwardTime": 0.4,
+				"CrashForwardTime": 0.2,
+				"ParalyzedDamageToPartnerScale": 0.5,
+				"SkyCityShipDetectXOffset": -80,
+				"HitRect": "RTID(SkyTwinHitRect@RectangleProps)",
+				"AttackRect": "RTID(SkyTwinAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"KilledByShrinkingViolet": true,
+				"CannotBeGrabbedByPtero": true,
+				"ZombieSort": "Normal",
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.22,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(ImpHitRect@RectangleProps)",
+				"AttackRect": "RTID(ImpAttackRect@RectangleProps)",
+				"JumpSPS": 3,
+				"SkyCityShipDetectXOffset": -40
+			}
+		},
+		{
+			"aliases": [
+				"sky_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"ZombieSort": "Gargantuar",
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"JamStyle": "jam_metal",
+				"WaveType": "eighties_gargantuar_wave",
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ShipDPS": 300,
+				"SkyCityShipDetectXOffset": -70,
+				"SkyCityShipDetectXOffsetFiring": -100,
+				"HealthPercentThrowImp0": 0.7,
+				"HealthPercentThrowImp1": 0.3,
+				"ImpType": "sky_imp",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_dropship"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ImmuneToShrinkingViolet": true,
+				"ImmuneToSporeShroom": true,
+				"ImmuneToSweetPotato": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeGummedByGumnut": true,
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBePushedBySliders": true,
+				"IgnoredBySnapPea": true,
+				"IgnoredByHomingThistle": true,
+				"CannotBeHypnotizedByProjectiles": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 0,
+				"EatDPS": 100,
+				"Toughness": 1200,
+				"NormalDeathWhenMowed": true,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0,
+				"ImpType": "sky_imp",
+				"ImpCount": {
+					"Min": 3,
+					"Max": 4
+				},
+				"TimeBeforeFirst": {
+					"Min": 1,
+					"Max": 2
+				},
+				"TimeBetween": {
+					"Min": 3,
+					"Max": 4
+				},
+				"ImpLandingColumns": [
+					0,
+					1
+				],
+				"ImpLandingRows": [],
+				"ImpFlyingDuration": {
+					"Min": 3,
+					"Max": 3.5
+				},
+				"HitRect": "RTID(FutureProtectorShieldHitRect@RectangleProps)",
+				"AttackRect": "RTID(FutureProtectorShieldAttackRect@RectangleProps)"
 			}
 		},
 		{

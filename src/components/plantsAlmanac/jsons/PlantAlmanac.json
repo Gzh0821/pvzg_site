@@ -503,7 +503,7 @@
 				"Special": [],
 				"Chat": {
 					"en": "Don't even think about trying to pull one over on Homing Thistle. He's got a bead on you. He sees right through your facade. It's like he has a laser beam... aimed at your soul.",
-					"zh": "别想着能欺骗导向蓟。他能一眼把你看穿，穿过你表露的假象，像是一道雷射光，精准地瞄着你的灵魂！"
+					"zh": "别想着能欺骗导向蓟。他能一眼把你看穿，穿过你表露的假象，像是一道镭射光，精准地瞄着你的灵魂！"
 				},
 				"BriefIntroduction": {
 					"en": "Attacks farthest left target in any lane",
@@ -619,6 +619,67 @@
 				"BriefIntroduction": {
 					"en": "Shoots heavy stunning peas",
 					"zh": "发射重型豌豆"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"asparagus"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 80
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Multi-Lane",
+							"zh": "多行"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Asparaguses shoot at zombies in three lanes.",
+					"zh": "芦笋战机可以攻击前方及相邻两行的僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "must reload for a moment when finishing 7 shots",
+							"zh": "发射 7 次后必须重新装填一会。"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Asparagus enjoys the reputation of being the \"King of Vegetables\", yet he takes no pride in this. Having loved studying all kinds of firearms since childhood, he can only realize its value on the battlefield. \"I just want everyone to remember the passionate me on the battlefield!\" Asparagus said earnestly.",
+					"zh": "芦笋享有“蔬菜之王”的美称，然而他却并不以此为傲。从小热爱研究各类热兵器的他只有在战场上才能实现自己的价值。“我只希望大家能够记住战场上热血的我！”芦笋战机认真地说道。"
+				},
+				"BriefIntroduction": {
+					"en": "Shoots at zombies in three lanes",
+					"zh": "向三行的僵尸发射子弹"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -2386,6 +2447,63 @@
 		},
 		{
 			"aliases": [
+				"pineapple"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "PLANTFOOD",
+						"SORT": {
+							"en": "Attract Projectiles",
+							"zh": "吸引子弹"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Pineapples block off zombies, and spin to reflect hostile projectiles.",
+					"zh": "旋转菠萝可以阻挡僵尸前进, 并通过旋转自身反弹敌人的子弹。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "attracts projectiles when on being fed with Plantfood",
+							"zh": "使用叶绿素时能吸引子弹"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Others often question the way Pineapple deals with his problems, \"Is it because of the elasticity of your body rather than your spinning that make the bullets reflected?\" He replied about that, \"I just like spinning, which relaxes my spinning leaves.\"",
+					"zh": "时常有人怀疑旋转菠萝处理问题的方式，“子弹会不会只是通过你身体的弹性反弹，而不是你的旋转呢？”对此，他表示道：“我只是喜欢旋转，这样能让我头顶的叶片放松很多。”"
+				},
+				"BriefIntroduction": {
+					"en": "Blocks off zombies and reflect projectiles",
+					"zh": "抵挡僵尸并反弹子弹"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"murkadamia"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -2850,6 +2968,74 @@
 				"BriefIntroduction": {
 					"en": "Zaps several chickens or zombies per strike",
 					"zh": "电击连续的几只僵尸或鸡"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 20
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Straight",
+							"zh": "直线"
+						}
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Absorbs Charges",
+							"zh": "吸收电荷"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Anthuriums fire lightning bolts at zombies and absorb electric charges from surrounding plants.",
+					"zh": "电离红掌向僵尸发射球状闪电，并且能吸收周围植物身上的电荷。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "lightning bolts fired after absorbing charges deal much more damages",
+							"zh": "吸收电荷后发射的球状电伤害更高"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Just staying together is an ordeal for the Anthurium brothers. They must resist a powerful attraction to prevent their dangerous electrical energy from canceling out the instant they touch.",
+					"zh": "电离红掌兄弟光是待在一起都是一种历练，他们得抵抗强大的吸引力，防止身上危险的电能在碰到的一瞬间抵消殆尽。"
+				},
+				"BriefIntroduction": {
+					"en": "Fire lightning bolts and absorb electric charges",
+					"zh": "发射球状电并吸收电荷"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -4979,7 +5165,7 @@
 				"Special": [],
 				"Chat": {
 					"en": "Enforce-mint shrinks zombies, which may seem a bit off-brand for a guy who's all about melee damage. Enforce-mint shrugs. \"I don't set policy。\" he says.",
-					"zh": "健壮薄荷能缩小僵尸，这对一个专精近战伤害的家伙来说似乎有点“人设不符”。强制薄荷耸了耸肩。对此他表示：“规则不是我定的。”"
+					"zh": "健壮薄荷能缩小僵尸，这对一个专精近战伤害的家伙来说似乎有点“人设不符”。健壮薄荷耸了耸肩。对此他表示：“规则不是我定的。”"
 				},
 				"BriefIntroduction": {
 					"en": "Boosts melee plants",

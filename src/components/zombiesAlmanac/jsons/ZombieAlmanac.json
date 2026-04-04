@@ -3831,10 +3831,10 @@
 					{
 						"TYPE": "TOUGHNESS",
 						"SORT": {
-							"en": "Protected",
-							"zh": "加强"
+							"en": "Dense",
+							"zh": "结实"
 						},
-						"PROGRESS": 0.8
+						"PROGRESS": 0.6
 					},
 					{
 						"TYPE": "SPEED",
@@ -9937,6 +9937,60 @@
 			}
 		},
 		{
+			"aliases": [
+				"sky_electric"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Dense",
+							"zh": "结实"
+						},
+						"PROGRESS": 0.6
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Shoots lightning bolts towards plants with a lightning gun.",
+					"zh": "使用闪电枪发射电荷攻击植物。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "shoots positive or negative bolts",
+							"zh": "发射正电荷或负电荷"
+						}
+					}
+				],
+				"Chat": {
+					"en": "The two large batteries on his back could have provided enough voltage to destroy everything, but he carelessly connected them in parallel.",
+					"zh": "他后背上的两颗大电池本来可以提供摧毁一切的电压，但是他粗心地将它们并联了。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"//": "basic",
 			"aliases": [
 				"sky"
@@ -10105,6 +10159,243 @@
 				"DisplayOffset": {
 					"x": 0,
 					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "imp",
+			"aliases": [
+				"sky_imp"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Average",
+							"zh": "一般"
+						},
+						"PROGRESS": 0.25
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "Parachute directly into your ship and proceed rightwards.",
+					"zh": "空降直至你的飞船中，并向右行进。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Imp Paratrooper is actually not good at landing and falls every time, but his greatest achievement is inventing the self-storing parachute.",
+					"zh": "伞兵小鬼的实际上不善于着陆，每次都摔一跤，但实际上他最伟大的成就是发明了可以自动收纳的降落伞。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sky_twin"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "Can only be defeated when both cabins are destroyed.",
+					"zh": "两个机舱全部被击毁后才会坠落。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "paralyzed cabin passes half of the damage it receives to the other",
+							"zh": "瘫痪的机舱将受到的伤害的一半传递给另一个机舱"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "paralyzed cabin can be blocked by plants",
+							"zh": "瘫痪的机舱会被植物挡下"
+						}
+					}
+				],
+				"Chat": {
+					"en": "The brothers in the Double-Cabin Aircraft dream of \"traveling the world\" and \"conquering the earth\". However, they have never agreed on where to explore. \"I just can't communicate with a brainless partner!\" They always complain about each other like this.",
+					"zh": "双舱飞行僵尸拥有“环球旅行”、“征服世界”的探险梦。然而他们兄弟俩从未在去哪儿探险这个问题上达成一致。“我简直无法同一个没有脑子的家伙沟通！”他们总是这样气鼓鼓地抱怨对方。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"//": "gargantuar",
+			"aliases": [
+				"sky_gargantuar"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Great",
+							"zh": "巨大"
+						},
+						"PROGRESS": 0.9
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "Destroying everything with its bare hands with nothing to be affraid of.",
+					"zh": "徒手摧毁一切，并且无所畏惧的巨尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Damage",
+							"zh": "攻击"
+						},
+						"DESCRIPTION": {
+							"en": "crushes plants with fists",
+							"zh": "用重拳摧毁植物"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特殊"
+						},
+						"DESCRIPTION": {
+							"en": "damages your ship with a drill",
+							"zh": "用电钻破坏你的飞船"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "launches Imp Paratroopers when damaged",
+							"zh": "受重伤时丢出伞兵小鬼"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Just like a pair of worn-out headphones, the Flying Gargantuar's aircraft has uneven power output on the left and right. In fact, right now, he's slowly spinning in place.",
+					"zh": "就像用久了的耳机一样，飞行巨尸的飞行器左右功率不相同，其实现在他正以极慢的速度自转呢。"
+				},
+				"DisplayOffset": {
+					"x": 20,
+					"y": -60
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sky_battleplane"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Attack your plants and ship with the machine gun on his plane.",
+					"zh": "使用战斗机上的机枪攻击植物和飞船。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "lobbed projectiles or poison directly damage the imp driver",
+							"zh": "投掷的子弹或毒能直接伤害到小鬼驾驶员"
+						}
+					}
+				],
+				"Chat": {
+					"en": "To become an excellent fighter, he studied a total of 97 flight courses, passed 81 exams, and underwent 101 simulated flight drills during his time at flight school... He always talks endlessly to others about his superb flying skills, but the zombies who have ridden in his plane seem unwilling to bring up this topic again.",
+					"zh": "为了成为一名优秀的战斗机僵尸，在飞行学校学习期间，他总共学习了97门飞行课程、通过了81场考试、经历了101场模拟飞行演练……他总是滔滔不绝地和别人提起自己高超的飞行技术，不过坐过他的飞机的僵尸似乎都不愿意再次提及这个话题。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": -20
 				},
 				"DisplayScale": {
 					"x": 1,

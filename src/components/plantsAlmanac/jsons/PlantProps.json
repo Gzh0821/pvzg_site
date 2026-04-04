@@ -43,6 +43,34 @@
 				"MaxContainZombieCount": 1,
 				"PlantfoodSwallowCount": 4,
 				"Family": "Melee",
+				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"asparagus"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 5,
+				"CooldownFrom": 0.5,
+				"SunCost": 225,
+				"BeghouledCost": 3000,
+				"Toughness": 300,
+				"Family": "Lobber",
+				"Damage": 20,
+				"DamagePlantfood": 800,
+				"MaxClips": 7,
+				"IdleReloadClips": 3,
+				"ShootInterval": 1.75,
+				"ShootIntervalAdditional": 0.15,
+				"ReloadDuration": 6,
+				"MintDamageFactor": 5,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 3,
@@ -406,6 +434,28 @@
 				"BeghouledCost": 1000,
 				"Toughness": 4000,
 				"Family": "Defence",
+				"MintBoostedProps": {
+					"ResistanceMult": 3,
+					"SpeedMult": 1,
+					"Plantfood": true
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pineapple"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ArmorToughness": 6000,
+				"Cooldown": 20,
+				"CooldownFrom": 0.75,
+				"SunCost": 125,
+				"BeghouledCost": 2000,
+				"Toughness": 6000,
+				"Family": "Defence",
+				"SpinDuration": 2,
+				"PlantfoodDuration": 10,
 				"MintBoostedProps": {
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
@@ -797,6 +847,7 @@
 				"BeghouledCost": 2000,
 				"Toughness": 2000,
 				"Family": "Defence",
+				"IsNotAPlant": true,
 				"MintBoostedProps": {
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
@@ -820,6 +871,7 @@
 				"Family": "Defence",
 				"StabDamage": 20,
 				"StabInterval": 1,
+				"IsNotAPlant": true,
 				"MintBoostedProps": {
 					"ResistanceMult": 3,
 					"SpeedMult": 3,
@@ -843,6 +895,7 @@
 				"Family": "Defence",
 				"StabDamage": 40,
 				"StabInterval": 1,
+				"IsNotAPlant": true,
 				"MintBoostedProps": {
 					"ResistanceMult": 3,
 					"SpeedMult": 3,
@@ -1363,6 +1416,7 @@
 			],
 			"objclass": "PlantProperties",
 			"objdata": {
+				"ImmuneToLightningCharge": true,
 				"Damage": 10,
 				"SplashDamage": 10,
 				"SplashCount": 3,
@@ -1379,6 +1433,36 @@
 				"RedAttackStunDuration": 0.25,
 				"CallsElectricCurrant": true,
 				"MintDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ImmuneToLightningCharge": true,
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"Cooldown": 5,
+				"CooldownFrom": 0.5,
+				"SunCost": 150,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Electricity",
+				"RedAttackStunDuration": 1,
+				"CallsElectricCurrant": true,
+				"MintDamageFactor": 3,
+				"BoltType": "anthurium_bolt",
+				"BigBoltType": "anthurium_bolt_big",
+				"PlantfoodLightningCount": 3,
+				"PlantfoodDamage": 1200,
+				"PlantfoodSplashDamage": 400,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -2169,6 +2253,7 @@
 				"SunCost": 0,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
+				"ImmuneToLightningCharge": true,
 				"Family": "Electricity",
 				"ImmuneToBoomBox": true,
 				"ImmuneToIceblock": true,
@@ -2966,6 +3051,7 @@
 				"SunCost": 200,
 				"BeghouledCost": 2500,
 				"Toughness": 300,
+				"ImmuneToLightningCharge": true,
 				"Family": "Electricity",
 				"RedAttackStunDuration": 0.25,
 				"CallsElectricCurrant": true,
@@ -3371,6 +3457,7 @@
 				"SunCost": 150,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
+				"ImmuneToLightningCharge": true,
 				"Family": "Electricity",
 				"CallsElectricCurrant": true,
 				"MintDamageFactor": 5,
@@ -4915,6 +5002,7 @@
 				"SunCost": 150,
 				"BeghouledCost": 4500,
 				"Toughness": 300,
+				"ImmuneToLightningCharge": true,
 				"Family": "Electricity",
 				"PlantFoodCloudSpeed": 10,
 				"PlantFoodLightningBoltDamage": 5000,

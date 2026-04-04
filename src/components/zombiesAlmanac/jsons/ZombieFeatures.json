@@ -2073,6 +2073,9 @@
       },
       "_CARDSPRITENAME": "beachzomboss",
       "CODENAME": "zombossmech_beach",
+      "SubZombieList": [
+        "zombossmech_beach2"
+      ],
       "OBTAINWORLD": "water",
       "ALMANAC": "RTID(zombossmech_beach@ZombieAlmanac)",
       "PROPS": "RTID(zombossmech_beach@ZombieProps)",
@@ -3404,54 +3407,6 @@
     },
     {
       "NAME": {
-        "en": "Pilot Zombie",
-        "zh": "飞行员僵尸"
-      },
-      "_CARDSPRITENAME": "skybasic",
-      "CODENAME": "sky",
-      "OBTAINWORLD": "sky",
-      "ALMANAC": "RTID(sky@ZombieAlmanac)",
-      "PROPS": "RTID(sky@ZombieProps)",
-      "RES": "SkyBasic"
-    },
-    {
-      "NAME": {
-        "en": "Conehead Pilot",
-        "zh": "路障飞行员"
-      },
-      "_CARDSPRITENAME": "skyarmor1",
-      "CODENAME": "sky_armor1",
-      "OBTAINWORLD": "sky",
-      "ALMANAC": "RTID(sky_armor1@ZombieAlmanac)",
-      "PROPS": "RTID(sky_armor1@ZombieProps)",
-      "RES": "SkyBasic"
-    },
-    {
-      "NAME": {
-        "en": "Buckethead Pilot",
-        "zh": "铁桶飞行员"
-      },
-      "_CARDSPRITENAME": "skyarmor2",
-      "CODENAME": "sky_armor2",
-      "OBTAINWORLD": "sky",
-      "ALMANAC": "RTID(sky_armor2@ZombieAlmanac)",
-      "PROPS": "RTID(sky_armor2@ZombieProps)",
-      "RES": "SkyBasic"
-    },
-    {
-      "NAME": {
-        "en": "Flag Pilot",
-        "zh": "旗帜飞行员"
-      },
-      "_CARDSPRITENAME": "skyflag",
-      "CODENAME": "sky_flag",
-      "OBTAINWORLD": "sky",
-      "ALMANAC": "RTID(sky_flag@ZombieAlmanac)",
-      "PROPS": "RTID(sky_flag@ZombieProps)",
-      "RES": "SkyFlag"
-    },
-    {
-      "NAME": {
         "en": "Neon Zombie",
         "zh": "霓虹僵尸"
       },
@@ -3831,6 +3786,184 @@
     },
     {
       "NAME": {
+        "en": "Unarmed Pilot Zombie",
+        "zh": "空手飞行员僵尸"
+      },
+      "_CARDSPRITENAME": "skynormalbasic",
+      "CODENAME": "sky_unarmed",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(sky@ZombieProps)",
+      "RES": "SkyBasicUnarmed"
+    },
+    {
+      "NAME": {
+        "en": "Unarmed Flag Pilot",
+        "zh": "空手旗帜飞行员"
+      },
+      "_CARDSPRITENAME": "skynormalflag",
+      "CODENAME": "sky_unarmed_flag",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(sky_flag@ZombieProps)",
+      "RES": "SkyFlagUnarmed"
+    },
+    {
+      "NAME": {
+        "en": "Pilot Zombie",
+        "zh": "飞行员僵尸"
+      },
+      "SubZombieList": [
+        "sky_unarmed"
+      ],
+      "_CARDSPRITENAME": "skybasic",
+      "CODENAME": "sky",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky@ZombieAlmanac)",
+      "PROPS": "RTID(sky@ZombieProps)",
+      "RES": "SkyBasic"
+    },
+    {
+      "NAME": {
+        "en": "Conehead Pilot",
+        "zh": "路障飞行员"
+      },
+      "_CARDSPRITENAME": "skyarmor1",
+      "CODENAME": "sky_armor1",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_armor1@ZombieAlmanac)",
+      "PROPS": "RTID(sky_armor1@ZombieProps)",
+      "RES": "SkyBasic"
+    },
+    {
+      "NAME": {
+        "en": "Buckethead Pilot",
+        "zh": "铁桶飞行员"
+      },
+      "_CARDSPRITENAME": "skyarmor2",
+      "CODENAME": "sky_armor2",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_armor2@ZombieAlmanac)",
+      "PROPS": "RTID(sky_armor2@ZombieProps)",
+      "RES": "SkyBasic"
+    },
+    {
+      "NAME": {
+        "en": "Flag Pilot",
+        "zh": "旗帜飞行员"
+      },
+      "_CARDSPRITENAME": "skyflag",
+      "CODENAME": "sky_flag",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_flag@ZombieAlmanac)",
+      "PROPS": "RTID(sky_flag@ZombieProps)",
+      "RES": "SkyFlag"
+    },
+    {
+      "NAME": {
+        "en": "Battleplane Zombie",
+        "zh": "战斗机僵尸"
+      },
+      "_CARDSPRITENAME": "skybattleplane",
+      "CODENAME": "sky_battleplane",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_battleplane@ZombieAlmanac)",
+      "PROPS": "RTID(sky_battleplane@ZombieProps)",
+      "RES": "SkyBattlePlane"
+    },
+    {
+      "NAME": {
+        "en": "Transport Boat",
+        "zh": "运兵艇"
+      },
+      "_CARDSPRITENAME": "skydropship",
+      "CODENAME": "sky_dropship",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_dropship@ZombieAlmanac)",
+      "PROPS": "RTID(sky_dropship@ZombieProps)",
+      "RES": "SkyDropShip"
+    },
+    {
+      "NAME": {
+        "en": "Double-Cabin Aircraft (Upper)",
+        "zh": "双舱飞行僵尸（上半）"
+      },
+      "_CARDSPRITENAME": "skytwinupper",
+      "CODENAME": "sky_twin_upper",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(sky_twin_upper@ZombieProps)",
+      "RES": "SkyTwinUpper"
+    },
+    {
+      "NAME": {
+        "en": "Double-Cabin Aircraft (Lower)",
+        "zh": "双舱飞行僵尸（下半）"
+      },
+      "_CARDSPRITENAME": "skytwinlower",
+      "CODENAME": "sky_twin_lower",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(empty@ZombieAlmanac)",
+      "PROPS": "RTID(sky_twin_lower@ZombieProps)",
+      "RES": "SkyTwinLower"
+    },
+    {
+      "NAME": {
+        "en": "Double-Cabin Aircraft",
+        "zh": "双舱飞行僵尸"
+      },
+      "_CARDSPRITENAME": "skytwin",
+      "CODENAME": "sky_twin",
+      "OBTAINWORLD": "sky",
+      "SubZombieList": [
+        "sky_twin_upper",
+        "sky_twin_lower"
+      ],
+      "ALMANAC": "RTID(sky_twin@ZombieAlmanac)",
+      "PROPS": "RTID(sky_twin@ZombieProps)",
+      "RES": "SkyTwinLower"
+    },
+    {
+      "NAME": {
+        "en": "Lightning Gun Zombie",
+        "zh": "闪电枪僵尸"
+      },
+      "_CARDSPRITENAME": "skyelectric",
+      "CODENAME": "sky_electric",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_electric@ZombieAlmanac)",
+      "PROPS": "RTID(sky_electric@ZombieProps)",
+      "RES": "SkyElectric"
+    },
+    {
+      "NAME": {
+        "en": "Imp Paratrooper",
+        "zh": "伞兵小鬼"
+      },
+      "_CARDSPRITENAME": "skyimp",
+      "CODENAME": "sky_imp",
+      "OBTAINWORLD": "sky",
+      "SubZombieList": [
+        "sky_dropship"
+      ],
+      "ALMANAC": "RTID(sky_imp@ZombieAlmanac)",
+      "PROPS": "RTID(sky_imp@ZombieProps)",
+      "RES": "SkyImp"
+    },
+    {
+      "NAME": {
+        "en": "Airborne Gargantuar",
+        "zh": "飞行巨尸"
+      },
+      "_CARDSPRITENAME": "skygargantuar",
+      "CODENAME": "sky_gargantuar",
+      "OBTAINWORLD": "sky",
+      "ALMANAC": "RTID(sky_gargantuar@ZombieAlmanac)",
+      "PROPS": "RTID(sky_gargantuar@ZombieProps)",
+      "RES": "SkyGargantuar"
+    },
+    {
+      "NAME": {
         "en": "Lawn Basic Zombie",
         "zh": "场地普通僵尸"
       },
@@ -4098,10 +4231,6 @@
     "kongfu_boss_explode",
     "kongfu_boss_blade",
     "kongfu_boss_chi",
-    "sky",
-    "sky_armor1",
-    "sky_armor2",
-    "sky_flag",
     "eighties",
     "eighties_armor1",
     "eighties_armor2",
@@ -4130,6 +4259,15 @@
     "dino_imp",
     "dino_gargantuar",
     "zombossmech_dino",
+    "sky",
+    "sky_armor1",
+    "sky_armor2",
+    "sky_flag",
+    "sky_battleplane",
+    "sky_twin",
+    "sky_electric",
+    "sky_imp",
+    "sky_gargantuar",
     "modern_newspaper",
     "newspaper_veteran",
     "modern_balloon",
