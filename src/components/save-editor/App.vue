@@ -36,20 +36,20 @@
                         <a-row :gutter="16">
                             <a-col :span="6">
                                 <a-form-item>
-                                    <a-input-number :addon-before="t('worldKey')"
-                                        v-model:value="archiveData.worldkey" :min="0" style="width:100%" />
-                                </a-form-item>
-                            </a-col>
-                            <a-col :span="6">
-                                <a-form-item>
-                                    <a-input-number :addon-before="t('gem')" v-model:value="archiveData.gem"
+                                    <a-input-number :addon-before="t('worldKey')" v-model:value="archiveData.worldkey"
                                         :min="0" style="width:100%" />
                                 </a-form-item>
                             </a-col>
                             <a-col :span="6">
                                 <a-form-item>
-                                    <a-input-number :addon-before="t('coin')" v-model:value="archiveData.coin"
-                                        :min="0" style="width:100%" />
+                                    <a-input-number :addon-before="t('gem')" v-model:value="archiveData.gem" :min="0"
+                                        style="width:100%" />
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="6">
+                                <a-form-item>
+                                    <a-input-number :addon-before="t('coin')" v-model:value="archiveData.coin" :min="0"
+                                        style="width:100%" />
                                 </a-form-item>
                             </a-col>
                             <a-col :span="6">
@@ -71,9 +71,8 @@
                                     :placeholder="t('select plant')" :options="plantOptions"
                                     :filter-option="plantFilterOption" style="width: 320px" />
                             </a-flex>
-                            <a-flex v-if="selectPlantValue && plantCodenameMap[selectPlantValue]"
-                                justify="center" align="center"
-                                style="width:100%; margin-top:16px; flex-wrap:wrap; gap:32px;">
+                            <a-flex v-if="selectPlantValue && plantCodenameMap[selectPlantValue]" justify="center"
+                                align="center" style="width:100%; margin-top:16px; flex-wrap:wrap; gap:32px;">
                                 <!-- 植物图片 + 名称 -->
                                 <a-flex vertical align="center" style="min-width:110px; max-width:150px">
                                     <img style="width:120px; height:120px; object-fit:contain;" alt="plant"
@@ -88,11 +87,9 @@
                                 <!-- 编辑控件 -->
                                 <a-flex vertical gap="small" style="min-width:220px; max-width:300px">
                                     <!-- 植物已在存档中 -->
-                                    <template
-                                        v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
+                                    <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
                                         <!-- 解锁进度 -->
-                                        <a-select
-                                            v-model:value="archiveData.plantProps[selectPlantValue].progress"
+                                        <a-select v-model:value="archiveData.plantProps[selectPlantValue].progress"
                                             style="width:100%">
                                             <a-select-option :value="0">{{ t('locked') }}</a-select-option>
                                             <a-select-option :value="1">{{ t('available') }}</a-select-option>
@@ -101,25 +98,21 @@
                                         <!-- 爆发充能开关 -->
                                         <a-flex gap="small" align="center">
                                             <span style="font-size:0.9em">{{ t('boost') }}:</span>
-                                            <a-switch
-                                                :checked="!!(archiveData.plantProps?.[selectPlantValue]?.boost)"
+                                            <a-switch :checked="!!(archiveData.plantProps?.[selectPlantValue]?.boost)"
                                                 @change="(val: boolean) => { if (archiveData.plantProps?.[selectPlantValue]) archiveData.plantProps[selectPlantValue].boost = val ? 1 : 0 }" />
                                         </a-flex>
                                         <!-- 奖章 -->
-                                        <a-checkbox
-                                            v-model:checked="archiveData.plantProps[selectPlantValue].medal">
+                                        <a-checkbox v-model:checked="archiveData.plantProps[selectPlantValue].medal">
                                             {{ t('medal') }}
                                         </a-checkbox>
                                         <!-- 删除 -->
-                                        <a-button danger @click="removePlant(selectPlantValue)"
-                                            style="width:100%">
+                                        <a-button danger @click="removePlant(selectPlantValue)" style="width:100%">
                                             {{ t('delete') }}
                                         </a-button>
                                     </template>
                                     <!-- 植物不在存档中 -->
                                     <template v-else>
-                                        <a-button type="primary" @click="addPlant(selectPlantValue)"
-                                            style="width:100%">
+                                        <a-button type="primary" @click="addPlant(selectPlantValue)" style="width:100%">
                                             {{ t('add') }}
                                         </a-button>
                                     </template>
@@ -134,15 +127,14 @@
                     <a-collapse-panel :key="'worlds'" :header="t('world unlock')">
                         <a-row v-if="archiveData.worldProps" :gutter="[12, 12]">
                             <template v-for="(world, worldID) in archiveData.worldProps" :key="worldID">
-                                <a-col :span="8" v-if="world && world.hasOwnProperty && world.hasOwnProperty('unlocked')">
+                                <a-col :span="8"
+                                    v-if="world && world.hasOwnProperty && world.hasOwnProperty('unlocked')">
                                     <div class="world-card">
-                                        <a-checkbox
-                                            v-model:checked="archiveData.worldProps[worldID]['unlocked']">
+                                        <a-checkbox v-model:checked="archiveData.worldProps[worldID]['unlocked']">
                                             {{ t('world ' + worldID) }}
                                         </a-checkbox>
                                         <div v-if="world.endlessProps" style="margin-top:6px">
-                                            <a-input-number size="small"
-                                                :addon-before="t('endless level')"
+                                            <a-input-number size="small" :addon-before="t('endless level')"
                                                 v-model:value="archiveData.worldProps[worldID].endlessProps.level"
                                                 :min="1" style="width:100%" />
                                         </div>
@@ -156,8 +148,7 @@
                 <!-- 升级特性（用列表替代卡片，解决卡顿） -->
                 <a-collapse v-model:activeKey="activeKeys" :bordered="false">
                     <a-collapse-panel :key="'upgrades'" :header="t('upgrades')">
-                        <a-list v-if="archiveData.upgradeProps" :data-source="upgradeEntries" size="small"
-                            bordered>
+                        <a-list v-if="archiveData.upgradeProps" :data-source="upgradeEntries" size="small" bordered>
                             <template #renderItem="{ item }">
                                 <a-list-item>
                                     <a-row style="width:100%" align="middle" :gutter="8">
@@ -171,14 +162,12 @@
                                                     upgradeList[item.id]?.OBTAINWORLD) }}
                                             </div>
                                         </a-col>
-                                        <a-col :span="9"
-                                            style="font-size:0.82em; color:#555; line-height:1.4">
+                                        <a-col :span="9" style="font-size:0.82em; color:#555; line-height:1.4">
                                             {{ upgradeList[item.id]?.DESCRIPTION[i18nLanguage] ||
                                                 upgradeList[item.id]?.DESCRIPTION.en }}
                                         </a-col>
                                         <a-col :span="5">
-                                            <a-select
-                                                v-model:value="archiveData.upgradeProps[item.id].progress"
+                                            <a-select v-model:value="archiveData.upgradeProps[item.id].progress"
                                                 style="width:100%">
                                                 <a-select-option :value="0">{{ t('locked') }}</a-select-option>
                                                 <a-select-option :value="1">{{ t('unlocked') }}</a-select-option>
@@ -186,11 +175,9 @@
                                             </a-select>
                                         </a-col>
                                         <a-col :span="3" style="text-align:center">
-                                            <a-switch
-                                                v-model:checked="archiveData.upgradeProps[item.id].enabled"
+                                            <a-switch v-model:checked="archiveData.upgradeProps[item.id].enabled"
                                                 :disabled="archiveData.upgradeProps[item.id].progress === 0"
-                                                :checked-children="t('enabled')"
-                                                :un-checked-children="t('disabled')" />
+                                                :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
                                         </a-col>
                                     </a-row>
                                 </a-list-item>
@@ -224,8 +211,7 @@
                                 <a-col :span="8">
                                     <a-flex gap="small" align="center">
                                         <a-switch v-model:checked="archiveData.features[key]"
-                                            :checked-children="t('enabled')"
-                                            :un-checked-children="t('disabled')" />
+                                            :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
                                         <span style="font-size:0.9em">{{ t(key) || key }}</span>
                                     </a-flex>
                                 </a-col>
@@ -298,7 +284,8 @@ const worldCodenames = [
     'modern', 'kongfu',
     'epic_egypt', 'epic_pirate', 'epic_cowboy', 'epic_future', 'epic_dark',
     'epic_beach', 'epic_iceage', 'epic_lostcity', 'epic_eighties', 'epic_dino',
-    'epic_modern', 'epic_kongfu'
+    'epic_modern', 'epic_kongfu',
+    'sky', 'epic_sky'
 ];
 const worldAmount = worldCodenames.length; // 26
 
