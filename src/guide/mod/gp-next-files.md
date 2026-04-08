@@ -25,7 +25,8 @@ com.pvzge.app/
     │   │       ├── features/
     │   │       ├── lang/
     │   │       ├── objects/
-    │   │       └── levels/
+    │   │       ├── levels/
+    │   │       └── worldmap/
     │   └── AnotherPack.zip
     ├── patches/
     │   └── jsons/
@@ -45,6 +46,12 @@ com.pvzge.app/
 - 可以放完整数据包文件夹
 - 也可以直接放 `.zip` 包
 - 适合做正式模组、分享给别人、长期维护
+
+如果你要做世界地图运行时替代，还会在包里看到：
+
+- `jsons/worldmap/gpn-worldmap.json5`
+
+它和普通 `features/WorldmapFeatures.json5` 不是一回事，前者改的是“运行时地图图结构”，后者改的是“原始世界数据”。
 
 ### `patches/`
 
@@ -127,3 +134,4 @@ GP-Next 的覆盖顺序可以概括为：
 
 - [JSON 合并规则](./gp-next-merge.md)
 - [Datapack 与 `pack.json`](./gp-next-datapack.md)
+- [地图](./gp-next-worldmap.md)

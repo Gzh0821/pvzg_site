@@ -25,7 +25,8 @@ com.pvzge.app/
     │   │       ├── features/
     │   │       ├── lang/
     │   │       ├── objects/
-    │   │       └── levels/
+    │   │       ├── levels/
+    │   │       └── worldmap/
     │   └── AnotherPack.zip
     ├── patches/
     │   └── jsons/
@@ -45,6 +46,12 @@ This is the main folder you should use most of the time.
 - It can contain full datapack folders
 - It can also contain `.zip` packs directly
 - It is suitable for complete mods, long-term maintenance, and sharing with other players
+
+If you are making a runtime world-map replacement, you may also have:
+
+- `jsons/worldmap/gpn-worldmap.json5`
+
+This is not the same as a normal `features/WorldmapFeatures.json5` patch. The former changes the runtime map graph, while the latter changes raw world data.
 
 ### `patches/`
 
@@ -127,3 +134,4 @@ These are edits you made directly in the Data page, so the system treats them as
 
 - [Merge Rules](./gp-next-merge.md)
 - [Datapacks and `pack.json`](./gp-next-datapack.md)
+- [World Map](./gp-next-worldmap.md)

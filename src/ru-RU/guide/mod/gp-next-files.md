@@ -25,7 +25,8 @@ com.pvzge.app/
     │   │       ├── features/
     │   │       ├── lang/
     │   │       ├── objects/
-    │   │       └── levels/
+    │   │       ├── levels/
+    │   │       └── worldmap/
     │   └── AnotherPack.zip
     ├── patches/
     │   └── jsons/
@@ -45,6 +46,12 @@ com.pvzge.app/
 - В ней могут лежать полноценные папки datapack-пакетов
 - Также можно класть `.zip`-архивы напрямую
 - Она подходит для полноценных модов, долгосрочной поддержки и публикации
+
+Если вы делаете runtime-замену карты мира, здесь также может быть:
+
+- `jsons/worldmap/gpn-worldmap.json5`
+
+Это не то же самое, что обычный патч `features/WorldmapFeatures.json5`. Первый меняет runtime-граф карты, второй — сырые данные мира.
 
 ### `patches/`
 
@@ -127,3 +134,4 @@ com.pvzge.app/
 
 - [Правила слияния](./gp-next-merge.md)
 - [Datapacks и `pack.json`](./gp-next-datapack.md)
+- [Карта](./gp-next-worldmap.md)

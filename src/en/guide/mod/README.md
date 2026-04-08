@@ -22,5 +22,6 @@ GP-Next is the default modding and debugging tool in PvZ2 Gardendless. You can u
 
 - Getting started: "GP-Next Overview" -> "Structure" -> "Datapacks and `pack.json`"
 - Editing values: "Merge Rules" -> "Source Data" -> "Types & Fields"
+- Editing world maps: "Datapacks and `pack.json`" -> "World Map"
 - Translating text: "Language Packs and `lang.json`"
 - Console commands: "Console API"

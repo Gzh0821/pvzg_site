@@ -19,7 +19,8 @@ MyFirstMod/
     ├── features/
     ├── lang/
     ├── objects/
-    └── levels/
+    ├── levels/
+    └── worldmap/
 ```
 
 其中，`pack.json` 是必须的。
@@ -113,6 +114,17 @@ MyFirstMod/
 3. 创建 `jsons/` 及子目录
 4. 放入你的补丁 JSON
 5. 回到游戏点击 **Save & Reload**
+
+## `worldmap/` 是做什么的
+
+如果你要改的是世界地图运行时节点图，而不是普通 `WorldmapFeatures` 原始数据，那么还会用到：
+
+```text
+jsons/worldmap/gpn-worldmap.json5
+```
+
+这项能力目前在 GP-Next 里仍归类为 **Experimental / 实验性** 功能，需要先在对应页面启用。  
+具体写法请看：[地图](./gp-next-worldmap.md)
 
 ## 打包分享
 

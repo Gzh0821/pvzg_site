@@ -25,7 +25,8 @@ com.pvzge.app/
     │   │       ├── features/
     │   │       ├── lang/
     │   │       ├── objects/
-    │   │       └── levels/
+    │   │       ├── levels/
+    │   │       └── worldmap/
     │   └── AnotherPack.zip
     ├── patches/
     │   └── jsons/
@@ -45,6 +46,12 @@ Esta es la carpeta principal que deberias usar la mayor parte del tiempo.
 - Puede contener carpetas completas de datapacks
 - Tambien puede contener archivos `.zip`
 - Sirve para mods completos, mantenimiento a largo plazo y contenido que quieras compartir
+
+Si vas a hacer un reemplazo runtime del mapa mundial, tambien puedes tener:
+
+- `jsons/worldmap/gpn-worldmap.json5`
+
+Esto no es lo mismo que un parche normal `features/WorldmapFeatures.json5`. El primero cambia el grafo runtime del mapa; el segundo cambia los datos base del mundo.
 
 ### `patches/`
 
@@ -127,3 +134,4 @@ Estas son las ediciones que hiciste directamente en la pagina Data, asi que el s
 
 - [Reglas de fusion](./gp-next-merge.md)
 - [Datapacks y `pack.json`](./gp-next-datapack.md)
+- [Mapa](./gp-next-worldmap.md)

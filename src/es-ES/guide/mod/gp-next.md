@@ -66,6 +66,8 @@ La documentacion de GP-Next esta dividida por temas:
 
 Si estas creando un paquete de traduccion, sigue con [Paquetes de idioma y `lang.json`](./gp-next-language.md).
 
+Si quieres cambiar el orden de nodos del mapa mundial, las ramas, las cajas de regalo, los portales o la estructura runtime completa del mapa, continua con [Mapa](./gp-next-worldmap.md).
+
 Si te interesan mas las operaciones dentro del juego que la estructura de archivos, ve directamente a:
 
 - [Data y Trainer](./gp-next-tools.md)
@@ -88,3 +90,4 @@ Si aun no sabes como es el JSON original de un tipo, lee primero [Datos original
 - [Estructura y prioridad](./gp-next-files.md)
 - [Reglas de fusion](./gp-next-merge.md)
 - [Datapacks y `pack.json`](./gp-next-datapack.md)
+- [Mapa](./gp-next-worldmap.md)

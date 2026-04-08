@@ -22,5 +22,6 @@ GP-Next 是 PvZ2 Gardendless 当前默认的模组与调试工具。你可以用
 
 - 快速上手：“GP-Next 简介” → “目录结构” → “Datapack 与 `pack.json`”
 - 修改数值：“JSON 合并规则” → “原始数据” → “类型与字段”
+- 修改世界地图：“数据包与 `pack.json`” → “地图”
 - 做文本翻译：“多语言与 `lang.json`”
 - 控制台命令：“控制台/API”

@@ -19,7 +19,8 @@ MyFirstMod/
     ├── features/
     ├── lang/
     ├── objects/
-    └── levels/
+    ├── levels/
+    └── worldmap/
 ```
 
 Здесь `pack.json` обязателен.
@@ -113,6 +114,17 @@ MyFirstMod/
 3. Создайте `jsons/` и его подпапки
 4. Положите туда свои JSON-патчи
 5. Вернитесь в игру и нажмите **Save & Reload**
+
+## Для чего нужен `worldmap/`
+
+Если вы хотите менять runtime-граф карты мира, а не обычные сырые данные `WorldmapFeatures`, вам также понадобится:
+
+```text
+jsons/worldmap/gpn-worldmap.json5
+```
+
+Сейчас эта возможность всё ещё относится к **Experimental** внутри GP-Next, поэтому сначала её нужно включить на соответствующей странице.  
+Формат описан в [Карте](./gp-next-worldmap.md).
 
 ## Публикация
 

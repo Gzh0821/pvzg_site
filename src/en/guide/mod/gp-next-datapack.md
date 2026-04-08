@@ -19,7 +19,8 @@ MyFirstMod/
     ├── features/
     ├── lang/
     ├── objects/
-    └── levels/
+    ├── levels/
+    └── worldmap/
 ```
 
 Here, `pack.json` is required.
@@ -113,6 +114,17 @@ Patcher will then show it as the pack cover image.
 3. Create `jsons/` and its subfolders
 4. Put your patch JSON files inside
 5. Go back to the game and click **Save & Reload**
+
+## What `worldmap/` Is For
+
+If you want to change the runtime world-map node graph rather than ordinary `WorldmapFeatures` raw data, you will also use:
+
+```text
+jsons/worldmap/gpn-worldmap.json5
+```
+
+This feature is currently still classified as **Experimental** inside GP-Next, so you need to enable it first on that page.  
+For the actual format, see [World Map](./gp-next-worldmap.md).
 
 ## Sharing
 

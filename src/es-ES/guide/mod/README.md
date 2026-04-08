@@ -22,5 +22,6 @@ GP-Next es la herramienta principal de modding y depuracion de PvZ2 Gardendless.
 
 - Para empezar: "Introduccion a GP-Next" -> "Estructura" -> "Datapacks y `pack.json`"
 - Para cambiar valores: "Reglas de fusion" -> "Datos originales" -> "Tipos y campos"
+- Para editar el mapa mundial: "Datapacks y `pack.json`" -> "Mapa"
 - Para traducir texto: "Paquetes de idioma y `lang.json`"
 - Para comandos de consola: "API de consola"
