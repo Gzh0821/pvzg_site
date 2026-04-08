@@ -6,34 +6,38 @@ index: true
 order: 6
 ---
 
-# Mapa mundial y `gpn-worldmap.json5`
-
 > [!warning]
-> Esta funcion sigue estando en la pestaña **Experimental** de GP-Next.  
+> Esta funcion sigue clasificada en la pestaña **Experimental** de GP-Next.  
 > Antes de usarla, activa `worldmap-json` en la pagina **Experimental** dentro del juego.
+> Las funciones experimentales pueden cambiar en cualquier momento, asi que haz una copia de tu partida antes de usarlas.
 
-Si quieres cambiar los nodos, conexiones, ramas y el orden de los puntos de recompensa que el jugador ve realmente en el mapa mundial, no basta con editar `WorldmapFeatures`. Debes usar:
+Si quieres personalizar el mapa mundial, puedes usar:
 
 ```text
-jsons/worldmap/gpn-worldmap.json5
+jsons/worldmap/gpn-worldmap.json
 ```
 
-Esto es muy diferente de un parche de datos normal:
+## Estructura de carpetas
 
-- `features/WorldmapFeatures.json5`: cambia los datos base del mundo, como `LEVELS`, `PLANTS`, `STARTINGLEVELS` y `EPIC_TARGET`
-- `worldmap/gpn-worldmap.json5`: cambia el grafo de islas en tiempo de ejecucion que el mapa realmente dibuja
+```text
+MyPack/
+├── pack.json
+└── jsons/
+    ├── features/
+    ├── levels/
+    └── worldmap/
+        └── gpn-worldmap.json
+```
 
-En resumen:
+Tambien puedes usar `gpn-worldmap.json5`.
 
-- si quieres cambiar que niveles, plantas o introduccion tiene un mundo, empieza por `WorldmapFeatures`
-- si quieres insertar una planta despues del nivel 1, mover una caja de regalo a la linea principal o rehacer las ramas, usa `gpn-worldmap`
+## Ejemplo minimo
 
-## Archivo minimo
-
-El formato actual requiere un `apiVersion` en la raiz, y por ahora solo acepta la version `1`:
+El formato actual requiere `apiVersion` en la raiz, y por ahora solo acepta la version `1`:
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-worldmap.schema.json",
   "apiVersion": 1,
   "worlds": {
     "egypt": {
@@ -46,38 +50,29 @@ El formato actual requiere un `apiVersion` en la raiz, y por ahora solo acepta l
 }
 ```
 
-Nombre de archivo recomendado:
-
-- `gpn-worldmap.json5`
-
-Si prefieres JSON puro en lugar de JSON5, tambien puedes usar:
-
-- `gpn-worldmap.json`
-
-## Donde va
-
-Dentro de un datapack, la estructura suele ser:
+`$schema` puede ayudarte a obtener autocompletado y validacion en tu editor, por ejemplo `vscode`. Puedes usar cualquiera de estas direcciones:
 
 ```text
-MyWorldmapPack/
-├── pack.json
-└── jsons/
-    ├── features/
-    ├── levels/
-    └── worldmap/
-        └── gpn-worldmap.json5
+https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-worldmap.schema.json
+
+https://pvzge.com/jsons/schema/gpn-worldmap.schema.json
 ```
+
+El nombre del archivo puede ser:
+
+- `gpn-worldmap.json`
+- `gpn-worldmap.json5`
 
 ## Forma recomendada
 
-La estructura recomendada actual para `replace` es:
+En el modo `replace`, la estructura recomendada actual es:
 
-- `mainline`: un arreglo separado para la linea principal
-- `branches`: un arreglo separado para las ramas
+- `mainline`: escribir la linea principal en un arreglo separado
+- `branches`: escribir las ramas en un arreglo separado
 
-El orden de progresion principal viene directamente del orden de `mainline`. No hace falta poner el siguiente nodo principal dentro de `children`.
+El orden principal lo determina el orden del arreglo `mainline`, y las ramas se determinan mediante la propiedad `children` de los nodos de la linea principal.
 
-Ejemplo minimo:
+Ejemplo:
 
 ```json5
 {
@@ -129,31 +124,36 @@ Ejemplo minimo:
 }
 ```
 
-## Que hace `replace`
+## Modo `replace`
 
 Cuando `map.mode` es `replace`:
 
-- el grafo principal visible queda definido totalmente por `mainline` y `branches`
-- el orden del arreglo `mainline` define la progresion
-- `children` se usa sobre todo para conexiones laterales extra
-- las islas principales originales del mapa vanilla se eliminan
-- las islas endless siguen siendo vanilla y no se definen aqui
+- los nodos del mapa principal quedan totalmente definidos por `mainline` y `branches`
+- el orden del arreglo `mainline` es el orden de progresion principal
+- los nodos dentro de `branches` no aparecen automaticamente en la linea principal; deben conectarse de forma explicita mediante `children` de un nodo principal
+- `children` se usa sobre todo para "conexiones de rama adicionales"
+- los nodos originales del mapa principal se eliminan
+- las islas endless siguen siendo vanilla y no se personalizan aqui
 
-Por eso ahora se recomienda la estructura con `mainline` separado.  
-Evita el problema antiguo en el que insertar nodos de planta o recompensa desordenaba tanto la progresion como las posiciones reutilizadas.
+## Posicion de los nodos
 
-## Reglas de posicion
+Puedes usar `position` o `relativePosition` para controlar la posicion de un nodo en el mapa.  
+`position` es una coordenada absoluta, y `relativePosition` es un desplazamiento relativo al nodo padre.
 
-Si un nodo no define `position` explicitamente:
+Si un nodo no declara una posicion de forma explicita:
 
-- los nodos de `mainline` intentan reutilizar primero las posiciones vanilla segun el **indice del arreglo principal**
-- si no hay una posicion reutilizable, GP-Next usa el diseno automatico
+- los nodos principales intentaran reutilizar primero la posicion vanilla de la linea principal segun el **indice del arreglo**
+- si no hay una posicion reutilizable, se usara el auto-layout
 
-Para nodos de rama, normalmente es mejor usar `relativePosition`.
+Para los nodos de rama sigue siendo mas recomendable usar:
 
-## Tipos de nodo comunes
+- `relativePosition`
 
-Valores comunes de `type`:
+Es decir, un desplazamiento relativo al nodo padre, que normalmente es mas comodo que escribir coordenadas absolutas a mano.
+
+## Tipos de nodos
+
+Los `type` actuales son:
 
 - `level`
 - `plant`
@@ -163,7 +163,7 @@ Valores comunes de `type`:
 
 ### `level`
 
-Las fases normales, los bosses y las islas mini-boss siguen siendo `type: 'level'`. La diferencia principal esta en la apariencia.
+Las fases normales y las fases de boss, incluidas las fases de boss pequeno, pertenecen al tipo `level`.
 
 Valores comunes de `appearance`:
 
@@ -173,35 +173,100 @@ Valores comunes de `appearance`:
 
 Por ejemplo:
 
-- la isla tipo "mini boss" del nivel 8 de Egypt usa la familia `gargantuar`
-- las islas Zomboss de Egypt 25 / 35 usan `zomboss`
+- la apariencia del nivel 8 vanilla de Egypt puede usar `appearance: 'gargantuar'`
+- la apariencia de isla Zomboss del Egypt vanilla 25 / 35 puede usar `appearance: 'zomboss'`
 
-Punto importante:
+Ten en cuenta:
 
-- `appearance` solo es una familia visual amplia, no una identidad de plantilla unica
-- si un mundo tiene varias islas del mismo grupo general pero con diseno distinto, conviene anclar la plantilla con un id real de nivel vanilla
+- para fases de boss y boss pequeno, usa el id del nivel vanilla para anclar la plantilla; de lo contrario puede haber problemas de apariencia o distribucion
 
-Ejemplos mas seguros en Egypt:
+Por ejemplo, Egypt nivel 8:
 
 ```json5
-template: { levelId: 'egypt8' }
-template: { levelId: 'egypt35' }
+{
+  "id": "mini-boss-main",
+  "type": "level",
+  "appearance": "gargantuar",
+  "template": {
+    "levelId": "egypt8"
+  },
+  "levels": [
+    "egypt8"
+  ],
+  "title": "8"
+},
 ```
 
-### `giftBox` y `epicPortal`
+### Otros nodos
 
-Estos dos tipos ya se muestran correctamente, pero a diferencia de un `level` normal, normalmente conviene declarar una plantilla explicita:
+Estos tipos de nodo necesitan declarar la plantilla de forma explicita:
 
 ```json5
+template: { type: 'plant' }
+template: { type: 'upgrade' }
 template: { type: 'giftBox' }
 template: { type: 'epicPortal' }
 ```
 
-Ahora GP-Next limita estos selectores a candidatos especiales reales del juego vanilla, en lugar de emparejarlos de forma laxa con islas sin relacion.
+A continuacion se muestran algunos ejemplos. Nodo de planta:
 
-## `data` a nivel de mundo
+```json5
+{
+  "id": "plant-a",
+  "type": "plant",
+  "template": {
+    "type": "plant"
+  },
+  "plantReward": "repeater"
+}
+```
 
-Ademas de `map`, puedes sobrescribir algunos campos del mundo:
+Nodo de mejora:
+
+```json5
+{
+  "id": "upgrade-main",
+  "type": "upgrade",
+  "template": {
+    "type": "upgrade"
+  },
+  "upgradeReward": "upgrade_starting_sun_lvl2"
+}
+```
+
+Nodo de recompensa:
+
+```json5
+{
+  "id": "gift-main",
+  "type": "giftBox",
+  "template": {
+    "type": "giftBox"
+  }
+},
+```
+
+Nodo de portal:
+
+```json5
+{
+  "id": "portal-main",
+  "type": "epicPortal",
+  "template": {
+    "type": "epicPortal"
+  },
+  "portalLevels": [
+    "egypt_epic_1",
+    "egypt_epic_2"
+  ]
+},
+```
+
+Estos nodos estan limitados por las posiciones de los nodos especiales vanilla, asi que evita insertar demasiados de este tipo.
+
+## Datos de mundo `data`
+
+Ademas de `map`, tambien puedes modificar los datos de mundo de cada mundo:
 
 - `levels`
 - `plants`
@@ -209,74 +274,24 @@ Ademas de `map`, puedes sobrescribir algunos campos del mundo:
 - `epicTarget`
 - `intro`
 
-Los mas comunes son:
+El mas comun es:
 
-- `epicTarget`: a que mundo epico conduce finalmente un portal epico
-- `intro`: la clave de introduccion del mundo
+- `epicTarget`: a que mundo epico conduce finalmente el portal epico
 
-Si omites `levels / plants / startingLevels` en modo `replace`, GP-Next intentara derivarlos de la lista de nodos.
+Si omites `levels / plants / startingLevels` en el modo `replace`, GP-Next tambien intentara deducirlos automaticamente a partir de la lista de nodos.
 
-## Limitaciones conocidas actuales
+## Metodo de depuracion recomendado
 
-### 1. No personalices todavia las islas endless
+Si el mapa no se muestra como esperabas despues de escribirlo, revisa primero:
 
-Por ahora las islas endless siguen siendo vanilla.
-
-El problema no es solo "no se encontro la plantilla". Internamente, las islas endless siguen siendo nodos `level`, pero ademas dependen de:
-
-- `EndlessZoneEntrance.levelsID`
-- plantillas de islas grandes especificas de cada mundo
-
-Si intentas reemplazarlas como si fueran nodos normales, es facil provocar:
-
-- varias islas endless superpuestas
-- nodos azules extra de fases normales
-- entradas endless conectadas a la isla equivocada
-
-Asi que por ahora la recomendacion es simple:
-
-- puedes personalizar el mapa principal
-- deja las islas endless en vanilla
-
-### 2. Las recompensas de `giftBox` todavia no se pueden configurar aqui con precision
-
-Las recompensas de las cajas de regalo del mapa mundial no usan la misma cadena que las recompensas normales al completar niveles.  
-Por eso no es algo que se controle de forma fiable solo editando JSON de niveles.
-
-Por ahora no inventes campos como:
-
-```json
-{
-  "giftReward": "..."
-}
-```
-
-GP-Next todavia no expone control determinista de recompensas de `giftBox` mediante `gpn-worldmap.json5`.
-
-## Cuando usar `WorldmapFeatures` y cuando usar `gpn-worldmap`
-
-Regla practica:
-
-- si quieres cambiar que niveles, plantas o destino epico tiene un mundo, usa `WorldmapFeatures`
-- si quieres cambiar el orden de nodos, la estructura principal/ramas, o donde aparecen cajas y portales, usa `gpn-worldmap`
-
-Muchos mods de mapa mundial acabaran usando ambos:
-
-- un parche para `WorldmapFeatures`
-- un parche para `gpn-worldmap`
-
-## Lista recomendada de depuracion
-
-Si el mapa no aparece como esperas, revisa primero:
-
-1. confirma que `worldmap-json` esta activado en la pestaña **Experimental**
-2. confirma que el nombre del archivo es `gpn-worldmap.json5` o `gpn-worldmap.json`
-3. confirma que existe `apiVersion: 1` en la raiz
-4. confirma que la clave bajo `worlds` es el `CODENAME` correcto del mundo
-5. si una isla especial se ve mal, prueba un anclaje `template` mas preciso
+1. Confirma que `worldmap-json` esta activado en la pagina **Experimental**
+2. Confirma que el nombre del archivo es `gpn-worldmap.json5` o `gpn-worldmap.json`
+3. Confirma que en la raiz existe `apiVersion: 1`
+4. Confirma que la clave bajo `worlds` es el `CODENAME` correcto del mundo
+5. Si es una isla especial, intenta usar un anclaje `template` mas preciso
 
 ## Siguiente paso
 
-- Si quieres repasar primero la carpeta del datapack: lee [Datapacks y `pack.json`](./gp-next-datapack.md)
-- Si quieres las reglas normales de parcheo JSON: lee [Reglas de fusion](./gp-next-merge.md)
-- Si quieres inspeccionar los datos originales antes de escribir parches: lee [Datos originales](./gp-next-json.md)
+- Si primero quieres ver la carpeta del datapack: lee [Datapacks y `pack.json`](./gp-next-datapack.md)
+- Si quieres revisar las reglas normales de los parches JSON: lee [Reglas de fusion](./gp-next-merge.md)
+- Si quieres inspeccionar primero los datos originales: lee [Datos originales](./gp-next-json.md)

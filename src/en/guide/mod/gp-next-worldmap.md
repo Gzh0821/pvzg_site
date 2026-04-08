@@ -6,34 +6,38 @@ index: true
 order: 6
 ---
 
-# World Map and `gpn-worldmap.json5`
-
 > [!warning]
-> This feature is currently still listed under the **Experimental** tab in GP-Next.  
+> This feature is still classified under the **Experimental** tab in GP-Next.  
 > Before using it, enable `worldmap-json` in the in-game **Experimental** page.
+> Experimental features may change at any time, so please back up your save before using them.
 
-If you want to change the nodes, links, branches, and reward-point order that players actually see on the world map, editing ordinary `WorldmapFeatures` is not enough. You should use:
+If you want to customize the world map, you can use:
 
 ```text
-jsons/worldmap/gpn-worldmap.json5
+jsons/worldmap/gpn-worldmap.json
 ```
 
-This is very different from normal data patches:
+## Folder Layout
 
-- `features/WorldmapFeatures.json5`: changes raw world data such as `LEVELS`, `PLANTS`, `STARTINGLEVELS`, and `EPIC_TARGET`
-- `worldmap/gpn-worldmap.json5`: changes the runtime island graph that the world map actually renders
+```text
+MyPack/
+├── pack.json
+└── jsons/
+    ├── features/
+    ├── levels/
+    └── worldmap/
+        └── gpn-worldmap.json
+```
 
-In simple terms:
+You can also use `gpn-worldmap.json5`.
 
-- if you want to change which levels, plants, or intro data a world has, start with `WorldmapFeatures`
-- if you want to insert a plant node after level 1, move a gift box onto the mainline, or rebuild branch structure, use `gpn-worldmap`
+## Minimal Example
 
-## Minimal File
-
-The current format requires a top-level `apiVersion`, and right now only version `1` is accepted:
+The current format requires a top-level `apiVersion`, and currently only version `1` is accepted:
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-worldmap.schema.json",
   "apiVersion": 1,
   "worlds": {
     "egypt": {
@@ -46,38 +50,29 @@ The current format requires a top-level `apiVersion`, and right now only version
 }
 ```
 
-Preferred filename:
-
-- `gpn-worldmap.json5`
-
-If you want plain JSON instead of JSON5, you can also use:
-
-- `gpn-worldmap.json`
-
-## Where It Goes
-
-Inside a datapack, the layout usually looks like this:
+`$schema` can help your editor, such as `vscode`, provide field completion and validation. You can use either of the following URLs:
 
 ```text
-MyWorldmapPack/
-├── pack.json
-└── jsons/
-    ├── features/
-    ├── levels/
-    └── worldmap/
-        └── gpn-worldmap.json5
+https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-worldmap.schema.json
+
+https://pvzge.com/jsons/schema/gpn-worldmap.schema.json
 ```
 
-## Recommended Shape
+The filename can be:
 
-The current recommended `replace` shape is:
+- `gpn-worldmap.json`
+- `gpn-worldmap.json5`
 
-- `mainline`: a separate main progression array
-- `branches`: a separate branch array
+## Recommended Style
 
-The main progression order comes directly from the order of `mainline`. You do not need to put the next mainline node into `children`.
+In the current `replace` mode, the recommended structure is:
 
-Minimal example:
+- `mainline`: write the main progression as a separate array
+- `branches`: write side branches as a separate array
+
+The main progression order is determined by the order of the `mainline` array, and branches are determined by the `children` property of mainline nodes.
+
+Example:
 
 ```json5
 {
@@ -129,31 +124,36 @@ Minimal example:
 }
 ```
 
-## What `replace` Does
+## `replace` Mode
 
 When `map.mode` is `replace`:
 
-- the visible main graph is fully defined by your `mainline` and `branches`
-- `mainline` array order defines progression order
-- `children` is mainly for extra side links
-- the original vanilla main-map islands are removed
-- endless islands are still kept vanilla and are not authored here
+- the main-map nodes are fully determined by the declared `mainline` and `branches`
+- the order of the `mainline` array is the main progression order
+- nodes inside `branches` do not automatically appear on the mainline; they must be explicitly connected through a mainline node's `children`
+- `children` mainly handles "extra branch connections"
+- vanilla main-map nodes are removed
+- endless islands are still kept vanilla and are not customized here
 
-This is why the separate `mainline` array is now the preferred structure.  
-It avoids the old problem where inserting plant or reward nodes could scramble both progression order and reused positions.
+## Node Position
 
-## Position Rules
+You can use `position` or `relativePosition` to control where a node appears on the map.  
+`position` is an absolute coordinate, while `relativePosition` is an offset relative to the parent node.
 
-If a node does not explicitly define `position`:
+If a node does not explicitly declare a position:
 
-- mainline nodes first try to reuse vanilla mainline positions by **mainline array index**
-- if no reusable original position exists, GP-Next falls back to auto layout
+- mainline nodes will first try to reuse the original vanilla mainline position by **array index**
+- if no reusable position exists, it falls back to auto-layout
 
-For branch nodes, `relativePosition` is usually the better choice.
+For branch nodes, it is still recommended to write:
 
-## Common Node Types
+- `relativePosition`
 
-Common `type` values:
+That is, an offset relative to the parent node, which is usually easier than writing absolute coordinates by hand.
+
+## Node Types
+
+The current `type` values are:
 
 - `level`
 - `plant`
@@ -163,7 +163,7 @@ Common `type` values:
 
 ### `level`
 
-Ordinary stages, bosses, and mini-boss islands are all still `type: 'level'`. The difference is mainly their appearance.
+Ordinary stages and boss stages, including smaller boss stages, all belong to the `level` type.
 
 Common `appearance` values:
 
@@ -173,35 +173,100 @@ Common `appearance` values:
 
 For example:
 
-- the vanilla Egypt level 8 "small boss" island uses the `gargantuar` family
-- the vanilla Egypt level 25 / 35 Zomboss islands use `zomboss`
+- the appearance of vanilla Egypt level 8 can use `appearance: 'gargantuar'`
+- the Zomboss-island appearance of vanilla Egypt 25 / 35 can use `appearance: 'zomboss'`
 
-Important lesson:
+Please note:
 
-- `appearance` is only a broad visual family, not a unique template identity
-- if a world has multiple islands of the same broad family with different layouts, anchor the template by a real vanilla level id
+- for boss stages and smaller boss stages, use a vanilla level id to anchor the template, otherwise the appearance or layout may become incorrect
 
-Safer Egypt examples:
+For example, Egypt level 8:
 
 ```json5
-template: { levelId: 'egypt8' }
-template: { levelId: 'egypt35' }
+{
+  "id": "mini-boss-main",
+  "type": "level",
+  "appearance": "gargantuar",
+  "template": {
+    "levelId": "egypt8"
+  },
+  "levels": [
+    "egypt8"
+  ],
+  "title": "8"
+},
 ```
 
-### `giftBox` and `epicPortal`
+### Other Node Types
 
-These two node types now render correctly, but unlike ordinary `level` nodes, they should usually declare an explicit template:
+These node types need an explicit template declaration:
 
 ```json5
+template: { type: 'plant' }
+template: { type: 'upgrade' }
 template: { type: 'giftBox' }
 template: { type: 'epicPortal' }
 ```
 
-GP-Next now restricts these selectors to real vanilla special-node candidates, instead of loosely matching unrelated runtime islands.
+Below are some examples. Plant node:
+
+```json5
+{
+  "id": "plant-a",
+  "type": "plant",
+  "template": {
+    "type": "plant"
+  },
+  "plantReward": "repeater"
+}
+```
+
+Upgrade node:
+
+```json5
+{
+  "id": "upgrade-main",
+  "type": "upgrade",
+  "template": {
+    "type": "upgrade"
+  },
+  "upgradeReward": "upgrade_starting_sun_lvl2"
+}
+```
+
+Reward node:
+
+```json5
+{
+  "id": "gift-main",
+  "type": "giftBox",
+  "template": {
+    "type": "giftBox"
+  }
+},
+```
+
+Portal node:
+
+```json5
+{
+  "id": "portal-main",
+  "type": "epicPortal",
+  "template": {
+    "type": "epicPortal"
+  },
+  "portalLevels": [
+    "egypt_epic_1",
+    "egypt_epic_2"
+  ]
+},
+```
+
+These nodes are constrained by the positions of vanilla special nodes, so avoid inserting too many of them.
 
 ## World-Level `data`
 
-Besides `map`, you can also override some world-level fields:
+In addition to `map`, you can also modify world-level data for each world:
 
 - `levels`
 - `plants`
@@ -209,74 +274,24 @@ Besides `map`, you can also override some world-level fields:
 - `epicTarget`
 - `intro`
 
-The most common ones are:
+The most common one is:
 
-- `epicTarget`: which epic world an epic portal finally leads to
-- `intro`: the intro feature key for the world
+- `epicTarget`: which epic world the epic portal finally leads to
 
-If you omit `levels / plants / startingLevels` in `replace` mode, GP-Next will try to derive them from the node list.
+If you omit `levels / plants / startingLevels` in `replace` mode, GP-Next will also try to derive them automatically from the node list.
 
-## Current Known Limits
+## Recommended Debugging Checklist
 
-### 1. Do not customize endless islands yet
+If the map does not display as expected after you finish writing it, check these first:
 
-Endless islands are still kept vanilla for now.
-
-The issue is not just "template not found". Endless islands are still `level` islands internally, but also depend on:
-
-- `EndlessZoneEntrance.levelsID`
-- world-specific large-island templates
-
-If you try to replace them like ordinary nodes, you can easily get:
-
-- multiple endless islands overlapping
-- extra blue normal-stage nodes appearing
-- endless entrances attached to the wrong island
-
-So the current advice is simple:
-
-- you can customize the main map
-- leave endless islands vanilla for now
-
-### 2. `giftBox` rewards cannot be precisely configured here yet
-
-World-map gift-box rewards are not on the same chain as ordinary level-clear rewards.  
-So this is not something reliably controlled by simply editing level JSON.
-
-For now, do not invent fields like:
-
-```json
-{
-  "giftReward": "..."
-}
-```
-
-GP-Next does not currently expose deterministic gift-box reward control through `gpn-worldmap.json5`.
-
-## When To Use `WorldmapFeatures` vs `gpn-worldmap`
-
-A practical rule:
-
-- if you want to change which levels, plants, or epic target a world has, look at `WorldmapFeatures`
-- if you want to change node order, mainline/branch structure, or where gift boxes and portals appear, use `gpn-worldmap`
-
-Many world-map mods will end up using both:
-
-- one patch for `WorldmapFeatures`
-- one patch for `gpn-worldmap`
-
-## Recommended Debug Checklist
-
-If the map does not show what you expect, check these first:
-
-1. confirm `worldmap-json` is enabled in the **Experimental** tab
-2. confirm the filename is `gpn-worldmap.json5` or `gpn-worldmap.json`
-3. confirm the top-level `apiVersion: 1` is present
-4. confirm the key under `worlds` is the correct world `CODENAME`
-5. if a special island looks wrong, try a more precise `template` anchor
+1. Confirm that `worldmap-json` is enabled in the **Experimental** page
+2. Confirm that the filename is `gpn-worldmap.json5` or `gpn-worldmap.json`
+3. Confirm that the top level contains `apiVersion: 1`
+4. Confirm that the key under `worlds` is the correct world `CODENAME`
+5. If it is a special island, prefer using a precise `template` anchor
 
 ## Next
 
-- Want the datapack folder basics first: read [Datapacks and `pack.json`](./gp-next-datapack.md)
-- Want ordinary JSON patch rules: read [Merge Rules](./gp-next-merge.md)
-- Want to inspect original data before writing patches: read [Source Data](./gp-next-json.md)
+- Want to review the datapack folder first: read [Datapacks and `pack.json`](./gp-next-datapack.md)
+- Want to review ordinary JSON patch rules: read [Merge Rules](./gp-next-merge.md)
+- Want to inspect original data first: read [Source Data](./gp-next-json.md)
