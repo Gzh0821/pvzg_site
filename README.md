@@ -40,7 +40,7 @@ Deploy the game locally by using [Docker image](https://hub.docker.com/r/gaozih/
 
 “PvZ2 Gardendless”是完全使用 Web 技术（包括 cocos 引擎）重写的“植物大战僵尸 2”！
 
-访问我们的[网站](https://pvzge.com)获取 download links, game guides and more. 您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论 and suggestions！
+访问我们的[网站](https://pvzge.com)获取下载链接、游戏指南等。您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论和建议！
 
 ### 在线游玩
 
