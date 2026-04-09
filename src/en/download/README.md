@@ -144,7 +144,13 @@ Download Link: <a :href="gameInfoData.MacOSDownload.Storage" target="_blank">cli
 ## ::brands:linux:: Linux/Other platforms
 
 > [!info]
-> To play on Linux and other systems with x86_64 (amd64) architecture, you can use Docker images to deploy the web version locally.
+> To play on Linux and other systems with x86_64 (amd64) architecture, you can use Docker images or AppImage to run the game.
+
+### AppImage (Recommended) ::brands:linux::
+
+Linux users can download the AppImage version to play directly without installing Docker or configuring any environment.
+
+Download Link: <a href="https://github.com/hthienloc/pvz2-gardendless-appimage/releases" target="_blank">click to enter</a>
 
 ### Docker Hub ::brands:docker::
 
