@@ -34,17 +34,13 @@ Find source code of the game in [Game repo](https://github.com/Gzh0821/pvzge_web
 
 Deploy the game locally by using [Docker image](https://hub.docker.com/r/gaozih/pvzge)
 
-### Linux (AppImage)
-
-Besides Docker, Linux users can run the game directly using the [AppImage version](https://github.com/hthienloc/pvz2-gardendless-appimage/releases), which is standalone and requires no configuration.
-
 ## PvZ2 Gardendless 网站
 
 这是“PvZ2 Gardendless”网站的开源仓库。
 
 “PvZ2 Gardendless”是完全使用 Web 技术（包括 cocos 引擎）重写的“植物大战僵尸 2”！
 
-访问我们的[网站](https://pvzge.com)获取 download links, game guides and more. 您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论和建议！
+访问我们的[网站](https://pvzge.com)获取 download links, game guides and more. 您还可以在网站的反馈模块或本项目的问题和讨论中报告错误、发表评论 and suggestions！
 
 ### 在线游玩
 
@@ -55,10 +51,6 @@ Besides Docker, Linux users can run the game directly using the [AppImage versio
 ### 使用 Docker
 
 使用 [Docker 镜像](https://hub.docker.com/r/gaozih/pvzge) 在本地部署游戏
-
-### Linux (AppImage)
-
-除了 Docker，Linux 用户还可以下载 [AppImage](https://github.com/hthienloc/pvz2-gardendless-appimage/releases) 直接运行游戏，无需配置任何环境。
 
 ## Star History
 
