@@ -144,7 +144,13 @@ onMounted(() => {
 ## ::brands:linux:: Linux/其它平台
 
 > [!info]
-> 要在 x86_64(amd64)架构的 Linux 和其它系统上游玩，可以使用 Docker 镜像在本地部署 Web 版本。
+> 要在 x86_64(amd64)架构的 Linux 和其它系统上游玩，可以使用 Docker 镜像或者 AppImage 运行。
+
+### AppImage (推荐) ::brands:linux::
+
+Linux 用户可以下载 AppImage 版本直接游玩，无需安装 Docker 或配置环境。
+
+下载地址：<a href="https://github.com/hthienloc/pvz2-gardendless-appimage/releases" target="_blank">点击进入</a>
 
 ### Docker Hub ::brands:docker::
 
