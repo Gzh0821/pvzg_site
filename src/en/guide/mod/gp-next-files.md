@@ -22,6 +22,7 @@ com.pvzge.app/
     │   ├── MyPack/
     │   │   ├── pack.json
     │   │   └── jsons/
+    │   │       ├── config/
     │   │       ├── features/
     │   │       ├── lang/
     │   │       ├── objects/
@@ -50,8 +51,11 @@ This is the main folder you should use most of the time.
 If you are making a runtime world-map replacement, you may also have:
 
 - `jsons/worldmap/gpn-worldmap.json5`
+- `jsons/config/patching.json`
 
 This is not the same as a normal `features/WorldmapFeatures.json5` patch. The former changes the runtime map graph, while the latter changes raw world data.
+
+`jsons/config/patching.json` is the config file for the normal JSON patch system itself. Right now it is mainly used to set file-level `merge` / `replace` behavior for selected `features` and `objects` types.
 
 ### `patches/`
 

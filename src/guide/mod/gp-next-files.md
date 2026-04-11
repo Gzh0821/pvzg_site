@@ -22,6 +22,7 @@ com.pvzge.app/
     │   ├── MyPack/
     │   │   ├── pack.json
     │   │   └── jsons/
+    │   │       ├── config/
     │   │       ├── features/
     │   │       ├── lang/
     │   │       ├── objects/
@@ -50,8 +51,11 @@ com.pvzge.app/
 如果你要做世界地图运行时替代，还会在包里看到：
 
 - `jsons/worldmap/gpn-worldmap.json5`
+- `jsons/config/patching.json`
 
 它和普通 `features/WorldmapFeatures.json5` 不是一回事，前者改的是“运行时地图图结构”，后者改的是“原始世界数据”。
+
+`jsons/config/patching.json` 则是普通 JSON 补丁系统自己的配置文件。当前主要用于给 `features` / `objects` 某些类型指定文件级 `merge` / `replace` 行为。
 
 ### `patches/`
 

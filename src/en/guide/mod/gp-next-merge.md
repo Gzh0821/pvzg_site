@@ -76,6 +76,59 @@ Level files are the exception.
 
 `levels/*.json` is generally handled as **whole-file replacement**, not as the usual "change one field and deep merge" workflow.
 
+## File-Level `merge / replace`
+
+GP-Next now also supports file-level modes for selected `features` / `objects` types.
+
+Put the config file here:
+
+```text
+jsons/config/patching.json
+```
+
+A minimal example:
+
+```json
+{
+  "defaultMode": "merge",
+  "features": {
+    "StoreCommodityFeatures": { "mode": "replace" }
+  },
+  "objects": {
+    "PlantProps": { "mode": "replace" }
+  }
+}
+```
+
+Current rules:
+
+- this only applies to `features` and `objects`
+- types not listed use `defaultMode`
+- if `defaultMode` is omitted, it falls back to `merge`
+- `mode: "replace"` means that type's whole JSON replaces the game's original data
+- `mode: "merge"` keeps using GP-Next's normal merge behavior
+
+### When `replace` Makes Sense
+
+Typical cases:
+
+- you want to fully rebuild the store contents
+- you want to clearly remove a large batch of vanilla entries
+- you do not want to keep any old content from the original JSON of that type
+
+### When `merge` Is Still Better
+
+Typical cases:
+
+- changing only a few plant or zombie stats
+- editing a small number of almanac or text entries
+- keeping better compatibility with future game updates and new fields
+
+Short version:
+
+- `merge`: only write the parts you want to change
+- `replace`: you take over the whole type's data
+
 ## Arrays
 
 This is the easiest place to make mistakes:

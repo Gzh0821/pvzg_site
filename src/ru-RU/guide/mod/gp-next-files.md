@@ -22,6 +22,7 @@ com.pvzge.app/
     │   ├── MyPack/
     │   │   ├── pack.json
     │   │   └── jsons/
+    │   │       ├── config/
     │   │       ├── features/
     │   │       ├── lang/
     │   │       ├── objects/
@@ -50,8 +51,11 @@ com.pvzge.app/
 Если вы делаете runtime-замену карты мира, здесь также может быть:
 
 - `jsons/worldmap/gpn-worldmap.json5`
+- `jsons/config/patching.json`
 
 Это не то же самое, что обычный патч `features/WorldmapFeatures.json5`. Первый меняет runtime-граф карты, второй — сырые данные мира.
+
+`jsons/config/patching.json` — это файл конфигурации самой системы обычных JSON-патчей. Сейчас он в основном используется для задания файлового режима `merge` / `replace` для отдельных типов в `features` и `objects`.
 
 ### `patches/`
 

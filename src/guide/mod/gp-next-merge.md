@@ -77,6 +77,59 @@ GP-Next 会把你的 JSON 和游戏原始数据做深度合并。
 
 `levels/*.json` 一般按**整文件替换**处理，不走常规的“只改一个字段就深度合并”的思路。
 
+## 文件级 `merge / replace`
+
+现在 GP-Next 也支持给 `features` / `objects` 的指定类型配置文件级模式。
+
+配置文件放在：
+
+```text
+jsons/config/patching.json
+```
+
+一个最小示例：
+
+```json
+{
+  "defaultMode": "merge",
+  "features": {
+    "StoreCommodityFeatures": { "mode": "replace" }
+  },
+  "objects": {
+    "PlantProps": { "mode": "replace" }
+  }
+}
+```
+
+当前规则是：
+
+- 只作用于 `features` 和 `objects`
+- 未写到的类型默认使用 `defaultMode`
+- `defaultMode` 不写时，默认是 `merge`
+- `mode: "replace"` 表示该类型整份 JSON 直接替换游戏原始数据
+- `mode: "merge"` 表示继续使用 GP-Next 原本的合并规则
+
+### 什么时候适合 `replace`
+
+通常适合这些场景：
+
+- 你要完全重做商店内容
+- 你要明确移除原版里的一大批条目
+- 你不希望保留原版同类型 JSON 的任何旧内容
+
+### 什么时候更适合继续 `merge`
+
+通常更适合这些场景：
+
+- 只改个别植物 / 僵尸数值
+- 只改少量图鉴或描述
+- 想尽量兼容以后游戏更新新增的字段
+
+简短理解就是：
+
+- `merge`：只写你要改的部分
+- `replace`：你接管这个类型的整份数据
+
 ## 数组
 
 这是最容易踩坑的地方：
