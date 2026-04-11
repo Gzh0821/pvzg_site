@@ -6,147 +6,45 @@ index: true
 order: 3
 ---
 
-# 合并规则
+# `merge / replace`
 
-很多新手第一次写补丁时，最容易犯的错是：  
-把原始 JSON 整份复制出来再改一点点。
+GP-Next 的普通 JSON 补丁，现在可以分成两种文件级模式：
 
-这在 GP-Next 里通常不是最好的做法，因为游戏更新后，你整份复制的旧数据很容易把新的字段覆盖掉。
+- `merge`
+- `replace`
 
-## 原则
+如果你只记一句话：
 
-**只写你真的想改的字段。**
+- `merge`：只写你想改的部分
+- `replace`：你接管这个类型的整份 JSON
 
-GP-Next 会把你的 JSON 和游戏原始数据做深度合并。  
-没有提到的字段，会尽量保持原样。
+这页专门讲这两个模式怎么区别、怎么配置、什么时候该用哪一个。
 
-## 类型
+## 默认行为
 
-## Features
+默认情况下，GP-Next 对普通 JSON 补丁的处理是：
 
-例如：
+- `features` / `objects`：按 `merge`
+- `levels`：按整文件替换理解
+- `lang`：继续深度合并到 `MultiLanguage.lyrics`
+- `worldmap`：属于 GP-Next 自己的运行时系统，不走这里这套规则
 
-- `PlantFeatures`
-- `ZombieFeatures`
-- `StoreCommodityFeatures`
-- `WorldmapFeatures`
-- `MintObtainRoute`
+所以这页主要讨论的是：
 
-这些文件不是靠数组下标合并，而是靠“标识字段”定位条目。
+- `jsons/features/*.json`
+- `jsons/objects/*.json`
 
-### 常见标识字段
+## `merge` 是什么
 
-- 大多数 Features：`CODENAME`
-- `MintObtainRoute`：`Family`
-- `StoreCommodityFeatures.Plants / Upgrade`：`CommodityName`
+`merge` 是 GP-Next 原本的默认思路。
 
-### 特别注意 `StoreCommodityFeatures`
+它的目标是：
 
-它不是一个简单数组，而是多个并列区段：
+- 尽量保留游戏原始 JSON
+- 只覆盖你明确写出来的字段
+- 让补丁尽量短，也更容易兼容后续游戏更新
 
-- `Plants`
-- `Upgrade`
-- `Gem`
-- `Coin`
-- `Zen`
-
-其中：
-
-- `Plants` / `Upgrade`：按条目合并
-- `Gem` / `Coin` / `Zen`：通常按整个数组替换
-
-## Objects
-
-例如：
-
-- `PlantProps`
-- `ZombieProps`
-- `PlantAlmanac`
-- `ZombieAlmanac`
-
-这类文件的定位方式通常是：
-
-- 进入 `objects` 数组
-- 找到 `aliases[0]` 与你填写的别名一致的条目
-
-也就是说，你要改某个植物，通常写的是它的第一个 `aliases`。
-
-## Levels
-
-关卡文件是例外。
-
-`levels/*.json` 一般按**整文件替换**处理，不走常规的“只改一个字段就深度合并”的思路。
-
-## 文件级 `merge / replace`
-
-现在 GP-Next 也支持给 `features` / `objects` 的指定类型配置文件级模式。
-
-配置文件放在：
-
-```text
-jsons/config/patching.json
-```
-
-一个最小示例：
-
-```json
-{
-  "defaultMode": "merge",
-  "features": {
-    "StoreCommodityFeatures": { "mode": "replace" }
-  },
-  "objects": {
-    "PlantProps": { "mode": "replace" }
-  }
-}
-```
-
-当前规则是：
-
-- 只作用于 `features` 和 `objects`
-- 未写到的类型默认使用 `defaultMode`
-- `defaultMode` 不写时，默认是 `merge`
-- `mode: "replace"` 表示该类型整份 JSON 直接替换游戏原始数据
-- `mode: "merge"` 表示继续使用 GP-Next 原本的合并规则
-
-### 什么时候适合 `replace`
-
-通常适合这些场景：
-
-- 你要完全重做商店内容
-- 你要明确移除原版里的一大批条目
-- 你不希望保留原版同类型 JSON 的任何旧内容
-
-### 什么时候更适合继续 `merge`
-
-通常更适合这些场景：
-
-- 只改个别植物 / 僵尸数值
-- 只改少量图鉴或描述
-- 想尽量兼容以后游戏更新新增的字段
-
-简短理解就是：
-
-- `merge`：只写你要改的部分
-- `replace`：你接管这个类型的整份数据
-
-## 数组
-
-这是最容易踩坑的地方：
-
-**GP-Next 里数组默认是整体替换，不是按索引逐项合并。**
-
-例如你要改：
-
-- 僵尸池 `Basic_Zombie`
-- 植物解锁列表 `PLANTS`
-- `SEEDCHOOSERDEFAULTORDER`
-
-那就应该写出**完整的新数组**，而不是只写你想追加的一项。
-
-## 示例
-
-只改豌豆射手的阳光和冷却：
+例如你只想改一个植物的数值，就应该优先用 `merge`。
 
 ```json
 {
@@ -163,38 +61,203 @@ jsons/config/patching.json
 }
 ```
 
-这个写法的优点是：
+这个补丁不会重写整份 `PlantProps`，只会改 `peashooter` 的这两个字段。
 
-- 不会覆盖整个 `PlantProps`
-- 只会影响 `peashooter`
-- 只会改 `SunCost` 和 `Cooldown`
+## `replace` 是什么
 
-## 适合整体替换的情况
+`replace` 表示：
 
-下面这些情况，通常就应该接受“整体替换”：
+- 不再按 GP-Next 的普通合并规则处理这个类型
+- 直接用你的补丁文件，替换游戏原始的整份该类型 JSON
 
-- 你在改数组
-- 你在改整张关卡
-- 你在改商店某些整体列表
+它适合这些场景：
 
-## 适合局部修改的情况
+- 你想完全重做商店内容
+- 你想明确移除原版的大量条目
+- 你不想保留这个类型里任何原版旧内容
 
-下面这些情况，应该尽量只写局部字段：
+也就是说，`replace` 不是“只覆盖得更狠一点”，而是“这个类型现在由你的文件整体接管”。
 
-- 单个植物数值
-- 单个僵尸数值
-- 单条图鉴文本
-- 单个商店商品的价格
+## 怎么配置
 
-## 写补丁时可以这样做
+文件放在：
+
+```text
+jsons/config/patching.json
+```
+
+最小示例：
+
+```json
+{
+  "defaultMode": "merge",
+  "features": {
+    "StoreCommodityFeatures": { "mode": "replace" }
+  },
+  "objects": {
+    "PlantProps": { "mode": "replace" }
+  }
+}
+```
+
+含义是：
+
+- 未写到的类型默认按 `merge`
+- `StoreCommodityFeatures` 整份按 `replace`
+- `PlantProps` 整份按 `replace`
+
+## 当前支持范围
+
+当前这套配置只作用于：
+
+- `features`
+- `objects`
+
+也就是说：
+
+- `features/PlantFeatures.json`
+- `features/StoreCommodityFeatures.json`
+- `objects/PlantProps.json`
+- `objects/ZombieProps.json`
+
+这些可以通过 `patching.json` 指定 `merge / replace`。
+
+而下面这些不在这套规则里：
+
+- `levels`
+- `lang`
+- `worldmap`
+
+## 配置规则
+
+当前规则很简单：
+
+- `features` 和 `objects` 下按“类型名”写
+- 未列出的类型使用 `defaultMode`
+- 不写 `defaultMode` 时，默认值是 `merge`
+- 目前只支持 `merge` 和 `replace`
+
+例如：
+
+```json
+{
+  "features": {
+    "StoreCommodityFeatures": { "mode": "replace" }
+  }
+}
+```
+
+这表示只把 `StoreCommodityFeatures` 切到 `replace`，其它类型继续走默认行为。
+
+## `merge` 时 GP-Next 在做什么
+
+### Features
+
+Features 文件不是按数组下标合并，而是按标识字段找条目。
+
+常见情况：
+
+- 大多数 Features：`CODENAME`
+- `MintObtainRoute`：`Family`
+- `StoreCommodityFeatures.Plants / Upgrade`：`CommodityName`
+
+### Objects
+
+Objects 文件通常在 `objects` 数组里，按：
+
+- `aliases[0]`
+
+来定位目标条目。
+
+所以你要改某个植物或僵尸，通常是写它的第一个 alias。
+
+## 数组要特别注意
+
+即使在 `merge` 模式里，数组也不是按索引逐项合并。
+
+**GP-Next 里的数组默认仍然是整体替换。**
+
+例如这些内容，通常都要写完整新数组：
+
+- 僵尸池
+- `PLANTS`
+- `SEEDCHOOSERDEFAULTORDER`
+- 某些整段商店列表
+
+所以“`merge`”不等于“所有东西都自动聪明追加”。  
+它只是对象字段按规则合并，而数组仍然以替换为主。
+
+## 特别注意 `StoreCommodityFeatures`
+
+`StoreCommodityFeatures` 不是单一数组，而是多个并列区段：
+
+- `Plants`
+- `Upgrade`
+- `Gem`
+- `Coin`
+- `Zen`
+
+在普通 `merge` 里：
+
+- `Plants` / `Upgrade`：按 `CommodityName` 合并条目
+- `Gem` / `Coin` / `Zen`：通常按整个数组替换
+
+如果你想“整个商店完全按你自己的版本来”，那 `replace` 往往比继续和原版混合更清楚。
+
+## 什么时候该选 `merge`
+
+更适合 `merge` 的情况：
+
+- 只改个别植物 / 僵尸数值
+- 只改少量图鉴文本或描述
+- 只改个别商店商品价格
+- 希望尽量兼容以后游戏更新新增的字段
+
+一句话：
+
+**能只改局部，就优先用 `merge`。**
+
+## 什么时候该选 `replace`
+
+更适合 `replace` 的情况：
+
+- 你要彻底重做某个类型
+- 你明确希望删除大量原版内容
+- 你不想让原版同类型 JSON 继续参与结果
+- 你已经准备好维护这一整份类型数据
+
+一句话：
+
+**当你要“接管整个类型”时，再用 `replace`。**
+
+## 一个实用判断法
+
+可以这样快速判断：
+
+1. 你只是想改少量字段吗？
+2. 你希望原版未来新增字段尽量自动保留吗？
+3. 你不想维护整份 JSON 吗？
+
+如果这三题大多是“是”，那就用 `merge`。
+
+反过来：
+
+1. 你已经准备好自己维护整份类型文件了吗？
+2. 你希望原版旧内容不要再混进来吗？
+3. 你就是想整体重做这一类内容吗？
+
+如果这三题大多是“是”，那就用 `replace`。
+
+## 推荐工作流
 
 1. 先在 **Data** 页确认目标条目的真实结构
-2. 只提取你需要的最小字段
-3. 写成单独 patch
-4. 重载后再回 Data 页确认
+2. 先默认按 `merge` 写最小补丁
+3. 如果发现需求本质上是“整类接管”，再切到 `replace`
+4. 重载后回 **Data** 页确认最终结果
 
 ## 下一步
 
+- [目录与优先级](./gp-next-files.md)
 - [Datapack 与 `pack.json`](./gp-next-datapack.md)
 - [多语言与 `lang.json`](./gp-next-language.md)
 - [类型与字段参考](./format.md)

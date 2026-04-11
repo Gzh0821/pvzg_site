@@ -6,81 +6,81 @@ index: true
 order: 3
 ---
 
-# Reglas de fusion
+# `merge / replace`
 
-Uno de los errores mas comunes al empezar es copiar todo el JSON original y cambiar solo unas pocas lineas.
+GP-Next ahora tiene dos modos a nivel de archivo para los parches JSON normales:
 
-En GP-Next eso no suele ser lo mejor, porque despues de una actualizacion del juego tu copia antigua puede sobrescribir campos nuevos anadidos por el juego.
+- `merge`
+- `replace`
 
-## Regla principal
+Si solo quieres recordar una frase:
 
-**Escribe solo los campos que realmente quieres cambiar.**
+- `merge`: escribe solo las partes que quieres cambiar
+- `replace`: pasas a controlar todo el JSON de ese tipo
 
-GP-Next fusiona en profundidad tu JSON con los datos originales del juego.
-Los campos que no menciones se conservan, siempre que sea posible.
+Esta pagina esta dedicada a explicar la diferencia entre esos dos modos, como configurarlos y cuando conviene usar cada uno.
 
-## Tipos
+## Comportamiento por defecto
 
-## Features
+Por defecto, GP-Next trata los parches JSON normales asi:
 
-Por ejemplo:
+- `features` / `objects`: `merge`
+- `levels`: en la practica, reemplazo de archivo completo
+- `lang`: sigue fusionandose en profundidad en `MultiLanguage.lyrics`
+- `worldmap`: usa el sistema runtime propio de GP-Next, no las reglas de esta pagina
 
-- `PlantFeatures`
-- `ZombieFeatures`
-- `StoreCommodityFeatures`
-- `WorldmapFeatures`
-- `MintObtainRoute`
+Por eso esta pagina se centra sobre todo en:
 
-Estos archivos no se fusionan por indice del array. GP-Next encuentra cada entrada mediante campos identificadores.
+- `jsons/features/*.json`
+- `jsons/objects/*.json`
 
-### Campos identificadores comunes
+## Que significa `merge`
 
-- la mayoria de archivos Features: `CODENAME`
-- `MintObtainRoute`: `Family`
-- `StoreCommodityFeatures.Plants / Upgrade`: `CommodityName`
+`merge` es el enfoque original y por defecto de GP-Next.
 
-### Nota especial sobre `StoreCommodityFeatures`
+Su objetivo es:
 
-No es un unico array plano. Contiene varias secciones paralelas:
+- conservar la mayor parte posible del JSON original del juego
+- sobrescribir solo los campos que escribes de forma explicita
+- mantener los parches pequenos y mas compatibles con futuras actualizaciones
 
-- `Plants`
-- `Upgrade`
-- `Gem`
-- `Coin`
-- `Zen`
+Por ejemplo, si solo quieres cambiar las estadisticas de una planta, `merge` suele ser la mejor primera opcion.
 
-Entre ellas:
+```json
+{
+  "objects": [
+    {
+      "aliases": ["peashooter"],
+      "objclass": "PlantProperties",
+      "objdata": {
+        "SunCost": 50,
+        "Cooldown": 2
+      }
+    }
+  ]
+}
+```
 
-- `Plants` / `Upgrade`: se fusionan entrada por entrada
-- `Gem` / `Coin` / `Zen`: normalmente se reemplazan como arrays completos
+Este parche no reemplaza todo `PlantProps`. Solo cambia esos dos campos de `peashooter`.
 
-## Objects
+## Que significa `replace`
 
-Por ejemplo:
+`replace` significa:
 
-- `PlantProps`
-- `ZombieProps`
-- `PlantAlmanac`
-- `ZombieAlmanac`
+- GP-Next deja de usar las reglas normales de fusion para ese tipo
+- tu archivo de parche reemplaza directamente todo el JSON original de ese tipo
 
-Estos archivos suelen localizarse asi:
+Es util cuando:
 
-- entra en el array `objects`
-- encuentra la entrada cuyo `aliases[0]` coincida con el alias que escribiste
+- quieres rehacer por completo el contenido de la tienda
+- quieres eliminar con claridad una gran cantidad de datos vanilla
+- no quieres que siga quedando nada del contenido original de ese tipo
 
-Asi que si quieres editar una planta, normalmente escribes su primer alias.
+Asi que `replace` no es solo "una sobrescritura mas fuerte". Significa "este tipo completo ahora lo controla mi archivo".
 
-## Levels
+## Como configurarlo
 
-Los archivos de nivel son la excepcion.
-
-`levels/*.json` suele tratarse como **reemplazo completo del archivo**, no como el flujo normal de "cambiar un campo y fusionar en profundidad".
-
-## `merge / replace` a nivel de archivo
-
-Ahora GP-Next tambien admite modos a nivel de archivo para tipos concretos de `features` y `objects`.
-
-El archivo de configuracion va aqui:
+Pon el archivo de configuracion aqui:
 
 ```text
 jsons/config/patching.json
@@ -100,100 +100,162 @@ Ejemplo minimo:
 }
 ```
 
-Reglas actuales:
+Esto significa:
 
-- solo afecta a `features` y `objects`
+- los tipos no listados siguen usando `merge`
+- `StoreCommodityFeatures` usa `replace` completo
+- `PlantProps` usa `replace` completo
+
+## Alcance actual
+
+Ahora mismo esta configuracion solo afecta a:
+
+- `features`
+- `objects`
+
+Eso significa que archivos como:
+
+- `features/PlantFeatures.json`
+- `features/StoreCommodityFeatures.json`
+- `objects/PlantProps.json`
+- `objects/ZombieProps.json`
+
+pueden cambiarse entre `merge` y `replace` mediante `patching.json`.
+
+Estas categorias no usan las reglas de esta pagina:
+
+- `levels`
+- `lang`
+- `worldmap`
+
+## Reglas de configuracion
+
+Las reglas actuales son simples:
+
+- escribe los nombres de tipo dentro de `features` y `objects`
 - los tipos no listados usan `defaultMode`
-- si no escribes `defaultMode`, se usa `merge`
-- `mode: "replace"` hace que el JSON completo de ese tipo reemplace los datos originales del juego
-- `mode: "merge"` mantiene el comportamiento normal de fusion de GP-Next
+- si omites `defaultMode`, se usa `merge`
+- por ahora solo se admiten `merge` y `replace`
 
-### Cuando conviene `replace`
-
-Casos tipicos:
-
-- quieres rehacer por completo el contenido de la tienda
-- quieres eliminar claramente un grupo grande de entradas vanilla
-- no quieres conservar nada del JSON original de ese tipo
-
-### Cuando sigue siendo mejor `merge`
-
-Casos tipicos:
-
-- solo cambias unas pocas estadisticas de plantas o zombis
-- editas unas pocas entradas de texto o del almanaque
-- quieres mantener mejor compatibilidad con futuras actualizaciones del juego
-
-Version corta:
-
-- `merge`: escribe solo las partes que quieres cambiar
-- `replace`: pasas a controlar todos los datos de ese tipo
-
-## Arrays
-
-Este es el punto mas facil para equivocarse:
-
-**En GP-Next, los arrays se reemplazan completos por defecto. No se fusionan elemento por elemento por indice.**
-
-Por ejemplo, si quieres editar:
-
-- un pool de zombis como `Basic_Zombie`
-- la lista de desbloqueo de plantas `PLANTS`
-- `SEEDCHOOSERDEFAULTORDER`
-
-entonces debes escribir el **array completo nuevo**, no solo el elemento extra que quieras anadir.
-
-## Ejemplo
-
-Cambiar solo el coste de sol y el enfriamiento de Peashooter:
+Por ejemplo:
 
 ```json
 {
-  "objects": [
-    {
-      "aliases": ["peashooter"],
-      "objclass": "PlantProperties",
-      "objdata": {
-        "SunCost": 50,
-        "Cooldown": 2
-      }
-    }
-  ]
+  "features": {
+    "StoreCommodityFeatures": { "mode": "replace" }
+  }
 }
 ```
 
-La ventaja de este formato es:
+Esto cambia solo `StoreCommodityFeatures` a `replace`. Todo lo demas mantiene el comportamiento por defecto.
 
-- no sobrescribe todo `PlantProps`
-- solo afecta a `peashooter`
-- solo cambia `SunCost` y `Cooldown`
+## Que hace GP-Next en `merge`
 
-## Buenos casos para reemplazo completo
+### Features
 
-El reemplazo completo suele ser correcto cuando:
+Los archivos Features no se fusionan por indice del array. Se emparejan mediante campos identificadores.
 
-- estas editando un array
-- estas reemplazando un nivel entero
-- estas cambiando algunas listas completas de la tienda
+Casos comunes:
 
-## Buenos casos para cambios parciales
+- la mayoria de archivos Features: `CODENAME`
+- `MintObtainRoute`: `Family`
+- `StoreCommodityFeatures.Plants / Upgrade`: `CommodityName`
 
-Conviene mantener el parche lo mas pequeno posible al editar:
+### Objects
 
-- las estadisticas de una sola planta
-- las estadisticas de un solo zombi
-- un texto del almanaque
-- el precio de un solo objeto de tienda
+Los archivos Objects suelen localizar las entradas dentro del array `objects` por:
 
-## Un flujo practico
+- `aliases[0]`
 
-1. Revisa la estructura real de la entrada objetivo en la pagina **Data**
-2. Extrae solo el conjunto minimo de campos que necesitas
-3. Escribelo como un parche separado
-4. Recarga y confirma el resultado en la pagina Data
+Asi que si editas una planta o un zombi, normalmente escribes su primer alias.
+
+## Los arrays requieren cuidado extra
+
+Incluso en `merge`, los arrays no se fusionan elemento por elemento por indice.
+
+**En GP-Next, los arrays siguen reemplazandose completos por defecto.**
+
+Esto suele aplicarse a cosas como:
+
+- pools de zombis
+- `PLANTS`
+- `SEEDCHOOSERDEFAULTORDER`
+- ciertas listas completas de la tienda
+
+Asi que `merge` no significa "todo se anade automaticamente de forma inteligente".
+Significa sobre todo que los campos de objeto se fusionan por regla, mientras que los arrays siguen tendiendo al reemplazo.
+
+## Nota especial sobre `StoreCommodityFeatures`
+
+`StoreCommodityFeatures` no es un unico array. Contiene varias secciones paralelas:
+
+- `Plants`
+- `Upgrade`
+- `Gem`
+- `Coin`
+- `Zen`
+
+En el `merge` normal:
+
+- `Plants` / `Upgrade`: se fusionan por `CommodityName`
+- `Gem` / `Coin` / `Zen`: normalmente se reemplazan como arrays completos
+
+Si tu objetivo es "toda la tienda debe seguir mi propia version", `replace` suele ser mas claro que seguir mezclando con datos vanilla.
+
+## Cuando elegir `merge`
+
+`merge` suele ser mejor cuando:
+
+- solo quieres cambiar unas pocas estadisticas de plantas o zombis
+- solo quieres editar unas pocas descripciones o textos del almanaque
+- solo quieres ajustar algunos precios de tienda
+- quieres mejor compatibilidad con futuras actualizaciones y nuevos campos
+
+Version corta:
+
+**Si basta con un cambio local, elige `merge`.**
+
+## Cuando elegir `replace`
+
+`replace` suele ser mejor cuando:
+
+- quieres rehacer por completo un tipo
+- quieres quitar claramente una gran cantidad de contenido vanilla
+- no quieres que el JSON original de ese tipo siga participando en el resultado
+- estas dispuesto a mantener por tu cuenta todo ese archivo de tipo
+
+Version corta:
+
+**Usa `replace` cuando quieras tomar control de todo el tipo.**
+
+## Una prueba rapida para decidir
+
+Preguntate:
+
+1. Estoy cambiando solo unos pocos campos?
+2. Quiero que futuros campos vanilla se mantengan siempre que sea posible?
+3. Quiero evitar mantener un archivo completo de tipo?
+
+Si la mayoria de respuestas es si, usa `merge`.
+
+Por otro lado:
+
+1. Estoy listo para mantener yo mismo el archivo completo del tipo?
+2. Quiero que el contenido vanilla antiguo deje de mezclarse?
+3. Estoy rehaciendo esta categoria de forma intencionada?
+
+Si la mayoria de respuestas es si, usa `replace`.
+
+## Flujo de trabajo recomendado
+
+1. Revisa primero la estructura real en la pagina **Data**
+2. Empieza con el parche `merge` mas pequeno posible
+3. Cambia a `replace` solo si la necesidad real es "controlar todo el tipo"
+4. Recarga y vuelve a confirmar el resultado en la pagina **Data**
 
 ## Siguiente
 
+- [Estructura y prioridad](./gp-next-files.md)
 - [Datapacks y `pack.json`](./gp-next-datapack.md)
 - [Paquetes de idioma y `lang.json`](./gp-next-language.md)
 - [Tipos y campos](./format.md)
