@@ -1,5 +1,5 @@
 ---
-title: Community Version
+title: Community Mods
 index: true
 order: 1
 dir:
@@ -10,7 +10,8 @@ comment: false
 ---
 
 > [!info]
-> This contains the community version of Gardendless, which is made and uploaded by community members. The Gardendless development team is not responsible for its content.
+> This section contains Gardendless community mods, created and uploaded by community members. The Gardendless development team is not responsible for their content.
+> Most mods are loaded using the `gp-next` tool.
 
 <script setup>
     import { onMounted } from 'vue';
