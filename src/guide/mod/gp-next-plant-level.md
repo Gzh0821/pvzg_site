@@ -14,7 +14,7 @@ GP-Next 现在已经有一套实验性的“植物等级”系统。
 
 - 选一个**基础植物**
 - 为不同等级准备对应的**克隆植物**
-- 用 `jsons/gp-next/plant-levels.json` 把“基础植物 ↔ 各等级 clone”绑定起来
+- 用 `jsons/extensions/plant-levels.json` 把“基础植物 ↔ 各等级 clone”绑定起来
 
 这样做的好处是：
 
@@ -62,7 +62,7 @@ GP-Next 现在已经有一套实验性的“植物等级”系统。
 MyPack/
 ├── pack.json
 └── jsons/
-    ├── gp-next/
+    ├── extensions/
     │   └── plant-levels.json
     ├── features/
     │   └── PlantFeatures.json5

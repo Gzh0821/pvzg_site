@@ -14,7 +14,7 @@ The core idea is not to mutate the vanilla plant directly. Instead, you:
 
 - choose one **base plant**
 - prepare one **clone plant** for each level
-- bind `base plant ↔ level clones` through `jsons/gp-next/plant-levels.json`
+- bind `base plant ↔ level clones` through `jsons/extensions/plant-levels.json`
 
 This is useful because:
 
@@ -60,7 +60,7 @@ A common setup looks like this:
 MyPack/
 ├── pack.json
 └── jsons/
-    ├── gp-next/
+    ├── extensions/
     │   └── plant-levels.json
     ├── features/
     │   └── PlantFeatures.json5

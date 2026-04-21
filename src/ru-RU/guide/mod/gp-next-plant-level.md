@@ -14,7 +14,7 @@ order: 7.5
 
 - выбирается **базовое растение**
 - для каждого уровня подготавливается свой **клон**
-- связь `базовое растение ↔ клоны по уровням` описывается в `jsons/gp-next/plant-levels.json`
+- связь `базовое растение ↔ клоны по уровням` описывается в `jsons/extensions/plant-levels.json`
 
 Это удобно, потому что:
 
@@ -60,7 +60,7 @@ order: 7.5
 MyPack/
 ├── pack.json
 └── jsons/
-    ├── gp-next/
+    ├── extensions/
     │   └── plant-levels.json
     ├── features/
     │   └── PlantFeatures.json5

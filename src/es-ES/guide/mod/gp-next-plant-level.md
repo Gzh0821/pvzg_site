@@ -14,7 +14,7 @@ La idea principal no es modificar directamente la planta vanilla, sino:
 
 - elegir una **planta base**
 - preparar un **clon** para cada nivel
-- enlazar `planta base ↔ clones por nivel` con `jsons/gp-next/plant-levels.json`
+- enlazar `planta base ↔ clones por nivel` con `jsons/extensions/plant-levels.json`
 
 Esto es util porque:
 
@@ -60,7 +60,7 @@ Una estructura habitual es:
 MyPack/
 ├── pack.json
 └── jsons/
-    ├── gp-next/
+    ├── extensions/
     │   └── plant-levels.json
     ├── features/
     │   └── PlantFeatures.json5
