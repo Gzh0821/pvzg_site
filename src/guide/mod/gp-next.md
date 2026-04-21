@@ -66,6 +66,8 @@ GP-Next 文档已经按主题拆开：
 
 如果你要做翻译包，继续看 [多语言与 `lang.json`](./gp-next-language.md)。
 
+如果你要做植物等级线路、等级徽标或图鉴等级页，继续看 [植物等级](./gp-next-plant-level.md)。
+
 如果你要改世界地图的节点顺序、支线、礼盒、传送门或主图结构，继续看 [地图](./gp-next-worldmap.md)。
 
 如果你更关注游戏内操作而不是文件结构，可以直接阅读：
@@ -90,4 +92,5 @@ GP-Next 文档已经按主题拆开：
 - [目录结构与加载优先级](./gp-next-files.md)
 - [JSON 合并规则](./gp-next-merge.md)
 - [Datapack 与 `pack.json`](./gp-next-datapack.md)
+- [植物等级](./gp-next-plant-level.md)
 - [地图](./gp-next-worldmap.md)

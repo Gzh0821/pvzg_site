@@ -66,6 +66,8 @@ The GP-Next docs are split by topic:
 
 If you are building a translation pack, continue with [Language Packs and `lang.json`](./gp-next-language.md).
 
+If you are building plant level lines, level badges, or almanac level pages, continue with [Plant Levels](./gp-next-plant-level.md).
+
 If you want to change world-map node order, branches, gift boxes, portals, or the overall runtime map structure, continue with [World Map](./gp-next-worldmap.md).
 
 If you care more about in-game operations than file structure, go directly to:
@@ -90,4 +92,5 @@ If you still do not know what the original JSON of a type looks like, read [Sour
 - [Structure and Priority](./gp-next-files.md)
 - [Merge Rules](./gp-next-merge.md)
 - [Datapacks and `pack.json`](./gp-next-datapack.md)
+- [Plant Levels](./gp-next-plant-level.md)
 - [World Map](./gp-next-worldmap.md)
