@@ -9,12 +9,17 @@ Sentry’s Quality Of Life is a mod that keeps the original vision of Gardendles
 
 ## Features
 
-Plant and Zombie almanac have been reordered for a more streamlined experience
-Extra almanac entries have been added for miscellaneous and holiday zombies (some are borrowed from maido’s Rebalance, ty maido)
-All dialogue in levels can now be replayed
-All plants now have their plant food effects listed in the almanac
-Fixed errors in the original game’s almanac
-Addition grid items have been added to the sandbox 
+- Plant and Zombie almanac have been reordered for a more streamlined experience
+
+- Extra almanac entries have been added for miscellaneous and holiday zombies (some are borrowed from maido’s Rebalance, ty maido)
+
+- All dialogue in levels can now be replayed
+
+- All plants now have their plant food effects listed in the almanac
+
+- Fixed errors in the original game’s almanac
+
+- Addition grid items have been added to the sandbox 
 
 ## Note
 
