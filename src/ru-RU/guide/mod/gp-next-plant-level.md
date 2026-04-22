@@ -8,6 +8,11 @@ order: 7.5
 
 # Уровни растений
 
+> [!warning]
+> Эта возможность все еще находится на странице **Experimental** в GP-Next.  
+> Перед использованием включите `plant-level-system` на внутриигровой странице **Experimental**.
+> Экспериментальные функции все еще могут измениться в любой момент, поэтому сначала сделайте резервную копию сохранения.
+
 В GP-Next уже есть экспериментальная система уровней растений.
 
 Ее основная идея не в том, чтобы напрямую менять ванильное растение, а в следующем:
@@ -84,6 +89,7 @@ MyPack/
 
 ```json5
 {
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
   "plants": {
     "peashooter": {
       "levels": {
@@ -114,6 +120,7 @@ MyPack/
 - `cloneCodename`: реальный codename, используемый этим уровнем
 - `icon`: стиль значка
 - `displayName`: необязательный пользовательский текст уровня
+- `hideText`: необязательное поле; если задать `true`, текст значка этого уровня скрывается, но сам значок остается
 
 ## Чем может быть `displayName`
 
@@ -136,6 +143,31 @@ MyPack/
 ```
 
 Если ваш языковой пакет добавляет другие языковые коды, сюда можно добавить и их.
+
+## Где Находится JSON Schema И Как Ее Использовать
+
+Schema для уровней растений опубликована в той же директории schema, что и schema worldmap:
+
+```text
+src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+```
+
+Как и в случае с worldmap, вы можете добавить `$schema` в начало `plant-levels.json` или `plant-levels.json5`, чтобы редактор, например `vscode`, давал автодополнение и проверку:
+
+```json5
+{
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
+  "plants": {}
+}
+```
+
+Можно использовать любой из этих URL:
+
+```text
+https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+
+https://pvzge.com/jsons/schema/gpn-plant-levels.schema.json
+```
 
 ## Какие значения поддерживает `icon`
 

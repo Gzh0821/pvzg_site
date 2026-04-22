@@ -8,6 +8,11 @@ order: 7.5
 
 # 植物等级
 
+> [!warning]
+> 这项能力目前仍归类在 GP-Next 的 **Experimental / 实验性** 页。  
+> 使用前请先在游戏里的 **Experimental** 页启用 `plant-level-system`。
+> 实验性功能可能随时变动，使用前请务必备份存档。
+
 GP-Next 现在已经有一套实验性的“植物等级”系统。
 
 它的核心思路不是直接修改原版植物本体，而是：
@@ -86,6 +91,7 @@ MyPack/
 
 ```json5
 {
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
   "plants": {
     "peashooter": {
       "levels": {
@@ -116,6 +122,7 @@ MyPack/
 - `cloneCodename`：该等级真正使用的植物 codename
 - `icon`：等级徽标样式
 - `displayName`：可选，自定义等级文字
+- `hideText`：可选，设为 `true` 时隐藏该等级的角标文字，但保留图标
 
 ## `displayName` 可以写什么
 
@@ -138,6 +145,31 @@ MyPack/
 ```
 
 如果你自己又通过语言包扩展了更多语言字段，也可以继续加对应语言代码。
+
+## JSON Schema 在哪里，怎么用
+
+植物等级用的 schema 文件和 worldmap 的 schema 放在站点同一级目录：
+
+```text
+src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+```
+
+和 worldmap 一样，可以在 `plant-levels.json` 或 `plant-levels.json5` 顶层加上 `$schema`，让编辑器（例如 `vscode`）提供字段补全和校验：
+
+```json5
+{
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
+  "plants": {}
+}
+```
+
+你可以使用下面任意一个地址：
+
+```text
+https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+
+https://pvzge.com/jsons/schema/gpn-plant-levels.schema.json
+```
 
 ## `icon` 目前支持哪些值
 

@@ -8,6 +8,11 @@ order: 7.5
 
 # Niveles de plantas
 
+> [!warning]
+> Esta función sigue estando en la página **Experimental** de GP-Next.  
+> Antes de usarla, activa `plant-level-system` en la página **Experimental** dentro del juego.
+> Las funciones experimentales todavía pueden cambiar en cualquier momento, así que haz una copia de tu guardado antes.
+
 GP-Next ya incluye un sistema experimental de niveles de plantas.
 
 La idea principal no es modificar directamente la planta vanilla, sino:
@@ -84,6 +89,7 @@ La estructura recomendada es:
 
 ```json5
 {
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
   "plants": {
     "peashooter": {
       "levels": {
@@ -114,6 +120,7 @@ Significado:
 - `cloneCodename`: codename real usado por ese nivel
 - `icon`: estilo de insignia
 - `displayName`: texto personalizado opcional del nivel
+- `hideText`: opcional; si se establece en `true`, oculta el texto de la insignia de ese nivel pero conserva el icono
 
 ## Que puede ser `displayName`
 
@@ -136,6 +143,31 @@ Significado:
 ```
 
 Si tu propio paquete de idioma añade mas codigos de idioma, tambien puedes poner esos campos aqui.
+
+## Dónde Está El JSON Schema Y Cómo Usarlo
+
+El schema de niveles de plantas se publica en el mismo directorio de schemas que el de worldmap:
+
+```text
+src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+```
+
+Igual que con worldmap, puedes añadir `$schema` al inicio de `plant-levels.json` o `plant-levels.json5` para que tu editor, como `vscode`, ofrezca autocompletado y validación:
+
+```json5
+{
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
+  "plants": {}
+}
+```
+
+Puedes usar cualquiera de estas URL:
+
+```text
+https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+
+https://pvzge.com/jsons/schema/gpn-plant-levels.schema.json
+```
 
 ## Valores soportados para `icon`
 

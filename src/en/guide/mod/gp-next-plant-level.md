@@ -8,6 +8,11 @@ order: 7.5
 
 # Plant Levels
 
+> [!warning]
+> This feature is still listed under GP-Next's **Experimental** page.  
+> Before using it, enable `plant-level-system` in the in-game **Experimental** page.
+> Experimental features may still change at any time, so back up your save first.
+
 GP-Next now includes an experimental plant-level system.
 
 The core idea is not to mutate the vanilla plant directly. Instead, you:
@@ -84,6 +89,7 @@ The recommended structure is:
 
 ```json5
 {
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
   "plants": {
     "peashooter": {
       "levels": {
@@ -114,6 +120,7 @@ Meaning:
 - `cloneCodename`: the real codename used by that level
 - `icon`: badge style
 - `displayName`: optional custom level text
+- `hideText`: optional; when set to `true`, hides the badge text for that level but keeps the icon
 
 ## What `displayName` Can Be
 
@@ -136,6 +143,31 @@ Meaning:
 ```
 
 If your own language pack adds more language codes, you can also add matching fields here.
+
+## Where The JSON Schema Is And How To Use It
+
+The plant-level schema file is published in the same schema directory as the worldmap schema:
+
+```text
+src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+```
+
+Like the worldmap config, you can add `$schema` at the top of `plant-levels.json` or `plant-levels.json5` so your editor, such as `vscode`, can provide completion and validation:
+
+```json5
+{
+  "$schema": "https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json",
+  "plants": {}
+}
+```
+
+You can use either of these URLs:
+
+```text
+https://raw.githubusercontent.com/Gzh0821/pvzg_site/refs/heads/main/src/.vuepress/public/jsons/schema/gpn-plant-levels.schema.json
+
+https://pvzge.com/jsons/schema/gpn-plant-levels.schema.json
+```
 
 ## Supported `icon` Values
 
