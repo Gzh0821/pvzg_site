@@ -2,6 +2,13 @@
     "title": "PvZ2 Gardendless Редактор привязки клавиш",
     "gameVersion": "Версия игры: v{version}",
     "instructions": "Чтобы изменить привязку клавиш, щелкните в поле ввода ниже. Чтобы восстановить привязку клавиш по умолчанию, щелкните значок удаления справа.",
+    "actionsTotal": "Действий",
+    "modified": "Изменено",
+    "conflicts": "Конфликты",
+    "searchActions": "Поиск действий или клавиш",
+    "conflictWarning": "Повторяющиеся клавиши",
+    "moreConflicts": "и еще {count} групп",
+    "noResults": "Нет подходящих клавиш",
     "restoreDefault": "Восстановить по умолчанию",
     "saveConfig": "Сохранить",
     "revertChanges": "Отменить изменения",
@@ -41,6 +48,8 @@
         "Game_HideUI": "Скрыть интерфейс",
         "Game_BananaLauncher": "Банана-Пульта",
         "Game_MissileToe": "Ракетная Омела",
+        "Game_Bamboozle": "Bamboozle",
+        "Game_HollyKnight": "Holly Knight",
         "Game_IceShroom": "Ледо-гриб",
         "ZenGarden_Glove": "Перчатка из Сада Дзен",
         "ZenGarden_Shovel": "Лопата из Сада Дзен",
@@ -62,7 +71,19 @@
         "Rhythm_PhatBeet2": "Ритм-Суперская Свёкла 2",
         "Rhythm_PhatBeet3": "Ритм-Суперская Свёкла 3",
         "Rhythm_PhatBeet4": "Ритм Суперская Свёкла 4",
-        "Rhythm_PhatBeet5": "Ритм-Суперская Свёкла 5"
+        "Rhythm_PhatBeet5": "Ритм-Суперская Свёкла 5",
+        "AirRaid_W": "Воздушный налёт вверх",
+        "AirRaid_S": "Воздушный налёт вниз",
+        "AirRaid_A": "Воздушный налёт влево",
+        "AirRaid_D": "Воздушный налёт вправо"
+    },
+    "groups": {
+        "Game": "Игра",
+        "ZenGarden": "Сад Дзен",
+        "Sandbox": "Песочница",
+        "Rhythm": "Ритм",
+        "AirRaid": "Воздушный налёт",
+        "Other": "Другое"
     },
     "keybinds": {
         "KEY_A": "A",

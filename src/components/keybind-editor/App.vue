@@ -7,14 +7,34 @@
         components: {}
     }"></a-config-provider>
     <div class="keybind-editor-container">
-        <a-typography-title :level="2" class="title">{{ t('title') }}</a-typography-title>
-        <a-typography-title :level="5">{{ t('gameVersion', { version: gameVersion }) }}</a-typography-title>
-        <a-typography-paragraph>
+        <div class="tool-header">
+            <div>
+                <a-typography-title :level="2" class="title">{{ t('title') }}</a-typography-title>
+                <a-typography-text type="secondary">{{ t('gameVersion', { version: gameVersion }) }}</a-typography-text>
+            </div>
+            <div class="stats-row">
+                <div class="stat-pill">
+                    <strong>{{ totalActionCount }}</strong>
+                    <span>{{ t('actionsTotal') }}</span>
+                </div>
+                <div class="stat-pill">
+                    <strong>{{ modifiedCount }}</strong>
+                    <span>{{ t('modified') }}</span>
+                </div>
+                <div class="stat-pill" :class="{ warning: conflictCount > 0 }">
+                    <strong>{{ conflictCount }}</strong>
+                    <span>{{ t('conflicts') }}</span>
+                </div>
+            </div>
+        </div>
+        <a-typography-paragraph class="instructions">
             <span v-html="t('instructions')"></span>
         </a-typography-paragraph>
 
         <a-form :model="keybinds" layout="vertical">
-            <a-form-item>
+            <div class="toolbar">
+                <a-input-search v-model:value="actionSearch" :placeholder="t('searchActions')" allow-clear
+                    class="action-search" />
                 <a-space wrap>
                     <a-button type="primary" size="large" @click="saveKeybinds">
                         <template #icon><save-outlined /></template>
@@ -33,24 +53,34 @@
                         {{ t('revertChanges') }}
                     </a-button>
                 </a-space>
-            </a-form-item>
-            <a-divider />
-            <a-row :gutter="[16, 24]">
-                <a-col v-for="(_value, action) in displayableKeybinds" :key="action" :xs="24" :sm="12" :md="8">
-                    <a-form-item :label="formatActionName(action)">
-                        <a-input-group compact style="display: flex;">
-                            <a-input :value="getFriendlyKeyCode(keybinds[action])" :placeholder="t('restoreDefault')"
-                                read-only @click="startBinding(action)" :class="{
-                                    'binding-active': bindingAction === action,
-                                    'keybind-modified': isKeybindModified(action)
-                                }" class="keybind-input" />
-                            <a-button @click.stop="resetToDefault(action)" :title="t('restoreDefault')">
-                                <template #icon><delete-outlined /></template>
-                            </a-button>
-                        </a-input-group>
-                    </a-form-item>
-                </a-col>
-            </a-row>
+            </div>
+            <a-alert v-if="conflictCount > 0" type="warning" show-icon :message="t('conflictWarning')"
+                :description="conflictSummary" class="conflict-alert" />
+            <a-collapse v-model:activeKey="activeGroupKeys" :bordered="false" :destroy-inactive-panel="true">
+                <a-collapse-panel v-for="group in visibleActionGroups" :key="group.id"
+                    :header="`${t(`groups.${group.id}`)} · ${group.items.length}`">
+                    <a-row :gutter="[14, 14]">
+                        <a-col v-for="action in group.items" :key="action" :xs="24" :md="12" :xl="8">
+                            <a-form-item :label="formatActionName(action)" class="keybind-item">
+                                <a-input-group compact class="keybind-row">
+                                    <a-input :value="getFriendlyKeyCode(keybinds[action])"
+                                        :placeholder="t('restoreDefault')" read-only @click="startBinding(action)"
+                                        :class="{
+                                            'binding-active': bindingAction === action,
+                                            'keybind-modified': isKeybindModified(action),
+                                            'keybind-conflict': hasConflict(action)
+                                        }" class="keybind-input" />
+                                    <a-button @click.stop="resetToDefault(action)" :title="t('restoreDefault')">
+                                        <template #icon><delete-outlined /></template>
+                                    </a-button>
+                                </a-input-group>
+                                <div class="action-code">{{ action }}</div>
+                            </a-form-item>
+                        </a-col>
+                    </a-row>
+                </a-collapse-panel>
+            </a-collapse>
+            <a-empty v-if="visibleActionGroups.length === 0" :description="t('noResults')" />
         </a-form>
 
         <a-modal v-model:open="isBinding" :title="t('pressKeyPrompt')" :closable="false" :footer="null"
@@ -65,9 +95,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed, reactive, inject, watch } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed, reactive, inject } from 'vue';
 import { message, theme } from 'ant-design-vue';
-import { DeleteOutlined, SaveOutlined, ReloadOutlined, UploadOutlined, FileAddOutlined, UndoOutlined } from '@ant-design/icons-vue';
+import { DeleteOutlined, SaveOutlined, UploadOutlined, FileAddOutlined, UndoOutlined } from '@ant-design/icons-vue';
 import { useI18n } from 'vue-i18n';
 
 import initialKeybindsFromFile from './KeyBinds.json';
@@ -97,6 +127,8 @@ const sessionInitialKeybinds = reactive<Record<string, string>>({ ...initialKeyb
 const keybinds = reactive<Record<string, string>>({ ...initialKeybindsFromFile });
 const bindingAction = ref<string | null>(null);
 const isBinding = ref(false);
+const actionSearch = ref('');
+const activeGroupKeys = ref(['Game', 'ZenGarden', 'Sandbox']);
 
 const { t, locale } = useI18n({
     locale: i18nLanguage,
@@ -116,18 +148,91 @@ const displayableKeybinds = computed(() => {
     return filtered;
 });
 
-// Watch for changes in initialKeybindsFromFile to update sessionInitialKeybinds if needed,
-// though initialKeybindsFromFile itself is static after import.
-// More importantly, update sessionInitialKeybinds upon explicit actions like upload or new.
+const actionGroups = [
+    { id: 'Game', prefix: 'Game_' },
+    { id: 'ZenGarden', prefix: 'ZenGarden_' },
+    { id: 'Sandbox', prefix: 'Sandbox_' },
+    { id: 'Rhythm', prefix: 'Rhythm_' },
+    { id: 'AirRaid', prefix: 'AirRaid_' }
+];
 
-// watch(initialKeybindsFromFile, (newInitial) => {
-//     Object.keys(sessionInitialKeybinds).forEach(key => delete sessionInitialKeybinds[key]);
-//     Object.assign(sessionInitialKeybinds, newInitial);
-// }, { deep: true, immediate: true });
+const getActionGroup = (action: string) =>
+    actionGroups.find(group => action.startsWith(group.prefix)) || { id: 'Other', prefix: '' };
 
+const officialDuplicateKeys = new Set<string>();
+for (const action in initialKeybindsFromFile) {
+    if (action === '__KeyCodeList__') continue;
+    const groupId = getActionGroup(action).id;
+    const key = initialKeybindsFromFile[action as keyof typeof initialKeybindsFromFile];
+    const groupKey = `${groupId}:${key}`;
+    const actions = Object.keys(initialKeybindsFromFile).filter(other =>
+        other !== '__KeyCodeList__'
+        && getActionGroup(other).id === groupId
+        && initialKeybindsFromFile[other as keyof typeof initialKeybindsFromFile] === key
+    );
+    if (actions.length > 1) officialDuplicateKeys.add(groupKey);
+}
+
+const totalActionCount = computed(() => Object.keys(displayableKeybinds.value).length);
+
+const modifiedCount = computed(() =>
+    Object.keys(displayableKeybinds.value).filter(action => isKeybindModified(action)).length
+);
+
+const conflictActionSet = computed(() => {
+    const result = new Set<string>();
+    conflictGroups.value.forEach(group => group.actions.forEach(action => result.add(action)));
+    return result;
+});
+
+const conflictCount = computed(() => conflictActionSet.value.size);
+
+const hasConflict = (action: string) => conflictActionSet.value.has(action);
+
+const conflictGroups = computed(() => {
+    const keyToActions = new Map<string, { key: string, groupId: string, actions: string[] }>();
+    for (const action in displayableKeybinds.value) {
+        const key = keybinds[action];
+        if (!key) continue;
+        const groupId = getActionGroup(action).id;
+        const mapKey = `${groupId}:${key}`;
+        const group = keyToActions.get(mapKey) || { key, groupId, actions: [] };
+        group.actions.push(action);
+        keyToActions.set(mapKey, group);
+    }
+    return [...keyToActions.entries()]
+        .filter(([mapKey, group]) => group.actions.length > 1 && !officialDuplicateKeys.has(mapKey))
+        .map(([, group]) => group);
+});
+
+const conflictSummary = computed(() => {
+    const shown = conflictGroups.value.slice(0, 4)
+        .map(group => `${getFriendlyKeyCode(group.key)}: ${group.actions.map(action => formatActionName(action)).join(', ')}`)
+        .join(' | ');
+    const hidden = conflictGroups.value.length - 4;
+    return hidden > 0 ? `${shown} ${t('moreConflicts', { count: hidden })}` : shown;
+});
+
+const visibleActionGroups = computed(() => {
+    const query = actionSearch.value.trim().toLowerCase();
+    const grouped = new Map<string, string[]>();
+    for (const action in displayableKeybinds.value) {
+        const label = formatActionName(action) || action;
+        const keyLabel = getFriendlyKeyCode(keybinds[action]);
+        const matches = !query
+            || action.toLowerCase().includes(query)
+            || label.toLowerCase().includes(query)
+            || keyLabel.toLowerCase().includes(query);
+        if (!matches) continue;
+        const groupId = getActionGroup(action).id;
+        const list = grouped.get(groupId) || [];
+        list.push(action);
+        grouped.set(groupId, list);
+    }
+    return [...grouped.entries()].map(([id, items]) => ({ id, items }));
+});
 
 const formatActionName = (action: string | null): string | undefined => {
-    // return action?.replace(/_/g, ' ');
     return t(`actions.${action}`, action ? action.replace(/_/g, ' ') : '');
 };
 
@@ -159,7 +264,7 @@ const getCocosKeyCode = (event: KeyboardEvent): string => {
         'Space': 'SPACE', 'Enter': 'ENTER', 'Backspace': 'BACKSPACE',
         'Tab': 'TAB', 'Backquote': 'BACK_QUOTE', 'AltLeft': 'ALT_LEFT',
         'AltRight': 'ALT_RIGHT', 'ShiftLeft': 'SHIFT_LEFT', 'ShiftRight': 'SHIFT_RIGHT',
-        'ControlLeft': 'CONTROL_LEFT', 'ControlRight': 'CONTROL_RIGHT', 'Escape': 'ESCAPE',
+        'ControlLeft': 'CTRL_LEFT', 'ControlRight': 'CTRL_RIGHT', 'Escape': 'ESCAPE',
         'F1': 'F1', 'F2': 'F2', 'F3': 'F3', 'F4': 'F4', 'F5': 'F5', 'F6': 'F6',
         'F7': 'F7', 'F8': 'F8', 'F9': 'F9', 'F10': 'F10', 'F11': 'F11', 'F12': 'F12',
         'Pause': 'PAUSE', 'CapsLock': 'CAPS_LOCK', 'PageUp': 'PAGE_UP', 'PageDown': 'PAGE_DOWN',
@@ -189,11 +294,6 @@ const handleKeyDown = (event: KeyboardEvent) => {
     if (!newKeyCode) {
         message.warning(t('cannotBindModifier'));
         return;
-    }
-    for (const action in displayableKeybinds.value) {
-        if (keybinds[action] === newKeyCode && action !== bindingAction.value) {
-            message.warning(t('keyAlreadyBound', { key: getFriendlyKeyCode(newKeyCode), action: formatActionName(action) }));
-        }
     }
     keybinds[bindingAction.value] = newKeyCode;
     bindingAction.value = null;
@@ -393,34 +493,142 @@ onBeforeUnmount(() => {
 }
 
 .keybind-editor-container {
-    max-width: 960px;
+    container-type: inline-size;
+    max-width: 1120px;
     margin: 2rem auto;
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(170, 111, 66, 0.16);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-color, #fff) 94%, #aa6f42 6%);
+    box-shadow: 0 10px 30px rgba(64, 38, 18, 0.08);
     font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Noto Sans', 'Segoe UI', Roboto,
         sans-serif, 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
+.tool-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.stat-pill {
+    min-width: 108px;
+    padding: 8px 12px;
+    border: 1px solid rgba(170, 111, 66, 0.16);
+    border-radius: 8px;
+    background: rgba(170, 111, 66, 0.06);
+}
+
+.stat-pill strong {
+    display: block;
+    color: #8b572f;
+    font-size: 1.2rem;
+    line-height: 1.1;
+}
+
+.stat-pill span {
+    color: #7a6a5e;
+    font-size: 0.82rem;
+}
+
+.stat-pill.warning strong {
+    color: #cf6b22;
+}
+
+.instructions {
+    margin-bottom: 18px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.toolbar :deep(.ant-space) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px !important;
+}
+
+.toolbar :deep(.ant-space-item) {
+    display: flex;
+}
+
+.toolbar :deep(.ant-btn) {
+    min-height: 40px;
+    height: auto;
+    white-space: normal;
+}
+
+.action-search {
+    max-width: 360px;
+}
+
+.conflict-alert {
+    margin-bottom: 14px;
+}
+
+.keybind-item {
+    height: 100%;
+    padding: 10px;
+    border: 1px solid rgba(170, 111, 66, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.42);
+}
+
+.keybind-row {
+    display: flex;
+}
+
+.keybind-row :deep(.ant-btn-icon-only) {
+    width: 40px;
+    min-width: 40px;
+}
+
 .keybind-input {
     cursor: pointer;
-    transition: all 0.3s;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .keybind-input:hover {
-    border-color: #40a9ff;
+    border-color: #aa6f42;
 }
 
 .binding-active {
-    background-color: #e6f7ff !important;
-    border-color: #1890ff !important;
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    background-color: rgba(170, 111, 66, 0.1) !important;
+    border-color: #aa6f42 !important;
+    box-shadow: 0 0 0 2px rgba(170, 111, 66, 0.18);
 }
 
 .keybind-modified {
     font-weight: bold;
-    font-style: italic;
-    /* Or use a color, e.g., color: #1890ff; */
+    color: #8b572f;
+}
+
+.keybind-conflict {
+    border-color: #d46b08 !important;
+    box-shadow: 0 0 0 2px rgba(212, 107, 8, 0.14);
+}
+
+.action-code {
+    margin-top: 4px;
+    color: #8a8178;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.75rem;
+    overflow-wrap: anywhere;
 }
 
 .binding-modal-content {
@@ -431,15 +639,98 @@ onBeforeUnmount(() => {
 .binding-modal-content .key-prompt {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #1890ff;
+    color: #8b572f;
     margin: 1rem 0;
     padding: 0.5rem;
-    border: 1px dashed #91d5ff;
+    border: 1px dashed rgba(170, 111, 66, 0.45);
     border-radius: 4px;
-    background-color: #e6f7ff;
+    background-color: rgba(170, 111, 66, 0.08);
 }
 
 :deep(.ant-form-item-label > label) {
     font-weight: 500;
+}
+
+:deep(.ant-collapse) {
+    background: transparent;
+}
+
+:deep(.ant-collapse-header) {
+    font-weight: 600;
+}
+
+@media (max-width: 760px) {
+    .keybind-editor-container {
+        margin: 0.75rem 0;
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.45rem !important;
+        line-height: 1.25 !important;
+    }
+
+    .tool-header,
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .stats-row {
+        justify-content: flex-start;
+    }
+
+    .action-search {
+        max-width: none;
+    }
+
+    .toolbar :deep(.ant-space) {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .toolbar :deep(.ant-space-item) {
+        flex: 1 1 150px;
+        min-width: 0;
+    }
+
+    .toolbar :deep(.ant-btn) {
+        width: 100%;
+    }
+}
+
+@container (max-width: 760px) {
+    .title {
+        font-size: 1.45rem !important;
+        line-height: 1.25 !important;
+    }
+
+    .tool-header,
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .stats-row {
+        justify-content: flex-start;
+    }
+
+    .action-search {
+        max-width: none;
+    }
+
+    .toolbar :deep(.ant-space) {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .toolbar :deep(.ant-space-item) {
+        flex: 1 1 150px;
+        min-width: 0;
+    }
+
+    .toolbar :deep(.ant-btn) {
+        width: 100%;
+    }
 }
 </style>

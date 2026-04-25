@@ -2,6 +2,13 @@
     "title": "Editor de Teclas de PvZ2 Gardendless",
     "gameVersion": "Versión del juego: v{version}",
     "instructions": "Haga clic en el cuadro de abajo para cambiar su tecla. Para restaurar la tecla predeterminada, haga click en el icono de eliminar a la derecha.",
+    "actionsTotal": "Acciones",
+    "modified": "Modificadas",
+    "conflicts": "Conflictos",
+    "searchActions": "Buscar acciones o teclas",
+    "conflictWarning": "Teclas duplicadas",
+    "moreConflicts": "y {count} grupos más",
+    "noResults": "No hay teclas coincidentes",
     "restoreDefault": "Restaurar a Predeterminado",
     "saveConfig": "Guardar",
     "revertChanges": "Revertir Cambios",
@@ -41,6 +48,8 @@
         "Game_HideUI": "Ocultar IU",
         "Game_BananaLauncher": "Lanzador de Banana",
         "Game_MissileToe": "Muérdago Misil",
+        "Game_Bamboozle": "Bamboozle",
+        "Game_HollyKnight": "Holly Knight",
         "Game_IceShroom": "Seta congelada",
         "ZenGarden_Glove": "Guante del Jardín Zen",
         "ZenGarden_Shovel": "Pala del Jardín Zen",
@@ -62,7 +71,19 @@
         "Rhythm_PhatBeet2": "Rhythm Phat Beet 2",
         "Rhythm_PhatBeet3": "Rhythm Phat Beet 3",
         "Rhythm_PhatBeet4": "Rhythm Phat Beet 4",
-        "Rhythm_PhatBeet5": "Rhythm Phat Beet 5"
+        "Rhythm_PhatBeet5": "Rhythm Phat Beet 5",
+        "AirRaid_W": "Ataque aéreo arriba",
+        "AirRaid_S": "Ataque aéreo abajo",
+        "AirRaid_A": "Ataque aéreo izquierda",
+        "AirRaid_D": "Ataque aéreo derecha"
+    },
+    "groups": {
+        "Game": "Juego",
+        "ZenGarden": "Jardín Zen",
+        "Sandbox": "Sandbox",
+        "Rhythm": "Ritmo",
+        "AirRaid": "Ataque aéreo",
+        "Other": "Otros"
     },
     "keybinds": {
         "KEY_A": "A",

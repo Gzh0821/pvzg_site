@@ -2,6 +2,13 @@
     "title": "PvZ2 Gardendless 键位绑定器",
     "gameVersion": "游戏版本: v{version}",
     "instructions": "点击下方的输入框以修改键位。要恢复默认键位，请点击右侧的删除图标。",
+    "actionsTotal": "可配置项",
+    "modified": "已修改",
+    "conflicts": "冲突",
+    "searchActions": "搜索动作或按键",
+    "conflictWarning": "有重复按键",
+    "moreConflicts": "等 {count} 组更多冲突",
+    "noResults": "没有匹配的键位",
     "restoreDefault": "恢复默认",
     "saveConfig": "保存配置",
     "revertChanges": "撤销更改",
@@ -41,6 +48,8 @@
         "Game_HideUI": "隐藏界面",
         "Game_BananaLauncher": "香蕉火箭炮",
         "Game_MissileToe": "槲寄生",
+        "Game_Bamboozle": "竹先生",
+        "Game_HollyKnight": "冬青骑士",
         "Game_IceShroom": "寒冰菇",
         "ZenGarden_Glove": "禅境花园手套",
         "ZenGarden_Shovel": "禅境花园铲子",
@@ -62,7 +71,19 @@
         "Rhythm_PhatBeet2": "节奏游戏甜菜2",
         "Rhythm_PhatBeet3": "节奏游戏甜菜3",
         "Rhythm_PhatBeet4": "节奏游戏甜菜4",
-        "Rhythm_PhatBeet5": "节奏游戏甜菜5"
+        "Rhythm_PhatBeet5": "节奏游戏甜菜5",
+        "AirRaid_W": "空袭模式上移",
+        "AirRaid_S": "空袭模式下移",
+        "AirRaid_A": "空袭模式左移",
+        "AirRaid_D": "空袭模式右移"
+    },
+    "groups": {
+        "Game": "游戏",
+        "ZenGarden": "禅境花园",
+        "Sandbox": "沙盒模式",
+        "Rhythm": "节奏游戏",
+        "AirRaid": "空袭模式",
+        "Other": "其他"
     },
     "keybinds": {
         "KEY_A": "A",

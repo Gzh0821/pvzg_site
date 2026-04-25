@@ -2,6 +2,13 @@
     "title": "PvZ2 Gardendless Keybind Editor",
     "gameVersion": "Game Version: v{version}",
     "instructions": "Click the input box below to change the keybind. To restore the default keybind, click the delete icon on the right.",
+    "actionsTotal": "Actions",
+    "modified": "Modified",
+    "conflicts": "Conflicts",
+    "searchActions": "Search actions or keys",
+    "conflictWarning": "Duplicate keybinds",
+    "moreConflicts": "and {count} more groups",
+    "noResults": "No matching keybinds",
     "restoreDefault": "Restore Default",
     "saveConfig": "Save",
     "revertChanges": "Revert Changes",
@@ -41,6 +48,8 @@
         "Game_HideUI": "Hide UI",
         "Game_BananaLauncher": "Banana Launcher",
         "Game_MissileToe": "Missile Toe",
+        "Game_Bamboozle": "Bamboozle",
+        "Game_HollyKnight": "Holly Knight",
         "Game_IceShroom": "Ice-shroom",
         "ZenGarden_Glove": "Zen Garden Glove",
         "ZenGarden_Shovel": "Zen Garden Shovel",
@@ -62,7 +71,19 @@
         "Rhythm_PhatBeet2": "Rhythm Phat Beet 2",
         "Rhythm_PhatBeet3": "Rhythm Phat Beet 3",
         "Rhythm_PhatBeet4": "Rhythm Phat Beet 4",
-        "Rhythm_PhatBeet5": "Rhythm Phat Beet 5"
+        "Rhythm_PhatBeet5": "Rhythm Phat Beet 5",
+        "AirRaid_W": "Air Raid Up",
+        "AirRaid_S": "Air Raid Down",
+        "AirRaid_A": "Air Raid Left",
+        "AirRaid_D": "Air Raid Right"
+    },
+    "groups": {
+        "Game": "Game",
+        "ZenGarden": "Zen Garden",
+        "Sandbox": "Sandbox",
+        "Rhythm": "Rhythm",
+        "AirRaid": "Air Raid",
+        "Other": "Other"
     },
     "keybinds": {
         "KEY_A": "A",
