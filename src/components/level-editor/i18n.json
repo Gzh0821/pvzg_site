@@ -1,0 +1,236 @@
+{
+  "title": {
+    "zh": "自定义关卡编辑器",
+    "en": "Custom Level Editor",
+    "es": "Editor de niveles",
+    "ru": "Редактор уровней"
+  },
+  "subtitle": {
+    "zh": "用图形界面生成标准关卡 JSON，复杂模块会在导入时保留。",
+    "en": "Create standard level JSON visually. Complex imported modules are preserved.",
+    "es": "Crea JSON de niveles estándar visualmente. Los módulos complejos importados se conservan.",
+    "ru": "Создавайте JSON стандартных уровней визуально. Сложные импортированные модули сохраняются."
+  },
+  "newLevel": {
+    "zh": "新建模板",
+    "en": "New template",
+    "es": "Nueva plantilla",
+    "ru": "Новый шаблон"
+  },
+  "importLevel": {
+    "zh": "导入关卡",
+    "en": "Import level",
+    "es": "Importar nivel",
+    "ru": "Импорт уровня"
+  },
+  "exportLevel": {
+    "zh": "导出 JSON",
+    "en": "Export JSON",
+    "es": "Exportar JSON",
+    "ru": "Экспорт JSON"
+  },
+  "errors": {
+    "zh": "{count} 个错误",
+    "en": "{count} errors",
+    "es": "{count} errores",
+    "ru": "Ошибок: {count}"
+  },
+  "warnings": {
+    "zh": "{count} 个警告",
+    "en": "{count} warnings",
+    "es": "{count} advertencias",
+    "ru": "Предупреждений: {count}"
+  },
+  "levelName": {
+    "zh": "关卡名",
+    "en": "Level name",
+    "es": "Nombre",
+    "ru": "Название"
+  },
+  "description": {
+    "zh": "描述",
+    "en": "Description",
+    "es": "Descripción",
+    "ru": "Описание"
+  },
+  "stage": {
+    "zh": "场景",
+    "en": "Stage",
+    "es": "Escenario",
+    "ru": "Сцена"
+  },
+  "startingSun": {
+    "zh": "初始阳光",
+    "en": "Starting sun",
+    "es": "Soles iniciales",
+    "ru": "Начальное солнце"
+  },
+  "seedBank": {
+    "zh": "种子栏",
+    "en": "Seed bank",
+    "es": "Banco de semillas",
+    "ru": "Панель семян"
+  },
+  "chooseAsset": {
+    "zh": "选择素材",
+    "en": "Choose asset",
+    "es": "Elegir recurso",
+    "ru": "Выбрать объект"
+  },
+  "plants": {
+    "zh": "植物",
+    "en": "Plants",
+    "es": "Plantas",
+    "ru": "Растения"
+  },
+  "zombies": {
+    "zh": "僵尸",
+    "en": "Zombies",
+    "es": "Zombis",
+    "ru": "Зомби"
+  },
+  "objects": {
+    "zh": "物件",
+    "en": "Objects",
+    "es": "Objetos",
+    "ru": "Объекты"
+  },
+  "search": {
+    "zh": "搜索名称或代号",
+    "en": "Search name or code",
+    "es": "Buscar nombre o código",
+    "ru": "Поиск имени или кода"
+  },
+  "board": {
+    "zh": "草坪",
+    "en": "Board",
+    "es": "Tablero",
+    "ru": "Поле"
+  },
+  "propertyPanel": {
+    "zh": "属性",
+    "en": "Properties",
+    "es": "Propiedades",
+    "ru": "Свойства"
+  },
+  "waves": {
+    "zh": "波次",
+    "en": "Waves",
+    "es": "Oleadas",
+    "ru": "Волны"
+  },
+  "validation": {
+    "zh": "校验",
+    "en": "Validation",
+    "es": "Validación",
+    "ru": "Проверка"
+  },
+  "addWave": {
+    "zh": "添加波次",
+    "en": "Add wave",
+    "es": "Añadir oleada",
+    "ru": "Добавить волну"
+  },
+  "addZombie": {
+    "zh": "添加僵尸",
+    "en": "Add zombie",
+    "es": "Añadir zombi",
+    "ru": "Добавить зомби"
+  },
+  "flagWave": {
+    "zh": "旗帜波",
+    "en": "Flag wave",
+    "es": "Oleada de bandera",
+    "ru": "Флаговая волна"
+  },
+  "selected": {
+    "zh": "当前选择",
+    "en": "Selected",
+    "es": "Seleccionado",
+    "ru": "Выбрано"
+  },
+  "remove": {
+    "zh": "删除",
+    "en": "Remove",
+    "es": "Eliminar",
+    "ru": "Удалить"
+  },
+  "clearCell": {
+    "zh": "清空格子",
+    "en": "Clear cell",
+    "es": "Vaciar celda",
+    "ru": "Очистить клетку"
+  },
+  "emptyCell": {
+    "zh": "选择素材后点击草坪放置。",
+    "en": "Choose an asset, then click a board cell.",
+    "es": "Elige un recurso y haz clic en una celda.",
+    "ru": "Выберите объект, затем нажмите клетку поля."
+  },
+  "seedChooser": {
+    "zh": "玩家选卡",
+    "en": "Player chooses",
+    "es": "El jugador elige",
+    "ru": "Выбор игрока"
+  },
+  "seedPreset": {
+    "zh": "固定卡组",
+    "en": "Preset cards",
+    "es": "Cartas fijas",
+    "ru": "Фиксированные карты"
+  },
+  "seedChooserHint": {
+    "zh": "列表里的植物会锁定进种子栏，其余格子由玩家选择。",
+    "en": "Listed plants are locked into the seed bank; players choose the remaining slots.",
+    "es": "Las plantas listadas quedan fijadas; el jugador elige los espacios restantes.",
+    "ru": "Растения в списке закреплены; остальные ячейки выбирает игрок."
+  },
+  "seedPresetHint": {
+    "zh": "列表里的植物就是完整卡组。",
+    "en": "Listed plants become the full seed bank.",
+    "es": "Las plantas listadas forman todo el banco.",
+    "ru": "Растения в списке становятся всей панелью семян."
+  },
+  "seedLimit": {
+    "zh": "种子栏最多 {count} 格。",
+    "en": "Seed bank supports up to {count} slots.",
+    "es": "El banco de semillas admite hasta {count} espacios.",
+    "ru": "Панель семян поддерживает до {count} ячеек."
+  },
+  "unsupported": {
+    "zh": "导入保留对象",
+    "en": "Preserved imported objects",
+    "es": "Objetos importados conservados",
+    "ru": "Сохраненные импортированные объекты"
+  },
+  "noIssues": {
+    "zh": "当前没有发现阻止导出的错误。",
+    "en": "No export-blocking issues found.",
+    "es": "No se encontraron errores que bloqueen la exportación.",
+    "ru": "Ошибок, блокирующих экспорт, не найдено."
+  },
+  "importFailed": {
+    "zh": "关卡文件解析失败",
+    "en": "Failed to parse level file",
+    "es": "No se pudo analizar el archivo de nivel",
+    "ru": "Не удалось разобрать файл уровня"
+  },
+  "imported": {
+    "zh": "已导入关卡",
+    "en": "Level imported",
+    "es": "Nivel importado",
+    "ru": "Уровень импортирован"
+  },
+  "exportBlocked": {
+    "zh": "请先修复错误再导出。",
+    "en": "Fix errors before exporting.",
+    "es": "Corrige los errores antes de exportar.",
+    "ru": "Исправьте ошибки перед экспортом."
+  },
+  "mobileHint": {
+    "zh": "移动端可通过底部标签切换草坪、素材、波次和校验。",
+    "en": "On mobile, use the bottom tabs to switch board, assets, waves, and validation.",
+    "es": "En móvil, usa las pestañas inferiores para cambiar entre tablero, recursos, oleadas y validación.",
+    "ru": "На мобильных используйте нижние вкладки для поля, объектов, волн и проверки."
+  }
+}

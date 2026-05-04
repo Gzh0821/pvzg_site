@@ -5,7 +5,7 @@
         },
         algorithm: $isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {}
-    }"></a-config-provider>
+    }">
     <a-layout class="save-editor-shell">
         <div class="tool-header">
             <div class="tool-title-block">
@@ -231,6 +231,7 @@
             <a-empty :description="t('empty description')" />
         </a-layout-content>
     </a-layout>
+    </a-config-provider>
 </template>
 
 <script lang="ts" setup>
@@ -524,14 +525,27 @@ const saveArchive = () => {
 
 <style scoped>
 .save-editor-shell {
+    --tool-accent: #aa6f42;
+    --tool-accent-strong: #8b572f;
+    --tool-bg: color-mix(in srgb, var(--vp-c-bg) 94%, var(--tool-accent) 6%);
+    --tool-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
+    --tool-accent-surface: color-mix(in srgb, var(--tool-accent) 10%, var(--vp-c-bg));
+    --tool-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
+    --tool-muted: var(--vp-c-text-mute);
     container-type: inline-size;
     max-width: 1120px;
     margin: 1.5rem auto;
-    border: 1px solid rgba(170, 111, 66, 0.16);
+    border: 1px solid var(--tool-border);
     border-radius: 10px;
-    background: color-mix(in srgb, var(--bg-color, #fff) 94%, #aa6f42 6%);
+    background: var(--tool-bg);
     box-shadow: 0 10px 30px rgba(64, 38, 18, 0.08);
+    color: var(--vp-c-text);
     overflow: hidden;
+}
+
+[data-theme="dark"] .save-editor-shell {
+    --tool-accent-strong: #d9aa7b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
 }
 
 .tool-header {
@@ -541,7 +555,7 @@ const saveArchive = () => {
     gap: 16px;
     padding: 18px 20px;
     font-family: 'pvzgeFontEN', 'pvzgFont', sans-serif;
-    border-bottom: 1px solid rgba(170, 111, 66, 0.14);
+    border-bottom: 1px solid var(--tool-border);
 }
 
 .tool-title-block {
@@ -598,20 +612,20 @@ const saveArchive = () => {
 .summary-pill {
     min-width: 120px;
     padding: 8px 12px;
-    border: 1px solid rgba(170, 111, 66, 0.16);
+    border: 1px solid var(--tool-border);
     border-radius: 8px;
-    background: rgba(170, 111, 66, 0.06);
+    background: var(--tool-accent-surface);
 }
 
 .summary-pill strong {
     display: block;
-    color: #8b572f;
+    color: var(--tool-accent-strong);
     font-size: 1.2rem;
     line-height: 1.1;
 }
 
 .summary-pill span {
-    color: #7a6a5e;
+    color: var(--tool-muted);
     font-size: 0.82rem;
 }
 
@@ -631,9 +645,9 @@ p.plant-title {
     flex-wrap: wrap;
     gap: 32px;
     padding: 18px;
-    border: 1px solid rgba(170, 111, 66, 0.14);
+    border: 1px solid var(--tool-border);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.45);
+    background: var(--tool-panel);
 }
 
 .plant-preview {
@@ -653,7 +667,7 @@ p.plant-title {
 }
 
 .muted-code {
-    color: #888;
+    color: var(--tool-muted);
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     font-size: 0.82em;
     margin: 0;
@@ -661,10 +675,10 @@ p.plant-title {
 
 .world-card {
     height: 100%;
-    border: 1px solid rgba(170, 111, 66, 0.16);
+    border: 1px solid var(--tool-border);
     border-radius: 6px;
     padding: 8px 10px;
-    background: rgba(255, 255, 255, 0.38);
+    background: var(--tool-panel);
 }
 
 .section-search {
@@ -678,13 +692,13 @@ p.plant-title {
 }
 
 .upgrade-meta {
-    color: #888;
+    color: var(--tool-muted);
     font-size: 0.8em;
     margin-top: 2px;
 }
 
 .upgrade-desc {
-    color: #555;
+    color: var(--tool-muted);
     font-size: 0.82em;
     line-height: 1.45;
 }

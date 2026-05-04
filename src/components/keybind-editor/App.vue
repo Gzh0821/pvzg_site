@@ -5,7 +5,7 @@
         },
         algorithm: $isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {}
-    }"></a-config-provider>
+    }">
     <div class="keybind-editor-container">
         <div class="tool-header">
             <div>
@@ -92,6 +92,7 @@
             </div>
         </a-modal>
     </div>
+    </a-config-provider>
 </template>
 
 <script setup lang="ts">
@@ -493,16 +494,29 @@ onBeforeUnmount(() => {
 }
 
 .keybind-editor-container {
+    --tool-accent: #aa6f42;
+    --tool-accent-strong: #8b572f;
+    --tool-bg: color-mix(in srgb, var(--vp-c-bg) 94%, var(--tool-accent) 6%);
+    --tool-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
+    --tool-accent-surface: color-mix(in srgb, var(--tool-accent) 10%, var(--vp-c-bg));
+    --tool-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
+    --tool-muted: var(--vp-c-text-mute);
     container-type: inline-size;
     max-width: 1120px;
     margin: 2rem auto;
     padding: 2rem;
-    border: 1px solid rgba(170, 111, 66, 0.16);
+    border: 1px solid var(--tool-border);
     border-radius: 10px;
-    background: color-mix(in srgb, var(--bg-color, #fff) 94%, #aa6f42 6%);
+    background: var(--tool-bg);
     box-shadow: 0 10px 30px rgba(64, 38, 18, 0.08);
+    color: var(--vp-c-text);
     font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Noto Sans', 'Segoe UI', Roboto,
         sans-serif, 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+[data-theme="dark"] .keybind-editor-container {
+    --tool-accent-strong: #d9aa7b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
 }
 
 .tool-header {
@@ -523,20 +537,20 @@ onBeforeUnmount(() => {
 .stat-pill {
     min-width: 108px;
     padding: 8px 12px;
-    border: 1px solid rgba(170, 111, 66, 0.16);
+    border: 1px solid var(--tool-border);
     border-radius: 8px;
-    background: rgba(170, 111, 66, 0.06);
+    background: var(--tool-accent-surface);
 }
 
 .stat-pill strong {
     display: block;
-    color: #8b572f;
+    color: var(--tool-accent-strong);
     font-size: 1.2rem;
     line-height: 1.1;
 }
 
 .stat-pill span {
-    color: #7a6a5e;
+    color: var(--tool-muted);
     font-size: 0.82rem;
 }
 
@@ -584,9 +598,9 @@ onBeforeUnmount(() => {
 .keybind-item {
     height: 100%;
     padding: 10px;
-    border: 1px solid rgba(170, 111, 66, 0.14);
+    border: 1px solid var(--tool-border);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.42);
+    background: var(--tool-panel);
 }
 
 .keybind-row {
@@ -615,7 +629,7 @@ onBeforeUnmount(() => {
 
 .keybind-modified {
     font-weight: bold;
-    color: #8b572f;
+    color: var(--tool-accent-strong);
 }
 
 .keybind-conflict {
@@ -625,7 +639,7 @@ onBeforeUnmount(() => {
 
 .action-code {
     margin-top: 4px;
-    color: #8a8178;
+    color: var(--tool-muted);
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     font-size: 0.75rem;
     overflow-wrap: anywhere;
@@ -639,12 +653,12 @@ onBeforeUnmount(() => {
 .binding-modal-content .key-prompt {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #8b572f;
+    color: var(--tool-accent-strong);
     margin: 1rem 0;
     padding: 0.5rem;
-    border: 1px dashed rgba(170, 111, 66, 0.45);
+    border: 1px dashed color-mix(in srgb, var(--tool-accent) 45%, transparent);
     border-radius: 4px;
-    background-color: rgba(170, 111, 66, 0.08);
+    background-color: var(--tool-accent-surface);
 }
 
 :deep(.ant-form-item-label > label) {
