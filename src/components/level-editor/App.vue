@@ -233,6 +233,7 @@ const currentAssetOptions = computed(() => {
 });
 
 const selectedWave = computed(() => draft.value.waves.find((wave) => wave.id === selectedWaveId.value) || draft.value.waves[0]);
+const selectedCellItems = computed(() => (selectedCell.value ? itemsAt(selectedCell.value.row, selectedCell.value.col) : []));
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
@@ -345,6 +346,10 @@ function clearSelectedCell() {
   );
 }
 
+function clearBoardItems() {
+  draft.value.boardItems = [];
+}
+
 function itemsAt(row: number, col: number) {
   const layerOrder: Record<AssetKind, number> = { object: 0, plant: 1, zombie: 2 };
   return draft.value.boardItems
@@ -395,6 +400,18 @@ function getPlantDisplayName(code: string) {
 
 function getObjectDisplayName(code: string) {
   return objectOptions.find((item) => item.code === code)?.name || code;
+}
+
+function getBoardItemImage(item: BoardItem) {
+  if (item.kind === 'plant') return plantOptions.value.find((plant) => plant.code === item.code)?.image || '';
+  if (item.kind === 'zombie') return zombieOptions.value.find((zombie) => zombie.code === item.code)?.image || '';
+  return '';
+}
+
+function getBoardItemKindLabel(kind: AssetKind) {
+  if (kind === 'plant') return t('cellKindPlant');
+  if (kind === 'zombie') return t('cellKindZombie');
+  return t('cellKindObject');
 }
 
 function normalizeSeedPlants(plants: string[]) {
@@ -831,9 +848,15 @@ const BoardEditor = defineComponent({
       h('section', { class: 'board-editor' }, [
         h('div', { class: 'board-header' }, [
           h('div', [h('strong', t('board')), h('span', selectedAsset.value ? `${t('selected')}: ${selectedAsset.value.name}` : t('emptyCell'))]),
-          selectedCell.value
-            ? h('button', { class: 'text-button', onClick: clearSelectedCell }, [h(DeleteOutlined), t('clearCell')])
-            : null
+          h('div', { class: 'board-actions' }, [
+            selectedCell.value
+              ? h('button', { class: 'text-button', onClick: clearSelectedCell }, [h(DeleteOutlined), t('clearCell')])
+              : null,
+            h('button', { class: 'text-button danger', disabled: !draft.value.boardItems.length, onClick: clearBoardItems }, [
+              h(DeleteOutlined),
+              t('clearBoard')
+            ])
+          ])
         ]),
         h(
           'div',
@@ -856,17 +879,46 @@ const BoardEditor = defineComponent({
                       'span',
                       { class: 'cell-stack' },
                       items.map((item) =>
-                        h('span', { class: `cell-layer ${item.kind}`, title: item.label }, [
-                          h('span', { class: `cell-chip ${item.kind}` }, item.kind === 'plant' ? 'P' : item.kind === 'zombie' ? 'Z' : 'O'),
-                          h('span', { class: 'cell-label' }, item.label)
-                        ])
+                        h(
+                          'span',
+                          {
+                            class: `cell-marker ${item.kind}`,
+                            title: `${getBoardItemKindLabel(item.kind)}: ${item.label}`
+                          },
+                          getBoardItemImage(item)
+                            ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
+                            : h('span', { class: `cell-chip ${item.kind}` }, item.kind === 'plant' ? 'P' : item.kind === 'zombie' ? 'Z' : 'O')
+                        )
                       )
                     )
                   : h('span', { class: 'cell-coord' }, `${col + 1},${row + 1}`)
               );
             })
           ).flat()
-        )
+        ),
+        h('div', { class: 'cell-detail-panel' }, [
+          h(
+            'div',
+            { class: 'cell-detail-title' },
+            selectedCell.value ? t('selectedCellTitle', { col: selectedCell.value.col + 1, row: selectedCell.value.row + 1 }) : t('selectedCellNone')
+          ),
+          selectedCell.value
+            ? selectedCellItems.value.length
+              ? h(
+                  'div',
+                  { class: 'cell-detail-list' },
+                  selectedCellItems.value.map((item) =>
+                    h('span', { class: `cell-detail-pill ${item.kind}` }, [
+                      getBoardItemImage(item)
+                        ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
+                        : h('span', { class: `cell-chip ${item.kind}` }, item.kind === 'plant' ? 'P' : item.kind === 'zombie' ? 'Z' : 'O'),
+                      h('span', { class: 'cell-detail-copy' }, [h('strong', item.label), h('small', getBoardItemKindLabel(item.kind))])
+                    ])
+                  )
+                )
+              : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
+            : h('div', { class: 'cell-detail-empty' }, t('selectedCellHint'))
+        ])
       ]);
   }
 });
@@ -1243,12 +1295,19 @@ body:has(.level-editor-shell) {
   font-size: 0.85rem;
 }
 
+.board-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
 .lawn-grid {
   display: grid;
   grid-template-columns: repeat(9, minmax(0, 1fr));
   min-width: 0;
-  gap: 0.25rem;
-  padding: 0.55rem;
+  gap: 0.16rem;
+  padding: 0.42rem;
   aspect-ratio: 9 / 5;
   border-radius: 8px;
   background:
@@ -1270,7 +1329,7 @@ body:has(.level-editor-shell) {
 }
 
 .lawn-cell.has-items {
-  padding: 0.18rem;
+  padding: 0.08rem;
 }
 
 .lawn-cell:nth-child(odd) {
@@ -1278,25 +1337,46 @@ body:has(.level-editor-shell) {
 }
 
 .lawn-cell.selected {
-  outline: 3px solid #f8d66d;
-  outline-offset: -3px;
+  outline: 2px solid #f8d66d;
+  outline-offset: -2px;
 }
 
 .cell-stack {
-  display: grid;
-  gap: 0.12rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.03rem;
+  align-content: center;
+  justify-content: center;
   min-width: 0;
 }
 
-.cell-layer {
+.cell-marker {
   display: grid;
-  grid-template-columns: 1rem minmax(0, 1fr);
-  gap: 0.16rem;
+  place-items: center;
+  width: clamp(0.72rem, 31%, 1.35rem);
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.cell-marker img,
+.cell-detail-pill img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cell-marker .cell-chip {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  min-width: 0;
-  padding: 0.08rem 0.14rem;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.3);
+  justify-content: center;
+  font-size: clamp(0.44rem, 1vw, 0.56rem);
+  line-height: 1;
 }
 
 .cell-chip {
@@ -1333,6 +1413,69 @@ body:has(.level-editor-shell) {
 .cell-coord {
   color: rgba(18, 50, 15, 0.48);
   font-size: 0.72rem;
+}
+
+.cell-detail-panel {
+  display: grid;
+  gap: 0.45rem;
+  min-height: 5.4rem;
+  margin-top: 0.65rem;
+  padding: 0.65rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--vp-c-bg) 78%, var(--editor-accent) 8%);
+}
+
+.cell-detail-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.cell-detail-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.cell-detail-pill {
+  display: grid;
+  grid-template-columns: 1.9rem minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: center;
+  max-width: 100%;
+  min-height: 2.35rem;
+  padding: 0.25rem 0.55rem 0.25rem 0.3rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.cell-detail-pill > img,
+.cell-detail-pill > .cell-chip {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.cell-detail-pill > .cell-chip {
+  line-height: 1.9rem;
+}
+
+.cell-detail-copy {
+  display: grid;
+  min-width: 0;
+}
+
+.cell-detail-copy strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.82rem;
+}
+
+.cell-detail-copy small,
+.cell-detail-empty {
+  color: var(--editor-muted);
+  font-size: 0.78rem;
 }
 
 .property-section {
@@ -1491,7 +1634,8 @@ body:has(.level-editor-shell) {
   border-color: color-mix(in srgb, var(--editor-accent) 45%, var(--editor-border));
 }
 
-.add-button:disabled {
+.add-button:disabled,
+.text-button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
@@ -1605,8 +1749,8 @@ body:has(.level-editor-shell) {
 
   .lawn-grid {
     grid-template-columns: repeat(9, minmax(2rem, 1fr));
-    gap: 0.18rem;
-    padding: 0.35rem;
+    gap: 0.12rem;
+    padding: 0.28rem;
   }
 
   .lawn-cell {
