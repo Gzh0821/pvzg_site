@@ -234,6 +234,15 @@ const currentAssetOptions = computed(() => {
 
 const selectedWave = computed(() => draft.value.waves.find((wave) => wave.id === selectedWaveId.value) || draft.value.waves[0]);
 const selectedCellItems = computed(() => (selectedCell.value ? itemsAt(selectedCell.value.row, selectedCell.value.col) : []));
+const selectedPlantAsset = computed(() => (selectedAsset.value?.kind === 'plant' ? selectedAsset.value : null));
+const selectedZombieAsset = computed(() => (selectedAsset.value?.kind === 'zombie' ? selectedAsset.value : null));
+const seedPlantAlreadyAdded = computed(() => !!selectedPlantAsset.value && draft.value.seedPlants.includes(selectedPlantAsset.value.code));
+const canAddSelectedSeedPlant = computed(
+  () => !!selectedPlantAsset.value && !seedPlantAlreadyAdded.value && draft.value.seedPlants.length < MAX_SEED_PLANTS
+);
+const canAddSelectedZombie = computed(() => !!selectedZombieAsset.value && !!selectedWave.value);
+const seedActionHint = ref('');
+const zombieActionHint = ref('');
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
@@ -319,6 +328,8 @@ function resetDraft() {
 function chooseAsset(asset: AssetOption) {
   selectedAsset.value = asset;
   assetTab.value = asset.kind;
+  if (asset.kind === 'plant') seedActionHint.value = '';
+  if (asset.kind === 'zombie') zombieActionHint.value = '';
 }
 
 function placeAsset(row: number, col: number) {
@@ -357,8 +368,8 @@ function itemsAt(row: number, col: number) {
     .sort((a, b) => layerOrder[a.kind] - layerOrder[b.kind]);
 }
 
-function addSeedPlant(code?: string) {
-  const plantCode = code || plantOptions.value[0]?.code;
+function addSeedPlant(code: string) {
+  const plantCode = code;
   if (!plantCode || draft.value.seedPlants.includes(plantCode)) return;
   if (draft.value.seedPlants.length >= MAX_SEED_PLANTS) {
     message.warning(t('seedLimit', { count: MAX_SEED_PLANTS }));
@@ -367,8 +378,22 @@ function addSeedPlant(code?: string) {
   draft.value.seedPlants.push(plantCode);
 }
 
+function addSelectedSeedPlant() {
+  if (!selectedPlantAsset.value) {
+    seedActionHint.value = 'selectPlantFirst';
+    return;
+  }
+  if (seedPlantAlreadyAdded.value) {
+    seedActionHint.value = 'plantAlreadyAdded';
+    return;
+  }
+  seedActionHint.value = '';
+  addSeedPlant(selectedPlantAsset.value.code);
+}
+
 function removeSeedPlant(code: string) {
   draft.value.seedPlants = draft.value.seedPlants.filter((item) => item !== code);
+  if (selectedPlantAsset.value?.code === code) seedActionHint.value = '';
 }
 
 function addWave() {
@@ -383,11 +408,20 @@ function removeWave(id: number) {
   selectedWaveId.value = draft.value.waves[0].id;
 }
 
-function addZombieToWave(code?: string) {
+function addZombieToWave(code: string) {
   if (!selectedWave.value) return;
-  const zombie = zombieOptions.value.find((item) => item.code === code) || zombieOptions.value[0];
+  const zombie = zombieOptions.value.find((item) => item.code === code);
   if (!zombie) return;
   selectedWave.value.zombies.push({ id: nextZombieId.value++, code: zombie.code, label: zombie.name, count: 1 });
+}
+
+function addSelectedZombieToWave() {
+  if (!selectedZombieAsset.value) {
+    zombieActionHint.value = 'selectZombieFirst';
+    return;
+  }
+  zombieActionHint.value = '';
+  addZombieToWave(selectedZombieAsset.value.code);
 }
 
 function getZombieDisplayName(code: string, fallback: string) {
@@ -947,13 +981,17 @@ const PropertyPanel = defineComponent({
               ]);
             })
           ),
-        h('button', {
-          class: 'add-button',
-          disabled: draft.value.seedPlants.length >= MAX_SEED_PLANTS,
-          onClick: () => addSeedPlant(selectedAsset.value?.kind === 'plant' ? selectedAsset.value.code : undefined)
-        }, [
-            h(PlusOutlined),
-            t('plants')
+          h('div', { class: 'action-row' }, [
+            h(
+              'button',
+              {
+                class: ['add-button', !canAddSelectedSeedPlant.value ? 'is-disabled' : ''],
+                'aria-disabled': !canAddSelectedSeedPlant.value ? 'true' : 'false',
+                onClick: addSelectedSeedPlant
+              },
+              [h(PlusOutlined), t('plants')]
+            ),
+            seedActionHint.value ? h('small', { class: 'action-hint' }, t(seedActionHint.value)) : null
           ])
         ])
       ]);
@@ -1014,10 +1052,16 @@ const WaveTimeline = defineComponent({
                 )
               ),
               h('div', { class: 'wave-actions' }, [
-                h('button', { class: 'add-button', onClick: () => addZombieToWave(selectedAsset.value?.kind === 'zombie' ? selectedAsset.value.code : undefined) }, [
-                  h(PlusOutlined),
-                  t('addZombie')
-                ]),
+                h(
+                  'button',
+                  {
+                    class: ['add-button', !canAddSelectedZombie.value ? 'is-disabled' : ''],
+                    'aria-disabled': !canAddSelectedZombie.value ? 'true' : 'false',
+                    onClick: addSelectedZombieToWave
+                  },
+                  [h(PlusOutlined), t('addZombie')]
+                ),
+                zombieActionHint.value ? h('small', { class: 'action-hint' }, t(zombieActionHint.value)) : null,
                 draft.value.waves.length > 1
                   ? h('button', { class: 'text-button danger', onClick: () => removeWave(selectedWave.value.id) }, t('remove'))
                   : null
@@ -1613,7 +1657,20 @@ body:has(.level-editor-shell) {
 .wave-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.action-hint {
+  color: var(--editor-muted);
+  font-size: 0.78rem;
 }
 
 .add-button,
@@ -1635,7 +1692,8 @@ body:has(.level-editor-shell) {
 }
 
 .add-button:disabled,
-.text-button:disabled {
+.text-button:disabled,
+.add-button.is-disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
