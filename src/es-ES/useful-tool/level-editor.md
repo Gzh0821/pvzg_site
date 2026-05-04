@@ -25,7 +25,7 @@ sidebar: false
 > [!warning]
 > El editor de niveles personalizados está en fase temprana de prueba. Prueba los archivos exportados localmente antes de compartirlos.
 >
-> La primera versión admite principalmente tableros estándar, bancos de semillas y oleadas normales. Los módulos no compatibles de niveles complejos importados se muestran en la validación.
+> Actualmente admite principalmente tableros estándar, bancos de semillas y oleadas normales. Los módulos no compatibles de niveles complejos importados se muestran en la validación.
 
 ## Herramientas y guías relacionadas
 

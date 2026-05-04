@@ -25,7 +25,7 @@ sidebar: false
 > [!warning]
 > The custom level editor is in early testing. Test exported level files locally before sharing them with other players.
 >
-> The first version mainly supports standard boards, seed banks, and regular waves. Unsupported modules in imported complex levels are shown in the validation area.
+> Currently, it mainly supports standard boards, seed banks, and regular waves. Unsupported modules in imported complex levels are shown in the validation area.
 
 ## Related Tools and Guides
 
