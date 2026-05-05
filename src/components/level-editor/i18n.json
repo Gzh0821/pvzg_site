@@ -29,6 +29,30 @@
     "es": "Exportar JSON",
     "ru": "Экспорт JSON"
   },
+  "previewJson": {
+    "zh": "预览 JSON",
+    "en": "Preview JSON",
+    "es": "Vista JSON",
+    "ru": "Просмотр JSON"
+  },
+  "copyJson": {
+    "zh": "复制 JSON",
+    "en": "Copy JSON",
+    "es": "Copiar JSON",
+    "ru": "Копировать JSON"
+  },
+  "copied": {
+    "zh": "已复制",
+    "en": "Copied",
+    "es": "Copiado",
+    "ru": "Скопировано"
+  },
+  "copyFailed": {
+    "zh": "复制失败",
+    "en": "Copy failed",
+    "es": "No se pudo copiar",
+    "ru": "Не удалось скопировать"
+  },
   "errors": {
     "zh": "{count} 个错误",
     "en": "{count} errors",
@@ -64,6 +88,42 @@
     "en": "Starting sun",
     "es": "Soles iniciales",
     "ru": "Начальное солнце"
+  },
+  "advancedLevel": {
+    "zh": "高级关卡字段",
+    "en": "Advanced level fields",
+    "es": "Campos avanzados",
+    "ru": "Дополнительные поля"
+  },
+  "author": {
+    "zh": "作者",
+    "en": "Author",
+    "es": "Autor",
+    "ru": "Автор"
+  },
+  "mower": {
+    "zh": "小推车",
+    "en": "Mower",
+    "es": "Cortacésped",
+    "ru": "Газонокосилка"
+  },
+  "sunDropper": {
+    "zh": "阳光掉落",
+    "en": "Sun dropper",
+    "es": "Generador de sol",
+    "ru": "Падение солнца"
+  },
+  "stageDefault": {
+    "zh": "按场景默认",
+    "en": "Stage default",
+    "es": "Predeterminado",
+    "ru": "По сцене"
+  },
+  "none": {
+    "zh": "无",
+    "en": "None",
+    "es": "Ninguno",
+    "ru": "Нет"
   },
   "seedBank": {
     "zh": "种子栏",
@@ -124,6 +184,12 @@
     "en": "Validation",
     "es": "Validación",
     "ru": "Проверка"
+  },
+  "settings": {
+    "zh": "设置",
+    "en": "Settings",
+    "es": "Ajustes",
+    "ru": "Настройки"
   },
   "addWave": {
     "zh": "添加波次",
@@ -262,6 +328,144 @@
     "en": "Seed bank supports up to {count} slots.",
     "es": "El banco de semillas admite hasta {count} espacios.",
     "ru": "Панель семян поддерживает до {count} ячеек."
+  },
+  "advancedSeedBank": {
+    "zh": "高级种子栏",
+    "en": "Advanced seed bank",
+    "es": "Banco avanzado",
+    "ru": "Расширенная панель"
+  },
+  "seedSlots": {
+    "zh": "种子格数",
+    "en": "Seed slots",
+    "es": "Espacios",
+    "ru": "Ячейки семян"
+  },
+  "unlockAll": {
+    "zh": "解锁全部植物",
+    "en": "Unlock all plants",
+    "es": "Desbloquear plantas",
+    "ru": "Открыть все растения"
+  },
+  "includePlants": {
+    "zh": "包含植物列表",
+    "en": "Include plant list",
+    "es": "Lista incluida",
+    "ru": "Список включения"
+  },
+  "excludePlants": {
+    "zh": "排除植物列表",
+    "en": "Exclude plant list",
+    "es": "Lista excluida",
+    "ru": "Список исключения"
+  },
+  "addSelectedPlant": {
+    "zh": "添加当前植物",
+    "en": "Add selected plant",
+    "es": "Añadir planta",
+    "ru": "Добавить выбранное"
+  },
+  "emptyList": {
+    "zh": "暂无条目。",
+    "en": "No entries yet.",
+    "es": "Sin entradas.",
+    "ru": "Пока пусто."
+  },
+  "advancedWaveSettings": {
+    "zh": "高级波次字段",
+    "en": "Advanced wave fields",
+    "es": "Oleadas avanzadas",
+    "ru": "Доп. поля волн"
+  },
+  "flagWaveInterval": {
+    "zh": "旗帜波间隔",
+    "en": "Flag wave interval",
+    "es": "Intervalo de bandera",
+    "ru": "Интервал флага"
+  },
+  "firstWaveCountdown": {
+    "zh": "首波倒计时",
+    "en": "First wave countdown",
+    "es": "Cuenta inicial",
+    "ru": "Таймер первой волны"
+  },
+  "suppressFlagZombie": {
+    "zh": "不生成旗帜僵尸",
+    "en": "Suppress flag zombie",
+    "es": "Sin zombi bandera",
+    "ru": "Без флагового зомби"
+  },
+  "advancedCurrentWave": {
+    "zh": "当前波次高级字段",
+    "en": "Advanced current wave",
+    "es": "Oleada actual avanzada",
+    "ru": "Доп. поля текущей волны"
+  },
+  "additionalPlantfood": {
+    "zh": "额外叶绿素",
+    "en": "Additional plant food",
+    "es": "Nutrientes extra",
+    "ru": "Доп. подкормка"
+  },
+  "dynamicPlantfood": {
+    "zh": "动态叶绿素数组",
+    "en": "Dynamic plant food array",
+    "es": "Matriz dinámica",
+    "ru": "Массив подкормки"
+  },
+  "spawnStyle": {
+    "zh": "僵尸生成风格",
+    "en": "Zombie spawn style",
+    "es": "Estilo de aparición",
+    "ru": "Стиль появления"
+  },
+  "styleDefault": {
+    "zh": "默认",
+    "en": "Default",
+    "es": "Predeterminado",
+    "ru": "По умолчанию"
+  },
+  "mustKillAllToNextWave": {
+    "zh": "杀完本波才进入下一波",
+    "en": "Kill all before next wave",
+    "es": "Matar todo antes de seguir",
+    "ru": "Убить всех перед след. волной"
+  },
+  "addSpecialAction": {
+    "zh": "添加事件",
+    "en": "Add event",
+    "es": "Añadir evento",
+    "ru": "Добавить событие"
+  },
+  "addTideAction": {
+    "zh": "潮汐",
+    "en": "Tide",
+    "es": "Marea",
+    "ru": "Прилив"
+  },
+  "addDinoAction": {
+    "zh": "恐龙",
+    "en": "Dinosaur",
+    "es": "Dinosaurio",
+    "ru": "Динозавр"
+  },
+  "addStormAction": {
+    "zh": "沙尘暴",
+    "en": "Storm",
+    "es": "Tormenta",
+    "ru": "Буря"
+  },
+  "addGroundSpawnAction": {
+    "zh": "地面生成",
+    "en": "Ground spawn",
+    "es": "Aparición de suelo",
+    "ru": "Из-под земли"
+  },
+  "noSpecialActions": {
+    "zh": "当前波次没有额外事件。",
+    "en": "No extra events in this wave.",
+    "es": "No hay eventos extra en esta oleada.",
+    "ru": "В этой волне нет доп. событий."
   },
   "unsupported": {
     "zh": "导入保留对象",

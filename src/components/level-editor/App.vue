@@ -12,26 +12,31 @@
           <a-typography-text type="secondary">{{ t('subtitle') }}</a-typography-text>
         </div>
         <div class="top-actions">
-          <a-tag :color="validationSummary.errors ? 'error' : 'success'">
-            {{ t('errors', { count: validationSummary.errors }) }}
-          </a-tag>
-          <a-tag :color="validationSummary.warnings ? 'warning' : 'default'">
-            {{ t('warnings', { count: validationSummary.warnings }) }}
-          </a-tag>
-          <a-upload :before-upload="handleUpload" accept=".json,.json5" :show-upload-list="false">
-            <a-button>
-              <template #icon><upload-outlined /></template>
-              {{ t('importLevel') }}
+          <div class="top-action-row action-row-primary">
+            <a-tag class="validation-summary-tag" :color="validationSummaryColor">
+              {{ t('errors', { count: validationSummary.errors }) }} / {{ t('warnings', { count: validationSummary.warnings }) }}
+            </a-tag>
+            <a-upload :before-upload="handleUpload" accept=".json,.json5" :show-upload-list="false">
+              <a-button>
+                <template #icon><upload-outlined /></template>
+                {{ t('importLevel') }}
+              </a-button>
+            </a-upload>
+            <a-button @click="resetDraft">
+              <template #icon><file-add-outlined /></template>
+              {{ t('newLevel') }}
             </a-button>
-          </a-upload>
-          <a-button @click="resetDraft">
-            <template #icon><file-add-outlined /></template>
-            {{ t('newLevel') }}
-          </a-button>
-          <a-button type="primary" @click="exportLevel">
-            <template #icon><download-outlined /></template>
-            {{ t('exportLevel') }}
-          </a-button>
+          </div>
+          <div class="top-action-row action-row-export">
+            <a-button @click="openPreview">
+              <template #icon><eye-outlined /></template>
+              {{ t('previewJson') }}
+            </a-button>
+            <a-button type="primary" @click="exportLevel">
+              <template #icon><download-outlined /></template>
+              {{ t('exportLevel') }}
+            </a-button>
+          </div>
         </div>
       </header>
 
@@ -58,6 +63,9 @@
           <a-tab-pane key="waves" :tab="t('waves')">
             <WaveTimeline />
           </a-tab-pane>
+          <a-tab-pane key="settings" :tab="t('settings')">
+            <PropertyPanel />
+          </a-tab-pane>
           <a-tab-pane key="validation" :tab="t('validation')">
             <ValidationPanel />
           </a-tab-pane>
@@ -69,6 +77,16 @@
         <WaveTimeline />
         <ValidationPanel compact />
       </div>
+
+      <a-modal v-model:open="previewOpen" :title="`${draft.name || 'custom_level'}.json`" width="min(920px, 96vw)" :footer="null">
+        <div class="preview-actions">
+          <a-button size="small" @click="copyPreview">
+            <template #icon><copy-outlined /></template>
+            {{ t('copyJson') }}
+          </a-button>
+        </div>
+        <pre class="json-preview">{{ previewJson }}</pre>
+      </a-modal>
     </section>
   </a-config-provider>
 </template>
@@ -78,8 +96,10 @@ import { computed, defineComponent, h, inject, ref } from 'vue';
 import JSON5 from 'json5';
 import { message, theme as antdTheme } from 'ant-design-vue';
 import {
+  CopyOutlined,
   DeleteOutlined,
   DownloadOutlined,
+  EyeOutlined,
   FileAddOutlined,
   PlusOutlined,
   UploadOutlined
@@ -91,8 +111,21 @@ import localeMessages from './i18n.json';
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
 type AssetKind = 'plant' | 'zombie' | 'object';
 type SeedMode = 'chooser' | 'preset';
+type PlantListKey = 'seedPlants' | 'includePlants' | 'excludePlants';
 
 const MAX_SEED_PLANTS = 8;
+const STAGE_DEFAULT_MOWER = '__stageDefault';
+const NO_MODULE = 'none';
+const NEW_WAVES_REF = 'RTID(NewWaves@CurrentLevel)';
+const DEFAULT_MODULE_REFS = [
+  'RTID(StandardIntro@LevelModules)',
+  'RTID(DefaultSunDropper@LevelModules)',
+  'RTID(ZombiesDeadWinCon@LevelModules)',
+  'RTID(EgyptMowers@LevelModules)',
+  'RTID(SeedBank@CurrentLevel)',
+  'RTID(DefaultZombieWinCondition@LevelModules)',
+  NEW_WAVES_REF
+];
 
 interface NamedFeature {
   CODENAME: string;
@@ -124,6 +157,16 @@ interface WaveZombie {
   code: string;
   label: string;
   count: number;
+  entries?: Record<string, any>[];
+}
+
+interface WaveActionDraft {
+  id: number;
+  alias: string;
+  objclass: string;
+  objdata: Record<string, any>;
+  jsonText: string;
+  managed?: boolean;
 }
 
 interface WaveDraft {
@@ -131,20 +174,54 @@ interface WaveDraft {
   name: string;
   flag: boolean;
   zombies: WaveZombie[];
+  zombieActionAlias?: string;
+  zombieActionExtra?: Record<string, any>;
+  additionalPlantfood: number;
+  dynamicPlantfood: string;
+  spawnStyle: string;
+  mustKillAllToNextWave: boolean;
+  rawActions: WaveActionDraft[];
 }
 
 interface LevelDraft {
   name: string;
+  author: string;
   description: string;
   stage: string;
+  mower: string;
+  sunDropper: string;
   startingSun: number;
   seedMode: SeedMode;
+  seedSlots: number;
   seedPlants: string[];
+  seedPresetEntries: Record<string, any>[];
+  includePlants: string[];
+  excludePlants: string[];
+  unlockAll: boolean;
+  seedBankExtra: Record<string, any>;
   boardItems: BoardItem[];
   waves: WaveDraft[];
+  flagWaveInterval: number;
+  firstWaveCountdown: number;
+  suppressFlagZombie: boolean;
+  waveSpendingPointIncrement: number;
+  waveSpendingPoints: number;
+  minNextWaveHealthPercentage: number;
+  maxNextWaveHealthPercentage: number;
+  waveManagerModuleExtra: Record<string, any>;
+  waveManagerExtra: Record<string, any>;
+  hasWaveManager: boolean;
+  preserveGeneratorWaves: boolean;
+  preservedWaveManagerModule?: any;
+  preserveCustomWaveManager: boolean;
+  preservedWaveManagerObject?: any;
+  waveSystemDirty: boolean;
+  levelExtra: Record<string, any>;
+  preserveBoardModules: boolean;
+  preservedPlacementObjects: any[];
   unsupportedObjects: number;
   unsupportedRawObjects: any[];
-  extraModuleRefs: string[];
+  moduleRefs: string[];
 }
 
 interface ValidationItem {
@@ -155,6 +232,7 @@ interface ValidationItem {
 const messages = localeMessages as Record<string, Record<LocaleKey, string>>;
 const providedLanguage = inject<string>('i18nLanguage', 'zh');
 const mobileTab = ref('board');
+const previewOpen = ref(false);
 const assetTab = ref<AssetKind>('plant');
 const assetSearch = ref('');
 const selectedAsset = ref<AssetOption | null>(null);
@@ -163,22 +241,78 @@ const selectedWaveId = ref(1);
 const nextItemId = ref(1);
 const nextWaveId = ref(2);
 const nextZombieId = ref(1);
+const nextWaveActionId = ref(1);
 
 const stageOptions = [
   { value: 'TutorialStage', label: 'Tutorial Stage', mower: 'TutorialMowers' },
   { value: 'FrontLawnStage', label: 'Front Lawn', mower: 'FrontLawnMowers' },
   { value: 'EgyptStage', label: 'Ancient Egypt', mower: 'EgyptMowers' },
+  { value: 'EgyptNightStage', label: 'Ancient Egypt Night', mower: 'EgyptMowers' },
   { value: 'PirateStage', label: 'Pirate Seas', mower: 'PirateMowers' },
   { value: 'WestStage', label: 'Wild West', mower: 'WestMowers' },
   { value: 'KongfuStage', label: 'Kongfu World', mower: 'KongfuMowers' },
+  { value: 'KongfuVeteranStage', label: 'Kongfu Veteran', mower: 'KongfuMowers' },
   { value: 'FutureStage', label: 'Far Future', mower: 'FutureMowers' },
+  { value: 'DarkTutorialStage', label: 'Dark Ages Tutorial', mower: 'DarkMowers' },
   { value: 'DarkStage', label: 'Dark Ages', mower: 'DarkMowers' },
+  { value: 'BeachTutorialStage', label: 'Big Wave Beach Tutorial', mower: 'BeachMowers' },
   { value: 'BeachStage', label: 'Big Wave Beach', mower: 'BeachMowers' },
+  { value: 'IceageTutorialStage', label: 'Frostbite Caves Tutorial', mower: 'IceageMowers' },
+  { value: 'IceageVeteranStage', label: 'Frostbite Caves Veteran', mower: 'IceageMowers' },
   { value: 'LostCityStage', label: 'Lost City', mower: 'LostCityMowers' },
+  { value: 'LostCityTutorialStage', label: 'Lost City Tutorial', mower: 'LostCityMowers' },
+  { value: 'LostCityNightStage', label: 'Lost City Night', mower: 'LostCityMowers' },
   { value: 'IceageStage', label: 'Frostbite Caves', mower: 'IceageMowers' },
   { value: 'EightiesStage', label: 'Neon Mixtape Tour', mower: 'EightiesMowers' },
+  { value: 'EightiesTutorialStage', label: 'Neon Mixtape Tutorial', mower: 'EightiesMowers' },
   { value: 'DinoStage', label: 'Jurassic Marsh', mower: 'DinoMowers' },
-  { value: 'ModernStage', label: 'Modern Day', mower: 'ModernMowers' }
+  { value: 'DinoTutorialStage', label: 'Jurassic Marsh Tutorial', mower: 'DinoMowers' },
+  { value: 'ModernStage', label: 'Modern Day', mower: 'ModernMowers' },
+  { value: 'ModernNightStage', label: 'Modern Day Night', mower: 'ModernMowers' },
+  { value: 'SkyStage', label: 'Sky City', mower: NO_MODULE },
+  { value: 'LunarStage', label: 'Lunar Zoo', mower: NO_MODULE },
+  { value: 'PaddysStage', label: "St. Paddy's", mower: NO_MODULE },
+  { value: 'SummerNightsStage', label: 'Summer Nights', mower: NO_MODULE },
+  { value: 'FarmStage', label: 'Farm', mower: NO_MODULE },
+  { value: 'HalloweenStage', label: 'Halloween', mower: NO_MODULE },
+  { value: 'HeroesStage', label: 'Heroes', mower: NO_MODULE },
+  { value: 'FallsStage', label: 'Falls', mower: NO_MODULE },
+  { value: 'CircusStage', label: 'Circus', mower: NO_MODULE },
+  { value: 'ArenaStage', label: 'Arena', mower: NO_MODULE },
+  { value: 'PersuitStage', label: 'Pursuit', mower: NO_MODULE }
+];
+
+const mowerOptions = [
+  { value: STAGE_DEFAULT_MOWER, label: 'Stage default' },
+  { value: NO_MODULE, label: 'None' },
+  { value: 'JoustDarkMowers', label: 'Joust Dark Mowers' },
+  { value: 'TutorialMowers', label: 'Tutorial Mowers' },
+  { value: 'EgyptTutorialMowers', label: 'Egypt Tutorial Mowers' },
+  { value: 'EgyptMowers', label: 'Egypt Mowers' },
+  { value: 'PirateMowers', label: 'Pirate Mowers' },
+  { value: 'WestMowers', label: 'West Mowers' },
+  { value: 'KongfuMowers', label: 'Kongfu Mowers' },
+  { value: 'FutureMowers', label: 'Future Mowers' },
+  { value: 'DarkMowers', label: 'Dark Mowers' },
+  { value: 'BeachMowers', label: 'Beach Mowers' },
+  { value: 'LostCityMowers', label: 'Lost City Mowers' },
+  { value: 'IceageMowers', label: 'Iceage Mowers' },
+  { value: 'IceageZombossMowers', label: 'Iceage Zomboss Mowers' },
+  { value: 'EightiesMowers', label: 'Eighties Mowers' },
+  { value: 'EightiesZombossMowers', label: 'Eighties Zomboss Mowers' },
+  { value: 'DinoMowers', label: 'Dino Mowers' },
+  { value: 'ModernMowers', label: 'Modern Mowers' },
+  { value: 'FrontLawnMowers', label: 'Front Lawn Mowers' }
+];
+
+const sunDropperOptions = [
+  { value: NO_MODULE, label: 'None' },
+  { value: 'RevertedSunDropper', label: 'Reverted Sun Dropper' },
+  { value: 'VerySlowSunDropper', label: 'Very Slow Sun Dropper' },
+  { value: 'SlowSunDropper', label: 'Slow Sun Dropper' },
+  { value: 'DefaultSunDropper', label: 'Default Sun Dropper' },
+  { value: 'FastSunDropper', label: 'Fast Sun Dropper' },
+  { value: 'VeryFastSunDropper', label: 'Very Fast Sun Dropper' }
 ];
 
 const objectOptions: AssetOption[] = [
@@ -238,7 +372,7 @@ const selectedPlantAsset = computed(() => (selectedAsset.value?.kind === 'plant'
 const selectedZombieAsset = computed(() => (selectedAsset.value?.kind === 'zombie' ? selectedAsset.value : null));
 const seedPlantAlreadyAdded = computed(() => !!selectedPlantAsset.value && draft.value.seedPlants.includes(selectedPlantAsset.value.code));
 const canAddSelectedSeedPlant = computed(
-  () => !!selectedPlantAsset.value && !seedPlantAlreadyAdded.value && draft.value.seedPlants.length < MAX_SEED_PLANTS
+  () => !!selectedPlantAsset.value && !seedPlantAlreadyAdded.value && draft.value.seedPlants.length < draft.value.seedSlots
 );
 const canAddSelectedZombie = computed(() => !!selectedZombieAsset.value && !!selectedWave.value);
 const seedActionHint = ref('');
@@ -249,16 +383,42 @@ const validationItems = computed<ValidationItem[]>(() => {
   if (!draft.value.name.trim()) {
     items.push({ type: 'error', text: language.value === 'zh' ? '关卡名不能为空。' : 'Level name is required.' });
   }
-  if (!draft.value.waves.length) {
+  const expectsWaveSystem =
+    (draft.value.hasWaveManager && !draft.value.preserveCustomWaveManager) ||
+    draft.value.preserveGeneratorWaves ||
+    draft.value.moduleRefs.includes(NEW_WAVES_REF);
+  if (!draft.value.waves.length && expectsWaveSystem && !draft.value.preserveGeneratorWaves) {
     items.push({ type: 'error', text: language.value === 'zh' ? '至少需要 1 个波次。' : 'At least one wave is required.' });
   }
   draft.value.waves.forEach((wave, index) => {
-    if (!wave.zombies.length) {
+    if (!wave.zombies.length && !wave.rawActions.length) {
       items.push({
         type: 'warning',
         text: language.value === 'zh' ? `第 ${index + 1} 波没有僵尸。` : `Wave ${index + 1} has no zombies.`
       });
     }
+    if (wave.dynamicPlantfood.trim() && !Array.isArray(parseOptionalArrayText(wave.dynamicPlantfood))) {
+      items.push({
+        type: 'error',
+        text:
+          language.value === 'zh'
+            ? `第 ${index + 1} 波的动态叶绿素需要是数组 JSON。`
+            : `Wave ${index + 1} dynamic plant food must be a JSON array.`
+      });
+    }
+    wave.rawActions.forEach((action) => {
+      try {
+        JSON5.parse(action.jsonText || '{}');
+      } catch {
+        items.push({
+          type: 'error',
+          text:
+            language.value === 'zh'
+              ? `第 ${index + 1} 波的 ${action.objclass} JSON 无法解析。`
+              : `Wave ${index + 1} ${action.objclass} JSON cannot be parsed.`
+        });
+      }
+    });
   });
   if (draft.value.seedMode === 'preset' && !draft.value.seedPlants.length) {
     items.push({
@@ -283,6 +443,14 @@ const validationSummary = computed(() => ({
   warnings: validationItems.value.filter((item) => item.type === 'warning').length
 }));
 
+const validationSummaryColor = computed(() => {
+  if (validationSummary.value.errors) return 'error';
+  if (validationSummary.value.warnings) return 'warning';
+  return 'success';
+});
+
+const previewJson = computed(() => JSON.stringify(serializeLevel(), null, 2));
+
 function t(key: string, vars: Record<string, string | number> = {}) {
   const template = messages[key]?.[language.value] || messages[key]?.en || key;
   return Object.entries(vars).reduce((text, [name, value]) => text.replace(`{${name}}`, String(value)), template);
@@ -292,26 +460,114 @@ function localName(item: NamedFeature) {
   return item.NAME?.[language.value] || item.NAME?.en || item.NAME?.zh || item.CODENAME;
 }
 
+function cloneJson<T>(value: T): T {
+  return value == null ? value : JSON.parse(JSON.stringify(value));
+}
+
+function omitKeys(source: Record<string, any> = {}, keys: string[]) {
+  return Object.fromEntries(Object.entries(source).filter(([key]) => !keys.includes(key)));
+}
+
+function stringifyObjdata(value: Record<string, any>) {
+  return JSON.stringify(value || {}, null, 2);
+}
+
+function parseActionObjdata(action: WaveActionDraft) {
+  try {
+    return JSON5.parse(action.jsonText || '{}');
+  } catch {
+    return cloneJson(action.objdata || {});
+  }
+}
+
+function parseOptionalArrayText(text: string) {
+  if (!text.trim()) return undefined;
+  try {
+    const parsed = JSON5.parse(text);
+    return Array.isArray(parsed) ? parsed : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function createEmptyWave(index: number, id = nextWaveId.value++): WaveDraft {
+  return {
+    id,
+    name: `Wave ${index}`,
+    flag: false,
+    zombies: [],
+    additionalPlantfood: 0,
+    dynamicPlantfood: '',
+    spawnStyle: '',
+    mustKillAllToNextWave: false,
+    rawActions: []
+  };
+}
+
+function createRawWaveAction(alias: string, objclass: string, objdata: Record<string, any>): WaveActionDraft {
+  const data = cloneJson(objdata || {});
+  return {
+    id: nextWaveActionId.value++,
+    alias,
+    objclass,
+    objdata: data,
+    jsonText: stringifyObjdata(data)
+  };
+}
+
 function createDefaultDraft(): LevelDraft {
   return {
     name: 'custom_level_1',
+    author: '',
     description: 'Custom Level',
     stage: 'EgyptStage',
+    mower: STAGE_DEFAULT_MOWER,
+    sunDropper: 'DefaultSunDropper',
     startingSun: 50,
     seedMode: 'chooser',
+    seedSlots: MAX_SEED_PLANTS,
     seedPlants: ['peashooter', 'sunflower', 'wallnut', 'potatomine'],
+    seedPresetEntries: [],
+    includePlants: [],
+    excludePlants: [],
+    unlockAll: false,
+    seedBankExtra: {},
     boardItems: [],
     waves: [
       {
         id: 1,
         name: 'Wave 1',
         flag: false,
-        zombies: [{ id: 1, code: 'mummy', label: 'mummy', count: 3 }]
+        zombies: [{ id: 1, code: 'mummy', label: 'mummy', count: 3 }],
+        additionalPlantfood: 0,
+        dynamicPlantfood: '',
+        spawnStyle: '',
+        mustKillAllToNextWave: false,
+        rawActions: []
       }
     ],
+    flagWaveInterval: 5,
+    firstWaveCountdown: -1,
+    suppressFlagZombie: false,
+    waveSpendingPointIncrement: 30,
+    waveSpendingPoints: 100,
+    minNextWaveHealthPercentage: 0.55,
+    maxNextWaveHealthPercentage: 0.7,
+    waveManagerModuleExtra: {},
+    waveManagerExtra: {},
+    hasWaveManager: true,
+    preserveGeneratorWaves: false,
+    preserveCustomWaveManager: false,
+    waveSystemDirty: false,
+    levelExtra: {
+      LevelNumber: 1,
+      Loot: 'RTID(NoLoot@LevelModules)'
+    },
+    preserveBoardModules: false,
+    preservedPlacementObjects: [],
     unsupportedObjects: 0,
     unsupportedRawObjects: [],
-    extraModuleRefs: []
+    moduleRefs: [...DEFAULT_MODULE_REFS]
   };
 }
 
@@ -323,6 +579,7 @@ function resetDraft() {
   nextItemId.value = 1;
   nextWaveId.value = 2;
   nextZombieId.value = 2;
+  nextWaveActionId.value = 1;
 }
 
 function chooseAsset(asset: AssetOption) {
@@ -335,6 +592,7 @@ function chooseAsset(asset: AssetOption) {
 function placeAsset(row: number, col: number) {
   selectedCell.value = { row, col };
   if (!selectedAsset.value) return;
+  draft.value.preserveBoardModules = false;
   const existingIndex = draft.value.boardItems.findIndex(
     (item) => item.row === row && item.col === col && item.kind === selectedAsset.value?.kind
   );
@@ -352,12 +610,14 @@ function placeAsset(row: number, col: number) {
 
 function clearSelectedCell() {
   if (!selectedCell.value) return;
+  draft.value.preserveBoardModules = false;
   draft.value.boardItems = draft.value.boardItems.filter(
     (item) => item.row !== selectedCell.value?.row || item.col !== selectedCell.value?.col
   );
 }
 
 function clearBoardItems() {
+  draft.value.preserveBoardModules = false;
   draft.value.boardItems = [];
 }
 
@@ -371,8 +631,8 @@ function itemsAt(row: number, col: number) {
 function addSeedPlant(code: string) {
   const plantCode = code;
   if (!plantCode || draft.value.seedPlants.includes(plantCode)) return;
-  if (draft.value.seedPlants.length >= MAX_SEED_PLANTS) {
-    message.warning(t('seedLimit', { count: MAX_SEED_PLANTS }));
+  if (draft.value.seedPlants.length >= draft.value.seedSlots) {
+    message.warning(t('seedLimit', { count: draft.value.seedSlots }));
     return;
   }
   draft.value.seedPlants.push(plantCode);
@@ -391,25 +651,62 @@ function addSelectedSeedPlant() {
   addSeedPlant(selectedPlantAsset.value.code);
 }
 
-function removeSeedPlant(code: string) {
-  draft.value.seedPlants = draft.value.seedPlants.filter((item) => item !== code);
-  if (selectedPlantAsset.value?.code === code) seedActionHint.value = '';
+function addSelectedPlantToList(listKey: PlantListKey) {
+  if (!selectedPlantAsset.value) {
+    seedActionHint.value = 'selectPlantFirst';
+    return;
+  }
+  const list = draft.value[listKey];
+  if (list.includes(selectedPlantAsset.value.code)) {
+    seedActionHint.value = 'plantAlreadyAdded';
+    return;
+  }
+  if (listKey === 'seedPlants' && list.length >= draft.value.seedSlots) {
+    message.warning(t('seedLimit', { count: draft.value.seedSlots }));
+    return;
+  }
+  seedActionHint.value = '';
+  list.push(selectedPlantAsset.value.code);
+}
+
+function removePlantFromList(listKey: PlantListKey, code: string) {
+  draft.value[listKey] = draft.value[listKey].filter((item) => item !== code);
+}
+
+function markWaveSystemEdited() {
+  draft.value.hasWaveManager = true;
+  draft.value.preserveGeneratorWaves = false;
+  draft.value.preserveCustomWaveManager = false;
+  draft.value.waveSystemDirty = true;
 }
 
 function addWave() {
-  const id = nextWaveId.value++;
-  draft.value.waves.push({ id, name: `Wave ${draft.value.waves.length + 1}`, flag: false, zombies: [] });
-  selectedWaveId.value = id;
+  markWaveSystemEdited();
+  const wave = createEmptyWave(draft.value.waves.length + 1);
+  draft.value.waves.push(wave);
+  selectedWaveId.value = wave.id;
 }
 
 function removeWave(id: number) {
   if (draft.value.waves.length <= 1) return;
+  markWaveSystemEdited();
   draft.value.waves = draft.value.waves.filter((wave) => wave.id !== id);
   selectedWaveId.value = draft.value.waves[0].id;
 }
 
+function setWaveFlag(index: number, checked: boolean) {
+  const wave = draft.value.waves[index];
+  if (!wave) return;
+  markWaveSystemEdited();
+  wave.flag = checked;
+  if (checked) {
+    draft.value.flagWaveInterval = index + 1;
+  }
+}
+
 function addZombieToWave(code: string) {
   if (!selectedWave.value) return;
+  markWaveSystemEdited();
   const zombie = zombieOptions.value.find((item) => item.code === code);
   if (!zombie) return;
   selectedWave.value.zombies.push({ id: nextZombieId.value++, code: zombie.code, label: zombie.name, count: 1 });
@@ -448,17 +745,137 @@ function getBoardItemKindLabel(kind: AssetKind) {
   return t('cellKindObject');
 }
 
-function normalizeSeedPlants(plants: string[]) {
-  return Array.from(new Set(plants.filter(Boolean))).slice(0, MAX_SEED_PLANTS);
+function normalizePlantCodes(plants: string[]) {
+  return Array.from(new Set(plants.filter(Boolean)));
 }
 
-function toPresetPlantList(plants: string[]) {
-  return normalizeSeedPlants(plants).map((code) => ({ PlantType: code, Level: -1 }));
+function normalizeSeedSlots(value: unknown, minimum = 0) {
+  const numericValue = Number(value);
+  const fallback = Math.max(MAX_SEED_PLANTS, minimum);
+  if (!Number.isFinite(numericValue)) return fallback;
+  return Math.min(MAX_SEED_PLANTS, Math.max(minimum, Math.round(numericValue)));
+}
+
+function normalizeSeedPlants(plants: string[], limit = MAX_SEED_PLANTS) {
+  return normalizePlantCodes(plants).slice(0, Math.max(0, limit));
+}
+
+function buildSeedPresetPlants(plants: string[], importedEntries: Record<string, any>[]) {
+  const used = new Set<number>();
+  return plants.map((code) => {
+    const importedIndex = importedEntries.findIndex((entry, index) => !used.has(index) && entry?.PlantType === code);
+    if (importedIndex >= 0) {
+      used.add(importedIndex);
+      return {
+        ...cloneJson(importedEntries[importedIndex]),
+        PlantType: code
+      };
+    }
+    return { PlantType: code, Level: -1 };
+  });
+}
+
+function normalizeWaveRefs(entry: unknown) {
+  return Array.isArray(entry) ? entry.filter(Boolean).map(String) : entry ? [String(entry)] : [];
+}
+
+function parseWaveZombieGroups(zombieEntries: any[]) {
+  const groups: WaveZombie[] = [];
+  zombieEntries.forEach((zombie: any) => {
+    const code = parseTypeAlias(zombie?.Type) || 'mummy';
+    const option = zombieOptions.value.find((item) => item.code === code);
+    const normalizedEntry = cloneJson(zombie || { Type: `RTID(${code}@ZombieTypes)` });
+    const existing = groups.find((item) => item.code === code);
+    if (existing) {
+      existing.count += 1;
+      existing.entries = [...(existing.entries || []), normalizedEntry];
+    } else {
+      groups.push({
+        id: nextZombieId.value++,
+        code,
+        label: option?.name || code,
+        count: 1,
+        entries: [normalizedEntry]
+      });
+    }
+  });
+  return groups;
 }
 
 function removeZombieFromWave(id: number) {
   if (!selectedWave.value) return;
+  markWaveSystemEdited();
   selectedWave.value.zombies = selectedWave.value.zombies.filter((zombie) => zombie.id !== id);
+}
+
+function createUniqueWaveActionAlias(base: string) {
+  const used = new Set<string>();
+  draft.value.waves.forEach((item) => {
+    if (item.zombieActionAlias) used.add(item.zombieActionAlias);
+    item.rawActions.forEach((action) => used.add(action.alias));
+  });
+  if (!used.has(base)) return base;
+  let index = 1;
+  while (used.has(`${base}_${index}`)) index++;
+  return `${base}_${index}`;
+}
+
+function addWaveAction(kind: 'tide' | 'dino' | 'storm' | 'ground') {
+  const wave = selectedWave.value;
+  if (!wave) return;
+  markWaveSystemEdited();
+  const waveIndex = draft.value.waves.findIndex((item) => item.id === wave.id) + 1;
+  const templates = {
+    tide: {
+      alias: `Wave${waveIndex}TidalChangeEvent0`,
+      objclass: 'TidalChangeWaveActionProps',
+      objdata: { TidalChange: { ChangeAmount: 3, ChangeType: 'absolute' } }
+    },
+    dino: {
+      alias: `Wave${waveIndex}DinoTimeEvent0`,
+      objclass: 'DinoWaveActionProps',
+      objdata: { DinoRow: 2, DinoType: 'raptor', DinoWaveDuration: 0 }
+    },
+    storm: {
+      alias: `Wave${waveIndex}StormEvent0`,
+      objclass: 'StormZombieSpawnerProps',
+      objdata: {
+        ColumnStart: 4,
+        ColumnEnd: 8,
+        GroupSize: 2,
+        TimeBetweenGroups: 2,
+        Type: 'sandstorm',
+        Zombies: [{ Type: 'RTID(mummy@ZombieTypes)' }, { Type: 'RTID(mummy@ZombieTypes)' }]
+      }
+    },
+    ground: {
+      alias: `Wave${waveIndex}GroundSpawnEvent0`,
+      objclass: 'SpawnZombiesFromGroundSpawnerProps',
+      objdata: {
+        ColumnStart: 4,
+        ColumnEnd: 8,
+        RowStart: 0,
+        RowEnd: 4,
+        Zombies: [{ Type: 'RTID(mummy@ZombieTypes)' }, { Type: 'RTID(mummy@ZombieTypes)' }]
+      }
+    }
+  }[kind];
+  wave.rawActions.push(createRawWaveAction(createUniqueWaveActionAlias(templates.alias), templates.objclass, templates.objdata));
+}
+
+function removeWaveAction(wave: WaveDraft, id: number) {
+  markWaveSystemEdited();
+  wave.rawActions = wave.rawActions.filter((action) => action.id !== id);
+}
+
+function updateWaveActionJson(action: WaveActionDraft, value: string) {
+  markWaveSystemEdited();
+  action.jsonText = value;
+  try {
+    action.objdata = JSON5.parse(value || '{}');
+  } catch {
+    // Validation reports invalid action JSON; keep the last valid object for preview stability.
+  }
 }
 
 function handleUpload(file: File) {
@@ -466,6 +883,10 @@ function handleUpload(file: File) {
   reader.onload = () => {
     try {
       const parsed = JSON5.parse(String(reader.result || '{}'));
+      nextItemId.value = 1;
+      nextWaveId.value = 1;
+      nextZombieId.value = 1;
+      nextWaveActionId.value = 1;
       draft.value = parseLevel(parsed);
       selectedWaveId.value = draft.value.waves[0]?.id || 1;
       selectedCell.value = null;
@@ -482,27 +903,46 @@ function parseLevel(raw: any): LevelDraft {
   const objects = Array.isArray(raw?.objects) ? raw.objects : [];
   const level = objects.find((object: any) => object?.objclass === 'LevelDefinition')?.objdata || {};
   const seed = objects.find((object: any) => object?.objclass === 'SeedBankProperties')?.objdata || {};
-  const waveProps = objects.find((object: any) => object?.objclass === 'WaveManagerProperties')?.objdata || {};
+  const waveManagerModule = objects.find((object: any) => object?.objclass === 'WaveManagerModuleProperties');
+  const waveManagerObject = objects.find((object: any) => object?.objclass === 'WaveManagerProperties');
+  const waveProps = waveManagerObject?.objdata || {};
+  const levelModules = Array.isArray(level.Modules) ? level.Modules.map(String) : [];
+  const stage = parseLevelModuleAlias(level.StageModule) || 'EgyptStage';
+  const stageDefaultMower = stageOptions.find((item) => item.value === stage)?.mower || NO_MODULE;
+  const importedMower = mowerOptions
+    .filter((option) => option.value !== STAGE_DEFAULT_MOWER && option.value !== NO_MODULE)
+    .find((option) => levelModules.includes(`RTID(${option.value}@LevelModules)`))?.value;
+  const importedSunDropper = sunDropperOptions
+    .filter((option) => option.value !== NO_MODULE)
+    .find((option) => levelModules.includes(`RTID(${option.value}@LevelModules)`))?.value;
   const aliasMap = new Map<string, any>();
   objects.forEach((object: any) => {
     (object?.aliases || []).forEach((alias: string) => aliasMap.set(alias, object));
   });
 
-  const waves: WaveDraft[] = (Array.isArray(waveProps.Waves) ? waveProps.Waves : []).map((entries: string[], index: number) => {
-    const zombies: WaveZombie[] = [];
-    entries.forEach((entry) => {
+  const waveActionAliases = new Set<string>();
+  const waves: WaveDraft[] = (Array.isArray(waveProps.Waves) ? waveProps.Waves : []).map((entryRefs: unknown, index: number) => {
+    const wave = createEmptyWave(index + 1, index + 1);
+    wave.flag = (index + 1) % Number(waveProps.FlagWaveInterval || 10) === 0;
+    normalizeWaveRefs(entryRefs).forEach((entry) => {
       const alias = parseCurrentLevelAlias(entry);
       const waveObject = alias ? aliasMap.get(alias) : null;
-      const zombieEntries = waveObject?.objdata?.Zombies || [];
-      zombieEntries.forEach((zombie: any) => {
-        const code = parseTypeAlias(zombie?.Type) || 'mummy';
-        const option = zombieOptions.value.find((item) => item.code === code);
-        const existing = zombies.find((item) => item.code === code);
-        if (existing) existing.count += 1;
-        else zombies.push({ id: nextZombieId.value++, code, label: option?.name || code, count: 1 });
-      });
+      if (!waveObject) return;
+      waveActionAliases.add(alias);
+      if (waveObject.objclass === 'SpawnZombiesJitteredWaveActionProps' && !wave.zombieActionAlias) {
+        const objdata = waveObject.objdata || {};
+        wave.zombieActionAlias = alias;
+        wave.zombieActionExtra = omitKeys(objdata, ['Zombies', 'AdditionalPlantfood', 'DynamicPlantfood', 'Style', 'MustKillAllToNextWave']);
+        wave.additionalPlantfood = Math.max(0, Number(objdata.AdditionalPlantfood || 0));
+        wave.dynamicPlantfood = Array.isArray(objdata.DynamicPlantfood) ? JSON.stringify(objdata.DynamicPlantfood) : '';
+        wave.spawnStyle = String(objdata.Style || '');
+        wave.mustKillAllToNextWave = objdata.MustKillAllToNextWave === true;
+        wave.zombies = parseWaveZombieGroups(Array.isArray(objdata.Zombies) ? objdata.Zombies : []);
+      } else {
+        wave.rawActions.push(createRawWaveAction(alias, String(waveObject.objclass || 'WaveActionProps'), waveObject.objdata || {}));
+      }
     });
-    return { id: index + 1, name: `Wave ${index + 1}`, flag: (index + 1) % Number(waveProps.FlagWaveInterval || 10) === 0, zombies };
+    return wave;
   });
 
   const boardItems: BoardItem[] = [];
@@ -582,6 +1022,8 @@ function parseLevel(raw: any): LevelDraft {
       });
     });
 
+  const placementClasses = new Set(['InitialGridItemProperties', 'InitialPlantProperties', 'InitialZombieProperties', 'GravestoneProperties']);
+  const preservedPlacementObjects = objects.filter((object: any) => placementClasses.has(object?.objclass)).map((object: any) => cloneJson(object));
   const supportedClasses = new Set([
     'LevelDefinition',
     'SeedBankProperties',
@@ -593,40 +1035,64 @@ function parseLevel(raw: any): LevelDraft {
     'InitialZombieProperties',
     'GravestoneProperties'
   ]);
-  const supportedCurrentLevelRefs = objects
-    .filter((object: any) => supportedClasses.has(object?.objclass))
-    .flatMap((object: any) => (object?.aliases || []).map((alias: string) => `RTID(${alias}@CurrentLevel)`));
-  const generatedModuleRefs = new Set([
-    'RTID(StandardIntro@LevelModules)',
-    'RTID(DefaultSunDropper@LevelModules)',
-    'RTID(ZombiesDeadWinCon@LevelModules)',
-    'RTID(SeedBank@CurrentLevel)',
-    'RTID(DefaultZombieWinCondition@LevelModules)',
-    'RTID(NewWaves@CurrentLevel)',
-    'RTID(InitialGridItems@CurrentLevel)',
-    'RTID(FrozenPlantPlacement@CurrentLevel)',
-    'RTID(FrozenZombiePlacement@CurrentLevel)',
-    ...stageOptions.map((stage) => `RTID(${stage.mower}@LevelModules)`),
-    ...supportedCurrentLevelRefs
-  ]);
-  const unsupportedRawObjects = objects.filter((object: any) => !supportedClasses.has(object?.objclass));
+  const unsupportedRawObjects = objects.filter(
+    (object: any) => !supportedClasses.has(object?.objclass) && !(object?.aliases || []).some((alias: string) => waveActionAliases.has(alias))
+  );
+  const seedPresetPlants = Array.isArray(seed.PresetPlantList) ? seed.PresetPlantList.map((item: any) => item.PlantType) : [];
+  const seedPresetEntries = Array.isArray(seed.PresetPlantList) ? seed.PresetPlantList.map((item: any) => cloneJson(item)) : [];
+  const seedSlots = normalizeSeedSlots(seed.OverrideSeedSlotsCount ?? MAX_SEED_PLANTS, seedPresetPlants.length);
+  const preserveCustomWaveManager = !!waveManagerObject && !Array.isArray(waveProps.Waves) && !waveManagerModule;
+  nextWaveId.value = waves.length + 1;
 
   return {
     name: String(level.Name || raw?.['#comment'] || 'custom_level_1'),
+    author: String(level.WritenBy || raw?.Information?.Author || ''),
     description: String(level.Description || ''),
-    stage: parseLevelModuleAlias(level.StageModule) || 'EgyptStage',
+    stage,
+    mower: importedMower ? (importedMower === stageDefaultMower ? STAGE_DEFAULT_MOWER : importedMower) : NO_MODULE,
+    sunDropper: importedSunDropper || NO_MODULE,
     startingSun: Number(level.StartingSun ?? 50),
     seedMode: seed.SelectionMethod === 'preset' ? 'preset' : 'chooser',
-    seedPlants: normalizeSeedPlants(
-      Array.isArray(seed.PresetPlantList)
-        ? seed.PresetPlantList.map((item: any) => item.PlantType)
-        : []
-    ),
+    seedSlots,
+    seedPresetEntries,
+    seedPlants: normalizeSeedPlants(seedPresetPlants, seedSlots),
+    includePlants: normalizePlantCodes(Array.isArray(seed.PlantIncludeList) ? seed.PlantIncludeList : []),
+    excludePlants: normalizePlantCodes(Array.isArray(seed.PlantExcludeList) ? seed.PlantExcludeList : []),
+    unlockAll: seed.UnlockAll === true,
+    seedBankExtra: omitKeys(seed, ['SelectionMethod', 'UnlockAll', 'OverrideSeedSlotsCount', 'PresetPlantList', 'PlantIncludeList', 'PlantExcludeList']),
     boardItems,
-    waves: waves.length ? waves : createDefaultDraft().waves,
+    waves: waves.length ? waves : [],
+    flagWaveInterval: Math.max(1, Number(waveProps.FlagWaveInterval || 5)),
+    firstWaveCountdown: Number(waveProps.ZombieCountdownFirstWaveSecs ?? -1),
+    suppressFlagZombie: waveProps.SuppressFlagZombie === true,
+    waveSpendingPointIncrement: Number(waveProps.WaveSpendingPointIncrement ?? 30),
+    waveSpendingPoints: Number(waveProps.WaveSpendingPoints ?? 100),
+    minNextWaveHealthPercentage: Number(waveProps.MinNextWaveHealthPercentage ?? 0.55),
+    maxNextWaveHealthPercentage: Number(waveProps.MaxNextWaveHealthPercentage ?? 0.7),
+    waveManagerModuleExtra: omitKeys(waveManagerModule?.objdata || {}, ['WaveManagerProps']),
+    waveManagerExtra: omitKeys(waveProps, [
+      'FlagWaveInterval',
+      'WaveCount',
+      'WaveSpendingPointIncrement',
+      'WaveSpendingPoints',
+      'Waves',
+      'SuppressFlagZombie',
+      'ZombieCountdownFirstWaveSecs',
+      'MinNextWaveHealthPercentage',
+      'MaxNextWaveHealthPercentage'
+    ]),
+    hasWaveManager: !!waveManagerObject,
+    preserveGeneratorWaves: !Array.isArray(waveProps.Waves) && !!waveManagerModule,
+    preservedWaveManagerModule: !Array.isArray(waveProps.Waves) && waveManagerModule ? cloneJson(waveManagerModule) : undefined,
+    preserveCustomWaveManager,
+    preservedWaveManagerObject: preserveCustomWaveManager ? cloneJson(waveManagerObject) : undefined,
+    waveSystemDirty: false,
+    levelExtra: omitKeys(level, ['Name', 'Description', 'StageModule', 'Modules', 'StartingSun', 'WritenBy']),
+    preserveBoardModules: preservedPlacementObjects.length > 0,
+    preservedPlacementObjects,
     unsupportedObjects: unsupportedRawObjects.length,
     unsupportedRawObjects,
-    extraModuleRefs: Array.isArray(level.Modules) ? level.Modules.filter((ref: string) => !generatedModuleRefs.has(ref)) : []
+    moduleRefs: uniqueRefs(levelModules)
   };
 }
 
@@ -656,88 +1122,219 @@ function serializeBoardPlacement(item: BoardItem) {
   };
 }
 
+function serializeWaveZombies(wave: WaveDraft) {
+  return wave.zombies.flatMap((zombie) => {
+    const templates = zombie.entries?.length ? zombie.entries : [{ Type: `RTID(${zombie.code}@ZombieTypes)` }];
+    return Array.from({ length: Math.max(1, Number(zombie.count) || 1) }, (_, index) => {
+      const template = cloneJson(templates[Math.min(index, templates.length - 1)] || {});
+      return {
+        ...template,
+        Type: `RTID(${zombie.code}@ZombieTypes)`
+      };
+    });
+  });
+}
+
+function replaceModuleGroup(refs: string[], group: Set<string>, selectedRef: string | null) {
+  const result: string[] = [];
+  let inserted = false;
+  let foundGroup = false;
+  refs.forEach((ref) => {
+    if (!group.has(ref)) {
+      result.push(ref);
+      return;
+    }
+    foundGroup = true;
+    if (selectedRef && !inserted) {
+      result.push(selectedRef);
+      inserted = true;
+    }
+  });
+  if (!foundGroup && selectedRef) result.push(selectedRef);
+  return uniqueRefs(result);
+}
+
+function setModuleRef(refs: string[], ref: string, enabled: boolean) {
+  if (!enabled) return refs.filter((item) => item !== ref);
+  return refs.includes(ref) ? refs : [...refs, ref];
+}
+
+function buildModuleRefs(
+  mowerModule: string,
+  sunDropperModule: string,
+  shouldReferenceWaveManager: boolean,
+  generatedBoardRefs: string[]
+) {
+  const mowerRefs = new Set(
+    mowerOptions
+      .filter((option) => option.value !== STAGE_DEFAULT_MOWER && option.value !== NO_MODULE)
+      .map((option) => `RTID(${option.value}@LevelModules)`)
+  );
+  const sunDropperRefs = new Set(
+    sunDropperOptions.filter((option) => option.value !== NO_MODULE).map((option) => `RTID(${option.value}@LevelModules)`)
+  );
+  let refs = [...draft.value.moduleRefs];
+  refs = replaceModuleGroup(refs, sunDropperRefs, sunDropperModule !== NO_MODULE ? `RTID(${sunDropperModule}@LevelModules)` : null);
+  refs = replaceModuleGroup(refs, mowerRefs, mowerModule !== NO_MODULE ? `RTID(${mowerModule}@LevelModules)` : null);
+  refs = setModuleRef(refs, NEW_WAVES_REF, shouldReferenceWaveManager);
+
+  if (!draft.value.preserveBoardModules) {
+    const boardRefs = new Set([
+      'RTID(InitialGridItems@CurrentLevel)',
+      'RTID(FrozenPlantPlacement@CurrentLevel)',
+      'RTID(FrozenZombiePlacement@CurrentLevel)',
+      ...draft.value.preservedPlacementObjects.flatMap((object) => (object?.aliases || []).map((alias: string) => `RTID(${alias}@CurrentLevel)`))
+    ]);
+    refs = refs.filter((ref) => !boardRefs.has(ref));
+    refs.push(...generatedBoardRefs);
+  }
+
+  return uniqueRefs(refs);
+}
+
 function serializeLevel() {
   const stage = stageOptions.find((item) => item.value === draft.value.stage) || stageOptions[2];
-  const waveObjects = draft.value.waves.map((wave, index) => ({
-    aliases: [`Wave${index + 1}`],
-    objclass: 'SpawnZombiesJitteredWaveActionProps',
-    objdata: {
-      Zombies: wave.zombies.flatMap((zombie) =>
-        Array.from({ length: Math.max(1, Number(zombie.count) || 1) }, () => ({
-          Type: `RTID(${zombie.code}@ZombieTypes)`
-        }))
-      )
+  const mowerModule = draft.value.mower === STAGE_DEFAULT_MOWER ? stage.mower : draft.value.mower;
+  const sunDropperModule = draft.value.sunDropper;
+  const seedSlots = normalizeSeedSlots(draft.value.seedSlots, draft.value.seedPlants.length);
+  const normalizedSeedPlants = normalizeSeedPlants(draft.value.seedPlants, seedSlots);
+  const preserveGeneratorWaveSystem = draft.value.preserveGeneratorWaves && !draft.value.waves.length && draft.value.preservedWaveManagerModule;
+  const preserveCustomWaveManager =
+    draft.value.preserveCustomWaveManager && !draft.value.waves.length && draft.value.preservedWaveManagerObject && !draft.value.waveSystemDirty;
+  const shouldEmitWaveManager =
+    !!preserveGeneratorWaveSystem || !!preserveCustomWaveManager || draft.value.hasWaveManager || draft.value.waves.length > 0;
+  const shouldReferenceWaveManager = draft.value.moduleRefs.includes(NEW_WAVES_REF) || (draft.value.waveSystemDirty && draft.value.waves.length > 0);
+  const usedActionAliases = new Set<string>([
+    'SeedBank',
+    'NewWaves',
+    'WaveManagerProps',
+    'InitialGridItems',
+    'FrozenPlantPlacement',
+    'FrozenZombiePlacement',
+    ...draft.value.preservedPlacementObjects.flatMap((object) => object?.aliases || []),
+    ...draft.value.unsupportedRawObjects.flatMap((object) => object?.aliases || [])
+  ]);
+  const uniqueActionAlias = (preferred: string) => {
+    let alias = preferred || 'WaveAction';
+    if (!usedActionAliases.has(alias)) {
+      usedActionAliases.add(alias);
+      return alias;
     }
-  }));
+    let index = 1;
+    while (usedActionAliases.has(`${alias}_${index}`)) index++;
+    alias = `${alias}_${index}`;
+    usedActionAliases.add(alias);
+    return alias;
+  };
+  const waveObjects: any[] = [];
+  const waveRefs = draft.value.waves.map((wave, index) => {
+    const refs: string[] = [];
+    if (wave.zombies.length || wave.zombieActionAlias) {
+      const alias = uniqueActionAlias(wave.zombieActionAlias || `Wave${index + 1}`);
+      const dynamicPlantfood = parseOptionalArrayText(wave.dynamicPlantfood);
+      const objdata: Record<string, any> = {
+        ...(wave.zombieActionExtra || {}),
+        ...(wave.additionalPlantfood > 0 ? { AdditionalPlantfood: Math.max(0, Number(wave.additionalPlantfood) || 0) } : {}),
+        ...(Array.isArray(dynamicPlantfood) ? { DynamicPlantfood: dynamicPlantfood } : {}),
+        ...(wave.spawnStyle ? { Style: wave.spawnStyle } : {}),
+        ...(wave.mustKillAllToNextWave ? { MustKillAllToNextWave: true } : {}),
+        Zombies: serializeWaveZombies(wave)
+      };
+      waveObjects.push({
+        aliases: [alias],
+        objclass: 'SpawnZombiesJitteredWaveActionProps',
+        objdata
+      });
+      refs.push(`RTID(${alias}@CurrentLevel)`);
+    }
+    wave.rawActions.forEach((action, actionIndex) => {
+      const alias = uniqueActionAlias(action.alias || `Wave${index + 1}Action${actionIndex}`);
+      waveObjects.push({
+        aliases: [alias],
+        objclass: action.objclass,
+        objdata: parseActionObjdata(action)
+      });
+      refs.push(`RTID(${alias}@CurrentLevel)`);
+    });
+    return refs;
+  });
 
   const gridItems = draft.value.boardItems.filter((item) => item.kind === 'object').map(serializeBoardPlacement);
   const initialPlants = draft.value.boardItems.filter((item) => item.kind === 'plant').map(serializeBoardPlacement);
   const initialZombies = draft.value.boardItems.filter((item) => item.kind === 'zombie').map(serializeBoardPlacement);
-  const seedPresetPlants = toPresetPlantList(draft.value.seedPlants);
+  const generatedBoardRefs = [
+    ...(!draft.value.preserveBoardModules && gridItems.length ? ['RTID(InitialGridItems@CurrentLevel)'] : []),
+    ...(!draft.value.preserveBoardModules && initialPlants.length ? ['RTID(FrozenPlantPlacement@CurrentLevel)'] : []),
+    ...(!draft.value.preserveBoardModules && initialZombies.length ? ['RTID(FrozenZombiePlacement@CurrentLevel)'] : [])
+  ];
+  const seedPresetPlants = buildSeedPresetPlants(normalizedSeedPlants, draft.value.seedPresetEntries);
+  const seedBankData: Record<string, any> = {
+    ...draft.value.seedBankExtra,
+    SelectionMethod: draft.value.seedMode,
+    ...(draft.value.unlockAll ? { UnlockAll: true } : {}),
+    ...(seedSlots > 0 ? { OverrideSeedSlotsCount: seedSlots } : {}),
+    ...(seedPresetPlants.length || draft.value.seedMode === 'preset' ? { PresetPlantList: seedPresetPlants } : {}),
+    ...(draft.value.includePlants.length ? { PlantIncludeList: normalizePlantCodes(draft.value.includePlants) } : {}),
+    ...(draft.value.excludePlants.length ? { PlantExcludeList: normalizePlantCodes(draft.value.excludePlants) } : {})
+  };
+  const waveManagerData: Record<string, any> = {
+    ...draft.value.waveManagerExtra,
+    MinNextWaveHealthPercentage: Number(draft.value.minNextWaveHealthPercentage),
+    MaxNextWaveHealthPercentage: Number(draft.value.maxNextWaveHealthPercentage),
+    FlagWaveInterval: Math.max(1, Number(draft.value.flagWaveInterval) || 5),
+    WaveCount: draft.value.waves.length,
+    WaveSpendingPointIncrement: Number(draft.value.waveSpendingPointIncrement),
+    WaveSpendingPoints: Number(draft.value.waveSpendingPoints),
+    Waves: waveRefs,
+    ...(draft.value.suppressFlagZombie ? { SuppressFlagZombie: true } : {})
+  };
+  if (Number(draft.value.firstWaveCountdown) >= 0) {
+    waveManagerData.ZombieCountdownFirstWaveSecs = Number(draft.value.firstWaveCountdown) === 0 ? 0.1 : Number(draft.value.firstWaveCountdown);
+  }
 
   const objects: any[] = [
     {
       objclass: 'LevelDefinition',
       objdata: {
+        ...draft.value.levelExtra,
         Name: draft.value.name,
         Description: draft.value.description,
-        LevelNumber: 1,
         StartingSun: Number(draft.value.startingSun) || 0,
-        Loot: 'RTID(NoLoot@LevelModules)',
         StageModule: `RTID(${draft.value.stage}@LevelModules)`,
-        Modules: uniqueRefs([
-          'RTID(StandardIntro@LevelModules)',
-          'RTID(DefaultSunDropper@LevelModules)',
-          'RTID(ZombiesDeadWinCon@LevelModules)',
-          `RTID(${stage.mower}@LevelModules)`,
-          'RTID(SeedBank@CurrentLevel)',
-          'RTID(DefaultZombieWinCondition@LevelModules)',
-          'RTID(NewWaves@CurrentLevel)',
-          ...(gridItems.length ? ['RTID(InitialGridItems@CurrentLevel)'] : []),
-          ...(initialPlants.length ? ['RTID(FrozenPlantPlacement@CurrentLevel)'] : []),
-          ...(initialZombies.length ? ['RTID(FrozenZombiePlacement@CurrentLevel)'] : []),
-          ...draft.value.extraModuleRefs
-        ])
+        Modules: buildModuleRefs(mowerModule, sunDropperModule, shouldReferenceWaveManager, generatedBoardRefs),
+        ...(draft.value.author.trim() ? { WritenBy: draft.value.author.trim() } : {})
       }
     },
     {
       aliases: ['SeedBank'],
       objclass: 'SeedBankProperties',
-      objdata:
-        draft.value.seedMode === 'preset'
-          ? {
-              SelectionMethod: 'preset',
-              PresetPlantList: seedPresetPlants
-            }
-          : {
-              SelectionMethod: 'chooser',
-              OverrideSeedSlotsCount: MAX_SEED_PLANTS,
-              ...(seedPresetPlants.length ? { PresetPlantList: seedPresetPlants } : {})
-            }
-    },
-    {
-      aliases: ['NewWaves'],
-      objclass: 'WaveManagerModuleProperties',
-      objdata: { WaveManagerProps: 'RTID(WaveManagerProps@CurrentLevel)' }
-    },
-    {
-      aliases: ['WaveManagerProps'],
-      objclass: 'WaveManagerProperties',
-      objdata: {
-        MinNextWaveHealthPercentage: 0.55,
-        MaxNextWaveHealthPercentage: 0.7,
-        FlagWaveInterval: Math.max(1, draft.value.waves.findIndex((wave) => wave.flag) + 1 || 10),
-        WaveCount: draft.value.waves.length,
-        WaveSpendingPointIncrement: 30,
-        WaveSpendingPoints: 100,
-        Waves: draft.value.waves.map((_, index) => [`RTID(Wave${index + 1}@CurrentLevel)`])
-      }
-    },
-    ...waveObjects,
-    ...draft.value.unsupportedRawObjects
+      objdata: seedBankData
+    }
   ];
 
-  if (gridItems.length) {
+  if (preserveGeneratorWaveSystem) {
+    objects.push(cloneJson(draft.value.preservedWaveManagerModule));
+  } else if (preserveCustomWaveManager) {
+    objects.push(cloneJson(draft.value.preservedWaveManagerObject));
+  } else if (shouldEmitWaveManager) {
+    objects.push(
+      {
+        aliases: ['NewWaves'],
+        objclass: 'WaveManagerModuleProperties',
+        objdata: { ...draft.value.waveManagerModuleExtra, WaveManagerProps: 'RTID(WaveManagerProps@CurrentLevel)' }
+      },
+      {
+        aliases: ['WaveManagerProps'],
+        objclass: 'WaveManagerProperties',
+        objdata: waveManagerData
+      },
+      ...waveObjects
+    );
+  }
+
+  if (draft.value.preserveBoardModules) {
+    objects.push(...draft.value.preservedPlacementObjects.map((object) => cloneJson(object)));
+  } else if (gridItems.length) {
     objects.push({
       aliases: ['InitialGridItems'],
       objclass: 'InitialGridItemProperties',
@@ -745,7 +1342,7 @@ function serializeLevel() {
     });
   }
 
-  if (initialPlants.length) {
+  if (!draft.value.preserveBoardModules && initialPlants.length) {
     objects.push({
       aliases: ['FrozenPlantPlacement'],
       objclass: 'InitialPlantProperties',
@@ -753,13 +1350,15 @@ function serializeLevel() {
     });
   }
 
-  if (initialZombies.length) {
+  if (!draft.value.preserveBoardModules && initialZombies.length) {
     objects.push({
       aliases: ['FrozenZombiePlacement'],
       objclass: 'InitialZombieProperties',
       objdata: { InitialZombiePlacements: initialZombies }
     });
   }
+
+  objects.push(...draft.value.unsupportedRawObjects);
 
   return {
     '#comment': draft.value.name,
@@ -785,6 +1384,19 @@ function exportLevel() {
   link.download = `${draft.value.name || 'custom_level'}.json`;
   link.click();
   URL.revokeObjectURL(url);
+}
+
+function openPreview() {
+  previewOpen.value = true;
+}
+
+async function copyPreview() {
+  try {
+    await navigator.clipboard.writeText(previewJson.value);
+    message.success(t('copied'));
+  } catch {
+    message.warning(t('copyFailed'));
+  }
 }
 
 const BasicForm = defineComponent({
@@ -832,6 +1444,46 @@ const BasicForm = defineComponent({
               draft.value.startingSun = Number((event.target as HTMLInputElement).value);
             }
           })
+        ]),
+        h('details', { class: 'advanced-details wide' }, [
+          h('summary', t('advancedLevel')),
+          h('div', { class: 'advanced-grid' }, [
+            h('div', { class: 'field-row' }, [
+              h('label', t('author')),
+              h('input', {
+                value: draft.value.author,
+                onInput: (event: Event) => {
+                  draft.value.author = (event.target as HTMLInputElement).value;
+                }
+              })
+            ]),
+            h('div', { class: 'field-row' }, [
+              h('label', t('mower')),
+              h(
+                'select',
+                {
+                  value: draft.value.mower,
+                  onChange: (event: Event) => {
+                    draft.value.mower = (event.target as HTMLSelectElement).value;
+                  }
+                },
+                mowerOptions.map((option) => h('option', { value: option.value }, option.value === STAGE_DEFAULT_MOWER ? t('stageDefault') : option.label))
+              )
+            ]),
+            h('div', { class: 'field-row' }, [
+              h('label', t('sunDropper')),
+              h(
+                'select',
+                {
+                  value: draft.value.sunDropper,
+                  onChange: (event: Event) => {
+                    draft.value.sunDropper = (event.target as HTMLSelectElement).value;
+                  }
+                },
+                sunDropperOptions.map((option) => h('option', { value: option.value }, option.value === NO_MODULE ? t('none') : option.label))
+              )
+            ])
+          ])
         ])
       ]);
   }
@@ -957,30 +1609,37 @@ const BoardEditor = defineComponent({
   }
 });
 
+function renderPlantPills(listKey: PlantListKey) {
+  const list = draft.value[listKey];
+  return h(
+    'div',
+    { class: 'seed-list' },
+    list.length
+      ? list.map((code) => {
+          const plant = plantOptions.value.find((item) => item.code === code);
+          return h('span', { class: 'seed-pill' }, [
+            plant?.image ? h('img', { src: plant.image, alt: plant.name, loading: 'lazy' }) : null,
+            h('span', plant?.name || code),
+            h('button', { onClick: () => removePlantFromList(listKey, code) }, 'x')
+          ]);
+        })
+      : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
+  );
+}
+
 const PropertyPanel = defineComponent({
   setup() {
     return () =>
       h('aside', { class: 'property-panel-inner' }, [
         h('div', { class: 'panel-title' }, t('propertyPanel')),
         h('div', { class: 'property-section' }, [
-          h('strong', `${t('seedBank')} ${draft.value.seedPlants.length}/${MAX_SEED_PLANTS}`),
+          h('strong', `${t('seedBank')} ${draft.value.seedPlants.length}/${draft.value.seedSlots}`),
           h('div', { class: 'segmented stacked' }, [
             h('button', { class: draft.value.seedMode === 'chooser' ? 'active' : '', onClick: () => (draft.value.seedMode = 'chooser') }, t('seedChooser')),
             h('button', { class: draft.value.seedMode === 'preset' ? 'active' : '', onClick: () => (draft.value.seedMode = 'preset') }, t('seedPreset'))
           ]),
           h('small', { class: 'seed-mode-hint' }, t(draft.value.seedMode === 'chooser' ? 'seedChooserHint' : 'seedPresetHint')),
-          h(
-            'div',
-            { class: 'seed-list' },
-            draft.value.seedPlants.map((code) => {
-              const plant = plantOptions.value.find((item) => item.code === code);
-              return h('span', { class: 'seed-pill' }, [
-                plant?.image ? h('img', { src: plant.image, alt: plant.name, loading: 'lazy' }) : null,
-                h('span', plant?.name || code),
-                h('button', { onClick: () => removeSeedPlant(code) }, 'x')
-              ]);
-            })
-          ),
+          renderPlantPills('seedPlants'),
           h('div', { class: 'action-row' }, [
             h(
               'button',
@@ -992,11 +1651,138 @@ const PropertyPanel = defineComponent({
               [h(PlusOutlined), t('plants')]
             ),
             seedActionHint.value ? h('small', { class: 'action-hint' }, t(seedActionHint.value)) : null
+          ]),
+          h('details', { class: 'advanced-details' }, [
+            h('summary', t('advancedSeedBank')),
+            h('div', { class: 'advanced-grid single' }, [
+              h('div', { class: 'field-row compact' }, [
+                h('label', t('seedSlots')),
+                h('input', {
+                  type: 'number',
+                  min: 0,
+                  max: MAX_SEED_PLANTS,
+                  value: draft.value.seedSlots,
+                  onInput: (event: Event) => {
+                    draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
+                    draft.value.seedPlants = normalizeSeedPlants(draft.value.seedPlants, draft.value.seedSlots);
+                  }
+                })
+              ]),
+              h('label', { class: 'check-row' }, [
+                h('input', {
+                  type: 'checkbox',
+                  checked: draft.value.unlockAll,
+                  onChange: (event: Event) => {
+                    draft.value.unlockAll = (event.target as HTMLInputElement).checked;
+                  }
+                }),
+                t('unlockAll')
+              ]),
+              h('div', { class: 'plant-list-block' }, [
+                h('strong', t('includePlants')),
+                renderPlantPills('includePlants'),
+                h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('includePlants') }, [h(PlusOutlined), t('addSelectedPlant')])
+              ]),
+              h('div', { class: 'plant-list-block' }, [
+                h('strong', t('excludePlants')),
+                renderPlantPills('excludePlants'),
+                h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('excludePlants') }, [h(PlusOutlined), t('addSelectedPlant')])
+              ])
+            ])
           ])
         ])
       ]);
   }
 });
+
+function renderWaveAdvancedEditor(wave: WaveDraft) {
+  return h('details', { class: 'advanced-details' }, [
+    h('summary', t('advancedCurrentWave')),
+    h('div', { class: 'wave-advanced-body' }, [
+      h('div', { class: 'advanced-grid' }, [
+        h('div', { class: 'field-row compact' }, [
+          h('label', t('additionalPlantfood')),
+          h('input', {
+            type: 'number',
+            min: 0,
+            value: wave.additionalPlantfood,
+            onInput: (event: Event) => {
+              markWaveSystemEdited();
+              wave.additionalPlantfood = Math.max(0, Number((event.target as HTMLInputElement).value) || 0);
+            }
+          })
+        ]),
+        h('div', { class: 'field-row compact' }, [
+          h('label', t('spawnStyle')),
+          h(
+            'select',
+            {
+              value: wave.spawnStyle,
+              onChange: (event: Event) => {
+                markWaveSystemEdited();
+                wave.spawnStyle = (event.target as HTMLSelectElement).value;
+              }
+            },
+            [
+              h('option', { value: '' }, t('styleDefault')),
+              h('option', { value: 'appear' }, 'appear'),
+              h('option', { value: 'sandstorm' }, 'sandstorm'),
+              h('option', { value: 'snowstorm' }, 'snowstorm')
+            ]
+          )
+        ]),
+        h('div', { class: 'field-row compact' }, [
+          h('label', t('dynamicPlantfood')),
+          h('input', {
+            value: wave.dynamicPlantfood,
+            placeholder: '[1,1,1,0,0]',
+            onInput: (event: Event) => {
+              markWaveSystemEdited();
+              wave.dynamicPlantfood = (event.target as HTMLInputElement).value;
+            }
+          })
+        ]),
+        h('label', { class: 'check-row advanced-check' }, [
+          h('input', {
+            type: 'checkbox',
+            checked: wave.mustKillAllToNextWave,
+            onChange: (event: Event) => {
+              markWaveSystemEdited();
+              wave.mustKillAllToNextWave = (event.target as HTMLInputElement).checked;
+            }
+          }),
+          t('mustKillAllToNextWave')
+        ])
+      ]),
+      h('div', { class: 'special-action-buttons' }, [
+        h('span', t('addSpecialAction')),
+        h('button', { class: 'add-button small', onClick: () => addWaveAction('tide') }, t('addTideAction')),
+        h('button', { class: 'add-button small', onClick: () => addWaveAction('dino') }, t('addDinoAction')),
+        h('button', { class: 'add-button small', onClick: () => addWaveAction('storm') }, t('addStormAction')),
+        h('button', { class: 'add-button small', onClick: () => addWaveAction('ground') }, t('addGroundSpawnAction'))
+      ]),
+      wave.rawActions.length
+        ? h(
+            'div',
+            { class: 'raw-action-list' },
+            wave.rawActions.map((action) =>
+              h('div', { class: 'raw-action-card' }, [
+                h('div', { class: 'raw-action-title' }, [
+                  h('span', [h('strong', action.objclass), h('small', action.alias)]),
+                  h('button', { class: 'text-button danger', onClick: () => removeWaveAction(wave, action.id) }, t('remove'))
+                ]),
+                h('textarea', {
+                  value: action.jsonText,
+                  spellcheck: 'false',
+                  onInput: (event: Event) => updateWaveActionJson(action, (event.target as HTMLTextAreaElement).value)
+                })
+              ])
+            )
+          )
+        : h('small', { class: 'seed-mode-hint' }, t('noSpecialActions'))
+    ])
+  ]);
+}
 
 const WaveTimeline = defineComponent({
   setup() {
@@ -1011,16 +1797,57 @@ const WaveTimeline = defineComponent({
           { class: 'wave-strip' },
           draft.value.waves.map((wave, index) => {
             const zombieCount = wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0);
+            const actionCount = wave.rawActions.length;
             return h(
               'button',
               {
                 class: ['wave-card', selectedWaveId.value === wave.id ? 'active' : '', wave.flag ? 'flag' : ''],
                 onClick: () => (selectedWaveId.value = wave.id)
               },
-              [h('strong', `#${index + 1}`), h('span', `${zombieCount} Z`)]
+              [h('strong', `#${index + 1}`), h('span', actionCount ? `${zombieCount} Z + ${actionCount} A` : `${zombieCount} Z`)]
             );
           })
         ),
+        h('details', { class: 'advanced-details' }, [
+          h('summary', t('advancedWaveSettings')),
+          h('div', { class: 'advanced-grid' }, [
+            h('div', { class: 'field-row compact' }, [
+              h('label', t('flagWaveInterval')),
+              h('input', {
+                type: 'number',
+                min: 1,
+                value: draft.value.flagWaveInterval,
+                onInput: (event: Event) => {
+                  markWaveSystemEdited();
+                  draft.value.flagWaveInterval = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
+                }
+              })
+            ]),
+            h('div', { class: 'field-row compact' }, [
+              h('label', t('firstWaveCountdown')),
+              h('input', {
+                type: 'number',
+                min: -1,
+                value: draft.value.firstWaveCountdown,
+                onInput: (event: Event) => {
+                  markWaveSystemEdited();
+                  draft.value.firstWaveCountdown = Number((event.target as HTMLInputElement).value);
+                }
+              })
+            ]),
+            h('label', { class: 'check-row advanced-check' }, [
+              h('input', {
+                type: 'checkbox',
+                checked: draft.value.suppressFlagZombie,
+                onChange: (event: Event) => {
+                  markWaveSystemEdited();
+                  draft.value.suppressFlagZombie = (event.target as HTMLInputElement).checked;
+                }
+              }),
+              t('suppressFlagZombie')
+            ])
+          ])
+        ]),
         selectedWave.value
           ? h('div', { class: 'wave-detail' }, [
               h('label', { class: 'check-row' }, [
@@ -1028,7 +1855,10 @@ const WaveTimeline = defineComponent({
                   type: 'checkbox',
                   checked: selectedWave.value.flag,
                   onChange: (event: Event) => {
-                    selectedWave.value.flag = (event.target as HTMLInputElement).checked;
+                    setWaveFlag(
+                      draft.value.waves.findIndex((wave) => wave.id === selectedWave.value.id),
+                      (event.target as HTMLInputElement).checked
+                    );
                   }
                 }),
                 t('flagWave')
@@ -1044,6 +1874,7 @@ const WaveTimeline = defineComponent({
                       min: 1,
                       value: zombie.count,
                       onInput: (event: Event) => {
+                        markWaveSystemEdited();
                         zombie.count = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
                       }
                     }),
@@ -1065,7 +1896,8 @@ const WaveTimeline = defineComponent({
                 draft.value.waves.length > 1
                   ? h('button', { class: 'text-button danger', onClick: () => removeWave(selectedWave.value.id) }, t('remove'))
                   : null
-              ])
+              ]),
+              renderWaveAdvancedEditor(selectedWave.value)
             ])
           : null
       ]);
@@ -1117,8 +1949,9 @@ body:has(.level-editor-shell) {
 }
 
 .editor-topbar {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 24rem);
+  gap: 1rem 1.5rem;
   align-items: flex-start;
   justify-content: space-between;
   min-width: 0;
@@ -1138,11 +1971,34 @@ body:has(.level-editor-shell) {
 }
 
 .top-actions {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: end;
+  min-width: 0;
+  width: 100%;
+}
+
+.top-action-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  align-items: center;
   justify-content: flex-end;
-  min-width: 18rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.validation-summary-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  margin-inline-end: 0;
+  white-space: nowrap;
+}
+
+.top-actions .ant-upload {
+  display: inline-flex;
+  max-width: 100%;
 }
 
 .mobile-helper,
@@ -1206,6 +2062,10 @@ body:has(.level-editor-shell) {
   grid-column: 1 / -1;
 }
 
+.advanced-details.wide {
+  grid-column: 1 / -1;
+}
+
 .field-row label {
   font-size: 0.78rem;
   color: var(--editor-muted);
@@ -1259,6 +2119,129 @@ body:has(.level-editor-shell) {
 .segmented button.active {
   background: var(--editor-accent);
   color: #fff;
+}
+
+.advanced-details {
+  min-width: 0;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--vp-c-bg) 90%, var(--editor-accent) 5%);
+}
+
+.advanced-details summary {
+  cursor: pointer;
+  padding: 0.55rem 0.65rem;
+  font-weight: 700;
+}
+
+.advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  padding: 0 0.65rem 0.65rem;
+}
+
+.advanced-grid.single {
+  grid-template-columns: 1fr;
+}
+
+.advanced-check {
+  align-self: end;
+  min-height: 2.35rem;
+}
+
+.wave-advanced-body {
+  display: grid;
+  gap: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.special-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  padding: 0 0.65rem;
+}
+
+.special-action-buttons > span {
+  color: var(--editor-muted);
+  font-size: 0.82rem;
+}
+
+.raw-action-list {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0 0.65rem;
+}
+
+.raw-action-card {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.55rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.raw-action-title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.raw-action-title span {
+  display: grid;
+  min-width: 0;
+}
+
+.raw-action-title small {
+  overflow: hidden;
+  color: var(--editor-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.raw-action-card textarea {
+  width: 100%;
+  min-height: 8rem;
+  resize: vertical;
+  padding: 0.5rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 6px;
+  background: var(--vp-c-bg-alt);
+  color: var(--editor-text);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.plant-list-block {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.preview-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.6rem;
+}
+
+.json-preview {
+  max-height: min(68vh, 720px);
+  overflow: auto;
+  padding: 0.75rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  white-space: pre;
 }
 
 .asset-search {
@@ -1775,6 +2758,20 @@ body:has(.level-editor-shell) {
   }
 }
 
+@media (max-width: 900px) {
+  .editor-topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .top-actions {
+    justify-items: start;
+  }
+
+  .top-action-row {
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 760px) {
   .level-editor-shell {
     width: 100%;
@@ -1783,11 +2780,11 @@ body:has(.level-editor-shell) {
   }
 
   .editor-topbar {
-    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .top-actions {
-    justify-content: flex-start;
+    justify-items: start;
   }
 
   .mobile-helper,
@@ -1802,6 +2799,10 @@ body:has(.level-editor-shell) {
   }
 
   .basic-form {
+    grid-template-columns: 1fr;
+  }
+
+  .advanced-grid {
     grid-template-columns: 1fr;
   }
 
