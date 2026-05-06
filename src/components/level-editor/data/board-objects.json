@@ -1,0 +1,446 @@
+[
+  {
+    "code": "powertile_alpha",
+    "name": "Power Tile Alpha",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(powertile_alpha@TileProps)",
+    "res": "PowerAlpha",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "powertile_beta",
+    "name": "Power Tile Beta",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(powertile_beta@TileProps)",
+    "res": "PowerBeta",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "powertile_gamma",
+    "name": "Power Tile Gamma",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(powertile_gamma@TileProps)",
+    "res": "PowerGamma",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "powertile_delta",
+    "name": "Power Tile Delta",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(powertile_delta@TileProps)",
+    "res": "PowerDelta",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "powertile_epsilon",
+    "name": "Power Tile Epsilon",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(powertile_epsilon@TileProps)",
+    "res": "PowerEpsilon",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "endangered",
+    "name": "Endangered Tile",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(endangered@TileProps)",
+    "res": "Endangered",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "potholepuddle",
+    "name": "Pothole Puddle",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(potholepuddle@TileProps)",
+    "res": "PotholePuddle",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "shallowpuddle",
+    "name": "Shallow Puddle",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(shallowpuddle@TileProps)",
+    "res": "ShallowPuddle",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "slider_up",
+    "name": "Slider Up",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(slider_up@TileProps)",
+    "res": "SliderUp",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "slider_down",
+    "name": "Slider Down",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(slider_down@TileProps)",
+    "res": "SliderDown",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "slider_up_modern",
+    "name": "Modern Slider Up",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(slider_up@TileProps)",
+    "res": "SliderUpModern",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "slider_down_modern",
+    "name": "Modern Slider Down",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(slider_down@TileProps)",
+    "res": "SliderDownModern",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "goldtile",
+    "name": "Gold Tile",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(goldtile@TileProps)",
+    "res": "Gold",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "taichitile",
+    "name": "Taichi Tile",
+    "category": "tile",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(taichitile@TileProps)",
+    "res": "Taichi",
+    "source": "TilesFeatures"
+  },
+  {
+    "code": "flame_spreader_trap",
+    "name": "Flame Spreader Trap",
+    "category": "obstacle",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(flame_spreader_trap@TileProps)",
+    "res": "FlameSpreader",
+    "source": "TilesFeatures",
+    "advanced": true
+  },
+  {
+    "code": "boulder_trap_falling_forward",
+    "name": "Boulder Trap Forward",
+    "category": "obstacle",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(boulder_trap_falling_forward@TileProps)",
+    "res": "BoulderTrap",
+    "source": "TilesFeatures",
+    "advanced": true
+  },
+  {
+    "code": "boulder_trap_falling_backward",
+    "name": "Boulder Trap Backward",
+    "category": "obstacle",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(boulder_trap_falling_backward@TileProps)",
+    "res": "BoulderTrap",
+    "source": "TilesFeatures",
+    "advanced": true
+  },
+  {
+    "code": "thunder_trap",
+    "name": "Thunder Trap",
+    "category": "obstacle",
+    "exportClass": "InitialGridItemProperties",
+    "props": "RTID(thunder_trap@TileProps)",
+    "res": "ThunderTrap",
+    "source": "TilesFeatures",
+    "advanced": true
+  },
+  {
+    "code": "gravestone",
+    "name": "Stage Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "source": "GravestoneProperties"
+  },
+  {
+    "code": "gravestone_tutorial",
+    "name": "Tutorial Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_tutorial@TombstoneProps)",
+    "res": "Tutorial",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestone_egypt",
+    "name": "Egypt Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_egypt@TombstoneProps)",
+    "res": "Egypt",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestone_pirate",
+    "name": "Pirate Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_pirate@TombstoneProps)",
+    "res": "Pirate",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestone_cowboy",
+    "name": "Cowboy Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_cowboy@TombstoneProps)",
+    "res": "Cowboy",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestone_future",
+    "name": "Future Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_future@TombstoneProps)",
+    "res": "Future",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestone_dark",
+    "name": "Dark Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_dark@TombstoneProps)",
+    "res": "Dark",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestoneSunOnDestruction",
+    "name": "Sun Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestoneSunOnDestruction@TombstoneProps)",
+    "res": "DarkSun",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestonePlantfoodOnDestruction",
+    "name": "Plant Food Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestonePlantfoodOnDestruction@TombstoneProps)",
+    "res": "DarkPF",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestone_iceage",
+    "name": "Iceage Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_iceage@TombstoneProps)",
+    "res": "Iceage",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "gravestone_lostcity",
+    "name": "Lost City Gravestone",
+    "category": "tombstone",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(gravestone_lostcity@TombstoneProps)",
+    "res": "Lostcity",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_torch",
+    "name": "Kongfu Torch Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_torch@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_blade",
+    "name": "Kongfu Blade Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_blade@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_bomb",
+    "name": "Kongfu Bomb Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_bomb@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_flag",
+    "name": "Kongfu Flag Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_flag@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_nunchaku",
+    "name": "Kongfu Nunchaku Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_nunchaku@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_hammer",
+    "name": "Kongfu Hammer Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_hammer@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_helmet",
+    "name": "Kongfu Helmet Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_helmet@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_fan",
+    "name": "Kongfu Fan Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_fan@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_rack_3section_staff",
+    "name": "Kongfu 3-Section Staff Rack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_rack_3section_staff@TombstoneProps)",
+    "res": "KongfuArmRack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "kongfu_TNT",
+    "name": "Kongfu TNT",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(kongfu_TNT@TombstoneProps)",
+    "res": "KongfuTNT",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "surfboard",
+    "name": "Surfboard",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(surfboard@TombstoneProps)",
+    "res": "Surfboard",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "surfboard_veteran",
+    "name": "Veteran Surfboard",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(surfboard_veteran@TombstoneProps)",
+    "res": "SurfboardVeteran",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "planttarget_iceblock",
+    "name": "Plant Ice Block",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(planttarget_iceblock@TombstoneProps)",
+    "res": "IceblockPlant",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "zombietarget_iceblock",
+    "name": "Zombie Ice Block",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(zombietarget_iceblock@TombstoneProps)",
+    "res": "IceblockZombie",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "zomboss_iceage_glacier_block",
+    "name": "Glacier Block",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(zomboss_iceage_glacier_block@TombstoneProps)",
+    "res": "GlacierBlock",
+    "source": "TombstonesFeatures",
+    "advanced": true
+  },
+  {
+    "code": "planttarget_squid",
+    "name": "Octopus Target",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(planttarget_squid@TombstoneProps)",
+    "res": "Octopus",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "backpack",
+    "name": "Backpack",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(backpack@TombstoneProps)",
+    "res": "Backpack",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "tent",
+    "name": "Tent",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(tent@TombstoneProps)",
+    "res": "Tent",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "eightiesarcadecabinet",
+    "name": "Arcade Cabinet",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(eightiesarcadecabinet@TombstoneProps)",
+    "res": "EightiesArcadeCabinet",
+    "source": "TombstonesFeatures"
+  },
+  {
+    "code": "speaker",
+    "name": "Speaker",
+    "category": "obstacle",
+    "exportClass": "GravestoneProperties",
+    "props": "RTID(speaker@TombstoneProps)",
+    "res": "EightiesSpeaker",
+    "source": "TombstonesFeatures"
+  }
+]

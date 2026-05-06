@@ -106,10 +106,15 @@ import {
 } from '@ant-design/icons-vue';
 import plantFeatures from '../plantsAlmanac/jsons/PlantFeatures.json';
 import zombieFeatures from '../zombiesAlmanac/jsons/ZombieFeatures.json';
+import boardObjectData from './data/board-objects.json';
 import localeMessages from './i18n.json';
 
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
 type AssetKind = 'plant' | 'zombie' | 'object';
+type ObjectCategory = 'tile' | 'obstacle' | 'tombstone';
+type ObjectCategoryFilter = 'all' | ObjectCategory;
+type ObjectExportClass = 'InitialGridItemProperties' | 'GravestoneProperties';
+type BoardLayer = 'tile' | 'obstacle' | 'plant' | 'zombie';
 type SeedMode = 'chooser' | 'preset';
 type PlantListKey = 'seedPlants' | 'includePlants' | 'excludePlants';
 
@@ -140,6 +145,12 @@ interface AssetOption {
   name: string;
   world?: string;
   image?: string;
+  category?: ObjectCategory;
+  exportClass?: ObjectExportClass;
+  props?: string;
+  res?: string;
+  source?: string;
+  advanced?: boolean;
 }
 
 interface BoardItem {
@@ -149,6 +160,12 @@ interface BoardItem {
   label: string;
   row: number;
   col: number;
+  category?: ObjectCategory;
+  exportClass?: ObjectExportClass;
+  props?: string;
+  res?: string;
+  source?: string;
+  advanced?: boolean;
   extra?: Record<string, any>;
 }
 
@@ -234,6 +251,7 @@ const providedLanguage = inject<string>('i18nLanguage', 'zh');
 const mobileTab = ref('board');
 const previewOpen = ref(false);
 const assetTab = ref<AssetKind>('plant');
+const objectCategory = ref<ObjectCategoryFilter>('all');
 const assetSearch = ref('');
 const selectedAsset = ref<AssetOption | null>(null);
 const selectedCell = ref<{ row: number; col: number } | null>(null);
@@ -315,14 +333,7 @@ const sunDropperOptions = [
   { value: 'VeryFastSunDropper', label: 'Very Fast Sun Dropper' }
 ];
 
-const objectOptions: AssetOption[] = [
-  { kind: 'object', code: 'gravestone', name: 'Gravestone' },
-  { kind: 'object', code: 'potholepuddle', name: 'Puddle' },
-  { kind: 'object', code: 'slider_up', name: 'Slider Up' },
-  { kind: 'object', code: 'slider_down', name: 'Slider Down' },
-  { kind: 'object', code: 'kongfu_rack_torch', name: 'Kongfu Torch Rack' },
-  { kind: 'object', code: 'kongfu_rack_blade', name: 'Kongfu Blade Rack' }
-];
+const objectOptions: AssetOption[] = (boardObjectData as AssetOption[]).map((item) => ({ ...item, kind: 'object' }));
 
 const draft = ref<LevelDraft>(createDefaultDraft());
 
@@ -362,7 +373,11 @@ const currentAssetOptions = computed(() => {
         : objectOptions;
   const query = assetSearch.value.trim().toLowerCase();
   return source
-    .filter((item) => !query || item.code.toLowerCase().includes(query) || item.name.toLowerCase().includes(query))
+    .filter((item) => assetTab.value !== 'object' || objectCategory.value === 'all' || item.category === objectCategory.value)
+    .filter((item) => {
+      if (!query) return true;
+      return [item.code, item.name, item.res || '', item.source || '', item.exportClass || ''].some((value) => value.toLowerCase().includes(query));
+    })
     .slice(0, 80);
 });
 
@@ -585,16 +600,34 @@ function resetDraft() {
 function chooseAsset(asset: AssetOption) {
   selectedAsset.value = asset;
   assetTab.value = asset.kind;
+  if (asset.kind === 'object') objectCategory.value = asset.category || 'all';
   if (asset.kind === 'plant') seedActionHint.value = '';
   if (asset.kind === 'zombie') zombieActionHint.value = '';
+}
+
+function getObjectOption(code: string) {
+  return objectOptions.find((item) => item.code === code);
+}
+
+function getAssetLayer(asset: AssetOption): BoardLayer {
+  if (asset.kind === 'plant') return 'plant';
+  if (asset.kind === 'zombie') return 'zombie';
+  return asset.category === 'tile' ? 'tile' : 'obstacle';
+}
+
+function getBoardItemLayer(item: BoardItem): BoardLayer {
+  if (item.kind === 'plant') return 'plant';
+  if (item.kind === 'zombie') return 'zombie';
+  return item.category === 'tile' || item.exportClass === 'InitialGridItemProperties' ? 'tile' : 'obstacle';
 }
 
 function placeAsset(row: number, col: number) {
   selectedCell.value = { row, col };
   if (!selectedAsset.value) return;
   draft.value.preserveBoardModules = false;
+  const selectedLayer = getAssetLayer(selectedAsset.value);
   const existingIndex = draft.value.boardItems.findIndex(
-    (item) => item.row === row && item.col === col && item.kind === selectedAsset.value?.kind
+    (item) => item.row === row && item.col === col && getBoardItemLayer(item) === selectedLayer
   );
   const item: BoardItem = {
     id: nextItemId.value++,
@@ -602,7 +635,13 @@ function placeAsset(row: number, col: number) {
     code: selectedAsset.value.code,
     label: selectedAsset.value.name,
     row,
-    col
+    col,
+    category: selectedAsset.value.category,
+    exportClass: selectedAsset.value.exportClass,
+    props: selectedAsset.value.props,
+    res: selectedAsset.value.res,
+    source: selectedAsset.value.source,
+    advanced: selectedAsset.value.advanced
   };
   if (existingIndex >= 0) draft.value.boardItems.splice(existingIndex, 1, item);
   else draft.value.boardItems.push(item);
@@ -616,16 +655,28 @@ function clearSelectedCell() {
   );
 }
 
+function clearSelectedLayer() {
+  if (!selectedCell.value || !selectedAsset.value) return;
+  const selectedLayer = getAssetLayer(selectedAsset.value);
+  draft.value.preserveBoardModules = false;
+  draft.value.boardItems = draft.value.boardItems.filter(
+    (item) =>
+      item.row !== selectedCell.value?.row ||
+      item.col !== selectedCell.value?.col ||
+      getBoardItemLayer(item) !== selectedLayer
+  );
+}
+
 function clearBoardItems() {
   draft.value.preserveBoardModules = false;
   draft.value.boardItems = [];
 }
 
 function itemsAt(row: number, col: number) {
-  const layerOrder: Record<AssetKind, number> = { object: 0, plant: 1, zombie: 2 };
+  const layerOrder: Record<BoardLayer, number> = { tile: 0, obstacle: 1, plant: 2, zombie: 3 };
   return draft.value.boardItems
     .filter((item) => item.row === row && item.col === col)
-    .sort((a, b) => layerOrder[a.kind] - layerOrder[b.kind]);
+    .sort((a, b) => layerOrder[getBoardItemLayer(a)] - layerOrder[getBoardItemLayer(b)]);
 }
 
 function addSeedPlant(code: string) {
@@ -730,19 +781,39 @@ function getPlantDisplayName(code: string) {
 }
 
 function getObjectDisplayName(code: string) {
-  return objectOptions.find((item) => item.code === code)?.name || code;
+  return getObjectOption(code)?.name || code;
 }
 
 function getBoardItemImage(item: BoardItem) {
   if (item.kind === 'plant') return plantOptions.value.find((plant) => plant.code === item.code)?.image || '';
   if (item.kind === 'zombie') return zombieOptions.value.find((zombie) => zombie.code === item.code)?.image || '';
-  return '';
+  return getObjectOption(item.code)?.image || '';
 }
 
 function getBoardItemKindLabel(kind: AssetKind) {
   if (kind === 'plant') return t('cellKindPlant');
   if (kind === 'zombie') return t('cellKindZombie');
   return t('cellKindObject');
+}
+
+function getObjectCategoryLabel(category?: ObjectCategory) {
+  if (category === 'tile') return t('objectCategoryTile');
+  if (category === 'tombstone') return t('objectCategoryTombstone');
+  if (category === 'obstacle') return t('objectCategoryObstacle');
+  return t('objects');
+}
+
+function getBoardItemTypeLabel(item: BoardItem) {
+  if (item.kind !== 'object') return getBoardItemKindLabel(item.kind);
+  return getObjectCategoryLabel(item.category);
+}
+
+function getBoardItemChip(item: BoardItem) {
+  if (item.kind === 'plant') return 'P';
+  if (item.kind === 'zombie') return 'Z';
+  if (item.category === 'tile') return 'T';
+  if (item.category === 'tombstone') return 'G';
+  return 'O';
 }
 
 function normalizePlantCodes(plants: string[]) {
@@ -950,13 +1021,22 @@ function parseLevel(raw: any): LevelDraft {
     .filter((object: any) => object?.objclass === 'GravestoneProperties')
     .forEach((object: any) => {
       (object?.objdata?.ForceSpawnData || []).forEach((entry: any) => {
+        const code = entry.TypeName || 'gravestone';
+        const option = getObjectOption(code);
         boardItems.push({
           id: nextItemId.value++,
           kind: 'object',
-          code: entry.TypeName || 'gravestone',
-          label: entry.TypeName || 'gravestone',
+          code,
+          label: option?.name || code,
           row: Number(entry.GridY || 0),
-          col: Number(entry.GridX || 0)
+          col: Number(entry.GridX || 0),
+          category: option?.category || 'tombstone',
+          exportClass: 'GravestoneProperties',
+          props: option?.props,
+          res: option?.res,
+          source: option?.source,
+          advanced: option?.advanced,
+          extra: getPlacementExtra(entry)
         });
       });
     });
@@ -964,13 +1044,20 @@ function parseLevel(raw: any): LevelDraft {
     .filter((object: any) => object?.objclass === 'InitialGridItemProperties')
     .forEach((object: any) => {
       (object?.objdata?.InitialGridItemPlacements || []).forEach((entry: any) => {
+        const option = getObjectOption(entry.TypeName);
         boardItems.push({
           id: nextItemId.value++,
           kind: 'object',
           code: entry.TypeName,
-          label: getObjectDisplayName(entry.TypeName),
+          label: option?.name || getObjectDisplayName(entry.TypeName),
           row: Number(entry.GridY || 0),
           col: Number(entry.GridX || 0),
+          category: option?.category || 'tile',
+          exportClass: 'InitialGridItemProperties',
+          props: option?.props,
+          res: option?.res,
+          source: option?.source,
+          advanced: option?.advanced,
           extra: getPlacementExtra(entry)
         });
       });
@@ -978,13 +1065,20 @@ function parseLevel(raw: any): LevelDraft {
         (matrix.GridMatrix || []).forEach((line: string, row: number) => {
           line.split('').forEach((cell, col) => {
             if (cell === '1') {
+              const option = getObjectOption(matrix.TypeName);
               boardItems.push({
                 id: nextItemId.value++,
                 kind: 'object',
                 code: matrix.TypeName,
-                label: getObjectDisplayName(matrix.TypeName),
+                label: option?.name || getObjectDisplayName(matrix.TypeName),
                 row,
-                col
+                col,
+                category: option?.category || 'tile',
+                exportClass: 'InitialGridItemProperties',
+                props: option?.props,
+                res: option?.res,
+                source: option?.source,
+                advanced: option?.advanced
               });
             }
           });
@@ -1114,12 +1208,15 @@ function getPlacementExtra(entry: any) {
 }
 
 function serializeBoardPlacement(item: BoardItem) {
-  return {
+  const placement: Record<string, any> = {
     ...(item.extra || {}),
     GridX: item.col,
-    GridY: item.row,
-    TypeName: item.code
+    GridY: item.row
   };
+  if (!(item.exportClass === 'GravestoneProperties' && item.code === 'gravestone')) {
+    placement.TypeName = item.code;
+  }
+  return placement;
 }
 
 function serializeWaveZombies(wave: WaveDraft) {
@@ -1181,6 +1278,7 @@ function buildModuleRefs(
   if (!draft.value.preserveBoardModules) {
     const boardRefs = new Set([
       'RTID(InitialGridItems@CurrentLevel)',
+      'RTID(Gravestones@CurrentLevel)',
       'RTID(FrozenPlantPlacement@CurrentLevel)',
       'RTID(FrozenZombiePlacement@CurrentLevel)',
       ...draft.value.preservedPlacementObjects.flatMap((object) => (object?.aliases || []).map((alias: string) => `RTID(${alias}@CurrentLevel)`))
@@ -1209,6 +1307,7 @@ function serializeLevel() {
     'NewWaves',
     'WaveManagerProps',
     'InitialGridItems',
+    'Gravestones',
     'FrozenPlantPlacement',
     'FrozenZombiePlacement',
     ...draft.value.preservedPlacementObjects.flatMap((object) => object?.aliases || []),
@@ -1259,11 +1358,17 @@ function serializeLevel() {
     return refs;
   });
 
-  const gridItems = draft.value.boardItems.filter((item) => item.kind === 'object').map(serializeBoardPlacement);
+  const gridItems = draft.value.boardItems
+    .filter((item) => item.kind === 'object' && (item.exportClass || 'InitialGridItemProperties') === 'InitialGridItemProperties')
+    .map(serializeBoardPlacement);
+  const gravestoneItems = draft.value.boardItems
+    .filter((item) => item.kind === 'object' && item.exportClass === 'GravestoneProperties')
+    .map(serializeBoardPlacement);
   const initialPlants = draft.value.boardItems.filter((item) => item.kind === 'plant').map(serializeBoardPlacement);
   const initialZombies = draft.value.boardItems.filter((item) => item.kind === 'zombie').map(serializeBoardPlacement);
   const generatedBoardRefs = [
     ...(!draft.value.preserveBoardModules && gridItems.length ? ['RTID(InitialGridItems@CurrentLevel)'] : []),
+    ...(!draft.value.preserveBoardModules && gravestoneItems.length ? ['RTID(Gravestones@CurrentLevel)'] : []),
     ...(!draft.value.preserveBoardModules && initialPlants.length ? ['RTID(FrozenPlantPlacement@CurrentLevel)'] : []),
     ...(!draft.value.preserveBoardModules && initialZombies.length ? ['RTID(FrozenZombiePlacement@CurrentLevel)'] : [])
   ];
@@ -1339,6 +1444,14 @@ function serializeLevel() {
       aliases: ['InitialGridItems'],
       objclass: 'InitialGridItemProperties',
       objdata: { InitialGridItemPlacements: gridItems }
+    });
+  }
+
+  if (!draft.value.preserveBoardModules && gravestoneItems.length) {
+    objects.push({
+      aliases: ['Gravestones'],
+      objclass: 'GravestoneProperties',
+      objdata: { ForceSpawnData: gravestoneItems }
     });
   }
 
@@ -1499,6 +1612,22 @@ const AssetLibrary = defineComponent({
           h('button', { class: assetTab.value === 'zombie' ? 'active' : '', onClick: () => (assetTab.value = 'zombie') }, t('zombies')),
           h('button', { class: assetTab.value === 'object' ? 'active' : '', onClick: () => (assetTab.value = 'object') }, t('objects'))
         ]),
+        assetTab.value === 'object'
+          ? h('div', { class: 'object-category-tabs' }, [
+              h('button', { class: objectCategory.value === 'all' ? 'active' : '', onClick: () => (objectCategory.value = 'all') }, t('objectCategoryAll')),
+              h('button', { class: objectCategory.value === 'tile' ? 'active' : '', onClick: () => (objectCategory.value = 'tile') }, t('objectCategoryTile')),
+              h(
+                'button',
+                { class: objectCategory.value === 'obstacle' ? 'active' : '', onClick: () => (objectCategory.value = 'obstacle') },
+                t('objectCategoryObstacle')
+              ),
+              h(
+                'button',
+                { class: objectCategory.value === 'tombstone' ? 'active' : '', onClick: () => (objectCategory.value = 'tombstone') },
+                t('objectCategoryTombstone')
+              )
+            ])
+          : null,
         h('input', {
           class: 'asset-search',
           placeholder: t('search'),
@@ -1518,8 +1647,20 @@ const AssetLibrary = defineComponent({
                 onClick: () => chooseAsset(asset)
               },
               [
-                asset.image ? h('img', { src: asset.image, alt: asset.name, loading: 'lazy' }) : h('span', { class: 'object-dot' }),
-                h('span', { class: 'asset-copy' }, [h('strong', asset.name), h('small', asset.code)])
+                asset.image
+                  ? h('img', { src: asset.image, alt: asset.name, loading: 'lazy' })
+                  : h('span', { class: ['object-dot', asset.kind === 'object' ? asset.category || 'object' : ''] }),
+                h('span', { class: 'asset-copy' }, [
+                  h('strong', asset.name),
+                  h('small', asset.code),
+                  asset.kind === 'object'
+                    ? h('span', { class: 'asset-meta-row' }, [
+                        h('span', { class: `asset-badge ${asset.category || 'object'}` }, getObjectCategoryLabel(asset.category)),
+                        h('span', { class: 'asset-target' }, asset.exportClass || ''),
+                        asset.advanced ? h('span', { class: 'asset-badge advanced' }, t('advancedObject')) : null
+                      ])
+                    : null
+                ])
               ]
             )
           )
@@ -1537,6 +1678,9 @@ const BoardEditor = defineComponent({
           h('div', { class: 'board-actions' }, [
             selectedCell.value
               ? h('button', { class: 'text-button', onClick: clearSelectedCell }, [h(DeleteOutlined), t('clearCell')])
+              : null,
+            selectedCell.value && selectedAsset.value
+              ? h('button', { class: 'text-button', onClick: clearSelectedLayer }, [h(DeleteOutlined), t('clearLayer')])
               : null,
             h('button', { class: 'text-button danger', disabled: !draft.value.boardItems.length, onClick: clearBoardItems }, [
               h(DeleteOutlined),
@@ -1568,12 +1712,12 @@ const BoardEditor = defineComponent({
                         h(
                           'span',
                           {
-                            class: `cell-marker ${item.kind}`,
-                            title: `${getBoardItemKindLabel(item.kind)}: ${item.label}`
+                            class: `cell-marker ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}`,
+                            title: `${getBoardItemTypeLabel(item)}: ${item.label}`
                           },
                           getBoardItemImage(item)
                             ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
-                            : h('span', { class: `cell-chip ${item.kind}` }, item.kind === 'plant' ? 'P' : item.kind === 'zombie' ? 'Z' : 'O')
+                            : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item))
                         )
                       )
                     )
@@ -1597,8 +1741,14 @@ const BoardEditor = defineComponent({
                     h('span', { class: `cell-detail-pill ${item.kind}` }, [
                       getBoardItemImage(item)
                         ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
-                        : h('span', { class: `cell-chip ${item.kind}` }, item.kind === 'plant' ? 'P' : item.kind === 'zombie' ? 'Z' : 'O'),
-                      h('span', { class: 'cell-detail-copy' }, [h('strong', item.label), h('small', getBoardItemKindLabel(item.kind))])
+                        : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item)),
+                      h('span', { class: 'cell-detail-copy' }, [
+                        h('strong', item.label),
+                        h('small', getBoardItemTypeLabel(item)),
+                        item.kind === 'object'
+                          ? h('small', { class: 'cell-detail-code' }, `${item.code}${item.exportClass ? ` -> ${item.exportClass}` : ''}`)
+                          : null
+                      ])
                     ])
                   )
                 )
@@ -2248,6 +2398,33 @@ body:has(.level-editor-shell) {
   margin: 0.6rem 0;
 }
 
+.object-category-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.object-category-tabs button {
+  min-width: 0;
+  padding: 0.38rem 0.42rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  color: var(--editor-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.15;
+  cursor: pointer;
+}
+
+.object-category-tabs button.active,
+.object-category-tabs button:hover {
+  border-color: color-mix(in srgb, var(--editor-accent) 48%, transparent);
+  background: color-mix(in srgb, var(--editor-accent) 10%, transparent);
+  color: var(--editor-text);
+}
+
 .asset-list {
   display: grid;
   gap: 0.35rem;
@@ -2285,6 +2462,7 @@ body:has(.level-editor-shell) {
 .asset-copy {
   display: grid;
   min-width: 0;
+  gap: 0.08rem;
 }
 
 .asset-copy strong,
@@ -2300,12 +2478,73 @@ body:has(.level-editor-shell) {
   color: var(--editor-muted);
 }
 
+.asset-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+  min-width: 0;
+}
+
+.asset-badge,
+.asset-target {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-height: 1rem;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--editor-accent) 10%, transparent);
+  color: var(--editor-muted);
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 1rem;
+}
+
+.asset-badge.tile {
+  background: rgba(66, 128, 203, 0.14);
+  color: #3c78bd;
+}
+
+.asset-badge.tombstone {
+  background: rgba(116, 100, 83, 0.16);
+  color: #796450;
+}
+
+.asset-badge.obstacle,
+.asset-badge.advanced {
+  background: rgba(178, 109, 44, 0.14);
+  color: #a96328;
+}
+
+.asset-target {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 600;
+}
+
 .object-dot {
   width: 1.4rem;
   height: 1.4rem;
   margin: auto;
   border-radius: 4px;
   background: #a88755;
+}
+
+.object-dot.tile {
+  border-radius: 5px;
+  background: linear-gradient(135deg, #6c9ed6 0 49%, #4f7eaf 50% 100%);
+}
+
+.object-dot.tombstone {
+  border-radius: 50% 50% 5px 5px;
+  background: linear-gradient(180deg, #9a9186, #6d6258);
+}
+
+.object-dot.obstacle {
+  border-radius: 5px;
+  background: linear-gradient(135deg, #bc8350, #805537);
 }
 
 .board-header {
@@ -2430,6 +2669,18 @@ body:has(.level-editor-shell) {
   background: #a46e35;
 }
 
+.cell-chip.tile {
+  background: #477fb5;
+}
+
+.cell-chip.obstacle {
+  background: #9b6634;
+}
+
+.cell-chip.tombstone {
+  background: #746858;
+}
+
 .cell-label {
   display: block;
   min-width: 0;
@@ -2503,6 +2754,10 @@ body:has(.level-editor-shell) {
 .cell-detail-empty {
   color: var(--editor-muted);
   font-size: 0.78rem;
+}
+
+.cell-detail-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 .property-section {
