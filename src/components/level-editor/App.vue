@@ -215,6 +215,7 @@ interface LevelDraft {
   includePlants: string[];
   excludePlants: string[];
   unlockAll: boolean;
+  hasSeedBank: boolean;
   seedBankExtra: Record<string, any>;
   boardItems: BoardItem[];
   waves: WaveDraft[];
@@ -546,6 +547,7 @@ function createDefaultDraft(): LevelDraft {
     includePlants: [],
     excludePlants: [],
     unlockAll: false,
+    hasSeedBank: true,
     seedBankExtra: {},
     boardItems: [],
     waves: [
@@ -973,7 +975,8 @@ function handleUpload(file: File) {
 function parseLevel(raw: any): LevelDraft {
   const objects = Array.isArray(raw?.objects) ? raw.objects : [];
   const level = objects.find((object: any) => object?.objclass === 'LevelDefinition')?.objdata || {};
-  const seed = objects.find((object: any) => object?.objclass === 'SeedBankProperties')?.objdata || {};
+  const seedObject = objects.find((object: any) => object?.objclass === 'SeedBankProperties');
+  const seed = seedObject?.objdata || {};
   const waveManagerModule = objects.find((object: any) => object?.objclass === 'WaveManagerModuleProperties');
   const waveManagerObject = objects.find((object: any) => object?.objclass === 'WaveManagerProperties');
   const waveProps = waveManagerObject?.objdata || {};
@@ -1153,6 +1156,7 @@ function parseLevel(raw: any): LevelDraft {
     includePlants: normalizePlantCodes(Array.isArray(seed.PlantIncludeList) ? seed.PlantIncludeList : []),
     excludePlants: normalizePlantCodes(Array.isArray(seed.PlantExcludeList) ? seed.PlantExcludeList : []),
     unlockAll: seed.UnlockAll === true,
+    hasSeedBank: !!seedObject,
     seedBankExtra: omitKeys(seed, ['SelectionMethod', 'UnlockAll', 'OverrideSeedSlotsCount', 'PresetPlantList', 'PlantIncludeList', 'PlantExcludeList']),
     boardItems,
     waves: waves.length ? waves : [],
@@ -1302,6 +1306,16 @@ function serializeLevel() {
   const shouldEmitWaveManager =
     !!preserveGeneratorWaveSystem || !!preserveCustomWaveManager || draft.value.hasWaveManager || draft.value.waves.length > 0;
   const shouldReferenceWaveManager = draft.value.moduleRefs.includes(NEW_WAVES_REF) || (draft.value.waveSystemDirty && draft.value.waves.length > 0);
+  const shouldEmitSeedBank =
+    draft.value.hasSeedBank ||
+    draft.value.moduleRefs.includes('RTID(SeedBank@CurrentLevel)') ||
+    normalizedSeedPlants.length > 0 ||
+    draft.value.includePlants.length > 0 ||
+    draft.value.excludePlants.length > 0 ||
+    draft.value.unlockAll ||
+    draft.value.seedMode === 'preset' ||
+    seedSlots !== MAX_SEED_PLANTS ||
+    Object.keys(draft.value.seedBankExtra || {}).length > 0;
   const usedActionAliases = new Set<string>([
     'SeedBank',
     'NewWaves',
@@ -1326,6 +1340,7 @@ function serializeLevel() {
     return alias;
   };
   const waveObjects: any[] = [];
+  const emittedRawActionAliases = new Map<string, string>();
   const waveRefs = draft.value.waves.map((wave, index) => {
     const refs: string[] = [];
     if (wave.zombies.length || wave.zombieActionAlias) {
@@ -1347,6 +1362,12 @@ function serializeLevel() {
       refs.push(`RTID(${alias}@CurrentLevel)`);
     }
     wave.rawActions.forEach((action, actionIndex) => {
+      const rawActionKey = action.alias || '';
+      const existingAlias = rawActionKey ? emittedRawActionAliases.get(rawActionKey) : undefined;
+      if (existingAlias) {
+        refs.push(`RTID(${existingAlias}@CurrentLevel)`);
+        return;
+      }
       const alias = uniqueActionAlias(action.alias || `Wave${index + 1}Action${actionIndex}`);
       waveObjects.push({
         aliases: [alias],
@@ -1354,6 +1375,7 @@ function serializeLevel() {
         objdata: parseActionObjdata(action)
       });
       refs.push(`RTID(${alias}@CurrentLevel)`);
+      if (rawActionKey) emittedRawActionAliases.set(rawActionKey, alias);
     });
     return refs;
   });
@@ -1409,13 +1431,16 @@ function serializeLevel() {
         Modules: buildModuleRefs(mowerModule, sunDropperModule, shouldReferenceWaveManager, generatedBoardRefs),
         ...(draft.value.author.trim() ? { WritenBy: draft.value.author.trim() } : {})
       }
-    },
-    {
+    }
+  ];
+
+  if (shouldEmitSeedBank) {
+    objects.push({
       aliases: ['SeedBank'],
       objclass: 'SeedBankProperties',
       objdata: seedBankData
-    }
-  ];
+    });
+  }
 
   if (preserveGeneratorWaveSystem) {
     objects.push(cloneJson(draft.value.preservedWaveManagerModule));
