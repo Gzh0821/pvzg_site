@@ -1715,7 +1715,6 @@ const AssetLibrary = defineComponent({
                   asset.kind === 'object'
                     ? h('span', { class: 'asset-meta-row' }, [
                         h('span', { class: `asset-badge ${asset.category || 'object'}` }, getObjectCategoryLabel(asset.category)),
-                        h('span', { class: 'asset-target' }, asset.exportClass || ''),
                         asset.advanced ? h('span', { class: 'asset-badge advanced' }, t('advancedObject')) : null
                       ])
                     : null
@@ -1728,16 +1727,25 @@ const AssetLibrary = defineComponent({
   }
 });
 
-function renderPlacementSettings(item: BoardItem) {
+function getBoardItemExportTarget(item: BoardItem) {
+  if (item.kind === 'plant') return 'InitialPlantProperties';
+  if (item.kind === 'zombie') return 'InitialZombieProperties';
+  return item.exportClass || 'InitialGridItemProperties';
+}
+
+function renderCellDetailAdvanced(item: BoardItem) {
   const preservedEntries = preservedPlacementExtraEntries(item);
   const hasEditableControls = item.kind === 'plant' || item.kind === 'zombie';
-  if (!hasEditableControls && !preservedEntries.length) return null;
+  const exportTarget = getBoardItemExportTarget(item);
+  const metaEntries = [
+    [t('exportTarget'), exportTarget],
+    ...(item.source ? [[t('sourceField'), item.source]] : []),
+    ...(item.props ? [[t('propsField'), item.props]] : []),
+    ...(item.res ? [[t('resField'), item.res]] : [])
+  ];
 
-  return h('div', { class: 'placement-settings-card' }, [
-    h('div', { class: 'placement-settings-title' }, [
-      h('strong', item.label),
-      h('small', `${getBoardItemTypeLabel(item)} · ${item.code}`)
-    ]),
+  return h('details', { class: 'cell-detail-advanced' }, [
+    h('summary', t('advancedPlacementInfo')),
     hasEditableControls
       ? h('div', { class: 'placement-control-row' }, [
           h('label', { class: 'check-row' }, [
@@ -1756,10 +1764,15 @@ function renderPlacementSettings(item: BoardItem) {
                   onChange: (event: Event) => setBoardItemPlantfood(item, (event.target as HTMLInputElement).checked)
                 }),
                 t('startPlantfood')
-              ])
-            : null
+          ])
+          : null
         ])
       : null,
+    h(
+      'div',
+      { class: 'placement-extra-list' },
+      metaEntries.map(([key, value]) => h('code', { class: 'placement-extra-chip' }, `${key}: ${value}`))
+    ),
     preservedEntries.length
       ? h('div', { class: 'placement-extra-list' }, [
           h('small', { class: 'placement-extra-title' }, t('preservedPlacementFields')),
@@ -1768,6 +1781,22 @@ function renderPlacementSettings(item: BoardItem) {
           )
         ])
       : null
+  ]);
+}
+
+function renderCellDetailItem(item: BoardItem) {
+  return h('div', { class: `cell-detail-pill ${item.kind}` }, [
+    h('div', { class: 'cell-detail-main' }, [
+      getBoardItemImage(item)
+        ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
+        : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item)),
+      h('span', { class: 'cell-detail-copy' }, [
+        h('strong', item.label),
+        h('small', getBoardItemTypeLabel(item)),
+        h('small', { class: 'cell-detail-code' }, item.code)
+      ])
+    ]),
+    renderCellDetailAdvanced(item)
   ]);
 }
 
@@ -1840,25 +1869,7 @@ const BoardEditor = defineComponent({
                   h(
                     'div',
                     { class: 'cell-detail-list' },
-                    selectedCellItems.value.map((item) =>
-                      h('span', { class: `cell-detail-pill ${item.kind}` }, [
-                        getBoardItemImage(item)
-                          ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
-                          : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item)),
-                        h('span', { class: 'cell-detail-copy' }, [
-                          h('strong', item.label),
-                          h('small', getBoardItemTypeLabel(item)),
-                          item.kind === 'object'
-                            ? h('small', { class: 'cell-detail-code' }, `${item.code}${item.exportClass ? ` -> ${item.exportClass}` : ''}`)
-                            : null
-                        ])
-                      ])
-                    )
-                  ),
-                  h(
-                    'div',
-                    { class: 'placement-settings-list' },
-                    selectedCellItems.value.map((item) => renderPlacementSettings(item)).filter(Boolean)
+                    selectedCellItems.value.map((item) => renderCellDetailItem(item))
                   )
                 ]
               : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
@@ -2612,8 +2623,7 @@ body:has(.level-editor-shell) {
   min-width: 0;
 }
 
-.asset-badge,
-.asset-target {
+.asset-badge {
   display: inline-flex;
   align-items: center;
   max-width: 100%;
@@ -2641,14 +2651,6 @@ body:has(.level-editor-shell) {
 .asset-badge.advanced {
   background: rgba(178, 109, 44, 0.14);
   color: #a96328;
-}
-
-.asset-target {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-weight: 600;
 }
 
 .object-dot {
@@ -2837,31 +2839,35 @@ body:has(.level-editor-shell) {
 }
 
 .cell-detail-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 0.45rem;
 }
 
 .cell-detail-pill {
   display: grid;
-  grid-template-columns: 1.9rem minmax(0, 1fr);
   gap: 0.45rem;
-  align-items: center;
   max-width: 100%;
-  min-height: 2.35rem;
-  padding: 0.25rem 0.55rem 0.25rem 0.3rem;
+  padding: 0.45rem 0.55rem;
   border: 1px solid var(--editor-border);
   border-radius: 8px;
   background: var(--vp-c-bg);
 }
 
-.cell-detail-pill > img,
-.cell-detail-pill > .cell-chip {
+.cell-detail-main {
+  display: grid;
+  grid-template-columns: 1.9rem minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.cell-detail-main > img,
+.cell-detail-main > .cell-chip {
   width: 1.9rem;
   height: 1.9rem;
 }
 
-.cell-detail-pill > .cell-chip {
+.cell-detail-main > .cell-chip {
   line-height: 1.9rem;
 }
 
@@ -2887,42 +2893,50 @@ body:has(.level-editor-shell) {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.placement-settings-list {
+.cell-detail-advanced {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
-.placement-settings-list:empty {
-  display: none;
-}
-
-.placement-settings-card {
-  display: grid;
-  gap: 0.45rem;
-  padding: 0.55rem;
-  border: 1px solid var(--editor-border);
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--vp-c-bg) 88%, var(--editor-accent) 4%);
-}
-
-.placement-settings-title {
-  display: grid;
-  gap: 0.1rem;
-  min-width: 0;
-}
-
-.placement-settings-title strong,
-.unsupported-object-card strong {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.placement-settings-title small,
-.placement-extra-title,
-.unsupported-object-card small {
+.cell-detail-advanced summary {
   color: var(--editor-muted);
+  cursor: pointer;
   font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cell-detail-advanced summary::marker {
+  color: color-mix(in srgb, var(--editor-muted) 80%, transparent);
+}
+
+.cell-detail-advanced .check-row {
+  min-height: 1.8rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--vp-c-bg) 92%, var(--editor-accent) 4%);
+  color: var(--editor-text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.cell-detail-advanced .check-row:hover {
+  border-color: color-mix(in srgb, var(--editor-accent) 45%, var(--editor-border));
+  background: color-mix(in srgb, var(--vp-c-bg) 86%, var(--editor-accent) 8%);
+}
+
+.cell-detail-advanced .check-row input {
+  width: 0.88rem;
+  height: 0.88rem;
+  margin: 0;
+  accent-color: var(--editor-accent);
 }
 
 .placement-control-row,
@@ -2937,13 +2951,26 @@ body:has(.level-editor-shell) {
   gap: 0.35rem;
 }
 
+.placement-extra-title,
+.unsupported-object-card small {
+  color: var(--editor-muted);
+  font-size: 0.76rem;
+}
+
+.unsupported-object-card strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .placement-extra-chip {
   max-width: 100%;
   padding: 0.2rem 0.35rem;
   border-radius: 6px;
   background: var(--editor-bg);
   overflow-wrap: anywhere;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
+  line-height: 1.35;
 }
 
 .property-section {
