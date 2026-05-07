@@ -681,6 +681,40 @@ function itemsAt(row: number, col: number) {
     .sort((a, b) => layerOrder[getBoardItemLayer(a)] - layerOrder[getBoardItemLayer(b)]);
 }
 
+function setBoardItemExtra(item: BoardItem, key: string, value: any) {
+  draft.value.preserveBoardModules = false;
+  const extra = { ...(item.extra || {}) };
+  if (value === undefined) delete extra[key];
+  else extra[key] = value;
+  item.extra = Object.keys(extra).length ? extra : undefined;
+}
+
+function setBoardItemIcecubed(item: BoardItem, checked: boolean) {
+  setBoardItemExtra(item, 'Condition', checked ? 'icecubed' : undefined);
+}
+
+function setBoardItemPlantfood(item: BoardItem, checked: boolean) {
+  setBoardItemExtra(item, 'Plantfood', checked ? true : undefined);
+}
+
+function editablePlacementExtraKeys(item: BoardItem) {
+  if (item.kind === 'plant') return new Set(['Condition', 'Plantfood']);
+  if (item.kind === 'zombie') return new Set(['Condition']);
+  return new Set<string>();
+}
+
+function preservedPlacementExtraEntries(item: BoardItem) {
+  const editableKeys = editablePlacementExtraKeys(item);
+  return Object.entries(item.extra || {}).filter(([key]) => !editableKeys.has(key));
+}
+
+function formatPlacementExtraValue(value: unknown) {
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  if (value == null) return String(value);
+  return JSON.stringify(value);
+}
+
 function addSeedPlant(code: string) {
   const plantCode = code;
   if (!plantCode || draft.value.seedPlants.includes(plantCode)) return;
@@ -1694,6 +1728,49 @@ const AssetLibrary = defineComponent({
   }
 });
 
+function renderPlacementSettings(item: BoardItem) {
+  const preservedEntries = preservedPlacementExtraEntries(item);
+  const hasEditableControls = item.kind === 'plant' || item.kind === 'zombie';
+  if (!hasEditableControls && !preservedEntries.length) return null;
+
+  return h('div', { class: 'placement-settings-card' }, [
+    h('div', { class: 'placement-settings-title' }, [
+      h('strong', item.label),
+      h('small', `${getBoardItemTypeLabel(item)} · ${item.code}`)
+    ]),
+    hasEditableControls
+      ? h('div', { class: 'placement-control-row' }, [
+          h('label', { class: 'check-row' }, [
+            h('input', {
+              type: 'checkbox',
+              checked: item.extra?.Condition === 'icecubed',
+              onChange: (event: Event) => setBoardItemIcecubed(item, (event.target as HTMLInputElement).checked)
+            }),
+            t('icecubedCondition')
+          ]),
+          item.kind === 'plant'
+            ? h('label', { class: 'check-row' }, [
+                h('input', {
+                  type: 'checkbox',
+                  checked: item.extra?.Plantfood === true,
+                  onChange: (event: Event) => setBoardItemPlantfood(item, (event.target as HTMLInputElement).checked)
+                }),
+                t('startPlantfood')
+              ])
+            : null
+        ])
+      : null,
+    preservedEntries.length
+      ? h('div', { class: 'placement-extra-list' }, [
+          h('small', { class: 'placement-extra-title' }, t('preservedPlacementFields')),
+          ...preservedEntries.map(([key, value]) =>
+            h('code', { class: 'placement-extra-chip' }, `${key}: ${formatPlacementExtraValue(value)}`)
+          )
+        ])
+      : null
+  ]);
+}
+
 const BoardEditor = defineComponent({
   setup() {
     return () =>
@@ -1759,24 +1836,31 @@ const BoardEditor = defineComponent({
           ),
           selectedCell.value
             ? selectedCellItems.value.length
-              ? h(
-                  'div',
-                  { class: 'cell-detail-list' },
-                  selectedCellItems.value.map((item) =>
-                    h('span', { class: `cell-detail-pill ${item.kind}` }, [
-                      getBoardItemImage(item)
-                        ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
-                        : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item)),
-                      h('span', { class: 'cell-detail-copy' }, [
-                        h('strong', item.label),
-                        h('small', getBoardItemTypeLabel(item)),
-                        item.kind === 'object'
-                          ? h('small', { class: 'cell-detail-code' }, `${item.code}${item.exportClass ? ` -> ${item.exportClass}` : ''}`)
-                          : null
+              ? [
+                  h(
+                    'div',
+                    { class: 'cell-detail-list' },
+                    selectedCellItems.value.map((item) =>
+                      h('span', { class: `cell-detail-pill ${item.kind}` }, [
+                        getBoardItemImage(item)
+                          ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
+                          : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item)),
+                        h('span', { class: 'cell-detail-copy' }, [
+                          h('strong', item.label),
+                          h('small', getBoardItemTypeLabel(item)),
+                          item.kind === 'object'
+                            ? h('small', { class: 'cell-detail-code' }, `${item.code}${item.exportClass ? ` -> ${item.exportClass}` : ''}`)
+                            : null
+                        ])
                       ])
-                    ])
+                    )
+                  ),
+                  h(
+                    'div',
+                    { class: 'placement-settings-list' },
+                    selectedCellItems.value.map((item) => renderPlacementSettings(item)).filter(Boolean)
                   )
-                )
+                ]
               : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
             : h('div', { class: 'cell-detail-empty' }, t('selectedCellHint'))
         ])
@@ -1800,6 +1884,26 @@ function renderPlantPills(listKey: PlantListKey) {
         })
       : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
   );
+}
+
+function renderUnsupportedObjectsSummary() {
+  if (!draft.value.unsupportedRawObjects.length) return null;
+
+  return h('details', { class: 'unsupported-summary' }, [
+    h('summary', `${t('unsupported')}: ${draft.value.unsupportedObjects}`),
+    h(
+      'div',
+      { class: 'unsupported-object-list' },
+      draft.value.unsupportedRawObjects.map((object: any, index) => {
+        const aliases = Array.isArray(object?.aliases) ? object.aliases.join(', ') : '';
+        return h('div', { class: 'unsupported-object-card' }, [
+          h('strong', object?.objclass || t('unknownObjclass')),
+          h('small', aliases ? `${t('unsupportedAlias')}: ${aliases}` : t('unsupportedNoAlias')),
+          h('code', `#${index + 1}`)
+        ]);
+      })
+    )
+  ]);
 }
 
 const PropertyPanel = defineComponent({
@@ -2092,9 +2196,7 @@ const ValidationPanel = defineComponent({
               validationItems.value.map((item) => h('div', { class: ['issue', item.type] }, item.text))
             )
           : h('div', { class: 'issue ok' }, t('noIssues')),
-        draft.value.unsupportedObjects
-          ? h('div', { class: 'unsupported-note' }, `${t('unsupported')}: ${draft.value.unsupportedObjects}`)
-          : null
+        renderUnsupportedObjectsSummary()
       ]);
   }
 });
@@ -2785,6 +2887,65 @@ body:has(.level-editor-shell) {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
+.placement-settings-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.placement-settings-list:empty {
+  display: none;
+}
+
+.placement-settings-card {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.55rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--vp-c-bg) 88%, var(--editor-accent) 4%);
+}
+
+.placement-settings-title {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.placement-settings-title strong,
+.unsupported-object-card strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placement-settings-title small,
+.placement-extra-title,
+.unsupported-object-card small {
+  color: var(--editor-muted);
+  font-size: 0.76rem;
+}
+
+.placement-control-row,
+.placement-extra-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.placement-extra-list {
+  gap: 0.35rem;
+}
+
+.placement-extra-chip {
+  max-width: 100%;
+  padding: 0.2rem 0.35rem;
+  border-radius: 6px;
+  background: var(--editor-bg);
+  overflow-wrap: anywhere;
+  font-size: 0.72rem;
+}
+
 .property-section {
   display: grid;
   gap: 0.65rem;
@@ -2976,11 +3137,43 @@ body:has(.level-editor-shell) {
 }
 
 .issue,
-.unsupported-note {
+.unsupported-summary {
   padding: 0.55rem;
   border-radius: 8px;
   background: var(--editor-bg);
   font-size: 0.88rem;
+}
+
+.unsupported-summary summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.unsupported-object-list {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.unsupported-object-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.2rem 0.5rem;
+  align-items: center;
+  padding: 0.45rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.unsupported-object-card small {
+  grid-column: 1 / -1;
+  overflow-wrap: anywhere;
+}
+
+.unsupported-object-card code {
+  color: var(--editor-muted);
+  font-size: 0.74rem;
 }
 
 .issue.error {
