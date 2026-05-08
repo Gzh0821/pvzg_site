@@ -16,6 +16,14 @@
             <a-tag class="validation-summary-tag" :color="validationSummaryColor">
               {{ t('errors', { count: validationSummary.errors }) }} / {{ t('warnings', { count: validationSummary.warnings }) }}
             </a-tag>
+            <label class="expert-mode-toggle">
+              <input v-model="expertMode" type="checkbox" :aria-label="t('expertMode')" />
+              <span class="expert-mode-switch" aria-hidden="true"></span>
+              <span class="expert-mode-copy">
+                <strong>{{ t('expertMode') }}</strong>
+                <small>{{ t(expertMode ? 'expertModeOn' : 'expertModeOff') }}</small>
+              </span>
+            </label>
             <a-upload :before-upload="handleUpload" accept=".json,.json5" :show-upload-list="false">
               <a-button>
                 <template #icon><upload-outlined /></template>
@@ -92,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, h, inject, ref } from 'vue';
+import { computed, defineComponent, h, inject, onMounted, ref, watch } from 'vue';
 import JSON5 from 'json5';
 import { message, theme as antdTheme } from 'ant-design-vue';
 import {
@@ -251,6 +259,8 @@ const messages = localeMessages as Record<string, Record<LocaleKey, string>>;
 const providedLanguage = inject<string>('i18nLanguage', 'zh');
 const mobileTab = ref('board');
 const previewOpen = ref(false);
+const EXPERT_MODE_STORAGE_KEY = 'pvzg-level-editor-expert-mode';
+const expertMode = ref(false);
 const assetTab = ref<AssetKind>('plant');
 const objectCategory = ref<ObjectCategoryFilter>('all');
 const assetSearch = ref('');
@@ -466,6 +476,15 @@ const validationSummaryColor = computed(() => {
 });
 
 const previewJson = computed(() => JSON.stringify(serializeLevel(), null, 2));
+
+onMounted(() => {
+  expertMode.value = window.localStorage.getItem(EXPERT_MODE_STORAGE_KEY) === '1';
+});
+
+watch(expertMode, (enabled) => {
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(EXPERT_MODE_STORAGE_KEY, enabled ? '1' : '0');
+});
 
 function t(key: string, vars: Record<string, string | number> = {}) {
   const template = messages[key]?.[language.value] || messages[key]?.en || key;
@@ -1617,46 +1636,48 @@ const BasicForm = defineComponent({
             }
           })
         ]),
-        h('details', { class: 'advanced-details wide' }, [
-          h('summary', t('advancedLevel')),
-          h('div', { class: 'advanced-grid' }, [
-            h('div', { class: 'field-row' }, [
-              h('label', t('author')),
-              h('input', {
-                value: draft.value.author,
-                onInput: (event: Event) => {
-                  draft.value.author = (event.target as HTMLInputElement).value;
-                }
-              })
-            ]),
-            h('div', { class: 'field-row' }, [
-              h('label', t('mower')),
-              h(
-                'select',
-                {
-                  value: draft.value.mower,
-                  onChange: (event: Event) => {
-                    draft.value.mower = (event.target as HTMLSelectElement).value;
-                  }
-                },
-                mowerOptions.map((option) => h('option', { value: option.value }, option.value === STAGE_DEFAULT_MOWER ? t('stageDefault') : option.label))
-              )
-            ]),
-            h('div', { class: 'field-row' }, [
-              h('label', t('sunDropper')),
-              h(
-                'select',
-                {
-                  value: draft.value.sunDropper,
-                  onChange: (event: Event) => {
-                    draft.value.sunDropper = (event.target as HTMLSelectElement).value;
-                  }
-                },
-                sunDropperOptions.map((option) => h('option', { value: option.value }, option.value === NO_MODULE ? t('none') : option.label))
-              )
+        expertMode.value
+          ? h('details', { class: 'advanced-details wide' }, [
+              h('summary', t('advancedLevel')),
+              h('div', { class: 'advanced-grid' }, [
+                h('div', { class: 'field-row' }, [
+                  h('label', t('author')),
+                  h('input', {
+                    value: draft.value.author,
+                    onInput: (event: Event) => {
+                      draft.value.author = (event.target as HTMLInputElement).value;
+                    }
+                  })
+                ]),
+                h('div', { class: 'field-row' }, [
+                  h('label', t('mower')),
+                  h(
+                    'select',
+                    {
+                      value: draft.value.mower,
+                      onChange: (event: Event) => {
+                        draft.value.mower = (event.target as HTMLSelectElement).value;
+                      }
+                    },
+                    mowerOptions.map((option) => h('option', { value: option.value }, option.value === STAGE_DEFAULT_MOWER ? t('stageDefault') : option.label))
+                  )
+                ]),
+                h('div', { class: 'field-row' }, [
+                  h('label', t('sunDropper')),
+                  h(
+                    'select',
+                    {
+                      value: draft.value.sunDropper,
+                      onChange: (event: Event) => {
+                        draft.value.sunDropper = (event.target as HTMLSelectElement).value;
+                      }
+                    },
+                    sunDropperOptions.map((option) => h('option', { value: option.value }, option.value === NO_MODULE ? t('none') : option.label))
+                  )
+                ])
+              ])
             ])
-          ])
-        ])
+          : null
       ]);
   }
 });
@@ -1734,6 +1755,8 @@ function getBoardItemExportTarget(item: BoardItem) {
 }
 
 function renderCellDetailAdvanced(item: BoardItem) {
+  if (!expertMode.value) return null;
+
   const preservedEntries = preservedPlacementExtraEntries(item);
   const hasEditableControls = item.kind === 'plant' || item.kind === 'zombie';
   const exportTarget = getBoardItemExportTarget(item);
@@ -1898,7 +1921,7 @@ function renderPlantPills(listKey: PlantListKey) {
 }
 
 function renderUnsupportedObjectsSummary() {
-  if (!draft.value.unsupportedRawObjects.length) return null;
+  if (!expertMode.value || !draft.value.unsupportedRawObjects.length) return null;
 
   return h('details', { class: 'unsupported-summary' }, [
     h('summary', `${t('unsupported')}: ${draft.value.unsupportedObjects}`),
@@ -1942,50 +1965,60 @@ const PropertyPanel = defineComponent({
             ),
             seedActionHint.value ? h('small', { class: 'action-hint' }, t(seedActionHint.value)) : null
           ]),
-          h('details', { class: 'advanced-details' }, [
-            h('summary', t('advancedSeedBank')),
-            h('div', { class: 'advanced-grid single' }, [
-              h('div', { class: 'field-row compact' }, [
-                h('label', t('seedSlots')),
-                h('input', {
-                  type: 'number',
-                  min: 0,
-                  max: MAX_SEED_PLANTS,
-                  value: draft.value.seedSlots,
-                  onInput: (event: Event) => {
-                    draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
-                    draft.value.seedPlants = normalizeSeedPlants(draft.value.seedPlants, draft.value.seedSlots);
-                  }
-                })
-              ]),
-              h('label', { class: 'check-row' }, [
-                h('input', {
-                  type: 'checkbox',
-                  checked: draft.value.unlockAll,
-                  onChange: (event: Event) => {
-                    draft.value.unlockAll = (event.target as HTMLInputElement).checked;
-                  }
-                }),
-                t('unlockAll')
-              ]),
-              h('div', { class: 'plant-list-block' }, [
-                h('strong', t('includePlants')),
-                renderPlantPills('includePlants'),
-                h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('includePlants') }, [h(PlusOutlined), t('addSelectedPlant')])
-              ]),
-              h('div', { class: 'plant-list-block' }, [
-                h('strong', t('excludePlants')),
-                renderPlantPills('excludePlants'),
-                h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('excludePlants') }, [h(PlusOutlined), t('addSelectedPlant')])
+          expertMode.value
+            ? h('details', { class: 'advanced-details' }, [
+                h('summary', t('advancedSeedBank')),
+                h('div', { class: 'advanced-grid single' }, [
+                  h('div', { class: 'field-row compact' }, [
+                    h('label', t('seedSlots')),
+                    h('input', {
+                      type: 'number',
+                      min: 0,
+                      max: MAX_SEED_PLANTS,
+                      value: draft.value.seedSlots,
+                      onInput: (event: Event) => {
+                        draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
+                        draft.value.seedPlants = normalizeSeedPlants(draft.value.seedPlants, draft.value.seedSlots);
+                      }
+                    })
+                  ]),
+                  h('label', { class: 'check-row' }, [
+                    h('input', {
+                      type: 'checkbox',
+                      checked: draft.value.unlockAll,
+                      onChange: (event: Event) => {
+                        draft.value.unlockAll = (event.target as HTMLInputElement).checked;
+                      }
+                    }),
+                    t('unlockAll')
+                  ]),
+                  h('div', { class: 'plant-list-block' }, [
+                    h('strong', t('includePlants')),
+                    renderPlantPills('includePlants'),
+                    h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('includePlants') }, [
+                      h(PlusOutlined),
+                      t('addSelectedPlant')
+                    ])
+                  ]),
+                  h('div', { class: 'plant-list-block' }, [
+                    h('strong', t('excludePlants')),
+                    renderPlantPills('excludePlants'),
+                    h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('excludePlants') }, [
+                      h(PlusOutlined),
+                      t('addSelectedPlant')
+                    ])
+                  ])
+                ])
               ])
-            ])
-          ])
+            : null
         ])
       ]);
   }
 });
 
 function renderWaveAdvancedEditor(wave: WaveDraft) {
+  if (!expertMode.value) return null;
+
   return h('details', { class: 'advanced-details' }, [
     h('summary', t('advancedCurrentWave')),
     h('div', { class: 'wave-advanced-body' }, [
@@ -2098,46 +2131,48 @@ const WaveTimeline = defineComponent({
             );
           })
         ),
-        h('details', { class: 'advanced-details' }, [
-          h('summary', t('advancedWaveSettings')),
-          h('div', { class: 'advanced-grid' }, [
-            h('div', { class: 'field-row compact' }, [
-              h('label', t('flagWaveInterval')),
-              h('input', {
-                type: 'number',
-                min: 1,
-                value: draft.value.flagWaveInterval,
-                onInput: (event: Event) => {
-                  markWaveSystemEdited();
-                  draft.value.flagWaveInterval = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
-                }
-              })
-            ]),
-            h('div', { class: 'field-row compact' }, [
-              h('label', t('firstWaveCountdown')),
-              h('input', {
-                type: 'number',
-                min: -1,
-                value: draft.value.firstWaveCountdown,
-                onInput: (event: Event) => {
-                  markWaveSystemEdited();
-                  draft.value.firstWaveCountdown = Number((event.target as HTMLInputElement).value);
-                }
-              })
-            ]),
-            h('label', { class: 'check-row advanced-check' }, [
-              h('input', {
-                type: 'checkbox',
-                checked: draft.value.suppressFlagZombie,
-                onChange: (event: Event) => {
-                  markWaveSystemEdited();
-                  draft.value.suppressFlagZombie = (event.target as HTMLInputElement).checked;
-                }
-              }),
-              t('suppressFlagZombie')
+        expertMode.value
+          ? h('details', { class: 'advanced-details' }, [
+              h('summary', t('advancedWaveSettings')),
+              h('div', { class: 'advanced-grid' }, [
+                h('div', { class: 'field-row compact' }, [
+                  h('label', t('flagWaveInterval')),
+                  h('input', {
+                    type: 'number',
+                    min: 1,
+                    value: draft.value.flagWaveInterval,
+                    onInput: (event: Event) => {
+                      markWaveSystemEdited();
+                      draft.value.flagWaveInterval = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
+                    }
+                  })
+                ]),
+                h('div', { class: 'field-row compact' }, [
+                  h('label', t('firstWaveCountdown')),
+                  h('input', {
+                    type: 'number',
+                    min: -1,
+                    value: draft.value.firstWaveCountdown,
+                    onInput: (event: Event) => {
+                      markWaveSystemEdited();
+                      draft.value.firstWaveCountdown = Number((event.target as HTMLInputElement).value);
+                    }
+                  })
+                ]),
+                h('label', { class: 'check-row advanced-check' }, [
+                  h('input', {
+                    type: 'checkbox',
+                    checked: draft.value.suppressFlagZombie,
+                    onChange: (event: Event) => {
+                      markWaveSystemEdited();
+                      draft.value.suppressFlagZombie = (event.target as HTMLInputElement).checked;
+                    }
+                  }),
+                  t('suppressFlagZombie')
+                ])
+              ])
             ])
-          ])
-        ]),
+          : null,
         selectedWave.value
           ? h('div', { class: 'wave-detail' }, [
               h('label', { class: 'check-row' }, [
@@ -2219,6 +2254,13 @@ body:has(.level-editor-shell) {
   overflow-x: hidden;
 }
 
+.level-editor-shell,
+.level-editor-shell *,
+.level-editor-shell *::before,
+.level-editor-shell *::after {
+  box-sizing: border-box;
+}
+
 .level-editor-shell {
   --editor-bg: color-mix(in srgb, var(--vp-c-bg) 94%, #5f9f3f 6%);
   --editor-panel: color-mix(in srgb, var(--vp-c-bg) 90%, var(--vp-c-bg-soft) 10%);
@@ -2227,20 +2269,26 @@ body:has(.level-editor-shell) {
   --editor-muted: var(--vp-c-text-mute);
   --editor-accent: #5f9f3f;
   --editor-accent-strong: #3f7f2f;
-  width: min(1080px, calc(100vw - 360px));
+  width: min(1120px, 100%);
   max-width: calc(100vw - 2rem);
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-left: calc((100% - min(1080px, calc(100vw - 360px))) / 2);
+  margin: 1rem auto 2rem;
   color: var(--editor-text);
+  font-size: 0.95rem;
+  line-height: 1.45;
   overflow-x: hidden;
+}
+
+.dark .level-editor-shell {
+  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 88%, #5f9f3f 8%);
+  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
+  --editor-border: color-mix(in srgb, var(--vp-c-text) 20%, transparent);
 }
 
 .editor-topbar {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(17rem, 24rem);
-  gap: 1rem 1.5rem;
-  align-items: flex-start;
+  grid-template-columns: minmax(0, 1fr) minmax(19rem, auto);
+  gap: 0.85rem 1.2rem;
+  align-items: center;
   justify-content: space-between;
   min-width: 0;
   padding: 1rem;
@@ -2251,6 +2299,7 @@ body:has(.level-editor-shell) {
 
 .editor-title {
   margin: 0 0 0.25rem !important;
+  line-height: 1.2 !important;
 }
 
 .title-block {
@@ -2260,7 +2309,7 @@ body:has(.level-editor-shell) {
 
 .top-actions {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.55rem;
   justify-items: end;
   min-width: 0;
   width: 100%;
@@ -2289,6 +2338,100 @@ body:has(.level-editor-shell) {
   max-width: 100%;
 }
 
+.expert-mode-toggle {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: center;
+  min-width: 0;
+  max-width: 15.5rem;
+  min-height: 2.35rem;
+  padding: 0.28rem 0.55rem 0.28rem 0.42rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.expert-mode-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.expert-mode-switch {
+  position: relative;
+  width: 2.1rem;
+  height: 1.18rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--editor-muted) 32%, transparent);
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.expert-mode-switch::after {
+  content: "";
+  position: absolute;
+  top: 0.16rem;
+  left: 0.18rem;
+  width: 0.86rem;
+  height: 0.86rem;
+  border-radius: 50%;
+  background: var(--vp-c-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+  transition: transform 160ms ease;
+}
+
+.expert-mode-toggle input:checked + .expert-mode-switch {
+  background: var(--editor-accent);
+}
+
+.expert-mode-toggle input:checked + .expert-mode-switch::after {
+  transform: translateX(0.9rem);
+}
+
+.expert-mode-toggle input:focus-visible + .expert-mode-switch {
+  outline: 2px solid color-mix(in srgb, var(--editor-accent) 70%, #fff);
+  outline-offset: 2px;
+}
+
+.expert-mode-copy {
+  display: grid;
+  gap: 0.03rem;
+  min-width: 0;
+  line-height: 1.1;
+}
+
+.expert-mode-copy strong,
+.expert-mode-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expert-mode-copy strong {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.expert-mode-copy small {
+  color: var(--editor-muted);
+  font-size: 0.68rem;
+}
+
+.level-editor-shell button:focus-visible,
+.level-editor-shell input:focus-visible,
+.level-editor-shell select:focus-visible,
+.level-editor-shell textarea:focus-visible,
+.level-editor-shell summary:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--editor-accent) 70%, #fff);
+  outline-offset: 2px;
+}
+
 .mobile-helper,
 .mobile-layout {
   display: none;
@@ -2296,7 +2439,7 @@ body:has(.level-editor-shell) {
 
 .desktop-layout {
   display: grid;
-  grid-template-columns: minmax(220px, 0.72fr) minmax(470px, 1.5fr) minmax(250px, 0.82fr);
+  grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1.5fr) minmax(240px, 0.82fr);
   gap: 0.75rem;
   margin-top: 0.75rem;
 }
@@ -2304,6 +2447,7 @@ body:has(.level-editor-shell) {
 .panel,
 .board-panel,
 .desktop-bottom {
+  min-width: 0;
   border: 1px solid var(--editor-border);
   border-radius: 8px;
   background: var(--editor-panel);
@@ -2371,6 +2515,7 @@ body:has(.level-editor-shell) {
   border-radius: 8px;
   background: var(--vp-c-bg);
   color: var(--editor-text);
+  font: inherit;
 }
 
 .segmented {
@@ -2402,6 +2547,9 @@ body:has(.level-editor-shell) {
   border-radius: 6px;
   background: transparent;
   color: var(--editor-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
 .segmented button.active {
@@ -2582,6 +2730,7 @@ body:has(.level-editor-shell) {
   border-radius: 8px;
   background: transparent;
   color: var(--editor-text);
+  font: inherit;
   text-align: left;
 }
 
@@ -2614,6 +2763,7 @@ body:has(.level-editor-shell) {
 .asset-copy small,
 .zombie-row small {
   color: var(--editor-muted);
+  line-height: 1.25;
 }
 
 .asset-meta-row {
@@ -2653,6 +2803,19 @@ body:has(.level-editor-shell) {
   color: #a96328;
 }
 
+.dark .asset-badge.tile {
+  color: #8bbcf0;
+}
+
+.dark .asset-badge.tombstone {
+  color: #d5c6b7;
+}
+
+.dark .asset-badge.obstacle,
+.dark .asset-badge.advanced {
+  color: #f1b77a;
+}
+
 .object-dot {
   width: 1.4rem;
   height: 1.4rem;
@@ -2678,10 +2841,16 @@ body:has(.level-editor-shell) {
 
 .board-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 0.5rem;
   margin-bottom: 0.65rem;
   min-width: 0;
+}
+
+.board-header > div:first-child {
+  min-width: min(14rem, 100%);
 }
 
 .board-header span {
@@ -3012,6 +3181,7 @@ body:has(.level-editor-shell) {
   border: 0;
   background: transparent;
   color: var(--editor-muted);
+  cursor: pointer;
 }
 
 .desktop-bottom {
@@ -3103,6 +3273,7 @@ body:has(.level-editor-shell) {
   border-radius: 6px;
   background: var(--vp-c-bg);
   color: var(--editor-text);
+  font: inherit;
 }
 
 .wave-actions {
@@ -3136,6 +3307,8 @@ body:has(.level-editor-shell) {
   border-radius: 8px;
   background: var(--vp-c-bg);
   color: var(--editor-text);
+  font: inherit;
+  font-weight: 600;
 }
 
 .add-button {
@@ -3156,6 +3329,10 @@ body:has(.level-editor-shell) {
 
 .text-button.danger {
   color: #c34040;
+}
+
+.dark .text-button.danger {
+  color: #ff8a8a;
 }
 
 .issue-list {
@@ -3216,11 +3393,6 @@ body:has(.level-editor-shell) {
 }
 
 @media (max-width: 1320px) {
-  .level-editor-shell {
-    width: min(1040px, calc(100vw - 320px));
-    margin-left: calc((100% - min(1040px, calc(100vw - 320px))) / 2);
-  }
-
   .desktop-layout {
     grid-template-columns: minmax(200px, 0.62fr) minmax(0, 1.38fr);
   }
@@ -3243,11 +3415,6 @@ body:has(.level-editor-shell) {
 }
 
 @media (max-width: 1040px) and (min-width: 761px) {
-  .level-editor-shell {
-    width: min(760px, calc(100vw - 300px));
-    margin-left: calc((100% - min(760px, calc(100vw - 300px))) / 2);
-  }
-
   .desktop-layout {
     grid-template-columns: 1fr;
   }
@@ -3270,13 +3437,18 @@ body:has(.level-editor-shell) {
   .top-action-row {
     justify-content: flex-start;
   }
+
+  .expert-mode-toggle {
+    flex: 1 1 13rem;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 760px) {
   .level-editor-shell {
     width: 100%;
     max-width: 100%;
-    margin-left: 0;
+    margin: 0.75rem auto 1.5rem;
   }
 
   .editor-topbar {
@@ -3291,6 +3463,10 @@ body:has(.level-editor-shell) {
   .mobile-layout {
     display: block;
     margin-top: 0.75rem;
+  }
+
+  .mobile-layout .ant-tabs-content-holder {
+    min-width: 0;
   }
 
   .desktop-layout,
@@ -3322,6 +3498,42 @@ body:has(.level-editor-shell) {
 
   .asset-list {
     max-height: 24rem;
+  }
+
+  .zombie-row {
+    grid-template-columns: minmax(0, 1fr) minmax(3.4rem, 4.5rem) 2rem;
+  }
+
+  .unsupported-object-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .top-action-row > .ant-btn,
+  .top-action-row .ant-upload,
+  .top-action-row .ant-upload .ant-btn,
+  .expert-mode-toggle {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .validation-summary-tag {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .board-actions,
+  .wave-actions,
+  .action-row {
+    width: 100%;
+  }
+
+  .board-actions .text-button,
+  .wave-actions .add-button,
+  .wave-actions .text-button,
+  .action-row .add-button {
+    flex: 1 1 9rem;
   }
 }
 
