@@ -2269,9 +2269,12 @@ body:has(.level-editor-shell) {
   --editor-muted: var(--vp-c-text-mute);
   --editor-accent: #5f9f3f;
   --editor-accent-strong: #3f7f2f;
-  width: min(1120px, 100%);
+  --editor-shell-width: min(1080px, calc(100vw - 360px));
+  width: var(--editor-shell-width);
   max-width: calc(100vw - 2rem);
-  margin: 1rem auto 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-left: calc((100% - var(--editor-shell-width)) / 2);
   color: var(--editor-text);
   font-size: 0.95rem;
   line-height: 1.45;
@@ -3393,6 +3396,10 @@ body:has(.level-editor-shell) {
 }
 
 @media (max-width: 1320px) {
+  .level-editor-shell {
+    --editor-shell-width: min(1040px, calc(100vw - 320px));
+  }
+
   .desktop-layout {
     grid-template-columns: minmax(200px, 0.62fr) minmax(0, 1.38fr);
   }
@@ -3415,6 +3422,10 @@ body:has(.level-editor-shell) {
 }
 
 @media (max-width: 1040px) and (min-width: 761px) {
+  .level-editor-shell {
+    --editor-shell-width: min(760px, calc(100vw - 300px));
+  }
+
   .desktop-layout {
     grid-template-columns: 1fr;
   }
