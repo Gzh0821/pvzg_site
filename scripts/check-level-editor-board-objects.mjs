@@ -7,8 +7,8 @@ import { fileURLToPath } from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, '..');
-const defaultGameJsonDir = path.resolve(siteRoot, '../pvzge_build/docs/game-json-files');
-const boardObjectsPath = path.join(siteRoot, 'src/components/level-editor/data/board-objects.json');
+const defaultGameJsonDir = path.join(siteRoot, 'src/components/game-data/raw');
+const boardObjectsPath = path.join(siteRoot, 'src/components/game-data/indexes/board-objects.json');
 const publicRoot = path.join(siteRoot, 'src/.vuepress/public');
 const objectImageDir = path.join(publicRoot, 'assets/image/objects');
 const imagePrefix = '/assets/image/objects/';
@@ -55,6 +55,9 @@ function parseArgs() {
 
   for (let i = 2; i < process.argv.length; i += 1) {
     const arg = process.argv[i];
+    if (arg === '--') {
+      continue;
+    }
     if (arg === '--help' || arg === '-h') {
       console.log(`Usage: pnpm check:level-editor-objects [-- --game-json-dir <path>]
 

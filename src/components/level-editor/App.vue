@@ -112,7 +112,7 @@ import {
 } from '@ant-design/icons-vue';
 import plantFeatures from '../plantsAlmanac/jsons/PlantFeatures.json';
 import zombieFeatures from '../zombiesAlmanac/jsons/ZombieFeatures.json';
-import boardObjectData from './data/board-objects.json';
+import boardObjectData from '../game-data/indexes/board-objects.json';
 import localeMessages from './i18n.json';
 
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
