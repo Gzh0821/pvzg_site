@@ -2710,11 +2710,18 @@ body:has(.level-editor-shell) {
   cursor: pointer;
 }
 
-.object-category-tabs button.active,
-.object-category-tabs button:hover {
+.object-category-tabs button.active {
   border-color: color-mix(in srgb, var(--editor-accent) 48%, transparent);
   background: color-mix(in srgb, var(--editor-accent) 10%, transparent);
   color: var(--editor-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .object-category-tabs button:hover {
+    border-color: color-mix(in srgb, var(--editor-accent) 48%, transparent);
+    background: color-mix(in srgb, var(--editor-accent) 10%, transparent);
+    color: var(--editor-text);
+  }
 }
 
 .asset-list {
@@ -2740,10 +2747,16 @@ body:has(.level-editor-shell) {
   text-align: left;
 }
 
-.asset-row.active,
-.asset-row:hover {
+.asset-row.active {
   border-color: color-mix(in srgb, var(--editor-accent) 55%, transparent);
   background: color-mix(in srgb, var(--editor-accent) 10%, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .asset-row:hover {
+    border-color: color-mix(in srgb, var(--editor-accent) 55%, transparent);
+    background: color-mix(in srgb, var(--editor-accent) 10%, transparent);
+  }
 }
 
 .asset-row img {
