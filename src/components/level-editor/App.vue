@@ -101,6 +101,7 @@ import { computed, defineComponent, h, inject, onBeforeUnmount, onMounted, ref, 
 import JSON5 from 'json5';
 import { message, theme as antdTheme } from 'ant-design-vue';
 import {
+  CloseOutlined,
   CopyOutlined,
   DeleteOutlined,
   DownloadOutlined,
@@ -691,16 +692,9 @@ function clearSelectedCell() {
   );
 }
 
-function clearSelectedLayer() {
-  if (!selectedCell.value || !selectedAsset.value) return;
-  const selectedLayer = getAssetLayer(selectedAsset.value);
+function removeBoardItem(id: number) {
   draft.value.preserveBoardModules = false;
-  draft.value.boardItems = draft.value.boardItems.filter(
-    (item) =>
-      item.row !== selectedCell.value?.row ||
-      item.col !== selectedCell.value?.col ||
-      getBoardItemLayer(item) !== selectedLayer
-  );
+  draft.value.boardItems = draft.value.boardItems.filter((item) => item.id !== id);
 }
 
 function clearBoardItems() {
@@ -1824,6 +1818,17 @@ function renderCellDetailAdvanced(item: BoardItem) {
 
 function renderCellDetailItem(item: BoardItem) {
   return h('div', { class: `cell-detail-pill ${item.kind}` }, [
+    h(
+      'button',
+      {
+        class: 'cell-detail-remove',
+        type: 'button',
+        title: t('removeCellItem', { name: item.label }),
+        'aria-label': t('removeCellItem', { name: item.label }),
+        onClick: () => removeBoardItem(item.id)
+      },
+      h(CloseOutlined, { 'aria-hidden': 'true' })
+    ),
     h('div', { class: 'cell-detail-main' }, [
       getBoardItemImage(item)
         ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
@@ -1847,9 +1852,6 @@ const BoardEditor = defineComponent({
           h('div', { class: 'board-actions' }, [
             selectedCell.value
               ? h('button', { class: 'text-button', onClick: clearSelectedCell }, [h(DeleteOutlined), t('clearCell')])
-              : null,
-            selectedCell.value && selectedAsset.value
-              ? h('button', { class: 'text-button', onClick: clearSelectedLayer }, [h(DeleteOutlined), t('clearLayer')])
               : null,
             h('button', { class: 'text-button danger', disabled: !draft.value.boardItems.length, onClick: clearBoardItems }, [
               h(DeleteOutlined),
@@ -3017,13 +3019,52 @@ body:has(.level-editor-shell) {
 }
 
 .cell-detail-pill {
+  position: relative;
   display: grid;
   gap: 0.45rem;
   max-width: 100%;
-  padding: 0.45rem 0.55rem;
+  padding: 0.45rem 2.35rem 0.45rem 0.55rem;
   border: 1px solid var(--editor-border);
   border-radius: 8px;
   background: var(--vp-c-bg);
+}
+
+.cell-detail-remove {
+  position: absolute;
+  top: 0.42rem;
+  right: 0.42rem;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--editor-muted);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.cell-detail-remove:hover {
+  border-color: color-mix(in srgb, #d14d4d 34%, var(--editor-border));
+  background: color-mix(in srgb, #d14d4d 12%, transparent);
+  color: #b73535;
+}
+
+.cell-detail-remove:focus-visible {
+  outline: 2px solid color-mix(in srgb, #d14d4d 62%, var(--editor-accent));
+  outline-offset: 2px;
+}
+
+.dark .cell-detail-remove:hover {
+  background: color-mix(in srgb, #ff7a7a 16%, transparent);
+  color: #ff9a9a;
 }
 
 .cell-detail-main {
