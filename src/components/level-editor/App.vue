@@ -97,7 +97,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, h, inject, onMounted, ref, watch } from 'vue';
+import { computed, defineComponent, h, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import JSON5 from 'json5';
 import { message, theme as antdTheme } from 'ant-design-vue';
 import {
@@ -474,8 +474,22 @@ const validationSummaryColor = computed(() => {
 
 const previewJson = computed(() => JSON.stringify(serializeLevel(), null, 2));
 
+function clearSelectedAsset() {
+  selectedAsset.value = null;
+}
+
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key !== 'Escape' || previewOpen.value || !selectedAsset.value) return;
+  clearSelectedAsset();
+}
+
 onMounted(() => {
   expertMode.value = window.localStorage.getItem(EXPERT_MODE_STORAGE_KEY) === '1';
+  window.addEventListener('keydown', handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown);
 });
 
 watch(expertMode, (enabled) => {
@@ -616,6 +630,10 @@ function resetDraft() {
 }
 
 function chooseAsset(asset: AssetOption) {
+  if (selectedAsset.value?.kind === asset.kind && selectedAsset.value?.code === asset.code) {
+    clearSelectedAsset();
+    return;
+  }
   selectedAsset.value = asset;
   assetTab.value = asset.kind;
   if (asset.kind === 'object') objectCategory.value = asset.category || 'all';
