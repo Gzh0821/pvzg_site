@@ -1,7 +1,5 @@
 import type { Zombie } from './types';
-import zombieAlmanacJson from './jsons/ZombieAlmanac.json';
-import zombieFeaturesJson from './jsons/ZombieFeatures.json';
-import zombiePropsJson from './jsons/ZombieProps.json';
+import { zombieAlmanacJson, zombieFeaturesJson, zombiePropsJson } from '../game-data/zombies';
 import i18nJson from './i18n.json';
 
 /**
@@ -128,4 +126,3 @@ export function formatOriginZombie(originZombie: any, i18nLanguage: string): Zom
 
     return zombie;
 }
-

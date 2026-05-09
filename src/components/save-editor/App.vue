@@ -243,7 +243,7 @@ import JSON5 from 'json5'
 
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants'
 
-import upgradeJson from './UpgradeFeatures.json'
+import { upgradeJson } from '../game-data/upgrades'
 import versionJson from '../version.json'
 
 import type { ArchiveData } from './types';

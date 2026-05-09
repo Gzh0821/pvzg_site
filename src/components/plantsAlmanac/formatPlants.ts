@@ -1,8 +1,6 @@
 import type { Plant } from './types';
 
-import plantAlmanacJson from './jsons/PlantAlmanac.json';
-import plantFeaturesJson from './jsons/PlantFeatures.json';
-import plantPropsJson from './jsons/PlantProps.json';
+import { plantAlmanacJson, plantFeaturesJson, plantPropsJson } from '../game-data/plants';
 
 import i18nJson from './i18n.json';
 
@@ -97,4 +95,3 @@ export function formatOriginPlant(originPlant: any, i18nLanguage: string): Plant
     }
     return res;
 }
-

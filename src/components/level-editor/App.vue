@@ -110,9 +110,9 @@ import {
   PlusOutlined,
   UploadOutlined
 } from '@ant-design/icons-vue';
-import plantFeatures from '../plantsAlmanac/jsons/PlantFeatures.json';
-import zombieFeatures from '../zombiesAlmanac/jsons/ZombieFeatures.json';
-import boardObjectData from '../game-data/indexes/board-objects.json';
+import { boardObjectData } from '../game-data/board-objects';
+import { plantFeaturesJson as plantFeatures } from '../game-data/plants';
+import { zombieFeaturesJson as zombieFeatures } from '../game-data/zombies';
 import localeMessages from './i18n.json';
 
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
