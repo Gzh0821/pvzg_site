@@ -19,10 +19,7 @@
             <label class="expert-mode-toggle">
               <input v-model="expertMode" type="checkbox" :aria-label="t('expertMode')" />
               <span class="expert-mode-switch" aria-hidden="true"></span>
-              <span class="expert-mode-copy">
-                <strong>{{ t('expertMode') }}</strong>
-                <small>{{ t(expertMode ? 'expertModeOn' : 'expertModeOff') }}</small>
-              </span>
+              <span class="expert-mode-label">{{ t('expertMode') }}</span>
             </label>
             <a-upload :before-upload="handleUpload" accept=".json,.json5" :show-upload-list="false">
               <a-button>
@@ -2344,13 +2341,13 @@ body:has(.level-editor-shell) {
 .expert-mode-toggle {
   position: relative;
   display: inline-grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, auto);
   gap: 0.45rem;
   align-items: center;
   min-width: 0;
-  max-width: 15.5rem;
+  max-width: 11rem;
   min-height: 2.35rem;
-  padding: 0.28rem 0.55rem 0.28rem 0.42rem;
+  padding: 0.28rem 0.6rem 0.28rem 0.42rem;
   border: 1px solid var(--editor-border);
   border-radius: 8px;
   background: var(--vp-c-bg);
@@ -2402,28 +2399,14 @@ body:has(.level-editor-shell) {
   outline-offset: 2px;
 }
 
-.expert-mode-copy {
-  display: grid;
-  gap: 0.03rem;
+.expert-mode-label {
   min-width: 0;
-  line-height: 1.1;
-}
-
-.expert-mode-copy strong,
-.expert-mode-copy small {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.expert-mode-copy strong {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
-}
-
-.expert-mode-copy small {
-  color: var(--editor-muted);
-  font-size: 0.68rem;
+  line-height: 1.1;
 }
 
 .level-editor-shell button:focus-visible,
