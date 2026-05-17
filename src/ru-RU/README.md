@@ -58,8 +58,8 @@ highlights:
         details: Изменяйте ресурсы игры используя GE Patcher
         link: ./guide/mod/
 
-      - title: Рекомендованная Конфигурация
-        icon: sliders
-        details: Просмотр рекомендуемой конфигурации для игры
-        link: ./guide/requirement
+      - title: Редактор уровней
+        icon: pen-to-square
+        details: Создавайте и экспортируйте пользовательские уровни Gardendless
+        link: ./useful-tool/level-editor
 ---

@@ -58,8 +58,8 @@ highlights:
         details: Personaliza tu juego usando GE Patcher
         link: ./guide/mod/
 
-      - title: Ajustes Recomendados
-        icon: sliders
-        details: Estos son los ajustes recomendados para el juego
-        link: ./guide/requirement
+      - title: Editor de niveles
+        icon: pen-to-square
+        details: Crea y exporta niveles personalizados de Gardendless
+        link: ./useful-tool/level-editor
 ---

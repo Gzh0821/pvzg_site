@@ -58,8 +58,8 @@ highlights:
       details: 使用GE Patcher自定义游戏资源
       link: ./guide/mod/
 
-    - title: 推荐配置
-      icon: sliders
-      details: 查看游戏的推荐配置
-      link: ./guide/requirement
+    - title: 自定义关卡编辑器
+      icon: pen-to-square
+      details: 可视化编辑并导出自定义关卡
+      link: ./useful-tool/level-editor
 ---

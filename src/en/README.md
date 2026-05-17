@@ -58,8 +58,8 @@ highlights:
       details: Customize game resources using GE Patcher
       link: ./guide/mod/
 
-    - title: Recommended Configuration
-      icon: sliders
-      details: View the recommended configuration for the game
-      link: ./guide/requirement
+    - title: Custom Level Editor
+      icon: pen-to-square
+      details: Build and export custom Gardendless levels
+      link: ./useful-tool/level-editor
 ---
