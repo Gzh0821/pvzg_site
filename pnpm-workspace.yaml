@@ -1,6 +1,9 @@
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - core-js
-  - esbuild
-  - sharp
-  - workerd
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
+  esbuild: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - miniflare@4.20260518.0
+  - wrangler@4.93.0
