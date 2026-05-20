@@ -137,6 +137,12 @@
     "es": "Banco de semillas",
     "ru": "Панель семян"
   },
+  "seedSupply": {
+    "zh": "种子供给",
+    "en": "Seed supply",
+    "es": "Suministro de semillas",
+    "ru": "Подача семян"
+  },
   "chooseAsset": {
     "zh": "选择素材",
     "en": "Choose asset",
@@ -556,6 +562,300 @@
     "en": "No extra events in this wave.",
     "es": "No hay eventos extra en esta oleada.",
     "ru": "В этой волне нет доп. событий."
+  },
+  "add": {
+    "zh": "添加",
+    "en": "Add",
+    "es": "Añadir",
+    "ru": "Добавить"
+  },
+  "conveyor": {
+    "zh": "传送带",
+    "en": "Conveyor",
+    "es": "Cinta transportadora",
+    "ru": "Конвейер"
+  },
+  "advancedConveyor": {
+    "zh": "高级传送带",
+    "en": "Advanced conveyor",
+    "es": "Cinta avanzada",
+    "ru": "Расширенный конвейер"
+  },
+  "conveyorSimpleHint": {
+    "zh": "选择植物后加入传送带，导出时会使用传送带种子栏。",
+    "en": "Select plants and add them to the conveyor; export will use a conveyor seed bank.",
+    "es": "Elige plantas y añádelas a la cinta; la exportación usará banco de cinta.",
+    "ru": "Выберите растения и добавьте их в конвейер; экспорт использует конвейер семян."
+  },
+  "conveyorSeedBankNotice": {
+    "zh": "传送带关卡不会导出普通 SeedBankProperties。",
+    "en": "Conveyor levels do not export normal SeedBankProperties.",
+    "es": "Los niveles con cinta no exportan SeedBankProperties normales.",
+    "ru": "Уровни с конвейером не экспортируют обычный SeedBankProperties."
+  },
+  "conveyorPreserveOriginal": {
+    "zh": "未改动时保留导入原文",
+    "en": "Preserve imported JSON until edited",
+    "es": "Conservar JSON importado hasta editarlo",
+    "ru": "Сохранять импортированный JSON до правки"
+  },
+  "conveyorInitialPlants": {
+    "zh": "初始植物池",
+    "en": "Initial plant pool",
+    "es": "Plantas iniciales",
+    "ru": "Начальный пул растений"
+  },
+  "conveyorDropDelayConditions": {
+    "zh": "掉落延迟条件",
+    "en": "Drop delay conditions",
+    "es": "Condiciones de demora",
+    "ru": "Условия задержки"
+  },
+  "conveyorSpeedConditions": {
+    "zh": "速度条件",
+    "en": "Speed conditions",
+    "es": "Condiciones de velocidad",
+    "ru": "Условия скорости"
+  },
+  "conveyorWaveModifications": {
+    "zh": "波次植物池修改",
+    "en": "Wave plant pool changes",
+    "es": "Cambios por oleada",
+    "ru": "Изменения пула по волнам"
+  },
+  "conveyorAction": {
+    "zh": "动作",
+    "en": "Action",
+    "es": "Acción",
+    "ru": "Действие"
+  },
+  "conveyorWave": {
+    "zh": "波次",
+    "en": "Wave",
+    "es": "Oleada",
+    "ru": "Волна"
+  },
+  "conveyorAddPlant": {
+    "zh": "加入植物",
+    "en": "Add plant",
+    "es": "Añadir planta",
+    "ru": "Добавить растение"
+  },
+  "conveyorRemovePlant": {
+    "zh": "移除植物",
+    "en": "Remove plant",
+    "es": "Quitar planta",
+    "ru": "Убрать растение"
+  },
+  "conveyorAdvancedPlantFields": {
+    "zh": "高级植物参数",
+    "en": "Advanced plant parameters",
+    "es": "Parámetros avanzados",
+    "ru": "Доп. параметры растения"
+  },
+  "conveyorWeight": {
+    "zh": "权重",
+    "en": "Weight",
+    "es": "Peso",
+    "ru": "Вес"
+  },
+  "conveyorMaxPackets": {
+    "zh": "最大卡包数",
+    "en": "Max packets",
+    "es": "Paquetes máx.",
+    "ru": "Макс. пакетов"
+  },
+  "conveyorDelay": {
+    "zh": "延迟",
+    "en": "Delay",
+    "es": "Demora",
+    "ru": "Задержка"
+  },
+  "conveyorSpeed": {
+    "zh": "速度",
+    "en": "Speed",
+    "es": "Velocidad",
+    "ru": "Скорость"
+  },
+  "conveyorMaxCount": {
+    "zh": "最大数量",
+    "en": "Max count",
+    "es": "Cantidad máx.",
+    "ru": "Макс. число"
+  },
+  "conveyorMinCount": {
+    "zh": "最小数量",
+    "en": "Min count",
+    "es": "Cantidad mín.",
+    "ru": "Мин. число"
+  },
+  "conveyorMaxWeightFactor": {
+    "zh": "最大权重系数",
+    "en": "Max weight factor",
+    "es": "Factor máx.",
+    "ru": "Макс. множитель"
+  },
+  "conveyorMinWeightFactor": {
+    "zh": "最小权重系数",
+    "en": "Min weight factor",
+    "es": "Factor mín.",
+    "ru": "Мин. множитель"
+  },
+  "conveyorCooldownSeconds": {
+    "zh": "冷却秒数",
+    "en": "Cooldown seconds",
+    "es": "Recarga seg.",
+    "ru": "Перезарядка, с"
+  },
+  "conveyorMaxCountCooldownSeconds": {
+    "zh": "最大数量冷却",
+    "en": "Max count cooldown",
+    "es": "Recarga máx.",
+    "ru": "КД макс. числа"
+  },
+  "conveyorMinCountCooldownSeconds": {
+    "zh": "最小数量冷却",
+    "en": "Min count cooldown",
+    "es": "Recarga mín.",
+    "ru": "КД мин. числа"
+  },
+  "conveyorMaxDelivered": {
+    "zh": "最大投放数",
+    "en": "Max delivered",
+    "es": "Entregas máx.",
+    "ru": "Макс. выдано"
+  },
+  "conveyorForceBoosted": {
+    "zh": "强制能量豆强化",
+    "en": "Force boosted",
+    "es": "Forzar potenciado",
+    "ru": "Принудительно усилено"
+  },
+  "conveyorTabPlants": {
+    "zh": "植物池",
+    "en": "Plants",
+    "es": "Plantas",
+    "ru": "Растения"
+  },
+  "conveyorTabRules": {
+    "zh": "掉卡规则",
+    "en": "Drop rules",
+    "es": "Reglas",
+    "ru": "Правила"
+  },
+  "conveyorTabWaves": {
+    "zh": "波次修改",
+    "en": "Wave changes",
+    "es": "Oleadas",
+    "ru": "Волны"
+  },
+  "conveyorSummaryPlants": {
+    "zh": "植物",
+    "en": "plants",
+    "es": "plantas",
+    "ru": "раст."
+  },
+  "conveyorSummaryRules": {
+    "zh": "规则",
+    "en": "rules",
+    "es": "reglas",
+    "ru": "прав."
+  },
+  "conveyorSummaryWaveMods": {
+    "zh": "波次",
+    "en": "waves",
+    "es": "oleadas",
+    "ru": "волн"
+  },
+  "conveyorRuleDrop": {
+    "zh": "掉落延迟",
+    "en": "Drop delay",
+    "es": "Demora",
+    "ru": "Задержка"
+  },
+  "conveyorRuleSpeed": {
+    "zh": "传送速度",
+    "en": "Conveyor speed",
+    "es": "Velocidad",
+    "ru": "Скорость"
+  },
+  "conveyorWaveNumber": {
+    "zh": "第 {wave} 波",
+    "en": "Wave {wave}",
+    "es": "Oleada {wave}",
+    "ru": "Волна {wave}"
+  },
+  "conveyorNoExtraParams": {
+    "zh": "默认参数",
+    "en": "Default params",
+    "es": "Parámetros pred.",
+    "ru": "По умолчанию"
+  },
+  "conveyorBaseParams": {
+    "zh": "基础",
+    "en": "Basics",
+    "es": "Básico",
+    "ru": "Основное"
+  },
+  "conveyorCountLimits": {
+    "zh": "数量限制",
+    "en": "Count limits",
+    "es": "Límites",
+    "ru": "Ограничения"
+  },
+  "conveyorWeightFactors": {
+    "zh": "权重系数",
+    "en": "Weight factors",
+    "es": "Factores",
+    "ru": "Множители"
+  },
+  "conveyorCooldowns": {
+    "zh": "冷却",
+    "en": "Cooldowns",
+    "es": "Recargas",
+    "ru": "Перезарядки"
+  },
+  "conveyorEditPlantTitle": {
+    "zh": "{plant} - 传送带参数",
+    "en": "{plant} - conveyor params",
+    "es": "{plant} - parámetros",
+    "ru": "{plant} - параметры"
+  },
+  "conveyorEditWaveTitle": {
+    "zh": "第 {wave} 波 - {plant}",
+    "en": "Wave {wave} - {plant}",
+    "es": "Oleada {wave} - {plant}",
+    "ru": "Волна {wave} - {plant}"
+  },
+  "conveyorEditDropTitle": {
+    "zh": "编辑掉落延迟",
+    "en": "Edit drop delay",
+    "es": "Editar demora",
+    "ru": "Правка задержки"
+  },
+  "conveyorEditSpeedTitle": {
+    "zh": "编辑传送速度",
+    "en": "Edit conveyor speed",
+    "es": "Editar velocidad",
+    "ru": "Правка скорости"
+  },
+  "conveyorEditPlantAria": {
+    "zh": "编辑 {plant} 的传送带参数",
+    "en": "Edit conveyor parameters for {plant}",
+    "es": "Editar parámetros de {plant}",
+    "ru": "Изменить параметры {plant}"
+  },
+  "conveyorEditWaveAria": {
+    "zh": "编辑第 {wave} 波 {plant} 的传送带修改",
+    "en": "Edit conveyor wave {wave} change for {plant}",
+    "es": "Editar cambio de oleada {wave} para {plant}",
+    "ru": "Изменить волну {wave} для {plant}"
+  },
+  "conveyorRemoveModeHint": {
+    "zh": "移除动作只需要波次和植物；加入专用的权重、数量和冷却参数不会导出。",
+    "en": "Remove actions only need wave and plant. Add-only weight, count, and cooldown params are not exported.",
+    "es": "Quitar solo usa oleada y planta; peso, límites y recarga no se exportan.",
+    "ru": "Для удаления нужны только волна и растение; вес, лимиты и КД не экспортируются."
   },
   "unsupported": {
     "zh": "导入保留对象",

@@ -92,12 +92,24 @@
         </div>
         <pre class="json-preview">{{ previewJson }}</pre>
       </a-modal>
+
+      <a-drawer
+        :open="conveyorEditorOpen"
+        :title="conveyorEditorTitle"
+        placement="right"
+        width="min(720px, 96vw)"
+        root-class-name="level-editor-drawer-root"
+        :body-style="{ padding: 0 }"
+        @close="closeConveyorEditor"
+      >
+        <ConveyorEditorPanel />
+      </a-drawer>
     </section>
   </a-config-provider>
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, h, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, defineComponent, h, inject, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import JSON5 from 'json5';
 import { message, theme as antdTheme } from 'ant-design-vue';
 import {
@@ -105,6 +117,7 @@ import {
   CopyOutlined,
   DeleteOutlined,
   DownloadOutlined,
+  EditOutlined,
   EyeOutlined,
   FileAddOutlined,
   PlusOutlined,
@@ -123,6 +136,13 @@ type ObjectExportClass = 'InitialGridItemProperties' | 'GravestoneProperties';
 type BoardLayer = 'tile' | 'obstacle' | 'plant' | 'zombie';
 type SeedMode = 'chooser' | 'preset';
 type PlantListKey = 'seedPlants' | 'includePlants' | 'excludePlants';
+type ConveyorWaveMode = 'Add' | 'Remove';
+type ConveyorAdvancedTab = 'plants' | 'rules' | 'waves';
+type ConveyorEditorTarget =
+  | { kind: 'initialPlant'; index: number }
+  | { kind: 'dropCondition'; index: number }
+  | { kind: 'speedCondition'; index: number }
+  | { kind: 'waveModification'; index: number };
 
 const MAX_SEED_PLANTS = 8;
 const STAGE_DEFAULT_MOWER = '__stageDefault';
@@ -206,6 +226,72 @@ interface WaveDraft {
   rawActions: WaveActionDraft[];
 }
 
+interface ConveyorPlantEntry {
+  PlantType: string;
+  Weight?: number;
+  MaxCount?: number;
+  MaxWeightFactor?: number;
+  MinCount?: number;
+  MinWeightFactor?: number;
+  CooldownSeconds?: number;
+  MaxCountCooldownSeconds?: number;
+  MinCountCooldownSeconds?: number;
+  MaxDelivered?: number;
+  ForceBoosted?: boolean;
+  [key: string]: any;
+}
+
+interface ConveyorDropDelayCondition {
+  MaxPackets: number;
+  Delay: number;
+  [key: string]: any;
+}
+
+interface ConveyorSpeedCondition {
+  MaxPackets: number;
+  Speed: number;
+  [key: string]: any;
+}
+
+interface ConveyorWaveModification {
+  waveIndex: number;
+  mode: ConveyorWaveMode;
+  PlantType: string;
+  alias?: string;
+  Weight?: number;
+  MaxCount?: number;
+  MaxWeightFactor?: number;
+  MinCount?: number;
+  MinWeightFactor?: number;
+  CooldownSeconds?: number;
+  MaxCountCooldownSeconds?: number;
+  MinCountCooldownSeconds?: number;
+  MaxDelivered?: number;
+  ForceBoosted?: boolean;
+  [key: string]: any;
+}
+
+interface PreservedConveyorWaveAction {
+  alias: string;
+  waveIndex: number;
+  objclass: string;
+  objdata: Record<string, any>;
+}
+
+interface ConveyorDraft {
+  enabled: boolean;
+  alias: string;
+  preserveOriginal: boolean;
+  dirty: boolean;
+  originalObject?: any;
+  originalActionObjects: PreservedConveyorWaveAction[];
+  initialPlants: ConveyorPlantEntry[];
+  dropDelayConditions: ConveyorDropDelayCondition[];
+  speedConditions: ConveyorSpeedCondition[];
+  waveModifications: ConveyorWaveModification[];
+  extra: Record<string, any>;
+}
+
 interface LevelDraft {
   name: string;
   author: string;
@@ -223,6 +309,7 @@ interface LevelDraft {
   unlockAll: boolean;
   hasSeedBank: boolean;
   seedBankExtra: Record<string, any>;
+  conveyor: ConveyorDraft;
   boardItems: BoardItem[];
   waves: WaveDraft[];
   flagWaveInterval: number;
@@ -401,6 +488,11 @@ const canAddSelectedSeedPlant = computed(
 const canAddSelectedZombie = computed(() => !!selectedZombieAsset.value && !!selectedWave.value);
 const seedActionHint = ref('');
 const zombieActionHint = ref('');
+const conveyorActionHint = ref('');
+const conveyorAdvancedTab = ref<ConveyorAdvancedTab>('plants');
+const conveyorEditorOpen = ref(false);
+const conveyorEditorTarget = ref<ConveyorEditorTarget | null>(null);
+const conveyorEditorReturnFocus = ref<HTMLElement | null>(null);
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
@@ -415,7 +507,9 @@ const validationItems = computed<ValidationItem[]>(() => {
     items.push({ type: 'error', text: language.value === 'zh' ? '至少需要 1 个波次。' : 'At least one wave is required.' });
   }
   draft.value.waves.forEach((wave, index) => {
-    if (!wave.zombies.length && !wave.rawActions.length) {
+    const hasConveyorWaveMod =
+      draft.value.conveyor.enabled && draft.value.conveyor.waveModifications.some((modification) => modification.waveIndex === index + 1);
+    if (!wave.zombies.length && !wave.rawActions.length && !hasConveyorWaveMod) {
       items.push({
         type: 'warning',
         text: language.value === 'zh' ? `第 ${index + 1} 波没有僵尸。` : `Wave ${index + 1} has no zombies.`
@@ -444,10 +538,29 @@ const validationItems = computed<ValidationItem[]>(() => {
       }
     });
   });
-  if (draft.value.seedMode === 'preset' && !draft.value.seedPlants.length) {
+  if (!draft.value.conveyor.enabled && draft.value.seedMode === 'preset' && !draft.value.seedPlants.length) {
     items.push({
       type: 'warning',
       text: language.value === 'zh' ? '固定卡组模式下还没有选择植物。' : 'Preset seed bank has no plants.'
+    });
+  }
+  if (draft.value.conveyor.enabled) {
+    if (!draft.value.conveyor.initialPlants.length && !draft.value.conveyor.waveModifications.length) {
+      items.push({
+        type: 'warning',
+        text: language.value === 'zh' ? '传送带已启用，但没有初始植物或波次修改。' : 'Conveyor is enabled but has no plants.'
+      });
+    }
+    draft.value.conveyor.waveModifications.forEach((modification) => {
+      if (modification.waveIndex < 1 || modification.waveIndex > draft.value.waves.length) {
+        items.push({
+          type: 'error',
+          text:
+            language.value === 'zh'
+              ? `传送带波次修改指向不存在的第 ${modification.waveIndex} 波。`
+              : `Conveyor modification points to missing wave ${modification.waveIndex}.`
+        });
+      }
     });
   }
   if (draft.value.unsupportedObjects > 0) {
@@ -562,6 +675,21 @@ function createRawWaveAction(alias: string, objclass: string, objdata: Record<st
   };
 }
 
+function createDefaultConveyorDraft(): ConveyorDraft {
+  return {
+    enabled: false,
+    alias: 'ConveyorBelt',
+    preserveOriginal: false,
+    dirty: false,
+    originalActionObjects: [],
+    initialPlants: [],
+    dropDelayConditions: [{ MaxPackets: 0, Delay: 5 }],
+    speedConditions: [{ MaxPackets: 0, Speed: 100 }],
+    waveModifications: [],
+    extra: {}
+  };
+}
+
 function createDefaultDraft(): LevelDraft {
   return {
     name: 'custom_level_1',
@@ -580,6 +708,7 @@ function createDefaultDraft(): LevelDraft {
     unlockAll: false,
     hasSeedBank: true,
     seedBankExtra: {},
+    conveyor: createDefaultConveyorDraft(),
     boardItems: [],
     waves: [
       {
@@ -620,6 +749,7 @@ function createDefaultDraft(): LevelDraft {
 }
 
 function resetDraft() {
+  closeConveyorEditor();
   draft.value = createDefaultDraft();
   selectedWaveId.value = 1;
   selectedCell.value = null;
@@ -638,7 +768,10 @@ function chooseAsset(asset: AssetOption) {
   selectedAsset.value = asset;
   assetTab.value = asset.kind;
   if (asset.kind === 'object') objectCategory.value = asset.category || 'all';
-  if (asset.kind === 'plant') seedActionHint.value = '';
+  if (asset.kind === 'plant') {
+    seedActionHint.value = '';
+    conveyorActionHint.value = '';
+  }
   if (asset.kind === 'zombie') zombieActionHint.value = '';
 }
 
@@ -788,11 +921,186 @@ function removePlantFromList(listKey: PlantListKey, code: string) {
   draft.value[listKey] = draft.value[listKey].filter((item) => item !== code);
 }
 
+function markConveyorEdited() {
+  draft.value.conveyor.enabled = true;
+  draft.value.conveyor.preserveOriginal = false;
+  draft.value.conveyor.dirty = true;
+}
+
+function setConveyorEnabled(checked: boolean) {
+  draft.value.conveyor.enabled = checked;
+  draft.value.conveyor.dirty = true;
+  draft.value.hasSeedBank = !checked;
+  if (checked) {
+    if (!draft.value.conveyor.alias.trim()) draft.value.conveyor.alias = 'ConveyorBelt';
+    if (!draft.value.conveyor.speedConditions.length) draft.value.conveyor.speedConditions.push({ MaxPackets: 0, Speed: 100 });
+  }
+}
+
+function setSeedSupplyMode(mode: 'seedBank' | 'conveyor') {
+  if (mode === 'conveyor') {
+    setConveyorEnabled(true);
+    return;
+  }
+  setConveyorEnabled(false);
+  draft.value.hasSeedBank = true;
+}
+
+function setOptionalNumber(target: Record<string, any>, key: string, value: string, min = Number.NEGATIVE_INFINITY) {
+  if (!value.trim()) {
+    delete target[key];
+    return;
+  }
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) {
+    delete target[key];
+    return;
+  }
+  target[key] = Math.max(min, numericValue);
+}
+
+function setRequiredNumber(target: Record<string, any>, key: string, value: string, fallback: number, min = Number.NEGATIVE_INFINITY) {
+  const numericValue = value.trim() ? Number(value) : fallback;
+  target[key] = Math.max(min, Number.isFinite(numericValue) ? numericValue : fallback);
+}
+
+function addSelectedConveyorPlant() {
+  if (!selectedPlantAsset.value) {
+    conveyorActionHint.value = 'selectPlantFirst';
+    return;
+  }
+  conveyorActionHint.value = '';
+  markConveyorEdited();
+  draft.value.conveyor.initialPlants.push({
+    PlantType: selectedPlantAsset.value.code,
+    Weight: 15
+  });
+}
+
+function removeConveyorPlant(index: number) {
+  markConveyorEdited();
+  draft.value.conveyor.initialPlants.splice(index, 1);
+  normalizeConveyorEditorAfterRemoval('initialPlant', index);
+}
+
+function addConveyorCondition(kind: 'drop' | 'speed') {
+  markConveyorEdited();
+  if (kind === 'drop') {
+    draft.value.conveyor.dropDelayConditions.push({ MaxPackets: 5, Delay: 3 });
+    return;
+  }
+  draft.value.conveyor.speedConditions.push({ MaxPackets: 5, Speed: 100 });
+}
+
+function removeConveyorCondition(kind: 'drop' | 'speed', index: number) {
+  markConveyorEdited();
+  if (kind === 'drop') draft.value.conveyor.dropDelayConditions.splice(index, 1);
+  else draft.value.conveyor.speedConditions.splice(index, 1);
+  normalizeConveyorEditorAfterRemoval(kind === 'drop' ? 'dropCondition' : 'speedCondition', index);
+}
+
+function addConveyorWaveModification(mode: ConveyorWaveMode) {
+  if (!selectedPlantAsset.value) {
+    conveyorActionHint.value = 'selectPlantFirst';
+    return;
+  }
+  conveyorActionHint.value = '';
+  markConveyorEdited();
+  const waveIndex = Math.max(1, draft.value.waves.findIndex((wave) => wave.id === selectedWaveId.value) + 1 || 1);
+  draft.value.conveyor.waveModifications.push({
+    waveIndex,
+    mode,
+    PlantType: selectedPlantAsset.value.code,
+    ...(mode === 'Add' ? { Weight: 40 } : {})
+  });
+}
+
+function setConveyorWaveMode(entry: ConveyorWaveModification, mode: ConveyorWaveMode) {
+  markConveyorEdited();
+  entry.mode = mode;
+  if (entry.mode === 'Remove') {
+    delete entry.Weight;
+    delete entry.MaxCount;
+    delete entry.MaxWeightFactor;
+    delete entry.MinCount;
+    delete entry.MinWeightFactor;
+    delete entry.CooldownSeconds;
+    delete entry.MaxCountCooldownSeconds;
+    delete entry.MinCountCooldownSeconds;
+    delete entry.MaxDelivered;
+    delete entry.ForceBoosted;
+  } else if (entry.Weight === undefined) {
+    entry.Weight = 40;
+  }
+}
+
+function removeConveyorWaveModification(index: number) {
+  markConveyorEdited();
+  draft.value.conveyor.waveModifications.splice(index, 1);
+  normalizeConveyorEditorAfterRemoval('waveModification', index);
+}
+
+function openConveyorEditor(target: ConveyorEditorTarget, event?: MouseEvent) {
+  conveyorEditorTarget.value = target;
+  conveyorEditorOpen.value = true;
+  conveyorEditorReturnFocus.value = event?.currentTarget instanceof HTMLElement ? event.currentTarget : null;
+}
+
+function closeConveyorEditor() {
+  conveyorEditorOpen.value = false;
+  conveyorEditorTarget.value = null;
+  const returnFocus = conveyorEditorReturnFocus.value;
+  conveyorEditorReturnFocus.value = null;
+  if (returnFocus) nextTick(() => returnFocus.focus());
+}
+
+function normalizeConveyorEditorAfterRemoval(kind: ConveyorEditorTarget['kind'], removedIndex: number) {
+  const target = conveyorEditorTarget.value;
+  if (!target || target.kind !== kind) return;
+  if (target.index === removedIndex) {
+    closeConveyorEditor();
+    return;
+  }
+  if (target.index > removedIndex) target.index -= 1;
+}
+
+function getConveyorEditorEntry(target = conveyorEditorTarget.value) {
+  if (!target) return null;
+  if (target.kind === 'initialPlant') return draft.value.conveyor.initialPlants[target.index] || null;
+  if (target.kind === 'dropCondition') return draft.value.conveyor.dropDelayConditions[target.index] || null;
+  if (target.kind === 'speedCondition') return draft.value.conveyor.speedConditions[target.index] || null;
+  return draft.value.conveyor.waveModifications[target.index] || null;
+}
+
+function getPlantOption(code: string) {
+  return plantOptions.value.find((plant) => plant.code === code);
+}
+
+function getPlantDisplayImage(code: string) {
+  return getPlantOption(code)?.image || '';
+}
+
+const conveyorEditorTitle = computed(() => {
+  const target = conveyorEditorTarget.value;
+  const entry = getConveyorEditorEntry(target);
+  if (!target || !entry) return t('advancedConveyor');
+  if (target.kind === 'initialPlant') return t('conveyorEditPlantTitle', { plant: getPlantDisplayName((entry as ConveyorPlantEntry).PlantType) });
+  if (target.kind === 'waveModification') {
+    const modification = entry as ConveyorWaveModification;
+    return t('conveyorEditWaveTitle', { wave: modification.waveIndex, plant: getPlantDisplayName(modification.PlantType) });
+  }
+  return target.kind === 'dropCondition' ? t('conveyorEditDropTitle') : t('conveyorEditSpeedTitle');
+});
+
 function markWaveSystemEdited() {
   draft.value.hasWaveManager = true;
   draft.value.preserveGeneratorWaves = false;
   draft.value.preserveCustomWaveManager = false;
   draft.value.waveSystemDirty = true;
+  if (draft.value.conveyor.enabled && draft.value.conveyor.originalActionObjects.length) {
+    draft.value.conveyor.preserveOriginal = false;
+    draft.value.conveyor.dirty = true;
+  }
 }
 
 function addWave() {
@@ -937,6 +1245,64 @@ function parseWaveZombieGroups(zombieEntries: any[]) {
   return groups;
 }
 
+function parseConveyorPlantEntry(entry: any): ConveyorPlantEntry {
+  const { PlantType, Type, ToolType, ...extra } = entry || {};
+  return {
+    ...cloneJson(extra),
+    PlantType: parsePlantReference(PlantType || Type || ToolType)
+  };
+}
+
+function parseConveyorWaveModifications(objdata: Record<string, any>, waveIndex: number, alias: string) {
+  const modifications: ConveyorWaveModification[] = [];
+  (Array.isArray(objdata.Add) ? objdata.Add : []).forEach((entry: any) => {
+    const { Type, ToolType, PlantType, ...extra } = entry || {};
+    modifications.push({
+      ...cloneJson(extra),
+      alias,
+      waveIndex,
+      mode: 'Add',
+      PlantType: parsePlantReference(Type || ToolType || PlantType)
+    });
+  });
+  (Array.isArray(objdata.Remove) ? objdata.Remove : []).forEach((entry: any) => {
+    const { Type, ToolType, PlantType, ...extra } = entry || {};
+    modifications.push({
+      ...cloneJson(extra),
+      alias,
+      waveIndex,
+      mode: 'Remove',
+      PlantType: parsePlantReference(Type || ToolType || PlantType)
+    });
+  });
+  return modifications;
+}
+
+function parseConveyorDraft(
+  conveyorObject: any,
+  conveyorAlias: string,
+  originalActionObjects: PreservedConveyorWaveAction[],
+  waveModifications: ConveyorWaveModification[]
+): ConveyorDraft {
+  if (!conveyorObject) return createDefaultConveyorDraft();
+  const objdata = conveyorObject.objdata || {};
+  return {
+    enabled: true,
+    alias: conveyorAlias || 'ConveyorBelt',
+    preserveOriginal: true,
+    dirty: false,
+    originalObject: cloneJson(conveyorObject),
+    originalActionObjects,
+    initialPlants: Array.isArray(objdata.InitialPlantList) ? objdata.InitialPlantList.map(parseConveyorPlantEntry) : [],
+    dropDelayConditions: Array.isArray(objdata.DropDelayConditions)
+      ? objdata.DropDelayConditions.map((entry: any) => cloneJson(entry))
+      : [],
+    speedConditions: Array.isArray(objdata.SpeedConditions) ? objdata.SpeedConditions.map((entry: any) => cloneJson(entry)) : [],
+    waveModifications,
+    extra: omitKeys(objdata, ['InitialPlantList', 'DropDelayConditions', 'SpeedConditions'])
+  };
+}
+
 function removeZombieFromWave(id: number) {
   if (!selectedWave.value) return;
   markWaveSystemEdited();
@@ -1038,6 +1404,7 @@ function parseLevel(raw: any): LevelDraft {
   const objects = Array.isArray(raw?.objects) ? raw.objects : [];
   const level = objects.find((object: any) => object?.objclass === 'LevelDefinition')?.objdata || {};
   const seedObject = objects.find((object: any) => object?.objclass === 'SeedBankProperties');
+  const conveyorObject = objects.find((object: any) => object?.objclass === 'ConveyorSeedBankProperties');
   const seed = seedObject?.objdata || {};
   const waveManagerModule = objects.find((object: any) => object?.objclass === 'WaveManagerModuleProperties');
   const waveManagerObject = objects.find((object: any) => object?.objclass === 'WaveManagerProperties');
@@ -1055,8 +1422,16 @@ function parseLevel(raw: any): LevelDraft {
   objects.forEach((object: any) => {
     (object?.aliases || []).forEach((alias: string) => aliasMap.set(alias, object));
   });
+  const conveyorAliases = Array.isArray(conveyorObject?.aliases) ? conveyorObject.aliases.map(String) : [];
+  const conveyorAlias =
+    conveyorAliases.find((alias) => levelModules.includes(`RTID(${alias}@CurrentLevel)`)) ||
+    conveyorAliases[0] ||
+    levelModules.map(parseCurrentLevelAlias).find((alias) => /^Conveyor(Belt)?$/i.test(alias)) ||
+    'ConveyorBelt';
 
   const waveActionAliases = new Set<string>();
+  const conveyorActionObjects: PreservedConveyorWaveAction[] = [];
+  const conveyorWaveModifications: ConveyorWaveModification[] = [];
   const waves: WaveDraft[] = (Array.isArray(waveProps.Waves) ? waveProps.Waves : []).map((entryRefs: unknown, index: number) => {
     const wave = createEmptyWave(index + 1, index + 1);
     wave.flag = (index + 1) % Number(waveProps.FlagWaveInterval || 10) === 0;
@@ -1074,6 +1449,15 @@ function parseLevel(raw: any): LevelDraft {
         wave.spawnStyle = String(objdata.Style || '');
         wave.mustKillAllToNextWave = objdata.MustKillAllToNextWave === true;
         wave.zombies = parseWaveZombieGroups(Array.isArray(objdata.Zombies) ? objdata.Zombies : []);
+      } else if (waveObject.objclass === 'ModifyConveyorWaveActionProps') {
+        const objdata = cloneJson(waveObject.objdata || {});
+        conveyorActionObjects.push({
+          alias,
+          waveIndex: index + 1,
+          objclass: 'ModifyConveyorWaveActionProps',
+          objdata
+        });
+        conveyorWaveModifications.push(...parseConveyorWaveModifications(objdata, index + 1, alias));
       } else {
         wave.rawActions.push(createRawWaveAction(alias, String(waveObject.objclass || 'WaveActionProps'), waveObject.objdata || {}));
       }
@@ -1186,6 +1570,7 @@ function parseLevel(raw: any): LevelDraft {
   const supportedClasses = new Set([
     'LevelDefinition',
     'SeedBankProperties',
+    'ConveyorSeedBankProperties',
     'WaveManagerModuleProperties',
     'WaveManagerProperties',
     'SpawnZombiesJitteredWaveActionProps',
@@ -1220,6 +1605,7 @@ function parseLevel(raw: any): LevelDraft {
     unlockAll: seed.UnlockAll === true,
     hasSeedBank: !!seedObject,
     seedBankExtra: omitKeys(seed, ['SelectionMethod', 'UnlockAll', 'OverrideSeedSlotsCount', 'PresetPlantList', 'PlantIncludeList', 'PlantExcludeList']),
+    conveyor: parseConveyorDraft(conveyorObject, conveyorAlias, conveyorActionObjects, conveyorWaveModifications),
     boardItems,
     waves: waves.length ? waves : [],
     flagWaveInterval: Math.max(1, Number(waveProps.FlagWaveInterval || 5)),
@@ -1268,6 +1654,15 @@ function parseTypeAlias(value: string) {
   return /^RTID\((.+)@(?:ZombieTypes|PlantTypes)\)$/.exec(value || '')?.[1] || '';
 }
 
+function parsePlantReference(value: unknown) {
+  const text = String(value || '');
+  return parseTypeAlias(text) || text;
+}
+
+function toPlantTypeRef(code: string) {
+  return `RTID(${code}@PlantTypes)`;
+}
+
 function getPlacementExtra(entry: any) {
   const { GridX, GridY, TypeName, ...extra } = entry || {};
   return Object.keys(extra).length ? extra : undefined;
@@ -1295,6 +1690,48 @@ function serializeWaveZombies(wave: WaveDraft) {
         Type: `RTID(${zombie.code}@ZombieTypes)`
       };
     });
+  });
+}
+
+function compactUndefinedValues(source: Record<string, any>) {
+  return Object.fromEntries(Object.entries(source).filter(([, value]) => value !== undefined));
+}
+
+function serializeConveyorPlantEntry(entry: ConveyorPlantEntry) {
+  const { PlantType, ...extra } = entry;
+  return compactUndefinedValues({
+    ...cloneJson(extra),
+    PlantType: PlantType || 'peashooter'
+  });
+}
+
+function serializeConveyorWaveEntry(entry: ConveyorWaveModification) {
+  const { waveIndex, mode, alias, PlantType, ...extra } = entry;
+  return compactUndefinedValues({
+    ...cloneJson(extra),
+    Type: toPlantTypeRef(PlantType || 'peashooter')
+  });
+}
+
+function buildConveyorWaveObjdata(modifications: ConveyorWaveModification[]) {
+  const add = modifications.filter((item) => item.mode === 'Add').map(serializeConveyorWaveEntry);
+  const remove = modifications.filter((item) => item.mode === 'Remove').map(serializeConveyorWaveEntry);
+  return {
+    ...(add.length ? { Add: add } : {}),
+    ...(remove.length ? { Remove: remove } : {})
+  };
+}
+
+function serializeConveyorData() {
+  return compactUndefinedValues({
+    ...draft.value.conveyor.extra,
+    ...(draft.value.conveyor.dropDelayConditions.length
+      ? { DropDelayConditions: draft.value.conveyor.dropDelayConditions.map((entry) => compactUndefinedValues(cloneJson(entry))) }
+      : {}),
+    InitialPlantList: draft.value.conveyor.initialPlants.map(serializeConveyorPlantEntry),
+    ...(draft.value.conveyor.speedConditions.length
+      ? { SpeedConditions: draft.value.conveyor.speedConditions.map((entry) => compactUndefinedValues(cloneJson(entry))) }
+      : {})
   });
 }
 
@@ -1326,7 +1763,9 @@ function buildModuleRefs(
   mowerModule: string,
   sunDropperModule: string,
   shouldReferenceWaveManager: boolean,
-  generatedBoardRefs: string[]
+  generatedBoardRefs: string[],
+  shouldEmitSeedBank: boolean,
+  shouldEmitConveyor: boolean
 ) {
   const mowerRefs = new Set(
     mowerOptions
@@ -1340,6 +1779,16 @@ function buildModuleRefs(
   refs = replaceModuleGroup(refs, sunDropperRefs, sunDropperModule !== NO_MODULE ? `RTID(${sunDropperModule}@LevelModules)` : null);
   refs = replaceModuleGroup(refs, mowerRefs, mowerModule !== NO_MODULE ? `RTID(${mowerModule}@LevelModules)` : null);
   refs = setModuleRef(refs, NEW_WAVES_REF, shouldReferenceWaveManager);
+  refs = setModuleRef(refs, 'RTID(SeedBank@CurrentLevel)', shouldEmitSeedBank && !shouldEmitConveyor);
+  refs = replaceModuleGroup(
+    refs,
+    new Set([
+      'RTID(Conveyor@CurrentLevel)',
+      'RTID(ConveyorBelt@CurrentLevel)',
+      `RTID(${draft.value.conveyor.alias || 'ConveyorBelt'}@CurrentLevel)`
+    ]),
+    shouldEmitConveyor ? `RTID(${draft.value.conveyor.alias || 'ConveyorBelt'}@CurrentLevel)` : null
+  );
 
   if (!draft.value.preserveBoardModules) {
     const boardRefs = new Set([
@@ -1365,21 +1814,27 @@ function serializeLevel() {
   const preserveGeneratorWaveSystem = draft.value.preserveGeneratorWaves && !draft.value.waves.length && draft.value.preservedWaveManagerModule;
   const preserveCustomWaveManager =
     draft.value.preserveCustomWaveManager && !draft.value.waves.length && draft.value.preservedWaveManagerObject && !draft.value.waveSystemDirty;
+  const shouldEmitConveyor = draft.value.conveyor.enabled;
+  const shouldPreserveConveyor = shouldEmitConveyor && draft.value.conveyor.preserveOriginal && !draft.value.conveyor.dirty && draft.value.conveyor.originalObject;
   const shouldEmitWaveManager =
     !!preserveGeneratorWaveSystem || !!preserveCustomWaveManager || draft.value.hasWaveManager || draft.value.waves.length > 0;
   const shouldReferenceWaveManager = draft.value.moduleRefs.includes(NEW_WAVES_REF) || (draft.value.waveSystemDirty && draft.value.waves.length > 0);
   const shouldEmitSeedBank =
-    draft.value.hasSeedBank ||
-    draft.value.moduleRefs.includes('RTID(SeedBank@CurrentLevel)') ||
-    normalizedSeedPlants.length > 0 ||
-    draft.value.includePlants.length > 0 ||
-    draft.value.excludePlants.length > 0 ||
-    draft.value.unlockAll ||
-    draft.value.seedMode === 'preset' ||
-    seedSlots !== MAX_SEED_PLANTS ||
-    Object.keys(draft.value.seedBankExtra || {}).length > 0;
+    !shouldEmitConveyor &&
+    (draft.value.hasSeedBank ||
+      draft.value.moduleRefs.includes('RTID(SeedBank@CurrentLevel)') ||
+      normalizedSeedPlants.length > 0 ||
+      draft.value.includePlants.length > 0 ||
+      draft.value.excludePlants.length > 0 ||
+      draft.value.unlockAll ||
+      draft.value.seedMode === 'preset' ||
+      seedSlots !== MAX_SEED_PLANTS ||
+      Object.keys(draft.value.seedBankExtra || {}).length > 0);
   const usedActionAliases = new Set<string>([
     'SeedBank',
+    'Conveyor',
+    'ConveyorBelt',
+    draft.value.conveyor.alias || 'ConveyorBelt',
     'NewWaves',
     'WaveManagerProps',
     'InitialGridItems',
@@ -1403,6 +1858,7 @@ function serializeLevel() {
   };
   const waveObjects: any[] = [];
   const emittedRawActionAliases = new Map<string, string>();
+  const emittedConveyorActionAliases = new Set<string>();
   const waveRefs = draft.value.waves.map((wave, index) => {
     const refs: string[] = [];
     if (wave.zombies.length || wave.zombieActionAlias) {
@@ -1439,6 +1895,33 @@ function serializeLevel() {
       refs.push(`RTID(${alias}@CurrentLevel)`);
       if (rawActionKey) emittedRawActionAliases.set(rawActionKey, alias);
     });
+    if (shouldPreserveConveyor) {
+      draft.value.conveyor.originalActionObjects
+        .filter((action) => action.waveIndex === index + 1)
+        .forEach((action) => {
+          if (!emittedConveyorActionAliases.has(action.alias)) {
+            emittedConveyorActionAliases.add(action.alias);
+            usedActionAliases.add(action.alias);
+            waveObjects.push({
+              aliases: [action.alias],
+              objclass: action.objclass,
+              objdata: cloneJson(action.objdata)
+            });
+          }
+          refs.push(`RTID(${action.alias}@CurrentLevel)`);
+        });
+    } else if (shouldEmitConveyor) {
+      const conveyorModifications = draft.value.conveyor.waveModifications.filter((modification) => modification.waveIndex === index + 1);
+      if (conveyorModifications.length) {
+        const alias = uniqueActionAlias(`Wave${index + 1}ModConveyor0`);
+        waveObjects.push({
+          aliases: [alias],
+          objclass: 'ModifyConveyorWaveActionProps',
+          objdata: buildConveyorWaveObjdata(conveyorModifications)
+        });
+        refs.push(`RTID(${alias}@CurrentLevel)`);
+      }
+    }
     return refs;
   });
 
@@ -1490,7 +1973,14 @@ function serializeLevel() {
         Description: draft.value.description,
         StartingSun: Number(draft.value.startingSun) || 0,
         StageModule: `RTID(${draft.value.stage}@LevelModules)`,
-        Modules: buildModuleRefs(mowerModule, sunDropperModule, shouldReferenceWaveManager, generatedBoardRefs),
+        Modules: buildModuleRefs(
+          mowerModule,
+          sunDropperModule,
+          shouldReferenceWaveManager,
+          generatedBoardRefs,
+          shouldEmitSeedBank,
+          shouldEmitConveyor
+        ),
         ...(draft.value.author.trim() ? { WritenBy: draft.value.author.trim() } : {})
       }
     }
@@ -1502,6 +1992,18 @@ function serializeLevel() {
       objclass: 'SeedBankProperties',
       objdata: seedBankData
     });
+  }
+
+  if (shouldEmitConveyor) {
+    objects.push(
+      shouldPreserveConveyor
+        ? cloneJson(draft.value.conveyor.originalObject)
+        : {
+            aliases: [draft.value.conveyor.alias || 'ConveyorBelt'],
+            objclass: 'ConveyorSeedBankProperties',
+            objdata: serializeConveyorData()
+          }
+    );
   }
 
   if (preserveGeneratorWaveSystem) {
@@ -1930,12 +2432,633 @@ function renderPlantPills(listKey: PlantListKey) {
           return h('span', { class: 'seed-pill' }, [
             plant?.image ? h('img', { src: plant.image, alt: plant.name, loading: 'lazy' }) : null,
             h('span', plant?.name || code),
-            h('button', { onClick: () => removePlantFromList(listKey, code) }, 'x')
+            h('button', { 'aria-label': t('remove'), onClick: () => removePlantFromList(listKey, code) }, 'x')
           ]);
         })
       : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
   );
 }
+
+function renderConveyorPlantPills() {
+  return h(
+    'div',
+    { class: 'seed-list' },
+    draft.value.conveyor.initialPlants.length
+      ? draft.value.conveyor.initialPlants.map((entry, index) => {
+          const plant = plantOptions.value.find((item) => item.code === entry.PlantType);
+          return h('span', { class: 'seed-pill' }, [
+            plant?.image ? h('img', { src: plant.image, alt: plant.name, loading: 'lazy' }) : null,
+            h('span', plant?.name || entry.PlantType),
+            h('button', { 'aria-label': t('remove'), onClick: () => removeConveyorPlant(index) }, 'x')
+          ]);
+        })
+      : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
+  );
+}
+
+function renderPlantSelect(value: string, onChange: (code: string) => void) {
+  const knownPlant = plantOptions.value.some((plant) => plant.code === value);
+  return h(
+    'select',
+    {
+      value,
+      onChange: (event: Event) => onChange((event.target as HTMLSelectElement).value)
+    },
+    [
+      !knownPlant && value ? h('option', { value }, value) : null,
+      ...plantOptions.value.map((plant) => h('option', { value: plant.code }, `${plant.name} (${plant.code})`))
+    ].filter(Boolean)
+  );
+}
+
+function renderConveyorNumberField(
+  labelKey: string,
+  value: number | undefined,
+  onInput: (value: string) => void,
+  min = 0,
+  step: string | number = 'any'
+) {
+  return h('div', { class: 'field-row compact' }, [
+    h('label', t(labelKey)),
+    h('input', {
+      type: 'number',
+      min,
+      step,
+      value: value ?? '',
+      onInput: (event: Event) => onInput((event.target as HTMLInputElement).value)
+    })
+  ]);
+}
+
+function renderConveyorChipList(chips: string[]) {
+  return chips.length
+    ? h('div', { class: 'conveyor-chip-list' }, chips.map((chip) => h('span', { class: 'conveyor-chip' }, chip)))
+    : h('small', { class: 'conveyor-muted' }, t('conveyorNoExtraParams'));
+}
+
+function getConveyorPlantSummaryChips(entry: ConveyorPlantEntry | ConveyorWaveModification) {
+  const chips: string[] = [];
+  if (entry.Weight !== undefined) chips.push(`${t('conveyorWeight')} ${entry.Weight}`);
+  if (entry.MinCount !== undefined) chips.push(`${t('conveyorMinCount')} ${entry.MinCount}`);
+  if (entry.MaxCount !== undefined) chips.push(`${t('conveyorMaxCount')} ${entry.MaxCount}`);
+  if (entry.MaxDelivered !== undefined) chips.push(`${t('conveyorMaxDelivered')} ${entry.MaxDelivered}`);
+  if (entry.MinWeightFactor !== undefined) chips.push(`${t('conveyorMinWeightFactor')} ${entry.MinWeightFactor}`);
+  if (entry.MaxWeightFactor !== undefined) chips.push(`${t('conveyorMaxWeightFactor')} ${entry.MaxWeightFactor}`);
+  if (entry.CooldownSeconds !== undefined) chips.push(`${t('conveyorCooldownSeconds')} ${entry.CooldownSeconds}`);
+  if (entry.MinCountCooldownSeconds !== undefined) chips.push(`${t('conveyorMinCountCooldownSeconds')} ${entry.MinCountCooldownSeconds}`);
+  if (entry.MaxCountCooldownSeconds !== undefined) chips.push(`${t('conveyorMaxCountCooldownSeconds')} ${entry.MaxCountCooldownSeconds}`);
+  if (entry.ForceBoosted === true) chips.push(t('conveyorForceBoosted'));
+  return chips;
+}
+
+function renderConveyorPlantIdentity(code: string) {
+  const image = getPlantDisplayImage(code);
+  return h('div', { class: 'conveyor-row-media' }, [
+    image ? h('img', { src: image, alt: getPlantDisplayName(code), loading: 'lazy' }) : h('span', { class: 'conveyor-plant-placeholder' }, code.slice(0, 2)),
+    h('span', { class: 'conveyor-row-copy' }, [h('strong', getPlantDisplayName(code)), h('small', code)])
+  ]);
+}
+
+function renderConveyorRowActions(editLabel: string, editTarget: ConveyorEditorTarget, removeLabel: string, onRemove: () => void) {
+  return h('div', { class: 'conveyor-row-actions' }, [
+    h(
+      'button',
+      {
+        class: 'text-button icon-button',
+        onClick: (event: MouseEvent) => openConveyorEditor(editTarget, event),
+        'aria-label': editLabel
+      },
+      h(EditOutlined)
+    ),
+    h('button', { class: 'text-button danger icon-button', onClick: onRemove, 'aria-label': removeLabel }, h(DeleteOutlined))
+  ]);
+}
+
+function renderConveyorPlantRows() {
+  if (!draft.value.conveyor.initialPlants.length) return h('small', { class: 'seed-mode-hint' }, t('emptyList'));
+  return h(
+    'div',
+    { class: 'conveyor-list compact' },
+    draft.value.conveyor.initialPlants.map((entry, index) =>
+      h('div', { class: 'conveyor-compact-row' }, [
+        h('div', { class: 'conveyor-row-main' }, [renderConveyorPlantIdentity(entry.PlantType), renderConveyorChipList(getConveyorPlantSummaryChips(entry))]),
+        renderConveyorRowActions(
+          t('conveyorEditPlantAria', { plant: getPlantDisplayName(entry.PlantType) }),
+          { kind: 'initialPlant', index },
+          t('remove'),
+          () => removeConveyorPlant(index)
+        )
+      ])
+    )
+  );
+}
+
+function renderConveyorConditions(kind: 'drop' | 'speed') {
+  const list = kind === 'drop' ? draft.value.conveyor.dropDelayConditions : draft.value.conveyor.speedConditions;
+  const valueKey = kind === 'drop' ? 'Delay' : 'Speed';
+  return h('div', { class: 'conveyor-subsection' }, [
+    h('div', { class: 'conveyor-subtitle' }, [
+      h('strong', t(kind === 'drop' ? 'conveyorDropDelayConditions' : 'conveyorSpeedConditions')),
+      h('button', { class: 'add-button small', onClick: () => addConveyorCondition(kind) }, [h(PlusOutlined), t('add')])
+    ]),
+    list.length
+      ? h(
+          'div',
+          { class: 'conveyor-list compact' },
+          list.map((entry, index) =>
+            h('div', { class: 'conveyor-compact-row' }, [
+              h('div', { class: 'conveyor-row-main' }, [
+                h('div', { class: 'conveyor-rule-title' }, [
+                  h('strong', t(kind === 'drop' ? 'conveyorRuleDrop' : 'conveyorRuleSpeed')),
+                  h('small', `${t('conveyorMaxPackets')} ${entry.MaxPackets}`)
+                ]),
+                renderConveyorChipList([`${t(kind === 'drop' ? 'conveyorDelay' : 'conveyorSpeed')} ${entry[valueKey]}`])
+              ]),
+              renderConveyorRowActions(
+                t(kind === 'drop' ? 'conveyorEditDropTitle' : 'conveyorEditSpeedTitle'),
+                { kind: kind === 'drop' ? 'dropCondition' : 'speedCondition', index },
+                t('remove'),
+                () => removeConveyorCondition(kind, index)
+              )
+            ])
+          )
+        )
+      : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
+  ]);
+}
+
+function renderConveyorWaveModifications() {
+  return h('div', { class: 'conveyor-subsection' }, [
+    h('div', { class: 'conveyor-subtitle' }, [
+      h('strong', t('conveyorWaveModifications')),
+      h('span', { class: 'conveyor-action-buttons' }, [
+        h(
+          'button',
+          {
+            class: ['add-button small', !selectedPlantAsset.value ? 'is-disabled' : ''],
+            'aria-disabled': !selectedPlantAsset.value ? 'true' : 'false',
+            onClick: () => addConveyorWaveModification('Add')
+          },
+          [h(PlusOutlined), t('conveyorAddPlant')]
+        ),
+        h(
+          'button',
+          {
+            class: ['add-button small', !selectedPlantAsset.value ? 'is-disabled' : ''],
+            'aria-disabled': !selectedPlantAsset.value ? 'true' : 'false',
+            onClick: () => addConveyorWaveModification('Remove')
+          },
+          [h(PlusOutlined), t('conveyorRemovePlant')]
+        )
+      ])
+    ]),
+    conveyorActionHint.value ? h('small', { class: 'action-hint' }, t(conveyorActionHint.value)) : null,
+    draft.value.conveyor.waveModifications.length
+      ? h(
+          'div',
+          { class: 'conveyor-list compact' },
+          draft.value.conveyor.waveModifications.map((entry, index) =>
+            h('div', { class: 'conveyor-compact-row' }, [
+              h('div', { class: 'conveyor-row-main' }, [
+                h('div', { class: 'conveyor-wave-heading' }, [
+                  h('span', { class: ['conveyor-mode-chip', entry.mode === 'Remove' ? 'remove' : 'add'] }, t(entry.mode === 'Add' ? 'conveyorAddPlant' : 'conveyorRemovePlant')),
+                  h('span', { class: 'conveyor-wave-index' }, t('conveyorWaveNumber', { wave: entry.waveIndex }))
+                ]),
+                renderConveyorPlantIdentity(entry.PlantType),
+                entry.mode === 'Add' ? renderConveyorChipList(getConveyorPlantSummaryChips(entry)) : null
+              ]),
+              renderConveyorRowActions(
+                t('conveyorEditWaveAria', { wave: entry.waveIndex, plant: getPlantDisplayName(entry.PlantType) }),
+                { kind: 'waveModification', index },
+                t('remove'),
+                () => removeConveyorWaveModification(index)
+              )
+            ])
+          )
+        )
+      : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
+  ]);
+}
+
+function renderConveyorSummary() {
+  const rulesCount = draft.value.conveyor.dropDelayConditions.length + draft.value.conveyor.speedConditions.length;
+  return h('div', { class: 'conveyor-summary-grid' }, [
+    h('div', { class: 'conveyor-summary-card' }, [h('strong', String(draft.value.conveyor.initialPlants.length)), h('span', t('conveyorSummaryPlants'))]),
+    h('div', { class: 'conveyor-summary-card' }, [h('strong', String(rulesCount)), h('span', t('conveyorSummaryRules'))]),
+    h('div', { class: 'conveyor-summary-card' }, [
+      h('strong', String(draft.value.conveyor.waveModifications.length)),
+      h('span', t('conveyorSummaryWaveMods'))
+    ])
+  ]);
+}
+
+function renderConveyorAdvancedTabs() {
+  const tabs: Array<{ key: ConveyorAdvancedTab; label: string }> = [
+    { key: 'plants', label: t('conveyorTabPlants') },
+    { key: 'rules', label: t('conveyorTabRules') },
+    { key: 'waves', label: t('conveyorTabWaves') }
+  ];
+  return h(
+    'div',
+    { class: 'segmented conveyor-tabs', role: 'tablist' },
+    tabs.map((tab) =>
+      h(
+        'button',
+        {
+          class: conveyorAdvancedTab.value === tab.key ? 'active' : '',
+          role: 'tab',
+          'aria-selected': conveyorAdvancedTab.value === tab.key ? 'true' : 'false',
+          onClick: () => (conveyorAdvancedTab.value = tab.key)
+        },
+        tab.label
+      )
+    )
+  );
+}
+
+function renderConveyorAdvancedTabPanel() {
+  if (conveyorAdvancedTab.value === 'rules') {
+    return h('div', { class: 'conveyor-tab-panel' }, [renderConveyorConditions('drop'), renderConveyorConditions('speed')]);
+  }
+  if (conveyorAdvancedTab.value === 'waves') return h('div', { class: 'conveyor-tab-panel' }, [renderConveyorWaveModifications()]);
+  return h('div', { class: 'conveyor-tab-panel' }, [
+    h('div', { class: 'conveyor-subsection' }, [
+      h('div', { class: 'conveyor-subtitle' }, [
+        h('strong', t('conveyorInitialPlants')),
+        h(
+          'button',
+          {
+            class: ['add-button small', !selectedPlantAsset.value ? 'is-disabled' : ''],
+            'aria-disabled': !selectedPlantAsset.value ? 'true' : 'false',
+            onClick: addSelectedConveyorPlant
+          },
+          [h(PlusOutlined), t('addSelectedPlant')]
+        )
+      ]),
+      renderConveyorPlantRows()
+    ])
+  ]);
+}
+
+function renderConveyorControls() {
+  const children = [
+    h('strong', `${t('conveyor')} ${draft.value.conveyor.initialPlants.length}`),
+    h('small', { class: 'seed-mode-hint' }, t('conveyorSimpleHint')),
+    renderConveyorPlantPills(),
+    h('div', { class: 'action-row' }, [
+      h(
+        'button',
+        {
+          class: ['add-button', !selectedPlantAsset.value ? 'is-disabled' : ''],
+          'aria-disabled': !selectedPlantAsset.value ? 'true' : 'false',
+          onClick: addSelectedConveyorPlant
+        },
+        [h(PlusOutlined), t('addSelectedPlant')]
+      ),
+      conveyorActionHint.value ? h('small', { class: 'action-hint' }, t(conveyorActionHint.value)) : null
+    ])
+  ];
+  if (!expertMode.value) return children;
+  const enabledChildren = [
+    h('small', { class: 'seed-mode-hint' }, t('conveyorSeedBankNotice')),
+    draft.value.conveyor.originalObject
+      ? h('div', { class: 'advanced-grid single' }, [
+          h('label', { class: 'check-row advanced-check' }, [
+            h('input', {
+              type: 'checkbox',
+              checked: draft.value.conveyor.preserveOriginal && !draft.value.conveyor.dirty,
+              onChange: (event: Event) => {
+                draft.value.conveyor.preserveOriginal = (event.target as HTMLInputElement).checked;
+                draft.value.conveyor.dirty = !(event.target as HTMLInputElement).checked;
+              }
+            }),
+            t('conveyorPreserveOriginal')
+          ])
+        ])
+      : null,
+    renderConveyorSummary(),
+    renderConveyorAdvancedTabs(),
+    renderConveyorAdvancedTabPanel()
+  ];
+  children.push(h('details', { class: 'advanced-details conveyor-details' }, [
+    h('summary', t('advancedConveyor')),
+    h('div', { class: 'conveyor-body' }, enabledChildren)
+  ]));
+  return children;
+}
+
+function renderSeedSupplyModeSelector() {
+  return h('div', { class: 'segmented stacked supply-mode-selector' }, [
+    h(
+      'button',
+      {
+        class: !draft.value.conveyor.enabled ? 'active' : '',
+        'aria-pressed': !draft.value.conveyor.enabled ? 'true' : 'false',
+        onClick: () => setSeedSupplyMode('seedBank')
+      },
+      t('seedBank')
+    ),
+    h(
+      'button',
+      {
+        class: draft.value.conveyor.enabled ? 'active' : '',
+        'aria-pressed': draft.value.conveyor.enabled ? 'true' : 'false',
+        onClick: () => setSeedSupplyMode('conveyor')
+      },
+      t('conveyor')
+    )
+  ]);
+}
+
+function renderSeedBankControls() {
+  return [
+    h('strong', `${t('seedBank')} ${draft.value.seedPlants.length}/${draft.value.seedSlots}`),
+    h('div', { class: 'segmented stacked' }, [
+      h(
+        'button',
+        {
+          class: draft.value.seedMode === 'chooser' ? 'active' : '',
+          'aria-pressed': draft.value.seedMode === 'chooser' ? 'true' : 'false',
+          onClick: () => (draft.value.seedMode = 'chooser')
+        },
+        t('seedChooser')
+      ),
+      h(
+        'button',
+        {
+          class: draft.value.seedMode === 'preset' ? 'active' : '',
+          'aria-pressed': draft.value.seedMode === 'preset' ? 'true' : 'false',
+          onClick: () => (draft.value.seedMode = 'preset')
+        },
+        t('seedPreset')
+      )
+    ]),
+    h('small', { class: 'seed-mode-hint' }, t(draft.value.seedMode === 'chooser' ? 'seedChooserHint' : 'seedPresetHint')),
+    renderPlantPills('seedPlants'),
+    h('div', { class: 'action-row' }, [
+      h(
+        'button',
+        {
+          class: ['add-button', !canAddSelectedSeedPlant.value ? 'is-disabled' : ''],
+          'aria-disabled': !canAddSelectedSeedPlant.value ? 'true' : 'false',
+          onClick: addSelectedSeedPlant
+        },
+        [h(PlusOutlined), t('addSelectedPlant')]
+      ),
+      seedActionHint.value ? h('small', { class: 'action-hint' }, t(seedActionHint.value)) : null
+    ]),
+    expertMode.value
+      ? h('details', { class: 'advanced-details' }, [
+          h('summary', t('advancedSeedBank')),
+          h('div', { class: 'advanced-grid single' }, [
+            h('div', { class: 'field-row compact' }, [
+              h('label', t('seedSlots')),
+              h('input', {
+                type: 'number',
+                min: 0,
+                max: MAX_SEED_PLANTS,
+                value: draft.value.seedSlots,
+                onInput: (event: Event) => {
+                  draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
+                  draft.value.seedPlants = normalizeSeedPlants(draft.value.seedPlants, draft.value.seedSlots);
+                }
+              })
+            ]),
+            h('label', { class: 'check-row' }, [
+              h('input', {
+                type: 'checkbox',
+                checked: draft.value.unlockAll,
+                onChange: (event: Event) => {
+                  draft.value.unlockAll = (event.target as HTMLInputElement).checked;
+                }
+              }),
+              t('unlockAll')
+            ]),
+            h('div', { class: 'plant-list-block' }, [
+              h('strong', t('includePlants')),
+              renderPlantPills('includePlants'),
+              h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('includePlants') }, [
+                h(PlusOutlined),
+                t('addSelectedPlant')
+              ])
+            ]),
+            h('div', { class: 'plant-list-block' }, [
+              h('strong', t('excludePlants')),
+              renderPlantPills('excludePlants'),
+              h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('excludePlants') }, [
+                h(PlusOutlined),
+                t('addSelectedPlant')
+              ])
+            ])
+          ])
+        ])
+      : null
+  ];
+}
+
+function renderConveyorEditorGroup(titleKey: string, children: Array<ReturnType<typeof h> | null>) {
+  return h('section', { class: 'conveyor-editor-group' }, [
+    h('h3', t(titleKey)),
+    h('div', { class: 'conveyor-editor-grid' }, children.filter(Boolean))
+  ]);
+}
+
+function renderConveyorPlantSelectField(entry: ConveyorPlantEntry | ConveyorWaveModification) {
+  return h('div', { class: 'field-row compact' }, [
+    h('label', t('plants')),
+    renderPlantSelect(entry.PlantType, (code) => {
+      markConveyorEdited();
+      entry.PlantType = code;
+    })
+  ]);
+}
+
+function renderConveyorForceBoostedField(entry: ConveyorPlantEntry | ConveyorWaveModification) {
+  return h('label', { class: 'check-row advanced-check' }, [
+    h('input', {
+      type: 'checkbox',
+      checked: entry.ForceBoosted === true,
+      onChange: (event: Event) => {
+        markConveyorEdited();
+        if ((event.target as HTMLInputElement).checked) entry.ForceBoosted = true;
+        else delete entry.ForceBoosted;
+      }
+    }),
+    t('conveyorForceBoosted')
+  ]);
+}
+
+function renderConveyorPlantEditorGroups(entry: ConveyorPlantEntry | ConveyorWaveModification) {
+  return [
+    renderConveyorEditorGroup('conveyorBaseParams', [
+      renderConveyorPlantSelectField(entry),
+      renderConveyorNumberField('conveyorWeight', entry.Weight, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'Weight', value, 0);
+      }),
+      renderConveyorForceBoostedField(entry)
+    ]),
+    renderConveyorEditorGroup('conveyorCountLimits', [
+      renderConveyorNumberField('conveyorMinCount', entry.MinCount, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MinCount', value, -1);
+      }, -1),
+      renderConveyorNumberField('conveyorMaxCount', entry.MaxCount, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxCount', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMaxDelivered', entry.MaxDelivered, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxDelivered', value, 0);
+      })
+    ]),
+    renderConveyorEditorGroup('conveyorWeightFactors', [
+      renderConveyorNumberField('conveyorMinWeightFactor', entry.MinWeightFactor, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MinWeightFactor', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMaxWeightFactor', entry.MaxWeightFactor, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxWeightFactor', value, 0);
+      })
+    ]),
+    renderConveyorEditorGroup('conveyorCooldowns', [
+      renderConveyorNumberField('conveyorCooldownSeconds', entry.CooldownSeconds, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'CooldownSeconds', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMinCountCooldownSeconds', entry.MinCountCooldownSeconds, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MinCountCooldownSeconds', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMaxCountCooldownSeconds', entry.MaxCountCooldownSeconds, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxCountCooldownSeconds', value, 0);
+      })
+    ])
+  ];
+}
+
+function renderConveyorConditionEditor(target: Extract<ConveyorEditorTarget, { kind: 'dropCondition' | 'speedCondition' }>, entry: ConveyorDropDelayCondition | ConveyorSpeedCondition) {
+  const valueKey = target.kind === 'dropCondition' ? 'Delay' : 'Speed';
+  return [
+    renderConveyorEditorGroup(target.kind === 'dropCondition' ? 'conveyorRuleDrop' : 'conveyorRuleSpeed', [
+      renderConveyorNumberField('conveyorMaxPackets', entry.MaxPackets, (value) => {
+        markConveyorEdited();
+        setRequiredNumber(entry, 'MaxPackets', value, 0, 0);
+      }),
+      renderConveyorNumberField(target.kind === 'dropCondition' ? 'conveyorDelay' : 'conveyorSpeed', entry[valueKey], (value) => {
+        markConveyorEdited();
+        setRequiredNumber(entry, valueKey, value, target.kind === 'dropCondition' ? 3 : 100, 0);
+      })
+    ])
+  ];
+}
+
+function renderConveyorWaveEditor(entry: ConveyorWaveModification) {
+  const baseFields = [
+    h('div', { class: 'field-row compact' }, [
+      h('label', t('conveyorAction')),
+      h(
+        'select',
+        {
+          value: entry.mode,
+          onChange: (event: Event) => setConveyorWaveMode(entry, (event.target as HTMLSelectElement).value as ConveyorWaveMode)
+        },
+        [h('option', { value: 'Add' }, t('conveyorAddPlant')), h('option', { value: 'Remove' }, t('conveyorRemovePlant'))]
+      )
+    ]),
+    h('div', { class: 'field-row compact' }, [
+      h('label', t('conveyorWave')),
+      h(
+        'select',
+        {
+          value: entry.waveIndex,
+          onChange: (event: Event) => {
+            markConveyorEdited();
+            entry.waveIndex = Math.max(1, Number((event.target as HTMLSelectElement).value) || 1);
+          }
+        },
+        draft.value.waves.map((wave, waveIndex) => h('option', { value: waveIndex + 1 }, `#${waveIndex + 1}`))
+      )
+    ]),
+    renderConveyorPlantSelectField(entry)
+  ];
+
+  if (entry.mode === 'Remove') {
+    return [
+      renderConveyorEditorGroup('conveyorBaseParams', baseFields),
+      h('p', { class: 'conveyor-editor-note' }, t('conveyorRemoveModeHint'))
+    ];
+  }
+
+  return [
+    renderConveyorEditorGroup('conveyorBaseParams', [
+      ...baseFields,
+      renderConveyorNumberField('conveyorWeight', entry.Weight, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'Weight', value, 0);
+      }),
+      renderConveyorForceBoostedField(entry)
+    ]),
+    renderConveyorEditorGroup('conveyorCountLimits', [
+      renderConveyorNumberField('conveyorMinCount', entry.MinCount, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MinCount', value, -1);
+      }, -1),
+      renderConveyorNumberField('conveyorMaxCount', entry.MaxCount, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxCount', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMaxDelivered', entry.MaxDelivered, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxDelivered', value, 0);
+      })
+    ]),
+    renderConveyorEditorGroup('conveyorWeightFactors', [
+      renderConveyorNumberField('conveyorMinWeightFactor', entry.MinWeightFactor, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MinWeightFactor', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMaxWeightFactor', entry.MaxWeightFactor, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxWeightFactor', value, 0);
+      })
+    ]),
+    renderConveyorEditorGroup('conveyorCooldowns', [
+      renderConveyorNumberField('conveyorCooldownSeconds', entry.CooldownSeconds, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'CooldownSeconds', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMinCountCooldownSeconds', entry.MinCountCooldownSeconds, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MinCountCooldownSeconds', value, 0);
+      }),
+      renderConveyorNumberField('conveyorMaxCountCooldownSeconds', entry.MaxCountCooldownSeconds, (value) => {
+        markConveyorEdited();
+        setOptionalNumber(entry, 'MaxCountCooldownSeconds', value, 0);
+      })
+    ])
+  ];
+}
+
+const ConveyorEditorPanel = defineComponent({
+  name: 'ConveyorEditorPanel',
+  setup() {
+    return () => {
+      const target = conveyorEditorTarget.value;
+      const entry = getConveyorEditorEntry();
+      if (!target || !entry) return h('div', { class: 'conveyor-editor-empty' }, t('emptyList'));
+
+      let body: Array<ReturnType<typeof h> | null> = [];
+      if (target.kind === 'initialPlant') body = renderConveyorPlantEditorGroups(entry as ConveyorPlantEntry);
+      else if (target.kind === 'waveModification') body = renderConveyorWaveEditor(entry as ConveyorWaveModification);
+      else body = renderConveyorConditionEditor(target, entry as ConveyorDropDelayCondition | ConveyorSpeedCondition);
+
+      return h('div', { class: 'conveyor-editor-panel' }, body);
+    };
+  }
+});
 
 function renderUnsupportedObjectsSummary() {
   if (!expertMode.value || !draft.value.unsupportedRawObjects.length) return null;
@@ -1963,71 +3086,9 @@ const PropertyPanel = defineComponent({
       h('aside', { class: 'property-panel-inner' }, [
         h('div', { class: 'panel-title' }, t('propertyPanel')),
         h('div', { class: 'property-section' }, [
-          h('strong', `${t('seedBank')} ${draft.value.seedPlants.length}/${draft.value.seedSlots}`),
-          h('div', { class: 'segmented stacked' }, [
-            h('button', { class: draft.value.seedMode === 'chooser' ? 'active' : '', onClick: () => (draft.value.seedMode = 'chooser') }, t('seedChooser')),
-            h('button', { class: draft.value.seedMode === 'preset' ? 'active' : '', onClick: () => (draft.value.seedMode = 'preset') }, t('seedPreset'))
-          ]),
-          h('small', { class: 'seed-mode-hint' }, t(draft.value.seedMode === 'chooser' ? 'seedChooserHint' : 'seedPresetHint')),
-          renderPlantPills('seedPlants'),
-          h('div', { class: 'action-row' }, [
-            h(
-              'button',
-              {
-                class: ['add-button', !canAddSelectedSeedPlant.value ? 'is-disabled' : ''],
-                'aria-disabled': !canAddSelectedSeedPlant.value ? 'true' : 'false',
-                onClick: addSelectedSeedPlant
-              },
-              [h(PlusOutlined), t('plants')]
-            ),
-            seedActionHint.value ? h('small', { class: 'action-hint' }, t(seedActionHint.value)) : null
-          ]),
-          expertMode.value
-            ? h('details', { class: 'advanced-details' }, [
-                h('summary', t('advancedSeedBank')),
-                h('div', { class: 'advanced-grid single' }, [
-                  h('div', { class: 'field-row compact' }, [
-                    h('label', t('seedSlots')),
-                    h('input', {
-                      type: 'number',
-                      min: 0,
-                      max: MAX_SEED_PLANTS,
-                      value: draft.value.seedSlots,
-                      onInput: (event: Event) => {
-                        draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
-                        draft.value.seedPlants = normalizeSeedPlants(draft.value.seedPlants, draft.value.seedSlots);
-                      }
-                    })
-                  ]),
-                  h('label', { class: 'check-row' }, [
-                    h('input', {
-                      type: 'checkbox',
-                      checked: draft.value.unlockAll,
-                      onChange: (event: Event) => {
-                        draft.value.unlockAll = (event.target as HTMLInputElement).checked;
-                      }
-                    }),
-                    t('unlockAll')
-                  ]),
-                  h('div', { class: 'plant-list-block' }, [
-                    h('strong', t('includePlants')),
-                    renderPlantPills('includePlants'),
-                    h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('includePlants') }, [
-                      h(PlusOutlined),
-                      t('addSelectedPlant')
-                    ])
-                  ]),
-                  h('div', { class: 'plant-list-block' }, [
-                    h('strong', t('excludePlants')),
-                    renderPlantPills('excludePlants'),
-                    h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('excludePlants') }, [
-                      h(PlusOutlined),
-                      t('addSelectedPlant')
-                    ])
-                  ])
-                ])
-              ])
-            : null
+          h('strong', t('seedSupply')),
+          renderSeedSupplyModeSelector(),
+          ...(draft.value.conveyor.enabled ? renderConveyorControls() : renderSeedBankControls())
         ])
       ]);
   }
@@ -2137,7 +3198,10 @@ const WaveTimeline = defineComponent({
           { class: 'wave-strip' },
           draft.value.waves.map((wave, index) => {
             const zombieCount = wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0);
-            const actionCount = wave.rawActions.length;
+            const conveyorActionCount = draft.value.conveyor.enabled
+              ? draft.value.conveyor.waveModifications.filter((modification) => modification.waveIndex === index + 1).length
+              : 0;
+            const actionCount = wave.rawActions.length + conveyorActionCount;
             return h(
               'button',
               {
@@ -2665,6 +3729,294 @@ body:has(.level-editor-shell) {
   display: grid;
   gap: 0.4rem;
   min-width: 0;
+}
+
+.conveyor-details {
+  margin-top: 0;
+}
+
+.supply-mode-selector {
+  margin-bottom: 0.05rem;
+}
+
+.conveyor-body {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0 0.65rem 0.65rem;
+}
+
+.conveyor-subsection,
+.conveyor-list {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.conveyor-subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.conveyor-subtitle strong {
+  min-width: 0;
+  font-size: 0.86rem;
+}
+
+.conveyor-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.conveyor-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.conveyor-summary-card {
+  display: grid;
+  gap: 0.08rem;
+  min-width: 0;
+  padding: 0.45rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.conveyor-summary-card strong {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.conveyor-summary-card span {
+  overflow: hidden;
+  color: var(--editor-muted);
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conveyor-tabs {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.conveyor-tab-panel {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.conveyor-compact-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.45rem;
+  align-items: start;
+  min-width: 0;
+  padding: 0.55rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.conveyor-row-main {
+  display: grid;
+  gap: 0.42rem;
+  min-width: 0;
+}
+
+.conveyor-row-media {
+  display: grid;
+  grid-template-columns: 1.85rem minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.conveyor-row-media img,
+.conveyor-plant-placeholder {
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.conveyor-row-media img {
+  object-fit: contain;
+}
+
+.conveyor-plant-placeholder {
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--editor-accent) 16%, transparent);
+  color: var(--editor-accent-strong);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.conveyor-row-copy {
+  display: grid;
+  gap: 0.08rem;
+  min-width: 0;
+}
+
+.conveyor-row-copy strong,
+.conveyor-rule-title strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conveyor-row-copy small,
+.conveyor-rule-title small,
+.conveyor-muted {
+  color: var(--editor-muted);
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.conveyor-rule-title {
+  display: grid;
+  gap: 0.08rem;
+  min-width: 0;
+}
+
+.conveyor-chip-list,
+.conveyor-wave-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.conveyor-chip,
+.conveyor-mode-chip,
+.conveyor-wave-index {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.28rem;
+  max-width: 100%;
+  padding: 0.12rem 0.35rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--editor-accent) 10%, transparent);
+  color: var(--editor-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.conveyor-mode-chip.add {
+  background: color-mix(in srgb, var(--editor-accent) 16%, transparent);
+  color: var(--editor-accent-strong);
+}
+
+.conveyor-mode-chip.remove {
+  background: color-mix(in srgb, #d14d4d 12%, transparent);
+  color: #b94040;
+}
+
+.dark .conveyor-mode-chip.remove {
+  color: #ff9a9a;
+}
+
+.conveyor-row-actions {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon-button {
+  width: 2.1rem;
+  min-width: 2.1rem;
+  padding: 0;
+}
+
+.level-editor-drawer-root {
+  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 94%, #5f9f3f 6%);
+  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 90%, var(--vp-c-bg-soft) 10%);
+  --editor-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
+  --editor-text: var(--vp-c-text);
+  --editor-muted: var(--vp-c-text-mute);
+  --editor-accent: #5f9f3f;
+  --editor-accent-strong: #3f7f2f;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.dark .level-editor-drawer-root {
+  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 88%, #5f9f3f 8%);
+  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
+  --editor-border: color-mix(in srgb, var(--vp-c-text) 20%, transparent);
+}
+
+.level-editor-drawer-root .ant-drawer-title {
+  color: var(--editor-text);
+}
+
+.level-editor-drawer-root .ant-drawer-content-wrapper {
+  right: 0 !important;
+  left: auto !important;
+  max-width: min(720px, 96vw);
+}
+
+.level-editor-drawer-root .ant-drawer-body {
+  background: var(--editor-panel);
+  color: var(--editor-text);
+}
+
+.conveyor-editor-panel {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.85rem;
+}
+
+.conveyor-editor-group {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.conveyor-editor-group h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.conveyor-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.conveyor-editor-note,
+.conveyor-editor-empty {
+  margin: 0;
+  padding: 0.75rem;
+  color: var(--editor-muted);
+  line-height: 1.45;
+}
+
+.level-editor-drawer-root button:focus-visible,
+.level-editor-drawer-root input:focus-visible,
+.level-editor-drawer-root select:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--editor-accent) 70%, #fff);
+  outline-offset: 2px;
 }
 
 .preview-actions {
@@ -3572,6 +4924,19 @@ body:has(.level-editor-shell) {
 
   .unsupported-object-card {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .conveyor-compact-row,
+  .conveyor-editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .icon-button {
+    width: 100%;
+  }
+
+  .conveyor-row-actions .icon-button {
+    width: 2.1rem;
   }
 }
 
