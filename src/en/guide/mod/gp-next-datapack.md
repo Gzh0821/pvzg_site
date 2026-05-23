@@ -35,7 +35,7 @@ Here, `pack.json` is required.
   "priority": 100,
   "description": "Description of the mod",
   "author": "Your name",
-  "formatVersion": 1,
+  "packFormatVersion": 1,
   "gameVersion": "0.7.1",
   "gpNextVersion": ">=1.0.0"
 }
@@ -74,7 +74,7 @@ Short description of the mod.
 
 Author name.
 
-### `formatVersion`
+### `packFormatVersion`
 
 For now, just write `1`.
 
@@ -85,6 +85,32 @@ The game version your mod targets.
 ### `gpNextVersion`
 
 The minimum GP-Next version required by your mod.
+
+### `requiredGpNextFeatures`
+
+Optional array. If your datapack depends on GP-Next experimental features or runtime extensions, declare them here:
+
+```json
+{
+  "requiredGpNextFeatures": [
+    "experimental.worldMapJson",
+    "runtime.dynamicPlantRegistry"
+  ]
+}
+```
+
+When the datapack is enabled but a required feature is off, GP-Next shows a warning in the Patcher pack list. It does not turn those features on automatically; players need to enable them in **Experimental** or **Settings**, then reload patches.
+
+Currently supported IDs:
+
+| ID | Toggle |
+| --- | --- |
+| `experimental.worldMapJson` | Experimental -> worldmap-json |
+| `experimental.plantLevelSystem` | Experimental -> plant-level-system |
+| `experimental.jsModding` | Experimental -> JS Modding (still forced off in the current build) |
+| `runtime.dynamicPlantRegistry` | Settings -> Runtime Extensions -> Dynamic Plant Registry |
+| `runtime.shopExtensions` | Settings -> Runtime Extensions -> Shop Extensions |
+| `runtime.scrollSensitivity` | Settings -> Scroll Settings -> Scroll Optimization |
 
 ## Thumbnail
 

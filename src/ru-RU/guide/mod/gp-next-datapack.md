@@ -35,7 +35,7 @@ MyFirstMod/
   "priority": 100,
   "description": "Описание мода",
   "author": "Ваше имя",
-  "formatVersion": 1,
+  "packFormatVersion": 1,
   "gameVersion": "0.7.1",
   "gpNextVersion": ">=1.0.0"
 }
@@ -74,7 +74,7 @@ MyFirstMod/
 
 Имя автора.
 
-### `formatVersion`
+### `packFormatVersion`
 
 Пока достаточно указать `1`.
 
@@ -85,6 +85,32 @@ MyFirstMod/
 ### `gpNextVersion`
 
 Минимальная версия GP-Next, требуемая вашим модом.
+
+### `requiredGpNextFeatures`
+
+Необязательный массив. Если datapack зависит от экспериментальных функций GP-Next или runtime-расширений, объявите их здесь:
+
+```json
+{
+  "requiredGpNextFeatures": [
+    "experimental.worldMapJson",
+    "runtime.dynamicPlantRegistry"
+  ]
+}
+```
+
+Когда datapack включен, но нужная функция выключена, GP-Next показывает предупреждение в списке пакетов Patcher. Он не включает эти функции автоматически; игроку нужно включить их в **Experimental** или **Settings**, а затем перезагрузить патчи.
+
+Сейчас поддерживаются такие ID:
+
+| ID | Переключатель |
+| --- | --- |
+| `experimental.worldMapJson` | Experimental -> worldmap-json |
+| `experimental.plantLevelSystem` | Experimental -> plant-level-system |
+| `experimental.jsModding` | Experimental -> JS Modding (в текущей сборке всё ещё принудительно выключен) |
+| `runtime.dynamicPlantRegistry` | Settings -> Runtime Extensions -> Dynamic Plant Registry |
+| `runtime.shopExtensions` | Settings -> Runtime Extensions -> Shop Extensions |
+| `runtime.scrollSensitivity` | Settings -> Scroll Settings -> Scroll Optimization |
 
 ## Миниатюра
 

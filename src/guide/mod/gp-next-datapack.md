@@ -35,7 +35,7 @@ MyFirstMod/
   "priority": 100,
   "description": "模组的介绍信息",
   "author": "你的名字",
-  "formatVersion": 1,
+  "packFormatVersion": 1,
   "gameVersion": "0.7.1",
   "gpNextVersion": ">=1.0.0"
 }
@@ -74,7 +74,7 @@ MyFirstMod/
 
 作者名。
 
-### `formatVersion`
+### `packFormatVersion`
 
 当前写 `1` 即可。
 
@@ -85,6 +85,32 @@ MyFirstMod/
 ### `gpNextVersion`
 
 你的模组要求的最低 GP-Next 版本。
+
+### `requiredGpNextFeatures`
+
+可选数组。数据包依赖某些 GP-Next 实验功能或运行时扩展时，可以在这里声明：
+
+```json
+{
+  "requiredGpNextFeatures": [
+    "experimental.worldMapJson",
+    "runtime.dynamicPlantRegistry"
+  ]
+}
+```
+
+当数据包已启用，但所需功能未开启时，GP-Next 会在 Patcher 的数据包列表里提示。它不会自动开启这些功能，玩家需要到 **Experimental** 或 **Settings** 里手动开启，然后重新加载补丁。
+
+当前可以声明的 ID：
+
+| ID | 对应开关 |
+| --- | --- |
+| `experimental.worldMapJson` | Experimental → worldmap-json |
+| `experimental.plantLevelSystem` | Experimental → plant-level-system |
+| `experimental.jsModding` | Experimental → JS Modding（当前构建仍强制关闭） |
+| `runtime.dynamicPlantRegistry` | Settings → Runtime Extensions → 动态植物注册 |
+| `runtime.shopExtensions` | Settings → Runtime Extensions → 商店功能扩展 |
+| `runtime.scrollSensitivity` | Settings → 滚动设置 → 滚动优化 |
 
 ## 缩略图
 
