@@ -58,6 +58,25 @@
 		},
 		{
 			"aliases": [
+				"feastivus_armor3"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"iceage_armor3"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"feastivus_flag"
 			],
 			"objclass": "ZombieProperties",
@@ -144,10 +163,183 @@
 		},
 		{
 			"aliases": [
+				"treasureyeti"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotCarryPlantfoodsInWaves": true,
+				"RetreatSpeedScale": 2,
+				"ImmuneToGarlic": true,
+				"LivesInDeepWater": true,
+				"ImmuneToSweetPotato": true,
+				"CannotBeCarriedByFanStorm": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeSwallowedByChomper": true,
+				"PrizeProps": [
+					{
+						"Weight": 1,
+						"Prize": {
+							"Type": "sprout",
+							"Count": 3
+						}
+					},
+					{
+						"Weight": 5,
+						"Prize": {
+							"Type": "gem",
+							"Count": 10
+						}
+					},
+					{
+						"Weight": 2,
+						"Prize": {
+							"Type": "coin_gold",
+							"Count": 20
+						}
+					},
+					{
+						"Weight": 0.5,
+						"Prize": {
+							"Type": "coin_silver",
+							"Count": 40
+						}
+					}
+				],
+				"WalkForwardTime": {
+					"Min": 10,
+					"Max": 15
+				},
+				"WalkSPS": 0.185,
+				"Toughness": 700,
+				"EatDPS": 100,
+				"WavePointCost": 0,
+				"Weight": 1000,
+				"HitRect": "RTID(YetiHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lunar_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"lunar_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lunar_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"lunar_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sportzball_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"sportzball_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sportzball_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"sportzball_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"stpatrick_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"stpatrick_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"stpatrick_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"stpatrick_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"tutorial"
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"ChanceToReverse": 0,
 				"ZombieSort": "Normal",
 				"WalkSPS": 0.185,
 				"Toughness": 190,
@@ -395,6 +587,30 @@
 		},
 		{
 			"aliases": [
+				"sportzball_imp"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"AllstarKickedColumn": {
+					"Min": 2,
+					"Max": 2
+				},
+				"CanBeKickedByAllstar": true,
+				"KilledByShrinkingViolet": true,
+				"CannotBeGrabbedByPtero": true,
+				"ZombieSort": "Normal",
+				"IgnoredInWaves": true,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(ImpHitRect@RectangleProps)",
+				"AttackRect": "RTID(ImpAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"tutorial_gargantuar"
 			],
 			"objclass": "ZombieProperties",
@@ -417,6 +633,189 @@
 				"WavePointCost": 1500,
 				"Weight": 3000,
 				"ImpType": "tutorial_imp",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sportzball_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.28,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ImpType": "sportzball_imp",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_egg_af"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ImmuneToSporeShroom": true,
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 1,
+				"EatDPS": 100,
+				"Lifespan": {
+					"Min": 3,
+					"Max": 3
+				},
+				"ZombiesToSpawn": [
+					{
+						"Type": "summer_gargantuar",
+						"Weight": 10
+					},
+					{
+						"Type": "halloween_gargantuar",
+						"Weight": 10
+					},
+					{
+						"Type": "valentines_gargantuar",
+						"Weight": 10
+					}
+				],
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_egg"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ImmuneToSporeShroom": true,
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 1,
+				"EatDPS": 100,
+				"Lifespan": {
+					"Min": 3,
+					"Max": 3
+				},
+				"ZombiesToSpawn": [
+					{
+						"Type": "easter_imp",
+						"Weight": 2
+					},
+					{
+						"Type": "dark_imp_dragon",
+						"Weight": 1
+					}
+				],
+				"WavePointCost": 100,
+				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ImpType": "easter_egg",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_gargantuar_af"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 500,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ImpType": "easter_egg_af",
+				"ImpColumns": [
+					-2
+				],
+				"ImpColumnsAreRelative": true,
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"valentines_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"LaneChangeTime": 0.6,
+				"ImpType": "valentines_imp",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -574,6 +973,7 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 200,
 				"Weight": 100,
+				"BobsledType": "bobsled",
 				"HitRect": "RTID(BobsledTeamHitRect@RectangleProps)",
 				"AttackRect": "RTID(BobsledTeamAttackRect@RectangleProps)"
 			}
@@ -896,6 +1296,48 @@
 		},
 		{
 			"aliases": [
+				"easter_camel_segment"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "easter_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "easter",
+				"TeamMemberCount": [
+					0
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lunar_camel_segment"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "lunar_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "lunar",
+				"TeamMemberCount": [
+					0
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"feastivus_camel_segment"
 			],
 			"objclass": "ZombieProperties",
@@ -989,6 +1431,178 @@
 				"EatDPS": 100,
 				"Toughness": 250,
 				"ZombieInside": "mummy",
+				"TeamMemberCount": [
+					5,
+					6,
+					7
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1200,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_camel_onehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "easter_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "easter",
+				"TeamMemberCount": [
+					3
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 600,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_camel_twohump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "easter_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "easter",
+				"TeamMemberCount": [
+					4
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 800,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_camel_threehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "easter_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "easter",
+				"TeamMemberCount": [
+					5
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1000,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_camel_manyhump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "easter_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "easter",
+				"TeamMemberCount": [
+					5,
+					6,
+					7
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1200,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lunar_camel_onehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "lunar_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "lunar",
+				"TeamMemberCount": [
+					3
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 600,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lunar_camel_twohump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "lunar_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "lunar",
+				"TeamMemberCount": [
+					4
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 800,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lunar_camel_threehump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "lunar_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "lunar",
+				"TeamMemberCount": [
+					5
+				],
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1000,
+				"Weight": 3000,
+				"HitRect": "RTID(CamelSegmentHitRect@RectangleProps)",
+				"AttackRect": "RTID(CamelSegmentAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"lunar_camel_manyhump"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"TeammateType": "lunar_camel_segment",
+				"WalkSPS": 0.12,
+				"EatDPS": 100,
+				"Toughness": 250,
+				"ZombieInside": "lunar",
 				"TeamMemberCount": [
 					5,
 					6,
@@ -1271,6 +1885,25 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 1200,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 450,
+				"Weight": 100,
+				"HitRect": "RTID(PharoahHitRect@RectangleProps)",
+				"AttackRect": "RTID(PharoahAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"birthday_pharaoh"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ProtectsInside": true,
+				"ZombieInside": "birthday_pharaoh_inner",
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 1200,
+				"DamageExtends": false,
 				"NormalDeathWhenMowed": true,
 				"WavePointCost": 450,
 				"Weight": 100,
@@ -2174,10 +2807,29 @@
 		},
 		{
 			"aliases": [
+				"birthday_barrelroller"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"BarrelType": "birthday_barrel",
+				"ImmuneToSweetPotato": true,
+				"WalkSPS": 0.2,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 500,
+				"Weight": 2000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"barrelroller"
 			],
 			"objclass": "ZombieProperties",
 			"objdata": {
+				"BarrelType": "pirate_barrel",
 				"ImmuneToSweetPotato": true,
 				"WalkSPS": 0.2,
 				"EatDPS": 100,
@@ -2298,6 +2950,63 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 400,
 				"Weight": 0,
+				"HitRect": "RTID(PirateParrotHitRect@RectangleProps)",
+				"AttackRect": "RTID(PirateParrotAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_drone"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeHypnotizedByProjectiles": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"ImmuneToSweetPotato": true,
+				"ImmuneToSporeShroom": true,
+				"CannotBeCarriedByFanStorm": true,
+				"CannotBeDetectedBySapfling": true,
+				"ImmuneToShrinkingViolet": true,
+				"CannotBeChompedByTyranno": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"WalkSPS": 1.8,
+				"EatDPS": 50,
+				"Toughness": 800,
+				"NormalDeathWhenMowed": true,
+				"FlyingSpeed": 1.8,
+				"CarriedArmorType": "sky_armor3",
+				"PlantEatingRangeRadius": 10,
+				"TimeBeforeFirst": {
+					"Min": 4,
+					"Max": 8
+				},
+				"TimeBetween": {
+					"Min": 8,
+					"Max": 12
+				},
+				"LowPriorityPlantTypes": [
+					"wallnut",
+					"tallnut",
+					"pineapple",
+					"peanut",
+					"wallnut",
+					"peach",
+					"chardguard",
+					"turnip",
+					"holonut",
+					"sweetpotato",
+					"endurian",
+					"lychee",
+					"pumpkin",
+					"bamboobusket",
+					"hollybarrierleaf",
+					"hollybarrierleafplantfood",
+					"primalwallnut"
+				],
+				"ImmuneToGarlic": true,
+				"WavePointCost": 2000,
+				"Weight": 10,
 				"HitRect": "RTID(PirateParrotHitRect@RectangleProps)",
 				"AttackRect": "RTID(PirateParrotAttackRect@RectangleProps)"
 			}
@@ -6178,6 +6887,7 @@
 				"ImmuneToGarlic": true,
 				"WavePointCost": 800,
 				"Weight": 3000,
+				"JetpackType": "future_jetpack_disco",
 				"HitRect": "RTID(FutureDiscoMechHitRect@RectangleProps)",
 				"AttackRect": "RTID(FutureDiscoMechAttackRect@RectangleProps)"
 			}
@@ -9752,6 +10462,32 @@
 		},
 		{
 			"aliases": [
+				"eighties_skunk"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"KilledByShrinkingViolet": true,
+				"CannotBeGrabbedByPtero": true,
+				"ChiliStunDurationMult": 0,
+				"CannotBePushedBySliders": true,
+				"CanBeEasilySwallowedByChomper": true,
+				"WalkSPS": 0.23125,
+				"RunSPS": 1.5,
+				"DoesNotDamageHeavilyToGarlic": true,
+				"EatDPS": 75,
+				"Toughness": 40,
+				"WavePointCost": 10,
+				"Weight": 0,
+				"NormalDeathWhenMowed": true,
+				"FartInterval": 3,
+				"FartStunDuration": 2,
+				"HitRect": "RTID(CowboyChickenHitRect@RectangleProps)",
+				"AttackRect": "RTID(CowboyChickenAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"iceage_imp"
 			],
 			"objclass": "ZombieProperties",
@@ -11962,6 +12698,63 @@
 		},
 		{
 			"aliases": [
+				"sky_dronemaker"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ImmuneToSporeShroom": true,
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeHypnotizedByProjectiles": true,
+				"CannotBeGrabbedByPtero": true,
+				"PlantablePlants": [
+					"ghostpepper"
+				],
+				"ValidDroneTargets": [
+					"sky",
+					"sky_electric",
+					"sky_flag",
+					"sky_armor1",
+					"sky_armor2"
+				],
+				"TargetListBecomesBlackList": false,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 2000,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 1400,
+				"DroneInterval": {
+					"Min": 16,
+					"Max": 20
+				},
+				"Weight": 2500,
+				"HitRect": "RTID(DarkKingHitRect@RectangleProps)",
+				"AttackRect": "RTID(DarkKingAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_dronemaker_alt"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ValidDroneTargets": [
+					"sky_twin_upper",
+					"sky_twin_lower",
+					"sky_twin",
+					"sky_drone",
+					"sky_arbiterx",
+					"sky_gargantuar",
+					"sky_imp"
+				],
+				"TargetListBecomesBlackList": true
+			}
+		},
+		{
+			"aliases": [
 				"sky_electric"
 			],
 			"objclass": "ZombieProperties",
@@ -11971,7 +12764,7 @@
 				"WalkSPS": 0.185,
 				"EatDPS": 100,
 				"Toughness": 700,
-				"WavePointCost": 100,
+				"WavePointCost": 300,
 				"Weight": 1000,
 				"SkyCityShipDetectXOffsetFiring": -60,
 				"SkyCityShipDetectXOffset": -40,
@@ -12099,6 +12892,7 @@
 				"CrashDamage": 1200,
 				"CrashDamageToShip": 1200,
 				"ImpDeathSpeedMult": 2,
+				"BulletSpeed": 13,
 				"ArmDroppingHealthPct": -100,
 				"ImpArmDroppingHealthPct": 0.5,
 				"WavePointCost": 700,
@@ -12106,6 +12900,94 @@
 				"SkyCityShipDetectXOffset": -60,
 				"HitRect": "RTID(SkyBattlePlaneHitRect@RectangleProps)",
 				"AttackRect": "RTID(SkyBattlePlaneAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_arbiterx"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"ImmuneToSweetPotato": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.16,
+				"KnockBackDistanceScale": 0.1,
+				"WalkSPSParalyzed": 0.67,
+				"EatDPS": 100,
+				"Toughness": 4000,
+				"CrashDamageToShip": 2000,
+				"CrashDamage": 2000,
+				"WavePointCost": 1200,
+				"Weight": 3000,
+				"CrashBackwardTime": 0.4,
+				"CrashForwardTime": 0.2,
+				"SkyCityShipDetectXOffset": -120,
+				"FogLifeSpanMiddle": 11,
+				"FogLifeSpanSide1": 8,
+				"FogLifeSpanSide2": 5,
+				"HitRect": "RTID(SkyArbiterXHitRect@RectangleProps)",
+				"AttackRect": "RTID(SkyArbiterXAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_airraid_arbiterx"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"ImmuneToSweetPotato": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.4,
+				"KnockBackDistanceScale": 0.1,
+				"WalkSPSParalyzed": 0.67,
+				"EatDPS": 100,
+				"Toughness": 4000,
+				"CrashDamageToShip": 2000,
+				"CrashDamage": 2000,
+				"WavePointCost": 1200,
+				"Weight": 3000,
+				"CrashBackwardTime": 0.4,
+				"CrashForwardTime": 0.2,
+				"SkyCityShipDetectXOffset": -120,
+				"FogLifeSpanMiddle": 11,
+				"FogLifeSpanSide1": 8,
+				"FogLifeSpanSide2": 5,
+				"ShootingStyles": [],
+				"HitRect": "RTID(SkyArbiterXHitRect@RectangleProps)",
+				"AttackRect": "RTID(SkyArbiterXAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_airraid_twin"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeTossedByCitron": true,
+				"CannotBeEnlightenedBySolarSage": true,
+				"ChooseToSpawnOnDeepWaterRows": true,
+				"ImmuneToSweetPotato": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"ChooseToSpawnOnNonDeckRows": true,
+				"WalkSPS": 0.4,
+				"KnockBackDistanceScale": 0.5,
+				"EatDPS": 300,
+				"Toughness": 3000,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"HitRect": "RTID(SkyAirRaidTwinHitRect@RectangleProps)",
+				"AttackRect": "RTID(SkyAirRaidTwinAttackRect@RectangleProps)"
 			}
 		},
 		{
@@ -12251,7 +13133,52 @@
 				"SkyCityShipDetectXOffsetFiring": -100,
 				"HealthPercentThrowImp0": 0.7,
 				"HealthPercentThrowImp1": 0.3,
+				"ImpColumns": [
+					0,
+					1,
+					2
+				],
 				"ImpType": "sky_imp",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"sky_gargantuar_armor2_thrower"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"CannotBeEnlightenedBySolarSage": true,
+				"ZombieSort": "Gargantuar",
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"JamStyle": "jam_metal",
+				"WaveType": "eighties_gargantuar_wave",
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"ShipDPS": 300,
+				"SkyCityShipDetectXOffset": -70,
+				"SkyCityShipDetectXOffsetFiring": -100,
+				"HealthPercentThrowImp0": 0.7,
+				"HealthPercentThrowImp1": 0.3,
+				"ImpColumns": [
+					0,
+					1,
+					2
+				],
+				"ImpType": "sky_armor2",
 				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
 				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
 			}
@@ -12430,6 +13357,60 @@
 				"JamStyle": "jam_punk",
 				"WavePointCost": 300,
 				"Weight": 1000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"eighties_punk_veteran"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"WalkSPS": 0.23125,
+				"EatDPS": 100,
+				"Toughness": 400,
+				"PushCooldown": 2,
+				"JamStyle": "jam_punk",
+				"WavePointCost": 500,
+				"Weight": 1000,
+				"SkunkCooldown": 5,
+				"SkunkChasingSpeedMult": 1,
+				"SkunkPositionList": [
+					{
+						"x": -1,
+						"y": -1
+					},
+					{
+						"x": 0,
+						"y": -1
+					},
+					{
+						"x": 1,
+						"y": -1
+					},
+					{
+						"x": -1,
+						"y": 0
+					},
+					{
+						"x": 1,
+						"y": 0
+					},
+					{
+						"x": -1,
+						"y": 1
+					},
+					{
+						"x": 0,
+						"y": 1
+					},
+					{
+						"x": 1,
+						"y": 1
+					}
+				],
+				"SkunkType": "eighties_skunk",
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
@@ -12907,6 +13888,422 @@
 						"StunStaggerBackMovement": 1,
 						"StunStaggerBackTime": 0.4,
 						"StunTime": 1.5
+					}
+				]
+			}
+		},
+		{
+			"aliases": [
+				"zombossmech_eighties2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"MissileType": "zomboss_missile_egypt",
+				"CannotBeEnlightenedBySolarSage": true,
+				"ImmuneToSweetPotato": true,
+				"ImmuneToShrinkingViolet": true,
+				"ZombieSort": "Zomboss",
+				"IgnoredBySnapPea": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotBeDetectedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeDetectedBySapfling": true,
+				"CannotBeSwallowedByChomper": true,
+				"ChiliStunDurationMult": 0,
+				"CannotCarryPlantfoodsInWaves": true,
+				"LivesInDeepWater": true,
+				"FoeEatDamageReflectPct": 5,
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"ImmuneToGarlic": true,
+				"WavePointCost": 100,
+				"Weight": 0,
+				"HitRect": "RTID(EightiesZombossMechHitRect@RectangleProps)",
+				"AttackRect": "RTID(EightiesZombossMechHitRect@RectangleProps)",
+				"IdleColumn": 6,
+				"ZombossMechLevel": 0,
+				"ZombossStages": [
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_glitter",
+										"eighties_punk_veteran"
+									],
+									"pointMin": 700,
+									"pointMax": 1200,
+									"columnOffset": -1,
+									"plantfoodchance": 0
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_glitter",
+										"eighties_armor1",
+										"eighties_armor4"
+									],
+									"pointMin": 700,
+									"pointMax": 1200,
+									"columnOffset": -1,
+									"plantfoodchance": 0.2
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_pop",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 2500,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_punk_veteran"
+									],
+									"pointMin": 600,
+									"pointMax": 900,
+									"columnOffset": -1,
+									"plantfoodchance": 0
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 40,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_punk",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 1500,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_armor4",
+										"eighties_armor2"
+									],
+									"pointMin": 1200,
+									"pointMax": 1800,
+									"columnOffset": -1,
+									"plantfoodchance": 0.1
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_arcade"
+									],
+									"pointMin": 1200,
+									"pointMax": 1200,
+									"columnOffset": 0,
+									"plantfoodchance": 0
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_8bit",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 4500,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_armor4",
+										"eighties_punk_veteran"
+									],
+									"pointMin": 1200,
+									"pointMax": 1800,
+									"columnOffset": -1,
+									"plantfoodchance": 0.2
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_mc",
+										"eighties_breakdancer",
+										"eighties_breakdancer"
+									],
+									"pointMin": 800,
+									"pointMax": 800,
+									"columnOffset": -1,
+									"plantfoodchance": 0
+								},
+								"weight": 30,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_rap",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 5500,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_armor4",
+										"eighties_punk_veteran"
+									],
+									"pointMin": 1200,
+									"pointMax": 1800,
+									"columnOffset": -1,
+									"plantfoodchance": 0.4
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_gargantuar"
+									],
+									"pointMin": 1500,
+									"pointMax": 3000,
+									"columnOffset": -1,
+									"plantfoodchance": 0
+								},
+								"weight": 30,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "rush",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 10,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 40,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_punk",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 4500,
+						"MaxIdleTime": 4.5,
+						"MinIdleTime": 3.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
+					},
+					{
+						"Actions": [
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_armor4",
+										"eighties_punk_veteran"
+									],
+									"pointMin": 1200,
+									"pointMax": 1800,
+									"columnOffset": -1,
+									"plantfoodchance": 0.2
+								},
+								"weight": 20,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "summon",
+								"summonProps": {
+									"zombieList": [
+										"eighties_gargantuar"
+									],
+									"pointMin": 1500,
+									"pointMax": 3000,
+									"columnOffset": -1,
+									"plantfoodchance": 0
+								},
+								"weight": 30,
+								"repeatMax": 1,
+								"repeatMin": 1
+							},
+							{
+								"actionName": "shoot",
+								"summonProps": {
+									"zombieList": [],
+									"pointMin": 1000,
+									"pointMax": 2000
+								},
+								"weight": 40,
+								"repeatMax": 1,
+								"repeatMin": 1
+							}
+						],
+						"JamStyle": "jam_metal",
+						"AnimRateModifier": 1,
+						"ChilledDurationFromFrozen": 10,
+						"DamageIndexFull": 0,
+						"DamageIndexHalf": 2,
+						"HitPoints": 4500,
+						"MaxIdleTime": 3.5,
+						"MinIdleTime": 2.5,
+						"StunDamageScale": 1,
+						"StunStaggerBackMovement": 1,
+						"StunStaggerBackTime": 0.4,
+						"StunTime": 2.5
 					}
 				]
 			}
@@ -14309,6 +15706,64 @@
 						}
 					}
 				]
+			}
+		},
+		{
+			"aliases": [
+				"easter_armor1"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"easter_armor1"
+				],
+				"WavePointCost": 200,
+				"Weight": 3000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_armor2"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"StartingArmors": [
+					"easter_armor2"
+				],
+				"WavePointCost": 400,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
+				"easter_armor4"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"Toughness": 190,
+				"EatDPS": 100,
+				"CannotCarryPlantfoodsInWaves": true,
+				"StartingArmors": [
+					"easter_armor4"
+				],
+				"WavePointCost": 700,
+				"Weight": 4000,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)"
 			}
 		}
 	]

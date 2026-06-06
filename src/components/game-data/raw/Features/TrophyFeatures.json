@@ -1,0 +1,825 @@
+{
+  "TROPHIES": [
+    {
+      "NAME": {
+        "en": "World Key",
+        "zh": "时空钥匙"
+      },
+      "DESCRIPTION": {
+        "en": "Use to unlock new Worlds and travel to other times!",
+        "zh": "用于解锁新的世界，并开启新的时空之旅！"
+      },
+      "OBTAINWORLD": "market",
+      "CODENAME": "worldkey",
+      "SPRITENAME": "worldkey",
+      "TROPHYTYPE": "worldkey",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Ancient Egypt Trophy",
+        "zh": "神秘埃及奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot Sphinx-inator.",
+        "zh": "你已击败了僵尸博士的杰作，狮身人面降临者。"
+      },
+      "OBTAINWORLD": "egypt",
+      "CODENAME": "worldtrophy_egypt",
+      "SPRITENAME": "egypt",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Pirate Seas Trophy",
+        "zh": "海盗港湾奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot Plank Walker.",
+        "zh": "你已击败了僵尸博士的杰作，甲板漫步者。"
+      },
+      "OBTAINWORLD": "pirate",
+      "CODENAME": "worldtrophy_pirate",
+      "SPRITENAME": "pirate",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Wild West Trophy",
+        "zh": "狂野西部奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot War Wagon.",
+        "zh": "你已击败了僵尸博士的杰作，重型战马车。"
+      },
+      "OBTAINWORLD": "cowboy",
+      "CODENAME": "worldtrophy_cowboy",
+      "SPRITENAME": "cowboy",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Far Future Trophy",
+        "zh": "遥远未来奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot Tomorrow-tron.",
+        "zh": "你已击败了僵尸博士的杰作，明日缔造者。"
+      },
+      "OBTAINWORLD": "future",
+      "CODENAME": "worldtrophy_future",
+      "SPRITENAME": "future",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Dark Ages Trophy",
+        "zh": "黑暗时代奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot Dark Dragon.",
+        "zh": "你已击败了僵尸博士的杰作，巨龙驾驭者。"
+      },
+      "OBTAINWORLD": "dark",
+      "CODENAME": "worldtrophy_dark",
+      "SPRITENAME": "dark",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Big Wave Beach Trophy",
+        "zh": "巨浪沙滩奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot Sharktronic Sub.",
+        "zh": "你已击败了僵尸博士的杰作，巨鲨号深潜艇。"
+      },
+      "OBTAINWORLD": "beach",
+      "CODENAME": "worldtrophy_beach",
+      "SPRITENAME": "beach",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Frostbite Caves Trophy",
+        "zh": "极寒冰窟奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot Tuskmaster 10,000 BC.",
+        "zh": "你已击败了僵尸博士的杰作，獠牙征服者。"
+      },
+      "OBTAINWORLD": "ice",
+      "CODENAME": "worldtrophy_iceage",
+      "SPRITENAME": "iceage",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Lost City Trophy",
+        "zh": "遗落古城奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' invention, the Zombot Aerostatic Gondola.",
+        "zh": "你已击败了僵尸博士的发明，热气球浮舰。"
+      },
+      "OBTAINWORLD": "lostcity",
+      "CODENAME": "worldtrophy_lostcity",
+      "SPRITENAME": "lostcity",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Neon Mixtape Tour Trophy",
+        "zh": "炫光魔音游奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss’ creation, the Zombot Multi-stage Masher.",
+        "zh": "你已击败了僵尸博士的杰作，节奏引领者。"
+      },
+      "OBTAINWORLD": "eighties",
+      "CODENAME": "worldtrophy_eighties",
+      "SPRITENAME": "eighties",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Jurassic Marsh Trophy",
+        "zh": "侏罗纪沼泽奖杯"
+      },
+      "DESCRIPTION": {
+        "en": "You have defeated Dr. Zomboss' creation, the Zombot Dinotronic Mechasaur.",
+        "zh": "你已击败了僵尸博士的杰作，恐龙支配者。"
+      },
+      "OBTAINWORLD": "dino",
+      "CODENAME": "worldtrophy_dino",
+      "SPRITENAME": "dino",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Taco With a Waffle In It",
+        "zh": "装着华夫饼的玉米卷"
+      },
+      "DESCRIPTION": {
+        "en": "You have acquired a taco with a waffle in it!",
+        "zh": "你得到了一块装着华夫饼的玉米卷！"
+      },
+      "OBTAINWORLD": "frontyard",
+      "CODENAME": "worldtrophy_modern",
+      "SPRITENAME": "modern",
+      "TROPHYTYPE": "worldtrophy",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Access to the Pyramid of Doom!",
+        "zh": "通往末日金字塔！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "egypt",
+      "CODENAME": "dangerroom_egypt",
+      "SPRITENAME": "dangerroom_egypt",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "egypt_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Pyramid of Doom!",
+        "zh": "通往末日金字塔！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "egypt",
+      "CODENAME": "dangerroom_egypt2",
+      "SPRITENAME": "dangerroom_egypt",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "egypt_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Mummy Memory!",
+        "zh": "通往木乃伊记忆！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive from waves of Camel Zombies. Test your memorizing ability in this special Endless Zone.",
+        "zh": "在大群的骆驼牌僵尸中存活，在这个特殊的无尽空间中磨练你的记忆力。"
+      },
+      "OBTAINWORLD": "egypt",
+      "CODENAME": "dangerroom_egypt_minigame",
+      "SPRITENAME": "dangerroom_egypt",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "egypt_dangerroom_minigame"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to Dead Man's Booty!",
+        "zh": "通往死人的遗产！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "pirate",
+      "CODENAME": "dangerroom_pirate",
+      "SPRITENAME": "dangerroom_pirate",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "pirate_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to Dead Man's Booty!",
+        "zh": "通往死人的遗产！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "pirate",
+      "CODENAME": "dangerroom_pirate2",
+      "SPRITENAME": "dangerroom_pirate",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "pirate_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Big Bad Butte!",
+        "zh": "通往罪恶孤岭！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "cowboy",
+      "CODENAME": "dangerroom_cowboy",
+      "SPRITENAME": "dangerroom_cowboy",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "cowboy_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Big Bad Butte!",
+        "zh": "通往罪恶孤岭！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "cowboy",
+      "CODENAME": "dangerroom_cowboy2",
+      "SPRITENAME": "dangerroom_cowboy",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "cowboy_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Terror from Tomorrow!",
+        "zh": "通往明日动乱！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "future",
+      "CODENAME": "dangerroom_future",
+      "SPRITENAME": "dangerroom_future",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "future_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Terror from Tomorrow!",
+        "zh": "通往明日动乱！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "future",
+      "CODENAME": "dangerroom_future2",
+      "SPRITENAME": "dangerroom_future",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "future_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Terror from Tomorrow!",
+        "zh": "通往明日动乱！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie and sun bomb attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸和太阳炸弹攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "future",
+      "CODENAME": "dangerroom_future_sunbomb",
+      "SPRITENAME": "dangerroom_future",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "future_dangerroom_sunbomb"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Arthur's Challenge!",
+        "zh": "通往亚瑟的挑战！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "dark",
+      "CODENAME": "dangerroom_dark",
+      "SPRITENAME": "dangerroom_dark",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "dark_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Arthur's Challenge!",
+        "zh": "通往亚瑟的挑战！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "dark",
+      "CODENAME": "dangerroom_dark2",
+      "SPRITENAME": "dangerroom_dark",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "dark_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Arthur's Challenge!",
+        "zh": "通往亚瑟的挑战！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie and evil potion attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸和邪恶药水攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "dark",
+      "CODENAME": "dangerroom_dark_potion",
+      "SPRITENAME": "dangerroom_dark",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "dark_dangerroom_potion"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Tiki Torch-er!",
+        "zh": "通往提基火炬手！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "beach",
+      "CODENAME": "dangerroom_beach",
+      "SPRITENAME": "dangerroom_beach",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "beach_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Wall-nut Bowling",
+        "zh": "通往坚果保龄球！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks, using powerful Bowling Bulbs and Wallnuts!",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，用上强大的保龄球！"
+      },
+      "OBTAINWORLD": "beach",
+      "CODENAME": "dangerroom_beach_minigame",
+      "SPRITENAME": "dangerroom_beach",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "beach_dangerroom_minigame_egypt",
+          "beach_dangerroom_minigame_pirate",
+          "beach_dangerroom_minigame_cowboy",
+          "beach_dangerroom_minigame_future",
+          "beach_dangerroom_minigame_dark",
+          "beach_dangerroom_minigame_beach",
+          "beach_dangerroom_minigame_iceage",
+          "beach_dangerroom_minigame_lostcity"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Icebound Battleground!",
+        "zh": "通往冰封沙场！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "ice",
+      "CODENAME": "dangerroom_iceage",
+      "SPRITENAME": "dangerroom_iceage",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "iceage_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Icebound Battleground!",
+        "zh": "通往冰封沙场！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "ice",
+      "CODENAME": "dangerroom_iceage2",
+      "SPRITENAME": "dangerroom_iceage",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "iceage_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Temple of Bloom!",
+        "zh": "通往花开庙宇！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "lostcity",
+      "CODENAME": "dangerroom_lostcity",
+      "SPRITENAME": "dangerroom_lostcity",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "lostcity_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Greatest Hits!",
+        "zh": "通往劲爆节拍！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "eighties",
+      "CODENAME": "dangerroom_eighties",
+      "SPRITENAME": "dangerroom_eighties",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "eighties_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the La Brainsa Tarpits!",
+        "zh": "通往脑焦油坑！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "dino",
+      "CODENAME": "dangerroom_dino",
+      "SPRITENAME": "dangerroom_dino",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "dino_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Highway to the Danger Room!",
+        "zh": "通往登峰造极！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "modern",
+      "CODENAME": "dangerroom_modern",
+      "SPRITENAME": "dangerroom_modern",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "modern_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Tiki Torch-er!",
+        "zh": "通往提基火炬手！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "beach",
+      "CODENAME": "dangerroom_beach2",
+      "SPRITENAME": "dangerroom_beach",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "beach_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the La Brainsa Tarpits!",
+        "zh": "通往脑焦油坑！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "dino",
+      "CODENAME": "dangerroom_dino2",
+      "SPRITENAME": "dangerroom_dino",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "dino_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Highway to the Danger Room!",
+        "zh": "通往登峰造极！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "modern",
+      "CODENAME": "dangerroom_modern2",
+      "SPRITENAME": "dangerroom_modern",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "modern_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Martial Arts Competitions!",
+        "zh": "通往八方会武！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "kongfu",
+      "CODENAME": "dangerroom_kongfu",
+      "SPRITENAME": "dangerroom_kongfu",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "kongfu_dangerroom"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Martial Arts Competitions!",
+        "zh": "通往八方会武！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "kongfu",
+      "CODENAME": "dangerroom_kongfu2",
+      "SPRITENAME": "dangerroom_kongfu",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "kongfu_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Martial Arts Competitions!",
+        "zh": "通往八方会武！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "kongfu",
+      "CODENAME": "dangerroom_kongfu3",
+      "SPRITENAME": "dangerroom_kongfu",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "kongfu_dangerroom3"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Martial Arts Competitions!",
+        "zh": "通往八方会武！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "kongfu",
+      "CODENAME": "dangerroom_kongfu4",
+      "SPRITENAME": "dangerroom_kongfu",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "kongfu_dangerroom4"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Temple of Bloom!",
+        "zh": "通往花开庙宇！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "lostcity",
+      "CODENAME": "dangerroom_lostcity2",
+      "SPRITENAME": "dangerroom_lostcity",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "lostcity_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "A bottle of sauce",
+        "zh": "一瓶辣椒酱"
+      },
+      "DESCRIPTION": {
+        "en": "Used to mask the gamey smell of undercooked meat in a taco.",
+        "zh": "用于掩盖玉米卷里没熟的肉的腥味。"
+      },
+      "OBTAINWORLD": "frontyard",
+      "CODENAME": "sauce",
+      "SPRITENAME": "sauce",
+      "TROPHYTYPE": "sauce",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Map of space-time-ness",
+        "zh": "时空地图"
+      },
+      "DESCRIPTION": {
+        "en": "A parchment of ancient lands, with cosmic implications.",
+        "zh": "一张古老土地的羊皮卷，蕴含着宇宙层面的深意。"
+      },
+      "OBTAINWORLD": "market",
+      "CODENAME": "map",
+      "SPRITENAME": "map",
+      "TROPHYTYPE": "map",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Crazy Dave's jar of preserved powers",
+        "zh": "疯狂戴夫的备用能源"
+      },
+      "DESCRIPTION": {
+        "en": "Use only in a jam. Do not use if quality seal is broken.",
+        "zh": "仅供紧急情况下使用。若品质封条破损，请勿使用。"
+      },
+      "OBTAINWORLD": "market",
+      "CODENAME": "powerupgadget",
+      "SPRITENAME": "powerups",
+      "TROPHYTYPE": "powerups",
+      "objdata": {}
+    },
+    {
+      "NAME": {
+        "en": "Access to the Greatest Hits!",
+        "zh": "通往劲爆节拍！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "eighties",
+      "CODENAME": "dangerroom_eighties2",
+      "SPRITENAME": "dangerroom_eighties",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "eighties_dangerroom2"
+        ]
+      }
+    },
+    {
+      "NAME": {
+        "en": "Access to the Thunder Firmament!",
+        "zh": "通往雷鸣苍穹！"
+      },
+      "DESCRIPTION": {
+        "en": "Survive level after level of escalating zombie attacks. Test your skills in this Endless Zone.",
+        "zh": "在一波又一波愈演愈烈的僵尸攻势中生存下来，在此无尽空间中挑战你的极限。"
+      },
+      "OBTAINWORLD": "sky",
+      "CODENAME": "dangerroom_sky",
+      "SPRITENAME": "dangerroom_sky",
+      "TROPHYTYPE": "dangerroom",
+      "objdata": {
+        "UnlockLevel": [
+          "sky_dangerroom"
+        ]
+      }
+    }
+  ]
+}

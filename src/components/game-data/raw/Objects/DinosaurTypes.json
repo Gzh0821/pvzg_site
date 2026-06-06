@@ -1,0 +1,56 @@
+{
+	"#comment": "Dinosaur Types!",
+	"version": 1,
+	"objects": [
+		{
+			"aliases": [
+				"raptor"
+			],
+			"objclass": "DinosaurType",
+			"objdata": {
+				"Properties": "RTID(raptor@DinosaurProps)",
+				"DinosaurBasedOn": "raptor"
+			}
+		},
+		{
+			"aliases": [
+				"stego"
+			],
+			"objclass": "DinosaurType",
+			"objdata": {
+				"Properties": "RTID(stego@DinosaurProps)",
+				"DinosaurBasedOn": "stego"
+			}
+		},
+		{
+			"aliases": [
+				"ptero"
+			],
+			"objclass": "DinosaurType",
+			"objdata": {
+				"Properties": "RTID(ptero@DinosaurProps)",
+				"DinosaurBasedOn": "ptero"
+			}
+		},
+		{
+			"aliases": [
+				"tyranno"
+			],
+			"objclass": "DinosaurType",
+			"objdata": {
+				"Properties": "RTID(tyranno@DinosaurProps)",
+				"DinosaurBasedOn": "tyranno"
+			}
+		},
+		{
+			"aliases": [
+				"ankylo"
+			],
+			"objclass": "DinosaurType",
+			"objdata": {
+				"Properties": "RTID(ankylo@DinosaurProps)",
+				"DinosaurBasedOn": "ankylo"
+			}
+		}
+	]
+}

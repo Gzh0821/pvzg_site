@@ -28,6 +28,67 @@
 		},
 		{
 			"aliases": [
+				"poisonpeashooter"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 150,
+				"BeghouledCost": 1500,
+				"Toughness": 300,
+				"PeaType": "pea_goo",
+				"PeaTypePlantfood": "pea_goo_pf",
+				"Family": "Poison",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"peacommando"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 450,
+				"BeghouledCost": 5000,
+				"Toughness": 300,
+				"PlantfoodRayDamage": 600,
+				"PeaType": "pea_commando",
+				"ShootCount": 2,
+				"ShootCountPlantfood": 2,
+				"HeadCountFactor": 1,
+				"HeadCountFactorPlantfood": 2,
+				"FlyTime": {
+					"Min": 3,
+					"Max": 4
+				},
+				"FlyToTargetTime": {
+					"Min": 1,
+					"Max": 2
+				},
+				"AttackInterval": {
+					"Min": 5,
+					"Max": 7
+				},
+				"Family": "Peashooter",
+				"MintPlantfoodDamageFactor": 5,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
 				"snappea"
 			],
 			"objclass": "PlantProperties",
@@ -678,6 +739,43 @@
 				"Toughness": 300,
 				"Family": "Melee",
 				"MintDamageFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
+				"wasabiwhip"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"AttackDamage": 40,
+				"AttackInterval": 0.6,
+				"AttackSplashSamage": 20,
+				"PlantfoodDPS": 400,
+				"PlantfoodDuration": 5,
+				"MaxDistance": 2.5,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 225,
+				"BeghouledCost": 1500,
+				"Toughness": 300,
+				"Family": "Fire",
+				"MintDamageFactor": 3,
+				"ImmuneToIceblock": true,
+				"WarmingRadius": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 6,
+					"GridItemDamage": 200
+				},
+				"WarmingRadiusPlantfood": {
+					"PulseInitialDelay": 0.25,
+					"PulseCooldown": 1.5,
+					"GridItemDamage": 100
+				},
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -2042,6 +2140,32 @@
 		},
 		{
 			"aliases": [
+				"loquat"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Damage": 0,
+				"Cooldown": 20,
+				"CooldownFrom": 1,
+				"SunCost": 100,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Slow",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"TornadoDuration": 3.5,
+				"ZombieDraggingFactor": 4,
+				"MintDurationFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
 				"noctarine"
 			],
 			"objclass": "PlantProperties",
@@ -2802,6 +2926,7 @@
 				"PeaType": "coconut",
 				"PeaTypePlantfood": "coconut_pf",
 				"RestTime": 15,
+				"AlwaysShoots": false,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 400,
@@ -3278,6 +3403,26 @@
 				"Toughness": 300,
 				"Family": "Sun",
 				"MintProductionFactor": 2,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": true
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bulbkekengi"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"Cooldown": 20,
+				"CooldownFrom": 1,
+				"SunCost": 75,
+				"BeghouledCost": 500,
+				"Toughness": 300,
+				"Family": "Nope",
+				"PlantfoodDuration": 15,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 1,
@@ -4183,17 +4328,17 @@
 			"objclass": "PlantProperties",
 			"objdata": {
 				"PeaType": "peanut",
-				"ShootInterval": 1.35,
+				"ShootInterval": 0.65,
 				"ShootIntervalAdditional": 0.15,
-				"ShootIntervalSemi": 2.7,
+				"ShootIntervalSemi": 1.35,
 				"ShootIntervalSemiAdditional": 0.15,
-				"ArmorToughness": 4000,
+				"ArmorToughness": 6000,
 				"PlantfoodPeaCount": 60,
 				"Cooldown": 15,
 				"CooldownFrom": 1,
 				"SunCost": 150,
 				"BeghouledCost": 1500,
-				"Toughness": 4000,
+				"Toughness": 6000,
 				"Family": "Defence",
 				"MintBoostedProps": {
 					"ResistanceMult": 3,

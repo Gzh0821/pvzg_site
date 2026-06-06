@@ -1,0 +1,5614 @@
+{
+	"#comment": "Projectile Properties!",
+	"version": 1,
+	"objects": [
+		{
+			"aliases": [
+				"abbot_fan_storm"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"MaxCarryingZombies": 1,
+				"DiesWhenLosingZombies": false,
+				"Size": {
+					"w": 4,
+					"h": 70
+				}
+			}
+		},
+		{
+			"aliases": [
+				"atombomb"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 0,
+				"PlantTypeToSpawn": "atombomb_seedling",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sky_battleplane_bullet"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageToShip": 20
+			}
+		},
+		{
+			"aliases": [
+				"airraid_0"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 10,
+				"Size": {
+					"w": 4,
+					"h": 4
+				},
+				"DamageToShip": 20
+			}
+		},
+		{
+			"aliases": [
+				"airraid_1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 4,
+					"h": 4
+				},
+				"DamageToShip": 20
+			}
+		},
+		{
+			"aliases": [
+				"airraid_2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 4,
+					"h": 4
+				},
+				"DamageToShip": 30
+			}
+		},
+		{
+			"aliases": [
+				"pea"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"YellowIgnitedType": "pea_flame_yellow",
+				"BlueIgnitedType": "pea_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"SpeedMult": 1.5,
+				"YellowIgnitedType": "pea1_flame_yellow",
+				"BlueIgnitedType": "pea1_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SpeedMult": 2,
+				"YellowIgnitedType": "pea2_flame_yellow",
+				"BlueIgnitedType": "pea2_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"BlueIgnitedType": "pea_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea1_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"SpeedMult": 1.5,
+				"BlueIgnitedType": "pea1_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea1_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"SpeedMult": 1.5,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea2_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SpeedMult": 2,
+				"BlueIgnitedType": "pea2_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea2_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SpeedMult": 2,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_snap"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"YellowIgnitedType": "pea_snap_flame_yellow",
+				"BlueIgnitedType": "pea_snap_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea1_snap"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 120,
+				"SpeedMult": 1.5,
+				"YellowIgnitedType": "pea1_snap_flame_yellow",
+				"BlueIgnitedType": "pea1_snap_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea2_snap"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"SpeedMult": 2,
+				"YellowIgnitedType": "pea2_snap_flame_yellow",
+				"BlueIgnitedType": "pea2_snap_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_snap_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"BlueIgnitedType": "pea_snap_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_snap_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea1_snap_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 120,
+				"SpeedMult": 1.5,
+				"BlueIgnitedType": "pea1_snap_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea1_snap_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 120,
+				"SpeedMult": 1.5,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea2_snap_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"SpeedMult": 2,
+				"BlueIgnitedType": "pea2_snap_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea2_snap_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"SpeedMult": 2,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"BlueIgnitedType": "sea_pea_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 30,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 30,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea1_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 90,
+				"SpeedMult": 1.5,
+				"BlueIgnitedType": "sea_pea1_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 90,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea1_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 90,
+				"SpeedMult": 1.5,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 90,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea2_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SpeedMult": 2,
+				"BlueIgnitedType": "sea_pea2_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 150,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea2_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SpeedMult": 2,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 75,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"BlueIgnitedType": "pea_commando_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 75,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 75,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando1_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 450,
+				"SpeedMult": 1.5,
+				"BlueIgnitedType": "pea_commando1_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 225,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando1_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 450,
+				"SpeedMult": 1.5,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 225,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando2_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 750,
+				"SpeedMult": 2,
+				"BlueIgnitedType": "pea_commando2_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 375,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando2_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 750,
+				"SpeedMult": 2,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"SplashDamage": [
+					{
+						"Damage": 375,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_mega_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1800,
+				"ProjectileEmissions": [
+					{
+						"Type": "pea2",
+						"Count": 10
+					}
+				],
+				"YellowIgnitedType": "pea_mega_mint_flame_yellow",
+				"BlueIgnitedType": "pea_mega_mint_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_mega_mint_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1800,
+				"ProjectileEmissions": [
+					{
+						"Type": "pea2_flame_yellow",
+						"Count": 10
+					}
+				],
+				"DamageScale": 2,
+				"BlueIgnitedType": "pea_mega_mint_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_mega_mint_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamageScale": 3,
+				"ProjectileEmissions": [
+					{
+						"Type": "pea2_flame_blue",
+						"Count": 10
+					}
+				],
+				"Damage": 1800,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_mega"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 400,
+				"YellowIgnitedType": "pea_mega_flame_yellow",
+				"BlueIgnitedType": "pea_mega_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_mega_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 400,
+				"BlueIgnitedType": "pea_mega_flame_blue",
+				"DamageScale": 2,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pea_mega_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 400,
+				"DamageScale": 3,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"iceweed_saw"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"DPS": 200,
+				"Size": {
+					"w": 65,
+					"h": 65
+				},
+				"ChillDuration": 5,
+				"FreezeDuration": 10,
+				"IceBlockLevel": 1,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"spearmint_saw"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"DPS": 900,
+				"Size": {
+					"w": 65,
+					"h": 65
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"pea_snow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"YellowIgnitedType": "pea",
+				"BlueIgnitedType": "pea",
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ChillDuration": 10,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_snow1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"SpeedMult": 1.5,
+				"YellowIgnitedType": "pea1",
+				"BlueIgnitedType": "pea1",
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ChillDuration": 15,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_snow2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SpeedMult": 2,
+				"YellowIgnitedType": "pea2",
+				"BlueIgnitedType": "pea2",
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ChillDuration": 20,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_goo"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"PoisonStacked": {
+					"DPS": 5,
+					"Duration": 5
+				},
+				"ZombieSpeedStacked": {
+					"SpeedMult": 0.95,
+					"Duration": 5
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_goo1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 90,
+				"SpeedMult": 1.5,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"PoisonStacked": {
+					"DPS": 15,
+					"Duration": 5
+				},
+				"ZombieSpeedStacked": {
+					"SpeedMult": 0.90,
+					"Duration": 5
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_goo2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SpeedMult": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"PoisonStacked": {
+					"DPS": 25,
+					"Duration": 5
+				},
+				"ZombieSpeedStacked": {
+					"SpeedMult": 0.85,
+					"Duration": 5
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_goo_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"Size": {
+					"w": 160,
+					"h": 160
+				},
+				"TileLiquidType": "goo",
+				"Poison": {
+					"DPS": 50,
+					"Duration": 5
+				},
+				"LeapBackDistance": 2
+			}
+		},
+		{
+			"aliases": [
+				"cabbage"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				}
+			}
+		},
+		{
+			"aliases": [
+				"cabbage1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 80,
+				"Size": {
+					"w": 28,
+					"h": 28
+				}
+			}
+		},
+		{
+			"aliases": [
+				"cabbage2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 120,
+				"Size": {
+					"w": 28,
+					"h": 28
+				}
+			}
+		},
+		{
+			"aliases": [
+				"cabbage_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 300,
+				"Size": {
+					"w": 28,
+					"h": 28
+				}
+			}
+		},
+		{
+			"aliases": [
+				"caulipower"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"IgnoreTombstones": true,
+				"CannotBeReversedByJester": true,
+				"Damage": 0,
+				"Hypnotizing": true,
+				"Size": {
+					"w": 28,
+					"h": 28
+				}
+			}
+		},
+		{
+			"aliases": [
+				"boomerang"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"boomerang1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"Damage": 60,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"boomerang2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"Damage": 100,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"snowdrop"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 1,
+							"h": 1
+						},
+						"ChillDuration": 10
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ChillDuration": 10,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"icebloom"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 5,
+				"SplashDamage": [],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"IcebloomBlock": true,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"snowdrop_freeze"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 1,
+							"h": 1
+						},
+						"ChillDuration": 10,
+						"FreezeDuration": 5
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ChillDuration": 10,
+				"FreezeDuration": 6,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"corn"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"corn1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"corn2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"butter"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"Size": {
+					"w": 40,
+					"h": 40
+				},
+				"ButterDuration": 8
+			}
+		},
+		{
+			"aliases": [
+				"butter1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 120,
+				"Size": {
+					"w": 40,
+					"h": 40
+				},
+				"ButterDuration": 8
+			}
+		},
+		{
+			"aliases": [
+				"butter2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"Size": {
+					"w": 40,
+					"h": 40
+				},
+				"ButterDuration": 8
+			}
+		},
+		{
+			"aliases": [
+				"buttercup_butter"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"Size": {
+					"w": 40,
+					"h": 40
+				},
+				"TileLiquid": {
+					"Type": "butter",
+					"Duration": 120
+				},
+				"ButterDuration": 8
+			}
+		},
+		{
+			"aliases": [
+				"coconut"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 900,
+				"SplashDamage": [
+					{
+						"Damage": 300,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ShakesScreenOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"coconut_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 2700,
+				"SplashDamage": [
+					{
+						"Damage": 1500,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ShakesScreenOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"coconut_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 1800,
+				"SplashDamage": [
+					{
+						"Damage": 1800,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"melon"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 80,
+				"SplashDamage": [
+					{
+						"Damage": 40,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				}
+			}
+		},
+		{
+			"aliases": [
+				"melon1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 160,
+				"SplashDamage": [
+					{
+						"Damage": 80,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				}
+			}
+		},
+		{
+			"aliases": [
+				"melon2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 240,
+				"SplashDamage": [
+					{
+						"Damage": 120,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				}
+			}
+		},
+		{
+			"aliases": [
+				"melon_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"SplashDamage": [
+					{
+						"Damage": 100,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ShakesScreenOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"cantaloupe"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Damage": 100,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				}
+			}
+		},
+		{
+			"aliases": [
+				"cantaloupe1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 200,
+				"SplashDamage": [
+					{
+						"Damage": 200,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				}
+			}
+		},
+		{
+			"aliases": [
+				"cantaloupe2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 300,
+				"SplashDamage": [
+					{
+						"Damage": 300,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				}
+			}
+		},
+		{
+			"aliases": [
+				"cantaloupe_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 400,
+				"SplashDamage": [
+					{
+						"Damage": 400,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ShakesScreenOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"winter_melon"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 80,
+				"SplashDamage": [
+					{
+						"Damage": 40,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 5
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ChillDuration": 5,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"winter_melon1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 160,
+				"SplashDamage": [
+					{
+						"Damage": 80,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 5
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ChillDuration": 5,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"winter_melon2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 140,
+				"SplashDamage": [
+					{
+						"Damage": 120,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 5
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ChillDuration": 5,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"winter_melon_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"SplashDamage": [
+					{
+						"Damage": 200,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 5
+					}
+				],
+				"Size": {
+					"w": 18,
+					"h": 18
+				},
+				"ChillDuration": 5,
+				"ShakesScreenOnImpact": true,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"electricpea"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"ElectricInterval": 0.5,
+				"ElectricDamage": 20,
+				"ElectricTargetCount": 2,
+				"Damage": 20,
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"DamageType": "electricity",
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"electricpea_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"ElectricInterval": 0.5,
+				"ElectricDamage": 100,
+				"ElectricTargetCount": 2,
+				"Damage": 100,
+				"Size": {
+					"w": 24,
+					"h": 24
+				},
+				"DamageType": "electricity",
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"electricpea_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"ChildCount": 6,
+				"ChildPeaType": "electricpea_small",
+				"DamageType": "electricity",
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"electricpea_small"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"DamageType": "electricity",
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"citron"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 800,
+				"SplashDamage": [
+					{
+						"Damage": 20,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 40,
+					"h": 40
+				}
+			}
+		},
+		{
+			"aliases": [
+				"citron1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 2400,
+				"SplashDamage": [
+					{
+						"Damage": 60,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 40,
+					"h": 40
+				}
+			}
+		},
+		{
+			"aliases": [
+				"citron2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 4000,
+				"SplashDamage": [
+					{
+						"Damage": 100,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 40,
+					"h": 40
+				}
+			}
+		},
+		{
+			"aliases": [
+				"citron_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 2500,
+				"SplashDamage": [
+					{
+						"Damage": 20,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 60,
+					"h": 60
+				},
+				"DamageType": "electricity",
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"citron_pf_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 8000,
+				"SplashDamage": [
+					{
+						"Damage": 800,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 60,
+					"h": 60
+				},
+				"DamageType": "electricity",
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"magnifying_grass"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 550,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"magnifying_grass1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"Damage": 1100,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"magnifying_grass2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"Damage": 1650,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"star"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"star1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"star2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pinkstar"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pinkstar1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 50,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pinkstar2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 70,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"star_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pinkstar_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"apple"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"StunDuration": 0.75
+			}
+		},
+		{
+			"aliases": [
+				"apple1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 90,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"StunDuration": 1.5
+			}
+		},
+		{
+			"aliases": [
+				"apple2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"StunDuration": 2.25
+			}
+		},
+		{
+			"aliases": [
+				"apple_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 250,
+				"SplashDamage": [
+					{
+						"Damage": 50,
+						"Range": {
+							"w": 1,
+							"h": 1
+						},
+						"StunDuration": 1
+					}
+				],
+				"Size": {
+					"w": 30,
+					"h": 30
+				},
+				"StunDuration": 3
+			}
+		},
+		{
+			"aliases": [
+				"puffshroom_spore"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 12,
+					"h": 12
+				}
+			}
+		},
+		{
+			"aliases": [
+				"puffshroom_spore1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"Damage": 60,
+				"Size": {
+					"w": 12,
+					"h": 12
+				}
+			}
+		},
+		{
+			"aliases": [
+				"puffshroom_spore2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"Damage": 100,
+				"Size": {
+					"w": 12,
+					"h": 12
+				}
+			}
+		},
+		{
+			"aliases": [
+				"scaredyshroom_spore"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"scaredyshroom_spore1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"scaredyshroom_spore2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"scaredyshroom_spore_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"KnockbackDistance": 0.5,
+				"Damage": 100,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bowling0"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bowling1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 120,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bowling2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 180,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bowling0_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 400,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bowling1_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1200,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bowling2_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1800,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bowling_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 600,
+				"SplashDamage": [
+					{
+						"Damage": 100,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 30,
+					"h": 30
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"bowling_pf_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 6000,
+				"SplashDamage": [
+					{
+						"Damage": 1000,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 30,
+					"h": 30
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"bowling_explode_o_nut"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SupressArmorProtection": true,
+				"SplashDamage": [
+					{
+						"Damage": 1800,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true,
+				"IgnoredBy3SectionStaff": true,
+				"WarmsOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"bowling_iceberg"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 1,
+							"h": 1
+						},
+						"ChillDuration": 3,
+						"FreezeDuration": 7
+					}
+				],
+				"Size": {
+					"w": 30,
+					"h": 30
+				},
+				"ChillDuration": 3,
+				"FreezeDuration": 7,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"bowling_infinut"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1000,
+				"DamageBowlingLevel": 1,
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ShakesScreenOnImpact": true,
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"bowling_primal_wallnut"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1000,
+				"DamageBowlingLevel": 1,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 1.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.5
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"KnockbackDistance": 1,
+				"ShakesScreenOnImpact": true,
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"bowling_tallnut"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamagePerHit": 1800,
+				"Damage": 1800,
+				"Size": {
+					"w": 200,
+					"h": 100
+				},
+				"ShakesScreenOnImpact": true,
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"bowling_wallnut"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1000,
+				"DamageBowlingLevel": 1,
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ShakesScreenOnImpact": true,
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"guacodile"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"guacodile1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"Damage": 60,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"guacodile2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"Damage": 100,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"guacodile_child"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamagePerHit": 70,
+				"Size": {
+					"w": 100,
+					"h": 48
+				},
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"guacodile_child_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamagePerHit": 140,
+				"Size": {
+					"w": 100,
+					"h": 48
+				},
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"homing_thistle"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 40,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"homing_thistle1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"Damage": 160,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"homing_thistle2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"Damage": 200,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"homing_thistle_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 240,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"parsnip_child"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamagePerHit": 140,
+				"Size": {
+					"w": 144,
+					"h": 48
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"parsnip_child_small"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamagePerHit": 140,
+				"Size": {
+					"w": 72,
+					"h": 96
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"parsnip_child_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamagePerHit": 700,
+				"Size": {
+					"w": 144,
+					"h": 48
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"parsnip_child_small_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DamagePerHit": 700,
+				"Size": {
+					"w": 72,
+					"h": 96
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"seashroom_spore"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 12,
+					"h": 12
+				}
+			}
+		},
+		{
+			"aliases": [
+				"hollyleaf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"PlantTypeToSpawn": "hollybarrierleaf",
+				"PlantTypesToReplace": [
+					"hollybarrierleaf"
+				],
+				"Damage": 20,
+				"KnockbackDistance": 1,
+				"SplashDamage": [
+					{
+						"Damage": 20,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"KnockbackDistance": 1
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"hollyleaf_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"PlantTypeToSpawn": "hollybarrierleafplantfood",
+				"PlantTypesToReplace": [
+					"hollybarrierleafplantfood",
+					"hollybarrierleaf"
+				],
+				"Damage": 200,
+				"KnockbackDistance": 1,
+				"SplashDamage": [
+					{
+						"Damage": 200,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"KnockbackDistance": 1
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"banana"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1200,
+				"SplashDamage": [
+					{
+						"Damage": 1200,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"banana1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 2200,
+				"SplashDamage": [
+					{
+						"Damage": 2200,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"banana2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 3200,
+				"SplashDamage": [
+					{
+						"Damage": 3200,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"armamint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 900,
+				"StunDuration": 5,
+				"SplashDamage": [
+					{
+						"Damage": 900,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"StunDuration": 5
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"missiletoe"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1200,
+				"SplashDamage": [
+					{
+						"Damage": 1200,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					},
+					{
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 5,
+						"FreezeDuration": 5
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ChillDuration": 5,
+				"FreezeDuration": 5,
+				"IceBlockLevel": 1,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"missiletoe1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 2200,
+				"SpeedMult": 1.5,
+				"SplashDamage": [
+					{
+						"Damage": 2200,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					},
+					{
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 10,
+						"FreezeDuration": 10
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ChillDuration": 10,
+				"FreezeDuration": 10,
+				"IceBlockLevel": 1,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"missiletoe2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 3200,
+				"SpeedMult": 2,
+				"SplashDamage": [
+					{
+						"Damage": 3200,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					},
+					{
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 15,
+						"FreezeDuration": 15
+					}
+				],
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"ChillDuration": 15,
+				"FreezeDuration": 15,
+				"IceBlockLevel": 1,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"sapfling"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				},
+				"TileLiquid": {
+					"Type": "sap",
+					"Duration": 15
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"gumnut"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 0,
+				"Size": {
+					"w": 40,
+					"h": 40
+				},
+				"IgnoreTombstones": true,
+				"BaseGumHealth": 4000,
+				"ZombieGumHealthMult": 3,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"sapfling_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				},
+				"TileLiquid": {
+					"Type": "plantfoodsap",
+					"Duration": 30
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"pepper"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 50,
+				"SplashDamage": [
+					{
+						"Damage": 10,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pepper1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SplashDamage": [
+					{
+						"Damage": 50,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pepper2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 250,
+				"SplashDamage": [
+					{
+						"Damage": 100,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"pepper_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 350,
+				"SplashDamage": [
+					{
+						"Damage": 350,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 28,
+					"h": 28
+				},
+				"DamageType": "fire"
+			}
+		},
+		{
+			"aliases": [
+				"blooming_heart"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DefenceRateList": [
+					0.9
+				],
+				"Damage": 40,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"blooming_heart1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DefenceRateList": [
+					0.9,
+					0.9
+				],
+				"Damage": 120,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"blooming_heart2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DefenceRateList": [
+					0.9,
+					0.9,
+					0.9
+				],
+				"Damage": 200,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"blooming_heart_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"DefenceRateList": [
+					0.8,
+					0.8,
+					0.8
+				],
+				"Damage": 300,
+				"Size": {
+					"w": 15,
+					"h": 15
+				}
+			}
+		},
+		{
+			"aliases": [
+				"rotobaga"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 10,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"rotobaga1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"rotobaga2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"Damage": 50,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"rotobaga_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"redstinger"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"redstinger1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"Damage": 90,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"redstinger2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"Damage": 150,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"redstinger_weak"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"akee"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": {
+					"Min": 4,
+					"Max": 4
+				},
+				"Damage": 60,
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"akee_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": {
+					"Min": 8,
+					"Max": 8
+				},
+				"Damage": 450,
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"akee_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": {
+					"Min": 8,
+					"Max": 8
+				},
+				"Damage": 300,
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"akee_pf_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": {
+					"Min": 16,
+					"Max": 16
+				},
+				"Damage": 2250,
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dandelion"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 50,
+				"SplashDamage": [
+					{
+						"Damage": 50,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dandelion1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SplashDamage": [
+					{
+						"Damage": 150,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dandelion2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 250,
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dandelion_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 300,
+				"SplashDamage": [
+					{
+						"Damage": 300,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dandelion_blew"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 25,
+				"SplashDamage": [
+					{
+						"Damage": 25,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bamboozle"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 600,
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"IgnoredBy3SectionStaff": true,
+				"DestroysBalloons": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"strawburst0"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 200,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"strawburst1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 400,
+				"SplashDamage": [
+					{
+						"Damage": 400,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"strawburst2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 900,
+				"SplashDamage": [
+					{
+						"Damage": 900,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"strawburst0_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 600,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"strawburst1_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 1200,
+				"SplashDamage": [
+					{
+						"Damage": 1200,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"strawburst2_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 2700,
+				"SplashDamage": [
+					{
+						"Damage": 2700,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"cactus"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": {
+					"Min": 3,
+					"Max": 4
+				},
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"cactus1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"MaxHitCount": {
+					"Min": 3,
+					"Max": 4
+				},
+				"Damage": 90,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"cactus2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"MaxHitCount": {
+					"Min": 3,
+					"Max": 4
+				},
+				"Damage": 150,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"cactus_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": {
+					"Min": 3,
+					"Max": 4
+				},
+				"Damage": 40,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"cactus_pf1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 1.5,
+				"MaxHitCount": {
+					"Min": 3,
+					"Max": 4
+				},
+				"Damage": 120,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"cactus_pf2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SpeedMult": 2,
+				"MaxHitCount": {
+					"Min": 3,
+					"Max": 4
+				},
+				"Damage": 200,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DestroysBalloons": true
+			}
+		},
+		{
+			"aliases": [
+				"sporeshroom_spore"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 50,
+				"CarriesSporeShroom": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sporeshroom_spore1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"CarriesSporeShroom": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sporeshroom_spore2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 250,
+				"CarriesSporeShroom": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sporeshroom_spore_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1800,
+				"CarriesSporeShroom": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"grapeshot"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": 5,
+				"Damage": 200,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"grapeshot_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"MaxHitCount": 15,
+				"Damage": 600,
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"YellowIgnitedType": "pea_primal_flame_yellow",
+				"BlueIgnitedType": "pea_primal_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 180,
+				"YellowIgnitedType": "pea_primal1_flame_yellow",
+				"BlueIgnitedType": "pea_primal1_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 300,
+				"YellowIgnitedType": "pea_primal2_flame_yellow",
+				"BlueIgnitedType": "pea_primal2_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"BlueIgnitedType": "pea_primal_flame_blue",
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal1_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 180,
+				"BlueIgnitedType": "pea_primal1_flame_blue",
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal2_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 300,
+				"BlueIgnitedType": "pea_primal2_flame_blue",
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal1_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 180,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"pea_primal2_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 300,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"StunDuration": 1
+			}
+		},
+		{
+			"aliases": [
+				"meteor"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Damage": 100,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 7,
+					"h": 7
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true,
+				"WarmsOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"meteor_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 500,
+				"SplashDamage": [
+					{
+						"Damage": 500,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 7,
+					"h": 7
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true,
+				"WarmsOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"pea_shadow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"Damage": 20,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_shadow1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"SpeedMult": 1.5,
+				"Damage": 60,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_shadow2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"SpeedMult": 2,
+				"Damage": 100,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_shadow_pf_0"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"Damage": 400,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 3,
+							"h": 1
+						},
+						"Damage": 400
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true,
+				"IgnoredBy3SectionStaff": true,
+				"DamageType": "ray"
+			}
+		},
+		{
+			"aliases": [
+				"pea_shadow_pf_1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"Damage": 800,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"Damage": 800
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true,
+				"IgnoredBy3SectionStaff": true,
+				"DamageType": "ray"
+			}
+		},
+		{
+			"aliases": [
+				"pea_shadow_pf_2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"Damage": 1200,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 200,
+							"h": 100
+						},
+						"Damage": 1200
+					}
+				],
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"CannotBeReversedByJester": true,
+				"IgnoredBy3SectionStaff": true,
+				"DamageType": "ray"
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"KnockbackDistance": 0.05,
+				"Damage": 20,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.05
+					}
+				],
+				"YellowIgnitedType": "pea_sky_flame_yellow",
+				"BlueIgnitedType": "pea_sky_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"KnockbackDistance": 0.15,
+				"SpeedMult": 1.5,
+				"Damage": 60,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.15
+					}
+				],
+				"YellowIgnitedType": "pea_sky1_flame_yellow",
+				"BlueIgnitedType": "pea_sky1_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"KnockbackDistance": 0.25,
+				"SpeedMult": 2,
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.25
+					}
+				],
+				"YellowIgnitedType": "pea_sky2_flame_yellow",
+				"BlueIgnitedType": "pea_sky2_flame_blue",
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"Damage": 20,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.05
+					}
+				],
+				"BlueIgnitedType": "pea_sky_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"KnockbackDistance": 0.05
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky1_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"SpeedMult": 1.5,
+				"Damage": 60,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.15
+					}
+				],
+				"BlueIgnitedType": "pea_sky1_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"KnockbackDistance": 0.15
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky2_flame_yellow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"SpeedMult": 2,
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.25
+					}
+				],
+				"BlueIgnitedType": "pea_sky2_flame_blue",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"KnockbackDistance": 0.25
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"Damage": 20,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.05
+					}
+				],
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"KnockbackDistance": 0.05
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky1_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"SpeedMult": 1.5,
+				"Damage": 60,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.15
+					}
+				],
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"KnockbackDistance": 0.15
+			}
+		},
+		{
+			"aliases": [
+				"pea_sky2_flame_blue"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CancelsKnockbackFlying": true,
+				"CannotInterruptOtherKnockback": true,
+				"SpeedMult": 2,
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 0.5,
+							"h": 1
+						},
+						"KnockbackDistance": 0.25
+					}
+				],
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"MeltsIceTile": true,
+				"DamageScale": 3,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"DamageType": "fire",
+				"KnockbackDistance": 0.25
+			}
+		},
+		{
+			"aliases": [
+				"sky_bolt_positive"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CannotBeReversedByJester": true,
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 0,
+				"PositiveCharge": 1,
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sky_bolt_negative"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"CannotBeReversedByJester": true,
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 0,
+				"NegativeCharge": 1,
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shootingstar"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shootingstar1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 60,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shootingstar2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 90,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"shootingstar_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 400,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium_bolt"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"DamageType": "electricity",
+				"Damage": 20,
+				"Size": {
+					"w": 25,
+					"h": 25
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium_bolt1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"DamageType": "electricity",
+				"Damage": 60,
+				"SpeedMult": 1.5,
+				"Size": {
+					"w": 25,
+					"h": 25
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium_bolt2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"DamageType": "electricity",
+				"Damage": 100,
+				"SpeedMult": 2,
+				"Size": {
+					"w": 25,
+					"h": 25
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium_bolt_big"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"DamageType": "electricity",
+				"Damage": 400,
+				"Size": {
+					"w": 25,
+					"h": 25
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium_bolt_big1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"DamageType": "electricity",
+				"Damage": 1200,
+				"SpeedMult": 1.5,
+				"Size": {
+					"w": 25,
+					"h": 25
+				}
+			}
+		},
+		{
+			"aliases": [
+				"anthurium_bolt_big2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"DamageType": "electricity",
+				"Damage": 2000,
+				"SpeedMult": 2,
+				"Size": {
+					"w": 25,
+					"h": 25
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 1,
+							"h": 1
+						},
+						"Damage": 75
+					}
+				],
+				"YellowIgnitedType": "pea_commando_flame_yellow",
+				"BlueIgnitedType": "pea_commando_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 450,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 1,
+							"h": 1
+						},
+						"Damage": 225
+					}
+				],
+				"SpeedMult": 1.5,
+				"YellowIgnitedType": "pea_commando1_flame_yellow",
+				"BlueIgnitedType": "pea_commando1_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"pea_commando2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 750,
+				"SplashDamage": [
+					{
+						"Range": {
+							"w": 1,
+							"h": 1
+						},
+						"Damage": 375
+					}
+				],
+				"SpeedMult": 2,
+				"YellowIgnitedType": "pea_commando2_flame_yellow",
+				"BlueIgnitedType": "pea_commando2_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"YellowIgnitedType": "sea_pea_flame",
+				"BlueIgnitedType": "sea_pea_flame",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 90,
+				"SpeedMult": 1.5,
+				"YellowIgnitedType": "sea_pea1_flame",
+				"BlueIgnitedType": "sea_pea1_flame",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SpeedMult": 2,
+				"YellowIgnitedType": "sea_pea2_flame",
+				"BlueIgnitedType": "sea_pea2_flame",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea_flame"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 30,
+				"YellowIgnitedType": "sea_pea_flame_yellow",
+				"BlueIgnitedType": "sea_pea_flame_blue",
+				"SplashDamage": [
+					{
+						"Damage": 30,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea1_flame"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 90,
+				"SplashDamage": [
+					{
+						"Damage": 90,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"SpeedMult": 1.5,
+				"YellowIgnitedType": "sea_pea1_flame_yellow",
+				"BlueIgnitedType": "sea_pea1_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sea_pea2_flame"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 150,
+				"SplashDamage": [
+					{
+						"Damage": 150,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"SpeedMult": 2,
+				"YellowIgnitedType": "sea_pea2_flame_yellow",
+				"BlueIgnitedType": "sea_pea2_flame_blue",
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"nightshade"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"nightshade_mega"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 400,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"nightshade_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1000,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"nightshade_mega_mint"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 2000,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"nightshade_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 400,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"nightshade_pf_mega"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 800,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dusklobber"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 5,
+				"SplashDamage": [
+					{
+						"Damage": 25,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dusklobber1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 15,
+				"SplashDamage": [
+					{
+						"Damage": 75,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dusklobber2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 25,
+				"SplashDamage": [
+					{
+						"Damage": 125,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dusklobber_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 5,
+				"SplashDamage": [
+					{
+						"Damage": 100,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 20,
+					"h": 20
+				}
+			}
+		},
+		{
+			"aliases": [
+				"cranjelly"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 20,
+				"LiquidType": "cranjelly",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 40,
+					"h": 40
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"dragonfruit"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Damage": 50,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dragonfruit1"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Damage": 50,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dragonfruit2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 100,
+				"SplashDamage": [
+					{
+						"Damage": 50,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				}
+			}
+		},
+		{
+			"aliases": [
+				"dragonfruit_pf"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 200,
+				"SplashDamage": [
+					{
+						"Damage": 50,
+						"Range": {
+							"w": 2,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				}
+			}
+		},
+		{
+			"aliases": [
+				"tombraiser_bone"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 20,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"octopus"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"hunter_snowball"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"ChillDuration": 5,
+				"FreezeDuration": 10,
+				"IceBlockLevel": 1
+			}
+		},
+		{
+			"aliases": [
+				"abbot_chi"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 200,
+				"FootballPush": true,
+				"Size": {
+					"w": 16,
+					"h": 16
+				},
+				"KnockbackDistance": 1,
+				"CannotBeReversedByJester": true,
+				"DetectsEaterDetectDisabledPlants": true
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_boss_chi_chi"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 400,
+				"FootballPush": true,
+				"Size": {
+					"w": 56,
+					"h": 56
+				},
+				"KnockbackDistance": 2,
+				"SplashDamage": [
+					{
+						"KnockbackDistance": 2,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"CannotBeReversedByJester": true,
+				"DetectsEaterDetectDisabledPlants": true
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_boss_explode_bomb"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"SupressArmorProtection": true,
+				"Damage": 1800,
+				"Size": {
+					"w": 12,
+					"h": 12
+				}
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_boss_blade_chi"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {}
+		},
+		{
+			"aliases": [
+				"eighties_gargantuar_wave"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 1000,
+				"Size": {
+					"w": 20,
+					"h": 20
+				},
+				"CannotBeReversedByJester": true,
+				"DetectsEaterDetectDisabledPlants": true
+			}
+		},
+		{
+			"aliases": [
+				"eighties_speaker_wave"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Size": {
+					"w": 50,
+					"h": 50
+				},
+				"CannotBeReversedByJester": true,
+				"DetectsEaterDetectDisabledPlants": true
+			}
+		},
+		{
+			"aliases": [
+				"busketball"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"Damage": 75,
+				"Size": {
+					"w": 16.2,
+					"h": 16.2
+				}
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_lostcity_sandbag"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 20,
+				"SuppressArmorImpactSound": true,
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"kongfu_boss_chi_rack"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SupressArmorProtection": true,
+				"Damage": 500,
+				"RackTypes": [
+					"kongfu_rack_torch",
+					"kongfu_rack_blade",
+					"kongfu_rack_bomb",
+					"kongfu_rack_flag",
+					"kongfu_rack_nunchaku",
+					"kongfu_rack_hammer",
+					"kongfu_rack_helmet",
+					"kongfu_rack_fan",
+					"kongfu_rack_3section_staff"
+				],
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_missile_egypt"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"BoneCount": {
+					"Min": 2,
+					"Max": 2
+				},
+				"SupressArmorProtection": true,
+				"Damage": 500,
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_missile_egypt2"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"BoneCount": {
+					"Min": 2,
+					"Max": 4
+				},
+				"SupressArmorProtection": true,
+				"Damage": 500,
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_missile_dino"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"TileCrackleTime": 10,
+				"SupressArmorProtection": true,
+				"Damage": 500,
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_missile_cowboy"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SupressArmorProtection": true,
+				"Damage": 500,
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_missile_future"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"DestroysTiles": true,
+				"SupressArmorProtection": true,
+				"Damage": 500,
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"DamageType": "fire",
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_missile_dark"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SupressArmorProtection": true,
+				"FlameDamage": 3600,
+				"FlameDuration": 4,
+				"DragonImpType": "dark_imp_dragon",
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 30,
+					"h": 30
+				},
+				"CannotBeReversedByJester": true,
+				"WarmsOnImpact": true
+			}
+		},
+		{
+			"aliases": [
+				"zomboss_missile_iceage"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"KillsInsteadOfBurning": true,
+				"Damage": 500,
+				"SplashDamage": [
+					{
+						"Damage": 250,
+						"Range": {
+							"w": 3,
+							"h": 1
+						}
+					},
+					{
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 5,
+						"FreezeDuration": 5
+					}
+				],
+				"Size": {
+					"w": 12,
+					"h": 12
+				},
+				"ChillDuration": 5,
+				"FreezeDuration": 5,
+				"ShakesScreenOnImpact": true,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"powerup_snow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Damage": 450,
+				"SplashDamage": [
+					{
+						"Damage": 5,
+						"Range": {
+							"w": 3,
+							"h": 3
+						},
+						"ChillDuration": 5
+					},
+					{
+						"Damage": 450,
+						"Range": {
+							"w": 1,
+							"h": 1
+						}
+					}
+				],
+				"Size": {
+					"w": 25,
+					"h": 25
+				},
+				"ChillDuration": 5,
+				"IceBlockLevel": 1,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"trap_boulder"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"Size": {
+					"w": 140,
+					"h": 140
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_modern"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_egypt"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_pirate"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_cowboy"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_kongfu"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_future"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_dark"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_beach"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_iceage"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_lostcity"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_eighties"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"aliases": [
+				"mower_dino"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"SuppressArmorImpactSound": true,
+				"SuppressZombieImpactSound": true,
+				"Size": {
+					"w": 50,
+					"h": 150
+				},
+				"CannotBeReversedByJester": true
+			}
+		}
+	]
+}

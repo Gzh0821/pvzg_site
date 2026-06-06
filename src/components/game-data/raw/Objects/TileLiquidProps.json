@@ -1,0 +1,123 @@
+{
+  "#comment": "Tile Liquid Properties!",
+  "version": 1,
+  "objects": [
+    {
+      "aliases": [
+        "sapfling"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "SapflingDuration": 0.5,
+        "LifeSpan": 30,
+        "Priority": 5,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "goo"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "SapflingDuration": 0.5,
+        "PoisonDPS": 50,
+        "LifeSpan": 5,
+        "Priority": 4,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "cranjelly"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "AttackInterval": 0.5,
+        "Damage": 10,
+        "LifeSpan": 30,
+        "Priority": 3,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "cranjelly_eternal"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "AttackInterval": 0.5,
+        "Damage": 10,
+        "LifeSpan": 3600000,
+        "Priority": 3,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "butter"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "LifeSpan": 30,
+        "ButterDuration": 8,
+        "Priority": 2,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "moltenpool"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "DPS": 50,
+        "SapflingDuration": 0,
+        "LifeSpan": 30,
+        "Priority": 1,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "moltenpool_mint"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "DPS": 250,
+        "SapflingDuration": 0,
+        "LifeSpan": 30,
+        "Priority": 1,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "lavaguava"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "DPS": 100,
+        "SapflingDuration": 0.5,
+        "LifeSpan": 30,
+        "Priority": 0,
+        "BurnsPlants": true,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    },
+    {
+      "aliases": [
+        "lavaguava_mint"
+      ],
+      "objclass": "TileLiquidProperties",
+      "objdata": {
+        "DPS": 500,
+        "SapflingDuration": 0.5,
+        "LifeSpan": 30,
+        "Priority": 0,
+        "BurnsPlants": true,
+        "Rect": "RTID(TileDefaultRect@RectangleProps)"
+      }
+    }
+  ]
+}

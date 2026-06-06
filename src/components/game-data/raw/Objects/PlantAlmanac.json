@@ -658,7 +658,7 @@
 					}
 				],
 				"Introduction": {
-					"en": "Asparaguses shoot at zombies in three lanes.",
+					"en": "Asparajets shoot at zombies in three lanes.",
 					"zh": "芦笋战机可以攻击前方及相邻两行的僵尸。"
 				},
 				"Special": [
@@ -674,8 +674,8 @@
 					}
 				],
 				"Chat": {
-					"en": "Asparagus enjoys the reputation of being the \"King of Vegetables\", yet he takes no pride in this. Having loved studying all kinds of firearms since childhood, he can only realize its value on the battlefield. \"I just want everyone to remember the passionate me on the battlefield!\" Asparagus said earnestly.",
-					"zh": "芦笋享有“蔬菜之王”的美称，然而他却并不以此为傲。从小热爱研究各类热兵器的他只有在战场上才能实现自己的价值。“我只希望大家能够记住战场上热血的我！”芦笋战机认真地说道。"
+					"en": "Asparagus enjoys the reputation of being the \"King of Vegetables\", yet Asparajet takes no pride in this. Having loved studying all kinds of firearms since childhood, he can only realize its value on the battlefield. \"I just want everyone to remember the passionate me on the battlefield!\" Asparagus said earnestly.",
+					"zh": "芦笋享有“蔬菜之王”的美称，然而芦笋战机却并不以此为傲。从小热爱研究各类热兵器的他只有在战场上才能实现自己的价值。“我只希望大家能够记住战场上热血的我！”芦笋战机认真地说道。"
 				},
 				"BriefIntroduction": {
 					"en": "Shoots at zombies in three lanes",
@@ -1351,6 +1351,67 @@
 				"BriefIntroduction": {
 					"en": "Rapidly punches enemies ahead or behind",
 					"zh": "快速击打身前或身后的敌人"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"wasabiwhip"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 40
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Close",
+							"zh": "接近"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Wasabi Whips lash out with their flaming whips, delivering whippings to zombies both in front and behind.",
+					"zh": "炙热山葵挥舞火焰长鞭，抽打前后的僵尸。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "resist cold and warms nearby plants",
+							"zh": "无视寒冷并温暖身边的植物"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"The trick to proper whipping is all in the wrist,\" says Wasabi Whip. \"Well, not the wrist, exactly, since I don't have any. You have to, like... BE the wrist.\"",
+					"zh": "“正确甩鞭的诀窍全在手腕上，”炙热山葵说道。“呃，严格来说也不是手腕，因为我压根没有。你得……嗯……化身成为手腕本身。”"
+				},
+				"BriefIntroduction": {
+					"en": "Whips both ahead and behind",
+					"zh": "抽打身前和身后的敌人"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -2060,6 +2121,63 @@
 		},
 		{
 			"aliases": [
+				"poisonpeashooter"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 30
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Straight",
+							"zh": "直线"
+						}
+					},
+					{
+						"TYPE": "SPECIAL",
+						"SORT": {
+							"en": "Poison",
+							"zh": "毒伤"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Goo Peashooters shoot poison peas at zombies, poisoning them as well as slowing them down.",
+					"zh": "黏毒豌豆向僵尸发射毒性子弹，利用剧毒伤害僵尸，并使之减速。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Goo Peashooter is a goopy shooter. See? See how that works? It's a play on words. Words are often playful, folks!",
+					"zh": "黏毒豌豆是黏弹的射手。懂了吗？明白其中的妙处了吗？这有个多音字。朋友们，语言往往就是这么有趣！"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"BriefIntroduction": {
+					"en": "Shoots sticky poison peas",
+					"zh": "发射黏性毒液豌豆子弹"
+				}
+			}
+		},
+		{
+			"aliases": [
 				"snappea"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -2473,7 +2591,7 @@
 					}
 				],
 				"Introduction": {
-					"en": "Pineapples block off zombies, and spin to reflect hostile projectiles.",
+					"en": "Spinapples block off zombies, and spin to reflect hostile projectiles.",
 					"zh": "旋转菠萝可以阻挡僵尸前进, 并通过旋转自身反弹敌人的子弹。"
 				},
 				"Special": [
@@ -2489,7 +2607,7 @@
 					}
 				],
 				"Chat": {
-					"en": "Others often question the way Pineapple deals with his problems, \"Is it because of the elasticity of your body rather than your spinning that make the bullets reflected?\" He replied about that, \"I just like spinning, which relaxes my spinning leaves.\"",
+					"en": "Others often question the way Spinapple deals with his problems, \"Is it because of the elasticity of your body rather than your spinning that make the bullets reflected?\" He replied about that, \"I just like spinning, which relaxes my spinning leaves.\"",
 					"zh": "时常有人怀疑旋转菠萝处理问题的方式，“子弹会不会只是通过你身体的弹性反弹，而不是你的旋转呢？”对此，他表示道：“我只是喜欢旋转，这样能让我头顶的叶片放松很多。”"
 				},
 				"BriefIntroduction": {
@@ -3014,7 +3132,7 @@
 					}
 				],
 				"Introduction": {
-					"en": "Anthuriums fire lightning bolts at zombies and absorb electric charges from surrounding plants.",
+					"en": "Ampereums fire lightning bolts at zombies and absorb electric charges from surrounding plants.",
 					"zh": "电离红掌向僵尸发射球状闪电，并且能吸收周围植物身上的电荷。"
 				},
 				"Special": [
@@ -3030,7 +3148,7 @@
 					}
 				],
 				"Chat": {
-					"en": "Just staying together is an ordeal for the Anthurium brothers. They must resist a powerful attraction to prevent their dangerous electrical energy from canceling out the instant they touch.",
+					"en": "Just staying together is an ordeal for the Ampereum brothers. They must resist a powerful attraction to prevent their dangerous electrical energy from canceling out the instant they touch.",
 					"zh": "电离红掌兄弟光是待在一起都是一种历练，他们得抵抗强大的吸引力，防止身上危险的电能在碰到的一瞬间抵消殆尽。"
 				},
 				"BriefIntroduction": {
@@ -4622,6 +4740,64 @@
 				"BriefIntroduction": {
 					"en": "Blows up all zombies in a medium area",
 					"zh": "爆炸并对范围内僵尸造成伤害"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"loquat"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DURATION",
+						"VALUE": 3.5
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "3x3",
+							"zh": "3x3 范围"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Loquanados rotate and drag zombies towards them in a medium range.",
+					"zh": "漩涡枇杷旋转并把范围内的僵尸向自己吸引。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "single use, instant",
+							"zh": "一次性使用，立刻触发"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Loquanados, who dreams of becoming a ballet dancer, has a special talent to spin in place for countless rotations. \"I know I could be the greatest ballet dancer in the world, but no one wants to hire me. I just don't get it,\" she said dejectedly, and took a big scoop of ice-cream.",
+					"zh": "梦想成为芭蕾舞演员的漩涡枇杷有一项绝活：她可以在原地旋转很多圈。“我觉得我一定能成为这个世界上最伟大的芭蕾舞演员，但是没有人愿意聘请我，我不理解为什么会这样。”漩涡枇杷沮丧地说，顺便吞下了一大口冰激凌。"
+				},
+				"BriefIntroduction": {
+					"en": "Drags zombies towards her in a medium area",
+					"zh": "将范围内的僵尸向自己吸引"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -7423,8 +7599,8 @@
 					}
 				],
 				"Introduction": {
-					"en": "Planterns remove fog and reveal invisible zombies.",
-					"zh": "路灯花会驱散迷雾，并使隐形的僵尸显现。"
+					"en": "Planterns remove fogs in a small range and reveal invisible zombies.",
+					"zh": "路灯花会驱散小范围内的迷雾，并使隐形的僵尸显现。"
 				},
 				"Special": [
 					{
@@ -7463,8 +7639,65 @@
 					"zh": "路灯花根据以往的工作经验恪尽职守，“僵尸以前也喜欢隐藏他们自己，难道我们不能也这么干嘛。”"
 				},
 				"BriefIntroduction": {
-					"en": "Removes fog and reveals invisible zombies",
+					"en": "Removes fogs and reveals invisible zombies",
 					"zh": "驱散迷雾，并显示隐形的僵尸"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"bulbkekengi"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "PLANTFOOD",
+						"SORT": {
+							"en": "Range Expanding",
+							"zh": "范围扩大"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Bulbkekengus remove fogs in a medium range.",
+					"zh": "灯笼草驱散中等范围内的迷雾。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "removes fogs",
+							"zh": "驱散迷雾"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Bulbkekengi soon became inseparable friends with Torchwood and Snapdragon, dubbing themselves the \"Musketeers of Flame\". However, the Hawaiian-themed lounge seems hesitant to serve the trio—the owner doesn't want to see any more scorched tables.",
+					"zh": "灯笼草很快就与火炬树桩和火龙草成了形影不离的好朋友，他们自称为“火焰三剑客”。不过夏威夷风情酒廊似乎不太敢招待他们三个，老板可不愿意再看见烧焦的酒桌。"
+				},
+				"BriefIntroduction": {
+					"en": "Removes fogs in a medium range",
+					"zh": "驱散中等范围内的迷雾"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -9494,8 +9727,8 @@
 					{
 						"TYPE": "RANGE",
 						"SORT": {
-							"en": "Straight",
-							"zh": "直线"
+							"en": "4 Tiles",
+							"zh": "4 格"
 						}
 					},
 					{
@@ -9778,7 +10011,7 @@
 						},
 						"DESCRIPTION": {
 							"en": "can be planted on water",
-							"zh": "冲出时即失去这株植物"
+							"zh": "可以被种植在水中"
 						}
 					}
 				],
@@ -10831,6 +11064,67 @@
 				"BriefIntroduction": {
 					"en": "Diverts zombies into other lanes",
 					"zh": "把僵尸分散到其他行"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"peacommando"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 150
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Full Board",
+							"zh": "全屏"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Pea Commandoes deploy three flying pea soldiers to launch a heavy attack on the three leftmost zombies.",
+					"zh": "豌豆突击队派遣三只突击豌豆飞行小兵，向最靠左侧的三名僵尸发动突袭。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "hovers above ground or water",
+							"zh": "能飘浮于水面上"
+						}
+					}
+				],
+				"Chat": {
+					"en": "were among those who failed the \"Air Raid\" elite selection. Rather than raiding zombie bases under the cover of night like the elites, they're better suited to guard duties at their own base!",
+					"zh": "豌豆突击队是“壮植凌云”精英选拔中落选的一批，比起那些趁夜突击僵尸基地的精英们，他们更适合在自己的基地做好守卫工作！"
+				},
+				"BriefIntroduction": {
+					"en": "Deploys flying pea soldiers to launch a heavy attack on the zombies",
+					"zh": "派遣飞行小兵，向僵尸发动突袭"
 				},
 				"DisplayOffset": {
 					"x": 0,

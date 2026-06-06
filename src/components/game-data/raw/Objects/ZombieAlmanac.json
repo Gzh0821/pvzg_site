@@ -2254,7 +2254,7 @@
 				],
 				"Chat": {
 					"en": "Barrel Roller Zombie is part of a super underground secret awesome club. You probably haven't heard about it. Also, his left arm is slightly longer than his right arm.",
-					"zh": "滚筒僵尸是地下超级神秘帅气俱乐部的一员，你可能哈还没听说过吧。另外，他的左手比右手长一点点。"
+					"zh": "滚筒僵尸是地下超级神秘帅气俱乐部的一员，你可能还没听说过吧。另外，他的左手比右手长一点点。"
 				},
 				"DisplayOffset": {
 					"x": 60,
@@ -2758,7 +2758,7 @@
 				"Special": [],
 				"Chat": {
 					"en": "Cart-head Cowboy could probably move a lot faster if he did a handstand and rolled, but he's not thinking that far ahead.",
-					"zh": "加入矿车头牛仔倒立前进的话可能可以走得快得多了，但他根本想不出这么先进的办法。"
+					"zh": "要是矿车头牛仔倒立前进的话可能可以走得快得多了，但他根本想不出这么先进的办法。"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -4026,6 +4026,70 @@
 				"DisplayOffset": {
 					"x": 30,
 					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"treasureyeti"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Hardened",
+							"zh": "强化"
+						},
+						"PROGRESS": 0.7
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "A rare and curious creature, he always packs with treasures.",
+					"zh": "罕见且稀奇的生物，经常带着一些宝物。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "runs away after a short while",
+							"zh": "进场一段时间后就撤离"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "carries treasure",
+							"zh": "携带宝物"
+						}
+					}
+				],
+				"Chat": {
+					"en": "The rare and wondrous Yeti carries his lunch box up and down Mount Brainer to his isolated mountain lodge.",
+					"zh": "罕见而奇妙的雪人提着午餐盒，在脑山上下往返，前往他那与世隔绝的山间小屋。"
+				},
+				"DisplayOffset": {
+					"x": 10,
+					"y": -20
 				},
 				"DisplayScale": {
 					"x": 1,
@@ -7653,7 +7717,7 @@
 				],
 				"Introduction": {
 					"en": "Her scallop shelled bucket gives her great resistance to damage.",
-					"zh": "她挂上扇贝的铁桶使他极其抗揍。"
+					"zh": "她挂上扇贝的铁桶使她极其抗揍。"
 				},
 				"Special": [],
 				"Chat": {
@@ -8021,6 +8085,62 @@
 				"DisplayOffset": {
 					"x": 0,
 					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"sky_dronemaker"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					}
+				],
+				"Introduction": {
+					"en": "Crafts and throws armors with drones to other zombies.",
+					"zh": "制作并向其他僵尸投出带有无人机的盔甲。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "drones will equip basic zombies with helmets and use them as strongholds for its further actions",
+							"zh": "无人机将给一般的僵尸戴上头盔，并以其为据点行动"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "drones frequently leave their strongholds, fly towards plants on the lawn, and damage them",
+							"zh": "无人机会时常离开据点，飞向场上的植物并啃食"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Obviously, instead of having drones slowly come over from their air base, it's better to charge straight into the fray, making and sending the drones right on the spot!",
+					"zh": "很显然，与其让无人机从基地慢悠悠地飞过来，不如冲锋陷阵，现场组装分发无人机！"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": -20
 				},
 				"DisplayScale": {
 					"x": 1,
@@ -10275,6 +10395,60 @@
 			}
 		},
 		{
+			"aliases": [
+				"sky_arbiterx"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Machined",
+							"zh": "重甲"
+						},
+						"PROGRESS": 0.8
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Basic",
+							"zh": "普通"
+						},
+						"PROGRESS": 0.5
+					}
+				],
+				"Introduction": {
+					"en": "Sprays mist into the airspace behind, obstructing your view.",
+					"zh": "向身后的空域喷射雾气，阻挡你的视野。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "mist can be briefly dispersed by Bulbkekengi.",
+							"zh": "雾气可以被灯笼草短暂化开"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Almost every day is bright and sunny in the sky, which is getting us a bit dull. The birth of the Arbiter - Model X perfectly solves these problems!",
+					"zh": "在空中的几乎每一天都是大晴天，不免让人有些乏味。仲裁者 - X 型的诞生完美解决了这些问题！"
+				},
+				"DisplayOffset": {
+					"x": 60,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
 			"//": "gargantuar",
 			"aliases": [
 				"sky_gargantuar"
@@ -10666,6 +10840,124 @@
 				"Chat": {
 					"en": "Punk Zombie's piercings represent his individuality and his belief in personal freedom, or maybe just that he fell face-first into a sewing machine.",
 					"zh": "朋克僵尸身上的穿孔代表了他的个性和对个人自由的信仰，或许也只是因为他一头栽进了缝纫机里。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"eighties_punk_veteran"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Protected",
+							"zh": "加强"
+						},
+						"PROGRESS": 0.5
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Hungry",
+							"zh": "饥渴"
+						},
+						"PROGRESS": 0.6
+					}
+				],
+				"Introduction": {
+					"en": "Moshes plants back a space when his jam is playing. Releases skunks to protect himself.",
+					"zh": "舞蹈时，将植物向左侧空间踢走。释放臭鼬保护自身。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "skunks rush forwards when his jam is playing",
+							"zh": "舞蹈时，臭鼬将失控向前冲"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Weakness",
+							"zh": "弱点"
+						},
+						"DESCRIPTION": {
+							"en": "Magnet Shrooms pull off his head",
+							"zh": "磁力菇能吸走他的头"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Skunk Punk shared his hairspray and hair dye with his pets, masking their original stench.",
+					"zh": "臭鼬朋克将自己的发胶和染发剂分享给这些动物朋友们，掩盖了它们原有的气味。"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				},
+				"DisplayScale": {
+					"x": 1,
+					"y": 1
+				}
+			}
+		},
+		{
+			"aliases": [
+				"eighties_skunk"
+			],
+			"objclass": "ZombieAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "TOUGHNESS",
+						"SORT": {
+							"en": "Fragile",
+							"zh": "脆弱"
+						},
+						"PROGRESS": 0.2
+					},
+					{
+						"TYPE": "SPEED",
+						"SORT": {
+							"en": "Flighty",
+							"zh": "飞速"
+						},
+						"PROGRESS": 1
+					}
+				],
+				"Introduction": {
+					"en": "Released to protect their owner — as it should be.",
+					"zh": "被丢出保护自己的主人，本应如此。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "releases foul stenches and stuns nearby plants",
+							"zh": "释放难闻的臭味，眩晕接触到的植物"
+						}
+					}
+				],
+				"Chat": {
+					"en": "A weasel with dyed fur, carrying stink bombs, which make it way more reliable than a real skunk. Skunks are way to rare!",
+					"zh": "被染发的黄鼠狼，携带臭气弹，这样可比真的臭鼬可靠多了。谁叫臭鼬那么稀有呢！"
 				},
 				"DisplayOffset": {
 					"x": 0,

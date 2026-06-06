@@ -377,7 +377,7 @@
 			"TYPE": [
 				"floawerPot"
 			],
-			"OBTAINWORLD": "epic",
+			"OBTAINWORLD": "market",
 			"ZENGARDEN": {
 				"FixedWeight": 1,
 				"PlantPlace": "fly"
@@ -1651,7 +1651,8 @@
 			"_CARDSPRITENAME": "squash",
 			"CODENAME": "squash",
 			"TYPE": [
-				"plant"
+				"plant",
+				"losingPlant"
 			],
 			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
@@ -2039,6 +2040,7 @@
 			"_CARDSPRITENAME": "imitator",
 			"CODENAME": "imitater",
 			"TYPE": [
+				"imitater",
 				"any"
 			],
 			"COSTUME": 0,
@@ -5006,7 +5008,7 @@
 		{
 			"ID": 199,
 			"NAME": {
-				"en": "Asparagus",
+				"en": "Asparajet",
 				"zh": "芦笋战机"
 			},
 			"_CARDSPRITENAME": "asparagus",
@@ -5030,7 +5032,7 @@
 		{
 			"ID": 200,
 			"NAME": {
-				"en": "Pineapple",
+				"en": "Spinapple",
 				"zh": "旋转菠萝"
 			},
 			"_CARDSPRITENAME": "pineapple",
@@ -5054,7 +5056,7 @@
 		{
 			"ID": 201,
 			"NAME": {
-				"en": "Anthurium",
+				"en": "Ampereum",
 				"zh": "电离红掌"
 			},
 			"_CARDSPRITENAME": "anthurium",
@@ -5073,6 +5075,127 @@
 			"RES": {
 				"Disabled": "Anthurium",
 				"Plant": "Anthurium"
+			}
+		},
+		{
+			"ID": 202,
+			"NAME": {
+				"en": "Bulbkekengi",
+				"zh": "灯笼草"
+			},
+			"_CARDSPRITENAME": "bulbkekengi",
+			"CODENAME": "bulbkekengi",
+			"TYPE": [
+				"fly"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "sky",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"BOOST": 2,
+			"ALMANAC": "RTID(bulbkekengi@PlantAlmanac)",
+			"PROPS": "RTID(bulbkekengi@PlantProps)",
+			"RES": {
+				"Disabled": "Bulbkekengi",
+				"Plant": "Bulbkekengi"
+			}
+		},
+		{
+			"ID": 203,
+			"NAME": {
+				"en": "Loquanado",
+				"zh": "漩涡枇杷"
+			},
+			"_CARDSPRITENAME": "loquat",
+			"CODENAME": "loquat",
+			"TYPE": [
+				"fly",
+				"losingPlant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "sky",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"BOOST": 0,
+			"ALMANAC": "RTID(loquat@PlantAlmanac)",
+			"PROPS": "RTID(loquat@PlantProps)",
+			"RES": {
+				"Disabled": "Loquat",
+				"Plant": "Loquat"
+			}
+		},
+		{
+			"ID": 204,
+			"NAME": {
+				"en": "Pea Commando",
+				"zh": "豌豆突击队"
+			},
+			"_CARDSPRITENAME": "peacommando",
+			"CODENAME": "peacommando",
+			"TYPE": [
+				"fly"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "sky",
+			"ZENGARDEN": {
+				"PlantPlace": "fly"
+			},
+			"BOOST": 3,
+			"ALMANAC": "RTID(peacommando@PlantAlmanac)",
+			"PROPS": "RTID(peacommando@PlantProps)",
+			"RES": {
+				"Disabled": "PeaCommando",
+				"Plant": "PeaCommando"
+			}
+		},
+		{
+			"ID": 205,
+			"NAME": {
+				"en": "Wasabi Whip",
+				"zh": "炙热山葵"
+			},
+			"_CARDSPRITENAME": "wasabiwhip",
+			"CODENAME": "wasabiwhip",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"BOOST": 3,
+			"ALMANAC": "RTID(wasabiwhip@PlantAlmanac)",
+			"PROPS": "RTID(wasabiwhip@PlantProps)",
+			"RES": {
+				"Disabled": "WasabiWhip",
+				"Plant": "WasabiWhip"
+			}
+		},
+		{
+			"ID": 206,
+			"NAME": {
+				"en": "Goo Peashooter",
+				"zh": "黏毒豌豆"
+			},
+			"_CARDSPRITENAME": "goopeashooter",
+			"CODENAME": "poisonpeashooter",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 1,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 3,
+			"ALMANAC": "RTID(poisonpeashooter@PlantAlmanac)",
+			"PROPS": "RTID(poisonpeashooter@PlantProps)",
+			"RES": {
+				"Disabled": "GooPeashooter",
+				"Plant": "GooPeashooter"
 			}
 		}
 	],
@@ -5126,6 +5249,7 @@
 		"magnifyinggrass",
 		"powerplant",
 		"applemortar",
+		"wasabiwhip",
 		"solartomato",
 		"pumpkin",
 		"hollyknight",
@@ -5136,6 +5260,7 @@
 		"fumeshroom",
 		"sunbean",
 		"peanut",
+		"poisonpeashooter",
 		"magnetshroom",
 		"scaredyshroom",
 		"plantern",
@@ -5216,6 +5341,9 @@
 		"moonbean",
 		"anthurium",
 		"asparagus",
+		"loquat",
+		"bulbkekengi",
+		"peacommando",
 		"floawerPot",
 		"moonflower",
 		"nightshade",
@@ -5316,6 +5444,7 @@
 		"starfruit",
 		"pinkstarfruit",
 		"shootingstarfruit",
+		"wasabiwhip",
 		"applemortar",
 		"solartomato",
 		"pumpkin",
@@ -5331,6 +5460,7 @@
 		"scaredyshroom",
 		"peanut",
 		"hypnoshroom",
+		"poisonpeashooter",
 		"plantern",
 		"vamporcini",
 		"glaciershroom",
@@ -5422,6 +5552,9 @@
 		"pineapple",
 		"moonbean",
 		"anthurium",
+		"loquat",
+		"bulbkekengi",
+		"peacommando",
 		"asparagus",
 		"floawerPot",
 		"moonflower",

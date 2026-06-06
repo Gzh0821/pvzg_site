@@ -1,0 +1,896 @@
+{
+  "#comment": "Grid Item Types!",
+  "version": 1,
+  "objects": [
+    {
+      "aliases": [
+        "sapfling"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(sapfling@TileLiquidProps)",
+        "TileLiquidBasedOn": "sapfling"
+      }
+    },
+    {
+      "aliases": [
+        "plantfoodsap"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(sapfling@TileLiquidProps)",
+        "TileLiquidBasedOn": "sapfling"
+      }
+    },
+    {
+      "aliases": [
+        "sap"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(sapfling@TileLiquidProps)",
+        "TileLiquidBasedOn": "sapfling"
+      }
+    },
+    {
+      "aliases": [
+        "poison_tile"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(goo@TileLiquidProps)",
+        "TileLiquidBasedOn": "goo"
+      }
+    },
+    {
+      "aliases": [
+        "goo"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(goo@TileLiquidProps)",
+        "TileLiquidBasedOn": "goo"
+      }
+    },
+    {
+      "aliases": [
+        "butter"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(butter@TileLiquidProps)",
+        "TileLiquidBasedOn": "butter"
+      }
+    },
+    {
+      "aliases": [
+        "goopuddle"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(cranjelly@TileLiquidProps)",
+        "TileLiquidBasedOn": "cranjelly"
+      }
+    },
+    {
+      "aliases": [
+        "goopuddle_eternal"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(cranjelly_eternal@TileLiquidProps)",
+        "TileLiquidBasedOn": "cranjelly"
+      }
+    },
+    {
+      "aliases": [
+        "cranjelly"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(cranjelly@TileLiquidProps)",
+        "TileLiquidBasedOn": "cranjelly"
+      }
+    },
+    {
+      "aliases": [
+        "moltenpool"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(moltenpool@TileLiquidProps)",
+        "TileLiquidBasedOn": "moltenpool"
+      }
+    },
+    {
+      "aliases": [
+        "moltenpool_mint"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(moltenpool_mint@TileLiquidProps)",
+        "TileLiquidBasedOn": "moltenpool"
+      }
+    },
+    {
+      "aliases": [
+        "lavaguava"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(lavaguava@TileLiquidProps)",
+        "TileLiquidBasedOn": "lavaguava"
+      }
+    },
+    {
+      "aliases": [
+        "lava"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(lavaguava@TileLiquidProps)",
+        "TileLiquidBasedOn": "lavaguava"
+      }
+    },
+    {
+      "aliases": [
+        "lava_mint"
+      ],
+      "objclass": "TileLiquidType",
+      "objdata": {
+        "Properties": "RTID(lavaguava_mint@TileLiquidProps)",
+        "TileLiquidBasedOn": "lavaguava"
+      }
+    },
+    {
+      "aliases": [
+        "slider_up_modern"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(slider_up@TileProps)",
+        "TileBasedOn": "slider_up_modern"
+      }
+    },
+    {
+      "aliases": [
+        "slider_down_modern"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(slider_down@TileProps)",
+        "TileBasedOn": "slider_down_modern"
+      }
+    },
+    {
+      "aliases": [
+        "slider_up"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(slider_up@TileProps)",
+        "TileBasedOn": "slider_up"
+      }
+    },
+    {
+      "aliases": [
+        "slider_down"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(slider_down@TileProps)",
+        "TileBasedOn": "slider_down"
+      }
+    },
+    {
+      "aliases": [
+        "rail"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_tutorial@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_tutorial"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_tutorial@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_egypt"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_egypt@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_pirate"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_pirate@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_cowboy"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_cowboy@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_future"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_future@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_dark"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_dark@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_beach"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_beach@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_sky"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_sky@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "rail_kongfu"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(rail_kongfu@TileProps)",
+        "TileBasedOn": "rail"
+      }
+    },
+    {
+      "aliases": [
+        "railcart"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_tutorial@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_tutorial"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_tutorial@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_tutorial_above"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_tutorial_above@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_egypt"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_egypt@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_pirate"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_pirate@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_cowboy"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_cowboy@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_future"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_future@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_dark"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_dark@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_dark_above"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_dark_above@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_beach"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_beach@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_sky"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_sky@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "railcart_kongfu"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(railcart_kongfu@TileProps)",
+        "TileBasedOn": "railcart"
+      }
+    },
+    {
+      "aliases": [
+        "powertile"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(powertile_alpha@TileProps)",
+        "TileBasedOn": "powertile_alpha"
+      }
+    },
+    {
+      "aliases": [
+        "powertile_alpha"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(powertile_alpha@TileProps)",
+        "TileBasedOn": "powertile_alpha"
+      }
+    },
+    {
+      "aliases": [
+        "powertile_beta"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(powertile_beta@TileProps)",
+        "TileBasedOn": "powertile_beta"
+      }
+    },
+    {
+      "aliases": [
+        "powertile_delta"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(powertile_delta@TileProps)",
+        "TileBasedOn": "powertile_delta"
+      }
+    },
+    {
+      "aliases": [
+        "powertile_gamma"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(powertile_gamma@TileProps)",
+        "TileBasedOn": "powertile_gamma"
+      }
+    },
+    {
+      "aliases": [
+        "powertile_epsilon"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(powertile_epsilon@TileProps)",
+        "TileBasedOn": "powertile_epsilon"
+      }
+    },
+    {
+      "aliases": [
+        "protect_plant"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(endangered@TileProps)",
+        "TileBasedOn": "endangered"
+      }
+    },
+    {
+      "aliases": [
+        "endangered"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(endangered@TileProps)",
+        "TileBasedOn": "endangered"
+      }
+    },
+    {
+      "aliases": [
+        "potholepuddle"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(potholepuddle@TileProps)",
+        "TileBasedOn": "potholepuddle"
+      }
+    },
+    {
+      "aliases": [
+        "shallowpuddle"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(shallowpuddle@TileProps)",
+        "TileBasedOn": "shallowpuddle"
+      }
+    },
+    {
+      "aliases": [
+        "goldtile"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(goldtile@TileProps)",
+        "TileBasedOn": "goldtile"
+      }
+    },
+    {
+      "aliases": [
+        "taichitile"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(taichitile@TileProps)",
+        "TileBasedOn": "taichitile"
+      }
+    },
+    {
+      "aliases": [
+        "boulder_trap_falling_forward"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(boulder_trap_falling_forward@TileProps)",
+        "TileBasedOn": "boulder_trap_falling_forward"
+      }
+    },
+    {
+      "aliases": [
+        "boulder_trap_falling_backward"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(boulder_trap_falling_backward@TileProps)",
+        "TileBasedOn": "boulder_trap_falling_forward"
+      }
+    },
+    {
+      "aliases": [
+        "flame_spreader_trap"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(flame_spreader_trap@TileProps)",
+        "TileBasedOn": "flame_spreader_trap"
+      }
+    },
+    {
+      "aliases": [
+        "thunder_trap"
+      ],
+      "objclass": "TileType",
+      "objdata": {
+        "Properties": "RTID(thunder_trap@TileProps)",
+        "TileBasedOn": "thunder_trap"
+      }
+    },
+    {
+      "aliases": [
+        "lilypad"
+      ],
+      "objclass": "PlantType",
+      "objdata": {
+        "PlantBasedOn": "lilypad",
+        "Properties": "RTID(lilypad@PlantProps)"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_tutorial@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_tutorial"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_tutorial"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_tutorial@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_tutorial"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_egypt"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_egypt@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_egypt"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_pirate"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_pirate@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_pirate"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_cowboy"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_cowboy@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_cowboy"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_future"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_future@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_future"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_dark"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_dark@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_dark"
+      }
+    },
+    {
+      "aliases": [
+        "gravestoneSunOnDestruction"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestoneSunOnDestruction@TombstoneProps)",
+        "TombstoneBasedOn": "gravestoneSunOnDestruction"
+      }
+    },
+    {
+      "aliases": [
+        "gravestonePlantfoodOnDestruction"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestonePlantfoodOnDestruction@TombstoneProps)",
+        "TombstoneBasedOn": "gravestonePlantfoodOnDestruction"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_torch"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_torch@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_torch"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_blade"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_blade@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_blade"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_bomb"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_bomb@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_bomb"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_flag"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_flag@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_flag"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_nunchaku"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_nunchaku@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_nunchaku"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_hammer"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_hammer@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_hammer"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_helmet"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_helmet@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_helmet"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_fan"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_fan@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_fan"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_rack_3section_staff"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_rack_3section_staff@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_rack_3section_staff"
+      }
+    },
+    {
+      "aliases": [
+        "kongfu_TNT"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(kongfu_TNT@TombstoneProps)",
+        "TombstoneBasedOn": "kongfu_TNT"
+      }
+    },
+    {
+      "aliases": [
+        "surfboard"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(surfboard@TombstoneProps)",
+        "TombstoneBasedOn": "surfboard"
+      }
+    },
+    {
+      "aliases": [
+        "surfboard_veteran"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(surfboard_veteran@TombstoneProps)",
+        "TombstoneBasedOn": "surfboard_veteran"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_iceage"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_iceage@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_iceage"
+      }
+    },
+    {
+      "aliases": [
+        "planttarget_iceblock"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(planttarget_iceblock@TombstoneProps)",
+        "TombstoneBasedOn": "planttarget_iceblock"
+      }
+    },
+    {
+      "aliases": [
+        "zombietarget_iceblock"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(zombietarget_iceblock@TombstoneProps)",
+        "TombstoneBasedOn": "zombietarget_iceblock"
+      }
+    },
+    {
+      "aliases": [
+        "zombietarget_birthday_present"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(zombietarget_iceblock@TombstoneProps)",
+        "TombstoneBasedOn": "zombietarget_birthday_present"
+      }
+    },
+    {
+      "aliases": [
+        "zomboss_iceage_glacier_block"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(zomboss_iceage_glacier_block@TombstoneProps)",
+        "TombstoneBasedOn": "zomboss_iceage_glacier_block"
+      }
+    },
+    {
+      "aliases": [
+        "planttarget_squid"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(planttarget_squid@TombstoneProps)",
+        "TombstoneBasedOn": "planttarget_squid"
+      }
+    },
+    {
+      "aliases": [
+        "gravestone_lostcity"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(gravestone_lostcity@TombstoneProps)",
+        "TombstoneBasedOn": "gravestone_lostcity"
+      }
+    },
+    {
+      "aliases": [
+        "backpack"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(backpack@TombstoneProps)",
+        "TombstoneBasedOn": "backpack"
+      }
+    },
+    {
+      "aliases": [
+        "tent"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(tent@TombstoneProps)",
+        "TombstoneBasedOn": "tent"
+      }
+    },
+    {
+      "aliases": [
+        "eightiesarcadecabinet"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(eightiesarcadecabinet@TombstoneProps)",
+        "TombstoneBasedOn": "eightiesarcadecabinet"
+      }
+    },
+    {
+      "aliases": [
+        "speaker"
+      ],
+      "objclass": "TombstoneType",
+      "objdata": {
+        "Properties": "RTID(speaker@TombstoneProps)",
+        "TombstoneBasedOn": "speaker"
+      }
+    }
+  ]
+}
