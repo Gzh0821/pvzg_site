@@ -98,6 +98,16 @@ onMounted(() => {
 
 </template>
 
+<template v-if="gameInfoData?.Download.Quark || gameInfoData?.Download.QuarkZip">
+
+### 夸克网盘 ::cloud::
+
+<p v-if="gameInfoData?.Download.Quark">默认下载：<a :href="gameInfoData.Download.Quark" target="_blank">点击进入</a></p>
+
+<p v-if="gameInfoData?.Download.QuarkZip">ZIP 包下载：<a :href="gameInfoData.Download.QuarkZip" target="_blank">点击进入</a></p>
+
+</template>
+
 <template v-if="gameInfoData?.Download.Baidu">
 
 ### 百度网盘 ::cloud::
@@ -111,14 +121,6 @@ onMounted(() => {
 ### 123 网盘 ::cloud::
 
 下载链接：<a :href="gameInfoData.Download.Pan123" target="_blank">点击进入</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Quark">
-
-### 夸克网盘 ::cloud::
-
-下载链接：<a :href="gameInfoData.Download.Quark" target="_blank">点击进入</a>
 
 </template>
 

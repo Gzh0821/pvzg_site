@@ -100,6 +100,16 @@ Enlace de descarga: <a :href="gameInfoData.Download.Storage" target="_blank">hag
 
 </template>
 
+<template v-if="gameInfoData?.Download.Quark || gameInfoData?.Download.QuarkZip">
+
+### Quark Netdisk ::cloud::
+
+<p v-if="gameInfoData?.Download.Quark">Descarga predeterminada: <a :href="gameInfoData.Download.Quark" target="_blank">haga clic para ingresar</a></p>
+
+<p v-if="gameInfoData?.Download.QuarkZip">Descarga del paquete ZIP: <a :href="gameInfoData.Download.QuarkZip" target="_blank">haga clic para ingresar</a></p>
+
+</template>
+
 <template v-if="gameInfoData?.Download.Baidu">
 
 ### Baidu Netdisk ::cloud::
@@ -113,14 +123,6 @@ Enlace de descarga: <a :href="gameInfoData.Download.Baidu" target="_blank">haga 
 ### 123 Pan ::cloud::
 
 Enlace de descarga: <a :href="gameInfoData.Download.Pan123" target="_blank">haga clic para ingresar</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Quark">
-
-### Quark Netdisk ::cloud::
-
-Enlace de descarga: <a :href="gameInfoData.Download.Quark" target="_blank">haga clic para ingresar</a>
 
 </template>
 

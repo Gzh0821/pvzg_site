@@ -100,6 +100,16 @@ onMounted(() => {
 
 </template>
 
+<template v-if="gameInfoData?.Download.Quark || gameInfoData?.Download.QuarkZip">
+
+### Quark Netdisk ::cloud::
+
+<p v-if="gameInfoData?.Download.Quark">Обычная загрузка: <a :href="gameInfoData.Download.Quark" target="_blank">нажмите чтобы открыть</a></p>
+
+<p v-if="gameInfoData?.Download.QuarkZip">Загрузка ZIP-пакета: <a :href="gameInfoData.Download.QuarkZip" target="_blank">нажмите чтобы открыть</a></p>
+
+</template>
+
 <template v-if="gameInfoData?.Download.Baidu">
 
 ### Baidu Netdisk ::cloud::
@@ -113,14 +123,6 @@ onMounted(() => {
 ### 123 Pan ::cloud::
 
 Ссылка для скачивания: <a :href="gameInfoData.Download.Pan123" target="_blank">нажмите чтобы открыть</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Quark">
-
-### Quark Netdisk ::cloud::
-
-Ссылка для скачивания: <a :href="gameInfoData.Download.Quark" target="_blank">нажмите чтобы открыть</a>
 
 </template>
 

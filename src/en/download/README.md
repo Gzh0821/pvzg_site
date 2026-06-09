@@ -99,6 +99,16 @@ Download Link: <a :href="gameInfoData.Download.Storage" target="_blank">click to
 
 </template>
 
+<template v-if="gameInfoData?.Download.Quark || gameInfoData?.Download.QuarkZip">
+
+### Quark ::cloud::
+
+<p v-if="gameInfoData?.Download.Quark">Default download: <a :href="gameInfoData.Download.Quark" target="_blank">click to enter</a></p>
+
+<p v-if="gameInfoData?.Download.QuarkZip">ZIP package download: <a :href="gameInfoData.Download.QuarkZip" target="_blank">click to enter</a></p>
+
+</template>
+
 <template v-if="gameInfoData?.Download.Baidu">
 
 ### Baidu Netdisk ::cloud::
@@ -111,14 +121,6 @@ Download Link: <a :href="gameInfoData.Download.Baidu" target="_blank">click to e
 ### 123Pan ::cloud::
 
 Download Link: <a :href="gameInfoData.Download.Pan123" target="_blank">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Quark">
-
-### Quark ::cloud::
-
-Download Link: <a :href="gameInfoData.Download.Quark" target="_blank">click to enter</a>
 
 </template>
 
