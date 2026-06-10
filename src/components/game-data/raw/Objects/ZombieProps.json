@@ -639,6 +639,43 @@
 		},
 		{
 			"aliases": [
+				"birthday_gargantuar"
+			],
+			"objclass": "ZombieProperties",
+			"objdata": {
+				"ZombieSort": "Gargantuar",
+				"CannotBeEnlightenedBySolarSage": true,
+				"CannotBeGrabbedByPtero": true,
+				"CannotChangeLaneByPowerToss": true,
+				"CannotBeFlickedByPowerToss": true,
+				"CannotBeDraggedByTangleKelp": true,
+				"CannotBeTossedByCitron": true,
+				"CannotBeSwallowedByChomper": true,
+				"CannotCarryPlantfoodsInWaves": true,
+				"SmashDamage": 1500,
+				"WalkSPS": 0.24,
+				"EatDPS": 100,
+				"Toughness": 3600,
+				"LivesInDeepWater": true,
+				"NormalDeathWhenMowed": true,
+				"WavePointCost": 1500,
+				"Weight": 3000,
+				"TimeBeforeFirstLaneChanging": {
+					"Min": 3,
+					"Max": 4
+				},
+				"TimeBetweenLaneChanging": {
+					"Min": 6,
+					"Max": 8
+				},
+				"DecreasedChangeLaneCDPerSmash": 2,
+				"ImpType": "tutorial_imp",
+				"HitRect": "RTID(GargantuarHitRect@RectangleProps)",
+				"AttackRect": "RTID(GargantuarAttackRect@RectangleProps)"
+			}
+		},
+		{
+			"aliases": [
 				"sportzball_gargantuar"
 			],
 			"objclass": "ZombieProperties",
@@ -12951,10 +12988,10 @@
 				"KnockBackDistanceScale": 0.1,
 				"WalkSPSParalyzed": 0.67,
 				"EatDPS": 100,
-				"Toughness": 4000,
+				"Toughness": 8000,
 				"CrashDamageToShip": 2000,
 				"CrashDamage": 2000,
-				"WavePointCost": 1200,
+				"WavePointCost": 2400,
 				"Weight": 3000,
 				"CrashBackwardTime": 0.4,
 				"CrashForwardTime": 0.2,
