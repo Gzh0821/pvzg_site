@@ -53,6 +53,11 @@ highlights:
       details: 修改Gardendless的游戏存档
       link: ./useful-tool/save-editor
 
+    - title: 植物解码练习器
+      icon: puzzle-piece
+      details: 在网页中练习新的植物解码小游戏
+      link: ./useful-tool/plant-decoding
+
     - title: MOD教程
       icon: toolbox
       details: 使用GE Patcher自定义游戏资源

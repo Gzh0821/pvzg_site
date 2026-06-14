@@ -53,6 +53,11 @@ highlights:
       details: Modify Gardendless game saves
       link: ./useful-tool/save-editor
 
+    - title: Plant Decoding Practice
+      icon: puzzle-piece
+      details: Practice the new Plant Decoding minigame in your browser
+      link: ./useful-tool/plant-decoding
+
     - title: MOD tutorial
       icon: toolbox
       details: Customize game resources using GE Patcher

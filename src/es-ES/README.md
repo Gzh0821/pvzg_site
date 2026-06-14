@@ -53,6 +53,11 @@ highlights:
         details: Modifica tus partidas guardadas de Gardenless
         link: ./useful-tool/save-editor
 
+      - title: Practica de descifrado
+        icon: puzzle-piece
+        details: Practica el nuevo minijuego de descifrado de plantas
+        link: ./useful-tool/plant-decoding
+
       - title: Tutorial de MODs
         icon: toolbox
         details: Personaliza tu juego usando GE Patcher

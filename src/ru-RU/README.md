@@ -53,6 +53,11 @@ highlights:
         details: Редактируйте сохранения Gardendless
         link: ./useful-tool/save-editor
 
+      - title: Расшифровка растений
+        icon: puzzle-piece
+        details: Тренируйтесь в новом мини-режиме расшифровки растений
+        link: ./useful-tool/plant-decoding
+
       - title: Руководство по моддингу
         icon: toolbox
         details: Изменяйте ресурсы игры используя GE Patcher
