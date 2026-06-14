@@ -4,12 +4,33 @@ export interface ArchiveData {
     gem?: number;
     coin?: number;
     sprout?: number;
+    forceLevel?: string;
+    time?: number;
+    date?: { [key: string]: any };
+    difficulty?: number;
     plantProps?: { [key: string]: PlantData };
+    zombieProps?: { [key: string]: any };
+    trophyProps?: { [key: string]: any };
+    levelProps?: { [key: string]: any };
+    worldProgress?: any[];
+    cardDecks?: any[];
+    memoryPlantChoose?: any[];
+    zengarden?: { [key: string]: any };
+    arcade_plant_decoding?: ArcadePlantDecodingData;
+    yeti_spawned_today?: boolean;
     worldProps?: { [key: string]: any };
     upgradeProps?: { [key: string]: UpgradeData };
     tutorial?: { [key: string]: boolean };
     features?: { [key: string]: boolean };
     version?: string;
+    [key: string]: any;
+}
+
+export interface ArcadePlantDecodingData {
+    played_today: boolean;
+    gem_today: number;
+    max_base_count: number;
+    max_code_count: number;
     [key: string]: any;
 }
 

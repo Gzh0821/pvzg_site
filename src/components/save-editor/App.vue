@@ -82,6 +82,54 @@
                         </a-row>
                     </a-collapse-panel>
 
+                    <a-collapse-panel :key="'daily'" :header="t('daily state')">
+                        <div class="daily-grid">
+                            <div class="daily-card" v-if="archiveData.arcade_plant_decoding">
+                                <div class="daily-card-title">{{ t('plant decoding') }}</div>
+                                <a-row :gutter="[12, 12]">
+                                    <a-col :xs="24" :md="12">
+                                        <a-flex gap="small" align="center" class="daily-switch-row">
+                                            <a-switch v-model:checked="archiveData.arcade_plant_decoding.played_today"
+                                                :checked-children="t('enabled')"
+                                                :un-checked-children="t('disabled')" />
+                                            <span>{{ t('played today') }}</span>
+                                        </a-flex>
+                                    </a-col>
+                                    <a-col :xs="24" :md="12">
+                                        <a-input-number :addon-before="t('gem today')"
+                                            v-model:value="archiveData.arcade_plant_decoding.gem_today" :min="0"
+                                            style="width:100%" />
+                                    </a-col>
+                                    <a-col :xs="24" :md="12">
+                                        <a-input-number :addon-before="t('base count')"
+                                            v-model:value="archiveData.arcade_plant_decoding.max_base_count" :min="3"
+                                            :max="10" style="width:100%" />
+                                    </a-col>
+                                    <a-col :xs="24" :md="12">
+                                        <a-input-number :addon-before="t('code count')"
+                                            v-model:value="archiveData.arcade_plant_decoding.max_code_count" :min="3"
+                                            :max="10" style="width:100%" />
+                                    </a-col>
+                                </a-row>
+                                <div class="daily-actions">
+                                    <a-button size="small" @click="resetArcadeDaily">
+                                        {{ t('reset arcade daily') }}
+                                    </a-button>
+                                    <span class="daily-card-note">{{ t('arcade reward note') }}</span>
+                                </div>
+                            </div>
+
+                            <div class="daily-card">
+                                <div class="daily-card-title">{{ t('daily flags') }}</div>
+                                <a-flex gap="small" align="center" class="daily-switch-row">
+                                    <a-switch v-model:checked="archiveData.yeti_spawned_today"
+                                        :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
+                                    <span>{{ t('yeti spawned today') }}</span>
+                                </a-flex>
+                            </div>
+                        </div>
+                    </a-collapse-panel>
+
                     <a-collapse-panel :key="'plants'" :header="t('edit plants')">
                         <a-form-item>
                             <a-flex justify="center" class="plant-search-row">
@@ -313,14 +361,53 @@ const makeEndlessProps = () => ({
     plantsToChoose: null
 });
 
+const makeArcadePlantDecoding = () => ({
+    played_today: false,
+    gem_today: 0,
+    max_base_count: 5,
+    max_code_count: 4
+});
+
+const makeDateState = () => ({
+    date: 1,
+    month: 1,
+    year: 1,
+    hour: 0,
+    minute: 0,
+    second: 0,
+    plantCostumeToday: [] as any[]
+});
+
+const makeZenGardenState = () => ({
+    sprout: 0,
+    plantsInMain: [] as any[],
+    plantsInMushroom: [] as any[],
+    plantsInBeach: [] as any[],
+    plantsInNight: [] as any[],
+    plantInCart: null
+});
+
 // 初始化空存档模板
 const defaultArchive = {
     name: "New Player",
+    forceLevel: 'tutorial1',
     worldkey: 0,
     gem: 0,
     coin: 0,
     sprout: 0,
+    time: 0,
+    date: makeDateState(),
+    difficulty: 3,
     plantProps: {} as Record<string, any>,
+    zombieProps: {} as Record<string, any>,
+    trophyProps: {} as Record<string, any>,
+    levelProps: {} as Record<string, any>,
+    worldProgress: [] as any[],
+    cardDecks: [] as any[],
+    memoryPlantChoose: [] as any[],
+    zengarden: makeZenGardenState(),
+    arcade_plant_decoding: makeArcadePlantDecoding(),
+    yeti_spawned_today: false,
     worldProps: {
         ...Object.fromEntries(
             Array.from({ length: worldAmount }, (_, i) => [i, {
@@ -345,7 +432,10 @@ const defaultArchive = {
         premium_light_up: false,
         premium_unlock: false,
         premium_bring_out: false,
-        worldmap: false
+        worldmap: false,
+        worldkey: false,
+        zengarden_open: false,
+        zengarden_intro: false
     } as Record<string, boolean>,
     features: {
         feature_zengarden: false,
@@ -362,15 +452,41 @@ const defaultArchive = {
     version: gameVersion,
 };
 
+const handledSaveKeys = new Set(Object.keys(defaultArchive));
+
 const archiveData = ref<ArchiveData>({});
 const otherData = ref<Record<string, any>>({}); // 保存存档中其他未处理字段，确保下载时完整恢复
 const selectPlantValue = ref<string>('');
 const uploadVersion = ref('');
 const upgradeQuery = ref('');
 // 控制折叠面板的展开/收起状态（升级特性默认不展开，避免首次渲染卡顿）
-const activeKeys = ref(['basic', 'plants', 'worlds', 'tutorial', 'features']);
+const activeKeys = ref(['basic', 'daily', 'plants', 'worlds', 'tutorial', 'features']);
 
 const cloneDefaultArchive = () => structuredClone(defaultArchive) as ArchiveData;
+
+const clampInteger = (value: any, min: number, max: number, fallback: number) => {
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return fallback;
+    return Math.min(max, Math.max(min, Math.trunc(parsed)));
+};
+
+const normalizeArcadePlantDecoding = (data?: Record<string, any> | null) => {
+    const base = makeArcadePlantDecoding();
+    const source = (data && typeof data === 'object') ? data : {};
+    return {
+        ...base,
+        ...source,
+        played_today: Boolean(source.played_today ?? base.played_today),
+        gem_today: Math.max(0, Math.trunc(Number(source.gem_today ?? base.gem_today) || 0)),
+        max_base_count: clampInteger(source.max_base_count, 3, 10, base.max_base_count),
+        max_code_count: clampInteger(source.max_code_count, 3, 10, base.max_code_count)
+    };
+};
+
+const mergeObject = (base: any, value: any) => ({
+    ...(base || {}),
+    ...((value && typeof value === 'object' && !Array.isArray(value)) ? value : {})
+});
 
 const normalizeArchive = (data: Record<string, any> = {}) => {
     const base = cloneDefaultArchive();
@@ -381,7 +497,17 @@ const normalizeArchive = (data: Record<string, any> = {}) => {
         worldProps: { ...(base.worldProps || {}), ...(data.worldProps || {}) },
         upgradeProps: { ...(base.upgradeProps || {}), ...(data.upgradeProps || {}) },
         tutorial: { ...(base.tutorial || {}), ...(data.tutorial || {}) },
-        features: { ...(base.features || {}), ...(data.features || {}) }
+        features: { ...(base.features || {}), ...(data.features || {}) },
+        date: mergeObject(base.date, data.date),
+        zombieProps: mergeObject(base.zombieProps, data.zombieProps),
+        trophyProps: mergeObject(base.trophyProps, data.trophyProps),
+        levelProps: mergeObject(base.levelProps, data.levelProps),
+        zengarden: mergeObject(base.zengarden, data.zengarden),
+        worldProgress: Array.isArray(data.worldProgress) ? data.worldProgress : base.worldProgress,
+        cardDecks: Array.isArray(data.cardDecks) ? data.cardDecks : base.cardDecks,
+        memoryPlantChoose: Array.isArray(data.memoryPlantChoose) ? data.memoryPlantChoose : base.memoryPlantChoose,
+        arcade_plant_decoding: normalizeArcadePlantDecoding(data.arcade_plant_decoding),
+        yeti_spawned_today: Boolean(data.yeti_spawned_today ?? base.yeti_spawned_today)
     } as ArchiveData;
 };
 
@@ -435,7 +561,7 @@ const handleUpload = (file: File) => {
             archiveData.value = normalizeArchive(data);
             // 保存 defaultArchive 中不存在的字段，下载时原样恢复
             otherData.value = Object.fromEntries(
-                Object.entries(data).filter(([key]) => !(key in defaultArchive))
+                Object.entries(data).filter(([key]) => !handledSaveKeys.has(key))
             );
         } catch (err) {
             message.error(t('parse error'));
@@ -502,12 +628,20 @@ const completeTutorial = () => {
     message.success(t('tutorials completed'));
 };
 
+const resetArcadeDaily = () => {
+    const arcade = normalizeArcadePlantDecoding(archiveData.value.arcade_plant_decoding);
+    arcade.played_today = false;
+    arcade.gem_today = 0;
+    archiveData.value.arcade_plant_decoding = arcade;
+    message.success(t('arcade daily reset'));
+};
+
 // 保存存档（将 archiveData 与 otherData 合并后下载，保留所有原始字段）
 const saveArchive = () => {
     archiveData.value.worldProgress?.sort((a: any, b: any) => a.worldID - b.worldID);
     const finalData = {
-        ...archiveData.value,
-        ...otherData.value   // otherData 覆盖在后，确保原始字段值被保留
+        ...otherData.value,
+        ...archiveData.value
     };
     const saveName = finalData.name || 'New Player';
     const blob = new Blob([JSON.stringify(finalData, null, 2)], {
@@ -679,6 +813,42 @@ p.plant-title {
     border-radius: 6px;
     padding: 8px 10px;
     background: var(--tool-panel);
+}
+
+.daily-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+}
+
+.daily-card {
+    min-width: 0;
+    border: 1px solid var(--tool-border);
+    border-radius: 6px;
+    padding: 12px;
+    background: var(--tool-panel);
+}
+
+.daily-card-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.daily-switch-row {
+    min-height: 32px;
+}
+
+.daily-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.daily-card-note {
+    color: var(--tool-muted);
+    font-size: 0.82em;
 }
 
 .section-search {
