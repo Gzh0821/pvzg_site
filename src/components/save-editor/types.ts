@@ -10,7 +10,7 @@ export interface ArchiveData {
     difficulty?: number;
     plantProps?: { [key: string]: PlantData };
     zombieProps?: { [key: string]: any };
-    trophyProps?: { [key: string]: any };
+    player_trophies?: { [key: string]: any };
     levelProps?: { [key: string]: any };
     worldProgress?: any[];
     cardDecks?: any[];
@@ -19,7 +19,7 @@ export interface ArchiveData {
     arcade_plant_decoding?: ArcadePlantDecodingData;
     yeti_spawned_today?: boolean;
     worldProps?: { [key: string]: any };
-    upgradeProps?: { [key: string]: UpgradeData };
+    player_upgrades?: { [key: string]: UpgradeData };
     tutorial?: { [key: string]: boolean };
     features?: { [key: string]: boolean };
     version?: string;

@@ -202,7 +202,7 @@
                     <a-collapse-panel :key="'upgrades'" :header="t('upgrades')">
                         <a-input-search v-model:value="upgradeQuery" :placeholder="t('search upgrades')"
                             allow-clear class="section-search" />
-                        <a-list v-if="archiveData.upgradeProps" :data-source="upgradeEntries" size="small" bordered>
+                        <a-list v-if="archiveData.player_upgrades" :data-source="upgradeEntries" size="small" bordered>
                             <template #renderItem="{ item }">
                                 <a-list-item>
                                     <a-row style="width:100%" align="middle" :gutter="8">
@@ -212,14 +212,14 @@
                                             </div>
                                             <div class="upgrade-meta">
                                                 {{ t('obtain from') }}: {{ t('world ' +
-                                                    upgradeList[item.id]?.OBTAINWORLD) }}
+                                                    upgradeList[item.index]?.OBTAINWORLD) }}
                                             </div>
                                         </a-col>
                                         <a-col :xs="24" :lg="9" class="upgrade-desc">
                                             {{ item.description }}
                                         </a-col>
                                         <a-col :xs="16" :lg="5">
-                                            <a-select v-model:value="archiveData.upgradeProps[item.id].progress"
+                                            <a-select v-model:value="archiveData.player_upgrades[item.id].progress"
                                                 style="width:100%">
                                                 <a-select-option :value="0">{{ t('upgrade progress locked') }}</a-select-option>
                                                 <a-select-option :value="1">{{ t('upgrade progress pending') }}</a-select-option>
@@ -227,8 +227,8 @@
                                             </a-select>
                                         </a-col>
                                         <a-col :xs="8" :lg="3" style="text-align:center">
-                                            <a-switch v-model:checked="archiveData.upgradeProps[item.id].enabled"
-                                                :disabled="archiveData.upgradeProps[item.id].progress === 0"
+                                            <a-switch v-model:checked="archiveData.player_upgrades[item.id].enabled"
+                                                :disabled="archiveData.player_upgrades[item.id].progress === 0"
                                                 :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
                                         </a-col>
                                     </a-row>
@@ -292,6 +292,7 @@ import JSON5 from 'json5'
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants'
 
 import { upgradeJson } from '../game-data/upgrades'
+import { trophyJson } from '../game-data/trophies'
 import versionJson from '../version.json'
 
 import type { ArchiveData } from './types';
@@ -342,6 +343,7 @@ const worldAmount = worldCodenames.length;
 // 游戏版本 & 升级特性列表
 const gameVersion = versionJson.gameVersion;
 const upgradeList = upgradeJson.UPGRADES;
+const trophyList = trophyJson.TROPHIES;
 
 const { t, locale } = useI18n({
     locale: i18nLanguage,
@@ -400,7 +402,7 @@ const defaultArchive = {
     difficulty: 3,
     plantProps: {} as Record<string, any>,
     zombieProps: {} as Record<string, any>,
-    trophyProps: {} as Record<string, any>,
+    player_trophies: {} as Record<string, any>,
     levelProps: {} as Record<string, any>,
     worldProgress: [] as any[],
     cardDecks: [] as any[],
@@ -420,8 +422,8 @@ const defaultArchive = {
         currentWM: 0,
         worldChooserPos: 1
     },
-    upgradeProps: Object.fromEntries(
-        Array.from({ length: upgradeList.length }, (_, i) => [i, { progress: 0, enabled: true }])
+    player_upgrades: Object.fromEntries(
+        upgradeList.map((upgrade: any) => [upgrade.CODENAME, { progress: 0, enabled: true }])
     ),
     tutorial: {
         plantfood: false,
@@ -453,6 +455,7 @@ const defaultArchive = {
 };
 
 const handledSaveKeys = new Set(Object.keys(defaultArchive));
+const legacySaveKeys = new Set(['upgradeProps', 'trophyProps', 'obtainedUpgrades', 'obtainedTrophies']);
 
 const archiveData = ref<ArchiveData>({});
 const otherData = ref<Record<string, any>>({}); // 保存存档中其他未处理字段，确保下载时完整恢复
@@ -468,6 +471,73 @@ const clampInteger = (value: any, min: number, max: number, fallback: number) =>
     const parsed = Number(value);
     if (!Number.isFinite(parsed)) return fallback;
     return Math.min(max, Math.max(min, Math.trunc(parsed)));
+};
+
+const isRecord = (value: any): value is Record<string, any> =>
+    value && typeof value === 'object' && !Array.isArray(value);
+
+const resolveFeatureCodename = (key: any, featureList: any[]) => {
+    const keyText = String(key);
+    if (featureList.some((entry: any) => entry.CODENAME === keyText)) return keyText;
+    const index = Number(keyText);
+    if (Number.isInteger(index) && index >= 0 && index < featureList.length) {
+        return featureList[index]?.CODENAME || null;
+    }
+    return null;
+};
+
+const normalizeUpgradeData = (value: any) => ({
+    progress: clampInteger(value?.progress, 0, 2, 0),
+    enabled: value?.enabled === false ? false : true
+});
+
+const normalizeTrophyData = (value: any) => ({
+    progress: clampInteger(value?.progress, 0, 2, 0)
+});
+
+const applyProgressObject = (
+    target: Record<string, any>,
+    source: any,
+    featureList: any[],
+    normalize: (value: any) => any
+) => {
+    if (!isRecord(source)) return;
+    Object.entries(source).forEach(([key, value]) => {
+        const codename = resolveFeatureCodename(key, featureList);
+        if (codename) target[codename] = normalize(value);
+    });
+};
+
+const applyLegacyProgressArray = (
+    target: Record<string, any>,
+    source: any,
+    idKey: string,
+    featureList: any[],
+    normalize: (value: any) => any
+) => {
+    if (!Array.isArray(source)) return;
+    source.forEach(value => {
+        const codename = resolveFeatureCodename(value?.[idKey], featureList);
+        if (codename) target[codename] = normalize(value);
+    });
+};
+
+const normalizePlayerUpgrades = (data: Record<string, any>) => {
+    const result = Object.fromEntries(
+        upgradeList.map((upgrade: any) => [upgrade.CODENAME, { progress: 0, enabled: true }])
+    );
+    applyLegacyProgressArray(result, data.obtainedUpgrades, 'upgradeID', upgradeList, normalizeUpgradeData);
+    applyProgressObject(result, data.upgradeProps, upgradeList, normalizeUpgradeData);
+    applyProgressObject(result, data.player_upgrades, upgradeList, normalizeUpgradeData);
+    return result;
+};
+
+const normalizePlayerTrophies = (data: Record<string, any>) => {
+    const result: Record<string, any> = {};
+    applyLegacyProgressArray(result, data.obtainedTrophies, 'trophyID', trophyList, normalizeTrophyData);
+    applyProgressObject(result, data.trophyProps, trophyList, normalizeTrophyData);
+    applyProgressObject(result, data.player_trophies, trophyList, normalizeTrophyData);
+    return result;
 };
 
 const normalizeArcadePlantDecoding = (data?: Record<string, any> | null) => {
@@ -490,17 +560,19 @@ const mergeObject = (base: any, value: any) => ({
 
 const normalizeArchive = (data: Record<string, any> = {}) => {
     const base = cloneDefaultArchive();
+    const currentData = { ...data };
+    legacySaveKeys.forEach(key => delete currentData[key]);
     return {
         ...base,
-        ...data,
+        ...currentData,
         plantProps: { ...(base.plantProps || {}), ...(data.plantProps || {}) },
         worldProps: { ...(base.worldProps || {}), ...(data.worldProps || {}) },
-        upgradeProps: { ...(base.upgradeProps || {}), ...(data.upgradeProps || {}) },
+        player_upgrades: normalizePlayerUpgrades(data),
         tutorial: { ...(base.tutorial || {}), ...(data.tutorial || {}) },
         features: { ...(base.features || {}), ...(data.features || {}) },
         date: mergeObject(base.date, data.date),
         zombieProps: mergeObject(base.zombieProps, data.zombieProps),
-        trophyProps: mergeObject(base.trophyProps, data.trophyProps),
+        player_trophies: normalizePlayerTrophies(data),
         levelProps: mergeObject(base.levelProps, data.levelProps),
         zengarden: mergeObject(base.zengarden, data.zengarden),
         worldProgress: Array.isArray(data.worldProgress) ? data.worldProgress : base.worldProgress,
@@ -516,14 +588,15 @@ const localizedText = (entry: any, key: 'NAME' | 'DESCRIPTION') =>
 
 // 升级列表条目（用于 a-list，避免直接 v-for 对象导致性能问题）
 const upgradeEntries = computed(() => {
-    if (!archiveData.value.upgradeProps) return [];
+    if (!archiveData.value.player_upgrades) return [];
     const query = upgradeQuery.value.trim().toLowerCase();
-    return Object.entries(archiveData.value.upgradeProps)
-        .map(([id, data]) => {
-            const entry = upgradeList[Number(id)];
+    return upgradeList
+        .map((entry: any, index: number) => {
+            const id = entry.CODENAME;
             return {
                 id,
-                data,
+                index,
+                data: archiveData.value.player_upgrades?.[id],
                 name: localizedText(entry, 'NAME'),
                 description: localizedText(entry, 'DESCRIPTION')
             };
@@ -561,7 +634,7 @@ const handleUpload = (file: File) => {
             archiveData.value = normalizeArchive(data);
             // 保存 defaultArchive 中不存在的字段，下载时原样恢复
             otherData.value = Object.fromEntries(
-                Object.entries(data).filter(([key]) => !handledSaveKeys.has(key))
+                Object.entries(data).filter(([key]) => !handledSaveKeys.has(key) && !legacySaveKeys.has(key))
             );
         } catch (err) {
             message.error(t('parse error'));
@@ -643,6 +716,7 @@ const saveArchive = () => {
         ...otherData.value,
         ...archiveData.value
     };
+    legacySaveKeys.forEach(key => delete (finalData as Record<string, any>)[key]);
     const saveName = finalData.name || 'New Player';
     const blob = new Blob([JSON.stringify(finalData, null, 2)], {
         type: 'application/json'
