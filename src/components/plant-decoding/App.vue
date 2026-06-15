@@ -408,8 +408,15 @@ const PlantToken = defineComponent({
     }
 });
 
+function resolveDisplayCodename(codename: string) {
+    if (imageAliasMap[codename]) return imageAliasMap[codename];
+    const lowerCodename = codename.toLowerCase();
+    if (plantMap.value[lowerCodename]) return lowerCodename;
+    return codename;
+}
+
 function plantView(codename: string): PlantView {
-    const displayCodename = imageAliasMap[codename] || codename;
+    const displayCodename = resolveDisplayCodename(codename);
     const plant = plantMap.value[codename] || plantMap.value[displayCodename];
     const image = hasKnownImage(displayCodename) ? `/assets/image/plants/plants_${displayCodename}_c.webp` : null;
     return {
