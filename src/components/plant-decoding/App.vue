@@ -651,10 +651,6 @@ onMounted(startRound);
     overflow: hidden;
 }
 
-:global(.theme-container:has(.decoding-shell) .vp-page-title) {
-    display: none;
-}
-
 [data-theme="dark"] .decoding-shell {
     --decoding-primary: #2dd4bf;
     --decoding-primary-strong: #5eead4;
