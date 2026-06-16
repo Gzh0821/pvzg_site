@@ -36,6 +36,12 @@
                 <span>{{ t('codeCount') }}</span>
                 <a-input-number v-model:value="codeCount" size="small" :min="3" :max="10" />
             </label>
+            <a-segmented
+                v-model:value="viewMode"
+                class="mode-toggle"
+                size="small"
+                :options="viewModeOptions"
+            />
             <div class="control-actions">
                 <a-button type="primary" size="small" @click="startRound">
                     <template #icon><reload-outlined /></template>
@@ -130,8 +136,8 @@
                 </div>
             </section>
 
-            <aside class="side-panel" :class="{ 'answer-open': revealAnswer || solved }">
-                <section>
+            <aside class="side-panel" :class="{ 'answer-open': viewMode === 'practice' && (revealAnswer || solved), 'rules-open': viewMode === 'rules' }">
+                <section v-if="viewMode === 'practice'">
                     <div class="section-head compact">
                         <h3>{{ t('basePool') }}</h3>
                         <span class="muted">{{ availableRules.length }} {{ t('rules') }}</span>
@@ -151,7 +157,7 @@
                     </div>
                 </section>
 
-                <section class="answer-panel" v-if="revealAnswer || solved">
+                <section class="answer-panel" v-if="viewMode === 'practice' && (revealAnswer || solved)">
                     <div class="section-head compact">
                         <h3>{{ t('answer') }}</h3>
                     </div>
@@ -161,6 +167,39 @@
                             <span class="muted">{{ plantName(rule.PlantA) }} + {{ plantName(rule.PlantB) }}</span>
                         </li>
                     </ol>
+                </section>
+
+                <section class="rules-panel" v-if="viewMode === 'rules'">
+                    <div class="section-head compact">
+                        <div class="rules-title">
+                            <h3>{{ t('rulesReference') }}</h3>
+                            <span class="muted">{{ visibleRules.length }}/{{ allRules.length }}</span>
+                        </div>
+                        <a-segmented
+                            v-model:value="ruleScope"
+                            class="scope-toggle"
+                            size="small"
+                            :options="ruleScopeOptions"
+                        />
+                    </div>
+                    <div class="rules-table-wrap">
+                        <table class="rules-table">
+                            <thead>
+                                <tr>
+                                    <th>{{ t('plantA') }}</th>
+                                    <th>{{ t('plantB') }}</th>
+                                    <th>{{ t('result') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="rule in visibleRules" :key="`${rule.PlantA}-${rule.PlantB}-${rule.Target}`">
+                                    <td><PlantToken :plant="plantView(rule.PlantA)" compact /></td>
+                                    <td><PlantToken :plant="plantView(rule.PlantB)" compact /></td>
+                                    <td><PlantToken :plant="plantView(rule.Target)" compact /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </aside>
         </main>
@@ -178,6 +217,8 @@ import decodingData from './decoding-plants.json';
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
 
 type FeedbackState = 'correct' | 'change' | 'half' | 'fault';
+type ViewMode = 'practice' | 'rules';
+type RuleScope = 'current' | 'all';
 
 interface MergeRule {
     PlantA: string;
@@ -223,6 +264,14 @@ const messages = {
         reward: '模拟钻石',
         basePool: '基础池',
         rules: '条规则',
+        practiceMode: '练习',
+        rulesMode: '规则',
+        rulesReference: '合成规则',
+        currentRules: '当前',
+        allRules: '全部',
+        plantA: '植物 A',
+        plantB: '植物 B',
+        result: '结果',
         answer: '答案',
         history: '提交记录',
         feedback: {
@@ -257,6 +306,14 @@ const messages = {
         reward: 'Simulated Gems',
         basePool: 'Base Pool',
         rules: 'rules',
+        practiceMode: 'Play',
+        rulesMode: 'Rules',
+        rulesReference: 'Merge Rules',
+        currentRules: 'Current',
+        allRules: 'All',
+        plantA: 'Plant A',
+        plantB: 'Plant B',
+        result: 'Result',
         answer: 'Answer',
         history: 'History',
         feedback: {
@@ -291,6 +348,14 @@ const messages = {
         reward: 'Gemas simuladas',
         basePool: 'Bases',
         rules: 'reglas',
+        practiceMode: 'Juego',
+        rulesMode: 'Reglas',
+        rulesReference: 'Reglas',
+        currentRules: 'Actual',
+        allRules: 'Todo',
+        plantA: 'Planta A',
+        plantB: 'Planta B',
+        result: 'Resultado',
         answer: 'Respuesta',
         history: 'Historial',
         feedback: {
@@ -325,6 +390,14 @@ const messages = {
         reward: 'Гемы',
         basePool: 'База',
         rules: 'правил',
+        practiceMode: 'Игра',
+        rulesMode: 'Правила',
+        rulesReference: 'Правила',
+        currentRules: 'Текущие',
+        allRules: 'Все',
+        plantA: 'Раст. A',
+        plantB: 'Раст. B',
+        result: 'Итог',
         answer: 'Ответ',
         history: 'История',
         feedback: {
@@ -369,6 +442,8 @@ const step = ref(0);
 const solved = ref(false);
 const revealAnswer = ref(false);
 const reward = ref(0);
+const viewMode = ref<ViewMode>('practice');
+const ruleScope = ref<RuleScope>('current');
 
 const activeBasePlants = computed(() => basePool.slice(0, baseCount.value));
 const availableRules = computed(() => allRules.filter(rule =>
@@ -379,6 +454,15 @@ const currentMerge = computed(() => selectedPlants.value.length === 2
     : null
 );
 const canConfirm = computed(() => guesses.value.length > 0 && guesses.value.every(Boolean) && !solved.value);
+const visibleRules = computed(() => ruleScope.value === 'current' ? availableRules.value : allRules);
+const viewModeOptions = computed(() => [
+    { label: t('practiceMode'), value: 'practice' },
+    { label: t('rulesMode'), value: 'rules' }
+]);
+const ruleScopeOptions = computed(() => [
+    { label: t('currentRules'), value: 'current' },
+    { label: t('allRules'), value: 'all' }
+]);
 
 const PlantToken = defineComponent({
     name: 'PlantToken',
@@ -661,6 +745,17 @@ onMounted(startRound);
     margin-left: auto;
 }
 
+.mode-toggle,
+.scope-toggle {
+    flex: 0 0 auto;
+}
+
+.mode-toggle :deep(.ant-segmented-item-label),
+.scope-toggle :deep(.ant-segmented-item-label) {
+    min-height: 24px;
+    line-height: 24px;
+}
+
 .play-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.68fr);
@@ -687,6 +782,72 @@ onMounted(startRound);
 
 .side-panel > section {
     padding: 10px;
+}
+
+.rules-panel {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    max-height: 360px;
+}
+
+.rules-title {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    min-width: 0;
+}
+
+.rules-table-wrap {
+    min-height: 0;
+    overflow: auto;
+    border: 1px solid var(--decoding-border);
+    border-radius: 7px;
+    background: var(--decoding-surface);
+}
+
+.rules-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.rules-table th,
+.rules-table td {
+    padding: 5px 4px;
+    border-bottom: 1px solid var(--decoding-border);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.rules-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--decoding-surface);
+    color: var(--decoding-muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.rules-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.rules-table :deep(.plant-token-text strong) {
+    max-width: 64px;
+}
+
+.rules-table :deep(.plant-token) {
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: center;
+    justify-items: start;
+    gap: 4px;
+}
+
+.rules-table :deep(.plant-token.compact img),
+.rules-table :deep(.plant-token.compact .plant-fallback) {
+    width: 24px;
+    height: 24px;
 }
 
 .section-head {
@@ -1027,6 +1188,10 @@ onMounted(startRound);
         width: auto;
     }
 
+    .mode-toggle {
+        max-width: 100%;
+    }
+
     .slots-grid {
         grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
         gap: 4px;
@@ -1043,6 +1208,23 @@ onMounted(startRound);
 
     .side-panel.answer-open > section:first-child {
         display: none;
+    }
+
+    .rules-panel {
+        max-height: 256px;
+    }
+
+    .rules-panel .section-head {
+        align-items: flex-start;
+    }
+
+    .scope-toggle {
+        max-width: 148px;
+    }
+
+    .rules-table th,
+    .rules-table td {
+        padding-inline: 3px;
     }
 
     .picked-row {
