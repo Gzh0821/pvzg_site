@@ -594,12 +594,13 @@ function judgeSlot(index: number): FeedbackState {
 function confirmGuess() {
     if (!canConfirm.value) return;
     step.value += 1;
-    feedback.value = guesses.value.map((_, index) => judgeSlot(index));
+    const judgedFeedback = guesses.value.map((_, index) => judgeSlot(index));
+    feedback.value = judgedFeedback;
     attempts.value.unshift({
         index: step.value,
-        feedback: feedback.value as FeedbackState[]
+        feedback: judgedFeedback.slice()
     });
-    solved.value = feedback.value.every(state => state === 'correct');
+    solved.value = judgedFeedback.every(state => state === 'correct');
     if (solved.value) {
         reward.value = Math.round(
             secretRules.value.length * activeBasePlants.value.length * Math.exp(-Math.pow(step.value / 8, 2))
