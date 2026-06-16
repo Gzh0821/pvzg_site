@@ -9,8 +9,7 @@
     <section class="decoding-shell">
         <header class="tool-header">
             <div class="title-block">
-                <a-typography-title :level="2" class="tool-title">{{ t('title') }}</a-typography-title>
-                <a-typography-text type="secondary">{{ t('subtitle') }}</a-typography-text>
+                <a-typography-title :level="1" class="tool-title">{{ t('title') }}</a-typography-title>
             </div>
             <div class="stats-row">
                 <div class="stat-pill">
@@ -31,18 +30,18 @@
         <div class="control-band">
             <label class="number-control">
                 <span>{{ t('baseCount') }}</span>
-                <a-input-number v-model:value="baseCount" :min="3" :max="10" />
+                <a-input-number v-model:value="baseCount" size="small" :min="3" :max="10" />
             </label>
             <label class="number-control">
                 <span>{{ t('codeCount') }}</span>
-                <a-input-number v-model:value="codeCount" :min="3" :max="10" />
+                <a-input-number v-model:value="codeCount" size="small" :min="3" :max="10" />
             </label>
             <div class="control-actions">
-                <a-button type="primary" @click="startRound">
+                <a-button type="primary" size="small" @click="startRound">
                     <template #icon><reload-outlined /></template>
                     {{ t('newRound') }}
                 </a-button>
-                <a-button @click="toggleReveal">
+                <a-button size="small" @click="toggleReveal">
                     <template #icon><eye-outlined /></template>
                     {{ revealAnswer ? t('hideAnswer') : t('showAnswer') }}
                 </a-button>
@@ -106,7 +105,6 @@
                 <div class="board-actions">
                     <a-button
                         type="primary"
-                        size="large"
                         data-action="confirm-guess"
                         :disabled="!canConfirm"
                         @click="confirmGuess"
@@ -114,7 +112,7 @@
                         <template #icon><check-circle-outlined /></template>
                         {{ t('confirm') }}
                     </a-button>
-                    <a-button size="large" :disabled="!guesses[activeSlot]" @click="clearSlot(activeSlot)">
+                    <a-button :disabled="!guesses[activeSlot]" @click="clearSlot(activeSlot)">
                         {{ t('clearSlot') }}
                     </a-button>
                     <div class="reward" v-if="solved">
@@ -122,9 +120,17 @@
                         <span>{{ t('reward') }}</span>
                     </div>
                 </div>
+                <div class="feedback-strip" v-if="attempts.length">
+                    <span class="attempt-index">#{{ attempts[0].index }}</span>
+                    <div class="history-feedbacks">
+                        <a-tag v-for="(state, index) in attempts[0].feedback" :key="index" :color="feedbackColor(state)">
+                            {{ index + 1 }} · {{ t(`feedback.${state}`) }}
+                        </a-tag>
+                    </div>
+                </div>
             </section>
 
-            <aside class="side-panel">
+            <aside class="side-panel" :class="{ 'answer-open': revealAnswer || solved }">
                 <section>
                     <div class="section-head compact">
                         <h3>{{ t('basePool') }}</h3>
@@ -159,21 +165,6 @@
             </aside>
         </main>
 
-        <section class="history-panel" v-if="attempts.length">
-            <div class="section-head compact">
-                <h3>{{ t('history') }}</h3>
-            </div>
-            <div class="history-list">
-                <div v-for="attempt in attempts" :key="attempt.index" class="history-row">
-                    <span class="attempt-index">#{{ attempt.index }}</span>
-                    <div class="history-feedbacks">
-                        <a-tag v-for="(state, index) in attempt.feedback" :key="index" :color="feedbackColor(state)">
-                            {{ index + 1 }} · {{ t(`feedback.${state}`) }}
-                        </a-tag>
-                    </div>
-                </div>
-            </div>
-        </section>
     </section>
     </a-config-provider>
 </template>
@@ -396,9 +387,16 @@ const PlantToken = defineComponent({
         compact: { type: Boolean, default: false }
     },
     setup(props) {
-        return () => h('span', { class: ['plant-token', props.compact ? 'compact' : ''] }, [
+        return () => h('span', { class: ['plant-token', props.compact ? 'compact' : ''], title: props.plant.codename }, [
             props.plant.image
-                ? h('img', { src: props.plant.image, alt: props.plant.name, loading: 'lazy' })
+                ? h('img', {
+                    src: props.plant.image,
+                    alt: '',
+                    loading: 'lazy',
+                    width: props.compact ? 32 : 40,
+                    height: props.compact ? 32 : 40,
+                    'aria-hidden': 'true'
+                })
                 : h('span', { class: 'plant-fallback', 'aria-hidden': 'true' }, props.plant.codename.slice(0, 2).toUpperCase()),
             h('span', { class: 'plant-token-text' }, [
                 h('strong', props.plant.name),
@@ -556,14 +554,21 @@ onMounted(startRound);
     --decoding-surface: color-mix(in srgb, var(--vp-c-bg) 82%, #f0fdfa 18%);
     --decoding-border: color-mix(in srgb, var(--vp-c-text) 15%, transparent);
     --decoding-muted: var(--vp-c-text-mute);
+    --decoding-shell-width: min(1120px, calc(100vw - 96px));
     container-type: inline-size;
-    max-width: 1200px;
-    margin: 1.5rem auto;
+    width: var(--decoding-shell-width);
+    max-width: calc(100vw - 2rem);
+    margin: 0.25rem auto 0.75rem;
+    margin-left: calc((100% - var(--decoding-shell-width)) / 2);
     border: 1px solid var(--decoding-border);
-    border-radius: 10px;
+    border-radius: 8px;
     background: var(--decoding-bg);
     color: var(--vp-c-text);
     overflow: hidden;
+}
+
+:global(.theme-container:has(.decoding-shell) .vp-page-title) {
+    display: none;
 }
 
 [data-theme="dark"] .decoding-shell {
@@ -576,9 +581,9 @@ onMounted(startRound);
 .tool-header {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 16px;
-    align-items: start;
-    padding: 18px 20px;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
     border-bottom: 1px solid var(--decoding-border);
 }
 
@@ -587,7 +592,8 @@ onMounted(startRound);
 }
 
 .tool-title {
-    margin-bottom: 4px !important;
+    margin-bottom: 0 !important;
+    font-size: 1.18rem !important;
     line-height: 1.2 !important;
     white-space: normal;
     overflow-wrap: anywhere;
@@ -595,28 +601,28 @@ onMounted(startRound);
 
 .stats-row {
     display: grid;
-    grid-template-columns: repeat(3, minmax(88px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(3, minmax(68px, 1fr));
+    gap: 6px;
 }
 
 .stat-pill {
-    min-width: 88px;
+    min-width: 68px;
     border: 1px solid var(--decoding-border);
-    border-radius: 8px;
-    padding: 8px 10px;
+    border-radius: 6px;
+    padding: 5px 8px;
     background: var(--decoding-surface);
 }
 
 .stat-pill strong {
     display: block;
     color: var(--decoding-primary-strong);
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1;
 }
 
 .stat-pill span {
     color: var(--decoding-muted);
-    font-size: 0.78rem;
+    font-size: 0.68rem;
 }
 
 .stat-pill.solved strong {
@@ -627,20 +633,20 @@ onMounted(startRound);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
-    padding: 14px 20px;
+    gap: 8px;
+    padding: 8px 12px;
     border-bottom: 1px solid var(--decoding-border);
     background: color-mix(in srgb, var(--decoding-panel) 88%, var(--decoding-primary) 12%);
 }
 
 .number-control {
     display: inline-grid;
-    grid-template-columns: auto 90px;
+    grid-template-columns: auto 76px;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     min-width: 0;
     color: var(--decoding-muted);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .number-control :deep(.ant-input-number) {
@@ -651,67 +657,65 @@ onMounted(startRound);
 .control-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     margin-left: auto;
 }
 
 .play-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.75fr);
-    gap: 16px;
-    padding: 18px 20px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.68fr);
+    gap: 10px;
+    padding: 10px 12px 12px;
 }
 
 .board-panel,
-.side-panel > section,
-.history-panel {
+.side-panel > section {
     border: 1px solid var(--decoding-border);
-    border-radius: 8px;
+    border-radius: 7px;
     background: var(--decoding-panel);
 }
 
 .board-panel {
-    padding: 14px;
+    padding: 10px;
 }
 
 .side-panel {
     display: grid;
-    gap: 14px;
+    gap: 8px;
     align-content: start;
 }
 
-.side-panel > section,
-.history-panel {
-    padding: 14px;
+.side-panel > section {
+    padding: 10px;
 }
 
 .section-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 12px;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 .section-head h3 {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 0.92rem;
     line-height: 1.25;
 }
 
 .section-head.compact h3 {
-    font-size: 0.98rem;
+    font-size: 0.86rem;
 }
 
 .muted {
     color: var(--decoding-muted);
-    font-size: 0.82rem;
+    font-size: 0.76rem;
 }
 
 .slots-grid {
     display: grid;
-    grid-template-columns: repeat(var(--slot-count), minmax(118px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(var(--slot-count), minmax(88px, 1fr));
+    gap: 6px;
 }
 
 .code-slot,
@@ -726,10 +730,10 @@ onMounted(startRound);
     position: relative;
     display: grid;
     align-content: center;
-    min-height: 132px;
+    min-height: 88px;
     border: 2px solid var(--decoding-border);
-    border-radius: 8px;
-    padding: 12px 8px 10px;
+    border-radius: 7px;
+    padding: 10px 6px 8px;
     background: var(--decoding-surface);
     text-align: center;
 }
@@ -761,39 +765,39 @@ onMounted(startRound);
 
 .slot-index {
     position: absolute;
-    top: 7px;
-    left: 8px;
+    top: 5px;
+    left: 6px;
     color: var(--decoding-muted);
-    font-size: 0.75rem;
+    font-size: 0.68rem;
 }
 
 .slot-empty,
 .picked-cell,
 .picked-result {
     color: var(--decoding-muted);
-    font-size: 0.9rem;
+    font-size: 0.78rem;
 }
 
 .feedback-label {
     position: absolute;
-    right: 7px;
-    bottom: 6px;
-    font-size: 0.74rem;
+    right: 6px;
+    bottom: 5px;
+    font-size: 0.68rem;
     font-weight: 600;
 }
 
 .merge-tray {
-    margin-top: 14px;
+    margin-top: 8px;
     border: 1px solid var(--decoding-border);
-    border-radius: 8px;
-    padding: 12px;
+    border-radius: 7px;
+    padding: 8px;
     background: var(--decoding-surface);
 }
 
 .picked-row {
     display: grid;
-    grid-template-columns: minmax(96px, 1fr) auto minmax(96px, 1fr) auto minmax(120px, 1.1fr);
-    gap: 8px;
+    grid-template-columns: minmax(72px, 1fr) auto minmax(72px, 1fr) auto minmax(90px, 1.05fr);
+    gap: 6px;
     align-items: center;
 }
 
@@ -801,9 +805,9 @@ onMounted(startRound);
 .picked-result {
     display: grid;
     place-items: center;
-    min-height: 74px;
+    min-height: 54px;
     border: 1px dashed var(--decoding-border);
-    border-radius: 8px;
+    border-radius: 7px;
     background: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
 }
 
@@ -822,33 +826,42 @@ onMounted(startRound);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
-    margin-top: 14px;
+    gap: 8px;
+    margin-top: 8px;
 }
 
 .reward {
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 5px;
     margin-left: auto;
     color: var(--decoding-action);
 }
 
 .reward strong {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
+}
+
+.feedback-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    min-height: 24px;
 }
 
 .base-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
+    gap: 6px;
 }
 
 .plant-button {
-    min-height: 108px;
+    min-height: 72px;
     border: 1px solid var(--decoding-border);
-    border-radius: 8px;
-    padding: 8px;
+    border-radius: 7px;
+    padding: 6px;
     background: var(--decoding-surface);
 }
 
@@ -859,55 +872,47 @@ onMounted(startRound);
 
 .answer-list {
     display: grid;
-    gap: 8px;
+    gap: 5px;
     margin: 0;
-    padding-left: 20px;
+    padding-left: 18px;
 }
 
 .answer-list li {
     display: grid;
-    grid-template-columns: minmax(120px, 1fr);
-    gap: 2px;
-}
-
-.history-panel {
-    margin: 0 20px 18px;
-}
-
-.history-list {
-    display: grid;
-    gap: 8px;
-}
-
-.history-row {
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    gap: 8px;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px;
     align-items: center;
+}
+
+.answer-list li .muted {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .attempt-index {
     color: var(--decoding-muted);
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.76rem;
 }
 
 .history-feedbacks {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
 }
 
 :deep(.plant-token) {
     display: inline-grid;
     justify-items: center;
-    gap: 4px;
+    gap: 2px;
     max-width: 100%;
 }
 
 :deep(.plant-token img),
 :deep(.plant-fallback) {
-    width: 54px;
-    height: 54px;
+    width: 40px;
+    height: 40px;
 }
 
 :deep(.plant-token img) {
@@ -917,7 +922,7 @@ onMounted(startRound);
 :deep(.plant-fallback) {
     display: grid;
     place-items: center;
-    border-radius: 8px;
+    border-radius: 7px;
     border: 1px solid var(--decoding-border);
     color: var(--decoding-primary-strong);
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
@@ -926,33 +931,34 @@ onMounted(startRound);
 
 :deep(.plant-token.compact img),
 :deep(.plant-token.compact .plant-fallback) {
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
 }
 
 :deep(.plant-token-text) {
     display: grid;
     gap: 1px;
     max-width: 100%;
-    line-height: 1.15;
+    line-height: 1.08;
 }
 
 :deep(.plant-token-text strong) {
-    max-width: 120px;
+    max-width: 96px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 0.82rem;
+    font-size: 0.76rem;
 }
 
 :deep(.plant-token-text small) {
-    max-width: 120px;
+    display: none;
+    max-width: 96px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: var(--decoding-muted);
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-    font-size: 0.68rem;
+    font-size: 0.62rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -963,8 +969,7 @@ onMounted(startRound);
 }
 
 @container (max-width: 880px) {
-    .tool-header,
-    .play-layout {
+    .tool-header {
         grid-template-columns: 1fr;
     }
 
@@ -977,6 +982,21 @@ onMounted(startRound);
     }
 }
 
+@media (max-width: 1180px) and (min-width: 761px) {
+    .decoding-shell {
+        --decoding-shell-width: min(980px, calc(100vw - 48px));
+    }
+}
+
+@media (max-width: 760px) {
+    .decoding-shell {
+        --decoding-shell-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+    }
+}
+
 @container (max-width: 620px) {
     .decoding-shell {
         margin: 0.75rem 0;
@@ -986,7 +1006,7 @@ onMounted(startRound);
     .tool-header,
     .control-band,
     .play-layout {
-        padding-inline: 14px;
+        padding-inline: 10px;
     }
 
     .stats-row {
@@ -1004,16 +1024,30 @@ onMounted(startRound);
 
     .control-actions,
     .control-actions :deep(.ant-btn) {
-        width: 100%;
+        width: auto;
     }
 
     .slots-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
+        gap: 4px;
+    }
+
+    .code-slot {
+        min-height: 76px;
+        padding: 8px 4px 6px;
+    }
+
+    .play-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .side-panel.answer-open > section:first-child {
+        display: none;
     }
 
     .picked-row {
-        grid-template-columns: 1fr;
-        justify-items: stretch;
+        grid-template-columns: minmax(46px, 1fr) auto minmax(46px, 1fr) auto minmax(58px, 1.05fr);
+        gap: 4px;
     }
 
     .plus-sign,
@@ -1022,17 +1056,13 @@ onMounted(startRound);
     }
 
     .board-actions :deep(.ant-btn) {
-        width: 100%;
+        width: auto;
     }
 
     .reward {
         width: 100%;
         margin-left: 0;
         justify-content: center;
-    }
-
-    .history-panel {
-        margin-inline: 14px;
     }
 }
 </style>
