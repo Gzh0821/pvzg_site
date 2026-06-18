@@ -17,6 +17,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'FWC2026UltraCondensedMedium';
+    src: url('/fonts/FWC2026-UltraCondensedMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 // @font-face {
 //     font-family: 'paris2024';
 //     src: url('/fonts/Paris2024-Variable.woff2') format('woff2');
@@ -149,3 +157,57 @@ iframe.youtube-video {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* World Cup 26 seasonal styles START. Remove this block, FWC2026UltraCondensedMedium @font-face, and worldcup26 assets to roll back. */
+.vp-navbar {
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5)),
+        url('/assets/image/worldcup26-navbar-pattern.png') center / 100% 150px no-repeat;
+}
+
+[data-theme="dark"] .vp-navbar {
+    background:
+        linear-gradient(90deg, rgba(0, 24, 20, 0.42), rgba(0, 24, 20, 0.32)),
+        url('/assets/image/worldcup26-navbar-pattern.png') center / 100% 150px no-repeat;
+}
+
+.vp-navbar-start,
+.vp-navbar-center,
+.vp-navbar-end {
+    position: relative;
+    z-index: 1;
+}
+
+#main-title,
+.vp-hero-title {
+    max-width: 100%;
+    font-family: 'FWC2026UltraCondensedMedium', 'pvzgeFontEN', 'pvzgFont', sans-serif;
+    font-size: 5.4rem;
+    letter-spacing: 0;
+    line-height: 0.88;
+    overflow-wrap: normal;
+    word-break: keep-all;
+}
+
+@media (max-width: 959px) {
+    #main-title,
+    .vp-hero-title {
+        font-size: 4.4rem;
+    }
+}
+
+@media (max-width: 719px) {
+    #main-title,
+    .vp-hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 419px) {
+    #main-title,
+    .vp-hero-title {
+        font-size: 2.65rem;
+    }
+}
+/* World Cup 26 seasonal styles END. */
