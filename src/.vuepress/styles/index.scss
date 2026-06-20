@@ -160,16 +160,15 @@ iframe.youtube-video {
 
 /* World Cup 26 seasonal styles START. Remove this block, FWC2026UltraCondensedMedium @font-face, and worldcup26 assets to roll back. */
 .vp-navbar {
-    overflow: hidden;
     background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5)),
-        url('/assets/image/worldcup26-navbar-pattern.png') center / 100% 150px no-repeat;
+        linear-gradient(90deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.34)),
+        url('/assets/image/worldcup26-navbar-ai-light.webp') center / cover no-repeat;
 }
 
 [data-theme="dark"] .vp-navbar {
     background:
-        linear-gradient(90deg, rgba(0, 24, 20, 0.42), rgba(0, 24, 20, 0.32)),
-        url('/assets/image/worldcup26-navbar-pattern.png') center / 100% 150px no-repeat;
+        linear-gradient(90deg, rgba(0, 16, 28, 0.18), rgba(0, 16, 28, 0.24)),
+        url('/assets/image/worldcup26-navbar-ai-dark.webp') center / cover no-repeat;
 }
 
 .vp-navbar-start,
