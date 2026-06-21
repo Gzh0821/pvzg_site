@@ -4,6 +4,26 @@
 	"objects": [
 		{
 			"aliases": [
+				"darkmatter"
+			],
+			"objclass": "ProjectileType",
+			"objdata": {
+				"ProjectileBasedOn": "darkmatter",
+				"Props": "RTID(darkmatter@ProjectileProps)"
+			}
+		},
+		{
+			"aliases": [
+				"darkmatter_shadow"
+			],
+			"objclass": "ProjectileType",
+			"objdata": {
+				"ProjectileBasedOn": "darkmatter_shadow",
+				"Props": "RTID(darkmatter_shadow@ProjectileProps)"
+			}
+		},
+		{
+			"aliases": [
 				"abbot_fan_storm"
 			],
 			"objclass": "ProjectileType",

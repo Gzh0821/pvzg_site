@@ -334,7 +334,7 @@
 				"PlantPlace": "dirt"
 			},
 			"BOOST": 2,
-			"COSTUME": 0,
+			"COSTUME": 1,
 			"ALMANAC": "RTID(pumpkin@PlantAlmanac)",
 			"PROPS": "RTID(pumpkin@PlantProps)",
 			"RES": {
@@ -353,7 +353,7 @@
 			"TYPE": [
 				"vine"
 			],
-			"COSTUME": 0,
+			"COSTUME": 1,
 			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
@@ -1135,7 +1135,7 @@
 				"lastStandDisallowed",
 				"losingPlant"
 			],
-			"COSTUME": 1,
+			"COSTUME": 2,
 			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
@@ -4269,7 +4269,7 @@
 				"en": "Pyre Vine",
 				"zh": "柴火藤蔓"
 			},
-			"COSTUME": 0,
+			"COSTUME": 1,
 			"_CARDSPRITENAME": "pyrevine",
 			"CODENAME": "pyrevine",
 			"TYPE": [
@@ -5198,6 +5198,30 @@
 				"Disabled": "GooPeashooter",
 				"Plant": "GooPeashooter"
 			}
+		},
+		{
+			"ID": 207,
+			"NAME": {
+				"en": "Dark Matter Dragonfruit",
+				"zh": "暗物质火龙果"
+			},
+			"_CARDSPRITENAME": "darkmatterdragonfruit",
+			"CODENAME": "darkmatterdragonfruit",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 3,
+			"ALMANAC": "RTID(darkmatterdragonfruit@PlantAlmanac)",
+			"PROPS": "RTID(darkmatterdragonfruit@PlantProps)",
+			"RES": {
+				"Disabled": "DarkMatterDragonfruit",
+				"Plant": "DarkMatterDragonfruit"
+			}
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -5361,6 +5385,7 @@
 		"umbrellaleaf",
 		"snappea",
 		"cranjelly",
+		"darkmatterdragonfruit",
 		"appeasemint",
 		"enlightenmint",
 		"reinforcemint",
@@ -5574,6 +5599,7 @@
 		"gloomvine",
 		"snappea",
 		"cranjelly",
+		"darkmatterdragonfruit",
 		"appeasemint",
 		"enlightenmint",
 		"reinforcemint",

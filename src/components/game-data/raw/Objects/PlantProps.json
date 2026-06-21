@@ -28,6 +28,35 @@
 		},
 		{
 			"aliases": [
+				"darkmatterdragonfruit"
+			],
+			"objclass": "PlantProperties",
+			"objdata": {
+				"ShootInterval": 2.7,
+				"ShootIntervalAdditional": 0.15,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 350,
+				"BeghouledCost": 4000,
+				"Toughness": 300,
+				"PeaType": "darkmatter",
+				"PeaTypeShadow": "darkmatter_shadow",
+				"Family": "Shadow",
+				"MintDamageFactor": 3,
+				"PlantfoodKnockbackSPS": 1.5,
+				"PlantfoodDuration": 6,
+				"PlantFoodDPS": 400,
+				"PlantFoodSplashDPS": 100,
+				"DarkMatterEffectDuration": 6,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"aliases": [
 				"poisonpeashooter"
 			],
 			"objclass": "PlantProperties",

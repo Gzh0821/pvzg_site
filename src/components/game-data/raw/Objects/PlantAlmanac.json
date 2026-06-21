@@ -628,6 +628,87 @@
 		},
 		{
 			"aliases": [
+				"darkmatterdragonfruit"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 40
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Straight",
+							"zh": "直线"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Dark Matter Dragonfruits are shadow plants that damage zombies with dark energies. Make zombies heavier and slower when powered by other Shadow plants.",
+					"zh": "暗物质火龙果是一种暗影植物，用暗能量伤害僵尸。当其他暗影植物为其提供能量时，能使僵尸更沉重。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "zombies caught in the dark energy explosion will take higher damage than those who directly contact his projectiles",
+							"zh": "比起直接接触其子弹的僵尸，受到子弹暗能量爆炸波及的僵尸会受到更高的伤害"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "when powered, the more healthy zombies are, the heavier they'll become",
+							"zh": "得到暗影能量时，僵尸越健全，沉重效果越显著"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "heavy zombies' movements become slower and will be harder to knockback",
+							"zh": "沉重的僵尸行动会更缓慢，并且难以击退"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Dark Matter Dragonfruit's ancestors were hunted to the depths of space. Now their descendants are back for cold, fruity vengeance.",
+					"zh": "暗物质火龙果的祖先曾被猎杀至太空深处。如今，他们的后代带着冰冷的果实复仇归来了。"
+				},
+				"BriefIntroduction": {
+					"en": "Launches explosive dark energies",
+					"zh": "发射爆炸性暗能量"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"asparagus"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -2879,7 +2960,7 @@
 				],
 				"Introduction": {
 					"en": "Nightshades are shadow plants that smack zombies with slappy leaves. Hurls and regrow its leaves when powered by other Shadow plants.",
-					"zh": "暗影龙葵是一种暗影植物，能用叶子猛烈地拍击僵尸。当其他阴影植物为其提供能量时，它的叶子会喷射并重新生长。"
+					"zh": "暗影龙葵是一种暗影植物，能用叶子猛烈地拍击僵尸。当其他暗影植物为其提供能量时，它的叶子会喷射并重新生长。"
 				},
 				"Special": [
 					{

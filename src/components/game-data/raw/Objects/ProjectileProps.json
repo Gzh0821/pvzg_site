@@ -91,6 +91,56 @@
 		},
 		{
 			"aliases": [
+				"darkmatter"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"Damage": 40,
+				"SplashDamage": [
+					{
+						"Damage": 80,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
+				"darkmatter_shadow"
+			],
+			"objclass": "ProjectileProperties",
+			"objdata": {
+				"IgnoredBy3SectionStaff": true,
+				"CannotBeReversedByJester": true,
+				"Damage": 40,
+				"DarkMatterDuration": 10,
+				"SplashDamage": [
+					{
+						"DarkMatterDuration": 10,
+						"Damage": 80,
+						"Range": {
+							"w": 3,
+							"h": 3
+						}
+					}
+				],
+				"Size": {
+					"w": 30,
+					"h": 30
+				}
+			}
+		},
+		{
+			"aliases": [
 				"pea"
 			],
 			"objclass": "ProjectileProperties",
