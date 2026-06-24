@@ -32,17 +32,10 @@ Te invitamos a unirte a nuestra comunidad y contribuir al desarrollo de "PvZ2 Ga
 
 <div class="vp-card-container">
   <VPCard
-    title="Grupo activo de QQ"
-    desc="Numero de grupo: 980405270, para jugadores que quieran ayudar, compartir estrategias y participar en discusiones"
+    title="Grupo de anuncios QQ-6"
+    desc="Numero de grupo: 1022799196, para recibir la informacion mas reciente"
     logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/q/MIqVcRAg8u"
-    background="rgba(245, 158, 0, 0.15)"
-  />
-  <VPCard
-    title="Grupo de anuncios QQ-4"
-    desc="Numero de grupo: 981880465, para recibir la informacion mas reciente"
-    logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/q/8LkQioyGI2"
+    link="https://qm.qq.com/cgi-bin/qm/qr?k=rYECBLqDrqVG6p1MY2YeVd9TkkTBWI36&jump_from=webapi&authKey=/ro2FD+hdoARQYdsqzx/fSBseCiaGDEdnJVP9ODBdXM3gQXux/c/f0OOkLwNDK3/"
     background="rgba(228, 0, 54, 0.15)"
   />
   <VPCard

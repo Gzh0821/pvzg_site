@@ -31,18 +31,11 @@ pageInfo: false
 </ins>
 
 <div class="vp-card-container">
-  <!-- <VPCard
-    title="QQ活跃聊天群"
-    desc="群号：980405270，适合想提供帮助，分享攻略和参与讨论的玩家"
-    logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/q/MIqVcRAg8u"
-    background="rgba(245, 158, 0, 0.15)"
-  /> -->
   <VPCard
-    title="QQ公告群-5"
-    desc="群号：834051839，适合潜水和获取最新版本的信息"
+    title="QQ公告群-6"
+    desc="群号：1022799196，适合潜水和获取最新版本的信息"
     logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/q/8LkQioyGI2"
+    link="https://qm.qq.com/cgi-bin/qm/qr?k=rYECBLqDrqVG6p1MY2YeVd9TkkTBWI36&jump_from=webapi&authKey=/ro2FD+hdoARQYdsqzx/fSBseCiaGDEdnJVP9ODBdXM3gQXux/c/f0OOkLwNDK3/"
     background="rgba(228, 0, 54, 0.15)"
   />
   <VPCard

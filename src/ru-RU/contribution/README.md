@@ -32,17 +32,10 @@ data-full-width-responsive="true"> </ins>
 
 <div class="vp-card-container">
   <VPCard
-    title="QQ active chat group"
-    desc="Group Number:980405270,for players who want to provide help, share strategies and participate in discussions"
+    title="QQ Announcement Group-6"
+    desc="Group Number:1022799196, for getting the latest information"
     logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/q/MIqVcRAg8u"
-    background="rgba(245, 158, 0, 0.15)"
-  />
-  <VPCard
-    title="QQ Announcement Group-4"
-    desc="Group Number:981880465, for getting the latest information"
-    logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/q/8LkQioyGI2"
+    link="https://qm.qq.com/cgi-bin/qm/qr?k=rYECBLqDrqVG6p1MY2YeVd9TkkTBWI36&jump_from=webapi&authKey=/ro2FD+hdoARQYdsqzx/fSBseCiaGDEdnJVP9ODBdXM3gQXux/c/f0OOkLwNDK3/"
     background="rgba(228, 0, 54, 0.15)"
   />
   <VPCard
