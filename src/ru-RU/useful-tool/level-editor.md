@@ -30,7 +30,7 @@ sidebar: false
 ## Связанные инструменты и руководства
 
 - Основы файлов уровней: [Руководство по уровням](../guide/level/levelguide.md)
-- Справочник официальных уровней: [Официальные уровни](../creator-garden/official-level.md)
+- Daily level reference: [Daily Level](../creator-garden/daily-level.md)
 - Датапаки и патчи: [MOD-руководство](../guide/mod/)
 
 <ins class="adsbygoogle"

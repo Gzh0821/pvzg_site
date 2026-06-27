@@ -30,7 +30,7 @@ sidebar: false
 ## Herramientas y guías relacionadas
 
 - Conceptos básicos de archivos de nivel: [Guía de niveles](../guide/level/levelguide.md)
-- Referencia de niveles oficiales: [Niveles oficiales](../creator-garden/official-level.md)
+- Daily level reference: [Daily Level](../creator-garden/daily-level.md)
 - Paquetes de datos y parches: [Guía MOD](../guide/mod/)
 
 <ins class="adsbygoogle"

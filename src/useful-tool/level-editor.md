@@ -30,7 +30,7 @@ sidebar: false
 ## 相关工具与教程
 
 - 本地关卡导入流程：[本地关卡导入](../guide/seo/level-import.md)
-- 官方关卡参考：[官方关卡](../creator-garden/official-level.md)
+- 每日关卡参考：[每日关卡](../creator-garden/daily-level.md)
 - 补丁与数据包制作：[MOD 教程](../guide/mod/)
 
 <ins class="adsbygoogle"

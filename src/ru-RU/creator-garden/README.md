@@ -8,9 +8,11 @@ comment: false
 ---
 
 > [!info]
-> В списке пользовательских уровней нажмите на название элемента, чтобы загрузить файл уровня, и нажмите `Play Local Level` в настройках игры, чтобы импортировать его и начать игру. Если список пуст, пожалуйста, подождите или попробуйте обновить страницу.
 >
-> Официальные уровни — это те уровни, созданные членами команды разработчиков, включая примеры файлов уровней. Уровни сообщества содержат файлы уровней, созданные участниками Discord и другими членами сообщества.
-> Для обучения созданию пользовательских уровней смотрите [Руководство по созданию уровней](../guide/level/).
+> Welcome to the Creator's Garden, a hub for player-made levels, mods, and packs.
+>
+> The Daily Level rotates every two days at a US evening-friendly time. Open the Daily Level page to inspect today's plants, zombies, mechanics, and download the level file.
+>
+> To learn how to create custom levels, see the [Custom Level Guide](../guide/level/).
 
 <Catalog />
