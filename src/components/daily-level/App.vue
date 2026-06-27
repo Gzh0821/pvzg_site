@@ -4,11 +4,6 @@
       <div class="daily-level-hero__main">
         <p class="daily-level-kicker">{{ t.kicker }}</p>
         <h1>{{ currentLevel?.title || t.loadingTitle }}</h1>
-        <div class="daily-level-meta">
-          <span v-if="currentLevel?.author">{{ currentLevel.author }}</span>
-          <span v-if="currentLevel?.stats?.stage">{{ currentLevel.stats.stage }}</span>
-          <span v-if="activeRange">{{ activeRange }}</span>
-        </div>
       </div>
 
       <div class="daily-level-actions">
@@ -16,10 +11,6 @@
           <VPIcon icon="download" />
           <span>{{ downloading ? t.downloading : t.download }}</span>
         </button>
-        <a v-if="rawDownloadUrl" class="daily-level-button daily-level-button--secondary" :href="rawDownloadUrl" target="_blank" rel="noopener">
-          <VPIcon icon="up-right-from-square" />
-          <span>{{ t.raw }}</span>
-        </a>
       </div>
     </div>
 
@@ -30,6 +21,16 @@
     </div>
 
     <template v-else-if="currentLevel">
+      <section class="daily-level-summary">
+        <p v-if="currentLevel.description" class="daily-level-description">{{ currentLevel.description }}</p>
+        <div class="daily-level-details" aria-label="Level details">
+          <div v-for="detail in levelDetails" :key="detail.label" class="daily-level-detail">
+            <span>{{ detail.label }}</span>
+            <strong>{{ detail.value }}</strong>
+          </div>
+        </div>
+      </section>
+
       <div class="daily-level-facts" aria-label="Level facts">
         <div v-for="fact in facts" :key="fact.label" class="daily-level-fact">
           <span>{{ fact.label }}</span>
@@ -100,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, onMounted, ref } from 'vue';
+import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
 
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
 import { getZombieMap } from '../zombiesAlmanac/formatZombies';
@@ -121,6 +122,7 @@ type DailyLevel = {
   slug: string;
   title: string;
   author: string;
+  description?: string;
   rawUrl: string;
   stats: {
     stage: string;
@@ -171,7 +173,10 @@ const copy = {
     failed: '无法载入每日关卡',
     download: '下载关卡',
     downloading: '正在下载',
-    raw: '查看源文件',
+    author: '作者',
+    stage: '场景',
+    activeCountdown: '剩余时间',
+    refreshSoon: '即将刷新',
     plants: '本关植物',
     zombies: '本关僵尸',
     mechanics: '机制',
@@ -181,8 +186,6 @@ const copy = {
     seedMode: '供给',
     waves: '波次',
     sun: '阳光',
-    board: '开局棋盘',
-    until: '持续到',
     wave: '第 {wave} 波',
     localBased: '基于 {name}',
     unresolved: '未识别',
@@ -200,7 +203,10 @@ const copy = {
     failed: 'Daily level unavailable',
     download: 'Download level',
     downloading: 'Downloading',
-    raw: 'Open source',
+    author: 'Author',
+    stage: 'Stage',
+    activeCountdown: 'Time left',
+    refreshSoon: 'Refreshing soon',
     plants: 'Plants',
     zombies: 'Zombies',
     mechanics: 'Mechanics',
@@ -210,8 +216,6 @@ const copy = {
     seedMode: 'Supply',
     waves: 'Waves',
     sun: 'Sun',
-    board: 'Opening board',
-    until: 'Until',
     wave: 'Wave {wave}',
     localBased: 'Based on {name}',
     unresolved: 'Unresolved',
@@ -328,12 +332,14 @@ const error = ref('');
 const downloading = ref(false);
 const showAllPlants = ref(false);
 const showAllZombies = ref(false);
+const nowTimestamp = ref(Date.now());
+let countdownTimer: number | undefined;
 
 const t = computed(() => copy[language.value]);
 const currentLevel = computed(() => payload.value?.daily.level || null);
-const activeRange = computed(() => {
+const activeCountdown = computed(() => {
   if (!payload.value?.daily.activeUntil) return '';
-  return `${t.value.until} ${formatDate(payload.value.daily.activeUntil)}`;
+  return formatCountdown(new Date(payload.value.daily.activeUntil).getTime() - nowTimestamp.value);
 });
 const rawDownloadUrl = computed(() => {
   if (!currentLevel.value?.rawUrl) return '';
@@ -345,19 +351,31 @@ const visibleZombies = computed(() => (showAllZombies.value ? currentLevel.value
 const hiddenPlantCount = computed(() => Math.max(0, (currentLevel.value?.entities.plants.length || 0) - visiblePlants.value.length));
 const hiddenZombieCount = computed(() => Math.max(0, (currentLevel.value?.entities.zombies.length || 0) - visibleZombies.value.length));
 const notices = computed(() => currentLevel.value?.diagnostics.filter((item) => item.severity !== 'info') || []);
+const levelDetails = computed(() => {
+  const level = currentLevel.value;
+  if (!level) return [];
+  return [
+    level.author ? { label: t.value.author, value: level.author } : null,
+    level.stats.stage ? { label: t.value.stage, value: level.stats.stage } : null,
+    activeCountdown.value ? { label: t.value.activeCountdown, value: activeCountdown.value } : null
+  ].filter((item): item is { label: string; value: string } => Boolean(item));
+});
 const facts = computed(() => {
   const level = currentLevel.value;
   if (!level) return [];
-  const boardCount = level.board.initialPlants + level.board.initialZombies + level.board.gridItems + level.board.gravestones;
   return [
     { label: t.value.seedMode, value: t.value.seedModes[level.stats.seedMode] || level.stats.seedMode },
     { label: t.value.waves, value: String(level.stats.waveCount || '-') },
-    { label: t.value.sun, value: String(level.stats.startingSun ?? '-') },
-    { label: t.value.board, value: String(boardCount) }
+    { label: t.value.sun, value: String(level.stats.startingSun ?? '-') }
   ];
 });
 
 onMounted(async () => {
+  nowTimestamp.value = Date.now();
+  countdownTimer = window.setInterval(() => {
+    nowTimestamp.value = Date.now();
+  }, 1000);
+
   try {
     loading.value = true;
     error.value = '';
@@ -371,18 +389,40 @@ onMounted(async () => {
   }
 });
 
+onUnmounted(() => {
+  if (countdownTimer !== undefined) window.clearInterval(countdownTimer);
+});
+
 function entityKey(entity: DailyEntity) {
   return `${entity.kind}-${entity.id}-${entity.basedOn || ''}`;
 }
 
-function formatDate(value: string) {
-  return new Intl.DateTimeFormat(language.value === 'zh' ? 'zh-CN' : 'en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZoneName: 'short'
-  }).format(new Date(value));
+function formatCountdown(milliseconds: number) {
+  if (!Number.isFinite(milliseconds) || milliseconds <= 0) return t.value.refreshSoon;
+  const totalSeconds = Math.max(1, Math.ceil(milliseconds / 1000));
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (language.value === 'zh') {
+    const parts = [
+      days ? `${days}天` : '',
+      hours ? `${hours}小时` : '',
+      minutes ? `${minutes}分` : '',
+      `${seconds}秒`
+    ].filter(Boolean);
+    return parts.join(' ');
+  }
+
+  const plural = (value: number, unit: string) => `${value} ${unit}${value === 1 ? '' : 's'}`;
+  const parts = [
+    days ? plural(days, 'day') : '',
+    hours ? plural(hours, 'hour') : '',
+    minutes ? plural(minutes, 'min') : '',
+    plural(seconds, 'sec')
+  ].filter(Boolean);
+  return parts.join(' ');
 }
 
 function entityBaseId(entity: DailyEntity) {
@@ -470,9 +510,9 @@ async function downloadLevel() {
 
 .daily-level-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
   padding: 28px 0 24px;
   border-bottom: 1px solid var(--daily-line);
 }
@@ -488,20 +528,13 @@ async function downloadLevel() {
 
 .daily-level-hero h1 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 4.8rem);
-  line-height: 0.98;
+  font-size: clamp(2.35rem, 4.2vw, 4rem);
+  line-height: 1;
   letter-spacing: 0;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
-.daily-level-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-  color: var(--daily-muted);
-}
-
-.daily-level-meta span,
 .daily-level-tags span {
   min-height: 28px;
   display: inline-flex;
@@ -516,6 +549,7 @@ async function downloadLevel() {
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .daily-level-button {
@@ -551,10 +585,6 @@ async function downloadLevel() {
   color: #fff;
 }
 
-.daily-level-button--secondary {
-  background: var(--daily-soft);
-}
-
 .daily-level-state {
   margin: 24px 0;
   padding: 18px;
@@ -569,9 +599,48 @@ async function downloadLevel() {
   color: var(--daily-coral);
 }
 
+.daily-level-summary {
+  padding: 18px 0 4px;
+}
+
+.daily-level-description {
+  max-width: 760px;
+  margin: 0 0 14px;
+  color: var(--daily-ink);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.daily-level-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.daily-level-detail {
+  min-height: 58px;
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  border-radius: 12px;
+  padding: 11px 14px;
+  background: var(--daily-panel);
+}
+
+.daily-level-detail span {
+  color: var(--daily-muted);
+  font-size: 0.76rem;
+}
+
+.daily-level-detail strong {
+  overflow-wrap: anywhere;
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
 .daily-level-facts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin: 20px 0;
 }
@@ -625,25 +694,25 @@ async function downloadLevel() {
 
 .daily-level-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+  gap: 8px;
 }
 
 .daily-level-entity {
-  min-height: 76px;
+  min-height: 64px;
   display: grid;
-  grid-template-columns: 54px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 8px;
   align-items: center;
-  border-radius: 14px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 8px;
   background: var(--daily-panel);
 }
 
 .daily-level-entity img,
 .daily-level-placeholder {
-  width: 54px;
-  height: 54px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
 }
 
@@ -659,15 +728,15 @@ async function downloadLevel() {
 .daily-level-entity strong {
   display: block;
   overflow-wrap: anywhere;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   line-height: 1.25;
 }
 
 .daily-level-entity span {
   display: block;
-  margin-top: 4px;
+  margin-top: 2px;
   color: var(--daily-muted);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   line-height: 1.3;
 }
 
