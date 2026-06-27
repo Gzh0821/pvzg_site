@@ -155,7 +155,7 @@ type DailyPayload = {
 };
 
 const props = withDefaults(defineProps<{ apiBase?: string }>(), {
-  apiBase: 'https://pvzge-daily-level.pages.dev/api/v1'
+  apiBase: 'https://daily-level-api.pvzge.com/api/v1'
 });
 
 const injectedLanguage = inject('i18nLanguage', 'en');
