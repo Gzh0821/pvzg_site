@@ -497,9 +497,10 @@ async function downloadLevel() {
 .daily-level-shell {
   --daily-ink: color-mix(in srgb, var(--vp-c-text) 92%, #13251b);
   --daily-muted: color-mix(in srgb, var(--vp-c-text) 58%, transparent);
-  --daily-panel: color-mix(in srgb, var(--vp-c-bg) 86%, #f5f8f1);
-  --daily-soft: color-mix(in srgb, var(--vp-c-bg) 74%, #e9f1e3);
+  --daily-panel: color-mix(in srgb, var(--vp-c-bg-alt) 88%, #eef5eb 12%);
+  --daily-soft: color-mix(in srgb, var(--vp-c-bg-alt) 80%, #e9f2e6 20%);
   --daily-line: color-mix(in srgb, var(--vp-c-divider) 64%, transparent);
+  --daily-separator: color-mix(in srgb, var(--vp-c-border) 52%, transparent);
   --daily-green: #2f7d4f;
   --daily-amber: #b86f1d;
   --daily-coral: #c5523b;
@@ -540,6 +541,7 @@ async function downloadLevel() {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
+  border: 1px solid var(--daily-separator);
   padding: 4px 10px;
   background: var(--daily-soft);
   font-size: 0.85rem;
@@ -587,6 +589,7 @@ async function downloadLevel() {
 
 .daily-level-state {
   margin: 24px 0;
+  border: 1px solid var(--daily-separator);
   padding: 18px;
   border-radius: 14px;
   background: var(--daily-panel);
@@ -622,6 +625,7 @@ async function downloadLevel() {
   display: grid;
   align-content: center;
   gap: 4px;
+  border: 1px solid var(--daily-separator);
   border-radius: 12px;
   padding: 11px 14px;
   background: var(--daily-panel);
@@ -650,6 +654,7 @@ async function downloadLevel() {
   display: grid;
   align-content: center;
   gap: 4px;
+  border: 1px solid var(--daily-separator);
   border-radius: 16px;
   padding: 14px 16px;
   background: var(--daily-panel);
@@ -704,6 +709,7 @@ async function downloadLevel() {
   grid-template-columns: 44px minmax(0, 1fr);
   gap: 8px;
   align-items: center;
+  border: 1px solid var(--daily-separator);
   border-radius: 12px;
   padding: 8px;
   background: var(--daily-panel);
@@ -761,7 +767,7 @@ async function downloadLevel() {
 .daily-level-more {
   min-height: 40px;
   margin-top: 12px;
-  border: 0;
+  border: 1px solid var(--daily-separator);
   border-radius: 12px;
   padding: 0 14px;
   background: var(--daily-soft);
