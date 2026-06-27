@@ -67,4 +67,9 @@ highlights:
         icon: pen-to-square
         details: Crea y exporta niveles personalizados de Gardendless
         link: ./useful-tool/level-editor
+
+      - title: Nivel diario
+        icon: calendar-days
+        details: Consulta niveles diarios programados de la comunidad de Discord
+        link: ./creator-garden/daily-level
 ---

@@ -67,4 +67,9 @@ highlights:
         icon: pen-to-square
         details: Создавайте и экспортируйте пользовательские уровни Gardendless
         link: ./useful-tool/level-editor
+
+      - title: Ежедневный уровень
+        icon: calendar-days
+        details: Просматривайте ежедневные уровни от сообщества Discord
+        link: ./creator-garden/daily-level
 ---

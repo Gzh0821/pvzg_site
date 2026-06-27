@@ -67,4 +67,9 @@ highlights:
       icon: pen-to-square
       details: 可视化编辑并导出自定义关卡
       link: ./useful-tool/level-editor
+
+    - title: 每日关卡
+      icon: calendar-days
+      details: 查看来自 Discord 社区投稿并定时更新的每日关卡
+      link: ./creator-garden/daily-level
 ---
