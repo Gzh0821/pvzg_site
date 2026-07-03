@@ -159,16 +159,91 @@ iframe.youtube-video {
 }
 
 /* World Cup 26 seasonal styles START. Remove this block, FWC2026UltraCondensedMedium @font-face, and worldcup26 assets to roll back. */
+:root {
+    --wc26-theme-ink: #10243e;
+    --wc26-nav-gradient: linear-gradient(90deg,
+            #aed0c9 0% 8.333%,
+            #b8feee 8.333% 16.666%,
+            #c5a6fb 16.666% 24.999%,
+            #e1f895 24.999% 33.332%,
+            #ffb7a0 33.332% 41.665%,
+            #b3c0ff 41.665% 49.998%,
+            #dfceff 49.998% 58.331%,
+            #ef9d9a 58.331% 66.664%,
+            #d2a1a6 66.664% 74.997%,
+            #f2fea5 74.997% 83.33%,
+            #b3eed2 83.33% 91.663%,
+            #e6c4dc 91.663% 100%);
+    --wc26-rule-gradient: linear-gradient(90deg,
+            #b3c0ff 0% 8.333%,
+            #dfceff 8.333% 16.666%,
+            #ef9d9a 16.666% 24.999%,
+            #d2a1a6 24.999% 33.332%,
+            #f2fea5 33.332% 41.665%,
+            #b3eed2 41.665% 49.998%,
+            #e6c4dc 49.998% 58.331%,
+            #aed0c9 58.331% 66.664%,
+            #b8feee 66.664% 74.997%,
+            #c5a6fb 74.997% 83.33%,
+            #e1f895 83.33% 91.663%,
+            #ffb7a0 91.663% 100%);
+    --wc26-title-gradient: linear-gradient(90deg,
+            #005847 0% 6.25%,
+            #64feda 6.25% 12.5%,
+            #6100e9 12.5% 18.75%,
+            #afea00 18.75% 25%,
+            #ff3d00 25% 31.25%,
+            #304fff 31.25% 37.5%,
+            #b288fd 37.5% 43.75%,
+            #d40100 43.75% 50%,
+            #8a1822 50% 56.25%,
+            #e2fb37 56.25% 62.5%,
+            #3ed08f 62.5% 68.75%,
+            #c377ae 68.75% 75%,
+            #005847 75% 81.25%,
+            #64feda 81.25% 87.5%,
+            #6100e9 87.5% 93.75%,
+            #ff3d00 93.75% 100%);
+}
+
+[data-theme="dark"] {
+    --wc26-nav-gradient: linear-gradient(90deg,
+            #003f36 0% 8.333%,
+            #0f6f5e 8.333% 16.666%,
+            #3b0f88 16.666% 24.999%,
+            #4c6500 24.999% 33.332%,
+            #9f2800 33.332% 41.665%,
+            #1e34a6 41.665% 49.998%,
+            #7251aa 49.998% 58.331%,
+            #8f0707 58.331% 66.664%,
+            #5d1118 66.664% 74.997%,
+            #5a6900 74.997% 83.33%,
+            #176b4a 83.33% 91.663%,
+            #965176 91.663% 100%);
+    --wc26-rule-gradient: linear-gradient(90deg,
+            #1e34a6 0% 8.333%,
+            #7251aa 8.333% 16.666%,
+            #8f0707 16.666% 24.999%,
+            #5d1118 24.999% 33.332%,
+            #5a6900 33.332% 41.665%,
+            #176b4a 41.665% 49.998%,
+            #965176 49.998% 58.331%,
+            #003f36 58.331% 66.664%,
+            #0f6f5e 66.664% 74.997%,
+            #3b0f88 74.997% 83.33%,
+            #4c6500 83.33% 91.663%,
+            #9f2800 91.663% 100%);
+}
+
 .vp-navbar {
-    background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.34)),
-        url('/assets/image/worldcup26-navbar-ai-light.webp') center / cover no-repeat;
+    overflow: visible;
+    background: var(--wc26-nav-gradient);
+    box-shadow: 0 1px 0 rgba(16, 36, 62, 0.28);
 }
 
 [data-theme="dark"] .vp-navbar {
-    background:
-        linear-gradient(90deg, rgba(0, 16, 28, 0.18), rgba(0, 16, 28, 0.24)),
-        url('/assets/image/worldcup26-navbar-ai-dark.webp') center / cover no-repeat;
+    background: var(--wc26-nav-gradient);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .vp-navbar-start,
@@ -178,15 +253,38 @@ iframe.youtube-video {
     z-index: 1;
 }
 
+.vp-navbar::before {
+    height: 3px;
+    background: var(--wc26-rule-gradient);
+    opacity: 1;
+}
+
 #main-title,
 .vp-hero-title {
+    display: inline-block;
     max-width: 100%;
+    color: var(--wc26-theme-ink);
+    background: var(--wc26-title-gradient);
     font-family: 'FWC2026UltraCondensedMedium', 'pvzgeFontEN', 'pvzgFont', sans-serif;
     font-size: 5.4rem;
     letter-spacing: 0;
     line-height: 0.88;
+    filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.46)) drop-shadow(0 2px 4px rgba(16, 36, 62, 0.2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     overflow-wrap: normal;
+    text-wrap: balance;
     word-break: keep-all;
+}
+
+[data-theme="dark"] #main-title,
+[data-theme="dark"] .vp-hero-title {
+    background: var(--wc26-title-gradient);
+    filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.18)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media (max-width: 959px) {
