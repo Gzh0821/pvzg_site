@@ -12,23 +12,7 @@ category:
 ---
 
 <script setup>
-import axios from 'axios';
-import { ref, onBeforeMount, onMounted } from 'vue'
-
-const gameInfoData = ref(null);
-const gpNextInfoData = ref(null);
-
-onBeforeMount(() => {
-  axios.get('/jsons/gameinfo.json').then(res => {
-    gameInfoData.value = res.data;
-  });
-  axios.get('/jsons/gp-next-info.json').then(res => {
-    gpNextInfoData.value = res.data;
-  });
-})
-onMounted(() => {
-  (window.adsbygoogle = window.adsbygoogle || []).push({});
-})
+import DownloadPanel from '@source/components/download-page/DownloadPanel.vue';
 </script>
 
 > [!important]
@@ -46,15 +30,7 @@ onMounted(() => {
 >
 > Para el contenido específico de los acuerdos y declaraciones anteriores, consulte [aquí](../instructions/)
 
-<span v-if="gameInfoData?.Version">La última versión del juego es la {{ gameInfoData.Version }}.</span>
-
-<span v-if="gameInfoData?.Name">El nombre de la versión del juego: {{ gameInfoData.Name }}</span>
-
-<span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
-
-<span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
-
-<span v-if="gpNextInfoData?.version">La última versión de la herramienta GP-Next es {{ gpNextInfoData.version }}</span>
+<DownloadPanel locale="es" />
 
 ## Recomendado despues de descargar
 
@@ -63,97 +39,3 @@ onMounted(() => {
 - Buscar IDs y CodeName de plantas/zombis: [Almanaque en linea](../almanac/)
 - Aprender parches y localizacion: [Guia de MOD](../guide/mod/)
 - Descargar niveles oficiales y de la comunidad: [Creator's Garden](../creator-garden/)
-
-## Registro de cambios
-
-<template v-if="gameInfoData?.EnNewFeatures">
-
-- <li v-for="(item, index) in gameInfoData.EnNewFeatures" :key="index">{{ item }}</li>
-
-</template>
-
-<template v-else>Ninguno</template>
-
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2336226859954206"
-     data-ad-slot="1822530351"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
-
-## ::brands:windows:: Plataforma Windows
-
-<template v-if="gameInfoData?.Download.Github">
-
-### Github ::brands:github::
-
-Enlace de descarga: <a :href="gameInfoData.Download.Github" target="_blank">haga clic para ingresar</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Storage">
-
-### Descarga local ::cloud-arrow-down::
-
-Enlace de descarga: <a :href="gameInfoData.Download.Storage" target="_blank">haga clic para ingresar</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Quark || gameInfoData?.Download.QuarkZip">
-
-### Quark Netdisk ::cloud::
-
-<p v-if="gameInfoData?.Download.Quark">Descarga predeterminada: <a :href="gameInfoData.Download.Quark" target="_blank">haga clic para ingresar</a></p>
-
-<p v-if="gameInfoData?.Download.QuarkZip">Descarga del paquete ZIP: <a :href="gameInfoData.Download.QuarkZip" target="_blank">haga clic para ingresar</a></p>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Baidu">
-
-### Baidu Netdisk ::cloud::
-
-Enlace de descarga: <a :href="gameInfoData.Download.Baidu" target="_blank">haga clic para ingresar</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Pan123">
-
-### 123 Pan ::cloud::
-
-Enlace de descarga: <a :href="gameInfoData.Download.Pan123" target="_blank">haga clic para ingresar</a>
-
-</template>
-
-## ::brands:apple:: Plataforma macOS
-
-> [!warning]
-> Esta versión solo es compatible con dispositivos Apple Silicon (arm64) y requiere macOS 11.0 o superior. Si macOS muestra "XXX está dañado y no se puede abrir. Deberías moverlo a la Papelera.", siga estos pasos:
->
-> 1. Primero escriba esto en Terminal (todavía no lo ejecute): <code>sudo xattr -r -d com.apple.quarantine </code>
-> 2. Arrastre la app del juego a la ventana de Terminal para autocompletar la ruta.
-> 3. Verifique la ruta y pulse Enter para ejecutar.
->
-> Si aún no abre, permita la app en "Configuración del sistema > Privacidad y seguridad" y vuelva a intentarlo.
-
-<template v-if="gameInfoData?.MacOSDownload?.Storage">
-
-### Descarga local ::cloud-arrow-down::
-
-Enlace de descarga: <a :href="gameInfoData.MacOSDownload.Storage" target="_blank">haga clic para ingresar</a>
-
-</template>
-
-## ::brands:linux:: Linux/Otras plataformas
-
-> [!info]
-> Para jugar en Linux y otros sistemas con arquitectura x86_64 (amd64), puede usar imágenes Docker para implementar localmente la versión web.
-
-### Docker Hub ::brands:docker::
-
-Dirección de la imagen: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">haga clic para ingresar</a>
-
-## ::clock-rotate-left:: Versiones históricas/Archivos de recursos
-
-Todas las versiones históricas y archivos de recursos `JSON` se pueden descargar desde [GE Drive](https://drive.pvzge.com/)

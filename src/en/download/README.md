@@ -12,23 +12,7 @@ category:
 ---
 
 <script setup>
-import axios from 'axios';
-import { ref, onBeforeMount, onMounted } from 'vue'
-
-const gameInfoData = ref(null);
-const gpNextInfoData = ref(null);
-
-onBeforeMount(() => {
-  axios.get('/jsons/gameinfo.json').then(res => {
-    gameInfoData.value = res.data;
-  });
-  axios.get('/jsons/gp-next-info.json').then(res => {
-    gpNextInfoData.value = res.data;
-  });
-})
-onMounted(() => {
-  (window.adsbygoogle = window.adsbygoogle || []).push({});
-})
+import DownloadPanel from '@source/components/download-page/DownloadPanel.vue';
 </script>
 
 > [!important]
@@ -45,15 +29,7 @@ onMounted(() => {
 >
 > For the details of the above agreement and statement, please see [here](../instructions/)
 
-<span v-if="gameInfoData?.Version">The latest game version is {{ gameInfoData.Version }}.</span>
-
-<span v-if="gameInfoData?.Name">The game version name: {{ gameInfoData.Name }}</span>
-
-<span v-if="gameInfoData?.Hash?.MD5">MD5: <code>{{ gameInfoData?.Hash?.MD5 }}</code></span>
-
-<span v-if="gameInfoData?.Hash?.SHA256">SHA256: <code>{{ gameInfoData?.Hash?.SHA256 }}</code></span>
-
-<span v-if="gpNextInfoData?.version">The latest GP-Next tool version is {{ gpNextInfoData.version }}</span>
+<DownloadPanel locale="en" />
 
 ## Recommended Next Steps
 
@@ -62,96 +38,3 @@ onMounted(() => {
 - Find plant/zombie IDs and codenames: [Online Almanac](../almanac/)
 - Learn patching and localization: [MOD Guide](../guide/mod/)
 - Download official/community levels: [Creator's Garden](../creator-garden/)
-
-## Changelog
-
-<template v-if="gameInfoData?.EnNewFeatures">
-
-- <li v-for="(item, index) in gameInfoData.EnNewFeatures" :key="index">{{ item }}</li>
-
-</template>
-
-<template v-else>None</template>
-
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2336226859954206"
-     data-ad-slot="1822530351"
-     data-ad-format="auto"
-     data-full-width-responsive="true">
-</ins>
-
-## ::brands:windows:: Windows platform
-
-<template v-if="gameInfoData?.Download.Github">
-
-### Github ::brands:github::
-
-Download Link: <a :href="gameInfoData.Download.Github" target="_blank">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Storage">
-
-### Local Download ::cloud-arrow-down::
-
-Download Link: <a :href="gameInfoData.Download.Storage" target="_blank">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Quark || gameInfoData?.Download.QuarkZip">
-
-### Quark ::cloud::
-
-<p v-if="gameInfoData?.Download.Quark">Default download: <a :href="gameInfoData.Download.Quark" target="_blank">click to enter</a></p>
-
-<p v-if="gameInfoData?.Download.QuarkZip">ZIP package download: <a :href="gameInfoData.Download.QuarkZip" target="_blank">click to enter</a></p>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Baidu">
-
-### Baidu Netdisk ::cloud::
-Download Link: <a :href="gameInfoData.Download.Baidu" target="_blank">click to enter</a>
-
-</template>
-
-<template v-if="gameInfoData?.Download.Pan123">
-
-### 123Pan ::cloud::
-
-Download Link: <a :href="gameInfoData.Download.Pan123" target="_blank">click to enter</a>
-
-</template>
-
-## ::brands:apple:: macOS platform
-
-> [!warning]
-> This version only supports Apple Silicon (arm64) devices and requires macOS 11.0 or later. If macOS shows "XXX is damaged and can't be opened. You should move it to the Bin.", follow these steps:
->
-> 1. Type this in Terminal first (do not run it yet): <code>sudo xattr -r -d com.apple.quarantine </code>
-> 2. Drag the game app into the Terminal window so the app path is auto-completed.
-> 3. Verify the path, then press Enter to run it.
->
-> If it still cannot open, allow the app in "System Settings > Privacy & Security" and retry.
-
-<template v-if="gameInfoData?.MacOSDownload?.Storage">
-
-### Local Download ::cloud-arrow-down::
-
-Download Link: <a :href="gameInfoData.MacOSDownload.Storage" target="_blank">click to enter</a>
-
-</template>
-
-## ::brands:linux:: Linux/Other platforms
-
-> [!info]
-> To play on Linux and other systems with x86_64 (amd64) architecture, you can use Docker images to deploy the web version locally.
-
-### Docker Hub ::brands:docker::
-
-Image address: <a href="https://hub.docker.com/r/gaozih/pvzge" target="_blank">click to enter</a>
-
-## ::clock-rotate-left:: Historical Versions
-
-All historical versions can be downloaded from [Github Release](https://github.com/Gzh0821/pvzg_site/releases)
