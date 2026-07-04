@@ -12,7 +12,12 @@ category:
 ---
 
 <script setup>
+import { onMounted } from 'vue';
 import DownloadPanel from '@source/components/download-page/DownloadPanel.vue';
+
+onMounted(() => {
+  (window.adsbygoogle = window.adsbygoogle || []).push({});
+});
 </script>
 
 > [!important]
@@ -28,6 +33,14 @@ import DownloadPanel from '@source/components/download-page/DownloadPanel.vue';
 > - "PvZ2 Gardendless" User Agreement and Disclaimer
 >
 > For the details of the above agreement and statement, please see [here](../instructions/)
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2336226859954206"
+     data-ad-slot="1822530351"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>
 
 <DownloadPanel locale="en" />
 

@@ -12,7 +12,12 @@ category:
 ---
 
 <script setup>
+import { onMounted } from 'vue';
 import DownloadPanel from '@source/components/download-page/DownloadPanel.vue';
+
+onMounted(() => {
+  (window.adsbygoogle = window.adsbygoogle || []).push({});
+});
 </script>
 
 > [!important]
@@ -29,6 +34,14 @@ import DownloadPanel from '@source/components/download-page/DownloadPanel.vue';
 > - Declaración de exención de responsabilidad de "PvZ2 Gardendless"
 >
 > Para el contenido específico de los acuerdos y declaraciones anteriores, consulte [aquí](../instructions/)
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2336226859954206"
+     data-ad-slot="1822530351"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>
 
 <DownloadPanel locale="es" />
 

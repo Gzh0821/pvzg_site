@@ -66,17 +66,6 @@
         <p v-else class="download-muted">{{ t.noChangelog }}</p>
       </section>
 
-      <div class="download-ad" :aria-label="t.adLabel">
-        <ins
-          class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-2336226859954206"
-          data-ad-slot="1822530351"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-      </div>
-
       <nav id="download-options" class="download-os-switch" :aria-label="t.choosePlatform">
         <button
           v-for="os in osTabs"
@@ -219,7 +208,6 @@ const copy = {
     loadFailed: '无法读取下载信息',
     changelog: '更新日志',
     noChangelog: '暂无更新说明',
-    adLabel: '广告',
     choosePlatform: '选择平台',
     windowsTitle: 'Windows 下载',
     macTitle: 'macOS 下载',
@@ -264,7 +252,6 @@ const copy = {
     loadFailed: 'Download information unavailable',
     changelog: 'Changelog',
     noChangelog: 'No changelog available',
-    adLabel: 'Advertisement',
     choosePlatform: 'Choose platform',
     windowsTitle: 'Windows download',
     macTitle: 'macOS download',
@@ -309,7 +296,6 @@ const copy = {
     loadFailed: 'No se pudo cargar la información de descarga',
     changelog: 'Registro de cambios',
     noChangelog: 'Sin registro de cambios',
-    adLabel: 'Publicidad',
     choosePlatform: 'Elegir plataforma',
     windowsTitle: 'Descarga para Windows',
     macTitle: 'Descarga para macOS',
@@ -354,7 +340,6 @@ const copy = {
     loadFailed: 'Информация о загрузке недоступна',
     changelog: 'Журнал изменений',
     noChangelog: 'Журнал изменений недоступен',
-    adLabel: 'Реклама',
     choosePlatform: 'Выбрать платформу',
     windowsTitle: 'Загрузка для Windows',
     macTitle: 'Загрузка для macOS',
@@ -545,14 +530,6 @@ onMounted(() => {
   }
 
   void loadDownloadInfo();
-
-  window.requestAnimationFrame(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch {
-      // Ad blockers can block the global. The download panel should keep working.
-    }
-  });
 });
 
 function localDownloadHref(os: OsKey) {
@@ -962,15 +939,6 @@ function detectOs(): DetectedOs {
 
 .download-history a {
   font-weight: 700;
-}
-
-.download-ad {
-  min-height: 90px;
-  padding: 0.35rem 0;
-}
-
-.download-ad .adsbygoogle {
-  min-height: 90px;
 }
 
 @media (max-width: 820px) {
