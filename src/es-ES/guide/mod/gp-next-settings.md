@@ -15,6 +15,7 @@ Ademas de los interruptores normales, la pagina Settings tambien incluye algunas
 Los ajustes basicos mas comunes ahora mismo incluyen:
 
 - idioma del panel
+- atajo del panel (por defecto `F9`, configurable en Settings)
 - tasa de frames
 - modo depuracion
 

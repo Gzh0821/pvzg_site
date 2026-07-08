@@ -15,6 +15,7 @@ Besides ordinary toggles, the Settings page also hosts some runtime features man
 Common basic settings currently include:
 
 - panel language
+- panel hotkey (default `F9`, configurable in Settings)
 - frame rate
 - debug mode
 

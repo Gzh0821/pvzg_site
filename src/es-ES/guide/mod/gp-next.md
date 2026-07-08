@@ -20,7 +20,7 @@ GP-Next es el panel integrado de modding, depuracion y utilidades en tiempo de e
 - **Settings**: incluye idioma, tasa de frames, ajustes de scroll, Runtime Extensions, HP Overlay y mas
 - **Guide / About / Log**: documentacion integrada, referencia de comandos y registros de ejecucion
 
-Si instalaste una version oficial, GP-Next ya viene incluido. En el juego, pulsa `F10` o haz clic en el boton de la esquina superior izquierda para abrir el panel.
+Si instalaste una version oficial, GP-Next ya viene incluido. En el juego, pulsa `F9` o haz clic en el boton de la esquina superior izquierda para abrir el panel.
 
 ## Que necesitas
 
@@ -37,7 +37,7 @@ Si planeas editar plantas, zombis, tienda o textos, conviene tener abiertas esta
 ### 1. Abrir el panel
 
 - entra al juego
-- pulsa `F10`
+- pulsa `F9`
 - abre la pestaña **Patcher**
 
 ### 2. Abrir la carpeta

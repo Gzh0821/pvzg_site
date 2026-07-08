@@ -17,7 +17,7 @@ Epic Quest rework to be more fair and balanced
 Various QoL changes
 
 ## Note
-Make sure Dynamic Plant Registry and Worldmap Registry are enabled in the F10 menu in order to have new plants and world changes.
+Make sure Dynamic Plant Registry and Worldmap Registry are enabled in the F9 menu in order to have new plants and world changes.
 
 ## Download
 

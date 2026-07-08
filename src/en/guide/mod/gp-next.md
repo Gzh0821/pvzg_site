@@ -20,7 +20,7 @@ GP-Next is the built-in modding, debugging, and runtime utility panel in PvZ2 Ga
 - **Settings**: includes language, frame rate, scroll tweaks, Runtime Extensions, HP Overlay, and more
 - **Guide / About / Log**: built-in docs, console command references, and runtime logs
 
-If you installed an official release, GP-Next is already included. In game, press `F10` or click the top-left button to open the panel.
+If you installed an official release, GP-Next is already included. In game, press `F9` or click the top-left button to open the panel.
 
 ## What You Need
 
@@ -37,7 +37,7 @@ If you plan to edit plants, zombies, store data, or language content, it is usef
 ### 1. Open the Panel
 
 - enter the game
-- press `F10`
+- press `F9`
 - open the **Patcher** page
 
 ### 2. Open the Folder

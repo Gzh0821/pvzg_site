@@ -21,7 +21,7 @@ Impzane Edition is a community mod for PvZ2 Gardendless by Seal-enjoyer. Its REA
 
 ## Note
 
-Download the GitHub repository zip and load it through the F10 `Datapacks` panel as described in the author's README.
+Download the GitHub repository zip and load it through the F9 `Datapacks` panel as described in the author's README.
 
 ## Download
 

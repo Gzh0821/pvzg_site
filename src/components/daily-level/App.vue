@@ -7,11 +7,16 @@
       </div>
 
       <div class="daily-level-actions">
-        <button class="daily-level-button daily-level-button--primary" :disabled="!currentLevel || downloading" @click="downloadLevel">
+        <button class="daily-level-button daily-level-button--primary" :disabled="!deepLinkUrl" @click="openInGame">
+          <VPIcon icon="computer" />
+          <span>{{ t.openInGame }}</span>
+        </button>
+        <button class="daily-level-button daily-level-button--secondary" :disabled="!currentLevel || downloading" @click="downloadLevel">
           <VPIcon icon="download" />
           <span>{{ downloading ? t.downloading : t.download }}</span>
         </button>
       </div>
+      <p v-if="deepLinkHintVisible" class="daily-level-deep-link-hint">{{ t.deepLinkHint }}</p>
     </div>
 
     <div v-if="loading" class="daily-level-state">{{ t.loading }}</div>
@@ -150,6 +155,7 @@ type DailyPayload = {
   generatedAt: string;
   daily: {
     date: string;
+    slot: number;
     activeFrom: string;
     activeUntil: string;
     level: DailyLevel;
@@ -171,6 +177,8 @@ const copy = {
     loadingTitle: '正在载入今日关卡',
     loading: '正在载入关卡数据...',
     failed: '无法载入每日关卡',
+    openInGame: '打开游戏',
+    deepLinkHint: '没有反应？请先启动新版游戏，或下载关卡文件。',
     download: '下载关卡',
     downloading: '正在下载',
     author: '作者',
@@ -201,6 +209,8 @@ const copy = {
     loadingTitle: 'Loading today level',
     loading: 'Loading level data...',
     failed: 'Daily level unavailable',
+    openInGame: 'Open in game',
+    deepLinkHint: 'No response? Open the latest game first, or download the level file.',
     download: 'Download level',
     downloading: 'Downloading',
     author: 'Author',
@@ -330,10 +340,12 @@ const payload = ref<DailyPayload | null>(null);
 const loading = ref(true);
 const error = ref('');
 const downloading = ref(false);
+const deepLinkHintVisible = ref(false);
 const showAllPlants = ref(false);
 const showAllZombies = ref(false);
 const nowTimestamp = ref(Date.now());
 let countdownTimer: number | undefined;
+let deepLinkHintTimer: number | undefined;
 
 const t = computed(() => copy[language.value]);
 const currentLevel = computed(() => payload.value?.daily.level || null);
@@ -344,6 +356,14 @@ const activeCountdown = computed(() => {
 const rawDownloadUrl = computed(() => {
   if (!currentLevel.value?.rawUrl) return '';
   return new URL(`../../${currentLevel.value.rawUrl}`, normalizedApiBase.value).toString();
+});
+const deepLinkUrl = computed(() => {
+  if (!currentLevel.value || !payload.value?.daily.date || !Number.isInteger(payload.value.daily.slot)) return '';
+  const url = new URL('pvzge://daily-level/open');
+  url.searchParams.set('date', payload.value.daily.date);
+  url.searchParams.set('slot', String(payload.value.daily.slot));
+  url.searchParams.set('slug', currentLevel.value.slug);
+  return url.toString();
 });
 const normalizedApiBase = computed(() => (props.apiBase.endsWith('/') ? props.apiBase : `${props.apiBase}/`));
 const visiblePlants = computed(() => (showAllPlants.value ? currentLevel.value?.entities.plants || [] : (currentLevel.value?.entities.plants || []).slice(0, 18)));
@@ -391,6 +411,7 @@ onMounted(async () => {
 
 onUnmounted(() => {
   if (countdownTimer !== undefined) window.clearInterval(countdownTimer);
+  if (deepLinkHintTimer !== undefined) window.clearTimeout(deepLinkHintTimer);
 });
 
 function entityKey(entity: DailyEntity) {
@@ -468,6 +489,16 @@ function mechanicLabel(id: string) {
 function hideBrokenImage(event: Event) {
   const target = event.target as HTMLImageElement;
   target.style.visibility = 'hidden';
+}
+
+function openInGame() {
+  if (!deepLinkUrl.value) return;
+  deepLinkHintVisible.value = false;
+  if (deepLinkHintTimer !== undefined) window.clearTimeout(deepLinkHintTimer);
+  window.location.href = deepLinkUrl.value;
+  deepLinkHintTimer = window.setTimeout(() => {
+    if (document.visibilityState === 'visible') deepLinkHintVisible.value = true;
+  }, 1800);
 }
 
 async function downloadLevel() {
@@ -585,6 +616,18 @@ async function downloadLevel() {
 .daily-level-button--primary {
   background: var(--daily-green);
   color: #fff;
+}
+
+.daily-level-button--secondary {
+  border: 1px solid var(--daily-separator);
+  background: var(--daily-soft);
+  color: var(--daily-ink);
+}
+
+.daily-level-deep-link-hint {
+  margin: -8px 0 0;
+  color: var(--daily-muted);
+  font-size: 0.9rem;
 }
 
 .daily-level-state {
