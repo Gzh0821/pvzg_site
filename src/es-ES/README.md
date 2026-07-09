@@ -24,9 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: Jugar en linea
-    icon: circle-play
-    link: https://play.pvzge.com
+  - text: Nivel diario
+    icon: calendar-days
+    link: ./creator-garden/daily-level
 
   - text: Comunidad
     icon: comment
@@ -43,6 +43,11 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
+      - title: Jugar en linea
+        icon: circle-play
+        details: Juega PvZ2 Gardendless directamente en tu navegador
+        link: https://play.pvzge.com
+
       - title: Almanaque en Línea
         icon: book-atlas
         details: Aquí encontrarás a las plantas y a los zombis, sus IDs y sus nombres

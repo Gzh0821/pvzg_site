@@ -24,9 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: Online Play
-    icon: circle-play
-    link: https://play.pvzge.com
+  - text: Daily Level
+    icon: calendar-days
+    link: ./creator-garden/daily-level
 
   - text: Community
     icon: comment
@@ -43,6 +43,11 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
+    - title: Online Play
+      icon: circle-play
+      details: Play PvZ2 Gardendless directly in your browser
+      link: https://play.pvzge.com
+
     - title: Online Almanac
       icon: book-atlas
       details: Find plants and zombies, as well as their ID and CodeName

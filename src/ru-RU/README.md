@@ -24,9 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: Играть онлайн
-    icon: circle-play
-    link: https://play.pvzge.com
+  - text: Ежедневный уровень
+    icon: calendar-days
+    link: ./creator-garden/daily-level
 
   - text: Сообщество
     icon: comment
@@ -43,6 +43,11 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
+      - title: Играть онлайн
+        icon: circle-play
+        details: Играйте в PvZ2 Gardendless прямо в браузере
+        link: https://play.pvzge.com
+
       - title: Онлайн-Альманах
         icon: book-atlas
         details: Найдите растения и зомби, а также их ID и CodeName

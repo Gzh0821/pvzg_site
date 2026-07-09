@@ -24,9 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: 在线游玩
-    icon: circle-play
-    link: https://play.pvzge.com
+  - text: 每日关卡
+    icon: calendar-days
+    link: ./creator-garden/daily-level
 
   - text: 社区
     icon: comment
@@ -43,6 +43,11 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
+    - title: 在线游玩
+      icon: circle-play
+      details: 在浏览器中直接体验 PvZ2 Gardendless
+      link: https://play.pvzge.com
+
     - title: 在线图鉴
       icon: book-atlas
       details: 查找植物和僵尸,以及它们的 ID 和 CodeName
