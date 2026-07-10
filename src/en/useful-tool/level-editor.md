@@ -23,15 +23,7 @@ sidebar: false
 </script>
 
 > [!warning]
-> The custom level editor is in early testing. Test exported level files locally before sharing them with other players.
->
-> Currently, it mainly supports standard boards, seed banks, and regular waves. Unsupported modules in imported complex levels are shown in the validation area.
-
-## Related Tools and Guides
-
-- Level file basics: [Level Guide](../guide/level/levelguide.md)
-- Daily level reference: [Daily Level](../creator-garden/daily-level.md)
-- Datapacks and patching: [MOD Guide](../guide/mod/)
+> The editor is still in testing. Test exports locally; complex imported objects are preserved and shown in validation.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -42,3 +34,9 @@ sidebar: false
 </ins>
 
 <Editor />
+
+## Related Tools and Guides
+
+- Level file basics: [Level Guide](../guide/level/levelguide.md)
+- Daily level reference: [Daily Level](../creator-garden/daily-level.md)
+- Datapacks and patching: [MOD Guide](../guide/mod/)

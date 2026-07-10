@@ -5,11 +5,17 @@
     "es": "Editor de niveles",
     "ru": "Редактор уровней"
   },
-  "subtitle": {
-    "zh": "用图形界面生成标准关卡 JSON，复杂模块会在导入时保留。",
-    "en": "Create standard level JSON visually. Complex imported modules are preserved.",
-    "es": "Crea JSON de niveles estándar visualmente. Los módulos complejos importados se conservan.",
-    "ru": "Создавайте JSON стандартных уровней визуально. Сложные импортированные модули сохраняются."
+  "summaryWaves": {
+    "zh": "{count} 个波次",
+    "en": "{count} waves",
+    "es": "{count} oleadas",
+    "ru": "Волн: {count}"
+  },
+  "summaryPlacements": {
+    "zh": "{count} 个草坪布置",
+    "en": "{count} placements",
+    "es": "{count} elementos",
+    "ru": "Объектов: {count}"
   },
   "expertMode": {
     "zh": "高级模式",
@@ -22,6 +28,30 @@
     "en": "New template",
     "es": "Nueva plantilla",
     "ru": "Новый шаблон"
+  },
+  "confirmNewTitle": {
+    "zh": "新建关卡模板？",
+    "en": "Start a new level template?",
+    "es": "¿Crear una nueva plantilla?",
+    "ru": "Создать новый шаблон?"
+  },
+  "confirmNewDescription": {
+    "zh": "当前未导出的编辑内容会被清空。",
+    "en": "Your current unexported edits will be cleared.",
+    "es": "Se borrarán los cambios actuales no exportados.",
+    "ru": "Текущие неэкспортированные изменения будут удалены."
+  },
+  "confirmNewAction": {
+    "zh": "新建模板",
+    "en": "Start new",
+    "es": "Crear plantilla",
+    "ru": "Создать"
+  },
+  "cancel": {
+    "zh": "取消",
+    "en": "Cancel",
+    "es": "Cancelar",
+    "ru": "Отмена"
   },
   "importLevel": {
     "zh": "导入关卡",
@@ -149,6 +179,12 @@
     "es": "Elegir recurso",
     "ru": "Выбрать объект"
   },
+  "assetType": {
+    "zh": "素材类型",
+    "en": "Asset type",
+    "es": "Tipo de recurso",
+    "ru": "Тип объекта"
+  },
   "plants": {
     "zh": "植物",
     "en": "Plants",
@@ -172,6 +208,12 @@
     "en": "All",
     "es": "Todo",
     "ru": "Все"
+  },
+  "objectCategory": {
+    "zh": "物件分类",
+    "en": "Object category",
+    "es": "Categoría de objeto",
+    "ru": "Категория объекта"
   },
   "objectCategoryTile": {
     "zh": "地砖",
@@ -202,6 +244,24 @@
     "en": "Search name or code",
     "es": "Buscar nombre o código",
     "ru": "Поиск имени или кода"
+  },
+  "assetResults": {
+    "zh": "{count} 个可用素材",
+    "en": "{count} available assets",
+    "es": "{count} recursos disponibles",
+    "ru": "Доступно объектов: {count}"
+  },
+  "noAssetResults": {
+    "zh": "没有匹配的素材，请尝试其他名称或代号。",
+    "en": "No matching assets. Try another name or code.",
+    "es": "No hay resultados. Prueba otro nombre o código.",
+    "ru": "Ничего не найдено. Попробуйте другое имя или код."
+  },
+  "showMoreAssets": {
+    "zh": "再显示 {count} 个",
+    "en": "Show {count} more",
+    "es": "Mostrar {count} más",
+    "ru": "Показать еще {count}"
   },
   "board": {
     "zh": "草坪",
@@ -281,6 +341,18 @@
     "es": "Eliminar",
     "ru": "Удалить"
   },
+  "removeZombie": {
+    "zh": "删除僵尸{name}",
+    "en": "Remove zombie {name}",
+    "es": "Eliminar zombi {name}",
+    "ru": "Удалить зомби {name}"
+  },
+  "zombieCount": {
+    "zh": "{name}的数量",
+    "en": "Count for {name}",
+    "es": "Cantidad de {name}",
+    "ru": "Количество: {name}"
+  },
   "clearCell": {
     "zh": "清空格子",
     "en": "Clear cell",
@@ -305,23 +377,17 @@
     "es": "Elige un recurso y haz clic en una celda.",
     "ru": "Выберите объект, затем нажмите клетку поля."
   },
-  "selectedCellNone": {
-    "zh": "当前格子",
-    "en": "Current cell",
-    "es": "Celda actual",
-    "ru": "Текущая клетка"
-  },
   "selectedCellTitle": {
     "zh": "当前格子 {col},{row}",
     "en": "Current cell {col},{row}",
     "es": "Celda actual {col},{row}",
     "ru": "Текущая клетка {col},{row}"
   },
-  "selectedCellHint": {
-    "zh": "点击草坪格子查看完整名称。",
-    "en": "Click a board cell to see full names.",
-    "es": "Haz clic en una celda para ver los nombres completos.",
-    "ru": "Нажмите клетку, чтобы увидеть полные имена."
+  "cellAria": {
+    "zh": "第 {row} 行第 {col} 列：{content}",
+    "en": "Row {row}, column {col}: {content}",
+    "es": "Fila {row}, columna {col}: {content}",
+    "ru": "Строка {row}, столбец {col}: {content}"
   },
   "selectedCellEmpty": {
     "zh": "该格没有放置内容。",
@@ -408,16 +474,16 @@
     "ru": "Фиксированные карты"
   },
   "seedChooserHint": {
-    "zh": "列表里的植物会锁定进种子栏，其余格子由玩家选择。",
-    "en": "Listed plants are locked into the seed bank; players choose the remaining slots.",
-    "es": "Las plantas listadas quedan fijadas; el jugador elige los espacios restantes.",
-    "ru": "Растения в списке закреплены; остальные ячейки выбирает игрок."
+    "zh": "列表内植物固定，其余由玩家选择。",
+    "en": "Listed plants are fixed; players choose the rest.",
+    "es": "Las plantas listadas quedan fijas; el jugador elige el resto.",
+    "ru": "Растения из списка закреплены; остальные выбирает игрок."
   },
   "seedPresetHint": {
-    "zh": "列表里的植物就是完整卡组。",
-    "en": "Listed plants become the full seed bank.",
-    "es": "Las plantas listadas forman todo el banco.",
-    "ru": "Растения в списке становятся всей панелью семян."
+    "zh": "列表内植物组成完整卡组。",
+    "en": "Listed plants are the full seed bank.",
+    "es": "Las plantas listadas forman el banco completo.",
+    "ru": "Растения из списка составляют всю панель."
   },
   "seedLimit": {
     "zh": "种子栏最多 {count} 格。",
@@ -581,17 +647,11 @@
     "es": "Cinta avanzada",
     "ru": "Расширенный конвейер"
   },
-  "conveyorSimpleHint": {
-    "zh": "选择植物后加入传送带，导出时会使用传送带种子栏。",
-    "en": "Select plants and add them to the conveyor; export will use a conveyor seed bank.",
-    "es": "Elige plantas y añádelas a la cinta; la exportación usará banco de cinta.",
-    "ru": "Выберите растения и добавьте их в конвейер; экспорт использует конвейер семян."
-  },
   "conveyorSeedBankNotice": {
-    "zh": "传送带关卡不会导出普通 SeedBankProperties。",
-    "en": "Conveyor levels do not export normal SeedBankProperties.",
-    "es": "Los niveles con cinta no exportan SeedBankProperties normales.",
-    "ru": "Уровни с конвейером не экспортируют обычный SeedBankProperties."
+    "zh": "传送带模式不生成普通种子栏。",
+    "en": "Conveyor mode omits the normal seed bank.",
+    "es": "El modo cinta omite el banco de semillas normal.",
+    "ru": "В режиме конвейера обычная панель не создается."
   },
   "conveyorPreserveOriginal": {
     "zh": "未改动时保留导入原文",
@@ -881,6 +941,60 @@
     "es": "objclass desconocido",
     "ru": "Неизвестный objclass"
   },
+  "validationNameRequired": {
+    "zh": "关卡名不能为空。",
+    "en": "Level name is required.",
+    "es": "El nombre del nivel es obligatorio.",
+    "ru": "Укажите название уровня."
+  },
+  "validationWaveRequired": {
+    "zh": "至少需要 1 个波次。",
+    "en": "At least one wave is required.",
+    "es": "Se necesita al menos una oleada.",
+    "ru": "Нужна хотя бы одна волна."
+  },
+  "validationWaveEmpty": {
+    "zh": "第 {wave} 波没有僵尸。",
+    "en": "Wave {wave} has no zombies.",
+    "es": "La oleada {wave} no tiene zombis.",
+    "ru": "В волне {wave} нет зомби."
+  },
+  "validationDynamicPlantfood": {
+    "zh": "第 {wave} 波的动态叶绿素需要是数组 JSON。",
+    "en": "Wave {wave} dynamic plant food must be a JSON array.",
+    "es": "Los nutrientes dinámicos de la oleada {wave} deben ser una matriz JSON.",
+    "ru": "Динамическая подкормка волны {wave} должна быть массивом JSON."
+  },
+  "validationActionJson": {
+    "zh": "第 {wave} 波的 {action} JSON 无法解析。",
+    "en": "Wave {wave} {action} JSON cannot be parsed.",
+    "es": "No se puede analizar el JSON de {action} en la oleada {wave}.",
+    "ru": "Не удалось разобрать JSON действия {action} в волне {wave}."
+  },
+  "validationPresetEmpty": {
+    "zh": "固定卡组模式下还没有选择植物。",
+    "en": "Preset seed bank has no plants.",
+    "es": "El banco predeterminado no tiene plantas.",
+    "ru": "В фиксированном наборе нет растений."
+  },
+  "validationConveyorEmpty": {
+    "zh": "传送带已启用，但没有初始植物或波次修改。",
+    "en": "Conveyor is enabled but has no plants or wave changes.",
+    "es": "La cinta está activa, pero no tiene plantas ni cambios de oleada.",
+    "ru": "Конвейер включен, но в нем нет растений или изменений волн."
+  },
+  "validationConveyorWaveMissing": {
+    "zh": "传送带波次修改指向不存在的第 {wave} 波。",
+    "en": "Conveyor change points to missing wave {wave}.",
+    "es": "El cambio de cinta apunta a la oleada inexistente {wave}.",
+    "ru": "Изменение конвейера ссылается на отсутствующую волну {wave}."
+  },
+  "validationUnsupported": {
+    "zh": "导入文件中有 {count} 个对象已保留，但尚不能在面板中编辑。",
+    "en": "{count} imported objects are preserved but not editable in the panels.",
+    "es": "Se conservan {count} objetos importados que aún no se pueden editar en los paneles.",
+    "ru": "Сохранено объектов без визуального редактирования: {count}."
+  },
   "noIssues": {
     "zh": "当前没有发现阻止导出的错误。",
     "en": "No export-blocking issues found.",
@@ -893,6 +1007,12 @@
     "es": "No se pudo analizar el archivo de nivel",
     "ru": "Не удалось разобрать файл уровня"
   },
+  "importInvalidStructure": {
+    "zh": "这不是可编辑的完整关卡：需要唯一的 LevelDefinition、关卡名、场景和 Modules。",
+    "en": "This is not a complete editable level. It needs one LevelDefinition, a name, a stage, and Modules.",
+    "es": "No es un nivel completo editable. Necesita un LevelDefinition, nombre, escenario y Modules.",
+    "ru": "Это не полный редактируемый уровень: нужен один LevelDefinition, имя, сцена и Modules."
+  },
   "imported": {
     "zh": "已导入关卡",
     "en": "Level imported",
@@ -904,11 +1024,5 @@
     "en": "Fix errors before exporting.",
     "es": "Corrige los errores antes de exportar.",
     "ru": "Исправьте ошибки перед экспортом."
-  },
-  "mobileHint": {
-    "zh": "移动端可通过底部标签切换草坪、素材、波次和校验。",
-    "en": "On mobile, use the bottom tabs to switch board, assets, waves, and validation.",
-    "es": "En móvil, usa las pestañas inferiores para cambiar entre tablero, recursos, oleadas y validación.",
-    "ru": "На мобильных используйте нижние вкладки для поля, объектов, волн и проверки."
   }
 }

@@ -23,15 +23,7 @@ sidebar: false
 </script>
 
 > [!warning]
-> El editor de niveles personalizados está en fase temprana de prueba. Prueba los archivos exportados localmente antes de compartirlos.
->
-> Actualmente admite principalmente tableros estándar, bancos de semillas y oleadas normales. Los módulos no compatibles de niveles complejos importados se muestran en la validación.
-
-## Herramientas y guías relacionadas
-
-- Conceptos básicos de archivos de nivel: [Guía de niveles](../guide/level/levelguide.md)
-- Daily level reference: [Daily Level](../creator-garden/daily-level.md)
-- Paquetes de datos y parches: [Guía MOD](../guide/mod/)
+> El editor sigue en fase de prueba. Prueba las exportaciones localmente; los objetos complejos importados se conservan y aparecen en la validación.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -42,3 +34,9 @@ sidebar: false
 </ins>
 
 <Editor />
+
+## Herramientas y guías relacionadas
+
+- Conceptos básicos de archivos de nivel: [Guía de niveles](../guide/level/levelguide.md)
+- Daily level reference: [Daily Level](../creator-garden/daily-level.md)
+- Paquetes de datos y parches: [Guía MOD](../guide/mod/)

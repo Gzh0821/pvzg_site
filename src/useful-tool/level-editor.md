@@ -23,15 +23,7 @@ sidebar: false
 </script>
 
 > [!warning]
-> 自定义关卡编辑器处于早期测试阶段。导出的关卡文件请先在本地测试，再分享给其他玩家。
->
-> 目前主要支持标准草坪、种子栏和普通波次。导入复杂官方关卡时，暂未可视化支持的模块会显示在校验区域。
-
-## 相关工具与教程
-
-- 本地关卡导入流程：[本地关卡导入](../guide/seo/level-import.md)
-- 每日关卡参考：[每日关卡](../creator-garden/daily-level.md)
-- 补丁与数据包制作：[MOD 教程](../guide/mod/)
+> 编辑器仍处于测试阶段。导出后请先在本地测试；导入的复杂对象会保留并列入校验。
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -42,3 +34,9 @@ sidebar: false
 </ins>
 
 <Editor />
+
+## 相关工具与教程
+
+- 本地关卡导入流程：[本地关卡导入](../guide/seo/level-import.md)
+- 每日关卡参考：[每日关卡](../creator-garden/daily-level.md)
+- 补丁与数据包制作：[MOD 教程](../guide/mod/)

@@ -1,21 +1,33 @@
 <template>
   <a-config-provider
     :theme="{
-      token: { colorPrimary: '#5f9f3f', borderRadius: 8 },
+      token: { colorPrimary: '#5f9f3f', borderRadius: 12, controlHeight: 40 },
       algorithm: $isDarkMode ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm
     }"
   >
     <section class="level-editor-shell">
       <header class="editor-topbar">
         <div class="title-block">
-          <a-typography-title :level="2" class="editor-title">{{ t('title') }}</a-typography-title>
-          <a-typography-text type="secondary">{{ t('subtitle') }}</a-typography-text>
+          <div class="title-row">
+            <span class="title-sun" aria-hidden="true"></span>
+            <a-typography-title :level="2" class="editor-title">{{ t('title') }}</a-typography-title>
+          </div>
+          <div class="workspace-meta">
+            <span>{{ t('summaryWaves', { count: draft.waves.length }) }}</span>
+            <span>{{ t('summaryPlacements', { count: draft.boardItems.length }) }}</span>
+          </div>
         </div>
         <div class="top-actions">
           <div class="top-action-row action-row-primary">
-            <a-tag class="validation-summary-tag" :color="validationSummaryColor">
+            <button
+              type="button"
+              class="validation-summary-control"
+              :class="validationState"
+              @click="openValidation"
+            >
+              <span class="validation-status-dot" aria-hidden="true"></span>
               {{ t('errors', { count: validationSummary.errors }) }} / {{ t('warnings', { count: validationSummary.warnings }) }}
-            </a-tag>
+            </button>
             <label class="expert-mode-toggle">
               <input v-model="expertMode" type="checkbox" :aria-label="t('expertMode')" />
               <span class="expert-mode-switch" aria-hidden="true"></span>
@@ -27,7 +39,7 @@
                 {{ t('importLevel') }}
               </a-button>
             </a-upload>
-            <a-button @click="resetDraft">
+            <a-button @click="confirmResetDraft">
               <template #icon><file-add-outlined /></template>
               {{ t('newLevel') }}
             </a-button>
@@ -45,9 +57,7 @@
         </div>
       </header>
 
-      <a-alert class="mobile-helper" :message="t('mobileHint')" type="info" show-icon />
-
-      <div class="desktop-layout">
+      <div v-if="!isMobileViewport" class="desktop-layout">
         <AssetLibrary class="panel library-panel" />
         <main class="board-panel">
           <BasicForm />
@@ -56,34 +66,38 @@
         <PropertyPanel class="panel property-panel" />
       </div>
 
-      <div class="mobile-layout">
-        <a-tabs v-model:active-key="mobileTab" centered>
-          <a-tab-pane key="board" :tab="t('board')">
-            <BasicForm />
-            <BoardEditor />
-          </a-tab-pane>
-          <a-tab-pane key="assets" :tab="t('chooseAsset')">
-            <AssetLibrary />
-          </a-tab-pane>
-          <a-tab-pane key="waves" :tab="t('waves')">
-            <WaveTimeline />
-          </a-tab-pane>
-          <a-tab-pane key="settings" :tab="t('settings')">
-            <PropertyPanel />
-          </a-tab-pane>
-          <a-tab-pane key="validation" :tab="t('validation')">
-            <ValidationPanel />
-          </a-tab-pane>
-        </a-tabs>
+      <div v-else class="mobile-layout">
+        <section class="mobile-section-stack">
+          <BasicForm />
+          <BoardEditor />
+        </section>
+        <section class="mobile-section-stack">
+          <AssetLibrary />
+        </section>
+        <section class="mobile-section-stack">
+          <WaveTimeline />
+        </section>
+        <section class="mobile-section-stack">
+          <PropertyPanel />
+        </section>
+        <section class="mobile-section-stack">
+          <ValidationPanel />
+        </section>
       </div>
 
-      <div class="desktop-bottom">
+      <div v-if="!isMobileViewport" class="desktop-bottom">
         <PropertyPanel class="panel seedbank-fallback-panel" />
         <WaveTimeline />
         <ValidationPanel compact />
       </div>
 
-      <a-modal v-model:open="previewOpen" :title="`${draft.name || 'custom_level'}.json`" width="min(920px, 96vw)" :footer="null">
+      <a-modal
+        v-model:open="previewOpen"
+        :title="`${draft.name || 'custom_level'}.json`"
+        width="min(920px, 96vw)"
+        root-class-name="level-editor-modal-root"
+        :footer="null"
+      >
         <div class="preview-actions">
           <a-button size="small" @click="copyPreview">
             <template #icon><copy-outlined /></template>
@@ -111,7 +125,7 @@
 <script setup lang="ts">
 import { computed, defineComponent, h, inject, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import JSON5 from 'json5';
-import { message, theme as antdTheme } from 'ant-design-vue';
+import { message, Modal, theme as antdTheme } from 'ant-design-vue';
 import {
   CloseOutlined,
   CopyOutlined,
@@ -145,6 +159,7 @@ type ConveyorEditorTarget =
   | { kind: 'waveModification'; index: number };
 
 const MAX_SEED_PLANTS = 8;
+const ASSET_PAGE_SIZE = 120;
 const STAGE_DEFAULT_MOWER = '__stageDefault';
 const NO_MODULE = 'none';
 const NEW_WAVES_REF = 'RTID(NewWaves@CurrentLevel)';
@@ -313,6 +328,8 @@ interface LevelDraft {
   boardItems: BoardItem[];
   waves: WaveDraft[];
   flagWaveInterval: number;
+  flagWaveIntervalOriginal?: number;
+  flagWaveIntervalDirty: boolean;
   firstWaveCountdown: number;
   suppressFlagZombie: boolean;
   waveSpendingPointIncrement: number;
@@ -342,13 +359,15 @@ interface ValidationItem {
 
 const messages = localeMessages as Record<string, Record<LocaleKey, string>>;
 const providedLanguage = inject<string>('i18nLanguage', 'zh');
-const mobileTab = ref('board');
 const previewOpen = ref(false);
+const isMobileViewport = ref(false);
+let mobileViewportQuery: MediaQueryList | null = null;
 const EXPERT_MODE_STORAGE_KEY = 'pvzg-level-editor-expert-mode';
 const expertMode = ref(false);
 const assetTab = ref<AssetKind>('plant');
 const objectCategory = ref<ObjectCategoryFilter>('all');
 const assetSearch = ref('');
+const assetVisibleLimit = ref(ASSET_PAGE_SIZE);
 const selectedAsset = ref<AssetOption | null>(null);
 const selectedCell = ref<{ row: number; col: number } | null>(null);
 const selectedWaveId = ref(1);
@@ -469,13 +488,14 @@ const currentAssetOptions = computed(() => {
         : objectOptions;
   const query = assetSearch.value.trim().toLowerCase();
   return source
+    .filter((item) => expertMode.value || !item.advanced)
     .filter((item) => assetTab.value !== 'object' || objectCategory.value === 'all' || item.category === objectCategory.value)
     .filter((item) => {
       if (!query) return true;
       return [item.code, item.name, item.res || '', item.source || '', item.exportClass || ''].some((value) => value.toLowerCase().includes(query));
-    })
-    .slice(0, 80);
+    });
 });
+const visibleAssetOptions = computed(() => currentAssetOptions.value.slice(0, assetVisibleLimit.value));
 
 const selectedWave = computed(() => draft.value.waves.find((wave) => wave.id === selectedWaveId.value) || draft.value.waves[0]);
 const selectedCellItems = computed(() => (selectedCell.value ? itemsAt(selectedCell.value.row, selectedCell.value.col) : []));
@@ -497,14 +517,14 @@ const conveyorEditorReturnFocus = ref<HTMLElement | null>(null);
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
   if (!draft.value.name.trim()) {
-    items.push({ type: 'error', text: language.value === 'zh' ? '关卡名不能为空。' : 'Level name is required.' });
+    items.push({ type: 'error', text: t('validationNameRequired') });
   }
   const expectsWaveSystem =
     (draft.value.hasWaveManager && !draft.value.preserveCustomWaveManager) ||
     draft.value.preserveGeneratorWaves ||
     draft.value.moduleRefs.includes(NEW_WAVES_REF);
   if (!draft.value.waves.length && expectsWaveSystem && !draft.value.preserveGeneratorWaves) {
-    items.push({ type: 'error', text: language.value === 'zh' ? '至少需要 1 个波次。' : 'At least one wave is required.' });
+    items.push({ type: 'error', text: t('validationWaveRequired') });
   }
   draft.value.waves.forEach((wave, index) => {
     const hasConveyorWaveMod =
@@ -512,16 +532,13 @@ const validationItems = computed<ValidationItem[]>(() => {
     if (!wave.zombies.length && !wave.rawActions.length && !hasConveyorWaveMod) {
       items.push({
         type: 'warning',
-        text: language.value === 'zh' ? `第 ${index + 1} 波没有僵尸。` : `Wave ${index + 1} has no zombies.`
+        text: t('validationWaveEmpty', { wave: index + 1 })
       });
     }
     if (wave.dynamicPlantfood.trim() && !Array.isArray(parseOptionalArrayText(wave.dynamicPlantfood))) {
       items.push({
         type: 'error',
-        text:
-          language.value === 'zh'
-            ? `第 ${index + 1} 波的动态叶绿素需要是数组 JSON。`
-            : `Wave ${index + 1} dynamic plant food must be a JSON array.`
+        text: t('validationDynamicPlantfood', { wave: index + 1 })
       });
     }
     wave.rawActions.forEach((action) => {
@@ -530,10 +547,7 @@ const validationItems = computed<ValidationItem[]>(() => {
       } catch {
         items.push({
           type: 'error',
-          text:
-            language.value === 'zh'
-              ? `第 ${index + 1} 波的 ${action.objclass} JSON 无法解析。`
-              : `Wave ${index + 1} ${action.objclass} JSON cannot be parsed.`
+          text: t('validationActionJson', { wave: index + 1, action: action.objclass })
         });
       }
     });
@@ -541,24 +555,21 @@ const validationItems = computed<ValidationItem[]>(() => {
   if (!draft.value.conveyor.enabled && draft.value.seedMode === 'preset' && !draft.value.seedPlants.length) {
     items.push({
       type: 'warning',
-      text: language.value === 'zh' ? '固定卡组模式下还没有选择植物。' : 'Preset seed bank has no plants.'
+      text: t('validationPresetEmpty')
     });
   }
   if (draft.value.conveyor.enabled) {
     if (!draft.value.conveyor.initialPlants.length && !draft.value.conveyor.waveModifications.length) {
       items.push({
         type: 'warning',
-        text: language.value === 'zh' ? '传送带已启用，但没有初始植物或波次修改。' : 'Conveyor is enabled but has no plants.'
+        text: t('validationConveyorEmpty')
       });
     }
     draft.value.conveyor.waveModifications.forEach((modification) => {
       if (modification.waveIndex < 1 || modification.waveIndex > draft.value.waves.length) {
         items.push({
           type: 'error',
-          text:
-            language.value === 'zh'
-              ? `传送带波次修改指向不存在的第 ${modification.waveIndex} 波。`
-              : `Conveyor modification points to missing wave ${modification.waveIndex}.`
+          text: t('validationConveyorWaveMissing', { wave: modification.waveIndex })
         });
       }
     });
@@ -566,10 +577,7 @@ const validationItems = computed<ValidationItem[]>(() => {
   if (draft.value.unsupportedObjects > 0) {
     items.push({
       type: 'warning',
-      text:
-        language.value === 'zh'
-          ? `导入文件中有 ${draft.value.unsupportedObjects} 个对象已保留，但尚不能在面板中编辑。`
-          : `${draft.value.unsupportedObjects} imported objects are preserved but not editable in the panels.`
+      text: t('validationUnsupported', { count: draft.value.unsupportedObjects })
     });
   }
   return items;
@@ -580,7 +588,7 @@ const validationSummary = computed(() => ({
   warnings: validationItems.value.filter((item) => item.type === 'warning').length
 }));
 
-const validationSummaryColor = computed(() => {
+const validationState = computed(() => {
   if (validationSummary.value.errors) return 'error';
   if (validationSummary.value.warnings) return 'warning';
   return 'success';
@@ -597,18 +605,33 @@ function handleKeydown(event: KeyboardEvent) {
   clearSelectedAsset();
 }
 
+function updateMobileViewport(event: MediaQueryListEvent | MediaQueryList) {
+  isMobileViewport.value = event.matches;
+}
+
 onMounted(() => {
   expertMode.value = window.localStorage.getItem(EXPERT_MODE_STORAGE_KEY) === '1';
   window.addEventListener('keydown', handleKeydown);
+  mobileViewportQuery = window.matchMedia('(max-width: 760px)');
+  updateMobileViewport(mobileViewportQuery);
+  mobileViewportQuery.addEventListener('change', updateMobileViewport);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown);
+  if (mobileViewportQuery) {
+    mobileViewportQuery.removeEventListener('change', updateMobileViewport);
+  }
 });
 
 watch(expertMode, (enabled) => {
   if (typeof window === 'undefined') return;
+  if (!enabled && selectedAsset.value?.advanced) clearSelectedAsset();
   window.localStorage.setItem(EXPERT_MODE_STORAGE_KEY, enabled ? '1' : '0');
+});
+
+watch([assetTab, objectCategory, assetSearch, expertMode], () => {
+  assetVisibleLimit.value = ASSET_PAGE_SIZE;
 });
 
 function t(key: string, vars: Record<string, string | number> = {}) {
@@ -724,6 +747,7 @@ function createDefaultDraft(): LevelDraft {
       }
     ],
     flagWaveInterval: 5,
+    flagWaveIntervalDirty: true,
     firstWaveCountdown: -1,
     suppressFlagZombie: false,
     waveSpendingPointIncrement: 30,
@@ -760,6 +784,28 @@ function resetDraft() {
   nextWaveActionId.value = 1;
 }
 
+function confirmResetDraft() {
+  Modal.confirm({
+    title: t('confirmNewTitle'),
+    content: t('confirmNewDescription'),
+    okText: t('confirmNewAction'),
+    cancelText: t('cancel'),
+    okType: 'danger',
+    centered: true,
+    onOk: resetDraft
+  });
+}
+
+async function openValidation() {
+  const isMobile = window.matchMedia('(max-width: 760px)').matches;
+  await nextTick();
+  const selector = isMobile ? '.mobile-layout .validation-panel' : '.desktop-bottom .validation-panel';
+  document.querySelector(selector)?.scrollIntoView({
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    block: 'center'
+  });
+}
+
 function chooseAsset(asset: AssetOption) {
   if (selectedAsset.value?.kind === asset.kind && selectedAsset.value?.code === asset.code) {
     clearSelectedAsset();
@@ -775,6 +821,10 @@ function chooseAsset(asset: AssetOption) {
   if (asset.kind === 'zombie') zombieActionHint.value = '';
 }
 
+function showMoreAssets() {
+  assetVisibleLimit.value = Math.min(currentAssetOptions.value.length, assetVisibleLimit.value + ASSET_PAGE_SIZE);
+}
+
 function getObjectOption(code: string) {
   return objectOptions.find((item) => item.code === code);
 }
@@ -788,7 +838,7 @@ function getAssetLayer(asset: AssetOption): BoardLayer {
 function getBoardItemLayer(item: BoardItem): BoardLayer {
   if (item.kind === 'plant') return 'plant';
   if (item.kind === 'zombie') return 'zombie';
-  return item.category === 'tile' || item.exportClass === 'InitialGridItemProperties' ? 'tile' : 'obstacle';
+  return item.category === 'tile' ? 'tile' : 'obstacle';
 }
 
 function placeAsset(row: number, col: number) {
@@ -1103,28 +1153,48 @@ function markWaveSystemEdited() {
   }
 }
 
+function syncWaveFlags() {
+  const interval = normalizeFlagWaveIntervalMagnitude(draft.value.flagWaveInterval, 1);
+  draft.value.waves.forEach((wave, index) => {
+    wave.flag = (index + 1) % interval === 0;
+  });
+}
+
+function setFlagWaveInterval(value: string) {
+  markWaveSystemEdited();
+  draft.value.flagWaveInterval = normalizeFlagWaveIntervalMagnitude(value, 1);
+  draft.value.flagWaveIntervalDirty = true;
+  syncWaveFlags();
+}
+
+function normalizeFlagWaveIntervalMagnitude(value: unknown, fallback = 5) {
+  const numericValue = Math.trunc(Number(value));
+  return Number.isFinite(numericValue) && numericValue !== 0 ? Math.abs(numericValue) : fallback;
+}
+
 function addWave() {
   markWaveSystemEdited();
   const wave = createEmptyWave(draft.value.waves.length + 1);
   draft.value.waves.push(wave);
+  syncWaveFlags();
   selectedWaveId.value = wave.id;
 }
 
 function removeWave(id: number) {
   if (draft.value.waves.length <= 1) return;
+  const removedIndex = draft.value.waves.findIndex((wave) => wave.id === id);
+  if (removedIndex < 0) return;
   markWaveSystemEdited();
   draft.value.waves = draft.value.waves.filter((wave) => wave.id !== id);
-  selectedWaveId.value = draft.value.waves[0].id;
-}
-
-function setWaveFlag(index: number, checked: boolean) {
-  const wave = draft.value.waves[index];
-  if (!wave) return;
-  markWaveSystemEdited();
-  wave.flag = checked;
-  if (checked) {
-    draft.value.flagWaveInterval = index + 1;
-  }
+  const removedWaveNumber = removedIndex + 1;
+  draft.value.conveyor.waveModifications = draft.value.conveyor.waveModifications
+    .filter((modification) => modification.waveIndex !== removedWaveNumber)
+    .map((modification) => ({
+      ...modification,
+      waveIndex: modification.waveIndex > removedWaveNumber ? modification.waveIndex - 1 : modification.waveIndex
+    }));
+  syncWaveFlags();
+  selectedWaveId.value = draft.value.waves[Math.min(removedIndex, draft.value.waves.length - 1)].id;
 }
 
 function addZombieToWave(code: string) {
@@ -1178,6 +1248,11 @@ function getObjectCategoryLabel(category?: ObjectCategory) {
 function getBoardItemTypeLabel(item: BoardItem) {
   if (item.kind !== 'object') return getBoardItemKindLabel(item.kind);
   return getObjectCategoryLabel(item.category);
+}
+
+function getCellAriaLabel(row: number, col: number, items: BoardItem[]) {
+  const content = items.length ? items.map((item) => item.label).join(', ') : t('selectedCellEmpty');
+  return t('cellAria', { col: col + 1, row: row + 1, content });
 }
 
 function getBoardItemChip(item: BoardItem) {
@@ -1384,6 +1459,20 @@ function handleUpload(file: File) {
   reader.onload = () => {
     try {
       const parsed = JSON5.parse(String(reader.result || '{}'));
+      const levelDefinitions = Array.isArray(parsed?.objects)
+        ? parsed.objects.filter((object: any) => object?.objclass === 'LevelDefinition')
+        : [];
+      const levelData = levelDefinitions[0]?.objdata;
+      if (
+        levelDefinitions.length !== 1 ||
+        !levelData ||
+        !String(levelData.Name || parsed?.['#comment'] || '').trim() ||
+        !String(levelData.StageModule || '').trim() ||
+        !Array.isArray(levelData.Modules)
+      ) {
+        message.error(t('importInvalidStructure'));
+        return;
+      }
       nextItemId.value = 1;
       nextWaveId.value = 1;
       nextZombieId.value = 1;
@@ -1409,6 +1498,8 @@ function parseLevel(raw: any): LevelDraft {
   const waveManagerModule = objects.find((object: any) => object?.objclass === 'WaveManagerModuleProperties');
   const waveManagerObject = objects.find((object: any) => object?.objclass === 'WaveManagerProperties');
   const waveProps = waveManagerObject?.objdata || {};
+  const importedFlagWaveInterval = Math.trunc(Number(waveProps.FlagWaveInterval ?? 5));
+  const flagWaveInterval = normalizeFlagWaveIntervalMagnitude(importedFlagWaveInterval, 5);
   const levelModules = Array.isArray(level.Modules) ? level.Modules.map(String) : [];
   const stage = parseLevelModuleAlias(level.StageModule) || 'EgyptStage';
   const stageDefaultMower = stageOptions.find((item) => item.value === stage)?.mower || NO_MODULE;
@@ -1434,7 +1525,7 @@ function parseLevel(raw: any): LevelDraft {
   const conveyorWaveModifications: ConveyorWaveModification[] = [];
   const waves: WaveDraft[] = (Array.isArray(waveProps.Waves) ? waveProps.Waves : []).map((entryRefs: unknown, index: number) => {
     const wave = createEmptyWave(index + 1, index + 1);
-    wave.flag = (index + 1) % Number(waveProps.FlagWaveInterval || 10) === 0;
+    wave.flag = (index + 1) % flagWaveInterval === 0;
     normalizeWaveRefs(entryRefs).forEach((entry) => {
       const alias = parseCurrentLevelAlias(entry);
       const waveObject = alias ? aliasMap.get(alias) : null;
@@ -1590,7 +1681,7 @@ function parseLevel(raw: any): LevelDraft {
 
   return {
     name: String(level.Name || raw?.['#comment'] || 'custom_level_1'),
-    author: String(level.WritenBy || raw?.Information?.Author || ''),
+    author: String(level.WrittenBy || level.WritenBy || raw?.Information?.Author || ''),
     description: String(level.Description || ''),
     stage,
     mower: importedMower ? (importedMower === stageDefaultMower ? STAGE_DEFAULT_MOWER : importedMower) : NO_MODULE,
@@ -1608,7 +1699,9 @@ function parseLevel(raw: any): LevelDraft {
     conveyor: parseConveyorDraft(conveyorObject, conveyorAlias, conveyorActionObjects, conveyorWaveModifications),
     boardItems,
     waves: waves.length ? waves : [],
-    flagWaveInterval: Math.max(1, Number(waveProps.FlagWaveInterval || 5)),
+    flagWaveInterval,
+    flagWaveIntervalOriginal: Number.isFinite(importedFlagWaveInterval) && importedFlagWaveInterval !== 0 ? importedFlagWaveInterval : undefined,
+    flagWaveIntervalDirty: false,
     firstWaveCountdown: Number(waveProps.ZombieCountdownFirstWaveSecs ?? -1),
     suppressFlagZombie: waveProps.SuppressFlagZombie === true,
     waveSpendingPointIncrement: Number(waveProps.WaveSpendingPointIncrement ?? 30),
@@ -1633,7 +1726,7 @@ function parseLevel(raw: any): LevelDraft {
     preserveCustomWaveManager,
     preservedWaveManagerObject: preserveCustomWaveManager ? cloneJson(waveManagerObject) : undefined,
     waveSystemDirty: false,
-    levelExtra: omitKeys(level, ['Name', 'Description', 'StageModule', 'Modules', 'StartingSun', 'WritenBy']),
+    levelExtra: omitKeys(level, ['Name', 'Description', 'StageModule', 'Modules', 'StartingSun', 'WrittenBy', 'WritenBy']),
     preserveBoardModules: preservedPlacementObjects.length > 0,
     preservedPlacementObjects,
     unsupportedObjects: unsupportedRawObjects.length,
@@ -1953,7 +2046,10 @@ function serializeLevel() {
     ...draft.value.waveManagerExtra,
     MinNextWaveHealthPercentage: Number(draft.value.minNextWaveHealthPercentage),
     MaxNextWaveHealthPercentage: Number(draft.value.maxNextWaveHealthPercentage),
-    FlagWaveInterval: Math.max(1, Number(draft.value.flagWaveInterval) || 5),
+    FlagWaveInterval:
+      !draft.value.flagWaveIntervalDirty && draft.value.flagWaveIntervalOriginal !== undefined
+        ? draft.value.flagWaveIntervalOriginal
+        : normalizeFlagWaveIntervalMagnitude(draft.value.flagWaveInterval, 5),
     WaveCount: draft.value.waves.length,
     WaveSpendingPointIncrement: Number(draft.value.waveSpendingPointIncrement),
     WaveSpendingPoints: Number(draft.value.waveSpendingPoints),
@@ -1981,7 +2077,7 @@ function serializeLevel() {
           shouldEmitSeedBank,
           shouldEmitConveyor
         ),
-        ...(draft.value.author.trim() ? { WritenBy: draft.value.author.trim() } : {})
+        ...(draft.value.author.trim() ? { WrittenBy: draft.value.author.trim() } : {})
       }
     }
   ];
@@ -2108,6 +2204,7 @@ const BasicForm = defineComponent({
         h('div', { class: 'field-row name-field' }, [
           h('label', t('levelName')),
           h('input', {
+            'aria-label': t('levelName'),
             value: draft.value.name,
             onInput: (event: Event) => {
               draft.value.name = (event.target as HTMLInputElement).value;
@@ -2117,6 +2214,7 @@ const BasicForm = defineComponent({
         h('div', { class: 'field-row wide' }, [
           h('label', t('description')),
           h('input', {
+            'aria-label': t('description'),
             value: draft.value.description,
             onInput: (event: Event) => {
               draft.value.description = (event.target as HTMLInputElement).value;
@@ -2128,6 +2226,7 @@ const BasicForm = defineComponent({
           h(
             'select',
             {
+              'aria-label': t('stage'),
               value: draft.value.stage,
               onChange: (event: Event) => {
                 draft.value.stage = (event.target as HTMLSelectElement).value;
@@ -2141,6 +2240,7 @@ const BasicForm = defineComponent({
           h('input', {
             type: 'number',
             min: 0,
+            'aria-label': t('startingSun'),
             value: draft.value.startingSun,
             onInput: (event: Event) => {
               draft.value.startingSun = Number((event.target as HTMLInputElement).value);
@@ -2154,6 +2254,7 @@ const BasicForm = defineComponent({
                 h('div', { class: 'field-row' }, [
                   h('label', t('author')),
                   h('input', {
+                    'aria-label': t('author'),
                     value: draft.value.author,
                     onInput: (event: Event) => {
                       draft.value.author = (event.target as HTMLInputElement).value;
@@ -2165,6 +2266,7 @@ const BasicForm = defineComponent({
                   h(
                     'select',
                     {
+                      'aria-label': t('mower'),
                       value: draft.value.mower,
                       onChange: (event: Event) => {
                         draft.value.mower = (event.target as HTMLSelectElement).value;
@@ -2178,6 +2280,7 @@ const BasicForm = defineComponent({
                   h(
                     'select',
                     {
+                      'aria-label': t('sunDropper'),
                       value: draft.value.sunDropper,
                       onChange: (event: Event) => {
                         draft.value.sunDropper = (event.target as HTMLSelectElement).value;
@@ -2196,25 +2299,25 @@ const BasicForm = defineComponent({
 const AssetLibrary = defineComponent({
   setup() {
     return () =>
-      h('aside', { class: 'asset-library' }, [
+        h('aside', { class: 'asset-library' }, [
         h('div', { class: 'panel-title' }, t('chooseAsset')),
-        h('div', { class: 'segmented' }, [
-          h('button', { class: assetTab.value === 'plant' ? 'active' : '', onClick: () => (assetTab.value = 'plant') }, t('plants')),
-          h('button', { class: assetTab.value === 'zombie' ? 'active' : '', onClick: () => (assetTab.value = 'zombie') }, t('zombies')),
-          h('button', { class: assetTab.value === 'object' ? 'active' : '', onClick: () => (assetTab.value = 'object') }, t('objects'))
+        h('div', { class: 'segmented', role: 'group', 'aria-label': t('assetType') }, [
+          h('button', { type: 'button', class: assetTab.value === 'plant' ? 'active' : '', 'aria-pressed': assetTab.value === 'plant', onClick: () => (assetTab.value = 'plant') }, t('plants')),
+          h('button', { type: 'button', class: assetTab.value === 'zombie' ? 'active' : '', 'aria-pressed': assetTab.value === 'zombie', onClick: () => (assetTab.value = 'zombie') }, t('zombies')),
+          h('button', { type: 'button', class: assetTab.value === 'object' ? 'active' : '', 'aria-pressed': assetTab.value === 'object', onClick: () => (assetTab.value = 'object') }, t('objects'))
         ]),
         assetTab.value === 'object'
-          ? h('div', { class: 'object-category-tabs' }, [
-              h('button', { class: objectCategory.value === 'all' ? 'active' : '', onClick: () => (objectCategory.value = 'all') }, t('objectCategoryAll')),
-              h('button', { class: objectCategory.value === 'tile' ? 'active' : '', onClick: () => (objectCategory.value = 'tile') }, t('objectCategoryTile')),
+          ? h('div', { class: 'object-category-tabs', role: 'group', 'aria-label': t('objectCategory') }, [
+              h('button', { type: 'button', class: objectCategory.value === 'all' ? 'active' : '', 'aria-pressed': objectCategory.value === 'all', onClick: () => (objectCategory.value = 'all') }, t('objectCategoryAll')),
+              h('button', { type: 'button', class: objectCategory.value === 'tile' ? 'active' : '', 'aria-pressed': objectCategory.value === 'tile', onClick: () => (objectCategory.value = 'tile') }, t('objectCategoryTile')),
               h(
                 'button',
-                { class: objectCategory.value === 'obstacle' ? 'active' : '', onClick: () => (objectCategory.value = 'obstacle') },
+                { type: 'button', class: objectCategory.value === 'obstacle' ? 'active' : '', 'aria-pressed': objectCategory.value === 'obstacle', onClick: () => (objectCategory.value = 'obstacle') },
                 t('objectCategoryObstacle')
               ),
               h(
                 'button',
-                { class: objectCategory.value === 'tombstone' ? 'active' : '', onClick: () => (objectCategory.value = 'tombstone') },
+                { type: 'button', class: objectCategory.value === 'tombstone' ? 'active' : '', 'aria-pressed': objectCategory.value === 'tombstone', onClick: () => (objectCategory.value = 'tombstone') },
                 t('objectCategoryTombstone')
               )
             ])
@@ -2222,39 +2325,52 @@ const AssetLibrary = defineComponent({
         h('input', {
           class: 'asset-search',
           placeholder: t('search'),
+          'aria-label': t('search'),
           value: assetSearch.value,
           onInput: (event: Event) => {
             assetSearch.value = (event.target as HTMLInputElement).value;
           }
         }),
+        h('div', { class: 'asset-result-summary', 'aria-live': 'polite' }, t('assetResults', { count: currentAssetOptions.value.length })),
         h(
           'div',
           { class: 'asset-list' },
-          currentAssetOptions.value.map((asset) =>
-            h(
+          currentAssetOptions.value.length
+            ? visibleAssetOptions.value.map((asset) =>
+                h(
+                  'button',
+                  {
+                    type: 'button',
+                    class: ['asset-row', selectedAsset.value?.kind === asset.kind && selectedAsset.value?.code === asset.code ? 'active' : ''],
+                    'aria-pressed': selectedAsset.value?.kind === asset.kind && selectedAsset.value?.code === asset.code,
+                    onClick: () => chooseAsset(asset)
+                  },
+                  [
+                    asset.image
+                      ? h('img', { src: asset.image, alt: '', loading: 'lazy' })
+                      : h('span', { class: ['object-dot', asset.kind === 'object' ? asset.category || 'object' : ''], 'aria-hidden': 'true' }),
+                    h('span', { class: 'asset-copy' }, [
+                      h('strong', asset.name),
+                      h('small', asset.code),
+                      asset.kind === 'object'
+                        ? h('span', { class: 'asset-meta-row' }, [
+                            h('span', { class: `asset-badge ${asset.category || 'object'}` }, getObjectCategoryLabel(asset.category)),
+                            asset.advanced ? h('span', { class: 'asset-badge advanced' }, t('advancedObject')) : null
+                          ])
+                        : null
+                    ])
+                  ]
+                )
+              )
+            : h('div', { class: 'asset-empty' }, t('noAssetResults'))
+        ),
+        visibleAssetOptions.value.length < currentAssetOptions.value.length
+          ? h(
               'button',
-              {
-                class: ['asset-row', selectedAsset.value?.kind === asset.kind && selectedAsset.value?.code === asset.code ? 'active' : ''],
-                onClick: () => chooseAsset(asset)
-              },
-              [
-                asset.image
-                  ? h('img', { src: asset.image, alt: asset.name, loading: 'lazy' })
-                  : h('span', { class: ['object-dot', asset.kind === 'object' ? asset.category || 'object' : ''] }),
-                h('span', { class: 'asset-copy' }, [
-                  h('strong', asset.name),
-                  h('small', asset.code),
-                  asset.kind === 'object'
-                    ? h('span', { class: 'asset-meta-row' }, [
-                        h('span', { class: `asset-badge ${asset.category || 'object'}` }, getObjectCategoryLabel(asset.category)),
-                        asset.advanced ? h('span', { class: 'asset-badge advanced' }, t('advancedObject')) : null
-                      ])
-                    : null
-                ])
-              ]
+              { type: 'button', class: 'asset-load-more add-button', onClick: showMoreAssets },
+              t('showMoreAssets', { count: Math.min(ASSET_PAGE_SIZE, currentAssetOptions.value.length - visibleAssetOptions.value.length) })
             )
-          )
-        )
+          : null
       ]);
   }
 });
@@ -2363,13 +2479,15 @@ const BoardEditor = defineComponent({
         ]),
         h(
           'div',
-          { class: `lawn-grid stage-${draft.value.stage.toLowerCase()}` },
+          { class: `lawn-grid stage-${draft.value.stage.toLowerCase()}`, 'aria-label': t('board') },
           Array.from({ length: 5 }, (_, row) =>
             Array.from({ length: 9 }, (_, col) => {
               const items = itemsAt(row, col);
               return h(
                 'button',
                 {
+                  type: 'button',
+                  'aria-label': getCellAriaLabel(row, col, items),
                   class: [
                     'lawn-cell',
                     items.length ? 'has-items' : '',
@@ -2399,24 +2517,18 @@ const BoardEditor = defineComponent({
             })
           ).flat()
         ),
-        h('div', { class: 'cell-detail-panel' }, [
-          h(
-            'div',
-            { class: 'cell-detail-title' },
-            selectedCell.value ? t('selectedCellTitle', { col: selectedCell.value.col + 1, row: selectedCell.value.row + 1 }) : t('selectedCellNone')
-          ),
-          selectedCell.value
-            ? selectedCellItems.value.length
-              ? [
-                  h(
+        selectedCell.value
+          ? h('div', { class: 'cell-detail-panel' }, [
+              h('div', { class: 'cell-detail-title' }, t('selectedCellTitle', { col: selectedCell.value.col + 1, row: selectedCell.value.row + 1 })),
+              selectedCellItems.value.length
+                ? h(
                     'div',
                     { class: 'cell-detail-list' },
                     selectedCellItems.value.map((item) => renderCellDetailItem(item))
                   )
-                ]
-              : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
-            : h('div', { class: 'cell-detail-empty' }, t('selectedCellHint'))
-        ])
+                : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
+            ])
+          : null
       ]);
   }
 });
@@ -2703,7 +2815,6 @@ function renderConveyorAdvancedTabPanel() {
 function renderConveyorControls() {
   const children = [
     h('strong', `${t('conveyor')} ${draft.value.conveyor.initialPlants.length}`),
-    h('small', { class: 'seed-mode-hint' }, t('conveyorSimpleHint')),
     renderConveyorPlantPills(),
     h('div', { class: 'action-row' }, [
       h(
@@ -3191,7 +3302,18 @@ const WaveTimeline = defineComponent({
       h('section', { class: 'wave-panel' }, [
         h('div', { class: 'panel-title row-title' }, [
           h('span', t('waves')),
-          h('button', { class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')])
+          h('div', { class: 'wave-header-actions' }, [
+            h('label', { class: 'flag-interval-control' }, [
+              h('span', t('flagWaveInterval')),
+              h('input', {
+                type: 'number',
+                min: 1,
+                value: draft.value.flagWaveInterval,
+                onInput: (event: Event) => setFlagWaveInterval((event.target as HTMLInputElement).value)
+              })
+            ]),
+            h('button', { class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')])
+          ])
         ]),
         h(
           'div',
@@ -3206,9 +3328,14 @@ const WaveTimeline = defineComponent({
               'button',
               {
                 class: ['wave-card', selectedWaveId.value === wave.id ? 'active' : '', wave.flag ? 'flag' : ''],
+                'aria-pressed': selectedWaveId.value === wave.id,
                 onClick: () => (selectedWaveId.value = wave.id)
               },
-              [h('strong', `#${index + 1}`), h('span', actionCount ? `${zombieCount} Z + ${actionCount} A` : `${zombieCount} Z`)]
+              [
+                h('strong', `#${index + 1}`),
+                h('span', actionCount ? `${zombieCount} Z + ${actionCount} A` : `${zombieCount} Z`),
+                wave.flag ? h('span', { class: 'wave-flag-badge' }, t('flagWave')) : null
+              ]
             );
           })
         ),
@@ -3216,18 +3343,6 @@ const WaveTimeline = defineComponent({
           ? h('details', { class: 'advanced-details' }, [
               h('summary', t('advancedWaveSettings')),
               h('div', { class: 'advanced-grid' }, [
-                h('div', { class: 'field-row compact' }, [
-                  h('label', t('flagWaveInterval')),
-                  h('input', {
-                    type: 'number',
-                    min: 1,
-                    value: draft.value.flagWaveInterval,
-                    onInput: (event: Event) => {
-                      markWaveSystemEdited();
-                      draft.value.flagWaveInterval = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
-                    }
-                  })
-                ]),
                 h('div', { class: 'field-row compact' }, [
                   h('label', t('firstWaveCountdown')),
                   h('input', {
@@ -3256,19 +3371,6 @@ const WaveTimeline = defineComponent({
           : null,
         selectedWave.value
           ? h('div', { class: 'wave-detail' }, [
-              h('label', { class: 'check-row' }, [
-                h('input', {
-                  type: 'checkbox',
-                  checked: selectedWave.value.flag,
-                  onChange: (event: Event) => {
-                    setWaveFlag(
-                      draft.value.waves.findIndex((wave) => wave.id === selectedWave.value.id),
-                      (event.target as HTMLInputElement).checked
-                    );
-                  }
-                }),
-                t('flagWave')
-              ]),
               h(
                 'div',
                 { class: 'zombie-list' },
@@ -3278,13 +3380,22 @@ const WaveTimeline = defineComponent({
                     h('input', {
                       type: 'number',
                       min: 1,
+                      'aria-label': t('zombieCount', { name: getZombieDisplayName(zombie.code, zombie.label) }),
                       value: zombie.count,
                       onInput: (event: Event) => {
                         markWaveSystemEdited();
                         zombie.count = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
                       }
                     }),
-                    h('button', { onClick: () => removeZombieFromWave(zombie.id) }, h(DeleteOutlined))
+                    h(
+                      'button',
+                      {
+                        title: t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
+                        'aria-label': t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
+                        onClick: () => removeZombieFromWave(zombie.id)
+                      },
+                      h(DeleteOutlined)
+                    )
                   ])
                 )
               ),
@@ -3314,7 +3425,7 @@ const ValidationPanel = defineComponent({
   props: { compact: Boolean },
   setup(props) {
     return () =>
-      h('section', { class: ['validation-panel', props.compact ? 'compact' : ''] }, [
+      h('section', { class: ['validation-panel', props.compact ? 'compact' : ''], 'aria-live': 'polite' }, [
         h('div', { class: 'panel-title' }, t('validation')),
         validationItems.value.length
           ? h(
@@ -3343,52 +3454,98 @@ body:has(.level-editor-shell) {
 }
 
 .level-editor-shell {
-  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 94%, #5f9f3f 6%);
-  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 90%, var(--vp-c-bg-soft) 10%);
+  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 95%, #5f9f3f 5%);
+  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 92%, var(--vp-c-bg-soft) 8%);
+  --editor-panel-raised: color-mix(in srgb, var(--vp-c-bg) 96%, #fff 4%);
   --editor-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
   --editor-text: var(--vp-c-text);
   --editor-muted: var(--vp-c-text-mute);
   --editor-accent: #5f9f3f;
   --editor-accent-strong: #3f7f2f;
-  --editor-shell-width: min(1080px, calc(100vw - 360px));
+  --editor-sun: #f4c84a;
+  --editor-soil: #8b6442;
+  --editor-shell-width: min(1440px, calc(100vw - 3rem));
   width: var(--editor-shell-width);
-  max-width: calc(100vw - 2rem);
+  max-width: none;
   margin-top: 1rem;
   margin-bottom: 2rem;
   margin-left: calc((100% - var(--editor-shell-width)) / 2);
   color: var(--editor-text);
   font-size: 0.95rem;
   line-height: 1.45;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-anchor: none;
 }
 
 .dark .level-editor-shell {
   --editor-bg: color-mix(in srgb, var(--vp-c-bg) 88%, #5f9f3f 8%);
   --editor-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
+  --editor-panel-raised: color-mix(in srgb, var(--vp-c-bg) 91%, #fff 3%);
   --editor-border: color-mix(in srgb, var(--vp-c-text) 20%, transparent);
 }
 
 .editor-topbar {
+  position: sticky;
+  top: calc(var(--navbar-height, 3.75rem) + 0.5rem);
+  z-index: 20;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(19rem, auto);
   gap: 0.85rem 1.2rem;
   align-items: center;
   justify-content: space-between;
   min-width: 0;
-  padding: 1rem;
+  padding: 1.05rem 1.15rem;
   border: 1px solid var(--editor-border);
-  border-radius: 8px;
-  background: var(--editor-panel);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--editor-panel-raised) 92%, transparent);
+  box-shadow: 0 12px 34px color-mix(in srgb, #172912 10%, transparent);
+  backdrop-filter: blur(18px) saturate(1.15);
+}
+
+.title-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.title-sun {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--editor-sun);
+  box-shadow: 0 0 0 0.28rem color-mix(in srgb, var(--editor-sun) 22%, transparent);
 }
 
 .editor-title {
   margin: 0 0 0.25rem !important;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif !important;
   line-height: 1.2 !important;
 }
 
 .title-block {
   min-width: 0;
   max-width: 34rem;
+}
+
+.workspace-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+}
+
+.workspace-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: 0.1rem 0.48rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--editor-accent) 9%, transparent);
+  color: var(--editor-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
 }
 
 .top-actions {
@@ -3409,12 +3566,36 @@ body:has(.level-editor-shell) {
   width: 100%;
 }
 
-.validation-summary-tag {
+.validation-summary-control {
   display: inline-flex;
+  gap: 0.42rem;
   align-items: center;
-  min-height: 2rem;
-  margin-inline-end: 0;
+  min-height: 2.35rem;
+  padding: 0.28rem 0.62rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 10px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.validation-status-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--editor-accent);
+}
+
+.validation-summary-control.warning .validation-status-dot {
+  background: #d7a100;
+}
+
+.validation-summary-control.error .validation-status-dot {
+  background: #d94f4f;
 }
 
 .top-actions .ant-upload {
@@ -3502,16 +3683,15 @@ body:has(.level-editor-shell) {
   outline-offset: 2px;
 }
 
-.mobile-helper,
 .mobile-layout {
   display: none;
 }
 
 .desktop-layout {
   display: grid;
-  grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1.5fr) minmax(240px, 0.82fr);
-  gap: 0.75rem;
-  margin-top: 0.75rem;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(520px, 1.7fr) minmax(270px, 0.82fr);
+  gap: 0.9rem;
+  margin-top: 0.9rem;
 }
 
 .panel,
@@ -3519,14 +3699,20 @@ body:has(.level-editor-shell) {
 .desktop-bottom {
   min-width: 0;
   border: 1px solid var(--editor-border);
-  border-radius: 8px;
+  border-radius: 14px;
   background: var(--editor-panel);
 }
 
 .board-panel {
-  padding: 0.85rem;
+  padding: 1rem;
   min-width: 0;
   overflow: hidden;
+}
+
+.panel,
+.board-panel,
+.desktop-bottom {
+  box-shadow: 0 8px 24px color-mix(in srgb, #172912 7%, transparent);
 }
 
 .asset-library,
@@ -4025,6 +4211,17 @@ body:has(.level-editor-shell) {
   margin-bottom: 0.6rem;
 }
 
+.level-editor-modal-root {
+  --editor-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
+  --editor-text: var(--vp-c-text);
+  --editor-muted: var(--vp-c-text-mute);
+  --editor-accent: #5f9f3f;
+}
+
+.dark .level-editor-modal-root {
+  --editor-border: color-mix(in srgb, var(--vp-c-text) 20%, transparent);
+}
+
 .json-preview {
   max-height: min(68vh, 720px);
   overflow: auto;
@@ -4039,7 +4236,14 @@ body:has(.level-editor-shell) {
 }
 
 .asset-search {
-  margin: 0.6rem 0;
+  margin: 0.6rem 0 0.25rem;
+}
+
+.asset-result-summary {
+  margin-bottom: 0.5rem;
+  color: var(--editor-muted);
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .object-category-tabs {
@@ -4082,6 +4286,19 @@ body:has(.level-editor-shell) {
   max-height: min(31rem, calc(100vh - 20rem));
   overflow: auto;
   padding-right: 0.15rem;
+}
+
+.asset-empty {
+  padding: 1.25rem 0.75rem;
+  border: 1px dashed var(--editor-border);
+  border-radius: 10px;
+  color: var(--editor-muted);
+  text-align: center;
+}
+
+.asset-load-more {
+  width: 100%;
+  margin-top: 0.55rem;
 }
 
 .asset-row {
@@ -4605,6 +4822,31 @@ body:has(.level-editor-shell) {
   display: none;
 }
 
+.wave-header-actions,
+.flag-interval-control {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.flag-interval-control {
+  color: var(--editor-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.flag-interval-control input {
+  width: 3.5rem;
+  min-height: 2.1rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
 .wave-strip {
   display: flex;
   gap: 0.4rem;
@@ -4641,10 +4883,17 @@ body:has(.level-editor-shell) {
   font-size: 0.72rem;
 }
 
-.wave-card.flag::after {
-  content: "FLAG";
+.wave-flag-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1rem;
+  padding: 0 0.28rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--editor-sun) 18%, transparent);
   color: #c98b00;
   font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .wave-detail {
@@ -4804,11 +5053,21 @@ body:has(.level-editor-shell) {
 
 @media (max-width: 1320px) {
   .level-editor-shell {
-    --editor-shell-width: min(1040px, calc(100vw - 320px));
+    --editor-shell-width: calc(100vw - 2rem);
   }
 
   .desktop-layout {
-    grid-template-columns: minmax(200px, 0.62fr) minmax(0, 1.38fr);
+    grid-template-columns: minmax(220px, 0.68fr) minmax(460px, 1.6fr) minmax(250px, 0.78fr);
+  }
+}
+
+@media (max-width: 1120px) and (min-width: 761px) {
+  .level-editor-shell {
+    --editor-shell-width: calc(100vw - 2rem);
+  }
+
+  .desktop-layout {
+    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.5fr);
   }
 
   .property-panel {
@@ -4822,17 +5081,9 @@ body:has(.level-editor-shell) {
   .desktop-bottom {
     grid-template-columns: 1fr;
   }
-
-  .basic-form {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
-@media (max-width: 1040px) and (min-width: 761px) {
-  .level-editor-shell {
-    --editor-shell-width: min(760px, calc(100vw - 300px));
-  }
-
+@media (max-width: 920px) and (min-width: 761px) {
   .desktop-layout {
     grid-template-columns: 1fr;
   }
@@ -4864,26 +5115,65 @@ body:has(.level-editor-shell) {
 
 @media (max-width: 760px) {
   .level-editor-shell {
-    width: 100%;
-    max-width: 100%;
-    margin: 0.75rem auto 1.5rem;
+    --editor-shell-width: calc(100vw - 1rem);
+    width: var(--editor-shell-width);
+    max-width: none;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    margin-left: calc((100% - var(--editor-shell-width)) / 2);
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    overflow-x: visible;
   }
 
   .editor-topbar {
+    position: relative;
+    top: auto;
     grid-template-columns: 1fr;
+    padding: 0.9rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px color-mix(in srgb, #172912 8%, transparent);
   }
 
   .top-actions {
-    justify-items: start;
+    width: 100%;
+    justify-items: stretch;
   }
 
-  .mobile-helper,
+  .top-action-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .top-action-row > .ant-btn,
+  .top-action-row .ant-upload,
+  .top-action-row .ant-upload .ant-btn,
+  .expert-mode-toggle,
+  .validation-summary-control {
+    width: 100%;
+    max-width: none;
+    min-height: 2.75rem;
+  }
+
+  .validation-summary-control {
+    grid-column: 1 / -1;
+    justify-content: center;
+    white-space: normal;
+  }
+
+  .action-row-primary .expert-mode-toggle {
+    grid-column: 1 / -1;
+  }
+
   .mobile-layout {
-    display: block;
-    margin-top: 0.75rem;
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 0.9rem;
   }
 
-  .mobile-layout .ant-tabs-content-holder {
+  .mobile-section-stack {
+    display: grid;
+    gap: 0.9rem;
     min-width: 0;
   }
 
@@ -4901,13 +5191,16 @@ body:has(.level-editor-shell) {
   }
 
   .lawn-grid {
-    grid-template-columns: repeat(9, minmax(2rem, 1fr));
+    grid-template-columns: repeat(9, minmax(2.75rem, 1fr));
     gap: 0.12rem;
     padding: 0.28rem;
+    aspect-ratio: auto;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
   }
 
   .lawn-cell {
-    min-height: 3.15rem;
+    min-height: 2.75rem;
   }
 
   .cell-label {
@@ -4915,11 +5208,11 @@ body:has(.level-editor-shell) {
   }
 
   .asset-list {
-    max-height: 24rem;
+    max-height: 58vh;
   }
 
   .zombie-row {
-    grid-template-columns: minmax(0, 1fr) minmax(3.4rem, 4.5rem) 2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(3.4rem, 4.5rem) 2.75rem;
   }
 
   .unsupported-object-card {
@@ -4932,28 +5225,41 @@ body:has(.level-editor-shell) {
   }
 
   .icon-button {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
     width: 100%;
   }
 
   .conveyor-row-actions .icon-button {
-    width: 2.1rem;
+    width: 2.75rem;
+  }
+
+  .cell-detail-pill {
+    padding-right: 3.35rem;
+  }
+
+  .cell-detail-remove,
+  .seed-pill button {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .segmented button,
+  .object-category-tabs button,
+  .add-button,
+  .text-button,
+  .zombie-row button {
+    min-height: 2.75rem;
+  }
+
+  .wave-header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 }
 
 @media (max-width: 420px) {
-  .top-action-row > .ant-btn,
-  .top-action-row .ant-upload,
-  .top-action-row .ant-upload .ant-btn,
-  .expert-mode-toggle {
-    flex: 1 1 100%;
-    width: 100%;
-  }
-
-  .validation-summary-tag {
-    width: 100%;
-    justify-content: center;
-  }
-
   .board-actions,
   .wave-actions,
   .action-row {
@@ -4969,9 +5275,11 @@ body:has(.level-editor-shell) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  .level-editor-shell *,
+  .level-editor-shell *::before,
+  .level-editor-shell *::after,
+  .level-editor-drawer-root *,
+  .level-editor-modal-root * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
