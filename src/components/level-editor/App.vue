@@ -215,6 +215,8 @@ interface WaveZombie {
   code: string;
   label: string;
   count: number;
+  row: string;
+  rowDirty?: boolean;
   entries?: Record<string, any>[];
 }
 
@@ -225,6 +227,12 @@ interface WaveActionDraft {
   objdata: Record<string, any>;
   jsonText: string;
   managed?: boolean;
+}
+
+interface WaveActionOrderEntry {
+  kind: 'zombies' | 'raw' | 'conveyor';
+  actionId?: number;
+  alias?: string;
 }
 
 interface WaveDraft {
@@ -239,6 +247,7 @@ interface WaveDraft {
   spawnStyle: string;
   mustKillAllToNextWave: boolean;
   rawActions: WaveActionDraft[];
+  actionOrder: WaveActionOrderEntry[];
 }
 
 interface ConveyorPlantEntry {
@@ -371,6 +380,7 @@ const assetVisibleLimit = ref(ASSET_PAGE_SIZE);
 const selectedAsset = ref<AssetOption | null>(null);
 const selectedCell = ref<{ row: number; col: number } | null>(null);
 const selectedWaveId = ref(1);
+const expandedWaveActionKey = ref('zombies');
 const nextItemId = ref(1);
 const nextWaveId = ref(2);
 const nextZombieId = ref(1);
@@ -683,7 +693,8 @@ function createEmptyWave(index: number, id = nextWaveId.value++): WaveDraft {
     dynamicPlantfood: '',
     spawnStyle: '',
     mustKillAllToNextWave: false,
-    rawActions: []
+    rawActions: [],
+    actionOrder: []
   };
 }
 
@@ -738,12 +749,13 @@ function createDefaultDraft(): LevelDraft {
         id: 1,
         name: 'Wave 1',
         flag: false,
-        zombies: [{ id: 1, code: 'mummy', label: 'mummy', count: 3 }],
+        zombies: [{ id: 1, code: 'mummy', label: 'mummy', count: 3, row: '' }],
         additionalPlantfood: 0,
         dynamicPlantfood: '',
         spawnStyle: '',
         mustKillAllToNextWave: false,
-        rawActions: []
+        rawActions: [],
+        actionOrder: [{ kind: 'zombies' }]
       }
     ],
     flagWaveInterval: 5,
@@ -776,6 +788,7 @@ function resetDraft() {
   closeConveyorEditor();
   draft.value = createDefaultDraft();
   selectedWaveId.value = 1;
+  expandedWaveActionKey.value = 'zombies';
   selectedCell.value = null;
   selectedAsset.value = null;
   nextItemId.value = 1;
@@ -1057,12 +1070,17 @@ function addConveyorWaveModification(mode: ConveyorWaveMode) {
   conveyorActionHint.value = '';
   markConveyorEdited();
   const waveIndex = Math.max(1, draft.value.waves.findIndex((wave) => wave.id === selectedWaveId.value) + 1 || 1);
+  const wave = draft.value.waves[waveIndex - 1];
+  if (wave && !wave.actionOrder.some((entry) => entry.kind === 'conveyor')) {
+    wave.actionOrder.push({ kind: 'conveyor' });
+  }
   draft.value.conveyor.waveModifications.push({
     waveIndex,
     mode,
     PlantType: selectedPlantAsset.value.code,
     ...(mode === 'Add' ? { Weight: 40 } : {})
   });
+  expandedWaveActionKey.value = 'conveyor';
 }
 
 function setConveyorWaveMode(entry: ConveyorWaveModification, mode: ConveyorWaveMode) {
@@ -1178,6 +1196,108 @@ function addWave() {
   draft.value.waves.push(wave);
   syncWaveFlags();
   selectedWaveId.value = wave.id;
+  expandedWaveActionKey.value = 'zombies';
+}
+
+function normalizeWaveNames() {
+  draft.value.waves.forEach((wave, index) => {
+    wave.name = `Wave ${index + 1}`;
+  });
+}
+
+function insertWaveAfter(id: number) {
+  const index = draft.value.waves.findIndex((wave) => wave.id === id);
+  if (index < 0) return;
+  markWaveSystemEdited();
+  const insertedWaveNumber = index + 2;
+  draft.value.conveyor.waveModifications.forEach((modification) => {
+    if (modification.waveIndex >= insertedWaveNumber) modification.waveIndex += 1;
+  });
+  const wave = createEmptyWave(insertedWaveNumber);
+  draft.value.waves.splice(index + 1, 0, wave);
+  normalizeWaveNames();
+  syncWaveFlags();
+  selectedWaveId.value = wave.id;
+  expandedWaveActionKey.value = 'zombies';
+}
+
+function duplicateWave(id: number) {
+  const index = draft.value.waves.findIndex((wave) => wave.id === id);
+  if (index < 0) return;
+  const source = draft.value.waves[index];
+  const sourceWaveNumber = index + 1;
+  const insertedWaveNumber = sourceWaveNumber + 1;
+  const sourceConveyorModifications = draft.value.conveyor.waveModifications
+    .filter((modification) => modification.waveIndex === sourceWaveNumber)
+    .map((modification) => cloneJson(modification));
+  markWaveSystemEdited();
+
+  const rawActionIdMap = new Map<number, number>();
+  const rawActions = source.rawActions.map((action, actionIndex) => {
+    const clonedAction = createRawWaveAction(
+      createUniqueWaveActionAlias(`${action.alias || `Wave${sourceWaveNumber}Action${actionIndex}`}Copy${actionIndex + 1}`),
+      action.objclass,
+      parseActionObjdata(action)
+    );
+    rawActionIdMap.set(action.id, clonedAction.id);
+    return clonedAction;
+  });
+  const actionOrder: WaveActionOrderEntry[] = [];
+  let conveyorAdded = false;
+  getEffectiveWaveActionOrder(source, sourceWaveNumber).forEach((entry) => {
+    if (entry.kind === 'raw') {
+      const actionId = entry.actionId ? rawActionIdMap.get(entry.actionId) : undefined;
+      const action = rawActions.find((item) => item.id === actionId);
+      if (actionId) actionOrder.push({ kind: 'raw', actionId, alias: action?.alias });
+    } else if (entry.kind === 'conveyor') {
+      if (!conveyorAdded && sourceConveyorModifications.length) {
+        conveyorAdded = true;
+        actionOrder.push({ kind: 'conveyor' });
+      }
+    } else {
+      actionOrder.push({ kind: 'zombies' });
+    }
+  });
+
+  const clone: WaveDraft = {
+    ...cloneJson(source),
+    id: nextWaveId.value++,
+    name: `Wave ${insertedWaveNumber}`,
+    zombies: source.zombies.map((zombie) => ({ ...cloneJson(zombie), id: nextZombieId.value++ })),
+    zombieActionAlias: source.zombieActionAlias
+      ? createUniqueWaveActionAlias(`${source.zombieActionAlias}Copy`)
+      : undefined,
+    rawActions,
+    actionOrder
+  };
+
+  draft.value.conveyor.waveModifications.forEach((modification) => {
+    if (modification.waveIndex >= insertedWaveNumber) modification.waveIndex += 1;
+  });
+  draft.value.conveyor.waveModifications.push(
+    ...sourceConveyorModifications.map((modification) => ({ ...modification, waveIndex: insertedWaveNumber, alias: undefined }))
+  );
+  draft.value.waves.splice(index + 1, 0, clone);
+  normalizeWaveNames();
+  syncWaveFlags();
+  selectedWaveId.value = clone.id;
+  expandedWaveActionKey.value = clone.actionOrder.some((entry) => entry.kind === 'zombies') ? 'zombies' : '';
+}
+
+function moveWave(id: number, direction: -1 | 1) {
+  const fromIndex = draft.value.waves.findIndex((wave) => wave.id === id);
+  const toIndex = fromIndex + direction;
+  if (fromIndex < 0 || toIndex < 0 || toIndex >= draft.value.waves.length) return;
+  markWaveSystemEdited();
+  const fromWaveNumber = fromIndex + 1;
+  const toWaveNumber = toIndex + 1;
+  draft.value.conveyor.waveModifications.forEach((modification) => {
+    if (modification.waveIndex === fromWaveNumber) modification.waveIndex = toWaveNumber;
+    else if (modification.waveIndex === toWaveNumber) modification.waveIndex = fromWaveNumber;
+  });
+  [draft.value.waves[fromIndex], draft.value.waves[toIndex]] = [draft.value.waves[toIndex], draft.value.waves[fromIndex]];
+  normalizeWaveNames();
+  syncWaveFlags();
 }
 
 function removeWave(id: number) {
@@ -1194,7 +1314,9 @@ function removeWave(id: number) {
       waveIndex: modification.waveIndex > removedWaveNumber ? modification.waveIndex - 1 : modification.waveIndex
     }));
   syncWaveFlags();
+  normalizeWaveNames();
   selectedWaveId.value = draft.value.waves[Math.min(removedIndex, draft.value.waves.length - 1)].id;
+  expandedWaveActionKey.value = 'zombies';
 }
 
 function addZombieToWave(code: string) {
@@ -1202,7 +1324,11 @@ function addZombieToWave(code: string) {
   markWaveSystemEdited();
   const zombie = zombieOptions.value.find((item) => item.code === code);
   if (!zombie) return;
-  selectedWave.value.zombies.push({ id: nextZombieId.value++, code: zombie.code, label: zombie.name, count: 1 });
+  if (!selectedWave.value.actionOrder.some((entry) => entry.kind === 'zombies')) {
+    selectedWave.value.actionOrder.push({ kind: 'zombies' });
+  }
+  selectedWave.value.zombies.push({ id: nextZombieId.value++, code: zombie.code, label: zombie.name, count: 1, row: '' });
+  expandedWaveActionKey.value = 'zombies';
 }
 
 function addSelectedZombieToWave() {
@@ -1301,9 +1427,10 @@ function parseWaveZombieGroups(zombieEntries: any[]) {
   const groups: WaveZombie[] = [];
   zombieEntries.forEach((zombie: any) => {
     const code = parseTypeAlias(zombie?.Type) || 'mummy';
+    const row = zombie?.Row === undefined || zombie?.Row === null ? '' : String(zombie.Row);
     const option = zombieOptions.value.find((item) => item.code === code);
     const normalizedEntry = cloneJson(zombie || { Type: `RTID(${code}@ZombieTypes)` });
-    const existing = groups.find((item) => item.code === code);
+    const existing = groups.find((item) => item.code === code && item.row === row);
     if (existing) {
       existing.count += 1;
       existing.entries = [...(existing.entries || []), normalizedEntry];
@@ -1313,6 +1440,7 @@ function parseWaveZombieGroups(zombieEntries: any[]) {
         code,
         label: option?.name || code,
         count: 1,
+        row,
         entries: [normalizedEntry]
       });
     }
@@ -1396,6 +1524,86 @@ function createUniqueWaveActionAlias(base: string) {
   return `${base}_${index}`;
 }
 
+function isPreservingConveyorActions() {
+  return Boolean(
+    draft.value.conveyor.enabled &&
+      draft.value.conveyor.preserveOriginal &&
+      !draft.value.conveyor.dirty &&
+      draft.value.conveyor.originalObject
+  );
+}
+
+function getWaveConveyorOrderEntries(waveIndex: number): WaveActionOrderEntry[] {
+  if (!draft.value.conveyor.enabled) return [];
+  if (isPreservingConveyorActions()) {
+    return draft.value.conveyor.originalActionObjects
+      .filter((action) => action.waveIndex === waveIndex)
+      .map((action) => ({ kind: 'conveyor', alias: action.alias }));
+  }
+  return draft.value.conveyor.waveModifications.some((modification) => modification.waveIndex === waveIndex)
+    ? [{ kind: 'conveyor' }]
+    : [];
+}
+
+function getEffectiveWaveActionOrder(wave: WaveDraft, waveIndex: number) {
+  const result: WaveActionOrderEntry[] = [];
+  const rawIds = new Set(wave.rawActions.map((action) => action.id));
+  const conveyorEntries = getWaveConveyorOrderEntries(waveIndex);
+  const preservingConveyor = isPreservingConveyorActions();
+  const conveyorAliases = new Set(conveyorEntries.map((entry) => entry.alias).filter(Boolean));
+  let hasZombies = false;
+  let hasGeneratedConveyor = false;
+  const rawOrderIds = new Set<number>();
+  const preservedConveyorAliases = new Set<string>();
+
+  const append = (entry: WaveActionOrderEntry) => {
+    if (entry.kind === 'zombies') {
+      if (hasZombies || (!wave.zombies.length && !wave.zombieActionAlias)) return;
+      hasZombies = true;
+      result.push({ kind: 'zombies', alias: wave.zombieActionAlias || entry.alias });
+      return;
+    }
+    if (entry.kind === 'raw') {
+      if (!entry.actionId || !rawIds.has(entry.actionId) || rawOrderIds.has(entry.actionId)) return;
+      rawOrderIds.add(entry.actionId);
+      result.push({ kind: 'raw', actionId: entry.actionId, alias: entry.alias });
+      return;
+    }
+    if (preservingConveyor) {
+      if (!entry.alias || !conveyorAliases.has(entry.alias) || preservedConveyorAliases.has(entry.alias)) return;
+      preservedConveyorAliases.add(entry.alias);
+      result.push({ kind: 'conveyor', alias: entry.alias });
+      return;
+    }
+    if (!conveyorEntries.length || hasGeneratedConveyor) return;
+    hasGeneratedConveyor = true;
+    result.push({ kind: 'conveyor' });
+  };
+
+  wave.actionOrder.forEach(append);
+  append({ kind: 'zombies' });
+  wave.rawActions.forEach((action) => append({ kind: 'raw', actionId: action.id, alias: action.alias }));
+  conveyorEntries.forEach(append);
+  return result;
+}
+
+function markWaveOrderEdited() {
+  draft.value.hasWaveManager = true;
+  draft.value.preserveGeneratorWaves = false;
+  draft.value.preserveCustomWaveManager = false;
+  draft.value.waveSystemDirty = true;
+}
+
+function moveWaveAction(wave: WaveDraft, entryIndex: number, direction: -1 | 1) {
+  const waveIndex = draft.value.waves.findIndex((item) => item.id === wave.id) + 1;
+  const order = getEffectiveWaveActionOrder(wave, waveIndex);
+  const targetIndex = entryIndex + direction;
+  if (targetIndex < 0 || targetIndex >= order.length) return;
+  markWaveOrderEdited();
+  [order[entryIndex], order[targetIndex]] = [order[targetIndex], order[entryIndex]];
+  wave.actionOrder = order;
+}
+
 function addWaveAction(kind: 'tide' | 'dino' | 'storm' | 'ground') {
   const wave = selectedWave.value;
   if (!wave) return;
@@ -1436,12 +1644,17 @@ function addWaveAction(kind: 'tide' | 'dino' | 'storm' | 'ground') {
       }
     }
   }[kind];
-  wave.rawActions.push(createRawWaveAction(createUniqueWaveActionAlias(templates.alias), templates.objclass, templates.objdata));
+  const action = createRawWaveAction(createUniqueWaveActionAlias(templates.alias), templates.objclass, templates.objdata);
+  wave.rawActions.push(action);
+  wave.actionOrder.push({ kind: 'raw', actionId: action.id, alias: action.alias });
+  expandedWaveActionKey.value = `raw:${action.id}`;
 }
 
 function removeWaveAction(wave: WaveDraft, id: number) {
   markWaveSystemEdited();
   wave.rawActions = wave.rawActions.filter((action) => action.id !== id);
+  wave.actionOrder = wave.actionOrder.filter((entry) => !(entry.kind === 'raw' && entry.actionId === id));
+  if (expandedWaveActionKey.value === `raw:${id}`) expandedWaveActionKey.value = 'zombies';
 }
 
 function updateWaveActionJson(action: WaveActionDraft, value: string) {
@@ -1452,6 +1665,38 @@ function updateWaveActionJson(action: WaveActionDraft, value: string) {
   } catch {
     // Validation reports invalid action JSON; keep the last valid object for preview stability.
   }
+}
+
+function updateWaveActionData(action: WaveActionDraft, updater: (objdata: Record<string, any>) => void) {
+  markWaveSystemEdited();
+  const objdata = cloneJson(action.objdata || {});
+  updater(objdata);
+  action.objdata = objdata;
+  action.jsonText = stringifyObjdata(objdata);
+}
+
+function setWaveZombieRow(zombie: WaveZombie, value: string) {
+  markWaveSystemEdited();
+  zombie.row = value;
+  zombie.rowDirty = true;
+}
+
+function getWaveActionKey(entry: WaveActionOrderEntry) {
+  if (entry.kind === 'raw') return `raw:${entry.actionId}`;
+  return entry.kind;
+}
+
+function selectWave(id: number) {
+  selectedWaveId.value = id;
+  const index = draft.value.waves.findIndex((wave) => wave.id === id);
+  const wave = draft.value.waves[index];
+  const firstEntry = wave ? getEffectiveWaveActionOrder(wave, index + 1)[0] : undefined;
+  expandedWaveActionKey.value = firstEntry ? getWaveActionKey(firstEntry) : '';
+}
+
+function toggleWaveAction(entry: WaveActionOrderEntry) {
+  const key = getWaveActionKey(entry);
+  expandedWaveActionKey.value = expandedWaveActionKey.value === key ? '' : key;
 }
 
 function handleUpload(file: File) {
@@ -1540,6 +1785,7 @@ function parseLevel(raw: any): LevelDraft {
         wave.spawnStyle = String(objdata.Style || '');
         wave.mustKillAllToNextWave = objdata.MustKillAllToNextWave === true;
         wave.zombies = parseWaveZombieGroups(Array.isArray(objdata.Zombies) ? objdata.Zombies : []);
+        wave.actionOrder.push({ kind: 'zombies', alias });
       } else if (waveObject.objclass === 'ModifyConveyorWaveActionProps') {
         const objdata = cloneJson(waveObject.objdata || {});
         conveyorActionObjects.push({
@@ -1549,8 +1795,11 @@ function parseLevel(raw: any): LevelDraft {
           objdata
         });
         conveyorWaveModifications.push(...parseConveyorWaveModifications(objdata, index + 1, alias));
+        wave.actionOrder.push({ kind: 'conveyor', alias });
       } else {
-        wave.rawActions.push(createRawWaveAction(alias, String(waveObject.objclass || 'WaveActionProps'), waveObject.objdata || {}));
+        const action = createRawWaveAction(alias, String(waveObject.objclass || 'WaveActionProps'), waveObject.objdata || {});
+        wave.rawActions.push(action);
+        wave.actionOrder.push({ kind: 'raw', actionId: action.id, alias });
       }
     });
     return wave;
@@ -1778,9 +2027,14 @@ function serializeWaveZombies(wave: WaveDraft) {
     const templates = zombie.entries?.length ? zombie.entries : [{ Type: `RTID(${zombie.code}@ZombieTypes)` }];
     return Array.from({ length: Math.max(1, Number(zombie.count) || 1) }, (_, index) => {
       const template = cloneJson(templates[Math.min(index, templates.length - 1)] || {});
+      const importedRow = template.Row;
+      delete template.Row;
       return {
         ...template,
-        Type: `RTID(${zombie.code}@ZombieTypes)`
+        Type: `RTID(${zombie.code}@ZombieTypes)`,
+        ...(zombie.row
+          ? { Row: !zombie.rowDirty && importedRow !== undefined && String(importedRow) === zombie.row ? importedRow : zombie.row }
+          : {})
       };
     });
   });
@@ -1954,7 +2208,12 @@ function serializeLevel() {
   const emittedConveyorActionAliases = new Set<string>();
   const waveRefs = draft.value.waves.map((wave, index) => {
     const refs: string[] = [];
-    if (wave.zombies.length || wave.zombieActionAlias) {
+    let zombiesEmitted = false;
+    let generatedConveyorEmitted = false;
+
+    const appendZombies = () => {
+      if (zombiesEmitted || (!wave.zombies.length && !wave.zombieActionAlias)) return;
+      zombiesEmitted = true;
       const alias = uniqueActionAlias(wave.zombieActionAlias || `Wave${index + 1}`);
       const dynamicPlantfood = parseOptionalArrayText(wave.dynamicPlantfood);
       const objdata: Record<string, any> = {
@@ -1971,14 +2230,16 @@ function serializeLevel() {
         objdata
       });
       refs.push(`RTID(${alias}@CurrentLevel)`);
-    }
-    wave.rawActions.forEach((action, actionIndex) => {
+    };
+
+    const appendRawAction = (action: WaveActionDraft) => {
       const rawActionKey = action.alias || '';
       const existingAlias = rawActionKey ? emittedRawActionAliases.get(rawActionKey) : undefined;
       if (existingAlias) {
         refs.push(`RTID(${existingAlias}@CurrentLevel)`);
         return;
       }
+      const actionIndex = wave.rawActions.findIndex((item) => item.id === action.id);
       const alias = uniqueActionAlias(action.alias || `Wave${index + 1}Action${actionIndex}`);
       waveObjects.push({
         aliases: [alias],
@@ -1987,25 +2248,30 @@ function serializeLevel() {
       });
       refs.push(`RTID(${alias}@CurrentLevel)`);
       if (rawActionKey) emittedRawActionAliases.set(rawActionKey, alias);
-    });
-    if (shouldPreserveConveyor) {
-      draft.value.conveyor.originalActionObjects
-        .filter((action) => action.waveIndex === index + 1)
-        .forEach((action) => {
-          if (!emittedConveyorActionAliases.has(action.alias)) {
-            emittedConveyorActionAliases.add(action.alias);
-            usedActionAliases.add(action.alias);
-            waveObjects.push({
-              aliases: [action.alias],
-              objclass: action.objclass,
-              objdata: cloneJson(action.objdata)
-            });
-          }
-          refs.push(`RTID(${action.alias}@CurrentLevel)`);
-        });
-    } else if (shouldEmitConveyor) {
+    };
+
+    const appendConveyorAction = (entry: WaveActionOrderEntry) => {
+      if (shouldPreserveConveyor) {
+        const action = draft.value.conveyor.originalActionObjects.find(
+          (item) => item.waveIndex === index + 1 && item.alias === entry.alias
+        );
+        if (!action) return;
+        if (!emittedConveyorActionAliases.has(action.alias)) {
+          emittedConveyorActionAliases.add(action.alias);
+          usedActionAliases.add(action.alias);
+          waveObjects.push({
+            aliases: [action.alias],
+            objclass: action.objclass,
+            objdata: cloneJson(action.objdata)
+          });
+        }
+        refs.push(`RTID(${action.alias}@CurrentLevel)`);
+        return;
+      }
+      if (!shouldEmitConveyor || generatedConveyorEmitted) return;
       const conveyorModifications = draft.value.conveyor.waveModifications.filter((modification) => modification.waveIndex === index + 1);
       if (conveyorModifications.length) {
+        generatedConveyorEmitted = true;
         const alias = uniqueActionAlias(`Wave${index + 1}ModConveyor0`);
         waveObjects.push({
           aliases: [alias],
@@ -2014,7 +2280,15 @@ function serializeLevel() {
         });
         refs.push(`RTID(${alias}@CurrentLevel)`);
       }
-    }
+    };
+
+    getEffectiveWaveActionOrder(wave, index + 1).forEach((entry) => {
+      if (entry.kind === 'zombies') appendZombies();
+      else if (entry.kind === 'raw') {
+        const action = wave.rawActions.find((item) => item.id === entry.actionId);
+        if (action) appendRawAction(action);
+      } else appendConveyorAction(entry);
+    });
     return refs;
   });
 
@@ -3205,93 +3479,523 @@ const PropertyPanel = defineComponent({
   }
 });
 
-function renderWaveAdvancedEditor(wave: WaveDraft) {
-  if (!expertMode.value) return null;
+function getRawWaveActionLabel(action: WaveActionDraft) {
+  const labels: Record<string, string> = {
+    TidalChangeWaveActionProps: 'actionTide',
+    DinoWaveActionProps: 'actionDino',
+    StormZombieSpawnerProps: 'actionStorm',
+    SpawnZombiesFromGroundSpawnerProps: 'actionGround'
+  };
+  return labels[action.objclass] ? t(labels[action.objclass]) : action.objclass;
+}
 
-  return h('details', { class: 'advanced-details' }, [
-    h('summary', t('advancedCurrentWave')),
-    h('div', { class: 'wave-advanced-body' }, [
-      h('div', { class: 'advanced-grid' }, [
-        h('div', { class: 'field-row compact' }, [
-          h('label', t('additionalPlantfood')),
-          h('input', {
-            type: 'number',
-            min: 0,
-            value: wave.additionalPlantfood,
-            onInput: (event: Event) => {
-              markWaveSystemEdited();
-              wave.additionalPlantfood = Math.max(0, Number((event.target as HTMLInputElement).value) || 0);
-            }
-          })
-        ]),
-        h('div', { class: 'field-row compact' }, [
-          h('label', t('spawnStyle')),
-          h(
-            'select',
-            {
-              value: wave.spawnStyle,
-              onChange: (event: Event) => {
-                markWaveSystemEdited();
-                wave.spawnStyle = (event.target as HTMLSelectElement).value;
-              }
-            },
-            [
-              h('option', { value: '' }, t('styleDefault')),
-              h('option', { value: 'appear' }, 'appear'),
-              h('option', { value: 'sandstorm' }, 'sandstorm'),
-              h('option', { value: 'snowstorm' }, 'snowstorm')
-            ]
-          )
-        ]),
-        h('div', { class: 'field-row compact' }, [
-          h('label', t('dynamicPlantfood')),
-          h('input', {
-            value: wave.dynamicPlantfood,
-            placeholder: '[1,1,1,0,0]',
-            onInput: (event: Event) => {
-              markWaveSystemEdited();
-              wave.dynamicPlantfood = (event.target as HTMLInputElement).value;
-            }
-          })
-        ]),
-        h('label', { class: 'check-row advanced-check' }, [
-          h('input', {
-            type: 'checkbox',
-            checked: wave.mustKillAllToNextWave,
+function getRawWaveActionSummary(action: WaveActionDraft) {
+  const data = parseActionObjdata(action);
+  if (action.objclass === 'TidalChangeWaveActionProps') {
+    return t('actionTideSummary', { column: data?.TidalChange?.ChangeAmount ?? '-' });
+  }
+  if (action.objclass === 'DinoWaveActionProps') {
+    return t('actionDinoSummary', { type: data.DinoType || '-', row: Number(data.DinoRow || 0) + 1 });
+  }
+  if (action.objclass === 'StormZombieSpawnerProps') {
+    return t('actionStormSummary', {
+      type: data.Type || '-',
+      start: data.ColumnStart ?? '-',
+      end: data.ColumnEnd ?? '-',
+      count: Array.isArray(data.Zombies) ? data.Zombies.length : 0
+    });
+  }
+  if (action.objclass === 'SpawnZombiesFromGroundSpawnerProps') {
+    return t('actionGroundSummary', {
+      start: data.ColumnStart ?? '-',
+      end: data.ColumnEnd ?? '-',
+      count: Array.isArray(data.Zombies) ? data.Zombies.length : 0
+    });
+  }
+  return action.alias || t('actionUnknown');
+}
+
+function renderActionNumberField(
+  labelKey: string,
+  value: unknown,
+  onInput: (value: number) => void,
+  min = 0,
+  max?: number
+) {
+  return h('div', { class: 'field-row compact' }, [
+    h('label', t(labelKey)),
+    h('input', {
+      type: 'number',
+      min,
+      ...(max === undefined ? {} : { max }),
+      value: value ?? '',
+      onInput: (event: Event) => {
+        const number = Number((event.target as HTMLInputElement).value);
+        onInput(Number.isFinite(number) ? number : min);
+      }
+    })
+  ]);
+}
+
+function renderKnownWaveActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  if (action.objclass === 'TidalChangeWaveActionProps') {
+    return h('div', { class: 'wave-action-field-grid' }, [
+      renderActionNumberField('tideColumn', data?.TidalChange?.ChangeAmount, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.TidalChange = { ...(objdata.TidalChange || {}), ChangeAmount: value, ChangeType: 'absolute' };
+        });
+      }, 0, 9)
+    ]);
+  }
+  if (action.objclass === 'DinoWaveActionProps') {
+    return h('div', { class: 'wave-action-field-grid' }, [
+      h('div', { class: 'field-row compact' }, [
+        h('label', t('dinoType')),
+        h(
+          'select',
+          {
+            value: data.DinoType || 'raptor',
             onChange: (event: Event) => {
-              markWaveSystemEdited();
-              wave.mustKillAllToNextWave = (event.target as HTMLInputElement).checked;
+              updateWaveActionData(action, (objdata) => {
+                objdata.DinoType = (event.target as HTMLSelectElement).value;
+              });
             }
-          }),
-          t('mustKillAllToNextWave')
-        ])
+          },
+          ['raptor', 'tyranno', 'ankylo', 'ptero', 'stego'].map((value) => h('option', { value }, value))
+        )
       ]),
-      h('div', { class: 'special-action-buttons' }, [
-        h('span', t('addSpecialAction')),
-        h('button', { class: 'add-button small', onClick: () => addWaveAction('tide') }, t('addTideAction')),
-        h('button', { class: 'add-button small', onClick: () => addWaveAction('dino') }, t('addDinoAction')),
-        h('button', { class: 'add-button small', onClick: () => addWaveAction('storm') }, t('addStormAction')),
-        h('button', { class: 'add-button small', onClick: () => addWaveAction('ground') }, t('addGroundSpawnAction'))
+      h('div', { class: 'field-row compact' }, [
+        h('label', t('rowAssignment')),
+        h(
+          'select',
+          {
+            value: String(Number(data.DinoRow || 0)),
+            onChange: (event: Event) => {
+              updateWaveActionData(action, (objdata) => {
+                objdata.DinoRow = Number((event.target as HTMLSelectElement).value);
+              });
+            }
+          },
+          Array.from({ length: 5 }, (_, index) => h('option', { value: String(index) }, t('rowNumber', { row: index + 1 })))
+        )
       ]),
-      wave.rawActions.length
-        ? h(
+      renderActionNumberField('duration', data.DinoWaveDuration, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.DinoWaveDuration = value;
+        });
+      })
+    ]);
+  }
+  if (action.objclass === 'StormZombieSpawnerProps') {
+    return h('div', { class: 'wave-action-field-grid' }, [
+      h('div', { class: 'field-row compact' }, [
+        h('label', t('eventType')),
+        h(
+          'select',
+          {
+            value: data.Type || 'sandstorm',
+            onChange: (event: Event) => {
+              updateWaveActionData(action, (objdata) => {
+                objdata.Type = (event.target as HTMLSelectElement).value;
+              });
+            }
+          },
+          [h('option', { value: 'sandstorm' }, 'sandstorm'), h('option', { value: 'snowstorm' }, 'snowstorm')]
+        )
+      ]),
+      renderActionNumberField('columnStart', data.ColumnStart, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnStart = value;
+        });
+      }, 0, 9),
+      renderActionNumberField('columnEnd', data.ColumnEnd, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnEnd = value;
+        });
+      }, 0, 9),
+      renderActionNumberField('groupSize', data.GroupSize, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.GroupSize = Math.max(1, value);
+        });
+      }, 1),
+      renderActionNumberField('timeBetweenGroups', data.TimeBetweenGroups, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.TimeBetweenGroups = value;
+        });
+      }),
+      renderActionNumberField('eventWaves', data.Waves, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.Waves = Math.max(1, value);
+        });
+      }, 1)
+    ]);
+  }
+  if (action.objclass === 'SpawnZombiesFromGroundSpawnerProps') {
+    return h('div', { class: 'wave-action-field-grid' }, [
+      renderActionNumberField('columnStart', data.ColumnStart, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnStart = value;
+        });
+      }, 0, 9),
+      renderActionNumberField('columnEnd', data.ColumnEnd, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnEnd = value;
+        });
+      }, 0, 9)
+    ]);
+  }
+  return null;
+}
+
+function renderLanePreview(wave: WaveDraft) {
+  const rows = [1, 2, 3, 4, 5].map((row) => ({
+    row: String(row),
+    zombies: wave.zombies.filter((zombie) => zombie.row === String(row))
+  }));
+  const random = wave.zombies.filter((zombie) => zombie.row === '');
+  const special = wave.zombies.filter((zombie) => zombie.row !== '' && !['1', '2', '3', '4', '5'].includes(zombie.row));
+  return h('div', { class: 'lane-preview', 'aria-label': t('lanePreview') }, [
+    ...rows.map((lane) =>
+      h('div', { class: 'lane-preview-row' }, [
+        h('span', { class: 'lane-number' }, lane.row),
+        h(
+          'div',
+          { class: 'lane-zombies' },
+          lane.zombies.length
+            ? lane.zombies.map((zombie) =>
+                h('span', { class: 'lane-zombie-chip', title: getZombieDisplayName(zombie.code, zombie.label) }, [
+                  h('span', { class: 'lane-zombie-dot', 'aria-hidden': 'true' }),
+                  getZombieDisplayName(zombie.code, zombie.label),
+                  h('strong', `×${zombie.count}`)
+                ])
+              )
+            : h('span', { class: 'lane-empty' }, '—')
+        )
+      ])
+    ),
+    random.length
+      ? h('div', { class: 'lane-preview-row random' }, [
+          h('span', { class: 'lane-number' }, t('randomRowShort')),
+          h(
             'div',
-            { class: 'raw-action-list' },
-            wave.rawActions.map((action) =>
-              h('div', { class: 'raw-action-card' }, [
-                h('div', { class: 'raw-action-title' }, [
-                  h('span', [h('strong', action.objclass), h('small', action.alias)]),
-                  h('button', { class: 'text-button danger', onClick: () => removeWaveAction(wave, action.id) }, t('remove'))
-                ]),
-                h('textarea', {
-                  value: action.jsonText,
-                  spellcheck: 'false',
-                  onInput: (event: Event) => updateWaveActionJson(action, (event.target as HTMLTextAreaElement).value)
-                })
+            { class: 'lane-zombies' },
+            random.map((zombie) =>
+              h('span', { class: 'lane-zombie-chip', title: getZombieDisplayName(zombie.code, zombie.label) }, [
+                h('span', { class: 'lane-zombie-dot', 'aria-hidden': 'true' }),
+                getZombieDisplayName(zombie.code, zombie.label),
+                h('strong', `×${zombie.count}`)
               ])
             )
           )
-        : h('small', { class: 'seed-mode-hint' }, t('noSpecialActions'))
+        ])
+      : null,
+    special.length
+      ? h('div', { class: 'lane-preview-row random' }, [
+          h('span', { class: 'lane-number' }, t('specialRowShort')),
+          h(
+            'div',
+            { class: 'lane-zombies' },
+            special.map((zombie) =>
+              h('span', { class: 'lane-zombie-chip', title: `${getZombieDisplayName(zombie.code, zombie.label)} · ${zombie.row}` }, [
+                h('span', { class: 'lane-zombie-dot', 'aria-hidden': 'true' }),
+                getZombieDisplayName(zombie.code, zombie.label),
+                h('strong', `×${zombie.count} · ${zombie.row}`)
+              ])
+            )
+          )
+        ])
+      : null
+  ]);
+}
+
+function renderWaveSpawnAdvancedFields(wave: WaveDraft) {
+  if (!expertMode.value) return null;
+  return h('details', { class: 'advanced-details wave-spawn-advanced' }, [
+    h('summary', t('advancedCurrentWave')),
+    h('div', { class: 'advanced-grid' }, [
+      renderActionNumberField('additionalPlantfood', wave.additionalPlantfood, (value) => {
+        markWaveSystemEdited();
+        wave.additionalPlantfood = Math.max(0, value);
+      }),
+      h('div', { class: 'field-row compact' }, [
+        h('label', t('spawnStyle')),
+        h(
+          'select',
+          {
+            value: wave.spawnStyle,
+            onChange: (event: Event) => {
+              markWaveSystemEdited();
+              wave.spawnStyle = (event.target as HTMLSelectElement).value;
+            }
+          },
+          [
+            h('option', { value: '' }, t('styleDefault')),
+            h('option', { value: 'appear' }, 'appear'),
+            h('option', { value: 'sandstorm' }, 'sandstorm'),
+            h('option', { value: 'snowstorm' }, 'snowstorm')
+          ]
+        )
+      ]),
+      h('div', { class: 'field-row compact' }, [
+        h('label', t('dynamicPlantfood')),
+        h('input', {
+          value: wave.dynamicPlantfood,
+          placeholder: '[1,1,1,0,0]',
+          onInput: (event: Event) => {
+            markWaveSystemEdited();
+            wave.dynamicPlantfood = (event.target as HTMLInputElement).value;
+          }
+        })
+      ]),
+      h('label', { class: 'check-row advanced-check' }, [
+        h('input', {
+          type: 'checkbox',
+          checked: wave.mustKillAllToNextWave,
+          onChange: (event: Event) => {
+            markWaveSystemEdited();
+            wave.mustKillAllToNextWave = (event.target as HTMLInputElement).checked;
+          }
+        }),
+        t('mustKillAllToNextWave')
+      ])
+    ])
+  ]);
+}
+
+function renderZombieSpawnEditor(wave: WaveDraft) {
+  return h('div', { class: 'wave-action-editor-body' }, [
+    wave.zombies.length ? renderLanePreview(wave) : null,
+    h(
+      'div',
+      { class: 'zombie-list' },
+      wave.zombies.length
+        ? wave.zombies.map((zombie) => {
+            const standardRows = ['', '1', '2', '3', '4', '5'];
+            const rowOptions = standardRows.includes(zombie.row) ? standardRows : [...standardRows, zombie.row];
+            return h('div', { class: 'zombie-row' }, [
+              h('span', { class: 'zombie-identity' }, [
+                h('strong', getZombieDisplayName(zombie.code, zombie.label)),
+                h('small', zombie.code)
+              ]),
+              h('div', { class: 'zombie-row-controls' }, [
+                h(
+                  'select',
+                  {
+                    'aria-label': t('zombieRow', { name: getZombieDisplayName(zombie.code, zombie.label) }),
+                    value: zombie.row,
+                    onChange: (event: Event) => setWaveZombieRow(zombie, (event.target as HTMLSelectElement).value)
+                  },
+                  rowOptions.map((row) =>
+                    h(
+                      'option',
+                      { value: row },
+                      row === '' ? t('randomRow') : ['1', '2', '3', '4', '5'].includes(row) ? t('rowNumber', { row }) : row
+                    )
+                  )
+                ),
+                h('input', {
+                  type: 'number',
+                  min: 1,
+                  'aria-label': t('zombieCount', { name: getZombieDisplayName(zombie.code, zombie.label) }),
+                  value: zombie.count,
+                  onInput: (event: Event) => {
+                    markWaveSystemEdited();
+                    zombie.count = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
+                  }
+                }),
+                h(
+                  'button',
+                  {
+                    title: t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
+                    'aria-label': t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
+                    onClick: () => removeZombieFromWave(zombie.id)
+                  },
+                  h(DeleteOutlined)
+                )
+              ])
+            ]);
+          })
+        : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
+    ),
+    h('div', { class: 'wave-actions' }, [
+      h(
+        'button',
+        {
+          class: ['add-button', !canAddSelectedZombie.value ? 'is-disabled' : ''],
+          'aria-disabled': !canAddSelectedZombie.value ? 'true' : 'false',
+          onClick: addSelectedZombieToWave
+        },
+        [h(PlusOutlined), t('addZombie')]
+      ),
+      zombieActionHint.value ? h('small', { class: 'action-hint' }, t(zombieActionHint.value)) : null
+    ]),
+    renderWaveSpawnAdvancedFields(wave)
+  ]);
+}
+
+function renderConveyorWaveActionEditor(waveIndex: number, entry: WaveActionOrderEntry) {
+  const modifications = draft.value.conveyor.waveModifications
+    .map((modification, index) => ({ modification, index }))
+    .filter(
+      ({ modification }) =>
+        modification.waveIndex === waveIndex && (!entry.alias || !modification.alias || modification.alias === entry.alias)
+    );
+  return h('div', { class: 'wave-action-editor-body conveyor-wave-action-editor' }, [
+    modifications.length
+      ? h(
+          'div',
+          { class: 'conveyor-wave-action-list' },
+          modifications.map(({ modification, index }) =>
+            h('div', { class: 'conveyor-wave-action-row' }, [
+              h('span', [
+                h('strong', getPlantDisplayName(modification.PlantType)),
+                h('small', modification.mode === 'Add' ? t('conveyorAddPlant') : t('conveyorRemovePlant'))
+              ]),
+              h('div', { class: 'conveyor-row-actions' }, [
+                h(
+                  'button',
+                  {
+                    class: 'icon-button',
+                    title: t('edit'),
+                    'aria-label': t('conveyorEditWaveAria', {
+                      wave: modification.waveIndex,
+                      plant: getPlantDisplayName(modification.PlantType)
+                    }),
+                    onClick: (event: MouseEvent) => openConveyorEditor({ kind: 'waveModification', index }, event)
+                  },
+                  h(EditOutlined)
+                ),
+                h(
+                  'button',
+                  {
+                    class: 'icon-button danger',
+                    title: t('remove'),
+                    'aria-label': t('remove'),
+                    onClick: () => removeConveyorWaveModification(index)
+                  },
+                  h(DeleteOutlined)
+                )
+              ])
+            ])
+          )
+        )
+      : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
+  ]);
+}
+
+function getWaveActionEntryLabel(wave: WaveDraft, entry: WaveActionOrderEntry) {
+  if (entry.kind === 'zombies') return t('waveSpawnAction');
+  if (entry.kind === 'conveyor') return t('conveyorWaveAction');
+  const action = wave.rawActions.find((item) => item.id === entry.actionId);
+  return action ? getRawWaveActionLabel(action) : t('actionUnknown');
+}
+
+function getWaveActionEntrySummary(wave: WaveDraft, waveIndex: number, entry: WaveActionOrderEntry) {
+  if (entry.kind === 'zombies') {
+    const count = wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0);
+    const lanes = new Set(wave.zombies.map((zombie) => zombie.row).filter((row) => ['1', '2', '3', '4', '5'].includes(row))).size;
+    return t('waveSpawnSummary', { count, lanes });
+  }
+  if (entry.kind === 'conveyor') {
+    const count = draft.value.conveyor.waveModifications.filter(
+      (modification) => modification.waveIndex === waveIndex && (!entry.alias || !modification.alias || modification.alias === entry.alias)
+    ).length;
+    return t('conveyorWaveSummary', { count });
+  }
+  const action = wave.rawActions.find((item) => item.id === entry.actionId);
+  return action ? getRawWaveActionSummary(action) : '';
+}
+
+function renderRawWaveActionEditor(wave: WaveDraft, action: WaveActionDraft) {
+  const knownFields = renderKnownWaveActionFields(action);
+  return h('div', { class: 'wave-action-editor-body' }, [
+    knownFields,
+    expertMode.value
+      ? h('label', { class: 'raw-json-field' }, [
+          h('span', t('rawJson')),
+          h('textarea', {
+            value: action.jsonText,
+            spellcheck: 'false',
+            onInput: (event: Event) => updateWaveActionJson(action, (event.target as HTMLTextAreaElement).value)
+          })
+        ])
+      : null,
+    h('div', { class: 'wave-action-editor-footer' }, [
+      h('code', action.alias),
+      h('button', { class: 'text-button danger', onClick: () => removeWaveAction(wave, action.id) }, [
+        h(DeleteOutlined),
+        t('remove')
+      ])
+    ])
+  ]);
+}
+
+function renderWaveActionEditor(wave: WaveDraft, waveIndex: number, entry: WaveActionOrderEntry) {
+  if (entry.kind === 'zombies') return renderZombieSpawnEditor(wave);
+  if (entry.kind === 'conveyor') return renderConveyorWaveActionEditor(waveIndex, entry);
+  const action = wave.rawActions.find((item) => item.id === entry.actionId);
+  return action ? renderRawWaveActionEditor(wave, action) : null;
+}
+
+function renderWaveActionSequence(wave: WaveDraft, waveIndex: number) {
+  const order = getEffectiveWaveActionOrder(wave, waveIndex);
+  return h(
+    'div',
+    { class: 'wave-action-sequence' },
+    order.map((entry, entryIndex) => {
+      const key = getWaveActionKey(entry);
+      const expanded = expandedWaveActionKey.value === key;
+      return h('div', { class: ['wave-action-entry', expanded ? 'expanded' : ''] }, [
+        h('div', { class: 'wave-action-entry-header' }, [
+          h('button', { class: 'wave-action-entry-main', 'aria-expanded': expanded, onClick: () => toggleWaveAction(entry) }, [
+            h('span', { class: ['wave-action-index', entry.kind] }, String(entryIndex + 1)),
+            h('span', { class: 'wave-action-entry-copy' }, [
+              h('strong', getWaveActionEntryLabel(wave, entry)),
+              h('small', getWaveActionEntrySummary(wave, waveIndex, entry))
+            ]),
+            h('span', { class: 'wave-action-chevron', 'aria-hidden': 'true' }, '›')
+          ]),
+          h('div', { class: 'wave-action-order-controls' }, [
+            h(
+              'button',
+              {
+                type: 'button',
+                disabled: entryIndex === 0,
+                title: t('moveEarlier'),
+                'aria-label': t('moveEarlier'),
+                onClick: () => moveWaveAction(wave, entryIndex, -1)
+              },
+              '↑'
+            ),
+            h(
+              'button',
+              {
+                type: 'button',
+                disabled: entryIndex === order.length - 1,
+                title: t('moveLater'),
+                'aria-label': t('moveLater'),
+                onClick: () => moveWaveAction(wave, entryIndex, 1)
+              },
+              '↓'
+            )
+          ])
+        ]),
+        expanded ? renderWaveActionEditor(wave, waveIndex, entry) : null
+      ]);
+    })
+  );
+}
+
+function renderWaveAddMenu() {
+  return h('details', { class: 'wave-add-menu' }, [
+    h('summary', [h(PlusOutlined), t('addSpecialAction')]),
+    h('div', { class: 'wave-add-menu-grid' }, [
+      h('button', { class: 'add-button small', onClick: addSelectedZombieToWave }, t('addZombie')),
+      h('button', { class: 'add-button small', onClick: () => addWaveAction('tide') }, t('addTideAction')),
+      h('button', { class: 'add-button small', onClick: () => addWaveAction('dino') }, t('addDinoAction')),
+      h('button', { class: 'add-button small', onClick: () => addWaveAction('storm') }, t('addStormAction')),
+      h('button', { class: 'add-button small', onClick: () => addWaveAction('ground') }, t('addGroundSpawnAction'))
     ])
   ]);
 }
@@ -3320,16 +4024,13 @@ const WaveTimeline = defineComponent({
           { class: 'wave-strip' },
           draft.value.waves.map((wave, index) => {
             const zombieCount = wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0);
-            const conveyorActionCount = draft.value.conveyor.enabled
-              ? draft.value.conveyor.waveModifications.filter((modification) => modification.waveIndex === index + 1).length
-              : 0;
-            const actionCount = wave.rawActions.length + conveyorActionCount;
+            const actionCount = getEffectiveWaveActionOrder(wave, index + 1).filter((entry) => entry.kind !== 'zombies').length;
             return h(
               'button',
               {
                 class: ['wave-card', selectedWaveId.value === wave.id ? 'active' : '', wave.flag ? 'flag' : ''],
                 'aria-pressed': selectedWaveId.value === wave.id,
-                onClick: () => (selectedWaveId.value = wave.id)
+                onClick: () => selectWave(wave.id)
               },
               [
                 h('strong', `#${index + 1}`),
@@ -3370,52 +4071,53 @@ const WaveTimeline = defineComponent({
             ])
           : null,
         selectedWave.value
-          ? h('div', { class: 'wave-detail' }, [
-              h(
-                'div',
-                { class: 'zombie-list' },
-                selectedWave.value.zombies.map((zombie) =>
-                  h('div', { class: 'zombie-row' }, [
-                    h('span', [h('strong', getZombieDisplayName(zombie.code, zombie.label)), h('small', zombie.code)]),
-                    h('input', {
-                      type: 'number',
-                      min: 1,
-                      'aria-label': t('zombieCount', { name: getZombieDisplayName(zombie.code, zombie.label) }),
-                      value: zombie.count,
-                      onInput: (event: Event) => {
-                        markWaveSystemEdited();
-                        zombie.count = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
-                      }
-                    }),
+          ? (() => {
+              const wave = selectedWave.value;
+              const waveIndex = draft.value.waves.findIndex((item) => item.id === wave.id);
+              return h('div', { class: 'wave-detail' }, [
+                h('div', { class: 'selected-wave-toolbar' }, [
+                  h('strong', t('selectedWaveNumber', { wave: waveIndex + 1 })),
+                  h('div', { class: 'selected-wave-actions' }, [
                     h(
                       'button',
                       {
-                        title: t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
-                        'aria-label': t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
-                        onClick: () => removeZombieFromWave(zombie.id)
+                        type: 'button',
+                        disabled: waveIndex === 0,
+                        title: t('moveWaveEarlier'),
+                        onClick: () => moveWave(wave.id, -1)
                       },
-                      h(DeleteOutlined)
-                    )
+                      ['←', t('moveEarlier')]
+                    ),
+                    h(
+                      'button',
+                      {
+                        type: 'button',
+                        disabled: waveIndex === draft.value.waves.length - 1,
+                        title: t('moveWaveLater'),
+                        onClick: () => moveWave(wave.id, 1)
+                      },
+                      [t('moveLater'), '→']
+                    ),
+                    h('button', { type: 'button', title: t('duplicateWave'), onClick: () => duplicateWave(wave.id) }, [
+                      h(CopyOutlined),
+                      t('duplicate')
+                    ]),
+                    h('button', { type: 'button', title: t('insertWaveAfter'), onClick: () => insertWaveAfter(wave.id) }, [
+                      h(PlusOutlined),
+                      t('insert')
+                    ]),
+                    draft.value.waves.length > 1
+                      ? h('button', { type: 'button', class: 'danger', onClick: () => removeWave(wave.id) }, [
+                          h(DeleteOutlined),
+                          t('remove')
+                        ])
+                      : null
                   ])
-                )
-              ),
-              h('div', { class: 'wave-actions' }, [
-                h(
-                  'button',
-                  {
-                    class: ['add-button', !canAddSelectedZombie.value ? 'is-disabled' : ''],
-                    'aria-disabled': !canAddSelectedZombie.value ? 'true' : 'false',
-                    onClick: addSelectedZombieToWave
-                  },
-                  [h(PlusOutlined), t('addZombie')]
-                ),
-                zombieActionHint.value ? h('small', { class: 'action-hint' }, t(zombieActionHint.value)) : null,
-                draft.value.waves.length > 1
-                  ? h('button', { class: 'text-button danger', onClick: () => removeWave(selectedWave.value.id) }, t('remove'))
-                  : null
-              ]),
-              renderWaveAdvancedEditor(selectedWave.value)
-            ])
+                ]),
+                renderWaveActionSequence(wave, waveIndex + 1),
+                renderWaveAddMenu()
+              ]);
+            })()
           : null
       ]);
   }
@@ -3840,75 +4542,6 @@ body:has(.level-editor-shell) {
 .advanced-check {
   align-self: end;
   min-height: 2.35rem;
-}
-
-.wave-advanced-body {
-  display: grid;
-  gap: 0.65rem;
-  padding-bottom: 0.65rem;
-}
-
-.special-action-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  align-items: center;
-  padding: 0 0.65rem;
-}
-
-.special-action-buttons > span {
-  color: var(--editor-muted);
-  font-size: 0.82rem;
-}
-
-.raw-action-list {
-  display: grid;
-  gap: 0.55rem;
-  padding: 0 0.65rem;
-}
-
-.raw-action-card {
-  display: grid;
-  gap: 0.45rem;
-  min-width: 0;
-  padding: 0.55rem;
-  border: 1px solid var(--editor-border);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
-}
-
-.raw-action-title {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 0;
-}
-
-.raw-action-title span {
-  display: grid;
-  min-width: 0;
-}
-
-.raw-action-title small {
-  overflow: hidden;
-  color: var(--editor-muted);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.raw-action-card textarea {
-  width: 100%;
-  min-height: 8rem;
-  resize: vertical;
-  padding: 0.5rem;
-  border: 1px solid var(--editor-border);
-  border-radius: 6px;
-  background: var(--vp-c-bg-alt);
-  color: var(--editor-text);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: 0.78rem;
-  line-height: 1.45;
 }
 
 .plant-list-block {
@@ -4898,8 +5531,274 @@ body:has(.level-editor-shell) {
 
 .wave-detail {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.75rem;
   margin-top: 0.75rem;
+}
+
+.selected-wave-toolbar,
+.selected-wave-actions,
+.wave-action-entry-header,
+.wave-action-order-controls,
+.zombie-row-controls,
+.wave-action-editor-footer {
+  display: flex;
+  align-items: center;
+}
+
+.selected-wave-toolbar {
+  gap: 0.75rem;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.selected-wave-toolbar > strong {
+  flex: 0 0 auto;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
+  font-size: 1.05rem;
+}
+
+.selected-wave-actions {
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+.selected-wave-actions button,
+.wave-action-order-controls button {
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.2rem 0.5rem;
+  border: 0;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 82%, transparent);
+  color: var(--editor-muted);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.selected-wave-actions button:not(:disabled):hover,
+.wave-action-order-controls button:not(:disabled):hover {
+  background: color-mix(in srgb, var(--editor-accent) 11%, var(--vp-c-bg));
+  color: var(--editor-accent-strong);
+}
+
+.selected-wave-actions button.danger {
+  color: #c74747;
+}
+
+.selected-wave-actions button:disabled,
+.wave-action-order-controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.wave-action-sequence {
+  overflow: hidden;
+  border-top: 1px solid var(--editor-border);
+  border-bottom: 1px solid var(--editor-border);
+}
+
+.wave-action-entry + .wave-action-entry {
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 70%, transparent);
+}
+
+.wave-action-entry-header {
+  min-width: 0;
+}
+
+.wave-action-entry-main {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: 1.8rem minmax(0, 1fr) 1.2rem;
+  gap: 0.6rem;
+  align-items: center;
+  min-width: 0;
+  min-height: 3.45rem;
+  padding: 0.55rem 0.4rem;
+  border: 0;
+  background: transparent;
+  color: var(--editor-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.wave-action-entry-main:hover {
+  background: color-mix(in srgb, var(--editor-accent) 5%, transparent);
+}
+
+.wave-action-index {
+  display: grid;
+  width: 1.55rem;
+  height: 1.55rem;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--editor-accent) 11%, var(--vp-c-bg));
+  color: var(--editor-accent-strong);
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.wave-action-index.raw {
+  background: color-mix(in srgb, var(--editor-sun) 18%, var(--vp-c-bg));
+  color: #9b7000;
+}
+
+.wave-action-index.conveyor {
+  background: color-mix(in srgb, var(--editor-soil) 15%, var(--vp-c-bg));
+  color: var(--editor-soil);
+}
+
+.wave-action-entry-copy {
+  display: grid;
+  min-width: 0;
+}
+
+.wave-action-entry-copy strong,
+.wave-action-entry-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wave-action-entry-copy small {
+  color: var(--editor-muted);
+  font-size: 0.74rem;
+}
+
+.wave-action-chevron {
+  color: var(--editor-muted);
+  font-size: 1.25rem;
+  transition: transform 0.18s ease;
+}
+
+.wave-action-entry.expanded .wave-action-chevron {
+  transform: rotate(90deg);
+}
+
+.wave-action-order-controls {
+  flex: 0 0 auto;
+  gap: 0.15rem;
+  padding-right: 0.25rem;
+}
+
+.wave-action-order-controls button {
+  width: 2rem;
+  min-width: 2rem;
+  padding: 0;
+}
+
+.wave-action-editor-body {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.75rem 0.5rem 0.9rem 2.8rem;
+  background: color-mix(in srgb, var(--editor-accent) 3.5%, transparent);
+}
+
+.wave-action-field-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.wave-action-editor-footer {
+  gap: 0.6rem;
+  justify-content: space-between;
+}
+
+.wave-action-editor-footer code {
+  overflow: hidden;
+  color: var(--editor-muted);
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.raw-json-field {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--editor-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.raw-json-field textarea {
+  min-height: 8rem;
+  padding: 0.65rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 10px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.76rem;
+  resize: vertical;
+}
+
+.lane-preview {
+  overflow: hidden;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--editor-accent) 5%, var(--vp-c-bg));
+}
+
+.lane-preview-row {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  min-height: 2rem;
+}
+
+.lane-preview-row + .lane-preview-row {
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 65%, transparent);
+}
+
+.lane-number {
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--editor-accent) 8%, transparent);
+  color: var(--editor-accent-strong);
+  font-size: 0.7rem;
+  font-weight: 850;
+}
+
+.lane-preview-row.random .lane-number {
+  color: var(--editor-muted);
+  font-size: 0.62rem;
+}
+
+.lane-zombies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  padding: 0.3rem 0.45rem;
+}
+
+.lane-zombie-chip {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+  min-width: 0;
+  color: var(--editor-text);
+  font-size: 0.72rem;
+}
+
+.lane-zombie-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--editor-soil);
+}
+
+.lane-zombie-chip strong {
+  color: var(--editor-muted);
+}
+
+.lane-empty {
+  color: var(--editor-muted);
+  opacity: 0.45;
 }
 
 .check-row {
@@ -4915,24 +5814,104 @@ body:has(.level-editor-shell) {
 
 .zombie-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 4.5rem 2rem;
-  gap: 0.4rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
   align-items: center;
+  min-height: 2.9rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--editor-border) 58%, transparent);
 }
 
-.zombie-row span {
+.zombie-identity {
   display: grid;
   min-width: 0;
 }
 
-.zombie-row input {
+.zombie-row-controls {
+  gap: 0.35rem;
+}
+
+.zombie-row input,
+.zombie-row select {
   min-width: 0;
+  min-height: 2.2rem;
   padding: 0.25rem;
   border: 1px solid var(--editor-border);
   border-radius: 6px;
   background: var(--vp-c-bg);
   color: var(--editor-text);
   font: inherit;
+}
+
+.zombie-row select {
+  width: 6.5rem;
+}
+
+.zombie-row input {
+  width: 4.5rem;
+}
+
+.zombie-row-controls > button {
+  width: 2.2rem;
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #c74747;
+}
+
+.conveyor-wave-action-list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.conveyor-wave-action-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--editor-border) 58%, transparent);
+}
+
+.conveyor-wave-action-row > span {
+  display: grid;
+}
+
+.conveyor-wave-action-row small {
+  color: var(--editor-muted);
+}
+
+.wave-add-menu {
+  justify-self: start;
+}
+
+.wave-add-menu > summary {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--editor-accent) 10%, var(--vp-c-bg));
+  color: var(--editor-accent-strong);
+  font-size: 0.8rem;
+  font-weight: 750;
+  cursor: pointer;
+  list-style: none;
+}
+
+.wave-add-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.wave-add-menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .wave-actions {
@@ -5212,7 +6191,41 @@ body:has(.level-editor-shell) {
   }
 
   .zombie-row {
-    grid-template-columns: minmax(0, 1fr) minmax(3.4rem, 4.5rem) 2.75rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .zombie-row-controls {
+    width: 100%;
+  }
+
+  .zombie-row select {
+    flex: 1 1 auto;
+    width: auto;
+  }
+
+  .selected-wave-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .selected-wave-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .selected-wave-actions button,
+  .wave-action-order-controls button {
+    min-height: 2.75rem;
+  }
+
+  .wave-action-editor-body {
+    padding: 0.75rem 0.35rem 0.9rem;
+  }
+
+  .wave-action-field-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .unsupported-object-card {

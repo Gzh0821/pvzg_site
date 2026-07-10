@@ -623,11 +623,245 @@
     "es": "Aparición de suelo",
     "ru": "Из-под земли"
   },
-  "noSpecialActions": {
-    "zh": "当前波次没有额外事件。",
-    "en": "No extra events in this wave.",
-    "es": "No hay eventos extra en esta oleada.",
-    "ru": "В этой волне нет доп. событий."
+  "edit": {
+    "zh": "编辑",
+    "en": "Edit",
+    "es": "Editar",
+    "ru": "Изменить"
+  },
+  "duplicate": {
+    "zh": "复制",
+    "en": "Duplicate",
+    "es": "Duplicar",
+    "ru": "Копировать"
+  },
+  "insert": {
+    "zh": "插入",
+    "en": "Insert",
+    "es": "Insertar",
+    "ru": "Вставить"
+  },
+  "moveEarlier": {
+    "zh": "前移",
+    "en": "Earlier",
+    "es": "Antes",
+    "ru": "Раньше"
+  },
+  "moveLater": {
+    "zh": "后移",
+    "en": "Later",
+    "es": "Después",
+    "ru": "Позже"
+  },
+  "moveWaveEarlier": {
+    "zh": "将波次前移",
+    "en": "Move wave earlier",
+    "es": "Mover oleada antes",
+    "ru": "Переместить волну раньше"
+  },
+  "moveWaveLater": {
+    "zh": "将波次后移",
+    "en": "Move wave later",
+    "es": "Mover oleada después",
+    "ru": "Переместить волну позже"
+  },
+  "duplicateWave": {
+    "zh": "复制当前波次",
+    "en": "Duplicate current wave",
+    "es": "Duplicar oleada actual",
+    "ru": "Копировать текущую волну"
+  },
+  "insertWaveAfter": {
+    "zh": "在当前波次后插入",
+    "en": "Insert after current wave",
+    "es": "Insertar después de la oleada actual",
+    "ru": "Вставить после текущей волны"
+  },
+  "selectedWaveNumber": {
+    "zh": "第 {wave} 波",
+    "en": "Wave {wave}",
+    "es": "Oleada {wave}",
+    "ru": "Волна {wave}"
+  },
+  "zombieRow": {
+    "zh": "{name} 的出怪行",
+    "en": "Spawn row for {name}",
+    "es": "Fila de aparición de {name}",
+    "ru": "Ряд появления: {name}"
+  },
+  "randomRow": {
+    "zh": "任意行",
+    "en": "Any row",
+    "es": "Cualquier fila",
+    "ru": "Любой ряд"
+  },
+  "randomRowShort": {
+    "zh": "任",
+    "en": "Any",
+    "es": "Cualq.",
+    "ru": "Люб."
+  },
+  "specialRowShort": {
+    "zh": "特",
+    "en": "Other",
+    "es": "Otra",
+    "ru": "Особ."
+  },
+  "rowNumber": {
+    "zh": "第 {row} 行",
+    "en": "Row {row}",
+    "es": "Fila {row}",
+    "ru": "Ряд {row}"
+  },
+  "rowAssignment": {
+    "zh": "行",
+    "en": "Row",
+    "es": "Fila",
+    "ru": "Ряд"
+  },
+  "lanePreview": {
+    "zh": "五路出怪预览",
+    "en": "Five-lane spawn preview",
+    "es": "Vista previa de cinco filas",
+    "ru": "Предпросмотр пяти рядов"
+  },
+  "waveSpawnAction": {
+    "zh": "普通出怪",
+    "en": "Zombie spawn",
+    "es": "Aparición de zombis",
+    "ru": "Появление зомби"
+  },
+  "conveyorWaveAction": {
+    "zh": "传送带调整",
+    "en": "Conveyor change",
+    "es": "Cambio de cinta",
+    "ru": "Изменение конвейера"
+  },
+  "waveSpawnSummary": {
+    "zh": "{count} 只 · {lanes} 条指定行",
+    "en": "{count} zombies · {lanes} assigned lanes",
+    "es": "{count} zombis · {lanes} filas asignadas",
+    "ru": "Зомби: {count} · рядов: {lanes}"
+  },
+  "conveyorWaveSummary": {
+    "zh": "{count} 项修改",
+    "en": "{count} changes",
+    "es": "{count} cambios",
+    "ru": "Изменений: {count}"
+  },
+  "actionTide": {
+    "zh": "潮水变化",
+    "en": "Tide change",
+    "es": "Cambio de marea",
+    "ru": "Изменение прилива"
+  },
+  "actionDino": {
+    "zh": "恐龙事件",
+    "en": "Dinosaur event",
+    "es": "Evento de dinosaurio",
+    "ru": "Событие с динозавром"
+  },
+  "actionStorm": {
+    "zh": "风暴突袭",
+    "en": "Storm raid",
+    "es": "Ataque de tormenta",
+    "ru": "Штормовой налет"
+  },
+  "actionGround": {
+    "zh": "地面生成",
+    "en": "Ground spawn",
+    "es": "Aparición de suelo",
+    "ru": "Появление из земли"
+  },
+  "actionUnknown": {
+    "zh": "保留事件",
+    "en": "Preserved event",
+    "es": "Evento conservado",
+    "ru": "Сохраненное событие"
+  },
+  "actionTideSummary": {
+    "zh": "潮水至第 {column} 列",
+    "en": "Tide to column {column}",
+    "es": "Marea hasta la columna {column}",
+    "ru": "Прилив до столбца {column}"
+  },
+  "actionDinoSummary": {
+    "zh": "{type} · 第 {row} 行",
+    "en": "{type} · row {row}",
+    "es": "{type} · fila {row}",
+    "ru": "{type} · ряд {row}"
+  },
+  "actionStormSummary": {
+    "zh": "{type} · 第 {start}–{end} 列 · {count} 只",
+    "en": "{type} · columns {start}–{end} · {count} zombies",
+    "es": "{type} · columnas {start}–{end} · {count} zombis",
+    "ru": "{type} · столбцы {start}–{end} · зомби: {count}"
+  },
+  "actionGroundSummary": {
+    "zh": "第 {start}–{end} 列 · {count} 只",
+    "en": "Columns {start}–{end} · {count} zombies",
+    "es": "Columnas {start}–{end} · {count} zombis",
+    "ru": "Столбцы {start}–{end} · зомби: {count}"
+  },
+  "tideColumn": {
+    "zh": "潮水列",
+    "en": "Tide column",
+    "es": "Columna de marea",
+    "ru": "Столбец прилива"
+  },
+  "dinoType": {
+    "zh": "恐龙类型",
+    "en": "Dinosaur type",
+    "es": "Tipo de dinosaurio",
+    "ru": "Тип динозавра"
+  },
+  "duration": {
+    "zh": "持续时间",
+    "en": "Duration",
+    "es": "Duración",
+    "ru": "Длительность"
+  },
+  "eventType": {
+    "zh": "事件类型",
+    "en": "Event type",
+    "es": "Tipo de evento",
+    "ru": "Тип события"
+  },
+  "columnStart": {
+    "zh": "起始列",
+    "en": "Start column",
+    "es": "Columna inicial",
+    "ru": "Начальный столбец"
+  },
+  "columnEnd": {
+    "zh": "结束列",
+    "en": "End column",
+    "es": "Columna final",
+    "ru": "Конечный столбец"
+  },
+  "groupSize": {
+    "zh": "每组数量",
+    "en": "Group size",
+    "es": "Tamaño del grupo",
+    "ru": "Размер группы"
+  },
+  "timeBetweenGroups": {
+    "zh": "组间秒数",
+    "en": "Seconds between groups",
+    "es": "Segundos entre grupos",
+    "ru": "Секунд между группами"
+  },
+  "eventWaves": {
+    "zh": "事件批次",
+    "en": "Event batches",
+    "es": "Lotes del evento",
+    "ru": "Пакеты события"
+  },
+  "rawJson": {
+    "zh": "原始 JSON",
+    "en": "Raw JSON",
+    "es": "JSON original",
+    "ru": "Исходный JSON"
   },
   "add": {
     "zh": "添加",
