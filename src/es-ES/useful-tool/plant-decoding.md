@@ -1,5 +1,5 @@
 ---
-title: Practica de descifrado de plantas
+title: Asistente de descifrado
 index: true
 order: 5
 icon: puzzle-piece

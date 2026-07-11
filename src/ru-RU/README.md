@@ -58,9 +58,9 @@ highlights:
         details: Редактируйте сохранения Gardendless
         link: ./useful-tool/save-editor
 
-      - title: Расшифровка растений
+      - title: Помощник расшифровки
         icon: puzzle-piece
-        details: Тренируйтесь в новом мини-режиме расшифровки растений
+        details: Записывайте результаты, исключайте ответы или тренируйтесь в браузере
         link: ./useful-tool/plant-decoding
 
       - title: Руководство по моддингу

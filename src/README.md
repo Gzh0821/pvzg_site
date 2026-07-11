@@ -58,9 +58,9 @@ highlights:
       details: 修改Gardendless的游戏存档
       link: ./useful-tool/save-editor
 
-    - title: 植物解码练习器
+    - title: 植物解码助手
       icon: puzzle-piece
-      details: 在网页中练习新的植物解码小游戏
+      details: 记录游戏反馈、智能排除答案，也可随时练习解码
       link: ./useful-tool/plant-decoding
 
     - title: MOD教程

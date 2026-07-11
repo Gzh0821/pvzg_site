@@ -57,10 +57,37 @@
         </div>
       </header>
 
+      <div v-if="importCapability" class="import-capability-strip" role="status">
+        <strong>{{ t('importCheck') }}</strong>
+        <span class="capability-chip visual">
+          {{ t('importVisual', { sections: importVisualSectionLabels }) }}
+        </span>
+        <span v-if="importCapability.advancedActions" class="capability-chip advanced">
+          {{ t('importAdvancedActions', { count: importCapability.advancedActions }) }}
+        </span>
+        <span v-if="importCapability.preservedObjects" class="capability-chip preserved">
+          {{ t('importPreservedObjects', { count: importCapability.preservedObjects }) }}
+        </span>
+        <span v-if="importCapability.waveMode === 'generator'" class="capability-chip preserved">
+          {{ t('importGeneratorWaves') }}
+        </span>
+      </div>
+
       <div v-if="!isMobileViewport" class="desktop-layout">
         <AssetLibrary class="panel library-panel" />
         <main class="board-panel">
           <BasicForm />
+          <ObjectivesPanel
+            :system="draft.objectives"
+            :plant-options="plantOptions"
+            :selected-cell="selectedCell"
+            :selected-cell-items="selectedCellItems"
+            :selected-plant-code="selectedPlantAsset ? selectedPlantAsset.code : ''"
+            :resolve-mold-locations="resolveBoardGridMapSquares"
+            :expert-mode="expertMode"
+            :translate="t"
+            @select-cell="selectedCell = $event"
+          />
           <BoardEditor />
         </main>
         <PropertyPanel class="panel property-panel" />
@@ -69,6 +96,17 @@
       <div v-else class="mobile-layout">
         <section class="mobile-section-stack">
           <BasicForm />
+          <ObjectivesPanel
+            :system="draft.objectives"
+            :plant-options="plantOptions"
+            :selected-cell="selectedCell"
+            :selected-cell-items="selectedCellItems"
+            :selected-plant-code="selectedPlantAsset ? selectedPlantAsset.code : ''"
+            :resolve-mold-locations="resolveBoardGridMapSquares"
+            :expert-mode="expertMode"
+            :translate="t"
+            @select-cell="selectedCell = $event"
+          />
           <BoardEditor />
         </section>
         <section class="mobile-section-stack">
@@ -138,9 +176,44 @@ import {
   UploadOutlined
 } from '@ant-design/icons-vue';
 import { boardObjectData } from '../game-data/board-objects';
+import { resolveBoardGridMapSquares } from '../game-data/board-grid-maps';
 import { plantFeaturesJson as plantFeatures } from '../game-data/plants';
 import { zombieFeaturesJson as zombieFeatures } from '../game-data/zombies';
 import localeMessages from './i18n.json';
+import ObjectivesPanel from './objectives-panel';
+import BoardRulesPanel from './board-rules-panel';
+import {
+  analyzeLevelCapabilities,
+  buildSeedPresetPlants,
+  createLevelImportSnapshot,
+  getImportedObjectsByClass,
+  getUnchangedImportedLevel,
+  isImportedDomainUnchanged,
+  normalizePlantCodes,
+  normalizeSeedPlants,
+  normalizeSeedSlots,
+  validateLevelDocument
+} from './level-codec.mjs';
+import {
+  createEmptyObjectiveSystem,
+  getMoldedSquares,
+  parseObjectiveSystem,
+  serializeObjectiveSystem,
+  updateObjectiveModuleRefs
+} from './objective-codec.mjs';
+import {
+  POWER_TILE_GROUPS,
+  createEmptyBoardRuleSystem,
+  getPowerTileAt,
+  getRulePowerTiles,
+  getRuleRailcarts,
+  getRuleRails,
+  normalizeBoardCoordinate,
+  parseBoardRuleSystem,
+  serializeBoardRuleSystem,
+  updateBoardRuleModuleRefs
+} from './board-rule-codec.mjs';
+import { stageOptions } from './stage-registry.mjs';
 import {
   collectPreservedStaticWaveObjects,
   groupZombieEntries,
@@ -153,6 +226,55 @@ import {
   supportsDynamicZombieEditing,
   toZombieTypeReference
 } from './wave-codec.mjs';
+import {
+  ADDABLE_WAVE_ACTIONS,
+  addAirDropCompanion,
+  addGridItemSpawnType,
+  addGravestonePoolEntry,
+  addQigongStrike,
+  addThunderCharge,
+  createWaveActionTemplate,
+  getAirDropCompanions,
+  getAirDropSummary,
+  getChiHoleLanes,
+  getChiHoleSummary,
+  getDropShipLandingValues,
+  getDropShipProperties,
+  getDropShipSummary,
+  getFrostWindCount,
+  getFrostWindSummary,
+  getGridItemSpawnSummary,
+  getGridItemSpawnTypes,
+  getGravestonePool,
+  getGravestoneSummary,
+  getMissileLocateSummary,
+  getQigongStrikes,
+  getQigongSummary,
+  getThunderCharges,
+  getThunderSummary,
+  getWaveWarningSummary,
+  getWaveActionDefinitionByClass,
+  hasGravestonePosition,
+  parseGridItemTypeReference,
+  parseZombieTypeReference,
+  removeAirDropCompanion,
+  removeGridItemSpawnType,
+  removeGravestonePoolEntry,
+  removeQigongStrike,
+  removeThunderCharge,
+  setGravestonePoolCount,
+  setGravestonePosition,
+  setDropShipLandingValue,
+  setDropShipRange,
+  setChiHoleLane,
+  setWaveWarningMessage,
+  updateAirDropCompanion,
+  updateGridItemSpawnType,
+  updateGravestonePoolType,
+  updateQigongStrike,
+  updateThunderCharge,
+  setFrostWindCount
+} from './wave-action-codec.mjs';
 
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
 type AssetKind = 'plant' | 'zombie' | 'object';
@@ -165,6 +287,25 @@ type PlantListKey = 'seedPlants' | 'includePlants' | 'excludePlants';
 type ConveyorWaveMode = 'Add' | 'Remove';
 type ConveyorAdvancedTab = 'plants' | 'rules' | 'waves';
 type DynamicZombieNumberField = 'StartingWave' | 'StartingPoints' | 'PointIncrementPerWave';
+type StageReferenceScope = 'LevelModules' | 'CurrentLevel';
+type AddableWaveActionKind =
+  | 'tide'
+  | 'dino'
+  | 'storm'
+  | 'ground'
+  | 'frostWind'
+  | 'beachAmbush'
+  | 'raidingParty'
+  | 'spiderRain'
+  | 'parachuteRain'
+  | 'gravestones'
+  | 'gridItemSpawn'
+  | 'dropShip'
+  | 'thunderCharge'
+  | 'qigongStrike'
+  | 'chiHole'
+  | 'missileLocate'
+  | 'waveWarning';
 type ConveyorEditorTarget =
   | { kind: 'initialPlant'; index: number }
   | { kind: 'dropCondition'; index: number }
@@ -334,6 +475,7 @@ interface LevelDraft {
   author: string;
   description: string;
   stage: string;
+  stageSource: StageReferenceScope;
   mower: string;
   sunDropper: string;
   startingSun: number;
@@ -347,6 +489,8 @@ interface LevelDraft {
   hasSeedBank: boolean;
   seedBankExtra: Record<string, any>;
   conveyor: ConveyorDraft;
+  objectives: ObjectiveSystemDraft;
+  boardRules: BoardRuleSystemDraft;
   boardItems: BoardItem[];
   waves: WaveDraft[];
   flagWaveInterval: number;
@@ -381,6 +525,69 @@ interface ValidationItem {
   text: string;
 }
 
+interface StarObjectiveDraft {
+  id: string;
+  kind: string;
+  alias: string;
+  originalAlias: string | null;
+  objclass: string;
+  objdata: Record<string, any>;
+  originalObject: any;
+  implicit: boolean;
+  groupIndex: number;
+}
+
+interface ProtectObjectiveDraft {
+  id: 'protect';
+  alias: string;
+  originalAlias: string | null;
+  objdata: Record<string, any>;
+  originalObject: any;
+}
+
+interface ObjectiveSystemDraft {
+  dirty: boolean;
+  starDirty: boolean;
+  protectDirty: boolean;
+  ownedObjectIndexes: number[];
+  originalObjects: any[];
+  originalStarObjects: any[];
+  originalProtectObjects: any[];
+  originalModuleRefs: { star: string | null; protect: string | null };
+  starModule: { alias: string; originalObject: any; extra: Record<string, any> } | null;
+  starGroups: string[][];
+  starObjectives: StarObjectiveDraft[];
+  originalSupportedAliases: string[];
+  opaqueStarObjects: any[];
+  protect: ProtectObjectiveDraft | null;
+}
+
+interface BoardRuleModuleDraft {
+  id: string;
+  kind: 'railcart' | 'tide' | 'planks' | 'powerTiles';
+  alias: string;
+  originalAlias: string | null;
+  originalRef: string | null;
+  objclass: string;
+  objdata: Record<string, any>;
+  originalObject: any;
+  dirty: boolean;
+}
+
+interface BoardRuleSystemDraft {
+  dirty: boolean;
+  ownedObjectIndexes: number[];
+  originalObjects: any[];
+  modules: BoardRuleModuleDraft[];
+}
+
+interface ImportCapabilitySummary {
+  visualSections: string[];
+  advancedActions: number;
+  preservedObjects: number;
+  waveMode: 'static' | 'generator' | 'none';
+}
+
 const messages = localeMessages as Record<string, Record<LocaleKey, string>>;
 const providedLanguage = inject<string>('i18nLanguage', 'zh');
 const previewOpen = ref(false);
@@ -395,6 +602,9 @@ const assetVisibleLimit = ref(ASSET_PAGE_SIZE);
 const selectedAsset = ref<AssetOption | null>(null);
 const selectedCell = ref<{ row: number; col: number } | null>(null);
 const selectedWaveId = ref(1);
+const newWaveActionKind = ref<AddableWaveActionKind>('tide');
+const newGravestoneType = ref('gravestone_egypt');
+const newGridItemSpawnType = ref('gravestone_egypt');
 const expandedWaveActionKey = ref('zombies');
 const selectedDynamicDifficulty = ref(4);
 const dynamicDifficultyOpen = ref(false);
@@ -402,45 +612,8 @@ const nextItemId = ref(1);
 const nextWaveId = ref(2);
 const nextZombieId = ref(1);
 const nextWaveActionId = ref(1);
-
-const stageOptions = [
-  { value: 'TutorialStage', label: 'Tutorial Stage', mower: 'TutorialMowers' },
-  { value: 'FrontLawnStage', label: 'Front Lawn', mower: 'FrontLawnMowers' },
-  { value: 'EgyptStage', label: 'Ancient Egypt', mower: 'EgyptMowers' },
-  { value: 'EgyptNightStage', label: 'Ancient Egypt Night', mower: 'EgyptMowers' },
-  { value: 'PirateStage', label: 'Pirate Seas', mower: 'PirateMowers' },
-  { value: 'WestStage', label: 'Wild West', mower: 'WestMowers' },
-  { value: 'KongfuStage', label: 'Kongfu World', mower: 'KongfuMowers' },
-  { value: 'KongfuVeteranStage', label: 'Kongfu Veteran', mower: 'KongfuMowers' },
-  { value: 'FutureStage', label: 'Far Future', mower: 'FutureMowers' },
-  { value: 'DarkTutorialStage', label: 'Dark Ages Tutorial', mower: 'DarkMowers' },
-  { value: 'DarkStage', label: 'Dark Ages', mower: 'DarkMowers' },
-  { value: 'BeachTutorialStage', label: 'Big Wave Beach Tutorial', mower: 'BeachMowers' },
-  { value: 'BeachStage', label: 'Big Wave Beach', mower: 'BeachMowers' },
-  { value: 'IceageTutorialStage', label: 'Frostbite Caves Tutorial', mower: 'IceageMowers' },
-  { value: 'IceageVeteranStage', label: 'Frostbite Caves Veteran', mower: 'IceageMowers' },
-  { value: 'LostCityStage', label: 'Lost City', mower: 'LostCityMowers' },
-  { value: 'LostCityTutorialStage', label: 'Lost City Tutorial', mower: 'LostCityMowers' },
-  { value: 'LostCityNightStage', label: 'Lost City Night', mower: 'LostCityMowers' },
-  { value: 'IceageStage', label: 'Frostbite Caves', mower: 'IceageMowers' },
-  { value: 'EightiesStage', label: 'Neon Mixtape Tour', mower: 'EightiesMowers' },
-  { value: 'EightiesTutorialStage', label: 'Neon Mixtape Tutorial', mower: 'EightiesMowers' },
-  { value: 'DinoStage', label: 'Jurassic Marsh', mower: 'DinoMowers' },
-  { value: 'DinoTutorialStage', label: 'Jurassic Marsh Tutorial', mower: 'DinoMowers' },
-  { value: 'ModernStage', label: 'Modern Day', mower: 'ModernMowers' },
-  { value: 'ModernNightStage', label: 'Modern Day Night', mower: 'ModernMowers' },
-  { value: 'SkyStage', label: 'Sky City', mower: NO_MODULE },
-  { value: 'LunarStage', label: 'Lunar Zoo', mower: NO_MODULE },
-  { value: 'PaddysStage', label: "St. Paddy's", mower: NO_MODULE },
-  { value: 'SummerNightsStage', label: 'Summer Nights', mower: NO_MODULE },
-  { value: 'FarmStage', label: 'Farm', mower: NO_MODULE },
-  { value: 'HalloweenStage', label: 'Halloween', mower: NO_MODULE },
-  { value: 'HeroesStage', label: 'Heroes', mower: NO_MODULE },
-  { value: 'FallsStage', label: 'Falls', mower: NO_MODULE },
-  { value: 'CircusStage', label: 'Circus', mower: NO_MODULE },
-  { value: 'ArenaStage', label: 'Arena', mower: NO_MODULE },
-  { value: 'PersuitStage', label: 'Pursuit', mower: NO_MODULE }
-];
+let importedLevelSnapshot: any = null;
+const importCapability = ref<ImportCapabilitySummary | null>(null);
 
 const mowerOptions = [
   { value: STAGE_DEFAULT_MOWER, label: 'Stage default' },
@@ -486,6 +659,22 @@ const language = computed<LocaleKey>(() => {
   return 'zh';
 });
 
+const importVisualSectionLabels = computed(() => {
+  const sectionKeys: Record<string, string> = {
+    basic: 'importSectionBasic',
+    seed: 'importSectionSeed',
+    board: 'importSectionBoard',
+    waves: 'importSectionWaves',
+    objectives: 'importSectionObjectives'
+  };
+  return (importCapability.value?.visualSections || []).map((section) => t(sectionKeys[section] || section)).join(' · ');
+});
+
+const availableStageOptions = computed(() => {
+  if (stageOptions.some((stage) => stage.value === draft.value.stage)) return stageOptions;
+  return [{ value: draft.value.stage, label: draft.value.stage, mower: NO_MODULE }, ...stageOptions];
+});
+
 const plantOptions = computed<AssetOption[]>(() =>
   ((plantFeatures as { PLANTS: NamedFeature[] }).PLANTS || []).map((plant) => ({
     kind: 'plant',
@@ -528,7 +717,12 @@ const selectedWave = computed(() => draft.value.waves.find((wave) => wave.id ===
 const selectedCellItems = computed(() => (selectedCell.value ? itemsAt(selectedCell.value.row, selectedCell.value.col) : []));
 const selectedPlantAsset = computed(() => (selectedAsset.value?.kind === 'plant' ? selectedAsset.value : null));
 const selectedZombieAsset = computed(() => (selectedAsset.value?.kind === 'zombie' ? selectedAsset.value : null));
-const seedPlantAlreadyAdded = computed(() => !!selectedPlantAsset.value && draft.value.seedPlants.includes(selectedPlantAsset.value.code));
+const seedPlantAlreadyAdded = computed(
+  () =>
+    draft.value.seedMode !== 'preset' &&
+    !!selectedPlantAsset.value &&
+    draft.value.seedPlants.includes(selectedPlantAsset.value.code)
+);
 const canAddSelectedSeedPlant = computed(
   () => !!selectedPlantAsset.value && !seedPlantAlreadyAdded.value && draft.value.seedPlants.length < draft.value.seedSlots
 );
@@ -600,6 +794,68 @@ const validationItems = computed<ValidationItem[]>(() => {
           type: 'error',
           text: t('validationConveyorWaveMissing', { wave: modification.waveIndex })
         });
+      }
+    });
+  }
+  draft.value.boardRules.modules.forEach((rule, ruleIndex) => {
+    if (rule.kind === 'railcart') {
+      getRuleRails(rule).forEach((rail: any, entryIndex: number) => {
+        const col = Number(rail.Column);
+        const rowStart = Number(rail.RowStart);
+        const rowEnd = Number(rail.RowEnd);
+        if (
+          !Number.isInteger(col) ||
+          !Number.isInteger(rowStart) ||
+          !Number.isInteger(rowEnd) ||
+          col < 0 || col > 8 || rowStart < 0 || rowStart > 4 || rowEnd < 0 || rowEnd > 4 || rowStart > rowEnd
+        ) {
+          items.push({ type: 'error', text: t('validationRail', { rule: ruleIndex + 1, index: entryIndex + 1 }) });
+        }
+      });
+      getRuleRailcarts(rule).forEach((cart: any, entryIndex: number) => {
+        const col = Number(cart.Column);
+        const row = Number(cart.Row);
+        if (!Number.isInteger(col) || !Number.isInteger(row) || col < 0 || col > 8 || row < 0 || row > 4) {
+          items.push({ type: 'error', text: t('validationRailcart', { rule: ruleIndex + 1, index: entryIndex + 1 }) });
+        }
+      });
+    } else if (rule.kind === 'tide') {
+      const column = Number(rule.objdata?.StartingWaveLocation);
+      if (!Number.isInteger(column) || column < 0 || column > 9) {
+        items.push({ type: 'error', text: t('validationTide', { rule: ruleIndex + 1 }) });
+      }
+    } else if (rule.kind === 'planks') {
+      const rows = Array.isArray(rule.objdata?.PlankRows) ? rule.objdata.PlankRows : [];
+      if (rows.some((row: any) => !Number.isInteger(Number(row)) || Number(row) < 0 || Number(row) > 4)) {
+        items.push({ type: 'error', text: t('validationPlanks', { rule: ruleIndex + 1 }) });
+      }
+    } else if (rule.kind === 'powerTiles') {
+      getRulePowerTiles(rule).forEach((tile: any, entryIndex: number) => {
+        const col = Number(tile?.Location?.mX);
+        const row = Number(tile?.Location?.mY);
+        const delay = Number(tile?.PropagationDelay);
+        if (
+          !POWER_TILE_GROUPS.includes(String(tile?.Group)) ||
+          !Number.isInteger(col) || col < 0 || col > 8 ||
+          !Number.isInteger(row) || row < 0 || row > 4 ||
+          !Number.isFinite(delay) || delay < 0
+        ) {
+          items.push({ type: 'error', text: t('validationPowerTile', { rule: ruleIndex + 1, index: entryIndex + 1 }) });
+        }
+      });
+    }
+  });
+  const protectObjective = draft.value.objectives.protect;
+  if (protectObjective) {
+    const protectedPlants = Array.isArray(protectObjective.objdata?.Plants) ? protectObjective.objdata.Plants : [];
+    if (Number(protectObjective.objdata?.MustProtectCount || 0) > protectedPlants.length) {
+      items.push({ type: 'warning', text: t('validationProtectCount') });
+    }
+    protectedPlants.forEach((plant: any, index: number) => {
+      const col = Number(plant.GridX);
+      const row = Number(plant.GridY);
+      if (!plant.PlantType || !Number.isInteger(col) || !Number.isInteger(row) || col < 0 || col > 8 || row < 0 || row > 4) {
+        items.push({ type: 'error', text: t('validationProtectedPlant', { index: index + 1 }) });
       }
     });
   }
@@ -749,6 +1005,7 @@ function createDefaultDraft(): LevelDraft {
     author: '',
     description: 'Custom Level',
     stage: 'EgyptStage',
+    stageSource: 'LevelModules',
     mower: STAGE_DEFAULT_MOWER,
     sunDropper: 'DefaultSunDropper',
     startingSun: 50,
@@ -762,6 +1019,8 @@ function createDefaultDraft(): LevelDraft {
     hasSeedBank: true,
     seedBankExtra: {},
     conveyor: createDefaultConveyorDraft(),
+    objectives: createEmptyObjectiveSystem() as ObjectiveSystemDraft,
+    boardRules: createEmptyBoardRuleSystem() as BoardRuleSystemDraft,
     boardItems: [],
     waves: [
       {
@@ -807,8 +1066,13 @@ function createDefaultDraft(): LevelDraft {
 
 function resetDraft() {
   closeConveyorEditor();
+  importedLevelSnapshot = null;
+  importCapability.value = null;
   draft.value = createDefaultDraft();
   selectedWaveId.value = 1;
+  newWaveActionKind.value = 'tide';
+  newGravestoneType.value = 'gravestone_egypt';
+  newGridItemSpawnType.value = 'gravestone_egypt';
   expandedWaveActionKey.value = 'zombies';
   selectedDynamicDifficulty.value = 4;
   dynamicDifficultyOpen.value = false;
@@ -966,7 +1230,7 @@ function formatPlacementExtraValue(value: unknown) {
 
 function addSeedPlant(code: string) {
   const plantCode = code;
-  if (!plantCode || draft.value.seedPlants.includes(plantCode)) return;
+  if (!plantCode || (draft.value.seedMode !== 'preset' && draft.value.seedPlants.includes(plantCode))) return;
   if (draft.value.seedPlants.length >= draft.value.seedSlots) {
     message.warning(t('seedLimit', { count: draft.value.seedSlots }));
     return;
@@ -993,7 +1257,7 @@ function addSelectedPlantToList(listKey: PlantListKey) {
     return;
   }
   const list = draft.value[listKey];
-  if (list.includes(selectedPlantAsset.value.code)) {
+  if (list.includes(selectedPlantAsset.value.code) && (listKey !== 'seedPlants' || draft.value.seedMode !== 'preset')) {
     seedActionHint.value = 'plantAlreadyAdded';
     return;
   }
@@ -1005,8 +1269,8 @@ function addSelectedPlantToList(listKey: PlantListKey) {
   list.push(selectedPlantAsset.value.code);
 }
 
-function removePlantFromList(listKey: PlantListKey, code: string) {
-  draft.value[listKey] = draft.value[listKey].filter((item) => item !== code);
+function removePlantFromList(listKey: PlantListKey, index: number) {
+  draft.value[listKey].splice(index, 1);
 }
 
 function markConveyorEdited() {
@@ -1574,36 +1838,6 @@ function getBoardItemChip(item: BoardItem) {
   return 'O';
 }
 
-function normalizePlantCodes(plants: string[]) {
-  return Array.from(new Set(plants.filter(Boolean)));
-}
-
-function normalizeSeedSlots(value: unknown, minimum = 0) {
-  const numericValue = Number(value);
-  const fallback = Math.max(MAX_SEED_PLANTS, minimum);
-  if (!Number.isFinite(numericValue)) return fallback;
-  return Math.min(MAX_SEED_PLANTS, Math.max(minimum, Math.round(numericValue)));
-}
-
-function normalizeSeedPlants(plants: string[], limit = MAX_SEED_PLANTS) {
-  return normalizePlantCodes(plants).slice(0, Math.max(0, limit));
-}
-
-function buildSeedPresetPlants(plants: string[], importedEntries: Record<string, any>[]) {
-  const used = new Set<number>();
-  return plants.map((code) => {
-    const importedIndex = importedEntries.findIndex((entry, index) => !used.has(index) && entry?.PlantType === code);
-    if (importedIndex >= 0) {
-      used.add(importedIndex);
-      return {
-        ...cloneJson(importedEntries[importedIndex]),
-        PlantType: code
-      };
-    }
-    return { PlantType: code, Level: -1 };
-  });
-}
-
 function normalizeWaveRefs(entry: unknown) {
   return Array.isArray(entry) ? entry.filter(Boolean).map(String) : entry ? [String(entry)] : [];
 }
@@ -1776,47 +2010,14 @@ function moveWaveAction(wave: WaveDraft, entryIndex: number, direction: -1 | 1) 
   wave.actionOrder = order;
 }
 
-function addWaveAction(kind: 'tide' | 'dino' | 'storm' | 'ground') {
+function addWaveAction(kind: AddableWaveActionKind) {
   const wave = selectedWave.value;
   if (!wave) return;
   markWaveSystemEdited();
   const waveIndex = draft.value.waves.findIndex((item) => item.id === wave.id) + 1;
-  const templates = {
-    tide: {
-      alias: `Wave${waveIndex}TidalChangeEvent0`,
-      objclass: 'TidalChangeWaveActionProps',
-      objdata: { TidalChange: { ChangeAmount: 3, ChangeType: 'absolute' } }
-    },
-    dino: {
-      alias: `Wave${waveIndex}DinoTimeEvent0`,
-      objclass: 'DinoWaveActionProps',
-      objdata: { DinoRow: 2, DinoType: 'raptor', DinoWaveDuration: 0 }
-    },
-    storm: {
-      alias: `Wave${waveIndex}StormEvent0`,
-      objclass: 'StormZombieSpawnerProps',
-      objdata: {
-        ColumnStart: 4,
-        ColumnEnd: 8,
-        GroupSize: 2,
-        TimeBetweenGroups: 2,
-        Type: 'sandstorm',
-        Zombies: [{ Type: 'RTID(mummy@ZombieTypes)' }, { Type: 'RTID(mummy@ZombieTypes)' }]
-      }
-    },
-    ground: {
-      alias: `Wave${waveIndex}GroundSpawnEvent0`,
-      objclass: 'SpawnZombiesFromGroundSpawnerProps',
-      objdata: {
-        ColumnStart: 4,
-        ColumnEnd: 8,
-        RowStart: 0,
-        RowEnd: 4,
-        Zombies: [{ Type: 'RTID(mummy@ZombieTypes)' }, { Type: 'RTID(mummy@ZombieTypes)' }]
-      }
-    }
-  }[kind];
-  const action = createRawWaveAction(createUniqueWaveActionAlias(templates.alias), templates.objclass, templates.objdata);
+  const template = createWaveActionTemplate(kind, waveIndex);
+  if (!template) return;
+  const action = createRawWaveAction(createUniqueWaveActionAlias(template.alias), template.objclass, template.objdata);
   wave.rawActions.push(action);
   wave.actionOrder.push({ kind: 'raw', actionId: action.id, alias: action.alias });
   expandedWaveActionKey.value = `raw:${action.id}`;
@@ -1848,7 +2049,11 @@ function updateWaveActionData(action: WaveActionDraft, updater: (objdata: Record
 }
 
 function isZombiePoolEvent(action: WaveActionDraft) {
-  return action.objclass === 'StormZombieSpawnerProps' || action.objclass === 'SpawnZombiesFromGroundSpawnerProps';
+  return (
+    action.objclass === 'StormZombieSpawnerProps' ||
+    action.objclass === 'SpawnZombiesFromGroundSpawnerProps' ||
+    action.objclass === 'SpawnZombiesFromGridItemSpawnerProps'
+  );
 }
 
 function getEventZombieGroups(action: WaveActionDraft): WaveZombie[] {
@@ -1921,17 +2126,7 @@ function handleUpload(file: File) {
   reader.onload = () => {
     try {
       const parsed = JSON5.parse(String(reader.result || '{}'));
-      const levelDefinitions = Array.isArray(parsed?.objects)
-        ? parsed.objects.filter((object: any) => object?.objclass === 'LevelDefinition')
-        : [];
-      const levelData = levelDefinitions[0]?.objdata;
-      if (
-        levelDefinitions.length !== 1 ||
-        !levelData ||
-        !String(levelData.Name || parsed?.['#comment'] || '').trim() ||
-        !String(levelData.StageModule || '').trim() ||
-        !Array.isArray(levelData.Modules)
-      ) {
+      if (!validateLevelDocument(parsed)) {
         message.error(t('importInvalidStructure'));
         return;
       }
@@ -1939,7 +2134,10 @@ function handleUpload(file: File) {
       nextWaveId.value = 1;
       nextZombieId.value = 1;
       nextWaveActionId.value = 1;
-      draft.value = parseLevel(parsed);
+      const importedDraft = parseLevel(parsed);
+      draft.value = importedDraft;
+      importedLevelSnapshot = createLevelImportSnapshot(parsed, importedDraft);
+      importCapability.value = analyzeLevelCapabilities(parsed) as ImportCapabilitySummary;
       selectedWaveId.value = draft.value.waves[0]?.id || 1;
       selectedDynamicDifficulty.value = 4;
       dynamicDifficultyOpen.value = false;
@@ -1967,7 +2165,8 @@ function parseLevel(raw: any): LevelDraft {
   const importedFlagWaveInterval = Math.trunc(Number(waveProps.FlagWaveInterval ?? 5));
   const flagWaveInterval = normalizeFlagWaveIntervalMagnitude(importedFlagWaveInterval, 5);
   const levelModules = Array.isArray(level.Modules) ? level.Modules.map(String) : [];
-  const stage = parseLevelModuleAlias(level.StageModule) || 'EgyptStage';
+  const stageReference = parseStageReference(level.StageModule);
+  const stage = stageReference.alias || 'EgyptStage';
   const stageDefaultMower = stageOptions.find((item) => item.value === stage)?.mower || NO_MODULE;
   const importedMower = mowerOptions
     .filter((option) => option.value !== STAGE_DEFAULT_MOWER && option.value !== NO_MODULE)
@@ -2126,6 +2325,9 @@ function parseLevel(raw: any): LevelDraft {
       });
     });
 
+  const objectives = parseObjectiveSystem(raw) as ObjectiveSystemDraft;
+  const boardRules = parseBoardRuleSystem(raw) as BoardRuleSystemDraft;
+  const managedObjectIndexes = new Set([...objectives.ownedObjectIndexes, ...boardRules.ownedObjectIndexes]);
   const placementClasses = new Set(['InitialGridItemProperties', 'InitialPlantProperties', 'InitialZombieProperties', 'GravestoneProperties']);
   const preservedPlacementObjects = objects.filter((object: any) => placementClasses.has(object?.objclass)).map((object: any) => cloneJson(object));
   const supportedClasses = new Set([
@@ -2141,9 +2343,10 @@ function parseLevel(raw: any): LevelDraft {
     'GravestoneProperties'
   ]);
   const unsupportedRawObjects = objects.filter(
-    (object: any) =>
-      isDetachedZombieSpawnAction(object, waveActionAliases) ||
-      (!supportedClasses.has(object?.objclass) && !(object?.aliases || []).some((alias: string) => waveActionAliases.has(alias)))
+    (object: any, objectIndex: number) =>
+      !managedObjectIndexes.has(objectIndex) &&
+      (isDetachedZombieSpawnAction(object, waveActionAliases) ||
+        (!supportedClasses.has(object?.objclass) && !(object?.aliases || []).some((alias: string) => waveActionAliases.has(alias))))
   );
   const seedPresetPlants = Array.isArray(seed.PresetPlantList) ? seed.PresetPlantList.map((item: any) => item.PlantType) : [];
   const seedPresetEntries = Array.isArray(seed.PresetPlantList) ? seed.PresetPlantList.map((item: any) => cloneJson(item)) : [];
@@ -2159,19 +2362,22 @@ function parseLevel(raw: any): LevelDraft {
     author: String(level.WrittenBy || level.WritenBy || raw?.Information?.Author || ''),
     description: String(level.Description || ''),
     stage,
+    stageSource: stageReference.scope,
     mower: importedMower ? (importedMower === stageDefaultMower ? STAGE_DEFAULT_MOWER : importedMower) : NO_MODULE,
     sunDropper: importedSunDropper || NO_MODULE,
     startingSun: Number(level.StartingSun ?? 50),
     seedMode: seed.SelectionMethod === 'preset' ? 'preset' : 'chooser',
     seedSlots,
     seedPresetEntries,
-    seedPlants: normalizeSeedPlants(seedPresetPlants, seedSlots),
+    seedPlants: normalizeSeedPlants(seedPresetPlants, seedSlots, true),
     includePlants: normalizePlantCodes(Array.isArray(seed.PlantIncludeList) ? seed.PlantIncludeList : []),
     excludePlants: normalizePlantCodes(Array.isArray(seed.PlantExcludeList) ? seed.PlantExcludeList : []),
     unlockAll: seed.UnlockAll === true,
     hasSeedBank: !!seedObject,
     seedBankExtra: omitKeys(seed, ['SelectionMethod', 'UnlockAll', 'OverrideSeedSlotsCount', 'PresetPlantList', 'PlantIncludeList', 'PlantExcludeList']),
     conveyor: parseConveyorDraft(conveyorObject, conveyorAlias, conveyorActionObjects, conveyorWaveModifications),
+    objectives,
+    boardRules,
     boardItems,
     waves: waves.length ? waves : [],
     flagWaveInterval,
@@ -2218,6 +2424,14 @@ function parseCurrentLevelAlias(value: string) {
 
 function parseLevelModuleAlias(value: string) {
   return /^RTID\((.+)@LevelModules\)$/.exec(value || '')?.[1] || '';
+}
+
+function parseStageReference(value: string): { alias: string; scope: StageReferenceScope } {
+  const match = /^RTID\((.+)@(LevelModules|CurrentLevel)\)$/.exec(value || '');
+  return {
+    alias: match?.[1] || '',
+    scope: match?.[2] === 'CurrentLevel' ? 'CurrentLevel' : 'LevelModules'
+  };
 }
 
 function parseTypeAlias(value: string) {
@@ -2350,6 +2564,8 @@ function buildModuleRefs(
     ]),
     shouldEmitConveyor ? `RTID(${draft.value.conveyor.alias || 'ConveyorBelt'}@CurrentLevel)` : null
   );
+  refs = updateObjectiveModuleRefs(refs, draft.value.objectives);
+  refs = updateBoardRuleModuleRefs(refs, draft.value.boardRules);
 
   if (!draft.value.preserveBoardModules) {
     const boardRefs = new Set([
@@ -2367,11 +2583,14 @@ function buildModuleRefs(
 }
 
 function serializeLevel() {
+  const unchangedImportedLevel = getUnchangedImportedLevel(importedLevelSnapshot, draft.value);
+  if (unchangedImportedLevel) return unchangedImportedLevel;
+
   const stage = stageOptions.find((item) => item.value === draft.value.stage) || stageOptions[2];
   const mowerModule = draft.value.mower === STAGE_DEFAULT_MOWER ? stage.mower : draft.value.mower;
   const sunDropperModule = draft.value.sunDropper;
   const seedSlots = normalizeSeedSlots(draft.value.seedSlots, draft.value.seedPlants.length);
-  const normalizedSeedPlants = normalizeSeedPlants(draft.value.seedPlants, seedSlots);
+  const normalizedSeedPlants = normalizeSeedPlants(draft.value.seedPlants, seedSlots, draft.value.seedMode === 'preset');
   const preserveGeneratorWaveSystem = draft.value.preserveGeneratorWaves && !draft.value.waves.length && draft.value.preservedWaveManagerModule;
   const preserveCustomWaveManager =
     draft.value.preserveCustomWaveManager && !draft.value.waves.length && draft.value.preservedWaveManagerObject && !draft.value.waveSystemDirty;
@@ -2393,6 +2612,11 @@ function serializeLevel() {
       draft.value.seedMode === 'preset' ||
       seedSlots !== MAX_SEED_PLANTS ||
       Object.keys(draft.value.seedBankExtra || {}).length > 0);
+  const importedSeedBankObjects = getImportedObjectsByClass(importedLevelSnapshot, 'SeedBankProperties');
+  const shouldPreserveImportedSeedBank =
+    shouldEmitSeedBank &&
+    importedSeedBankObjects.length > 0 &&
+    isImportedDomainUnchanged(importedLevelSnapshot, draft.value, 'seed');
   const usedActionAliases = new Set<string>([
     'SeedBank',
     'Conveyor',
@@ -2507,7 +2731,6 @@ function serializeLevel() {
     });
     return refs;
   });
-
   const gridItems = draft.value.boardItems
     .filter((item) => item.kind === 'object' && (item.exportClass || 'InitialGridItemProperties') === 'InitialGridItemProperties')
     .map(serializeBoardPlacement);
@@ -2558,7 +2781,7 @@ function serializeLevel() {
         Name: draft.value.name,
         Description: draft.value.description,
         StartingSun: Number(draft.value.startingSun) || 0,
-        StageModule: `RTID(${draft.value.stage}@LevelModules)`,
+        StageModule: `RTID(${draft.value.stage}@${draft.value.stageSource})`,
         Modules: buildModuleRefs(
           mowerModule,
           sunDropperModule,
@@ -2572,12 +2795,22 @@ function serializeLevel() {
     }
   ];
 
+  objects.push(...serializeObjectiveSystem(draft.value.objectives));
+  objects.push(...serializeBoardRuleSystem(draft.value.boardRules));
+
   if (shouldEmitSeedBank) {
-    objects.push({
-      aliases: ['SeedBank'],
-      objclass: 'SeedBankProperties',
-      objdata: seedBankData
-    });
+    objects.push(
+      shouldPreserveImportedSeedBank
+        ? importedSeedBankObjects[0]
+        : {
+            aliases: ['SeedBank'],
+            objclass: 'SeedBankProperties',
+            objdata: seedBankData
+          },
+      ...importedSeedBankObjects.slice(1)
+    );
+  } else if (shouldEmitConveyor && importedSeedBankObjects.length) {
+    objects.push(...importedSeedBankObjects);
   }
 
   if (shouldEmitConveyor) {
@@ -2722,9 +2955,10 @@ const BasicForm = defineComponent({
               value: draft.value.stage,
               onChange: (event: Event) => {
                 draft.value.stage = (event.target as HTMLSelectElement).value;
+                draft.value.stageSource = 'LevelModules';
               }
             },
-            stageOptions.map((stage) => h('option', { value: stage.value }, stage.label))
+            availableStageOptions.value.map((stage) => h('option', { value: stage.value }, stage.label))
           )
         ]),
         h('div', { class: 'field-row compact' }, [
@@ -2787,6 +3021,25 @@ const BasicForm = defineComponent({
       ]);
   }
 });
+
+function getProtectPlants() {
+  const plants = draft.value.objectives.protect?.objdata?.Plants;
+  return Array.isArray(plants) ? plants : [];
+}
+
+function getProtectedTarget(row: number, col: number) {
+  return getProtectPlants().find((entry: any) => Number(entry.GridX) === col && Number(entry.GridY) === row);
+}
+
+function getMoldedTarget(row: number, col: number) {
+  return draft.value.objectives.starObjectives
+    .filter((objective) => objective.kind === 'mold')
+    .find((objective) =>
+      getMoldedSquares(objective.objdata, resolveBoardGridMapSquares).some(
+        (square: any) => square.GridX === col && square.GridY === row
+      )
+    );
+}
 
 const AssetLibrary = defineComponent({
   setup() {
@@ -2953,6 +3206,46 @@ function renderCellDetailItem(item: BoardItem) {
   ]);
 }
 
+const boardRuleEntries = computed(() => draft.value.boardRules.modules);
+
+function cellHasRailTrack(row: number, col: number) {
+  return boardRuleEntries.value
+    .filter((rule) => rule.kind === 'railcart')
+    .some((rule) =>
+      getRuleRails(rule).some(
+        (rail: any) =>
+          Number(rail.Column) === col &&
+          row >= Math.min(Number(rail.RowStart ?? 0), Number(rail.RowEnd ?? 4)) &&
+          row <= Math.max(Number(rail.RowStart ?? 0), Number(rail.RowEnd ?? 4))
+      )
+    );
+}
+
+function cellHasRailcart(row: number, col: number) {
+  return boardRuleEntries.value
+    .filter((rule) => rule.kind === 'railcart')
+    .some((rule) => getRuleRailcarts(rule).some((cart: any) => Number(cart.Column) === col && Number(cart.Row) === row));
+}
+
+function isPiratePlankRow(row: number) {
+  return boardRuleEntries.value
+    .filter((rule) => rule.kind === 'planks')
+    .some((rule) => (Array.isArray(rule.objdata?.PlankRows) ? rule.objdata.PlankRows : []).map(Number).includes(row));
+}
+
+function getStartingTideLocation() {
+  const tide = boardRuleEntries.value.find((rule) => rule.kind === 'tide');
+  return tide ? normalizeBoardCoordinate(tide.objdata?.StartingWaveLocation, 9) : null;
+}
+
+function getPowerTileAtCell(row: number, col: number) {
+  for (const rule of boardRuleEntries.value.filter((entry) => entry.kind === 'powerTiles')) {
+    const tile = getPowerTileAt(rule, row, col);
+    if (tile) return tile;
+  }
+  return null;
+}
+
 const BoardEditor = defineComponent({
   setup() {
     return () =>
@@ -2969,12 +3262,24 @@ const BoardEditor = defineComponent({
             ])
           ])
         ]),
+        h(BoardRulesPanel, {
+          system: draft.value.boardRules,
+          selectedCell: selectedCell.value,
+          expertMode: expertMode.value,
+          translate: t
+        }),
         h(
           'div',
           { class: `lawn-grid stage-${draft.value.stage.toLowerCase()}`, 'aria-label': t('board') },
           Array.from({ length: 5 }, (_, row) =>
             Array.from({ length: 9 }, (_, col) => {
               const items = itemsAt(row, col);
+              const protectedTarget = getProtectedTarget(row, col);
+              const moldedTarget = getMoldedTarget(row, col);
+              const powerTile = getPowerTileAtCell(row, col);
+              const railTrack = cellHasRailTrack(row, col);
+              const railcart = cellHasRailcart(row, col);
+              const plankRow = isPiratePlankRow(row);
               return h(
                 'button',
                 {
@@ -2983,31 +3288,72 @@ const BoardEditor = defineComponent({
                   class: [
                     'lawn-cell',
                     items.length ? 'has-items' : '',
+                    protectedTarget ? 'protected-target' : '',
+                    moldedTarget ? 'molded-target' : '',
+                    powerTile ? `power-tile power-tile-${powerTile.Group}` : '',
+                    railTrack ? 'rail-track' : '',
+                    railcart ? 'has-railcart' : '',
+                    plankRow ? 'pirate-plank-row' : '',
                     selectedCell.value?.row === row && selectedCell.value?.col === col ? 'selected' : ''
                   ],
                   onClick: () => placeAsset(row, col)
                 },
-                items.length
-                  ? h(
-                      'span',
-                      { class: 'cell-stack' },
-                      items.map((item) =>
-                        h(
-                          'span',
-                          {
-                            class: `cell-marker ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}`,
-                            title: `${getBoardItemTypeLabel(item)}: ${item.label}`
-                          },
-                          getBoardItemImage(item)
-                            ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
-                            : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item))
+                [
+                  powerTile
+                    ? h(
+                        'span',
+                        { class: `power-tile-overlay power-group-${powerTile.Group}`, title: t('boardRulePowerTileCell') },
+                        powerTile.Group === 'alpha'
+                          ? '+'
+                          : powerTile.Group === 'beta'
+                            ? '×'
+                            : powerTile.Group === 'gamma'
+                              ? '□'
+                              : powerTile.Group === 'delta'
+                                ? '△'
+                                : '○'
+                      )
+                    : null,
+                  items.length
+                    ? h(
+                        'span',
+                        { class: 'cell-stack' },
+                        items.map((item) =>
+                          h(
+                            'span',
+                            {
+                              class: `cell-marker ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}`,
+                              title: `${getBoardItemTypeLabel(item)}: ${item.label}`
+                            },
+                            getBoardItemImage(item)
+                              ? h('img', { src: getBoardItemImage(item), alt: item.label, loading: 'lazy' })
+                              : h('span', { class: `cell-chip ${item.kind} ${getBoardItemLayer(item)} ${item.category || ''}` }, getBoardItemChip(item))
+                          )
                         )
                       )
-                    )
-                  : h('span', { class: 'cell-coord' }, `${col + 1},${row + 1}`)
+                    : h('span', { class: 'cell-coord' }, `${col + 1},${row + 1}`),
+                  protectedTarget
+                    ? h('span', { class: 'protected-target-badge', title: t('objectiveProtectedCell') }, '◆')
+                    : null,
+                  moldedTarget
+                    ? h('span', { class: 'mold-target-badge', title: t('objectiveMoldCell') }, '✕')
+                    : null,
+                  railcart ? h('span', { class: 'railcart-badge', title: t('boardRuleRailcart') }, '▣') : null,
+                  plankRow && col === 0 ? h('span', { class: 'plank-row-badge', title: t('boardRulePlankRow') }, '≋') : null
+                ]
               );
             })
-          ).flat()
+          ).flat().concat(
+            getStartingTideLocation() !== null
+              ? [
+                  h('span', {
+                    class: 'tide-start-line',
+                    title: t('boardRuleTideLine'),
+                    style: { left: `${(Number(getStartingTideLocation()) / 9) * 100}%` }
+                  })
+                ]
+              : []
+          )
         ),
         selectedCell.value
           ? h('div', { class: 'cell-detail-panel' }, [
@@ -3031,12 +3377,12 @@ function renderPlantPills(listKey: PlantListKey) {
     'div',
     { class: 'seed-list' },
     list.length
-      ? list.map((code) => {
+      ? list.map((code, index) => {
           const plant = plantOptions.value.find((item) => item.code === code);
           return h('span', { class: 'seed-pill' }, [
             plant?.image ? h('img', { src: plant.image, alt: plant.name, loading: 'lazy' }) : null,
             h('span', plant?.name || code),
-            h('button', { 'aria-label': t('remove'), onClick: () => removePlantFromList(listKey, code) }, 'x')
+            h('button', { 'aria-label': t('remove'), onClick: () => removePlantFromList(listKey, index) }, 'x')
           ]);
         })
       : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
@@ -3423,7 +3769,11 @@ function renderSeedBankControls() {
                 value: draft.value.seedSlots,
                 onInput: (event: Event) => {
                   draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
-                  draft.value.seedPlants = normalizeSeedPlants(draft.value.seedPlants, draft.value.seedSlots);
+                  draft.value.seedPlants = normalizeSeedPlants(
+                    draft.value.seedPlants,
+                    draft.value.seedSlots,
+                    draft.value.seedMode === 'preset'
+                  );
                 }
               })
             ]),
@@ -3698,13 +4048,8 @@ const PropertyPanel = defineComponent({
 });
 
 function getRawWaveActionLabel(action: WaveActionDraft) {
-  const labels: Record<string, string> = {
-    TidalChangeWaveActionProps: 'actionTide',
-    DinoWaveActionProps: 'actionDino',
-    StormZombieSpawnerProps: 'actionStorm',
-    SpawnZombiesFromGroundSpawnerProps: 'actionGround'
-  };
-  return labels[action.objclass] ? t(labels[action.objclass]) : action.objclass;
+  const definition = getWaveActionDefinitionByClass(action.objclass);
+  return definition ? t(definition.labelKey) : action.objclass;
 }
 
 function getRawWaveActionSummary(action: WaveActionDraft) {
@@ -3730,6 +4075,67 @@ function getRawWaveActionSummary(action: WaveActionDraft) {
       count: Array.isArray(data.Zombies) ? data.Zombies.length : 0
     });
   }
+  if (action.objclass === 'FrostWindWaveActionProps') {
+    const summary = getFrostWindSummary(data);
+    return t('actionFrostWindSummary', summary);
+  }
+  if (action.objclass === 'BeachStageEventZombieSpawnerProps') {
+    return t('actionBeachAmbushSummary', {
+      zombie: getZombieDisplayName(String(data.ZombieName || ''), String(data.ZombieName || '-')),
+      count: Number(data.ZombieCount || 0),
+      start: data.ColumnStart ?? '-',
+      end: data.ColumnEnd ?? '-'
+    });
+  }
+  if (action.objclass === 'RaidingPartyZombieSpawnerProps') {
+    const code = parseZombieTypeReference(data.ZombieType);
+    return t('actionRaidingPartySummary', {
+      zombie: code ? getZombieDisplayName(code, code) : t('stageDefault'),
+      count: Number(data.SwashbucklerCount || 0),
+      groups: Number(data.GroupSize || 0)
+    });
+  }
+  if (action.objclass === 'SpiderRainZombieSpawnerProps' || action.objclass === 'ParachuteRainZombieSpawnerProps') {
+    const summary = getAirDropSummary(data);
+    return t('actionAirDropSummary', {
+      zombie: getZombieDisplayName(summary.zombie, summary.zombie || '-'),
+      count: summary.count,
+      start: summary.start,
+      end: summary.end,
+      companions: summary.companions
+    });
+  }
+  if (action.objclass === 'SpawnGravestonesWaveActionProps') {
+    return t('actionGravestonesSummary', getGravestoneSummary(data));
+  }
+  if (action.objclass === 'SpawnZombiesFromGridItemSpawnerProps') {
+    return t('actionGridItemSpawnSummary', getGridItemSpawnSummary(data));
+  }
+  if (action.objclass === 'DropShipZombieSpawnerProps') {
+    const summary = getDropShipSummary(data);
+    return t('actionDropShipSummary', {
+      zombie: getZombieDisplayName(summary.zombie, summary.zombie || '-'),
+      min: summary.min,
+      max: summary.max,
+      column: summary.column,
+      row: summary.row
+    });
+  }
+  if (action.objclass === 'ThunderChargeWaveActionProps') {
+    return t('actionThunderChargeSummary', getThunderSummary(data));
+  }
+  if (action.objclass === 'QigongStrikeWaveActionProps') {
+    return t('actionQigongStrikeSummary', getQigongSummary(data));
+  }
+  if (action.objclass === 'KongfuChiHoleProps') {
+    return t('actionChiHoleSummary', getChiHoleSummary(data));
+  }
+  if (action.objclass === 'MissileLocateWaveActionProps') {
+    return t('actionMissileLocateSummary', getMissileLocateSummary(data));
+  }
+  if (action.objclass === 'WaveWarningProps') {
+    return t('actionWaveWarningSummary', getWaveWarningSummary(data));
+  }
   return action.alias || t('actionUnknown');
 }
 
@@ -3752,6 +4158,758 @@ function renderActionNumberField(
         onInput(Number.isFinite(number) ? number : min);
       }
     })
+  ]);
+}
+
+function renderActionRangeField(
+  labelKey: string,
+  value: Record<string, any> | undefined,
+  onInput: (bound: 'Min' | 'Max', value: number) => void
+) {
+  return h('div', { class: 'action-range-field' }, [
+    h('label', t(labelKey)),
+    h('div', { class: 'action-range-inputs' }, [
+      h('input', {
+        type: 'number',
+        min: 0,
+        value: value?.Min ?? '',
+        placeholder: t('minimum'),
+        'aria-label': t('rangeMinimum', { label: t(labelKey) }),
+        onInput: (event: Event) => onInput('Min', Number((event.target as HTMLInputElement).value) || 0)
+      }),
+      h('span', '–'),
+      h('input', {
+        type: 'number',
+        min: 0,
+        value: value?.Max ?? '',
+        placeholder: t('maximum'),
+        'aria-label': t('rangeMaximum', { label: t(labelKey) }),
+        onInput: (event: Event) => onInput('Max', Number((event.target as HTMLInputElement).value) || 0)
+      })
+    ])
+  ]);
+}
+
+function renderWaveZombieTypeSelect(
+  labelKey: string,
+  value: string,
+  onChange: (code: string) => void,
+  allowDefault = false
+) {
+  const knownZombie = zombieOptions.value.some((zombie) => zombie.code === value);
+  return h('div', { class: 'field-row compact wave-zombie-type-field' }, [
+    h('label', t(labelKey)),
+    h(
+      'select',
+      {
+        value,
+        onChange: (event: Event) => onChange((event.target as HTMLSelectElement).value)
+      },
+      [
+        allowDefault ? h('option', { value: '' }, t('stageDefault')) : null,
+        !knownZombie && value ? h('option', { value }, value) : null,
+        ...zombieOptions.value.map((zombie) => h('option', { value: zombie.code }, `${zombie.name} (${zombie.code})`))
+      ].filter(Boolean)
+    )
+  ]);
+}
+
+function renderWaveObjectTypeSelect(value: string, onChange: (code: string) => void) {
+  const knownObject = objectOptions.some((object) => object.code === value);
+  return h('div', { class: 'field-row compact wave-object-type-field' }, [
+    h('label', t('objectType')),
+    h(
+      'select',
+      {
+        value,
+        onChange: (event: Event) => onChange((event.target as HTMLSelectElement).value)
+      },
+      [
+        !knownObject && value ? h('option', { value }, value) : null,
+        ...objectOptions.map((object) => h('option', { value: object.code }, `${object.name} (${object.code})`))
+      ].filter(Boolean)
+    )
+  ]);
+}
+
+function renderAirDropCompanions(action: WaveActionDraft) {
+  const companions = getAirDropCompanions(action.objdata || {});
+  return h('details', { class: 'air-drop-companions', open: companions.length > 0 }, [
+    h('summary', t('fixedDropZombies', { count: companions.length })),
+    h(
+      'div',
+      { class: 'air-drop-companion-list' },
+      companions.map((companion: any, index: number) =>
+        h('div', { class: 'air-drop-companion-row' }, [
+          renderWaveZombieTypeSelect('zombieType', String(companion?.Type || ''), (code) => {
+            updateWaveActionData(action, (objdata) => {
+              updateAirDropCompanion(objdata, index, { Type: code });
+            });
+          }),
+          renderActionNumberField('column', Number(companion?.mX || 0) + 1, (value) => {
+            updateWaveActionData(action, (objdata) => {
+              updateAirDropCompanion(objdata, index, { mX: Math.min(8, Math.max(0, Math.round(value) - 1)) });
+            });
+          }, 1, 9),
+          renderActionNumberField('rowAssignment', Number(companion?.mY || 0) + 1, (value) => {
+            updateWaveActionData(action, (objdata) => {
+              updateAirDropCompanion(objdata, index, { mY: Math.min(4, Math.max(0, Math.round(value) - 1)) });
+            });
+          }, 1, 5),
+          h(
+            'button',
+            {
+              type: 'button',
+              class: 'text-button danger air-drop-companion-remove',
+              title: t('remove'),
+              'aria-label': t('remove'),
+              onClick: () => {
+                updateWaveActionData(action, (objdata) => removeAirDropCompanion(objdata, index));
+              }
+            },
+            h(DeleteOutlined)
+          )
+        ])
+      )
+    ),
+    h(
+      'button',
+      {
+        type: 'button',
+        class: 'add-button small air-drop-companion-add',
+        onClick: () => {
+          updateWaveActionData(action, (objdata) => addAirDropCompanion(objdata, selectedAsset.value?.kind === 'zombie' ? selectedAsset.value.code : 'mummy'));
+        }
+      },
+      [h(PlusOutlined), t('addFixedDropZombie')]
+    )
+  ]);
+}
+
+function renderAirDropActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  const isParachuteRain = action.objclass === 'ParachuteRainZombieSpawnerProps';
+  return h('div', { class: 'air-drop-editor' }, [
+    h('div', { class: 'wave-action-field-grid' }, [
+      renderWaveZombieTypeSelect('airDropZombieType', String(data.SpiderZombieName || ''), (code) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.SpiderZombieName = code;
+        });
+      }),
+      renderActionNumberField('eventZombieCount', data.SpiderCount, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.SpiderCount = Math.max(0, Math.round(value));
+        });
+      }),
+      renderActionNumberField('columnStart', data.ColumnStart, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnStart = value;
+        });
+      }, 0, 9),
+      renderActionNumberField('columnEnd', data.ColumnEnd, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnEnd = value;
+        });
+      }, 0, 9),
+      renderActionNumberField('groupSize', data.GroupSize, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.GroupSize = Math.max(1, Math.round(value));
+        });
+      }, 1),
+      renderActionNumberField('timeBeforeFullSpawn', data.TimeBeforeFullSpawn, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.TimeBeforeFullSpawn = Math.max(0, value);
+        });
+      }),
+      renderActionNumberField('timeBetweenGroups', data.TimeBetweenGroups, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.TimeBetweenGroups = Math.max(0, value);
+        });
+      }),
+      renderActionNumberField('zombieFallTime', data.ZombieFallTime, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ZombieFallTime = Math.max(0, value);
+        });
+      })
+    ]),
+    isParachuteRain ? renderAirDropCompanions(action) : null
+  ]);
+}
+
+function renderGravestonePoolEditor(action: WaveActionDraft) {
+  const pool = getGravestonePool(action.objdata || {});
+  return h('div', { class: 'gravestone-pool-editor' }, [
+    h('strong', t('spawnObjectPool')),
+    h(
+      'div',
+      { class: 'gravestone-pool-list' },
+      pool.map((entry: any, index: number) => {
+        const code = parseGridItemTypeReference(entry?.Type);
+        return h('div', { class: 'gravestone-pool-row' }, [
+          renderWaveObjectTypeSelect(code, (nextCode) => {
+            updateWaveActionData(action, (objdata) => updateGravestonePoolType(objdata, index, nextCode));
+          }),
+          renderActionNumberField('spawnCount', entry?.Count, (value) => {
+            updateWaveActionData(action, (objdata) => setGravestonePoolCount(objdata, index, value));
+          }),
+          h(
+            'button',
+            {
+              type: 'button',
+              class: 'text-button danger gravestone-pool-remove',
+              title: t('remove'),
+              'aria-label': t('remove'),
+              onClick: () => {
+                updateWaveActionData(action, (objdata) => removeGravestonePoolEntry(objdata, index));
+              }
+            },
+            h(DeleteOutlined)
+          )
+        ]);
+      })
+    ),
+    h('div', { class: 'gravestone-pool-add' }, [
+      h(
+        'select',
+        {
+          value: newGravestoneType.value,
+          'aria-label': t('objectType'),
+          onChange: (event: Event) => {
+            newGravestoneType.value = (event.target as HTMLSelectElement).value;
+          }
+        },
+        objectOptions.map((object) => h('option', { value: object.code }, `${object.name} (${object.code})`))
+      ),
+      h(
+        'button',
+        {
+          type: 'button',
+          class: 'add-button small',
+          onClick: () => updateWaveActionData(action, (objdata) => addGravestonePoolEntry(objdata, newGravestoneType.value))
+        },
+        [h(PlusOutlined), t('addSpawnObject')]
+      )
+    ])
+  ]);
+}
+
+function renderGravestonePositionGrid(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  return h('div', { class: 'gravestone-position-editor' }, [
+    h('strong', t('spawnCandidateCells')),
+    h('div', { class: 'gravestone-position-grid', role: 'grid', 'aria-label': t('spawnCandidateCells') }, [
+      h('span', { class: 'gravestone-grid-corner', 'aria-hidden': 'true' }),
+      ...Array.from({ length: 9 }, (_, column) =>
+        h('span', { class: 'gravestone-grid-column', 'aria-hidden': 'true' }, String(column + 1))
+      ),
+      ...Array.from({ length: 5 }, (_, row) => [
+        h('span', { class: 'gravestone-grid-row', 'aria-hidden': 'true' }, String(row + 1)),
+        ...Array.from({ length: 9 }, (_, column) => {
+          const active = hasGravestonePosition(data, column, row);
+          const label = t('spawnCandidateCell', { row: row + 1, column: column + 1 });
+          return h(
+            'button',
+            {
+              type: 'button',
+              class: ['gravestone-grid-cell', active ? 'active' : ''],
+              role: 'gridcell',
+              'aria-label': label,
+              'aria-pressed': active,
+              title: label,
+              onClick: () => {
+                updateWaveActionData(action, (objdata) => setGravestonePosition(objdata, column, row, !active));
+              }
+            },
+            active ? '●' : ''
+          );
+        })
+      ]).flat()
+    ])
+  ]);
+}
+
+function renderGravestoneActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  const hasRange = data.minX !== undefined && data.maxX !== undefined;
+  return h('div', { class: 'gravestone-event-editor' }, [
+    renderGravestonePoolEditor(action),
+    h('div', { class: 'gravestone-event-options' }, [
+      h('label', { class: 'compact-checkbox' }, [
+        h('input', {
+          type: 'checkbox',
+          checked: Boolean(data.DisplacePlants),
+          onChange: (event: Event) => {
+            updateWaveActionData(action, (objdata) => {
+              objdata.DisplacePlants = (event.target as HTMLInputElement).checked;
+            });
+          }
+        }),
+        h('span', t('displacePlants'))
+      ]),
+      h('label', { class: 'compact-checkbox' }, [
+        h('input', {
+          type: 'checkbox',
+          checked: hasRange,
+          onChange: (event: Event) => {
+            updateWaveActionData(action, (objdata) => {
+              if ((event.target as HTMLInputElement).checked) {
+                objdata.minX = 3;
+                objdata.maxX = 8;
+              } else {
+                delete objdata.minX;
+                delete objdata.maxX;
+              }
+            });
+          }
+        }),
+        h('span', t('limitSpawnColumns'))
+      ]),
+      hasRange
+        ? h('div', { class: 'gravestone-range-fields' }, [
+            renderActionNumberField('columnStart', Number(data.minX || 0) + 1, (value) => {
+              updateWaveActionData(action, (objdata) => {
+                objdata.minX = Math.min(8, Math.max(0, Math.round(value) - 1));
+              });
+            }, 1, 9),
+            renderActionNumberField('columnEnd', Number(data.maxX || 0) + 1, (value) => {
+              updateWaveActionData(action, (objdata) => {
+                objdata.maxX = Math.min(8, Math.max(0, Math.round(value) - 1));
+              });
+            }, 1, 9)
+          ])
+        : null
+    ]),
+    renderGravestonePositionGrid(action)
+  ]);
+}
+
+function renderGridItemSpawnActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  const sourceTypes = getGridItemSpawnTypes(data);
+  return h('div', { class: 'grid-item-spawn-editor' }, [
+    h('strong', t('gridItemSpawnSources')),
+    h(
+      'div',
+      { class: 'grid-item-source-list' },
+      sourceTypes.map((type: string, index: number) =>
+        h('div', { class: 'grid-item-source-row' }, [
+          renderWaveObjectTypeSelect(parseGridItemTypeReference(type), (code) => {
+            updateWaveActionData(action, (objdata) => updateGridItemSpawnType(objdata, index, code));
+          }),
+          h(
+            'button',
+            {
+              type: 'button',
+              class: 'text-button danger grid-item-source-remove',
+              title: t('remove'),
+              'aria-label': t('remove'),
+              onClick: () => {
+                updateWaveActionData(action, (objdata) => removeGridItemSpawnType(objdata, index));
+              }
+            },
+            h(DeleteOutlined)
+          )
+        ])
+      )
+    ),
+    h('div', { class: 'grid-item-source-add' }, [
+      h(
+        'select',
+        {
+          value: newGridItemSpawnType.value,
+          'aria-label': t('objectType'),
+          onChange: (event: Event) => {
+            newGridItemSpawnType.value = (event.target as HTMLSelectElement).value;
+          }
+        },
+        objectOptions.map((object) => h('option', { value: object.code }, `${object.name} (${object.code})`))
+      ),
+      h(
+        'button',
+        {
+          type: 'button',
+          class: 'add-button small',
+          onClick: () => updateWaveActionData(action, (objdata) => addGridItemSpawnType(objdata, newGridItemSpawnType.value))
+        },
+        [h(PlusOutlined), t('addSpawnSource')]
+      )
+    ]),
+    h('div', { class: 'grid-item-spawn-options' }, [
+      renderActionNumberField('additionalPlantfood', data.AdditionalPlantfood, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.AdditionalPlantfood = Math.max(0, Math.round(value));
+        });
+      }),
+      renderActionNumberField('zombieSpawnWaitTime', data.ZombieSpawnWaitTime, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ZombieSpawnWaitTime = Math.max(0, value);
+        });
+      }),
+      h('label', { class: 'compact-checkbox' }, [
+        h('input', {
+          type: 'checkbox',
+          checked: Boolean(data.SuppressActionIfNoGridItemsFound),
+          onChange: (event: Event) => {
+            updateWaveActionData(action, (objdata) => {
+              objdata.SuppressActionIfNoGridItemsFound = (event.target as HTMLInputElement).checked;
+            });
+          }
+        }),
+        h('span', t('skipWithoutSource'))
+      ])
+    ])
+  ]);
+}
+
+function renderDropShipOffsetSelector(action: WaveActionDraft, key: 'ImpLandingColumns' | 'ImpLandingRows', labelKey: string) {
+  const values = getDropShipLandingValues(action.objdata || {}, key);
+  return h('div', { class: 'drop-ship-offset-selector' }, [
+    h('span', t(labelKey)),
+    h(
+      'div',
+      { class: 'drop-ship-offset-buttons' },
+      [0, 1, 2].map((value) => {
+        const active = values.includes(value);
+        return h(
+          'button',
+          {
+            type: 'button',
+            class: active ? 'active' : '',
+            'aria-pressed': active,
+            onClick: () => {
+              updateWaveActionData(action, (objdata) => setDropShipLandingValue(objdata, key, value, !active));
+            }
+          },
+          String(value)
+        );
+      })
+    )
+  ]);
+}
+
+function renderDropShipActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  const properties = getDropShipProperties(data);
+  return h('div', { class: 'drop-ship-editor' }, [
+    h('div', { class: 'drop-ship-basic-grid' }, [
+      renderWaveZombieTypeSelect('dropShipType', String(data.DropShipType || ''), (code) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.DropShipType = code;
+        });
+      }),
+      renderWaveZombieTypeSelect('dropShipImpType', String(properties.ImpType || ''), (code) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.DropShipShiftedProperties = { ...getDropShipProperties(objdata), ImpType: code };
+        });
+      }),
+      renderActionNumberField('column', Number(data.DropShipPosition?.mX || 0) + 1, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.DropShipPosition = {
+            ...(objdata.DropShipPosition || {}),
+            mX: Math.min(8, Math.max(0, Math.round(value) - 1))
+          };
+        });
+      }, 1, 9),
+      renderActionNumberField('rowAssignment', Number(data.DropShipPosition?.mY || 0) + 1, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.DropShipPosition = {
+            ...(objdata.DropShipPosition || {}),
+            mY: Math.min(4, Math.max(0, Math.round(value) - 1))
+          };
+        });
+      }, 1, 5)
+    ]),
+    h('div', { class: 'drop-ship-range-grid' }, [
+      renderActionRangeField('dropShipImpCount', properties.ImpCount, (bound, value) => {
+        updateWaveActionData(action, (objdata) => setDropShipRange(objdata, 'ImpCount', bound, value));
+      }),
+      renderActionRangeField('dropShipFirstDelay', properties.TimeBeforeFirst, (bound, value) => {
+        updateWaveActionData(action, (objdata) => setDropShipRange(objdata, 'TimeBeforeFirst', bound, value));
+      }),
+      renderActionRangeField('dropShipInterval', properties.TimeBetween, (bound, value) => {
+        updateWaveActionData(action, (objdata) => setDropShipRange(objdata, 'TimeBetween', bound, value));
+      }),
+      renderActionRangeField('dropShipFlightTime', properties.ImpFlyingDuration, (bound, value) => {
+        updateWaveActionData(action, (objdata) => setDropShipRange(objdata, 'ImpFlyingDuration', bound, value));
+      })
+    ]),
+    h('div', { class: 'drop-ship-offset-grid' }, [
+      renderDropShipOffsetSelector(action, 'ImpLandingColumns', 'dropShipColumnOffsets'),
+      renderDropShipOffsetSelector(action, 'ImpLandingRows', 'dropShipRowOffsets')
+    ])
+  ]);
+}
+
+function renderThunderChargeActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  const charges = getThunderCharges(data);
+  const updateRange = (key: 'TimeBeforeFirst' | 'TimeBetween', bound: 'Min' | 'Max', value: number) => {
+    updateWaveActionData(action, (objdata) => {
+      objdata[key] = { ...(objdata[key] || {}), [bound]: Math.max(0, value) };
+    });
+  };
+  return h('div', { class: 'thunder-charge-editor' }, [
+    h('strong', t('thunderCharges')),
+    h(
+      'div',
+      { class: 'thunder-charge-list' },
+      charges.map((charge: any, index: number) =>
+        h('div', { class: 'thunder-charge-row' }, [
+          h('div', { class: 'thunder-sign-buttons', role: 'group', 'aria-label': t('thunderPolarity') }, [
+            ...[1, -1].map((sign) =>
+              h(
+                'button',
+                {
+                  type: 'button',
+                  class: Number(charge?.Sign) === sign ? 'active' : '',
+                  'aria-pressed': Number(charge?.Sign) === sign,
+                  onClick: () => updateWaveActionData(action, (objdata) => updateThunderCharge(objdata, index, { Sign: sign }))
+                },
+                sign > 0 ? '+' : '−'
+              )
+            )
+          ]),
+          renderActionNumberField('linkedPlantCount', charge?.LinkedPlantCount, (value) => {
+            updateWaveActionData(action, (objdata) => updateThunderCharge(objdata, index, {
+              LinkedPlantCount: Math.max(0, Math.round(value))
+            }));
+          }),
+          h(
+            'button',
+            {
+              type: 'button',
+              class: 'text-button danger thunder-charge-remove',
+              title: t('remove'),
+              'aria-label': t('remove'),
+              onClick: () => updateWaveActionData(action, (objdata) => removeThunderCharge(objdata, index))
+            },
+            h(DeleteOutlined)
+          )
+        ])
+      )
+    ),
+    h(
+      'button',
+      {
+        type: 'button',
+        class: 'add-button small thunder-charge-add',
+        onClick: () => updateWaveActionData(action, (objdata) => addThunderCharge(objdata, 1))
+      },
+      [h(PlusOutlined), t('addThunderCharge')]
+    ),
+    h('div', { class: 'thunder-timing-grid' }, [
+      renderActionRangeField('thunderFirstDelay', data.TimeBeforeFirst, (bound, value) => updateRange('TimeBeforeFirst', bound, value)),
+      renderActionRangeField('thunderInterval', data.TimeBetween, (bound, value) => updateRange('TimeBetween', bound, value))
+    ])
+  ]);
+}
+
+function renderQigongStrikeActionFields(action: WaveActionDraft) {
+  const strikes = getQigongStrikes(action.objdata || {});
+  return h('div', { class: 'qigong-strike-editor' }, [
+    h('strong', t('qigongStrikeList')),
+    h(
+      'div',
+      { class: 'qigong-strike-list' },
+      strikes.map((strike: any, index: number) =>
+        h('div', { class: 'qigong-strike-row' }, [
+          renderWaveZombieTypeSelect('zombieType', String(strike?.Type || ''), (code) => {
+            updateWaveActionData(action, (objdata) => updateQigongStrike(objdata, index, { Type: code }));
+          }),
+          renderActionNumberField('rowAssignment', Number(strike?.Rows?.[0] || 0) + 1, (value) => {
+            updateWaveActionData(action, (objdata) => updateQigongStrike(objdata, index, {
+              Rows: [Math.min(4, Math.max(0, Math.round(value) - 1))]
+            }));
+          }, 1, 5),
+          renderActionNumberField('column', Number(strike?.Columns?.[0] || 0) + 1, (value) => {
+            updateWaveActionData(action, (objdata) => updateQigongStrike(objdata, index, {
+              Columns: [Math.min(8, Math.max(0, Math.round(value) - 1))]
+            }));
+          }, 1, 9),
+          renderActionNumberField('delay', strike?.Delay, (value) => {
+            updateWaveActionData(action, (objdata) => updateQigongStrike(objdata, index, { Delay: Math.max(0, value) }));
+          }),
+          h(
+            'button',
+            {
+              type: 'button',
+              class: 'text-button danger qigong-strike-remove',
+              title: t('remove'),
+              'aria-label': t('remove'),
+              onClick: () => updateWaveActionData(action, (objdata) => removeQigongStrike(objdata, index))
+            },
+            h(DeleteOutlined)
+          )
+        ])
+      )
+    ),
+    h(
+      'button',
+      {
+        type: 'button',
+        class: 'add-button small qigong-strike-add',
+        onClick: () => updateWaveActionData(action, (objdata) => addQigongStrike(
+          objdata,
+          selectedAsset.value?.kind === 'zombie' ? selectedAsset.value.code : 'abbot_imp'
+        ))
+      },
+      [h(PlusOutlined), t('addQigongStrike')]
+    )
+  ]);
+}
+
+function renderChiHoleActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  const lanes = getChiHoleLanes(data);
+  return h('div', { class: 'chi-hole-editor' }, [
+    h('div', { class: 'chi-hole-basic-grid' }, [
+      renderActionNumberField('column', Number(data.Column || 0) + 1, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.Column = Math.min(8, Math.max(0, Math.round(value) - 1));
+        });
+      }, 1, 9),
+      h('div', { class: 'field-row compact' }, [
+        h('label', t('chiHoleDirection')),
+        h(
+          'select',
+          {
+            value: String(Number(data.Direction || 1)),
+            onChange: (event: Event) => {
+              updateWaveActionData(action, (objdata) => {
+                objdata.Direction = Number((event.target as HTMLSelectElement).value);
+              });
+            }
+          },
+          [1, 2, 3, 4].map((value) => h('option', { value: String(value) }, t('directionValue', { value })))
+        )
+      ]),
+      renderActionNumberField('chiHoleLifeSpan', data.LifeSpan, (value) => {
+        updateWaveActionData(action, (objdata) => { objdata.LifeSpan = Math.max(0, value); });
+      }),
+      renderActionNumberField('chiHoleAbsorbDelay', data.TimeBeforeAbsorbing, (value) => {
+        updateWaveActionData(action, (objdata) => { objdata.TimeBeforeAbsorbing = Math.max(0, value); });
+      }),
+      renderActionNumberField('chiHoleMoveInterval', data.PlantMovingTimeBetweenSquares, (value) => {
+        updateWaveActionData(action, (objdata) => { objdata.PlantMovingTimeBetweenSquares = Math.max(0, value); });
+      })
+    ]),
+    h('div', { class: 'chi-hole-lanes' }, [
+      h('span', t('affectedLanes')),
+      h(
+        'div',
+        { class: 'chi-hole-lane-buttons' },
+        Array.from({ length: 5 }, (_, lane) => {
+          const active = lanes.includes(lane);
+          return h(
+            'button',
+            {
+              type: 'button',
+              class: active ? 'active' : '',
+              'aria-pressed': active,
+              onClick: () => updateWaveActionData(action, (objdata) => setChiHoleLane(objdata, lane, !active))
+            },
+            String(lane + 1)
+          );
+        })
+      )
+    ]),
+    h('div', { class: 'chi-hole-flags' }, [
+      h('label', { class: 'compact-checkbox' }, [
+        h('input', {
+          type: 'checkbox',
+          checked: Boolean(data.SuppressesNextWave),
+          onChange: (event: Event) => updateWaveActionData(action, (objdata) => {
+            objdata.SuppressesNextWave = (event.target as HTMLInputElement).checked;
+          })
+        }),
+        h('span', t('suppressNextWave'))
+      ]),
+      h('label', { class: 'compact-checkbox' }, [
+        h('input', {
+          type: 'checkbox',
+          checked: Boolean(data.SuppressObjectiveTip),
+          onChange: (event: Event) => updateWaveActionData(action, (objdata) => {
+            objdata.SuppressObjectiveTip = (event.target as HTMLInputElement).checked;
+          })
+        }),
+        h('span', t('suppressObjectiveTip'))
+      ])
+    ])
+  ]);
+}
+
+function renderMissileLocateActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  return h('div', { class: 'wave-action-field-grid' }, [
+    renderActionNumberField('missileCount', data.MissileCount, (value) => {
+      updateWaveActionData(action, (objdata) => {
+        objdata.MissileCount = Math.max(0, Math.round(value));
+      });
+    }),
+    renderActionNumberField('columnStart', Number(data.ColumnStart || 0) + 1, (value) => {
+      updateWaveActionData(action, (objdata) => {
+        objdata.ColumnStart = Math.min(8, Math.max(0, Math.round(value) - 1));
+      });
+    }, 1, 9),
+    renderActionNumberField('columnEnd', Number(data.ColumnEnd || 0) + 1, (value) => {
+      updateWaveActionData(action, (objdata) => {
+        objdata.ColumnEnd = Math.min(8, Math.max(0, Math.round(value) - 1));
+      });
+    }, 1, 9),
+    renderActionNumberField('missileCountdown', data.MissileFallCountdown, (value) => {
+      updateWaveActionData(action, (objdata) => {
+        objdata.MissileFallCountdown = Math.max(0, value);
+      });
+    })
+  ]);
+}
+
+function renderWaveWarningActionFields(action: WaveActionDraft) {
+  const data = action.objdata || {};
+  const messages = data.StringMultiLanguage && typeof data.StringMultiLanguage === 'object'
+    ? data.StringMultiLanguage
+    : {};
+  const renderTextField = (labelKey: string, value: unknown, onInput: (value: string) => void) =>
+    h('div', { class: 'field-row compact wave-warning-text-field' }, [
+      h('label', t(labelKey)),
+      h('input', {
+        type: 'text',
+        value: String(value || ''),
+        onInput: (event: Event) => onInput((event.target as HTMLInputElement).value)
+      })
+    ]);
+
+  return h('div', { class: 'wave-warning-editor' }, [
+    h('div', { class: 'wave-warning-message-grid' }, [
+      renderTextField('warningFallbackText', data.String, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.String = value;
+        });
+      }),
+      renderTextField('warningChineseText', messages.zh, (value) => {
+        updateWaveActionData(action, (objdata) => setWaveWarningMessage(objdata, 'zh', value));
+      }),
+      renderTextField('warningEnglishText', messages.en, (value) => {
+        updateWaveActionData(action, (objdata) => setWaveWarningMessage(objdata, 'en', value));
+      })
+    ]),
+    h('div', { class: 'wave-action-field-grid wave-warning-settings' }, [
+      renderTextField('warningSound', data.Sound, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.Sound = value;
+        });
+      }),
+      renderActionNumberField('duration', data.Duration, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.Duration = Math.max(0, value);
+        });
+      }),
+      renderActionNumberField('warningInitTime', data.InitTime, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.InitTime = Math.max(0, value);
+        });
+      })
+    ])
   ]);
 }
 
@@ -3863,6 +5021,112 @@ function renderKnownWaveActionFields(action: WaveActionDraft) {
       }, 0, 9)
     ]);
   }
+  if (action.objclass === 'FrostWindWaveActionProps') {
+    return h('div', { class: 'frost-wind-editor' }, [
+      h('strong', t('frostWindLanes')),
+      h(
+        'div',
+        { class: 'frost-wind-lanes' },
+        Array.from({ length: 5 }, (_, row) =>
+          h('div', { class: 'frost-wind-lane' }, [
+            h('span', t('rowNumber', { row: row + 1 })),
+            ...(['left', 'right'] as const).map((direction) =>
+              h('label', { class: `frost-wind-count ${direction}` }, [
+                h('span', direction === 'left' ? '←' : '→'),
+                h('input', {
+                  type: 'number',
+                  min: 0,
+                  max: 9,
+                  value: getFrostWindCount(data, row, direction),
+                  'aria-label': t(direction === 'left' ? 'frostWindLeftCount' : 'frostWindRightCount', { row: row + 1 }),
+                  onInput: (event: Event) => {
+                    updateWaveActionData(action, (objdata) => {
+                      setFrostWindCount(objdata, row, direction, (event.target as HTMLInputElement).value);
+                    });
+                  }
+                })
+              ])
+            )
+          ])
+        )
+      )
+    ]);
+  }
+  if (action.objclass === 'BeachStageEventZombieSpawnerProps') {
+    return h('div', { class: 'wave-action-field-grid' }, [
+      renderWaveZombieTypeSelect('zombieType', String(data.ZombieName || ''), (code) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ZombieName = code;
+        });
+      }),
+      renderActionNumberField('eventZombieCount', data.ZombieCount, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ZombieCount = Math.max(0, Math.round(value));
+        });
+      }),
+      renderActionNumberField('columnStart', data.ColumnStart, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnStart = value;
+        });
+      }, 0, 9),
+      renderActionNumberField('columnEnd', data.ColumnEnd, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ColumnEnd = value;
+        });
+      }, 0, 9),
+      renderActionNumberField('groupSize', data.GroupSize, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.GroupSize = Math.max(1, Math.round(value));
+        });
+      }, 1),
+      renderActionNumberField('timeBeforeFullSpawn', data.TimeBeforeFullSpawn, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.TimeBeforeFullSpawn = Math.max(0, value);
+        });
+      }),
+      renderActionNumberField('timeBetweenGroups', data.TimeBetweenGroups, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.TimeBetweenGroups = Math.max(0, value);
+        });
+      })
+    ]);
+  }
+  if (action.objclass === 'RaidingPartyZombieSpawnerProps') {
+    const zombieCode = parseZombieTypeReference(data.ZombieType);
+    return h('div', { class: 'wave-action-field-grid' }, [
+      renderWaveZombieTypeSelect('zombieType', zombieCode, (code) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.ZombieType = code ? toZombieTypeReference(code) : '';
+        });
+      }, true),
+      renderActionNumberField('swashbucklerCount', data.SwashbucklerCount, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.SwashbucklerCount = Math.max(0, Math.round(value));
+        });
+      }),
+      renderActionNumberField('groupSize', data.GroupSize, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.GroupSize = Math.max(0, Math.round(value));
+        });
+      }),
+      renderActionNumberField('timeBetweenGroups', data.TimeBetweenGroups, (value) => {
+        updateWaveActionData(action, (objdata) => {
+          objdata.TimeBetweenGroups = Math.max(0, value);
+        });
+      })
+    ]);
+  }
+  if (action.objclass === 'SpiderRainZombieSpawnerProps' || action.objclass === 'ParachuteRainZombieSpawnerProps') {
+    return renderAirDropActionFields(action);
+  }
+  if (action.objclass === 'SpawnGravestonesWaveActionProps') return renderGravestoneActionFields(action);
+  if (action.objclass === 'SpawnZombiesFromGridItemSpawnerProps') return renderGridItemSpawnActionFields(action);
+  if (action.objclass === 'DropShipZombieSpawnerProps') return renderDropShipActionFields(action);
+  if (action.objclass === 'ThunderChargeWaveActionProps') return renderThunderChargeActionFields(action);
+  if (action.objclass === 'QigongStrikeWaveActionProps') return renderQigongStrikeActionFields(action);
+  if (action.objclass === 'KongfuChiHoleProps') return renderChiHoleActionFields(action);
+  if (action.objclass === 'MissileLocateWaveActionProps') return renderMissileLocateActionFields(action);
+  if (action.objclass === 'WaveWarningProps') return renderWaveWarningActionFields(action);
   return null;
 }
 
@@ -4243,12 +5507,25 @@ function renderWaveActionSequence(wave: WaveDraft, waveIndex: number) {
 function renderWaveAddMenu() {
   return h('details', { class: 'wave-add-menu' }, [
     h('summary', [h(PlusOutlined), t('addSpecialAction')]),
-    h('div', { class: 'wave-add-menu-grid' }, [
+    h('div', { class: 'wave-add-menu-controls' }, [
       h('button', { class: 'add-button small', onClick: addSelectedZombieToWave }, t('addZombie')),
-      h('button', { class: 'add-button small', onClick: () => addWaveAction('tide') }, t('addTideAction')),
-      h('button', { class: 'add-button small', onClick: () => addWaveAction('dino') }, t('addDinoAction')),
-      h('button', { class: 'add-button small', onClick: () => addWaveAction('storm') }, t('addStormAction')),
-      h('button', { class: 'add-button small', onClick: () => addWaveAction('ground') }, t('addGroundSpawnAction'))
+      h(
+        'select',
+        {
+          value: newWaveActionKind.value,
+          'aria-label': t('waveEventType'),
+          onChange: (event: Event) => {
+            newWaveActionKind.value = (event.target as HTMLSelectElement).value as AddableWaveActionKind;
+          }
+        },
+        ADDABLE_WAVE_ACTIONS.map((definition: any) =>
+          h('option', { value: definition.kind }, t(definition.labelKey))
+        )
+      ),
+      h('button', { class: 'add-button small', onClick: () => addWaveAction(newWaveActionKind.value) }, [
+        h(PlusOutlined),
+        t('addWaveEvent')
+      ])
     ])
   ]);
 }
@@ -4616,6 +5893,40 @@ body:has(.level-editor-shell) {
   backdrop-filter: blur(18px) saturate(1.15);
 }
 
+.import-capability-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.55rem;
+  align-items: center;
+  margin-top: 0.65rem;
+  padding: 0.55rem 0.8rem;
+  border-left: 4px solid var(--editor-accent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--editor-accent) 7%, var(--editor-panel));
+  color: var(--editor-muted);
+  font-size: 0.8rem;
+}
+
+.import-capability-strip strong {
+  color: var(--editor-text);
+  font-size: 0.82rem;
+}
+
+.capability-chip + .capability-chip::before {
+  content: "·";
+  margin-right: 0.55rem;
+  color: color-mix(in srgb, var(--editor-muted) 58%, transparent);
+}
+
+.capability-chip.visual {
+  color: var(--editor-accent-strong);
+  font-weight: 700;
+}
+
+.capability-chip.preserved {
+  color: color-mix(in srgb, #a36d12 82%, var(--editor-text));
+}
+
 .title-row {
   display: flex;
   gap: 0.65rem;
@@ -4851,6 +6162,453 @@ body:has(.level-editor-shell) {
   gap: 0.65rem;
   margin-bottom: 0.85rem;
   min-width: 0;
+}
+
+.objectives-panel {
+  margin-bottom: 0.9rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--editor-border);
+  border-bottom: 1px solid var(--editor-border);
+}
+
+.objectives-header,
+.objective-inspector-header,
+.objectives-title,
+.objective-add-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.objectives-header,
+.objective-inspector-header {
+  justify-content: space-between;
+}
+
+.objectives-title span {
+  color: var(--editor-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.objective-add-controls select {
+  min-height: 2rem;
+  max-width: 15rem;
+  padding: 0.25rem 0.45rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 7px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  font: inherit;
+  font-size: 0.78rem;
+}
+
+.objective-tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+  padding-bottom: 0.15rem;
+  overflow-x: auto;
+}
+
+.objective-tabs > button {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.08rem;
+  min-width: 7.5rem;
+  max-width: 14rem;
+  padding: 0.42rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--editor-accent) 7%, transparent);
+  color: var(--editor-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.objective-tabs > button.active {
+  border-color: color-mix(in srgb, var(--editor-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--editor-accent) 14%, transparent);
+}
+
+.objective-tabs small,
+.objective-empty {
+  color: var(--editor-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.objective-empty {
+  display: block;
+  margin-top: 0.55rem;
+}
+
+.objective-inspector {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--editor-border);
+}
+
+.objective-inspector-body {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.55rem;
+}
+
+.objective-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.protect-count-grid {
+  grid-template-columns: minmax(8rem, 0.6fr) auto;
+  align-items: end;
+}
+
+.objective-complete-mark {
+  color: var(--editor-accent-strong);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.objective-alias {
+  width: fit-content;
+  color: var(--editor-muted);
+  font-size: 0.72rem;
+}
+
+.protected-plant-list {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.protected-plant-row {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, auto) minmax(9rem, 1fr) auto;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.protected-plant-row select {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.2rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 7px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+}
+
+.protected-cell-link {
+  min-height: 2.2rem;
+  padding: 0.3rem 0.45rem;
+  border: 0;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--editor-sun) 16%, transparent);
+  color: var(--editor-text);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mold-control-strip,
+.mold-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.mold-control-strip {
+  justify-content: space-between;
+}
+
+.mold-selection-status {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  color: var(--editor-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.mold-status-dot {
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 2px dotted #d6a5cf;
+  border-radius: 50%;
+  background: #654368;
+  box-shadow: 0 0 0 2px color-mix(in srgb, #654368 18%, transparent);
+}
+
+.board-rules-panel {
+  margin-bottom: 0.7rem;
+  padding: 0.65rem;
+  border-left: 3px solid color-mix(in srgb, var(--editor-soil) 72%, var(--editor-border));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--editor-soil) 6%, transparent);
+}
+
+.board-rules-header,
+.board-rule-inspector-header,
+.board-rules-title,
+.board-rule-add-controls,
+.board-rule-subheading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.board-rules-header,
+.board-rule-inspector-header,
+.board-rule-subheading {
+  justify-content: space-between;
+}
+
+.board-rules-title span {
+  color: var(--editor-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.board-rule-add-controls select,
+.board-rule-type select {
+  min-height: 2rem;
+  padding: 0.25rem 0.45rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 7px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  font: inherit;
+  font-size: 0.76rem;
+}
+
+.board-rule-tabs {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  overflow-x: auto;
+}
+
+.board-rule-tabs > button {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.05rem;
+  min-width: 7rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--editor-soil) 7%, transparent);
+  color: var(--editor-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.board-rule-tabs > button.active {
+  border-color: color-mix(in srgb, var(--editor-soil) 38%, var(--editor-border));
+  background: color-mix(in srgb, var(--editor-soil) 13%, transparent);
+}
+
+.board-rule-tabs small {
+  color: var(--editor-muted);
+  font-size: 0.68rem;
+}
+
+.board-rule-inspector {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed var(--editor-border);
+}
+
+.board-rule-inspector-header > div {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.board-rule-inspector-header code {
+  color: var(--editor-muted);
+  font-size: 0.7rem;
+}
+
+.board-rule-inspector-body,
+.board-rule-entry-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.board-rule-inspector-body {
+  margin-top: 0.5rem;
+}
+
+.board-rule-type {
+  max-width: 20rem;
+}
+
+.board-rule-subsection {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.board-rule-entry-row {
+  display: grid;
+  gap: 0.35rem;
+  align-items: end;
+}
+
+.board-rule-entry-row.rail-entry {
+  grid-template-columns: repeat(3, minmax(4.2rem, 1fr)) auto;
+}
+
+.board-rule-entry-row.cart-entry {
+  grid-template-columns: repeat(2, minmax(4.2rem, 1fr)) auto;
+}
+
+.board-coordinate-field {
+  display: grid;
+  gap: 0.12rem;
+  color: var(--editor-muted);
+  font-size: 0.7rem;
+}
+
+.board-coordinate-field input {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.1rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+}
+
+.plank-row-toggles {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.3rem;
+}
+
+.plank-row-toggles button {
+  min-height: 2.35rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 7px;
+  background: var(--vp-c-bg);
+  color: var(--editor-muted);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.plank-row-toggles button.active {
+  border-color: color-mix(in srgb, var(--editor-soil) 52%, var(--editor-border));
+  background: color-mix(in srgb, var(--editor-soil) 17%, transparent);
+  color: var(--editor-text);
+}
+
+.power-tile-groups {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.power-tile-groups button {
+  display: grid;
+  grid-template-columns: 2.35rem minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 0 0.4rem;
+  align-items: center;
+  min-width: 0;
+  min-height: 3.2rem;
+  padding: 0.28rem 0.45rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 7px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.power-tile-groups button.active {
+  border-color: color-mix(in srgb, var(--power-group-color) 72%, var(--editor-border));
+  background: color-mix(in srgb, var(--power-group-color) 10%, var(--vp-c-bg));
+  box-shadow: inset 3px 0 var(--power-group-color);
+}
+
+.power-tile-groups img {
+  grid-row: 1 / 3;
+  width: 2.35rem;
+  height: 2.35rem;
+  object-fit: contain;
+}
+
+.power-tile-groups span {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.power-tile-groups small {
+  color: var(--editor-muted);
+  font-size: 0.66rem;
+}
+
+.power-group-alpha {
+  --power-group-color: #12c8d5;
+}
+
+.power-group-beta {
+  --power-group-color: #45c82d;
+}
+
+.power-group-gamma {
+  --power-group-color: #e33f50;
+}
+
+.power-group-delta {
+  --power-group-color: #e7b928;
+}
+
+.power-group-epsilon {
+  --power-group-color: #b85ad8;
+}
+
+.power-tile-control-strip,
+.power-selected-cell,
+.power-tile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: end;
+}
+
+.power-tile-control-strip {
+  justify-content: space-between;
+}
+
+.power-delay-field {
+  flex: 0 1 10rem;
+}
+
+.power-selected-cell {
+  flex: 1 1 18rem;
+  justify-content: flex-end;
+}
+
+.power-selected-cell > span {
+  align-self: center;
+  color: var(--editor-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .field-row {
@@ -5500,6 +7258,7 @@ body:has(.level-editor-shell) {
 }
 
 .lawn-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(9, minmax(0, 1fr));
   min-width: 0;
@@ -5538,7 +7297,134 @@ body:has(.level-editor-shell) {
   outline-offset: -2px;
 }
 
+.lawn-cell.protected-target {
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--editor-sun) 88%, #7a5410);
+}
+
+.lawn-cell.molded-target {
+  border-color: #6b4168;
+  box-shadow: inset 0 0 0 2px rgba(107, 65, 104, 0.76);
+}
+
+.power-tile-overlay {
+  position: absolute;
+  z-index: 0;
+  inset: 0.12rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--power-group-color) 78%, #1c2917);
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--power-group-color) 24%, transparent), transparent 58%),
+    rgba(26, 51, 34, 0.34);
+  color: var(--power-group-color);
+  font-size: clamp(0.78rem, 1.7vw, 1.25rem);
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+}
+
+.lawn-cell.rail-track::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 50%;
+  width: 0.42rem;
+  border-right: 2px solid rgba(80, 66, 47, 0.82);
+  border-left: 2px solid rgba(80, 66, 47, 0.82);
+  background: repeating-linear-gradient(0deg, rgba(227, 205, 164, 0.88) 0 3px, transparent 3px 7px);
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.lawn-cell.pirate-plank-row {
+  border-top-color: color-mix(in srgb, var(--editor-soil) 72%, #fff);
+  border-bottom-color: color-mix(in srgb, var(--editor-soil) 72%, #1b120a);
+  background-image: linear-gradient(0deg, rgba(122, 76, 38, 0.14), rgba(229, 184, 111, 0.16));
+}
+
+.protected-target-badge {
+  position: absolute;
+  top: 0.12rem;
+  right: 0.12rem;
+  display: grid;
+  place-items: center;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
+  background: #f4c84a;
+  color: #573c0a;
+  font-size: 0.55rem;
+  line-height: 1;
+  transform: rotate(45deg);
+  box-shadow: 0 1px 3px rgba(64, 42, 5, 0.32);
+}
+
+.railcart-badge,
+.mold-target-badge,
+.plank-row-badge {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.mold-target-badge {
+  bottom: 0.08rem;
+  left: 0.08rem;
+  width: 0.92rem;
+  height: 0.92rem;
+  border: 1px dotted #f0c7e8;
+  background: #654368;
+  color: #fff4fc;
+  font-size: 0.55rem;
+}
+
+.railcart-badge {
+  right: 0.1rem;
+  bottom: 0.1rem;
+  width: 1rem;
+  height: 0.82rem;
+  border: 1px solid rgba(53, 44, 33, 0.65);
+  background: #c7b28d;
+  color: #4a3d2d;
+  font-size: 0.62rem;
+}
+
+.plank-row-badge {
+  top: 50%;
+  left: 0.1rem;
+  width: 0.9rem;
+  height: 1.2rem;
+  background: color-mix(in srgb, var(--editor-soil) 82%, #e0b376);
+  color: #fff7df;
+  font-size: 0.65rem;
+  transform: translateY(-50%);
+}
+
+.tide-start-line {
+  position: absolute;
+  z-index: 4;
+  top: 0.18rem;
+  bottom: 0.18rem;
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(95, 194, 221, 0.92);
+  box-shadow:
+    0 0 0 2px rgba(232, 252, 255, 0.68),
+    0 0 8px rgba(46, 154, 194, 0.65);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
 .cell-stack {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 0.03rem;
@@ -5620,6 +7506,8 @@ body:has(.level-editor-shell) {
 }
 
 .cell-coord {
+  position: relative;
+  z-index: 1;
   color: rgba(18, 50, 15, 0.48);
   font-size: 0.72rem;
 }
@@ -6305,6 +8193,499 @@ body:has(.level-editor-shell) {
   gap: 0.6rem;
 }
 
+.wave-zombie-type-field {
+  grid-column: span 2;
+}
+
+.wave-zombie-type-field select {
+  width: 100%;
+  min-width: 0;
+}
+
+.frost-wind-editor {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.frost-wind-editor > strong {
+  font-size: 0.78rem;
+}
+
+.frost-wind-lanes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.frost-wind-lane {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem;
+  padding: 0.35rem;
+  border-bottom: 2px solid color-mix(in srgb, #79bde4 58%, var(--editor-border));
+  background: linear-gradient(180deg, color-mix(in srgb, #dff6ff 32%, transparent), transparent);
+}
+
+.frost-wind-lane > span {
+  grid-column: 1 / -1;
+  color: var(--editor-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.frost-wind-count {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.15rem;
+  align-items: center;
+  color: #4e8eb6;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.frost-wind-count input {
+  width: 100%;
+  min-width: 0;
+  min-height: 2rem;
+  padding: 0.2rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  text-align: center;
+}
+
+.air-drop-editor {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.air-drop-companions {
+  padding-top: 0.6rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+}
+
+.air-drop-companions > summary {
+  color: var(--editor-text);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.air-drop-companion-list {
+  display: grid;
+  margin-top: 0.45rem;
+}
+
+.air-drop-companion-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(4.5rem, 0.6fr) minmax(4.5rem, 0.6fr) auto;
+  gap: 0.5rem;
+  align-items: end;
+  padding: 0.55rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 58%, transparent);
+}
+
+.air-drop-companion-row .wave-zombie-type-field {
+  grid-column: auto;
+}
+
+.air-drop-companion-remove {
+  width: 2.35rem;
+  min-width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+}
+
+.air-drop-companion-add {
+  margin-top: 0.25rem;
+}
+
+.gravestone-event-editor,
+.gravestone-pool-editor,
+.gravestone-position-editor {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.gravestone-pool-editor > strong,
+.gravestone-position-editor > strong {
+  font-size: 0.78rem;
+}
+
+.gravestone-pool-list {
+  display: grid;
+}
+
+.gravestone-pool-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(5rem, 0.55fr) auto;
+  gap: 0.5rem;
+  align-items: end;
+  padding: 0.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 58%, transparent);
+}
+
+.wave-object-type-field select {
+  width: 100%;
+  min-width: 0;
+}
+
+.gravestone-pool-remove {
+  width: 2.35rem;
+  min-width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+}
+
+.gravestone-pool-add {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+}
+
+.gravestone-pool-add select {
+  width: 100%;
+  min-width: 0;
+}
+
+.gravestone-event-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  align-items: end;
+  padding: 0.65rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+}
+
+.compact-checkbox {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  min-height: 2.35rem;
+  color: var(--editor-text);
+  font-size: 0.78rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.compact-checkbox input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--editor-accent);
+}
+
+.gravestone-range-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(5rem, 1fr));
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.gravestone-position-grid {
+  display: grid;
+  grid-template-columns: 1.25rem repeat(9, minmax(1.75rem, 1fr));
+  gap: 0.18rem;
+  width: min(100%, 38rem);
+}
+
+.gravestone-grid-column,
+.gravestone-grid-row {
+  display: grid;
+  place-items: center;
+  color: var(--editor-muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+
+.gravestone-grid-cell {
+  display: grid;
+  min-width: 0;
+  min-height: 1.9rem;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-bottom: 2px solid color-mix(in srgb, #73a64a 32%, var(--editor-border));
+  border-radius: 4px 4px 2px 2px;
+  background: color-mix(in srgb, #79b957 8%, var(--vp-c-bg));
+  color: var(--editor-accent-strong);
+  font: inherit;
+  cursor: pointer;
+}
+
+.gravestone-grid-cell:hover,
+.gravestone-grid-cell:focus-visible {
+  background: color-mix(in srgb, #79b957 17%, var(--vp-c-bg));
+}
+
+.gravestone-grid-cell.active {
+  border-bottom-color: color-mix(in srgb, var(--editor-accent) 78%, #315f20);
+  background: color-mix(in srgb, var(--editor-accent) 25%, var(--vp-c-bg));
+  color: var(--editor-accent-strong);
+}
+
+.grid-item-spawn-editor {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.grid-item-spawn-editor > strong {
+  font-size: 0.78rem;
+}
+
+.grid-item-source-list {
+  display: grid;
+}
+
+.grid-item-source-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: end;
+  padding: 0.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 58%, transparent);
+}
+
+.grid-item-source-remove {
+  width: 2.35rem;
+  min-width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+}
+
+.grid-item-source-add {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+}
+
+.grid-item-source-add select {
+  width: 100%;
+  min-width: 0;
+}
+
+.grid-item-spawn-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  align-items: end;
+  padding-top: 0.65rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+}
+
+.drop-ship-editor {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.drop-ship-basic-grid,
+.drop-ship-range-grid,
+.drop-ship-offset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.drop-ship-basic-grid .wave-zombie-type-field {
+  grid-column: auto;
+}
+
+.action-range-field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.action-range-field > label,
+.drop-ship-offset-selector > span {
+  color: var(--editor-muted);
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.action-range-inputs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.action-range-inputs input {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.35rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+}
+
+.drop-ship-offset-grid {
+  padding-top: 0.65rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+}
+
+.drop-ship-offset-selector {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drop-ship-offset-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 2.35rem);
+  gap: 0.2rem;
+}
+
+.drop-ship-offset-buttons button {
+  min-height: 2.35rem;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid var(--editor-border);
+  border-radius: 6px 6px 3px 3px;
+  background: color-mix(in srgb, var(--editor-accent) 6%, var(--vp-c-bg));
+  color: var(--editor-muted);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.drop-ship-offset-buttons button.active {
+  border-bottom-color: var(--editor-accent);
+  background: color-mix(in srgb, var(--editor-accent) 20%, var(--vp-c-bg));
+  color: var(--editor-accent-strong);
+}
+
+.thunder-charge-editor,
+.qigong-strike-editor,
+.chi-hole-editor,
+.wave-warning-editor {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.thunder-charge-editor > strong,
+.qigong-strike-editor > strong {
+  font-size: 0.78rem;
+}
+
+.thunder-charge-list,
+.qigong-strike-list {
+  display: grid;
+}
+
+.thunder-charge-row {
+  display: grid;
+  grid-template-columns: auto minmax(6rem, 1fr) auto;
+  gap: 0.5rem;
+  align-items: end;
+  padding: 0.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 58%, transparent);
+}
+
+.thunder-sign-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 2.35rem);
+  gap: 0.2rem;
+}
+
+.thunder-sign-buttons button,
+.chi-hole-lane-buttons button {
+  min-height: 2.35rem;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid var(--editor-border);
+  border-radius: 6px 6px 3px 3px;
+  background: color-mix(in srgb, var(--editor-accent) 6%, var(--vp-c-bg));
+  color: var(--editor-muted);
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.thunder-sign-buttons button.active,
+.chi-hole-lane-buttons button.active {
+  border-bottom-color: var(--editor-accent);
+  background: color-mix(in srgb, var(--editor-accent) 20%, var(--vp-c-bg));
+  color: var(--editor-accent-strong);
+}
+
+.thunder-charge-remove,
+.qigong-strike-remove {
+  width: 2.35rem;
+  min-width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+}
+
+.thunder-charge-add,
+.qigong-strike-add {
+  justify-self: start;
+}
+
+.thunder-timing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+}
+
+.qigong-strike-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(3, minmax(4.5rem, 0.55fr)) auto;
+  gap: 0.5rem;
+  align-items: end;
+  padding: 0.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 58%, transparent);
+}
+
+.qigong-strike-row .wave-zombie-type-field {
+  grid-column: auto;
+}
+
+.chi-hole-basic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.chi-hole-lanes,
+.chi-hole-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  align-items: center;
+  padding-top: 0.65rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+}
+
+.chi-hole-lanes > span {
+  color: var(--editor-muted);
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.chi-hole-lane-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 2.35rem);
+  gap: 0.2rem;
+}
+
+.wave-warning-message-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.wave-warning-settings {
+  padding-top: 0.65rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 72%, transparent);
+}
+
 .wave-action-editor-footer {
   gap: 0.6rem;
   justify-content: space-between;
@@ -6507,11 +8888,24 @@ body:has(.level-editor-shell) {
   display: none;
 }
 
-.wave-add-menu-grid {
-  display: flex;
-  flex-wrap: wrap;
+.wave-add-menu-controls {
+  display: grid;
+  grid-template-columns: auto minmax(12rem, 1fr) auto;
   gap: 0.4rem;
+  align-items: center;
   margin-top: 0.5rem;
+}
+
+.wave-add-menu-controls select {
+  min-width: 0;
+  min-height: 2.3rem;
+  padding: 0.25rem 0.45rem;
+  border: 1px solid var(--editor-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--editor-text);
+  font: inherit;
+  font-size: 0.78rem;
 }
 
 .wave-actions {
@@ -6713,6 +9107,12 @@ body:has(.level-editor-shell) {
     box-shadow: 0 8px 24px color-mix(in srgb, #172912 8%, transparent);
   }
 
+  .import-capability-strip {
+    align-items: flex-start;
+    margin-top: 0.5rem;
+    padding: 0.55rem 0.65rem;
+  }
+
   .top-actions {
     width: 100%;
     justify-items: stretch;
@@ -6756,6 +9156,12 @@ body:has(.level-editor-shell) {
     min-width: 0;
   }
 
+  .mobile-section-stack > * {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
   .desktop-layout,
   .desktop-bottom {
     display: none;
@@ -6763,6 +9169,71 @@ body:has(.level-editor-shell) {
 
   .basic-form {
     grid-template-columns: 1fr;
+  }
+
+  .objectives-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .objective-add-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-width: 0;
+  }
+
+  .objective-add-controls select {
+    width: 100%;
+    max-width: none;
+    min-height: 2.75rem;
+  }
+
+  .board-rules-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .board-rule-add-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-width: 0;
+  }
+
+  .board-rule-add-controls select {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.75rem;
+  }
+
+  .power-tile-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .power-selected-cell {
+    flex: none;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .power-delay-field {
+    flex: none;
+    width: 100%;
+  }
+
+  .power-tile-control-strip,
+  .mold-control-strip {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .objective-field-grid,
+  .protect-count-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .protected-plant-row {
+    grid-template-columns: minmax(5.5rem, auto) minmax(0, 1fr) auto;
+    min-width: 0;
   }
 
   .advanced-grid {
@@ -6856,6 +9327,132 @@ body:has(.level-editor-shell) {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .wave-zombie-type-field {
+    grid-column: auto;
+  }
+
+  .air-drop-companion-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  }
+
+  .air-drop-companion-row .wave-zombie-type-field {
+    grid-column: 1 / -1;
+  }
+
+  .air-drop-companion-remove {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .gravestone-pool-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .gravestone-pool-row .wave-object-type-field {
+    grid-column: 1 / -1;
+  }
+
+  .gravestone-pool-remove {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .gravestone-pool-add {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gravestone-event-options {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .gravestone-range-fields {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .grid-item-source-remove {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .grid-item-source-add,
+  .grid-item-spawn-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .drop-ship-basic-grid,
+  .drop-ship-range-grid,
+  .drop-ship-offset-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .drop-ship-offset-buttons {
+    grid-template-columns: repeat(3, 2.75rem);
+  }
+
+  .drop-ship-offset-buttons button {
+    min-height: 2.75rem;
+  }
+
+  .thunder-timing-grid,
+  .chi-hole-basic-grid,
+  .wave-warning-message-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .thunder-sign-buttons {
+    grid-template-columns: repeat(2, 2.75rem);
+  }
+
+  .thunder-sign-buttons button,
+  .chi-hole-lane-buttons button {
+    min-height: 2.75rem;
+  }
+
+  .thunder-charge-remove,
+  .qigong-strike-remove {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .qigong-strike-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  }
+
+  .qigong-strike-row .wave-zombie-type-field {
+    grid-column: 1 / -1;
+  }
+
+  .chi-hole-lanes,
+  .chi-hole-flags {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .chi-hole-lane-buttons {
+    grid-template-columns: repeat(5, minmax(2.75rem, 1fr));
+    width: 100%;
+  }
+
+  .wave-add-menu-controls {
+    grid-template-columns: minmax(0, 1fr) auto;
+    width: 100%;
+  }
+
+  .wave-add-menu-controls > button:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .wave-add-menu {
+    width: 100%;
+    justify-self: stretch;
+  }
+
   .unsupported-object-card {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -6889,6 +9486,7 @@ body:has(.level-editor-shell) {
   .segmented button,
   .object-category-tabs button,
   .add-button,
+  .add-button.small,
   .text-button,
   .zombie-row button {
     min-height: 2.75rem;

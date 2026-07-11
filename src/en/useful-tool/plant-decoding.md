@@ -1,5 +1,5 @@
 ---
-title: Plant Decoding Practice
+title: Plant Decoding Assistant
 index: true
 order: 5
 icon: puzzle-piece

@@ -58,9 +58,9 @@ highlights:
         details: Modifica tus partidas guardadas de Gardenless
         link: ./useful-tool/save-editor
 
-      - title: Practica de descifrado
+      - title: Asistente de descifrado
         icon: puzzle-piece
-        details: Practica el nuevo minijuego de descifrado de plantas
+        details: Registra resultados, descarta respuestas o practica en el navegador
         link: ./useful-tool/plant-decoding
 
       - title: Tutorial de MODs

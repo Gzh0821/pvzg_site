@@ -1,5 +1,5 @@
 ---
-title: 植物解码练习器
+title: 植物解码助手
 index: true
 order: 5
 icon: puzzle-piece

@@ -1,5 +1,5 @@
 ---
-title: Тренировка расшифровки растений
+title: Помощник расшифровки
 index: true
 order: 5
 icon: puzzle-piece
