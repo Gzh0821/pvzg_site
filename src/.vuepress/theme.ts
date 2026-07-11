@@ -172,21 +172,12 @@ export default hopeTheme({
   },
 
   plugins: {
-
-    // comment: {
-    //   provider: "Giscus",
-    //   repo: "Gzh0821/pvzg_site",
-    //   repoId: "R_kgDOMVGuyA",
-    //   category: "Announcements",
-    //   categoryId: "DIC_kwDOMVGuyM4ChC2W",
-    // },
-
     comment: {
-      provider: "Artalk",
-      server: "https://artalk.pvzge.com",
-      useBackendConf: true,
-      site: "Gardendless",
-      locale: "auto",
+      provider: "Giscus",
+      repo: "Gzh0821/pvzg_site",
+      repoId: "R_kgDOMVGuyA",
+      category: "Announcements",
+      categoryId: "DIC_kwDOMVGuyM4ChC2W",
     },
 
     docsearch: {
