@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="decoder-layout">
+            <div class="decoder-layout" :class="{ 'rules-layout': toolMode === 'rules' }">
                 <aside class="base-rail console-panel">
                     <div class="panel-heading">
                         <h2>{{ t('basePool') }}</h2>
@@ -80,11 +80,15 @@
                                 class="attempt-record"
                             >
                                 <span class="attempt-number">#{{ round.index }}</span>
-                                <div class="record-slots" :style="{ '--slot-count': String(round.guesses.length) }">
+                                <div class="record-slots" :class="{ dense: round.guesses.length >= 6 }" :style="{ '--slot-count': String(round.guesses.length) }">
                                     <div v-for="(target, index) in round.guesses" :key="`${round.index}-${index}`" class="record-card">
-                                        <PlantToken :plant="plantView(target)" image-only compact />
-                                        <span class="feedback-mark" :class="`state-${round.feedback[index]}`">
-                                            {{ feedbackSymbol(round.feedback[index]) }}
+                                        <PlantToken :plant="plantView(target)" image-only />
+                                        <span class="record-copy">
+                                            <strong>{{ plantName(target) }}</strong>
+                                            <span class="record-feedback" :class="`state-${round.feedback[index]}`" :aria-label="t(`feedback.${round.feedback[index]}`)">
+                                                <b aria-hidden="true">{{ feedbackSymbol(round.feedback[index]) }}</b>
+                                                <span>{{ t(`feedback.${round.feedback[index]}`) }}</span>
+                                            </span>
                                         </span>
                                     </div>
                                 </div>
@@ -143,7 +147,6 @@
                                     class="merge-option"
                                     :class="{ selected: assistantGuesses[assistantActiveSlot] === rule.Target }"
                                     :disabled="assistantTargetUsedElsewhere(rule.Target) || assistantLocked[assistantActiveSlot]"
-                                    :title="`${plantName(rule.PlantA)} + ${plantName(rule.PlantB)}`"
                                     @click="selectAssistantTarget(rule.Target)"
                                 >
                                     <PlantToken :plant="plantView(rule.Target)" image-only compact />
@@ -165,11 +168,15 @@
                         <div class="history-chamber practice-history" :class="{ empty: !practiceAttempts.length }" :aria-label="t('history')">
                             <article v-for="round in practiceAttempts" :key="round.index" class="attempt-record">
                                 <span class="attempt-number">#{{ round.index }}</span>
-                                <div class="record-slots" :style="{ '--slot-count': String(round.guesses.length) }">
+                                <div class="record-slots" :class="{ dense: round.guesses.length >= 6 }" :style="{ '--slot-count': String(round.guesses.length) }">
                                     <div v-for="(target, index) in round.guesses" :key="`${round.index}-${index}`" class="record-card">
-                                        <PlantToken :plant="plantView(target)" image-only compact />
-                                        <span class="feedback-mark" :class="`state-${round.feedback[index]}`">
-                                            {{ feedbackSymbol(round.feedback[index]) }}
+                                        <PlantToken :plant="plantView(target)" image-only />
+                                        <span class="record-copy">
+                                            <strong>{{ plantName(target) }}</strong>
+                                            <span class="record-feedback" :class="`state-${round.feedback[index]}`" :aria-label="t(`feedback.${round.feedback[index]}`)">
+                                                <b aria-hidden="true">{{ feedbackSymbol(round.feedback[index]) }}</b>
+                                                <span>{{ t(`feedback.${round.feedback[index]}`) }}</span>
+                                            </span>
                                         </span>
                                     </div>
                                 </div>
@@ -231,28 +238,31 @@
                             <h2>{{ t('rulesReference') }}</h2>
                             <span class="count-badge">{{ visibleRules.length }}</span>
                         </div>
-                        <div class="rules-table-wrap">
-                            <table class="rules-table">
-                                <thead>
-                                    <tr>
-                                        <th>{{ t('plantA') }}</th>
-                                        <th>{{ t('plantB') }}</th>
-                                        <th>{{ t('result') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="rule in visibleRules" :key="rule.Target">
-                                        <td><PlantToken :plant="plantView(rule.PlantA)" compact /></td>
-                                        <td><PlantToken :plant="plantView(rule.PlantB)" compact /></td>
-                                        <td class="result-cell"><PlantToken :plant="plantView(rule.Target)" compact /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="rules-feedback-strip">
+                            <span v-for="state in feedbackStates" :key="state" :class="`state-${state}`">
+                                <b>{{ feedbackSymbol(state) }}</b>
+                                <span><strong>{{ t(`feedback.${state}`) }}</strong><small>{{ t(`feedbackHelp.${state}`) }}</small></span>
+                            </span>
+                        </div>
+                        <div class="rules-grid">
+                            <article v-for="rule in visibleRules" :key="rule.Target" class="rule-card">
+                                <div class="rule-plant">
+                                    <PlantToken :plant="plantView(rule.PlantA)" compact />
+                                </div>
+                                <b class="rule-operator">+</b>
+                                <div class="rule-plant">
+                                    <PlantToken :plant="plantView(rule.PlantB)" compact />
+                                </div>
+                                <b class="rule-operator">=</b>
+                                <div class="rule-plant rule-result">
+                                    <PlantToken :plant="plantView(rule.Target)" compact />
+                                </div>
+                            </article>
                         </div>
                     </template>
                 </main>
 
-                <aside class="status-rail console-panel">
+                <aside v-if="toolMode !== 'rules'" class="status-rail console-panel">
                     <template v-if="toolMode === 'assistant'">
                         <div class="panel-heading">
                             <h2>{{ t('feedbackPanel') }}</h2>
@@ -337,17 +347,6 @@
                         </ol>
                     </template>
 
-                    <template v-else>
-                        <div class="panel-heading">
-                            <h2>{{ t('feedbackMeaning') }}</h2>
-                        </div>
-                        <div class="feedback-legend explanatory">
-                            <span v-for="state in feedbackStates" :key="state" :class="`state-${state}`">
-                                <b>{{ feedbackSymbol(state) }}</b>
-                                <span><strong>{{ t(`feedback.${state}`) }}</strong><small>{{ t(`feedbackHelp.${state}`) }}</small></span>
-                            </span>
-                        </div>
-                    </template>
                 </aside>
             </div>
         </section>
@@ -496,7 +495,7 @@ const PlantToken = defineComponent({
         imageOnly: { type: Boolean, default: false }
     },
     setup(props) {
-        return () => h('span', { class: ['plant-token', props.compact && 'compact', props.imageOnly && 'image-only'], title: props.plant.codename }, [
+        return () => h('span', { class: ['plant-token', props.compact && 'compact', props.imageOnly && 'image-only'] }, [
             props.plant.image
                 ? h('img', { src: props.plant.image, alt: '', loading: 'lazy', 'aria-hidden': 'true' })
                 : h('span', { class: 'plant-fallback', 'aria-hidden': 'true' }, props.plant.codename.slice(0, 2).toUpperCase()),
@@ -762,6 +761,7 @@ onMounted(() => {
     --shell-width: min(1320px, calc(100vw - 64px));
     width: var(--shell-width);
     max-width: calc(100vw - 24px);
+    box-sizing: border-box;
     margin: 8px auto 20px;
     margin-left: calc((100% - var(--shell-width)) / 2);
     color: var(--vp-c-text);
@@ -832,6 +832,13 @@ onMounted(() => {
     line-height: 34px;
 }
 
+.mode-switch :deep(.ant-segmented-thumb),
+.mode-switch :deep(.ant-segmented-thumb-motion-appear-active),
+.mode-switch :deep(.ant-segmented-thumb-motion-enter-active) {
+    animation: none !important;
+    transition: none !important;
+}
+
 .control-band {
     display: flex;
     align-items: center;
@@ -887,6 +894,15 @@ onMounted(() => {
     grid-template-columns: 180px minmax(0, 1fr) 244px;
     gap: 12px;
     align-items: start;
+}
+
+.decoder-layout.rules-layout {
+    grid-template-columns: 180px minmax(0, 1fr);
+}
+
+.decoder-layout > * {
+    min-width: 0;
+    max-width: 100%;
 }
 
 .console-panel {
@@ -1043,43 +1059,111 @@ onMounted(() => {
 
 .record-slots {
     display: grid;
-    grid-template-columns: repeat(var(--slot-count, 10), minmax(38px, 1fr));
-    gap: 5px;
+    grid-template-columns: repeat(var(--slot-count, 10), minmax(64px, 1fr));
+    gap: 7px;
+    overflow-x: auto;
+    padding: 2px 2px 4px;
 }
 
 .record-card {
+    box-sizing: border-box;
     position: relative;
     display: grid;
-    place-items: center;
-    min-height: 58px;
+    grid-template-columns: 52px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    min-height: 76px;
     border: 1px solid rgb(255 255 255 / 12%);
     border-radius: 8px;
+    padding: 7px 9px;
     background: #eef1e9;
 }
 
-.record-card :deep(.plant-token.compact.image-only) {
-    grid-template-columns: 42px;
+.record-card :deep(.plant-token.image-only) {
+    grid-template-columns: 52px;
 }
 
-.record-card :deep(.plant-token.compact img),
-.record-card :deep(.plant-token.compact .plant-fallback) {
-    width: 42px;
-    height: 42px;
+.record-card :deep(.plant-token img),
+.record-card :deep(.plant-fallback) {
+    width: 52px;
+    height: 52px;
 }
 
-.feedback-mark {
-    position: absolute;
-    right: -2px;
-    bottom: -3px;
+.record-copy {
     display: grid;
-    place-items: center;
-    width: 18px;
-    height: 18px;
-    border: 2px solid #16242c;
-    border-radius: 50%;
-    background: #15232b;
-    font-size: 0.7rem;
-    font-weight: 900;
+    gap: 5px;
+    min-width: 0;
+}
+
+.record-copy > strong {
+    overflow: hidden;
+    color: #14232c;
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", sans-serif;
+    font-size: 0.82rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.record-feedback {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    font-size: 0.64rem;
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+.record-feedback b {
+    flex: 0 0 auto;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.record-slots.dense .record-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 4px;
+    padding: 6px 4px;
+}
+
+.record-slots.dense {
+    grid-template-columns: repeat(var(--slot-count, 10), minmax(60px, 1fr));
+    gap: 5px;
+}
+
+.record-slots.dense .record-card :deep(.plant-token.image-only) {
+    grid-template-columns: 40px;
+}
+
+.record-slots.dense .record-card :deep(.plant-token img),
+.record-slots.dense .record-card :deep(.plant-fallback) {
+    width: 40px;
+    height: 40px;
+}
+
+.record-slots.dense .record-copy {
+    justify-items: center;
+    width: 100%;
+    gap: 2px;
+    text-align: center;
+}
+
+.record-slots.dense .record-copy > strong {
+    width: 100%;
+    font-size: 0.68rem;
+}
+
+.record-slots.dense .record-feedback {
+    justify-content: center;
+}
+
+.record-slots.dense .record-feedback > span {
+    display: none;
+}
+
+.record-slots.dense .record-feedback b {
+    font-size: 0.9rem;
 }
 
 .state-correct { color: var(--correct) !important; }
@@ -1127,7 +1211,7 @@ onMounted(() => {
 
 .decode-slots {
     display: grid;
-    grid-template-columns: repeat(var(--slot-count), minmax(76px, 1fr));
+    grid-template-columns: repeat(var(--slot-count), minmax(98px, 1fr));
     gap: 7px;
     overflow-x: auto;
     padding: 2px;
@@ -1138,11 +1222,11 @@ onMounted(() => {
     position: relative;
     display: grid;
     place-items: center;
-    min-width: 76px;
-    min-height: 102px;
+    min-width: 98px;
+    min-height: 118px;
     border: 2px solid var(--line);
     border-radius: 11px;
-    padding: 12px 5px 20px;
+    padding: 18px 6px 24px;
     background: color-mix(in srgb, var(--surface-raised) 82%, #f2f0df 18%);
     color: var(--ink);
     cursor: pointer;
@@ -1150,13 +1234,21 @@ onMounted(() => {
 }
 
 .decode-card :deep(.plant-token.compact) {
-    grid-template-columns: 42px minmax(0, 1fr);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 5px;
+    width: 100%;
+    text-align: center;
 }
 
 .decode-card :deep(.plant-token.compact img),
 .decode-card :deep(.plant-token.compact .plant-fallback) {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
+}
+
+.decode-card :deep(.plant-token-text) {
+    width: 100%;
 }
 
 .decode-card:hover { border-color: var(--cyan); }
@@ -1392,19 +1484,111 @@ onMounted(() => {
 .fusion-cell { display: grid; place-items: center; min-height: 64px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 0.7rem; }
 .fusion-cell.result.ready { border-style: solid; border-color: var(--cyan); background: var(--cyan-soft); }
 
-.rules-table-wrap {
-    max-height: 680px;
-    margin: 0 14px 14px;
-    border: 1px solid var(--line);
-    border-radius: 13px;
-    overflow: auto;
+.rules-feedback-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 14px 12px;
 }
 
-.rules-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.rules-table th, .rules-table td { border-bottom: 1px solid var(--line); padding: 8px; text-align: center; }
-.rules-table th { position: sticky; top: 0; z-index: 1; background: var(--surface-raised); color: var(--muted); font-size: 0.7rem; }
-.rules-table tr:last-child td { border-bottom: 0; }
-.rules-table .result-cell { background: color-mix(in srgb, var(--cyan-soft) 42%, transparent); }
+.rules-feedback-strip > span {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    border-radius: 10px;
+    padding: 8px;
+    background: var(--surface-raised);
+}
+
+.rules-feedback-strip > span > b {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.rules-feedback-strip > span > span {
+    display: grid;
+    gap: 1px;
+    min-width: 0;
+}
+
+.rules-feedback-strip strong {
+    color: var(--ink);
+    font-size: 0.68rem;
+}
+
+.rules-feedback-strip small {
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 0.56rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 10px;
+    max-height: 680px;
+    margin: 0 14px 14px;
+    overflow: auto;
+    padding: 2px 4px 4px 2px;
+}
+
+.rule-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 6px;
+    min-height: 112px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 9px;
+    background: var(--surface-raised);
+}
+
+.rule-plant {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    min-height: 88px;
+    border-radius: 9px;
+    padding: 7px 3px;
+}
+
+.rule-result {
+    background: color-mix(in srgb, var(--cyan-soft) 72%, transparent);
+}
+
+.rule-operator {
+    color: var(--cyan);
+    font-size: 1rem;
+}
+
+.rule-card :deep(.plant-token.compact) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.rule-card :deep(.plant-token.compact img),
+.rule-card :deep(.plant-token.compact .plant-fallback) {
+    width: 44px;
+    height: 44px;
+}
+
+.rule-card :deep(.plant-token-text) {
+    width: 100%;
+}
+
+.rule-card :deep(.plant-token-text strong) {
+    font-size: 0.78rem;
+}
 
 :deep(.plant-token) {
     display: inline-grid;
@@ -1437,6 +1621,8 @@ button:focus-visible,
 @media (max-width: 1180px) {
     .decoding-shell { --shell-width: min(1020px, calc(100vw - 32px)); }
     .decoder-layout { grid-template-columns: 160px minmax(0, 1fr) 220px; }
+    .decoder-layout.rules-layout { grid-template-columns: 160px minmax(0, 1fr); }
+    .rules-grid { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
 }
 
 @media (max-width: 880px) {
@@ -1445,11 +1631,12 @@ button:focus-visible,
     .control-band { flex-wrap: wrap; }
     .quick-stats { order: 3; width: 100%; }
     .decoder-layout { grid-template-columns: 1fr; }
+    .decoder-layout.rules-layout { grid-template-columns: 1fr; }
     .base-rail { order: 1; }
     .decode-stage { order: 2; }
     .status-rail { order: 3; }
-    .base-list { display: flex; max-height: none; overflow-x: auto; }
-    .base-card { flex: 0 0 86px; grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .base-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(136px, 1fr)); max-height: none; overflow: visible; }
+    .base-card { min-width: 0; }
     .status-rail .feedback-buttons { grid-template-columns: repeat(4, 1fr); }
     .feedback-button { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     .domain-list { grid-template-columns: repeat(10, 1fr); }
@@ -1457,20 +1644,30 @@ button:focus-visible,
 }
 
 @media (max-width: 620px) {
-    .tool-header { display: grid; gap: 12px; margin-inline: 0; padding: 13px 10px 10px; }
-    .mode-switch { width: 100%; }
-    .mode-switch :deep(.ant-segmented-group) { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .tool-header { display: grid; gap: 14px; margin-inline: 0; padding: 16px 14px 14px; }
+    .tool-header h1 { font-size: 1.42rem; }
+    .mode-switch { display: block; width: 100%; max-width: none; }
+    .mode-switch :deep(.ant-segmented-group) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
     .mode-switch :deep(.ant-segmented-item-label) { min-width: 0; }
-    .control-band { gap: 9px; margin-inline: 0; border-radius: 0 0 12px 12px; }
-    .number-control { flex: 1 1 130px; justify-content: space-between; }
-    .control-actions { width: 100%; margin-left: 0; }
+    .control-band { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-inline: 0; border-radius: 0 0 12px 12px; padding: 12px; }
+    .number-control { display: grid; gap: 6px; min-width: 0; }
+    .number-control :deep(.ant-input-number) { width: 100%; }
+    .control-actions { grid-column: 1 / -1; order: 2; width: 100%; margin-left: 0; }
     .control-actions :deep(.ant-btn) { flex: 1; }
+    .control-actions :deep(.ant-segmented) { width: 100%; }
+    .control-actions :deep(.ant-segmented-group) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+    .quick-stats { grid-column: 1 / -1; order: 3; width: 100%; flex-wrap: wrap; }
     .decoder-layout { gap: 9px; }
     .console-panel { border-radius: 14px; }
     .history-chamber { min-height: 96px; max-height: 260px; margin-inline: 8px; }
+    .record-card { grid-template-columns: 1fr; justify-items: center; gap: 4px; padding: 6px 4px; }
+    .record-card :deep(.plant-token.image-only) { grid-template-columns: 44px; }
+    .record-card :deep(.plant-token img), .record-card :deep(.plant-fallback) { width: 44px; height: 44px; }
+    .record-copy { justify-items: center; width: 100%; gap: 2px; text-align: center; }
+    .record-feedback { justify-content: center; }
     .current-deck, .merge-shelf, .fusion-dock { margin-inline: 8px; }
-    .decode-slots { grid-template-columns: repeat(var(--slot-count), minmax(68px, 1fr)); }
-    .decode-card { min-width: 68px; min-height: 92px; }
+    .decode-slots { grid-template-columns: repeat(var(--slot-count), minmax(92px, 1fr)); }
+    .decode-card { min-width: 92px; min-height: 112px; }
     .merge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 270px; }
     .status-rail .feedback-buttons { grid-template-columns: repeat(2, 1fr); }
     .feedback-button { min-height: 52px; }
@@ -1478,6 +1675,7 @@ button:focus-visible,
     .fusion-equation { grid-template-columns: 1fr auto 1fr; }
     .fusion-equation > b:nth-of-type(2), .fusion-cell.result { grid-column: span 1; }
     .fusion-cell.result { grid-column: 1 / -1; }
-    .rules-table th, .rules-table td { padding: 6px 3px; }
+    .rules-feedback-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rules-grid { grid-template-columns: 1fr; }
 }
 </style>
