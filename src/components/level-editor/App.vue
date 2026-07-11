@@ -141,6 +141,18 @@ import { boardObjectData } from '../game-data/board-objects';
 import { plantFeaturesJson as plantFeatures } from '../game-data/plants';
 import { zombieFeaturesJson as zombieFeatures } from '../game-data/zombies';
 import localeMessages from './i18n.json';
+import {
+  collectPreservedStaticWaveObjects,
+  groupZombieEntries,
+  groupZombiePoolReferences,
+  isDetachedZombieSpawnAction,
+  resizeZombiePoolGroup,
+  serializeZombieGroups,
+  serializeZombiePoolGroups,
+  setDynamicZombiesOnModuleObject,
+  supportsDynamicZombieEditing,
+  toZombieTypeReference
+} from './wave-codec.mjs';
 
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
 type AssetKind = 'plant' | 'zombie' | 'object';
@@ -152,6 +164,7 @@ type SeedMode = 'chooser' | 'preset';
 type PlantListKey = 'seedPlants' | 'includePlants' | 'excludePlants';
 type ConveyorWaveMode = 'Add' | 'Remove';
 type ConveyorAdvancedTab = 'plants' | 'rules' | 'waves';
+type DynamicZombieNumberField = 'StartingWave' | 'StartingPoints' | 'PointIncrementPerWave';
 type ConveyorEditorTarget =
   | { kind: 'initialPlant'; index: number }
   | { kind: 'dropCondition'; index: number }
@@ -347,11 +360,13 @@ interface LevelDraft {
   maxNextWaveHealthPercentage: number;
   waveManagerModuleExtra: Record<string, any>;
   waveManagerExtra: Record<string, any>;
+  supportsDynamicZombies: boolean;
   hasWaveManager: boolean;
   preserveGeneratorWaves: boolean;
   preservedWaveManagerModule?: any;
   preserveCustomWaveManager: boolean;
   preservedWaveManagerObject?: any;
+  preservedStaticWaveObjects: any[];
   waveSystemDirty: boolean;
   levelExtra: Record<string, any>;
   preserveBoardModules: boolean;
@@ -381,6 +396,8 @@ const selectedAsset = ref<AssetOption | null>(null);
 const selectedCell = ref<{ row: number; col: number } | null>(null);
 const selectedWaveId = ref(1);
 const expandedWaveActionKey = ref('zombies');
+const selectedDynamicDifficulty = ref(4);
+const dynamicDifficultyOpen = ref(false);
 const nextItemId = ref(1);
 const nextWaveId = ref(2);
 const nextZombieId = ref(1);
@@ -518,6 +535,8 @@ const canAddSelectedSeedPlant = computed(
 const canAddSelectedZombie = computed(() => !!selectedZombieAsset.value && !!selectedWave.value);
 const seedActionHint = ref('');
 const zombieActionHint = ref('');
+const eventZombieActionHint = ref('');
+const dynamicZombieActionHint = ref('');
 const conveyorActionHint = ref('');
 const conveyorAdvancedTab = ref<ConveyorAdvancedTab>('plants');
 const conveyorEditorOpen = ref(false);
@@ -768,9 +787,11 @@ function createDefaultDraft(): LevelDraft {
     maxNextWaveHealthPercentage: 0.7,
     waveManagerModuleExtra: {},
     waveManagerExtra: {},
+    supportsDynamicZombies: true,
     hasWaveManager: true,
     preserveGeneratorWaves: false,
     preserveCustomWaveManager: false,
+    preservedStaticWaveObjects: [],
     waveSystemDirty: false,
     levelExtra: {
       LevelNumber: 1,
@@ -789,6 +810,10 @@ function resetDraft() {
   draft.value = createDefaultDraft();
   selectedWaveId.value = 1;
   expandedWaveActionKey.value = 'zombies';
+  selectedDynamicDifficulty.value = 4;
+  dynamicDifficultyOpen.value = false;
+  dynamicZombieActionHint.value = '';
+  eventZombieActionHint.value = '';
   selectedCell.value = null;
   selectedAsset.value = null;
   nextItemId.value = 1;
@@ -1171,6 +1196,166 @@ function markWaveSystemEdited() {
   }
 }
 
+function getDynamicZombieSlots() {
+  const slots = draft.value.waveManagerModuleExtra?.DynamicZombies;
+  return Array.isArray(slots) ? slots : [];
+}
+
+function getDynamicZombieSlot(level = selectedDynamicDifficulty.value) {
+  const slot = getDynamicZombieSlots()[level - 1];
+  return slot && typeof slot === 'object' && !Array.isArray(slot) ? slot : {};
+}
+
+function isDynamicZombieSlotConfigured(level: number) {
+  return Object.keys(getDynamicZombieSlot(level)).length > 0;
+}
+
+function getConfiguredDynamicDifficultyCount() {
+  return Array.from({ length: 7 }, (_, index) => index + 1).filter(isDynamicZombieSlotConfigured).length;
+}
+
+function commitDynamicZombieSlots(slots: Record<string, any>[]) {
+  if (!draft.value.supportsDynamicZombies) return;
+  draft.value.waveManagerModuleExtra = {
+    ...draft.value.waveManagerModuleExtra,
+    DynamicZombies: slots
+  };
+
+  if (draft.value.preservedStaticWaveObjects.length) {
+    draft.value.preservedStaticWaveObjects = draft.value.preservedStaticWaveObjects.map((object) =>
+      object?.objclass === 'WaveManagerModuleProperties'
+        ? setDynamicZombiesOnModuleObject(object, slots)
+        : object
+    );
+  }
+
+  if (draft.value.preserveGeneratorWaves && draft.value.preservedWaveManagerModule) {
+    draft.value.preservedWaveManagerModule = setDynamicZombiesOnModuleObject(draft.value.preservedWaveManagerModule, slots);
+  }
+}
+
+function updateDynamicZombieSlots(updater: (slots: Record<string, any>[]) => void) {
+  const slots = cloneJson(getDynamicZombieSlots());
+  while (slots.length < 7) slots.push({});
+  updater(slots);
+  commitDynamicZombieSlots(slots);
+}
+
+function configureDynamicZombieSlot(level = selectedDynamicDifficulty.value) {
+  updateDynamicZombieSlots((slots) => {
+    if (Object.keys(slots[level - 1] || {}).length) return;
+    slots[level - 1] = {
+      StartingWave: 0,
+      StartingPoints: 0,
+      PointIncrementPerWave: 0,
+      ZombiePool: []
+    };
+  });
+  dynamicDifficultyOpen.value = true;
+}
+
+function clearDynamicZombieSlot(level = selectedDynamicDifficulty.value) {
+  Modal.confirm({
+    title: t('clearDifficulty', { level }),
+    content: t('clearDifficultyDescription', { level }),
+    okText: t('clearDifficulty', { level }),
+    cancelText: t('cancel'),
+    okType: 'danger',
+    centered: true,
+    onOk: () => {
+      updateDynamicZombieSlots((slots) => {
+        slots[level - 1] = {};
+      });
+      nextTick(() => {
+        document.querySelector<HTMLElement>(`[data-difficulty-level="${level}"]`)?.focus();
+      });
+    }
+  });
+}
+
+function getDynamicNumberInputValue(field: DynamicZombieNumberField) {
+  const raw = getDynamicZombieSlot()[field];
+  if (typeof raw !== 'number' || !Number.isFinite(raw)) return '';
+  return field === 'StartingWave' ? raw + 1 : raw;
+}
+
+function getDynamicNumberPlaceholder(field: DynamicZombieNumberField) {
+  const raw = getDynamicZombieSlot()[field];
+  return raw !== undefined && (typeof raw !== 'number' || !Number.isFinite(raw)) ? String(raw) : '';
+}
+
+function updateDynamicZombieNumber(field: DynamicZombieNumberField, text: string) {
+  updateDynamicZombieSlots((slots) => {
+    const index = selectedDynamicDifficulty.value - 1;
+    const slot = { ...(slots[index] || {}) };
+    if (!text.trim()) delete slot[field];
+    else {
+      const value = Number(text);
+      if (!Number.isFinite(value)) return;
+      slot[field] = field === 'StartingWave' ? Math.max(1, Math.round(value)) - 1 : value;
+    }
+    slots[index] = slot;
+  });
+}
+
+function getDynamicZombiePoolGroups(level = selectedDynamicDifficulty.value) {
+  const pool = getDynamicZombieSlot(level).ZombiePool;
+  return Array.isArray(pool) ? groupZombiePoolReferences(pool) : [];
+}
+
+function writeDynamicZombiePoolGroups(groups: { code: string; rawValues: any[] }[]) {
+  updateDynamicZombieSlots((slots) => {
+    const index = selectedDynamicDifficulty.value - 1;
+    const slot = { ...(slots[index] || {}) };
+    slot.ZombiePool = serializeZombiePoolGroups(groups);
+    slots[index] = slot;
+  });
+}
+
+function setDynamicZombiePoolCount(groupIndex: number, count: number) {
+  writeDynamicZombiePoolGroups(resizeZombiePoolGroup(getDynamicZombiePoolGroups(), groupIndex, count));
+}
+
+function removeDynamicZombiePoolGroup(groupIndex: number) {
+  const groups = getDynamicZombiePoolGroups();
+  groups.splice(groupIndex, 1);
+  writeDynamicZombiePoolGroups(groups);
+}
+
+function addSelectedZombieToDynamicPool() {
+  if (!selectedZombieAsset.value) {
+    dynamicZombieActionHint.value = 'selectZombieFirst';
+    return;
+  }
+  dynamicZombieActionHint.value = '';
+  if (!isDynamicZombieSlotConfigured(selectedDynamicDifficulty.value)) configureDynamicZombieSlot();
+  updateDynamicZombieSlots((slots) => {
+    const index = selectedDynamicDifficulty.value - 1;
+    const slot = { ...(slots[index] || {}) };
+    const pool = Array.isArray(slot.ZombiePool) ? [...slot.ZombiePool] : [];
+    pool.push(toZombieTypeReference(selectedZombieAsset.value!.code));
+    slot.ZombiePool = pool;
+    slots[index] = slot;
+  });
+}
+
+function selectDynamicDifficulty(level: number, shouldOpen = true) {
+  selectedDynamicDifficulty.value = Math.min(7, Math.max(1, level));
+  if (shouldOpen) dynamicDifficultyOpen.value = true;
+}
+
+function handleDynamicDifficultyKeydown(event: KeyboardEvent, level: number) {
+  let nextLevel = level;
+  if (event.key === 'ArrowLeft') nextLevel = level === 1 ? 7 : level - 1;
+  else if (event.key === 'ArrowRight') nextLevel = level === 7 ? 1 : level + 1;
+  else if (event.key === 'Home') nextLevel = 1;
+  else if (event.key === 'End') nextLevel = 7;
+  else return;
+  event.preventDefault();
+  selectDynamicDifficulty(nextLevel);
+  nextTick(() => document.querySelector<HTMLElement>(`[data-difficulty-level="${nextLevel}"]`)?.focus());
+}
+
 function syncWaveFlags() {
   const interval = normalizeFlagWaveIntervalMagnitude(draft.value.flagWaveInterval, 1);
   draft.value.waves.forEach((wave, index) => {
@@ -1424,28 +1609,15 @@ function normalizeWaveRefs(entry: unknown) {
 }
 
 function parseWaveZombieGroups(zombieEntries: any[]) {
-  const groups: WaveZombie[] = [];
-  zombieEntries.forEach((zombie: any) => {
-    const code = parseTypeAlias(zombie?.Type) || 'mummy';
-    const row = zombie?.Row === undefined || zombie?.Row === null ? '' : String(zombie.Row);
+  return groupZombieEntries(zombieEntries).map((group: any) => {
+    const code = group.code || 'mummy';
     const option = zombieOptions.value.find((item) => item.code === code);
-    const normalizedEntry = cloneJson(zombie || { Type: `RTID(${code}@ZombieTypes)` });
-    const existing = groups.find((item) => item.code === code && item.row === row);
-    if (existing) {
-      existing.count += 1;
-      existing.entries = [...(existing.entries || []), normalizedEntry];
-    } else {
-      groups.push({
-        id: nextZombieId.value++,
-        code,
-        label: option?.name || code,
-        count: 1,
-        row,
-        entries: [normalizedEntry]
-      });
-    }
+    return {
+      ...group,
+      id: nextZombieId.value++,
+      label: option?.name || code
+    };
   });
-  return groups;
 }
 
 function parseConveyorPlantEntry(entry: any): ConveyorPlantEntry {
@@ -1675,6 +1847,51 @@ function updateWaveActionData(action: WaveActionDraft, updater: (objdata: Record
   action.jsonText = stringifyObjdata(objdata);
 }
 
+function isZombiePoolEvent(action: WaveActionDraft) {
+  return action.objclass === 'StormZombieSpawnerProps' || action.objclass === 'SpawnZombiesFromGroundSpawnerProps';
+}
+
+function getEventZombieGroups(action: WaveActionDraft): WaveZombie[] {
+  const zombies = Array.isArray(action.objdata?.Zombies) ? action.objdata.Zombies : [];
+  return groupZombieEntries(zombies).map((group: any, index: number) => ({
+    ...group,
+    id: index + 1,
+    label: getZombieDisplayName(group.code, group.code)
+  }));
+}
+
+function writeEventZombieGroups(action: WaveActionDraft, groups: WaveZombie[]) {
+  updateWaveActionData(action, (objdata) => {
+    objdata.Zombies = serializeZombieGroups(groups);
+  });
+}
+
+function setEventZombieCount(action: WaveActionDraft, groupIndex: number, count: number) {
+  const groups = getEventZombieGroups(action);
+  if (!groups[groupIndex]) return;
+  groups[groupIndex].count = Math.max(1, Math.round(count) || 1);
+  writeEventZombieGroups(action, groups);
+}
+
+function removeEventZombieGroup(action: WaveActionDraft, groupIndex: number) {
+  const groups = getEventZombieGroups(action);
+  groups.splice(groupIndex, 1);
+  writeEventZombieGroups(action, groups);
+}
+
+function addSelectedZombieToEvent(action: WaveActionDraft) {
+  if (!selectedZombieAsset.value) {
+    eventZombieActionHint.value = 'selectZombieFirst';
+    return;
+  }
+  eventZombieActionHint.value = '';
+  updateWaveActionData(action, (objdata) => {
+    const zombies = Array.isArray(objdata.Zombies) ? [...objdata.Zombies] : [];
+    zombies.push({ Type: toZombieTypeReference(selectedZombieAsset.value!.code) });
+    objdata.Zombies = zombies;
+  });
+}
+
 function setWaveZombieRow(zombie: WaveZombie, value: string) {
   markWaveSystemEdited();
   zombie.row = value;
@@ -1724,6 +1941,10 @@ function handleUpload(file: File) {
       nextWaveActionId.value = 1;
       draft.value = parseLevel(parsed);
       selectedWaveId.value = draft.value.waves[0]?.id || 1;
+      selectedDynamicDifficulty.value = 4;
+      dynamicDifficultyOpen.value = false;
+      dynamicZombieActionHint.value = '';
+      eventZombieActionHint.value = '';
       selectedCell.value = null;
       message.success(t('imported'));
     } catch (error) {
@@ -1920,12 +2141,17 @@ function parseLevel(raw: any): LevelDraft {
     'GravestoneProperties'
   ]);
   const unsupportedRawObjects = objects.filter(
-    (object: any) => !supportedClasses.has(object?.objclass) && !(object?.aliases || []).some((alias: string) => waveActionAliases.has(alias))
+    (object: any) =>
+      isDetachedZombieSpawnAction(object, waveActionAliases) ||
+      (!supportedClasses.has(object?.objclass) && !(object?.aliases || []).some((alias: string) => waveActionAliases.has(alias)))
   );
   const seedPresetPlants = Array.isArray(seed.PresetPlantList) ? seed.PresetPlantList.map((item: any) => item.PlantType) : [];
   const seedPresetEntries = Array.isArray(seed.PresetPlantList) ? seed.PresetPlantList.map((item: any) => cloneJson(item)) : [];
   const seedSlots = normalizeSeedSlots(seed.OverrideSeedSlotsCount ?? MAX_SEED_PLANTS, seedPresetPlants.length);
   const preserveCustomWaveManager = !!waveManagerObject && !Array.isArray(waveProps.Waves) && !waveManagerModule;
+  const preservedStaticWaveObjects = Array.isArray(waveProps.Waves)
+    ? collectPreservedStaticWaveObjects(objects, waveManagerModule, waveManagerObject, waveActionAliases)
+    : [];
   nextWaveId.value = waves.length + 1;
 
   return {
@@ -1969,11 +2195,13 @@ function parseLevel(raw: any): LevelDraft {
       'MinNextWaveHealthPercentage',
       'MaxNextWaveHealthPercentage'
     ]),
+    supportsDynamicZombies: supportsDynamicZombieEditing(waveManagerModule),
     hasWaveManager: !!waveManagerObject,
     preserveGeneratorWaves: !Array.isArray(waveProps.Waves) && !!waveManagerModule,
     preservedWaveManagerModule: !Array.isArray(waveProps.Waves) && waveManagerModule ? cloneJson(waveManagerModule) : undefined,
     preserveCustomWaveManager,
     preservedWaveManagerObject: preserveCustomWaveManager ? cloneJson(waveManagerObject) : undefined,
+    preservedStaticWaveObjects,
     waveSystemDirty: false,
     levelExtra: omitKeys(level, ['Name', 'Description', 'StageModule', 'Modules', 'StartingSun', 'WrittenBy', 'WritenBy']),
     preserveBoardModules: preservedPlacementObjects.length > 0,
@@ -2023,21 +2251,7 @@ function serializeBoardPlacement(item: BoardItem) {
 }
 
 function serializeWaveZombies(wave: WaveDraft) {
-  return wave.zombies.flatMap((zombie) => {
-    const templates = zombie.entries?.length ? zombie.entries : [{ Type: `RTID(${zombie.code}@ZombieTypes)` }];
-    return Array.from({ length: Math.max(1, Number(zombie.count) || 1) }, (_, index) => {
-      const template = cloneJson(templates[Math.min(index, templates.length - 1)] || {});
-      const importedRow = template.Row;
-      delete template.Row;
-      return {
-        ...template,
-        Type: `RTID(${zombie.code}@ZombieTypes)`,
-        ...(zombie.row
-          ? { Row: !zombie.rowDirty && importedRow !== undefined && String(importedRow) === zombie.row ? importedRow : zombie.row }
-          : {})
-      };
-    });
-  });
+  return serializeZombieGroups(wave.zombies);
 }
 
 function compactUndefinedValues(source: Record<string, any>) {
@@ -2161,6 +2375,8 @@ function serializeLevel() {
   const preserveGeneratorWaveSystem = draft.value.preserveGeneratorWaves && !draft.value.waves.length && draft.value.preservedWaveManagerModule;
   const preserveCustomWaveManager =
     draft.value.preserveCustomWaveManager && !draft.value.waves.length && draft.value.preservedWaveManagerObject && !draft.value.waveSystemDirty;
+  const preserveStaticWaveSystem =
+    draft.value.preservedStaticWaveObjects.length > 0 && !draft.value.waveSystemDirty && !draft.value.conveyor.dirty;
   const shouldEmitConveyor = draft.value.conveyor.enabled;
   const shouldPreserveConveyor = shouldEmitConveyor && draft.value.conveyor.preserveOriginal && !draft.value.conveyor.dirty && draft.value.conveyor.originalObject;
   const shouldEmitWaveManager =
@@ -2380,6 +2596,8 @@ function serializeLevel() {
     objects.push(cloneJson(draft.value.preservedWaveManagerModule));
   } else if (preserveCustomWaveManager) {
     objects.push(cloneJson(draft.value.preservedWaveManagerObject));
+  } else if (preserveStaticWaveSystem) {
+    objects.push(...draft.value.preservedStaticWaveObjects.map((object) => cloneJson(object)));
   } else if (shouldEmitWaveManager) {
     objects.push(
       {
@@ -3648,6 +3866,25 @@ function renderKnownWaveActionFields(action: WaveActionDraft) {
   return null;
 }
 
+function renderEventZombiePoolEditor(action: WaveActionDraft) {
+  if (!isZombiePoolEvent(action)) return null;
+  const groups = getEventZombieGroups(action);
+  return h('div', { class: 'event-zombie-pool' }, [
+    h('strong', { class: 'pool-editor-title' }, t('eventZombiePool')),
+    h('div', { class: 'zombie-list' }, renderZombieGroupList(groups, {
+      onCount: (_zombie, value, index) => setEventZombieCount(action, index, value),
+      onRemove: (_zombie, index) => removeEventZombieGroup(action, index)
+    })),
+    h('div', { class: 'wave-actions' }, [
+      h('button', { type: 'button', class: 'add-button', onClick: () => addSelectedZombieToEvent(action) }, [
+        h(PlusOutlined),
+        t('addZombie')
+      ]),
+      eventZombieActionHint.value ? h('small', { class: 'action-hint' }, t(eventZombieActionHint.value)) : null
+    ])
+  ]);
+}
+
 function renderLanePreview(wave: WaveDraft) {
   const rows = [1, 2, 3, 4, 5].map((row) => ({
     row: String(row),
@@ -3763,61 +4000,75 @@ function renderWaveSpawnAdvancedFields(wave: WaveDraft) {
   ]);
 }
 
+function renderZombieGroupList(
+  zombies: WaveZombie[],
+  options: {
+    showRows?: boolean;
+    countLabelKey?: string;
+    onRow?: (zombie: WaveZombie, value: string, index: number) => void;
+    onCount: (zombie: WaveZombie, value: number, index: number) => void;
+    onRemove: (zombie: WaveZombie, index: number) => void;
+  }
+) {
+  if (!zombies.length) return h('small', { class: 'seed-mode-hint' }, t('emptyList'));
+  return zombies.map((zombie, index) => {
+    const name = getZombieDisplayName(zombie.code, zombie.label);
+    const standardRows = ['', '1', '2', '3', '4', '5'];
+    const rowOptions = standardRows.includes(zombie.row) ? standardRows : [...standardRows, zombie.row];
+    return h('div', { class: 'zombie-row' }, [
+      h('span', { class: 'zombie-identity' }, [h('strong', name), h('small', zombie.code)]),
+      h('div', { class: 'zombie-row-controls' }, [
+        options.showRows
+          ? h(
+              'select',
+              {
+                'aria-label': t('zombieRow', { name }),
+                value: zombie.row,
+                onChange: (event: Event) => options.onRow?.(zombie, (event.target as HTMLSelectElement).value, index)
+              },
+              rowOptions.map((row) =>
+                h(
+                  'option',
+                  { value: row },
+                  row === '' ? t('randomRow') : ['1', '2', '3', '4', '5'].includes(row) ? t('rowNumber', { row }) : row
+                )
+              )
+            )
+          : null,
+        h('input', {
+          type: 'number',
+          min: 1,
+          'aria-label': t(options.countLabelKey || 'zombieCount', { name }),
+          value: zombie.count,
+          onInput: (event: Event) => options.onCount(zombie, Number((event.target as HTMLInputElement).value), index)
+        }),
+        h(
+          'button',
+          {
+            type: 'button',
+            title: t('removeZombie', { name }),
+            'aria-label': t('removeZombie', { name }),
+            onClick: () => options.onRemove(zombie, index)
+          },
+          h(DeleteOutlined)
+        )
+      ])
+    ]);
+  });
+}
+
 function renderZombieSpawnEditor(wave: WaveDraft) {
   return h('div', { class: 'wave-action-editor-body' }, [
     wave.zombies.length ? renderLanePreview(wave) : null,
-    h(
-      'div',
-      { class: 'zombie-list' },
-      wave.zombies.length
-        ? wave.zombies.map((zombie) => {
-            const standardRows = ['', '1', '2', '3', '4', '5'];
-            const rowOptions = standardRows.includes(zombie.row) ? standardRows : [...standardRows, zombie.row];
-            return h('div', { class: 'zombie-row' }, [
-              h('span', { class: 'zombie-identity' }, [
-                h('strong', getZombieDisplayName(zombie.code, zombie.label)),
-                h('small', zombie.code)
-              ]),
-              h('div', { class: 'zombie-row-controls' }, [
-                h(
-                  'select',
-                  {
-                    'aria-label': t('zombieRow', { name: getZombieDisplayName(zombie.code, zombie.label) }),
-                    value: zombie.row,
-                    onChange: (event: Event) => setWaveZombieRow(zombie, (event.target as HTMLSelectElement).value)
-                  },
-                  rowOptions.map((row) =>
-                    h(
-                      'option',
-                      { value: row },
-                      row === '' ? t('randomRow') : ['1', '2', '3', '4', '5'].includes(row) ? t('rowNumber', { row }) : row
-                    )
-                  )
-                ),
-                h('input', {
-                  type: 'number',
-                  min: 1,
-                  'aria-label': t('zombieCount', { name: getZombieDisplayName(zombie.code, zombie.label) }),
-                  value: zombie.count,
-                  onInput: (event: Event) => {
-                    markWaveSystemEdited();
-                    zombie.count = Math.max(1, Number((event.target as HTMLInputElement).value) || 1);
-                  }
-                }),
-                h(
-                  'button',
-                  {
-                    title: t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
-                    'aria-label': t('removeZombie', { name: getZombieDisplayName(zombie.code, zombie.label) }),
-                    onClick: () => removeZombieFromWave(zombie.id)
-                  },
-                  h(DeleteOutlined)
-                )
-              ])
-            ]);
-          })
-        : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
-    ),
+    h('div', { class: 'zombie-list' }, renderZombieGroupList(wave.zombies, {
+      showRows: true,
+      onRow: (zombie, value) => setWaveZombieRow(zombie, value),
+      onCount: (zombie, value) => {
+        markWaveSystemEdited();
+        zombie.count = Math.max(1, Math.round(value) || 1);
+      },
+      onRemove: (zombie) => removeZombieFromWave(zombie.id)
+    })),
     h('div', { class: 'wave-actions' }, [
       h(
         'button',
@@ -3909,8 +4160,10 @@ function getWaveActionEntrySummary(wave: WaveDraft, waveIndex: number, entry: Wa
 
 function renderRawWaveActionEditor(wave: WaveDraft, action: WaveActionDraft) {
   const knownFields = renderKnownWaveActionFields(action);
+  const eventZombiePool = renderEventZombiePoolEditor(action);
   return h('div', { class: 'wave-action-editor-body' }, [
     knownFields,
+    eventZombiePool,
     expertMode.value
       ? h('label', { class: 'raw-json-field' }, [
           h('span', t('rawJson')),
@@ -4000,6 +4253,163 @@ function renderWaveAddMenu() {
   ]);
 }
 
+function renderDynamicNumberField(field: DynamicZombieNumberField, labelKey: string) {
+  const placeholder = getDynamicNumberPlaceholder(field);
+  return h('div', { class: ['field-row', 'compact', placeholder ? 'has-preserved-value' : ''] }, [
+    h('label', [t(labelKey), placeholder ? h('code', { title: placeholder }, placeholder) : null]),
+    h('input', {
+      type: 'number',
+      ...(field === 'StartingWave' ? { min: 1, step: 1 } : {}),
+      value: getDynamicNumberInputValue(field),
+      placeholder,
+      'aria-label': t(labelKey),
+      onInput: (event: Event) => updateDynamicZombieNumber(field, (event.target as HTMLInputElement).value)
+    })
+  ]);
+}
+
+function renderDynamicZombiePoolEditor() {
+  const groups = getDynamicZombiePoolGroups().map((group, index) => ({
+    id: index + 1,
+    code: group.code,
+    label: getZombieDisplayName(group.code, group.code),
+    count: group.rawValues.length,
+    row: ''
+  }));
+  return h('div', { class: 'dynamic-zombie-pool' }, [
+    h('strong', { class: 'pool-editor-title' }, t('dynamicZombiePool')),
+    h('div', { class: 'zombie-list' }, renderZombieGroupList(groups, {
+      countLabelKey: 'zombiePoolCopies',
+      onCount: (_zombie, value, index) => setDynamicZombiePoolCount(index, value),
+      onRemove: (_zombie, index) => removeDynamicZombiePoolGroup(index)
+    })),
+    h('div', { class: 'wave-actions' }, [
+      h('button', { type: 'button', class: 'add-button', onClick: addSelectedZombieToDynamicPool }, [
+        h(PlusOutlined),
+        t('addZombie')
+      ]),
+      dynamicZombieActionHint.value ? h('small', { class: 'action-hint' }, t(dynamicZombieActionHint.value)) : null
+    ])
+  ]);
+}
+
+function renderDynamicDifficultyEditor() {
+  if (!draft.value.supportsDynamicZombies) return null;
+  const selectedLevel = selectedDynamicDifficulty.value;
+  const configured = isDynamicZombieSlotConfigured(selectedLevel);
+  return h('section', { class: ['dynamic-difficulty', dynamicDifficultyOpen.value ? 'expanded' : ''] }, [
+    h('div', { class: 'dynamic-difficulty-bar' }, [
+      h(
+        'button',
+        {
+          type: 'button',
+          class: 'dynamic-difficulty-toggle',
+          'aria-expanded': dynamicDifficultyOpen.value,
+          'aria-controls': 'dynamic-difficulty-panel',
+          onClick: () => {
+            dynamicDifficultyOpen.value = !dynamicDifficultyOpen.value;
+          }
+        },
+        [
+          h('span', [h('strong', t('dynamicDifficulty')), h('small', t('dynamicDifficultySummary', { count: getConfiguredDynamicDifficultyCount() }))]),
+          h('span', { class: 'dynamic-difficulty-chevron', 'aria-hidden': 'true' }, '›')
+        ]
+      ),
+      h(
+        'div',
+        { class: 'dynamic-difficulty-tabs', role: 'tablist', 'aria-label': t('dynamicDifficulty') },
+        Array.from({ length: 7 }, (_, index) => {
+          const level = index + 1;
+          const slotConfigured = isDynamicZombieSlotConfigured(level);
+          const selected = selectedLevel === level;
+          return h(
+            'button',
+            {
+              type: 'button',
+              role: 'tab',
+              class: [selected ? 'active' : '', slotConfigured ? 'configured' : ''],
+              'aria-selected': selected,
+              'aria-controls': 'dynamic-difficulty-panel',
+              'aria-label': `${t('difficultyLevel', { level })} · ${t(slotConfigured ? 'difficultyConfigured' : 'difficultyNoExtraZombies')}`,
+              tabindex: selected ? 0 : -1,
+              'data-difficulty-level': level,
+              onClick: () => selectDynamicDifficulty(level),
+              onKeydown: (event: KeyboardEvent) => handleDynamicDifficultyKeydown(event, level)
+            },
+            [String(level), slotConfigured ? h('span', { class: 'difficulty-status-dot', 'aria-hidden': 'true' }) : null]
+          );
+        })
+      )
+    ]),
+    dynamicDifficultyOpen.value
+      ? h(
+          'div',
+          {
+            id: 'dynamic-difficulty-panel',
+            class: 'dynamic-difficulty-panel',
+            role: 'tabpanel',
+            'aria-label': t('difficultyLevel', { level: selectedLevel })
+          },
+          configured
+            ? [
+                h('div', { class: 'dynamic-difficulty-panel-heading' }, [
+                  h('span', [h('strong', t('difficultyLevel', { level: selectedLevel })), h('small', t('difficultyConfigured'))]),
+                  h(
+                    'button',
+                    { type: 'button', class: 'text-button danger', onClick: () => clearDynamicZombieSlot(selectedLevel) },
+                    t('clearDifficulty', { level: selectedLevel })
+                  )
+                ]),
+                h('div', { class: 'dynamic-difficulty-fields' }, [
+                  renderDynamicNumberField('StartingWave', 'dynamicStartsOnWave'),
+                  renderDynamicNumberField('StartingPoints', 'dynamicStartingPoints'),
+                  renderDynamicNumberField('PointIncrementPerWave', 'dynamicPointChangePerWave')
+                ]),
+                renderDynamicZombiePoolEditor()
+              ]
+            : [
+                h('div', { class: 'dynamic-difficulty-empty' }, [
+                  h('span', t('difficultyNoExtraZombies')),
+                  h(
+                    'button',
+                    { type: 'button', class: 'add-button small', onClick: () => configureDynamicZombieSlot(selectedLevel) },
+                    t('configureDifficulty', { level: selectedLevel })
+                  )
+                ])
+              ]
+        )
+      : null
+  ]);
+}
+
+function renderDynamicPoolWavePreview(waveIndex: number) {
+  if (!draft.value.supportsDynamicZombies) return null;
+  const slot = getDynamicZombieSlot();
+  const requiredNumbers = [slot.StartingWave, slot.StartingPoints, slot.PointIncrementPerWave];
+  if (requiredNumbers.some((value) => value === '' || value === undefined || Number.isNaN(Number(value)))) return null;
+  const startingWave = Number(slot.StartingWave) + 1;
+  if (waveIndex < startingWave) return null;
+  const groups = getDynamicZombiePoolGroups();
+  if (!groups.length) return null;
+  return h('div', { class: 'dynamic-wave-preview' }, [
+    h('span', { class: 'dynamic-wave-preview-label' }, [
+      h('strong', t('dynamicPoolPreview', { level: selectedDynamicDifficulty.value })),
+      h('small', t('startsOnWave', { wave: startingWave }))
+    ]),
+    h(
+      'div',
+      { class: 'dynamic-wave-preview-pool' },
+      groups.map((group) =>
+        h('span', { class: 'lane-zombie-chip', title: getZombieDisplayName(group.code, group.code) }, [
+          h('span', { class: 'lane-zombie-dot', 'aria-hidden': 'true' }),
+          getZombieDisplayName(group.code, group.code),
+          group.rawValues.length > 1 ? h('strong', `×${group.rawValues.length}`) : null
+        ])
+      )
+    )
+  ]);
+}
+
 const WaveTimeline = defineComponent({
   setup() {
     return () =>
@@ -4040,6 +4450,7 @@ const WaveTimeline = defineComponent({
             );
           })
         ),
+        renderDynamicDifficultyEditor(),
         expertMode.value
           ? h('details', { class: 'advanced-details' }, [
               h('summary', t('advancedWaveSettings')),
@@ -4114,6 +4525,7 @@ const WaveTimeline = defineComponent({
                       : null
                   ])
                 ]),
+                renderDynamicPoolWavePreview(waveIndex + 1),
                 renderWaveActionSequence(wave, waveIndex + 1),
                 renderWaveAddMenu()
               ]);
@@ -5487,6 +5899,194 @@ body:has(.level-editor-shell) {
   padding-bottom: 0.25rem;
 }
 
+.dynamic-difficulty {
+  margin-top: 0.65rem;
+  border-top: 1px solid var(--editor-border);
+  border-bottom: 1px solid var(--editor-border);
+}
+
+.dynamic-difficulty-bar {
+  display: grid;
+  grid-template-columns: minmax(11rem, auto) minmax(18rem, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 3.35rem;
+  padding: 0.45rem 0;
+}
+
+.dynamic-difficulty-toggle {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--editor-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.dynamic-difficulty-toggle > span:first-child,
+.dynamic-difficulty-panel-heading > span,
+.dynamic-wave-preview-label {
+  display: grid;
+  min-width: 0;
+}
+
+.dynamic-difficulty-toggle strong,
+.dynamic-difficulty-panel-heading strong {
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
+}
+
+.dynamic-difficulty-toggle small,
+.dynamic-difficulty-panel-heading small,
+.dynamic-wave-preview-label small {
+  color: var(--editor-muted);
+  font-size: 0.72rem;
+}
+
+.dynamic-difficulty-chevron {
+  color: var(--editor-muted);
+  font-size: 1.25rem;
+  transition: transform 0.18s ease;
+}
+
+.dynamic-difficulty.expanded .dynamic-difficulty-chevron {
+  transform: rotate(90deg);
+}
+
+.dynamic-difficulty-tabs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(2rem, 1fr));
+  gap: 0.15rem;
+  justify-self: end;
+  width: min(100%, 22rem);
+  padding: 0.18rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--editor-soil) 7%, var(--vp-c-bg-soft));
+}
+
+.dynamic-difficulty-tabs button {
+  position: relative;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--editor-muted);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.dynamic-difficulty-tabs button:hover {
+  color: var(--editor-accent-strong);
+}
+
+.dynamic-difficulty-tabs button.active {
+  background: var(--editor-accent);
+  color: #fff;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--editor-accent) 28%, transparent);
+}
+
+.difficulty-status-dot {
+  position: absolute;
+  top: 0.18rem;
+  right: 0.28rem;
+  width: 0.36rem;
+  height: 0.36rem;
+  border: 1px solid var(--vp-c-bg);
+  border-radius: 50%;
+  background: var(--editor-sun);
+}
+
+.dynamic-difficulty-panel {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.8rem 0 0.9rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 68%, transparent);
+}
+
+.dynamic-difficulty-panel-heading,
+.dynamic-difficulty-empty {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dynamic-difficulty-empty {
+  color: var(--editor-muted);
+  font-size: 0.82rem;
+}
+
+.dynamic-difficulty-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.dynamic-difficulty-fields label {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dynamic-difficulty-fields label code {
+  overflow: hidden;
+  color: #a47400;
+  font-size: 0.66rem;
+  text-overflow: ellipsis;
+}
+
+.dynamic-difficulty-fields .has-preserved-value input::placeholder {
+  color: #a47400;
+  opacity: 0.82;
+}
+
+.dynamic-zombie-pool,
+.event-zombie-pool {
+  display: grid;
+  gap: 0.55rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--editor-border) 62%, transparent);
+}
+
+.pool-editor-title {
+  font-size: 0.8rem;
+}
+
+.dynamic-wave-preview {
+  display: grid;
+  grid-template-columns: minmax(8rem, auto) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.65rem;
+  border-left: 3px solid var(--editor-sun);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--editor-sun) 7%, transparent);
+}
+
+.dynamic-wave-preview-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  min-width: 0;
+}
+
+.dynamic-difficulty-toggle:focus-visible,
+.dynamic-difficulty-tabs button:focus-visible {
+  outline: 2px solid var(--editor-accent);
+  outline-offset: 2px;
+}
+
 .wave-card {
   display: grid;
   align-content: center;
@@ -6209,6 +6809,34 @@ body:has(.level-editor-shell) {
     flex-direction: column;
   }
 
+  .dynamic-difficulty-bar {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+  }
+
+  .dynamic-difficulty-toggle {
+    width: 100%;
+    min-height: 2.75rem;
+  }
+
+  .dynamic-difficulty-tabs {
+    grid-template-columns: repeat(7, minmax(2.75rem, 1fr));
+    justify-self: stretch;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+  }
+
+  .dynamic-difficulty-tabs button {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
+
+  .dynamic-difficulty-fields,
+  .dynamic-wave-preview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .selected-wave-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -6273,6 +6901,12 @@ body:has(.level-editor-shell) {
 }
 
 @media (max-width: 420px) {
+  .dynamic-difficulty-panel-heading,
+  .dynamic-difficulty-empty {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
   .board-actions,
   .wave-actions,
   .action-row {

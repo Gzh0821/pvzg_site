@@ -7,6 +7,7 @@
   "scripts": {
     "build:level-editor-objects": "node scripts/build-level-editor-board-objects.mjs",
     "check:level-editor-objects": "node scripts/check-level-editor-board-objects.mjs",
+    "check:level-editor-waves": "node scripts/check-level-editor-wave-roundtrip.mjs",
     "docs:build": "vuepress-vite build src",
     "docs:clean-dev": "vuepress-vite dev src --clean-cache",
     "docs:dev": "vuepress-vite dev src",
