@@ -391,8 +391,8 @@ const messages = {
         availableMerges: '种合成', recordedRounds: '轮记录', attemptsUnit: '次推测', attemptsLabel: '推测次数', visibleRules: '条规则', undoRound: '撤销上一轮',
         resetAssistant: '重新开始', newRound: '新一局', basePool: '基础植物库',
         enterFeedback: '录入本轮游戏反馈', firstRecommendation: '先照此顺序推测',
-        currentGuess: '当前推测', restoreRecommendation: '恢复推荐方案', selectMerge: '选择合成', history: '推测记录',
-        mergeShelf: '可用合成', feedbackPanel: '反馈控制台', recordFeedback: '记录并计算下一轮',
+        currentGuess: '当前推测', restoreRecommendation: '使用推荐', selectMerge: '选择合成', history: '推测记录',
+        mergeShelf: '可用合成', feedbackPanel: '反馈控制台', recordFeedback: '记录并计算',
         contradictionHint: '请撤销上一轮并核对反馈或植物顺序。',
         possibleSolutions: '可行排列', sampledSolutions: '至少 {count} 组', exactSolutions: '{count} 组', averageConfidence: '平均把握度', confidenceValue: '{prefix}{value}% 把握',
         contradiction: '没有可行答案', contradictionDetail: '至少一条记录与其他记录冲突', solvedTitle: '解码完成', solvedDetail: '所有槽位均已完全正确',
@@ -411,8 +411,8 @@ const messages = {
         availableMerges: ' merges', recordedRounds: ' rounds', attemptsUnit: ' attempts', attemptsLabel: 'Attempts', visibleRules: ' rules', undoRound: 'Undo round',
         resetAssistant: 'Start over', newRound: 'New round', basePool: 'Base plant pool',
         enterFeedback: 'Enter this round’s feedback', firstRecommendation: 'Try this order first',
-        currentGuess: 'Current guess', restoreRecommendation: 'Restore recommendation', selectMerge: 'Select merge', history: 'Guess history',
-        mergeShelf: 'Available merges', feedbackPanel: 'Feedback console', recordFeedback: 'Record and calculate next round',
+        currentGuess: 'Current guess', restoreRecommendation: 'Use recommendation', selectMerge: 'Select merge', history: 'Guess history',
+        mergeShelf: 'Available merges', feedbackPanel: 'Feedback console', recordFeedback: 'Record & calculate',
         contradictionHint: 'Undo the last round and check the feedback or plant order.',
         possibleSolutions: 'Possible orders', sampledSolutions: 'At least {count}', exactSolutions: '{count}', averageConfidence: 'Average confidence', confidenceValue: '{prefix}{value}% confidence',
         contradiction: 'No possible answer', contradictionDetail: 'At least one record conflicts with another', solvedTitle: 'Decoded', solvedDetail: 'Every slot is fully correct',
@@ -431,7 +431,7 @@ const messages = {
         availableMerges: ' fusiones', recordedRounds: ' rondas', attemptsUnit: ' intentos', attemptsLabel: 'Intentos', visibleRules: ' reglas', undoRound: 'Deshacer ronda',
         resetAssistant: 'Reiniciar', newRound: 'Nueva ronda', basePool: 'Plantas base',
         enterFeedback: 'Introduce el resultado de la ronda', firstRecommendation: 'Prueba primero este orden',
-        currentGuess: 'Intento actual', restoreRecommendation: 'Restaurar recomendación', selectMerge: 'Elegir', history: 'Historial de intentos',
+        currentGuess: 'Intento actual', restoreRecommendation: 'Usar recomendación', selectMerge: 'Elegir', history: 'Historial de intentos',
         mergeShelf: 'Fusiones disponibles', feedbackPanel: 'Panel de resultados', recordFeedback: 'Registrar y calcular',
         contradictionHint: 'Deshaz la última ronda y comprueba el resultado o el orden.',
         possibleSolutions: 'Órdenes posibles', sampledSolutions: 'Al menos {count}', exactSolutions: '{count}', averageConfidence: 'Confianza media', confidenceValue: '{prefix}{value}% de confianza',
@@ -451,7 +451,7 @@ const messages = {
         availableMerges: ' слияний', recordedRounds: ' раундов', attemptsUnit: ' попыток', attemptsLabel: 'Попытки', visibleRules: ' правил', undoRound: 'Отменить раунд',
         resetAssistant: 'Сначала', newRound: 'Новый раунд', basePool: 'Базовые растения',
         enterFeedback: 'Введите результат раунда', firstRecommendation: 'Начните с этого порядка',
-        currentGuess: 'Текущая попытка', restoreRecommendation: 'Вернуть рекомендацию', selectMerge: 'Выбрать', history: 'История попыток',
+        currentGuess: 'Текущая попытка', restoreRecommendation: 'Вернуть вариант', selectMerge: 'Выбрать', history: 'История попыток',
         mergeShelf: 'Доступные слияния', feedbackPanel: 'Панель результата', recordFeedback: 'Записать и рассчитать',
         contradictionHint: 'Отмените последний раунд и проверьте результат или порядок.',
         possibleSolutions: 'Возможные порядки', sampledSolutions: 'Не менее {count}', exactSolutions: '{count}', averageConfidence: 'Средняя уверенность', confidenceValue: '{prefix}{value}% уверенности',
@@ -1412,8 +1412,12 @@ onMounted(() => {
 .primary-action,
 .secondary-action {
     width: calc(100% - 20px);
+    height: auto;
     min-height: 46px;
     margin: 0 10px 8px;
+    padding-block: 9px;
+    line-height: 1.2;
+    white-space: normal;
 }
 
 .primary-action {
