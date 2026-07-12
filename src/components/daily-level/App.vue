@@ -2,26 +2,26 @@
   <section class="daily-level-shell">
     <div class="daily-level-hero">
       <div class="daily-level-hero__main">
-        <p class="daily-level-kicker">{{ t.kicker }}</p>
-        <h1>{{ currentLevel?.title || t.loadingTitle }}</h1>
+        <p class="daily-level-kicker">{{ t('kicker') }}</p>
+        <h1>{{ currentLevel?.title || t('loadingTitle') }}</h1>
       </div>
 
       <div class="daily-level-actions">
         <button class="daily-level-button daily-level-button--primary" :disabled="!deepLinkUrl" @click="openInGame">
           <VPIcon icon="computer" />
-          <span>{{ t.openInGame }}</span>
+          <span>{{ t('openInGame') }}</span>
         </button>
         <button class="daily-level-button daily-level-button--secondary" :disabled="!currentLevel || downloading" @click="downloadLevel">
           <VPIcon icon="download" />
-          <span>{{ downloading ? t.downloading : t.download }}</span>
+          <span>{{ downloading ? t('downloading') : t('download') }}</span>
         </button>
       </div>
-      <p v-if="deepLinkHintVisible" class="daily-level-deep-link-hint">{{ t.deepLinkHint }}</p>
+      <p v-if="deepLinkHintVisible" class="daily-level-deep-link-hint">{{ t('deepLinkHint') }}</p>
     </div>
 
-    <div v-if="loading" class="daily-level-state">{{ t.loading }}</div>
+    <div v-if="loading" class="daily-level-state">{{ t('loading') }}</div>
     <div v-else-if="error" class="daily-level-state daily-level-state--error">
-      <strong>{{ t.failed }}</strong>
+      <strong>{{ t('failed') }}</strong>
       <span>{{ error }}</span>
     </div>
 
@@ -45,7 +45,7 @@
 
       <section class="daily-level-section">
         <div class="daily-level-section__head">
-          <h2>{{ t.plants }}</h2>
+          <h2>{{ t('plants') }}</h2>
           <span>{{ currentLevel.entities.plants.length }}</span>
         </div>
         <div class="daily-level-grid daily-level-grid--plants">
@@ -58,13 +58,13 @@
           </article>
         </div>
         <button v-if="hiddenPlantCount > 0" class="daily-level-more" @click="showAllPlants = !showAllPlants">
-          {{ showAllPlants ? t.showLess : t.showMore(hiddenPlantCount) }}
+          {{ showAllPlants ? t('showLess') : t('showMore', { count: hiddenPlantCount }) }}
         </button>
       </section>
 
       <section class="daily-level-section">
         <div class="daily-level-section__head">
-          <h2>{{ t.zombies }}</h2>
+          <h2>{{ t('zombies') }}</h2>
           <span>{{ currentLevel.entities.zombies.length }}</span>
         </div>
         <div class="daily-level-grid daily-level-grid--zombies">
@@ -78,13 +78,13 @@
           </article>
         </div>
         <button v-if="hiddenZombieCount > 0" class="daily-level-more" @click="showAllZombies = !showAllZombies">
-          {{ showAllZombies ? t.showLess : t.showMore(hiddenZombieCount) }}
+          {{ showAllZombies ? t('showLess') : t('showMore', { count: hiddenZombieCount }) }}
         </button>
       </section>
 
       <section class="daily-level-section daily-level-section--compact">
         <div class="daily-level-section__head">
-          <h2>{{ t.mechanics }}</h2>
+          <h2>{{ t('mechanics') }}</h2>
           <span>{{ currentLevel.mechanics.length }}</span>
         </div>
         <div class="daily-level-tags">
@@ -94,7 +94,7 @@
 
       <section v-if="notices.length" class="daily-level-section daily-level-section--compact">
         <div class="daily-level-section__head">
-          <h2>{{ t.notices }}</h2>
+          <h2>{{ t('notices') }}</h2>
           <span>{{ notices.length }}</span>
         </div>
         <ul class="daily-level-notices">
@@ -107,6 +107,7 @@
 
 <script setup lang="ts">
 import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
 import { getZombieMap } from '../zombiesAlmanac/formatZombies';
@@ -168,173 +169,20 @@ const props = withDefaults(defineProps<{ apiBase?: string }>(), {
 
 const injectedLanguage = inject('i18nLanguage', 'en');
 const language = computed(() => (String(injectedLanguage).startsWith('zh') ? 'zh' : 'en'));
+const messages = Object.fromEntries(
+  Object.entries(import.meta.glob('./locales/*.json', { eager: true }))
+    .map(([key, value]) => [key.match(/\/([a-zA-Z-]+)\.json$/)?.[1], (value as { default: Record<string, unknown> }).default])
+    .filter(([locale]) => locale)
+) as Record<'zh' | 'en', Record<string, unknown>>;
+const { t, te, locale } = useI18n({
+  useScope: 'local',
+  locale: language.value,
+  fallbackLocale: 'en',
+  messages
+});
+locale.value = language.value;
 const plantMap = computed<Record<string, any>>(() => getPlantMap(language.value));
 const zombieMap = computed<Record<string, any>>(() => getZombieMap(language.value));
-
-const copy = {
-  zh: {
-    kicker: '每日关卡',
-    loadingTitle: '正在载入今日关卡',
-    loading: '正在载入关卡数据...',
-    failed: '无法载入每日关卡',
-    openInGame: '打开游戏',
-    deepLinkHint: '没有反应？请先启动新版游戏，或下载关卡文件。',
-    download: '下载关卡',
-    downloading: '正在下载',
-    author: '作者',
-    stage: '场景',
-    activeCountdown: '剩余时间',
-    refreshSoon: '即将刷新',
-    plants: '本关植物',
-    zombies: '本关僵尸',
-    mechanics: '机制',
-    notices: '诊断',
-    showLess: '收起',
-    showMore: (count: number) => `展开其余 ${count} 个`,
-    seedMode: '供给',
-    waves: '波次',
-    sun: '阳光',
-    wave: '第 {wave} 波',
-    localBased: '基于 {name}',
-    unresolved: '未识别',
-    seedModes: {
-      conveyor: '传送带',
-      chooser: '玩家选卡',
-      preset: '固定卡组',
-      none: '无种子栏'
-    }
-  },
-  en: {
-    kicker: 'Daily Level',
-    loadingTitle: 'Loading today level',
-    loading: 'Loading level data...',
-    failed: 'Daily level unavailable',
-    openInGame: 'Open in game',
-    deepLinkHint: 'No response? Open the latest game first, or download the level file.',
-    download: 'Download level',
-    downloading: 'Downloading',
-    author: 'Author',
-    stage: 'Stage',
-    activeCountdown: 'Time left',
-    refreshSoon: 'Refreshing soon',
-    plants: 'Plants',
-    zombies: 'Zombies',
-    mechanics: 'Mechanics',
-    notices: 'Diagnostics',
-    showLess: 'Show less',
-    showMore: (count: number) => `Show ${count} more`,
-    seedMode: 'Supply',
-    waves: 'Waves',
-    sun: 'Sun',
-    wave: 'Wave {wave}',
-    localBased: 'Based on {name}',
-    unresolved: 'Unresolved',
-    seedModes: {
-      conveyor: 'Conveyor',
-      chooser: 'Choose plants',
-      preset: 'Fixed seed bank',
-      none: 'No seed bank'
-    }
-  }
-};
-
-const roleLabels = {
-  zh: {
-    'seed-preset': '固定卡组',
-    'seed-locked': '锁定卡槽',
-    'seed-include': '可选植物',
-    'seed-exclude': '禁用植物',
-    'conveyor-initial': '传送带初始',
-    'conveyor-add': '传送带加入',
-    'conveyor-remove': '传送带移除',
-    'initial-board': '开局放置',
-    'wave-spawned': '波次生成',
-    'protect-target': '保护目标',
-    wave: '波次',
-    storm: '风暴生成',
-    'ground-spawn': '地下生成'
-  },
-  en: {
-    'seed-preset': 'Fixed bank',
-    'seed-locked': 'Locked slot',
-    'seed-include': 'Allowed',
-    'seed-exclude': 'Excluded',
-    'conveyor-initial': 'Conveyor start',
-    'conveyor-add': 'Conveyor add',
-    'conveyor-remove': 'Conveyor remove',
-    'initial-board': 'Opening board',
-    'wave-spawned': 'Wave spawn',
-    'protect-target': 'Protect target',
-    wave: 'Waves',
-    storm: 'Storm spawn',
-    'ground-spawn': 'Ground spawn'
-  }
-};
-
-const mechanicLabels = {
-  zh: {
-    conveyor: '传送带',
-    'conveyor-wave-change': '传送带波次变化',
-    'initial-plants': '开局植物',
-    'initial-zombies': '开局僵尸',
-    'grid-items': '地物',
-    gravestones: '墓碑',
-    'star-challenge': '星星挑战',
-    'beat-the-level': '通关目标',
-    'plants-lost-limit': '植物损失限制',
-    'timed-kill-challenge': '限时击杀',
-    'protect-the-plant': '保护植物',
-    railcart: '矿车',
-    'mold-colony': '霉菌地块',
-    'level-scheduler': '关卡调度',
-    'wave-scheduler': '波次调度',
-    'frost-wind': '冰风',
-    dinosaur: '恐龙',
-    'storm-zombies': '风暴僵尸',
-    'ground-spawn': '地下出怪',
-    'spawn-plants': '生成植物',
-    'spawn-gravestones': '生成墓碑',
-    'missile-locate': '导弹定位',
-    'wave-warning': '波次警告',
-    'random-events': '随机事件',
-    'last-stand': '坚不可摧',
-    'future-minigame': '未来小游戏',
-    'cowboy-minigame': '西部小游戏',
-    'sky-city-ship': '天空船体',
-    'level-of-the-day': '每日关卡模块'
-  },
-  en: {
-    conveyor: 'Conveyor',
-    'conveyor-wave-change': 'Conveyor changes',
-    'initial-plants': 'Opening plants',
-    'initial-zombies': 'Opening zombies',
-    'grid-items': 'Board objects',
-    gravestones: 'Gravestones',
-    'star-challenge': 'Star challenge',
-    'beat-the-level': 'Beat the level',
-    'plants-lost-limit': 'Plant loss limit',
-    'timed-kill-challenge': 'Timed kills',
-    'protect-the-plant': 'Protect plants',
-    railcart: 'Railcart',
-    'mold-colony': 'Mold colony',
-    'level-scheduler': 'Level scheduler',
-    'wave-scheduler': 'Wave scheduler',
-    'frost-wind': 'Frost wind',
-    dinosaur: 'Dinosaur',
-    'storm-zombies': 'Storm zombies',
-    'ground-spawn': 'Ground spawn',
-    'spawn-plants': 'Spawn plants',
-    'spawn-gravestones': 'Spawn gravestones',
-    'missile-locate': 'Missile targeting',
-    'wave-warning': 'Wave warning',
-    'random-events': 'Random events',
-    'last-stand': 'Last stand',
-    'future-minigame': 'Future minigame',
-    'cowboy-minigame': 'Wild West minigame',
-    'sky-city-ship': 'Sky ship',
-    'level-of-the-day': 'Level of the day'
-  }
-};
 
 const payload = ref<DailyPayload | null>(null);
 const loading = ref(true);
@@ -347,7 +195,6 @@ const nowTimestamp = ref(Date.now());
 let countdownTimer: number | undefined;
 let deepLinkHintTimer: number | undefined;
 
-const t = computed(() => copy[language.value]);
 const currentLevel = computed(() => payload.value?.daily.level || null);
 const activeCountdown = computed(() => {
   if (!payload.value?.daily.activeUntil) return '';
@@ -375,18 +222,19 @@ const levelDetails = computed(() => {
   const level = currentLevel.value;
   if (!level) return [];
   return [
-    level.author ? { label: t.value.author, value: level.author } : null,
-    level.stats.stage ? { label: t.value.stage, value: level.stats.stage } : null,
-    activeCountdown.value ? { label: t.value.activeCountdown, value: activeCountdown.value } : null
+    level.author ? { label: t('author'), value: level.author } : null,
+    level.stats.stage ? { label: t('stage'), value: level.stats.stage } : null,
+    activeCountdown.value ? { label: t('activeCountdown'), value: activeCountdown.value } : null
   ].filter((item): item is { label: string; value: string } => Boolean(item));
 });
 const facts = computed(() => {
   const level = currentLevel.value;
   if (!level) return [];
+  const seedModeKey = `seedModes.${level.stats.seedMode}`;
   return [
-    { label: t.value.seedMode, value: t.value.seedModes[level.stats.seedMode] || level.stats.seedMode },
-    { label: t.value.waves, value: String(level.stats.waveCount || '-') },
-    { label: t.value.sun, value: String(level.stats.startingSun ?? '-') }
+    { label: t('seedMode'), value: te(seedModeKey) ? t(seedModeKey) : level.stats.seedMode },
+    { label: t('waves'), value: String(level.stats.waveCount || '-') },
+    { label: t('sun'), value: String(level.stats.startingSun ?? '-') }
   ];
 });
 
@@ -419,7 +267,7 @@ function entityKey(entity: DailyEntity) {
 }
 
 function formatCountdown(milliseconds: number) {
-  if (!Number.isFinite(milliseconds) || milliseconds <= 0) return t.value.refreshSoon;
+  if (!Number.isFinite(milliseconds) || milliseconds <= 0) return t('refreshSoon');
   const totalSeconds = Math.max(1, Math.ceil(milliseconds / 1000));
   const days = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
@@ -451,12 +299,12 @@ function entityBaseId(entity: DailyEntity) {
 }
 
 function entityName(entity: DailyEntity, type: 'plant' | 'zombie') {
-  if (entity.kind === 'unresolved') return `${entity.id} (${t.value.unresolved})`;
+  if (entity.kind === 'unresolved') return `${entity.id} (${t('unresolved')})`;
   const baseId = entityBaseId(entity);
   const map = type === 'plant' ? plantMap.value : zombieMap.value;
   const baseName = map[baseId]?.name || entity.name?.[language.value] || entity.name?.en || baseId;
   if (entity.kind === 'local') {
-    return `${entity.id} (${t.value.localBased.replace('{name}', baseName)})`;
+    return `${entity.id} (${t('localBased', { name: baseName })})`;
   }
   return baseName;
 }
@@ -474,16 +322,20 @@ function zombieImage(entity: DailyEntity) {
 }
 
 function roleSummary(roles: string[]) {
-  return roles.map((role) => roleLabels[language.value][role] || role).join(' / ');
+  return roles.map((role) => {
+    const key = `roleLabels.${role}`;
+    return te(key) ? t(key) : role;
+  }).join(' / ');
 }
 
 function zombieDetail(entity: DailyEntity) {
-  const waveText = entity.firstWave ? t.value.wave.replace('{wave}', String(entity.firstWave)) : roleSummary(entity.roles);
+  const waveText = entity.firstWave ? t('wave', { wave: entity.firstWave }) : roleSummary(entity.roles);
   return entity.count > 1 ? `${waveText} x${entity.count}` : waveText;
 }
 
 function mechanicLabel(id: string) {
-  return mechanicLabels[language.value][id] || id;
+  const key = `mechanicLabels.${id}`;
+  return te(key) ? t(key) : id;
 }
 
 function hideBrokenImage(event: Event) {

@@ -357,6 +357,7 @@
 import { computed, defineComponent, h, inject, nextTick, onMounted, ref, watch } from 'vue';
 import { theme } from 'ant-design-vue';
 import { CheckCircleOutlined, EyeOutlined, ReloadOutlined } from '@ant-design/icons-vue';
+import { useI18n } from 'vue-i18n';
 
 import decodingData from './decoding-plants.json';
 import { analyzePuzzle, judgeAttempt, makeSuggestion, suggestionConfidence } from './solver.mjs';
@@ -365,6 +366,7 @@ import { getPlantMap } from '../plantsAlmanac/formatPlants';
 type FeedbackState = 'correct' | 'change' | 'half' | 'fault';
 type ToolMode = 'assistant' | 'practice' | 'rules';
 type RuleScope = 'current' | 'all';
+type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
 
 interface MergeRule {
     PlantA: string;
@@ -384,108 +386,27 @@ interface RoundRecord {
     feedback: FeedbackState[];
 }
 
-const messages = {
-    zh: {
-        title: '植物解码助手',
-        assistantMode: '解码助手', practiceMode: '练习器', rulesMode: '规则表', baseCount: '基础植物', codeCount: '密码槽位',
-        availableMerges: '种合成', recordedRounds: '轮记录', attemptsUnit: '次推测', attemptsLabel: '推测次数', visibleRules: '条规则', undoRound: '撤销上一轮',
-        resetAssistant: '重新开始', newRound: '新一局', basePool: '基础植物库',
-        enterFeedback: '录入本轮游戏反馈', firstRecommendation: '先照此顺序推测',
-        currentGuess: '当前推测', restoreRecommendation: '使用推荐', selectMerge: '选择合成', history: '推测记录',
-        mergeShelf: '可用合成', feedbackPanel: '反馈控制台', recordFeedback: '记录并计算',
-        contradictionHint: '请撤销上一轮并核对反馈或植物顺序。',
-        possibleSolutions: '可行排列', sampledSolutions: '至少 {count} 组', exactSolutions: '{count} 组', averageConfidence: '平均把握度', confidenceValue: '{prefix}{value}% 把握',
-        contradiction: '没有可行答案', contradictionDetail: '至少一条记录与其他记录冲突', solvedTitle: '解码完成', solvedDetail: '所有槽位均已完全正确',
-        certainSlots: '{count} 个槽位已确定',
-        codeBoard: '解码记录台', solved: '已解开', inProgress: '解码中',
-        emptySlot: '空槽', mergeTray: '合成台', clear: '清空', pickA: '选择 A', pickB: '选择 B', noMerge: '尚未合成',
-        confirm: '提交判定', clearSlot: '清空当前槽', showAnswer: '显示答案', hideAnswer: '隐藏答案',
-        rulesReference: '全部合成关系', currentRules: '当前基础池', allRules: '全部', plantA: '植物 A', plantB: '植物 B', result: '合成结果',
-        feedbackMeaning: '四色反馈',
-        feedback: { correct: '完全正确', change: '位置错误', half: '部分正确', fault: '完全错误' },
-        feedbackHelp: { correct: '植物和槽位都正确', change: '植物存在，但应放在别处', half: '两株基础植物中有一株匹配', fault: '目标与两株基础植物都不匹配' }
-    },
-    en: {
-        title: 'Plant decoding assistant',
-        assistantMode: 'Assistant', practiceMode: 'Practice', rulesMode: 'Rules', baseCount: 'Base plants', codeCount: 'Code slots',
-        availableMerges: ' merges', recordedRounds: ' rounds', attemptsUnit: ' attempts', attemptsLabel: 'Attempts', visibleRules: ' rules', undoRound: 'Undo round',
-        resetAssistant: 'Start over', newRound: 'New round', basePool: 'Base plant pool',
-        enterFeedback: 'Enter this round’s feedback', firstRecommendation: 'Try this order first',
-        currentGuess: 'Current guess', restoreRecommendation: 'Use recommendation', selectMerge: 'Select merge', history: 'Guess history',
-        mergeShelf: 'Available merges', feedbackPanel: 'Feedback console', recordFeedback: 'Record & calculate',
-        contradictionHint: 'Undo the last round and check the feedback or plant order.',
-        possibleSolutions: 'Possible orders', sampledSolutions: 'At least {count}', exactSolutions: '{count}', averageConfidence: 'Average confidence', confidenceValue: '{prefix}{value}% confidence',
-        contradiction: 'No possible answer', contradictionDetail: 'At least one record conflicts with another', solvedTitle: 'Decoded', solvedDetail: 'Every slot is fully correct',
-        certainSlots: '{count} slots confirmed',
-        codeBoard: 'Decode history', solved: 'Solved', inProgress: 'In progress',
-        emptySlot: 'Empty', mergeTray: 'Merge dock', clear: 'Clear', pickA: 'Choose A', pickB: 'Choose B', noMerge: 'No merge yet',
-        confirm: 'Check guess', clearSlot: 'Clear active slot', showAnswer: 'Show answer', hideAnswer: 'Hide answer',
-        rulesReference: 'All merge rules', currentRules: 'Current pool', allRules: 'All', plantA: 'Plant A', plantB: 'Plant B', result: 'Result',
-        feedbackMeaning: 'Four feedback states',
-        feedback: { correct: 'Correct', change: 'Moved', half: 'Partial', fault: 'Wrong' },
-        feedbackHelp: { correct: 'Plant and slot both match', change: 'Plant exists in another slot', half: 'One of the two base plants matches', fault: 'Neither base plant matches' }
-    },
-    es: {
-        title: 'Asistente de descifrado',
-        assistantMode: 'Asistente', practiceMode: 'Práctica', rulesMode: 'Reglas', baseCount: 'Plantas base', codeCount: 'Ranuras',
-        availableMerges: ' fusiones', recordedRounds: ' rondas', attemptsUnit: ' intentos', attemptsLabel: 'Intentos', visibleRules: ' reglas', undoRound: 'Deshacer ronda',
-        resetAssistant: 'Reiniciar', newRound: 'Nueva ronda', basePool: 'Plantas base',
-        enterFeedback: 'Introduce el resultado de la ronda', firstRecommendation: 'Prueba primero este orden',
-        currentGuess: 'Intento actual', restoreRecommendation: 'Usar recomendación', selectMerge: 'Elegir', history: 'Historial de intentos',
-        mergeShelf: 'Fusiones disponibles', feedbackPanel: 'Panel de resultados', recordFeedback: 'Registrar y calcular',
-        contradictionHint: 'Deshaz la última ronda y comprueba el resultado o el orden.',
-        possibleSolutions: 'Órdenes posibles', sampledSolutions: 'Al menos {count}', exactSolutions: '{count}', averageConfidence: 'Confianza media', confidenceValue: '{prefix}{value}% de confianza',
-        contradiction: 'Sin respuesta posible', contradictionDetail: 'Algún registro contradice a otro', solvedTitle: 'Descifrado', solvedDetail: 'Todas las ranuras son correctas',
-        certainSlots: '{count} ranuras confirmadas',
-        codeBoard: 'Historial', solved: 'Resuelto', inProgress: 'En curso',
-        emptySlot: 'Vacía', mergeTray: 'Fusión', clear: 'Limpiar', pickA: 'Elegir A', pickB: 'Elegir B', noMerge: 'Sin fusión',
-        confirm: 'Comprobar', clearSlot: 'Limpiar ranura', showAnswer: 'Mostrar respuesta', hideAnswer: 'Ocultar respuesta',
-        rulesReference: 'Todas las fusiones', currentRules: 'Actuales', allRules: 'Todas', plantA: 'Planta A', plantB: 'Planta B', result: 'Resultado',
-        feedbackMeaning: 'Cuatro resultados',
-        feedback: { correct: 'Correcto', change: 'Movido', half: 'Parcial', fault: 'Error' },
-        feedbackHelp: { correct: 'Planta y posición coinciden', change: 'La planta está en otra ranura', half: 'Coincide una planta base', fault: 'No coincide ninguna planta base' }
-    },
-    ru: {
-        title: 'Помощник расшифровки',
-        assistantMode: 'Помощник', practiceMode: 'Тренировка', rulesMode: 'Правила', baseCount: 'Базовые', codeCount: 'Слоты',
-        availableMerges: ' слияний', recordedRounds: ' раундов', attemptsUnit: ' попыток', attemptsLabel: 'Попытки', visibleRules: ' правил', undoRound: 'Отменить раунд',
-        resetAssistant: 'Сначала', newRound: 'Новый раунд', basePool: 'Базовые растения',
-        enterFeedback: 'Введите результат раунда', firstRecommendation: 'Начните с этого порядка',
-        currentGuess: 'Текущая попытка', restoreRecommendation: 'Вернуть вариант', selectMerge: 'Выбрать', history: 'История попыток',
-        mergeShelf: 'Доступные слияния', feedbackPanel: 'Панель результата', recordFeedback: 'Записать и рассчитать',
-        contradictionHint: 'Отмените последний раунд и проверьте результат или порядок.',
-        possibleSolutions: 'Возможные порядки', sampledSolutions: 'Не менее {count}', exactSolutions: '{count}', averageConfidence: 'Средняя уверенность', confidenceValue: '{prefix}{value}% уверенности',
-        contradiction: 'Решений нет', contradictionDetail: 'Записи противоречат друг другу', solvedTitle: 'Готово', solvedDetail: 'Все слоты верны',
-        certainSlots: 'Точно: {count}',
-        codeBoard: 'История', solved: 'Решено', inProgress: 'В процессе',
-        emptySlot: 'Пусто', mergeTray: 'Слияние', clear: 'Очистить', pickA: 'Выбрать A', pickB: 'Выбрать B', noMerge: 'Нет слияния',
-        confirm: 'Проверить', clearSlot: 'Очистить слот', showAnswer: 'Ответ', hideAnswer: 'Скрыть ответ',
-        rulesReference: 'Все слияния', currentRules: 'Текущие', allRules: 'Все', plantA: 'Растение A', plantB: 'Растение B', result: 'Результат',
-        feedbackMeaning: 'Четыре результата',
-        feedback: { correct: 'Верно', change: 'Не на месте', half: 'Частично', fault: 'Ошибка' },
-        feedbackHelp: { correct: 'Растение и слот верны', change: 'Растение находится в другом слоте', half: 'Совпало одно базовое растение', fault: 'Нет совпавших базовых растений' }
-    }
-} as const;
+const messages = Object.fromEntries(
+    Object.entries(import.meta.glob('./locales/*.json', { eager: true }))
+        .map(([key, value]) => [key.match(/\/([a-zA-Z-]+)\.json$/)?.[1], (value as { default: any }).default])
+        .filter(([locale]) => locale)
+) as Record<LocaleKey, Record<string, any>>;
 
 const i18nLanguage = inject('i18nLanguage', 'en') as string;
-const localeKey = computed(() => (i18nLanguage in messages ? i18nLanguage : 'en') as keyof typeof messages);
+const localeKey = computed<LocaleKey>(() => (i18nLanguage in messages ? i18nLanguage : 'en') as LocaleKey);
+const { t, locale } = useI18n({
+    useScope: 'local',
+    locale: localeKey.value,
+    fallbackLocale: 'en',
+    messages
+});
+locale.value = localeKey.value;
+
 const plantMap = computed<Record<string, any>>(() => getPlantMap(localeKey.value));
 const imageAliasMap: Record<string, string> = { cherribomb: 'cherry_bomb' };
 const basePool = decodingData.BASES as string[];
 const allRules = decodingData.MERGES as MergeRule[];
 const feedbackStates: FeedbackState[] = ['change', 'fault', 'half', 'correct'];
-
-const t = (key: string, params?: Record<string, string | number>) => {
-    const segments = key.split('.');
-    let value: any = messages[localeKey.value];
-    for (const segment of segments) value = value?.[segment];
-    if (value === undefined) {
-        value = messages.en;
-        for (const segment of segments) value = value?.[segment];
-    }
-    const text = String(value ?? key);
-    return params ? Object.entries(params).reduce((result, [name, replacement]) => result.replace(`{${name}}`, String(replacement)), text) : text;
-};
 
 const PlantToken = defineComponent({
     name: 'PlantToken',
