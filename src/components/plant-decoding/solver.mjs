@@ -273,13 +273,11 @@ function feedbackEntropy(samples, guesses, rulesByTarget, lockedBefore) {
 
 function localSuggestion(rules, analysis) {
     const rulesByTarget = new Map(rules.map(rule => [rule.Target, rule]));
-    const used = new Set();
+    const certainTargets = analysis.domains.map(domain => domain.length === 1 ? domain[0] : null);
+    const used = new Set(certainTargets.filter(Boolean));
 
     return analysis.domains.map((domain, slotIndex) => {
-        if (domain.length === 1 && !used.has(domain[0])) {
-            used.add(domain[0]);
-            return domain[0];
-        }
+        if (certainTargets[slotIndex]) return certainTargets[slotIndex];
 
         let bestTarget = null;
         let bestScore = -Infinity;

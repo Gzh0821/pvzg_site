@@ -26,6 +26,15 @@ assert.equal(new Set(suggestion).size, 3);
 assert.deepEqual(makeSuggestion(rules, analysis), suggestion);
 assert.equal(suggestionConfidence(analysis, suggestion).length, 3);
 
+const certainSlotAnalysis = {
+    contradiction: false,
+    domains: [['aa', 'bb'], ['ac']],
+    samples: [['aa', 'ac'], ['bb', 'ac']]
+};
+const certainSlotSuggestion = makeSuggestion(rules, certainSlotAnalysis, [false, true]);
+assert.equal(certainSlotSuggestion[1], 'ac');
+assert.equal(new Set(certainSlotSuggestion).size, 2);
+
 const truncated = analyzePuzzle(rules, 3, [{ guesses: guess, feedback: judged.feedback }], 1);
 assert.equal(truncated.truncated, true);
 assert.ok(truncated.domains.every((domain, index) => domain.length >= analysis.domains[index].length));
