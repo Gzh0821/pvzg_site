@@ -107,9 +107,9 @@
                                     {{ t('restoreRecommendation') }}
                                 </button>
                             </div>
-                            <div class="decode-slots" :style="{ '--slot-count': String(codeCount) }">
+                            <div class="decode-slots" :style="{ '--slot-count': String(actualCodeCount) }">
                                 <button
-                                    v-for="(_, index) in codeCount"
+                                    v-for="(_, index) in actualCodeCount"
                                     :key="index"
                                     type="button"
                                     class="decode-card"
@@ -146,7 +146,7 @@
                                     type="button"
                                     class="merge-option"
                                     :class="{ selected: assistantGuesses[assistantActiveSlot] === rule.Target }"
-                                    :disabled="assistantTargetUsedElsewhere(rule.Target) || assistantLocked[assistantActiveSlot]"
+                                    :disabled="assistantLocked[assistantActiveSlot]"
                                     @click="selectAssistantTarget(rule.Target)"
                                 >
                                     <PlantToken :plant="plantView(rule.Target)" image-only compact />
@@ -445,6 +445,7 @@ const baseCount = ref(5);
 const codeCount = ref(4);
 const activeBasePlants = computed(() => basePool.slice(0, baseCount.value));
 const availableRules = computed(() => allRules.filter(rule => activeBasePlants.value.includes(rule.PlantA) && activeBasePlants.value.includes(rule.PlantB)));
+const actualCodeCount = computed(() => Math.min(codeCount.value, availableRules.value.length));
 const visibleRules = computed(() => ruleScope.value === 'current' ? availableRules.value : allRules);
 const toolModeOptions = computed(() => [
     { label: t('assistantMode'), value: 'assistant' },
@@ -461,11 +462,11 @@ const assistantGuesses = ref<string[]>([]);
 const assistantFeedback = ref<Array<FeedbackState | null>>([]);
 const assistantActiveSlot = ref(0);
 const assistantHistoryNewest = computed(() => assistantHistory.value.slice().reverse());
-const assistantAnalysis = computed(() => analyzePuzzle(availableRules.value, codeCount.value, assistantHistory.value));
+const assistantAnalysis = computed(() => analyzePuzzle(availableRules.value, actualCodeCount.value, assistantHistory.value));
 const assistantContradiction = computed(() => assistantAnalysis.value.contradiction);
 const assistantSolved = computed(() => assistantHistory.value.at(-1)?.feedback.every(state => state === 'correct') || false);
 const assistantLocked = computed(() => {
-    const locked = Array(codeCount.value).fill(false);
+    const locked = Array(actualCodeCount.value).fill(false);
     assistantHistory.value.forEach(round => round.feedback.forEach((state, index) => {
         if (state === 'correct') locked[index] = true;
     }));
@@ -484,10 +485,9 @@ const assistantRecommendationMatches = computed(() => (
     && recommendedGuesses.value.every((target: string, index: number) => target === assistantGuesses.value[index])
 ));
 const assistantCanSubmit = computed(() => (
-    assistantGuesses.value.length === codeCount.value
+    assistantGuesses.value.length === actualCodeCount.value
     && assistantGuesses.value.every(Boolean)
-    && new Set(assistantGuesses.value).size === codeCount.value
-    && assistantFeedback.value.length === codeCount.value
+    && assistantFeedback.value.length === actualCodeCount.value
     && assistantFeedback.value.every(Boolean)
 ));
 const assistantStatusClass = computed(() => assistantContradiction.value ? 'danger' : assistantSolved.value ? 'success' : '');
@@ -519,7 +519,7 @@ function confidenceLabel(index: number) {
 function applyRecommendation() {
     if (assistantContradiction.value) return;
     assistantGuesses.value = recommendedGuesses.value.slice();
-    assistantFeedback.value = Array.from({ length: codeCount.value }, (_, index) => assistantLocked.value[index] ? 'correct' : null);
+    assistantFeedback.value = Array.from({ length: actualCodeCount.value }, (_, index) => assistantLocked.value[index] ? 'correct' : null);
     assistantActiveSlot.value = assistantLocked.value.findIndex(locked => !locked);
     if (assistantActiveSlot.value < 0) assistantActiveSlot.value = 0;
 }
@@ -534,12 +534,8 @@ function undoAssistant() {
     nextTick(applyRecommendation);
 }
 
-function assistantTargetUsedElsewhere(target: string) {
-    return assistantGuesses.value.some((guess, index) => guess === target && index !== assistantActiveSlot.value);
-}
-
 function selectAssistantTarget(target: string) {
-    if (assistantLocked.value[assistantActiveSlot.value] || assistantTargetUsedElsewhere(target)) return;
+    if (assistantLocked.value[assistantActiveSlot.value]) return;
     assistantGuesses.value[assistantActiveSlot.value] = target;
     assistantFeedback.value[assistantActiveSlot.value] = null;
     const next = assistantGuesses.value.findIndex((guess, index) => !guess && !assistantLocked.value[index]);

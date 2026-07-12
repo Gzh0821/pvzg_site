@@ -121,6 +121,7 @@ export function analyzePuzzle(rules, slotCount, observations, sampleLimit = DEFA
     const domains = Array.from({ length: slotCount }, () => new Set(targets));
     const requiredTargets = new Set();
     const forbiddenTargets = new Set();
+    const lockedTargets = Array(slotCount).fill(null);
 
     for (const observation of observations) {
         observation.feedback.forEach((state, slotIndex) => {
@@ -132,7 +133,9 @@ export function analyzePuzzle(rules, slotCount, observations, sampleLimit = DEFA
             }
 
             if (state === 'correct') {
-                domains[slotIndex] = new Set([guessTarget]);
+                const correctTarget = lockedTargets[slotIndex] || guessTarget;
+                domains[slotIndex] = new Set([correctTarget]);
+                lockedTargets[slotIndex] = correctTarget;
             } else if (state === 'change') {
                 domains[slotIndex].delete(guessTarget);
                 requiredTargets.add(guessTarget);
@@ -141,13 +144,13 @@ export function analyzePuzzle(rules, slotCount, observations, sampleLimit = DEFA
                     const realRule = rulesByTarget.get(target);
                     return target !== guessTarget && realRule && judgeHalf(realRule, guessRule);
                 }));
-                forbiddenTargets.add(guessTarget);
+                if (!lockedTargets.includes(guessTarget)) forbiddenTargets.add(guessTarget);
             } else {
                 domains[slotIndex] = new Set([...domains[slotIndex]].filter(target => {
                     const realRule = rulesByTarget.get(target);
                     return target !== guessTarget && realRule && !judgeHalf(realRule, guessRule);
                 }));
-                forbiddenTargets.add(guessTarget);
+                if (!lockedTargets.includes(guessTarget)) forbiddenTargets.add(guessTarget);
             }
         });
     }

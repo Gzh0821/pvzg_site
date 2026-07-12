@@ -35,6 +35,26 @@ const certainSlotSuggestion = makeSuggestion(rules, certainSlotAnalysis, [false,
 assert.equal(certainSlotSuggestion[1], 'ac');
 assert.equal(new Set(certainSlotSuggestion).size, 2);
 
+const duplicateSecret = ['aa', 'bb'];
+const duplicateGuess = ['aa', 'aa'];
+const duplicateJudged = judgeAttempt(duplicateSecret, duplicateGuess, byTarget);
+assert.deepEqual(duplicateJudged.feedback, ['correct', 'fault']);
+const duplicateAnalysis = analyzePuzzle(rules, 2, [{ guesses: duplicateGuess, feedback: duplicateJudged.feedback }], 100);
+assert.equal(duplicateAnalysis.contradiction, false);
+assert.ok(duplicateAnalysis.samples.some(sample => sample.join(',') === duplicateSecret.join(',')));
+
+const lockedDuplicateSecret = ['aa', 'bb', 'ac'];
+const lockedDuplicateFirstGuess = ['aa', 'bc', 'ab'];
+const lockedDuplicateFirst = judgeAttempt(lockedDuplicateSecret, lockedDuplicateFirstGuess, byTarget);
+const lockedDuplicateSecondGuess = ['aa', 'aa', 'ac'];
+const lockedDuplicateSecond = judgeAttempt(lockedDuplicateSecret, lockedDuplicateSecondGuess, byTarget, lockedDuplicateFirst.correct);
+const lockedDuplicateAnalysis = analyzePuzzle(rules, 3, [
+    { guesses: lockedDuplicateFirstGuess, feedback: lockedDuplicateFirst.feedback },
+    { guesses: lockedDuplicateSecondGuess, feedback: lockedDuplicateSecond.feedback }
+], 100);
+assert.equal(lockedDuplicateAnalysis.contradiction, false);
+assert.ok(lockedDuplicateAnalysis.samples.some(sample => sample.join(',') === lockedDuplicateSecret.join(',')));
+
 const truncated = analyzePuzzle(rules, 3, [{ guesses: guess, feedback: judged.feedback }], 1);
 assert.equal(truncated.truncated, true);
 assert.ok(truncated.domains.every((domain, index) => domain.length >= analysis.domains[index].length));
