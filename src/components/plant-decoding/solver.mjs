@@ -728,8 +728,8 @@ export function makeSuggestionPlan(rules, analysis, lockedBefore = [], options =
     if (options.probeUsed || round < earliestRound) return { guesses: baseline, probe: false };
 
     const probe = makeOutcomeProbe(rules, analysis, lockedBefore, baseline, PROBE_CONFIG[mode]);
-    const changed = probe.some((target, slot) => target !== baseline[slot]);
-    return { guesses: probe, probe: changed };
+    const probeSlots = probe.map((target, slot) => target !== baseline[slot]);
+    return { guesses: probe, probe: probeSlots.some(Boolean), probeSlots };
 }
 
 export function makeSuggestion(rules, analysis, lockedBefore = [], options = {}) {

@@ -305,9 +305,20 @@ const lowRoundPlan = makeSuggestionPlan(decodingData.MERGES, probeAnalysis, prob
     round: 4,
     probeUsed: false
 });
+const lowRoundBaseline = makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked, {
+    mode: 'low-rounds',
+    round: 4,
+    probeUsed: true
+});
 assert.equal(lowRoundPlan.probe, true);
+assert.deepEqual(
+    lowRoundPlan.probeSlots,
+    lowRoundPlan.guesses.map((target, slot) => target !== lowRoundBaseline.guesses[slot]),
+    'only slots changed from the normal recommendation should be marked as probes'
+);
 probeLocked.forEach((locked, slot) => {
     if (locked) assert.equal(lowRoundPlan.guesses[slot], probeSecret[slot]);
+    if (locked) assert.equal(lowRoundPlan.probeSlots[slot], false);
 });
 assert.ok(lowRoundPlan.guesses.some((target, slot) => (
     !probeLocked[slot] && !probeAnalysis.domains[slot].includes(target)

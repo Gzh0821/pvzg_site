@@ -141,7 +141,7 @@
                                         {{ feedbackSymbol(assistantFeedback[index]!) }} {{ t(`feedback.${assistantFeedback[index]}`) }}
                                     </span>
                                     <span v-else class="slot-feedback confidence">
-                                        {{ currentRecommendationIsProbe ? t('probe') : confidenceLabel(index) }}
+                                        {{ currentRecommendationProbeSlots[index] ? t('probe') : confidenceLabel(index) }}
                                     </span>
                                 </button>
                             </div>
@@ -537,6 +537,9 @@ const assistantRecommendationMatches = computed(() => (
     && recommendedGuesses.value.every((target: string, index: number) => target === assistantGuesses.value[index])
 ));
 const currentRecommendationIsProbe = computed(() => recommendationPlan.value.probe && assistantRecommendationMatches.value);
+const currentRecommendationProbeSlots = computed(() => (
+    assistantRecommendationMatches.value ? recommendationPlan.value.probeSlots || [] : []
+));
 const assistantCanSubmit = computed(() => (
     assistantGuesses.value.length === actualCodeCount.value
     && assistantGuesses.value.every(Boolean)
