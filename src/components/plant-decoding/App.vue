@@ -116,7 +116,8 @@
                                     :class="[
                                         assistantActiveSlot === index ? 'active' : '',
                                         assistantFeedback[index] ? `state-${assistantFeedback[index]}` : '',
-                                        assistantLocked[index] ? 'locked' : ''
+                                        assistantLocked[index] ? 'locked' : '',
+                                        assistantGuessRules[index] ? 'has-recipe' : ''
                                     ]"
                                     @click="assistantActiveSlot = index"
                                 >
@@ -127,6 +128,15 @@
                                         compact
                                     />
                                     <span v-else class="slot-placeholder">{{ t('selectMerge') }}</span>
+                                    <span
+                                        v-if="assistantGuessRules[index]"
+                                        class="guess-recipe"
+                                        :aria-label="`${plantName(assistantGuessRules[index]!.PlantA)} + ${plantName(assistantGuessRules[index]!.PlantB)}`"
+                                    >
+                                        <PlantToken :plant="plantView(assistantGuessRules[index]!.PlantA)" image-only compact />
+                                        <b aria-hidden="true">+</b>
+                                        <PlantToken :plant="plantView(assistantGuessRules[index]!.PlantB)" image-only compact />
+                                    </span>
                                     <span v-if="assistantFeedback[index]" class="slot-feedback">
                                         {{ feedbackSymbol(assistantFeedback[index]!) }} {{ t(`feedback.${assistantFeedback[index]}`) }}
                                     </span>
@@ -461,6 +471,8 @@ const assistantHistory = ref<RoundRecord[]>([]);
 const assistantGuesses = ref<string[]>([]);
 const assistantFeedback = ref<Array<FeedbackState | null>>([]);
 const assistantActiveSlot = ref(0);
+const rulesByTarget = new Map(allRules.map(rule => [rule.Target, rule]));
+const assistantGuessRules = computed(() => assistantGuesses.value.map(target => rulesByTarget.get(target)));
 const assistantHistoryNewest = computed(() => assistantHistory.value.slice().reverse());
 const assistantAnalysis = computed(() => analyzePuzzle(availableRules.value, actualCodeCount.value, assistantHistory.value));
 const assistantContradiction = computed(() => assistantAnalysis.value.contradiction);
@@ -1168,6 +1180,38 @@ onMounted(() => {
     width: 100%;
 }
 
+.guess-recipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    max-width: 100%;
+    margin-top: 5px;
+    border-radius: 9px;
+    padding: 3px 5px;
+    background: color-mix(in srgb, var(--cyan-soft) 64%, transparent);
+    color: var(--cyan);
+}
+
+.guess-recipe b {
+    font-size: 0.68rem;
+    line-height: 1;
+}
+
+.decode-card .guess-recipe :deep(.plant-token.compact.image-only) {
+    grid-template-columns: 30px;
+}
+
+.decode-card .guess-recipe :deep(.plant-token.compact img),
+.decode-card .guess-recipe :deep(.plant-token.compact .plant-fallback) {
+    width: 30px;
+    height: 30px;
+}
+
+.decode-card.has-recipe {
+    min-height: 154px;
+}
+
 .decode-card:hover { border-color: var(--cyan); }
 .decode-card.active { border-color: var(--cyan); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cyan) 18%, transparent); transform: translateY(-2px); }
 .decode-card.locked { border-color: var(--correct); }
@@ -1589,6 +1633,7 @@ button:focus-visible,
     .current-deck, .merge-shelf, .fusion-dock { margin-inline: 8px; }
     .decode-slots { grid-template-columns: repeat(var(--slot-count), minmax(92px, 1fr)); }
     .decode-card { min-width: 92px; min-height: 112px; }
+    .decode-card.has-recipe { min-height: 148px; }
     .merge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 270px; }
     .status-rail .feedback-buttons { grid-template-columns: repeat(2, 1fr); }
     .feedback-button { min-height: 52px; }
