@@ -1,4 +1,9 @@
 const DEFAULT_SAMPLE_LIMIT = 4096;
+const DIVERSE_SAMPLE_PASSES = 32;
+const POSTERIOR_CHAIN_COUNT = 64;
+const POSTERIOR_BURN_IN = 400;
+const POSTERIOR_THINNING = 12;
+const SUGGESTION_OPTIMIZATION_PASSES = 3;
 
 export function judgeHalf(real, guess) {
     return (real.PlantA === guess.PlantA && real.PlantB !== guess.PlantB)
@@ -95,6 +100,14 @@ function createRandom(seed) {
     };
 }
 
+function shuffleWithRandom(values, random) {
+    for (let index = values.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(random() * (index + 1));
+        [values[index], values[swapIndex]] = [values[swapIndex], values[index]];
+    }
+    return values;
+}
+
 function sampleInitialSecrets(targets, slotCount, sampleLimit) {
     const random = createRandom(0xdec0de);
     const samples = [];
@@ -113,6 +126,156 @@ function sampleInitialSecrets(targets, slotCount, sampleLimit) {
         }
     }
     return samples;
+}
+
+function collectAssignments(domains, requiredTargets, observations, rulesByTarget, limit, options = {}) {
+    const random = options.random || null;
+    const seen = options.seen || new Set();
+    const samples = [];
+    const assignment = Array(domains.length).fill(null);
+    const used = new Set();
+    let stopped = false;
+
+    function search() {
+        if (samples.length >= limit) {
+            stopped = true;
+            return;
+        }
+
+        let smallestDomainSize = Infinity;
+        const nextSlotCandidates = [];
+        const valuesBySlot = new Map();
+        for (let slot = 0; slot < domains.length; slot += 1) {
+            if (assignment[slot]) continue;
+            const values = [...domains[slot]].filter(target => !used.has(target));
+            if (!values.length) return;
+            valuesBySlot.set(slot, values);
+            if (values.length < smallestDomainSize) {
+                smallestDomainSize = values.length;
+                nextSlotCandidates.length = 0;
+                nextSlotCandidates.push(slot);
+            } else if (values.length === smallestDomainSize) {
+                nextSlotCandidates.push(slot);
+            }
+        }
+
+        if (!nextSlotCandidates.length) {
+            if ([...requiredTargets].some(target => !used.has(target))) return;
+            if (!feedbackMatches(assignment, observations, rulesByTarget)) return;
+            const key = assignment.join('\u0000');
+            if (!seen.has(key)) {
+                seen.add(key);
+                samples.push(assignment.slice());
+            }
+            return;
+        }
+
+        const nextSlot = random
+            ? nextSlotCandidates[Math.floor(random() * nextSlotCandidates.length)]
+            : nextSlotCandidates[0];
+        const nextValues = valuesBySlot.get(nextSlot);
+        if (random) shuffleWithRandom(nextValues, random);
+        const unassignedSlots = assignment.reduce((slots, value, index) => {
+            if (!value && index !== nextSlot) slots.push(index);
+            return slots;
+        }, []);
+
+        for (const target of nextValues) {
+            assignment[nextSlot] = target;
+            used.add(target);
+
+            const missingRequired = [...requiredTargets].filter(required => !used.has(required));
+            const canStillPlaceRequired = missingRequired.length <= unassignedSlots.length
+                && missingRequired.every(required => unassignedSlots.some(slot => domains[slot].has(required)));
+            if (canStillPlaceRequired) search();
+
+            used.delete(target);
+            assignment[nextSlot] = null;
+            if (stopped) return;
+        }
+    }
+
+    search();
+    return { samples, stopped };
+}
+
+function sampleDiverseAssignments(domains, requiredTargets, observations, rulesByTarget, sampleLimit, fallbackSamples) {
+    const seen = new Set();
+    const samples = [];
+    const quota = Math.max(1, Math.ceil(sampleLimit / DIVERSE_SAMPLE_PASSES));
+
+    for (let pass = 0; pass < DIVERSE_SAMPLE_PASSES && samples.length < sampleLimit; pass += 1) {
+        const random = createRandom((0xdec0de ^ Math.imul(pass + 1, 0x9e3779b1)) >>> 0);
+        const result = collectAssignments(
+            domains,
+            requiredTargets,
+            observations,
+            rulesByTarget,
+            Math.min(quota, sampleLimit - samples.length),
+            { random, seen }
+        );
+        samples.push(...result.samples);
+    }
+
+    for (const sample of fallbackSamples) {
+        if (samples.length >= sampleLimit) break;
+        const key = sample.join('\u0000');
+        if (seen.has(key)) continue;
+        seen.add(key);
+        samples.push(sample);
+    }
+    return samples;
+}
+
+function samplePosteriorAssignments(targets, domains, observations, rulesByTarget, sampleLimit, seedSamples) {
+    if (!seedSamples.length) return [];
+    const mutableSlots = domains.reduce((slots, domain, index) => {
+        if (domain.size > 1) slots.push(index);
+        return slots;
+    }, []);
+    if (!mutableSlots.length) return Array.from({ length: sampleLimit }, () => seedSamples[0].slice());
+
+    const chainCount = Math.min(POSTERIOR_CHAIN_COUNT, seedSamples.length, sampleLimit);
+    const samplesPerChain = Math.ceil(sampleLimit / chainCount);
+    const posteriorSamples = [];
+
+    // Swap/replacement proposals are symmetric. Rejecting every proposal that
+    // violates a domain or the complete feedback history keeps all collected
+    // states valid and targets a uniform distribution over each reachable
+    // solution component. Diverse DFS seeds cover disconnected components.
+    for (let chain = 0; chain < chainCount && posteriorSamples.length < sampleLimit; chain += 1) {
+        const seedIndex = Math.floor(chain * seedSamples.length / chainCount);
+        let current = seedSamples[seedIndex].slice();
+        const random = createRandom((0x51f15e ^ Math.imul(chain + 1, 0x85ebca6b)) >>> 0);
+        const totalSteps = POSTERIOR_BURN_IN + samplesPerChain * POSTERIOR_THINNING;
+
+        for (let step = 0; step < totalSteps && posteriorSamples.length < sampleLimit; step += 1) {
+            const proposal = current.slice();
+            const unusedTargets = targets.filter(target => !current.includes(target));
+            const canSwap = mutableSlots.length > 1;
+            const useSwap = canSwap && (!unusedTargets.length || random() < 0.55);
+
+            if (useSwap) {
+                const firstOffset = Math.floor(random() * mutableSlots.length);
+                let secondOffset = Math.floor(random() * (mutableSlots.length - 1));
+                if (secondOffset >= firstOffset) secondOffset += 1;
+                const firstSlot = mutableSlots[firstOffset];
+                const secondSlot = mutableSlots[secondOffset];
+                [proposal[firstSlot], proposal[secondSlot]] = [proposal[secondSlot], proposal[firstSlot]];
+            } else if (unusedTargets.length) {
+                const slot = mutableSlots[Math.floor(random() * mutableSlots.length)];
+                proposal[slot] = unusedTargets[Math.floor(random() * unusedTargets.length)];
+            }
+
+            const respectsDomains = proposal.every((target, slot) => domains[slot].has(target));
+            if (respectsDomains && feedbackMatches(proposal, observations, rulesByTarget)) current = proposal;
+
+            if (step >= POSTERIOR_BURN_IN && (step - POSTERIOR_BURN_IN) % POSTERIOR_THINNING === 0) {
+                posteriorSamples.push(current.slice());
+            }
+        }
+    }
+    return posteriorSamples.slice(0, sampleLimit);
 }
 
 export function analyzePuzzle(rules, slotCount, observations, sampleLimit = DEFAULT_SAMPLE_LIMIT) {
@@ -166,67 +329,44 @@ export function analyzePuzzle(rules, slotCount, observations, sampleLimit = DEFA
 
     const initialPermutationCount = permutationCount(targets.length, slotCount, sampleLimit);
     if (!observations.length && initialPermutationCount > sampleLimit) {
+        const samples = sampleInitialSecrets(targets, slotCount, sampleLimit);
         return {
             contradiction: false,
             domains: domains.map(domain => [...domain]),
             requiredTargets: [],
-            samples: sampleInitialSecrets(targets, slotCount, sampleLimit),
+            samples,
+            posteriorSamples: samples,
             sampleCount: sampleLimit,
             truncated: true
         };
     }
 
-    const samples = [];
-    let truncated = false;
-    const assignment = Array(slotCount).fill(null);
-    const used = new Set();
+    // This deterministic pass owns contradiction/exactness decisions. The
+    // randomized passes below only improve the representative distribution;
+    // they never decide whether a valid answer exists.
+    const exactProbe = collectAssignments(
+        domains,
+        requiredTargets,
+        observations,
+        rulesByTarget,
+        sampleLimit + 1
+    );
+    if (!exactProbe.samples.length) return contradictionResult(domains);
 
-    function search() {
-        if (samples.length >= sampleLimit) {
-            truncated = true;
-            return;
-        }
-
-        let nextSlot = -1;
-        let nextValues = null;
-        for (let slot = 0; slot < slotCount; slot += 1) {
-            if (assignment[slot]) continue;
-            const values = [...domains[slot]].filter(target => !used.has(target));
-            if (!values.length) return;
-            if (!nextValues || values.length < nextValues.length) {
-                nextSlot = slot;
-                nextValues = values;
-            }
-        }
-
-        if (nextSlot < 0) {
-            if ([...requiredTargets].some(target => !used.has(target))) return;
-            if (feedbackMatches(assignment, observations, rulesByTarget)) samples.push(assignment.slice());
-            return;
-        }
-
-        const unassignedSlots = assignment.reduce((slots, value, index) => {
-            if (!value && index !== nextSlot) slots.push(index);
-            return slots;
-        }, []);
-
-        for (const target of nextValues) {
-            assignment[nextSlot] = target;
-            used.add(target);
-
-            const missingRequired = [...requiredTargets].filter(required => !used.has(required));
-            const canStillPlaceRequired = missingRequired.length <= unassignedSlots.length
-                && missingRequired.every(required => unassignedSlots.some(slot => domains[slot].has(required)));
-            if (canStillPlaceRequired) search();
-
-            used.delete(target);
-            assignment[nextSlot] = null;
-            if (truncated) return;
-        }
-    }
-
-    search();
-    if (!samples.length) return contradictionResult(domains);
+    const truncated = exactProbe.samples.length > sampleLimit || exactProbe.stopped;
+    const samples = truncated
+        ? sampleDiverseAssignments(
+            domains,
+            requiredTargets,
+            observations,
+            rulesByTarget,
+            sampleLimit,
+            exactProbe.samples
+        )
+        : exactProbe.samples;
+    const posteriorSamples = truncated
+        ? samplePosteriorAssignments(targets, domains, observations, rulesByTarget, sampleLimit, samples)
+        : samples;
 
     const supportedDomains = truncated
         ? domains.map(domain => [...domain])
@@ -240,6 +380,7 @@ export function analyzePuzzle(rules, slotCount, observations, sampleLimit = DEFA
         domains: supportedDomains,
         requiredTargets: [...requiredTargets],
         samples,
+        posteriorSamples,
         sampleCount: samples.length,
         truncated
     };
@@ -251,6 +392,7 @@ function contradictionResult(domains) {
         domains: domains.map(domain => [...domain]),
         requiredTargets: [],
         samples: [],
+        posteriorSamples: [],
         sampleCount: 0,
         truncated: false
     };
@@ -313,8 +455,28 @@ export function makeSuggestion(rules, analysis, lockedBefore = []) {
     if (!analysis.samples.length || analysis.contradiction) return suggestion;
 
     const rulesByTarget = new Map(rules.map(rule => [rule.Target, rule]));
-    const sampleStride = Math.max(1, Math.ceil(analysis.samples.length / 1024));
-    const optimizationSamples = analysis.samples.filter((_, index) => index % sampleStride === 0).slice(0, 1024);
+    const posteriorSamples = analysis.posteriorSamples?.length ? analysis.posteriorSamples : analysis.samples;
+    const sampleStride = Math.max(1, Math.ceil(posteriorSamples.length / 1024));
+    const optimizationSamples = posteriorSamples.filter((_, index) => index % sampleStride === 0).slice(0, 1024);
+    const exactMatchCounts = analysis.domains.map((_, slot) => {
+        const counts = new Map();
+        for (const sample of posteriorSamples) {
+            counts.set(sample[slot], (counts.get(sample[slot]) || 0) + 1);
+        }
+        return counts;
+    });
+    const scoreCache = new Map();
+    const suggestionScore = candidate => {
+        const key = candidate.join('\u0000');
+        if (scoreCache.has(key)) return scoreCache.get(key);
+        const informationGain = feedbackEntropy(optimizationSamples, candidate, rulesByTarget, lockedBefore);
+        const expectedExact = candidate.reduce((count, target, slot) => (
+            count + (exactMatchCounts[slot].get(target) || 0) / posteriorSamples.length
+        ), 0);
+        const score = informationGain + expectedExact * 0.0025;
+        scoreCache.set(key, score);
+        return score;
+    };
     const candidateStride = Math.max(1, Math.ceil(analysis.samples.length / 96));
     const candidateRows = [
         suggestion,
@@ -322,42 +484,68 @@ export function makeSuggestion(rules, analysis, lockedBefore = []) {
     ];
     let bestRowScore = -Infinity;
     for (const candidateRow of candidateRows) {
-        const score = feedbackEntropy(optimizationSamples, candidateRow, rulesByTarget, lockedBefore);
+        const score = suggestionScore(candidateRow);
         if (score > bestRowScore) {
             bestRowScore = score;
             suggestion = candidateRow.slice();
         }
     }
 
-    for (let pass = 0; pass < 1; pass += 1) {
+    for (let pass = 0; pass < SUGGESTION_OPTIMIZATION_PASSES; pass += 1) {
+        let changed = false;
         for (let slot = 0; slot < suggestion.length; slot += 1) {
             if (lockedBefore[slot] || analysis.domains[slot].length === 1) continue;
             const usedElsewhere = new Set(suggestion.filter((_, index) => index !== slot));
             let bestTarget = suggestion[slot];
-            let bestScore = -Infinity;
+            let bestScore = suggestionScore(suggestion);
 
             for (const target of analysis.domains[slot]) {
                 if (usedElsewhere.has(target)) continue;
                 const candidate = suggestion.slice();
                 candidate[slot] = target;
-                const informationGain = feedbackEntropy(optimizationSamples, candidate, rulesByTarget, lockedBefore);
-                const exactMatches = analysis.samples.filter(sample => sample[slot] === target).length;
-                const score = informationGain + (exactMatches / analysis.samples.length) * 0.01;
-                if (score > bestScore) {
+                const score = suggestionScore(candidate);
+                if (score > bestScore + 1e-12) {
                     bestScore = score;
                     bestTarget = target;
                 }
             }
+            if (bestTarget !== suggestion[slot]) changed = true;
             suggestion[slot] = bestTarget;
         }
+
+        // A one-slot replacement cannot cross states where two occupied slots
+        // must move together. Test all legal pair swaps without touching fixed
+        // or previously-correct slots.
+        let bestSwap = null;
+        let bestSwapScore = suggestionScore(suggestion);
+        for (let first = 0; first < suggestion.length; first += 1) {
+            if (lockedBefore[first] || analysis.domains[first].length === 1) continue;
+            for (let second = first + 1; second < suggestion.length; second += 1) {
+                if (lockedBefore[second] || analysis.domains[second].length === 1) continue;
+                const candidate = suggestion.slice();
+                [candidate[first], candidate[second]] = [candidate[second], candidate[first]];
+                const score = suggestionScore(candidate);
+                if (score > bestSwapScore + 1e-12) {
+                    bestSwapScore = score;
+                    bestSwap = [first, second];
+                }
+            }
+        }
+        if (bestSwap) {
+            const [first, second] = bestSwap;
+            [suggestion[first], suggestion[second]] = [suggestion[second], suggestion[first]];
+            changed = true;
+        }
+        if (!changed) break;
     }
     return suggestion;
 }
 
 export function suggestionConfidence(analysis, suggestion) {
-    if (!analysis.samples.length) return suggestion.map(() => 0);
+    const posteriorSamples = analysis.posteriorSamples?.length ? analysis.posteriorSamples : analysis.samples;
+    if (!posteriorSamples.length) return suggestion.map(() => 0);
     return suggestion.map((target, slot) => {
-        const matches = analysis.samples.filter(sample => sample[slot] === target).length;
-        return matches / analysis.samples.length;
+        const matches = posteriorSamples.filter(sample => sample[slot] === target).length;
+        return matches / posteriorSamples.length;
     });
 }
