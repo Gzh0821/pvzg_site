@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 import decodingData from './decoding-plants.json' with { type: 'json' };
-import { analyzePuzzle, judgeAttempt, makeSuggestion, suggestionConfidence } from './solver.mjs';
+import { analyzePuzzle, judgeAttempt, makeSuggestion, makeSuggestionPlan, suggestionConfidence } from './solver.mjs';
 
 function createRandom(seed) {
     let state = seed >>> 0;
@@ -278,6 +278,45 @@ assert.equal(maxRoundSuggestion.length, 10);
 assert.equal(new Set(maxRoundSuggestion).size, 10);
 assert.ok(maxInitialDuration < 5000, `max initial recommendation took ${maxInitialDuration}ms`);
 assert.ok(maxRoundDuration < 5000, `max feedback recommendation took ${maxRoundDuration}ms`);
+
+// A full-size exact branch exercises the optional outcome-count probe. It may
+// replace inferred/off-domain slots, but it must keep actual green slots and
+// must not run again after the history records that a probe was already used.
+const probeSecret = [
+    'scaredyShroom', 'explodeonut', 'icebloom', 'inferno', 'pepperpult',
+    'sporeshroom', 'skyshooter', 'starfruit', 'lychee', 'repeater'
+];
+const probeRows = [
+    ['cherribomb', 'sunshroom', 'glacierShroom', 'iceweed', 'hotdate', 'sporeshroom', 'stallia', 'plantern', 'peanut', 'stickybombrice'],
+    ['sweetpotato', 'snowpea', 'icebloom', 'pineapple', 'endurian', 'sporeshroom', 'gloomshroom', 'scaredyShroom', 'bulbkekengi', 'spikerock'],
+    ['starfruit', 'primalpotatomine', 'icebloom', 'pepperpult', 'inferno', 'sporeshroom', 'firegourd', 'slingpea', 'melonpult', 'skyshooter']
+];
+const probeHistory = [];
+let probeLocked = Array(10).fill(false);
+for (const guesses of probeRows) {
+    const judgedProbe = gameJudgeAttempt(probeSecret, guesses, fullRulesByTarget, probeLocked);
+    probeHistory.push({ guesses, feedback: judgedProbe.feedback });
+    probeLocked = judgedProbe.correct;
+}
+const probeAnalysis = analyzePuzzle(decodingData.MERGES, 10, probeHistory);
+assert.equal(probeAnalysis.truncated, false);
+const lowRoundPlan = makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked, {
+    mode: 'low-rounds',
+    round: 4,
+    probeUsed: false
+});
+assert.equal(lowRoundPlan.probe, true);
+probeLocked.forEach((locked, slot) => {
+    if (locked) assert.equal(lowRoundPlan.guesses[slot], probeSecret[slot]);
+});
+assert.ok(lowRoundPlan.guesses.some((target, slot) => (
+    !probeLocked[slot] && !probeAnalysis.domains[slot].includes(target)
+)), 'an outcome probe may use an off-domain target in an unlocked slot');
+assert.equal(makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked, {
+    mode: 'low-rounds',
+    round: 4,
+    probeUsed: true
+}).probe, false);
 
 console.log(JSON.stringify({
     status: 'plant decoding stress tests passed',

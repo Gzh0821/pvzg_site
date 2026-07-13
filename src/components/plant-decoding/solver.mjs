@@ -4,6 +4,29 @@ const POSTERIOR_CHAIN_COUNT = 64;
 const POSTERIOR_BURN_IN = 400;
 const POSTERIOR_THINNING = 12;
 const SUGGESTION_OPTIMIZATION_PASSES = 3;
+const PROBE_CONFIG = {
+    fast: {
+        bitsPerRound: 12,
+        sampleLimit: 256,
+        seedLimit: 32,
+        passes: 1,
+        minimumOutcomeRatio: 1.5
+    },
+    balanced: {
+        bitsPerRound: 12,
+        sampleLimit: 512,
+        seedLimit: 64,
+        passes: 1,
+        minimumOutcomeRatio: 1.25
+    },
+    'low-rounds': {
+        bitsPerRound: 12,
+        sampleLimit: 1024,
+        seedLimit: 128,
+        passes: 2,
+        minimumOutcomeRatio: 1.2
+    }
+};
 
 export function judgeHalf(real, guess) {
     return (real.PlantA === guess.PlantA && real.PlantB !== guess.PlantB)
@@ -416,6 +439,25 @@ function feedbackEntropy(samples, guesses, rulesByTarget, lockedBefore) {
     return entropy([...outcomes.values()], samples.length);
 }
 
+function feedbackStats(samples, guesses, rulesByTarget, lockedBefore) {
+    if (!samples.length) return { entropy: 0, outcomeCount: 0 };
+    const outcomes = new Map();
+    for (const secret of samples) {
+        const key = judgeAttempt(secret, guesses, rulesByTarget, lockedBefore).feedback.join('|');
+        outcomes.set(key, (outcomes.get(key) || 0) + 1);
+    }
+    return {
+        entropy: entropy([...outcomes.values()], samples.length),
+        outcomeCount: outcomes.size
+    };
+}
+
+function representativeSamples(samples, limit) {
+    if (samples.length <= limit) return samples;
+    const stride = samples.length / limit;
+    return Array.from({ length: limit }, (_, index) => samples[Math.floor(index * stride)]);
+}
+
 function localSuggestion(rules, analysis) {
     const rulesByTarget = new Map(rules.map(rule => [rule.Target, rule]));
     const certainTargets = analysis.domains.map(domain => domain.length === 1 ? domain[0] : null);
@@ -450,7 +492,41 @@ function localSuggestion(rules, analysis) {
     });
 }
 
-export function makeSuggestion(rules, analysis, lockedBefore = []) {
+function findCloseoutCandidate(samples, lockedBefore) {
+    const slotCount = samples[0]?.length || 0;
+    const counts = Array.from({ length: slotCount }, () => new Map());
+    for (const sample of samples) {
+        sample.forEach((target, slot) => {
+            counts[slot].set(target, (counts[slot].get(target) || 0) + 1);
+        });
+    }
+
+    let guesses = samples[0]?.slice() || [];
+    let bestExpectedExact = -Infinity;
+    for (const sample of samples) {
+        const expectedExact = sample.reduce((sum, target, slot) => (
+            sum + (lockedBefore[slot] ? 0 : (counts[slot].get(target) || 0) / samples.length)
+        ), 0);
+        if (expectedExact > bestExpectedExact) {
+            bestExpectedExact = expectedExact;
+            guesses = sample.slice();
+        }
+    }
+
+    const unlockedCount = guesses.reduce((count, _, slot) => count + (lockedBefore[slot] ? 0 : 1), 0);
+    return {
+        guesses,
+        counts,
+        averageConfidence: unlockedCount ? bestExpectedExact / unlockedCount : 1,
+        expectedWrong: unlockedCount - Math.max(0, bestExpectedExact)
+    };
+}
+
+function shouldCloseOut(closeout) {
+    return closeout.averageConfidence >= 0.8 && closeout.expectedWrong <= 0.75;
+}
+
+function makeEntropySuggestion(rules, analysis, lockedBefore = []) {
     let suggestion = localSuggestion(rules, analysis);
     if (!analysis.samples.length || analysis.contradiction) return suggestion;
 
@@ -539,6 +615,125 @@ export function makeSuggestion(rules, analysis, lockedBefore = []) {
         if (!changed) break;
     }
     return suggestion;
+}
+
+function initialPermutationBits(targetCount, slotCount) {
+    let bits = 0;
+    for (let index = 0; index < slotCount; index += 1) {
+        bits += Math.log2(Math.max(1, targetCount - index));
+    }
+    return bits;
+}
+
+export function recommendationProbeRound(targetCount, slotCount, mode = 'balanced') {
+    const config = PROBE_CONFIG[mode];
+    if (!config) return Infinity;
+    const complexityRounds = Math.ceil(initialPermutationBits(targetCount, slotCount) / config.bitsPerRound);
+    return Math.min(4, Math.max(2, complexityRounds));
+}
+
+function compareProbeScores(left, right) {
+    if (left.outcomeCount !== right.outcomeCount) return left.outcomeCount - right.outcomeCount;
+    if (Math.abs(left.entropy - right.entropy) > 1e-12) return left.entropy - right.entropy;
+    return left.expectedExact - right.expectedExact;
+}
+
+function makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config) {
+    const rulesByTarget = new Map(rules.map(rule => [rule.Target, rule]));
+    const targets = rules.map(rule => rule.Target);
+    const optimizationSamples = representativeSamples(analysis.samples, config.sampleLimit);
+    const exactMatchCounts = analysis.domains.map((_, slot) => {
+        const counts = new Map();
+        for (const sample of analysis.samples) {
+            counts.set(sample[slot], (counts.get(sample[slot]) || 0) + 1);
+        }
+        return counts;
+    });
+    const scoreCache = new Map();
+    const scoreCandidate = candidate => {
+        const key = candidate.join('\u0000');
+        if (scoreCache.has(key)) return scoreCache.get(key);
+        const stats = feedbackStats(optimizationSamples, candidate, rulesByTarget, lockedBefore);
+        const expectedExact = candidate.reduce((count, target, slot) => (
+            count + (exactMatchCounts[slot].get(target) || 0) / analysis.samples.length
+        ), 0);
+        const score = { ...stats, expectedExact };
+        scoreCache.set(key, score);
+        return score;
+    };
+
+    const seedStride = Math.max(1, Math.ceil(analysis.samples.length / config.seedLimit));
+    const seedRows = [
+        baseline,
+        ...analysis.samples.filter((_, index) => index % seedStride === 0).slice(0, config.seedLimit)
+    ];
+    let suggestion = baseline.slice();
+    let bestScore = scoreCandidate(suggestion);
+    for (const seed of seedRows) {
+        const candidate = seed.slice();
+        lockedBefore.forEach((locked, slot) => {
+            if (locked) candidate[slot] = baseline[slot];
+        });
+        const score = scoreCandidate(candidate);
+        if (compareProbeScores(score, bestScore) > 0) {
+            suggestion = candidate;
+            bestScore = score;
+        }
+    }
+
+    for (let pass = 0; pass < config.passes; pass += 1) {
+        let changed = false;
+        for (let slot = 0; slot < suggestion.length; slot += 1) {
+            if (lockedBefore[slot]) continue;
+            let bestTarget = suggestion[slot];
+            let slotBestScore = scoreCandidate(suggestion);
+            for (const target of targets) {
+                const candidate = suggestion.slice();
+                candidate[slot] = target;
+                const score = scoreCandidate(candidate);
+                if (compareProbeScores(score, slotBestScore) > 0) {
+                    bestTarget = target;
+                    slotBestScore = score;
+                }
+            }
+            if (bestTarget !== suggestion[slot]) changed = true;
+            suggestion[slot] = bestTarget;
+        }
+        if (!changed) break;
+    }
+
+    const baselineFull = feedbackStats(analysis.samples, baseline, rulesByTarget, lockedBefore);
+    const suggestionFull = feedbackStats(analysis.samples, suggestion, rulesByTarget, lockedBefore);
+    const requiredOutcomes = Math.ceil(baselineFull.outcomeCount * config.minimumOutcomeRatio);
+    return suggestionFull.outcomeCount > baselineFull.outcomeCount
+        && suggestionFull.outcomeCount >= requiredOutcomes
+        ? suggestion
+        : baseline;
+}
+
+export function makeSuggestionPlan(rules, analysis, lockedBefore = [], options = {}) {
+    const mode = options.mode in PROBE_CONFIG ? options.mode : 'fast';
+    const baseline = makeEntropySuggestion(rules, analysis, lockedBefore);
+    if (analysis.contradiction || analysis.truncated || analysis.samples.length <= 1) {
+        return { guesses: baseline, probe: false };
+    }
+
+    const posteriorSamples = analysis.posteriorSamples?.length ? analysis.posteriorSamples : analysis.samples;
+    if (shouldCloseOut(findCloseoutCandidate(posteriorSamples, lockedBefore))) {
+        return { guesses: baseline, probe: false };
+    }
+
+    const earliestRound = recommendationProbeRound(rules.length, analysis.domains.length, mode);
+    const round = Math.max(1, Number(options.round) || 1);
+    if (options.probeUsed || round < earliestRound) return { guesses: baseline, probe: false };
+
+    const probe = makeOutcomeProbe(rules, analysis, lockedBefore, baseline, PROBE_CONFIG[mode]);
+    const changed = probe.some((target, slot) => target !== baseline[slot]);
+    return { guesses: probe, probe: changed };
+}
+
+export function makeSuggestion(rules, analysis, lockedBefore = [], options = {}) {
+    return makeSuggestionPlan(rules, analysis, lockedBefore, options).guesses;
 }
 
 export function suggestionConfidence(analysis, suggestion) {

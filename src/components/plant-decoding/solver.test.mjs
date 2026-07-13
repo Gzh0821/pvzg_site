@@ -4,7 +4,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import decodingData from './decoding-plants.json' with { type: 'json' };
-import { analyzePuzzle, judgeAttempt, makeSuggestion, suggestionConfidence } from './solver.mjs';
+import {
+    analyzePuzzle,
+    judgeAttempt,
+    makeSuggestion,
+    makeSuggestionPlan,
+    recommendationProbeRound,
+    suggestionConfidence
+} from './solver.mjs';
 
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 
@@ -225,6 +232,21 @@ assert.ok(lockedAnalysis.samples.some(sample => sample.join(',') === lockedSecre
 const lockedSuggestion = makeSuggestion(rules, lockedAnalysis, firstJudged.correct);
 assert.equal(lockedSuggestion[0], 'aa', 'a correct slot must never be changed by recommendation optimization');
 
+const closeoutAnalysis = {
+    contradiction: false,
+    domains: [['aa'], ['ab', 'bb'], ['ac']],
+    samples: [['aa', 'ab', 'ac'], ['aa', 'bb', 'ac']],
+    posteriorSamples: [['aa', 'ab', 'ac'], ['aa', 'bb', 'ac']],
+    sampleCount: 2,
+    truncated: false
+};
+const closeoutPlan = makeSuggestionPlan(rules, closeoutAnalysis, [false, false, false], {
+    mode: 'low-rounds',
+    round: 4,
+    probeUsed: false
+});
+assert.deepEqual(closeoutPlan, { guesses: ['aa', 'ab', 'ac'], probe: false }, 'high-confidence slots must close out instead of probing');
+
 const truncated = analyzePuzzle(rules, 3, [{ guesses: guess, feedback: judged.feedback }], 1);
 assert.equal(truncated.truncated, true);
 assert.ok(truncated.domains.every((domain, index) => domain.length >= analysis.domains[index].length));
@@ -303,6 +325,11 @@ assert.equal(decodingData.BASES.length, 10);
 assert.equal(decodingData.MERGES.length, 45);
 assert.equal(new Set(decodingData.MERGES.map(rule => rule.Target)).size, 45);
 assert.equal(new Set(decodingData.MERGES.map(rule => [rule.PlantA, rule.PlantB].sort().join('|'))).size, 45);
+assert.equal(recommendationProbeRound(6, 3, 'balanced'), 2);
+assert.equal(recommendationProbeRound(13, 4, 'balanced'), 2);
+assert.equal(recommendationProbeRound(23, 6, 'balanced'), 3);
+assert.equal(recommendationProbeRound(38, 8, 'balanced'), 4);
+assert.equal(recommendationProbeRound(45, 10, 'balanced'), 4);
 const currentRulesByTarget = new Map(decodingData.MERGES.map(rule => [rule.Target, rule]));
 let currentRuleParityCases = 0;
 for (const real of decodingData.MERGES) {

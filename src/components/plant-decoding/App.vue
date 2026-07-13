@@ -140,7 +140,9 @@
                                     <span v-if="assistantFeedback[index]" class="slot-feedback">
                                         {{ feedbackSymbol(assistantFeedback[index]!) }} {{ t(`feedback.${assistantFeedback[index]}`) }}
                                     </span>
-                                    <span v-else class="slot-feedback confidence">{{ confidenceLabel(index) }}</span>
+                                    <span v-else class="slot-feedback confidence">
+                                        {{ currentRecommendationIsProbe ? t('probe') : confidenceLabel(index) }}
+                                    </span>
                                 </button>
                             </div>
                         </section>
@@ -279,6 +281,25 @@
                             <span class="active-slot-badge">{{ assistantActiveSlot + 1 }}</span>
                         </div>
 
+                        <div
+                            class="strategy-switch"
+                            role="radiogroup"
+                            :aria-label="t('strategyLabel')"
+                        >
+                            <button
+                                v-for="option in recommendationModeOptions"
+                                :key="option.value"
+                                type="button"
+                                role="radio"
+                                :class="{ selected: recommendationMode === option.value }"
+                                :aria-checked="recommendationMode === option.value"
+                                :disabled="assistantHistory.length > 0"
+                                @click="recommendationMode = option.value"
+                            >
+                                {{ option.label }}
+                            </button>
+                        </div>
+
                         <div class="solver-summary" :class="{ danger: assistantContradiction, solved: assistantSolved }">
                             <strong>{{ assistantSummaryTitle }}</strong>
                             <span>{{ assistantSummaryDetail }}</span>
@@ -370,12 +391,13 @@ import { CheckCircleOutlined, EyeOutlined, ReloadOutlined } from '@ant-design/ic
 import { useI18n } from 'vue-i18n';
 
 import decodingData from './decoding-plants.json';
-import { analyzePuzzle, judgeAttempt, makeSuggestion, suggestionConfidence } from './solver.mjs';
+import { analyzePuzzle, judgeAttempt, makeSuggestionPlan, suggestionConfidence } from './solver.mjs';
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
 
 type FeedbackState = 'correct' | 'change' | 'half' | 'fault';
 type ToolMode = 'assistant' | 'practice' | 'rules';
 type RuleScope = 'current' | 'all';
+type RecommendationMode = 'fast' | 'balanced' | 'low-rounds';
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
 
 interface MergeRule {
@@ -394,6 +416,7 @@ interface RoundRecord {
     index: number;
     guesses: string[];
     feedback: FeedbackState[];
+    usedOutcomeProbe?: boolean;
 }
 
 const messages = Object.fromEntries(
@@ -451,6 +474,7 @@ const feedbackSymbol = (state: FeedbackState) => ({ correct: '✓', change: '↔
 
 const toolMode = ref<ToolMode>('assistant');
 const ruleScope = ref<RuleScope>('current');
+const recommendationMode = ref<RecommendationMode>('balanced');
 const baseCount = ref(5);
 const codeCount = ref(4);
 const activeBasePlants = computed(() => basePool.slice(0, baseCount.value));
@@ -465,6 +489,11 @@ const toolModeOptions = computed(() => [
 const ruleScopeOptions = computed(() => [
     { label: t('currentRules'), value: 'current' },
     { label: t('allRules'), value: 'all' }
+]);
+const recommendationModeOptions = computed<Array<{ label: string; value: RecommendationMode }>>(() => [
+    { label: t('strategy.fast'), value: 'fast' },
+    { label: t('strategy.balanced'), value: 'balanced' },
+    { label: t('strategy.lowRounds'), value: 'low-rounds' }
 ]);
 
 const assistantHistory = ref<RoundRecord[]>([]);
@@ -484,7 +513,18 @@ const assistantLocked = computed(() => {
     }));
     return locked;
 });
-const recommendedGuesses = computed(() => makeSuggestion(availableRules.value, assistantAnalysis.value, assistantLocked.value));
+const assistantOutcomeProbeUsed = computed(() => assistantHistory.value.some(round => round.usedOutcomeProbe));
+const recommendationPlan = computed(() => makeSuggestionPlan(
+    availableRules.value,
+    assistantAnalysis.value,
+    assistantLocked.value,
+    {
+        mode: recommendationMode.value,
+        round: assistantHistory.value.length + 1,
+        probeUsed: assistantOutcomeProbeUsed.value
+    }
+));
+const recommendedGuesses = computed(() => recommendationPlan.value.guesses);
 const assistantConfidence = computed(() => suggestionConfidence(assistantAnalysis.value, assistantGuesses.value));
 const assistantAverageConfidence = computed(() => {
     if (!assistantConfidence.value.length) return 0;
@@ -496,6 +536,7 @@ const assistantRecommendationMatches = computed(() => (
     recommendedGuesses.value.length === assistantGuesses.value.length
     && recommendedGuesses.value.every((target: string, index: number) => target === assistantGuesses.value[index])
 ));
+const currentRecommendationIsProbe = computed(() => recommendationPlan.value.probe && assistantRecommendationMatches.value);
 const assistantCanSubmit = computed(() => (
     assistantGuesses.value.length === actualCodeCount.value
     && assistantGuesses.value.every(Boolean)
@@ -567,7 +608,8 @@ function submitAssistantRound() {
     assistantHistory.value.push({
         index: assistantHistory.value.length + 1,
         guesses: assistantGuesses.value.slice(),
-        feedback: assistantFeedback.value.slice() as FeedbackState[]
+        feedback: assistantFeedback.value.slice() as FeedbackState[],
+        usedOutcomeProbe: currentRecommendationIsProbe.value
     });
     if (!assistantFeedback.value.every(state => state === 'correct')) nextTick(applyRecommendation);
 }
@@ -666,6 +708,8 @@ watch([baseCount, codeCount], () => {
     resetAssistant();
     startPractice();
 });
+
+watch(recommendationMode, () => nextTick(applyRecommendation));
 
 onMounted(() => {
     resetAssistant();
@@ -1291,6 +1335,55 @@ onMounted(() => {
     color: var(--surface);
     font-size: 1rem;
 }
+
+.strategy-switch {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    width: calc(100% - 20px);
+    margin: 0 10px 10px;
+    padding: 3px;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.strategy-switch button {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 28px;
+    border: 0;
+    border-radius: 6px;
+    padding: 0 4px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: none;
+}
+
+.strategy-switch button.selected {
+    background: var(--surface-raised);
+    color: var(--ink);
+}
+
+.strategy-switch button:not(:disabled):not(.selected):hover {
+    background: color-mix(in srgb, var(--surface-raised) 72%, transparent);
+}
+
+.strategy-switch button.selected,
+.strategy-switch button:not(:disabled):not(.selected):hover {
+    box-shadow:
+        0 1px 2px 0 rgb(0 0 0 / 3%),
+        0 1px 6px -1px rgb(0 0 0 / 2%),
+        0 2px 4px 0 rgb(0 0 0 / 2%);
+}
+
+.strategy-switch button:disabled { cursor: not-allowed; }
 
 .solver-summary {
     display: grid;
