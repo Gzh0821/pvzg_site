@@ -17,7 +17,8 @@ const PROBE_CONFIG = {
         sampleLimit: 512,
         seedLimit: 64,
         passes: 1,
-        minimumOutcomeRatio: 1.25
+        minimumOutcomeRatio: 1.25,
+        latestProbeRound: 4
     },
     'low-rounds': {
         bitsPerRound: 12,
@@ -699,6 +700,30 @@ function makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config) {
             if (bestTarget !== suggestion[slot]) changed = true;
             suggestion[slot] = bestTarget;
         }
+
+        // Single-slot coordinate descent can stop at a local optimum when two
+        // occupied probe values need to move together. Try legal pair swaps as
+        // a small second step; green slots remain untouched.
+        let bestSwap = null;
+        let bestSwapScore = scoreCandidate(suggestion);
+        for (let first = 0; first < suggestion.length; first += 1) {
+            if (lockedBefore[first]) continue;
+            for (let second = first + 1; second < suggestion.length; second += 1) {
+                if (lockedBefore[second] || suggestion[first] === suggestion[second]) continue;
+                const candidate = suggestion.slice();
+                [candidate[first], candidate[second]] = [candidate[second], candidate[first]];
+                const score = scoreCandidate(candidate);
+                if (compareProbeScores(score, bestSwapScore) > 0) {
+                    bestSwapScore = score;
+                    bestSwap = [first, second];
+                }
+            }
+        }
+        if (bestSwap) {
+            const [first, second] = bestSwap;
+            [suggestion[first], suggestion[second]] = [suggestion[second], suggestion[first]];
+            changed = true;
+        }
         if (!changed) break;
     }
 
@@ -723,11 +748,14 @@ export function makeSuggestionPlan(rules, analysis, lockedBefore = [], options =
         return { guesses: baseline, probe: false };
     }
 
+    const config = PROBE_CONFIG[mode];
     const earliestRound = recommendationProbeRound(rules.length, analysis.domains.length, mode);
     const round = Math.max(1, Number(options.round) || 1);
-    if (options.probeUsed || round < earliestRound) return { guesses: baseline, probe: false };
+    if (options.probeUsed || round < earliestRound || round > (config.latestProbeRound || Infinity)) {
+        return { guesses: baseline, probe: false };
+    }
 
-    const probe = makeOutcomeProbe(rules, analysis, lockedBefore, baseline, PROBE_CONFIG[mode]);
+    const probe = makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config);
     const probeSlots = probe.map((target, slot) => target !== baseline[slot]);
     return { guesses: probe, probe: probeSlots.some(Boolean), probeSlots };
 }

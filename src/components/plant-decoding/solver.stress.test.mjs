@@ -324,6 +324,16 @@ assert.ok(lowRoundPlan.guesses.some((target, slot) => (
     !probeLocked[slot] && !probeAnalysis.domains[slot].includes(target)
 )), 'an outcome probe may use an off-domain target in an unlocked slot');
 assert.equal(makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked, {
+    mode: 'balanced',
+    round: 5,
+    probeUsed: false
+}).probe, false, 'balanced mode should close out instead of starting a late probe');
+assert.equal(makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked, {
+    mode: 'low-rounds',
+    round: 5,
+    probeUsed: false
+}).probe, true, 'low-rounds mode may still trade a late round for more information');
+assert.equal(makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked, {
     mode: 'low-rounds',
     round: 4,
     probeUsed: true
