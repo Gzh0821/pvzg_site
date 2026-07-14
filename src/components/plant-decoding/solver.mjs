@@ -4,6 +4,7 @@ const POSTERIOR_CHAIN_COUNT = 64;
 const POSTERIOR_BURN_IN = 400;
 const POSTERIOR_THINNING = 12;
 const SUGGESTION_OPTIMIZATION_PASSES = 3;
+const feedbackRuleContexts = new WeakMap();
 const PROBE_CONFIG = {
     fast: {
         bitsPerRound: 12,
@@ -423,33 +424,99 @@ function contradictionResult(domains) {
 }
 
 function entropy(parts, total) {
-    return parts.reduce((score, count) => {
-        if (!count) return score;
+    let score = 0;
+    for (const count of parts) {
+        if (!count) continue;
         const probability = count / total;
-        return score - probability * Math.log2(probability);
-    }, 0);
+        score -= probability * Math.log2(probability);
+    }
+    return score;
 }
 
-function feedbackEntropy(samples, guesses, rulesByTarget, lockedBefore) {
-    if (!samples.length) return 0;
-    const outcomes = new Map();
-    for (const secret of samples) {
-        const key = judgeAttempt(secret, guesses, rulesByTarget, lockedBefore).feedback.join('|');
-        outcomes.set(key, (outcomes.get(key) || 0) + 1);
+function feedbackRuleContext(rules) {
+    const cached = feedbackRuleContexts.get(rules);
+    if (cached) return cached;
+
+    const targetIds = new Map(rules.map((rule, index) => [rule.Target, index]));
+    const halfMatches = new Uint8Array(rules.length * rules.length);
+    for (let real = 0; real < rules.length; real += 1) {
+        for (let guess = 0; guess < rules.length; guess += 1) {
+            halfMatches[real * rules.length + guess] = judgeHalf(rules[real], rules[guess]) ? 1 : 0;
+        }
     }
-    return entropy([...outcomes.values()], samples.length);
+
+    const context = { targetIds, halfMatches, targetCount: rules.length };
+    feedbackRuleContexts.set(rules, context);
+    return context;
 }
 
-function feedbackStats(samples, guesses, rulesByTarget, lockedBefore) {
-    if (!samples.length) return { entropy: 0, outcomeCount: 0 };
-    const outcomes = new Map();
-    for (const secret of samples) {
-        const key = judgeAttempt(secret, guesses, rulesByTarget, lockedBefore).feedback.join('|');
-        outcomes.set(key, (outcomes.get(key) || 0) + 1);
+function createFeedbackStatsEvaluator(samples, rules, lockedBefore) {
+    if (!samples.length) return () => ({ entropy: 0, outcomeCount: 0 });
+
+    const { targetIds, halfMatches, targetCount } = feedbackRuleContext(rules);
+    const sampleCount = samples.length;
+    const slotCount = samples[0].length;
+    const encodedSecrets = new Uint8Array(sampleCount * slotCount);
+    const targetPositions = new Int8Array(sampleCount * targetCount);
+    targetPositions.fill(-1);
+
+    for (let sampleIndex = 0; sampleIndex < sampleCount; sampleIndex += 1) {
+        const secret = samples[sampleIndex];
+        const secretOffset = sampleIndex * slotCount;
+        const positionOffset = sampleIndex * targetCount;
+        for (let slot = 0; slot < slotCount; slot += 1) {
+            const targetId = targetIds.get(secret[slot]);
+            encodedSecrets[secretOffset + slot] = targetId;
+            targetPositions[positionOffset + targetId] = slot;
+        }
     }
-    return {
-        entropy: entropy([...outcomes.values()], samples.length),
-        outcomeCount: outcomes.size
+
+    let lockedMask = 0;
+    for (let slot = 0; slot < slotCount; slot += 1) {
+        if (lockedBefore[slot]) lockedMask |= 1 << slot;
+    }
+
+    const encodedGuesses = new Uint8Array(slotCount);
+    const outcomes = new Map();
+    return guesses => {
+        for (let slot = 0; slot < slotCount; slot += 1) {
+            encodedGuesses[slot] = targetIds.get(guesses[slot]);
+        }
+
+        outcomes.clear();
+        for (let sampleIndex = 0; sampleIndex < sampleCount; sampleIndex += 1) {
+            const secretOffset = sampleIndex * slotCount;
+            const positionOffset = sampleIndex * targetCount;
+            let correctMask = lockedMask;
+            // Pack fault/correct/change/half as 0/1/2/3, two bits per slot.
+            let outcome = 0;
+            for (let slot = 0; slot < slotCount; slot += 1) {
+                const slotBit = 1 << slot;
+                const realTarget = encodedSecrets[secretOffset + slot];
+                const guessTarget = encodedGuesses[slot];
+                let feedback = 0;
+                if (correctMask & slotBit) {
+                    feedback = 1;
+                } else if (realTarget === guessTarget) {
+                    feedback = 1;
+                    correctMask |= slotBit;
+                } else {
+                    const movableSlot = targetPositions[positionOffset + guessTarget];
+                    if (movableSlot >= 0 && !(correctMask & (1 << movableSlot))) {
+                        feedback = 2;
+                    } else if (halfMatches[realTarget * targetCount + guessTarget]) {
+                        feedback = 3;
+                    }
+                }
+                outcome |= feedback << (slot * 2);
+            }
+            outcomes.set(outcome, (outcomes.get(outcome) || 0) + 1);
+        }
+
+        return {
+            entropy: entropy(outcomes.values(), sampleCount),
+            outcomeCount: outcomes.size
+        };
     };
 }
 
@@ -531,10 +598,10 @@ function makeEntropySuggestion(rules, analysis, lockedBefore = []) {
     let suggestion = localSuggestion(rules, analysis);
     if (!analysis.samples.length || analysis.contradiction) return suggestion;
 
-    const rulesByTarget = new Map(rules.map(rule => [rule.Target, rule]));
     const posteriorSamples = analysis.posteriorSamples?.length ? analysis.posteriorSamples : analysis.samples;
     const sampleStride = Math.max(1, Math.ceil(posteriorSamples.length / 1024));
     const optimizationSamples = posteriorSamples.filter((_, index) => index % sampleStride === 0).slice(0, 1024);
+    const evaluateFeedback = createFeedbackStatsEvaluator(optimizationSamples, rules, lockedBefore);
     const exactMatchCounts = analysis.domains.map((_, slot) => {
         const counts = new Map();
         for (const sample of posteriorSamples) {
@@ -546,7 +613,7 @@ function makeEntropySuggestion(rules, analysis, lockedBefore = []) {
     const suggestionScore = candidate => {
         const key = candidate.join('\u0000');
         if (scoreCache.has(key)) return scoreCache.get(key);
-        const informationGain = feedbackEntropy(optimizationSamples, candidate, rulesByTarget, lockedBefore);
+        const informationGain = evaluateFeedback(candidate).entropy;
         const expectedExact = candidate.reduce((count, target, slot) => (
             count + (exactMatchCounts[slot].get(target) || 0) / posteriorSamples.length
         ), 0);
@@ -640,9 +707,9 @@ function compareProbeScores(left, right) {
 }
 
 function makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config) {
-    const rulesByTarget = new Map(rules.map(rule => [rule.Target, rule]));
     const targets = rules.map(rule => rule.Target);
     const optimizationSamples = representativeSamples(analysis.samples, config.sampleLimit);
+    const evaluateFeedback = createFeedbackStatsEvaluator(optimizationSamples, rules, lockedBefore);
     const exactMatchCounts = analysis.domains.map((_, slot) => {
         const counts = new Map();
         for (const sample of analysis.samples) {
@@ -654,7 +721,7 @@ function makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config) {
     const scoreCandidate = candidate => {
         const key = candidate.join('\u0000');
         if (scoreCache.has(key)) return scoreCache.get(key);
-        const stats = feedbackStats(optimizationSamples, candidate, rulesByTarget, lockedBefore);
+        const stats = evaluateFeedback(candidate);
         const expectedExact = candidate.reduce((count, target, slot) => (
             count + (exactMatchCounts[slot].get(target) || 0) / analysis.samples.length
         ), 0);
@@ -727,8 +794,11 @@ function makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config) {
         if (!changed) break;
     }
 
-    const baselineFull = feedbackStats(analysis.samples, baseline, rulesByTarget, lockedBefore);
-    const suggestionFull = feedbackStats(analysis.samples, suggestion, rulesByTarget, lockedBefore);
+    const evaluateFullFeedback = optimizationSamples === analysis.samples
+        ? evaluateFeedback
+        : createFeedbackStatsEvaluator(analysis.samples, rules, lockedBefore);
+    const baselineFull = evaluateFullFeedback(baseline);
+    const suggestionFull = evaluateFullFeedback(suggestion);
     const requiredOutcomes = Math.ceil(baselineFull.outcomeCount * config.minimumOutcomeRatio);
     return suggestionFull.outcomeCount > baselineFull.outcomeCount
         && suggestionFull.outcomeCount >= requiredOutcomes
