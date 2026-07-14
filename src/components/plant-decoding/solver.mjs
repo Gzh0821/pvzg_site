@@ -456,6 +456,11 @@ function createFeedbackStatsEvaluator(samples, rules, lockedBefore) {
     const { targetIds, halfMatches, targetCount } = feedbackRuleContext(rules);
     const sampleCount = samples.length;
     const slotCount = samples[0].length;
+    const entropyTerms = new Float64Array(sampleCount + 1);
+    for (let count = 1; count <= sampleCount; count += 1) {
+        const probability = count / sampleCount;
+        entropyTerms[count] = -probability * Math.log2(probability);
+    }
     const encodedSecrets = new Uint8Array(sampleCount * slotCount);
     const targetPositions = new Int8Array(sampleCount * targetCount);
     targetPositions.fill(-1);
@@ -513,10 +518,9 @@ function createFeedbackStatsEvaluator(samples, rules, lockedBefore) {
             outcomes.set(outcome, (outcomes.get(outcome) || 0) + 1);
         }
 
-        return {
-            entropy: entropy(outcomes.values(), sampleCount),
-            outcomeCount: outcomes.size
-        };
+        let feedbackEntropy = 0;
+        for (const count of outcomes.values()) feedbackEntropy += entropyTerms[count];
+        return { entropy: feedbackEntropy, outcomeCount: outcomes.size };
     };
 }
 
