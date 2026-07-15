@@ -846,3 +846,123 @@ export function suggestionConfidence(analysis, suggestion) {
         return matches / posteriorSamples.length;
     });
 }
+
+export function gemRewardForRounds(baseCount, slotCount, rounds) {
+    return Math.round(baseCount * slotCount * Math.exp(-Math.pow(rounds / 8, 2)));
+}
+
+export function estimateStrategyOutcome(rules, slotCount, history = [], lockedBefore = [], options = {}) {
+    const baseCount = Math.max(0, Number(options.baseCount) || 0);
+    const mode = options.mode in PROBE_CONFIG ? options.mode : 'fast';
+    const probeUsed = Boolean(options.probeUsed);
+    const analysisSampleLimit = Math.max(1, Number(options.analysisSampleLimit) || DEFAULT_SAMPLE_LIMIT);
+    const rolloutSampleLimit = Math.max(1, Number(options.rolloutSampleLimit) || 256);
+    const secretLimit = Math.max(1, Number(options.secretLimit) || 64);
+    const maxAdditionalRounds = Math.max(1, Number(options.maxAdditionalRounds) || 10);
+    const completedRounds = history.length;
+
+    if (history.at(-1)?.feedback.every(state => state === 'correct')) {
+        return {
+            expectedRemainingRounds: 0,
+            expectedTotalRounds: completedRounds,
+            expectedFirstReward: gemRewardForRounds(baseCount, slotCount, completedRounds),
+            approximate: false,
+            evaluatedSecrets: 1,
+            cappedSecrets: 0,
+            roundDistribution: { [completedRounds]: 1 }
+        };
+    }
+
+    const initialAnalysis = analyzePuzzle(rules, slotCount, history, analysisSampleLimit);
+    if (initialAnalysis.contradiction) return null;
+    const posteriorSamples = initialAnalysis.posteriorSamples?.length
+        ? initialAnalysis.posteriorSamples
+        : initialAnalysis.samples;
+    if (!posteriorSamples.length) return null;
+
+    const secrets = representativeSamples(posteriorSamples, secretLimit);
+    const rulesByTarget = new Map(rules.map(rule => [rule.Target, rule]));
+    const analysisCache = new Map();
+    const planCache = new Map();
+    const initialPlan = makeSuggestionPlan(rules, initialAnalysis, lockedBefore, {
+        mode,
+        round: completedRounds + 1,
+        probeUsed
+    });
+    let sawTruncatedAnalysis = initialAnalysis.truncated;
+
+    function getPlan(currentHistory, currentLocked, currentRound, currentProbeUsed) {
+        const historyKey = JSON.stringify(currentHistory);
+        const analysisKey = `${rolloutSampleLimit}|${historyKey}`;
+        let analysis = analysisCache.get(analysisKey);
+        if (!analysis) {
+            analysis = analyzePuzzle(rules, slotCount, currentHistory, rolloutSampleLimit);
+            analysisCache.set(analysisKey, analysis);
+            if (analysis.truncated) sawTruncatedAnalysis = true;
+        }
+        const planKey = `${mode}|${currentRound}|${currentProbeUsed}|${currentLocked.join('')}|${analysisKey}`;
+        let plan = planCache.get(planKey);
+        if (!plan) {
+            plan = makeSuggestionPlan(rules, analysis, currentLocked, {
+                mode,
+                round: currentRound,
+                probeUsed: currentProbeUsed
+            });
+            planCache.set(planKey, plan);
+        }
+        return plan;
+    }
+
+    const remainingRounds = [];
+    let cappedSecrets = 0;
+    for (const secret of secrets) {
+        let currentHistory = history;
+        let currentLocked = lockedBefore.slice();
+        let currentProbeUsed = probeUsed;
+        let solvedAfter = null;
+
+        for (let offset = 0; offset < maxAdditionalRounds; offset += 1) {
+            const currentRound = completedRounds + offset + 1;
+            const plan = offset === 0
+                ? initialPlan
+                : getPlan(currentHistory, currentLocked, currentRound, currentProbeUsed);
+            if (plan.probe) currentProbeUsed = true;
+            const judged = judgeAttempt(secret, plan.guesses, rulesByTarget, currentLocked);
+            if (judged.correct.every(Boolean)) {
+                solvedAfter = offset + 1;
+                break;
+            }
+            currentHistory = [...currentHistory, {
+                guesses: plan.guesses.slice(),
+                feedback: judged.feedback.slice()
+            }];
+            currentLocked = judged.correct;
+        }
+
+        if (solvedAfter === null) {
+            cappedSecrets += 1;
+            solvedAfter = maxAdditionalRounds + 1;
+        }
+        remainingRounds.push(solvedAfter);
+    }
+
+    const totalRounds = remainingRounds.map(rounds => completedRounds + rounds);
+    const roundDistribution = {};
+    for (const rounds of totalRounds) {
+        roundDistribution[rounds] = (roundDistribution[rounds] || 0) + 1;
+    }
+    return {
+        expectedRemainingRounds: remainingRounds.reduce((sum, rounds) => sum + rounds, 0) / remainingRounds.length,
+        expectedTotalRounds: totalRounds.reduce((sum, rounds) => sum + rounds, 0) / totalRounds.length,
+        expectedFirstReward: totalRounds.reduce((sum, rounds) => (
+            sum + gemRewardForRounds(baseCount, slotCount, rounds)
+        ), 0) / totalRounds.length,
+        approximate: posteriorSamples.length > 1
+            || sawTruncatedAnalysis
+            || secrets.length < posteriorSamples.length
+            || cappedSecrets > 0,
+        evaluatedSecrets: secrets.length,
+        cappedSecrets,
+        roundDistribution
+    };
+}

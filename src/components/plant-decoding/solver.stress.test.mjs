@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 import decodingData from './decoding-plants.json' with { type: 'json' };
-import { analyzePuzzle, judgeAttempt, makeSuggestion, makeSuggestionPlan, suggestionConfidence } from './solver.mjs';
+import { analyzePuzzle, estimateStrategyOutcome, judgeAttempt, makeSuggestion, makeSuggestionPlan, suggestionConfidence } from './solver.mjs';
 
 function createRandom(seed) {
     let state = seed >>> 0;
@@ -338,6 +338,22 @@ assert.equal(makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked,
     round: 4,
     probeUsed: true
 }).probe, false);
+
+const defaultBases = new Set(decodingData.BASES.slice(0, 5));
+const defaultRules = decodingData.MERGES.filter(rule => (
+    defaultBases.has(rule.PlantA) && defaultBases.has(rule.PlantB)
+));
+const defaultEstimate = estimateStrategyOutcome(defaultRules, 4, [], Array(4).fill(false), {
+    baseCount: 5,
+    mode: 'balanced',
+    analysisSampleLimit: 4096,
+    rolloutSampleLimit: 256,
+    secretLimit: 64
+});
+assert.ok(Math.abs(defaultEstimate.expectedTotalRounds - 3.52) < 0.2);
+assert.ok(Math.abs(defaultEstimate.expectedFirstReward - 16.46) < 0.5);
+assert.equal(defaultEstimate.approximate, true);
+assert.equal(defaultEstimate.cappedSecrets, 0);
 
 console.log(JSON.stringify({
     status: 'plant decoding stress tests passed',

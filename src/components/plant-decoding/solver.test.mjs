@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 import decodingData from './decoding-plants.json' with { type: 'json' };
 import {
     analyzePuzzle,
+    estimateStrategyOutcome,
+    gemRewardForRounds,
     judgeAttempt,
     makeSuggestion,
     makeSuggestionPlan,
@@ -267,6 +269,35 @@ const solved = analyzePuzzle(rules, 3, [{
     feedback: ['correct', 'correct', 'correct']
 }]);
 assert.deepEqual(suggestionConfidence(solved, secret), [1, 1, 1]);
+
+assert.equal(gemRewardForRounds(5, 4, 1), 20);
+assert.equal(gemRewardForRounds(5, 4, 3), 17);
+assert.equal(gemRewardForRounds(5, 4, 6), 11);
+const singleRule = [{ PlantA: 'a', PlantB: 'a', Target: 'aa' }];
+const singleEstimate = estimateStrategyOutcome(singleRule, 1, [], [false], {
+    baseCount: 5,
+    mode: 'balanced',
+    analysisSampleLimit: 8,
+    rolloutSampleLimit: 8,
+    secretLimit: 8
+});
+assert.deepEqual(singleEstimate, {
+    expectedRemainingRounds: 1,
+    expectedTotalRounds: 1,
+    expectedFirstReward: 5,
+    approximate: false,
+    evaluatedSecrets: 1,
+    cappedSecrets: 0,
+    roundDistribution: { 1: 1 }
+});
+const completedEstimate = estimateStrategyOutcome(singleRule, 1, [{
+    guesses: ['aa'],
+    feedback: ['correct']
+}], [true], { baseCount: 5 });
+assert.equal(completedEstimate.expectedRemainingRounds, 0);
+assert.equal(completedEstimate.expectedTotalRounds, 1);
+assert.equal(completedEstimate.expectedFirstReward, 5);
+assert.equal(completedEstimate.approximate, false);
 
 // Exhaust every 3-slot secret and every user row (including duplicate guesses).
 // Candidate results are compared against a brute-force game-body oracle.

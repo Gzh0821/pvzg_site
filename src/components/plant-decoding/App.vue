@@ -307,6 +307,14 @@
                                 <span>{{ t('averageConfidence') }}</span>
                                 <b>{{ confidencePrefix }}{{ assistantAverageConfidence }}%</b>
                             </div>
+                            <div v-if="assistantDisplayedEstimate" class="solver-confidence">
+                                <span>{{ t('expectedRounds') }}</span>
+                                <b>{{ formatEstimateValue(assistantDisplayedEstimate.expectedTotalRounds, assistantDisplayedEstimate.approximate) }}</b>
+                            </div>
+                            <div v-if="assistantDisplayedEstimate" class="solver-confidence">
+                                <span>{{ t('expectedReward') }}</span>
+                                <b>{{ formatEstimateValue(assistantDisplayedEstimate.expectedFirstReward, assistantDisplayedEstimate.approximate) }}</b>
+                            </div>
                         </div>
 
                         <div class="feedback-buttons">
@@ -388,10 +396,11 @@
 import { computed, defineComponent, h, inject, nextTick, onMounted, ref, watch } from 'vue';
 import { theme } from 'ant-design-vue';
 import { CheckCircleOutlined, EyeOutlined, ReloadOutlined } from '@ant-design/icons-vue';
+import { onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import decodingData from './decoding-plants.json';
-import { analyzePuzzle, judgeAttempt, makeSuggestionPlan, suggestionConfidence } from './solver.mjs';
+import { analyzePuzzle, gemRewardForRounds, judgeAttempt, makeSuggestionPlan, suggestionConfidence } from './solver.mjs';
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
 
 type FeedbackState = 'correct' | 'change' | 'half' | 'fault';
@@ -417,6 +426,13 @@ interface RoundRecord {
     guesses: string[];
     feedback: FeedbackState[];
     usedOutcomeProbe?: boolean;
+}
+
+interface CompletionEstimate {
+    expectedRemainingRounds: number;
+    expectedTotalRounds: number;
+    expectedFirstReward: number;
+    approximate: boolean;
 }
 
 const messages = Object.fromEntries(
@@ -525,6 +541,7 @@ const recommendationPlan = computed(() => makeSuggestionPlan(
     }
 ));
 const recommendedGuesses = computed(() => recommendationPlan.value.guesses);
+const assistantCompletionEstimate = ref<CompletionEstimate | null>(null);
 const assistantConfidence = computed(() => suggestionConfidence(assistantAnalysis.value, assistantGuesses.value));
 const assistantAverageConfidence = computed(() => {
     if (!assistantConfidence.value.length) return 0;
@@ -540,6 +557,19 @@ const currentRecommendationIsProbe = computed(() => recommendationPlan.value.pro
 const currentRecommendationProbeSlots = computed(() => (
     assistantRecommendationMatches.value ? recommendationPlan.value.probeSlots || [] : []
 ));
+const assistantDisplayedEstimate = computed<CompletionEstimate | null>(() => {
+    if (assistantContradiction.value) return null;
+    if (assistantSolved.value) {
+        const totalRounds = assistantHistory.value.length;
+        return {
+            expectedRemainingRounds: 0,
+            expectedTotalRounds: totalRounds,
+            expectedFirstReward: gemRewardForRounds(activeBasePlants.value.length, actualCodeCount.value, totalRounds),
+            approximate: false
+        };
+    }
+    return assistantRecommendationMatches.value ? assistantCompletionEstimate.value : null;
+});
 const assistantCanSubmit = computed(() => (
     assistantGuesses.value.length === actualCodeCount.value
     && assistantGuesses.value.every(Boolean)
@@ -570,6 +600,11 @@ function confidenceLabel(index: number) {
         prefix: confidencePrefix.value,
         value: Math.round((assistantConfidence.value[index] || 0) * 100)
     });
+}
+
+function formatEstimateValue(value: number, approximate: boolean) {
+    const formatted = new Intl.NumberFormat(localeKey.value, { maximumFractionDigits: 1 }).format(value);
+    return `${approximate ? '≈' : ''}${formatted}`;
 }
 
 function applyRecommendation() {
@@ -615,6 +650,58 @@ function submitAssistantRound() {
         usedOutcomeProbe: currentRecommendationIsProbe.value
     });
     if (!assistantFeedback.value.every(state => state === 'correct')) nextTick(applyRecommendation);
+}
+
+let completionWorker: Worker | null = null;
+let completionRequestId = 0;
+let completionTimer: number | null = null;
+
+function stopCompletionWorker() {
+    completionWorker?.terminate();
+    completionWorker = null;
+}
+
+function queueAssistantCompletionEstimate() {
+    completionRequestId += 1;
+    const requestId = completionRequestId;
+    if (completionTimer !== null) window.clearTimeout(completionTimer);
+    stopCompletionWorker();
+    assistantCompletionEstimate.value = null;
+    if (assistantContradiction.value || assistantSolved.value) return;
+
+    completionTimer = window.setTimeout(() => {
+        completionTimer = null;
+        const worker = new Worker(new URL('./completion-estimator.worker.mjs', import.meta.url), { type: 'module' });
+        completionWorker = worker;
+        worker.addEventListener('message', event => {
+            if (event.data.id === completionRequestId && event.data.estimate) {
+                assistantCompletionEstimate.value = event.data.estimate;
+            }
+            worker.terminate();
+            if (completionWorker === worker) completionWorker = null;
+        });
+        worker.addEventListener('error', () => {
+            worker.terminate();
+            if (completionWorker === worker) completionWorker = null;
+        });
+        worker.postMessage({
+            id: requestId,
+            rules: availableRules.value.map(rule => ({ ...rule })),
+            slotCount: actualCodeCount.value,
+            history: assistantHistory.value.map(round => ({
+                guesses: round.guesses.slice(),
+                feedback: round.feedback.slice()
+            })),
+            locked: assistantLocked.value.slice(),
+            options: {
+                baseCount: activeBasePlants.value.length,
+                mode: recommendationMode.value,
+                probeUsed: assistantOutcomeProbeUsed.value,
+                analysisSampleLimit: 4096,
+                maxAdditionalRounds: 10
+            }
+        });
+    }, 50);
 }
 
 const secretRules = ref<MergeRule[]>([]);
@@ -714,9 +801,21 @@ watch([baseCount, codeCount], () => {
 
 watch(recommendationMode, () => nextTick(applyRecommendation));
 
+watch(
+    [availableRules, actualCodeCount, assistantHistory, recommendationMode],
+    () => nextTick(queueAssistantCompletionEstimate),
+    { deep: true }
+);
+
 onMounted(() => {
     resetAssistant();
     startPractice();
+    nextTick(queueAssistantCompletionEstimate);
+});
+
+onBeforeUnmount(() => {
+    if (completionTimer !== null) window.clearTimeout(completionTimer);
+    stopCompletionWorker();
 });
 </script>
 
@@ -1416,6 +1515,7 @@ onMounted(() => {
     color: var(--ink);
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.82rem;
+    text-align: right;
 }
 
 .feedback-buttons {
