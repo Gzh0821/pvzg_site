@@ -284,36 +284,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, inject } from 'vue'
-import {
-    Alert as AAlert,
-    Button as AButton,
-    Checkbox as ACheckbox,
-    Col as ACol,
-    Collapse as ACollapse,
-    CollapsePanel as ACollapsePanel,
-    ConfigProvider as AConfigProvider,
-    Empty as AEmpty,
-    Flex as AFlex,
-    Form as AForm,
-    FormItem as AFormItem,
-    Input as AInput,
-    InputNumber as AInputNumber,
-    InputSearch as AInputSearch,
-    Layout as ALayout,
-    LayoutContent as ALayoutContent,
-    List as AList,
-    ListItem as AListItem,
-    Row as ARow,
-    Select as ASelect,
-    SelectOption as ASelectOption,
-    Switch as ASwitch,
-    Tag as ATag,
-    TypographyText as ATypographyText,
-    TypographyTitle as ATypographyTitle,
-    Upload as AUpload,
-    message,
-    theme,
-} from 'ant-design-vue'
+import { message, theme } from 'ant-design-vue'
 import { DeleteOutlined, FileAddOutlined, SaveOutlined, UploadOutlined } from '@ant-design/icons-vue'
 import { useI18n } from 'vue-i18n'
 import JSON5 from 'json5'

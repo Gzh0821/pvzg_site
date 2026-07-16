@@ -163,17 +163,7 @@
 <script setup lang="ts">
 import { computed, defineComponent, h, inject, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import JSON5 from 'json5';
-import {
-  Button as AButton,
-  ConfigProvider as AConfigProvider,
-  Drawer as ADrawer,
-  Modal,
-  Modal as AModal,
-  TypographyTitle as ATypographyTitle,
-  Upload as AUpload,
-  message,
-  theme as antdTheme,
-} from 'ant-design-vue';
+import { message, Modal, theme as antdTheme } from 'ant-design-vue';
 import {
   CloseOutlined,
   CopyOutlined,

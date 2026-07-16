@@ -36,7 +36,6 @@
 </template>
 
 <script lang="ts" setup>
-import { Col as ACol, Popover as APopover, Row as ARow } from 'ant-design-vue';
 import type { Zombie } from '../types';
 import { ref } from 'vue';
 

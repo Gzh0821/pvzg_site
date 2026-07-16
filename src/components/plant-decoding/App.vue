@@ -394,13 +394,7 @@
 
 <script setup lang="ts">
 import { computed, defineComponent, h, inject, nextTick, onMounted, ref, watch } from 'vue';
-import {
-    Button as AButton,
-    ConfigProvider as AConfigProvider,
-    InputNumber as AInputNumber,
-    Segmented as ASegmented,
-    theme,
-} from 'ant-design-vue';
+import { theme } from 'ant-design-vue';
 import { CheckCircleOutlined, EyeOutlined, ReloadOutlined } from '@ant-design/icons-vue';
 import { onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';

@@ -1,4 +1,5 @@
 import { defineClientConfig } from "vuepress/client";
+import Antd from 'ant-design-vue';
 import { createI18n } from 'vue-i18n';
 
 const i18n = createI18n({
@@ -6,7 +7,7 @@ const i18n = createI18n({
 })
 
 export default defineClientConfig({
-  enhance: ({ app }) => {
-    app.use(i18n);
+  enhance: ({ app, router, siteData }) => {
+    app.use(Antd).use(i18n);
   },
 });

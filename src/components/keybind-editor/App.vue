@@ -97,28 +97,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, computed, reactive, inject } from 'vue';
-import {
-    Alert as AAlert,
-    Button as AButton,
-    Col as ACol,
-    Collapse as ACollapse,
-    CollapsePanel as ACollapsePanel,
-    ConfigProvider as AConfigProvider,
-    Empty as AEmpty,
-    Form as AForm,
-    FormItem as AFormItem,
-    Input as AInput,
-    InputGroup as AInputGroup,
-    InputSearch as AInputSearch,
-    Modal as AModal,
-    Row as ARow,
-    Space as ASpace,
-    TypographyParagraph as ATypographyParagraph,
-    TypographyText as ATypographyText,
-    TypographyTitle as ATypographyTitle,
-    message,
-    theme,
-} from 'ant-design-vue';
+import { message, theme } from 'ant-design-vue';
 import { DeleteOutlined, SaveOutlined, UploadOutlined, FileAddOutlined, UndoOutlined } from '@ant-design/icons-vue';
 import { useI18n } from 'vue-i18n';
 
