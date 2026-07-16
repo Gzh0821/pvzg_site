@@ -36,6 +36,7 @@
 </template>
 
 <script lang="ts" setup>
+import { Col as ACol, Popover as APopover, Row as ARow } from 'ant-design-vue';
 import type {Plant} from '../types';
 import {ref} from 'vue';
 // 定义 props 类型

@@ -79,6 +79,14 @@ iframe.youtube-video {
     max-width: 100%;
 }
 
+@media (max-width: 719px) {
+    .vp-project-home .vp-hero-mask,
+    .vp-project-home .vp-feature-bg {
+        background-image: url('/assets/image/background-mobile.webp') !important;
+        background-attachment: scroll !important;
+    }
+}
+
 // For Special Event
 
 .vp-navbar {
