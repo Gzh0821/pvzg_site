@@ -162,78 +162,68 @@ iframe.youtube-video {
 :root {
     --wc26-theme-ink: #10243e;
     --wc26-nav-gradient: linear-gradient(90deg,
-            #aed0c9 0% 8.333%,
-            #b8feee 8.333% 16.666%,
-            #c5a6fb 16.666% 24.999%,
-            #e1f895 24.999% 33.332%,
-            #ffb7a0 33.332% 41.665%,
-            #b3c0ff 41.665% 49.998%,
-            #dfceff 49.998% 58.331%,
-            #ef9d9a 58.331% 66.664%,
-            #d2a1a6 66.664% 74.997%,
-            #f2fea5 74.997% 83.33%,
-            #b3eed2 83.33% 91.663%,
-            #e6c4dc 91.663% 100%);
+            #09090b 0% 18%,
+            #65470d 18% 30%,
+            #111113 30% 42%,
+            #6f4d0d 42% 58%,
+            #111113 58% 70%,
+            #65470d 70% 82%,
+            #09090b 82% 100%);
     --wc26-rule-gradient: linear-gradient(90deg,
-            #b3c0ff 0% 8.333%,
-            #dfceff 8.333% 16.666%,
-            #ef9d9a 16.666% 24.999%,
-            #d2a1a6 24.999% 33.332%,
-            #f2fea5 33.332% 41.665%,
-            #b3eed2 41.665% 49.998%,
-            #e6c4dc 49.998% 58.331%,
-            #aed0c9 58.331% 66.664%,
-            #b8feee 66.664% 74.997%,
-            #c5a6fb 74.997% 83.33%,
-            #e1f895 83.33% 91.663%,
-            #ffb7a0 91.663% 100%);
+            #6d4d0f 0%,
+            #f5d476 22%,
+            #ad7d1f 44%,
+            #fff0af 50%,
+            #ad7d1f 56%,
+            #f5d476 78%,
+            #6d4d0f 100%);
+    --wc26-nav-text: #fffaf0;
+    --wc26-nav-muted: #d9cda9;
+    --wc26-nav-active: #ffd66e;
+    --wc26-title-stroke: #0a0a0b;
+    --wc26-title-outline: #d4aa3f;
     --wc26-title-gradient: linear-gradient(90deg,
-            #002395 0% 16.666%,
-            #ffffff 16.666% 33.332%,
-            #ed2939 33.332% 50%,
-            #ffffff 50% 66.666%,
-            #ce1124 66.666% 83.332%,
-            #ffffff 83.332% 100%);
+            #aa151b 0% 16.666%,
+            #f1bf00 16.666% 33.332%,
+            #aa151b 33.332% 50%,
+            #74acdf 50% 66.666%,
+            #ffffff 66.666% 83.332%,
+            #74acdf 83.332% 100%);
 }
 
 [data-theme="dark"] {
     --wc26-nav-gradient: linear-gradient(90deg,
-            #003f36 0% 8.333%,
-            #0f6f5e 8.333% 16.666%,
-            #3b0f88 16.666% 24.999%,
-            #4c6500 24.999% 33.332%,
-            #9f2800 33.332% 41.665%,
-            #1e34a6 41.665% 49.998%,
-            #7251aa 49.998% 58.331%,
-            #8f0707 58.331% 66.664%,
-            #5d1118 66.664% 74.997%,
-            #5a6900 74.997% 83.33%,
-            #176b4a 83.33% 91.663%,
-            #965176 91.663% 100%);
+            #050506 0% 18%,
+            #5d400a 18% 30%,
+            #0b0b0c 30% 42%,
+            #68480b 42% 58%,
+            #0b0b0c 58% 70%,
+            #5d400a 70% 82%,
+            #050506 82% 100%);
     --wc26-rule-gradient: linear-gradient(90deg,
-            #1e34a6 0% 8.333%,
-            #7251aa 8.333% 16.666%,
-            #8f0707 16.666% 24.999%,
-            #5d1118 24.999% 33.332%,
-            #5a6900 33.332% 41.665%,
-            #176b4a 41.665% 49.998%,
-            #965176 49.998% 58.331%,
-            #003f36 58.331% 66.664%,
-            #0f6f5e 66.664% 74.997%,
-            #3b0f88 74.997% 83.33%,
-            #4c6500 83.33% 91.663%,
-            #9f2800 91.663% 100%);
+            #5f430e 0%,
+            #e9c45f 22%,
+            #976c1a 44%,
+            #f8dc87 50%,
+            #976c1a 56%,
+            #e9c45f 78%,
+            #5f430e 100%);
+    --wc26-nav-text: #fff8e8;
+    --wc26-nav-muted: #d1c39d;
+    --wc26-nav-active: #f6cf69;
+    --wc26-title-stroke: #030304;
+    --wc26-title-outline: #efc65c;
 }
 
 .vp-navbar {
     overflow: visible;
     background: var(--wc26-nav-gradient);
-    box-shadow: 0 1px 0 rgba(16, 36, 62, 0.28);
+    box-shadow: 0 1px 0 rgba(255, 218, 124, 0.72), 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .vp-navbar {
     background: var(--wc26-nav-gradient);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
+    box-shadow: 0 1px 0 rgba(255, 213, 105, 0.56), 0 4px 16px rgba(0, 0, 0, 0.46);
 }
 
 .vp-navbar-start,
@@ -249,6 +239,58 @@ iframe.youtube-video {
     opacity: 1;
 }
 
+.vp-navbar .vp-site-name,
+.vp-navbar .vp-nav-item > .auto-link,
+.vp-navbar .vp-dropdown-title {
+    color: var(--wc26-nav-text);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.82);
+}
+
+.vp-navbar .vp-action-link,
+.vp-navbar .vp-appearance-button,
+.vp-navbar .DocSearch-Button {
+    color: var(--wc26-nav-muted);
+}
+
+.vp-navbar .DocSearch-Button {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(245, 212, 118, 0.28);
+}
+
+.vp-navbar .DocSearch-Button:hover {
+    color: var(--wc26-nav-active);
+    background: rgba(255, 214, 110, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(255, 214, 110, 0.52);
+}
+
+.vp-navbar .DocSearch-Button-Key {
+    color: var(--wc26-nav-text);
+    background: rgba(0, 0, 0, 0.36);
+    box-shadow: inset 0 0 0 1px rgba(245, 212, 118, 0.22);
+}
+
+.vp-navbar .vp-brand:hover .vp-site-name,
+.vp-navbar .vp-nav-item > .auto-link:hover,
+.vp-navbar .vp-nav-item > .auto-link.route-link-active,
+.vp-navbar .vp-dropdown-title:hover,
+.vp-navbar .vp-action-link:hover,
+.vp-navbar .vp-appearance-button:hover {
+    color: var(--wc26-nav-active);
+}
+
+.vp-navbar .vp-nav-item > .auto-link::before {
+    background: var(--wc26-nav-active);
+}
+
+.vp-navbar .vp-toggle-navbar-button .vp-top,
+.vp-navbar .vp-toggle-navbar-button .vp-middle,
+.vp-navbar .vp-toggle-navbar-button .vp-bottom,
+.vp-navbar .vp-toggle-sidebar-button::before,
+.vp-navbar .vp-toggle-sidebar-button::after,
+.vp-navbar .vp-toggle-sidebar-button .icon {
+    background: var(--wc26-nav-text);
+}
+
 #main-title,
 .vp-hero-title {
     display: inline-block;
@@ -259,11 +301,18 @@ iframe.youtube-video {
     font-size: 5.4rem;
     letter-spacing: 0;
     line-height: 0.88;
-    filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.46)) drop-shadow(0 2px 4px rgba(16, 36, 62, 0.2));
+    -webkit-text-stroke: 1px var(--wc26-title-stroke);
+    filter:
+        drop-shadow(1px 0 0 var(--wc26-title-outline))
+        drop-shadow(-1px 0 0 var(--wc26-title-outline))
+        drop-shadow(0 1px 0 var(--wc26-title-outline))
+        drop-shadow(0 -1px 0 var(--wc26-title-outline))
+        drop-shadow(0 3px 5px rgba(16, 12, 4, 0.3));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     overflow-wrap: normal;
+    paint-order: stroke fill;
     text-wrap: balance;
     word-break: keep-all;
 }
@@ -271,7 +320,12 @@ iframe.youtube-video {
 [data-theme="dark"] #main-title,
 [data-theme="dark"] .vp-hero-title {
     background: var(--wc26-title-gradient);
-    filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.18)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.7));
+    filter:
+        drop-shadow(1px 0 0 var(--wc26-title-outline))
+        drop-shadow(-1px 0 0 var(--wc26-title-outline))
+        drop-shadow(0 1px 0 var(--wc26-title-outline))
+        drop-shadow(0 -1px 0 var(--wc26-title-outline))
+        drop-shadow(0 3px 6px rgba(0, 0, 0, 0.78));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
