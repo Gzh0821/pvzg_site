@@ -3,7 +3,6 @@
     <template v-if="mode === 'home'">
       <header class="daily-archive-header">
         <div>
-          <p class="daily-level-kicker">{{ t('archiveKicker') }}</p>
           <h2>{{ t('archiveTitle') }}</h2>
           <p>{{ t('archiveDescription', { days: archiveWindowDays }) }}</p>
         </div>
@@ -37,7 +36,7 @@
                 :title="day.entry.level.title"
               >
                 <span>{{ day.day }}</span>
-                <i aria-hidden="true"></i>
+                <em v-if="day.isStart" aria-hidden="true">{{ t('newBadge') }}</em>
               </a>
               <span v-else class="daily-calendar__day" :class="{ 'daily-calendar__day--outside': !day.inMonth }">
                 <span>{{ day.day }}</span>
@@ -66,115 +65,120 @@
       </section>
     </template>
 
-    <nav v-else class="daily-detail-nav" :aria-label="t('detailNavigation')">
-      <a class="daily-detail-nav__back" :href="backPath">← {{ t('backToArchive') }}</a>
-      <span>
-        <a v-if="previousEntry" :href="detailUrl(previousEntry)">{{ t('previousLevel') }}</a>
-        <a v-if="nextEntry" :href="detailUrl(nextEntry)">{{ t('nextLevel') }}</a>
-      </span>
-    </nav>
+    <template v-else>
+      <nav class="daily-detail-nav" :aria-label="t('detailNavigation')">
+        <a class="daily-detail-nav__back" :href="backPath">← {{ t('backToArchive') }}</a>
+        <span>
+          <a v-if="previousEntry" :href="detailUrl(previousEntry)">{{ t('previousLevel') }}</a>
+          <a v-if="nextEntry" :href="detailUrl(nextEntry)">{{ t('nextLevel') }}</a>
+        </span>
+      </nav>
 
-    <div class="daily-level-hero">
-      <div class="daily-level-hero__main">
-        <p class="daily-level-kicker">{{ mode === 'detail' ? t('detailKicker') : t('kicker') }}</p>
-        <h2>{{ currentLevel?.title || t('loadingTitle') }}</h2>
+      <div class="daily-level-hero">
+        <div class="daily-level-hero__main">
+          <p v-if="detailDisplayDate" class="daily-level-context">
+            <strong>{{ isTodayDetail ? t('todayLevel') : t('historicalLevel') }}</strong>
+            <time :datetime="detailDisplayDate">{{ formatLongDate(detailDisplayDate) }}</time>
+          </p>
+          <h2>{{ currentLevel?.title || t('loadingTitle') }}</h2>
+        </div>
+
+        <div class="daily-level-actions">
+          <button class="daily-level-button daily-level-button--primary" :disabled="!deepLinkUrl" @click="openInGame">
+            <VPIcon icon="computer" />
+            <span>{{ t('openInGame') }}</span>
+          </button>
+          <button class="daily-level-button daily-level-button--secondary" :disabled="!currentLevel || downloading" @click="downloadLevel">
+            <VPIcon icon="download" />
+            <span>{{ downloading ? t('downloading') : t('download') }}</span>
+          </button>
+        </div>
+        <p v-if="deepLinkHintVisible" class="daily-level-deep-link-hint">{{ t('deepLinkHint') }}</p>
       </div>
 
-      <div class="daily-level-actions">
-        <button class="daily-level-button daily-level-button--primary" :disabled="!deepLinkUrl" @click="openInGame">
-          <VPIcon icon="computer" />
-          <span>{{ t('openInGame') }}</span>
-        </button>
-        <button class="daily-level-button daily-level-button--secondary" :disabled="!currentLevel || downloading" @click="downloadLevel">
-          <VPIcon icon="download" />
-          <span>{{ downloading ? t('downloading') : t('download') }}</span>
-        </button>
+      <div v-if="loading" class="daily-level-state">{{ t('loading') }}</div>
+      <div v-else-if="error" class="daily-level-state daily-level-state--error">
+        <strong>{{ t('failed') }}</strong>
+        <span>{{ error }}</span>
       </div>
-      <p v-if="deepLinkHintVisible" class="daily-level-deep-link-hint">{{ t('deepLinkHint') }}</p>
-    </div>
 
-    <div v-if="loading" class="daily-level-state">{{ t('loading') }}</div>
-    <div v-else-if="error" class="daily-level-state daily-level-state--error">
-      <strong>{{ t('failed') }}</strong>
-      <span>{{ error }}</span>
-    </div>
+      <template v-else-if="currentLevel">
+        <section class="daily-level-summary">
+          <p v-if="currentLevel.description" class="daily-level-description">{{ currentLevel.description }}</p>
+          <div class="daily-level-details" aria-label="Level details">
+            <div v-for="detail in levelDetails" :key="detail.label" class="daily-level-detail">
+              <span>{{ detail.label }}</span>
+              <strong>{{ detail.value }}</strong>
+            </div>
+          </div>
+        </section>
 
-    <template v-else-if="currentLevel">
-      <section class="daily-level-summary">
-        <p v-if="currentLevel.description" class="daily-level-description">{{ currentLevel.description }}</p>
-        <div class="daily-level-details" aria-label="Level details">
-          <div v-for="detail in levelDetails" :key="detail.label" class="daily-level-detail">
-            <span>{{ detail.label }}</span>
-            <strong>{{ detail.value }}</strong>
+        <div class="daily-level-facts" aria-label="Level facts">
+          <div v-for="fact in facts" :key="fact.label" class="daily-level-fact">
+            <span>{{ fact.label }}</span>
+            <strong>{{ fact.value }}</strong>
           </div>
         </div>
-      </section>
 
-      <div class="daily-level-facts" aria-label="Level facts">
-        <div v-for="fact in facts" :key="fact.label" class="daily-level-fact">
-          <span>{{ fact.label }}</span>
-          <strong>{{ fact.value }}</strong>
-        </div>
-      </div>
+        <section class="daily-level-section">
+          <div class="daily-level-section__head">
+            <h2>{{ t('plants') }}</h2>
+            <span>{{ currentLevel.entities.plants.length }}</span>
+          </div>
+          <div class="daily-level-grid daily-level-grid--plants">
+            <article v-for="plant in visiblePlants" :key="entityKey(plant)" class="daily-level-entity">
+              <img :src="plantImage(plant)" :alt="entityName(plant, 'plant')" loading="lazy" @error="hideBrokenImage" />
+              <div>
+                <strong>{{ entityName(plant, 'plant') }}</strong>
+                <span>{{ roleSummary(plant.roles) }}</span>
+              </div>
+            </article>
+          </div>
+          <button v-if="hiddenPlantCount > 0" class="daily-level-more" @click="showAllPlants = !showAllPlants">
+            {{ showAllPlants ? t('showLess') : t('showMore', { count: hiddenPlantCount }) }}
+          </button>
+        </section>
 
-      <section class="daily-level-section">
-        <div class="daily-level-section__head">
-          <h2>{{ t('plants') }}</h2>
-          <span>{{ currentLevel.entities.plants.length }}</span>
-        </div>
-        <div class="daily-level-grid daily-level-grid--plants">
-          <article v-for="plant in visiblePlants" :key="entityKey(plant)" class="daily-level-entity">
-            <img :src="plantImage(plant)" :alt="entityName(plant, 'plant')" loading="lazy" @error="hideBrokenImage" />
-            <div>
-              <strong>{{ entityName(plant, 'plant') }}</strong>
-              <span>{{ roleSummary(plant.roles) }}</span>
-            </div>
-          </article>
-        </div>
-        <button v-if="hiddenPlantCount > 0" class="daily-level-more" @click="showAllPlants = !showAllPlants">
-          {{ showAllPlants ? t('showLess') : t('showMore', { count: hiddenPlantCount }) }}
-        </button>
-      </section>
+        <section class="daily-level-section">
+          <div class="daily-level-section__head">
+            <h2>{{ t('zombies') }}</h2>
+            <span>{{ currentLevel.entities.zombies.length }}</span>
+          </div>
+          <div class="daily-level-grid daily-level-grid--zombies">
+            <article v-for="zombie in visibleZombies" :key="entityKey(zombie)" class="daily-level-entity">
+              <img v-if="zombieImage(zombie)" :src="zombieImage(zombie)" :alt="entityName(zombie, 'zombie')" loading="lazy" @error="hideBrokenImage" />
+              <div v-else class="daily-level-placeholder" aria-hidden="true">?</div>
+              <div>
+                <strong>{{ entityName(zombie, 'zombie') }}</strong>
+                <span>{{ zombieDetail(zombie) }}</span>
+              </div>
+            </article>
+          </div>
+          <button v-if="hiddenZombieCount > 0" class="daily-level-more" @click="showAllZombies = !showAllZombies">
+            {{ showAllZombies ? t('showLess') : t('showMore', { count: hiddenZombieCount }) }}
+          </button>
+        </section>
 
-      <section class="daily-level-section">
-        <div class="daily-level-section__head">
-          <h2>{{ t('zombies') }}</h2>
-          <span>{{ currentLevel.entities.zombies.length }}</span>
-        </div>
-        <div class="daily-level-grid daily-level-grid--zombies">
-          <article v-for="zombie in visibleZombies" :key="entityKey(zombie)" class="daily-level-entity">
-            <img v-if="zombieImage(zombie)" :src="zombieImage(zombie)" :alt="entityName(zombie, 'zombie')" loading="lazy" @error="hideBrokenImage" />
-            <div v-else class="daily-level-placeholder" aria-hidden="true">?</div>
-            <div>
-              <strong>{{ entityName(zombie, 'zombie') }}</strong>
-              <span>{{ zombieDetail(zombie) }}</span>
-            </div>
-          </article>
-        </div>
-        <button v-if="hiddenZombieCount > 0" class="daily-level-more" @click="showAllZombies = !showAllZombies">
-          {{ showAllZombies ? t('showLess') : t('showMore', { count: hiddenZombieCount }) }}
-        </button>
-      </section>
+        <section class="daily-level-section daily-level-section--compact">
+          <div class="daily-level-section__head">
+            <h2>{{ t('mechanics') }}</h2>
+            <span>{{ currentLevel.mechanics.length }}</span>
+          </div>
+          <div class="daily-level-tags">
+            <span v-for="mechanic in currentLevel.mechanics" :key="mechanic.id">{{ mechanicLabel(mechanic.id) }}</span>
+          </div>
+        </section>
 
-      <section class="daily-level-section daily-level-section--compact">
-        <div class="daily-level-section__head">
-          <h2>{{ t('mechanics') }}</h2>
-          <span>{{ currentLevel.mechanics.length }}</span>
-        </div>
-        <div class="daily-level-tags">
-          <span v-for="mechanic in currentLevel.mechanics" :key="mechanic.id">{{ mechanicLabel(mechanic.id) }}</span>
-        </div>
-      </section>
-
-      <section v-if="notices.length" class="daily-level-section daily-level-section--compact">
-        <div class="daily-level-section__head">
-          <h2>{{ t('notices') }}</h2>
-          <span>{{ notices.length }}</span>
-        </div>
-        <ul class="daily-level-notices">
-          <li v-for="notice in notices" :key="notice.code + notice.message">{{ notice.message }}</li>
-        </ul>
-      </section>
+        <section v-if="notices.length" class="daily-level-section daily-level-section--compact">
+          <div class="daily-level-section__head">
+            <h2>{{ t('notices') }}</h2>
+            <span>{{ notices.length }}</span>
+          </div>
+          <ul class="daily-level-notices">
+            <li v-for="notice in notices" :key="notice.code + notice.message">{{ notice.message }}</li>
+          </ul>
+        </section>
+      </template>
     </template>
   </section>
 </template>
@@ -314,6 +318,7 @@ const zombieMap = computed<Record<string, any>>(() => getZombieMap(language.valu
 
 const payload = ref<DailyPayload | null>(null);
 const archiveEntries = ref<ArchiveEntry[]>([]);
+const calendarCurrentDate = ref('');
 const loading = ref(true);
 const error = ref('');
 const archiveLoading = ref(true);
@@ -329,6 +334,20 @@ let deepLinkHintTimer: number | undefined;
 
 const currentLevel = computed(() => payload.value?.daily.level || null);
 const currentDate = computed(() => payload.value?.daily.date || '');
+const selectedArchiveEntry = computed(() => archiveEntries.value.find((entry) => entry.date === currentDate.value) || null);
+const isTodayDetail = computed(() => {
+  const entry = selectedArchiveEntry.value;
+  const today = calendarCurrentDate.value;
+  return Boolean(
+    mode.value === 'detail'
+    && entry
+    && today >= entry.date
+    && today < entry.activeUntil.slice(0, 10)
+  );
+});
+const detailDisplayDate = computed(() => (
+  isTodayDetail.value ? calendarCurrentDate.value : currentDate.value
+));
 const archiveWindowDays = computed(() => payload.value?.archiveWindowDays || 30);
 const currentDetailUrl = computed(() => {
   const entry = archiveEntries.value.find((item) => (
@@ -406,7 +425,7 @@ const levelDetails = computed(() => {
   return [
     level.author ? { label: t('author'), value: level.author } : null,
     level.stats.stage ? { label: t('stage'), value: level.stats.stage } : null,
-    activeCountdown.value ? { label: t('activeCountdown'), value: activeCountdown.value } : null
+    isTodayDetail.value && activeCountdown.value ? { label: t('activeCountdown'), value: activeCountdown.value } : null
   ].filter((item): item is { label: string; value: string } => Boolean(item));
 });
 const facts = computed(() => {
@@ -421,10 +440,12 @@ const facts = computed(() => {
 });
 
 onMounted(async () => {
-  nowTimestamp.value = Date.now();
-  countdownTimer = window.setInterval(() => {
+  if (mode.value === 'detail') {
     nowTimestamp.value = Date.now();
-  }, 1000);
+    countdownTimer = window.setInterval(() => {
+      nowTimestamp.value = Date.now();
+    }, 1000);
+  }
 
   try {
     loading.value = true;
@@ -437,6 +458,7 @@ onMounted(async () => {
       if (!calendarResponse.ok) throw new Error(`${calendarResponse.status} ${calendarResponse.statusText}`);
       const calendarPayload = await calendarResponse.json() as CalendarPayload;
       archiveEntries.value = calendarPayload.daily;
+      calendarCurrentDate.value = calendarPayload.currentDate;
       const requestedDate = new URLSearchParams(window.location.search).get('date') || '';
       if (!/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)) throw new Error(t('missingDate'));
       const entry = archiveEntries.value.find((item) => item.date === requestedDate);
@@ -454,6 +476,7 @@ onMounted(async () => {
       if (calendarResponse.ok) {
         const calendarPayload = await calendarResponse.json() as CalendarPayload;
         archiveEntries.value = calendarPayload.daily;
+        calendarCurrentDate.value = calendarPayload.currentDate;
       } else {
         archiveError.value = t('archiveUnavailable');
       }
@@ -461,7 +484,8 @@ onMounted(async () => {
 
     if (payload.value?.daily.date) visibleMonth.value = startOfUtcMonth(parseUtcDate(payload.value.daily.date));
   } catch (err) {
-    error.value = err instanceof Error ? err.message : String(err);
+    if (mode.value === 'home') archiveError.value = t('archiveUnavailable');
+    else error.value = err instanceof Error ? err.message : String(err);
   } finally {
     loading.value = false;
     archiveLoading.value = false;
@@ -540,9 +564,19 @@ function formatShortDate(dateText: string) {
   }).format(parseUtcDate(dateText));
 }
 
+function formatLongDate(dateText: string) {
+  return new Intl.DateTimeFormat(localeCode.value, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC'
+  }).format(parseUtcDate(dateText));
+}
+
 function calendarDayLabel(day: CalendarDay) {
   if (!day.entry) return day.date;
-  return `${formatShortDate(day.date)} · ${day.entry.level.title}`;
+  const state = day.isStart ? ` · ${t('newLevel')}` : '';
+  return `${formatShortDate(day.date)}${state} · ${day.entry.level.title}`;
 }
 
 function entityKey(entity: DailyEntity) {
@@ -675,9 +709,9 @@ async function downloadLevel() {
 
 .daily-archive-header h2 {
   margin: 0;
-  font-size: clamp(2.45rem, 4.6vw, 4.35rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 
 .daily-archive-header p:last-child {
@@ -780,18 +814,15 @@ async function downloadLevel() {
 }
 
 .daily-calendar__day--active {
-  background: color-mix(in srgb, var(--daily-green) 10%, var(--daily-soft));
+  background: color-mix(in srgb, var(--daily-green) 7%, var(--daily-soft));
   color: var(--daily-ink);
   font-weight: 750;
   transition: background 0.16s ease, transform 0.16s ease;
 }
 
-.daily-calendar__day--active:not(.daily-calendar__day--start) {
-  border-radius: 5px 12px 12px 5px;
-}
-
 .daily-calendar__day--start {
-  border-radius: 12px 5px 5px 12px;
+  background: color-mix(in srgb, var(--daily-green) 17%, var(--daily-soft));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--daily-green) 48%, transparent);
 }
 
 .daily-calendar__day--active:hover {
@@ -800,21 +831,22 @@ async function downloadLevel() {
   transform: translateY(-1px);
 }
 
-.daily-calendar__day--active i {
+.daily-calendar__day--active em {
   position: absolute;
-  right: 9px;
-  bottom: 6px;
-  left: 9px;
-  height: 3px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--daily-green) 55%, transparent);
-}
-
-.daily-calendar__day--start i {
-  right: auto;
-  width: 7px;
-  border-radius: 50%;
+  top: 5px;
+  right: 5px;
+  min-width: 17px;
+  height: 15px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 5px;
+  padding: 0 3px;
   background: var(--daily-green);
+  color: var(--daily-accent-text);
+  font-size: 0.56rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .daily-calendar__day--today {
@@ -937,15 +969,6 @@ async function downloadLevel() {
   border-bottom: 1px solid var(--daily-line);
 }
 
-.daily-level-kicker {
-  margin: 0 0 8px;
-  color: var(--daily-green);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
 .daily-level-hero h2 {
   margin: 0;
   font-size: clamp(2.35rem, 4.2vw, 4rem);
@@ -953,6 +976,22 @@ async function downloadLevel() {
   letter-spacing: 0;
   overflow-wrap: normal;
   word-break: normal;
+}
+
+.daily-level-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 10px;
+  color: var(--daily-muted);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.daily-level-context strong {
+  color: var(--daily-green);
+  font-size: 0.92rem;
 }
 
 .daily-level-tags span {
