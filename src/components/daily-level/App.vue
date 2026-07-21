@@ -47,13 +47,13 @@
 
         <div class="daily-archive-list">
           <div class="daily-archive-list__head">
-            <h2>{{ t('monthLevels') }}</h2>
-            <span>{{ monthEntries.length }}</span>
+            <h2>{{ t('recentLevels') }}</h2>
+            <span>{{ recentEntries.length }}</span>
           </div>
           <div v-if="archiveLoading" class="daily-archive-list__state">{{ t('loadingArchive') }}</div>
           <div v-else-if="archiveError" class="daily-archive-list__state daily-archive-list__state--error">{{ archiveError }}</div>
-          <div v-else-if="!monthEntries.length" class="daily-archive-list__state">{{ t('noArchive') }}</div>
-          <a v-for="entry in monthEntries" :key="entry.date" class="daily-archive-entry" :href="detailUrl(entry)">
+          <div v-else-if="!recentEntries.length" class="daily-archive-list__state">{{ t('noArchive') }}</div>
+          <a v-for="entry in recentEntries" :key="entry.date" class="daily-archive-entry" :href="detailUrl(entry)">
             <time :datetime="entry.date">{{ formatShortDate(entry.date) }}</time>
             <span>
               <strong>{{ entry.level.title }}</strong>
@@ -373,9 +373,10 @@ const calendarDays = computed<CalendarDay[]>(() => buildCalendarDays(
   currentDate.value,
   archiveWindowDays.value
 ));
-const monthEntries = computed(() => archiveEntries.value
-  .filter((entry) => isSameUtcMonth(parseUtcDate(entry.date), visibleMonth.value))
-  .sort((a, b) => b.date.localeCompare(a.date)));
+const recentEntries = computed(() => archiveEntries.value
+  .slice()
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, 4));
 const canGoPreviousMonth = computed(() => {
   if (!earliestArchiveDate.value) return false;
   return addUtcMonths(visibleMonth.value, -1).getTime() >= startOfUtcMonth(parseUtcDate(earliestArchiveDate.value)).getTime();
