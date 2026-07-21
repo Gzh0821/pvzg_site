@@ -29,4 +29,4 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-<DailyLevel />
+<DailyLevel detail-path="/creator-garden/daily-level/detail.html" back-path="/creator-garden/daily-level.html" />

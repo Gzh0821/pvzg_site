@@ -1,8 +1,7 @@
 ---
-title: Daily Level
-index: true
-order: 22
-icon: calendar-days
+title: Daily Level Details
+index: false
+article: false
 pageInfo: false
 comment: false
 ---
@@ -19,7 +18,7 @@ onMounted(() => {
 </script>
 
 > [!important]
-> Disclaimer: All “Daily Levels” on this page come from community submissions. The Gardendless development team is not responsible for the content of any level and reserves the right to delete, withdraw, or otherwise handle level content.
+> Disclaimer: The “Daily Level” on this page comes from a community submission. The Gardendless development team is not responsible for its content and reserves the right to delete, withdraw, or otherwise handle level content.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -29,4 +28,4 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-<DailyLevel detail-path="/en/creator-garden/daily-level/detail.html" back-path="/en/creator-garden/daily-level.html" />
+<DailyLevel mode="detail" detail-path="/en/creator-garden/daily-level/detail.html" back-path="/en/creator-garden/daily-level.html" />

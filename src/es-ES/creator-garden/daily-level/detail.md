@@ -1,8 +1,7 @@
 ---
-title: Daily Level
-index: true
-order: 22
-icon: calendar-days
+title: Detalles del nivel diario
+index: false
+article: false
 pageInfo: false
 comment: false
 ---
@@ -11,7 +10,7 @@ comment: false
 import DailyLevel from '@source/components/daily-level/App.vue';
 import { provide, onMounted } from 'vue';
 
-provide("i18nLanguage", "en");
+provide("i18nLanguage", "es");
 
 onMounted(() => {
   (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -19,7 +18,7 @@ onMounted(() => {
 </script>
 
 > [!important]
-> Disclaimer: All “Daily Levels” on this page come from community submissions. The Gardendless development team is not responsible for the content of any level and reserves the right to delete, withdraw, or otherwise handle level content.
+> Declaración: El “nivel diario” de esta página proviene de un envío de la comunidad. El equipo de desarrollo de Gardendless no se responsabiliza de su contenido y se reserva el derecho de eliminarlo, retirarlo o gestionarlo.
 
 <ins class="adsbygoogle"
      style="display:block"
@@ -29,4 +28,4 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-<DailyLevel detail-path="/en/creator-garden/daily-level/detail.html" back-path="/en/creator-garden/daily-level.html" />
+<DailyLevel mode="detail" detail-path="/es-ES/creator-garden/daily-level/detail.html" back-path="/es-ES/creator-garden/daily-level.html" />

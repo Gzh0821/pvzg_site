@@ -1,5 +1,5 @@
 ---
-title: Daily Level
+title: Nivel diario
 index: true
 order: 22
 icon: calendar-days
@@ -11,7 +11,7 @@ comment: false
 import DailyLevel from '@source/components/daily-level/App.vue';
 import { provide, onMounted } from 'vue';
 
-provide("i18nLanguage", "en");
+provide("i18nLanguage", "es");
 
 onMounted(() => {
   (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -29,4 +29,4 @@ onMounted(() => {
      data-full-width-responsive="true">
 </ins>
 
-<DailyLevel />
+<DailyLevel detail-path="/es-ES/creator-garden/daily-level/detail.html" back-path="/es-ES/creator-garden/daily-level.html" />
