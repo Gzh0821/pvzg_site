@@ -25,6 +25,10 @@ const text = {
     introduction: '图鉴介绍',
     specials: '特性',
     chat: '角色趣闻',
+    derivedEntities: '衍生实体',
+    originEntities: '来源实体',
+    siblingEntities: '同组形态',
+    noAlmanac: '该实体暂无独立的图鉴介绍，页面仅展示游戏数据中可确认的资料。',
     nearby: '继续浏览',
   },
   en: {
@@ -51,6 +55,10 @@ const text = {
     introduction: 'Introduction',
     specials: 'Traits',
     chat: 'Character notes',
+    derivedEntities: 'Derived entities',
+    originEntities: 'Origin entities',
+    siblingEntities: 'Related forms',
+    noAlmanac: 'This entity has no standalone Almanac text. This page only shows data confirmed by the game files.',
     nearby: 'Keep browsing',
   },
 };

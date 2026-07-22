@@ -1,5 +1,6 @@
 export type AlmanacKind = 'plant' | 'zombie';
 export type AlmanacLocale = 'zh' | 'en';
+export type AlmanacCatalogRole = 'official' | 'derived';
 
 export interface AlmanacFamily {
   code: string;
@@ -43,13 +44,19 @@ export interface AlmanacSpecial {
 
 export interface AlmanacEntity extends AlmanacDirectoryEntity {
   locale: AlmanacLocale;
+  catalogRole: AlmanacCatalogRole;
+  hasAlmanac: boolean;
+  hasProps: boolean;
   directoryPath: string;
   description: string;
   chat: string;
   stats: AlmanacStat[];
   specials: AlmanacSpecial[];
-  previous: AlmanacNeighbor;
-  next: AlmanacNeighbor;
+  parents: AlmanacNeighbor[];
+  children: AlmanacNeighbor[];
+  siblings: AlmanacNeighbor[];
+  previous: AlmanacNeighbor | null;
+  next: AlmanacNeighbor | null;
   neighbors: AlmanacNeighbor[];
 }
 

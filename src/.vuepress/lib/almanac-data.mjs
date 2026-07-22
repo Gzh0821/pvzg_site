@@ -27,6 +27,7 @@ const DATASETS = {
     familyLabels: plantI18n.PlantFamily,
     propsGroup: 'PlantProps',
     almanacGroup: 'PlantAlmanac',
+    subListKey: 'SubPlantList',
   },
   zombie: {
     features: zombieFeatures.ZOMBIES,
@@ -37,6 +38,7 @@ const DATASETS = {
     familyLabels: zombieI18n.PlantFamily,
     propsGroup: 'ZombieProps',
     almanacGroup: 'ZombieAlmanac',
+    subListKey: 'SubZombieList',
   },
 };
 
@@ -48,6 +50,47 @@ for (const dataset of Object.values(DATASETS)) {
   dataset.featureMap = new Map(dataset.features.map((feature) => [feature.CODENAME, feature]));
   dataset.almanacMap = createAliasMap(dataset.almanac);
   dataset.propsMap = createAliasMap(dataset.props);
+}
+
+const buildRelationIndex = (dataset) => {
+  const parentToChildren = new Map();
+  const childToParents = new Map();
+  const unresolved = [];
+
+  for (const parentCodename of dataset.order) {
+    const parentFeature = dataset.featureMap.get(parentCodename);
+    const childCodenames = [...new Set(parentFeature?.[dataset.subListKey] ?? [])];
+
+    for (const childCodename of childCodenames) {
+      if (!dataset.featureMap.has(childCodename)) {
+        unresolved.push({
+          parentCodename,
+          childCodename,
+          reason: 'missing feature',
+        });
+        continue;
+      }
+
+      const children = parentToChildren.get(parentCodename) ?? [];
+      children.push(childCodename);
+      parentToChildren.set(parentCodename, children);
+
+      const parents = childToParents.get(childCodename) ?? [];
+      if (!parents.includes(parentCodename)) parents.push(parentCodename);
+      childToParents.set(childCodename, parents);
+    }
+  }
+
+  return {
+    parentToChildren,
+    childToParents,
+    childOrder: [...childToParents.keys()],
+    unresolved,
+  };
+};
+
+for (const dataset of Object.values(DATASETS)) {
+  dataset.relations = buildRelationIndex(dataset);
 }
 
 const parseRtid = (value, expectedGroup) => {
@@ -98,23 +141,27 @@ const resolveStatValue = ({ element, propsUpper, dataset, lang }) => {
   return normalizeDisplayValue(propsUpper[type]);
 };
 
-const resolveBaseEntity = (kind, codename, locale) => {
+const resolveBaseEntity = (kind, codename, locale, catalogRole = 'official') => {
   const dataset = DATASETS[kind];
   const feature = dataset.featureMap.get(codename);
   if (!feature) throw new Error(`Missing ${kind} feature: ${codename}`);
 
   const propsAlias = parseRtid(feature.PROPS, dataset.propsGroup);
   const almanacAlias = parseRtid(feature.ALMANAC, dataset.almanacGroup);
-  if (!propsAlias) throw new Error(`Invalid ${kind} Props RTID: ${codename}`);
-  if (!almanacAlias) throw new Error(`Invalid ${kind} Almanac RTID: ${codename}`);
+  if (catalogRole === 'official' && !propsAlias) throw new Error(`Invalid ${kind} Props RTID: ${codename}`);
+  if (catalogRole === 'official' && !almanacAlias) throw new Error(`Invalid ${kind} Almanac RTID: ${codename}`);
 
-  const propsEntry = dataset.propsMap.get(propsAlias) ?? dataset.propsMap.get(codename);
-  const almanacEntry = dataset.almanacMap.get(almanacAlias) ?? dataset.almanacMap.get(codename);
-  if (!propsEntry) throw new Error(`Missing ${kind} Props: ${codename} -> ${propsAlias}`);
-  if (!almanacEntry) throw new Error(`Missing ${kind} Almanac: ${codename} -> ${almanacAlias}`);
+  const propsEntry = (propsAlias ? dataset.propsMap.get(propsAlias) : null) ?? dataset.propsMap.get(codename);
+  const almanacEntry = (almanacAlias ? dataset.almanacMap.get(almanacAlias) : null) ?? dataset.almanacMap.get(codename);
+  if (catalogRole === 'official' && !propsEntry) {
+    throw new Error(`Missing ${kind} Props: ${codename} -> ${propsAlias}`);
+  }
+  if (catalogRole === 'official' && !almanacEntry) {
+    throw new Error(`Missing ${kind} Almanac: ${codename} -> ${almanacAlias}`);
+  }
 
-  const propsUpper = upperCaseKeys(propsEntry.objdata);
-  const almanacData = almanacEntry.objdata ?? {};
+  const propsUpper = upperCaseKeys(propsEntry?.objdata);
+  const almanacData = almanacEntry?.objdata ?? {};
   const name = localize(feature.NAME, locale.lang);
   const englishName = feature.NAME?.en ?? name;
   const image = getImagePath(kind, feature);
@@ -157,7 +204,10 @@ const resolveBaseEntity = (kind, codename, locale) => {
     kind,
     locale: locale.lang,
     codename,
-    numericId: kind === 'plant' ? feature.ID : null,
+    numericId: kind === 'plant' ? feature.ID ?? null : null,
+    catalogRole,
+    hasAlmanac: Boolean(almanacEntry),
+    hasProps: Boolean(propsEntry),
     name,
     englishName,
     image,
@@ -218,7 +268,18 @@ const getSimilarityScore = (entity, candidate) => {
   return score;
 };
 
-const getSimilarNeighbors = (entities, currentIndex) => {
+const getRelationScore = (dataset, entity, candidate) => {
+  const entityChildren = dataset.relations.parentToChildren.get(entity.codename) ?? [];
+  const candidateChildren = dataset.relations.parentToChildren.get(candidate.codename) ?? [];
+  const entityParents = dataset.relations.childToParents.get(entity.codename) ?? [];
+  const candidateParents = dataset.relations.childToParents.get(candidate.codename) ?? [];
+
+  if (entityChildren.includes(candidate.codename) || candidateChildren.includes(entity.codename)) return 24;
+  if (countShared(entityParents, candidateParents)) return 18;
+  return 0;
+};
+
+const getSimilarNeighbors = (entities, currentIndex, dataset) => {
   const current = entities[currentIndex];
   const count = entities.length;
 
@@ -228,7 +289,7 @@ const getSimilarNeighbors = (entities, currentIndex) => {
       return {
         candidate,
         candidateIndex,
-        score: getSimilarityScore(current, candidate),
+        score: getSimilarityScore(current, candidate) + getRelationScore(dataset, current, candidate),
         distance: Math.min(directDistance, count - directDistance),
       };
     })
@@ -240,51 +301,157 @@ const getSimilarNeighbors = (entities, currentIndex) => {
     .map(({ candidate }) => toNeighbor(candidate));
 };
 
-export const buildAlmanacCatalog = (kind, locale) => {
-  const dataset = DATASETS[kind];
-  const entities = dataset.order.map((codename) => resolveBaseEntity(kind, codename, locale));
-  const count = entities.length;
+const resolveRelationNeighbors = (codenames, entityMap) => codenames
+  .map((codename) => entityMap.get(codename))
+  .filter(Boolean)
+  .map((entity) => toNeighbor(entity));
 
-  return entities.map((entity, index) => {
+const buildAlmanacKindData = (kind, locale) => {
+  const dataset = DATASETS[kind];
+  const officialSet = new Set(dataset.order);
+  const officialEntities = dataset.order.map((codename) => (
+    resolveBaseEntity(kind, codename, locale, 'official')
+  ));
+  const derivedEntities = dataset.relations.childOrder
+    .filter((codename) => !officialSet.has(codename))
+    .map((codename) => resolveBaseEntity(kind, codename, locale, 'derived'));
+  const baseEntities = [...officialEntities, ...derivedEntities];
+  const entityMap = new Map(baseEntities.map((entity) => [entity.codename, entity]));
+  const officialCount = officialEntities.length;
+
+  const entities = baseEntities.map((entity, index) => {
+    const parentCodenames = dataset.relations.childToParents.get(entity.codename) ?? [];
+    const childCodenames = dataset.relations.parentToChildren.get(entity.codename) ?? [];
+    const siblingCodenames = [...new Set(parentCodenames.flatMap((parentCodename) => (
+      dataset.relations.parentToChildren.get(parentCodename) ?? []
+    )))].filter((codename) => codename !== entity.codename);
+    const officialIndex = officialSet.has(entity.codename)
+      ? dataset.order.indexOf(entity.codename)
+      : -1;
+
     return {
       ...entity,
-      previous: toNeighbor(entities[(index - 1 + count) % count]),
-      next: toNeighbor(entities[(index + 1) % count]),
-      neighbors: getSimilarNeighbors(entities, index),
+      parents: resolveRelationNeighbors(parentCodenames, entityMap),
+      children: resolveRelationNeighbors(childCodenames, entityMap),
+      siblings: resolveRelationNeighbors(siblingCodenames, entityMap),
+      previous: officialIndex === -1
+        ? null
+        : toNeighbor(officialEntities[(officialIndex - 1 + officialCount) % officialCount]),
+      next: officialIndex === -1
+        ? null
+        : toNeighbor(officialEntities[(officialIndex + 1) % officialCount]),
+      neighbors: getSimilarNeighbors(baseEntities, index, dataset),
     };
   });
+
+  const enrichedMap = new Map(entities.map((entity) => [entity.codename, entity]));
+
+  return {
+    entities,
+    official: dataset.order.map((codename) => enrichedMap.get(codename)),
+    unresolvedRelations: dataset.relations.unresolved.map((relation) => ({ kind, ...relation })),
+  };
 };
 
+export const buildAlmanacCatalog = (kind, locale) => buildAlmanacKindData(kind, locale).entities;
+
 export const buildAllAlmanacData = () => ALMANAC_LOCALES.map((locale) => {
-  const plants = buildAlmanacCatalog('plant', locale);
-  const zombies = buildAlmanacCatalog('zombie', locale);
+  const plantData = buildAlmanacKindData('plant', locale);
+  const zombieData = buildAlmanacKindData('zombie', locale);
   return {
     locale,
-    plants,
-    zombies,
+    plants: plantData.entities,
+    zombies: zombieData.entities,
     directories: {
-      plants: plants.map(toDirectoryEntity),
-      zombies: zombies.map(toDirectoryEntity),
+      plants: plantData.official.map(toDirectoryEntity),
+      zombies: zombieData.official.map(toDirectoryEntity),
     },
+    unresolvedRelations: [...plantData.unresolvedRelations, ...zombieData.unresolvedRelations],
   };
 });
 
 export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
   const errors = [];
   const seenPaths = new Set();
+  const unresolvedReferences = new Set();
 
   for (const localeData of allData) {
+    for (const [kind, directoryKey] of [['plant', 'plants'], ['zombie', 'zombies']]) {
+      const actualOrder = localeData.directories[directoryKey].map((entity) => entity.codename);
+      const expectedOrder = DATASETS[kind].order;
+      if (actualOrder.length !== expectedOrder.length
+        || actualOrder.some((codename, index) => codename !== expectedOrder[index])) {
+        errors.push(`${localeData.locale.lang}: ${kind} directory order differs from the official order`);
+      }
+    }
+
+    const officialDirectoryCodenames = {
+      plant: new Set(localeData.directories.plants.map((entity) => entity.codename)),
+      zombie: new Set(localeData.directories.zombies.map((entity) => entity.codename)),
+    };
+    const entityMaps = {
+      plant: new Map(localeData.plants.map((entity) => [entity.codename, entity])),
+      zombie: new Map(localeData.zombies.map((entity) => [entity.codename, entity])),
+    };
+
+    for (const relation of localeData.unresolvedRelations) {
+      unresolvedReferences.add(`${relation.kind}:${relation.parentCodename}:${relation.childCodename}`);
+      if (DATASETS[relation.kind].featureMap.has(relation.childCodename)) {
+        errors.push(`${relation.kind}:${relation.childCodename}: relation incorrectly marked unresolved`);
+      }
+    }
+
     for (const entity of [...localeData.plants, ...localeData.zombies]) {
       if (!entity.name) errors.push(`${entity.path}: missing localized name`);
       if (!entity.englishName) errors.push(`${entity.path}: missing English name`);
-      if (!entity.description) errors.push(`${entity.path}: missing introduction`);
+      if (entity.catalogRole === 'official' && !entity.description) {
+        errors.push(`${entity.path}: official entity is missing introduction`);
+      }
+      if (entity.catalogRole === 'derived' && officialDirectoryCodenames[entity.kind].has(entity.codename)) {
+        errors.push(`${entity.path}: derived entity leaked into the official directory`);
+      }
+      if (!entity.hasAlmanac && (entity.description || entity.chat || entity.stats.length || entity.specials.length)) {
+        errors.push(`${entity.path}: entity without Almanac data contains inherited Almanac content`);
+      }
       if (!entity.imageExists) errors.push(`${entity.path}: missing image ${entity.image}`);
+      if (entity.catalogRole === 'official' && (!entity.previous || !entity.next)) {
+        errors.push(`${entity.path}: official entity is missing sequence navigation`);
+      }
+      if (entity.catalogRole === 'derived' && (entity.previous || entity.next)) {
+        errors.push(`${entity.path}: derived entity should not use the official sequence navigation`);
+      }
       if (entity.neighbors.length !== 5) errors.push(`${entity.path}: expected 5 similar entities`);
       if (entity.neighbors.some((neighbor) => neighbor.codename === entity.codename)) {
         errors.push(`${entity.path}: similar entities include the current entity`);
       }
       if (new Set(entity.neighbors.map((neighbor) => neighbor.codename)).size !== entity.neighbors.length) {
         errors.push(`${entity.path}: duplicate similar entities`);
+      }
+      for (const relationKey of ['parents', 'children', 'siblings']) {
+        const relations = entity[relationKey];
+        if (relations.some((relation) => relation.codename === entity.codename)) {
+          errors.push(`${entity.path}: ${relationKey} include the current entity`);
+        }
+        if (new Set(relations.map((relation) => relation.codename)).size !== relations.length) {
+          errors.push(`${entity.path}: duplicate ${relationKey}`);
+        }
+        for (const relation of relations) {
+          if (!entityMaps[entity.kind].has(relation.codename)) {
+            errors.push(`${entity.path}: ${relationKey} target is not generated: ${relation.codename}`);
+          }
+        }
+      }
+      for (const child of entity.children) {
+        const childEntity = entityMaps[entity.kind].get(child.codename);
+        if (!childEntity?.parents.some((parent) => parent.codename === entity.codename)) {
+          errors.push(`${entity.path}: child relation is not bidirectional: ${child.codename}`);
+        }
+      }
+      for (const parent of entity.parents) {
+        const parentEntity = entityMaps[entity.kind].get(parent.codename);
+        if (!parentEntity?.children.some((child) => child.codename === entity.codename)) {
+          errors.push(`${entity.path}: parent relation is not bidirectional: ${parent.codename}`);
+        }
       }
       if (seenPaths.has(entity.path)) errors.push(`${entity.path}: duplicate route`);
       seenPaths.add(entity.path);
@@ -297,8 +464,15 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
 
   return {
     locales: allData.length,
+    officialPlantPages: allData.reduce((total, item) => total + item.directories.plants.length, 0),
+    officialZombiePages: allData.reduce((total, item) => total + item.directories.zombies.length, 0),
     plantPages: allData.reduce((total, item) => total + item.plants.length, 0),
     zombiePages: allData.reduce((total, item) => total + item.zombies.length, 0),
+    derivedPages: allData.reduce((total, item) => total
+      + [...item.plants, ...item.zombies].filter((entity) => entity.catalogRole === 'derived').length, 0),
+    incompletePages: allData.reduce((total, item) => total
+      + [...item.plants, ...item.zombies].filter((entity) => !entity.hasAlmanac).length, 0),
+    unresolvedReferences: unresolvedReferences.size,
     detailPages: seenPaths.size,
   };
 };

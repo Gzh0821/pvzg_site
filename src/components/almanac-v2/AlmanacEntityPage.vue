@@ -22,7 +22,11 @@
 
     <AdSenseUnit />
 
-    <section class="showcase" :aria-label="entity.name">
+    <section
+      class="showcase"
+      :class="{ 'showcase--single': !entity.stats.length }"
+      :aria-label="entity.name"
+    >
       <div class="entity-stage" :data-world="entity.world">
         <div class="entity-stage__visual">
           <div class="entity-stage__horizon" />
@@ -53,10 +57,14 @@
         </header>
       </div>
 
-      <div class="stat-panel">
+      <div v-if="entity.stats.length" class="stat-panel">
         <h2>{{ labels.attributes }}</h2>
         <dl>
-          <div v-for="stat in entity.stats" :key="stat.type" class="stat-row">
+          <div
+            v-for="(stat, statIndex) in entity.stats"
+            :key="`${stat.type}-${statIndex}`"
+            class="stat-row"
+          >
             <dt>
               <img v-if="stat.icon" :src="stat.icon" alt="" width="38" height="38">
               <span>{{ stat.label }}</span>
@@ -90,9 +98,70 @@
         <h2>{{ labels.chat }}</h2>
         <blockquote>{{ entity.chat }}</blockquote>
       </section>
+
+      <section v-if="!entity.hasAlmanac" class="lore-panel">
+        <h2>{{ labels.introduction }}</h2>
+        <p>{{ labels.noAlmanac }}</p>
+      </section>
     </div>
 
-    <nav class="sequence-nav" :aria-label="labels.nearby">
+    <div v-if="hasRelations" class="relation-stack">
+      <section v-if="entity.parents.length" class="relation-section">
+        <h2>{{ labels.originEntities }}</h2>
+        <div class="relation-rail">
+          <RouterLink
+            v-for="parent in entity.parents"
+            :key="parent.codename"
+            class="relation-card"
+            :to="parent.path"
+          >
+            <img :src="parent.image" alt="" loading="lazy" width="78" height="60">
+            <span>
+              <strong>{{ parent.name }}</strong>
+              <small>{{ parent.codename }}</small>
+            </span>
+          </RouterLink>
+        </div>
+      </section>
+
+      <section v-if="entity.children.length" class="relation-section">
+        <h2>{{ labels.derivedEntities }}</h2>
+        <div class="relation-rail">
+          <RouterLink
+            v-for="child in entity.children"
+            :key="child.codename"
+            class="relation-card"
+            :to="child.path"
+          >
+            <img :src="child.image" alt="" loading="lazy" width="78" height="60">
+            <span>
+              <strong>{{ child.name }}</strong>
+              <small>{{ child.codename }}</small>
+            </span>
+          </RouterLink>
+        </div>
+      </section>
+
+      <section v-if="entity.siblings.length" class="relation-section">
+        <h2>{{ labels.siblingEntities }}</h2>
+        <div class="relation-rail">
+          <RouterLink
+            v-for="sibling in entity.siblings"
+            :key="sibling.codename"
+            class="relation-card"
+            :to="sibling.path"
+          >
+            <img :src="sibling.image" alt="" loading="lazy" width="78" height="60">
+            <span>
+              <strong>{{ sibling.name }}</strong>
+              <small>{{ sibling.codename }}</small>
+            </span>
+          </RouterLink>
+        </div>
+      </section>
+    </div>
+
+    <nav v-if="entity.previous && entity.next" class="sequence-nav" :aria-label="labels.nearby">
       <RouterLink :to="entity.previous.path" rel="prev">
         <span>{{ labels.previous }}</span>
         <strong>← {{ entity.previous.name }}</strong>
@@ -133,6 +202,11 @@ const frontmatter = usePageFrontmatter<AlmanacPageFrontmatter>();
 const entity = computed(() => frontmatter.value.almanacEntity as AlmanacEntity);
 const labels = computed(() => getAlmanacText(entity.value.locale));
 const worldLabel = computed(() => getWorldLabel(entity.value.world, entity.value.locale));
+const hasRelations = computed(() => (
+  entity.value.parents.length > 0
+  || entity.value.children.length > 0
+  || entity.value.siblings.length > 0
+));
 const localePrefix = computed(() => entity.value.locale === 'en' ? '/en' : '');
 const plantDirectoryPath = computed(() => `${localePrefix.value}/almanac/plants.html`);
 const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombies.html`);
@@ -302,6 +376,10 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   margin-bottom: 1.15rem;
 }
 
+.showcase--single {
+  grid-template-columns: 1fr;
+}
+
 .entity-stage {
   --stage-sky: #9cc9a0;
   --stage-ground: #63894d;
@@ -397,6 +475,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 
 .stat-panel h2,
 .neighbor-section h2,
+.relation-section h2,
 .lore-panel h2 {
   margin: 0;
   color: #fff8dc;
@@ -495,6 +574,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 }
 
 .neighbor-section,
+.relation-section,
 .lore-panel {
   overflow: hidden;
   margin-bottom: 1.15rem;
@@ -505,8 +585,69 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 }
 
 .neighbor-section h2,
+.relation-section h2,
 .lore-panel h2 {
   padding: 0.72rem 1rem;
+}
+
+.relation-stack {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.relation-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.65rem;
+  padding: 0.8rem;
+}
+
+.relation-card {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 4.9rem minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  color: var(--almanac-ink);
+  border: 2px solid #9a7a4c;
+  border-radius: 8px;
+  background: #fff5d4;
+  text-decoration: none;
+}
+
+.relation-card img {
+  width: 4.9rem;
+  height: 3.75rem;
+  object-fit: contain;
+  background: rgb(79 138 69 / 16%);
+}
+
+.almanac-shell--zombie .relation-card img {
+  background: rgb(112 107 145 / 18%);
+}
+
+.relation-card > span {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+  padding: 0.45rem 0.55rem;
+}
+
+.relation-card strong,
+.relation-card small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.relation-card strong {
+  font-size: 0.88rem;
+}
+
+.relation-card small {
+  color: var(--almanac-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
 }
 
 .neighbor-rail {
@@ -602,6 +743,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 .back-link:focus-visible,
 .species-switch a:focus-visible,
 .sequence-nav a:focus-visible,
+.relation-card:focus-visible,
 .neighbor-card:focus-visible {
   outline: 3px solid #e1a83a;
   outline-offset: 3px;
@@ -610,6 +752,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 .back-link,
 .species-switch a,
 .sequence-nav a,
+.relation-card,
 .neighbor-card {
   transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
@@ -624,6 +767,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 
 [data-theme='dark'] .stat-panel,
 [data-theme='dark'] .neighbor-section,
+[data-theme='dark'] .relation-section,
 [data-theme='dark'] .lore-panel,
 [data-theme='dark'] .sequence-nav a {
   border-color: #8a6949;
@@ -634,7 +778,8 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   text-shadow: 0 2px 0 rgb(0 0 0 / 45%);
 }
 
-[data-theme='dark'] .neighbor-card {
+[data-theme='dark'] .neighbor-card,
+[data-theme='dark'] .relation-card {
   color: #f2e5c4;
   border-color: #856747;
   background: #211c16;
@@ -750,6 +895,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   .back-link,
   .species-switch a,
   .sequence-nav a,
+  .relation-card,
   .neighbor-card {
     transition: none;
   }
