@@ -100,7 +100,7 @@ const matchesQuery = computed(() => nodeMatches(props.value, props.path, props.n
 const visibleEntries = computed(() => rawEntries.value.filter(([key, value]) => (
   nodeMatches(value, pathFor(props.path, props.value, key), key, props.query)
 )));
-const displayKey = computed(() => Array.isArray(props.value) ? `[${props.nodeKey}]` : props.nodeKey);
+const displayKey = computed(() => props.nodeKey);
 const valueType = computed(() => {
   if (props.value === null) return 'null';
   if (Array.isArray(props.value)) return 'array';
