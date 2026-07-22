@@ -9,9 +9,7 @@ sidebar: false
 order: 3
 ---
 <script setup>
-    import { createApp,provide } from 'vue';
-    import Almanac from '@source/components/zombiesAlmanac/App.vue';
-    provide("i18nLanguage",'zh');
+    import AlmanacDirectoryPage from '@source/components/almanac-v2/AlmanacDirectoryPage.vue';
 </script>
 
-<Almanac />
+<AlmanacDirectoryPage />

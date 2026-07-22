@@ -4,6 +4,7 @@ import theme from "./theme.js";
 import vueI18n from '@intlify/unplugin-vue-i18n/vite'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { almanacPagesPlugin } from './plugins/almanac-pages.mjs'
 
 export default defineUserConfig({
   base: "/",
@@ -73,6 +74,7 @@ export default defineUserConfig({
     }
   }),
   theme,
+  plugins: [almanacPagesPlugin()],
 
   // Enable it with pwa
   shouldPrefetch: false,

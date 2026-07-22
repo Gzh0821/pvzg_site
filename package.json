@@ -5,6 +5,7 @@
   "license": "Apache 2.0",
   "type": "module",
   "scripts": {
+    "check:almanac": "node scripts/check-almanac-pages.mjs",
     "build:level-editor-objects": "node scripts/build-level-editor-board-objects.mjs",
     "check:level-editor-objects": "node scripts/check-level-editor-board-objects.mjs",
     "check:level-editor-waves": "node scripts/check-level-editor-wave-roundtrip.mjs",
