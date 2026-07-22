@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
@@ -27,6 +28,9 @@ const DATASETS = {
     familyLabels: plantI18n.PlantFamily,
     propsGroup: 'PlantProps',
     almanacGroup: 'PlantAlmanac',
+    featureSource: 'Features/PlantFeatures.json:PLANTS',
+    propsSource: 'Objects/PlantProps.json:objects',
+    almanacSource: 'Objects/PlantAlmanac.json:objects',
     subListKey: 'SubPlantList',
   },
   zombie: {
@@ -38,6 +42,9 @@ const DATASETS = {
     familyLabels: zombieI18n.PlantFamily,
     propsGroup: 'ZombieProps',
     almanacGroup: 'ZombieAlmanac',
+    featureSource: 'Features/ZombieFeatures.json:ZOMBIES',
+    propsSource: 'Objects/ZombieProps.json:objects',
+    almanacSource: 'Objects/ZombieAlmanac.json:objects',
     subListKey: 'SubZombieList',
   },
 };
@@ -100,6 +107,133 @@ const parseRtid = (value, expectedGroup) => {
   return match[1];
 };
 
+const resolveRawReference = ({ codename, rtid, group, source, aliasMap }) => {
+  const requestedAlias = parseRtid(rtid, group);
+  const resolvedAlias = requestedAlias && aliasMap.has(requestedAlias)
+    ? requestedAlias
+    : aliasMap.has(codename) ? codename : null;
+
+  return {
+    source,
+    rtid: typeof rtid === 'string' ? rtid : null,
+    requestedAlias,
+    resolvedAlias,
+    resolvedPath: resolvedAlias ? `${source}[alias=${resolvedAlias}]` : null,
+    value: resolvedAlias ? aliasMap.get(resolvedAlias) : null,
+  };
+};
+
+const buildUnversionedDeveloperPayload = (kind, codename, catalogRole) => {
+  const dataset = DATASETS[kind];
+  const feature = dataset.featureMap.get(codename);
+  if (!feature) throw new Error(`Missing ${kind} feature for developer payload: ${codename}`);
+
+  const props = resolveRawReference({
+    codename,
+    rtid: feature.PROPS,
+    group: dataset.propsGroup,
+    source: dataset.propsSource,
+    aliasMap: dataset.propsMap,
+  });
+  const almanac = resolveRawReference({
+    codename,
+    rtid: feature.ALMANAC,
+    group: dataset.almanacGroup,
+    source: dataset.almanacSource,
+    aliasMap: dataset.almanacMap,
+  });
+  const warnings = [];
+
+  if (feature.PROPS && !props.requestedAlias) warnings.push(`Invalid Props RTID: ${feature.PROPS}`);
+  if (feature.PROPS && !props.value) warnings.push(`Unresolved Props reference: ${feature.PROPS}`);
+  if (feature.ALMANAC && !almanac.requestedAlias) warnings.push(`Invalid Almanac RTID: ${feature.ALMANAC}`);
+  if (feature.ALMANAC && !almanac.value) warnings.push(`Unresolved Almanac reference: ${feature.ALMANAC}`);
+  if (!feature.PROPS) warnings.push('Feature has no Props reference');
+  if (!feature.ALMANAC) warnings.push('Feature has no Almanac reference');
+
+  return {
+    schemaVersion: 1,
+    kind,
+    codename,
+    catalogRole,
+    availability: {
+      feature: true,
+      props: Boolean(props.value),
+      almanac: Boolean(almanac.value),
+    },
+    references: {
+      feature: {
+        source: dataset.featureSource,
+        resolvedPath: `${dataset.featureSource}[CODENAME=${codename}]`,
+      },
+      props: {
+        source: props.source,
+        rtid: props.rtid,
+        requestedAlias: props.requestedAlias,
+        resolvedAlias: props.resolvedAlias,
+        resolvedPath: props.resolvedPath,
+      },
+      almanac: {
+        source: almanac.source,
+        rtid: almanac.rtid,
+        requestedAlias: almanac.requestedAlias,
+        resolvedAlias: almanac.resolvedAlias,
+        resolvedPath: almanac.resolvedPath,
+      },
+    },
+    warnings,
+    feature,
+    props: props.value,
+    almanac: almanac.value,
+  };
+};
+
+const getGeneratedEntityDescriptors = () => Object.entries(DATASETS).flatMap(([kind, dataset]) => {
+  const officialSet = new Set(dataset.order);
+  return [
+    ...dataset.order.map((codename) => ({ kind, codename, catalogRole: 'official' })),
+    ...dataset.relations.childOrder
+      .filter((codename) => !officialSet.has(codename))
+      .map((codename) => ({ kind, codename, catalogRole: 'derived' })),
+  ];
+});
+
+const createDeveloperPayloadCatalog = () => {
+  const unversioned = getGeneratedEntityDescriptors()
+    .map(({ kind, codename, catalogRole }) => (
+      buildUnversionedDeveloperPayload(kind, codename, catalogRole)
+    ))
+    .sort((left, right) => left.kind.localeCompare(right.kind)
+      || left.codename.localeCompare(right.codename));
+  const dataVersion = createHash('sha256')
+    .update(JSON.stringify(unversioned))
+    .digest('hex')
+    .slice(0, 12);
+  const entries = unversioned.map((payload) => {
+    const serialized = JSON.stringify({ dataVersion, ...payload });
+    const relativePath = `assets/almanac-data/${dataVersion}/${payload.kind}/${payload.codename}.json`;
+    return {
+      kind: payload.kind,
+      codename: payload.codename,
+      url: `/${relativePath}`,
+      relativePath,
+      serialized,
+      byteLength: Buffer.byteLength(serialized),
+      payload: JSON.parse(serialized),
+    };
+  });
+
+  return {
+    dataVersion,
+    entries,
+    entryMap: new Map(entries.map((entry) => [`${entry.kind}:${entry.codename}`, entry])),
+  };
+};
+
+const DEVELOPER_PAYLOAD_CATALOG = createDeveloperPayloadCatalog();
+
+export const buildAlmanacDeveloperPayloads = () => DEVELOPER_PAYLOAD_CATALOG;
+
 const upperCaseKeys = (record) => Object.fromEntries(
   Object.entries(record ?? {}).map(([key, value]) => [key.toUpperCase(), value]),
 );
@@ -145,6 +279,8 @@ const resolveBaseEntity = (kind, codename, locale, catalogRole = 'official') => 
   const dataset = DATASETS[kind];
   const feature = dataset.featureMap.get(codename);
   if (!feature) throw new Error(`Missing ${kind} feature: ${codename}`);
+  const developerPayload = DEVELOPER_PAYLOAD_CATALOG.entryMap.get(`${kind}:${codename}`);
+  if (!developerPayload) throw new Error(`Missing ${kind} developer payload: ${codename}`);
 
   const propsAlias = parseRtid(feature.PROPS, dataset.propsGroup);
   const almanacAlias = parseRtid(feature.ALMANAC, dataset.almanacGroup);
@@ -206,6 +342,7 @@ const resolveBaseEntity = (kind, codename, locale, catalogRole = 'official') => 
     codename,
     numericId: kind === 'plant' ? feature.ID ?? null : null,
     catalogRole,
+    developerPayloadUrl: developerPayload.url,
     hasAlmanac: Boolean(almanacEntry),
     hasProps: Boolean(propsEntry),
     name,
@@ -374,6 +511,34 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
   const errors = [];
   const seenPaths = new Set();
   const unresolvedReferences = new Set();
+  const referencedPayloads = new Set();
+  const payloads = buildAlmanacDeveloperPayloads();
+  const payloadKeys = new Set();
+
+  if (!/^[a-f0-9]{12}$/u.test(payloads.dataVersion)) {
+    errors.push(`invalid developer payload data version: ${payloads.dataVersion}`);
+  }
+  for (const entry of payloads.entries) {
+    const key = `${entry.kind}:${entry.codename}`;
+    if (payloadKeys.has(key)) errors.push(`${key}: duplicate developer payload`);
+    payloadKeys.add(key);
+    if (!/^[A-Za-z0-9_-]+$/u.test(entry.codename)) {
+      errors.push(`${key}: codename cannot be used as a static payload filename`);
+    }
+    if (entry.byteLength > 128 * 1024) {
+      errors.push(`${key}: developer payload exceeds 128 KiB (${entry.byteLength} bytes)`);
+    }
+    if (entry.payload.dataVersion !== payloads.dataVersion) {
+      errors.push(`${key}: developer payload uses a stale data version`);
+    }
+    if (entry.payload.feature?.PLANTS || entry.payload.feature?.ZOMBIES
+      || entry.payload.props?.objects || entry.payload.almanac?.objects) {
+      errors.push(`${key}: developer payload contains an entire source database`);
+    }
+    if (JSON.stringify(entry.payload) !== entry.serialized) {
+      errors.push(`${key}: developer payload serialization is not deterministic`);
+    }
+  }
 
   for (const localeData of allData) {
     for (const [kind, directoryKey] of [['plant', 'plants'], ['zombie', 'zombies']]) {
@@ -402,6 +567,8 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
     }
 
     for (const entity of [...localeData.plants, ...localeData.zombies]) {
+      const payloadKey = `${entity.kind}:${entity.codename}`;
+      const payloadEntry = payloads.entryMap.get(payloadKey);
       if (!entity.name) errors.push(`${entity.path}: missing localized name`);
       if (!entity.englishName) errors.push(`${entity.path}: missing English name`);
       if (entity.catalogRole === 'official' && !entity.description) {
@@ -414,6 +581,13 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
         errors.push(`${entity.path}: entity without Almanac data contains inherited Almanac content`);
       }
       if (!entity.imageExists) errors.push(`${entity.path}: missing image ${entity.image}`);
+      if (!payloadEntry) {
+        errors.push(`${entity.path}: missing developer payload`);
+      } else if (entity.developerPayloadUrl !== payloadEntry.url) {
+        errors.push(`${entity.path}: developer payload URL is stale`);
+      } else {
+        referencedPayloads.add(payloadKey);
+      }
       if (entity.catalogRole === 'official' && (!entity.previous || !entity.next)) {
         errors.push(`${entity.path}: official entity is missing sequence navigation`);
       }
@@ -458,6 +632,10 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
     }
   }
 
+  if (referencedPayloads.size !== payloads.entries.length) {
+    errors.push(`developer payload coverage differs from generated entities (${referencedPayloads.size}/${payloads.entries.length})`);
+  }
+
   if (errors.length) {
     throw new Error(`Almanac validation failed (${errors.length}):\n${errors.join('\n')}`);
   }
@@ -474,5 +652,7 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
       + [...item.plants, ...item.zombies].filter((entity) => !entity.hasAlmanac).length, 0),
     unresolvedReferences: unresolvedReferences.size,
     detailPages: seenPaths.size,
+    developerPayloads: payloads.entries.length,
+    developerDataVersion: payloads.dataVersion,
   };
 };

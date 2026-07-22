@@ -22,6 +22,25 @@
 
     <AdSenseUnit />
 
+    <nav class="view-switch" :aria-label="labels.siteLabel">
+      <button
+        type="button"
+        :class="{ active: activeView === 'user' }"
+        :aria-pressed="activeView === 'user'"
+        @click="setView('user')"
+      >
+        {{ labels.userView }}
+      </button>
+      <button
+        type="button"
+        :class="{ active: activeView === 'developer' }"
+        :aria-pressed="activeView === 'developer'"
+        @click="setView('developer')"
+      >
+        {{ labels.developerView }}
+      </button>
+    </nav>
+
     <section
       class="showcase"
       :class="{ 'showcase--single': !entity.stats.length }"
@@ -75,7 +94,8 @@
       </div>
     </section>
 
-    <div class="lore-stack">
+    <template v-if="activeView === 'user'">
+      <div class="lore-stack">
       <section v-if="entity.description" class="lore-panel">
         <h2>{{ labels.introduction }}</h2>
         <p>{{ entity.description }}</p>
@@ -103,9 +123,9 @@
         <h2>{{ labels.introduction }}</h2>
         <p>{{ labels.noAlmanac }}</p>
       </section>
-    </div>
+      </div>
 
-    <div v-if="hasRelations" class="relation-stack">
+      <div v-if="hasRelations" class="relation-stack">
       <section v-if="entity.parents.length" class="relation-section">
         <h2>{{ labels.originEntities }}</h2>
         <div class="relation-rail">
@@ -159,9 +179,9 @@
           </RouterLink>
         </div>
       </section>
-    </div>
+      </div>
 
-    <nav v-if="entity.previous && entity.next" class="sequence-nav" :aria-label="labels.nearby">
+      <nav v-if="entity.previous && entity.next" class="sequence-nav" :aria-label="labels.nearby">
       <RouterLink :to="entity.previous.path" rel="prev">
         <span>{{ labels.previous }}</span>
         <strong>← {{ entity.previous.name }}</strong>
@@ -170,9 +190,9 @@
         <span>{{ labels.next }}</span>
         <strong>{{ entity.next.name }} →</strong>
       </RouterLink>
-    </nav>
+      </nav>
 
-    <section class="neighbor-section" :aria-labelledby="`nearby-${entity.codename}`">
+      <section class="neighbor-section" :aria-labelledby="`nearby-${entity.codename}`">
       <h2 :id="`nearby-${entity.codename}`">{{ labels.nearby }}</h2>
       <div class="neighbor-rail">
         <template v-for="neighbor in entity.neighbors" :key="neighbor.codename">
@@ -186,19 +206,40 @@
           </RouterLink>
         </template>
       </div>
-    </section>
+      </section>
+    </template>
+
+    <AlmanacDeveloperPanel
+      v-else
+      :src="entity.developerPayloadUrl"
+      :codename="entity.codename"
+      :kind="entity.kind"
+      :labels="labels"
+    />
   </article>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { usePageFrontmatter } from 'vuepress/client';
+import {
+  computed,
+  defineAsyncComponent,
+  onMounted,
+  ref,
+  watch,
+} from 'vue';
+import { usePageFrontmatter, useRoute, useRouter } from 'vuepress/client';
 
 import AdSenseUnit from './AdSenseUnit.vue';
 import { getAlmanacText, getWorldLabel } from './locales';
 import type { AlmanacEntity, AlmanacPageFrontmatter } from './types';
 
+type AlmanacView = 'user' | 'developer';
+
+const AlmanacDeveloperPanel = defineAsyncComponent(() => import('./AlmanacDeveloperPanel.vue'));
 const frontmatter = usePageFrontmatter<AlmanacPageFrontmatter>();
+const route = useRoute();
+const router = useRouter();
+const activeView = ref<AlmanacView>('user');
 const entity = computed(() => frontmatter.value.almanacEntity as AlmanacEntity);
 const labels = computed(() => getAlmanacText(entity.value.locale));
 const worldLabel = computed(() => getWorldLabel(entity.value.world, entity.value.locale));
@@ -210,6 +251,19 @@ const hasRelations = computed(() => (
 const localePrefix = computed(() => entity.value.locale === 'en' ? '/en' : '');
 const plantDirectoryPath = computed(() => `${localePrefix.value}/almanac/plants.html`);
 const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombies.html`);
+
+const routeView = () => route.query.view === 'developer' ? 'developer' : 'user';
+const syncViewFromRoute = () => { activeView.value = routeView(); };
+const setView = (view: AlmanacView) => {
+  activeView.value = view;
+  const query = { ...route.query };
+  if (view === 'developer') query.view = 'developer';
+  else delete query.view;
+  void router.replace({ path: route.path, query, hash: route.hash });
+};
+
+onMounted(syncViewFromRoute);
+watch(() => route.query.view, syncViewFromRoute);
 </script>
 
 <style scoped>
@@ -295,6 +349,37 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 }
 
 .species-switch a.active {
+  color: white;
+  background: var(--almanac-accent);
+  box-shadow: inset 0 -3px 0 var(--almanac-accent-dark);
+}
+
+.view-switch {
+  display: flex;
+  width: fit-content;
+  gap: 0.25rem;
+  margin: 0 0 1.15rem;
+  padding: 0.25rem;
+  border: 3px solid var(--almanac-wood-dark);
+  border-radius: 9px;
+  background: var(--almanac-wood);
+  box-shadow: 0 4px 0 var(--almanac-wood-dark);
+}
+
+.view-switch button {
+  min-height: 2.5rem;
+  padding: 0.35rem 0.9rem;
+  color: #e5d8bb;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.view-switch button.active {
   color: white;
   background: var(--almanac-accent);
   box-shadow: inset 0 -3px 0 var(--almanac-accent-dark);
@@ -749,12 +834,21 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   outline-offset: 3px;
 }
 
+.view-switch button:focus-visible {
+  outline: 3px solid #e1a83a;
+  outline-offset: 3px;
+}
+
 .back-link,
 .species-switch a,
 .sequence-nav a,
 .relation-card,
 .neighbor-card {
   transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.view-switch button {
+  transition: color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
 }
 
 [data-theme='dark'] .almanac-shell {
@@ -829,6 +923,15 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
     flex: 1;
   }
 
+  .view-switch {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .view-switch button {
+    flex: 1;
+  }
+
   .entity-identity {
     grid-template-columns: 1fr;
     gap: 0.85rem;
@@ -888,6 +991,10 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 
   .stat-row dd {
     max-width: 8.5rem;
+  }
+
+  .view-switch button {
+    transition: none;
   }
 }
 

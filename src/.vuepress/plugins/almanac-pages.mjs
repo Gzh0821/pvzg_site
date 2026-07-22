@@ -1,12 +1,18 @@
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
+
+import { customizeDevServer } from '@vuepress/helper';
 import { createPage } from 'vuepress/core';
 
 import {
   buildAllAlmanacData,
+  buildAlmanacDeveloperPayloads,
   getAlmanacDirectoryPath,
   validateAlmanacData,
 } from '../lib/almanac-data.mjs';
 
 const HOSTNAME = 'https://www.pvzge.com';
+const DEVELOPER_ASSET_PREFIX = '/assets/almanac-data/';
 
 const PAGE_COMPONENT = `\
 <script setup>
@@ -34,6 +40,32 @@ const stripBuildOnlyFields = ({ imageExists: _imageExists, similarity: _similari
 
 export const almanacPagesPlugin = () => (app) => ({
   name: 'pvzge-almanac-pages',
+
+  extendsBundlerOptions: (bundlerOptions) => {
+    const payloads = buildAlmanacDeveloperPayloads();
+    const payloadByUrl = new Map(payloads.entries.map((entry) => [entry.url, entry]));
+
+    customizeDevServer(bundlerOptions, app, {
+      path: DEVELOPER_ASSET_PREFIX,
+      errMsg: 'Unknown almanac developer payload',
+      response: async (request, response) => {
+        const rawUrls = [request.originalUrl, request.url].filter(Boolean);
+        const candidates = rawUrls.flatMap((rawUrl) => {
+          const pathname = new URL(rawUrl, 'http://localhost').pathname;
+          return [
+            pathname,
+            `${DEVELOPER_ASSET_PREFIX}${pathname.replace(/^\/+/, '')}`,
+          ];
+        });
+        const entry = candidates.map((candidate) => payloadByUrl.get(candidate)).find(Boolean);
+        if (!entry) throw new Error(`Unknown almanac developer payload: ${request.url}`);
+
+        response.setHeader('Content-Type', 'application/json; charset=utf-8');
+        response.setHeader('Cache-Control', 'no-store');
+        return entry.serialized;
+      },
+    });
+  },
 
   onInitialized: async () => {
     const allData = buildAllAlmanacData();
@@ -96,5 +128,14 @@ export const almanacPagesPlugin = () => (app) => ({
     }
 
     app.pages.push(...await Promise.all(generatedPages));
+  },
+
+  onGenerated: () => {
+    const payloads = buildAlmanacDeveloperPayloads();
+    for (const entry of payloads.entries) {
+      const outputPath = app.dir.dest(entry.relativePath);
+      mkdirSync(dirname(outputPath), { recursive: true });
+      writeFileSync(outputPath, entry.serialized, 'utf8');
+    }
   },
 });
