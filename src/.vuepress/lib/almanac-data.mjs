@@ -143,6 +143,16 @@ const resolveBaseEntity = (kind, codename, locale) => {
     return specialName || description ? [{ name: specialName, description }] : [];
   });
 
+  const similarity = {
+    family: familyCode === 'Nope' ? '' : familyCode,
+    world: feature.OBTAINWORLD ?? '',
+    types: (feature.TYPE ?? []).filter((type) => type !== kind),
+    stats: [...new Set(stats.map((stat) => stat.type))],
+    specials: [...new Set((almanacData.Special ?? [])
+      .map((special) => special.NAME?.en ?? special.NAME?.zh)
+      .filter(Boolean))],
+  };
+
   return {
     kind,
     locale: locale.lang,
@@ -162,6 +172,7 @@ const resolveBaseEntity = (kind, codename, locale) => {
     chat: localize(almanacData.Chat, locale.lang),
     stats,
     specials,
+    similarity,
     path: getAlmanacDetailPath(kind, codename, locale.pathPrefix),
     directoryPath: getAlmanacDirectoryPath(kind, locale.pathPrefix),
     imageExists: existsSync(getImageFile(image)),
@@ -190,21 +201,56 @@ const toNeighbor = (entity, current = false) => ({
   current,
 });
 
+const countShared = (left, right) => {
+  const rightSet = new Set(right);
+  return left.filter((value) => rightSet.has(value)).length;
+};
+
+const getSimilarityScore = (entity, candidate) => {
+  let score = 0;
+
+  if (entity.similarity.family && entity.similarity.family === candidate.similarity.family) score += 12;
+  if (entity.similarity.world && entity.similarity.world === candidate.similarity.world) score += 4;
+  score += countShared(entity.similarity.types, candidate.similarity.types) * 3;
+  score += Math.min(countShared(entity.similarity.stats, candidate.similarity.stats), 4);
+  score += Math.min(countShared(entity.similarity.specials, candidate.similarity.specials), 3);
+
+  return score;
+};
+
+const getSimilarNeighbors = (entities, currentIndex) => {
+  const current = entities[currentIndex];
+  const count = entities.length;
+
+  return entities
+    .map((candidate, candidateIndex) => {
+      const directDistance = Math.abs(currentIndex - candidateIndex);
+      return {
+        candidate,
+        candidateIndex,
+        score: getSimilarityScore(current, candidate),
+        distance: Math.min(directDistance, count - directDistance),
+      };
+    })
+    .filter(({ candidateIndex }) => candidateIndex !== currentIndex)
+    .sort((left, right) => right.score - left.score
+      || left.distance - right.distance
+      || left.candidate.codename.localeCompare(right.candidate.codename))
+    .slice(0, 5)
+    .map(({ candidate }) => toNeighbor(candidate));
+};
+
 export const buildAlmanacCatalog = (kind, locale) => {
   const dataset = DATASETS[kind];
   const entities = dataset.order.map((codename) => resolveBaseEntity(kind, codename, locale));
   const count = entities.length;
 
   return entities.map((entity, index) => {
-    const neighborIndexes = [-2, -1, 0, 1, 2].map((offset) => (index + offset + count) % count);
     return {
       ...entity,
       previous: toNeighbor(entities[(index - 1 + count) % count]),
       next: toNeighbor(entities[(index + 1) % count]),
-      neighbors: neighborIndexes.map((neighborIndex) => toNeighbor(
-        entities[neighborIndex],
-        neighborIndex === index,
-      )),
+      neighbors: getSimilarNeighbors(entities, index),
     };
   });
 };
@@ -233,6 +279,13 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
       if (!entity.englishName) errors.push(`${entity.path}: missing English name`);
       if (!entity.description) errors.push(`${entity.path}: missing introduction`);
       if (!entity.imageExists) errors.push(`${entity.path}: missing image ${entity.image}`);
+      if (entity.neighbors.length !== 5) errors.push(`${entity.path}: expected 5 similar entities`);
+      if (entity.neighbors.some((neighbor) => neighbor.codename === entity.codename)) {
+        errors.push(`${entity.path}: similar entities include the current entity`);
+      }
+      if (new Set(entity.neighbors.map((neighbor) => neighbor.codename)).size !== entity.neighbors.length) {
+        errors.push(`${entity.path}: duplicate similar entities`);
+      }
       if (seenPaths.has(entity.path)) errors.push(`${entity.path}: duplicate route`);
       seenPaths.add(entity.path);
     }

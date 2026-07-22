@@ -1,18 +1,17 @@
 <template>
-  <div class="almanac-ad" aria-label="Advertisement">
-    <ins
-      class="adsbygoogle"
-      style="display: block"
-      data-ad-client="ca-pub-2336226859954206"
-      data-ad-slot="1822530351"
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-    />
+  <div class="almanac-v2-ad-placement">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2336226859954206"
+         data-ad-slot="1822530351"
+         data-ad-format="auto"
+         data-full-width-responsive="true">
+    </ins>
   </div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, onMounted } from 'vue';
+import { onMounted } from 'vue';
 
 declare global {
   interface Window {
@@ -20,49 +19,13 @@ declare global {
   }
 }
 
-onMounted(async () => {
-  await nextTick();
-  try {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  } catch {
-    // Ad blockers and local previews may prevent AdSense from initializing.
-  }
+onMounted(() => {
+  (window.adsbygoogle = window.adsbygoogle || []).push({});
 });
 </script>
 
-<style scoped>
-.almanac-ad {
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 100px;
+<style>
+.almanac-v2-ad-placement {
   margin: 1rem 0 1.35rem;
-  overflow: hidden;
-}
-
-.almanac-ad:has(.adsbygoogle[data-ad-status='unfilled']) {
-  height: 1rem;
-  min-height: 0;
-  margin: 0;
-}
-
-.almanac-ad:has(.adsbygoogle[data-ad-status='unfilled']) .adsbygoogle {
-  display: none !important;
-}
-
-:global(.vp-page:has(.almanac-shell) > .vp-page-title) {
-  display: none;
-}
-
-@media (max-width: 640px) {
-  .almanac-ad {
-    min-height: 90px;
-    margin-block: 0.75rem 1rem;
-  }
-
-  .almanac-ad:has(.adsbygoogle[data-ad-status='unfilled']) {
-    height: 0.75rem;
-    min-height: 0;
-    margin: 0;
-  }
 }
 </style>

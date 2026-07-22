@@ -7,12 +7,5 @@ toc: false
 watermark: true
 sidebar: false
 order: 2
+redirectTo: /en/almanac/plants.html
 ---
-
-<script setup>
-    import { createApp,provide } from 'vue';
-    import Almanac from '@source/components/plantsAlmanac/App.vue';
-    provide("i18nLanguage",'en');
-</script>
-
-<Almanac />

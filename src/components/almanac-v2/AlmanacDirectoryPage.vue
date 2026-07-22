@@ -200,6 +200,10 @@ const filteredEntities = computed(() => {
   color: var(--almanac-ink);
 }
 
+:global(.vp-page:has(.almanac-shell) > .vp-page-title) {
+  display: none;
+}
+
 .almanac-shell--zombie {
   --almanac-accent: #706b91;
   --almanac-accent-dark: #494560;
@@ -528,6 +532,7 @@ const filteredEntities = computed(() => {
   margin-top: 0.38rem;
   overflow: hidden;
   color: #514332;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
   font-size: 0.83rem;
   line-height: 1.35;
   -webkit-box-orient: vertical;

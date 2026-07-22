@@ -158,6 +158,10 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   color: var(--almanac-ink);
 }
 
+:global(.vp-page:has(.almanac-shell) > .vp-page-title) {
+  display: none;
+}
+
 .almanac-shell--zombie {
   --almanac-accent: #706b91;
   --almanac-accent-dark: #494560;

@@ -26,7 +26,7 @@ const compactDescription = (entity) => (entity.summary || entity.description)
   .trim()
   .slice(0, 155);
 
-const stripBuildOnlyFields = ({ imageExists: _imageExists, ...entity }) => entity;
+const stripBuildOnlyFields = ({ imageExists: _imageExists, similarity: _similarity, ...entity }) => entity;
 
 export const almanacPagesPlugin = () => (app) => ({
   name: 'pvzge-almanac-pages',
