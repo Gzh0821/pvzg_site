@@ -205,16 +205,17 @@ const createDeveloperPayloadCatalog = () => {
     ))
     .sort((left, right) => left.kind.localeCompare(right.kind)
       || left.codename.localeCompare(right.codename));
-  const dataVersion = createHash('sha256')
-    .update(JSON.stringify(unversioned))
-    .digest('hex')
-    .slice(0, 12);
   const entries = unversioned.map((payload) => {
+    const dataVersion = createHash('sha256')
+      .update(JSON.stringify(payload))
+      .digest('hex')
+      .slice(0, 12);
     const serialized = JSON.stringify({ dataVersion, ...payload });
-    const relativePath = `assets/almanac-data/${dataVersion}/${payload.kind}/${payload.codename}.json`;
+    const relativePath = `assets/almanac-data/${payload.kind}/${payload.codename}.${dataVersion}.json`;
     return {
       kind: payload.kind,
       codename: payload.codename,
+      dataVersion,
       url: `/${relativePath}`,
       relativePath,
       serialized,
@@ -222,9 +223,17 @@ const createDeveloperPayloadCatalog = () => {
       payload: JSON.parse(serialized),
     };
   });
+  const catalogVersion = createHash('sha256')
+    .update(JSON.stringify(entries.map(({ kind, codename, dataVersion }) => ({
+      kind,
+      codename,
+      dataVersion,
+    }))))
+    .digest('hex')
+    .slice(0, 12);
 
   return {
-    dataVersion,
+    catalogVersion,
     entries,
     entryMap: new Map(entries.map((entry) => [`${entry.kind}:${entry.codename}`, entry])),
   };
@@ -515,8 +524,8 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
   const payloads = buildAlmanacDeveloperPayloads();
   const payloadKeys = new Set();
 
-  if (!/^[a-f0-9]{12}$/u.test(payloads.dataVersion)) {
-    errors.push(`invalid developer payload data version: ${payloads.dataVersion}`);
+  if (!/^[a-f0-9]{12}$/u.test(payloads.catalogVersion)) {
+    errors.push(`invalid developer payload catalog version: ${payloads.catalogVersion}`);
   }
   for (const entry of payloads.entries) {
     const key = `${entry.kind}:${entry.codename}`;
@@ -528,8 +537,22 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
     if (entry.byteLength > 128 * 1024) {
       errors.push(`${key}: developer payload exceeds 128 KiB (${entry.byteLength} bytes)`);
     }
-    if (entry.payload.dataVersion !== payloads.dataVersion) {
-      errors.push(`${key}: developer payload uses a stale data version`);
+    if (!/^[a-f0-9]{12}$/u.test(entry.dataVersion)) {
+      errors.push(`${key}: invalid developer payload data version`);
+    }
+    if (entry.payload.dataVersion !== entry.dataVersion) {
+      errors.push(`${key}: developer payload uses a stale entity data version`);
+    }
+    const { dataVersion: _dataVersion, ...unversionedPayload } = entry.payload;
+    const expectedDataVersion = createHash('sha256')
+      .update(JSON.stringify(unversionedPayload))
+      .digest('hex')
+      .slice(0, 12);
+    if (entry.dataVersion !== expectedDataVersion) {
+      errors.push(`${key}: developer payload URL is not based on its own content`);
+    }
+    if (!entry.url.endsWith(`/${entry.kind}/${entry.codename}.${entry.dataVersion}.json`)) {
+      errors.push(`${key}: developer payload URL does not contain its entity hash`);
     }
     if (entry.payload.feature?.PLANTS || entry.payload.feature?.ZOMBIES
       || entry.payload.props?.objects || entry.payload.almanac?.objects) {
@@ -653,6 +676,6 @@ export const validateAlmanacData = (allData = buildAllAlmanacData()) => {
     unresolvedReferences: unresolvedReferences.size,
     detailPages: seenPaths.size,
     developerPayloads: payloads.entries.length,
-    developerDataVersion: payloads.dataVersion,
+    developerCatalogVersion: payloads.catalogVersion,
   };
 };
