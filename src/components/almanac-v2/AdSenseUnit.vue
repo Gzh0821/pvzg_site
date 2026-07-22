@@ -40,7 +40,13 @@ onMounted(async () => {
 }
 
 .almanac-ad:has(.adsbygoogle[data-ad-status='unfilled']) {
-  display: none;
+  height: 1rem;
+  min-height: 0;
+  margin: 0;
+}
+
+.almanac-ad:has(.adsbygoogle[data-ad-status='unfilled']) .adsbygoogle {
+  display: none !important;
 }
 
 :global(.vp-page:has(.almanac-shell) > .vp-page-title) {
@@ -51,6 +57,12 @@ onMounted(async () => {
   .almanac-ad {
     min-height: 90px;
     margin-block: 0.75rem 1rem;
+  }
+
+  .almanac-ad:has(.adsbygoogle[data-ad-status='unfilled']) {
+    height: 0.75rem;
+    min-height: 0;
+    margin: 0;
   }
 }
 </style>

@@ -4,6 +4,7 @@ export type AlmanacLocale = 'zh' | 'en';
 export interface AlmanacFamily {
   code: string;
   name: string;
+  icon: string;
 }
 
 export interface AlmanacDirectoryEntity {

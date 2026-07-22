@@ -1,52 +1,56 @@
 <template>
   <article class="almanac-shell" :class="`almanac-shell--${entity.kind}`">
-    <header class="entity-header">
-      <div class="entity-header__topline">
-        <RouterLink class="back-link" :to="entity.directoryPath">← {{ labels.back }}</RouterLink>
-        <nav class="species-switch" :aria-label="labels.siteLabel">
-          <RouterLink
-            :to="plantDirectoryPath"
-            :class="{ active: entity.kind === 'plant' }"
-            :aria-current="entity.kind === 'plant' ? 'page' : undefined"
-          >
-            {{ labels.plants }}
-          </RouterLink>
-          <RouterLink
-            :to="zombieDirectoryPath"
-            :class="{ active: entity.kind === 'zombie' }"
-            :aria-current="entity.kind === 'zombie' ? 'page' : undefined"
-          >
-            {{ labels.zombies }}
-          </RouterLink>
-        </nav>
-      </div>
-
-      <p class="entity-eyebrow">{{ kindTitle }}</p>
-      <h1>{{ entity.name }}</h1>
-      <p v-if="entity.englishName !== entity.name" class="entity-english">{{ entity.englishName }}</p>
-      <p v-if="entity.summary" class="entity-summary">{{ entity.summary }}</p>
-      <div class="entity-tags">
-        <span v-if="entity.world">{{ worldLabel }}</span>
-        <span v-if="entity.family">{{ entity.family.name }}</span>
-      </div>
+    <header class="almanac-toolbar">
+      <RouterLink class="back-link" :to="entity.directoryPath">← {{ labels.back }}</RouterLink>
+      <nav class="species-switch" :aria-label="labels.siteLabel">
+        <RouterLink
+          :to="plantDirectoryPath"
+          :class="{ active: entity.kind === 'plant' }"
+          :aria-current="entity.kind === 'plant' ? 'page' : undefined"
+        >
+          {{ labels.plants }}
+        </RouterLink>
+        <RouterLink
+          :to="zombieDirectoryPath"
+          :class="{ active: entity.kind === 'zombie' }"
+          :aria-current="entity.kind === 'zombie' ? 'page' : undefined"
+        >
+          {{ labels.zombies }}
+        </RouterLink>
+      </nav>
     </header>
 
     <AdSenseUnit />
 
     <section class="showcase" :aria-label="entity.name">
       <div class="entity-stage" :data-world="entity.world">
-        <div class="entity-stage__horizon" />
-        <img
-          :src="entity.image"
-          :alt="entity.name"
-          width="420"
-          height="330"
-          fetchpriority="high"
-        >
-        <div class="entity-nameplate">
-          <strong>{{ entity.name }}</strong>
-          <span>{{ entity.englishName }}</span>
+        <div class="entity-stage__visual">
+          <div class="entity-stage__horizon" />
+          <img
+            :src="entity.image"
+            :alt="entity.name"
+            width="420"
+            height="330"
+            fetchpriority="high"
+          >
         </div>
+
+        <header class="entity-identity">
+          <div class="entity-identity__copy">
+            <h1>{{ entity.name }}</h1>
+            <p class="entity-codename">{{ labels.codename }}: {{ entity.codename }}</p>
+            <p v-if="entity.world || entity.summary" class="entity-summary">
+              <template v-if="entity.world">{{ worldLabel }}</template>
+              <template v-if="entity.world && entity.summary"> · </template>
+              {{ entity.summary }}
+            </p>
+          </div>
+
+          <div v-if="entity.family" class="family-mark">
+            <img :src="entity.family.icon" alt="" width="56" height="56">
+            <strong>{{ entity.family.name }}</strong>
+          </div>
+        </header>
       </div>
 
       <div class="stat-panel">
@@ -62,6 +66,31 @@
         </dl>
       </div>
     </section>
+
+    <div class="lore-stack">
+      <section v-if="entity.description" class="lore-panel">
+        <h2>{{ labels.introduction }}</h2>
+        <p>{{ entity.description }}</p>
+      </section>
+
+      <section v-if="entity.specials.length" class="lore-panel">
+        <h2>{{ labels.specials }}</h2>
+        <div class="special-list">
+          <p
+            v-for="(special, specialIndex) in entity.specials"
+            :key="`${entity.codename}-${specialIndex}`"
+            class="special-entry"
+          >
+            <span v-if="special.name">{{ special.name }}: </span><span class="special-description">{{ special.description }}</span>
+          </p>
+        </div>
+      </section>
+
+      <section v-if="entity.chat" class="lore-panel lore-panel--chat">
+        <h2>{{ labels.chat }}</h2>
+        <blockquote>{{ entity.chat }}</blockquote>
+      </section>
+    </div>
 
     <nav class="sequence-nav" :aria-label="labels.nearby">
       <RouterLink :to="entity.previous.path" rel="prev">
@@ -89,28 +118,6 @@
         </template>
       </div>
     </section>
-
-    <div class="lore-stack">
-      <section v-if="entity.description" class="lore-panel">
-        <h2>{{ labels.introduction }}</h2>
-        <p>{{ entity.description }}</p>
-      </section>
-
-      <section v-if="entity.specials.length" class="lore-panel">
-        <h2>{{ labels.specials }}</h2>
-        <div class="special-list">
-          <article v-for="special in entity.specials" :key="`${special.name}-${special.description}`">
-            <h3 v-if="special.name">{{ special.name }}</h3>
-            <p>{{ special.description }}</p>
-          </article>
-        </div>
-      </section>
-
-      <section v-if="entity.chat" class="lore-panel lore-panel--chat">
-        <h2>{{ labels.chat }}</h2>
-        <blockquote>{{ entity.chat }}</blockquote>
-      </section>
-    </div>
   </article>
 </template>
 
@@ -119,13 +126,12 @@ import { computed } from 'vue';
 import { usePageFrontmatter } from 'vuepress/client';
 
 import AdSenseUnit from './AdSenseUnit.vue';
-import { getAlmanacText, getKindTitle, getWorldLabel } from './locales';
+import { getAlmanacText, getWorldLabel } from './locales';
 import type { AlmanacEntity, AlmanacPageFrontmatter } from './types';
 
 const frontmatter = usePageFrontmatter<AlmanacPageFrontmatter>();
 const entity = computed(() => frontmatter.value.almanacEntity as AlmanacEntity);
 const labels = computed(() => getAlmanacText(entity.value.locale));
-const kindTitle = computed(() => getKindTitle(entity.value.kind, entity.value.locale));
 const worldLabel = computed(() => getWorldLabel(entity.value.world, entity.value.locale));
 const localePrefix = computed(() => entity.value.locale === 'en' ? '/en' : '');
 const plantDirectoryPath = computed(() => `${localePrefix.value}/almanac/plants.html`);
@@ -142,10 +148,12 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   --almanac-muted: #6d5a45;
   --almanac-accent: #4f8a45;
   --almanac-accent-dark: #315a2c;
+  --almanac-description: #865600;
   position: relative;
   left: 50%;
   box-sizing: border-box;
   width: min(1120px, calc(100vw - 2rem));
+  margin-top: 0.75rem;
   transform: translateX(-50%);
   color: var(--almanac-ink);
 }
@@ -155,41 +163,25 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   --almanac-accent-dark: #494560;
 }
 
-.entity-header {
-  position: relative;
-  overflow: hidden;
-  padding: 1.35rem 1.55rem 1.5rem;
-  color: #fff8dc;
-  border: 4px solid var(--almanac-wood-dark);
-  border-radius: 18px 18px 10px 10px;
-  background: var(--almanac-wood);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 13%), 0 7px 0 var(--almanac-wood-dark);
-}
-
-.entity-header::after {
-  position: absolute;
-  top: -50%;
-  right: 3%;
-  width: 28%;
-  height: 210%;
-  border-inline: 1px solid rgb(255 255 255 / 8%);
-  content: '';
-  opacity: 0.65;
-  transform: rotate(13deg);
-  pointer-events: none;
-}
-
-.entity-header__topline {
-  position: relative;
-  z-index: 1;
+.almanac-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.4rem;
+  min-height: 3.25rem;
+  padding: 0.45rem 0.55rem 0.45rem 1rem;
+  color: #fff8dc;
+  border: 3px solid var(--almanac-wood-dark);
+  border-radius: 12px;
+  background: var(--almanac-wood);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 12%), 0 4px 0 var(--almanac-wood-dark);
 }
 
 .back-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding-inline: 0.25rem;
   color: #f2e7c4;
   font-size: 0.9rem;
   font-weight: 700;
@@ -210,8 +202,13 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 }
 
 .species-switch a {
+  display: inline-flex;
   min-width: 4.6rem;
-  padding: 0.45rem 0.75rem;
+  min-height: 2.75rem;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
   color: #d9ccb0;
   border-radius: 7px;
   font-weight: 700;
@@ -225,74 +222,102 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   box-shadow: inset 0 -3px 0 var(--almanac-accent-dark);
 }
 
-.entity-eyebrow {
-  margin: 0 0 0.2rem;
-  color: #e8c56a;
-  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+.entity-identity {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+  padding: 1rem 1.1rem 1.1rem;
+  color: #fff8dc;
+  border-top: 4px solid var(--almanac-wood-dark);
+  background: linear-gradient(105deg, var(--almanac-wood) 0 72%, #392718 72% 100%);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 10%);
 }
 
-.entity-header h1 {
+.entity-identity__copy {
+  min-width: 0;
+}
+
+.entity-identity h1 {
   margin: 0;
   color: #fff8dc;
   font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
-  font-size: clamp(2.35rem, 7vw, 4.8rem);
-  line-height: 0.98;
-  text-shadow: 0 4px 0 var(--almanac-wood-dark);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.02;
+  text-shadow: 0 2px 0 rgb(0 0 0 / 45%);
 }
 
-.entity-english {
-  margin: 0.45rem 0 0;
-  color: #e6d6aa;
-  font-family: 'pvzgeFontEN', 'Noto Sans SC', sans-serif;
-  font-size: clamp(1rem, 2vw, 1.35rem);
+.entity-codename {
+  margin: 0.35rem 0 0;
+  color: #f2e7c4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
 }
 
 .entity-summary {
-  max-width: 44rem;
-  margin: 0.85rem 0 0;
+  margin: 0.65rem 0 0;
+  color: #f0e3c2;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+
+.family-mark {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: center;
+  min-width: 10.5rem;
+  padding-left: 0.95rem;
+  border-left: 2px solid rgb(239 226 185 / 25%);
+}
+
+.family-mark img {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 2px rgb(0 0 0 / 35%));
+}
+
+.family-mark strong {
   color: #fff8dc;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
   font-size: 1.05rem;
-  line-height: 1.55;
-}
-
-.entity-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 1rem;
-}
-
-.entity-tags span {
-  padding: 0.3rem 0.65rem;
-  border: 1px solid rgb(255 255 255 / 28%);
-  border-radius: 999px;
-  background: rgb(27 18 12 / 38%);
-  color: #f4e7c4;
-  font-size: 0.8rem;
   font-weight: 700;
+  line-height: 1.25;
 }
 
 .showcase {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
   gap: 1rem;
+  align-items: start;
   margin-bottom: 1.15rem;
 }
 
 .entity-stage {
   --stage-sky: #9cc9a0;
   --stage-ground: #63894d;
+  display: grid;
+  grid-template-rows: minmax(300px, 1fr) auto;
+  min-height: 470px;
+  overflow: hidden;
+  border: 4px solid var(--almanac-wood);
+  border-radius: 14px;
+  background: var(--almanac-wood);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 20%), 0 6px 0 var(--almanac-wood-dark);
+}
+
+.entity-stage__visual {
   position: relative;
   display: grid;
-  min-height: 410px;
+  min-height: 300px;
   overflow: hidden;
   place-items: center;
-  border: 4px solid var(--almanac-wood);
-  border-radius: 12px;
   background-color: var(--stage-sky);
-  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 20%), 0 6px 0 var(--almanac-wood-dark);
   isolation: isolate;
 }
 
@@ -322,7 +347,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   --stage-ground: #937047;
 }
 
-.entity-stage::before {
+.entity-stage__visual::before {
   position: absolute;
   inset: 0;
   z-index: -2;
@@ -330,7 +355,7 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   content: '';
 }
 
-.entity-stage::after {
+.entity-stage__visual::after {
   position: absolute;
   right: -6%;
   bottom: -17%;
@@ -350,50 +375,18 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   background: rgb(255 255 255 / 28%);
 }
 
-.entity-stage > img {
+.entity-stage__visual > img {
   z-index: 1;
-  width: min(74%, 420px);
-  height: 330px;
-  margin-bottom: 1.6rem;
+  width: min(76%, 400px);
+  height: 320px;
   object-fit: contain;
   filter: drop-shadow(0 13px 7px rgb(38 27 18 / 42%));
-}
-
-.entity-nameplate {
-  position: absolute;
-  z-index: 2;
-  right: 1rem;
-  bottom: 0.8rem;
-  left: 1rem;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.7rem 0.9rem;
-  color: #fff5d5;
-  border: 3px solid var(--almanac-wood-dark);
-  border-radius: 8px;
-  background: var(--almanac-wood);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 12%);
-}
-
-.entity-nameplate strong {
-  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
-  font-size: 1.2rem;
-}
-
-.entity-nameplate span {
-  overflow: hidden;
-  color: #d9c9a5;
-  font-size: 0.78rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .stat-panel {
   overflow: hidden;
   border: 4px solid var(--almanac-wood);
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--almanac-paper);
   box-shadow: 0 6px 0 var(--almanac-wood-dark);
 }
@@ -566,32 +559,24 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 .special-list {
   margin: 0;
   padding: 1.1rem 1.2rem 1.25rem;
-  color: var(--almanac-ink);
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 1rem;
-  line-height: 1.8;
+  color: var(--almanac-description);
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
+  font-size: clamp(1.18rem, 1rem + 0.7vw, 1.5rem);
+  line-height: 1.45;
 }
 
 .special-list {
   display: grid;
-  gap: 0.85rem;
+  gap: 0.4rem;
 }
 
-.special-list article {
-  padding: 0.85rem 0.95rem;
-  border-left: 5px solid var(--almanac-accent);
-  background: rgb(255 255 255 / 28%);
-}
-
-.special-list h3 {
-  margin: 0 0 0.25rem;
-  color: var(--almanac-ink);
-  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
-  font-size: 1.02rem;
-}
-
-.special-list p {
+.special-entry {
   margin: 0;
+  line-height: inherit;
+}
+
+.special-description {
+  color: #f00;
 }
 
 .lore-panel blockquote {
@@ -618,11 +603,19 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   outline-offset: 3px;
 }
 
+.back-link,
+.species-switch a,
+.sequence-nav a,
+.neighbor-card {
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
 [data-theme='dark'] .almanac-shell {
   --almanac-paper: #342d20;
   --almanac-paper-deep: #463a29;
   --almanac-ink: #f2e5c4;
   --almanac-muted: #c8b795;
+  --almanac-description: #e2b000;
 }
 
 [data-theme='dark'] .stat-panel,
@@ -632,14 +625,15 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   border-color: #8a6949;
 }
 
+[data-theme='dark'] .entity-identity h1 {
+  color: #fff8dc;
+  text-shadow: 0 2px 0 rgb(0 0 0 / 45%);
+}
+
 [data-theme='dark'] .neighbor-card {
   color: #f2e5c4;
   border-color: #856747;
   background: #211c16;
-}
-
-[data-theme='dark'] .special-list article {
-  background: rgb(255 255 255 / 5%);
 }
 
 @media (max-width: 820px) {
@@ -648,10 +642,14 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
   }
 
   .entity-stage {
-    min-height: 360px;
+    min-height: 0;
   }
 
-  .entity-stage > img {
+  .entity-stage__visual {
+    min-height: 320px;
+  }
+
+  .entity-stage__visual > img {
     height: 285px;
   }
 }
@@ -661,15 +659,16 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
     width: calc(100vw - 1rem);
   }
 
-  .entity-header {
-    padding: 1rem;
+  .almanac-toolbar {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    gap: 0.25rem;
+    padding: 0.45rem;
     border-width: 3px;
   }
 
-  .entity-header__topline {
-    align-items: stretch;
-    flex-direction: column-reverse;
-    margin-bottom: 1.05rem;
+  .back-link {
+    padding-inline: 0.45rem;
   }
 
   .species-switch {
@@ -681,18 +680,42 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
     flex: 1;
   }
 
-  .entity-stage {
-    min-height: 325px;
+  .entity-identity {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 1rem;
   }
 
-  .entity-stage > img {
+  .entity-stage {
+    border-width: 3px;
+    border-radius: 11px;
+  }
+
+  .entity-stage__visual {
+    min-height: 275px;
+  }
+
+  .entity-stage__visual > img {
     width: 86%;
     height: 250px;
-    margin-bottom: 2rem;
   }
 
-  .entity-nameplate span {
-    display: none;
+  .family-mark {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    min-width: 0;
+    padding: 0.75rem 0 0;
+    border-top: 2px solid rgb(239 226 185 / 25%);
+    border-left: 0;
+  }
+
+  .family-mark img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .stat-panel {
+    border-width: 3px;
+    border-radius: 11px;
   }
 
   .sequence-nav {
@@ -720,6 +743,13 @@ const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombie
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .back-link,
+  .species-switch a,
+  .sequence-nav a,
+  .neighbor-card {
+    transition: none;
+  }
+
   .neighbor-rail {
     scroll-behavior: auto;
   }

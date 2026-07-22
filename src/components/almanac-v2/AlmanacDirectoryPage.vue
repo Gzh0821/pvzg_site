@@ -32,16 +32,6 @@
         <input v-model.trim="query" type="search" :placeholder="labels.searchPlaceholder">
       </label>
 
-      <label v-if="directory.kind === 'plant'" class="select-field">
-        <span>{{ labels.family }}</span>
-        <select v-model="family">
-          <option value="">{{ labels.allFamilies }}</option>
-          <option v-for="option in familyOptions" :key="option.code" :value="option.code">
-            {{ option.name }}
-          </option>
-        </select>
-      </label>
-
       <label class="select-field">
         <span>{{ labels.world }}</span>
         <select v-model="world">
@@ -53,26 +43,62 @@
       </label>
 
       <output class="result-count" aria-live="polite">{{ labels.resultCount(filteredEntities.length) }}</output>
+
+      <fieldset v-if="directory.kind === 'plant'" class="family-field">
+        <legend>{{ labels.family }}</legend>
+        <div class="family-picker">
+          <button
+            type="button"
+            class="family-option family-option--all"
+            :class="{ active: family === '' }"
+            :aria-label="labels.allFamilies"
+            :aria-pressed="family === ''"
+            :title="labels.allFamilies"
+            @click="family = ''"
+          >
+            <img src="/assets/wikicon/All_familyicon.webp" alt="" width="42" height="42">
+          </button>
+          <button
+            v-for="option in familyOptions"
+            :key="option.code"
+            type="button"
+            class="family-option"
+            :class="{ active: family === option.code }"
+            :aria-label="option.name"
+            :aria-pressed="family === option.code"
+            :title="option.name"
+            @click="family = option.code"
+          >
+            <img :src="option.icon" alt="" width="42" height="42">
+          </button>
+        </div>
+      </fieldset>
     </section>
 
     <div v-if="filteredEntities.length" class="packet-grid">
       <RouterLink
-        v-for="(entity, index) in filteredEntities"
+        v-for="entity in filteredEntities"
         :key="entity.codename"
         :to="entity.path"
         class="entity-packet"
       >
-        <span class="entity-packet__number">{{ String(index + 1).padStart(2, '0') }}</span>
+        <span class="entity-packet__number">{{ getEntityNumber(entity) }}</span>
+        <img
+          v-if="entity.family"
+          class="entity-packet__family-icon"
+          :src="entity.family.icon"
+          :alt="entity.family.name"
+          :title="entity.family.name"
+          loading="lazy"
+          width="34"
+          height="35"
+        >
         <div class="entity-packet__art" :data-world="entity.world">
           <img :src="entity.image" :alt="entity.name" loading="lazy" width="180" height="140">
         </div>
         <div class="entity-packet__body">
           <strong>{{ entity.name }}</strong>
-          <span v-if="entity.englishName !== entity.name" class="entity-packet__english">{{ entity.englishName }}</span>
-          <span class="entity-packet__meta">
-            {{ getWorldLabel(entity.world, directory.locale) }}
-            <template v-if="entity.family"> · {{ entity.family.name }}</template>
-          </span>
+          <span class="entity-packet__codename">{{ entity.codename }}</span>
           <span v-if="entity.summary" class="entity-packet__summary">{{ entity.summary }}</span>
         </div>
       </RouterLink>
@@ -88,7 +114,7 @@ import { usePageFrontmatter } from 'vuepress/client';
 
 import AdSenseUnit from './AdSenseUnit.vue';
 import { getAlmanacText, getKindDescription, getKindTitle, getWorldLabel } from './locales';
-import type { AlmanacDirectoryData, AlmanacPageFrontmatter } from './types';
+import type { AlmanacDirectoryData, AlmanacDirectoryEntity, AlmanacPageFrontmatter } from './types';
 
 const frontmatter = usePageFrontmatter<AlmanacPageFrontmatter>();
 const directory = computed(() => frontmatter.value.almanacDirectory as AlmanacDirectoryData);
@@ -110,17 +136,31 @@ watch(() => directory.value.kind, () => {
 });
 
 const familyOptions = computed(() => {
-  const options = new Map<string, string>();
+  const options = new Map<string, { name: string; icon: string }>();
   for (const entity of directory.value.entities) {
-    if (entity.family) options.set(entity.family.code, entity.family.name);
+    if (entity.family) {
+      options.set(entity.family.code, {
+        name: entity.family.name,
+        icon: entity.family.icon,
+      });
+    }
   }
-  return [...options].map(([code, name]) => ({ code, name })).sort((a, b) => a.name.localeCompare(b.name));
+  return [...options]
+    .map(([code, option]) => ({ code, ...option }))
+    .sort((a, b) => {
+      if (a.code === 'Nope') return 1;
+      if (b.code === 'Nope') return -1;
+      return a.name.localeCompare(b.name);
+    });
 });
 
 const worldOptions = computed(() => [...new Set(directory.value.entities.map((entity) => entity.world))]
   .filter(Boolean)
   .map((code) => ({ code, name: getWorldLabel(code, directory.value.locale) }))
   .sort((a, b) => a.name.localeCompare(b.name)));
+
+const getEntityNumber = (entity: AlmanacDirectoryEntity) => entity.numericId
+  ?? directory.value.entities.findIndex((candidate) => candidate.codename === entity.codename) + 1;
 
 const filteredEntities = computed(() => {
   const normalizedQuery = query.value.toLocaleLowerCase();
@@ -155,6 +195,7 @@ const filteredEntities = computed(() => {
   left: 50%;
   box-sizing: border-box;
   width: min(1180px, calc(100vw - 2rem));
+  margin-top: 0.75rem;
   transform: translateX(-50%);
   color: var(--almanac-ink);
 }
@@ -245,7 +286,7 @@ const filteredEntities = computed(() => {
 
 .filter-board {
   display: grid;
-  grid-template-columns: minmax(15rem, 2fr) repeat(2, minmax(9rem, 1fr)) auto;
+  grid-template-columns: minmax(15rem, 2fr) minmax(9rem, 1fr) auto;
   gap: 0.85rem;
   align-items: end;
   box-sizing: border-box;
@@ -258,7 +299,8 @@ const filteredEntities = computed(() => {
 }
 
 .search-field,
-.select-field {
+.select-field,
+.family-field legend {
   display: grid;
   gap: 0.35rem;
   min-width: 0;
@@ -267,6 +309,72 @@ const filteredEntities = computed(() => {
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.family-field {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.family-field legend {
+  margin-bottom: 0.35rem;
+  padding: 0;
+}
+
+.family-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.family-option {
+  position: relative;
+  display: grid;
+  width: 3.35rem;
+  height: 3.35rem;
+  flex: 0 0 3.35rem;
+  padding: 0.3rem;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 140ms ease;
+}
+
+.family-option::after {
+  position: absolute;
+  inset: 0.12rem;
+  content: '';
+  border: 2px solid transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.family-option img {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 1px rgb(43 28 16 / 28%));
+}
+
+.family-option:hover {
+  transform: translateY(-1px);
+}
+
+.family-option:hover::after {
+  border-color: rgb(225 168 58 / 72%);
+}
+
+.family-option.active::after {
+  border-color: var(--almanac-accent-dark);
+  box-shadow: 0 0 0 2px #e1a83a, 0 0 8px rgb(225 168 58 / 46%);
 }
 
 .search-field input,
@@ -289,6 +397,7 @@ const filteredEntities = computed(() => {
 
 .search-field input:focus-visible,
 .select-field select:focus-visible,
+.family-option:focus-visible,
 .entity-packet:focus-visible,
 .species-switch a:focus-visible {
   outline: 3px solid #e1a83a;
@@ -393,13 +502,24 @@ const filteredEntities = computed(() => {
   white-space: nowrap;
 }
 
-.entity-packet__english,
-.entity-packet__meta {
+.entity-packet__codename {
   overflow: hidden;
   color: #6d5a45;
   font-size: 0.75rem;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.entity-packet__family-icon {
+  position: absolute;
+  z-index: 2;
+  top: 0.45rem;
+  right: 0.45rem;
+  width: 2.15rem;
+  height: 2.2rem;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 1px rgb(43 28 16 / 32%));
 }
 
 .entity-packet__summary {
@@ -438,9 +558,9 @@ const filteredEntities = computed(() => {
 
 [data-theme='dark'] .search-field,
 [data-theme='dark'] .select-field,
+[data-theme='dark'] .family-field legend,
 [data-theme='dark'] .result-count,
-[data-theme='dark'] .entity-packet__english,
-[data-theme='dark'] .entity-packet__meta,
+[data-theme='dark'] .entity-packet__codename,
 [data-theme='dark'] .entity-packet__summary {
   color: #d4c19c;
 }
@@ -450,6 +570,10 @@ const filteredEntities = computed(() => {
   color: #f5e9c8;
   border-color: #8a6949;
   background: #211c16;
+}
+
+[data-theme='dark'] .family-option.active::after {
+  border-color: var(--almanac-accent);
 }
 
 @media (max-width: 820px) {
@@ -504,6 +628,17 @@ const filteredEntities = computed(() => {
     grid-column: auto;
   }
 
+  .family-picker {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.3rem;
+    scroll-snap-type: x proximity;
+  }
+
+  .family-option {
+    scroll-snap-align: start;
+  }
+
   .packet-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.7rem;
@@ -531,6 +666,18 @@ const filteredEntities = computed(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .family-option {
+    transition: none;
+  }
+
+  .family-option::after {
+    transition: none;
+  }
+
+  .family-option:hover {
+    transform: none;
+  }
+
   .entity-packet {
     transition: none;
   }

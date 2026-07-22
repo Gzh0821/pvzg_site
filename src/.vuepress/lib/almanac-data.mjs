@@ -122,6 +122,7 @@ const resolveBaseEntity = (kind, codename, locale) => {
   const familyName = familyCode
     ? localize(dataset.familyLabels?.[familyCode], locale.lang) || familyCode
     : '';
+  const familyIconName = familyCode ? dataset.familyLabels?.[familyCode]?.en : '';
 
   const stats = (almanacData.Elements ?? []).flatMap((element) => {
     const type = element.TYPE;
@@ -151,7 +152,11 @@ const resolveBaseEntity = (kind, codename, locale) => {
     englishName,
     image,
     world: feature.OBTAINWORLD ?? '',
-    family: familyCode ? { code: familyCode, name: familyName } : null,
+    family: familyCode ? {
+      code: familyCode,
+      name: familyName,
+      icon: `/assets/wikicon/${familyIconName || 'None'}_familyicon.webp`,
+    } : null,
     summary: localize(almanacData.BriefIntroduction, locale.lang),
     description: localize(almanacData.Introduction, locale.lang),
     chat: localize(almanacData.Chat, locale.lang),
