@@ -2,44 +2,46 @@
   <article class="almanac-shell" :class="`almanac-shell--${entity.kind}`">
     <header class="almanac-toolbar">
       <RouterLink class="back-link" :to="entity.directoryPath">← {{ labels.back }}</RouterLink>
-      <nav class="species-switch" :aria-label="labels.siteLabel">
-        <RouterLink
-          :to="plantDirectoryPath"
-          :class="{ active: entity.kind === 'plant' }"
-          :aria-current="entity.kind === 'plant' ? 'page' : undefined"
-        >
-          {{ labels.plants }}
-        </RouterLink>
-        <RouterLink
-          :to="zombieDirectoryPath"
-          :class="{ active: entity.kind === 'zombie' }"
-          :aria-current="entity.kind === 'zombie' ? 'page' : undefined"
-        >
-          {{ labels.zombies }}
-        </RouterLink>
-      </nav>
+      <div class="toolbar-switches">
+        <nav class="view-switch" :aria-label="labels.viewMode">
+          <button
+            type="button"
+            :class="{ active: activeView === 'user' }"
+            :aria-pressed="activeView === 'user'"
+            @click="setView('user')"
+          >
+            {{ labels.userView }}
+          </button>
+          <button
+            type="button"
+            :class="{ active: activeView === 'developer' }"
+            :aria-pressed="activeView === 'developer'"
+            @click="setView('developer')"
+          >
+            {{ labels.developerView }}
+          </button>
+        </nav>
+
+        <nav class="species-switch" :aria-label="labels.siteLabel">
+          <RouterLink
+            :to="plantDirectoryPath"
+            :class="{ active: entity.kind === 'plant' }"
+            :aria-current="entity.kind === 'plant' ? 'page' : undefined"
+          >
+            {{ labels.plants }}
+          </RouterLink>
+          <RouterLink
+            :to="zombieDirectoryPath"
+            :class="{ active: entity.kind === 'zombie' }"
+            :aria-current="entity.kind === 'zombie' ? 'page' : undefined"
+          >
+            {{ labels.zombies }}
+          </RouterLink>
+        </nav>
+      </div>
     </header>
 
     <AdSenseUnit />
-
-    <nav class="view-switch" :aria-label="labels.siteLabel">
-      <button
-        type="button"
-        :class="{ active: activeView === 'user' }"
-        :aria-pressed="activeView === 'user'"
-        @click="setView('user')"
-      >
-        {{ labels.userView }}
-      </button>
-      <button
-        type="button"
-        :class="{ active: activeView === 'developer' }"
-        :aria-pressed="activeView === 'developer'"
-        @click="setView('developer')"
-      >
-        {{ labels.developerView }}
-      </button>
-    </nav>
 
     <section
       class="showcase"
@@ -324,6 +326,12 @@ watch(() => route.query.view, syncViewFromRoute);
   color: white;
 }
 
+.toolbar-switches {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .species-switch {
   display: inline-flex;
   gap: 0.3rem;
@@ -355,34 +363,31 @@ watch(() => route.query.view, syncViewFromRoute);
 }
 
 .view-switch {
-  display: flex;
-  width: fit-content;
-  gap: 0.25rem;
-  margin: 0 0 1.15rem;
-  padding: 0.25rem;
-  border: 3px solid var(--almanac-wood-dark);
-  border-radius: 9px;
-  background: var(--almanac-wood);
-  box-shadow: 0 4px 0 var(--almanac-wood-dark);
+  display: inline-flex;
+  gap: 0.2rem;
+  padding: 0.3rem;
+  border: 2px solid var(--almanac-wood-dark);
+  border-radius: 11px;
+  background: #37271c;
 }
 
 .view-switch button {
-  min-height: 2.5rem;
-  padding: 0.35rem 0.9rem;
-  color: #e5d8bb;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.75rem;
+  color: #d9ccb0;
   border: 0;
-  border-radius: 5px;
+  border-radius: 7px;
   background: transparent;
   font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 800;
   cursor: pointer;
 }
 
 .view-switch button.active {
-  color: white;
-  background: var(--almanac-accent);
-  box-shadow: inset 0 -3px 0 var(--almanac-accent-dark);
+  color: #2b241c;
+  background: #ead8a5;
+  box-shadow: inset 0 -3px 0 #ad8952;
 }
 
 .entity-identity {
@@ -912,6 +917,12 @@ watch(() => route.query.view, syncViewFromRoute);
 
   .back-link {
     padding-inline: 0.45rem;
+  }
+
+  .toolbar-switches {
+    width: 100%;
+    flex-direction: column-reverse;
+    gap: 0.35rem;
   }
 
   .species-switch {

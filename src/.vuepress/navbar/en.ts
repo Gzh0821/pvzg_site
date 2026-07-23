@@ -5,7 +5,7 @@ export const enNavbar = navbar([
   "/en/download/",
   "/en/almanac/",
   "/en/guide/",
-  "/en/creator-garden/",
+  { text: "Garden", link: "/en/creator-garden/", icon: "feather" },
   "/en/useful-tool/",
   "/en/instructions/",
   "/en/contribution/",
