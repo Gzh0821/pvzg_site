@@ -126,13 +126,20 @@
             <span>{{ currentLevel.entities.plants.length }}</span>
           </div>
           <div class="daily-level-grid daily-level-grid--plants">
-            <article v-for="plant in visiblePlants" :key="entityKey(plant)" class="daily-level-entity">
+            <component
+              :is="entityAlmanacPath(plant, 'plant') ? 'a' : 'article'"
+              v-for="plant in visiblePlants"
+              :key="entityKey(plant)"
+              class="daily-level-entity"
+              :href="entityAlmanacPath(plant, 'plant') || undefined"
+              :title="entityAlmanacPath(plant, 'plant') ? t('viewAlmanac') : undefined"
+            >
               <img :src="plantImage(plant)" :alt="entityName(plant, 'plant')" loading="lazy" @error="hideBrokenImage" />
               <div>
                 <strong>{{ entityName(plant, 'plant') }}</strong>
                 <span>{{ roleSummary(plant.roles) }}</span>
               </div>
-            </article>
+            </component>
           </div>
           <button v-if="hiddenPlantCount > 0" class="daily-level-more" @click="showAllPlants = !showAllPlants">
             {{ showAllPlants ? t('showLess') : t('showMore', { count: hiddenPlantCount }) }}
@@ -145,14 +152,21 @@
             <span>{{ currentLevel.entities.zombies.length }}</span>
           </div>
           <div class="daily-level-grid daily-level-grid--zombies">
-            <article v-for="zombie in visibleZombies" :key="entityKey(zombie)" class="daily-level-entity">
+            <component
+              :is="entityAlmanacPath(zombie, 'zombie') ? 'a' : 'article'"
+              v-for="zombie in visibleZombies"
+              :key="entityKey(zombie)"
+              class="daily-level-entity"
+              :href="entityAlmanacPath(zombie, 'zombie') || undefined"
+              :title="entityAlmanacPath(zombie, 'zombie') ? t('viewAlmanac') : undefined"
+            >
               <img v-if="zombieImage(zombie)" :src="zombieImage(zombie)" :alt="entityName(zombie, 'zombie')" loading="lazy" @error="hideBrokenImage" />
               <div v-else class="daily-level-placeholder" aria-hidden="true">?</div>
               <div>
                 <strong>{{ entityName(zombie, 'zombie') }}</strong>
                 <span>{{ zombieDetail(zombie) }}</span>
               </div>
-            </article>
+            </component>
           </div>
           <button v-if="hiddenZombieCount > 0" class="daily-level-more" @click="showAllZombies = !showAllZombies">
             {{ showAllZombies ? t('showLess') : t('showMore', { count: hiddenZombieCount }) }}
@@ -187,6 +201,7 @@
 import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
+import { getAlmanacEntityPath } from '../almanac-v2/almanac-routes';
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
 import { getZombieMap } from '../zombiesAlmanac/formatZombies';
 
@@ -582,6 +597,11 @@ function calendarDayLabel(day: CalendarDay) {
 
 function entityKey(entity: DailyEntity) {
   return `${entity.kind}-${entity.id}-${entity.basedOn || ''}`;
+}
+
+function entityAlmanacPath(entity: DailyEntity, type: 'plant' | 'zombie') {
+  if (entity.kind !== 'official') return null;
+  return getAlmanacEntityPath(type, entity.id, language.value);
 }
 
 function formatCountdown(milliseconds: number) {
@@ -1184,6 +1204,24 @@ async function downloadLevel() {
   border-radius: 12px;
   padding: 8px;
   background: var(--daily-panel);
+}
+
+a.daily-level-entity {
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.daily-level-entity:hover {
+    border-color: var(--daily-green);
+    background: color-mix(in srgb, var(--daily-green) 7%, var(--daily-panel));
+  }
+}
+
+a.daily-level-entity:focus-visible {
+  outline: 2px solid var(--daily-green);
+  outline-offset: 2px;
 }
 
 .daily-level-entity img,

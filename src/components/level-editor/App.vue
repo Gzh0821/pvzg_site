@@ -175,6 +175,7 @@ import {
   PlusOutlined,
   UploadOutlined
 } from '@ant-design/icons-vue';
+import { getAlmanacEntityPath } from '../almanac-v2/almanac-routes';
 import { boardObjectData } from '../game-data/board-objects';
 import { resolveBoardGridMapSquares } from '../game-data/board-grid-maps';
 import { plantFeaturesJson as plantFeatures } from '../game-data/plants';
@@ -717,6 +718,11 @@ const selectedWave = computed(() => draft.value.waves.find((wave) => wave.id ===
 const selectedCellItems = computed(() => (selectedCell.value ? itemsAt(selectedCell.value.row, selectedCell.value.col) : []));
 const selectedPlantAsset = computed(() => (selectedAsset.value?.kind === 'plant' ? selectedAsset.value : null));
 const selectedZombieAsset = computed(() => (selectedAsset.value?.kind === 'zombie' ? selectedAsset.value : null));
+const selectedAssetAlmanacPath = computed(() => {
+  const asset = selectedAsset.value;
+  if (!asset || asset.kind === 'object') return null;
+  return getAlmanacEntityPath(asset.kind, asset.code, language.value);
+});
 const seedPlantAlreadyAdded = computed(
   () =>
     draft.value.seedMode !== 'preset' &&
@@ -3045,7 +3051,21 @@ const AssetLibrary = defineComponent({
   setup() {
     return () =>
         h('aside', { class: 'asset-library' }, [
-        h('div', { class: 'panel-title' }, t('chooseAsset')),
+        h('div', { class: 'panel-title' }, [
+          h('span', t('chooseAsset')),
+          selectedAssetAlmanacPath.value
+            ? h(
+                'a',
+                {
+                  class: 'asset-almanac-link',
+                  href: selectedAssetAlmanacPath.value,
+                  target: '_blank',
+                  rel: 'noopener noreferrer'
+                },
+                `${t('viewAlmanac')} ↗`
+              )
+            : null
+        ]),
         h('div', { class: 'segmented', role: 'group', 'aria-label': t('assetType') }, [
           h('button', { type: 'button', class: assetTab.value === 'plant' ? 'active' : '', 'aria-pressed': assetTab.value === 'plant', onClick: () => (assetTab.value = 'plant') }, t('plants')),
           h('button', { type: 'button', class: assetTab.value === 'zombie' ? 'active' : '', 'aria-pressed': assetTab.value === 'zombie', onClick: () => (assetTab.value = 'zombie') }, t('zombies')),
@@ -6154,6 +6174,20 @@ body:has(.level-editor-shell) {
   gap: 0.5rem;
   margin-bottom: 0.7rem;
   font-weight: 700;
+}
+
+.asset-almanac-link {
+  flex: 0 0 auto;
+  color: var(--editor-accent-strong);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.asset-almanac-link:hover {
+  color: var(--editor-accent);
 }
 
 .basic-form {

@@ -150,6 +150,15 @@
                                     <p class="muted-code">{{ selectPlantValue }}</p>
                                 </a-flex>
                                 <a-flex vertical gap="small" class="plant-controls">
+                                    <a-button
+                                        v-if="selectedPlantAlmanacPath"
+                                        :href="selectedPlantAlmanacPath"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style="width:100%"
+                                    >
+                                        {{ t('view almanac') }} ↗
+                                    </a-button>
                                     <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
                                         <a-select v-model:value="archiveData.plantProps[selectPlantValue].progress"
                                             style="width:100%">
@@ -289,6 +298,7 @@ import { DeleteOutlined, FileAddOutlined, SaveOutlined, UploadOutlined } from '@
 import { useI18n } from 'vue-i18n'
 import JSON5 from 'json5'
 
+import { getAlmanacEntityPath } from '../almanac-v2/almanac-routes'
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants'
 
 import { upgradeJson } from '../game-data/upgrades'
@@ -460,6 +470,11 @@ const legacySaveKeys = new Set(['upgradeProps', 'trophyProps', 'obtainedUpgrades
 const archiveData = ref<ArchiveData>({});
 const otherData = ref<Record<string, any>>({}); // 保存存档中其他未处理字段，确保下载时完整恢复
 const selectPlantValue = ref<string>('');
+const selectedPlantAlmanacPath = computed(() => (
+    selectPlantValue.value
+        ? getAlmanacEntityPath('plant', selectPlantValue.value, String(i18nLanguage))
+        : null
+));
 const uploadVersion = ref('');
 const upgradeQuery = ref('');
 // 控制折叠面板的展开/收起状态（升级特性默认不展开，避免首次渲染卡顿）
