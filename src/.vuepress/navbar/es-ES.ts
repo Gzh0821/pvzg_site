@@ -1,14 +1,16 @@
 import { navbar } from "vuepress-theme-hope";
 
 export const esNavbar = navbar([
-  "/es-ES/",
   "/es-ES/download/",
   "/es-ES/almanac/",
   "/es-ES/guide/",
   "/es-ES/creator-garden/",
   "/es-ES/useful-tool/",
-  "/es-ES/instructions/",
-  "/es-ES/contribution/",
+  {
+    text: "Más",
+    icon: "ellipsis",
+    children: ["/es-ES/contribution/", "/es-ES/instructions/"],
+  },
   { text: "Juego en línea", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",
   // "/portfolio",

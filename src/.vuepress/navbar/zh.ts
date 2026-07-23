@@ -1,14 +1,16 @@
 import { navbar } from "vuepress-theme-hope";
 
 export const zhNavbar = navbar([
-  "/",
   "/download/",
   "/almanac/",
   "/guide/",
   "/creator-garden/",
   "/useful-tool/",
-  "/instructions/",
-  "/contribution/",
+  {
+    text: "更多",
+    icon: "ellipsis",
+    children: ["/contribution/", "/instructions/"],
+  },
   { text: "在线游玩", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/demo/",
   // {
