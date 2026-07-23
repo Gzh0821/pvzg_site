@@ -21,23 +21,6 @@
             {{ labels.developerView }}
           </button>
         </nav>
-
-        <nav class="species-switch" :aria-label="labels.siteLabel">
-          <RouterLink
-            :to="plantDirectoryPath"
-            :class="{ active: entity.kind === 'plant' }"
-            :aria-current="entity.kind === 'plant' ? 'page' : undefined"
-          >
-            {{ labels.plants }}
-          </RouterLink>
-          <RouterLink
-            :to="zombieDirectoryPath"
-            :class="{ active: entity.kind === 'zombie' }"
-            :aria-current="entity.kind === 'zombie' ? 'page' : undefined"
-          >
-            {{ labels.zombies }}
-          </RouterLink>
-        </nav>
       </div>
     </header>
 
@@ -250,9 +233,6 @@ const hasRelations = computed(() => (
   || entity.value.children.length > 0
   || entity.value.siblings.length > 0
 ));
-const localePrefix = computed(() => entity.value.locale === 'en' ? '/en' : '');
-const plantDirectoryPath = computed(() => `${localePrefix.value}/almanac/plants.html`);
-const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombies.html`);
 
 const routeView = () => route.query.view === 'developer' ? 'developer' : 'user';
 const syncViewFromRoute = () => { activeView.value = routeView(); };
@@ -317,8 +297,9 @@ watch(() => route.query.view, syncViewFromRoute);
   align-items: center;
   padding-inline: 0.25rem;
   color: #f2e7c4;
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
   text-decoration: none;
 }
 
@@ -329,37 +310,6 @@ watch(() => route.query.view, syncViewFromRoute);
 .toolbar-switches {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.species-switch {
-  display: inline-flex;
-  gap: 0.3rem;
-  padding: 0.3rem;
-  border: 2px solid var(--almanac-wood-dark);
-  border-radius: 11px;
-  background: #2f2219;
-}
-
-.species-switch a {
-  display: inline-flex;
-  min-width: 4.6rem;
-  min-height: 2.75rem;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-  padding: 0.35rem 0.75rem;
-  color: #d9ccb0;
-  border-radius: 7px;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-}
-
-.species-switch a.active {
-  color: white;
-  background: var(--almanac-accent);
-  box-shadow: inset 0 -3px 0 var(--almanac-accent-dark);
 }
 
 .view-switch {
@@ -379,7 +329,7 @@ watch(() => route.query.view, syncViewFromRoute);
   border-radius: 7px;
   background: transparent;
   font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 800;
   cursor: pointer;
 }
@@ -831,7 +781,6 @@ watch(() => route.query.view, syncViewFromRoute);
 }
 
 .back-link:focus-visible,
-.species-switch a:focus-visible,
 .sequence-nav a:focus-visible,
 .relation-card:focus-visible,
 .neighbor-card:focus-visible {
@@ -845,7 +794,6 @@ watch(() => route.query.view, syncViewFromRoute);
 }
 
 .back-link,
-.species-switch a,
 .sequence-nav a,
 .relation-card,
 .neighbor-card {
@@ -921,17 +869,6 @@ watch(() => route.query.view, syncViewFromRoute);
 
   .toolbar-switches {
     width: 100%;
-    flex-direction: column-reverse;
-    gap: 0.35rem;
-  }
-
-  .species-switch {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .species-switch a {
-    flex: 1;
   }
 
   .view-switch {
@@ -1011,7 +948,6 @@ watch(() => route.query.view, syncViewFromRoute);
 
 @media (prefers-reduced-motion: reduce) {
   .back-link,
-  .species-switch a,
   .sequence-nav a,
   .relation-card,
   .neighbor-card {
