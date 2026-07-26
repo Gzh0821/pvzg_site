@@ -2646,6 +2646,84 @@
 		},
 		{
 			"aliases": [
+				"mirrornut"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 550
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Straight",
+							"zh": "直线"
+						}
+					},
+					{
+						"TYPE": "PLANTFOOD",
+						"SORT": {
+							"en": "Reflecting shields for plants",
+							"zh": "为植物提供反射盾"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Mirror-nuts collects energies from other nuts when they're damaged. Click to release the energies.",
+					"zh": "镜面坚果收集其他坚果受伤时释放的能量，点击以释放这些能量。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "tap to shoot when charged",
+							"zh": "充能时点击发射"
+						}
+					},
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "when charged and defeated, deals damage to all enemies in the lane",
+							"zh": "充能并被打败后，对整行敌人造成伤害"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Mirror-nut dressed up as a mirrorball for a disco-themed party. He never looked back, because that'd get his view blocked by his own outfit.",
+					"zh": "镜面坚果穿着一套镜面球参加迪斯科主题派对，从不回头，因为回头会被自己的行头挡住视野。"
+				},
+				"BriefIntroduction": {
+					"en": "Tap on the nut to fire energies collected from damaged nuts",
+					"zh": "点击发射来自受伤坚果的能量"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"pineapple"
 			],
 			"objclass": "PlantAlmanacProperties",

@@ -546,7 +546,7 @@
 			"TYPE": [
 				"fly"
 			],
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "lod",
 			"ZENGARDEN": {
 				"PlantPlace": "fly"
 			},
@@ -2044,7 +2044,7 @@
 				"any"
 			],
 			"COSTUME": 0,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "lod",
 			"ZENGARDEN": {
 				"FixedWeight": 1,
 				"PlantPlace": "dirt"
@@ -4993,7 +4993,7 @@
 				"plant"
 			],
 			"COSTUME": 1,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "lod",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -5187,7 +5187,7 @@
 				"plant"
 			],
 			"COSTUME": 1,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "epic",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -5211,7 +5211,7 @@
 				"plant"
 			],
 			"COSTUME": 0,
-			"OBTAINWORLD": "market",
+			"OBTAINWORLD": "lod",
 			"ZENGARDEN": {
 				"PlantPlace": "dirt"
 			},
@@ -5221,6 +5221,30 @@
 			"RES": {
 				"Disabled": "DarkMatterDragonfruit",
 				"Plant": "DarkMatterDragonfruit"
+			}
+		},
+		{
+			"ID": 208,
+			"NAME": {
+				"en": "Mirror-nut",
+				"zh": "镜面坚果"
+			},
+			"_CARDSPRITENAME": "mirrornut",
+			"CODENAME": "mirrornut",
+			"TYPE": [
+				"plant"
+			],
+			"COSTUME": 0,
+			"OBTAINWORLD": "market",
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"BOOST": 3,
+			"ALMANAC": "RTID(mirrornut@PlantAlmanac)",
+			"PROPS": "RTID(mirrornut@PlantProps)",
+			"RES": {
+				"Disabled": "MirrorNut",
+				"Plant": "MirrorNut"
 			}
 		}
 	],
@@ -5300,6 +5324,7 @@
 		"banana",
 		"seashroom",
 		"chomper",
+		"snappea",
 		"missiletoe",
 		"seashooter",
 		"ghostpepper",
@@ -5351,6 +5376,7 @@
 		"intensivecarrot",
 		"caulipower",
 		"bloominghearts",
+		"mirrornut",
 		"grapeshot",
 		"primalpeashooter",
 		"primalwallnut",
@@ -5383,7 +5409,6 @@
 		"gloomvine",
 		"gloomshroom",
 		"umbrellaleaf",
-		"snappea",
 		"cranjelly",
 		"darkmatterdragonfruit",
 		"appeasemint",
@@ -5507,6 +5532,7 @@
 		"ghostpepper",
 		"parsnip",
 		"icebloom",
+		"snappea",
 		"tool_projectile_bowlingbulb1",
 		"tool_projectile_bowlingbulb2",
 		"tool_projectile_bowlingbulb3",
@@ -5565,6 +5591,7 @@
 		"caulipower",
 		"strawburst",
 		"bloominghearts",
+		"mirrornut",
 		"primalpeashooter",
 		"primalwallnut",
 		"perfumeshroom",
@@ -5597,7 +5624,6 @@
 		"shadowpeashooter",
 		"noctarine",
 		"gloomvine",
-		"snappea",
 		"cranjelly",
 		"darkmatterdragonfruit",
 		"appeasemint",
