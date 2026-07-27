@@ -31,9 +31,11 @@
       :class="{ 'showcase--single': !entity.stats.length }"
       :aria-label="entity.name"
     >
-      <div class="entity-stage" :data-world="entity.world">
-        <div class="entity-stage__visual">
-          <div class="entity-stage__horizon" />
+      <div class="entity-stage">
+        <div
+          class="entity-stage__visual"
+          :style="{ backgroundImage: `url(${worldBackground})` }"
+        >
           <img
             :src="entity.image"
             :alt="entity.name"
@@ -217,6 +219,7 @@ import { usePageFrontmatter, useRoute, useRouter } from 'vuepress/client';
 import AdSenseUnit from './AdSenseUnit.vue';
 import { getAlmanacText, getWorldLabel } from './locales';
 import type { AlmanacEntity, AlmanacPageFrontmatter } from './types';
+import { getAlmanacWorldBackground } from './world-backgrounds';
 
 type AlmanacView = 'user' | 'developer';
 
@@ -228,6 +231,7 @@ const activeView = ref<AlmanacView>('user');
 const entity = computed(() => frontmatter.value.almanacEntity as AlmanacEntity);
 const labels = computed(() => getAlmanacText(entity.value.locale));
 const worldLabel = computed(() => getWorldLabel(entity.value.world, entity.value.locale));
+const worldBackground = computed(() => getAlmanacWorldBackground(entity.value.world));
 const hasRelations = computed(() => (
   entity.value.parents.length > 0
   || entity.value.children.length > 0
@@ -421,8 +425,6 @@ watch(() => route.query.view, syncViewFromRoute);
 }
 
 .entity-stage {
-  --stage-sky: #9cc9a0;
-  --stage-ground: #63894d;
   display: grid;
   grid-template-rows: minmax(300px, 1fr) auto;
   min-height: 470px;
@@ -439,62 +441,10 @@ watch(() => route.query.view, syncViewFromRoute);
   min-height: 300px;
   overflow: hidden;
   place-items: center;
-  background-color: var(--stage-sky);
+  background-color: #63894d;
+  background-position: center;
+  background-size: cover;
   isolation: isolate;
-}
-
-.entity-stage[data-world='dark'] {
-  --stage-sky: #49445f;
-  --stage-ground: #454b35;
-}
-
-.entity-stage[data-world='future'],
-.entity-stage[data-world='sky'] {
-  --stage-sky: #8ec5cf;
-  --stage-ground: #637b72;
-}
-
-.entity-stage[data-world='beach'],
-.entity-stage[data-world='water'],
-.entity-stage[data-world='pirate'] {
-  --stage-sky: #8ac3c9;
-  --stage-ground: #c4a66d;
-}
-
-.entity-stage[data-world='egypt'],
-.entity-stage[data-world='cowboy'],
-.entity-stage[data-world='lostcity'],
-.entity-stage[data-world='dino'] {
-  --stage-sky: #d5b978;
-  --stage-ground: #937047;
-}
-
-.entity-stage__visual::before {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: linear-gradient(to bottom, var(--stage-sky) 0 59%, var(--stage-ground) 59% 100%);
-  content: '';
-}
-
-.entity-stage__visual::after {
-  position: absolute;
-  right: -6%;
-  bottom: -17%;
-  left: -6%;
-  z-index: -1;
-  height: 53%;
-  border-radius: 50% 50% 0 0;
-  background: rgb(58 95 45 / 32%);
-  box-shadow: inset 0 3px 0 rgb(255 255 255 / 16%);
-  content: '';
-}
-
-.entity-stage__horizon {
-  position: absolute;
-  inset: 59% 0 auto;
-  height: 2px;
-  background: rgb(255 255 255 / 28%);
 }
 
 .entity-stage__visual > img {
