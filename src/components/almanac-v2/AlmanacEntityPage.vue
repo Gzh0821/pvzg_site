@@ -219,31 +219,9 @@ import { usePageFrontmatter, useRoute, useRouter } from 'vuepress/client';
 import AdSenseUnit from './AdSenseUnit.vue';
 import { getAlmanacText, getWorldLabel } from './locales';
 import type { AlmanacEntity, AlmanacPageFrontmatter } from './types';
+import { getAlmanacWorldBackground } from './world-backgrounds';
 
 type AlmanacView = 'user' | 'developer';
-
-const WORLD_BACKGROUND_FILES: Record<string, string> = {
-  beach: 'beach',
-  boost: 'boost',
-  cowboy: 'cowboy',
-  dark: 'dark',
-  dino: 'dino',
-  egypt: 'egypt',
-  eighties: 'eighties',
-  epic: 'epic',
-  frontyard: 'frontyard',
-  future: 'future',
-  ice: 'iceage',
-  kongfu: 'kongfu',
-  lod: 'lod',
-  lostcity: 'lostcity',
-  market: 'market',
-  mint: 'mint',
-  modern: 'modern',
-  pirate: 'pirate',
-  sky: 'sky',
-  water: 'beach_watered',
-};
 
 const AlmanacDeveloperPanel = defineAsyncComponent(() => import('./AlmanacDeveloperPanel.vue'));
 const frontmatter = usePageFrontmatter<AlmanacPageFrontmatter>();
@@ -253,10 +231,7 @@ const activeView = ref<AlmanacView>('user');
 const entity = computed(() => frontmatter.value.almanacEntity as AlmanacEntity);
 const labels = computed(() => getAlmanacText(entity.value.locale));
 const worldLabel = computed(() => getWorldLabel(entity.value.world, entity.value.locale));
-const worldBackground = computed(() => {
-  const file = WORLD_BACKGROUND_FILES[entity.value.world] ?? 'default';
-  return `/assets/image/almanac/backgrounds/${file}.png`;
-});
+const worldBackground = computed(() => getAlmanacWorldBackground(entity.value.world));
 const hasRelations = computed(() => (
   entity.value.parents.length > 0
   || entity.value.children.length > 0

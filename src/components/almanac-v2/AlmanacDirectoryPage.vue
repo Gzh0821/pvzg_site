@@ -93,8 +93,25 @@
           width="34"
           height="35"
         >
-        <div class="entity-packet__art" :data-world="entity.world">
-          <img :src="entity.image" :alt="entity.name" loading="lazy" width="180" height="140">
+        <div class="entity-packet__art">
+          <img
+            v-if="directory.kind === 'plant'"
+            class="entity-packet__background"
+            :src="getAlmanacWorldBackground(entity.world)"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            width="554"
+            height="546"
+          >
+          <img
+            class="entity-packet__entity-image"
+            :src="entity.image"
+            :alt="entity.name"
+            loading="lazy"
+            width="180"
+            height="140"
+          >
         </div>
         <div class="entity-packet__body">
           <strong>{{ entity.name }}</strong>
@@ -115,6 +132,7 @@ import { usePageFrontmatter } from 'vuepress/client';
 import AdSenseUnit from './AdSenseUnit.vue';
 import { getAlmanacText, getKindDescription, getKindTitle, getWorldLabel } from './locales';
 import type { AlmanacDirectoryData, AlmanacDirectoryEntity, AlmanacPageFrontmatter } from './types';
+import { getAlmanacWorldBackground } from './world-backgrounds';
 
 const frontmatter = usePageFrontmatter<AlmanacPageFrontmatter>();
 const directory = computed(() => frontmatter.value.almanacDirectory as AlmanacDirectoryData);
@@ -446,7 +464,7 @@ const filteredEntities = computed(() => {
 
 .entity-packet__number {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 0.55rem;
   left: 0.55rem;
   min-width: 2.2rem;
@@ -471,6 +489,16 @@ const filteredEntities = computed(() => {
   background-color: #8fbd73;
 }
 
+.entity-packet__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
 .almanac-shell--zombie .entity-packet__art {
   background-color: #a4a0bd;
 }
@@ -483,8 +511,15 @@ const filteredEntities = computed(() => {
   content: '';
 }
 
-.entity-packet__art img {
+.almanac-shell--plant .entity-packet__art::before {
+  inset: 0;
   z-index: 1;
+  border-top: 0;
+  background: rgb(43 36 28 / 14%);
+}
+
+.entity-packet__entity-image {
+  z-index: 2;
   width: min(88%, 180px);
   height: 132px;
   object-fit: contain;
@@ -516,7 +551,7 @@ const filteredEntities = computed(() => {
 
 .entity-packet__family-icon {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 0.45rem;
   right: 0.45rem;
   width: 2.15rem;
