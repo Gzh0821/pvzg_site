@@ -188,9 +188,11 @@ import ObjectivesPanel from './objectives-panel';
 import BoardRulesPanel from './board-rules-panel';
 import {
   analyzeLevelCapabilities,
+  buildLevelDocument,
   buildSeedPresetPlants,
   createLevelImportSnapshot,
   getImportedObjectsByClass,
+  getLevelRootExtra,
   getUnchangedImportedLevel,
   isImportedDomainUnchanged,
   normalizePlantCodes,
@@ -226,6 +228,7 @@ import {
   groupZombiePoolReferences,
   isDetachedZombieSpawnAction,
   resizeZombiePoolGroup,
+  resolveWaveManagerContext,
   serializeZombieGroups,
   serializeZombiePoolGroups,
   setDynamicZombiesOnModuleObject,
@@ -513,6 +516,8 @@ interface LevelDraft {
   maxNextWaveHealthPercentage: number;
   waveManagerModuleExtra: Record<string, any>;
   waveManagerExtra: Record<string, any>;
+  waveManagerAlias: string;
+  waveManagerReferenceOnModule: boolean;
   supportsDynamicZombies: boolean;
   hasWaveManager: boolean;
   preserveGeneratorWaves: boolean;
@@ -521,6 +526,7 @@ interface LevelDraft {
   preservedWaveManagerObject?: any;
   preservedStaticWaveObjects: any[];
   waveSystemDirty: boolean;
+  rootExtra: Record<string, any>;
   levelExtra: Record<string, any>;
   preserveBoardModules: boolean;
   preservedPlacementObjects: any[];
@@ -1084,12 +1090,15 @@ function createDefaultDraft(): LevelDraft {
     maxNextWaveHealthPercentage: 0.7,
     waveManagerModuleExtra: {},
     waveManagerExtra: {},
+    waveManagerAlias: 'WaveManagerProps',
+    waveManagerReferenceOnModule: true,
     supportsDynamicZombies: true,
     hasWaveManager: true,
     preserveGeneratorWaves: false,
     preserveCustomWaveManager: false,
     preservedStaticWaveObjects: [],
     waveSystemDirty: false,
+    rootExtra: { version: 1 },
     levelExtra: {
       LevelNumber: 1,
       Loot: 'RTID(NoLoot@LevelModules)'
@@ -2275,8 +2284,9 @@ function parseLevel(raw: any): LevelDraft {
   const seedObject = objects.find((object: any) => object?.objclass === 'SeedBankProperties');
   const conveyorObject = objects.find((object: any) => object?.objclass === 'ConveyorSeedBankProperties');
   const seed = seedObject?.objdata || {};
-  const waveManagerModule = objects.find((object: any) => object?.objclass === 'WaveManagerModuleProperties');
-  const waveManagerObject = objects.find((object: any) => object?.objclass === 'WaveManagerProperties');
+  const waveManagerContext = resolveWaveManagerContext(objects);
+  const waveManagerModule = waveManagerContext.moduleObject;
+  const waveManagerObject = waveManagerContext.managerObject;
   const waveProps = waveManagerObject?.objdata || {};
   const importedFlagWaveInterval = Math.trunc(Number(waveProps.FlagWaveInterval ?? 5));
   const flagWaveInterval = normalizeFlagWaveIntervalMagnitude(importedFlagWaveInterval, 5);
@@ -2558,7 +2568,10 @@ function parseLevel(raw: any): LevelDraft {
       'MinNextWaveHealthPercentage',
       'MaxNextWaveHealthPercentage'
     ]),
-    supportsDynamicZombies: supportsDynamicZombieEditing(waveManagerModule),
+    waveManagerAlias:
+      waveManagerContext.managerAlias || String(waveManagerObject?.aliases?.[0] || 'WaveManagerProps'),
+    waveManagerReferenceOnModule: waveManagerContext.referenceOwner === waveManagerModule,
+    supportsDynamicZombies: supportsDynamicZombieEditing(objects, waveManagerModule),
     hasWaveManager: !!waveManagerObject,
     preserveGeneratorWaves: !Array.isArray(waveProps.Waves) && !!waveManagerModule,
     preservedWaveManagerModule: !Array.isArray(waveProps.Waves) && waveManagerModule ? cloneJson(waveManagerModule) : undefined,
@@ -2566,6 +2579,7 @@ function parseLevel(raw: any): LevelDraft {
     preservedWaveManagerObject: preserveCustomWaveManager ? cloneJson(waveManagerObject) : undefined,
     preservedStaticWaveObjects,
     waveSystemDirty: false,
+    rootExtra: getLevelRootExtra(raw),
     levelExtra: omitKeys(level, ['Name', 'Description', 'StageModule', 'Modules', 'StartingSun', 'WrittenBy', 'WritenBy']),
     preserveBoardModules: preservedPlacementObjects.length > 0,
     preservedPlacementObjects,
@@ -2796,7 +2810,7 @@ function serializeLevel() {
     'ConveyorBelt',
     draft.value.conveyor.alias || 'ConveyorBelt',
     'NewWaves',
-    'WaveManagerProps',
+    draft.value.waveManagerAlias,
     'InitialGridItems',
     'Gravestones',
     'FrozenPlantPlacement',
@@ -3011,10 +3025,15 @@ function serializeLevel() {
       {
         aliases: ['NewWaves'],
         objclass: 'WaveManagerModuleProperties',
-        objdata: { ...draft.value.waveManagerModuleExtra, WaveManagerProps: 'RTID(WaveManagerProps@CurrentLevel)' }
+        objdata: {
+          ...draft.value.waveManagerModuleExtra,
+          ...(draft.value.waveManagerReferenceOnModule
+            ? { WaveManagerProps: `RTID(${draft.value.waveManagerAlias}@CurrentLevel)` }
+            : {})
+        }
       },
       {
-        aliases: ['WaveManagerProps'],
+        aliases: [draft.value.waveManagerAlias],
         objclass: 'WaveManagerProperties',
         objdata: waveManagerData
       },
@@ -3058,11 +3077,7 @@ function serializeLevel() {
 
   objects.push(...draft.value.unsupportedRawObjects);
 
-  return {
-    '#comment': draft.value.name,
-    version: 1,
-    objects
-  };
+  return buildLevelDocument(draft.value.rootExtra, draft.value.name, objects);
 }
 
 function uniqueRefs(refs: string[]) {

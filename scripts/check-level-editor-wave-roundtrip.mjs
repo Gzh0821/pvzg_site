@@ -3,6 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import JSON5 from 'json5';
+import { buildLevelDocument, getLevelRootExtra } from '../src/components/level-editor/level-codec.mjs';
 import {
   collectPreservedStaticWaveObjects,
   collectWaveReferenceGraph,
@@ -10,6 +11,7 @@ import {
   groupZombiePoolReferences,
   isDetachedZombieSpawnAction,
   resizeZombiePoolGroup,
+  resolveWaveManagerContext,
   serializeZombieGroups,
   serializeZombiePoolGroups,
   setDynamicZombiesOnModuleObject,
@@ -42,7 +44,10 @@ const stats = {
   duplicateAliasReferences: 0,
   detachedSpawnActions: 0,
   modulesWithoutManagerReference: 0,
-  dynamicWithoutManagerReference: 0
+  dynamicWithoutManagerReference: 0,
+  externalManagerReferenceOwners: 0,
+  extendedRootLevels: 0,
+  objectsWithoutClass: 0
 };
 
 let editableDynamicFixture;
@@ -65,10 +70,20 @@ for (const fileName of levelFiles) {
   const level = JSON5.parse(await readFile(filePath, 'utf8'));
   const objects = Array.isArray(level?.objects) ? level.objects : [];
   const moduleObject = objects.find((object) => object?.objclass === 'WaveManagerModuleProperties');
-  const managerObject = objects.find((object) => object?.objclass === 'WaveManagerProperties');
+  const managerContext = resolveWaveManagerContext(objects, moduleObject);
+  const managerObject = managerContext.managerObject;
   const waves = managerObject?.objdata?.Waves;
-  const supportsDynamic = supportsDynamicZombieEditing(moduleObject);
-  if (moduleObject && !supportsDynamic) stats.modulesWithoutManagerReference += 1;
+  const supportsDynamic = supportsDynamicZombieEditing(objects, moduleObject);
+  if (moduleObject && !managerContext.referenceOwner) stats.modulesWithoutManagerReference += 1;
+  if (managerContext.referenceOwner && managerContext.referenceOwner !== moduleObject) {
+    stats.externalManagerReferenceOwners += 1;
+  }
+
+  const rootExtra = getLevelRootExtra(level);
+  const rebuiltLevel = buildLevelDocument(rootExtra, level['#comment'], objects);
+  assert.deepStrictEqual(getLevelRootExtra(rebuiltLevel), rootExtra, `${fileName}: top-level extension fields changed`);
+  if (Object.keys(rootExtra).some((key) => key !== 'version')) stats.extendedRootLevels += 1;
+  stats.objectsWithoutClass += objects.filter((object) => !object?.objclass).length;
 
   if (Array.isArray(waves)) {
     stats.staticLevels += 1;
@@ -158,6 +173,7 @@ for (const fileName of levelFiles) {
 }
 
 assert.ok(editableDynamicFixture, 'No editable DynamicZombies fixture was found');
+assert.equal(stats.dynamicWithoutManagerReference, 0, 'Some DynamicZombies levels have no resolvable WaveManagerProps owner');
 const editedSlots = structuredClone(editableDynamicFixture);
 const editedIndex = editedSlots.findIndex((slot) => Object.keys(slot || {}).length);
 const originalOtherSlots = editableDynamicFixture.filter((_, index) => index !== editedIndex);
@@ -177,13 +193,49 @@ const generatorModule = {
     DynamicZombies: []
   }
 };
+const generatorManager = {
+  aliases: ['GeneratedWaveManager'],
+  objclass: 'WaveManagerProperties',
+  objdata: {}
+};
+const generatorObjects = [generatorModule, generatorManager];
 const generatorUpdated = setDynamicZombiesOnModuleObject(generatorModule, editedSlots);
 assert.deepStrictEqual(generatorUpdated.objdata.GenerationData, generatorModule.objdata.GenerationData);
 assert.equal(generatorUpdated.objdata.WaveManagerProps, generatorModule.objdata.WaveManagerProps);
 assert.ok(!Object.prototype.hasOwnProperty.call(generatorUpdated.objdata, 'Waves'));
 assert.deepStrictEqual(generatorModule.objdata.DynamicZombies, []);
-assert.equal(supportsDynamicZombieEditing(generatorModule), true);
-assert.equal(supportsDynamicZombieEditing({ objclass: 'WaveManagerModuleProperties', objdata: { DynamicZombies: editedSlots } }), false);
+assert.equal(supportsDynamicZombieEditing(generatorObjects, generatorModule), true);
+assert.equal(
+  supportsDynamicZombieEditing(
+    [{ objclass: 'WaveManagerModuleProperties', objdata: { DynamicZombies: editedSlots } }, generatorManager],
+    { objclass: 'WaveManagerModuleProperties', objdata: { DynamicZombies: editedSlots } }
+  ),
+  false
+);
+
+const externalOwnerModule = {
+  aliases: ['NewWaves'],
+  objclass: 'WaveManagerModuleProperties',
+  objdata: { DynamicZombies: editedSlots }
+};
+const externalOwner = {
+  aliases: ['LevelController'],
+  objclass: 'CustomLevelModuleProperties',
+  objdata: { WaveManagerProps: 'RTID(GeneratedWaveManager@CurrentLevel)' }
+};
+const externalOwnerObjects = [externalOwnerModule, externalOwner, generatorManager];
+const externalContext = resolveWaveManagerContext(externalOwnerObjects, externalOwnerModule);
+assert.equal(externalContext.referenceOwner, externalOwner);
+assert.equal(externalContext.managerObject, generatorManager);
+assert.equal(supportsDynamicZombieEditing(externalOwnerObjects, externalOwnerModule), true);
+
+const rootExtraFixture = {
+  version: 2,
+  Information: { Author: 'Editor Fixture', Introduction: { en: 'Preserve me' } },
+  FutureMetadata: { enabled: true }
+};
+const rebuiltRootFixture = buildLevelDocument(rootExtraFixture, 'Edited name', [{ objclass: 'LevelDefinition' }]);
+assert.deepStrictEqual(getLevelRootExtra(rebuiltRootFixture), rootExtraFixture);
 
 console.log(`Checked ${stats.levels} levels: ${stats.staticLevels} static, ${stats.generatorLevels} generator.`);
 console.log(
@@ -196,5 +248,8 @@ console.log(
   `Opaque wave refs retained by static snapshots: ${stats.unresolvedWaveReferences} unresolved, ${stats.duplicateAliasReferences} duplicate-alias references.`
 );
 console.log(
-  `Detached spawn actions preserved as opaque objects: ${stats.detachedSpawnActions}; dynamic editing disabled for ${stats.modulesWithoutManagerReference} modules without WaveManagerProps (${stats.dynamicWithoutManagerReference} contain DynamicZombies).`
+  `Detached spawn actions preserved as opaque objects: ${stats.detachedSpawnActions}; ${stats.externalManagerReferenceOwners} wave managers are referenced by another current-level object.`
+);
+console.log(
+  `Unresolved wave manager ownership: ${stats.modulesWithoutManagerReference} modules (${stats.dynamicWithoutManagerReference} contain DynamicZombies). Top-level extensions: ${stats.extendedRootLevels} levels; objects without objclass preserved for review: ${stats.objectsWithoutClass}.`
 );

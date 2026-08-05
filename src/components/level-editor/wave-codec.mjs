@@ -108,6 +108,46 @@ export function setDynamicZombiesOnModuleObject(moduleObject, slots) {
   return result;
 }
 
+function parseCurrentLevelReference(value) {
+  return /^RTID\((.+)@CurrentLevel\)$/.exec(String(value || ''))?.[1] || '';
+}
+
+export function resolveWaveManagerContext(objects, preferredModuleObject) {
+  const levelObjects = Array.isArray(objects) ? objects : [];
+  const moduleObject =
+    preferredModuleObject ||
+    levelObjects.find(
+      (object) => object?.objclass === 'WaveManagerModuleProperties' && Object.hasOwn(object?.objdata || {}, 'DynamicZombies')
+    ) ||
+    levelObjects.find((object) => object?.objclass === 'WaveManagerModuleProperties');
+  const managersByAlias = new Map();
+
+  levelObjects.forEach((object) => {
+    if (object?.objclass !== 'WaveManagerProperties') return;
+    (object?.aliases || []).forEach((alias) => {
+      if (!managersByAlias.has(alias)) managersByAlias.set(alias, object);
+    });
+  });
+
+  const referenceOwners = [moduleObject, ...levelObjects.filter((object) => object !== moduleObject)];
+  for (const ownerObject of referenceOwners) {
+    const reference = ownerObject?.objdata?.WaveManagerProps;
+    const managerAlias = parseCurrentLevelReference(reference);
+    const managerObject = managersByAlias.get(managerAlias);
+    if (managerObject) {
+      return { moduleObject, managerObject, referenceOwner: ownerObject, managerAlias, reference };
+    }
+  }
+
+  return {
+    moduleObject,
+    managerObject: levelObjects.find((object) => object?.objclass === 'WaveManagerProperties'),
+    referenceOwner: undefined,
+    managerAlias: '',
+    reference: undefined
+  };
+}
+
 export function collectCurrentLevelReferences(value, output = new Set()) {
   if (typeof value === 'string') {
     const alias = /^RTID\((.+)@CurrentLevel\)$/.exec(value)?.[1];
@@ -181,6 +221,7 @@ export function isDetachedZombieSpawnAction(object, referencedAliases) {
   return !(object?.aliases || []).some((alias) => aliases.has(alias));
 }
 
-export function supportsDynamicZombieEditing(moduleObject) {
-  return Boolean(moduleObject?.objdata?.WaveManagerProps);
+export function supportsDynamicZombieEditing(objects, moduleObject) {
+  const context = resolveWaveManagerContext(objects, moduleObject);
+  return Boolean(context.moduleObject && context.referenceOwner && context.managerObject);
 }

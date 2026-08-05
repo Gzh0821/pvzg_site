@@ -61,6 +61,23 @@ export function cloneLevelValue(value) {
   return value == null ? value : JSON.parse(JSON.stringify(value));
 }
 
+export function getLevelRootExtra(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return { version: 1 };
+  return Object.fromEntries(
+    Object.entries(raw)
+      .filter(([key]) => key !== '#comment' && key !== 'objects')
+      .map(([key, value]) => [key, cloneLevelValue(value)])
+  );
+}
+
+export function buildLevelDocument(rootExtra, comment, objects) {
+  return {
+    '#comment': comment,
+    ...cloneLevelValue(rootExtra || {}),
+    objects: cloneLevelValue(objects || [])
+  };
+}
+
 function fingerprint(value) {
   return JSON.stringify(value);
 }
