@@ -57,6 +57,14 @@ iframe.youtube-video {
     height: 100%;
 }
 
+@media (max-width: 719px) {
+    #markdown-content .adsbygoogle > div,
+    #markdown-content .adsbygoogle iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
 .vp-hero-info {
     display: block;
     text-align: center;

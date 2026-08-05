@@ -23,7 +23,7 @@ sidebar: false
 </script>
 
 > [!warning]
-> 编辑器仍处于测试阶段。导出后请先在本地测试；导入的复杂对象会保留并列入校验。
+> 编辑器仍在测试。导出后请先在本地测试。
 
 <ins class="adsbygoogle"
      style="display:block"

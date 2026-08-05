@@ -5,6 +5,7 @@ import path from 'node:path';
 import JSON5 from 'json5';
 import {
   collectPreservedStaticWaveObjects,
+  collectWaveReferenceGraph,
   groupZombieEntries,
   groupZombiePoolReferences,
   isDetachedZombieSpawnAction,
@@ -71,30 +72,23 @@ for (const fileName of levelFiles) {
 
   if (Array.isArray(waves)) {
     stats.staticLevels += 1;
-    const aliases = new Map();
-    objects.forEach((object) => {
-      (object?.aliases || []).forEach((alias) => {
-        const matches = aliases.get(alias) || [];
-        matches.push(object);
-        aliases.set(alias, matches);
-      });
-    });
     const referencedAliases = new Set();
     waves.flatMap(normalizeWaveRefs).forEach((reference) => {
       const alias = parseCurrentLevelAlias(reference);
       if (!alias) return;
       referencedAliases.add(alias);
-      const matches = aliases.get(alias) || [];
-      if (!matches.length) stats.unresolvedWaveReferences += 1;
-      else if (matches.length > 1) stats.duplicateAliasReferences += 1;
     });
 
+    const graph = collectWaveReferenceGraph(objects, referencedAliases);
+    stats.unresolvedWaveReferences += graph.unresolvedAliases.length;
+    stats.duplicateAliasReferences += graph.ambiguousAliases.length;
     const snapshot = collectPreservedStaticWaveObjects(objects, moduleObject, managerObject, referencedAliases);
+    const graphObjectIndexes = new Set(graph.objectIndexes);
     const expected = objects.filter(
-      (object) =>
+      (object, objectIndex) =>
         object === moduleObject ||
         object === managerObject ||
-        (object?.aliases || []).some((alias) => referencedAliases.has(alias))
+        graphObjectIndexes.has(objectIndex)
     );
     assert.deepStrictEqual(snapshot, expected, `${fileName}: static wave snapshot changed data`);
     stats.detachedSpawnActions += objects.filter((object) => isDetachedZombieSpawnAction(object, referencedAliases)).length;

@@ -369,7 +369,7 @@ export default defineComponent({
                 )
               )
             )
-          : h('small', { class: 'objective-empty' }, t('objectiveEmpty')),
+          : null,
         selected
           ? h('div', { class: 'objective-inspector' }, [
               h('div', { class: 'objective-inspector-header' }, [

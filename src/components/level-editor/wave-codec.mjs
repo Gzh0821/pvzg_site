@@ -108,15 +108,70 @@ export function setDynamicZombiesOnModuleObject(moduleObject, slots) {
   return result;
 }
 
+export function collectCurrentLevelReferences(value, output = new Set()) {
+  if (typeof value === 'string') {
+    const alias = /^RTID\((.+)@CurrentLevel\)$/.exec(value)?.[1];
+    if (alias) output.add(alias);
+    return output;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((entry) => collectCurrentLevelReferences(entry, output));
+    return output;
+  }
+  if (value && typeof value === 'object') {
+    Object.values(value).forEach((entry) => collectCurrentLevelReferences(entry, output));
+  }
+  return output;
+}
+
+export function collectWaveReferenceGraph(objects, rootAliases) {
+  const aliases = new Map();
+  (objects || []).forEach((object, objectIndex) => {
+    (object?.aliases || []).forEach((alias) => {
+      const matches = aliases.get(alias) || [];
+      matches.push({ object, objectIndex });
+      aliases.set(alias, matches);
+    });
+  });
+
+  const pending = [...new Set(rootAliases || [])];
+  const visitedAliases = new Set();
+  const objectIndexes = new Set();
+  const unresolvedAliases = new Set();
+  const ambiguousAliases = new Set();
+
+  while (pending.length) {
+    const alias = pending.shift();
+    if (!alias || visitedAliases.has(alias)) continue;
+    visitedAliases.add(alias);
+    const matches = aliases.get(alias) || [];
+    if (!matches.length) {
+      unresolvedAliases.add(alias);
+      continue;
+    }
+    if (matches.length > 1) ambiguousAliases.add(alias);
+    matches.forEach(({ object, objectIndex }) => {
+      objectIndexes.add(objectIndex);
+      collectCurrentLevelReferences(object?.objdata).forEach((reference) => {
+        if (!visitedAliases.has(reference)) pending.push(reference);
+      });
+    });
+  }
+
+  return {
+    objectIndexes: [...objectIndexes].sort((left, right) => left - right),
+    visitedAliases: [...visitedAliases],
+    unresolvedAliases: [...unresolvedAliases],
+    ambiguousAliases: [...ambiguousAliases],
+    aliasMatches: aliases
+  };
+}
+
 export function collectPreservedStaticWaveObjects(objects, moduleObject, managerObject, referencedAliases) {
-  const aliases = new Set(referencedAliases || []);
+  const graph = collectWaveReferenceGraph(objects, referencedAliases);
+  const objectIndexes = new Set(graph.objectIndexes);
   return (objects || [])
-    .filter(
-      (object) =>
-        object === moduleObject ||
-        object === managerObject ||
-        (object?.aliases || []).some((alias) => aliases.has(alias))
-    )
+    .filter((object, objectIndex) => object === moduleObject || object === managerObject || objectIndexes.has(objectIndex))
     .map((object) => cloneJson(object));
 }
 

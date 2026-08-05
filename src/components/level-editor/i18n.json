@@ -347,12 +347,6 @@
     "es": "Elige en el césped las plantas a proteger",
     "ru": "Выберите на поле растения для защиты"
   },
-  "objectiveEmpty": {
-    "zh": "暂无额外目标",
-    "en": "No additional objectives",
-    "es": "Sin objetivos adicionales",
-    "ru": "Нет дополнительных целей"
-  },
   "objectiveProtectedCell": {
     "zh": "保护目标",
     "en": "Protected target",
@@ -677,6 +671,12 @@
     "es": "{count} advertencias",
     "ru": "Предупреждений: {count}"
   },
+  "validationPassed": {
+    "zh": "校验通过",
+    "en": "Validation passed",
+    "es": "Validación superada",
+    "ru": "Проверка пройдена"
+  },
   "levelName": {
     "zh": "关卡名",
     "en": "Level name",
@@ -953,12 +953,6 @@
     "es": "Vaciar tablero",
     "ru": "Очистить поле"
   },
-  "emptyCell": {
-    "zh": "选择素材后点击草坪放置。",
-    "en": "Choose an asset, then click a board cell.",
-    "es": "Elige un recurso y haz clic en una celda.",
-    "ru": "Выберите объект, затем нажмите клетку поля."
-  },
   "selectedCellTitle": {
     "zh": "当前格子 {col},{row}",
     "en": "Current cell {col},{row}",
@@ -1054,18 +1048,6 @@
     "en": "Preset cards",
     "es": "Cartas fijas",
     "ru": "Фиксированные карты"
-  },
-  "seedChooserHint": {
-    "zh": "列表内植物固定，其余由玩家选择。",
-    "en": "Listed plants are fixed; players choose the rest.",
-    "es": "Las plantas listadas quedan fijas; el jugador elige el resto.",
-    "ru": "Растения из списка закреплены; остальные выбирает игрок."
-  },
-  "seedPresetHint": {
-    "zh": "列表内植物组成完整卡组。",
-    "en": "Listed plants are the full seed bank.",
-    "es": "Las plantas listadas forman el banco completo.",
-    "ru": "Растения из списка составляют всю панель."
   },
   "seedLimit": {
     "zh": "种子栏最多 {count} 格。",
@@ -1540,6 +1522,102 @@
     "en": "Wave warning",
     "es": "Aviso de oleada",
     "ru": "Предупреждение волны"
+  },
+  "actionScheduler": {
+    "zh": "循环调度",
+    "en": "Scheduler",
+    "es": "Programador",
+    "ru": "Планировщик"
+  },
+  "actionSchedulerSummary": {
+    "zh": "延迟 {delay}s · 最多 {repeat} 次 · {count} 个事件",
+    "en": "{delay}s delay · up to {repeat} repeats · {count} events",
+    "es": "Retraso {delay}s · hasta {repeat} repeticiones · {count} eventos",
+    "ru": "Задержка {delay} с · до {repeat} повторов · событий: {count}"
+  },
+  "schedulerFirstDelay": {
+    "zh": "首次延迟",
+    "en": "First delay",
+    "es": "Primer retraso",
+    "ru": "Первая задержка"
+  },
+  "schedulerInterval": {
+    "zh": "事件间隔",
+    "en": "Interval",
+    "es": "Intervalo",
+    "ru": "Интервал"
+  },
+  "schedulerRepeat": {
+    "zh": "重复次数",
+    "en": "Repeats",
+    "es": "Repeticiones",
+    "ru": "Повторы"
+  },
+  "schedulerRewardWhenEnded": {
+    "zh": "结束时发放奖励",
+    "en": "Reward when ended",
+    "es": "Premiar al terminar",
+    "ru": "Награда в конце"
+  },
+  "schedulerSuppressReward": {
+    "zh": "不切换奖励状态",
+    "en": "Suppress reward state",
+    "es": "Suprimir estado de recompensa",
+    "ru": "Не менять состояние награды"
+  },
+  "schedulerEndingWave": {
+    "zh": "结束波次",
+    "en": "Ending wave",
+    "es": "Oleada final",
+    "ru": "Конечная волна"
+  },
+  "schedulerEvents": {
+    "zh": "事件顺序",
+    "en": "Event order",
+    "es": "Orden de eventos",
+    "ru": "Порядок событий"
+  },
+  "schedulerEmpty": {
+    "zh": "还没有事件。",
+    "en": "No events yet.",
+    "es": "Aún no hay eventos.",
+    "ru": "Событий пока нет."
+  },
+  "schedulerAddEvent": {
+    "zh": "添加事件",
+    "en": "Add event",
+    "es": "Añadir evento",
+    "ru": "Добавить событие"
+  },
+  "schedulerInvalidEvent": {
+    "zh": "非标准引用",
+    "en": "Nonstandard reference",
+    "es": "Referencia no estándar",
+    "ru": "Нестандартная ссылка"
+  },
+  "schedulerExternalEvent": {
+    "zh": "共享引用（保留）",
+    "en": "Shared reference (preserved)",
+    "es": "Referencia compartida (conservada)",
+    "ru": "Общая ссылка (сохранена)"
+  },
+  "schedulerMissingEvent": {
+    "zh": "引用缺失（保留）",
+    "en": "Missing reference (preserved)",
+    "es": "Referencia ausente (conservada)",
+    "ru": "Ссылка отсутствует (сохранена)"
+  },
+  "schedulerCircularEvent": {
+    "zh": "循环引用（保留）",
+    "en": "Circular reference (preserved)",
+    "es": "Referencia circular (conservada)",
+    "ru": "Циклическая ссылка (сохранена)"
+  },
+  "schedulerPreservedEvent": {
+    "zh": "此事件保留原始数据，可在高级模式编辑。",
+    "en": "Original event data is preserved; edit it in expert mode.",
+    "es": "Se conservan los datos originales; edítalos en modo experto.",
+    "ru": "Исходные данные сохранены; редактируйте их в режиме эксперта."
   },
   "actionUnknown": {
     "zh": "保留事件",
@@ -2404,6 +2482,18 @@
     "en": "Wave {wave} {action} JSON cannot be parsed.",
     "es": "No se puede analizar el JSON de {action} en la oleada {wave}.",
     "ru": "Не удалось разобрать JSON действия {action} в волне {wave}."
+  },
+  "validationSupportActionJson": {
+    "zh": "调度事件 {action} 的 JSON 无法解析。",
+    "en": "Scheduler event {action} JSON cannot be parsed.",
+    "es": "No se puede analizar el JSON del evento {action}.",
+    "ru": "Не удалось разобрать JSON события {action}."
+  },
+  "validationWaveReferenceMissing": {
+    "zh": "波次引用 {alias} 缺少对应对象，将按原值保留。",
+    "en": "Wave reference {alias} has no matching object and will be preserved.",
+    "es": "La referencia de oleada {alias} no tiene objeto y se conservará.",
+    "ru": "Для ссылки волны {alias} нет объекта; ссылка будет сохранена."
   },
   "validationPresetEmpty": {
     "zh": "固定卡组模式下还没有选择植物。",

@@ -23,7 +23,7 @@ sidebar: false
 </script>
 
 > [!warning]
-> The editor is still in testing. Test exports locally; complex imported objects are preserved and shown in validation.
+> The editor is still in testing. Test exports locally first.
 
 <ins class="adsbygoogle"
      style="display:block"

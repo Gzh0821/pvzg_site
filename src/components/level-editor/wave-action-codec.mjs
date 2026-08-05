@@ -213,6 +213,19 @@ const ACTION_DEFINITIONS = {
       Duration: 3,
       InitTime: 0.33
     }
+  },
+  scheduler: {
+    objclass: 'WaveSchedulerProps',
+    labelKey: 'actionScheduler',
+    alias: (wave) => `Wave${wave}Scheduler0`,
+    defaults: {
+      RewardWhenEnded: false,
+      SuppressRewardState: false,
+      TimeBeforeFirst: { Min: 1, Max: 1 },
+      TimeBetween: { Min: 1, Max: 1 },
+      Repeat: { Min: 1, Max: 1 },
+      Events: []
+    }
   }
 };
 

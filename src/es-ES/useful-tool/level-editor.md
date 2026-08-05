@@ -23,7 +23,7 @@ sidebar: false
 </script>
 
 > [!warning]
-> El editor sigue en fase de prueba. Prueba las exportaciones localmente; los objetos complejos importados se conservan y aparecen en la validación.
+> El editor sigue en pruebas. Prueba primero las exportaciones localmente.
 
 <ins class="adsbygoogle"
      style="display:block"
