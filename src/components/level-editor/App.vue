@@ -9679,12 +9679,25 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   }
 
   .top-action-row {
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-content: stretch;
   }
 
   .expert-mode-toggle {
-    flex: 1 1 13rem;
-    max-width: 100%;
+    max-width: none;
+  }
+
+  .top-action-row > .ant-btn,
+  .top-action-row .ant-upload,
+  .top-action-row .ant-upload .ant-btn,
+  .expert-mode-toggle,
+  .validation-summary-control {
+    width: 100%;
+  }
+
+  .action-row-export > * {
+    grid-column: span 2;
   }
 }
 
@@ -9724,6 +9737,10 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
+  }
+
+  .action-row-export > * {
+    grid-column: auto;
   }
 
   .top-action-row > .ant-btn,
