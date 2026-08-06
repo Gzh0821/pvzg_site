@@ -158,6 +158,7 @@ type DetectedOs = OsKey | 'unknown';
 type ProviderLinks = {
   Github?: string;
   Storage?: string;
+  StorageLite?: string;
   Quark?: string;
   QuarkZip?: string;
   Baidu?: string;
@@ -176,6 +177,7 @@ type GameInfo = {
   Download?: ProviderLinks;
   MacOSDownload?: {
     Storage?: string;
+    StorageLite?: string;
   };
 };
 
@@ -268,14 +270,22 @@ const activeOptions = computed<DownloadOption[]>(() => {
   }
 
   if (activeOs.value === 'mac') {
+    const links = gameInfo.value.MacOSDownload || {};
     return compact([
       optionFromHref({
-        title: t('localTitle'),
-        description: t('localDescription'),
+        title: t('standardTitle'),
+        description: t('standardDescription'),
         action: t('download'),
-        href: gameInfo.value.MacOSDownload?.Storage,
+        href: links.Storage,
         icon: 'download',
         recommended: true
+      }),
+      optionFromHref({
+        title: t('liteTitle'),
+        description: t('liteDescription'),
+        action: t('download'),
+        href: links.StorageLite,
+        icon: 'file-zipper'
       })
     ]);
   }
@@ -296,12 +306,19 @@ const activeOptions = computed<DownloadOption[]>(() => {
   const links = gameInfo.value.Download || {};
   return compact([
     optionFromHref({
-      title: t('localTitle'),
-      description: t('localDescription'),
+      title: t('standardTitle'),
+      description: t('standardDescription'),
       action: t('download'),
       href: links.Storage,
       icon: 'download',
       recommended: true
+    }),
+    optionFromHref({
+      title: t('liteTitle'),
+      description: t('liteDescription'),
+      action: t('download'),
+      href: links.StorageLite,
+      icon: 'file-zipper'
     }),
     optionFromHref({
       title: t('githubTitle'),
