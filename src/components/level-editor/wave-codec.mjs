@@ -39,7 +39,8 @@ export function groupZombieEntries(entries = []) {
 
 export function serializeZombieGroups(groups = []) {
   return groups.flatMap((group) => {
-    const templates = group.entries?.length
+    const hasImportedEntries = Array.isArray(group.entries) && group.entries.length > 0;
+    const templates = hasImportedEntries
       ? group.entries
       : [{ Type: toZombieTypeReference(group.code || 'mummy') }];
 
@@ -51,10 +52,13 @@ export function serializeZombieGroups(groups = []) {
       const importedRow = template.Row;
       const row = String(group.row ?? '');
 
-      template.Type =
-        hadImportedType && getZombieCode(importedType) === group.code
-          ? importedType
-          : toZombieTypeReference(group.code || 'mummy');
+      if (hadImportedType && getZombieCode(importedType) === group.code) {
+        template.Type = importedType;
+      } else if (hasImportedEntries && !hadImportedType) {
+        delete template.Type;
+      } else {
+        template.Type = toZombieTypeReference(group.code || 'mummy');
+      }
 
       if (group.rowDirty) {
         if (row) template.Row = row;

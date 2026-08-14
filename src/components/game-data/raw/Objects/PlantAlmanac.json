@@ -4,6 +4,46 @@
 	"objects": [
 		{
 			"aliases": [
+				"inferno"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 40
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Infernos swirl up devastating fire tornados that sweep zombies back, burning and damaging them.",
+					"zh": "地狱火蕨卷起毁灭性的火焰龙卷风，将僵尸扫退并灼烧他们，造成持续伤害。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Inferno doesn't feel like he gets enough credit. \"Of course I burn zombies,\" he fumes. \"That's a given. But what about how I sweep them down the lane through the sheer force of hot air? Where's my prize for that?\"",
+					"zh": "地狱火蕨觉得自己没得到足够的认可。“我当然能烧僵尸，那还用说。”他气呼呼地说，“但我用一股热浪把他们整排扫退的事迹呢？我这方面的功劳怎么没人提？”"
+				},
+				"BriefIntroduction": {
+					"en": "Burns and pushes zombies back",
+					"zh": "将僵尸扫退并灼烧"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
 				"zoybeanpod"
 			],
 			"objclass": "PlantAlmanacProperties",
@@ -619,6 +659,56 @@
 				"BriefIntroduction": {
 					"en": "Shoots heavy stunning peas",
 					"zh": "发射重型豌豆"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"slingpea"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 20
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Full Board",
+							"zh": "全屏"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Sling Peas fire 5 peas in a burst, targeting the zombies closest to your house each time.",
+					"zh": "豌豆迫击炮每次朝离房子最近的僵尸发射 5 颗豌豆。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Sling Pea keeps a keen eye on the whole battle space. He's alert and attentive. \"If something slips through,\" he muses quietly, \"it would be my fault. And I just couldn't forgive myself if that happened.\"",
+					"zh": "豌豆迫击炮对整片战场保持着敏锐的观察，他时刻警觉而专注。“如果有漏网之鱼，”他低声沉吟，“那都是我的过错。若真发生那种情况，我绝不会原谅自己。”"
+				},
+				"BriefIntroduction": {
+					"en": "Fires 5 peas at whole board",
+					"zh": "向全场发射 5 颗豌豆"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -3245,6 +3335,56 @@
 				"BriefIntroduction": {
 					"en": "Zaps several chickens or zombies per strike",
 					"zh": "电击连续的几只僵尸或鸡"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"witchhazel"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 1200
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "3 Lanes",
+							"zh": "3 行"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Witch Hazels use magical sorcery to transform zombies into Puff-shrooms.",
+					"zh": "女巫金缕梅用魔法能量把僵尸变成小喷菇。"
+				},
+				"Special": [],
+				"Chat": {
+					"en": "Witch Hazel paused, unsure how to proceed. Then all at once, she knew: Use magic, like, ALL THE TIME!",
+					"zh": "女巫金缕梅停在原地，不知道怎么继续。然而一瞬间，她悟出了：要用魔法，就像一直以来那样！"
+				},
+				"BriefIntroduction": {
+					"en": "Transforms zombies into Puff-shrooms",
+					"zh": "把僵尸变成小喷菇"
 				},
 				"DisplayOffset": {
 					"x": 0,
@@ -6016,6 +6156,64 @@
 				"BriefIntroduction": {
 					"en": "Destroys an entire lane of zombies",
 					"zh": "燃烧摧毁一整行的僵尸"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"aliases": [
+				"chillypepper"
+			],
+			"objclass": "PlantAlmanacProperties",
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 1200
+					},
+					{
+						"TYPE": "AREA",
+						"SORT": {
+							"en": "Lane",
+							"zh": "整行"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Chilly Peppers freeze and damage an entire lane of zombies, chilling zombies in nearby lanes.",
+					"zh": "寒冰辣椒伤害并冻住整行的僵尸，并且使相邻的僵尸减速。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "single use, instant",
+							"zh": "一次性使用，立刻触发"
+						}
+					}
+				],
+				"Chat": {
+					"en": "\"Get up and freeze the day!! Chilly Pepper might look innocent and unassuming but deep down he's cold as ice. Compare him to Jalapeño and watch him EXPLODE!\"",
+					"zh": "“起来吧，冻住今天！寒冰辣椒外表看起来无辜又谦逊，但骨子里却冷若冰霜。拿他和火辣椒比比看，看他立马炸给你看！”"
+				},
+				"BriefIntroduction": {
+					"en": "Freezes and damages an entire lane of zombies",
+					"zh": "伤害并冻住一整行的僵尸"
 				},
 				"DisplayOffset": {
 					"x": 0,

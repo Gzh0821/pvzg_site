@@ -29,6 +29,104 @@
 		{
 			"objclass": "PlantProperties",
 			"aliases": [
+				"witchhazel"
+			],
+			"objdata": {
+				"ShroomType": "puffshroom",
+				"ShroomTypeMint": "fumeshroom",
+				"ShroomTypePlantfood": "toadstool",
+				"ShroomTypePlantfoodMint": "hypnoshroom",
+				"FailedTransDamage": 1200,
+				"FailedTransDamagePlantfood": 2400,
+				"MintDamageFactor": 3,
+				"MaxTransTime": 2,
+				"Cooldown": 30,
+				"CooldownFrom": 0.5,
+				"SunCost": 200,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Magic",
+				"RechargeTime": {
+					"Min": 17.5,
+					"Max": 18.5
+				},
+				"AttackInterval": {
+					"Min": 0.5,
+					"Max": 1.5
+				},
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"slingpea"
+			],
+			"objdata": {
+				"Cooldown": 5,
+				"SunCost": 125,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"PeaType": "pea_sling_0",
+				"PeaCountPerShot": 5,
+				"PeaTypePlantfood": "pea_sling_0_pf",
+				"PeaCountPerShotPlantfood": 10,
+				"PlantfoodShootTime": 4,
+				"Family": "Lobber",
+				"ShootInterval": {
+					"Min": 4,
+					"Max": 5
+				},
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"inferno"
+			],
+			"objdata": {
+				"Cooldown": 25,
+				"CooldownFrom": 0.4,
+				"SunCost": 200,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"TornadoType": "inferno_tornado",
+				"TornadoTypePlantfood": "inferno_tornado_pf",
+				"Family": "Fire",
+				"ImmuneToIceblock": true,
+				"TornadoInterval": {
+					"Min": 5.95,
+					"Max": 6.05
+				},
+				"WarmingRadius": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 6,
+					"GridItemDamage": 200
+				},
+				"WarmingRadiusPlantfood": {
+					"PulseInitialDelay": 0.25,
+					"PulseCooldown": 1.5,
+					"GridItemDamage": 100
+				},
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
 				"darkmatterdragonfruit"
 			],
 			"objdata": {
@@ -512,10 +610,10 @@
 			}
 		},
 		{
+			"objclass": "PlantProperties",
 			"aliases": [
 				"mirrornut"
 			],
-			"objclass": "PlantProperties",
 			"objdata": {
 				"CallsMirrorNutsOnDamaged": true,
 				"MaxShots": 4,
@@ -544,6 +642,7 @@
 				"wallnut"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"ArmorToughness": 4000,
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
@@ -555,8 +654,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -565,6 +663,7 @@
 				"pineapple"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"ArmorToughness": 6000,
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
@@ -578,8 +677,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -588,6 +686,7 @@
 				"murkadamia"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"ShieldToughness": 2000,
 				"JellyToughness": 2500,
 				"JellyCooldown": 5,
@@ -605,8 +704,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 4,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -760,6 +858,7 @@
 				"lychee"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"DamagePerHit": 20,
 				"DamagePerHitPlantfood": 40,
 				"PlantfoodDamageReceiveMult": 0.5,
@@ -775,8 +874,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -976,6 +1074,7 @@
 				"pumpkin"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"CannotBeKilledBySurfboard": true,
 				"ArmorToughness": 4000,
 				"Cooldown": 20,
@@ -988,8 +1087,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -2047,6 +2145,7 @@
 				"primalwallnut"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"ArmorToughness": 4000,
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
@@ -2058,8 +2157,7 @@
 					"ResistanceMult": 4,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -2816,6 +2914,32 @@
 		{
 			"objclass": "PlantProperties",
 			"aliases": [
+				"chillypepper"
+			],
+			"objdata": {
+				"ImmuneToBoomBox": true,
+				"CannotBeSheepenedByWizard": true,
+				"Damage": 1200,
+				"ChillDuration": 10,
+				"FreezeDuration": 10,
+				"Cooldown": 25,
+				"CooldownFrom": 1,
+				"SunCost": 125,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Cold",
+				"ImmuneToIceblock": true,
+				"MintDamageFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
 				"puffshroom"
 			],
 			"objdata": {
@@ -3163,6 +3287,7 @@
 				"tallnut"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"ArmorToughness": 6000,
 				"Cooldown": 20,
 				"CooldownFrom": 1,
@@ -3174,8 +3299,7 @@
 					"ResistanceMult": 5,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -3410,6 +3534,7 @@
 				"explodeonut"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"CannotBeHealedByAloe": true,
 				"ArmorToughness": 4000,
 				"Damage": 1800,
@@ -3425,8 +3550,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 1,
 					"Plantfood": false
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -3768,6 +3892,7 @@
 				"turnip"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"CannotBeGrabbedByParrot": true,
 				"CannotBePushedByFootballMech": true,
 				"ImmuneToSpeakerWave": true,
@@ -3781,8 +3906,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -4016,6 +4140,7 @@
 				"holonut"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"DelayBeforeRegenFromDamage": 15,
 				"DelayBeforeRecoverFromDeath": 15,
 				"Cooldown": 15,
@@ -4029,8 +4154,7 @@
 					"ResistanceMult": 4,
 					"SpeedMult": 3,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -4393,6 +4517,7 @@
 				"peanut"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"PeaType": "peanut",
 				"ShootInterval": 0.65,
 				"ShootIntervalAdditional": 0.15,
@@ -4410,8 +4535,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 2,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -4758,6 +4882,7 @@
 				"sweetpotato"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
 				"SunCost": 150,
@@ -4774,8 +4899,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{
@@ -4936,6 +5060,7 @@
 				"endurian"
 			],
 			"objdata": {
+				"CallsMirrorNutsOnDamaged": true,
 				"ArmorToughness": 6000,
 				"Cooldown": 15,
 				"CooldownFrom": 1,
@@ -4950,8 +5075,7 @@
 					"ResistanceMult": 3,
 					"SpeedMult": 3,
 					"Plantfood": true
-				},
-				"CallsMirrorNutsOnDamaged": true
+				}
 			}
 		},
 		{

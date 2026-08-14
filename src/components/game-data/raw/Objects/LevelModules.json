@@ -332,6 +332,16 @@
 		{
 			"objclass": "LawnType",
 			"aliases": [
+				"LostCityVolcanoStage"
+			],
+			"objdata": {
+				"LawnBaseOn": "LostCityVolcanoStage",
+				"Properties": "RTID(LostCityStage@LawnProps)"
+			}
+		},
+		{
+			"objclass": "LawnType",
+			"aliases": [
 				"SkyStage"
 			],
 			"objdata": {
@@ -650,6 +660,7 @@
 					"coin",
 					"gem",
 					"sprout",
+					"ticket",
 					"plantfood"
 				]
 			}
@@ -693,7 +704,7 @@
 				"FrontLawnMowers"
 			],
 			"objdata": {
-				"MowerType": "mower_modern",
+				"MowerType": "mower_lawn",
 				"MowerEntryAnimDuration": 2.5
 			}
 		},
