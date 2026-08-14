@@ -78,6 +78,74 @@ export function buildLevelDocument(rootExtra, comment, objects) {
   };
 }
 
+function getObjectAliases(object) {
+  return Array.isArray(object?.aliases) ? object.aliases.map(String) : [];
+}
+
+function findOriginalObjectIndex(originalObjects, generatedObject, usedIndexes) {
+  const generatedAliases = new Set(getObjectAliases(generatedObject));
+  if (generatedAliases.size) {
+    const matchingIndexes = originalObjects
+      .map((object, index) => ({ object, index }))
+      .filter(
+        ({ object, index }) =>
+          !usedIndexes.has(index) &&
+          object?.objclass === generatedObject?.objclass &&
+          getObjectAliases(object).some((alias) => generatedAliases.has(alias))
+      );
+    if (matchingIndexes.length) {
+      const exactAliases = JSON.stringify(getObjectAliases(generatedObject));
+      return (
+        matchingIndexes.find(({ object }) => JSON.stringify(getObjectAliases(object)) === exactAliases) || matchingIndexes[0]
+      ).index;
+    }
+  }
+
+  if (generatedObject?.objclass) {
+    return originalObjects.findIndex(
+      (object, index) =>
+        !usedIndexes.has(index) && !getObjectAliases(object).length && object?.objclass === generatedObject.objclass
+    );
+  }
+
+  const exactFingerprint = fingerprint(generatedObject);
+  const exactIndex = originalObjects.findIndex(
+    (object, index) => !usedIndexes.has(index) && !object?.objclass && fingerprint(object) === exactFingerprint
+  );
+  if (exactIndex >= 0) return exactIndex;
+  return originalObjects.findIndex((object, index) => !usedIndexes.has(index) && !object?.objclass);
+}
+
+export function reconcileLevelObjects(originalObjects, generatedObjects) {
+  const originals = Array.isArray(originalObjects) ? originalObjects : [];
+  const generated = Array.isArray(generatedObjects) ? generatedObjects : [];
+  if (!originals.length) return cloneLevelValue(generated);
+
+  const usedIndexes = new Set();
+  const generatedByOriginalIndex = new Map();
+  const newObjects = [];
+
+  generated.forEach((generatedObject) => {
+    const originalIndex = findOriginalObjectIndex(originals, generatedObject, usedIndexes);
+    if (originalIndex < 0) {
+      newObjects.push(cloneLevelValue(generatedObject));
+      return;
+    }
+    usedIndexes.add(originalIndex);
+    generatedByOriginalIndex.set(originalIndex, {
+      ...cloneLevelValue(originals[originalIndex]),
+      ...cloneLevelValue(generatedObject)
+    });
+  });
+
+  return [
+    ...originals.flatMap((_, index) =>
+      generatedByOriginalIndex.has(index) ? [generatedByOriginalIndex.get(index)] : []
+    ),
+    ...newObjects
+  ];
+}
+
 function fingerprint(value) {
   return JSON.stringify(value);
 }

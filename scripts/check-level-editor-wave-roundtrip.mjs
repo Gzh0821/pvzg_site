@@ -3,7 +3,11 @@ import { readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import JSON5 from 'json5';
-import { buildLevelDocument, getLevelRootExtra } from '../src/components/level-editor/level-codec.mjs';
+import {
+  buildLevelDocument,
+  getLevelRootExtra,
+  reconcileLevelObjects
+} from '../src/components/level-editor/level-codec.mjs';
 import {
   collectPreservedStaticWaveObjects,
   collectWaveReferenceGraph,
@@ -69,6 +73,11 @@ for (const fileName of levelFiles) {
   const filePath = path.join(levelsDirectory, fileName);
   const level = JSON5.parse(await readFile(filePath, 'utf8'));
   const objects = Array.isArray(level?.objects) ? level.objects : [];
+  assert.deepStrictEqual(
+    reconcileLevelObjects(objects, structuredClone(objects)),
+    objects,
+    `${fileName}: unchanged object order or envelopes changed`
+  );
   const moduleObject = objects.find((object) => object?.objclass === 'WaveManagerModuleProperties');
   const managerContext = resolveWaveManagerContext(objects, moduleObject);
   const managerObject = managerContext.managerObject;
@@ -236,6 +245,32 @@ const rootExtraFixture = {
 };
 const rebuiltRootFixture = buildLevelDocument(rootExtraFixture, 'Edited name', [{ objclass: 'LevelDefinition' }]);
 assert.deepStrictEqual(getLevelRootExtra(rebuiltRootFixture), rootExtraFixture);
+
+const originalObjectFixture = [
+  { objclass: 'LevelDefinition', sourceTag: 'keep-level-envelope', objdata: { Name: 'Before' } },
+  { sourceTag: 'keep-opaque-position', GridX: 3, GridY: 2 },
+  {
+    aliases: ['SeedBank'],
+    objclass: 'SeedBankProperties',
+    sourceTag: 'keep-seed-envelope',
+    objdata: { SelectionMethod: 'chooser', FutureField: true }
+  },
+  { aliases: ['RemovedObject'], objclass: 'CustomProperties', objdata: {} }
+];
+const generatedObjectFixture = [
+  { objclass: 'LevelDefinition', objdata: { Name: 'After' } },
+  { aliases: ['SeedBank'], objclass: 'SeedBankProperties', objdata: { SelectionMethod: 'preset', FutureField: true } },
+  { sourceTag: 'keep-opaque-position', GridX: 3, GridY: 2 },
+  { aliases: ['NewObject'], objclass: 'CustomProperties', objdata: { enabled: true } }
+];
+const reconciledObjectFixture = reconcileLevelObjects(originalObjectFixture, generatedObjectFixture);
+assert.deepStrictEqual(
+  reconciledObjectFixture.map((object) => object.sourceTag || object.aliases?.[0]),
+  ['keep-level-envelope', 'keep-opaque-position', 'keep-seed-envelope', 'NewObject']
+);
+assert.equal(reconciledObjectFixture[0].objdata.Name, 'After');
+assert.equal(reconciledObjectFixture[2].objdata.SelectionMethod, 'preset');
+assert.ok(!reconciledObjectFixture.some((object) => object.aliases?.includes('RemovedObject')));
 
 console.log(`Checked ${stats.levels} levels: ${stats.staticLevels} static, ${stats.generatorLevels} generator.`);
 console.log(

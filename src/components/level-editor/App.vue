@@ -198,6 +198,7 @@ import {
   normalizePlantCodes,
   normalizeSeedPlants,
   normalizeSeedSlots,
+  reconcileLevelObjects,
   validateLevelDocument
 } from './level-codec.mjs';
 import {
@@ -205,6 +206,7 @@ import {
   getMoldedSquares,
   parseObjectiveSystem,
   serializeObjectiveSystem,
+  setMoldedSquares,
   updateObjectiveModuleRefs
 } from './objective-codec.mjs';
 import {
@@ -538,6 +540,14 @@ interface LevelDraft {
 interface ValidationItem {
   type: 'error' | 'warning';
   text: string;
+}
+
+interface CellEffectEntry {
+  id: string;
+  label: string;
+  detail?: string;
+  tone: 'protect' | 'mold' | 'power' | 'rail' | 'plank';
+  remove?: () => void;
 }
 
 interface StarObjectiveDraft {
@@ -1875,7 +1885,8 @@ function getBoardItemTypeLabel(item: BoardItem) {
 }
 
 function getCellAriaLabel(row: number, col: number, items: BoardItem[]) {
-  const content = items.length ? items.map((item) => item.label).join(', ') : t('selectedCellEmpty');
+  const labels = [...items.map((item) => item.label), ...getCellEffects(row, col).map((effect) => effect.label)];
+  const content = labels.length ? labels.join(', ') : t('selectedCellEmpty');
   return t('cellAria', { col: col + 1, row: row + 1, content });
 }
 
@@ -3077,7 +3088,8 @@ function serializeLevel() {
 
   objects.push(...draft.value.unsupportedRawObjects);
 
-  return buildLevelDocument(draft.value.rootExtra, draft.value.name, objects);
+  const reconciledObjects = reconcileLevelObjects(importedLevelSnapshot?.source?.objects, objects);
+  return buildLevelDocument(draft.value.rootExtra, draft.value.name, reconciledObjects);
 }
 
 function uniqueRefs(refs: string[]) {
@@ -3452,6 +3464,119 @@ function getPowerTileAtCell(row: number, col: number) {
   return null;
 }
 
+function markBoardRuleEdited(rule: BoardRuleModuleDraft) {
+  rule.dirty = true;
+  draft.value.boardRules.dirty = true;
+}
+
+function removeProtectedTarget(row: number, col: number) {
+  const protect = draft.value.objectives.protect;
+  if (!protect) return;
+  const plants = getProtectPlants();
+  const previousLength = plants.length;
+  protect.objdata.Plants = plants.filter(
+    (entry: any) => Number(entry.GridX) !== col || Number(entry.GridY) !== row
+  );
+  if (protect.objdata.Plants.length === previousLength) return;
+  if (Number(protect.objdata.MustProtectCount ?? previousLength) === previousLength) {
+    protect.objdata.MustProtectCount = Math.max(0, previousLength - 1);
+  }
+  draft.value.objectives.dirty = true;
+  draft.value.objectives.protectDirty = true;
+}
+
+function removeMoldedTarget(objective: StarObjectiveDraft, row: number, col: number) {
+  const squares = getMoldedSquares(objective.objdata, resolveBoardGridMapSquares);
+  const nextSquares = squares.filter((square: any) => square.GridX !== col || square.GridY !== row);
+  if (nextSquares.length === squares.length) return;
+  setMoldedSquares(objective.objdata, nextSquares);
+  draft.value.objectives.dirty = true;
+  draft.value.objectives.starDirty = true;
+}
+
+function removePowerTile(rule: BoardRuleModuleDraft, row: number, col: number) {
+  const tiles = getRulePowerTiles(rule);
+  const nextTiles = tiles.filter(
+    (tile: any) => Number(tile?.Location?.mX) !== col || Number(tile?.Location?.mY) !== row
+  );
+  if (nextTiles.length === tiles.length) return;
+  rule.objdata.LinkedTiles = nextTiles;
+  markBoardRuleEdited(rule);
+}
+
+function getCellEffects(row: number, col: number): CellEffectEntry[] {
+  const effects: CellEffectEntry[] = [];
+  const protectedTarget = getProtectedTarget(row, col);
+  if (protectedTarget) {
+    effects.push({
+      id: 'protect',
+      label: t('objectiveProtectedCell'),
+      detail: getPlantDisplayName(String(protectedTarget.PlantType || '')),
+      tone: 'protect',
+      remove: () => removeProtectedTarget(row, col)
+    });
+  }
+
+  const moldedTarget = getMoldedTarget(row, col);
+  if (moldedTarget) {
+    effects.push({
+      id: `mold:${moldedTarget.id}`,
+      label: t('objectiveMoldCell'),
+      tone: 'mold',
+      remove: () => removeMoldedTarget(moldedTarget, row, col)
+    });
+  }
+
+  for (const rule of boardRuleEntries.value.filter((entry) => entry.kind === 'powerTiles')) {
+    const tile = getPowerTileAt(rule, row, col);
+    if (!tile) continue;
+    effects.push({
+      id: `power:${rule.id}`,
+      label: t('boardRulePowerTileCell'),
+      detail: t(`boardRulePowerGroup_${tile.Group}`),
+      tone: 'power',
+      remove: () => removePowerTile(rule, row, col)
+    });
+  }
+
+  if (cellHasRailTrack(row, col)) {
+    effects.push({ id: 'rail', label: t('boardRuleRails'), tone: 'rail' });
+  }
+  if (cellHasRailcart(row, col)) {
+    effects.push({ id: 'railcart', label: t('boardRuleRailcart'), tone: 'rail' });
+  }
+  if (isPiratePlankRow(row)) {
+    effects.push({ id: 'plank', label: t('boardRulePlankRow'), tone: 'plank' });
+  }
+  return effects;
+}
+
+const selectedCellEffects = computed(() =>
+  selectedCell.value ? getCellEffects(selectedCell.value.row, selectedCell.value.col) : []
+);
+
+function renderCellEffect(effect: CellEffectEntry) {
+  return h('span', { class: ['cell-effect-pill', `cell-effect-${effect.tone}`] }, [
+    h('span', { class: 'cell-effect-dot', 'aria-hidden': 'true' }),
+    h('span', { class: 'cell-effect-copy' }, [
+      h('strong', effect.label),
+      effect.detail ? h('small', effect.detail) : null
+    ]),
+    effect.remove
+      ? h(
+          'button',
+          {
+            type: 'button',
+            title: t('remove'),
+            'aria-label': `${t('remove')} ${effect.label}`,
+            onClick: effect.remove
+          },
+          h(CloseOutlined, { 'aria-hidden': 'true' })
+        )
+      : null
+  ]);
+}
+
 const BoardEditor = defineComponent({
   setup() {
     return () =>
@@ -3459,7 +3584,7 @@ const BoardEditor = defineComponent({
         h('div', { class: 'board-header' }, [
           h('div', [h('strong', t('board')), selectedAsset.value ? h('span', `${t('selected')}: ${selectedAsset.value.name}`) : null]),
           h('div', { class: 'board-actions' }, [
-            selectedCell.value
+            selectedCell.value && selectedCellItems.value.length
               ? h('button', { class: 'text-button', onClick: clearSelectedCell }, [h(DeleteOutlined), t('clearCell')])
               : null,
             h('button', { class: 'text-button danger', disabled: !draft.value.boardItems.length, onClick: clearBoardItems }, [
@@ -3564,13 +3689,22 @@ const BoardEditor = defineComponent({
         selectedCell.value
           ? h('div', { class: 'cell-detail-panel' }, [
               h('div', { class: 'cell-detail-title' }, t('selectedCellTitle', { col: selectedCell.value.col + 1, row: selectedCell.value.row + 1 })),
+              selectedCellEffects.value.length
+                ? h(
+                    'div',
+                    { class: 'cell-effect-list' },
+                    selectedCellEffects.value.map(renderCellEffect)
+                  )
+                : null,
               selectedCellItems.value.length
                 ? h(
                     'div',
                     { class: 'cell-detail-list' },
                     selectedCellItems.value.map((item) => renderCellDetailItem(item))
                   )
-                : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
+                : selectedCellEffects.value.length
+                  ? null
+                  : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
             ])
           : null
       ]);
@@ -7952,6 +8086,104 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   font-weight: 700;
 }
 
+.cell-effect-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.cell-effect-pill {
+  --cell-effect-color: var(--editor-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  min-height: 2rem;
+  padding: 0.24rem 0.3rem 0.24rem 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--cell-effect-color) 38%, var(--editor-border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--vp-c-bg) 88%, var(--cell-effect-color) 12%);
+  color: var(--editor-text);
+}
+
+.cell-effect-pill.cell-effect-protect {
+  --cell-effect-color: #d9a91a;
+}
+
+.cell-effect-pill.cell-effect-mold {
+  --cell-effect-color: #8d5a88;
+}
+
+.cell-effect-pill.cell-effect-power {
+  --cell-effect-color: #46a7b7;
+}
+
+.cell-effect-pill.cell-effect-rail {
+  --cell-effect-color: #8a6b43;
+}
+
+.cell-effect-pill.cell-effect-plank {
+  --cell-effect-color: #b2763e;
+}
+
+.cell-effect-dot {
+  width: 0.46rem;
+  height: 0.46rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--cell-effect-color);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--cell-effect-color) 20%, transparent);
+}
+
+.cell-effect-copy {
+  display: flex;
+  align-items: baseline;
+  gap: 0.28rem;
+  min-width: 0;
+}
+
+.cell-effect-copy strong {
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+
+.cell-effect-copy small {
+  color: var(--editor-muted);
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+
+.cell-effect-pill > button {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--editor-muted);
+  cursor: pointer;
+  transition:
+    color 120ms ease,
+    background-color 120ms ease,
+    transform 120ms ease;
+}
+
+.cell-effect-pill > button:hover,
+.cell-effect-pill > button:focus-visible {
+  background: color-mix(in srgb, #d14d4d 13%, transparent);
+  color: #b73535;
+}
+
+.cell-effect-pill > button:focus-visible {
+  outline: 2px solid color-mix(in srgb, #d14d4d 58%, var(--editor-accent));
+  outline-offset: 1px;
+}
+
+.cell-effect-pill > button:active {
+  transform: scale(0.92);
+}
+
 .cell-detail-list {
   display: grid;
   gap: 0.45rem;
@@ -10145,10 +10377,15 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   }
 
   .cell-detail-remove,
+  .cell-effect-pill > button,
   .seed-pill button {
     width: 2.75rem;
     min-width: 2.75rem;
     height: 2.75rem;
+  }
+
+  .cell-effect-pill {
+    min-height: 2.75rem;
   }
 
   .segmented button,
