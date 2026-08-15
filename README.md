@@ -55,7 +55,7 @@ Deploy the game locally by using [Docker image](https://hub.docker.com/r/gaozih/
 
 <div align="center">
     
-![Star History Chart](https://api.star-history.com/svg?repos=Gzh0821/pvzg_site&type=date&legend=top-left)
+![Star History Chart](https://star-history.dera.page/svg?repos=Gzh0821/pvzg_site&type=date&legend=top-left)
 
 </div>
 
