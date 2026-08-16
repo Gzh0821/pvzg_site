@@ -286,6 +286,13 @@ const activeOptions = computed<DownloadOption[]>(() => {
         action: t('download'),
         href: links.StorageLite,
         icon: 'file-zipper'
+      }),
+      optionFromHref({
+        title: t('githubTitle'),
+        description: t('githubDescription'),
+        action: t('open'),
+        href: gameInfo.value.Download?.Github,
+        icon: 'brands:github'
       })
     ]);
   }
