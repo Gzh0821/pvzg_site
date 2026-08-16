@@ -1,0 +1,420 @@
+name: Publish release from R2
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version shared by the Release and all platform ZIPs (for example, 0.13.0)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-release-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish ${{ inputs.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      VERSION: ${{ inputs.version }}
+      RELEASE_REPOSITORY: ${{ github.repository }}
+      R2_PUBLIC_BASE_URL: https://storage.pvzge.com
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Validate version and Release identity
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$VERSION" =~ ^[0-9A-Za-z][0-9A-Za-z._-]{0,63}$ ]]; then
+            echo "Invalid version: $VERSION" >&2
+            exit 1
+          fi
+
+          release_api="https://api.github.com/repos/${RELEASE_REPOSITORY}/releases/tags/${VERSION}"
+          response_file=$(mktemp)
+          trap 'rm -f "$response_file"' EXIT
+
+          status=$(curl \
+            --silent \
+            --show-error \
+            --output "$response_file" \
+            --write-out '%{http_code}' \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            "$release_api")
+
+          case "$status" in
+            200)
+              release_tag=$(jq -r '.tag_name' "$response_file")
+              release_name=$(jq -r '.name' "$response_file")
+              release_draft=$(jq -r '.draft' "$response_file")
+              if [[ "$release_tag" != "$VERSION" || "$release_name" != "$VERSION" ]]; then
+                echo "Existing Release must use name and tag '$VERSION'" >&2
+                echo "Found name='$release_name', tag='$release_tag'" >&2
+                exit 1
+              fi
+              echo "RELEASE_EXISTS=true" >>"$GITHUB_ENV"
+              echo "RELEASE_WAS_DRAFT=$release_draft" >>"$GITHUB_ENV"
+              ;;
+            404)
+              echo "RELEASE_EXISTS=false" >>"$GITHUB_ENV"
+              echo "RELEASE_WAS_DRAFT=true" >>"$GITHUB_ENV"
+              ;;
+            *)
+              echo "Failed to inspect Release $VERSION: HTTP $status" >&2
+              exit 1
+              ;;
+          esac
+
+          asset_manifest="$RUNNER_TEMP/release-assets.tsv"
+          asset_metadata="$RUNNER_TEMP/release-asset-metadata.tsv"
+          {
+            printf '%s|%s|%s|%s\n' \
+              "pvzge-${VERSION}.zip" \
+              "pvzge-${VERSION}.zip" \
+              windows \
+              "pvzge-${VERSION}.exe"
+            printf '%s|%s|%s|%s\n' \
+              "pvzge-lite-${VERSION}.zip" \
+              "pvzge-lite-${VERSION}.zip" \
+              windows \
+              "pvzge-lite.exe"
+            printf '%s|%s|%s|%s\n' \
+              "pvzge-macos-${VERSION}.zip" \
+              "macos/pvzge-macos-${VERSION}.zip" \
+              macos \
+              "pvzge.app"
+            printf '%s|%s|%s|%s\n' \
+              "pvzge-lite-macos-${VERSION}.zip" \
+              "macos/pvzge-lite-macos-${VERSION}.zip" \
+              macos \
+              "pvzge-lite.app"
+          } >"$asset_manifest"
+          : >"$asset_metadata"
+
+          {
+            echo "ASSET_MANIFEST=$asset_manifest"
+            echo "ASSET_METADATA=$asset_metadata"
+          } >>"$GITHUB_ENV"
+
+      - name: Download and validate all R2 ZIPs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          download_zip() {
+            local asset_name=$1
+            local r2_key=$2
+            local download_url
+            local downloaded=false
+
+            download_url="${R2_PUBLIC_BASE_URL}/${r2_key}?gha-run=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+            for attempt in {1..10}; do
+              if curl \
+                --fail \
+                --location \
+                --continue-at - \
+                --output "$asset_name" \
+                "$download_url"; then
+                downloaded=true
+                break
+              fi
+              echo "$asset_name download attempt $attempt failed; the next attempt will resume" >&2
+              sleep $((attempt * 2))
+            done
+            if [[ "$downloaded" != true ]]; then
+              echo "Failed to download ${R2_PUBLIC_BASE_URL}/${r2_key} after 10 resumable attempts" >&2
+              exit 1
+            fi
+          }
+
+          validate_windows_zip() {
+            local asset_name=$1
+            local expected_exe=$2
+            local entries
+
+            mapfile -t entries < <(zipinfo -1 "$asset_name")
+            if [[ "${#entries[@]}" -ne 1 || "${entries[0]}" != "$expected_exe" ]]; then
+              echo "$asset_name must contain exactly one file named $expected_exe" >&2
+              printf 'Found: %s\n' "${entries[@]}" >&2
+              exit 1
+            fi
+            unzip -tq "$asset_name"
+          }
+
+          validate_macos_zip() {
+            local asset_name=$1
+            local app_root=$2
+            local binary_name=${app_root%.app}
+            local plist_path="${app_root}/Contents/Info.plist"
+            local entries
+
+            mapfile -t entries < <(zipinfo -1 "$asset_name")
+            for entry in "${entries[@]}"; do
+              case "$entry" in
+                "${app_root}/"*|__MACOSX/*) ;;
+                *)
+                  echo "$asset_name contains an unexpected top-level entry: $entry" >&2
+                  exit 1
+                  ;;
+              esac
+            done
+
+            for required_path in \
+              "$plist_path" \
+              "${app_root}/Contents/MacOS/${binary_name}" \
+              "${app_root}/Contents/_CodeSignature/CodeResources"; do
+              if ! printf '%s\n' "${entries[@]}" | grep --fixed-strings --line-regexp --quiet "$required_path"; then
+                echo "$asset_name is missing $required_path" >&2
+                exit 1
+              fi
+            done
+
+            unzip -tq "$asset_name"
+            python3 -c '
+          import plistlib
+          import sys
+
+          expected_version, expected_executable = sys.argv[1:]
+          metadata = plistlib.loads(sys.stdin.buffer.read())
+          actual_version = metadata.get("CFBundleShortVersionString")
+          actual_executable = metadata.get("CFBundleExecutable")
+          if actual_version != expected_version:
+              raise SystemExit(
+                  f"macOS bundle version {actual_version!r} does not match {expected_version!r}"
+              )
+          if actual_executable != expected_executable:
+              raise SystemExit(
+                  f"macOS bundle executable {actual_executable!r} does not match "
+                  f"{expected_executable!r}"
+              )
+          ' "$VERSION" "$binary_name" < <(unzip -p "$asset_name" "$plist_path")
+          }
+
+          : >"$ASSET_METADATA"
+          while IFS='|' read -r asset_name r2_key asset_kind payload_name; do
+            download_zip "$asset_name" "$r2_key"
+
+            asset_size=$(stat --format='%s' "$asset_name")
+            asset_sha256=$(sha256sum "$asset_name" | awk '{ print $1 }')
+            if (( asset_size <= 0 || asset_size >= 2147483648 )); then
+              echo "$asset_name size $asset_size is empty or exceeds GitHub's 2 GiB limit" >&2
+              exit 1
+            fi
+
+            case "$asset_kind" in
+              windows) validate_windows_zip "$asset_name" "$payload_name" ;;
+              macos) validate_macos_zip "$asset_name" "$payload_name" ;;
+              *)
+                echo "Unknown asset kind: $asset_kind" >&2
+                exit 1
+                ;;
+            esac
+
+            printf '%s|%s|%s\n' \
+              "$asset_name" \
+              "$asset_size" \
+              "$asset_sha256" >>"$ASSET_METADATA"
+            echo "Validated $asset_name ($asset_size bytes, sha256:$asset_sha256)"
+          done <"$ASSET_MANIFEST"
+
+      - name: Create a draft Release when absent
+        if: env.RELEASE_EXISTS == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          gh release create "$VERSION" \
+            --repo "$RELEASE_REPOSITORY" \
+            --target main \
+            --title "$VERSION" \
+            --generate-notes \
+            --draft \
+            --prerelease
+
+      - name: Safely replace all Release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          release_id=$(gh api \
+            "repos/${RELEASE_REPOSITORY}/releases/tags/${VERSION}" \
+            --jq '.id')
+
+          asset_id_by_name() {
+            local asset_name=$1
+            gh api --paginate \
+              "repos/${RELEASE_REPOSITORY}/releases/${release_id}/assets?per_page=100" \
+              --jq ".[] | select(.name == \"$asset_name\") | .id"
+          }
+
+          delete_asset_by_name() {
+            local asset_name=$1
+            local asset_id
+            asset_id=$(asset_id_by_name "$asset_name")
+            if [[ -n "$asset_id" ]]; then
+              gh api --method DELETE \
+                "repos/${RELEASE_REPOSITORY}/releases/assets/${asset_id}"
+            fi
+          }
+
+          cleanup_temporary_assets() {
+            local original_status=$?
+            local cleanup_failed=0
+            trap - EXIT
+            set +e
+
+            while IFS='|' read -r asset_name _ _; do
+              asset_stem=${asset_name%.zip}
+              temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+              delete_asset_by_name "$temp_name" || cleanup_failed=1
+              rm -f "$temp_name" || cleanup_failed=1
+            done <"$ASSET_METADATA"
+
+            if (( original_status == 0 && cleanup_failed != 0 )); then
+              exit 1
+            fi
+            exit "$original_status"
+          }
+          trap cleanup_temporary_assets EXIT
+
+          # Stage every new asset first. Existing formal assets remain untouched
+          # until all four temporary uploads pass size and SHA-256 validation.
+          while IFS='|' read -r asset_name asset_size asset_sha256; do
+            asset_stem=${asset_name%.zip}
+            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+            expected_digest="sha256:${asset_sha256}"
+
+            delete_asset_by_name "$temp_name"
+            ln "$asset_name" "$temp_name"
+
+            uploaded=false
+            for attempt in 1 2 3; do
+              if gh release upload "$VERSION" "$temp_name" \
+                --repo "$RELEASE_REPOSITORY"; then
+                uploaded=true
+                break
+              fi
+              echo "$temp_name upload attempt $attempt failed" >&2
+              delete_asset_by_name "$temp_name"
+              sleep $((attempt * 5))
+            done
+            rm -f "$temp_name"
+            if [[ "$uploaded" != true ]]; then
+              echo "Failed to upload $temp_name after 3 attempts" >&2
+              exit 1
+            fi
+
+            temp_id=$(asset_id_by_name "$temp_name")
+            if [[ -z "$temp_id" ]]; then
+              echo "Temporary Release asset $temp_name is missing after upload" >&2
+              exit 1
+            fi
+            temp_size=$(gh api \
+              "repos/${RELEASE_REPOSITORY}/releases/assets/${temp_id}" \
+              --jq '.size')
+            temp_digest=$(gh api \
+              "repos/${RELEASE_REPOSITORY}/releases/assets/${temp_id}" \
+              --jq '.digest')
+            if [[ "$temp_size" != "$asset_size" || "$temp_digest" != "$expected_digest" ]]; then
+              echo "$temp_name failed size or SHA-256 validation" >&2
+              exit 1
+            fi
+
+            echo "Staged and verified $temp_name"
+          done <"$ASSET_METADATA"
+
+          # Recheck all temporary assets before replacing any formal name.
+          while IFS='|' read -r asset_name asset_size asset_sha256; do
+            asset_stem=${asset_name%.zip}
+            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+            expected_digest="sha256:${asset_sha256}"
+            temp_id=$(asset_id_by_name "$temp_name")
+            if [[ -z "$temp_id" ]]; then
+              echo "Temporary Release asset $temp_name is missing before replacement" >&2
+              exit 1
+            fi
+            temp_size=$(gh api \
+              "repos/${RELEASE_REPOSITORY}/releases/assets/${temp_id}" \
+              --jq '.size')
+            temp_digest=$(gh api \
+              "repos/${RELEASE_REPOSITORY}/releases/assets/${temp_id}" \
+              --jq '.digest')
+            if [[ "$temp_size" != "$asset_size" || "$temp_digest" != "$expected_digest" ]]; then
+              echo "$temp_name failed the replacement preflight" >&2
+              exit 1
+            fi
+          done <"$ASSET_METADATA"
+
+          while IFS='|' read -r asset_name asset_size asset_sha256; do
+            asset_stem=${asset_name%.zip}
+            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+            expected_digest="sha256:${asset_sha256}"
+            temp_id=$(asset_id_by_name "$temp_name")
+
+            delete_asset_by_name "$asset_name"
+            gh api --method PATCH \
+              "repos/${RELEASE_REPOSITORY}/releases/assets/${temp_id}" \
+              -f "name=$asset_name" \
+              --silent
+
+            final_id=$(asset_id_by_name "$asset_name")
+            final_size=$(gh api \
+              "repos/${RELEASE_REPOSITORY}/releases/assets/${final_id}" \
+              --jq '.size')
+            final_digest=$(gh api \
+              "repos/${RELEASE_REPOSITORY}/releases/assets/${final_id}" \
+              --jq '.digest')
+            if [[ "$final_size" != "$asset_size" || "$final_digest" != "$expected_digest" ]]; then
+              echo "$asset_name failed final size or SHA-256 validation" >&2
+              exit 1
+            fi
+
+            echo "Replaced and verified $asset_name"
+          done <"$ASSET_METADATA"
+
+          release_name=$(gh api \
+            "repos/${RELEASE_REPOSITORY}/releases/tags/${VERSION}" \
+            --jq '.name')
+          release_tag=$(gh api \
+            "repos/${RELEASE_REPOSITORY}/releases/tags/${VERSION}" \
+            --jq '.tag_name')
+          if [[ "$release_name" != "$VERSION" || "$release_tag" != "$VERSION" ]]; then
+            echo "Final Release name or tag does not match $VERSION" >&2
+            exit 1
+          fi
+
+          if [[ "$RELEASE_WAS_DRAFT" == true ]]; then
+            gh release edit "$VERSION" \
+              --repo "$RELEASE_REPOSITORY" \
+              --draft=false \
+              --prerelease
+          fi
+
+          echo "Verified Release $VERSION with all Standard and Lite assets"
+
+      - name: Clean up downloaded files
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -f \
+            "pvzge-${VERSION}.zip" \
+            "pvzge-lite-${VERSION}.zip" \
+            "pvzge-macos-${VERSION}.zip" \
+            "pvzge-lite-macos-${VERSION}.zip"
+          if [[ -n "${ASSET_MANIFEST:-}" ]]; then
+            rm -f "$ASSET_MANIFEST"
+          fi
+          if [[ -n "${ASSET_METADATA:-}" ]]; then
+            rm -f "$ASSET_METADATA"
+          fi
