@@ -53,6 +53,11 @@ highlights:
       details: Find plants and zombies, as well as their ID and CodeName
       link: ./almanac/
 
+    - title: Plant Matcher
+      icon: seedling
+      details: Answer 12 scenarios and find your match among 30 plants
+      link: ./useful-tool/which-pvzge-plant/
+
     - title: Save Editor
       icon: floppy-disk
       details: Modify Gardendless game saves

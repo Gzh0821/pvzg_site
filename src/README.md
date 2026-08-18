@@ -53,6 +53,11 @@ highlights:
       details: 查找植物和僵尸,以及它们的 ID 和 CodeName
       link: ./almanac/
 
+    - title: 植物配对机
+      icon: seedling
+      details: 回答 12 道情境题，看看 30 株植物中谁最像你
+      link: ./useful-tool/which-pvzge-plant/
+
     - title: 存档编辑器
       icon: floppy-disk
       details: 修改Gardendless的游戏存档
