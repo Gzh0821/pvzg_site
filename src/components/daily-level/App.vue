@@ -201,6 +201,7 @@
 import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
+import { trackEvent } from '../analytics';
 import { getAlmanacEntityPath } from '../almanac-v2/almanac-routes';
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
 import { getZombieMap } from '../zombiesAlmanac/formatZombies';
@@ -672,6 +673,10 @@ function hideBrokenImage(event: Event) {
 
 function openInGame() {
   if (!deepLinkUrl.value) return;
+  trackEvent('daily_level_open', {
+    level_scope: isTodayDetail.value ? 'current' : 'archive',
+    site_locale: language.value
+  });
   deepLinkHintVisible.value = false;
   if (deepLinkHintTimer !== undefined) window.clearTimeout(deepLinkHintTimer);
   window.location.href = deepLinkUrl.value;
@@ -695,6 +700,11 @@ async function downloadLevel() {
     link.click();
     link.remove();
     URL.revokeObjectURL(url);
+    trackEvent('tool_complete', {
+      site_locale: language.value,
+      tool_action: 'download_level',
+      tool_name: 'daily_level'
+    });
   } catch (err) {
     error.value = err instanceof Error ? err.message : String(err);
   } finally {

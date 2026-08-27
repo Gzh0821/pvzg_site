@@ -27,6 +27,7 @@
             :href="quickDownload.href"
             target="_blank"
             rel="noopener noreferrer"
+            @click="trackDownload(quickDownload.href, detectedOs, 'quick')"
           >
             <VPIcon icon="download" />
             <span class="download-button__text">
@@ -97,6 +98,7 @@
             :href="option.href"
             target="_blank"
             rel="noopener noreferrer"
+            @click="trackDownload(option.href, activeOs, 'option')"
           >
             <span class="download-option__icon">
               <VPIcon :icon="option.icon" />
@@ -150,6 +152,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+
+import { trackEvent } from '../analytics';
 
 type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
 type OsKey = 'windows' | 'mac' | 'linux';
@@ -427,6 +431,22 @@ function optionFromHref(option: Omit<DownloadOption, 'href'> & { href?: string }
 
 function compact<T>(items: Array<T | null | undefined>): T[] {
   return items.filter(Boolean) as T[];
+}
+
+function trackDownload(href: string, os: DetectedOs, source: 'quick' | 'option') {
+  let provider = 'unknown';
+  try {
+    provider = new URL(href, window.location.href).hostname.replace(/^www\./, '');
+  } catch {
+    // Keep malformed analytics metadata from blocking the download link.
+  }
+
+  trackEvent('download_start', {
+    download_placement: source,
+    download_platform: os,
+    download_provider: provider,
+    site_locale: localeKey.value
+  });
 }
 
 async function loadDownloadInfo() {

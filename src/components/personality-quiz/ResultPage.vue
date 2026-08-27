@@ -82,6 +82,7 @@ import QRCode from 'qrcode';
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 
 import AdSenseUnit from '../almanac-v2/AdSenseUnit.vue';
+import { trackEvent } from '../analytics';
 import {
   AXIS_COPY, LOCALES, QUIZ_RESULT_SESSION_KEY, QUIZ_VERSION, UI_COPY,
   getQuizPath, getResultPath, t,
@@ -284,13 +285,20 @@ const shareResult = async () => {
     const file = new File([blob], `pvzge-plant-${result.value.id}.png`, { type: 'image/png' });
     if (navigator.share && (!navigator.canShare || navigator.canShare({ files: [file] }))) {
       await navigator.share({ title: localize(result.value.title), text: resultText(), url: resultUrl(), files: [file] });
+      trackEvent('quiz_share', { share_method: 'native_file', site_locale: props.locale });
       return;
     }
-    if (navigator.share) { await navigator.share({ title: localize(result.value.title), text: resultText(), url: resultUrl() }); return; }
+    if (navigator.share) {
+      await navigator.share({ title: localize(result.value.title), text: resultText(), url: resultUrl() });
+      trackEvent('quiz_share', { share_method: 'native_link', site_locale: props.locale });
+      return;
+    }
   } catch (error) {
     if (error?.name === 'AbortError') return;
   }
-  await copyText(resultText()); showToast(copy.value.unavailableShare);
+  await copyText(resultText());
+  trackEvent('quiz_share', { share_method: 'copy', site_locale: props.locale });
+  showToast(copy.value.unavailableShare);
 };
 const downloadCard = async () => {
   const blob = await buildCardBlob(); const url = URL.createObjectURL(blob);

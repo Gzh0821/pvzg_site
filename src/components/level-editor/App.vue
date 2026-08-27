@@ -179,6 +179,7 @@ import {
   UploadOutlined
 } from '@ant-design/icons-vue';
 import { getAlmanacEntityPath } from '../almanac-v2/almanac-routes';
+import { trackEvent } from '../analytics';
 import { boardObjectData } from '../game-data/board-objects';
 import { resolveBoardGridMapSquares } from '../game-data/board-grid-maps';
 import { plantFeaturesJson as plantFeatures } from '../game-data/plants';
@@ -3109,6 +3110,11 @@ function exportLevel() {
   link.download = `${draft.value.name || 'custom_level'}.json`;
   link.click();
   URL.revokeObjectURL(url);
+  trackEvent('tool_complete', {
+    tool_action: 'export',
+    tool_name: 'level_editor',
+    warning_count: validationSummary.value.warnings
+  });
 }
 
 function openPreview() {

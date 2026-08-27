@@ -101,6 +101,7 @@ import { message, theme } from 'ant-design-vue';
 import { DeleteOutlined, SaveOutlined, UploadOutlined, FileAddOutlined, UndoOutlined } from '@ant-design/icons-vue';
 import { useI18n } from 'vue-i18n';
 
+import { trackEvent } from '../analytics';
 import initialKeybindsFromFile from './KeyBinds.json';
 import versionJson from '../version.json';
 
@@ -380,6 +381,11 @@ const saveKeybinds = () => {
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
+    trackEvent('tool_complete', {
+        modified_count: modifiedCount.value,
+        tool_action: 'export',
+        tool_name: 'keybind_editor'
+    });
     message.success(t('configSavedSuccess'), 1);
 };
 

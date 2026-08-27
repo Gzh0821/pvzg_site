@@ -80,6 +80,7 @@ import {
 } from './quiz-data.mjs';
 import { chooseTieBreakQuestion, evaluateQuiz, needsTieBreak } from './quiz-engine.mjs';
 import { RESULTS } from './quiz-results.mjs';
+import { trackEvent } from '../analytics';
 
 const props = defineProps({
   locale: { type: String, default: 'zh', validator: (value) => Object.hasOwn(LOCALES, value) },
@@ -206,6 +207,11 @@ const continueAfterTieBreak = () => {
 const revealResult = (evaluation) => {
   const resultId = evaluation.ranking[0].id;
   stage.value = 'calculating';
+  trackEvent('quiz_complete', {
+    quiz_result: resultId,
+    site_locale: props.locale,
+    tie_break_used: tieAnswers.value.length > 0,
+  });
   sessionStorage.setItem(QUIZ_RESULT_SESSION_KEY, JSON.stringify({
     version: QUIZ_VERSION, locale: props.locale, resultId, scores: evaluation.scores,
     ranking: evaluation.ranking.slice(0, 5), completedAt: Date.now(),

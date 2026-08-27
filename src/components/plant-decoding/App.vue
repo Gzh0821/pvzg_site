@@ -399,6 +399,7 @@ import { CheckCircleOutlined, EyeOutlined, ReloadOutlined } from '@ant-design/ic
 import { onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 
+import { trackEvent } from '../analytics';
 import decodingData from './decoding-plants.json';
 import { analyzePuzzle, gemRewardForRounds, judgeAttempt, makeSuggestionPlan, suggestionConfidence } from './solver.mjs';
 import { getPlantMap } from '../plantsAlmanac/formatPlants';
@@ -643,13 +644,22 @@ function setAssistantFeedback(state: FeedbackState) {
 
 function submitAssistantRound() {
     if (!assistantCanSubmit.value || assistantContradiction.value) return;
+    const solved = assistantFeedback.value.every(state => state === 'correct');
     assistantHistory.value.push({
         index: assistantHistory.value.length + 1,
         guesses: assistantGuesses.value.slice(),
         feedback: assistantFeedback.value.slice() as FeedbackState[],
         usedOutcomeProbe: currentRecommendationIsProbe.value
     });
-    if (!assistantFeedback.value.every(state => state === 'correct')) nextTick(applyRecommendation);
+    if (solved) {
+        trackEvent('tool_complete', {
+            mode: 'assistant',
+            round_count: assistantHistory.value.length,
+            tool_name: 'plant_decoding'
+        });
+    } else {
+        nextTick(applyRecommendation);
+    }
 }
 
 let completionWorker: Worker | null = null;
@@ -786,6 +796,11 @@ function confirmPractice() {
     if (practiceSolved.value) {
         practiceReward.value = Math.round(secretRules.value.length * activeBasePlants.value.length * Math.exp(-Math.pow(practiceStep.value / 8, 2)));
         revealAnswer.value = true;
+        trackEvent('tool_complete', {
+            mode: 'practice',
+            round_count: practiceStep.value,
+            tool_name: 'plant_decoding'
+        });
     } else {
         const next = practiceLocked.value.findIndex(locked => !locked);
         if (next >= 0) practiceActiveSlot.value = next;

@@ -298,6 +298,7 @@ import { DeleteOutlined, FileAddOutlined, SaveOutlined, UploadOutlined } from '@
 import { useI18n } from 'vue-i18n'
 import JSON5 from 'json5'
 
+import { trackEvent } from '../analytics'
 import { getAlmanacEntityPath } from '../almanac-v2/almanac-routes'
 import { getPlantIdMap } from '../plantsAlmanac/formatPlants'
 
@@ -742,6 +743,10 @@ const saveArchive = () => {
     a.download = `${saveName}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    trackEvent('tool_complete', {
+        tool_action: 'export',
+        tool_name: 'save_editor'
+    });
     message.success(t('save successfully'));
 };
 </script>
