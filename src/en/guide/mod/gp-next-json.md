@@ -21,6 +21,8 @@ This helps you confirm:
 
 [Download the game data archive (ZIP, 1352 JSON files)](/resources/game-json-0.14.0.zip)
 
+ZombieProps and netdisk links have been synchronized with the original files supplied by the author; see MANIFEST.json in the archive for sources and checksums.
+
 Includes the game’s Features, Objects, levels, language data and other JSON resources. Use it to look up fields, create patches or import individual levels into the level editor. This is a reference archive, not an installable datapack. To inspect data modified by your current mods, use the export methods below.
 
 ## What You Can Export
