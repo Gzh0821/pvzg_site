@@ -1,0 +1,502 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvzge.com/jsons/schema/gpn-worldmap.schema.json",
+  "title": "GP-Next Worldmap JSON / GP-Next 世界地图 JSON",
+  "description": "Schema for gp-next runtime world-map replacement patches. 用于 GP-Next 运行时世界地图替代补丁。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "worlds"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "apiVersion": {
+      "const": 1,
+      "description": "Worldmap JSON API version. Current format is version 1. worldmap JSON 的 API 版本；当前格式为第 1 版。"
+    },
+    "worlds": {
+      "type": "object",
+      "description": "Map keyed by world CODENAME. 以世界 CODENAME 为键的对象。",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/worldPatch"
+      }
+    }
+  },
+  "$defs": {
+    "worldPatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "map"
+      ],
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/worldData"
+        },
+        "map": {
+          "$ref": "#/$defs/mapSpec"
+        },
+        "endless": {
+          "$ref": "#/$defs/endlessSpec"
+        }
+      }
+    },
+    "worldData": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "World-level data overrides. 世界级数据覆盖。",
+      "properties": {
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Override LEVELS. 覆盖 LEVELS。"
+        },
+        "plants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Override PLANTS. 覆盖 PLANTS。"
+        },
+        "startingLevels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Override STARTINGLEVELS. 覆盖 STARTINGLEVELS。"
+        },
+        "epicTarget": {
+          "type": "string",
+          "description": "Override EPIC_TARGET. 覆盖 EPIC_TARGET。"
+        },
+        "intro": {
+          "type": "string",
+          "description": "Override INTRO. 覆盖 INTRO。"
+        }
+      }
+    },
+    "mapSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "mainline"
+      ],
+      "properties": {
+        "mode": {
+          "const": "replace",
+          "description": "Replace the runtime graph completely. 完全替代运行时地图图结构。"
+        },
+        "reuseOriginalPositions": {
+          "type": "boolean",
+          "description": "When a mainline node omits `position`, reuse the original world mainline position at the same mainline array index. 当主线节点未写 `position` 时，复用原地图主线中相同主线数组下标的位置。"
+        },
+        "overlapThreshold": {
+          "type": "number",
+          "description": "Warn if nodes are closer than this distance. 节点距离小于该值时给出重叠警告。"
+        },
+        "autoLayout": {
+          "$ref": "#/$defs/autoLayout"
+        },
+        "mainline": {
+          "type": "array",
+          "description": "Ordered mainline node list. Array order defines the main progression automatically. 有序主线节点列表；数组顺序自动定义主线推进。",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nodeSpec"
+          }
+        },
+        "branches": {
+          "type": "array",
+          "description": "Optional side-branch node list. Branch nodes are connected through `children` refs. 可选支线节点列表；支线通过 `children` 引用连接。",
+          "items": {
+            "$ref": "#/$defs/nodeSpec"
+          }
+        }
+      }
+    },
+    "autoLayout": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Fallback layout settings. 自动布局回退参数。",
+      "properties": {
+        "baseX": {
+          "type": "number",
+          "description": "Fallback base X. 自动布局基准 X。"
+        },
+        "baseY": {
+          "type": "number",
+          "description": "Fallback base Y. 自动布局基准 Y。"
+        },
+        "xStep": {
+          "type": "number",
+          "description": "Horizontal spacing, default 330. 水平间距，默认 330。"
+        },
+        "yStep": {
+          "type": "number",
+          "description": "Vertical spacing, default 180. 垂直间距，默认 180。"
+        }
+      }
+    },
+    "nodeSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable node id used by children refs. 供 children 引用的稳定节点 id。"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "level",
+            "plant",
+            "giftBox",
+            "upgrade",
+            "epicPortal"
+          ],
+          "description": "Runtime island type. 运行时节点类型。"
+        },
+        "appearance": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "minigame",
+            "gargantuar",
+            "zomboss"
+          ],
+          "description": "Level-node appearance for type=level. Use gargantuar for 'small boss' / giant-island style stages. level 类型节点的外观类别；“小 Boss”/巨人岛风格关卡用 gargantuar。"
+        },
+        "title": {
+          "type": "string",
+          "description": "Visible node title / label. 节点上显示的标题文字。"
+        },
+        "template": {
+          "$ref": "#/$defs/templateSelector",
+          "description": "Template selector used only while cloning visuals/components from the loaded runtime map. For `giftBox` / `epicPortal`, `type` selectors are restricted to real vanilla special-node candidates instead of generic same-type fallback. 仅在从当前已加载运行时地图克隆视觉/组件时使用的模板选择器。对于 `giftBox` / `epicPortal`，按 `type` 选择时会限制为真正的原版特殊节点候选，而不是泛化同类回退。"
+        },
+        "position": {
+          "$ref": "#/$defs/position"
+        },
+        "relativePosition": {
+          "$ref": "#/$defs/positionOffset"
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Level ids for level nodes. level 节点对应的关卡 id 列表。"
+        },
+        "portalLevels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Epic level ids for epicPortal nodes. epicPortal 节点对应的史诗关卡 id 列表。"
+        },
+        "plantReward": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "description": "Plant reward for plant nodes. plant 节点的植物奖励。"
+        },
+        "upgradeReward": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "description": "Upgrade reward for upgrade nodes. upgrade 节点的升级奖励。"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Additional child node ids. For `mainline`, GP-Next auto-links the next mainline item before these declared children. 额外子节点 id 列表；对于 `mainline`，GP-Next 会先自动连接下一项主线，再追加这里声明的子节点。"
+        },
+        "warnOverlap": {
+          "type": "boolean",
+          "description": "Enable overlap warning for this node. 是否为该节点启用重叠警告。"
+        },
+        "overlapThreshold": {
+          "type": "number",
+          "description": "Per-node overlap warning distance. 当前节点自己的重叠警告距离。"
+        }
+      },
+      "allOf": [
+        {
+          "not": {
+            "required": [
+              "position",
+              "relativePosition"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "level"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "levels"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "plant"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "plantReward"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "upgrade"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "upgradeReward"
+            ]
+          }
+        }
+      ]
+    },
+    "endlessSpec": {
+      "description": "Separate endless-island declaration. Currently accepted for compatibility but ignored at runtime; vanilla endless islands stay unchanged because endless islands use different runtime semantics from gift/portal special nodes. 独立的无尽岛声明；当前仅为兼容而保留，运行时会忽略并保留原版无尽岛，因为无尽岛的运行时语义与礼盒/传送门特殊节点不同。",
+      "oneOf": [
+        {
+          "type": "array",
+          "description": "Compatibility-only field; runtime currently ignores custom endless replacement. 兼容字段；运行时当前会忽略自定义无尽替换。",
+          "items": {
+            "$ref": "#/$defs/endlessNodeSpec"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "keepOriginal": {
+              "type": "boolean",
+              "description": "Compatibility hint. Vanilla endless islands are currently always kept untouched. 兼容提示；当前原版无尽岛始终保持不变。"
+            },
+            "nodes": {
+              "type": "array",
+              "description": "Compatibility-only field; runtime currently ignores custom endless replacement. 兼容字段；运行时当前会忽略自定义无尽替换。",
+              "items": {
+                "$ref": "#/$defs/endlessNodeSpec"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "endlessNodeSpec": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/nodeSpec"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "level",
+              "description": "Endless islands are level nodes. 无尽岛本质上是 level 节点。"
+            }
+          }
+        }
+      ]
+    },
+    "templateSelector": {
+      "description": "Selector used only when cloning from existing runtime nodes. `levelId` can match either ordinary levelJsonsID or endless-island entrance levelsID. 仅在从现有运行时节点克隆时使用的模板选择器；其中 `levelId` 既可匹配普通 levelJsonsID，也可匹配无尽岛入口的 levelsID。",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Match by stable runtime/custom id. 按稳定运行时/custom id 匹配。"
+            },
+            "customId": {
+              "type": "string",
+              "description": "Match by GP-Next custom id. 按 GP-Next 自定义 id 匹配。"
+            },
+            "levelId": {
+              "type": "string",
+              "description": "Match a level island by ordinary levelJsonsID or endless entrance levelsID. 按普通 levelJsonsID 或无尽入口 levelsID 匹配 level 岛。"
+            },
+            "levelIds": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              ],
+              "description": "Match a level island by all listed ordinary/endless level ids. 按给出的普通/无尽关卡 id 集合匹配 level 岛。"
+            },
+            "portalLevelId": {
+              "type": "string",
+              "description": "Match an epic portal by one represented epic level id. 按单个史诗关卡 id 匹配传送门。"
+            },
+            "portalLevelIds": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              ],
+              "description": "Match an epic portal by all represented epic level ids. 按整组史诗关卡 id 匹配传送门。"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "level",
+                "plant",
+                "giftBox",
+                "upgrade",
+                "epicPortal"
+              ],
+              "description": "Match by runtime island type. For `giftBox` / `epicPortal`, GP-Next only accepts real vanilla special-node candidates that already carry the corresponding runtime visual/component chain. 按运行时节点类型匹配。对于 `giftBox` / `epicPortal`，GP-Next 只接受已经携带对应运行时视觉/组件链的真正原版特殊节点候选。"
+            },
+            "appearance": {
+              "type": "string",
+              "enum": [
+                "normal",
+                "minigame",
+                "gargantuar",
+                "zomboss"
+              ],
+              "description": "Match by level-node appearance family. 按 level 节点外观族匹配。"
+            },
+            "plantDisplayed": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "description": "Match a plant node by displayed reward. 按展示的植物奖励匹配植物节点。"
+            },
+            "upgradeDisplayed": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "description": "Match an upgrade node by displayed reward. 按展示的升级奖励匹配升级节点。"
+            }
+          },
+          "minProperties": 1
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "description": "Local X position. 本地 X 坐标。"
+        },
+        "y": {
+          "type": "number",
+          "description": "Local Y position. 本地 Y 坐标。"
+        },
+        "z": {
+          "type": "number",
+          "description": "Local Z position. 本地 Z 坐标。"
+        }
+      }
+    },
+    "positionOffset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "description": "Offset relative to the resolved parent node position. 相对于父节点解析后位置的偏移量。",
+      "properties": {
+        "x": {
+          "type": "number",
+          "description": "Relative X offset. 相对 X 偏移。"
+        },
+        "y": {
+          "type": "number",
+          "description": "Relative Y offset. 相对 Y 偏移。"
+        },
+        "z": {
+          "type": "number",
+          "description": "Relative Z offset. 相对 Z 偏移。"
+        }
+      }
+    }
+  }
+}
