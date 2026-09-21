@@ -1,0 +1,113 @@
+// place your custom styles here
+@use 'sass:math';
+
+@font-face {
+    font-family: 'pvzgeFontEN';
+    src: url('/fonts/FBU-ENGRU.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'pvzgFont';
+    src: url('/fonts/FBUSV8C5EI.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+// @font-face {
+//     font-family: 'paris2024';
+//     src: url('/fonts/Paris2024-Variable.woff2') format('woff2');
+//     font-weight: 480;
+//     font-style: normal;
+// }
+
+#main-title {
+    font-family: 'Ma Shan Zheng', 'pvzgeFontEN', 'pvzgFont', serif;
+}
+
+#main-description {
+    font-family: 'pvzgeFontEN', 'pvzgFont', "Noto Sans SC", "Arial", sans-serif;
+}
+
+.vp-card-container {
+    font-family: "Noto Sans SC", "Arial", sans-serif;
+}
+
+.vp-site-name {
+    font-family: 'Ma Shan Zheng', 'pvzgeFontEN', 'pvzgFont', serif;
+}
+
+div.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+iframe.youtube-video {
+    margin: 8px 0;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 719px) {
+    #markdown-content .adsbygoogle > div,
+    #markdown-content .adsbygoogle iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+.vp-hero-info {
+    display: block;
+    text-align: center;
+
+    .vp-hero-image {
+        max-height: 200px;
+        margin: 0 auto;
+    }
+}
+
+#main-description {
+    max-width: 100%;
+}
+
+// Summer navbar
+
+.vp-navbar {
+    background:
+        linear-gradient(90deg,
+            rgba(74, 188, 181, 0.34) 0%,
+            rgba(241, 207, 78, 0.34) 50%,
+            rgba(115, 205, 211, 0.36) 100%),
+        rgba(247, 252, 250, 0.92);
+    box-shadow: 0 1px 0 rgba(8, 105, 99, 0.24);
+}
+
+[data-theme="dark"] .vp-navbar {
+    background:
+        linear-gradient(90deg,
+            rgba(20, 133, 127, 0.42) 0%,
+            rgba(171, 139, 31, 0.3) 50%,
+            rgba(27, 126, 145, 0.4) 100%),
+        #061a1c;
+    box-shadow: 0 1px 0 rgba(89, 230, 219, 0.3);
+}
+
+.vp-navbar::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #2aa9a2, #e7c84b, #54c4c6);
+    opacity: 0.8;
+    pointer-events: none;
+}

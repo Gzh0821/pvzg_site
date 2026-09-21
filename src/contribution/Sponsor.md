@@ -1,0 +1,19 @@
+---
+title: 赞助
+icon: fa-solid fa-hand-holding-heart
+pageInfo: false
+comment: false
+index: true
+order: 4
+---
+
+如果您希望对本网站进行赞助(与 Gardendless 游戏无关)，可以通过以下方式支持我们：
+[Buy Me a Coffee](https://buymeacoffee.com/gaozih)/[Github Sponsors](https://github.com/sponsors/Gzh0821)
+
+<a href="https://www.buymeacoffee.com/gaozih" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important; display: block; margin: 0 auto;"></a>
+
+《PvZ2 Gardendless》游戏的开发者[@南 Garden](https://space.bilibili.com/355909245)对本网站的开发和维护提供了大量的支持。
+
+本网站使用开源主题 [VuePress Theme Hope](https://theme-hope.vuejs.press/zh/) 开发。
+
+感谢所有对《PvZ2 Gardendless》游戏和官网的支持！

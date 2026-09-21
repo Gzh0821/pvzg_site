@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvzge.com/jsons/schema/gpn-plant-levels.schema.json",
+  "title": "GP-Next Plant Levels JSON / GP-Next 植物等级 JSON",
+  "description": "Schema for GP-Next plant-level registry config. 用于 GP-Next 植物等级注册配置。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plants"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional schema URI. 可选的 schema 地址。"
+    },
+    "meta": {
+      "type": "object",
+      "description": "Optional metadata bucket reserved for future use. 预留给未来扩展的可选元数据对象。",
+      "additionalProperties": true
+    },
+    "plants": {
+      "type": "object",
+      "description": "Base plant map keyed by base codename. 以基础植物 codename 为键的等级配置映射。",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^.+$": {
+          "$ref": "#/$defs/basePlantConfig"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "basePlantConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "levels"
+      ],
+      "properties": {
+        "levels": {
+          "type": "object",
+          "description": "Per-level clone mapping. 每个等级对应的 clone 配置。",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[1-9][0-9]*$": {
+              "$ref": "#/$defs/levelEntry"
+            }
+          }
+        },
+        "ui": {
+          "$ref": "#/$defs/uiConfig"
+        },
+        "almanacUpgrade": {
+          "$ref": "#/$defs/almanacUpgradeConfig"
+        }
+      }
+    },
+    "levelEntry": {
+      "description": "Legacy string form or object form with icon/display text. 兼容旧字符串形式，也支持带图标/显示名的对象形式。",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": ".*\\S.*",
+          "description": "Legacy form: clone codename only. 旧格式：只写 clone codename。"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "cloneCodename"
+          ],
+          "properties": {
+            "cloneCodename": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": ".*\\S.*",
+              "description": "Clone codename for this level. 当前等级对应的 clone codename。"
+            },
+            "icon": {
+              "type": "string",
+              "enum": [
+                "wood",
+                "silver",
+                "gold",
+                "star"
+              ],
+              "description": "Badge icon style. Defaults to `wood` when omitted. 等级角标图标样式；省略时默认 `wood`。"
+            },
+            "displayName": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": ".*\\S.*",
+              "description": "Custom badge text. Falls back to `LVL {n}` only when omitted and `hideText` is not true. 自定义等级角标文字；仅在省略且 `hideText` 不为 true 时回退到 `LVL {n}`。"
+            },
+            "hideText": {
+              "type": "boolean",
+              "description": "Hide the badge text for this level while keeping the badge icon visible. 隐藏当前等级的角标文字，同时保留角标图标。"
+            }
+          }
+        }
+      ]
+    },
+    "uiConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "UI toggles. UI 开关。",
+      "properties": {
+        "showInAlmanac": {
+          "type": "boolean",
+          "description": "Show level-related entry in almanac UI. 是否在图鉴 UI 中显示等级相关入口。"
+        },
+        "showLevelBadge": {
+          "type": "boolean",
+          "description": "Show level badge text on cards. 是否在卡面显示等级角标文字。"
+        }
+      }
+    },
+    "almanacUpgradeConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Almanac upgrade configuration. 图鉴升级配置。",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Allow upgrading from almanac UI. 是否允许在图鉴中升级。"
+        },
+        "lockedReasonText": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": ".*\\S.*",
+          "description": "Reason shown when almanac upgrade is unavailable. 图鉴升级不可用时显示的说明。"
+        },
+        "costs": {
+          "type": "object",
+          "description": "Upgrade costs keyed by target level. 以目标等级为键的升级花费。",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[1-9][0-9]*$": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/costItem"
+              }
+            }
+          }
+        }
+      }
+    },
+    "costItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "amount"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": ".*\\S.*",
+          "description": "Cost type such as `coin` or `gem`. 花费类型，例如 `coin` 或 `gem`。"
+        },
+        "amount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Cost amount. 花费数量。"
+        }
+      }
+    }
+  }
+}

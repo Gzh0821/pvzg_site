@@ -1,0 +1,10 @@
+project_id: pvzg_site
+base_path: .
+files:
+  - source: /src/en/**/*.md
+    translation: /src/%locale%/**/%original_file_name%
+    languages_mapping:
+      locale:
+        en: en
+  - source: /src/components/**/locales/en.json
+    translation: /src/components/**/locales/%two_letters_code%.json

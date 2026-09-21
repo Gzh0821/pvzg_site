@@ -1,0 +1,85 @@
+---
+home: true
+icon: home
+comment: false
+title: 主页
+heroImage: /pvz_logo@200.webp
+heroImageStyle:  
+  border-radius: 20%
+  border: "5px solid rgba(255, 255, 255, 0.3)"
+  box-shadow: "0 0 12px rgba(0, 0, 0, 0.2)"
+  backdrop-filter: "blur(10px)"
+  background: "rgba(255, 255, 255, 0.1)"
+bgImage: /assets/image/background.webp
+bgImageStyle:
+  background-attachment: fixed
+  filter: brightness(60%)
+  opacity: 0.5 
+heroFullScreen: true
+heroText: PvZ2 Gardendless
+tagline: 完全重制的全桌面平台PvZ2
+actions:
+  - text: 下载链接
+    icon: circle-down
+    link: ./download/
+    type: primary
+
+  - text: 每日关卡
+    icon: calendar-days
+    link: ./creator-garden/daily-level
+
+  - text: 社区
+    icon: comment
+    link: ./contribution/
+
+  - text: 赞助
+    icon: hand-holding-heart
+    link: ./contribution/Sponsor
+
+highlights:
+  - bgImage: /assets/image/background.webp
+    bgImageStyle:
+      background-attachment: fixed
+      opacity: 0.5
+      filter: brightness(60%)
+    features:
+    - title: 在线游玩
+      icon: circle-play
+      details: 在浏览器中直接体验 PvZ2 Gardendless
+      link: https://play.pvzge.com
+
+    - title: 在线图鉴
+      icon: book-atlas
+      details: 查找植物和僵尸,以及它们的 ID 和 CodeName
+      link: ./almanac/
+
+    - title: 植物配对机
+      icon: seedling
+      details: 回答 12 道情境题，看看 30 株植物中谁最像你
+      link: ./useful-tool/which-pvzge-plant/
+
+    - title: 存档编辑器
+      icon: floppy-disk
+      details: 修改Gardendless的游戏存档
+      link: ./useful-tool/save-editor
+
+    - title: 植物解码助手
+      icon: puzzle-piece
+      details: 记录游戏反馈、智能排除答案，也可随时练习解码
+      link: ./useful-tool/plant-decoding
+
+    - title: GP-Next 及模组指南
+      icon: toolbox
+      details: 使用 GP-Next，安装与制作模组
+      link: ./guide/mod/
+
+    - title: 自定义关卡编辑器
+      icon: pen-to-square
+      details: 可视化编辑并导出自定义关卡
+      link: ./useful-tool/level-editor
+
+    - title: 每日关卡
+      icon: calendar-days
+      details: 查看来自 Discord 社区投稿并定时更新的每日关卡
+      link: ./creator-garden/daily-level
+---

@@ -1,0 +1,877 @@
+<template>
+  <section class="download-panel" aria-labelledby="download-panel-title">
+    <div class="download-hero">
+      <div class="download-hero__copy">
+        <h2 id="download-panel-title">{{ t('title') }}</h2>
+
+        <div class="download-facts" :aria-label="t('releaseInfo')">
+          <div v-if="gameInfo?.Version" class="download-fact">
+            <span>{{ t('version') }}</span>
+            <strong>{{ gameInfo.Version }}</strong>
+          </div>
+          <div v-if="gameInfo?.Name" class="download-fact">
+            <span>{{ t('buildName') }}</span>
+            <strong>{{ gameInfo.Name }}</strong>
+          </div>
+          <div v-if="gpNextInfo?.version" class="download-fact">
+            <span>{{ t('gpNext') }}</span>
+            <strong>{{ gpNextInfo.version }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="download-quick" :aria-label="t('quickDownload')">
+        <template v-if="quickDownload">
+          <a
+            class="download-button download-button--primary"
+            :href="quickDownload.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="trackDownload(quickDownload.href, detectedOs, 'quick')"
+          >
+            <VPIcon icon="download" />
+            <span class="download-button__text">
+              <span>{{ t('localDownload') }}</span>
+              <small class="download-button__system">
+                <VPIcon :icon="quickDownload.osIcon" />
+                <span>{{ quickDownload.osName }}</span>
+              </small>
+            </span>
+          </a>
+        </template>
+        <a v-else class="download-button download-button--primary" href="#download-options">
+          <VPIcon icon="computer" />
+          <span>{{ t('choosePlatform') }}</span>
+        </a>
+        <a v-if="quickDownload" class="download-button download-button--ghost" href="#download-options">
+          <VPIcon icon="computer" />
+          <span>{{ t('choosePlatform') }}</span>
+        </a>
+      </div>
+    </div>
+
+    <div v-if="loading" class="download-state">{{ t('loading') }}</div>
+    <div v-else-if="error" class="download-state download-state--error">
+      <strong>{{ t('loadFailed') }}</strong>
+      <span>{{ error }}</span>
+    </div>
+
+    <template v-else>
+      <section class="download-changelog" :aria-labelledby="changelogHeadingId">
+        <div class="download-section-head">
+          <h3 :id="changelogHeadingId">{{ t('changelog') }}</h3>
+        </div>
+        <ul v-if="changes.length">
+          <li v-for="item in changes" :key="item">{{ item }}</li>
+        </ul>
+        <p v-else class="download-muted">{{ t('noChangelog') }}</p>
+      </section>
+
+      <nav id="download-options" class="download-os-switch" :aria-label="t('choosePlatform')">
+        <button
+          v-for="os in osTabs"
+          :key="os.key"
+          class="download-os-tab"
+          :class="{ 'download-os-tab--active': activeOs === os.key }"
+          type="button"
+          :aria-pressed="activeOs === os.key"
+          @click="activeOs = os.key"
+        >
+          <VPIcon :icon="os.icon" />
+          <span>
+            <strong>{{ os.label }}</strong>
+          </span>
+        </button>
+      </nav>
+
+      <section class="download-platform" :aria-labelledby="platformHeadingId">
+        <div class="download-section-head">
+          <h3 :id="platformHeadingId">{{ activePlatformTitle }}</h3>
+        </div>
+
+        <div v-if="activeOptions.length" class="download-option-grid">
+          <a
+            v-for="option in activeOptions"
+            :key="option.title + option.href"
+            class="download-option"
+            :class="{ 'download-option--recommended': option.recommended }"
+            :href="option.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="trackDownload(option.href, activeOs, 'option')"
+          >
+            <span class="download-option__icon">
+              <VPIcon :icon="option.icon" />
+            </span>
+            <span class="download-option__body">
+              <strong>{{ option.title }}</strong>
+              <small>{{ option.description }}</small>
+            </span>
+            <span class="download-option__action">{{ option.action }}</span>
+          </a>
+        </div>
+        <p v-else class="download-muted">{{ t('noOptions') }}</p>
+
+        <div v-if="activeOs === 'mac'" class="download-note download-note--warning">
+          <strong>{{ t('macNoticeTitle') }}</strong>
+          <p>{{ t('macNotice') }}</p>
+          <ol>
+            <li>{{ t('macStepType') }} <code>sudo xattr -r -d com.apple.quarantine </code></li>
+            <li>{{ t('macStepDrag') }}</li>
+            <li>{{ t('macStepRun') }}</li>
+          </ol>
+          <p>{{ t('macSecurity') }}</p>
+        </div>
+
+        <div v-if="activeOs === 'linux'" class="download-note">
+          <strong>{{ t('linuxNoticeTitle') }}</strong>
+          <p>{{ t('linuxNotice') }}</p>
+        </div>
+      </section>
+
+      <section v-if="gameInfo?.Hash?.MD5 || gameInfo?.Hash?.SHA256" class="download-hash" :aria-label="t('hashes')">
+        <div v-if="gameInfo?.Hash?.MD5">
+          <span>MD5</span>
+          <code>{{ gameInfo.Hash.MD5 }}</code>
+        </div>
+        <div v-if="gameInfo?.Hash?.SHA256">
+          <span>SHA256</span>
+          <code>{{ gameInfo.Hash.SHA256 }}</code>
+        </div>
+      </section>
+
+      <div class="download-history">
+        <VPIcon icon="clock-rotate-left" />
+        <span>{{ t('historyText') }}</span>
+        <a :href="historyLink.href" target="_blank" rel="noopener noreferrer">{{ historyLink.label }}</a>
+      </div>
+    </template>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { computed, onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+import { trackEvent } from '../analytics';
+
+type LocaleKey = 'zh' | 'en' | 'es' | 'ru';
+type OsKey = 'windows' | 'mac' | 'linux';
+type DetectedOs = OsKey | 'unknown';
+
+type ProviderLinks = {
+  Github?: string;
+  Storage?: string;
+  StorageLite?: string;
+  Quark?: string;
+  QuarkZip?: string;
+  Baidu?: string;
+  Pan123?: string;
+};
+
+type GameInfo = {
+  Name?: string;
+  Version?: string;
+  NewFeatures?: string[];
+  EnNewFeatures?: string[];
+  Hash?: {
+    MD5?: string;
+    SHA256?: string;
+  };
+  Download?: ProviderLinks;
+  MacOSDownload?: {
+    Storage?: string;
+    StorageLite?: string;
+  };
+};
+
+type GpNextInfo = {
+  version?: string;
+};
+
+type DownloadOption = {
+  title: string;
+  description: string;
+  action: string;
+  href: string;
+  icon: string;
+  recommended?: boolean;
+};
+
+const props = withDefaults(defineProps<{ locale?: LocaleKey }>(), {
+  locale: 'en'
+});
+
+const messages = Object.fromEntries(
+  Object.entries(import.meta.glob('./locales/*.json', { eager: true }))
+    .map(([key, value]) => [key.match(/\/([a-zA-Z-]+)\.json$/)?.[1], (value as { default: Record<string, string> }).default])
+    .filter(([locale]) => locale)
+) as Record<LocaleKey, Record<string, string>>;
+
+const gameInfo = ref<GameInfo | null>(null);
+const gpNextInfo = ref<GpNextInfo | null>(null);
+const loading = ref(true);
+const error = ref('');
+const detectedOs = ref<DetectedOs>('unknown');
+const activeOs = ref<OsKey>('windows');
+
+const localeKey = computed<LocaleKey>(() => {
+  return props.locale && props.locale in messages ? props.locale : 'en';
+});
+const { t, locale } = useI18n({
+  useScope: 'local',
+  locale: localeKey.value,
+  fallbackLocale: 'en',
+  messages
+});
+locale.value = localeKey.value;
+const changelogHeadingId = computed(() => `download-changelog-${localeKey.value}`);
+const platformHeadingId = computed(() => `download-platform-${localeKey.value}`);
+
+const osTabs = computed(() => [
+  { key: 'windows' as const, icon: 'brands:windows', label: 'Windows' },
+  { key: 'mac' as const, icon: 'brands:apple', label: 'macOS' },
+  { key: 'linux' as const, icon: 'brands:linux', label: 'Linux' }
+]);
+
+const activePlatformTitle = computed(() => {
+  if (activeOs.value === 'mac') {
+    return t('macTitle');
+  }
+  if (activeOs.value === 'linux') {
+    return t('linuxTitle');
+  }
+  return t('windowsTitle');
+});
+
+const quickDownload = computed(() => {
+  if (detectedOs.value !== 'windows' && detectedOs.value !== 'mac') {
+    return null;
+  }
+  const href = localDownloadHref(detectedOs.value);
+  if (!href) {
+    return null;
+  }
+  return {
+    href,
+    ...downloadOsMeta(detectedOs.value)
+  };
+});
+
+const changes = computed(() => {
+  if (!gameInfo.value) {
+    return [];
+  }
+  if (localeKey.value === 'zh') {
+    return gameInfo.value.NewFeatures || gameInfo.value.EnNewFeatures || [];
+  }
+  return gameInfo.value.EnNewFeatures || gameInfo.value.NewFeatures || [];
+});
+
+const activeOptions = computed<DownloadOption[]>(() => {
+  if (!gameInfo.value) {
+    return [];
+  }
+
+  if (activeOs.value === 'mac') {
+    const links = gameInfo.value.MacOSDownload || {};
+    return compact([
+      optionFromHref({
+        title: t('standardTitle'),
+        description: t('standardDescription'),
+        action: t('download'),
+        href: links.Storage,
+        icon: 'download',
+        recommended: true
+      }),
+      optionFromHref({
+        title: t('liteTitle'),
+        description: t('liteDescription'),
+        action: t('download'),
+        href: links.StorageLite,
+        icon: 'file-zipper'
+      }),
+      optionFromHref({
+        title: t('githubTitle'),
+        description: t('githubDescription'),
+        action: t('open'),
+        href: gameInfo.value.Download?.Github,
+        icon: 'brands:github'
+      })
+    ]);
+  }
+
+  if (activeOs.value === 'linux') {
+    return [
+      {
+        title: t('dockerTitle'),
+        description: t('dockerDescription'),
+        action: t('open'),
+        href: 'https://hub.docker.com/r/gaozih/pvzge',
+        icon: 'brands:docker',
+        recommended: true
+      }
+    ];
+  }
+
+  const links = gameInfo.value.Download || {};
+  return compact([
+    optionFromHref({
+      title: t('standardTitle'),
+      description: t('standardDescription'),
+      action: t('download'),
+      href: links.Storage,
+      icon: 'download',
+      recommended: true
+    }),
+    optionFromHref({
+      title: t('liteTitle'),
+      description: t('liteDescription'),
+      action: t('download'),
+      href: links.StorageLite,
+      icon: 'file-zipper'
+    }),
+    optionFromHref({
+      title: t('githubTitle'),
+      description: t('githubDescription'),
+      action: t('open'),
+      href: links.Github,
+      icon: 'brands:github'
+    }),
+    optionFromHref({
+      title: t('quarkTitle'),
+      description: t('quarkDescription'),
+      action: t('open'),
+      href: links.Quark,
+      icon: 'cloud'
+    }),
+    optionFromHref({
+      title: t('quarkZipTitle'),
+      description: t('quarkDescription'),
+      action: t('download'),
+      href: links.QuarkZip,
+      icon: 'file-zipper'
+    }),
+    optionFromHref({
+      title: t('baiduTitle'),
+      description: t('baiduDescription'),
+      action: t('open'),
+      href: links.Baidu,
+      icon: 'cloud'
+    }),
+    optionFromHref({
+      title: t('pan123Title'),
+      description: t('pan123Description'),
+      action: t('open'),
+      href: links.Pan123,
+      icon: 'cloud'
+    })
+  ]);
+});
+
+const historyLink = computed(() => {
+  if (localeKey.value === 'zh' || localeKey.value === 'en') {
+    return {
+      href: 'https://github.com/Gzh0821/pvzg_site/releases',
+      label: t('historyLabel')
+    };
+  }
+  return {
+    href: 'https://drive.pvzge.com/',
+    label: t('historyLabel')
+  };
+});
+
+onMounted(() => {
+  const os = detectOs();
+  detectedOs.value = os;
+  if (os !== 'unknown') {
+    activeOs.value = os;
+  }
+
+  void loadDownloadInfo();
+});
+
+function localDownloadHref(os: OsKey) {
+  if (os === 'mac') {
+    return gameInfo.value?.MacOSDownload?.Storage || '';
+  }
+  if (os === 'windows') {
+    return gameInfo.value?.Download?.Storage || '';
+  }
+  return '';
+}
+
+function downloadOsMeta(os: OsKey) {
+  if (os === 'mac') {
+    return {
+      osIcon: 'brands:apple',
+      osName: 'macOS'
+    };
+  }
+  return {
+    osIcon: 'brands:windows',
+    osName: 'Windows'
+  };
+}
+
+function optionFromHref(option: Omit<DownloadOption, 'href'> & { href?: string }): DownloadOption | null {
+  if (!option.href) {
+    return null;
+  }
+  return {
+    title: option.title,
+    description: option.description,
+    action: option.action,
+    href: option.href,
+    icon: option.icon,
+    recommended: option.recommended
+  };
+}
+
+function compact<T>(items: Array<T | null | undefined>): T[] {
+  return items.filter(Boolean) as T[];
+}
+
+function trackDownload(href: string, os: DetectedOs, source: 'quick' | 'option') {
+  let provider = 'unknown';
+  try {
+    provider = new URL(href, window.location.href).hostname.replace(/^www\./, '');
+  } catch {
+    // Keep malformed analytics metadata from blocking the download link.
+  }
+
+  trackEvent('download_start', {
+    download_placement: source,
+    download_platform: os,
+    download_provider: provider,
+    site_locale: localeKey.value
+  });
+}
+
+async function loadDownloadInfo() {
+  loading.value = true;
+  error.value = '';
+  try {
+    const [gameInfoResponse, gpNextInfoResponse] = await Promise.all([
+      fetch('/jsons/gameinfo.json'),
+      fetch('/jsons/gp-next-info.json')
+    ]);
+
+    if (!gameInfoResponse.ok) {
+      throw new Error(`gameinfo.json ${gameInfoResponse.status}`);
+    }
+
+    gameInfo.value = await gameInfoResponse.json();
+    if (gpNextInfoResponse.ok) {
+      gpNextInfo.value = await gpNextInfoResponse.json();
+    }
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : String(err);
+  } finally {
+    loading.value = false;
+  }
+}
+
+function detectOs(): DetectedOs {
+  const userAgentData = navigator.userAgentData as { platform?: string } | undefined;
+  const platform = `${userAgentData?.platform || navigator.platform || ''} ${navigator.userAgent || ''}`.toLowerCase();
+
+  if (platform.includes('win')) {
+    return 'windows';
+  }
+  if (platform.includes('mac')) {
+    return 'mac';
+  }
+  if (platform.includes('linux') || platform.includes('x11')) {
+    return 'linux';
+  }
+  return 'unknown';
+}
+</script>
+
+<style scoped>
+.download-panel {
+  --download-accent: var(--vp-c-accent, var(--vp-c-brand-1, #3eaf7c));
+  --download-accent-text: var(--vp-c-accent-text, #ffffff);
+  --download-text: var(--vp-c-text);
+  --download-muted: var(--vp-c-text-mute);
+  --download-surface: var(--vp-c-bg);
+  --download-soft: var(--vp-c-bg-alt);
+  --download-line: color-mix(in srgb, var(--vp-c-border) 72%, transparent);
+  --download-danger: var(--vp-c-danger, #d5393e);
+  --download-shadow: color-mix(in srgb, var(--vp-c-text) 10%, transparent);
+  color: var(--download-text);
+  display: grid;
+  gap: 1.15rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.download-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 0.36fr);
+  gap: 1rem;
+  align-items: stretch;
+  padding: 1.25rem;
+  border: 1px solid var(--download-line);
+  border-radius: 8px;
+  background: var(--download-surface);
+  box-shadow: 0 16px 36px var(--download-shadow);
+}
+
+.download-hero h2,
+.download-section-head h3 {
+  margin: 0;
+  border: 0;
+  color: var(--download-text);
+  font-family: "pvzgeFontEN", "pvzgFont", "Noto Sans SC", sans-serif;
+  letter-spacing: 0;
+}
+
+.download-hero h2 {
+  font-size: 1.9rem;
+  line-height: 1.15;
+}
+
+.download-muted {
+  margin: 0.65rem 0 0;
+  color: var(--download-muted);
+}
+
+.download-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.download-fact {
+  min-width: 0;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--download-line);
+  border-radius: 8px;
+  background: var(--download-soft);
+}
+
+.download-fact span,
+.download-option small {
+  display: block;
+  color: var(--download-muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.download-fact strong {
+  display: block;
+  overflow-wrap: anywhere;
+  margin-top: 0.15rem;
+}
+
+.download-quick {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.65rem;
+  min-width: 0;
+  padding-inline-start: 1rem;
+  border-inline-start: 1px dashed var(--download-line);
+}
+
+.download-button,
+.download-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 42px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.download-button:focus-visible,
+.download-option:focus-visible,
+.download-os-tab:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--download-accent) 32%, transparent);
+  outline-offset: 2px;
+}
+
+.download-button--primary {
+  border: 1px solid var(--download-accent);
+  background: var(--download-accent);
+  color: var(--download-accent-text);
+}
+
+.download-button__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  line-height: 1.15;
+}
+
+.download-button__system {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: currentColor;
+  font-size: 0.76rem;
+  font-weight: 600;
+  opacity: 0.78;
+}
+
+.download-button__system :deep(.vp-icon) {
+  font-size: 0.82rem;
+}
+
+.download-button--primary:hover,
+.download-option:hover {
+  transform: translateY(-1px);
+}
+
+.download-button--primary:disabled {
+  cursor: not-allowed;
+  border-color: var(--download-line);
+  background: var(--download-muted);
+}
+
+.download-button--ghost {
+  border: 1px solid var(--download-line);
+  background: transparent;
+  color: var(--download-accent);
+}
+
+.download-state,
+.download-changelog,
+.download-platform,
+.download-hash,
+.download-history {
+  padding: 1rem;
+  border: 1px solid var(--download-line);
+  border-radius: 8px;
+  background: var(--download-surface);
+}
+
+.download-state--error {
+  border-color: color-mix(in srgb, var(--download-danger) 36%, transparent);
+  color: var(--download-danger);
+}
+
+.download-state--error span {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.download-changelog ul {
+  margin: 0.75rem 0 0;
+  padding-inline-start: 1.2rem;
+}
+
+.download-changelog li + li {
+  margin-top: 0.3rem;
+}
+
+.download-os-switch {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.download-os-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  min-height: 64px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--download-line);
+  border-radius: 8px;
+  background: var(--download-soft);
+  color: var(--download-text);
+  cursor: pointer;
+  text-align: start;
+}
+
+.download-os-tab :deep(.vp-icon) {
+  flex: none;
+  color: var(--download-accent);
+  font-size: 1.35rem;
+}
+
+.download-os-tab span {
+  min-width: 0;
+}
+
+.download-os-tab strong {
+  display: block;
+}
+
+.download-os-tab--active {
+  border-color: var(--download-accent);
+  background: color-mix(in srgb, var(--download-accent) 8%, var(--download-surface));
+  box-shadow: inset 4px 0 0 var(--download-accent);
+}
+
+.download-option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.download-option {
+  justify-content: flex-start;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--download-line);
+  background: var(--download-soft);
+  color: var(--download-text);
+}
+
+.download-option--recommended {
+  border-color: color-mix(in srgb, var(--download-accent) 58%, var(--download-line));
+  background: color-mix(in srgb, var(--download-accent) 8%, var(--download-surface));
+}
+
+.download-option__icon {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--download-accent) 12%, transparent);
+  color: var(--download-accent);
+}
+
+.download-option__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.download-option__body strong,
+.download-option__body small {
+  overflow-wrap: anywhere;
+}
+
+.download-option__action {
+  flex: none;
+  color: var(--download-accent);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.download-note {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--download-line);
+  border-radius: 8px;
+  background: var(--download-soft);
+}
+
+.download-note--warning {
+  border-color: color-mix(in srgb, var(--download-danger) 28%, var(--download-line));
+  background: color-mix(in srgb, var(--download-danger) 8%, var(--download-surface));
+}
+
+.download-note p,
+.download-note ol {
+  margin: 0.45rem 0 0;
+}
+
+.download-hash {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.download-hash div {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.download-hash span {
+  color: var(--download-muted);
+  font-weight: 700;
+}
+
+.download-hash code {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.download-history {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.download-history :deep(.vp-icon) {
+  color: var(--download-accent);
+}
+
+.download-history a {
+  font-weight: 700;
+}
+
+@media (max-width: 820px) {
+  .download-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .download-quick {
+    padding-inline-start: 0;
+    padding-top: 1rem;
+    border-inline-start: 0;
+    border-top: 1px dashed var(--download-line);
+  }
+
+  .download-facts,
+  .download-os-switch,
+  .download-option-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .download-hero,
+  .download-state,
+  .download-changelog,
+  .download-platform,
+  .download-hash,
+  .download-history {
+    padding: 0.85rem;
+  }
+
+  .download-hero h2 {
+    font-size: 1.55rem;
+  }
+
+  .download-option {
+    align-items: flex-start;
+  }
+
+  .download-option__action {
+    margin-inline-start: auto;
+  }
+
+  .download-hash div {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .download-button,
+  .download-option {
+    transition: none;
+  }
+
+  .download-button--primary:hover,
+  .download-option:hover {
+    transform: none;
+  }
+}
+</style>

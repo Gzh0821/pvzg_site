@@ -1,0 +1,80 @@
+---
+home: true
+icon: home
+comment: false
+title: Домашняя Страница
+heroImage: /pvz_logo@200.webp
+heroImageStyle:
+  border-radius: 20%
+  border: "5px solid rgba(255, 255, 255, 0.3)"
+  box-shadow: "0 0 12px rgba(0, 0, 0, 0.2)"
+  backdrop-filter: "blur(10px)"
+  background: "rgba(255, 255, 255, 0.1)"
+bgImage: /assets/image/background.webp
+bgImageStyle:
+  background-attachment: fixed
+  filter: brightness(60%)
+  opacity: 0.5
+heroFullScreen: true
+heroText: PvZ2 Gardendless
+tagline: Полностью переделанная PvZ2 для всех настольных платформ
+actions:
+  - text: Скачать
+    icon: circle-down
+    link: ./download/
+    type: primary
+
+  - text: Ежедневный уровень
+    icon: calendar-days
+    link: ./creator-garden/daily-level
+
+  - text: Сообщество
+    icon: comment
+    link: ./contribution/
+
+  - text: Поддержать
+    icon: hand-holding-heart
+    link: ./contribution/Sponsor
+
+highlights:
+  - bgImage: /assets/image/background.webp
+    bgImageStyle:
+      background-attachment: fixed
+      opacity: 0.5
+      filter: brightness(60%)
+    features:
+      - title: Играть онлайн
+        icon: circle-play
+        details: Играйте в PvZ2 Gardendless прямо в браузере
+        link: https://play.pvzge.com
+
+      - title: Онлайн-Альманах
+        icon: book-atlas
+        details: Найдите растения и зомби, а также их ID и CodeName
+        link: ./almanac/
+
+      - title: Редактор Сохранений
+        icon: floppy-disk
+        details: Редактируйте сохранения Gardendless
+        link: ./useful-tool/save-editor
+
+      - title: Помощник расшифровки
+        icon: puzzle-piece
+        details: Записывайте результаты, исключайте ответы или тренируйтесь в браузере
+        link: ./useful-tool/plant-decoding
+
+      - title: Руководство по GP-Next и модам
+        icon: toolbox
+        details: Использование GP-Next, установка и создание модов
+        link: ./guide/mod/
+
+      - title: Редактор уровней
+        icon: pen-to-square
+        details: Создавайте и экспортируйте пользовательские уровни Gardendless
+        link: ./useful-tool/level-editor
+
+      - title: Ежедневный уровень
+        icon: calendar-days
+        details: Просматривайте ежедневные уровни от сообщества Discord
+        link: ./creator-garden/daily-level
+---

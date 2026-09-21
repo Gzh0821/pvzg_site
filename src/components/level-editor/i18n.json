@@ -1,0 +1,2552 @@
+{
+  "title": {
+    "zh": "自定义关卡编辑器",
+    "en": "Custom Level Editor",
+    "es": "Editor de niveles",
+    "ru": "Редактор уровней"
+  },
+  "summaryWaves": {
+    "zh": "{count} 个波次",
+    "en": "{count} waves",
+    "es": "{count} oleadas",
+    "ru": "Волн: {count}"
+  },
+  "summaryPlacements": {
+    "zh": "{count} 个草坪布置",
+    "en": "{count} placements",
+    "es": "{count} elementos",
+    "ru": "Объектов: {count}"
+  },
+  "expertMode": {
+    "zh": "高级模式",
+    "en": "Expert mode",
+    "es": "Modo experto",
+    "ru": "Режим эксперта"
+  },
+  "newLevel": {
+    "zh": "新建模板",
+    "en": "New template",
+    "es": "Nueva plantilla",
+    "ru": "Новый шаблон"
+  },
+  "confirmNewTitle": {
+    "zh": "新建关卡模板？",
+    "en": "Start a new level template?",
+    "es": "¿Crear una nueva plantilla?",
+    "ru": "Создать новый шаблон?"
+  },
+  "confirmNewDescription": {
+    "zh": "当前未导出的编辑内容会被清空。",
+    "en": "Your current unexported edits will be cleared.",
+    "es": "Se borrarán los cambios actuales no exportados.",
+    "ru": "Текущие неэкспортированные изменения будут удалены."
+  },
+  "confirmNewAction": {
+    "zh": "新建模板",
+    "en": "Start new",
+    "es": "Crear plantilla",
+    "ru": "Создать"
+  },
+  "cancel": {
+    "zh": "取消",
+    "en": "Cancel",
+    "es": "Cancelar",
+    "ru": "Отмена"
+  },
+  "importLevel": {
+    "zh": "导入关卡",
+    "en": "Import level",
+    "es": "Importar nivel",
+    "ru": "Импорт уровня"
+  },
+  "importCheck": {
+    "zh": "导入检查",
+    "en": "Import check",
+    "es": "Revisión de importación",
+    "ru": "Проверка импорта"
+  },
+  "importVisual": {
+    "zh": "可视：{sections}",
+    "en": "Visual: {sections}",
+    "es": "Visual: {sections}",
+    "ru": "Визуально: {sections}"
+  },
+  "importAdvancedActions": {
+    "zh": "高级动作 {count}",
+    "en": "Advanced actions {count}",
+    "es": "Acciones avanzadas {count}",
+    "ru": "Расширенные действия: {count}"
+  },
+  "importPreservedObjects": {
+    "zh": "仅保留 {count}",
+    "en": "Preserved only {count}",
+    "es": "Solo conservados {count}",
+    "ru": "Только сохранено: {count}"
+  },
+  "importGeneratorWaves": {
+    "zh": "生成式波次仅保留",
+    "en": "Generated waves preserved only",
+    "es": "Oleadas generadas solo conservadas",
+    "ru": "Генерируемые волны только сохраняются"
+  },
+  "importSectionBasic": {
+    "zh": "基础",
+    "en": "Basics",
+    "es": "Base",
+    "ru": "Основное"
+  },
+  "importSectionSeed": {
+    "zh": "种子",
+    "en": "Seeds",
+    "es": "Semillas",
+    "ru": "Семена"
+  },
+  "importSectionBoard": {
+    "zh": "棋盘",
+    "en": "Board",
+    "es": "Tablero",
+    "ru": "Поле"
+  },
+  "importSectionWaves": {
+    "zh": "波次",
+    "en": "Waves",
+    "es": "Oleadas",
+    "ru": "Волны"
+  },
+  "importSectionObjectives": {
+    "zh": "目标",
+    "en": "Objectives",
+    "es": "Objetivos",
+    "ru": "Цели"
+  },
+  "objectives": {
+    "zh": "目标条件",
+    "en": "Objectives",
+    "es": "Objetivos",
+    "ru": "Цели"
+  },
+  "objectiveCount": {
+    "zh": "{count} 项",
+    "en": "{count}",
+    "es": "{count}",
+    "ru": "{count}"
+  },
+  "objectiveAddType": {
+    "zh": "选择目标类型",
+    "en": "Choose objective type",
+    "es": "Elegir tipo de objetivo",
+    "ru": "Выберите тип цели"
+  },
+  "objectiveKind_beat": {
+    "zh": "完成关卡",
+    "en": "Complete the level",
+    "es": "Completar el nivel",
+    "ru": "Пройти уровень"
+  },
+  "objectiveKind_zombieDistance": {
+    "zh": "限制僵尸距离",
+    "en": "Limit zombie distance",
+    "es": "Limitar distancia zombi",
+    "ru": "Ограничить дистанцию зомби"
+  },
+  "objectiveKind_simultaneousPlants": {
+    "zh": "限制场上植物",
+    "en": "Limit active plants",
+    "es": "Limitar plantas activas",
+    "ru": "Ограничить растения на поле"
+  },
+  "objectiveKind_sunProduced": {
+    "zh": "生产阳光",
+    "en": "Produce sun",
+    "es": "Producir soles",
+    "ru": "Произвести солнце"
+  },
+  "objectiveKind_sunUsed": {
+    "zh": "限制阳光消耗",
+    "en": "Limit sun spent",
+    "es": "Limitar soles gastados",
+    "ru": "Ограничить расход солнца"
+  },
+  "objectiveKind_plantsLost": {
+    "zh": "限制植物损失",
+    "en": "Limit plants lost",
+    "es": "Limitar plantas perdidas",
+    "ru": "Ограничить потерю растений"
+  },
+  "objectiveKind_killInTime": {
+    "zh": "限时击杀",
+    "en": "Timed kills",
+    "es": "Bajas con tiempo",
+    "ru": "Убийства за время"
+  },
+  "objectiveKind_sunHoldout": {
+    "zh": "保留阳光",
+    "en": "Hold sun",
+    "es": "Conservar soles",
+    "ru": "Сохранять солнце"
+  },
+  "objectiveKind_protect": {
+    "zh": "保护植物",
+    "en": "Protect plants",
+    "es": "Proteger plantas",
+    "ru": "Защитить растения"
+  },
+  "objectiveKind_mold": {
+    "zh": "霉菌禁种区",
+    "en": "Mold restriction",
+    "es": "Restricción de moho",
+    "ru": "Зона плесени"
+  },
+  "objectiveMoldCount": {
+    "zh": "{count} 个禁种格",
+    "en": "{count} blocked cells",
+    "es": "{count} celdas bloqueadas",
+    "ru": "Заблокировано клеток: {count}"
+  },
+  "objectiveMoldSelectCell": {
+    "zh": "先在草坪选择一个格子",
+    "en": "Select a lawn cell first",
+    "es": "Primero elige una celda del césped",
+    "ru": "Сначала выберите клетку поля"
+  },
+  "objectiveMoldSelectedBlocked": {
+    "zh": "第 {row} 行第 {col} 列 · 已禁种",
+    "en": "Row {row}, column {col} · blocked",
+    "es": "Fila {row}, columna {col} · bloqueada",
+    "ru": "Ряд {row}, столбец {col} · заблокировано"
+  },
+  "objectiveMoldSelectedOpen": {
+    "zh": "第 {row} 行第 {col} 列 · 可种植",
+    "en": "Row {row}, column {col} · open",
+    "es": "Fila {row}, columna {col} · libre",
+    "ru": "Ряд {row}, столбец {col} · свободно"
+  },
+  "objectiveMoldAddSelected": {
+    "zh": "设为禁种格",
+    "en": "Block selected cell",
+    "es": "Bloquear celda elegida",
+    "ru": "Заблокировать клетку"
+  },
+  "objectiveMoldRemoveSelected": {
+    "zh": "恢复选中格",
+    "en": "Unblock selected cell",
+    "es": "Desbloquear celda elegida",
+    "ru": "Освободить клетку"
+  },
+  "objectiveMoldClear": {
+    "zh": "清空禁种区",
+    "en": "Clear mold",
+    "es": "Quitar todo el moho",
+    "ru": "Очистить плесень"
+  },
+  "objectiveMoldCell": {
+    "zh": "霉菌禁种格",
+    "en": "Mold-blocked cell",
+    "es": "Celda bloqueada por moho",
+    "ru": "Клетка с плесенью"
+  },
+  "objectiveDistance": {
+    "zh": "最远列",
+    "en": "Farthest column",
+    "es": "Columna máxima",
+    "ru": "Крайний столбец"
+  },
+  "objectiveMaximumPlants": {
+    "zh": "植物上限",
+    "en": "Plant limit",
+    "es": "Límite de plantas",
+    "ru": "Лимит растений"
+  },
+  "objectiveTargetSun": {
+    "zh": "目标阳光",
+    "en": "Sun target",
+    "es": "Objetivo de soles",
+    "ru": "Цель по солнцу"
+  },
+  "objectiveMaximumSun": {
+    "zh": "阳光上限",
+    "en": "Sun limit",
+    "es": "Límite de soles",
+    "ru": "Лимит солнца"
+  },
+  "objectiveMaximumPlantsLost": {
+    "zh": "最多损失",
+    "en": "Loss limit",
+    "es": "Límite de pérdidas",
+    "ru": "Лимит потерь"
+  },
+  "objectiveTime": {
+    "zh": "时限（秒）",
+    "en": "Time (seconds)",
+    "es": "Tiempo (segundos)",
+    "ru": "Время (секунды)"
+  },
+  "objectiveZombiesToKill": {
+    "zh": "击杀数量",
+    "en": "Zombies to defeat",
+    "es": "Zombis a derrotar",
+    "ru": "Зомби для уничтожения"
+  },
+  "objectiveHoldoutSeconds": {
+    "zh": "保持时间（秒）",
+    "en": "Hold time (seconds)",
+    "es": "Tiempo de espera (segundos)",
+    "ru": "Время удержания (секунды)"
+  },
+  "objectiveProtectCount": {
+    "zh": "{count} 个位置",
+    "en": "{count} positions",
+    "es": "{count} posiciones",
+    "ru": "Позиций: {count}"
+  },
+  "objectiveBeatReady": {
+    "zh": "随关卡胜利完成",
+    "en": "Completes with level victory",
+    "es": "Se completa al ganar el nivel",
+    "ru": "Выполняется при победе"
+  },
+  "objectiveMustProtectCount": {
+    "zh": "必须存活",
+    "en": "Must survive",
+    "es": "Deben sobrevivir",
+    "ru": "Должно выжить"
+  },
+  "objectiveProtectSelectedCell": {
+    "zh": "保护选中格",
+    "en": "Protect selected cell",
+    "es": "Proteger celda elegida",
+    "ru": "Защитить выбранную клетку"
+  },
+  "objectiveSelectCellPlant": {
+    "zh": "先选择一个有植物的格子",
+    "en": "Select a cell containing a plant first",
+    "es": "Primero elige una celda con una planta",
+    "ru": "Сначала выберите клетку с растением"
+  },
+  "columnShort": {
+    "zh": "列",
+    "en": "C",
+    "es": "C",
+    "ru": "С"
+  },
+  "rowShort": {
+    "zh": "行",
+    "en": "R",
+    "es": "F",
+    "ru": "Р"
+  },
+  "objectiveRemoveProtectedPlant": {
+    "zh": "移除保护位置",
+    "en": "Remove protected position",
+    "es": "Quitar posición protegida",
+    "ru": "Удалить защищаемую позицию"
+  },
+  "objectiveNoProtectedPlants": {
+    "zh": "从草坪选择要保护的植物",
+    "en": "Choose plants to protect from the lawn",
+    "es": "Elige en el césped las plantas a proteger",
+    "ru": "Выберите на поле растения для защиты"
+  },
+  "objectiveProtectedCell": {
+    "zh": "保护目标",
+    "en": "Protected target",
+    "es": "Objetivo protegido",
+    "ru": "Защищаемая цель"
+  },
+  "validationProtectCount": {
+    "zh": "必须存活数量超过了保护位置数量",
+    "en": "The required survivor count exceeds the protected positions",
+    "es": "La cantidad requerida supera las posiciones protegidas",
+    "ru": "Требуемое число выживших превышает число защищаемых позиций"
+  },
+  "validationProtectedPlant": {
+    "zh": "保护位置 {index} 的植物或坐标无效",
+    "en": "Protected position {index} has an invalid plant or coordinate",
+    "es": "La posición protegida {index} tiene una planta o coordenada no válida",
+    "ru": "В защищаемой позиции {index} неверное растение или координата"
+  },
+  "boardRules": {
+    "zh": "棋盘规则",
+    "en": "Board rules",
+    "es": "Reglas del tablero",
+    "ru": "Правила поля"
+  },
+  "boardRuleAddType": {
+    "zh": "选择棋盘规则",
+    "en": "Choose board rule",
+    "es": "Elegir regla del tablero",
+    "ru": "Выберите правило поля"
+  },
+  "boardRuleKind_railcart": {
+    "zh": "矿车轨道",
+    "en": "Minecart rails",
+    "es": "Rieles de vagoneta",
+    "ru": "Рельсы вагонетки"
+  },
+  "boardRuleKind_tide": {
+    "zh": "潮水起始线",
+    "en": "Starting tide line",
+    "es": "Línea inicial de marea",
+    "ru": "Начальная линия прилива"
+  },
+  "boardRuleKind_planks": {
+    "zh": "海盗木板",
+    "en": "Pirate planks",
+    "es": "Tablones piratas",
+    "ru": "Пиратские доски"
+  },
+  "boardRuleKind_powerTiles": {
+    "zh": "联动能量瓷砖",
+    "en": "Linked power tiles",
+    "es": "Baldosas de poder enlazadas",
+    "ru": "Связанные энергоплитки"
+  },
+  "boardRuleRailSummary": {
+    "zh": "{rails} 段 · {carts} 辆",
+    "en": "{rails} rails · {carts} carts",
+    "es": "{rails} rieles · {carts} carros",
+    "ru": "Рельсов: {rails} · тележек: {carts}"
+  },
+  "boardRuleTideSummary": {
+    "zh": "第 {column} 列",
+    "en": "Column {column}",
+    "es": "Columna {column}",
+    "ru": "Столбец {column}"
+  },
+  "boardRulePlankSummary": {
+    "zh": "{count} 行",
+    "en": "{count} rows",
+    "es": "{count} filas",
+    "ru": "Рядов: {count}"
+  },
+  "boardRulePowerTileSummary": {
+    "zh": "{count} 个瓷砖",
+    "en": "{count} tiles",
+    "es": "{count} baldosas",
+    "ru": "Плиток: {count}"
+  },
+  "boardRulePowerTileGroup": {
+    "zh": "能量瓷砖组",
+    "en": "Power tile group",
+    "es": "Grupo de baldosas",
+    "ru": "Группа энергоплиток"
+  },
+  "boardRulePowerGroup_alpha": {
+    "zh": "加号组",
+    "en": "Plus group",
+    "es": "Grupo más",
+    "ru": "Группа плюс"
+  },
+  "boardRulePowerGroup_beta": {
+    "zh": "叉号组",
+    "en": "Cross group",
+    "es": "Grupo cruz",
+    "ru": "Группа крест"
+  },
+  "boardRulePowerGroup_gamma": {
+    "zh": "方框组",
+    "en": "Square group",
+    "es": "Grupo cuadrado",
+    "ru": "Группа квадрат"
+  },
+  "boardRulePowerGroup_delta": {
+    "zh": "三角组",
+    "en": "Triangle group",
+    "es": "Grupo triángulo",
+    "ru": "Группа треугольник"
+  },
+  "boardRulePowerGroup_epsilon": {
+    "zh": "圆环组",
+    "en": "Ring group",
+    "es": "Grupo anillo",
+    "ru": "Группа кольцо"
+  },
+  "boardRulePowerGroupCount": {
+    "zh": "{count} 格",
+    "en": "{count} cells",
+    "es": "{count} celdas",
+    "ru": "Клеток: {count}"
+  },
+  "boardRulePowerDelay": {
+    "zh": "联动延迟（秒）",
+    "en": "Propagation delay (s)",
+    "es": "Retardo de propagación (s)",
+    "ru": "Задержка передачи (с)"
+  },
+  "boardRulePowerSelectedFilled": {
+    "zh": "第 {row} 行第 {col} 列 · 已有瓷砖",
+    "en": "Row {row}, column {col} · has a tile",
+    "es": "Fila {row}, columna {col} · con baldosa",
+    "ru": "Ряд {row}, столбец {col} · есть плитка"
+  },
+  "boardRulePowerSelectedEmpty": {
+    "zh": "第 {row} 行第 {col} 列 · 空白",
+    "en": "Row {row}, column {col} · empty",
+    "es": "Fila {row}, columna {col} · vacía",
+    "ru": "Ряд {row}, столбец {col} · пусто"
+  },
+  "boardRulePowerAddSelected": {
+    "zh": "添加到选中格",
+    "en": "Add to selected cell",
+    "es": "Añadir a la celda elegida",
+    "ru": "Добавить в клетку"
+  },
+  "boardRulePowerUpdateSelected": {
+    "zh": "更新选中格",
+    "en": "Update selected cell",
+    "es": "Actualizar celda elegida",
+    "ru": "Обновить клетку"
+  },
+  "boardRulePowerTileCell": {
+    "zh": "联动能量瓷砖",
+    "en": "Linked power tile",
+    "es": "Baldosa de poder enlazada",
+    "ru": "Связанная энергоплитка"
+  },
+  "boardRuleSelectCell": {
+    "zh": "先在草坪选择一个格子",
+    "en": "Select a lawn cell first",
+    "es": "Primero elige una celda del césped",
+    "ru": "Сначала выберите клетку поля"
+  },
+  "boardRuleRailcartType": {
+    "zh": "矿车类型",
+    "en": "Minecart type",
+    "es": "Tipo de vagoneta",
+    "ru": "Тип вагонетки"
+  },
+  "boardRuleRails": {
+    "zh": "轨道段",
+    "en": "Rail segments",
+    "es": "Tramos de riel",
+    "ru": "Участки рельсов"
+  },
+  "boardRuleAddRail": {
+    "zh": "在选中列添加",
+    "en": "Add in selected column",
+    "es": "Añadir en la columna elegida",
+    "ru": "Добавить в выбранный столбец"
+  },
+  "boardRuleRowStart": {
+    "zh": "起始行",
+    "en": "Start row",
+    "es": "Fila inicial",
+    "ru": "Начальный ряд"
+  },
+  "boardRuleRowEnd": {
+    "zh": "结束行",
+    "en": "End row",
+    "es": "Fila final",
+    "ru": "Конечный ряд"
+  },
+  "boardRuleNoRails": {
+    "zh": "暂无轨道段",
+    "en": "No rail segments",
+    "es": "Sin tramos de riel",
+    "ru": "Нет участков рельсов"
+  },
+  "boardRuleRailcarts": {
+    "zh": "初始矿车",
+    "en": "Starting minecarts",
+    "es": "Vagonetas iniciales",
+    "ru": "Начальные вагонетки"
+  },
+  "boardRuleAddRailcart": {
+    "zh": "在选中格添加",
+    "en": "Add in selected cell",
+    "es": "Añadir en la celda elegida",
+    "ru": "Добавить в выбранную клетку"
+  },
+  "boardRuleNoRailcarts": {
+    "zh": "暂无初始矿车",
+    "en": "No starting minecarts",
+    "es": "Sin vagonetas iniciales",
+    "ru": "Нет начальных вагонеток"
+  },
+  "boardRuleDynamicRailPreserved": {
+    "zh": "动态矿车数据会继续保留",
+    "en": "Dynamic minecart data remains preserved",
+    "es": "Los datos dinámicos de vagonetas se conservan",
+    "ru": "Данные динамических вагонеток сохраняются"
+  },
+  "boardRuleStartingTide": {
+    "zh": "起始潮线列（0–9）",
+    "en": "Starting tide column (0–9)",
+    "es": "Columna inicial de marea (0–9)",
+    "ru": "Начальный столбец прилива (0–9)"
+  },
+  "boardRulePlankRows": {
+    "zh": "木板所在行",
+    "en": "Plank rows",
+    "es": "Filas con tablones",
+    "ru": "Ряды с досками"
+  },
+  "boardRuleRailcart": {
+    "zh": "初始矿车",
+    "en": "Starting minecart",
+    "es": "Vagoneta inicial",
+    "ru": "Начальная вагонетка"
+  },
+  "boardRulePlankRow": {
+    "zh": "海盗木板行",
+    "en": "Pirate plank row",
+    "es": "Fila de tablones piratas",
+    "ru": "Ряд пиратских досок"
+  },
+  "boardRuleTideLine": {
+    "zh": "起始潮水线",
+    "en": "Starting tide line",
+    "es": "Línea inicial de marea",
+    "ru": "Начальная линия прилива"
+  },
+  "validationRail": {
+    "zh": "轨道规则 {rule} 的第 {index} 段坐标无效",
+    "en": "Rail rule {rule}, segment {index} has invalid coordinates",
+    "es": "La regla de riel {rule}, tramo {index}, tiene coordenadas no válidas",
+    "ru": "В правиле рельсов {rule}, участок {index}, неверные координаты"
+  },
+  "validationRailcart": {
+    "zh": "轨道规则 {rule} 的第 {index} 辆矿车坐标无效",
+    "en": "Rail rule {rule}, minecart {index} has invalid coordinates",
+    "es": "La regla de riel {rule}, vagoneta {index}, tiene coordenadas no válidas",
+    "ru": "В правиле рельсов {rule}, вагонетка {index}, неверные координаты"
+  },
+  "validationTide": {
+    "zh": "潮水规则 {rule} 的起始列无效",
+    "en": "Tide rule {rule} has an invalid starting column",
+    "es": "La regla de marea {rule} tiene una columna inicial no válida",
+    "ru": "В правиле прилива {rule} неверный начальный столбец"
+  },
+  "validationPlanks": {
+    "zh": "木板规则 {rule} 包含无效行号",
+    "en": "Plank rule {rule} contains an invalid row",
+    "es": "La regla de tablones {rule} contiene una fila no válida",
+    "ru": "Правило досок {rule} содержит неверный ряд"
+  },
+  "validationPowerTile": {
+    "zh": "能量瓷砖规则 {rule} 的第 {index} 个位置无效",
+    "en": "Power tile rule {rule}, entry {index} is invalid",
+    "es": "La regla de baldosas {rule}, entrada {index}, no es válida",
+    "ru": "В правиле энергоплиток {rule}, запись {index} неверна"
+  },
+  "exportLevel": {
+    "zh": "导出 JSON",
+    "en": "Export JSON",
+    "es": "Exportar JSON",
+    "ru": "Экспорт JSON"
+  },
+  "previewJson": {
+    "zh": "预览 JSON",
+    "en": "Preview JSON",
+    "es": "Vista JSON",
+    "ru": "Просмотр JSON"
+  },
+  "copyJson": {
+    "zh": "复制 JSON",
+    "en": "Copy JSON",
+    "es": "Copiar JSON",
+    "ru": "Копировать JSON"
+  },
+  "copied": {
+    "zh": "已复制",
+    "en": "Copied",
+    "es": "Copiado",
+    "ru": "Скопировано"
+  },
+  "copyFailed": {
+    "zh": "复制失败",
+    "en": "Copy failed",
+    "es": "No se pudo copiar",
+    "ru": "Не удалось скопировать"
+  },
+  "errors": {
+    "zh": "{count} 个错误",
+    "en": "{count} errors",
+    "es": "{count} errores",
+    "ru": "Ошибок: {count}"
+  },
+  "warnings": {
+    "zh": "{count} 个警告",
+    "en": "{count} warnings",
+    "es": "{count} advertencias",
+    "ru": "Предупреждений: {count}"
+  },
+  "validationPassed": {
+    "zh": "校验通过",
+    "en": "Validation passed",
+    "es": "Validación superada",
+    "ru": "Проверка пройдена"
+  },
+  "levelName": {
+    "zh": "关卡名",
+    "en": "Level name",
+    "es": "Nombre",
+    "ru": "Название"
+  },
+  "description": {
+    "zh": "描述",
+    "en": "Description",
+    "es": "Descripción",
+    "ru": "Описание"
+  },
+  "stage": {
+    "zh": "场景",
+    "en": "Stage",
+    "es": "Escenario",
+    "ru": "Сцена"
+  },
+  "startingSun": {
+    "zh": "初始阳光",
+    "en": "Starting sun",
+    "es": "Soles iniciales",
+    "ru": "Начальное солнце"
+  },
+  "advancedLevel": {
+    "zh": "高级关卡字段",
+    "en": "Advanced level fields",
+    "es": "Campos avanzados",
+    "ru": "Дополнительные поля"
+  },
+  "author": {
+    "zh": "作者",
+    "en": "Author",
+    "es": "Autor",
+    "ru": "Автор"
+  },
+  "mower": {
+    "zh": "小推车",
+    "en": "Mower",
+    "es": "Cortacésped",
+    "ru": "Газонокосилка"
+  },
+  "sunDropper": {
+    "zh": "阳光掉落",
+    "en": "Sun dropper",
+    "es": "Generador de sol",
+    "ru": "Падение солнца"
+  },
+  "stageDefault": {
+    "zh": "按场景默认",
+    "en": "Stage default",
+    "es": "Predeterminado",
+    "ru": "По сцене"
+  },
+  "none": {
+    "zh": "无",
+    "en": "None",
+    "es": "Ninguno",
+    "ru": "Нет"
+  },
+  "seedBank": {
+    "zh": "种子栏",
+    "en": "Seed bank",
+    "es": "Banco de semillas",
+    "ru": "Панель семян"
+  },
+  "seedSupply": {
+    "zh": "种子供给",
+    "en": "Seed supply",
+    "es": "Suministro de semillas",
+    "ru": "Подача семян"
+  },
+  "chooseAsset": {
+    "zh": "选择素材",
+    "en": "Choose asset",
+    "es": "Elegir recurso",
+    "ru": "Выбрать объект"
+  },
+  "viewAlmanac": {
+    "zh": "查看图鉴",
+    "en": "View Almanac",
+    "es": "Ver almanaque",
+    "ru": "Открыть альманах"
+  },
+  "assetType": {
+    "zh": "素材类型",
+    "en": "Asset type",
+    "es": "Tipo de recurso",
+    "ru": "Тип объекта"
+  },
+  "plants": {
+    "zh": "植物",
+    "en": "Plants",
+    "es": "Plantas",
+    "ru": "Растения"
+  },
+  "zombies": {
+    "zh": "僵尸",
+    "en": "Zombies",
+    "es": "Zombis",
+    "ru": "Зомби"
+  },
+  "objects": {
+    "zh": "物件",
+    "en": "Objects",
+    "es": "Objetos",
+    "ru": "Объекты"
+  },
+  "objectCategoryAll": {
+    "zh": "全部",
+    "en": "All",
+    "es": "Todo",
+    "ru": "Все"
+  },
+  "objectCategory": {
+    "zh": "物件分类",
+    "en": "Object category",
+    "es": "Categoría de objeto",
+    "ru": "Категория объекта"
+  },
+  "objectCategoryTile": {
+    "zh": "地砖",
+    "en": "Tiles",
+    "es": "Losetas",
+    "ru": "Плитки"
+  },
+  "objectCategoryObstacle": {
+    "zh": "障碍物",
+    "en": "Obstacles",
+    "es": "Obstáculos",
+    "ru": "Препятствия"
+  },
+  "objectCategoryTombstone": {
+    "zh": "墓碑",
+    "en": "Tombstones",
+    "es": "Lápidas",
+    "ru": "Надгробия"
+  },
+  "advancedObject": {
+    "zh": "高级",
+    "en": "Advanced",
+    "es": "Avanzado",
+    "ru": "Сложное"
+  },
+  "search": {
+    "zh": "搜索名称或代号",
+    "en": "Search name or code",
+    "es": "Buscar nombre o código",
+    "ru": "Поиск имени или кода"
+  },
+  "assetResults": {
+    "zh": "{count} 个可用素材",
+    "en": "{count} available assets",
+    "es": "{count} recursos disponibles",
+    "ru": "Доступно объектов: {count}"
+  },
+  "noAssetResults": {
+    "zh": "没有匹配的素材，请尝试其他名称或代号。",
+    "en": "No matching assets. Try another name or code.",
+    "es": "No hay resultados. Prueba otro nombre o código.",
+    "ru": "Ничего не найдено. Попробуйте другое имя или код."
+  },
+  "showMoreAssets": {
+    "zh": "再显示 {count} 个",
+    "en": "Show {count} more",
+    "es": "Mostrar {count} más",
+    "ru": "Показать еще {count}"
+  },
+  "board": {
+    "zh": "草坪",
+    "en": "Board",
+    "es": "Tablero",
+    "ru": "Поле"
+  },
+  "propertyPanel": {
+    "zh": "属性",
+    "en": "Properties",
+    "es": "Propiedades",
+    "ru": "Свойства"
+  },
+  "waves": {
+    "zh": "波次",
+    "en": "Waves",
+    "es": "Oleadas",
+    "ru": "Волны"
+  },
+  "validation": {
+    "zh": "校验",
+    "en": "Validation",
+    "es": "Validación",
+    "ru": "Проверка"
+  },
+  "settings": {
+    "zh": "设置",
+    "en": "Settings",
+    "es": "Ajustes",
+    "ru": "Настройки"
+  },
+  "addWave": {
+    "zh": "添加波次",
+    "en": "Add wave",
+    "es": "Añadir oleada",
+    "ru": "Добавить волну"
+  },
+  "addZombie": {
+    "zh": "添加僵尸",
+    "en": "Add zombie",
+    "es": "Añadir zombi",
+    "ru": "Добавить зомби"
+  },
+  "selectPlantFirst": {
+    "zh": "请先选择植物",
+    "en": "Please select a plant",
+    "es": "Elige una planta, por favor",
+    "ru": "Выберите растение, пожалуйста"
+  },
+  "selectZombieFirst": {
+    "zh": "请先选择僵尸",
+    "en": "Please select a zombie",
+    "es": "Elige un zombi, por favor",
+    "ru": "Выберите зомби, пожалуйста"
+  },
+  "plantAlreadyAdded": {
+    "zh": "已在种子栏",
+    "en": "Already in seed bank",
+    "es": "Ya está en el banco",
+    "ru": "Уже на панели семян"
+  },
+  "flagWave": {
+    "zh": "旗帜波",
+    "en": "Flag wave",
+    "es": "Oleada de bandera",
+    "ru": "Флаговая волна"
+  },
+  "selected": {
+    "zh": "当前选择",
+    "en": "Selected",
+    "es": "Seleccionado",
+    "ru": "Выбрано"
+  },
+  "remove": {
+    "zh": "删除",
+    "en": "Remove",
+    "es": "Eliminar",
+    "ru": "Удалить"
+  },
+  "removeZombie": {
+    "zh": "删除僵尸{name}",
+    "en": "Remove zombie {name}",
+    "es": "Eliminar zombi {name}",
+    "ru": "Удалить зомби {name}"
+  },
+  "zombieCount": {
+    "zh": "{name}的数量",
+    "en": "Count for {name}",
+    "es": "Cantidad de {name}",
+    "ru": "Количество: {name}"
+  },
+  "clearCell": {
+    "zh": "清除物件",
+    "en": "Clear items",
+    "es": "Quitar objetos",
+    "ru": "Убрать объекты"
+  },
+  "removeCellItem": {
+    "zh": "删除{name}",
+    "en": "Remove {name}",
+    "es": "Eliminar {name}",
+    "ru": "Удалить {name}"
+  },
+  "clearBoard": {
+    "zh": "清空草坪",
+    "en": "Clear board",
+    "es": "Vaciar tablero",
+    "ru": "Очистить поле"
+  },
+  "selectedCellTitle": {
+    "zh": "当前格子 {col},{row}",
+    "en": "Current cell {col},{row}",
+    "es": "Celda actual {col},{row}",
+    "ru": "Текущая клетка {col},{row}"
+  },
+  "cellAria": {
+    "zh": "第 {row} 行第 {col} 列：{content}",
+    "en": "Row {row}, column {col}: {content}",
+    "es": "Fila {row}, columna {col}: {content}",
+    "ru": "Строка {row}, столбец {col}: {content}"
+  },
+  "selectedCellEmpty": {
+    "zh": "该格没有放置内容。",
+    "en": "This cell is empty.",
+    "es": "Esta celda está vacía.",
+    "ru": "Эта клетка пуста."
+  },
+  "cellKindPlant": {
+    "zh": "初始植物",
+    "en": "Initial plant",
+    "es": "Planta inicial",
+    "ru": "Начальное растение"
+  },
+  "cellKindZombie": {
+    "zh": "初始僵尸",
+    "en": "Initial zombie",
+    "es": "Zombi inicial",
+    "ru": "Начальный зомби"
+  },
+  "cellKindObject": {
+    "zh": "地物",
+    "en": "Grid item",
+    "es": "Objeto de casilla",
+    "ru": "Объект клетки"
+  },
+  "icecubedCondition": {
+    "zh": "冰冻",
+    "en": "Frozen",
+    "es": "Congelado",
+    "ru": "Заморожено"
+  },
+  "startPlantfood": {
+    "zh": "开局叶绿素",
+    "en": "Start with plant food",
+    "es": "Con nutriente inicial",
+    "ru": "С подкормкой при старте"
+  },
+  "preservedPlacementFields": {
+    "zh": "保留字段",
+    "en": "Preserved fields",
+    "es": "Campos conservados",
+    "ru": "Сохраненные поля"
+  },
+  "advancedPlacementInfo": {
+    "zh": "高级 / 导出信息",
+    "en": "Advanced / export info",
+    "es": "Avanzado / exportación",
+    "ru": "Дополнительно / экспорт"
+  },
+  "exportTarget": {
+    "zh": "导出到",
+    "en": "Export to",
+    "es": "Exportar a",
+    "ru": "Экспорт в"
+  },
+  "sourceField": {
+    "zh": "来源",
+    "en": "Source",
+    "es": "Origen",
+    "ru": "Источник"
+  },
+  "propsField": {
+    "zh": "属性",
+    "en": "Props",
+    "es": "Props",
+    "ru": "Props"
+  },
+  "resField": {
+    "zh": "资源",
+    "en": "Resource",
+    "es": "Recurso",
+    "ru": "Ресурс"
+  },
+  "seedChooser": {
+    "zh": "玩家选卡",
+    "en": "Player chooses",
+    "es": "El jugador elige",
+    "ru": "Выбор игрока"
+  },
+  "seedPreset": {
+    "zh": "固定卡组",
+    "en": "Preset cards",
+    "es": "Cartas fijas",
+    "ru": "Фиксированные карты"
+  },
+  "seedLimit": {
+    "zh": "种子栏最多 {count} 格。",
+    "en": "Seed bank supports up to {count} slots.",
+    "es": "El banco de semillas admite hasta {count} espacios.",
+    "ru": "Панель семян поддерживает до {count} ячеек."
+  },
+  "advancedSeedBank": {
+    "zh": "高级种子栏",
+    "en": "Advanced seed bank",
+    "es": "Banco avanzado",
+    "ru": "Расширенная панель"
+  },
+  "seedSlots": {
+    "zh": "种子格数",
+    "en": "Seed slots",
+    "es": "Espacios",
+    "ru": "Ячейки семян"
+  },
+  "unlockAll": {
+    "zh": "解锁全部植物",
+    "en": "Unlock all plants",
+    "es": "Desbloquear plantas",
+    "ru": "Открыть все растения"
+  },
+  "includePlants": {
+    "zh": "包含植物列表",
+    "en": "Include plant list",
+    "es": "Lista incluida",
+    "ru": "Список включения"
+  },
+  "excludePlants": {
+    "zh": "排除植物列表",
+    "en": "Exclude plant list",
+    "es": "Lista excluida",
+    "ru": "Список исключения"
+  },
+  "addSelectedPlant": {
+    "zh": "添加当前植物",
+    "en": "Add selected plant",
+    "es": "Añadir planta",
+    "ru": "Добавить выбранное"
+  },
+  "emptyList": {
+    "zh": "暂无条目。",
+    "en": "No entries yet.",
+    "es": "Sin entradas.",
+    "ru": "Пока пусто."
+  },
+  "advancedWaveSettings": {
+    "zh": "高级波次字段",
+    "en": "Advanced wave fields",
+    "es": "Oleadas avanzadas",
+    "ru": "Доп. поля волн"
+  },
+  "dynamicDifficulty": {
+    "zh": "动态难度",
+    "en": "Dynamic difficulty",
+    "es": "Dificultad dinámica",
+    "ru": "Динамическая сложность"
+  },
+  "dynamicDifficultySummary": {
+    "zh": "{count}/7 档已有数据",
+    "en": "{count}/7 with data",
+    "es": "{count}/7 con datos",
+    "ru": "С данными: {count}/7"
+  },
+  "difficultyLevel": {
+    "zh": "难度 {level}",
+    "en": "Difficulty {level}",
+    "es": "Dificultad {level}",
+    "ru": "Сложность {level}"
+  },
+  "difficultyConfigured": {
+    "zh": "已有数据",
+    "en": "Has data",
+    "es": "Con datos",
+    "ru": "Есть данные"
+  },
+  "difficultyNoExtraZombies": {
+    "zh": "无额外出怪",
+    "en": "No extra zombies",
+    "es": "Sin zombis adicionales",
+    "ru": "Без дополнительных зомби"
+  },
+  "configureDifficulty": {
+    "zh": "配置难度 {level}",
+    "en": "Configure difficulty {level}",
+    "es": "Configurar dificultad {level}",
+    "ru": "Настроить сложность {level}"
+  },
+  "clearDifficulty": {
+    "zh": "清空难度 {level}",
+    "en": "Clear difficulty {level}",
+    "es": "Vaciar dificultad {level}",
+    "ru": "Очистить сложность {level}"
+  },
+  "clearDifficultyDescription": {
+    "zh": "这一档的点数和僵尸池会被删除。",
+    "en": "This difficulty's points and zombie pool will be removed.",
+    "es": "Se eliminarán los puntos y el grupo de zombis de esta dificultad.",
+    "ru": "Очки и пул зомби этой сложности будут удалены."
+  },
+  "dynamicStartsOnWave": {
+    "zh": "从第几波开始",
+    "en": "Starts on wave",
+    "es": "Empieza en la oleada",
+    "ru": "Начать с волны"
+  },
+  "dynamicStartingPoints": {
+    "zh": "初始点数",
+    "en": "Starting points",
+    "es": "Puntos iniciales",
+    "ru": "Начальные очки"
+  },
+  "dynamicPointChangePerWave": {
+    "zh": "每波点数变化",
+    "en": "Point change per wave",
+    "es": "Cambio de puntos por oleada",
+    "ru": "Изменение очков за волну"
+  },
+  "dynamicZombiePool": {
+    "zh": "动态僵尸池",
+    "en": "Dynamic zombie pool",
+    "es": "Grupo dinámico de zombis",
+    "ru": "Динамический пул зомби"
+  },
+  "eventZombiePool": {
+    "zh": "事件僵尸",
+    "en": "Event zombies",
+    "es": "Zombis del evento",
+    "ru": "Зомби события"
+  },
+  "zombiePoolCopies": {
+    "zh": "{name} 的池内份数",
+    "en": "Pool entries for {name}",
+    "es": "Entradas de {name} en el grupo",
+    "ru": "Количество {name} в пуле"
+  },
+  "dynamicPoolPreview": {
+    "zh": "动态池 · 难度 {level}",
+    "en": "Dynamic pool · difficulty {level}",
+    "es": "Grupo dinámico · dificultad {level}",
+    "ru": "Динамический пул · сложность {level}"
+  },
+  "startsOnWave": {
+    "zh": "第 {wave} 波起",
+    "en": "From wave {wave}",
+    "es": "Desde la oleada {wave}",
+    "ru": "С волны {wave}"
+  },
+  "flagWaveInterval": {
+    "zh": "旗帜波间隔",
+    "en": "Flag wave interval",
+    "es": "Intervalo de bandera",
+    "ru": "Интервал флага"
+  },
+  "firstWaveCountdown": {
+    "zh": "首波倒计时",
+    "en": "First wave countdown",
+    "es": "Cuenta inicial",
+    "ru": "Таймер первой волны"
+  },
+  "suppressFlagZombie": {
+    "zh": "不生成旗帜僵尸",
+    "en": "Suppress flag zombie",
+    "es": "Sin zombi bandera",
+    "ru": "Без флагового зомби"
+  },
+  "advancedCurrentWave": {
+    "zh": "当前波次高级字段",
+    "en": "Advanced current wave",
+    "es": "Oleada actual avanzada",
+    "ru": "Доп. поля текущей волны"
+  },
+  "additionalPlantfood": {
+    "zh": "额外叶绿素",
+    "en": "Additional plant food",
+    "es": "Nutrientes extra",
+    "ru": "Доп. подкормка"
+  },
+  "dynamicPlantfood": {
+    "zh": "动态叶绿素数组",
+    "en": "Dynamic plant food array",
+    "es": "Matriz dinámica",
+    "ru": "Массив подкормки"
+  },
+  "spawnStyle": {
+    "zh": "僵尸生成风格",
+    "en": "Zombie spawn style",
+    "es": "Estilo de aparición",
+    "ru": "Стиль появления"
+  },
+  "styleDefault": {
+    "zh": "默认",
+    "en": "Default",
+    "es": "Predeterminado",
+    "ru": "По умолчанию"
+  },
+  "mustKillAllToNextWave": {
+    "zh": "杀完本波才进入下一波",
+    "en": "Kill all before next wave",
+    "es": "Matar todo antes de seguir",
+    "ru": "Убить всех перед след. волной"
+  },
+  "addSpecialAction": {
+    "zh": "添加事件",
+    "en": "Add event",
+    "es": "Añadir evento",
+    "ru": "Добавить событие"
+  },
+  "waveEventType": {
+    "zh": "事件类型",
+    "en": "Event type",
+    "es": "Tipo de evento",
+    "ru": "Тип события"
+  },
+  "addWaveEvent": {
+    "zh": "添加事件",
+    "en": "Add event",
+    "es": "Añadir evento",
+    "ru": "Добавить событие"
+  },
+  "addTideAction": {
+    "zh": "潮汐",
+    "en": "Tide",
+    "es": "Marea",
+    "ru": "Прилив"
+  },
+  "addDinoAction": {
+    "zh": "恐龙",
+    "en": "Dinosaur",
+    "es": "Dinosaurio",
+    "ru": "Динозавр"
+  },
+  "addStormAction": {
+    "zh": "沙尘暴",
+    "en": "Storm",
+    "es": "Tormenta",
+    "ru": "Буря"
+  },
+  "addGroundSpawnAction": {
+    "zh": "地面生成",
+    "en": "Ground spawn",
+    "es": "Aparición de suelo",
+    "ru": "Из-под земли"
+  },
+  "edit": {
+    "zh": "编辑",
+    "en": "Edit",
+    "es": "Editar",
+    "ru": "Изменить"
+  },
+  "duplicate": {
+    "zh": "复制",
+    "en": "Duplicate",
+    "es": "Duplicar",
+    "ru": "Копировать"
+  },
+  "insert": {
+    "zh": "插入",
+    "en": "Insert",
+    "es": "Insertar",
+    "ru": "Вставить"
+  },
+  "moveEarlier": {
+    "zh": "前移",
+    "en": "Earlier",
+    "es": "Antes",
+    "ru": "Раньше"
+  },
+  "moveLater": {
+    "zh": "后移",
+    "en": "Later",
+    "es": "Después",
+    "ru": "Позже"
+  },
+  "moveWaveEarlier": {
+    "zh": "将波次前移",
+    "en": "Move wave earlier",
+    "es": "Mover oleada antes",
+    "ru": "Переместить волну раньше"
+  },
+  "moveWaveLater": {
+    "zh": "将波次后移",
+    "en": "Move wave later",
+    "es": "Mover oleada después",
+    "ru": "Переместить волну позже"
+  },
+  "duplicateWave": {
+    "zh": "复制当前波次",
+    "en": "Duplicate current wave",
+    "es": "Duplicar oleada actual",
+    "ru": "Копировать текущую волну"
+  },
+  "insertWaveAfter": {
+    "zh": "在当前波次后插入",
+    "en": "Insert after current wave",
+    "es": "Insertar después de la oleada actual",
+    "ru": "Вставить после текущей волны"
+  },
+  "selectedWaveNumber": {
+    "zh": "第 {wave} 波",
+    "en": "Wave {wave}",
+    "es": "Oleada {wave}",
+    "ru": "Волна {wave}"
+  },
+  "zombieRow": {
+    "zh": "{name} 的出怪行",
+    "en": "Spawn row for {name}",
+    "es": "Fila de aparición de {name}",
+    "ru": "Ряд появления: {name}"
+  },
+  "randomRow": {
+    "zh": "任意行",
+    "en": "Any row",
+    "es": "Cualquier fila",
+    "ru": "Любой ряд"
+  },
+  "randomRowShort": {
+    "zh": "任",
+    "en": "Any",
+    "es": "Cualq.",
+    "ru": "Люб."
+  },
+  "specialRowShort": {
+    "zh": "特",
+    "en": "Other",
+    "es": "Otra",
+    "ru": "Особ."
+  },
+  "rowNumber": {
+    "zh": "第 {row} 行",
+    "en": "Row {row}",
+    "es": "Fila {row}",
+    "ru": "Ряд {row}"
+  },
+  "rowAssignment": {
+    "zh": "行",
+    "en": "Row",
+    "es": "Fila",
+    "ru": "Ряд"
+  },
+  "lanePreview": {
+    "zh": "五路出怪预览",
+    "en": "Five-lane spawn preview",
+    "es": "Vista previa de cinco filas",
+    "ru": "Предпросмотр пяти рядов"
+  },
+  "waveSpawnAction": {
+    "zh": "普通出怪",
+    "en": "Zombie spawn",
+    "es": "Aparición de zombis",
+    "ru": "Появление зомби"
+  },
+  "conveyorWaveAction": {
+    "zh": "传送带调整",
+    "en": "Conveyor change",
+    "es": "Cambio de cinta",
+    "ru": "Изменение конвейера"
+  },
+  "waveSpawnSummary": {
+    "zh": "{count} 只 · {lanes} 条指定行",
+    "en": "{count} zombies · {lanes} assigned lanes",
+    "es": "{count} zombis · {lanes} filas asignadas",
+    "ru": "Зомби: {count} · рядов: {lanes}"
+  },
+  "conveyorWaveSummary": {
+    "zh": "{count} 项修改",
+    "en": "{count} changes",
+    "es": "{count} cambios",
+    "ru": "Изменений: {count}"
+  },
+  "actionTide": {
+    "zh": "潮水变化",
+    "en": "Tide change",
+    "es": "Cambio de marea",
+    "ru": "Изменение прилива"
+  },
+  "actionDino": {
+    "zh": "恐龙事件",
+    "en": "Dinosaur event",
+    "es": "Evento de dinosaurio",
+    "ru": "Событие с динозавром"
+  },
+  "actionStorm": {
+    "zh": "风暴突袭",
+    "en": "Storm raid",
+    "es": "Ataque de tormenta",
+    "ru": "Штормовой налет"
+  },
+  "actionGround": {
+    "zh": "地面生成",
+    "en": "Ground spawn",
+    "es": "Aparición de suelo",
+    "ru": "Появление из земли"
+  },
+  "actionFrostWind": {
+    "zh": "寒风",
+    "en": "Frost wind",
+    "es": "Viento helado",
+    "ru": "Ледяной ветер"
+  },
+  "actionBeachAmbush": {
+    "zh": "海滩突袭",
+    "en": "Beach ambush",
+    "es": "Emboscada de playa",
+    "ru": "Пляжная засада"
+  },
+  "actionRaidingParty": {
+    "zh": "海盗突袭",
+    "en": "Raiding party",
+    "es": "Partida de asalto",
+    "ru": "Пиратский налет"
+  },
+  "actionSpiderRain": {
+    "zh": "蜘蛛雨",
+    "en": "Spider rain",
+    "es": "Lluvia de arañas",
+    "ru": "Паучий дождь"
+  },
+  "actionParachuteRain": {
+    "zh": "降落伞雨",
+    "en": "Parachute rain",
+    "es": "Lluvia de paracaídas",
+    "ru": "Дождь парашютистов"
+  },
+  "actionGravestones": {
+    "zh": "墓碑生成",
+    "en": "Gravestone spawn",
+    "es": "Aparición de lápidas",
+    "ru": "Появление надгробий"
+  },
+  "actionGridItemSpawn": {
+    "zh": "物件出怪",
+    "en": "Grid-item spawn",
+    "es": "Aparición desde objetos",
+    "ru": "Появление из объектов"
+  },
+  "actionDropShip": {
+    "zh": "运输舰空投",
+    "en": "Drop ship",
+    "es": "Nave de desembarco",
+    "ru": "Десантный корабль"
+  },
+  "actionThunderCharge": {
+    "zh": "雷云充能",
+    "en": "Thunder charge",
+    "es": "Carga de trueno",
+    "ru": "Грозовой заряд"
+  },
+  "actionQigongStrike": {
+    "zh": "气功打击",
+    "en": "Qigong strike",
+    "es": "Golpe de qigong",
+    "ru": "Удар цигун"
+  },
+  "actionChiHole": {
+    "zh": "气孔",
+    "en": "Chi hole",
+    "es": "Agujero de chi",
+    "ru": "Воронка ци"
+  },
+  "actionMissileLocate": {
+    "zh": "导弹落点",
+    "en": "Missile strike",
+    "es": "Ataque de misiles",
+    "ru": "Ракетный удар"
+  },
+  "actionWaveWarning": {
+    "zh": "波次警告",
+    "en": "Wave warning",
+    "es": "Aviso de oleada",
+    "ru": "Предупреждение волны"
+  },
+  "actionScheduler": {
+    "zh": "循环调度",
+    "en": "Scheduler",
+    "es": "Programador",
+    "ru": "Планировщик"
+  },
+  "actionSchedulerSummary": {
+    "zh": "延迟 {delay}s · 最多 {repeat} 次 · {count} 个事件",
+    "en": "{delay}s delay · up to {repeat} repeats · {count} events",
+    "es": "Retraso {delay}s · hasta {repeat} repeticiones · {count} eventos",
+    "ru": "Задержка {delay} с · до {repeat} повторов · событий: {count}"
+  },
+  "schedulerFirstDelay": {
+    "zh": "首次延迟",
+    "en": "First delay",
+    "es": "Primer retraso",
+    "ru": "Первая задержка"
+  },
+  "schedulerInterval": {
+    "zh": "事件间隔",
+    "en": "Interval",
+    "es": "Intervalo",
+    "ru": "Интервал"
+  },
+  "schedulerRepeat": {
+    "zh": "重复次数",
+    "en": "Repeats",
+    "es": "Repeticiones",
+    "ru": "Повторы"
+  },
+  "schedulerRewardWhenEnded": {
+    "zh": "结束时发放奖励",
+    "en": "Reward when ended",
+    "es": "Premiar al terminar",
+    "ru": "Награда в конце"
+  },
+  "schedulerSuppressReward": {
+    "zh": "不切换奖励状态",
+    "en": "Suppress reward state",
+    "es": "Suprimir estado de recompensa",
+    "ru": "Не менять состояние награды"
+  },
+  "schedulerEndingWave": {
+    "zh": "结束波次",
+    "en": "Ending wave",
+    "es": "Oleada final",
+    "ru": "Конечная волна"
+  },
+  "schedulerEvents": {
+    "zh": "事件顺序",
+    "en": "Event order",
+    "es": "Orden de eventos",
+    "ru": "Порядок событий"
+  },
+  "schedulerEmpty": {
+    "zh": "还没有事件。",
+    "en": "No events yet.",
+    "es": "Aún no hay eventos.",
+    "ru": "Событий пока нет."
+  },
+  "schedulerAddEvent": {
+    "zh": "添加事件",
+    "en": "Add event",
+    "es": "Añadir evento",
+    "ru": "Добавить событие"
+  },
+  "schedulerInvalidEvent": {
+    "zh": "非标准引用",
+    "en": "Nonstandard reference",
+    "es": "Referencia no estándar",
+    "ru": "Нестандартная ссылка"
+  },
+  "schedulerExternalEvent": {
+    "zh": "共享引用（保留）",
+    "en": "Shared reference (preserved)",
+    "es": "Referencia compartida (conservada)",
+    "ru": "Общая ссылка (сохранена)"
+  },
+  "schedulerMissingEvent": {
+    "zh": "引用缺失（保留）",
+    "en": "Missing reference (preserved)",
+    "es": "Referencia ausente (conservada)",
+    "ru": "Ссылка отсутствует (сохранена)"
+  },
+  "schedulerCircularEvent": {
+    "zh": "循环引用（保留）",
+    "en": "Circular reference (preserved)",
+    "es": "Referencia circular (conservada)",
+    "ru": "Циклическая ссылка (сохранена)"
+  },
+  "schedulerPreservedEvent": {
+    "zh": "此事件保留原始数据，可在高级模式编辑。",
+    "en": "Original event data is preserved; edit it in expert mode.",
+    "es": "Se conservan los datos originales; edítalos en modo experto.",
+    "ru": "Исходные данные сохранены; редактируйте их в режиме эксперта."
+  },
+  "actionUnknown": {
+    "zh": "保留事件",
+    "en": "Preserved event",
+    "es": "Evento conservado",
+    "ru": "Сохраненное событие"
+  },
+  "actionTideSummary": {
+    "zh": "潮水至第 {column} 列",
+    "en": "Tide to column {column}",
+    "es": "Marea hasta la columna {column}",
+    "ru": "Прилив до столбца {column}"
+  },
+  "actionDinoSummary": {
+    "zh": "{type} · 第 {row} 行",
+    "en": "{type} · row {row}",
+    "es": "{type} · fila {row}",
+    "ru": "{type} · ряд {row}"
+  },
+  "actionStormSummary": {
+    "zh": "{type} · 第 {start}–{end} 列 · {count} 只",
+    "en": "{type} · columns {start}–{end} · {count} zombies",
+    "es": "{type} · columnas {start}–{end} · {count} zombis",
+    "ru": "{type} · столбцы {start}–{end} · зомби: {count}"
+  },
+  "actionGroundSummary": {
+    "zh": "第 {start}–{end} 列 · {count} 只",
+    "en": "Columns {start}–{end} · {count} zombies",
+    "es": "Columnas {start}–{end} · {count} zombis",
+    "ru": "Столбцы {start}–{end} · зомби: {count}"
+  },
+  "actionFrostWindSummary": {
+    "zh": "{count} 股风 · {lanes} 行",
+    "en": "{count} gusts · {lanes} lanes",
+    "es": "{count} ráfagas · {lanes} filas",
+    "ru": "Порывов: {count} · рядов: {lanes}"
+  },
+  "actionBeachAmbushSummary": {
+    "zh": "{zombie} ×{count} · 第 {start}–{end} 列",
+    "en": "{zombie} ×{count} · columns {start}–{end}",
+    "es": "{zombie} ×{count} · columnas {start}–{end}",
+    "ru": "{zombie} ×{count} · столбцы {start}–{end}"
+  },
+  "actionRaidingPartySummary": {
+    "zh": "{zombie} ×{count} · 每组 {groups}",
+    "en": "{zombie} ×{count} · {groups} per group",
+    "es": "{zombie} ×{count} · {groups} por grupo",
+    "ru": "{zombie} ×{count} · в группе: {groups}"
+  },
+  "actionAirDropSummary": {
+    "zh": "{zombie} ×{count} · 第 {start}–{end} 列 · 固定 {companions}",
+    "en": "{zombie} ×{count} · columns {start}–{end} · fixed {companions}",
+    "es": "{zombie} ×{count} · columnas {start}–{end} · fijos {companions}",
+    "ru": "{zombie} ×{count} · столбцы {start}–{end} · фикс.: {companions}"
+  },
+  "actionGravestonesSummary": {
+    "zh": "{count} 个物件 · {types} 种 · {cells} 个候选格",
+    "en": "{count} objects · {types} types · {cells} candidate cells",
+    "es": "{count} objetos · {types} tipos · {cells} casillas",
+    "ru": "Объектов: {count} · типов: {types} · клеток: {cells}"
+  },
+  "actionGridItemSpawnSummary": {
+    "zh": "{zombies} 只僵尸 · {sources} 种来源 · {plantfood} 叶绿素",
+    "en": "{zombies} zombies · {sources} sources · {plantfood} plant food",
+    "es": "{zombies} zombis · {sources} fuentes · {plantfood} nutrientes",
+    "ru": "Зомби: {zombies} · источников: {sources} · подкормки: {plantfood}"
+  },
+  "actionDropShipSummary": {
+    "zh": "{zombie} ×{min}–{max} · 第 {row} 行第 {column} 列",
+    "en": "{zombie} ×{min}–{max} · row {row}, column {column}",
+    "es": "{zombie} ×{min}–{max} · fila {row}, columna {column}",
+    "ru": "{zombie} ×{min}–{max} · ряд {row}, столбец {column}"
+  },
+  "actionThunderChargeSummary": {
+    "zh": "{count} 次 · 正 {positive} / 负 {negative}",
+    "en": "{count} charges · +{positive} / −{negative}",
+    "es": "{count} cargas · +{positive} / −{negative}",
+    "ru": "Зарядов: {count} · +{positive} / −{negative}"
+  },
+  "actionQigongStrikeSummary": {
+    "zh": "{count} 个打击落点",
+    "en": "{count} strike targets",
+    "es": "{count} objetivos",
+    "ru": "Точек удара: {count}"
+  },
+  "actionChiHoleSummary": {
+    "zh": "第 {column} 列 · {lanes} 行 · 方向 {direction}",
+    "en": "Column {column} · {lanes} lanes · direction {direction}",
+    "es": "Columna {column} · {lanes} filas · dirección {direction}",
+    "ru": "Столбец {column} · рядов: {lanes} · направление {direction}"
+  },
+  "actionMissileLocateSummary": {
+    "zh": "{count} 枚 · 第 {start}–{end} 列 · {countdown} 秒",
+    "en": "{count} missiles · columns {start}–{end} · {countdown}s",
+    "es": "{count} misiles · columnas {start}–{end} · {countdown}s",
+    "ru": "Ракет: {count} · столбцы {start}–{end} · {countdown} с"
+  },
+  "actionWaveWarningSummary": {
+    "zh": "{message} · {duration} 秒",
+    "en": "{message} · {duration}s",
+    "es": "{message} · {duration}s",
+    "ru": "{message} · {duration} с"
+  },
+  "frostWindLanes": {
+    "zh": "各行风向与数量",
+    "en": "Gusts by lane",
+    "es": "Ráfagas por fila",
+    "ru": "Порывы по рядам"
+  },
+  "frostWindLeftCount": {
+    "zh": "第 {row} 行向左寒风数量",
+    "en": "Left gusts in lane {row}",
+    "es": "Ráfagas a la izquierda en fila {row}",
+    "ru": "Порывы влево в ряду {row}"
+  },
+  "frostWindRightCount": {
+    "zh": "第 {row} 行向右寒风数量",
+    "en": "Right gusts in lane {row}",
+    "es": "Ráfagas a la derecha en fila {row}",
+    "ru": "Порывы вправо в ряду {row}"
+  },
+  "zombieType": {
+    "zh": "僵尸类型",
+    "en": "Zombie type",
+    "es": "Tipo de zombi",
+    "ru": "Тип зомби"
+  },
+  "airDropZombieType": {
+    "zh": "空投僵尸",
+    "en": "Dropped zombie",
+    "es": "Zombi lanzado",
+    "ru": "Десантный зомби"
+  },
+  "objectType": {
+    "zh": "物件类型",
+    "en": "Object type",
+    "es": "Tipo de objeto",
+    "ru": "Тип объекта"
+  },
+  "eventZombieCount": {
+    "zh": "僵尸总数",
+    "en": "Zombie count",
+    "es": "Cantidad de zombis",
+    "ru": "Количество зомби"
+  },
+  "swashbucklerCount": {
+    "zh": "突袭僵尸总数",
+    "en": "Raider count",
+    "es": "Cantidad de asaltantes",
+    "ru": "Количество налетчиков"
+  },
+  "tideColumn": {
+    "zh": "潮水列",
+    "en": "Tide column",
+    "es": "Columna de marea",
+    "ru": "Столбец прилива"
+  },
+  "dinoType": {
+    "zh": "恐龙类型",
+    "en": "Dinosaur type",
+    "es": "Tipo de dinosaurio",
+    "ru": "Тип динозавра"
+  },
+  "duration": {
+    "zh": "持续时间",
+    "en": "Duration",
+    "es": "Duración",
+    "ru": "Длительность"
+  },
+  "missileCount": {
+    "zh": "导弹数量",
+    "en": "Missiles",
+    "es": "Misiles",
+    "ru": "Ракеты"
+  },
+  "missileCountdown": {
+    "zh": "落地倒计时",
+    "en": "Impact countdown",
+    "es": "Cuenta atrás",
+    "ru": "До удара"
+  },
+  "warningFallbackText": {
+    "zh": "默认提示",
+    "en": "Fallback text",
+    "es": "Texto predeterminado",
+    "ru": "Текст по умолчанию"
+  },
+  "warningChineseText": {
+    "zh": "中文提示",
+    "en": "Chinese text",
+    "es": "Texto chino",
+    "ru": "Текст на китайском"
+  },
+  "warningEnglishText": {
+    "zh": "英文提示",
+    "en": "English text",
+    "es": "Texto inglés",
+    "ru": "Текст на английском"
+  },
+  "warningSound": {
+    "zh": "提示音",
+    "en": "Sound",
+    "es": "Sonido",
+    "ru": "Звук"
+  },
+  "warningInitTime": {
+    "zh": "出现时间",
+    "en": "Intro time",
+    "es": "Tiempo de entrada",
+    "ru": "Время появления"
+  },
+  "eventType": {
+    "zh": "事件类型",
+    "en": "Event type",
+    "es": "Tipo de evento",
+    "ru": "Тип события"
+  },
+  "columnStart": {
+    "zh": "起始列",
+    "en": "Start column",
+    "es": "Columna inicial",
+    "ru": "Начальный столбец"
+  },
+  "columnEnd": {
+    "zh": "结束列",
+    "en": "End column",
+    "es": "Columna final",
+    "ru": "Конечный столбец"
+  },
+  "groupSize": {
+    "zh": "每组数量",
+    "en": "Group size",
+    "es": "Tamaño del grupo",
+    "ru": "Размер группы"
+  },
+  "timeBetweenGroups": {
+    "zh": "组间秒数",
+    "en": "Seconds between groups",
+    "es": "Segundos entre grupos",
+    "ru": "Секунд между группами"
+  },
+  "timeBeforeFullSpawn": {
+    "zh": "全部入场时间（秒）",
+    "en": "Time to fully arrive (s)",
+    "es": "Tiempo de llegada total (s)",
+    "ru": "Время полного появления (с)"
+  },
+  "zombieFallTime": {
+    "zh": "下落时间（秒）",
+    "en": "Fall time (s)",
+    "es": "Tiempo de caída (s)",
+    "ru": "Время падения (с)"
+  },
+  "fixedDropZombies": {
+    "zh": "固定落点僵尸 {count}",
+    "en": "Fixed drops {count}",
+    "es": "Caídas fijas {count}",
+    "ru": "Фиксированные десанты: {count}"
+  },
+  "addFixedDropZombie": {
+    "zh": "添加固定落点",
+    "en": "Add fixed drop",
+    "es": "Añadir caída fija",
+    "ru": "Добавить фиксированный десант"
+  },
+  "spawnObjectPool": {
+    "zh": "生成物件及数量",
+    "en": "Spawn objects and counts",
+    "es": "Objetos y cantidades",
+    "ru": "Объекты и количество"
+  },
+  "spawnCount": {
+    "zh": "生成数量",
+    "en": "Spawn count",
+    "es": "Cantidad",
+    "ru": "Количество"
+  },
+  "addSpawnObject": {
+    "zh": "添加物件",
+    "en": "Add object",
+    "es": "Añadir objeto",
+    "ru": "Добавить объект"
+  },
+  "displacePlants": {
+    "zh": "移开占位植物",
+    "en": "Displace plants",
+    "es": "Desplazar plantas",
+    "ru": "Сдвигать растения"
+  },
+  "limitSpawnColumns": {
+    "zh": "限制生成列",
+    "en": "Limit spawn columns",
+    "es": "Limitar columnas",
+    "ru": "Ограничить столбцы"
+  },
+  "spawnCandidateCells": {
+    "zh": "候选生成格",
+    "en": "Candidate spawn cells",
+    "es": "Casillas candidatas",
+    "ru": "Клетки появления"
+  },
+  "spawnCandidateCell": {
+    "zh": "第 {row} 行第 {column} 列",
+    "en": "Row {row}, column {column}",
+    "es": "Fila {row}, columna {column}",
+    "ru": "Ряд {row}, столбец {column}"
+  },
+  "gridItemSpawnSources": {
+    "zh": "出怪来源物件",
+    "en": "Spawn source objects",
+    "es": "Objetos de origen",
+    "ru": "Объекты-источники"
+  },
+  "addSpawnSource": {
+    "zh": "添加来源",
+    "en": "Add source",
+    "es": "Añadir origen",
+    "ru": "Добавить источник"
+  },
+  "zombieSpawnWaitTime": {
+    "zh": "出怪等待（秒）",
+    "en": "Spawn delay (s)",
+    "es": "Espera de aparición (s)",
+    "ru": "Задержка появления (с)"
+  },
+  "skipWithoutSource": {
+    "zh": "没有来源物件时跳过",
+    "en": "Skip when no source exists",
+    "es": "Omitir si no hay origen",
+    "ru": "Пропустить без источника"
+  },
+  "dropShipType": {
+    "zh": "运输舰类型",
+    "en": "Drop-ship type",
+    "es": "Tipo de nave",
+    "ru": "Тип корабля"
+  },
+  "dropShipImpType": {
+    "zh": "空投小鬼",
+    "en": "Dropped imp",
+    "es": "Diablillo lanzado",
+    "ru": "Десантный имп"
+  },
+  "dropShipImpCount": {
+    "zh": "小鬼数量",
+    "en": "Imp count",
+    "es": "Cantidad de diablillos",
+    "ru": "Количество импов"
+  },
+  "dropShipFirstDelay": {
+    "zh": "首次空投等待（秒）",
+    "en": "First-drop delay (s)",
+    "es": "Espera inicial (s)",
+    "ru": "Задержка первого десанта (с)"
+  },
+  "dropShipInterval": {
+    "zh": "空投间隔（秒）",
+    "en": "Drop interval (s)",
+    "es": "Intervalo de caída (s)",
+    "ru": "Интервал десанта (с)"
+  },
+  "dropShipFlightTime": {
+    "zh": "飞行时间（秒）",
+    "en": "Flight time (s)",
+    "es": "Tiempo de vuelo (s)",
+    "ru": "Время полета (с)"
+  },
+  "dropShipColumnOffsets": {
+    "zh": "落点列偏移",
+    "en": "Landing column offsets",
+    "es": "Desplazamiento de columna",
+    "ru": "Смещение столбца"
+  },
+  "dropShipRowOffsets": {
+    "zh": "落点行偏移",
+    "en": "Landing row offsets",
+    "es": "Desplazamiento de fila",
+    "ru": "Смещение ряда"
+  },
+  "minimum": {
+    "zh": "最小",
+    "en": "Min",
+    "es": "Mín.",
+    "ru": "Мин."
+  },
+  "maximum": {
+    "zh": "最大",
+    "en": "Max",
+    "es": "Máx.",
+    "ru": "Макс."
+  },
+  "rangeMinimum": {
+    "zh": "{label}最小值",
+    "en": "Minimum {label}",
+    "es": "Mínimo de {label}",
+    "ru": "Минимум: {label}"
+  },
+  "rangeMaximum": {
+    "zh": "{label}最大值",
+    "en": "Maximum {label}",
+    "es": "Máximo de {label}",
+    "ru": "Максимум: {label}"
+  },
+  "thunderCharges": {
+    "zh": "雷云极性与连接植物",
+    "en": "Thunder polarity and linked plants",
+    "es": "Polaridad y plantas enlazadas",
+    "ru": "Полярность и связанные растения"
+  },
+  "thunderPolarity": {
+    "zh": "雷云极性",
+    "en": "Thunder polarity",
+    "es": "Polaridad del trueno",
+    "ru": "Полярность грозы"
+  },
+  "linkedPlantCount": {
+    "zh": "连接植物数",
+    "en": "Linked plants",
+    "es": "Plantas enlazadas",
+    "ru": "Связанные растения"
+  },
+  "addThunderCharge": {
+    "zh": "添加雷云",
+    "en": "Add thunder",
+    "es": "Añadir trueno",
+    "ru": "Добавить грозу"
+  },
+  "thunderFirstDelay": {
+    "zh": "首次雷击等待（秒）",
+    "en": "First-strike delay (s)",
+    "es": "Espera del primer golpe (s)",
+    "ru": "Задержка первого удара (с)"
+  },
+  "thunderInterval": {
+    "zh": "雷击间隔（秒）",
+    "en": "Strike interval (s)",
+    "es": "Intervalo de golpes (s)",
+    "ru": "Интервал ударов (с)"
+  },
+  "qigongStrikeList": {
+    "zh": "气功打击落点",
+    "en": "Qigong strike targets",
+    "es": "Objetivos de qigong",
+    "ru": "Точки удара цигун"
+  },
+  "addQigongStrike": {
+    "zh": "添加打击落点",
+    "en": "Add strike target",
+    "es": "Añadir objetivo",
+    "ru": "Добавить точку удара"
+  },
+  "delay": {
+    "zh": "延迟（秒）",
+    "en": "Delay (s)",
+    "es": "Retraso (s)",
+    "ru": "Задержка (с)"
+  },
+  "chiHoleDirection": {
+    "zh": "方向",
+    "en": "Direction",
+    "es": "Dirección",
+    "ru": "Направление"
+  },
+  "directionValue": {
+    "zh": "方向 {value}",
+    "en": "Direction {value}",
+    "es": "Dirección {value}",
+    "ru": "Направление {value}"
+  },
+  "chiHoleLifeSpan": {
+    "zh": "持续时间（秒）",
+    "en": "Lifetime (s)",
+    "es": "Duración (s)",
+    "ru": "Время жизни (с)"
+  },
+  "chiHoleAbsorbDelay": {
+    "zh": "开始吸收等待（秒）",
+    "en": "Absorb delay (s)",
+    "es": "Espera de absorción (s)",
+    "ru": "Задержка поглощения (с)"
+  },
+  "chiHoleMoveInterval": {
+    "zh": "植物移动间隔（秒）",
+    "en": "Plant-move interval (s)",
+    "es": "Intervalo de movimiento (s)",
+    "ru": "Интервал движения растений (с)"
+  },
+  "affectedLanes": {
+    "zh": "影响行",
+    "en": "Affected lanes",
+    "es": "Filas afectadas",
+    "ru": "Затронутые ряды"
+  },
+  "suppressNextWave": {
+    "zh": "事件期间阻止下一波",
+    "en": "Hold the next wave",
+    "es": "Retener la siguiente oleada",
+    "ru": "Задерживать следующую волну"
+  },
+  "suppressObjectiveTip": {
+    "zh": "隐藏目标提示",
+    "en": "Hide objective tip",
+    "es": "Ocultar aviso del objetivo",
+    "ru": "Скрыть подсказку цели"
+  },
+  "column": {
+    "zh": "列",
+    "en": "Column",
+    "es": "Columna",
+    "ru": "Столбец"
+  },
+  "eventWaves": {
+    "zh": "事件批次",
+    "en": "Event batches",
+    "es": "Lotes del evento",
+    "ru": "Пакеты события"
+  },
+  "rawJson": {
+    "zh": "原始 JSON",
+    "en": "Raw JSON",
+    "es": "JSON original",
+    "ru": "Исходный JSON"
+  },
+  "add": {
+    "zh": "添加",
+    "en": "Add",
+    "es": "Añadir",
+    "ru": "Добавить"
+  },
+  "conveyor": {
+    "zh": "传送带",
+    "en": "Conveyor",
+    "es": "Cinta transportadora",
+    "ru": "Конвейер"
+  },
+  "advancedConveyor": {
+    "zh": "高级传送带",
+    "en": "Advanced conveyor",
+    "es": "Cinta avanzada",
+    "ru": "Расширенный конвейер"
+  },
+  "conveyorSeedBankNotice": {
+    "zh": "传送带模式不生成普通种子栏。",
+    "en": "Conveyor mode omits the normal seed bank.",
+    "es": "El modo cinta omite el banco de semillas normal.",
+    "ru": "В режиме конвейера обычная панель не создается."
+  },
+  "conveyorPreserveOriginal": {
+    "zh": "未改动时保留导入原文",
+    "en": "Preserve imported JSON until edited",
+    "es": "Conservar JSON importado hasta editarlo",
+    "ru": "Сохранять импортированный JSON до правки"
+  },
+  "conveyorInitialPlants": {
+    "zh": "初始植物池",
+    "en": "Initial plant pool",
+    "es": "Plantas iniciales",
+    "ru": "Начальный пул растений"
+  },
+  "conveyorDropDelayConditions": {
+    "zh": "掉落延迟条件",
+    "en": "Drop delay conditions",
+    "es": "Condiciones de demora",
+    "ru": "Условия задержки"
+  },
+  "conveyorSpeedConditions": {
+    "zh": "速度条件",
+    "en": "Speed conditions",
+    "es": "Condiciones de velocidad",
+    "ru": "Условия скорости"
+  },
+  "conveyorWaveModifications": {
+    "zh": "波次植物池修改",
+    "en": "Wave plant pool changes",
+    "es": "Cambios por oleada",
+    "ru": "Изменения пула по волнам"
+  },
+  "conveyorAction": {
+    "zh": "动作",
+    "en": "Action",
+    "es": "Acción",
+    "ru": "Действие"
+  },
+  "conveyorWave": {
+    "zh": "波次",
+    "en": "Wave",
+    "es": "Oleada",
+    "ru": "Волна"
+  },
+  "conveyorAddPlant": {
+    "zh": "加入植物",
+    "en": "Add plant",
+    "es": "Añadir planta",
+    "ru": "Добавить растение"
+  },
+  "conveyorRemovePlant": {
+    "zh": "移除植物",
+    "en": "Remove plant",
+    "es": "Quitar planta",
+    "ru": "Убрать растение"
+  },
+  "conveyorAdvancedPlantFields": {
+    "zh": "高级植物参数",
+    "en": "Advanced plant parameters",
+    "es": "Parámetros avanzados",
+    "ru": "Доп. параметры растения"
+  },
+  "conveyorWeight": {
+    "zh": "权重",
+    "en": "Weight",
+    "es": "Peso",
+    "ru": "Вес"
+  },
+  "conveyorMaxPackets": {
+    "zh": "最大卡包数",
+    "en": "Max packets",
+    "es": "Paquetes máx.",
+    "ru": "Макс. пакетов"
+  },
+  "conveyorDelay": {
+    "zh": "延迟",
+    "en": "Delay",
+    "es": "Demora",
+    "ru": "Задержка"
+  },
+  "conveyorSpeed": {
+    "zh": "速度",
+    "en": "Speed",
+    "es": "Velocidad",
+    "ru": "Скорость"
+  },
+  "conveyorMaxCount": {
+    "zh": "最大数量",
+    "en": "Max count",
+    "es": "Cantidad máx.",
+    "ru": "Макс. число"
+  },
+  "conveyorMinCount": {
+    "zh": "最小数量",
+    "en": "Min count",
+    "es": "Cantidad mín.",
+    "ru": "Мин. число"
+  },
+  "conveyorMaxWeightFactor": {
+    "zh": "最大权重系数",
+    "en": "Max weight factor",
+    "es": "Factor máx.",
+    "ru": "Макс. множитель"
+  },
+  "conveyorMinWeightFactor": {
+    "zh": "最小权重系数",
+    "en": "Min weight factor",
+    "es": "Factor mín.",
+    "ru": "Мин. множитель"
+  },
+  "conveyorCooldownSeconds": {
+    "zh": "冷却秒数",
+    "en": "Cooldown seconds",
+    "es": "Recarga seg.",
+    "ru": "Перезарядка, с"
+  },
+  "conveyorMaxCountCooldownSeconds": {
+    "zh": "最大数量冷却",
+    "en": "Max count cooldown",
+    "es": "Recarga máx.",
+    "ru": "КД макс. числа"
+  },
+  "conveyorMinCountCooldownSeconds": {
+    "zh": "最小数量冷却",
+    "en": "Min count cooldown",
+    "es": "Recarga mín.",
+    "ru": "КД мин. числа"
+  },
+  "conveyorMaxDelivered": {
+    "zh": "最大投放数",
+    "en": "Max delivered",
+    "es": "Entregas máx.",
+    "ru": "Макс. выдано"
+  },
+  "conveyorForceBoosted": {
+    "zh": "强制能量豆强化",
+    "en": "Force boosted",
+    "es": "Forzar potenciado",
+    "ru": "Принудительно усилено"
+  },
+  "conveyorTabPlants": {
+    "zh": "植物池",
+    "en": "Plants",
+    "es": "Plantas",
+    "ru": "Растения"
+  },
+  "conveyorTabRules": {
+    "zh": "掉卡规则",
+    "en": "Drop rules",
+    "es": "Reglas",
+    "ru": "Правила"
+  },
+  "conveyorTabWaves": {
+    "zh": "波次修改",
+    "en": "Wave changes",
+    "es": "Oleadas",
+    "ru": "Волны"
+  },
+  "conveyorSummaryPlants": {
+    "zh": "植物",
+    "en": "plants",
+    "es": "plantas",
+    "ru": "раст."
+  },
+  "conveyorSummaryRules": {
+    "zh": "规则",
+    "en": "rules",
+    "es": "reglas",
+    "ru": "прав."
+  },
+  "conveyorSummaryWaveMods": {
+    "zh": "波次",
+    "en": "waves",
+    "es": "oleadas",
+    "ru": "волн"
+  },
+  "conveyorRuleDrop": {
+    "zh": "掉落延迟",
+    "en": "Drop delay",
+    "es": "Demora",
+    "ru": "Задержка"
+  },
+  "conveyorRuleSpeed": {
+    "zh": "传送速度",
+    "en": "Conveyor speed",
+    "es": "Velocidad",
+    "ru": "Скорость"
+  },
+  "conveyorWaveNumber": {
+    "zh": "第 {wave} 波",
+    "en": "Wave {wave}",
+    "es": "Oleada {wave}",
+    "ru": "Волна {wave}"
+  },
+  "conveyorNoExtraParams": {
+    "zh": "默认参数",
+    "en": "Default params",
+    "es": "Parámetros pred.",
+    "ru": "По умолчанию"
+  },
+  "conveyorBaseParams": {
+    "zh": "基础",
+    "en": "Basics",
+    "es": "Básico",
+    "ru": "Основное"
+  },
+  "conveyorCountLimits": {
+    "zh": "数量限制",
+    "en": "Count limits",
+    "es": "Límites",
+    "ru": "Ограничения"
+  },
+  "conveyorWeightFactors": {
+    "zh": "权重系数",
+    "en": "Weight factors",
+    "es": "Factores",
+    "ru": "Множители"
+  },
+  "conveyorCooldowns": {
+    "zh": "冷却",
+    "en": "Cooldowns",
+    "es": "Recargas",
+    "ru": "Перезарядки"
+  },
+  "conveyorEditPlantTitle": {
+    "zh": "{plant} - 传送带参数",
+    "en": "{plant} - conveyor params",
+    "es": "{plant} - parámetros",
+    "ru": "{plant} - параметры"
+  },
+  "conveyorEditWaveTitle": {
+    "zh": "第 {wave} 波 - {plant}",
+    "en": "Wave {wave} - {plant}",
+    "es": "Oleada {wave} - {plant}",
+    "ru": "Волна {wave} - {plant}"
+  },
+  "conveyorEditDropTitle": {
+    "zh": "编辑掉落延迟",
+    "en": "Edit drop delay",
+    "es": "Editar demora",
+    "ru": "Правка задержки"
+  },
+  "conveyorEditSpeedTitle": {
+    "zh": "编辑传送速度",
+    "en": "Edit conveyor speed",
+    "es": "Editar velocidad",
+    "ru": "Правка скорости"
+  },
+  "conveyorEditPlantAria": {
+    "zh": "编辑 {plant} 的传送带参数",
+    "en": "Edit conveyor parameters for {plant}",
+    "es": "Editar parámetros de {plant}",
+    "ru": "Изменить параметры {plant}"
+  },
+  "conveyorEditWaveAria": {
+    "zh": "编辑第 {wave} 波 {plant} 的传送带修改",
+    "en": "Edit conveyor wave {wave} change for {plant}",
+    "es": "Editar cambio de oleada {wave} para {plant}",
+    "ru": "Изменить волну {wave} для {plant}"
+  },
+  "conveyorRemoveModeHint": {
+    "zh": "移除动作只需要波次和植物；加入专用的权重、数量和冷却参数不会导出。",
+    "en": "Remove actions only need wave and plant. Add-only weight, count, and cooldown params are not exported.",
+    "es": "Quitar solo usa oleada y planta; peso, límites y recarga no se exportan.",
+    "ru": "Для удаления нужны только волна и растение; вес, лимиты и КД не экспортируются."
+  },
+  "unsupported": {
+    "zh": "导入保留对象",
+    "en": "Preserved imported objects",
+    "es": "Objetos importados conservados",
+    "ru": "Сохраненные импортированные объекты"
+  },
+  "unsupportedAlias": {
+    "zh": "别名",
+    "en": "Alias",
+    "es": "Alias",
+    "ru": "Псевдоним"
+  },
+  "unsupportedNoAlias": {
+    "zh": "无别名",
+    "en": "No alias",
+    "es": "Sin alias",
+    "ru": "Без псевдонима"
+  },
+  "unknownObjclass": {
+    "zh": "未知 objclass",
+    "en": "Unknown objclass",
+    "es": "objclass desconocido",
+    "ru": "Неизвестный objclass"
+  },
+  "validationNameRequired": {
+    "zh": "关卡名不能为空。",
+    "en": "Level name is required.",
+    "es": "El nombre del nivel es obligatorio.",
+    "ru": "Укажите название уровня."
+  },
+  "validationWaveRequired": {
+    "zh": "至少需要 1 个波次。",
+    "en": "At least one wave is required.",
+    "es": "Se necesita al menos una oleada.",
+    "ru": "Нужна хотя бы одна волна."
+  },
+  "validationWaveEmpty": {
+    "zh": "第 {wave} 波没有僵尸。",
+    "en": "Wave {wave} has no zombies.",
+    "es": "La oleada {wave} no tiene zombis.",
+    "ru": "В волне {wave} нет зомби."
+  },
+  "validationDynamicPlantfood": {
+    "zh": "第 {wave} 波的动态叶绿素需要是数组 JSON。",
+    "en": "Wave {wave} dynamic plant food must be a JSON array.",
+    "es": "Los nutrientes dinámicos de la oleada {wave} deben ser una matriz JSON.",
+    "ru": "Динамическая подкормка волны {wave} должна быть массивом JSON."
+  },
+  "validationActionJson": {
+    "zh": "第 {wave} 波的 {action} JSON 无法解析。",
+    "en": "Wave {wave} {action} JSON cannot be parsed.",
+    "es": "No se puede analizar el JSON de {action} en la oleada {wave}.",
+    "ru": "Не удалось разобрать JSON действия {action} в волне {wave}."
+  },
+  "validationSupportActionJson": {
+    "zh": "调度事件 {action} 的 JSON 无法解析。",
+    "en": "Scheduler event {action} JSON cannot be parsed.",
+    "es": "No se puede analizar el JSON del evento {action}.",
+    "ru": "Не удалось разобрать JSON события {action}."
+  },
+  "validationWaveReferenceMissing": {
+    "zh": "波次引用 {alias} 缺少对应对象，将按原值保留。",
+    "en": "Wave reference {alias} has no matching object and will be preserved.",
+    "es": "La referencia de oleada {alias} no tiene objeto y se conservará.",
+    "ru": "Для ссылки волны {alias} нет объекта; ссылка будет сохранена."
+  },
+  "validationPresetEmpty": {
+    "zh": "固定卡组模式下还没有选择植物。",
+    "en": "Preset seed bank has no plants.",
+    "es": "El banco predeterminado no tiene plantas.",
+    "ru": "В фиксированном наборе нет растений."
+  },
+  "validationConveyorEmpty": {
+    "zh": "传送带已启用，但没有初始植物或波次修改。",
+    "en": "Conveyor is enabled but has no plants or wave changes.",
+    "es": "La cinta está activa, pero no tiene plantas ni cambios de oleada.",
+    "ru": "Конвейер включен, но в нем нет растений или изменений волн."
+  },
+  "validationConveyorWaveMissing": {
+    "zh": "传送带波次修改指向不存在的第 {wave} 波。",
+    "en": "Conveyor change points to missing wave {wave}.",
+    "es": "El cambio de cinta apunta a la oleada inexistente {wave}.",
+    "ru": "Изменение конвейера ссылается на отсутствующую волну {wave}."
+  },
+  "validationUnsupported": {
+    "zh": "导入文件中有 {count} 个对象已保留，但尚不能在面板中编辑。",
+    "en": "{count} imported objects are preserved but not editable in the panels.",
+    "es": "Se conservan {count} objetos importados que aún no se pueden editar en los paneles.",
+    "ru": "Сохранено объектов без визуального редактирования: {count}."
+  },
+  "noIssues": {
+    "zh": "当前没有发现阻止导出的错误。",
+    "en": "No export-blocking issues found.",
+    "es": "No se encontraron errores que bloqueen la exportación.",
+    "ru": "Ошибок, блокирующих экспорт, не найдено."
+  },
+  "importFailed": {
+    "zh": "关卡文件解析失败",
+    "en": "Failed to parse level file",
+    "es": "No se pudo analizar el archivo de nivel",
+    "ru": "Не удалось разобрать файл уровня"
+  },
+  "importInvalidStructure": {
+    "zh": "这不是可编辑的完整关卡：需要唯一的 LevelDefinition、关卡名、场景和 Modules。",
+    "en": "This is not a complete editable level. It needs one LevelDefinition, a name, a stage, and Modules.",
+    "es": "No es un nivel completo editable. Necesita un LevelDefinition, nombre, escenario y Modules.",
+    "ru": "Это не полный редактируемый уровень: нужен один LevelDefinition, имя, сцена и Modules."
+  },
+  "imported": {
+    "zh": "已导入关卡",
+    "en": "Level imported",
+    "es": "Nivel importado",
+    "ru": "Уровень импортирован"
+  },
+  "exportBlocked": {
+    "zh": "请先修复错误再导出。",
+    "en": "Fix errors before exporting.",
+    "es": "Corrige los errores antes de exportar.",
+    "ru": "Исправьте ошибки перед экспортом."
+  }
+}

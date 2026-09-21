@@ -1,0 +1,1211 @@
+{
+  "#comment": "Make new grid item types here!",
+  "version": 1,
+  "objects": [
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "circus1"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "modern",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "carnie_stiltwalker"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "carnie_armor1"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "carnie_armor2"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "carnie"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "rome"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "rift1a",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 0.75,
+            "ZombieTypeName": "roman"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "roman_shield_triad"
+          },
+          {
+            "Weight": 0.35,
+            "ZombieTypeName": "roman_armor3"
+          },
+          {
+            "Weight": 0.25,
+            "ZombieTypeName": "roman_healer"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "chicken"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "west",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "chicken_battlez"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "eighties"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "eighties",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_mc"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_mc"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_breakdancer"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dino"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "dino",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_imp"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_imp"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_bully"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "lostcity"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "lostcity",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_jane"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_excavator"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_excavator"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "iceage"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "iceage",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_weaselhoarder"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_hunter"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "beach"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "beach",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_surfer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_surfer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_octopus"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dark"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "dark",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_juggler"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_juggler"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_juggler"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "future"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "future",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_protector"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "mech_cone"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "football_mech"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "future_2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "future",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_jetpack"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_armor1"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "mech_cone"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "west"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "west",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "prospector"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "poncho_plate"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "piano"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "pirate"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "pirate",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pirate_captain"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "seagull"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "seagull"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "barrelroller"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "egypt"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "Scale": 1,
+        "World": "egypt",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "ra"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "tomb_raiser"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "tomb_raiser"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pharaoh"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "egypt_2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "egypt",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "explorer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "explorer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "explorer"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "modern"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "modern",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 0.8,
+            "ZombieTypeName": "modern_allstar"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "modern_newspaper"
+          },
+          {
+            "Weight": 0.9,
+            "ZombieTypeName": "tutorial_armor4"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "modern_balloon"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_egypt"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "egypt",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "ra"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "explorer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "explorer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pharaoh"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_pirate"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "pirate",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "seagull"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pirate_captain"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pirate_captain"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "barrelroller"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_west"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "west",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "poncho"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "chicken_farmer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "poncho"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "piano"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_future"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "future",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_jetpack"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_protector"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_jetpack"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "mech_cone"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_dark"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "dark",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_juggler"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_wizard"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_juggler"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_armor3"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_beach"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "beach",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_snorkel"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_surfer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_surfer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_octopus"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_iceage"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "iceage",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_dodo"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_weaselhoarder"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_dodo"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_armor3"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_lostcity"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "lostcity",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_bug"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_excavator"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_bug"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_crystalskull"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_eighties"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "eighties",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_8bit_armor1"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_boombox"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_8bit_armor2"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_boombox"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_dino"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "dino",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_imp"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_bully"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_imp"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_armor3"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_egypt2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "egypt",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "ra"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "explorer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "explorer_veteran"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pharaoh"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_pirate2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "pirate",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pelican"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pirate_captain"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "pirate_captain"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "barrelroller"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_west2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "west",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "poncho"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "chicken_farmer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "poncho"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "piano"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_future2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "future",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_jetpack_disco"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_protector"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "future_jetpack_veteran"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "mech_cone"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_dark2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "dark",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_juggler"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_wizard_veteran"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_juggler"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dark_armor3"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_beach2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "beach",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_snorkel"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_surfer_veteran"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_surfer"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "beach_octopus"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_iceage2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "iceage",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_hunter"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_weaselhoarder"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_dodo"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "iceage_armor4"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_lostcity2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "lostcity",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_bug_armor2"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_excavator"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_bug_armor1"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "lostcity_crystalskull"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_eighties2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "eighties",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_8bit_armor2"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_boombox"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_8bit_armor2"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "eighties_boombox"
+          }
+        ]
+      }
+    },
+    {
+      "objclass": "PortalProps",
+      "aliases": [
+        "dangerroom_dino2"
+      ],
+      "objdata": {
+        "TimeBeforeFirst": {
+          "Min": 5,
+          "Max": 6
+        },
+        "TimeBetween": {
+          "Min": 10,
+          "Max": 12
+        },
+        "World": "dino",
+        "ZombieTypesToSpawn": [
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_imp"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_bully_veteran"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_imp"
+          },
+          {
+            "Weight": 1,
+            "ZombieTypeName": "dino_armor4"
+          }
+        ]
+      }
+    }
+  ]
+}

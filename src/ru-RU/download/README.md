@@ -1,0 +1,52 @@
+---
+title: Скачивание
+index: false
+icon: download
+pageInfo: false
+breadcrumb: false
+sidebar: false
+comment: false
+
+category:
+  - Скачивание
+---
+
+<script setup>
+import { onMounted } from 'vue';
+import DownloadPanel from '@source/components/download-page/DownloadPanel.vue';
+
+onMounted(() => {
+  (window.adsbygoogle = window.adsbygoogle || []).push({});
+});
+</script>
+
+> [!important]
+> Ответы на часто задаваемые вопросы, связанные со скачиванием и запуском, пожалуйста, смотрите [здесь](../guide/FAQ.md), а информацию о системных требованиях и рекомендуемых конфигурациях смотрите [тут](../guide/requirement.md)
+>
+> Официальная версия на сайте и версия QQ group/китайский сетевой диск этой игры используют разные методы упаковки, и файлы сохранения не будут автоматически унаследованы.
+
+> [!warning]
+> Загрузка или воспроизведение онлайн означает, что вы прочитали и согласились со следующими соглашениями и заявлениями:
+>
+> - Пользовательское соглашение "PvZ2 Gardendless"
+> - Отказ от ответственности "PvZ2 Gardendless"
+>
+> Для получения подробной информации о вышеуказанном соглашении и заявлении, пожалуйста, ознакомьтесь с [этим](../instructions/)
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2336226859954206"
+     data-ad-slot="1822530351"
+     data-ad-format="auto"
+     data-full-width-responsive="true">
+</ins>
+
+<DownloadPanel locale="ru" />
+
+## Что сделать после скачивания
+
+- Решение частых проблем: [FAQ](../guide/FAQ.md)
+- Системные требования и настройки: [Рекомендуемая конфигурация](../guide/requirement.md)
+- Поиск ID и CodeName растений/зомби: [Онлайн-альманах](../almanac/)
+- Руководство по патчам и локализации: [Гайд по MOD](../guide/mod/)
+- Официальные и пользовательские уровни: [Creator's Garden](../creator-garden/)

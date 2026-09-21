@@ -1,0 +1,97 @@
+{
+	"#comment": "Dinosaur Properties!",
+	"version": 1,
+	"objects": [
+		{
+			"aliases": [
+				"raptor"
+			],
+			"objclass": "DinosaurProperties",
+			"objdata": {
+				"LivesInDeepWater": false,
+				"MaxWonderingTime": 40,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(DinoRaptorAttackRect@RectangleProps)",
+				"WalkSPS": 0.65,
+				"ZombiesToKick": 5,
+				"ZombiesToFlickCharmed": 5,
+				"LeaveSpeedScale": 2,
+				"ZombieKickDistance": 3,
+				"KickEdgeColumn": 2,
+				"WalkEdgeColumn": 4,
+				"ReservedColumn": 1,
+				"SameZombieInterval": 4.5
+			}
+		},
+		{
+			"aliases": [
+				"stego"
+			],
+			"objclass": "DinosaurProperties",
+			"objdata": {
+				"LivesInDeepWater": true,
+				"MaxWonderingTime": 40,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(DinoRaptorAttackRect@RectangleProps)",
+				"MaxThrowingTime": 3,
+				"MaxZombiesToSitOnce": 3,
+				"IdleColumn": 6.5,
+				"DirectDamage": 2700,
+				"SplashDamage": 200,
+				"ThrowColumn": {
+					"Min": 3,
+					"Max": 4
+				}
+			}
+		},
+		{
+			"aliases": [
+				"ptero"
+			],
+			"objclass": "DinosaurProperties",
+			"objdata": {
+				"LivesInDeepWater": false,
+				"MaxWonderingTime": 40,
+				"HitRect": "RTID(DinoPteroHitRect@RectangleProps)",
+				"AttackRect": "RTID(DinoPteroAttackRect@RectangleProps)",
+				"FlyingTimes": 3,
+				"MaxCarryZombies": 1,
+				"DropColumn": 0,
+				"IdleColumn": 8.5,
+				"FlySPS": 2.5
+			}
+		},
+		{
+			"aliases": [
+				"tyranno"
+			],
+			"objclass": "DinosaurProperties",
+			"objdata": {
+				"LivesInDeepWater": false,
+				"MaxWonderingTime": 40,
+				"HitRect": "RTID(DinoPteroHitRect@RectangleProps)",
+				"AttackRect": "RTID(DinoPteroAttackRect@RectangleProps)",
+				"MaxRoaringTime": 1,
+				"MaxBitingTime": 5,
+				"IdleColumn": 6
+			}
+		},
+		{
+			"aliases": [
+				"ankylo"
+			],
+			"objclass": "DinosaurProperties",
+			"objdata": {
+				"LivesInDeepWater": false,
+				"MaxWonderingTime": 30,
+				"HitRect": "RTID(DinoPteroHitRect@RectangleProps)",
+				"ZombiesToThrow": 5,
+				"IdleColumn": 8.8,
+				"ThrowColumn": {
+					"Min": 1.8,
+					"Max": 2.3
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,3677 @@
+{
+	"#comment": "Projectile Types!",
+	"version": 1,
+	"objects": [
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"inferno_tornado"
+			],
+			"objdata": {
+				"MintBoostedType": "inferno_tornado_pf",
+				"ProjectileBasedOn": "inferno_tornado",
+				"Props": "RTID(inferno_tornado@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"inferno_tornado_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "inferno_tornado",
+				"Props": "RTID(inferno_tornado_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"darkmatter"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "darkmatter",
+				"Props": "RTID(darkmatter@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"darkmatter_shadow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "darkmatter_shadow",
+				"Props": "RTID(darkmatter_shadow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"abbot_fan_storm"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "abbot_fan_storm",
+				"Props": "RTID(abbot_fan_storm@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"airraid_0"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "airraid_0",
+				"Props": "RTID(airraid_0@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"airraid_1"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "airraid_1",
+				"Props": "RTID(airraid_1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"airraid_2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "homing_thistle_pf",
+				"Props": "RTID(airraid_2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"airraid_bolt_positive"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sky_bolt_positive",
+				"Props": "RTID(airraid_2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"airraid_bolt_negative"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sky_bolt_negative",
+				"Props": "RTID(airraid_2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2",
+				"ProjectileBasedOn": "pea",
+				"Props": "RTID(pea@ProjectileProps)",
+				"//ProjectileRedirection": [
+					{
+						"Type": "coconut_pf",
+						"Weight": 1
+					},
+					{
+						"Type": "coconut",
+						"Weight": 1
+					}
+				]
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2",
+				"ProjectileBasedOn": "pea1",
+				"Props": "RTID(pea1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2",
+				"Props": "RTID(pea2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_flame_yellow",
+				"ProjectileBasedOn": "pea_flame_yellow",
+				"Props": "RTID(pea_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_flame_blue",
+				"ProjectileBasedOn": "pea_flame_blue",
+				"Props": "RTID(pea_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea1_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_flame_yellow",
+				"ProjectileBasedOn": "pea1_flame_yellow",
+				"Props": "RTID(pea1_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea1_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_flame_blue",
+				"ProjectileBasedOn": "pea1_flame_blue",
+				"Props": "RTID(pea1_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea2_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_yellow",
+				"Props": "RTID(pea2_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea2_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_blue",
+				"Props": "RTID(pea2_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_0"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2",
+				"ProjectileBasedOn": "pea_sling_0",
+				"Props": "RTID(pea_sling_0@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2",
+				"ProjectileBasedOn": "pea_sling_1",
+				"Props": "RTID(pea_sling_1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sling_2",
+				"Props": "RTID(pea_sling_2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_0_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_flame_yellow",
+				"ProjectileBasedOn": "pea_sling_0_flame_yellow",
+				"Props": "RTID(pea_sling_0_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_0_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_flame_blue",
+				"ProjectileBasedOn": "pea_sling_0_flame_blue",
+				"Props": "RTID(pea_sling_0_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_1_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_flame_yellow",
+				"ProjectileBasedOn": "pea_sling_1_flame_yellow",
+				"Props": "RTID(pea_sling_1_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_1_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_flame_blue",
+				"ProjectileBasedOn": "pea_sling_1_flame_blue",
+				"Props": "RTID(pea_sling_1_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_2_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sling_2_flame_yellow",
+				"Props": "RTID(pea_sling_2_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_2_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sling_2_flame_blue",
+				"Props": "RTID(pea_sling_2_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_0_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_pf",
+				"ProjectileBasedOn": "pea_sling_0",
+				"Props": "RTID(pea_sling_0_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_1_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_pf",
+				"ProjectileBasedOn": "pea_sling_1",
+				"Props": "RTID(pea_sling_1_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_2_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sling_2",
+				"Props": "RTID(pea_sling_2_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_0_pf_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_pf_flame_yellow",
+				"ProjectileBasedOn": "pea_sling_0_flame_yellow",
+				"Props": "RTID(pea_sling_0_pf_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_0_pf_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_pf_flame_blue",
+				"ProjectileBasedOn": "pea_sling_0_flame_blue",
+				"Props": "RTID(pea_sling_0_pf_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_1_pf_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_pf_flame_yellow",
+				"ProjectileBasedOn": "pea_sling_1_flame_yellow",
+				"Props": "RTID(pea_sling_1_pf_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_1_pf_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sling_2_pf_flame_blue",
+				"ProjectileBasedOn": "pea_sling_1_flame_blue",
+				"Props": "RTID(pea_sling_1_pf_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_2_pf_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sling_2_flame_yellow",
+				"Props": "RTID(pea_sling_2_pf_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sling_2_pf_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sling_2_flame_blue",
+				"Props": "RTID(pea_sling_2_pf_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2_flame_yellow",
+				"ProjectileBasedOn": "pea_flame_yellow",
+				"Props": "RTID(sea_pea_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2_flame_blue",
+				"ProjectileBasedOn": "pea_flame_blue",
+				"Props": "RTID(sea_pea_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea1_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2_flame_yellow",
+				"ProjectileBasedOn": "pea1_flame_yellow",
+				"Props": "RTID(sea_pea1_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea1_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2_flame_blue",
+				"ProjectileBasedOn": "pea1_flame_blue",
+				"Props": "RTID(sea_pea1_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea2_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_yellow",
+				"Props": "RTID(sea_pea2_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea2_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_blue",
+				"Props": "RTID(sea_pea2_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_mega_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_mega",
+				"Props": "RTID(pea_mega_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_mega_mint_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_mega_flame_yellow",
+				"Props": "RTID(pea_mega_mint_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_mega_mint_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_mega_flame_blue",
+				"Props": "RTID(pea_mega_mint_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_mega"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_mega",
+				"Props": "RTID(pea_mega@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_mega_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_mega_flame_yellow",
+				"Props": "RTID(pea_mega_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_mega_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_mega_flame_blue",
+				"Props": "RTID(pea_mega_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_snow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_snow2",
+				"ProjectileBasedOn": "pea_snow",
+				"Props": "RTID(pea_snow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_snow1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_snow2",
+				"ProjectileBasedOn": "pea_snow1",
+				"Props": "RTID(pea_snow1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_snow2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_snow2",
+				"Props": "RTID(pea_snow2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_goo"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_goo2",
+				"ProjectileBasedOn": "pea_goo",
+				"Props": "RTID(pea_goo@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_goo1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_goo2",
+				"ProjectileBasedOn": "pea_goo1",
+				"Props": "RTID(pea_goo1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_goo2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_goo2",
+				"Props": "RTID(pea_goo2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_goo_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_goo_pf",
+				"Props": "RTID(pea_goo_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"iceweed_saw"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "iceweed_saw",
+				"Props": "RTID(iceweed_saw@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"spearmint_saw"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "spearmint_saw",
+				"Props": "RTID(spearmint_saw@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cabbage"
+			],
+			"objdata": {
+				"MintBoostedType": "cabbage2",
+				"ProjectileBasedOn": "cabbage",
+				"Props": "RTID(cabbage@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cabbage1"
+			],
+			"objdata": {
+				"MintBoostedType": "cabbage2",
+				"ProjectileBasedOn": "cabbage1",
+				"Props": "RTID(cabbage1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cabbage2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "cabbage2",
+				"Props": "RTID(cabbage2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cabbage_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "cabbage_pf",
+				"Props": "RTID(cabbage_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"boomerang"
+			],
+			"objdata": {
+				"MintBoostedType": "boomerang2",
+				"ProjectileBasedOn": "boomerang",
+				"Props": "RTID(boomerang@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"boomerang1"
+			],
+			"objdata": {
+				"MintBoostedType": "boomerang2",
+				"ProjectileBasedOn": "boomerang2",
+				"Props": "RTID(boomerang1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"boomerang2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "boomerang2",
+				"Props": "RTID(boomerang2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"snowdrop"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "snowdrop",
+				"Props": "RTID(snowdrop@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"snowdrop_freeze"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "snowdrop_freeze",
+				"Props": "RTID(snowdrop_freeze@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"icebloom"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "snowdrop_freeze",
+				"Props": "RTID(icebloom@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"corn"
+			],
+			"objdata": {
+				"MintBoostedType": "corn2",
+				"ProjectileBasedOn": "corn",
+				"Props": "RTID(corn@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"corn1"
+			],
+			"objdata": {
+				"MintBoostedType": "corn2",
+				"ProjectileBasedOn": "corn1",
+				"Props": "RTID(corn1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"corn2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "corn2",
+				"Props": "RTID(corn2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"butter"
+			],
+			"objdata": {
+				"MintBoostedType": "butter2",
+				"ProjectileBasedOn": "butter",
+				"Props": "RTID(butter@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"butter1"
+			],
+			"objdata": {
+				"MintBoostedType": "butter2",
+				"ProjectileBasedOn": "butter1",
+				"Props": "RTID(butter1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"butter2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "butter2",
+				"Props": "RTID(butter2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"buttercup_butter"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "butter",
+				"Props": "RTID(buttercup_butter@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"coconut"
+			],
+			"objdata": {
+				"MintBoostedType": "coconut_mint",
+				"ProjectileBasedOn": "coconut",
+				"Props": "RTID(coconut@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"coconut_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "coconut",
+				"Props": "RTID(coconut_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"coconut_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "coconut_pf",
+				"Props": "RTID(coconut_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cantaloupe"
+			],
+			"objdata": {
+				"MintBoostedType": "cantaloupe2",
+				"ProjectileBasedOn": "cantaloupe",
+				"Props": "RTID(cantaloupe@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cantaloupe1"
+			],
+			"objdata": {
+				"MintBoostedType": "cantaloupe2",
+				"ProjectileBasedOn": "cantaloupe1",
+				"Props": "RTID(cantaloupe1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cantaloupe2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "cantaloupe2",
+				"Props": "RTID(cantaloupe2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cantaloupe_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "cantaloupe_pf",
+				"Props": "RTID(cantaloupe_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"atombomb"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "atombomb",
+				"Props": "RTID(atombomb@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"caulipower"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "caulipower",
+				"Props": "RTID(caulipower@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"melon"
+			],
+			"objdata": {
+				"MintBoostedType": "melon2",
+				"ProjectileBasedOn": "melon",
+				"Props": "RTID(melon@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"melon1"
+			],
+			"objdata": {
+				"MintBoostedType": "melon2",
+				"ProjectileBasedOn": "melon1",
+				"Props": "RTID(melon1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"melon2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "melon2",
+				"Props": "RTID(melon2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"melon_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "melon_pf",
+				"Props": "RTID(melon_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"winter_melon"
+			],
+			"objdata": {
+				"MintBoostedType": "winter_melon2",
+				"ProjectileBasedOn": "winter_melon",
+				"Props": "RTID(winter_melon@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"winter_melon1"
+			],
+			"objdata": {
+				"MintBoostedType": "winter_melon2",
+				"ProjectileBasedOn": "winter_melon1",
+				"Props": "RTID(winter_melon1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"winter_melon2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "winter_melon2",
+				"Props": "RTID(winter_melon2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"winter_melon_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "winter_melon_pf",
+				"Props": "RTID(winter_melon_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"electricpea_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "electricpea_mint",
+				"Props": "RTID(electricpea_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"electricpea"
+			],
+			"objdata": {
+				"MintBoostedType": "electricpea_mint",
+				"ProjectileBasedOn": "electricpea",
+				"Props": "RTID(electricpea@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"electricpea_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "electricpea_pf",
+				"Props": "RTID(electricpea_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"electricpea_small"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "electricpea_small",
+				"Props": "RTID(electricpea_small@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"citron"
+			],
+			"objdata": {
+				"MintBoostedType": "citron2",
+				"ProjectileBasedOn": "citron",
+				"Props": "RTID(citron@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"citron1"
+			],
+			"objdata": {
+				"MintBoostedType": "citron2",
+				"ProjectileBasedOn": "citron1",
+				"Props": "RTID(citron1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"citron2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "citron2",
+				"Props": "RTID(citron2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"citron_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "citron_pf_mint",
+				"ProjectileBasedOn": "citron_pf",
+				"Props": "RTID(citron_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"citron_pf_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "citron_pf",
+				"Props": "RTID(citron_pf_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"magnifying_grass"
+			],
+			"objdata": {
+				"MintBoostedType": "magnifying_grass2",
+				"ProjectileBasedOn": "magnifying_grass",
+				"Props": "RTID(magnifying_grass@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"magnifying_grass1"
+			],
+			"objdata": {
+				"MintBoostedType": "magnifying_grass2",
+				"ProjectileBasedOn": "magnifying_grass1",
+				"Props": "RTID(magnifying_grass1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"magnifying_grass2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "magnifying_grass2",
+				"Props": "RTID(magnifying_grass2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"star"
+			],
+			"objdata": {
+				"MintBoostedType": "star2",
+				"ProjectileBasedOn": "star",
+				"Props": "RTID(star@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"star1"
+			],
+			"objdata": {
+				"MintBoostedType": "star2",
+				"ProjectileBasedOn": "star1",
+				"Props": "RTID(star1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"star2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "star2",
+				"Props": "RTID(star2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"star_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "star_pf",
+				"Props": "RTID(star_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pinkstar"
+			],
+			"objdata": {
+				"MintBoostedType": "pinkstar2",
+				"ProjectileBasedOn": "pinkstar",
+				"Props": "RTID(pinkstar@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pinkstar1"
+			],
+			"objdata": {
+				"MintBoostedType": "pinkstar2",
+				"ProjectileBasedOn": "pinkstar1",
+				"Props": "RTID(pinkstar1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pinkstar2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pinkstar2",
+				"Props": "RTID(pinkstar2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pinkstar_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pinkstar_pf",
+				"Props": "RTID(star_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"apple"
+			],
+			"objdata": {
+				"MintBoostedType": "apple2",
+				"ProjectileBasedOn": "apple",
+				"Props": "RTID(apple@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"apple1"
+			],
+			"objdata": {
+				"MintBoostedType": "apple2",
+				"ProjectileBasedOn": "apple1",
+				"Props": "RTID(apple1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"apple2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "apple2",
+				"Props": "RTID(apple2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"apple_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "apple_pf",
+				"Props": "RTID(apple_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"puffshroom_spore"
+			],
+			"objdata": {
+				"MintBoostedType": "puffshroom_spore2",
+				"ProjectileBasedOn": "puffshroom_spore",
+				"Props": "RTID(puffshroom_spore@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"puffshroom_spore1"
+			],
+			"objdata": {
+				"MintBoostedType": "puffshroom_spore2",
+				"ProjectileBasedOn": "puffshroom_spore1",
+				"Props": "RTID(puffshroom_spore1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"puffshroom_spore2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "puffshroom_spore2",
+				"Props": "RTID(puffshroom_spore2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"peanut"
+			],
+			"objdata": {
+				"MintBoostedType": "peanut2",
+				"ProjectileBasedOn": "peanut",
+				"Props": "RTID(pea@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"peanut1"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "peanut1",
+				"Props": "RTID(pea1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"peanut2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "peanut2",
+				"Props": "RTID(pea2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"scaredyshroom_spore"
+			],
+			"objdata": {
+				"MintBoostedType": "scaredyshroom_spore_mint",
+				"ProjectileBasedOn": "scaredyshroom_spore",
+				"Props": "RTID(scaredyshroom_spore@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"scaredyshroom_spore1"
+			],
+			"objdata": {
+				"MintBoostedType": "scaredyshroom_spore_mint",
+				"ProjectileBasedOn": "scaredyshroom_spore1",
+				"Props": "RTID(scaredyshroom_spore1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"scaredyshroom_spore2"
+			],
+			"objdata": {
+				"MintBoostedType": "scaredyshroom_spore_mint",
+				"ProjectileBasedOn": "scaredyshroom_spore2",
+				"Props": "RTID(scaredyshroom_spore2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"scaredyshroom_spore_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "scaredyshroom_spore2",
+				"Props": "RTID(scaredyshroom_spore_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling0"
+			],
+			"objdata": {
+				"MintBoostedType": "bowling0_mint",
+				"ProjectileBasedOn": "bowling0",
+				"Props": "RTID(bowling0@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling1"
+			],
+			"objdata": {
+				"MintBoostedType": "bowling1_mint",
+				"ProjectileBasedOn": "bowling1",
+				"Props": "RTID(bowling1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling2"
+			],
+			"objdata": {
+				"MintBoostedType": "bowling2_mint",
+				"ProjectileBasedOn": "bowling2",
+				"Props": "RTID(bowling2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "bowling_pf_mint",
+				"ProjectileBasedOn": "bowling_pf",
+				"Props": "RTID(bowling_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling0_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling0",
+				"Props": "RTID(bowling0_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling1_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling1",
+				"Props": "RTID(bowling1_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling2_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling2",
+				"Props": "RTID(bowling2_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_pf_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling_pf",
+				"Props": "RTID(bowling_pf_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_explode_o_nut"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling_explode_o_nut",
+				"Props": "RTID(bowling_explode_o_nut@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_iceberg"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling_iceberg",
+				"Props": "RTID(bowling_iceberg@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_infinut"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling_infinut",
+				"Props": "RTID(bowling_infinut@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_primal_wallnut"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling_primal_wallnut",
+				"Props": "RTID(bowling_primal_wallnut@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_tallnut"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling_tallnut",
+				"Props": "RTID(bowling_tallnut@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bowling_wallnut"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bowling_wallnut",
+				"Props": "RTID(bowling_wallnut@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"guacodile"
+			],
+			"objdata": {
+				"MintBoostedType": "guacodile2",
+				"ProjectileBasedOn": "guacodile",
+				"Props": "RTID(guacodile@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"guacodile1"
+			],
+			"objdata": {
+				"MintBoostedType": "guacodile2",
+				"ProjectileBasedOn": "guacodile1",
+				"Props": "RTID(guacodile1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"guacodile2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "guacodile2",
+				"Props": "RTID(guacodile2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"guacodile_child"
+			],
+			"objdata": {
+				"MintBoostedType": "guacodile_child_mint",
+				"ProjectileBasedOn": "guacodile_child",
+				"Props": "RTID(guacodile_child@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"guacodile_child_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "guacodile_child",
+				"Props": "RTID(guacodile_child_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"homing_thistle"
+			],
+			"objdata": {
+				"MintBoostedType": "homing_thistle2",
+				"ProjectileBasedOn": "homing_thistle",
+				"Props": "RTID(homing_thistle@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"homing_thistle1"
+			],
+			"objdata": {
+				"MintBoostedType": "homing_thistle2",
+				"ProjectileBasedOn": "homing_thistle1",
+				"Props": "RTID(homing_thistle1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"homing_thistle2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "homing_thistle2",
+				"Props": "RTID(homing_thistle2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"homing_thistle_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "homing_thistle_pf",
+				"Props": "RTID(homing_thistle_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"parsnip_child"
+			],
+			"objdata": {
+				"MintBoostedType": "parsnip_child_mint",
+				"ProjectileBasedOn": "parsnip_child",
+				"Props": "RTID(parsnip_child@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"parsnip_child_small"
+			],
+			"objdata": {
+				"MintBoostedType": "parsnip_child_small_mint",
+				"ProjectileBasedOn": "parsnip_child_small",
+				"Props": "RTID(parsnip_child_small@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"parsnip_child_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "parsnip_child",
+				"Props": "RTID(parsnip_child_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"parsnip_child_small_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "parsnip_child_small",
+				"Props": "RTID(parsnip_child_small_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"seashroom_spore"
+			],
+			"objdata": {
+				"MintBoostedType": "seashroom_spore2",
+				"ProjectileBasedOn": "seashroom_spore",
+				"Props": "RTID(puffshroom_spore@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"seashroom_spore1"
+			],
+			"objdata": {
+				"MintBoostedType": "seashroom_spore2",
+				"ProjectileBasedOn": "seashroom_spore1",
+				"Props": "RTID(puffshroom_spore1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"seashroom_spore2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "seashroom_spore2",
+				"Props": "RTID(puffshroom_spore2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"banana"
+			],
+			"objdata": {
+				"MintBoostedType": "banana2",
+				"ProjectileBasedOn": "banana",
+				"Props": "RTID(banana@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"banana1"
+			],
+			"objdata": {
+				"MintBoostedType": "banana2",
+				"ProjectileBasedOn": "banana",
+				"Props": "RTID(banana1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"banana2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "banana",
+				"Props": "RTID(banana2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"armamint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "armamint",
+				"Props": "RTID(armamint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"missiletoe"
+			],
+			"objdata": {
+				"MintBoostedType": "missiletoe2",
+				"ProjectileBasedOn": "missiletoe",
+				"Props": "RTID(missiletoe@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"missiletoe1"
+			],
+			"objdata": {
+				"MintBoostedType": "missiletoe2",
+				"ProjectileBasedOn": "missiletoe1",
+				"Props": "RTID(missiletoe1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"missiletoe2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "missiletoe2",
+				"Props": "RTID(missiletoe2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sapfling"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sapfling",
+				"Props": "RTID(sapfling@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"gumnut"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "gumnut",
+				"Props": "RTID(gumnut@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sapfling_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sapfling",
+				"Props": "RTID(sapfling_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pepper"
+			],
+			"objdata": {
+				"MintBoostedType": "pepper2",
+				"ProjectileBasedOn": "pepper",
+				"Props": "RTID(pepper@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pepper1"
+			],
+			"objdata": {
+				"MintBoostedType": "pepper2",
+				"ProjectileBasedOn": "pepper1",
+				"Props": "RTID(pepper1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pepper2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pepper2",
+				"Props": "RTID(pepper2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pepper_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pepper_pf",
+				"Props": "RTID(pepper_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blooming_heart"
+			],
+			"objdata": {
+				"MintBoostedType": "blooming_heart2",
+				"ProjectileBasedOn": "blooming_heart",
+				"Props": "RTID(blooming_heart@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blooming_heart1"
+			],
+			"objdata": {
+				"MintBoostedType": "blooming_heart2",
+				"ProjectileBasedOn": "blooming_heart1",
+				"Props": "RTID(blooming_heart1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blooming_heart2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "blooming_heart2",
+				"Props": "RTID(blooming_heart2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blooming_heart_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "blooming_heart_pf",
+				"Props": "RTID(blooming_heart_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"rotobaga"
+			],
+			"objdata": {
+				"MintBoostedType": "rotobaga2",
+				"ProjectileBasedOn": "rotobaga",
+				"Props": "RTID(rotobaga@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"rotobaga1"
+			],
+			"objdata": {
+				"MintBoostedType": "rotobaga2",
+				"ProjectileBasedOn": "rotobaga1",
+				"Props": "RTID(rotobaga1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"rotobaga2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "rotobaga2",
+				"Props": "RTID(rotobaga2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"rotobaga_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "rotobaga_pf",
+				"Props": "RTID(rotobaga_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"redstinger"
+			],
+			"objdata": {
+				"MintBoostedType": "redstinger2",
+				"ProjectileBasedOn": "redstinger",
+				"Props": "RTID(redstinger@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"redstinger1"
+			],
+			"objdata": {
+				"MintBoostedType": "redstinger2",
+				"ProjectileBasedOn": "redstinger1",
+				"Props": "RTID(redstinger1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"redstinger2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "redstinger2",
+				"Props": "RTID(redstinger2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"redstinger_weak"
+			],
+			"objdata": {
+				"MintBoostedType": "redstinger1",
+				"ProjectileBasedOn": "redstinger_weak",
+				"Props": "RTID(redstinger_weak@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"akee"
+			],
+			"objdata": {
+				"MintBoostedType": "akee_mint",
+				"ProjectileBasedOn": "akee",
+				"Props": "RTID(akee@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"akee_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "akee_pf_mint",
+				"ProjectileBasedOn": "akee_pf",
+				"Props": "RTID(akee_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"akee_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "akee",
+				"Props": "RTID(akee_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"akee_pf_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "akee_pf",
+				"Props": "RTID(akee_pf_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dandelion"
+			],
+			"objdata": {
+				"MintBoostedType": "dandelion2",
+				"ProjectileBasedOn": "dandelion",
+				"Props": "RTID(dandelion@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dandelion1"
+			],
+			"objdata": {
+				"MintBoostedType": "dandelion2",
+				"ProjectileBasedOn": "dandelion1",
+				"Props": "RTID(dandelion1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dandelion2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "dandelion2",
+				"Props": "RTID(dandelion2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dandelion_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "dandelion_pf",
+				"Props": "RTID(dandelion_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dandelion_blew"
+			],
+			"objdata": {
+				"MintBoostedType": "dandelion1",
+				"ProjectileBasedOn": "dandelion_blew",
+				"Props": "RTID(dandelion_blew@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"bamboozle"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "bamboozle",
+				"Props": "RTID(bamboozle@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"strawburst0"
+			],
+			"objdata": {
+				"MintBoostedType": "strawburst0_mint",
+				"ProjectileBasedOn": "strawburst0",
+				"Props": "RTID(strawburst0@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"strawburst1"
+			],
+			"objdata": {
+				"MintBoostedType": "strawburst1_mint",
+				"ProjectileBasedOn": "strawburst1",
+				"Props": "RTID(strawburst1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"strawburst2"
+			],
+			"objdata": {
+				"MintBoostedType": "strawburst2_mint",
+				"ProjectileBasedOn": "strawburst2",
+				"Props": "RTID(strawburst2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"strawburst0_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "strawburst0",
+				"Props": "RTID(strawburst0_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"strawburst1_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "strawburst1",
+				"Props": "RTID(strawburst1_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"strawburst2_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "strawburst2",
+				"Props": "RTID(strawburst2_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry"
+			],
+			"objdata": {
+				"MintBoostedType": "blastberry2",
+				"ProjectileBasedOn": "blastberry",
+				"Props": "RTID(blastberry@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry1"
+			],
+			"objdata": {
+				"MintBoostedType": "blastberry2",
+				"ProjectileBasedOn": "blastberry1",
+				"Props": "RTID(blastberry1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "blastberry2",
+				"Props": "RTID(blastberry2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "blastberry_pf_mint",
+				"ProjectileBasedOn": "blastberry_pf",
+				"Props": "RTID(blastberry_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry_pf_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "blastberry_pf",
+				"Props": "RTID(blastberry_pf_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry_small"
+			],
+			"objdata": {
+				"MintBoostedType": "blastberry_small2",
+				"ProjectileBasedOn": "blastberry_small",
+				"Props": "RTID(blastberry_small@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry_small1"
+			],
+			"objdata": {
+				"MintBoostedType": "blastberry_small2",
+				"ProjectileBasedOn": "blastberry_small1",
+				"Props": "RTID(blastberry_small1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry_small2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "blastberry_small2",
+				"Props": "RTID(blastberry_small2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry_small_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "blastberry_small_pf_mint",
+				"ProjectileBasedOn": "blastberry_small_pf",
+				"Props": "RTID(blastberry_small_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"blastberry_small_pf_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "blastberry_small_pf",
+				"Props": "RTID(blastberry_small_pf_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cactus"
+			],
+			"objdata": {
+				"MintBoostedType": "cactus2",
+				"ProjectileBasedOn": "cactus",
+				"Props": "RTID(cactus@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cactus1"
+			],
+			"objdata": {
+				"MintBoostedType": "cactus2",
+				"ProjectileBasedOn": "cactus1",
+				"Props": "RTID(cactus1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cactus2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "cactus2",
+				"Props": "RTID(cactus2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cactus_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "cactus_pf2",
+				"ProjectileBasedOn": "cactus_pf",
+				"Props": "RTID(cactus_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cactus_pf1"
+			],
+			"objdata": {
+				"MintBoostedType": "cactus_pf2",
+				"ProjectileBasedOn": "cactus_pf",
+				"Props": "RTID(cactus_pf1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cactus_pf2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "cactus_pf",
+				"Props": "RTID(cactus_pf2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sporeshroom_spore"
+			],
+			"objdata": {
+				"MintBoostedType": "sporeshroom_spore2",
+				"ProjectileBasedOn": "sporeshroom_spore",
+				"Props": "RTID(sporeshroom_spore@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sporeshroom_spore1"
+			],
+			"objdata": {
+				"MintBoostedType": "sporeshroom_spore2",
+				"ProjectileBasedOn": "sporeshroom_spore1",
+				"Props": "RTID(sporeshroom_spore1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sporeshroom_spore2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sporeshroom_spore2",
+				"Props": "RTID(sporeshroom_spore2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sporeshroom_spore_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sporeshroom_spore_pf",
+				"Props": "RTID(sporeshroom_spore_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"grapeshot"
+			],
+			"objdata": {
+				"MintBoostedType": "grapeshot_mint",
+				"ProjectileBasedOn": "grapeshot",
+				"Props": "RTID(grapeshot@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"grapeshot_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "grapeshot",
+				"Props": "RTID(grapeshot_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_primal2",
+				"ProjectileBasedOn": "pea_primal",
+				"Props": "RTID(pea_primal@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_primal2",
+				"ProjectileBasedOn": "pea_primal1",
+				"Props": "RTID(pea_primal1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_primal2",
+				"Props": "RTID(pea_primal2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_primal2_flame_yellow",
+				"ProjectileBasedOn": "pea_primal_flame_yellow",
+				"Props": "RTID(pea_primal_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal1_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_primal2_flame_yellow",
+				"ProjectileBasedOn": "pea_primal1_flame_yellow",
+				"Props": "RTID(pea_primal1_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal2_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_primal2_flame_yellow",
+				"Props": "RTID(pea_primal2_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_primal2_flame_blue",
+				"ProjectileBasedOn": "pea_primal_flame_blue",
+				"Props": "RTID(pea_primal_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal1_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_primal2_flame_blue",
+				"ProjectileBasedOn": "pea_primal1_flame_blue",
+				"Props": "RTID(pea_primal1_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_primal2_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_primal2_flame_blue",
+				"Props": "RTID(pea_primal2_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"meteor"
+			],
+			"objdata": {
+				"MintBoostedType": "meteor_mint",
+				"ProjectileBasedOn": "meteor",
+				"Props": "RTID(meteor@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"meteor_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "meteor",
+				"Props": "RTID(meteor_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_shadow_pf_0"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_shadow_pf_2",
+				"ProjectileBasedOn": "pea_shadow_pf_0",
+				"Props": "RTID(pea_shadow_pf_0@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_shadow_pf_1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_shadow_pf_2",
+				"ProjectileBasedOn": "pea_shadow_pf_1",
+				"Props": "RTID(pea_shadow_pf_1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_shadow_pf_2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_shadow_pf_2",
+				"Props": "RTID(pea_shadow_pf_2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_shadow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_shadow2",
+				"ProjectileBasedOn": "pea_shadow",
+				"Props": "RTID(pea_shadow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_shadow1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_shadow2",
+				"ProjectileBasedOn": "pea_shadow1",
+				"Props": "RTID(pea_shadow1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_shadow2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_shadow2",
+				"Props": "RTID(pea_shadow2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"lotus_torpedo"
+			],
+			"objdata": {
+				"MintBoostedType": "lotus_torpedo_mint",
+				"ProjectileBasedOn": "lotus_torpedo",
+				"Props": "RTID(lotus_torpedo@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"lotus_torpedo_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "lotus_torpedo",
+				"Props": "RTID(lotus_torpedo_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"lotus_torpedo_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "lotus_torpedo_pf_mint",
+				"ProjectileBasedOn": "lotus_torpedo_pf",
+				"Props": "RTID(lotus_torpedo_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"lotus_torpedo_pf_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "lotus_torpedo_pf",
+				"Props": "RTID(lotus_torpedo_pf_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"lotus"
+			],
+			"objdata": {
+				"MintBoostedType": "lotus2",
+				"ProjectileBasedOn": "lotus",
+				"Props": "RTID(lotus@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"lotus1"
+			],
+			"objdata": {
+				"MintBoostedType": "lotus2",
+				"ProjectileBasedOn": "lotus1",
+				"Props": "RTID(lotus1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"lotus2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "lotus2",
+				"Props": "RTID(lotus2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sky2",
+				"ProjectileBasedOn": "pea_sky",
+				"Props": "RTID(pea_sky@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sky2",
+				"ProjectileBasedOn": "pea_sky1",
+				"Props": "RTID(pea_sky1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sky2",
+				"Props": "RTID(pea_sky2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sky2_flame_yellow",
+				"ProjectileBasedOn": "pea_sky_flame_yellow",
+				"Props": "RTID(pea_sky_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky1_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sky2_flame_yellow",
+				"ProjectileBasedOn": "pea_sky1_flame_yellow",
+				"Props": "RTID(pea_sky1_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky2_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sky2_flame_yellow",
+				"Props": "RTID(pea_sky2_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sky2_flame_blue",
+				"ProjectileBasedOn": "pea_sky_flame_blue",
+				"Props": "RTID(pea_sky_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky1_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_sky2_flame_blue",
+				"ProjectileBasedOn": "pea_sky1_flame_blue",
+				"Props": "RTID(pea_sky1_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_sky2_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea_sky2_flame_blue",
+				"Props": "RTID(pea_sky2_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_commando2",
+				"ProjectileBasedOn": "pea",
+				"Props": "RTID(pea_commando@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando1"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_commando2",
+				"ProjectileBasedOn": "pea1",
+				"Props": "RTID(pea_commando1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2",
+				"Props": "RTID(pea_commando2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_commando2_flame_yellow",
+				"ProjectileBasedOn": "pea_flame_yellow",
+				"Props": "RTID(pea_commando_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando1_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_commando2_flame_yellow",
+				"ProjectileBasedOn": "pea1_flame_yellow",
+				"Props": "RTID(pea_commando1_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando2_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_yellow",
+				"Props": "RTID(pea_commando2_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_commando2_flame_blue",
+				"ProjectileBasedOn": "pea_flame_blue",
+				"Props": "RTID(pea_commando_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando1_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea_commando2_flame_blue",
+				"ProjectileBasedOn": "pea1_flame_blue",
+				"Props": "RTID(pea_commando1_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_commando2_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_blue",
+				"Props": "RTID(pea_commando2_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"shootingstar"
+			],
+			"objdata": {
+				"MintBoostedType": "shootingstar2",
+				"ProjectileBasedOn": "shootingstar",
+				"Props": "RTID(shootingstar@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"shootingstar1"
+			],
+			"objdata": {
+				"MintBoostedType": "shootingstar2",
+				"ProjectileBasedOn": "shootingstar1",
+				"Props": "RTID(shootingstar1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"shootingstar2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "shootingstar2",
+				"Props": "RTID(shootingstar2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"shootingstar_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "shootingstar_pf",
+				"Props": "RTID(shootingstar_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"nightshade"
+			],
+			"objdata": {
+				"MintBoostedType": "nightshade_mint",
+				"ProjectileBasedOn": "nightshade",
+				"Props": "RTID(nightshade@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"nightshade_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "nightshade",
+				"Props": "RTID(nightshade_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"nightshade_mega"
+			],
+			"objdata": {
+				"MintBoostedType": "nightshade_mega_mint",
+				"ProjectileBasedOn": "nightshade_mega",
+				"Props": "RTID(nightshade_mega@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"nightshade_mega_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "nightshade_mega",
+				"Props": "RTID(nightshade_mega_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"nightshade_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "nightshade_pf",
+				"Props": "RTID(nightshade_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"nightshade_pf_mega"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "nightshade_pf_mega",
+				"Props": "RTID(nightshade_pf_mega@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dusklobber"
+			],
+			"objdata": {
+				"MintBoostedType": "dusklobber2",
+				"ProjectileBasedOn": "dusklobber",
+				"Props": "RTID(dusklobber@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dusklobber1"
+			],
+			"objdata": {
+				"MintBoostedType": "dusklobber2",
+				"ProjectileBasedOn": "dusklobber1",
+				"Props": "RTID(dusklobber1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dusklobber2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "dusklobber2",
+				"Props": "RTID(dusklobber2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dusklobber_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "dusklobber_pf",
+				"Props": "RTID(dusklobber_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"hollyleaf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "hollyleaf",
+				"Props": "RTID(hollyleaf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"hollyleaf_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "hollyleaf_pf",
+				"Props": "RTID(hollyleaf_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"cranjelly"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "cranjelly",
+				"Props": "RTID(cranjelly@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"anthurium_bolt"
+			],
+			"objdata": {
+				"MintBoostedType": "anthurium_bolt2",
+				"ProjectileBasedOn": "anthurium_bolt",
+				"Props": "RTID(anthurium_bolt@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"anthurium_bolt1"
+			],
+			"objdata": {
+				"MintBoostedType": "anthurium_bolt2",
+				"ProjectileBasedOn": "anthurium_bolt",
+				"Props": "RTID(anthurium_bolt1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"anthurium_bolt2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "anthurium_bolt",
+				"Props": "RTID(anthurium_bolt2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"anthurium_bolt_big"
+			],
+			"objdata": {
+				"MintBoostedType": "anthurium_bolt_big2",
+				"ProjectileBasedOn": "anthurium_bolt_big",
+				"Props": "RTID(anthurium_bolt_big@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"anthurium_bolt_big1"
+			],
+			"objdata": {
+				"MintBoostedType": "anthurium_bolt_big2",
+				"ProjectileBasedOn": "anthurium_bolt_big",
+				"Props": "RTID(anthurium_bolt_big1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"anthurium_bolt_big2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "anthurium_bolt_big",
+				"Props": "RTID(anthurium_bolt_big2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2",
+				"ProjectileBasedOn": "sea_pea",
+				"Props": "RTID(sea_pea@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"stickybomb"
+			],
+			"objdata": {
+				"MintBoostedType": "stickybomb2",
+				"ProjectileBasedOn": "stickybomb",
+				"Props": "RTID(stickybomb@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"stickybomb1"
+			],
+			"objdata": {
+				"MintBoostedType": "stickybomb2",
+				"ProjectileBasedOn": "stickybomb1",
+				"Props": "RTID(stickybomb1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"stickybomb2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "stickybomb2",
+				"Props": "RTID(stickybomb2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"stickybomb_pf"
+			],
+			"objdata": {
+				"MintBoostedType": "stickybomb_pf_mint",
+				"ProjectileBasedOn": "stickybomb_pf",
+				"Props": "RTID(stickybomb_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"stickybomb_pf_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "stickybomb_pf",
+				"Props": "RTID(stickybomb_pf_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"turkey"
+			],
+			"objdata": {
+				"MintBoostedType": "turkey_mint",
+				"ProjectileBasedOn": "turkey",
+				"Props": "RTID(turkey@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"turkey_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "turkey",
+				"Props": "RTID(turkey_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"turkey_big"
+			],
+			"objdata": {
+				"MintBoostedType": "turkey_big_mint",
+				"ProjectileBasedOn": "turkey_big",
+				"Props": "RTID(turkey_big@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"turkey_big_mint"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "turkey_big",
+				"Props": "RTID(turkey_big_mint@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea1"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2",
+				"ProjectileBasedOn": "sea_pea1",
+				"Props": "RTID(sea_pea1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sea_pea2",
+				"Props": "RTID(sea_pea2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea_flame"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2_flame",
+				"ProjectileBasedOn": "sea_pea_flame",
+				"Props": "RTID(sea_pea_flame@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea1_flame"
+			],
+			"objdata": {
+				"MintBoostedType": "sea_pea2_flame",
+				"ProjectileBasedOn": "sea_pea1_flame",
+				"Props": "RTID(sea_pea1_flame@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sea_pea2_flame"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sea_pea2_flame",
+				"Props": "RTID(sea_pea2_flame@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dragonfruit"
+			],
+			"objdata": {
+				"MintBoostedType": "dragonfruit2",
+				"ProjectileBasedOn": "dragonfruit",
+				"Props": "RTID(dragonfruit@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dragonfruit1"
+			],
+			"objdata": {
+				"MintBoostedType": "dragonfruit2",
+				"ProjectileBasedOn": "dragonfruit1",
+				"Props": "RTID(dragonfruit1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dragonfruit2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "dragonfruit2",
+				"Props": "RTID(dragonfruit2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"dragonfruit_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "dragonfruit_pf",
+				"Props": "RTID(dragonfruit_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_snap"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_snap",
+				"ProjectileBasedOn": "pea",
+				"Props": "RTID(pea_snap@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea1_snap"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_snap",
+				"ProjectileBasedOn": "pea1",
+				"Props": "RTID(pea1_snap@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea2_snap"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2",
+				"Props": "RTID(pea2_snap@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_snap_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_snap_flame_yellow",
+				"ProjectileBasedOn": "pea_flame_yellow",
+				"Props": "RTID(pea_snap_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea_snap_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_snap_flame_blue",
+				"ProjectileBasedOn": "pea_flame_blue",
+				"Props": "RTID(pea_snap_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea1_snap_flame_yellow"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_snap_flame_yellow",
+				"ProjectileBasedOn": "pea1_flame_yellow",
+				"Props": "RTID(pea1_snap_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea1_snap_flame_blue"
+			],
+			"objdata": {
+				"MintBoostedType": "pea2_snap_flame_blue",
+				"ProjectileBasedOn": "pea1_flame_blue",
+				"Props": "RTID(pea1_snap_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea2_snap_flame_yellow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_yellow",
+				"Props": "RTID(pea2_snap_flame_yellow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"pea2_snap_flame_blue"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "pea2_flame_blue",
+				"Props": "RTID(pea2_snap_flame_blue@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"tombraiser_bone"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "tombraiser_bone",
+				"Props": "RTID(tombraiser_bone@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"octopus"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "octopus",
+				"Props": "RTID(octopus@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"hunter_snowball"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "hunter_snowball",
+				"Props": "RTID(hunter_snowball@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"abbot_chi"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "abbot_chi",
+				"Props": "RTID(abbot_chi@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"kongfu_boss_chi_rack"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "kongfu_boss_chi_rack",
+				"Props": "RTID(kongfu_boss_chi_rack@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"kongfu_boss_chi_chi"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "abbot_chi",
+				"Props": "RTID(kongfu_boss_chi_chi@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"kongfu_boss_explode_bomb"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "kongfu_boss_explode_bomb",
+				"Props": "RTID(kongfu_boss_explode_bomb@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"kongfu_boss_blade_chi"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "kongfu_boss_blade_chi",
+				"Props": "RTID(kongfu_boss_blade_chi@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"eighties_gargantuar_wave"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "eighties_gargantuar_wave",
+				"Props": "RTID(eighties_gargantuar_wave@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"eighties_speaker_wave"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "eighties_speaker_wave",
+				"Props": "RTID(eighties_speaker_wave@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sky_zomboss_storm"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sky_zomboss_storm",
+				"Props": "RTID(sky_zomboss_storm@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sky_battleplane_bullet"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sky_battleplane_bullet",
+				"Props": "RTID(sky_battleplane_bullet@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sky_bolt_positive"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sky_bolt_positive",
+				"Props": "RTID(sky_bolt_positive@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"sky_bolt_negative"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "sky_bolt_negative",
+				"Props": "RTID(sky_bolt_negative@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"busketball"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "busketball",
+				"Props": "RTID(busketball@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_lostcity_sandbag"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_lostcity_sandbag",
+				"Props": "RTID(zomboss_lostcity_sandbag@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_missile_egypt"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_missile_egypt",
+				"Props": "RTID(zomboss_missile_egypt@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_missile_egypt2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_missile_egypt",
+				"Props": "RTID(zomboss_missile_egypt2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_missile_cowboy"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_missile_cowboy",
+				"Props": "RTID(zomboss_missile_cowboy@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_missile_future"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_missile_future",
+				"Props": "RTID(zomboss_missile_future@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_missile_dark"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_missile_dark",
+				"Props": "RTID(zomboss_missile_dark@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_missile_iceage"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_missile_iceage",
+				"Props": "RTID(zomboss_missile_iceage@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"zomboss_missile_dino"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "zomboss_missile_dino",
+				"Props": "RTID(zomboss_missile_dino@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"powerup_snow"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "powerup_snow",
+				"Props": "RTID(powerup_snow@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"trap_boulder"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "trap_boulder",
+				"Props": "RTID(trap_boulder@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_modern"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_modern",
+				"Props": "RTID(mower_modern@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_egypt"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_egypt",
+				"Props": "RTID(mower_egypt@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_pirate"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_pirate",
+				"Props": "RTID(mower_pirate@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_cowboy"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_cowboy",
+				"Props": "RTID(mower_cowboy@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_kongfu"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_kongfu",
+				"Props": "RTID(mower_kongfu@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_future"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_future",
+				"Props": "RTID(mower_future@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_dark"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_dark",
+				"Props": "RTID(mower_dark@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_beach"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_beach",
+				"Props": "RTID(mower_beach@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_iceage"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_iceage",
+				"Props": "RTID(mower_iceage@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_lostcity"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_lostcity",
+				"Props": "RTID(mower_lostcity@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_eighties"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_eighties",
+				"Props": "RTID(mower_eighties@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"mower_dino"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "mower_dino",
+				"Props": "RTID(mower_dino@ProjectileProps)"
+			}
+		}
+	]
+}
