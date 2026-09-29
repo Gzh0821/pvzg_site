@@ -16,7 +16,29 @@ Un mod JSON necesita `pack.json` en la raíz y sus parches en `jsons/features/`,
 
 Los mods JS requieren `apiVersion: 2` y una entrada `.js` o `.mjs` con `setup(ctx)`. Declárala con `js.entry`; `scripts/main.js` también se detecta automáticamente. Usa `depends` y `optionalDepends` como listas de uuid.
 
-Los límites son `minGpNextVersion` y `maxGpNextVersion`, sin operadores como >=. Para las API actuales, usa `1.5.1` como versión mínima. Los antiguos campos `gpNextVersion` y `gameVersion` no sustituyen estos límites.
+## Compatibilidad de versión de GP-Next
+
+Usa un solo campo, por ejemplo `"gpNextVersion": "^1.5.0"`. Las mismas reglas se aplican a los mods de datos y JS.
+
+| Expresión | Versiones estables |
+| --- | --- |
+| `^1.5.0` | `>=1.5.0 <2.0.0` |
+| `~1.5.0` | `>=1.5.0 <1.6.0` |
+| `>=1.5.0 <2.0.0` | Debe cumplir ambos límites |
+| `1.5.x` | Cualquier versión estable `1.5` |
+| `^1.5.0 \|\| ^2.0.0` | Cualquiera de los dos rangos |
+| `>=1.5.0, <2.0.0, !=1.5.2` | Excluye una versión concreta |
+| `==1.5.0` | Versión exacta |
+| `~=1.5.0` / `~=1.5` | `>=1.5.0 <1.6.0` / `>=1.5.0 <2.0.0` |
+
+Se admiten rangos npm SemVer y las comas (Y), `==`, `!=` y `~=` de estilo Python, pero no todo PEP 440: no se admiten epoch, `.dev`, `.post` ni `===`. `==1.5` significa exactamente `1.5.0`; el rango npm `1.5` significa `1.5.x`. `~=1.5` y `~1.5` tienen límites superiores distintos.
+
+- Si existe `gpNextVersion`, se ignoran los antiguos `minGpNextVersion` y `maxGpNextVersion`. Solo se consultan si falta el nuevo campo. Si se omiten los tres, no hay aviso.
+- Los campos antiguos aceptan números de versión sin operadores y sus límites son inclusivos.
+- Una incompatibilidad, un campo nuevo vacío, un tipo incorrecto o una expresión no válida solo generan un aviso: no bloquean la instalación ni la carga. Un campo nuevo no válido tampoco hace que se usen los límites antiguos.
+- Los rangos nuevos excluyen las versiones preliminares por defecto. `^1.5.0` no coincide con `1.6.0-pre.1`; `^1.5.0-pre.1` admite `1.5.0-pre.2`, pero no admite automáticamente `1.6.0-pre.1`. Los límites antiguos conservan su comparación inclusiva.
+
+Por ejemplo, con `"gpNextVersion": "^1.5.0"` y `"maxGpNextVersion": "1.4.9"`, la versión actual `1.5.1` coincide con el campo nuevo sin aviso por el límite antiguo. Los avisos aparecen en la vista previa de importación y en los detalles del mod. La versión de API, el formato del manifiesto, las dependencias y las funciones obligatorias siguen validándose por separado.
 
 Comprime los archivos en ZIP e impórtalos. JSON5 también está admitido. [Guía JS en inglés](/en/guide/mod/gp-next-js.md).
 

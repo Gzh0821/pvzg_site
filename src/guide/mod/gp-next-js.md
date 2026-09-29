@@ -26,7 +26,7 @@ hello-mod/
   "version": "1.0.0",
   "packFormatVersion": 1,
   "apiVersion": 2,
-  "minGpNextVersion": "1.5.1",
+  "gpNextVersion": ">=1.5.1",
   "js": { "entry": "scripts/main.js" }
 }
 ```
