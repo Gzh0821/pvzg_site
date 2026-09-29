@@ -17,11 +17,11 @@ Eso te ayuda a confirmar:
 - cuales son sus valores por defecto
 - si el texto se guarda en la tabla principal de idioma o dentro de campos multilingues del propio objeto
 
-## Descargar los JSON originales de 0.14.0
+## Descargar los JSON originales de 0.15.0
 
-[Descargar los datos del juego (ZIP, 1352 archivos JSON)](/resources/game-json-0.14.0.zip)
+[Descargar los datos del juego (ZIP, 1364 archivos JSON)](/resources/game-json-0.15.0.zip)
 
-ZombieProps y los enlaces de descarga en la nube se han sincronizado con los archivos originales facilitados por el autor; las fuentes y sumas de verificación figuran en MANIFEST.json dentro del ZIP.
+Los enlaces de descarga en la nube corresponden al anuncio del autor; las fuentes y sumas de verificación figuran en MANIFEST.json dentro del ZIP.
 
 Incluye Features, Objects, niveles, idiomas y otros datos del juego. Sirve para consultar campos, crear parches o importar niveles individuales en el editor. Es un archivo de referencia, no un paquete de datos instalable. Para consultar los datos modificados por tus mods, utiliza los métodos de exportación siguientes.
 

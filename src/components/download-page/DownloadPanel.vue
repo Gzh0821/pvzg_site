@@ -89,6 +89,8 @@
           <h3 :id="platformHeadingId">{{ activePlatformTitle }}</h3>
         </div>
 
+        <p v-if="activeOs === 'windows'" class="download-muted">{{ t('windowsNotice') }}</p>
+
         <div v-if="activeOptions.length" class="download-option-grid">
           <a
             v-for="option in activeOptions"

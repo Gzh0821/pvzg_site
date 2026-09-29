@@ -29,6 +29,67 @@
 		{
 			"objclass": "PlantProperties",
 			"aliases": [
+				"repeater"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
+				"PeaTypeMega": "pea_mega",
+				"PlantfoodPeaCount": 90,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 200,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Peashooter",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "repeater_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"repeater_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea1",
+				"PeaTypeMega": "pea_mega_mint",
+				"PlantfoodPeaCount": 150,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 650,
+				"BeghouledCost": 6500,
+				"Toughness": 600,
+				"Family": "Peashooter",
+				"ChanceToPlantfood": 0.2,
+				"PeaSpeedMult": 1.7,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
 				"witchhazel"
 			],
 			"objdata": {
@@ -73,10 +134,49 @@
 				"Toughness": 300,
 				"PeaType": "pea_sling_0",
 				"PeaCountPerShot": 5,
+				"PeaCountPerShotUG": 5,
 				"PeaTypePlantfood": "pea_sling_0_pf",
 				"PeaCountPerShotPlantfood": 10,
 				"PlantfoodShootTime": 4,
 				"Family": "Lobber",
+				"ShootInterval": {
+					"Min": 4,
+					"Max": 5
+				},
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "slingpea_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"slingpea_mgp"
+			],
+			"objdata": {
+				"Cooldown": 5,
+				"SunCost": 575,
+				"BeghouledCost": 6000,
+				"Toughness": 600,
+				"PeaType": "pea_sling_0",
+				"PeaCountPerShot": 20,
+				"PeaCountPerShotUG": 25,
+				"PeaTypePlantfood": "pea_sling_0_pf",
+				"PeaCountPerShotPlantfood": 50,
+				"PlantfoodShootTime": 4,
+				"Family": "Lobber",
+				"ChanceToPlantfood": 0.1,
 				"ShootInterval": {
 					"Min": 4,
 					"Max": 5
@@ -169,6 +269,42 @@
 				"PeaType": "pea_goo",
 				"PeaTypePlantfood": "pea_goo_pf",
 				"Family": "Poison",
+				"PeaSpeedPlantfood": 5,
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "poisonpeashooter_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"poisonpeashooter_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 600,
+				"BeghouledCost": 6000,
+				"Toughness": 600,
+				"PeaSpeedMult": 1.7,
+				"ChanceToPlantfood": 0.1,
+				"PeaSpeedPlantfood": 2,
+				"PeaType": "pea_goo",
+				"PeaTypePlantfood": "pea_goo_pf_mgp",
+				"Family": "Poison",
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -207,6 +343,54 @@
 					"Min": 5,
 					"Max": 7
 				},
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "peacommando_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"peacommando_mgp"
+			],
+			"objdata": {
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 900,
+				"BeghouledCost": 9000,
+				"Toughness": 600,
+				"PlantfoodRayDamage": 2400,
+				"PeaType": "pea_commando",
+				"ShootCount": 3,
+				"ShootCountPlantfood": 4,
+				"HeadCountFactor": 2,
+				"HeadCountFactorPlantfood": 3,
+				"Family": "Peashooter",
+				"ChanceToPlantfood": 0.1,
+				"MintPlantfoodDamageFactor": 5,
+				"FlyTime": {
+					"Min": 1.5,
+					"Max": 2
+				},
+				"FlyToTargetTime": {
+					"Min": 0.5,
+					"Max": 1
+				},
+				"AttackInterval": {
+					"Min": 2,
+					"Max": 3
+				},
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -230,6 +414,47 @@
 				"ChewTimePerZombie": 20,
 				"MaxContainZombieCount": 1,
 				"PlantfoodSwallowCount": 4,
+				"Family": "Melee",
+				"MintDamageFactor": 5,
+				"ZombieCountPerSwallow": 1,
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "snappea_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"snappea_mgp"
+			],
+			"objdata": {
+				"Cooldown": 10,
+				"CooldownFrom": 0.5,
+				"SunCost": 650,
+				"BeghouledCost": 7000,
+				"Toughness": 600,
+				"PeaType": "pea_snap",
+				"HeadDamage": 1800,
+				"IsFullBoard": true,
+				"ChewTimePerZombie": 10,
+				"MaxContainZombieCount": 4,
+				"ZombieCountPerSwallow": 4,
+				"MaxContainZombieCountUpgraded": 5,
+				"ZombieCountPerSwallowUpgraded": 5,
+				"PlantfoodSwallowCount": 16,
+				"PeaSpeedMult": 1.7,
+				"ChanceToPlantfood": 0.1,
 				"Family": "Melee",
 				"MintDamageFactor": 5,
 				"MintBoostedProps": {
@@ -278,6 +503,8 @@
 				"RayIntervalAdditional": 0.2,
 				"RayDamage0": 40,
 				"RayDamage1": 70,
+				"RayDamage0UG": 40,
+				"RayDamage1UG": 70,
 				"PlantfoodPeaCount": 60,
 				"Cooldown": 10,
 				"CooldownFrom": 1,
@@ -293,6 +520,52 @@
 				"MintDamageFactor": 5,
 				"ZombiesToDrag": 1,
 				"ZombiesToDragShadowPowered": 2,
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "shadowpeashooter_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"shadowpeashooter_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"RayInterval": 2.3,
+				"RayIntervalAdditional": 0.2,
+				"RayDamage0": 160,
+				"RayDamage1": 280,
+				"RayDamage0UG": 200,
+				"RayDamage1UG": 350,
+				"PlantfoodPeaCount": 60,
+				"Cooldown": 10,
+				"CooldownFrom": 1,
+				"SunCost": 675,
+				"BeghouledCost": 7000,
+				"Toughness": 600,
+				"PeaType": "pea_shadow",
+				"ChanceToPlantfood": 0.1,
+				"PeaTypePlantfood0": "pea_shadow_pf_0_mgp",
+				"PeaTypePlantfood1": "pea_shadow_pf_1_mgp",
+				"PeaTypePlantfood2": "pea_shadow_pf_2_mgp",
+				"Family": "Shadow",
+				"PerfumeBuffDuration": 3,
+				"MintDamageFactor": 5,
+				"ZombiesToDrag": 4,
+				"ZombiesToDragShadowPowered": 8,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -318,6 +591,43 @@
 				"PeaTypePlantfood": "pea",
 				"PeaTypeSea": "sea_pea",
 				"PeaTypeSeaPlantfood": "sea_pea",
+				"Family": "Peashooter",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "seashooter_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"seashooter_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PlantfoodPeaCount": 150,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 725,
+				"BeghouledCost": 7000,
+				"Toughness": 600,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
+				"PeaTypeSea": "sea_pea",
+				"PeaTypeSeaPlantfood": "sea_pea",
+				"PeaSpeedMult": 1.7,
+				"ChanceToPlantfood": 0.2,
 				"Family": "Peashooter",
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
@@ -992,34 +1302,10 @@
 		{
 			"objclass": "PlantProperties",
 			"aliases": [
-				"repeater"
-			],
-			"objdata": {
-				"ShootInterval": 1.35,
-				"ShootIntervalAdditional": 0.15,
-				"PeaType": "pea",
-				"PeaTypePlantfood": "pea",
-				"PeaTypeMega": "pea_mega",
-				"PlantfoodPeaCount": 90,
-				"Cooldown": 5,
-				"CooldownFrom": 1,
-				"SunCost": 200,
-				"BeghouledCost": 2000,
-				"Toughness": 300,
-				"Family": "Peashooter",
-				"MintBoostedProps": {
-					"ResistanceMult": 1,
-					"SpeedMult": 2,
-					"Plantfood": false
-				}
-			}
-		},
-		{
-			"objclass": "PlantProperties",
-			"aliases": [
 				"megagatling"
 			],
 			"objdata": {
+				"PeaSpeedMult": 1.7,
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PeaType": "pea",
@@ -1029,9 +1315,107 @@
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 450,
-				"BeghouledCost": 4000,
+				"BeghouledCost": 6500,
 				"Toughness": 300,
 				"Family": "Peashooter",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "peacommando",
+						"TargetPlantType": "peacommando_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "skyshooter",
+						"TargetPlantType": "skyshooter_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "snappea",
+						"TargetPlantType": "snappea_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "firepeashooter",
+						"TargetPlantType": "firepeashooter_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "poisonpeashooter",
+						"TargetPlantType": "poisonpeashooter_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "snowpea",
+						"TargetPlantType": "snowpea_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "primalpeashooter",
+						"TargetPlantType": "primalpeashooter_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "electricpeashooter",
+						"TargetPlantType": "electricpeashooter_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "threepeater",
+						"TargetPlantType": "threepeater_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "shadowpeashooter",
+						"TargetPlantType": "shadowpeashooter_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "repeater",
+						"TargetPlantType": "repeater_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "splitpea",
+						"TargetPlantType": "splitpea_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "slingpea",
+						"TargetPlantType": "slingpea_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "peapod",
+						"TargetPlantType": "peapod_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "seashooter",
+						"TargetPlantType": "seashooter_mgp",
+						"MaxCount": 1
+					},
+					{
+						"Name": "mgp_evolution",
+						"OtherPlantType": "gatling",
+						"TargetPlantType": "gatling_mgp",
+						"MaxCount": 1
+					}
+				],
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -1315,6 +1699,55 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "firepeashooter_mgp",
+						"MaxCount": 1
+					}
+				],
+				"WarmingRadius": {
+					"PulseInitialDelay": 0.5,
+					"PulseCooldown": 6,
+					"GridItemDamage": 200
+				},
+				"WarmingRadiusPlantfood": {
+					"PulseInitialDelay": 0.25,
+					"PulseCooldown": 1.5,
+					"GridItemDamage": 100
+				},
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 3,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"firepeashooter_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea_flame_yellow",
+				"PeaTypePlantfood": "pea_flame_between_yellow_blue",
+				"PeaSpeedMult": 1.7,
+				"ChanceToPlantfood": 0.1,
+				"PlantfoodPeaCount": 3,
+				"PlantfoodDuration": 5,
+				"PlantfoodDamageInterval": 0.25,
+				"PlantfoodDamagePerHit": 120,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 625,
+				"BeghouledCost": 6500,
+				"Toughness": 600,
+				"Family": "Fire",
+				"ImmuneToIceblock": true,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 6,
@@ -1349,6 +1782,41 @@
 				"BeghouledCost": 4000,
 				"Toughness": 300,
 				"Family": "Peashooter",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "threepeater_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"threepeater_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
+				"PlantfoodPeaCount": 50,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 750,
+				"BeghouledCost": 7500,
+				"Toughness": 600,
+				"Family": "Peashooter",
+				"PeaSpeedMult": 1.7,
+				"ChanceToPlantfood": 0.3,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -1365,15 +1833,53 @@
 				"ShootInterval": 2.85,
 				"ShootIntervalAdditional": 0.15,
 				"PeaType": "pea_primal",
-				"PeaTypePlantfood": "pea_primal",
+				"PeaTypeKnockback": "pea_primal_kb",
+				"PeaTypePlantfood": "pea_primal_pf",
 				"PlantfoodPeaCount": 5,
-				"KnockbackDistance": 1,
 				"KnockbackChance": 0.5,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 175,
 				"BeghouledCost": 3000,
 				"Toughness": 300,
+				"Family": "Peashooter",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "primalpeashooter_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"primalpeashooter_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 2.85,
+				"ShootIntervalAdditional": 0.15,
+				"PeaType": "pea_primal",
+				"PeaTypeKnockback": "pea_primal_kb",
+				"PeaTypePlantfood": "pea_primal_pf",
+				"PlantfoodPeaCount": 60,
+				"ChanceToPlantfood": 0.1,
+				"PeaSpeedMult": 1.7,
+				"KnockbackDistance": 1,
+				"KnockbackChance": 0.5,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 625,
+				"BeghouledCost": 3000,
+				"Toughness": 600,
 				"Family": "Peashooter",
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
@@ -1700,12 +2206,54 @@
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 60,
+				"PlantfoodChillDuration": 5,
+				"PlantfoodFreezeDuration": 0,
 				"ChanceToFreeze": 0,
 				"Cooldown": 5,
 				"CooldownFrom": 0.5,
 				"SunCost": 150,
 				"BeghouledCost": 2500,
 				"Toughness": 300,
+				"Family": "Cold",
+				"ImmuneToIceblock": true,
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "snowpea_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"snowpea_mgp"
+			],
+			"objdata": {
+				"PeaType": "pea_snow",
+				"PeaTypePlantfood": "pea_snow",
+				"PeaFreezeType": "snowdrop_freeze",
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"ChanceToPlantfood": 0.1,
+				"PeaSpeedMult": 1.7,
+				"PlantfoodPeaCount": 150,
+				"PlantfoodChillDuration": 10,
+				"PlantfoodFreezeDuration": 10,
+				"ChanceToFreeze": 0.1,
+				"Cooldown": 5,
+				"CooldownFrom": 0.5,
+				"SunCost": 600,
+				"BeghouledCost": 2500,
+				"Toughness": 600,
 				"Family": "Cold",
 				"ImmuneToIceblock": true,
 				"MintBoostedProps": {
@@ -3192,6 +3740,41 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Peashooter",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "peapod_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"peapod_mgp"
+			],
+			"objdata": {
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea_mega_mint",
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PlantfoodPeaCount": 5,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 575,
+				"BeghouledCost": 6000,
+				"Toughness": 600,
+				"ChanceToPlantfood": 0.1,
+				"PeaSpeedMult": 1.7,
+				"Family": "Peashooter",
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -3275,6 +3858,47 @@
 					"pea_flame_yellow",
 					"pea_flame_blue"
 				],
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "gatling_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"gatling_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 0.9,
+				"ShootIntervalAdditional": 0.1,
+				"PeaType": "pea",
+				"PeaTypePlantfood": "pea",
+				"PlantfoodPeaCount": 60,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 900,
+				"BeghouledCost": 9000,
+				"Toughness": 600,
+				"ChanceToPlantfood": 0.1,
+				"PeaSpeedMult": 1.7,
+				"MGPAutoShotsChanceToPlantfood": 0.02,
+				"Family": "Peashooter",
+				"PeaTypesPlantfood": [
+					"pea",
+					"pea_flame_yellow",
+					"pea_flame_blue"
+				],
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -3298,6 +3922,51 @@
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Peashooter",
+				"PeaTypeMega": "pea_mega",
+				"PeaType": "pea",
+				"PeaTypeBack": "pea",
+				"PeaTypePlantfood": "pea",
+				"PeaTypePlantfoodBack": "pea",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "splitpea_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"splitpea_mgp"
+			],
+			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PlantfoodPeaCount": 150,
+				"PlantfoodPeaCountBack": 150,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 575,
+				"BeghouledCost": 5500,
+				"Toughness": 600,
+				"Family": "Peashooter",
+				"PeaTypeMega": "pea_mega_mint",
+				"PeaType": "pea",
+				"PeaTypeBack": "pea",
+				"PeaTypePlantfood": "pea",
+				"PeaTypePlantfoodBack": "pea1",
+				"ChanceToPlantfood": 0.1,
+				"ChanceToPlantfoodBack": 0.2,
+				"PeaSpeedMult": 1.7,
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -3411,6 +4080,43 @@
 				"SunCost": 200,
 				"BeghouledCost": 2500,
 				"Toughness": 300,
+				"ImmuneToLightningCharge": true,
+				"Family": "Electricity",
+				"RedAttackStunDuration": 0.25,
+				"CallsElectricCurrant": true,
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "electricpeashooter_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"electricpeashooter_mgp"
+			],
+			"objdata": {
+				"PeaType": "electricpea_mgp",
+				"PeaTypePlantfood": "electricpea_mgp_pf",
+				"ShootInterval": 2.7,
+				"ShootIntervalAdditional": 0.15,
+				"ChanceToPlantfood": 0.1,
+				"PlantfoodPeaCount": 5,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 650,
+				"BeghouledCost": 7500,
+				"Toughness": 600,
 				"ImmuneToLightningCharge": true,
 				"Family": "Electricity",
 				"RedAttackStunDuration": 0.25,
@@ -4529,6 +5235,41 @@
 				"SunCost": 150,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
+				"Family": "Peashooter",
+				"EvolutionRecipes": [
+					{
+						"Name": "mgp_evolution",
+						"ReadOthersCostume": true,
+						"OtherPlantType": "megagatling",
+						"TargetPlantType": "skyshooter_mgp",
+						"MaxCount": 1
+					}
+				],
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"skyshooter_mgp"
+			],
+			"objdata": {
+				"PeaType": "pea_sky",
+				"PeaTypePlantfood": "pea_sky",
+				"ShootInterval": 0.9,
+				"ShootIntervalAdditional": 0.1,
+				"PlantfoodPeaCount": 150,
+				"Cooldown": 5,
+				"CooldownFrom": 1,
+				"SunCost": 600,
+				"BeghouledCost": 6000,
+				"Toughness": 600,
+				"ChanceToPlantfood": 0.1,
+				"PeaSpeedMult": 1.7,
 				"Family": "Peashooter",
 				"MintBoostedProps": {
 					"ResistanceMult": 1,

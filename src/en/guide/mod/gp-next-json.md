@@ -17,11 +17,11 @@ This helps you confirm:
 - what the current default values are
 - whether text is stored in the main language table or directly inside multilingual object fields
 
-## Download the original 0.14.0 JSON files
+## Download the original 0.15.0 JSON files
 
-[Download the game data archive (ZIP, 1352 JSON files)](/resources/game-json-0.14.0.zip)
+[Download the game data archive (ZIP, 1364 JSON files)](/resources/game-json-0.15.0.zip)
 
-ZombieProps and netdisk links have been synchronized with the original files supplied by the author; see MANIFEST.json in the archive for sources and checksums.
+Netdisk links match the author announcement; see MANIFEST.json in the archive for sources and checksums.
 
 Includes the game’s Features, Objects, levels, language data and other JSON resources. Use it to look up fields, create patches or import individual levels into the level editor. This is a reference archive, not an installable datapack. To inspect data modified by your current mods, use the export methods below.
 

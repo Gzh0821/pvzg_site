@@ -9408,7 +9408,7 @@
 				"EatDPS": 100,
 				"Toughness": 190,
 				"CannotCarryPlantfoodsInWaves": true,
-				"WavePointCost": 400,
+				"WavePointCost": 700,
 				"Weight": 4000,
 				"HitRect": "RTID(CommonHitRect@RectangleProps)",
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
@@ -11589,6 +11589,25 @@
 				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
 				"StartingArmors": [
 					"halloween_armor2"
+				]
+			}
+		},
+		{
+			"objclass": "ZombieProperties",
+			"aliases": [
+				"halloween_armor3"
+			],
+			"objdata": {
+				"ZombieSort": "Normal",
+				"WalkSPS": 0.185,
+				"EatDPS": 100,
+				"Toughness": 190,
+				"WavePointCost": 550,
+				"Weight": 4500,
+				"HitRect": "RTID(CommonHitRect@RectangleProps)",
+				"AttackRect": "RTID(CommonAttackRect@RectangleProps)",
+				"StartingArmors": [
+					"halloween_armor3"
 				]
 			}
 		},

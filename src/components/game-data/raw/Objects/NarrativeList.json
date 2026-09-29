@@ -5,6 +5,216 @@
 		{
 			"objclass": "NarrativeProperties",
 			"aliases": [
+				"ARMA_E"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "crazydave",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "A bunch of pesky creatures live in the water.",
+							"zh": "水泽里栖息着一群烦人的家伙。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "They've got 8 legs!",
+							"zh": "这群家伙长着八条腿，"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "They will wrap our plants, immobilizing them.",
+							"zh": "会缠上我们的植物，让植物失去行动能力。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "You mean spiders?",
+							"zh": "蜘蛛？"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "You really were half-asleep, neighbor.",
+							"zh": "你真是睡迷糊了，邻居。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "\"Spiders\" was ten years ago.",
+							"zh": "蜘蛛已经是十年前的事情了。"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"ARMA_C"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Lotorpedoes supply stronger damages in water.",
+							"zh": "鱼雷莲蓬在水中比在陆地上拥有更强的战斗力。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Fires torpedos in water, projectiles otherwise.",
+							"zh": "在水中发射鱼雷，否则发射子弹。"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"ARMA_B"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Stickybomb Rice lobs sticky rice bombs with timers at zombies.",
+							"zh": "糯米投弹手向僵尸投掷糯米定时炸弹。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "sticky rice will stick zombies to the ground.",
+							"zh": "糯米会把僵尸固定在原地。"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"ARMA_A"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Blastberry Vines can be planted on top of other plants to provide increased defense,",
+							"zh": "爆莓藤蔓可以被种在其他植物身上，"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "and an additional attack in the form of lobbed projectiles that break into explosive bomblets.",
+							"zh": "同时发射在半空中爆裂的榴弹，并向前弹射。"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"ARMA_DEMO"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "crazydave",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Torpedos, Sticky projectiles, Cluster bombs.",
+							"zh": "鱼雷，黏弹，集束炸弹。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "With all this arms, we'll be able to fight our way to Dr. Zomboss' bedroom.",
+							"zh": "这么多军火够我们打到僵尸博士的卧室了。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "Error: Failed to locate...",
+							"zh": "错误：定位失败……"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Can't locate at Dr. Zomboss' bedroom",
+							"zh": "无法定位到僵尸博士的卧室。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "Do zombie actually sleep in bedrooms, User Dave?",
+							"zh": "僵尸真的需要卧室吗？用户戴夫。"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
 				"SKYCITY_OUTRO_ZOMBOSS"
 			],
 			"objdata": {
@@ -5009,10 +5219,10 @@
 					},
 					{
 						"Character": "winnie",
-						"Action": "TIRED",
+						"Action": "SAY",
 						"Lines": {
-							"en": "Also, watch out for the Mega Gatling Pea with unstable temper.",
-							"zh": "另外要小心超级机枪豌豆不稳定脾气。"
+							"en": "Also, Nunchaku Zombies stop walking while reflecting the peas.",
+							"zh": "另外，双节棍武僧在尝试反弹豌豆时不会移动。"
 						}
 					}
 				]
