@@ -22,13 +22,7 @@ next: false
 </script>
 
 > [!warning]
-> The save editor is in the testing phase. Using this tool may cause unknown problems in the save file. Please be sure to back up the original save file before using the save editor!
->
-> To ensure the synchronization of the save version, please use the save file exported from the latest game version for editing. If you are using the save file of the old game version, please import it into the latest game version before exporting and editing.
->
-> You can find the `plantID` for each plant in the [Almanac](../almanac/).
->
-> The save editor will not modify the save data that does not appear below.
+> Back up the original save and use a file exported by the current game version. Only fields exposed by the tool are edited; find plant IDs in the [Almanac](../almanac/).
 
 ## Related Tools and Guides
 

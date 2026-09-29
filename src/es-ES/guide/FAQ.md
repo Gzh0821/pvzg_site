@@ -13,13 +13,6 @@ order: 2
 	})
 </script>
 
-## Preguntas frecuentes del juego
-
-> [!note]
-> Por favor, lee este FAQ antes de jugar o hacer preguntas. Este FAQ es valido hasta la version 0.7.X.
->
-> Preguntas y respuestas por @Mola Mola en Discord
-
 <ins class="adsbygoogle"
 	 style="display:block"
 	 data-ad-client="ca-pub-2336226859954206"
@@ -28,86 +21,26 @@ order: 2
 	 data-full-width-responsive="true">
 </ins>
 
-### Como actualizo?
+## Descargar y actualizar
 
-R: Descarga la nueva version desde el sitio oficial de Gardendless. Puedes conservar o borrar la version anterior si quieres.
+Elige plataforma y edición en [Descargas](../download/) y consulta los [requisitos](./requirement.md). Exporta el guardado antes de actualizar y comprueba el progreso antes de borrar el paquete anterior.
 
-### Como transfiero mi progreso entre versiones? (al actualizar)
+## ¿Cómo copio o traslado mis guardados?
 
-R: Tus archivos de guardado se transfieren automaticamente entre versiones. Descarga la nueva version y listo.
+Pulsa tu nombre de jugador en el menú principal para exportar. Las plataformas y paquetes pueden usar carpetas distintas; no asumas una migración automática. Conserva también los datos propios de los mods. Consulta [archivos y copias](./mod/gp-next-files.md).
 
-### Por que el juego se cierra, va lento, no arranca, se traba o muestra pantallas grises?
+## ¿Qué hago si no inicia, se cierra o va lento?
 
-R: La optimizacion del juego aun no es la mejor. Puedes intentar cerrar otras aplicaciones o pestanas, pero si no mejora, es posible que tu dispositivo no cumpla los requisitos para ejecutar GE.
+Comprueba el paquete y los requisitos. Si aparece la recuperación de GP-Next, sigue [diagnóstico y recuperación](./mod/gp-next-recovery.md). Si abre, usa el modo seguro para aislar los mods y exporta un informe. La lentitud no demuestra por sí sola que el equipo sea incompatible.
 
-### Se puede modear? Que cosas se pueden modificar?
+## ¿Cómo instalo o creo mods?
 
-R: Sí. GP-Next admite mods JSON de datos e idiomas, mods JavaScript y nuevas plantas, zombis y recursos mediante frameworks compatibles. JSON se instala directamente; JavaScript requiere activación manual en la consola. Consulta la [guía de mods](./mod/gp-next.md).
+Empieza por [instalar mods](./mod/gp-next.md), o por [paquetes de datos](./mod/gp-next-datapack.md) y [ejemplos oficiales](./mod/gp-next-examples.md) si eres autor. Consulta el [índice](./mod/) para API y campos.
 
-### Hay version para Android/IOS/Linux?
+## ¿Cómo importo niveles?
 
-R: Actualmente hay un port reciente para Linux listado en el sitio web. No hay descarga para Android/IOS.
+Selecciona `Play Local Level` en ajustes del juego y abre el JSON. Consulta la [guía de niveles](./level/) y el [Jardín Creativo](../creator-garden/).
 
-### Como genero lapidas, vagonetas, charcos, etc. en modo Sandbox?
+## ¿Dónde consulto entidades o edito guardados?
 
-R: No se puede. Por ahora en Sandbox solo puedes generar pociones, plantas y zombis.
-
-### Como consigo plantas con fondo morado nocturno?
-
-R: Son plantas de Epic Quest y solo se consiguen en esas misiones.
-
-### Como entro a una Epic Quest?
-
-R: Dentro de cada mundo suele haber subniveles (por ejemplo, 14-1). Al completarlos, se abre un portal hacia una Epic Quest.
-
-### El audio me falla mucho, que puedo hacer?
-
-R: Ya se han intentado varias correcciones, pero si el problema continua, puede deberse a las especificaciones de tu dispositivo.
-
-### El juego es un virus? Por que activa el firewall?
-
-R: No, el juego no es un virus. El aviso del firewall aparece porque no tiene firma/licencia reconocida. Pulsa "Read more" y luego "Run anyway".
-
-### Para que sirve el Zen Garden?
-
-R: Por ahora el Zen Garden no tiene funcion amplia y existe sobre todo para obtener marigold al cultivarla alli.
-
-### Por que puedo usar powerups/plantfood/maximizar sol gratis?
-
-R: Porque tienes activada la opcion "Cheat" en ajustes. Si quieres una experiencia sin trampas, desactivalo en configuracion.
-
-### Por que algunas plantas de gemas no estan en la tienda? Como se consiguen?
-
-R: Algunas plantas de gemas solo aparecen en tienda despues de alcanzar cierto nivel en algunos mundos.
-
-### Por que algunos subniveles (ej. 22-1) no tienen portal de Epic Quest?
-
-R: Esos son niveles extra; no otorgan plantas.
-
-### Por que Ancient Egypt 25/26 se vuelve tan dificil de repente?
-
-R: Los niveles despues del combate contra Zomboss son niveles de expansion. Se recomienda jugarlos mas tarde, cuando tengas una variedad mayor de plantas.
-
-### Se va a anadir sistema de niveles?
-
-R: No. Gardendless no tendra sistema de leveo.
-
-### Se puede jugar Gardendless en Mac/Linux?
-
-R: Si, puedes jugar en Mac/Linux usando Winebottler o Docker.
-
-### Como obtengo mis datos de guardado en Gardendless?
-
-R: Entra al juego, en el menu principal abre tu perfil (tu nombre) y pulsa el boton "Export".
-
-### Que es el save editor? Como accedo?
-
-R: El save editor permite cambiar valores del guardado, como monedas, gemas o plantas desbloqueadas. Se encuentra en el sitio web, dentro de la categoria de herramientas utiles.
-
-## NOTAS
-
-El juego tiene 4 dificultades: A, B, C y D. A es la mas dificil y D la mas facil. Si el juego te parece demasiado dificil, probablemente estes en dificultad A por defecto.
-
-Si a un nivel le faltan funciones o combate de Zomboss, es porque aun no esta completamente desarrollado.
-
-Actualmente algunas plantas no se pueden obtener sin trampas: Resistant Radish, Heavenly Peach, Floawerpot, Skyshooter, Moonbean, Shooting Starfruit, Dragon Bruit.
+Usa el [almanaque](../almanac/) y las [herramientas](../useful-tool/). Haz una copia y utiliza guardados exportados por la versión actual.

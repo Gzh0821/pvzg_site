@@ -6,8 +6,6 @@ index: true
 order: 4
 ---
 
-# Файлы и pack.json
-
 JSON-моду нужен `pack.json` в корне и патчи в `jsons/features/`, `jsons/objects/`, `jsons/levels/` или `jsons/lang/`.
 
 ```json
@@ -18,6 +16,8 @@ JSON-моду нужен `pack.json` в корне и патчи в `jsons/featu
 
 Для JS обязательны `apiVersion: 2` и один файл `.js` или `.mjs` с `setup(ctx)`. Путь задаётся через `js.entry`; `scripts/main.js` распознаётся автоматически. `depends` и `optionalDepends` — списки uuid зависимостей.
 
-Ограничения версии задаются через `minGpNextVersion` и `maxGpNextVersion` без операторов вроде >=. Для предварительной версии укажите `1.5.0-pre.1`; `1.5.0` требует финальный выпуск. Старые поля `gpNextVersion` и `gameVersion` не заменяют эти ограничения.
+Ограничения версии задаются через `minGpNextVersion` и `maxGpNextVersion` без операторов вроде >=. Для текущих API укажите минимальную версию `1.5.1`. Старые поля `gpNextVersion` и `gameVersion` не заменяют эти ограничения.
 
 Упакуйте файлы в ZIP и импортируйте его. Поддерживается JSON5. [Руководство по JS на английском](/en/guide/mod/gp-next-js.md).
+
+[Рецепты слияния растений](./gp-next-fusion.md) · [Официальные примеры модов](./gp-next-examples.md)

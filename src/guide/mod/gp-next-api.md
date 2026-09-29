@@ -6,8 +6,6 @@ index: true
 order: 10
 ---
 
-# JavaScript 模组 API
-
 API 版本为 **2**。以下 `ctx` 来自 `setup(ctx)`。从控制台输入这些示例时没有 `ctx`；请把代码放进自己的模组入口。
 
 [完整参数、回调和返回类型](./gp-next-api-reference.md) · [下载类型声明](/downloads/mods/gp-next-api.d.ts)
@@ -187,3 +185,7 @@ const shot = await ctx.spawns.spawn({
 - [共享一个有版本的服务](./gp-next-api-reference.md#servicesapi)
 - [调用前置服务](./gp-next-api-reference.md#servicesapi)
 - [理解 Hook 的执行顺序](./gp-next-api-reference.md#modcontext)
+
+## 启动与运行期接口
+
+`startup(ctx)` 与 `setup(ctx)` 的上下文不同：启动阶段使用 `ctx.engine`、`ctx.registry` 和 `ctx.registrations`；运行期访问引擎和 Hook 使用 `ctx.unsafe.engine`、`ctx.unsafe.hooks`。普通数据和实体操作仍优先使用稳定 API。

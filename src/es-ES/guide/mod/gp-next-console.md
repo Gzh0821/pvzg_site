@@ -6,8 +6,6 @@ index: true
 order: 8
 ---
 
-# Consola
-
 Después de cargar el juego, abre F12 → Console.
 
 ```js

@@ -22,11 +22,7 @@ next: false
 </script>
 
 > [!warning]
-> El editor de teclas esta en fase de pruebas. Usar esta herramienta puede causar problemas desconocidos en la configuracion de teclas. Asegurate de hacer una copia de seguridad de la configuracion original antes de usarla.
->
-> Usa para editar el archivo exportado desde la version mas reciente del juego.
->
-> Puedes asignar varias funciones a la misma tecla, pero ten en cuenta que algunas funciones pueden entrar en conflicto o no funcionar correctamente.
+> Haz una copia de la configuración y usa una exportación de la versión actual. Varias acciones en una tecla pueden entrar en conflicto.
 
 ## Herramientas y guias relacionadas
 

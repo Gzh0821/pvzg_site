@@ -6,8 +6,6 @@ index: true
 order: 4
 ---
 
-# 模组文件与清单
-
 ## 只修改数据
 
 ```text
@@ -75,8 +73,6 @@ my-mod/
 | `author` / `description` | 作者与简短用途说明，可省略 |
 | `priority` | 未指定用户排序时的初始顺序，可省略 |
 
-例如依赖两个前置：`"depends": ["author.library", "author.behavior"]`。使用预发布功能时，最低版本写 `1.5.0-pre.1`；写 `1.5.0` 会要求正式版。
+例如依赖两个前置：`"depends": ["author.library", "author.behavior"]`。使用当前接口时，最低版本可写 `1.5.1`。
 
-旧示例中的 `gameVersion`、`gpNextVersion` 不是上述兼容性限制字段，不要用它们替代 `minGpNextVersion`。
-
-[合并规则](./gp-next-merge.md) · [字段参考](./format.md) · [JS 模组](./gp-next-js.md)
+[合并规则](./gp-next-merge.md) · [字段参考](./format.md) · [JS 模组](./gp-next-js.md) · [植物融合配方](./gp-next-fusion.md) · [官方示例模组](./gp-next-examples.md)

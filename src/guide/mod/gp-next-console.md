@@ -6,8 +6,6 @@ index: true
 order: 8
 ---
 
-# 控制台命令
-
 游戏加载完成后按 **F12**，切换到开发者工具的 **Console**。只需要安装纯 JSON 模组的玩家不用执行命令。
 
 ## JavaScript 模组开关

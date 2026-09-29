@@ -6,8 +6,6 @@ index: true
 order: 4
 ---
 
-# Mod files and manifest
-
 A JSON mod needs `pack.json` at the root and its patches under `jsons/`:
 
 ```json
@@ -40,8 +38,6 @@ ZIP the manifest and `jsons` together, then import the ZIP. No build tools are n
 | `minGpNextVersion` / `maxGpNextVersion` | Plain minimum/maximum version, without range operators |
 | `author` / `description` / `priority` | Optional author, purpose and initial ordering |
 
-For preview features, use `minGpNextVersion: "1.5.0-pre.1"`. A minimum of `1.5.0` requires the final release. The old example fields `gameVersion` and `gpNextVersion` do not replace these compatibility fields.
-
 | Content | Path |
 | --- | --- |
 | Features | `jsons/features/TypeName.json` |
@@ -53,4 +49,4 @@ For preview features, use `minGpNextVersion: "1.5.0-pre.1"`. A minimum of `1.5.0
 | Experimental plant levels | `jsons/extensions/plant-levels.json` |
 | Cover | `thumbnail.png` or `thumbnail.ico` at the root |
 
-JSON5 is also supported for patches. Asset paths and formats are defined by the mod or its framework. [Merge rules](./gp-next-merge.md) · [JavaScript](./gp-next-js.md)
+JSON5 is also supported for patches. Asset paths and formats are defined by the mod or its framework. [Merge rules](./gp-next-merge.md) · [JavaScript](./gp-next-js.md) · [Plant fusion recipes](./gp-next-fusion.md) · [Official example mods](./gp-next-examples.md)

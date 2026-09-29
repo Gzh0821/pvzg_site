@@ -6,8 +6,6 @@ index: true
 order: 8
 ---
 
-# Console commands
-
 After the game loads, press F12 and select Console. JSON-only mod installation does not need console commands.
 
 Enable JavaScript mods:

@@ -6,8 +6,6 @@ index: true
 order: 11
 ---
 
-# API parameters and return types
-
 Use alongside the [API guide](./gp-next-api.md). `?` marks optional fields; await a `Promise<T>`; string unions list accepted values. Start with ModContext for runtime domains or StartupContext for startup registration.
 
 [Download declarations](/downloads/mods/gp-next-api.d.ts)

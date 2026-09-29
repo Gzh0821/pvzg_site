@@ -22,11 +22,7 @@ next: false
 </script>
 
 > [!warning]
-> The key binder is in the testing phase. Using this tool may cause unknown problems with the key configuration. Please be sure to back up the original key configuration before using it!
->
-> Please use the archive exported from the latest game version for editing.
->
-> You can bind multiple functions to the same key, but please note that some functions may conflict or not work properly.
+> Back up the original configuration and use an export from the current game version. Binding several actions to one key may cause conflicts.
 
 ## Related Tools and Guides
 

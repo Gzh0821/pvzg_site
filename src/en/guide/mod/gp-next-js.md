@@ -6,8 +6,6 @@ index: true
 order: 9
 ---
 
-# Writing JavaScript mods
-
 Use JSON for fixed data or translation changes. Use JavaScript for gameplay behavior, controls and reading custom assets.
 
 Create `pack.json` and `scripts/main.js`:
@@ -16,7 +14,7 @@ Create `pack.json` and `scripts/main.js`:
 {
   "uuid": "yourname.hello", "name": "Hello mod", "version": "1.0.0",
   "packFormatVersion": 1, "apiVersion": 2,
-  "minGpNextVersion": "1.5.0-pre.1", "js": { "entry": "scripts/main.js" }
+  "minGpNextVersion": "1.5.1", "js": { "entry": "scripts/main.js" }
 }
 ```
 

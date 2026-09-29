@@ -24,16 +24,7 @@ order: 4
      data-full-width-responsive="true">
 </ins>
 
-## How To Use This Page
-
-This is not an introduction to building a mod from scratch. It is a field reference page.
-It is most useful when:
-
-- you already know what kind of data you want to edit, but do not know the field name
-- you have exported a JSON file from the game and want to check what each field does
-- you want to see which fields usually appear in common `Features` or `Props` files
-
-If you have not exported the original JSON yet, start with [Source Data](./gp-next-json.md).
+Read these fields alongside the [source data](./gp-next-json.md).
 
 ## Plant-Related Files
 

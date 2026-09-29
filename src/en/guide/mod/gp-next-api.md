@@ -6,8 +6,6 @@ index: true
 order: 10
 ---
 
-# JavaScript mod API
-
 API version **2**. `ctx` is provided to `setup(ctx)` inside your mod; these examples cannot be pasted into the console without a mod context.
 
 [Complete parameters, callbacks and return types](./gp-next-api-reference.md) · [Download type declarations](/downloads/mods/gp-next-api.d.ts)
@@ -148,3 +146,7 @@ advanced and unsafe access version-dependent game objects. Method hooks use `uns
 - [Share a versioned service](./gp-next-api-reference.md#servicesapi)
 - [Call a dependency service](./gp-next-api-reference.md#servicesapi)
 - [Understand Hook chaining](./gp-next-api-reference.md#modcontext)
+
+## Startup and runtime contexts
+
+`startup(ctx)` and `setup(ctx)` receive different contexts. Startup uses `ctx.engine`, `ctx.registry` and `ctx.registrations`. Runtime engine and hook access uses `ctx.unsafe.engine` and `ctx.unsafe.hooks`. Prefer stable APIs for ordinary data and entity operations.

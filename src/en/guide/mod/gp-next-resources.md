@@ -6,8 +6,6 @@ index: true
 order: 12
 ---
 
-# New plants, zombies and assets
-
 ## Installing content mods
 
 Install the content mod and every framework listed by its author. Enable JavaScript if required, then restart when prompted. Installing an image or animation file alone does not add a playable entity. Players do not need a compiler or programming tools.
@@ -58,3 +56,8 @@ export default {
 ```
 
 Do not await file reads or call ctx.engine/ctx.registry during publish. Obtain native objects during startup/preparation and dependency services during startup collection. After publication, follow restart prompts for updates or disabling.
+
+[Official example mods](./gp-next-examples.md) · [Plant fusion recipes](./gp-next-fusion.md)
+
+
+`startup(ctx)` and runtime `setup(ctx)` use different interfaces; see [API contexts](./gp-next-api.md#startup-and-runtime-contexts).

@@ -6,8 +6,6 @@ index: true
 order: 6
 ---
 
-# Tools, data and logs
-
 ## Tools
 
 Enable cheats in the game's own settings before using the trainer. Controls depend on the current scene; unavailable actions are disabled.
@@ -15,6 +13,8 @@ Enable cheats in the game's own settings before using the trainer. Controls depe
 Battle tools include sun, plant food, free planting, no cooldown, plant invincibility and auto-collect. You can also **clear tombs**, **restore plant health**, or **change a card during battle** by selecting its slot and replacement.
 
 Game speed uses the game's **1× / 1.5×** options, not arbitrary multipliers. World map, shop and Zen Garden expose their relevant tools. Back up before operations that change saved progress.
+
+Unlimited fusion count lets fused plants exceed recipe quotas; it does not remove terrain or level planting restrictions.
 
 ## Data
 
@@ -24,7 +24,7 @@ For a shareable mod, export reference data and place only the intended changes i
 
 ## Performance and logs
 
-Performance shows actual measurements separately from the FPS target. Sample ordinary gameplay before saving a report. In Log, filter by severity or keyword and copy the relevant messages with reproduction steps.
+Performance is read-only. Sample ordinary gameplay before saving a report; configure FPS in Experimental. Open Diagnostics → Log to filter messages. Diagnostics also provides mod errors, report export, restart and safe mode. See [startup recovery](./gp-next-recovery.md).
 
 ## Cloud saves
 

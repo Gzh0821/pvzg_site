@@ -6,8 +6,6 @@ index: true
 order: 1
 ---
 
-# GP-Next
-
 Press **F9** or click the top-left button to open the game sidebar. Change the shortcut in Settings.
 
 | Tab | Use |
@@ -15,10 +13,10 @@ Press **F9** or click the top-left button to open the game sidebar. Change the s
 | Mods | Import, enable, disable, update, reorder and configure mods |
 | Tools | Trainer, health display and cloud saves; availability depends on the scene |
 | Data | Search, compare, export and edit game data |
-| Performance | Set the target FPS, measure actual FPS and save reports |
-| Log | Filter and copy messages when reporting a problem |
+| Performance | Measure actual FPS and save reports |
+| Diagnostics | Mod errors, logs, reports, restart and safe mode |
 | Settings | Panel language, shortcut, scrolling and website help |
-| Experimental | Features specifically required by a mod |
+| Experimental | Frame scheduling, world maps and plant-level options |
 
 ## Install and update
 
@@ -46,3 +44,5 @@ Apply or restart when prompted. Only use JavaScript mods from sources you trust.
 Install missing dependencies and check their versions. After a failed startup, use the recovery screen to return to the previous configuration. Unexpected values may come from another mod or manual Data edits. Report the game version, mod versions, steps and relevant logs.
 
 [JSON mods](./gp-next-datapack.md) · [JavaScript guide](./gp-next-js.md) · [API](./gp-next-api.md)
+
+[Diagnostics and startup recovery](./gp-next-recovery.md) · [Official example mods](./gp-next-examples.md)

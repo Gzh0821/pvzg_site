@@ -22,13 +22,7 @@ next: false
 </script>
 
 > [!warning]
-> El editor de guardado esta en fase de pruebas. Usar esta herramienta puede causar problemas desconocidos en el archivo de guardado. Asegurate de hacer una copia de seguridad del archivo original antes de usar el editor.
->
-> Para asegurar la sincronizacion de version del guardado, usa el archivo de guardado exportado desde la version mas reciente del juego. Si estas usando un guardado de una version antigua, importalo primero en la version mas reciente antes de exportar y editar.
->
-> Puedes encontrar el `plantID` de cada planta en el [Almanaque](../almanac/).
->
-> El editor de guardado no modificara los datos de guardado que no aparezcan abajo.
+> Haz una copia del guardado y usa un archivo exportado por la versión actual. Solo se editan los campos disponibles en la herramienta; consulta los IDs en el [almanaque](../almanac/).
 
 ## Herramientas y guias relacionadas
 

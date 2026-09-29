@@ -24,16 +24,7 @@ order: 4
      data-full-width-responsive="true">
 </ins>
 
-## Como usar esta pagina
-
-Esta no es una introduccion para crear un mod desde cero. Es una pagina de referencia de campos.
-Resulta mas util cuando:
-
-- ya sabes que tipo de datos quieres editar, pero no conoces el nombre del campo
-- ya exportaste un JSON del juego y quieres revisar para que sirve cada campo
-- quieres ver que campos suelen aparecer en archivos comunes de `Features` o `Props`
-
-Si aun no exportaste el JSON original, empieza por [Datos originales](./gp-next-json.md).
+Consulta estos campos junto con los [datos originales](./gp-next-json.md).
 
 ## Archivos relacionados con plantas
 

@@ -6,8 +6,6 @@ index: true
 order: 4
 ---
 
-# Archivos y pack.json
-
 Un mod JSON necesita `pack.json` en la raíz y sus parches en `jsons/features/`, `jsons/objects/`, `jsons/levels/` o `jsons/lang/`.
 
 ```json
@@ -18,6 +16,8 @@ Un mod JSON necesita `pack.json` en la raíz y sus parches en `jsons/features/`,
 
 Los mods JS requieren `apiVersion: 2` y una entrada `.js` o `.mjs` con `setup(ctx)`. Declárala con `js.entry`; `scripts/main.js` también se detecta automáticamente. Usa `depends` y `optionalDepends` como listas de uuid.
 
-Los límites son `minGpNextVersion` y `maxGpNextVersion`, sin operadores como >=. Para esta versión preliminar usa `1.5.0-pre.1`; `1.5.0` exige la versión final. Los antiguos campos `gpNextVersion` y `gameVersion` no sustituyen estos límites.
+Los límites son `minGpNextVersion` y `maxGpNextVersion`, sin operadores como >=. Para las API actuales, usa `1.5.1` como versión mínima. Los antiguos campos `gpNextVersion` y `gameVersion` no sustituyen estos límites.
 
 Comprime los archivos en ZIP e impórtalos. JSON5 también está admitido. [Guía JS en inglés](/en/guide/mod/gp-next-js.md).
+
+[Recetas de fusión de plantas](./gp-next-fusion.md) · [Mods de ejemplo oficiales](./gp-next-examples.md)

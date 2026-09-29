@@ -6,8 +6,6 @@ index: true
 order: 12
 ---
 
-# 新植物、僵尸与资源
-
 ## 玩家安装
 
 一个新植物模组可能包含内容包和前置框架。安装作者列出的全部 ZIP，启用 JavaScript，再按提示重启。只有内容包而没有前置时，图片或动画不会自动变成可用植物。
@@ -71,3 +69,8 @@ export default {
 ```
 
 不要在 publish 中继续 await 文件读取，也不要在 publish 中重新调用 ctx.engine 或 ctx.registry。需要的游戏对象在 startup/prepare 阶段取得；所需前置服务在 startup 收集阶段取得。启动资源已发布后，更新或停用按提示重启。
+
+[官方示例模组](./gp-next-examples.md) · [植物融合配方](./gp-next-fusion.md)
+
+
+`startup(ctx)` 的启动接口与运行期 `setup(ctx)` 不同，见 [API 分层](./gp-next-api.md#启动与运行期接口)。

@@ -6,8 +6,6 @@ index: true
 order: 11
 ---
 
-# API 参数与返回类型
-
 配合 [API 用法](./gp-next-api.md) 查阅。`?` 表示可省略，`Promise<T>` 需要等待，联合类型中的字符串是允许的选项。先查 `ModContext` 选择领域，再查对应接口；启动入口查 `StartupContext`。
 
 [下载类型声明](/downloads/mods/gp-next-api.d.ts)

@@ -6,94 +6,21 @@ index: true
 order: 5
 ---
 
-# 语言包与 `lang.json`
-
-如果你希望一个模组同时支持中文、英文、西语、俄语或其他语言，可以使用语言包。
-
-## 目录
-
-```text
-MyFirstMod/
-├── pack.json
-└── jsons/
-    └── lang/
-        └── lang.json
-```
-
-也可以使用 `lang.json5`。
-
-## 最小示例
+在数据包中创建 `jsons/lang/lang.json` 或 `.json5`，以原始语言表中的文本节点为键，提供需要覆盖的语言字段。
 
 ```json
 {
-  "_languages": [
-    { "code": "es", "name": "Español", "isCJK": false },
-    { "code": "ru", "name": "Русский", "isCJK": false }
-  ],
-  "LoadingTips": [
-    {
-      "en": "Sun is your core resource.",
-      "zh": "阳光是你的核心资源。",
-      "es": "El sol es tu recurso principal.",
-      "ru": "Солнце - ваш основной ресурс."
-    }
-  ]
+  "_languages": [{ "code": "es", "name": "Español", "isCJK": false }],
+  "LoadingTips": [{
+    "en": "Sun is your core resource.",
+    "zh": "阳光是你的核心资源。",
+    "es": "El sol es tu recurso principal."
+  }]
 }
 ```
 
-## `_languages`
+`_languages` 用于注册额外语言：`code` 是语言代码，`name` 是游戏设置中显示的名称，`isCJK` 控制文本宽度规则。只修改已有语言时可省略它。
 
-这是一个可选字段，用来向游戏注册额外语言。
+语言对象深度合并，数组整体替换；示例中的 `LoadingTips` 会替换该提示列表，实际使用时应保留需要的其他条目。名称或图鉴中的多语言字段也可在对应 Features、Almanac 补丁中修改。
 
-每一项通常包含：
-
-- `code`：语言代码，例如 `es`、`ru`、`ja`
-- `name`：在设置页显示的名字
-- `isCJK`：是否按 CJK 文本宽度规则处理
-
-## 文本节点
-
-在同一个文本条目里并列写多个语言字段即可，例如：
-
-- `en`
-- `zh`
-- `es`
-- `ru`
-
-## 生效步骤
-
-1. 把语言包放进 `gp-next/packs/`
-2. 回到游戏打开 **模组**
-3. 点击 **保存并应用**
-4. 去游戏设置里切换语言
-5. 回到对应界面验证文本
-
-## 与其他补丁的关系
-
-`lang.json` 和其它补丁一样，也支持深度合并。
-
-这意味着：
-
-- 你不需要复制整份语言表
-- 只需要提供你想覆盖的文本节点
-
-## 其他可翻译位置
-
-如果别的 patch JSON 本身就包含多语言结构，例如：
-
-- `PlantAlmanac`
-- 某些商店显示名
-- 某些 Features 名称字段
-
-那你也可以直接在这些文件里加入更多语言字段。
-
-## 写语言包时要注意的事
-
-- 语言代码尽量使用标准代码
-- 先确认默认 `en` / `zh` 没写错
-- 新增语言时，先从少量文本开始测试
-
-## 下一步
-
-- [数据面板、手动编辑与 Trainer](./gp-next-tools.md)
-- [设置、Runtime Extensions 与辅助功能](./gp-next-settings.md)
+按[模组安装流程](./gp-next.md)导入并应用，然后在游戏自己的设置中切换语言。GP-Next 面板语言与游戏文字语言分别设置。原始文本和键名可从[游戏数据](./gp-next-json.md)导出。

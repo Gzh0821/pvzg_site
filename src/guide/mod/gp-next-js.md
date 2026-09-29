@@ -6,8 +6,6 @@ index: true
 order: 9
 ---
 
-# 编写 JavaScript 模组
-
 只改数值或翻译时，优先使用 [JSON 模组](./gp-next-datapack.md)。需要按游戏状态执行操作、添加自己的选项或读取资源时，再写 JavaScript。
 
 ## 最小可运行模组
@@ -28,7 +26,7 @@ hello-mod/
   "version": "1.0.0",
   "packFormatVersion": 1,
   "apiVersion": 2,
-  "minGpNextVersion": "1.5.0-pre.1",
+  "minGpNextVersion": "1.5.1",
   "js": { "entry": "scripts/main.js" }
 }
 ```

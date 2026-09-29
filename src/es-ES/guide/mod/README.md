@@ -6,13 +6,30 @@ index: true
 order: 0
 ---
 
-# Guía de GP-Next y mods
+## Usar mods
 
-- [GP-Next](./gp-next.md)
-- [Archivos y copias de seguridad](./gp-next-files.md)
-- [Archivos y pack.json](./gp-next-datapack.md)
-- [Herramientas, datos y registro](./gp-next-tools.md)
+- [Instalar y actualizar](./gp-next.md)
+- [Herramientas y datos](./gp-next-tools.md)
 - [Ajustes](./gp-next-settings.md)
-- [Consola](./gp-next-console.md)
+- [Diagnóstico y recuperación](./gp-next-recovery.md)
+- [Archivos y copias](./gp-next-files.md)
 
-[JavaScript API (English)](/en/guide/mod/gp-next-api.md) · [API reference](/en/guide/mod/gp-next-api-reference.md)
+## Crear mods
+
+- [Paquetes y manifiestos](./gp-next-datapack.md)
+- [Ejemplos oficiales](./gp-next-examples.md)
+- [Fusión de datos](./gp-next-merge.md)
+- [Idiomas](./gp-next-language.md)
+- [Recetas de fusión](./gp-next-fusion.md)
+- [Mapas](./gp-next-worldmap.md)
+- [Niveles de plantas](./gp-next-plant-level.md)
+- [Inicio de JavaScript (inglés)](/en/guide/mod/gp-next-js.md)
+- [Registro de recursos (inglés)](/en/guide/mod/gp-next-resources.md)
+
+## API y campos
+
+- [Guía API (inglés)](/en/guide/mod/gp-next-api.md)
+- [Tipos API (inglés)](/en/guide/mod/gp-next-api-reference.md)
+- [Datos originales](./gp-next-json.md)
+- [Campos](./format.md)
+- [Consola](./gp-next-console.md)
