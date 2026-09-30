@@ -98,6 +98,18 @@ my-mod/
 - 不匹配、空的新字段、错误类型或无效表达式都只提示“可能不兼容”，不会阻止安装或加载；新字段无效也不回退到旧字段。
 - 新范围默认不接纳预发布版。例如 `^1.5.0` 不匹配 `1.6.0-pre.1`；`^1.5.0-pre.1` 可匹配 `1.5.0-pre.2`，但不自动接纳 `1.6.0-pre.1`。旧 min/max 保留原有的包含端点比较规则。
 
-例如同时填写 `"gpNextVersion": "^1.5.0"` 与 `"maxGpNextVersion": "1.4.9"`，当前 `1.5.1` 按新字段匹配，不会因旧上限警告。版本警告可在导入预览和模组详情中查看；API 版本、清单格式、依赖及必需功能仍分别校验。
+例如同时填写 `"gpNextVersion": "^1.5.0"` 与 `"maxGpNextVersion": "1.4.9"`，当前 `1.5.2` 按新字段匹配，不会因旧上限警告。版本警告可在导入预览和模组详情中查看；API 版本、清单格式、依赖及必需功能仍分别校验。
 
 [合并规则](./gp-next-merge.md) · [字段参考](./format.md) · [JS 模组](./gp-next-js.md) · [植物融合配方](./gp-next-fusion.md) · [官方示例模组](./gp-next-examples.md)
+
+## 必需功能
+
+用 `requiredGpNextFeatures` 声明运行条件，例如：
+
+```json
+{ "requiredGpNextFeatures": ["experimental.jsModding", "experimental.worldMapJson"] }
+```
+
+可用 ID 包括 `experimental.jsModding`、`experimental.worldMapJson`、`experimental.plantLevelSystem`、`runtime.dynamicPlantRegistry`、`runtime.shopExtensions`、`runtime.scrollSensitivity`。功能关闭或 ID 未知会阻止正常安装／加载；前者可从错误提示打开相应设置，后者需作者修正。平台不会自动开启功能。
+
+`depends` 和 `optionalDepends` 填 uuid 字符串数组，不是 npm 包名或版本表达式；`gpNextVersion` 约束的是平台版本。`js.reloadable: false` 仅用于同时声明 `js.startup: true` 的启动模组。

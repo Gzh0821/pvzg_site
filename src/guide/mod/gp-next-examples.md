@@ -8,7 +8,7 @@ order: 13
 
 ## 下载与安装
 
-适用于游戏 **0.15.0** 和 GP-Next **1.5.1**。下载并安装全部三个包：
+适用于游戏 **0.15.0** 和 GP-Next **1.5.2**。下载并安装全部三个包：
 
 | 下载 | 用途 |
 | --- | --- |
@@ -16,7 +16,7 @@ order: 13
 | [example.entity-framework.zip](/downloads/mods/example.entity-framework.zip) | 示例植物和僵尸的行为 |
 | [example.entity-content.zip](/downloads/mods/example.entity-content.zip) | 脉冲三角、菱形行者及独立图片、动画和声音 |
 
-在“模组”导入三个 ZIP，通过[控制台](./gp-next-console.md)开启 JavaScript，启用全部三个包，再按提示重启。可在图鉴和沙盒中找到脉冲三角与菱形行者。内容包本身不含 JS，但依赖的框架和行为包需要 JS。
+先在“实验性 → JS Modding”确认风险并开启 JavaScript，再在“模组”依次导入框架、行为、内容三个 ZIP，启用全部三个包，再按提示重启。可在图鉴和沙盒中找到脉冲三角与菱形行者。内容包本身不含 JS，但依赖的框架和行为包需要 JS。
 
 ## 从示例制作自己的内容
 

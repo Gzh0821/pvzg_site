@@ -29,6 +29,8 @@ order: 11
 
 文中的坐标以格子为单位、从 0 开始；现实计时用毫秒，玩法计时用秒。具体字段说明优先于这一约定。
 
+原生伤害和死亡观察：[NativeDamageEvent](#nativedamageevent)、[NativeDeathEvent](#nativedeathevent)。关卡会话与取消信号：[GameplaySessionsApi](#gameplaysessionsapi)。
+
 ## MaybePromise
 
 回调可以直接返回结果，也可以返回 Promise。加载资源、读写存储时使用 `async` / `await`。
@@ -470,6 +472,7 @@ export interface EntityHealthWatchEvent extends EntityHealthChange {
 
 ```ts
 export interface EntitiesApi {
+    watchDeath(listener: (event: NativeDeathEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
     list(query?: EntityQuery): EntityHandle[]
     findNearest(subject: EntityHandle | EntitySnapshot, query?: EntityQuery): EntityHandle | null
     describe(subject: EntityHandle | EntitySnapshot): EntitySnapshot | null
@@ -732,7 +735,7 @@ export interface CombatDamageResolvedEvent {
 
 ## CombatCapabilities
 
-**范围：只处理通过 API 发起的伤害。** `modifiers.add` 返回可用 `dispose()` 移除的规则句柄；`list` 查看规则，`watchDamage` 监听这类伤害的处理结果。它们不拦截全部原版攻击，不能直接用来实现全局伤害倍率。
+**范围：只处理通过 API 发起的伤害。** `modifiers.add` 返回可用 `dispose()` 移除的规则句柄；`list` 查看规则，`watchDamage` 默认监听这类伤害的处理结果。额外的 `{ origin: 'native' }` 只读订阅及其覆盖范围由 `getNativeCapabilities()` 单独描述。它们不拦截全部原版攻击，不能直接用来实现全局伤害倍率。
 
 ```ts
 export interface CombatCapabilities {
@@ -752,11 +755,13 @@ export interface CombatCapabilities {
 ```ts
 export interface CombatApi {
     getCapabilities(): CombatCapabilities
+    getNativeCapabilities(): NativeObservationCapabilities
     readonly modifiers: {
         add(definition: CombatModifierDefinition): CombatModifierHandle
         list(): readonly CombatModifierMetadata[]
     }
-    watchDamage(listener: (event: CombatDamageResolvedEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
+    watchDamage(listener: (event: CombatDamageResolvedEvent) => MaybePromise<void>, options?: SubscriptionOptions & { origin?: 'api' }): () => boolean
+    watchDamage(listener: (event: NativeDamageEvent) => MaybePromise<void>, options: SubscriptionOptions & { origin: 'native' }): () => boolean
 }
 ```
 
@@ -2192,6 +2197,7 @@ export interface GameplayWatchOptions extends SubscriptionOptions {
 
 ```ts
 export interface GameApi {
+    readonly sessions: GameplaySessionsApi
     setSpeedUp(enabled: boolean): unknown
     getFrameRate(): number | null
     setFrameRate(fps: number): unknown
@@ -2532,5 +2538,94 @@ export interface ModModule {
     startup?(ctx: StartupContext): MaybePromise<void | (() => MaybePromise<void>)>
     setup(ctx: ModContext): MaybePromise<void | (() => MaybePromise<void>)>
     dispose?(ctx: ModContext): MaybePromise<void>
+}
+```
+
+
+## NativeObservationCapabilities
+
+覆盖与生命周期限制见 [API 用法](./gp-next-api.md)。
+
+```ts
+export interface NativeObservationCapabilities {
+    readonly available: boolean
+    readonly coverage: 'partial' | 'unknown'
+    readonly boundaries: readonly string[]
+    readonly uncovered: readonly string[]
+}
+```
+
+
+## NativeDamageEvent
+
+覆盖与生命周期限制见 [API 用法](./gp-next-api.md)。
+
+```ts
+export interface NativeDamageEvent {
+    readonly type: 'native-damage'
+    readonly target: EntityHandle
+    readonly source: EntityHandle | null
+    readonly before: EntitySnapshot
+    readonly after: EntitySnapshot
+    readonly damageType: string | null
+    readonly boundary: string
+    readonly health: EntityHealthChange
+}
+```
+
+
+## NativeDeathEvent
+
+覆盖与生命周期限制见 [API 用法](./gp-next-api.md)。
+
+```ts
+export interface NativeDeathEvent {
+    readonly type: 'death'
+    readonly target: EntityHandle
+    readonly source: EntityHandle | null
+    readonly before: EntitySnapshot
+    readonly after: EntitySnapshot
+    readonly cause: 'damage' | 'unknown'
+    readonly boundary: string
+}
+```
+
+
+## GameplaySession
+
+覆盖与生命周期限制见 [API 用法](./gp-next-api.md)。
+
+```ts
+export interface GameplaySession {
+
+    readonly id: number
+    readonly levelName: string | null
+    readonly signal: AbortSignal
+}
+```
+
+
+## GameplaySessionEvent
+
+覆盖与生命周期限制见 [API 用法](./gp-next-api.md)。
+
+```ts
+export type GameplaySessionEvent =
+    | { readonly type: 'initial' | 'entered' | 'started'; readonly session: GameplaySession }
+    | { readonly type: 'wave'; readonly session: GameplaySession; readonly previousWave: number; readonly wave: number }
+    | { readonly type: 'ended'; readonly session: GameplaySession; readonly reason: 'won' | 'lost' | 'ended' | 'left' | 'replaced' | 'mod-disposed' }
+```
+
+
+## GameplaySessionsApi
+
+覆盖与生命周期限制见 [API 用法](./gp-next-api.md)。
+
+```ts
+export interface GameplaySessionsApi {
+    getCapabilities(): NativeObservationCapabilities
+
+    current(): GameplaySession | null
+    watch(listener: (event: GameplaySessionEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
 }
 ```

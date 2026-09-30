@@ -225,6 +225,7 @@ export interface EntityHealthWatchEvent extends EntityHealthChange {
 }
 
 export interface EntitiesApi {
+    watchDeath(listener: (event: NativeDeathEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
     list(query?: EntityQuery): EntityHandle[]
     findNearest(subject: EntityHandle | EntitySnapshot, query?: EntityQuery): EntityHandle | null
     describe(subject: EntityHandle | EntitySnapshot): EntitySnapshot | null
@@ -386,11 +387,41 @@ export interface CombatCapabilities {
 
 export interface CombatApi {
     getCapabilities(): CombatCapabilities
+    getNativeCapabilities(): NativeObservationCapabilities
     readonly modifiers: {
         add(definition: CombatModifierDefinition): CombatModifierHandle
         list(): readonly CombatModifierMetadata[]
     }
-    watchDamage(listener: (event: CombatDamageResolvedEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
+    watchDamage(listener: (event: CombatDamageResolvedEvent) => MaybePromise<void>, options?: SubscriptionOptions & { origin?: 'api' }): () => boolean
+    watchDamage(listener: (event: NativeDamageEvent) => MaybePromise<void>, options: SubscriptionOptions & { origin: 'native' }): () => boolean
+}
+
+export interface NativeObservationCapabilities {
+    readonly available: boolean
+    readonly coverage: 'partial' | 'unknown'
+    readonly boundaries: readonly string[]
+    readonly uncovered: readonly string[]
+}
+
+export interface NativeDamageEvent {
+    readonly type: 'native-damage'
+    readonly target: EntityHandle
+    readonly source: EntityHandle | null
+    readonly before: EntitySnapshot
+    readonly after: EntitySnapshot
+    readonly damageType: string | null
+    readonly boundary: string
+    readonly health: EntityHealthChange
+}
+
+export interface NativeDeathEvent {
+    readonly type: 'death'
+    readonly target: EntityHandle
+    readonly source: EntityHandle | null
+    readonly before: EntitySnapshot
+    readonly after: EntitySnapshot
+    readonly cause: 'damage' | 'unknown'
+    readonly boundary: string
 }
 
 export type SpawnKind = 'plant' | 'zombie' | 'projectile' | 'resource' | 'tomb' | 'tile-liquid'
@@ -1120,6 +1151,7 @@ export interface GameplayWatchOptions extends SubscriptionOptions {
 }
 
 export interface GameApi {
+    readonly sessions: GameplaySessionsApi
     setSpeedUp(enabled: boolean): unknown
     getFrameRate(): number | null
     setFrameRate(fps: number): unknown
@@ -1128,6 +1160,25 @@ export interface GameApi {
         listener: (event: GameplayStateEvent) => MaybePromise<void>,
         options?: GameplayWatchOptions,
     ): () => boolean
+}
+
+export interface GameplaySession {
+
+    readonly id: number
+    readonly levelName: string | null
+    readonly signal: AbortSignal
+}
+
+export type GameplaySessionEvent =
+    | { readonly type: 'initial' | 'entered' | 'started'; readonly session: GameplaySession }
+    | { readonly type: 'wave'; readonly session: GameplaySession; readonly previousWave: number; readonly wave: number }
+    | { readonly type: 'ended'; readonly session: GameplaySession; readonly reason: 'won' | 'lost' | 'ended' | 'left' | 'replaced' | 'mod-disposed' }
+
+export interface GameplaySessionsApi {
+    getCapabilities(): NativeObservationCapabilities
+
+    current(): GameplaySession | null
+    watch(listener: (event: GameplaySessionEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
 }
 
 export interface GameMetadataApi {

@@ -8,7 +8,7 @@ order: 13
 
 ## Descargar e instalar
 
-Para el juego **0.15.0** y GP-Next **1.5.1**. Instala los tres paquetes:
+Para el juego **0.15.0** y GP-Next **1.5.2**. Instala los tres paquetes:
 
 | Descarga | Función |
 | --- | --- |
@@ -16,7 +16,7 @@ Para el juego **0.15.0** y GP-Next **1.5.1**. Instala los tres paquetes:
 | [example.entity-framework.zip](/downloads/mods/example.entity-framework.zip) | Comportamientos de la planta y el zombi de ejemplo |
 | [example.entity-content.zip](/downloads/mods/example.entity-content.zip) | Pulse triangle y Diamond walker, con imágenes, animaciones y sonidos propios |
 
-Importa los tres ZIP en Mods, activa JavaScript desde la [consola](./gp-next-console.md), habilita los paquetes y reinicia cuando se indique. Busca las entidades en el almanaque y el modo sandbox. El paquete de contenido no contiene JS, pero sus dependencias sí lo necesitan.
+Primero activa Experimental → JS Modding tras confirmar el aviso de riesgo, después importa en Mods los ZIP de framework, comportamiento y contenido en ese orden y habilítalos y reinicia cuando se indique. Busca las entidades en el almanaque y el modo sandbox. El paquete de contenido no contiene JS, pero sus dependencias sí lo necesitan.
 
 ## Crear contenido propio
 

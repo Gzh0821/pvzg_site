@@ -189,3 +189,18 @@ const shot = await ctx.spawns.spawn({
 ## 启动与运行期接口
 
 `startup(ctx)` 与 `setup(ctx)` 的上下文不同：启动阶段使用 `ctx.engine`、`ctx.registry` 和 `ctx.registrations`；运行期访问引擎和 Hook 使用 `ctx.unsafe.engine`、`ctx.unsafe.hooks`。普通数据和实体操作仍优先使用稳定 API。
+
+## 原生伤害、死亡与关卡会话
+
+- `combat.watchDamage(listener, { origin: 'native' })` 观察受支持原生入口的即时结果；省略 `origin` 仍只观察 API 伤害。先查 `combat.getNativeCapabilities()`。覆盖是部分的，直接字段写入、绕过入口的子类和异步结算不能保证捕获。同一次 API 伤害可能被两种订阅分别收到，不要重复统计。
+- `entities.watchDeath(listener)` 观察支持的原生死亡转换，每个实体代次最多一次。对象池回收或主动销毁不是战斗死亡；`source` 可能为 `null`，不能仅据此判定击杀者或发奖励。
+- `game.sessions.current()` 返回当前会话或 `null`；`watch` 发出 `initial/entered/started/wave/ended`。后加入只发 `initial`，不补发此前波次；波次保留原生计数。将会话 `signal` 交给定时器，可在胜负、退出、换关卡或模组卸载时停止任务。同名关卡重开也会创建新会话。
+
+```js
+ctx.game.sessions.watch(event => {
+  if (event.type === 'wave') ctx.log.info(event.wave)
+})
+ctx.entities.watchDeath(event => ctx.log.info(event.before.codename))
+```
+
+这些接口只观察，不提供修改全部原生伤害或保证捕获所有写入点的能力。原有 `game.watchState` 采样语义不变。签名见 [CombatApi](./gp-next-api-reference.md#combatapi)、[EntitiesApi](./gp-next-api-reference.md#entitiesapi) 与 [GameplaySessionsApi](./gp-next-api-reference.md#gameplaysessionsapi)。

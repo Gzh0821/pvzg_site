@@ -150,3 +150,18 @@ advanced and unsafe access version-dependent game objects. Method hooks use `uns
 ## Startup and runtime contexts
 
 `startup(ctx)` and `setup(ctx)` receive different contexts. Startup uses `ctx.engine`, `ctx.registry` and `ctx.registrations`. Runtime engine and hook access uses `ctx.unsafe.engine` and `ctx.unsafe.hooks`. Prefer stable APIs for ordinary data and entity operations.
+
+## Native damage, death and gameplay sessions
+
+- `combat.watchDamage(listener, { origin: 'native' })` observes synchronous results at supported native boundaries. Omitting `origin` still observes API damage only. Check `combat.getNativeCapabilities()` first. Coverage is partial: direct field writes, bypassing subclasses and asynchronous settlement may not be captured. The same API damage may reach both subscriptions; do not double-count it.
+- `entities.watchDeath(listener)` observes supported native death transitions, once per entity generation. Pool retirement or disposal is not combat death. `source` may be `null`; this alone cannot establish a killer or reward eligibility.
+- `game.sessions.current()` returns the current session or `null`; `watch` emits `initial/entered/started/wave/ended`. Joining a session emits `initial` without replaying earlier waves; wave numbers retain native counting. Pass its `signal` to timers to stop work on victory, defeat, exit, replacement or mod disposal. Restarting the same level creates a new session.
+
+```js
+ctx.game.sessions.watch(event => {
+  if (event.type === 'wave') ctx.log.info(event.wave)
+})
+ctx.entities.watchDeath(event => ctx.log.info(event.before.codename))
+```
+
+These are observers, not general native-damage modifiers, and do not intercept every state write. Existing `game.watchState` sampling semantics are unchanged. See [CombatApi](./gp-next-api-reference.md#combatapi), [EntitiesApi](./gp-next-api-reference.md#entitiesapi) and [GameplaySessionsApi](./gp-next-api-reference.md#gameplaysessionsapi).

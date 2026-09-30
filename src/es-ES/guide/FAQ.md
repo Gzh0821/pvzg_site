@@ -31,7 +31,7 @@ Pulsa tu nombre de jugador en el menú principal para exportar. Las plataformas 
 
 ## ¿Qué hago si no inicia, se cierra o va lento?
 
-Comprueba el paquete y los requisitos. Si aparece la recuperación de GP-Next, sigue [diagnóstico y recuperación](./mod/gp-next-recovery.md). Si abre, usa el modo seguro para aislar los mods y exporta un informe. La lentitud no demuestra por sí sola que el equipo sea incompatible.
+Comprueba el paquete y los requisitos. Si aparece la recuperación de GP-Next, sigue [diagnóstico y recuperación](./mod/gp-next-recovery.md). Si abre, desactiva los mods sospechosos, reinicia cuando se indique y exporta un informe. La recuperación también permite desactivar JS Modding o todos los mods. La lentitud no demuestra por sí sola que el equipo sea incompatible.
 
 ## ¿Cómo instalo o creo mods?
 

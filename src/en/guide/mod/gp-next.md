@@ -14,7 +14,7 @@ Press **F9** or click the top-left button to open the game sidebar. Change the s
 | Tools | Trainer, health display and cloud saves; availability depends on the scene |
 | Data | Search, compare, export and edit game data |
 | Performance | Measure actual FPS and save reports |
-| Diagnostics | Mod errors, logs, reports, restart and safe mode |
+| Diagnostics | Mod errors, logs, reports, restart |
 | Settings | Panel language, shortcut, scrolling and website help |
 | Experimental | Frame scheduling, world maps and plant-level options |
 
@@ -31,13 +31,9 @@ Disable a mod by clearing its checkbox, saving and applying. New entities and re
 
 ## JavaScript mods
 
-JSON-only mods work without JavaScript. JavaScript execution is off by default and can only be enabled from the developer console. Press F12, select Console and run:
+JavaScript is off by default. Enable Experimental → JS Modding after reading and confirming one risk notice; no console is needed. After disabling it, restart as prompted: script mods and their required dependents are suspended while their selection is retained. Re-enabling still runs normal checks. JSON-only packs need no JS unless they depend on a script mod.
 
-```js
-await gpNext.mods.enableJsModding()
-```
-
-Apply or restart when prompted. Only use JavaScript mods from sources you trust. Importing a ZIP does not enable this switch.
+Only install scripts you trust. Updating a script package with changed content requires a new trust confirmation. Importing a ZIP never enables JS Modding automatically.
 
 ## Troubleshooting
 
@@ -46,3 +42,11 @@ Install missing dependencies and check their versions. After a failed startup, u
 [JSON mods](./gp-next-datapack.md) · [JavaScript guide](./gp-next-js.md) · [API](./gp-next-api.md)
 
 [Diagnostics and startup recovery](./gp-next-recovery.md) · [Official example mods](./gp-next-examples.md)
+
+## Requirements, updates and uninstalling
+
+Mod details and import previews show dependency and required-feature status. Import and enable missing dependencies first. For a disabled built-in feature, follow the settings link, enable it and retry. Unknown feature IDs need correction by the author; features are never enabled automatically. A GP-Next version-range warning alone does not block loading.
+
+Enable JS Modding before importing script packages. Changed script-package content requires renewed trust when updating, even if its name or version is unchanged. ZIP and folder imports are supported; extract RAR files before importing the folder.
+
+Choose Uninstall in mod details, confirm, then apply or restart as prompted. Only mods imported by the new manager support uninstall; migrated legacy entries do not. Resolve enabled dependent mods first. Uninstall removes the mod from configuration; it does not erase saves, mod-owned data or all stored snapshots. Save-content dependencies still need checking.

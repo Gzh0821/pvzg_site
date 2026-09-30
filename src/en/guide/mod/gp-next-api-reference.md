@@ -29,6 +29,8 @@ Start with the [author guide](./gp-next-js.md). These declarations are a referen
 
 Grid coordinates start at zero. Wall-clock timing uses milliseconds and gameplay timing uses seconds unless a field says otherwise.
 
+Native damage and death: [NativeDamageEvent](#nativedamageevent), [NativeDeathEvent](#nativedeathevent). Gameplay sessions and cancellation: [GameplaySessionsApi](#gameplaysessionsapi).
+
 ## MaybePromise
 
 A callback may return a value immediately or a Promise. Use `async` / `await` for resource loading and storage.
@@ -470,6 +472,7 @@ Field meanings and usage: [EntityWatchEventBase](#entitywatcheventbase).
 
 ```ts
 export interface EntitiesApi {
+    watchDeath(listener: (event: NativeDeathEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
     list(query?: EntityQuery): EntityHandle[]
     findNearest(subject: EntityHandle | EntitySnapshot, query?: EntityQuery): EntityHandle | null
     describe(subject: EntityHandle | EntitySnapshot): EntitySnapshot | null
@@ -732,7 +735,7 @@ export interface CombatDamageResolvedEvent {
 
 ## CombatCapabilities
 
-**Coverage: damage initiated through the API only.** `modifiers.add` returns a rule handle with `dispose()`, `list` shows rules, and `watchDamage` reports their damage results. These do not intercept all native attacks or implement a global damage multiplier.
+**Coverage: damage initiated through the API only.** `modifiers.add` returns a rule handle with `dispose()`, `list` shows rules, and `watchDamage` reports their damage results by default. The additional read-only `{ origin: 'native' }` subscription has separate coverage described by `getNativeCapabilities()`. These do not intercept all native attacks or implement a global damage multiplier.
 
 ```ts
 export interface CombatCapabilities {
@@ -752,11 +755,13 @@ Field meanings and usage: [CombatCapabilities](#combatcapabilities).
 ```ts
 export interface CombatApi {
     getCapabilities(): CombatCapabilities
+    getNativeCapabilities(): NativeObservationCapabilities
     readonly modifiers: {
         add(definition: CombatModifierDefinition): CombatModifierHandle
         list(): readonly CombatModifierMetadata[]
     }
-    watchDamage(listener: (event: CombatDamageResolvedEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
+    watchDamage(listener: (event: CombatDamageResolvedEvent) => MaybePromise<void>, options?: SubscriptionOptions & { origin?: 'api' }): () => boolean
+    watchDamage(listener: (event: NativeDamageEvent) => MaybePromise<void>, options: SubscriptionOptions & { origin: 'native' }): () => boolean
 }
 ```
 
@@ -2192,6 +2197,7 @@ Field meanings and usage: [ScenesApi](#scenesapi).
 
 ```ts
 export interface GameApi {
+    readonly sessions: GameplaySessionsApi
     setSpeedUp(enabled: boolean): unknown
     getFrameRate(): number | null
     setFrameRate(fps: number): unknown
@@ -2532,5 +2538,94 @@ export interface ModModule {
     startup?(ctx: StartupContext): MaybePromise<void | (() => MaybePromise<void>)>
     setup(ctx: ModContext): MaybePromise<void | (() => MaybePromise<void>)>
     dispose?(ctx: ModContext): MaybePromise<void>
+}
+```
+
+
+## NativeObservationCapabilities
+
+See [API usage](./gp-next-api.md#native-damage-death-and-gameplay-sessions) for coverage and lifecycle limits.
+
+```ts
+export interface NativeObservationCapabilities {
+    readonly available: boolean
+    readonly coverage: 'partial' | 'unknown'
+    readonly boundaries: readonly string[]
+    readonly uncovered: readonly string[]
+}
+```
+
+
+## NativeDamageEvent
+
+See [API usage](./gp-next-api.md#native-damage-death-and-gameplay-sessions) for coverage and lifecycle limits.
+
+```ts
+export interface NativeDamageEvent {
+    readonly type: 'native-damage'
+    readonly target: EntityHandle
+    readonly source: EntityHandle | null
+    readonly before: EntitySnapshot
+    readonly after: EntitySnapshot
+    readonly damageType: string | null
+    readonly boundary: string
+    readonly health: EntityHealthChange
+}
+```
+
+
+## NativeDeathEvent
+
+See [API usage](./gp-next-api.md#native-damage-death-and-gameplay-sessions) for coverage and lifecycle limits.
+
+```ts
+export interface NativeDeathEvent {
+    readonly type: 'death'
+    readonly target: EntityHandle
+    readonly source: EntityHandle | null
+    readonly before: EntitySnapshot
+    readonly after: EntitySnapshot
+    readonly cause: 'damage' | 'unknown'
+    readonly boundary: string
+}
+```
+
+
+## GameplaySession
+
+See [API usage](./gp-next-api.md#native-damage-death-and-gameplay-sessions) for coverage and lifecycle limits.
+
+```ts
+export interface GameplaySession {
+
+    readonly id: number
+    readonly levelName: string | null
+    readonly signal: AbortSignal
+}
+```
+
+
+## GameplaySessionEvent
+
+See [API usage](./gp-next-api.md#native-damage-death-and-gameplay-sessions) for coverage and lifecycle limits.
+
+```ts
+export type GameplaySessionEvent =
+    | { readonly type: 'initial' | 'entered' | 'started'; readonly session: GameplaySession }
+    | { readonly type: 'wave'; readonly session: GameplaySession; readonly previousWave: number; readonly wave: number }
+    | { readonly type: 'ended'; readonly session: GameplaySession; readonly reason: 'won' | 'lost' | 'ended' | 'left' | 'replaced' | 'mod-disposed' }
+```
+
+
+## GameplaySessionsApi
+
+See [API usage](./gp-next-api.md#native-damage-death-and-gameplay-sessions) for coverage and lifecycle limits.
+
+```ts
+export interface GameplaySessionsApi {
+    getCapabilities(): NativeObservationCapabilities
+
+    current(): GameplaySession | null
+    watch(listener: (event: GameplaySessionEvent) => MaybePromise<void>, options?: SubscriptionOptions): () => boolean
 }
 ```

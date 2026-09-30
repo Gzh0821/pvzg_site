@@ -14,7 +14,7 @@ Create `pack.json` and `scripts/main.js`:
 {
   "uuid": "yourname.hello", "name": "Hello mod", "version": "1.0.0",
   "packFormatVersion": 1, "apiVersion": 2,
-  "gpNextVersion": ">=1.5.1", "js": { "entry": "scripts/main.js" }
+  "gpNextVersion": ">=1.5.2", "js": { "entry": "scripts/main.js" }
 }
 ```
 
@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-ZIP both files with their directories, import, enable JavaScript through the console and apply. Open the mod's details to use its button. Keep the same uuid and increase the mod version for updates.
+ZIP both files with their directories. First enable Experimental → JS Modding after confirming the risk notice, then import, enable the mod and apply. Open the mod's details to use its button. Keep the same uuid and increase the mod version for updates.
 
 Value controls use `getValue()` / `setValue(value)`, not `value/onChange`. Use settings for player options, storage for progress, and files to read packaged assets. Disabling a mod does not undo committed progress or currency changes.
 

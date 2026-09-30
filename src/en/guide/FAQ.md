@@ -31,7 +31,7 @@ Select your player name in the main menu to export a save. Different platforms o
 
 ## What if the game fails to start, crashes or runs slowly?
 
-Check the package and system requirements first. If GP-Next opens recovery, follow [diagnostics and recovery](./mod/gp-next-recovery.md). If the game opens, use safe mode to isolate mod effects and export a report. Lag alone does not prove that a device is unsupported.
+Check the package and system requirements first. If GP-Next opens recovery, follow [diagnostics and recovery](./mod/gp-next-recovery.md). If the game opens, disable suspect mods, restart as prompted and export a report. Recovery also offers Disable JS Modding and Disable all mods. Lag alone does not prove that a device is unsupported.
 
 ## How do I install or create mods?
 

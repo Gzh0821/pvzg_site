@@ -72,6 +72,18 @@ Supports npm SemVer ranges plus Python-style commas (AND), `==`, `!=` and `~=`. 
 - Mismatches, an empty new field, invalid types or invalid expressions only warn about possible incompatibility; they do not block installation or loading. An invalid new field does not fall back to old bounds.
 - New ranges exclude prereleases by default. For example, `^1.5.0` does not match `1.6.0-pre.1`; `^1.5.0-pre.1` matches `1.5.0-pre.2`, but does not automatically admit `1.6.0-pre.1`. Old min/max fields retain their inclusive comparison rules.
 
-For example, with both `"gpNextVersion": "^1.5.0"` and `"maxGpNextVersion": "1.4.9"`, the current version `1.5.1` matches the new field without an old-bound warning. Check warnings in the import preview and mod details. API versions, manifest formats, dependencies and required features are still validated separately.
+For example, with both `"gpNextVersion": "^1.5.0"` and `"maxGpNextVersion": "1.4.9"`, the current version `1.5.2` matches the new field without an old-bound warning. Check warnings in the import preview and mod details. API versions, manifest formats, dependencies and required features are still validated separately.
 
 JSON5 is also supported for patches. Asset paths and formats are defined by the mod or its framework. [Merge rules](./gp-next-merge.md) · [JavaScript](./gp-next-js.md) · [Plant fusion recipes](./gp-next-fusion.md) · [Official example mods](./gp-next-examples.md)
+
+## Required features
+
+Declare required platform features with `requiredGpNextFeatures`, for example:
+
+```json
+{ "requiredGpNextFeatures": ["experimental.jsModding", "experimental.worldMapJson"] }
+```
+
+Supported IDs include `experimental.jsModding`, `experimental.worldMapJson`, `experimental.plantLevelSystem`, `runtime.dynamicPlantRegistry`, `runtime.shopExtensions` and `runtime.scrollSensitivity`. Disabled or unknown requirements block normal installation/loading. A disabled feature offers a settings link; an unknown ID needs an author fix. Features are never enabled automatically.
+
+`depends` and `optionalDepends` are arrays of mod UUID strings, not npm names or version expressions. `gpNextVersion` describes the platform version. Use `js.reloadable: false` only with `js.startup: true`.

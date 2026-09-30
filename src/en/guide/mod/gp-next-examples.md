@@ -8,7 +8,7 @@ order: 13
 
 ## Download and install
 
-For game **0.15.0** and GP-Next **1.5.1**. Install all three packages:
+For game **0.15.0** and GP-Next **1.5.2**. Install all three packages:
 
 | Download | Purpose |
 | --- | --- |
@@ -16,7 +16,7 @@ For game **0.15.0** and GP-Next **1.5.1**. Install all three packages:
 | [example.entity-framework.zip](/downloads/mods/example.entity-framework.zip) | Example plant and zombie behaviors |
 | [example.entity-content.zip](/downloads/mods/example.entity-content.zip) | Pulse triangle and Diamond walker with their own images, animations and sounds |
 
-Import all three ZIPs in Mods, enable JavaScript through the [console](./gp-next-console.md), enable all packages and restart as prompted. Find Pulse triangle and Diamond walker in the Almanac and sandbox. The content package has no JS of its own; its framework and behavior dependencies require JS.
+First enable Experimental → JS Modding after confirming the risk notice, then import the framework, behavior and content ZIPs in that order in Mods and enable all packages and restart as prompted. Find Pulse triangle and Diamond walker in the Almanac and sandbox. The content package has no JS of its own; its framework and behavior dependencies require JS.
 
 ## Make your own content
 

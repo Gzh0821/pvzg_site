@@ -26,7 +26,7 @@ hello-mod/
   "version": "1.0.0",
   "packFormatVersion": 1,
   "apiVersion": 2,
-  "gpNextVersion": ">=1.5.1",
+  "gpNextVersion": ">=1.5.2",
   "js": { "entry": "scripts/main.js" }
 }
 ```
@@ -41,7 +41,7 @@ export default {
 }
 ```
 
-压缩后从模组页导入，按[控制台说明](./gp-next-console.md)开启 JS，勾选并应用。更新时保持 `uuid` 不变，增加 `version`，重新导入。
+先在“实验性 → JS Modding”确认风险并开启 JS，再从模组页导入压缩包，勾选并应用。更新时保持 `uuid` 不变，增加 `version`，重新导入。
 
 ## 给玩家一个按钮
 

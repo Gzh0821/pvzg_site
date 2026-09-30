@@ -8,7 +8,7 @@ order: 12
 
 ## Installing content mods
 
-Install the content mod and every framework listed by its author. Enable JavaScript if required, then restart when prompted. Installing an image or animation file alone does not add a playable entity. Players do not need a compiler or programming tools.
+If scripts are required, first enable Experimental → JS Modding and confirm the risk notice. Then install and enable the listed frameworks and content mod in dependency order, and restart when prompted. Installing an image or animation file alone does not add a playable entity. Players do not need a compiler or programming tools.
 
 ## Authoring assets
 
