@@ -3,6 +3,9 @@ import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import { enNavbar, esNavbar, ruNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, esSidebar, ruSidebar, zhSidebar } from "./sidebar/index.js";
 
+const footer = (home: string) => `<div class="site-footer-heading"><span class="site-footer-brand">PvZ2 Gardendless</span> <span aria-hidden="true">｜</span> <a href="${home}">Home</a></div><div>pvzge.com</div>`;
+const copyright = '<div>Copyright 2021-2026 <a href="https://gaozih.com">Gaozih</a> © All Rights Reserved | <a href="https://pvzge.com/en/instructions/Private.html">Privacy Policy</a></div><div>This website, Game and related content are not endorsed by or affiliated with EA</div>';
+
 export default hopeTheme({
   hostname: "https://www.pvzge.com",
 
@@ -31,12 +34,12 @@ export default hopeTheme({
     "/en/": {
       // navbar
       navbar: enNavbar,
-      navbarTitle: "PvZ2 Gardendless",
+      navbarTitle: "Home",
       // sidebar
       sidebar: enSidebar,
 
-      footer: "Website of PvZ2 Gardendless: pvzge.com",
-      copyright: "Copyright 2021-2026 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      footer: footer("/en/"),
+      copyright,
       displayFooter: true,
 
       metaLocales: {
@@ -46,12 +49,12 @@ export default hopeTheme({
     "/ru-RU/": {
       // navbar
       navbar: ruNavbar,
-      navbarTitle: "PvZ2 Gardendless",
+      navbarTitle: "Главная",
       // sidebar
       sidebar: ruSidebar,
 
-      footer: "Website of PvZ2 Gardendless: pvzge.com",
-      copyright: "Copyright 2021-2026 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      footer: footer("/ru-RU/"),
+      copyright,
       displayFooter: true,
 
       metaLocales: {
@@ -61,12 +64,12 @@ export default hopeTheme({
     "/es-ES/": {
       // navbar
       navbar: esNavbar,
-      navbarTitle: "PvZ2 Gardendless",
+      navbarTitle: "Inicio",
       // sidebar
       sidebar: esSidebar,
 
-      footer: "Website of PvZ2 Gardendless: pvzge.com",
-      copyright: "Copyright 2021-2026 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      footer: footer("/es-ES/"),
+      copyright,
       displayFooter: true,
 
       // page meta
@@ -77,12 +80,12 @@ export default hopeTheme({
     "/": {
       // navbar
       navbar: zhNavbar,
-      navbarTitle: "PvZ2 Gardendless",
+      navbarTitle: "主页",
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "《PvZ2 Gardendless》网站: pvzge.com",
-      copyright: "Copyright 2021-2026 <a href=\"https://gaozih.com\">Gaozih</a> © All Rights Reserved | <a href=\"https://pvzge.com/en/instructions/Private.html\">Privacy Policy</a>",
+      footer: footer("/"),
+      copyright,
       displayFooter: true,
 
       // page meta

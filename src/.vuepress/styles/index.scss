@@ -24,7 +24,8 @@
 //     font-style: normal;
 // }
 
-#main-title {
+#main-title,
+.site-footer-brand {
     font-family: 'Ma Shan Zheng', 'pvzgeFontEN', 'pvzgFont', serif;
 }
 
@@ -37,7 +38,7 @@
 }
 
 .vp-site-name {
-    font-family: 'Ma Shan Zheng', 'pvzgeFontEN', 'pvzgFont', serif;
+    font-family: 'pvzgeFontEN', 'pvzgFont', serif;
 }
 
 div.video-container {
@@ -110,4 +111,57 @@ iframe.youtube-video {
     background: linear-gradient(90deg, #2aa9a2, #e7c84b, #54c4c6);
     opacity: 0.8;
     pointer-events: none;
+}
+
+.vp-footer-wrapper {
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem 2rem;
+
+    .vp-footer,
+    .vp-copyright {
+        display: grid;
+        grid-template-rows: minmax(1.8rem, auto) auto;
+        gap: 0.25rem;
+        margin: 0;
+        line-height: 1.8rem;
+    }
+
+    .vp-footer {
+        color: #000;
+        text-align: left;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .vp-copyright {
+        flex: 1;
+        text-align: right;
+    }
+
+    .site-footer-heading {
+        display: flex;
+        align-items: baseline;
+        gap: 0.35rem;
+        white-space: nowrap;
+    }
+
+    .site-footer-brand {
+        font-size: 1.125rem;
+    }
+
+    @media (max-width: 719px) {
+        display: flex;
+        flex-direction: column;
+
+        .vp-copyright {
+            text-align: left;
+        }
+    }
+}
+
+[data-theme="dark"] .vp-footer-wrapper .vp-footer {
+    color: #fff;
 }
