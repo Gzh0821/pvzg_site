@@ -32,17 +32,25 @@ Usa una opción disponible en la [página de acceso](https://nest.pvzge.com/logi
 
 El apodo y el nombre de usuario son independientes. Las cuentas ordinarias usan su UID público como nombre predeterminado; los desarrolladores verificados y roles superiores pueden elegir uno válido y único. El perfil muestra proyectos, nivel y datos públicos; tú decides si tus favoritos son públicos.
 
-## Crear y publicar
+## Cómo subir tus creaciones
 
 1. Inicia sesión y abre el [Centro de creación](https://nest.pvzge.com/author) desde el menú de cuenta. Pulsa Nuevo proyecto arriba a la derecha.
 2. Introduce nombre, tipo, visibilidad, resumen y descripción Markdown. Las dependencias son opcionales: busca un ID de proyecto o añade información breve si no hay coincidencia.
-3. Sube una versión. Los niveles aceptan JSON/JSON5 o ZIP; los paquetes de datos y mods usan ZIP según las reglas de GP-Next. Las herramientas/plugins usan ZIP sin manifiesto GP ni UUID obligatorio.
-4. Añade versión y compatibilidad, envía y consulta las comprobaciones. Los cambios de usuarios ordinarios requieren revisión; desarrolladores verificados y superiores que cumplan las reglas pueden omitir la revisión manual. Se mantienen las comprobaciones de archivos, cuotas y archivos comprimidos.
+3. Añade enlaces a una plataforma externa o sube archivos de versiones. Puedes usar ambas opciones en el mismo proyecto.
+4. Guarda los datos del proyecto. Al subir una versión, añade su número, registro de cambios y compatibilidad; envíala y consulta las comprobaciones. Los cambios de usuarios ordinarios requieren revisión; desarrolladores verificados y superiores que cumplan las reglas pueden omitir la revisión manual. Se mantienen las comprobaciones de archivos, cuotas y archivos comprimidos.
+
+### Usar enlaces a plataformas externas
+
+Si tu creación ya está alojada en GitHub, Google Drive, MEGA, Dropbox u otra plataforma, añade enlaces de descarga en el editor del proyecto. Selecciona la plataforma e introduce un nombre y una URL HTTPS válida. Tras guardar, los jugadores podrán acceder desde la página del proyecto sin que tengas que subir otra copia a Gardenest.
+
+### Subir archivos de versiones
+
+Sube un archivo desde la gestión de versiones del proyecto, indica el número de versión, el registro de cambios y la compatibilidad, y envíalo. Los niveles aceptan JSON/JSON5 o ZIP; los paquetes de datos y mods usan ZIP según las reglas de GP-Next. Las herramientas/plugins usan ZIP sin manifiesto GP ni UUID obligatorio. Tras publicarse, los jugadores podrán elegir una versión en Descargas → Descarga local o Versiones.
 
 Gestiona equipo e invitaciones en el Centro de creación. Configuración → Gestión de cuotas muestra almacenamiento, subidas diarias y límite de proyectos. Las versiones antiguas y subidas del equipo cuentan para la cuenta correspondiente; el espacio de archivos eliminados se libera al terminar su limpieza.
 
 ## Tareas y notificaciones
 
-El [Centro de tareas](https://nest.pvzge.com/tasks) muestra nivel, experiencia, registro diario y tareas. Los días se calculan con la hora de Hong Kong; la próxima actualización se muestra en tu zona horaria. Puedes borrar [notificaciones](https://nest.pvzge.com/notifications) leídas solo para tu cuenta, sin cambiar el estado de otros usuarios. Consulta los [anuncios](https://nest.pvzge.com/announcements) para novedades.
+El [Centro de tareas](https://nest.pvzge.com/tasks) muestra nivel, experiencia, registro diario y tareas. La próxima actualización se muestra en tu zona horaria. Puedes borrar [notificaciones](https://nest.pvzge.com/notifications) leídas solo para tu cuenta, sin cambiar el estado de otros usuarios. Consulta los [anuncios](https://nest.pvzge.com/announcements) para novedades.
 
 Durante la Beta, envía problemas por [Comentarios](../contribution/feedback.md), con pasos, ID de proyecto/versión y errores que puedas compartir. No incluyas contraseñas, códigos de recuperación ni credenciales.
