@@ -28,7 +28,7 @@ Level ZIPs, tools/plugins, and external-only versions have no import button. Thi
 
 ## Sign in and secure your account
 
-Use a method offered on the [sign-in page](https://nest.pvzge.com/login); first-time third-party sign-in creates an account through the displayed flow. Link additional platforms from Settings → Third-party accounts on your existing account. Account and security provides passkeys, an authenticator, two-factor authentication, and recovery codes. Two-factor authentication is mandatory for administrators.
+Use a method offered on the [sign-in page](https://nest.pvzge.com/login); new users create an account through the displayed flow; eligible verified email identities may also link to an existing account. Link additional platforms from Settings → Third-party accounts on your existing account. Account and security provides passkeys, an authenticator, two-factor authentication, and recovery codes. Two-factor authentication is mandatory for administrators.
 
 Display names and usernames are separate. Ordinary accounts use their public UID as the default username; verified developers and above may choose a valid, unique username. Profiles show creations, level, and public information; users choose whether their saved collections are public.
 

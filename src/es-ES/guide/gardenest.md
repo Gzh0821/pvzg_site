@@ -28,7 +28,7 @@ Los ZIP de niveles, las herramientas/plugins y las versiones solo externas no ti
 
 ## Cuenta y seguridad
 
-Usa una opción disponible en la [página de acceso](https://nest.pvzge.com/login). El primer acceso con una cuenta externa crea una cuenta según el flujo mostrado. Vincula otras plataformas desde Configuración → Cuentas externas en tu cuenta existente. Cuenta y seguridad permite configurar claves de acceso, un autenticador, doble factor y códigos de recuperación. El doble factor es obligatorio para administradores.
+Usa una opción disponible en la [página de acceso](https://nest.pvzge.com/login). Los nuevos usuarios crean una cuenta según el flujo mostrado; las identidades que cumplen las reglas de correo verificado también pueden vincularse a una cuenta existente. Vincula otras plataformas desde Configuración → Cuentas externas en tu cuenta existente. Cuenta y seguridad permite configurar claves de acceso, un autenticador, doble factor y códigos de recuperación. El doble factor es obligatorio para administradores.
 
 El apodo y el nombre de usuario son independientes. Las cuentas ordinarias usan su UID público como nombre predeterminado; los desarrolladores verificados y roles superiores pueden elegir uno válido y único. El perfil muestra proyectos, nivel y datos públicos; tú decides si tus favoritos son públicos.
 
