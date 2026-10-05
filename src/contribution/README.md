@@ -32,6 +32,14 @@ pageInfo: false
 
 <div class="vp-card-container">
   <VPCard
+    title="创意苗圃 (Beta)"
+    desc="发现和分享社区关卡、数据包、模组与工具／插件"
+    logo="/pvz_logo-round.webp"
+    link="https://nest.pvzge.com/"
+    background="rgba(102, 204, 153, 0.15)"
+  />
+
+  <VPCard
     title="QQ公告群-6"
     desc="群号：1022799196，适合潜水和获取最新版本的信息"
     logo="/assets/image/qq.svg"

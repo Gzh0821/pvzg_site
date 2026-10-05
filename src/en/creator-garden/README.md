@@ -15,4 +15,6 @@ comment: false
 >
 > For tutorials on writing custom levels, see [Custom Level Guide](../guide/level/).
 
+> [Gardenest (Beta)](https://nest.pvzge.com/) is open for testing. Browse, download, and share community creations; see the [Gardenest guide](../guide/gardenest.md).
+
 <Catalog />

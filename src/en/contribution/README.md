@@ -33,6 +33,14 @@ Welcome to join our community and contribute to the development of "PvZ2 Gardend
 
 <div class="vp-card-container">
   <VPCard
+    title="Gardenest (Beta)"
+    desc="Discover and share community levels, data packs, mods, and tools/plugins"
+    logo="/pvz_logo-round.webp"
+    link="https://nest.pvzge.com/"
+    background="rgba(102, 204, 153, 0.15)"
+  />
+
+  <VPCard
     title="QQ Announcement Group-6"
     desc="Group Number:1022799196, for getting the latest information"
     logo="/assets/image/qq.svg"

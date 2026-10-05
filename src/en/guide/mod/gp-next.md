@@ -50,3 +50,9 @@ Mod details and import previews show dependency and required-feature status. Imp
 Enable JS Modding before importing script packages. Changed script-package content requires renewed trust when updating, even if its name or version is unchanged. ZIP and folder imports are supported; extract RAR files before importing the folder.
 
 Choose Uninstall in mod details, confirm, then apply or restart as prompted. Only mods imported by the new manager support uninstall; migrated legacy entries do not. Resolve enabled dependent mods first. Uninstall removes the mod from configuration; it does not erase saves, mod-owned data or all stored snapshots. Save-content dependencies still need checking.
+
+## Get creations from Gardenest
+
+Browse data packs and mods on [Gardenest (Beta)](https://nest.pvzge.com/discover). In a project’s Downloads tab, select a version and check compatibility and required/optional dependencies before downloading its ZIP and following the steps above. Gardenest also hosts levels and tools/plugins; tool ZIPs are not GP-Next mods.
+
+Desktop clients that support the Nest protocol can use “Import into game”. Imported packs stay disabled, including updates; they are not applied automatically. Dependency and script-trust checks still apply. This integration is in Beta testing; use manual downloads if your client does not support it or cannot be opened. See the [Gardenest guide](../gardenest.md).

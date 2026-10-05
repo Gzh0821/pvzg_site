@@ -9,7 +9,11 @@ export const zhNavbar = navbar([
   {
     text: "更多",
     icon: "ellipsis",
-    children: ["/contribution/", "/instructions/"],
+    children: [
+      { text: "创意苗圃 (Beta)", link: "https://nest.pvzge.com/", icon: "seedling" },
+      "/contribution/",
+      "/instructions/",
+    ],
   },
   { text: "在线游玩", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/demo/",

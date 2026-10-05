@@ -43,6 +43,11 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
+    - title: 创意苗圃 (Beta)
+      icon: seedling
+      details: 发现和分享社区关卡、数据包、模组与工具／插件
+      link: https://nest.pvzge.com/
+
     - title: 在线游玩
       icon: circle-play
       details: 在浏览器中直接体验 PvZ2 Gardendless

@@ -33,3 +33,9 @@ Los detalles y la vista previa muestran el estado de las dependencias y funcione
 Activa JS Modding antes de importar scripts. Actualizar un paquete de scripts cuyo contenido cambió exige confirmar de nuevo la confianza, aunque conserve nombre o versión. Se admiten ZIP y carpetas; extrae los RAR antes de importar la carpeta.
 
 Selecciona Desinstalar en los detalles, confirma y aplica o reinicia. Solo pueden desinstalarse los mods importados con el nuevo gestor, no los migrados del directorio antiguo. Antes debes resolver los mods activados que dependan de él. La desinstalación retira el mod de la configuración; no borra guardados, datos propios del mod ni todas las copias almacenadas. Se siguen comprobando las dependencias del guardado.
+
+## Obtener contenido de Gardenest
+
+Explora paquetes de datos y mods en [Gardenest (Beta)](https://nest.pvzge.com/discover). En Descargas, selecciona una versión y comprueba la compatibilidad y las dependencias obligatorias/opcionales antes de descargar el ZIP e importarlo siguiendo los pasos anteriores. Gardenest también ofrece niveles y herramientas/plugins; los ZIP de herramientas no son mods de GP-Next.
+
+Los clientes de escritorio compatibles con el protocolo Nest pueden usar “Importar al juego”. Los paquetes importados quedan desactivados, también al actualizarse, y no se aplican automáticamente. Se mantienen las comprobaciones de dependencias y confianza de scripts. Esta integración sigue en pruebas Beta; usa la descarga manual si el cliente no es compatible o no se abre. Consulta la [guía de Gardenest](../gardenest.md).

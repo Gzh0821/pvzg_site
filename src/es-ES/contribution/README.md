@@ -32,6 +32,14 @@ Te invitamos a unirte a nuestra comunidad y contribuir al desarrollo de "PvZ2 Ga
 
 <div class="vp-card-container">
   <VPCard
+    title="Gardenest (Beta)"
+    desc="Descubre y comparte niveles, paquetes de datos, mods y herramientas/plugins"
+    logo="/pvz_logo-round.webp"
+    link="https://nest.pvzge.com/"
+    background="rgba(102, 204, 153, 0.15)"
+  />
+
+  <VPCard
     title="Grupo de anuncios QQ-6"
     desc="Numero de grupo: 1022799196, para recibir la informacion mas reciente"
     logo="/assets/image/qq.svg"

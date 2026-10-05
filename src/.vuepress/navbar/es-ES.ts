@@ -9,7 +9,11 @@ export const esNavbar = navbar([
   {
     text: "Más",
     icon: "ellipsis",
-    children: ["/es-ES/contribution/", "/es-ES/instructions/"],
+    children: [
+      { text: "Gardenest (Beta)", link: "https://nest.pvzge.com/", icon: "seedling" },
+      "/es-ES/contribution/",
+      "/es-ES/instructions/",
+    ],
   },
   { text: "Juego en línea", link: "https://play.pvzge.com", icon: "circle-play" },
   // "/",

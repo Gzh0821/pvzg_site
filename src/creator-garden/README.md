@@ -15,4 +15,6 @@ comment: false
 >
 > 编写自定义关卡的教程见[自定义关卡指南](../guide/level/)。
 
+> [创意苗圃 Gardenest（Beta）](https://nest.pvzge.com/) 已开放测试，可浏览、下载和分享社区作品。使用方法见[苗圃指南](../guide/gardenest.md)。
+
 <Catalog />

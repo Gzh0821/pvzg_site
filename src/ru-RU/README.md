@@ -43,6 +43,11 @@ highlights:
       opacity: 0.5
       filter: brightness(60%)
     features:
+      - title: Gardenest (Beta)
+        icon: seedling
+        details: Находите и публикуйте уровни, пакеты данных, моды и инструменты/плагины
+        link: https://nest.pvzge.com/
+
       - title: Играть онлайн
         icon: circle-play
         details: Играйте в PvZ2 Gardendless прямо в браузере

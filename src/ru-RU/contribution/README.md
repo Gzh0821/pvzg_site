@@ -32,6 +32,14 @@ data-full-width-responsive="true"> </ins>
 
 <div class="vp-card-container">
   <VPCard
+    title="Gardenest (Beta)"
+    desc="Находите и публикуйте уровни, пакеты данных, моды и инструменты/плагины"
+    logo="/pvz_logo-round.webp"
+    link="https://nest.pvzge.com/"
+    background="rgba(102, 204, 153, 0.15)"
+  />
+
+  <VPCard
     title="QQ Announcement Group-6"
     desc="Group Number:1022799196, for getting the latest information"
     logo="/assets/image/qq.svg"
