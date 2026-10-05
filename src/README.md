@@ -24,9 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: 每日关卡
-    icon: calendar-days
-    link: ./creator-garden/daily-level
+  - text: 创意苗圃 Nest
+    icon: seedling
+    link: https://nest.pvzge.com/
 
   - text: 社区
     icon: comment

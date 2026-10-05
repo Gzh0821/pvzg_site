@@ -24,9 +24,9 @@ actions:
     link: ./download/
     type: primary
 
-  - text: Daily Level
-    icon: calendar-days
-    link: ./creator-garden/daily-level
+  - text: Gardenest
+    icon: seedling
+    link: https://nest.pvzge.com/
 
   - text: Community
     icon: comment
