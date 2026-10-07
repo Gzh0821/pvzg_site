@@ -24,6 +24,8 @@ onMounted(() => {
 > Para preguntas frecuentes relacionadas con la descarga y el juego, consulte [aquí](../guide/FAQ.md), y para los requisitos del sistema y configuraciones recomendadas, consulte [aquí](../guide/requirement.md)
 >
 > La versión oficial del sitio web y la versión del grupo QQ/discord de red chino de este juego utilizan diferentes métodos de empaque, y los archivos de guardado no se heredarán automáticamente.
+>
+> También puedes visitar [Nest (Gardenest)](https://nest.pvzge.com/) para descargar compilaciones de terceros para otras plataformas, versiones modificadas, niveles, mods y otros recursos de la comunidad.
 
 > [!warning]
 > Descargar o jugar en línea significa que ha leído y aceptado los siguientes acuerdos y declaraciones:

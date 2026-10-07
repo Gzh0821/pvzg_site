@@ -24,6 +24,8 @@ onMounted(() => {
 > For FAQs related to downloading and playing, please see [here](../guide/FAQ.md), and for system requirements and recommended configurations, please see [here](../guide/requirement.md)
 >
 > The website version and QQ group/Chinese netdisk version of this game use different packaging methods, and the archive files will not be automatically inherited.
+>
+> You can also visit [Nest (Gardenest)](https://nest.pvzge.com/) to download third-party builds for other platforms, modified versions, levels, mods, and other community resources.
 
 > [!warning]
 > Downloading or playing online means that you have read and agreed to the following agreements and statements:
