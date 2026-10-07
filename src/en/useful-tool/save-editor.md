@@ -24,6 +24,8 @@ next: false
 > [!warning]
 > Back up the original save and use a file exported by the current game version. Only fields exposed by the tool are edited; find plant IDs in the [Almanac](../almanac/).
 
+<Editor />
+
 ## Related Tools and Guides
 
 - Adjust key configuration: [Keybind Editor](./keybind-editor.md)
@@ -37,5 +39,3 @@ next: false
      data-ad-format="auto"
      data-full-width-responsive="true">
 </ins>
-
-<Editor />

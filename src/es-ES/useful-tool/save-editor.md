@@ -24,6 +24,8 @@ next: false
 > [!warning]
 > Haz una copia del guardado y usa un archivo exportado por la versión actual. Solo se editan los campos disponibles en la herramienta; consulta los IDs en el [almanaque](../almanac/).
 
+<Editor />
+
 ## Herramientas y guias relacionadas
 
 - Ajustar teclas: [Editor de teclas](./keybind-editor.md)
@@ -36,5 +38,3 @@ next: false
   data-ad-slot="1822530351"
   data-ad-format="auto"
   data-full-width-responsive="true"> </ins>
-
-<Editor />

@@ -1,12 +1,17 @@
 <template>
+    <ClientOnly>
     <a-config-provider :theme="{
         token: {
-            colorPrimary: '#aa6f42'
+            colorPrimary: $isDarkMode ? '#65d8cf' : '#08726c',
+            borderRadius: 12,
+            colorTextLightSolid: $isDarkMode ? '#062d2a' : '#fff',
+            colorError: $isDarkMode ? '#ffa49c' : '#b24037',
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif'
         },
         algorithm: $isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {}
     }">
-    <a-layout class="save-editor-shell">
+    <div class="save-editor-shell">
         <div class="tool-header">
             <div class="tool-title-block">
                 <a-typography-title :level="2" class="tool-title">{{ t('title') }}</a-typography-title>
@@ -23,21 +28,22 @@
                     <template #icon><file-add-outlined /></template>
                     {{ t('new save') }}
                 </a-button>
-                <a-button @click="clearArchive" danger>
-                    <template #icon><delete-outlined /></template>
-                    {{ t('clear save') }}
-                </a-button>
+                <a-popconfirm :title="t('discard save question')" @confirm="clearArchive" :ok-text="t('clear save')" :cancel-text="t('cancel')">
+                    <a-button danger :disabled="!Object.keys(archiveData).length">
+                        <template #icon><delete-outlined /></template>
+                        {{ t('clear save') }}
+                    </a-button>
+                </a-popconfirm>
             </div>
         </div>
-        <a-layout-content v-if="Object.keys(archiveData).length" class="tool-content">
+        <a-alert v-if="validationErrors.length" :message="t('invalid save')" type="error" class="validation-alert">
+            <template #description><ul><li v-for="error in validationErrors" :key="error">{{ error === 'save' ? t('save file required') : error }}</li></ul></template>
+        </a-alert>
+        <div v-if="Object.keys(archiveData).length" class="tool-content">
             <a-alert v-if="isOldArchive" :message="t('old version warning')" type="warning"
                 style="margin-bottom:16px" />
             <a-form layout="vertical">
                 <div class="summary-strip">
-                    <a-form-item class="name-field">
-                        <a-input :addon-before="t('save name')" v-model:value="archiveData.name"
-                            :placeholder="t('enter name')" />
-                    </a-form-item>
                     <div class="summary-pill">
                         <strong>{{ ownedPlantCount }}</strong>
                         <span>{{ t('plants owned') }}</span>
@@ -52,249 +58,258 @@
                     </div>
                 </div>
 
-                <a-collapse v-model:activeKey="activeKeys" :bordered="false" :destroy-inactive-panel="true">
-                    <a-collapse-panel :key="'basic'" :header="t('basic resources')">
-                        <a-row :gutter="[16, 12]">
-                            <a-col :xs="24" :sm="12" :lg="6">
-                                <a-form-item>
-                                    <a-input-number :addon-before="t('worldKey')" v-model:value="archiveData.worldkey"
-                                        :min="0" style="width:100%" />
-                                </a-form-item>
-                            </a-col>
-                            <a-col :xs="24" :sm="12" :lg="6">
-                                <a-form-item>
-                                    <a-input-number :addon-before="t('gem')" v-model:value="archiveData.gem" :min="0"
-                                        style="width:100%" />
-                                </a-form-item>
-                            </a-col>
-                            <a-col :xs="24" :sm="12" :lg="6">
-                                <a-form-item>
-                                    <a-input-number :addon-before="t('coin')" v-model:value="archiveData.coin" :min="0"
-                                        style="width:100%" />
-                                </a-form-item>
-                            </a-col>
-                            <a-col :xs="24" :sm="12" :lg="6">
-                                <a-form-item>
-                                    <a-input-number :addon-before="t('sprout')" v-model:value="archiveData.sprout"
-                                        :min="0" style="width:100%" />
-                                </a-form-item>
-                            </a-col>
-                        </a-row>
-                    </a-collapse-panel>
+                <div class="editor-workspace">
+                    <nav class="editor-nav" :aria-label="t('editor sections')">
+                        <button v-for="section in sections" :key="section.id" type="button"
+                            :class="{ active: activeSection === section.id }" :aria-current="activeSection === section.id ? 'page' : undefined"
+                            :aria-controls="'save-section-' + section.id" @click="activeSection = section.id">
+                            <component :is="section.icon" /><span>{{ t(section.label) }}</span>
+                        </button>
+                    </nav>
+                    <div class="editor-main">
+                        <h3 class="view-title">{{ t(sections.find(section => section.id === activeSection)!.label) }}</h3>
+                        <section v-if="activeSection === 'basic'" class="editor-section" id="save-section-basic">
+                            <a-form-item class="name-field">
+                                <a-input :addon-before="t('save name')" v-model:value="archiveData.name" :aria-label="t('save name')"
+                                    :placeholder="t('enter name')" />
+                            </a-form-item>
 
-                    <a-collapse-panel :key="'daily'" :header="t('daily state')">
-                        <div class="daily-grid">
-                            <div class="daily-card" v-if="archiveData.arcade_plant_decoding">
-                                <div class="daily-card-title">{{ t('plant decoding') }}</div>
-                                <a-row :gutter="[12, 12]">
-                                    <a-col :xs="24" :md="12">
-                                        <a-flex gap="small" align="center" class="daily-switch-row">
-                                            <a-switch v-model:checked="archiveData.arcade_plant_decoding.played_today"
-                                                :checked-children="t('enabled')"
-                                                :un-checked-children="t('disabled')" />
-                                            <span>{{ t('played today') }}</span>
-                                        </a-flex>
+                                <a-row :gutter="[16, 12]">
+                                    <a-col :xs="24" :sm="12" :lg="12">
+                                        <a-form-item>
+                                            <a-input-number :addon-before="t('worldKey')" v-model:value="archiveData.worldkey" :aria-label="t('worldKey')"
+                                                :min="0" style="width:100%" />
+                                        </a-form-item>
                                     </a-col>
-                                    <a-col :xs="24" :md="12">
-                                        <a-input-number :addon-before="t('gem today')"
-                                            v-model:value="archiveData.arcade_plant_decoding.gem_today" :min="0"
-                                            style="width:100%" />
+                                    <a-col :xs="24" :sm="12" :lg="12">
+                                        <a-form-item>
+                                            <a-input-number :addon-before="t('gem')" v-model:value="archiveData.gem" :aria-label="t('gem')" :min="0"
+                                                style="width:100%" />
+                                        </a-form-item>
                                     </a-col>
-                                    <a-col :xs="24" :md="12">
-                                        <a-input-number :addon-before="t('base count')"
-                                            v-model:value="archiveData.arcade_plant_decoding.max_base_count" :min="3"
-                                            :max="10" style="width:100%" />
+                                    <a-col :xs="24" :sm="12" :lg="12">
+                                        <a-form-item>
+                                            <a-input-number :addon-before="t('coin')" v-model:value="archiveData.coin" :aria-label="t('coin')" :min="0"
+                                                style="width:100%" />
+                                        </a-form-item>
                                     </a-col>
-                                    <a-col :xs="24" :md="12">
-                                        <a-input-number :addon-before="t('code count')"
-                                            v-model:value="archiveData.arcade_plant_decoding.max_code_count" :min="3"
-                                            :max="10" style="width:100%" />
+                                    <a-col :xs="24" :sm="12" :lg="12">
+                                        <a-form-item>
+                                            <a-input-number :addon-before="t('sprout')" v-model:value="archiveData.sprout" :aria-label="t('sprout')"
+                                                :min="0" style="width:100%" />
+                                        </a-form-item>
                                     </a-col>
                                 </a-row>
-                                <div class="daily-actions">
-                                    <a-button size="small" @click="resetArcadeDaily">
-                                        {{ t('reset arcade daily') }}
-                                    </a-button>
-                                    <span class="daily-card-note">{{ t('arcade reward note') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="daily-card">
-                                <div class="daily-card-title">{{ t('daily flags') }}</div>
-                                <a-flex gap="small" align="center" class="daily-switch-row">
-                                    <a-switch v-model:checked="archiveData.yeti_spawned_today"
-                                        :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
-                                    <span>{{ t('yeti spawned today') }}</span>
+                        </section>
+                        <section v-if="activeSection === 'plants'" class="editor-section" id="save-section-plants">
+                            <a-form-item>
+                                <a-flex justify="center" class="plant-search-row">
+                                    <a-select v-model:value="selectPlantValue" show-search allow-clear
+                                        :placeholder="t('select plant')" :options="plantOptions"
+                                        :filter-option="plantFilterOption" style="width: min(100%, 420px)" />
                                 </a-flex>
-                            </div>
-                        </div>
-                    </a-collapse-panel>
-
-                    <a-collapse-panel :key="'plants'" :header="t('edit plants')">
-                        <a-form-item>
-                            <a-flex justify="center" class="plant-search-row">
-                                <a-select v-model:value="selectPlantValue" show-search allow-clear
-                                    :placeholder="t('select plant')" :options="plantOptions"
-                                    :filter-option="plantFilterOption" style="width: min(100%, 420px)" />
-                            </a-flex>
-                            <a-flex v-if="selectPlantValue && plantCodenameMap[selectPlantValue]" justify="center"
-                                align="center" class="plant-editor-card">
-                                <a-flex vertical align="center" class="plant-preview">
-                                    <img class="plant-image" alt="plant"
-                                        :src="'/assets/image/plants/plants_' + selectPlantValue + '_c.webp'" />
-                                    <p class="plant-title">{{
-                                        plantCodenameMap[selectPlantValue]?.name ||
-                                        plantCodenameMap[selectPlantValue]?.enName ||
-                                        selectPlantValue
-                                    }}</p>
-                                    <p class="muted-code">{{ selectPlantValue }}</p>
-                                </a-flex>
-                                <a-flex vertical gap="small" class="plant-controls">
-                                    <a-button
-                                        v-if="selectedPlantAlmanacPath"
-                                        :href="selectedPlantAlmanacPath"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style="width:100%"
-                                    >
-                                        {{ t('view almanac') }} ↗
-                                    </a-button>
-                                    <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
-                                        <a-select v-model:value="archiveData.plantProps[selectPlantValue].progress"
-                                            style="width:100%">
-                                            <a-select-option :value="0">{{ t('locked') }}</a-select-option>
-                                            <a-select-option :value="1">{{ t('available') }}</a-select-option>
-                                            <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
-                                        </a-select>
-                                        <a-flex gap="small" align="center">
-                                            <span style="font-size:0.9em">{{ t('boost') }}:</span>
-                                            <a-switch :checked="!!(archiveData.plantProps?.[selectPlantValue]?.boost)"
-                                                @change="(val: boolean) => { if (archiveData.plantProps?.[selectPlantValue]) archiveData.plantProps[selectPlantValue].boost = val ? 1 : 0 }" />
-                                        </a-flex>
-                                        <!-- 奖章 -->
-                                        <a-checkbox v-model:checked="archiveData.plantProps[selectPlantValue].medal">
-                                            {{ t('medal') }}
-                                        </a-checkbox>
-                                        <a-button danger @click="removePlant(selectPlantValue)" style="width:100%">
-                                            {{ t('delete') }}
+                                <a-flex v-if="selectPlantValue && plantCodenameMap[selectPlantValue]" justify="center"
+                                    align="center" class="plant-editor-card">
+                                    <a-flex vertical align="center" class="plant-preview">
+                                        <img class="plant-image" alt="plant"
+                                            :src="'/assets/image/plants/plants_' + selectPlantValue + '_c.webp'" />
+                                        <p class="plant-title">{{
+                                            plantCodenameMap[selectPlantValue]?.name ||
+                                            plantCodenameMap[selectPlantValue]?.enName ||
+                                            selectPlantValue
+                                        }}</p>
+                                        <p class="muted-code">{{ selectPlantValue }}</p>
+                                    </a-flex>
+                                    <a-flex vertical gap="small" class="plant-controls">
+                                        <a-button
+                                            v-if="selectedPlantAlmanacPath"
+                                            :href="selectedPlantAlmanacPath"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style="width:100%"
+                                        >
+                                            {{ t('view almanac') }} ↗
                                         </a-button>
-                                    </template>
-                                    <template v-else>
-                                        <a-button type="primary" @click="addPlant(selectPlantValue)" style="width:100%">
-                                            {{ t('add') }}
-                                        </a-button>
-                                    </template>
-                                </a-flex>
-                            </a-flex>
-                        </a-form-item>
-                    </a-collapse-panel>
-
-                    <a-collapse-panel :key="'worlds'" :header="t('world unlock')">
-                        <a-row v-if="archiveData.worldProps" :gutter="[12, 12]">
-                            <template v-for="([worldID, world]) in worldEntries" :key="worldID">
-                                <a-col :xs="24" :sm="12" :lg="8">
-                                    <div class="world-card">
-                                        <a-checkbox v-model:checked="archiveData.worldProps[worldID]['unlocked']">
-                                            {{ t('world ' + worldID) }}
-                                        </a-checkbox>
-                                        <div v-if="world.endlessProps" style="margin-top:6px">
-                                            <a-input-number size="small" :addon-before="t('endless level')"
-                                                v-model:value="archiveData.worldProps[worldID].endlessProps.level"
-                                                :min="1" style="width:100%" />
-                                        </div>
-                                    </div>
-                                </a-col>
-                            </template>
-                        </a-row>
-                    </a-collapse-panel>
-
-                    <a-collapse-panel :key="'upgrades'" :header="t('upgrades')">
-                        <a-input-search v-model:value="upgradeQuery" :placeholder="t('search upgrades')"
-                            allow-clear class="section-search" />
-                        <a-list v-if="archiveData.player_upgrades" :data-source="upgradeEntries" size="small" bordered>
-                            <template #renderItem="{ item }">
-                                <a-list-item>
-                                    <a-row style="width:100%" align="middle" :gutter="8">
-                                        <a-col :xs="24" :lg="7">
-                                            <div class="upgrade-title">
-                                                {{ item.name }}
-                                            </div>
-                                            <div class="upgrade-meta">
-                                                {{ t('obtain from') }}: {{ t('world ' +
-                                                    upgradeList[item.index]?.OBTAINWORLD) }}
-                                            </div>
-                                        </a-col>
-                                        <a-col :xs="24" :lg="9" class="upgrade-desc">
-                                            {{ item.description }}
-                                        </a-col>
-                                        <a-col :xs="16" :lg="5">
-                                            <a-select v-model:value="archiveData.player_upgrades[item.id].progress"
+                                        <template v-if="archiveData.plantProps && archiveData.plantProps[selectPlantValue]">
+                                            <a-select v-model:value="archiveData.plantProps[selectPlantValue].progress"
                                                 style="width:100%">
-                                                <a-select-option :value="0">{{ t('upgrade progress locked') }}</a-select-option>
-                                                <a-select-option :value="1">{{ t('upgrade progress pending') }}</a-select-option>
-                                                <a-select-option :value="2">{{ t('upgrade progress obtained') }}</a-select-option>
+                                                <a-select-option :value="0">{{ t('locked') }}</a-select-option>
+                                                <a-select-option :value="1">{{ t('available') }}</a-select-option>
+                                                <a-select-option :value="2">{{ t('unlocked') }}</a-select-option>
                                             </a-select>
+                                            <a-flex gap="small" align="center">
+                                                <span style="font-size:0.9em">{{ t('boost') }}:</span>
+                                                <a-switch :checked="!!(archiveData.plantProps?.[selectPlantValue]?.boost)"
+                                                    @change="(val: boolean) => { if (archiveData.plantProps?.[selectPlantValue]) archiveData.plantProps[selectPlantValue].boost = val ? 1 : 0 }" />
+                                            </a-flex>
+                                            <!-- 奖章 -->
+                                            <a-checkbox v-model:checked="archiveData.plantProps[selectPlantValue].medal">
+                                                {{ t('medal') }}
+                                            </a-checkbox>
+                                            <a-button danger @click="removePlant(selectPlantValue)" style="width:100%">
+                                                {{ t('delete') }}
+                                            </a-button>
+                                        </template>
+                                        <template v-else>
+                                            <a-button type="primary" @click="addPlant(selectPlantValue)" style="width:100%">
+                                                {{ t('add') }}
+                                            </a-button>
+                                        </template>
+                                    </a-flex>
+                                </a-flex>
+                            </a-form-item>
+                        </section>
+                        <section v-if="activeSection === 'garden'" class="editor-section" id="save-section-garden">
+                            <GardenEditor :zen="archiveData.zengarden" :features="gardenFeatures" :plant-options="plantOptions" :t="t" :editable="gardenEditable" />
+                        </section>
+                        <section v-if="activeSection === 'worlds'" class="editor-section" id="save-section-worlds">
+                            <a-row v-if="archiveData.worldProps" :gutter="[12, 12]">
+                                <template v-for="([worldID, world]) in worldEntries" :key="worldID">
+                                    <a-col :xs="24" :sm="12" :lg="12">
+                                        <div class="world-card">
+                                            <a-checkbox v-model:checked="archiveData.worldProps[worldID]['unlocked']">
+                                                {{ t('world ' + worldID) }}
+                                            </a-checkbox>
+                                            <div v-if="world.endlessProps" style="margin-top:6px">
+                                                <a-input-number size="small" :addon-before="t('endless level')"
+                                                    v-model:value="archiveData.worldProps[worldID].endlessProps.level"
+                                                    :min="1" style="width:100%" />
+                                            </div>
+                                        </div>
+                                    </a-col>
+                                </template>
+                            </a-row>
+                        </section>
+                        <section v-if="activeSection === 'upgrades'" class="editor-section" id="save-section-upgrades">
+                            <a-input-search v-model:value="upgradeQuery" :placeholder="t('search upgrades')"
+                                allow-clear class="section-search" />
+                            <a-list v-if="archiveData.player_upgrades" :data-source="upgradeEntries" size="small" bordered>
+                                <template #renderItem="{ item }">
+                                    <a-list-item>
+                                        <a-row style="width:100%" align="middle" :gutter="8">
+                                            <a-col :xs="24" :lg="7">
+                                                <div class="upgrade-title">
+                                                    {{ item.name }}
+                                                </div>
+                                                <div class="upgrade-meta">
+                                                    {{ t('obtain from') }}: {{ t('world ' +
+                                                        upgradeList[item.index]?.OBTAINWORLD) }}
+                                                </div>
+                                            </a-col>
+                                            <a-col :xs="24" :lg="9" class="upgrade-desc">
+                                                {{ item.description }}
+                                            </a-col>
+                                            <a-col :xs="16" :lg="5">
+                                                <a-select v-model:value="archiveData.player_upgrades[item.id].progress"
+                                                    style="width:100%">
+                                                    <a-select-option :value="0">{{ t('upgrade progress locked') }}</a-select-option>
+                                                    <a-select-option :value="1">{{ t('upgrade progress pending') }}</a-select-option>
+                                                    <a-select-option :value="2">{{ t('upgrade progress obtained') }}</a-select-option>
+                                                </a-select>
+                                            </a-col>
+                                            <a-col :xs="8" :lg="3" style="text-align:center">
+                                                <a-switch v-model:checked="archiveData.player_upgrades[item.id].enabled"
+                                                    :disabled="archiveData.player_upgrades[item.id].progress === 0"
+                                                    :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
+                                            </a-col>
+                                        </a-row>
+                                    </a-list-item>
+                                </template>
+                            </a-list>
+                        </section>
+                        <section v-if="activeSection === 'daily'" class="editor-section" id="save-section-daily">
+                            <div class="daily-grid">
+                                <div class="daily-card" v-if="archiveData.arcade_plant_decoding">
+                                    <div class="daily-card-title">{{ t('plant decoding') }}</div>
+                                    <a-row :gutter="[12, 12]">
+                                        <a-col :xs="24" :md="12">
+                                            <a-flex gap="small" align="center" class="daily-switch-row">
+                                                <a-switch v-model:checked="archiveData.arcade_plant_decoding.played_today"
+                                                    :checked-children="t('enabled')"
+                                                    :un-checked-children="t('disabled')" />
+                                                <span>{{ t('played today') }}</span>
+                                            </a-flex>
                                         </a-col>
-                                        <a-col :xs="8" :lg="3" style="text-align:center">
-                                            <a-switch v-model:checked="archiveData.player_upgrades[item.id].enabled"
-                                                :disabled="archiveData.player_upgrades[item.id].progress === 0"
-                                                :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
+                                        <a-col :xs="24" :md="12">
+                                            <a-input-number :addon-before="t('gem today')"
+                                                v-model:value="archiveData.arcade_plant_decoding.gem_today" :min="0"
+                                                style="width:100%" />
+                                        </a-col>
+                                        <a-col :xs="24" :md="12">
+                                            <a-input-number :addon-before="t('base count')"
+                                                v-model:value="archiveData.arcade_plant_decoding.max_base_count" :min="3"
+                                                :max="10" style="width:100%" />
+                                        </a-col>
+                                        <a-col :xs="24" :md="12">
+                                            <a-input-number :addon-before="t('code count')"
+                                                v-model:value="archiveData.arcade_plant_decoding.max_code_count" :min="3"
+                                                :max="10" style="width:100%" />
                                         </a-col>
                                     </a-row>
-                                </a-list-item>
-                            </template>
-                        </a-list>
-                    </a-collapse-panel>
+                                    <div class="daily-actions">
+                                        <a-button size="small" @click="resetArcadeDaily">
+                                            {{ t('reset arcade daily') }}
+                                        </a-button>
+                                        <span class="daily-card-note">{{ t('arcade reward note') }}</span>
+                                    </div>
+                                </div>
 
-                    <a-collapse-panel :key="'tutorial'" :header="t('tutorial')">
-                        <a-flex v-if="archiveData.tutorial" gap="middle" align="center" wrap="wrap">
-                            <a-button type="primary" @click="completeTutorial">
-                                {{ t('complete tutorials') }}
-                            </a-button>
-                            <template v-for="(val, key) in archiveData.tutorial" :key="key">
-                                <a-tag :color="val ? 'success' : 'default'" style="cursor:default">
-                                    {{ key }}
-                                </a-tag>
-                            </template>
-                        </a-flex>
-                        <a-empty v-else :description="false" />
-                    </a-collapse-panel>
-
-                    <a-collapse-panel :key="'features'" :header="t('features')">
-                        <a-row v-if="archiveData.features" :gutter="[16, 12]">
-                            <template v-for="([key]) in featureEntries" :key="key">
-                                <a-col :xs="24" :sm="12" :lg="8">
-                                    <a-flex gap="small" align="center">
-                                        <a-switch v-model:checked="archiveData.features[key]"
+                                <div class="daily-card">
+                                    <div class="daily-card-title">{{ t('daily flags') }}</div>
+                                    <a-flex gap="small" align="center" class="daily-switch-row">
+                                        <a-switch v-model:checked="archiveData.yeti_spawned_today"
                                             :checked-children="t('enabled')" :un-checked-children="t('disabled')" />
-                                        <span style="font-size:0.9em">{{ t(key) || key }}</span>
+                                        <span>{{ t('yeti spawned today') }}</span>
                                     </a-flex>
-                                </a-col>
-                            </template>
-                        </a-row>
-                        <a-empty v-else :description="false" />
-                    </a-collapse-panel>
-                </a-collapse>
+                                </div>
+                            </div>
+                        </section>
+                        <section v-if="activeSection === 'advanced'" class="editor-section" id="save-section-advanced">
+                            <div class="section-subheading"><h4>{{ t('features') }}</h4></div>
+                            <div class="switch-list" v-if="archiveData.features">
+                                <label v-for="([key]) in featureEntries" :key="key" class="switch-row">
+                                    <span>{{ t(key) }}</span>
+                                    <a-switch v-model:checked="archiveData.features[key]" :aria-label="t(key)" />
+                                </label>
+                            </div>
+                        </section>
+                    </div>
+                </div>
 
                 <div class="tool-footer">
+                    <a-button :disabled="!history.length" @click="undo">{{ t('undo') }}</a-button>
+                    <a-button :disabled="!changes.length" @click="previewOpen = true">{{ t('preview changes', { count: changes.length }) }}</a-button>
                     <a-button type="primary" size="large" @click="saveArchive">
                         <template #icon><save-outlined /></template>
                         {{ t('save to local') }}
                     </a-button>
                 </div>
             </a-form>
-        </a-layout-content>
-        <a-layout-content v-else class="empty-state">
-            <a-empty :description="t('empty description')" />
-        </a-layout-content>
-    </a-layout>
+        </div>
+        <div v-else class="empty-state">
+            <div class="empty-symbol"><FileAddOutlined /></div>
+            <h3>{{ t('empty title') }}</h3>
+            <p>{{ t('empty description') }}</p>
+        </div>
+    </div>
+    <a-modal v-model:open="previewOpen" :title="t('changes title')" :footer="null" width="min(900px, 95vw)">
+        <div class="change-list">
+            <details v-for="change in changes" :key="change.path">
+                <summary>{{ change.path }}</summary>
+                <p>{{ t('before') }}</p><pre>{{ displayValue(change.before) }}</pre>
+                <p>{{ t('after') }}</p><pre>{{ displayValue(change.after) }}</pre>
+            </details>
+        </div>
+    </a-modal>
     </a-config-provider>
+    </ClientOnly>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, inject } from 'vue'
+import { ref, computed, inject, watch } from 'vue'
+import { ClientOnly } from 'vuepress/client'
 import { message, theme } from 'ant-design-vue'
-import { DeleteOutlined, FileAddOutlined, SaveOutlined, UploadOutlined } from '@ant-design/icons-vue'
+import { DeleteOutlined, FileAddOutlined, SaveOutlined, UploadOutlined, WalletOutlined, AppstoreOutlined, ExperimentOutlined, GlobalOutlined, GiftOutlined, CalendarOutlined, SettingOutlined } from '@ant-design/icons-vue'
 import { useI18n } from 'vue-i18n'
 import JSON5 from 'json5'
 
@@ -305,6 +320,11 @@ import { getPlantIdMap } from '../plantsAlmanac/formatPlants'
 import { upgradeJson } from '../game-data/upgrades'
 import { trophyJson } from '../game-data/trophies'
 import versionJson from '../version.json'
+
+import GardenEditor from './GardenEditor.vue';
+import gardenLayout from './garden-layout.json';
+import { plantFeaturesJson } from '../game-data/plants';
+import { validateSave, gardenIssues, diffSave } from './save-state.mjs';
 
 import type { ArchiveData } from './types';
 
@@ -353,6 +373,7 @@ const worldAmount = worldCodenames.length;
 
 // 游戏版本 & 升级特性列表
 const gameVersion = versionJson.gameVersion;
+const gardenFeatures = Object.fromEntries(plantFeaturesJson.PLANTS.map(plant => [plant.CODENAME, plant]));
 const upgradeList = upgradeJson.UPGRADES;
 const trophyList = trophyJson.TROPHIES;
 
@@ -478,8 +499,55 @@ const selectedPlantAlmanacPath = computed(() => (
 ));
 const uploadVersion = ref('');
 const upgradeQuery = ref('');
-// 控制折叠面板的展开/收起状态（升级特性默认不展开，避免首次渲染卡顿）
-const activeKeys = ref(['basic', 'daily', 'plants', 'worlds', 'tutorial', 'features']);
+const activeSection = ref('basic');
+const sections = [
+    { id: 'basic', label: 'basic resources', icon: WalletOutlined },
+    { id: 'plants', label: 'edit plants', icon: AppstoreOutlined },
+    { id: 'garden', label: 'garden editor', icon: ExperimentOutlined },
+    { id: 'worlds', label: 'world unlock', icon: GlobalOutlined },
+    { id: 'upgrades', label: 'upgrades', icon: GiftOutlined },
+    { id: 'daily', label: 'daily state', icon: CalendarOutlined },
+    { id: 'advanced', label: 'features', icon: SettingOutlined }
+];
+
+const originalData = ref<Record<string, any>>({});
+const history = ref<string[]>([]);
+const previewOpen = ref(false);
+const validationErrors = ref<string[]>([]);
+let lastSnapshot = '{}';
+const snapshot = () => JSON.stringify({ archive: archiveData.value, other: otherData.value });
+const beginSession = (original: Record<string, any>) => {
+    originalData.value = JSON.parse(JSON.stringify(original));
+    history.value = [];
+    activeSection.value = 'basic';
+    lastSnapshot = snapshot();
+    validationErrors.value = [];
+};
+watch(snapshot, (next) => {
+    if (next === lastSnapshot) return;
+    history.value.push(lastSnapshot);
+    if (history.value.length > 50) history.value.shift();
+    lastSnapshot = next;
+    validationErrors.value = [];
+});
+const undo = () => {
+    const previous = history.value.pop();
+    if (!previous) return;
+    const state = JSON.parse(previous);
+    lastSnapshot = previous;
+    archiveData.value = state.archive;
+    otherData.value = state.other;
+    validationErrors.value = [];
+};
+const finalData = computed(() => ({ ...otherData.value, ...archiveData.value }));
+const changes = computed(() => diffSave(originalData.value, finalData.value));
+const displayValue = (value: any) => value === undefined ? '—' : JSON.stringify(value);
+const gardenEditable = computed(() => archiveData.value.version === gardenLayout.version);
+const checkSave = (data: Record<string, any>) => {
+    const errors = validateSave(data);
+    if (!errors.length && data.version === gardenLayout.version) errors.push(...gardenIssues(data.zengarden, gardenLayout.slots, gardenFeatures));
+    return errors;
+};
 
 const cloneDefaultArchive = () => structuredClone(defaultArchive) as ArchiveData;
 
@@ -503,11 +571,13 @@ const resolveFeatureCodename = (key: any, featureList: any[]) => {
 };
 
 const normalizeUpgradeData = (value: any) => ({
+    ...value,
     progress: clampInteger(value?.progress, 0, 2, 0),
     enabled: value?.enabled === false ? false : true
 });
 
 const normalizeTrophyData = (value: any) => ({
+    ...value,
     progress: clampInteger(value?.progress, 0, 2, 0)
 });
 
@@ -539,9 +609,9 @@ const applyLegacyProgressArray = (
 };
 
 const normalizePlayerUpgrades = (data: Record<string, any>) => {
-    const result = Object.fromEntries(
+    const result = { ...(data.player_upgrades || {}), ...Object.fromEntries(
         upgradeList.map((upgrade: any) => [upgrade.CODENAME, { progress: 0, enabled: true }])
-    );
+    ) };
     applyLegacyProgressArray(result, data.obtainedUpgrades, 'upgradeID', upgradeList, normalizeUpgradeData);
     applyProgressObject(result, data.upgradeProps, upgradeList, normalizeUpgradeData);
     applyProgressObject(result, data.player_upgrades, upgradeList, normalizeUpgradeData);
@@ -549,7 +619,7 @@ const normalizePlayerUpgrades = (data: Record<string, any>) => {
 };
 
 const normalizePlayerTrophies = (data: Record<string, any>) => {
-    const result: Record<string, any> = {};
+    const result: Record<string, any> = { ...(data.player_trophies || {}) };
     applyLegacyProgressArray(result, data.obtainedTrophies, 'trophyID', trophyList, normalizeTrophyData);
     applyProgressObject(result, data.trophyProps, trophyList, normalizeTrophyData);
     applyProgressObject(result, data.player_trophies, trophyList, normalizeTrophyData);
@@ -630,7 +700,7 @@ const worldEntries = computed(() =>
 
 const featureEntries = computed(() => Object.entries(archiveData.value.features || {}));
 
-const ownedPlantCount = computed(() => Object.keys(archiveData.value.plantProps || {}).length);
+const ownedPlantCount = computed(() => Object.values(archiveData.value.plantProps || {}).filter(plant => plant.progress === 2).length);
 const unlockedWorldCount = computed(() =>
     worldEntries.value.filter(([, world]) => Boolean(world.unlocked)).length
 );
@@ -645,6 +715,12 @@ const handleUpload = (file: File) => {
         try {
             if (e.target === null || typeof e.target.result !== 'string') throw new Error('Invalid file');
             const data = JSON5.parse(e.target.result);
+            const errors = checkSave(data);
+            if (errors.length) {
+                validationErrors.value = errors;
+                message.error(t('invalid save'));
+                return;
+            }
             // 记录上传版本
             uploadVersion.value = data.version;
             archiveData.value = normalizeArchive(data);
@@ -652,11 +728,13 @@ const handleUpload = (file: File) => {
             otherData.value = Object.fromEntries(
                 Object.entries(data).filter(([key]) => !handledSaveKeys.has(key) && !legacySaveKeys.has(key))
             );
+            beginSession(data);
         } catch (err) {
             message.error(t('parse error'));
             console.error(err);
         }
     };
+    reader.onerror = () => message.error(t('parse error'));
     reader.readAsText(file);
     return false;
 };
@@ -666,6 +744,7 @@ const newArchive = () => {
     archiveData.value = cloneDefaultArchive();
     uploadVersion.value = gameVersion;
     otherData.value = {};
+    beginSession(finalData.value);
 };
 
 // 清空存档
@@ -673,6 +752,7 @@ const clearArchive = () => {
     archiveData.value = {};
     otherData.value = {};
     uploadVersion.value = '';
+    beginSession({});
 };
 
 // 判断是否为旧版存档
@@ -708,15 +788,6 @@ const removePlant = (codename: string) => {
     delete archiveData.value.plantProps?.[codename];
 };
 
-// 一键完成所有引导
-const completeTutorial = () => {
-    if (!archiveData.value.tutorial) return;
-    Object.keys(archiveData.value.tutorial).forEach(key => {
-        archiveData.value.tutorial![key] = true;
-    });
-    message.success(t('tutorials completed'));
-};
-
 const resetArcadeDaily = () => {
     const arcade = normalizeArcadePlantDecoding(archiveData.value.arcade_plant_decoding);
     arcade.played_today = false;
@@ -727,14 +798,15 @@ const resetArcadeDaily = () => {
 
 // 保存存档（将 archiveData 与 otherData 合并后下载，保留所有原始字段）
 const saveArchive = () => {
-    archiveData.value.worldProgress?.sort((a: any, b: any) => a.worldID - b.worldID);
-    const finalData = {
+    const exportedData = {
         ...otherData.value,
         ...archiveData.value
     };
-    legacySaveKeys.forEach(key => delete (finalData as Record<string, any>)[key]);
-    const saveName = finalData.name || 'New Player';
-    const blob = new Blob([JSON.stringify(finalData, null, 2)], {
+    legacySaveKeys.forEach(key => delete (exportedData as Record<string, any>)[key]);
+    validationErrors.value = checkSave(exportedData);
+    if (validationErrors.value.length) { message.error(t('invalid save')); return; }
+    const saveName = exportedData.name || 'New Player';
+    const blob = new Blob([JSON.stringify(exportedData, null, 2)], {
         type: 'application/json'
     });
     const url = URL.createObjectURL(blob);
@@ -751,327 +823,4 @@ const saveArchive = () => {
 };
 </script>
 
-<style scoped>
-.save-editor-shell {
-    --tool-accent: #aa6f42;
-    --tool-accent-strong: #8b572f;
-    --tool-bg: color-mix(in srgb, var(--vp-c-bg) 94%, var(--tool-accent) 6%);
-    --tool-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
-    --tool-accent-surface: color-mix(in srgb, var(--tool-accent) 10%, var(--vp-c-bg));
-    --tool-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
-    --tool-muted: var(--vp-c-text-mute);
-    container-type: inline-size;
-    max-width: 1120px;
-    margin: 1.5rem auto;
-    border: 1px solid var(--tool-border);
-    border-radius: 10px;
-    background: var(--tool-bg);
-    box-shadow: 0 10px 30px rgba(64, 38, 18, 0.08);
-    color: var(--vp-c-text);
-    overflow: hidden;
-}
-
-[data-theme="dark"] .save-editor-shell {
-    --tool-accent-strong: #d9aa7b;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
-}
-
-.tool-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 20px;
-    font-family: 'pvzgeFontEN', 'pvzgFont', sans-serif;
-    border-bottom: 1px solid var(--tool-border);
-}
-
-.tool-title-block {
-    flex: 1 1 280px;
-    min-width: 0;
-}
-
-.tool-title {
-    font-family: 'pvzgeFontEN', 'pvzgFont', sans-serif !important;
-    margin-bottom: 4px !important;
-    line-height: 1.22 !important;
-    white-space: normal;
-    overflow-wrap: anywhere;
-}
-
-.save-actions {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    gap: 8px;
-    justify-content: end;
-    align-items: start;
-}
-
-.save-actions :deep(.ant-upload),
-.save-actions :deep(.ant-upload-wrapper),
-.save-actions :deep(.ant-upload-select) {
-    width: 100%;
-}
-
-.save-actions :deep(.ant-btn) {
-    min-height: 36px;
-    height: auto;
-    white-space: normal;
-    text-align: center;
-}
-
-.tool-content {
-    padding: 20px;
-}
-
-.summary-strip {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-    align-items: stretch;
-    margin-bottom: 16px;
-}
-
-.name-field {
-    grid-column: 1 / -1;
-    margin: 0;
-}
-
-.summary-pill {
-    min-width: 120px;
-    padding: 8px 12px;
-    border: 1px solid var(--tool-border);
-    border-radius: 8px;
-    background: var(--tool-accent-surface);
-}
-
-.summary-pill strong {
-    display: block;
-    color: var(--tool-accent-strong);
-    font-size: 1.2rem;
-    line-height: 1.1;
-}
-
-.summary-pill span {
-    color: var(--tool-muted);
-    font-size: 0.82rem;
-}
-
-p.plant-title {
-    font-family: 'pvzgeFontEN', 'pvzgFont', sans-serif;
-    font-size: x-large;
-    text-align: center;
-    margin: 4px 0 2px;
-}
-
-.plant-search-row {
-    margin-bottom: 16px;
-}
-
-.plant-editor-card {
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 32px;
-    padding: 18px;
-    border: 1px solid var(--tool-border);
-    border-radius: 8px;
-    background: var(--tool-panel);
-}
-
-.plant-preview {
-    min-width: 110px;
-    max-width: 150px;
-}
-
-.plant-image {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-}
-
-.plant-controls {
-    min-width: 220px;
-    max-width: 320px;
-}
-
-.muted-code {
-    color: var(--tool-muted);
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-    font-size: 0.82em;
-    margin: 0;
-}
-
-.world-card {
-    height: 100%;
-    border: 1px solid var(--tool-border);
-    border-radius: 6px;
-    padding: 8px 10px;
-    background: var(--tool-panel);
-}
-
-.daily-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 12px;
-}
-
-.daily-card {
-    min-width: 0;
-    border: 1px solid var(--tool-border);
-    border-radius: 6px;
-    padding: 12px;
-    background: var(--tool-panel);
-}
-
-.daily-card-title {
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.daily-switch-row {
-    min-height: 32px;
-}
-
-.daily-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin-top: 12px;
-}
-
-.daily-card-note {
-    color: var(--tool-muted);
-    font-size: 0.82em;
-}
-
-.section-search {
-    max-width: 360px;
-    margin-bottom: 12px;
-}
-
-.upgrade-title {
-    font-weight: 600;
-    line-height: 1.3;
-}
-
-.upgrade-meta {
-    color: var(--tool-muted);
-    font-size: 0.8em;
-    margin-top: 2px;
-}
-
-.upgrade-desc {
-    color: var(--tool-muted);
-    font-size: 0.82em;
-    line-height: 1.45;
-}
-
-.tool-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 16px;
-}
-
-.empty-state {
-    padding: 56px 20px;
-}
-
-/* 定制折叠面板样式 */
-:deep(.ant-collapse) {
-    background: transparent;
-    margin-bottom: 16px;
-}
-
-:deep(.ant-collapse-header) {
-    font-size: 1.2em;
-    font-weight: 500;
-}
-
-:deep(.ant-collapse-content) {
-    padding: 10px 0;
-}
-
-:deep(.ant-motion-collapse),
-:deep(.ant-motion-collapse-active) {
-    transition: none !important;
-}
-
-/* 升级列表紧凑样式 */
-:deep(.ant-list-item) {
-    padding: 8px 12px;
-}
-
-@media (max-width: 760px) {
-    .save-editor-shell {
-        margin: 0.75rem 0;
-        border-radius: 8px;
-    }
-
-    .summary-strip {
-        grid-template-columns: 1fr;
-    }
-
-    .tool-header {
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 16px 14px;
-    }
-
-    .tool-title-block,
-    .save-actions {
-        width: 100%;
-    }
-
-    .tool-title-block {
-        flex: none;
-    }
-
-    .tool-title {
-        font-size: 1.35rem;
-        line-height: 1.25;
-    }
-
-    .save-actions {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-
-    .save-actions :deep(.ant-btn) {
-        width: 100%;
-    }
-
-    .tool-content {
-        padding: 14px;
-    }
-}
-
-@container (max-width: 760px) {
-    .tool-header {
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 16px 14px;
-    }
-
-    .tool-title-block,
-    .save-actions {
-        width: 100%;
-    }
-
-    .tool-title-block {
-        flex: none;
-    }
-
-    .tool-title {
-        font-size: 1.35rem;
-        line-height: 1.25;
-    }
-
-    .save-actions {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-
-    .save-actions :deep(.ant-btn) {
-        width: 100%;
-    }
-}
-</style>
+<style scoped src="./editor.css"></style>

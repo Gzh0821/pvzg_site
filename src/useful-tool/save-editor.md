@@ -24,6 +24,8 @@ next: false
 > [!warning]
 > 编辑前备份原存档，并使用当前游戏版本导出的文件。工具只修改界面中提供的字段；植物 ID 可查[在线图鉴](../almanac/)。
 
+<Editor />
+
 ## 相关工具与教程
 
 - 键位调整工具：[键位绑定器](./keybind-editor.md)
@@ -37,5 +39,3 @@ next: false
      data-ad-format="auto"
      data-full-width-responsive="true">
 </ins>
-
-<Editor />
