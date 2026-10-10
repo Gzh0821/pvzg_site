@@ -19,6 +19,7 @@ const DOMAIN_SELECTORS = {
   seed(draft) {
     return {
       seedMode: draft.seedMode,
+      overrideSeedSlots: draft.overrideSeedSlots,
       seedSlots: draft.seedSlots,
       seedPlants: draft.seedPlants,
       seedPresetEntries: draft.seedPresetEntries,

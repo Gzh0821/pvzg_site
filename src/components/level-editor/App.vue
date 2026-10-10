@@ -494,6 +494,7 @@ interface LevelDraft {
   sunDropper: string;
   startingSun: number;
   seedMode: SeedMode;
+  overrideSeedSlots: boolean;
   seedSlots: number;
   seedPlants: string[];
   seedPresetEntries: Record<string, any>[];
@@ -756,8 +757,9 @@ const seedPlantAlreadyAdded = computed(
     !!selectedPlantAsset.value &&
     draft.value.seedPlants.includes(selectedPlantAsset.value.code)
 );
+const seedPlantLimit = computed(() => draft.value.overrideSeedSlots ? draft.value.seedSlots : MAX_SEED_PLANTS);
 const canAddSelectedSeedPlant = computed(
-  () => !!selectedPlantAsset.value && !seedPlantAlreadyAdded.value && draft.value.seedPlants.length < draft.value.seedSlots
+  () => !!selectedPlantAsset.value && !seedPlantAlreadyAdded.value && draft.value.seedPlants.length < seedPlantLimit.value
 );
 const canAddSelectedZombie = computed(() => !!selectedZombieAsset.value && !!selectedWave.value);
 const seedActionHint = ref('');
@@ -1064,6 +1066,7 @@ function createDefaultDraft(): LevelDraft {
     sunDropper: 'DefaultSunDropper',
     startingSun: 50,
     seedMode: 'chooser',
+    overrideSeedSlots: false,
     seedSlots: MAX_SEED_PLANTS,
     seedPlants: ['peashooter', 'sunflower', 'wallnut', 'potatomine'],
     seedPresetEntries: [],
@@ -1291,8 +1294,8 @@ function formatPlacementExtraValue(value: unknown) {
 function addSeedPlant(code: string) {
   const plantCode = code;
   if (!plantCode || (draft.value.seedMode !== 'preset' && draft.value.seedPlants.includes(plantCode))) return;
-  if (draft.value.seedPlants.length >= draft.value.seedSlots) {
-    message.warning(t('seedLimit', { count: draft.value.seedSlots }));
+  if (draft.value.seedPlants.length >= seedPlantLimit.value) {
+    message.warning(t('seedLimit', { count: seedPlantLimit.value }));
     return;
   }
   draft.value.seedPlants.push(plantCode);
@@ -1321,8 +1324,8 @@ function addSelectedPlantToList(listKey: PlantListKey) {
     seedActionHint.value = 'plantAlreadyAdded';
     return;
   }
-  if (listKey === 'seedPlants' && list.length >= draft.value.seedSlots) {
-    message.warning(t('seedLimit', { count: draft.value.seedSlots }));
+  if (listKey === 'seedPlants' && list.length >= seedPlantLimit.value) {
+    message.warning(t('seedLimit', { count: seedPlantLimit.value }));
     return;
   }
   seedActionHint.value = '';
@@ -2545,6 +2548,7 @@ function parseLevel(raw: any): LevelDraft {
     sunDropper: importedSunDropper || NO_MODULE,
     startingSun: Number(level.StartingSun ?? 50),
     seedMode: seed.SelectionMethod === 'preset' ? 'preset' : 'chooser',
+    overrideSeedSlots: Number(seed.OverrideSeedSlotsCount) > 0,
     seedSlots,
     seedPresetEntries,
     seedPlants: normalizeSeedPlants(seedPresetPlants, seedSlots, true),
@@ -2788,7 +2792,7 @@ function serializeLevel() {
   const stage = stageOptions.find((item) => item.value === draft.value.stage) || stageOptions[2];
   const mowerModule = draft.value.mower === STAGE_DEFAULT_MOWER ? stage.mower : draft.value.mower;
   const sunDropperModule = draft.value.sunDropper;
-  const seedSlots = normalizeSeedSlots(draft.value.seedSlots, draft.value.seedPlants.length);
+  const seedSlots = normalizeSeedSlots(seedPlantLimit.value, draft.value.seedPlants.length);
   const normalizedSeedPlants = normalizeSeedPlants(draft.value.seedPlants, seedSlots, draft.value.seedMode === 'preset');
   const preserveGeneratorWaveSystem = draft.value.preserveGeneratorWaves && !draft.value.waves.length && draft.value.preservedWaveManagerModule;
   const preserveCustomWaveManager =
@@ -2809,7 +2813,7 @@ function serializeLevel() {
       draft.value.excludePlants.length > 0 ||
       draft.value.unlockAll ||
       draft.value.seedMode === 'preset' ||
-      seedSlots !== MAX_SEED_PLANTS ||
+      draft.value.overrideSeedSlots ||
       Object.keys(draft.value.seedBankExtra || {}).length > 0);
   const importedSeedBankObjects = getImportedObjectsByClass(importedLevelSnapshot, 'SeedBankProperties');
   const shouldPreserveImportedSeedBank =
@@ -2951,7 +2955,7 @@ function serializeLevel() {
     ...draft.value.seedBankExtra,
     SelectionMethod: draft.value.seedMode,
     ...(draft.value.unlockAll ? { UnlockAll: true } : {}),
-    ...(seedSlots > 0 ? { OverrideSeedSlotsCount: seedSlots } : {}),
+    ...(draft.value.overrideSeedSlots && seedSlots > 0 ? { OverrideSeedSlotsCount: seedSlots } : {}),
     ...(seedPresetPlants.length || draft.value.seedMode === 'preset' ? { PresetPlantList: seedPresetPlants } : {}),
     ...(draft.value.includePlants.length ? { PlantIncludeList: normalizePlantCodes(draft.value.includePlants) } : {}),
     ...(draft.value.excludePlants.length ? { PlantExcludeList: normalizePlantCodes(draft.value.excludePlants) } : {})
@@ -4067,7 +4071,7 @@ function renderSeedSupplyModeSelector() {
 
 function renderSeedBankControls() {
   return [
-    h('strong', `${t('seedBank')} ${draft.value.seedPlants.length}/${draft.value.seedSlots}`),
+    h('strong', `${t('seedBank')} ${draft.value.seedPlants.length}/${seedPlantLimit.value}`),
     h('div', { class: 'segmented stacked' }, [
       h(
         'button',
@@ -4104,6 +4108,14 @@ function renderSeedBankControls() {
     expertMode.value
       ? h('details', { class: 'advanced-details' }, [
           h('summary', t('advancedSeedBank')),
+          h('label', { class: 'check-row' }, [
+            h('input', {
+              type: 'checkbox',
+              checked: draft.value.overrideSeedSlots,
+              onChange: (event: Event) => (draft.value.overrideSeedSlots = (event.target as HTMLInputElement).checked)
+            }),
+            t('overrideSeedSlots')
+          ]),
           h('div', { class: 'advanced-grid single' }, [
             h('div', { class: 'field-row compact' }, [
               h('label', t('seedSlots')),
@@ -4112,6 +4124,7 @@ function renderSeedBankControls() {
                 min: 0,
                 max: MAX_SEED_PLANTS,
                 value: draft.value.seedSlots,
+                disabled: !draft.value.overrideSeedSlots,
                 onInput: (event: Event) => {
                   draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
                   draft.value.seedPlants = normalizeSeedPlants(
