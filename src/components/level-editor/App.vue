@@ -6534,7 +6534,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   background: var(--editor-glass);
   box-shadow: 0 10px 28px color-mix(in srgb, #172912 9%, transparent);
   backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
 }
 
 .import-capability-strip {
@@ -10590,7 +10589,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   border: 1px solid var(--editor-border);
   background: var(--editor-glass);
   backdrop-filter: blur(16px) saturate(1.5);
-  -webkit-backdrop-filter: blur(16px) saturate(1.5);
 }
 .level-editor-shell .board-actions button { border-radius: 999px; }
 .level-editor-shell .panel-title { font-size: 0.95rem; letter-spacing: -0.01em; }
@@ -10615,7 +10613,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   color: var(--editor-text);
   background: var(--editor-glass);
   backdrop-filter: blur(32px) saturate(1.5);
-  -webkit-backdrop-filter: blur(32px) saturate(1.5);
   border: 1px solid var(--editor-border);
   box-shadow: 0 24px 64px #102b2433, inset 0 1px 0 var(--editor-glass-highlight);
 }
@@ -10637,12 +10634,10 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   .level-editor-shell .editor-topbar, .level-editor-shell .board-actions {
     background: var(--editor-panel-raised);
     backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
   .level-editor-modal-root .ant-modal-content, .level-editor-drawer-root .ant-drawer-content {
     background: var(--vp-c-bg);
     backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }
 @media (prefers-contrast: more) {
