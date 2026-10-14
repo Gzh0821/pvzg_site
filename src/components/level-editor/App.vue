@@ -1,7 +1,7 @@
 <template>
   <a-config-provider
     :theme="{
-      token: { colorPrimary: '#5f9f3f', borderRadius: 12, controlHeight: 40 },
+      token: { colorPrimary: $isDarkMode ? '#77ddba' : '#08796a', borderRadius: 16, controlHeight: 40 },
       algorithm: $isDarkMode ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm
     }"
   >
@@ -46,6 +46,12 @@
             </a-button>
           </div>
           <div class="top-action-row action-row-export">
+            <a-button :aria-label="t('undo')" :disabled="!canUndo" :title="`${t('undo')} · ⌘/Ctrl Z`" @click="restoreHistory(-1)">
+              <template #icon><undo-outlined /></template>{{ t('undo') }}
+            </a-button>
+            <a-button :aria-label="t('redo')" :disabled="!canRedo" :title="`${t('redo')} · ⌘/Ctrl ⇧ Z`" @click="restoreHistory(1)">
+              <template #icon><redo-outlined /></template>{{ t('redo') }}
+            </a-button>
             <a-button @click="openPreview">
               <template #icon><eye-outlined /></template>
               {{ t('previewJson') }}
@@ -57,6 +63,13 @@
           </div>
         </div>
       </header>
+
+      <nav class="workspace-nav" :aria-label="t('workspaceNavigation')">
+        <a href="#editor-basic">{{ t('importSectionBasic') }}</a>
+        <a href="#editor-board">{{ t('importSectionBoard') }}</a>
+        <a href="#editor-waves">{{ t('importSectionWaves') }}</a>
+        <span class="workspace-summary">{{ t('summaryWaves', { count: draft.waves.length }) }} · {{ t('summaryPlacements', { count: draft.boardItems.length }) }}</span>
+      </nav>
 
       <div v-if="importCapability" class="import-capability-strip" role="status">
         <strong>{{ t('importCheck') }}</strong>
@@ -136,7 +149,7 @@
         v-model:open="previewOpen"
         :title="`${draft.name || 'custom_level'}.json`"
         width="min(920px, 96vw)"
-        root-class-name="level-editor-modal-root"
+        wrap-class-name="level-editor-modal-root"
         :footer="null"
       >
         <div class="preview-actions">
@@ -152,6 +165,7 @@
         :open="conveyorEditorOpen"
         :title="conveyorEditorTitle"
         placement="right"
+        :mask="false"
         width="min(720px, 96vw)"
         root-class-name="level-editor-drawer-root"
         :body-style="{ padding: 0 }"
@@ -176,7 +190,9 @@ import {
   EyeOutlined,
   FileAddOutlined,
   PlusOutlined,
-  UploadOutlined
+  UploadOutlined,
+  UndoOutlined,
+  RedoOutlined
 } from '@ant-design/icons-vue';
 import { getAlmanacEntityPath } from '../almanac-v2/almanac-routes';
 import { trackEvent } from '../analytics';
@@ -680,6 +696,42 @@ const sunDropperOptions = [
 const objectOptions: AssetOption[] = (boardObjectData as AssetOption[]).map((item) => ({ ...item, kind: 'object' }));
 
 const draft = ref<LevelDraft>(createDefaultDraft());
+const editHistory = ref<string[]>([JSON.stringify(draft.value)]);
+const historyIndex = ref(0);
+let restoringHistory = false;
+const canUndo = computed(() => historyIndex.value > 0);
+const canRedo = computed(() => historyIndex.value < editHistory.value.length - 1);
+
+function resetHistory() {
+  editHistory.value = [JSON.stringify(draft.value)];
+  historyIndex.value = 0;
+}
+
+function recordHistory() {
+  if (restoringHistory) return;
+  const snapshot = JSON.stringify(draft.value);
+  if (snapshot === editHistory.value[historyIndex.value]) return;
+  editHistory.value = [...editHistory.value.slice(0, historyIndex.value + 1), snapshot].slice(-50);
+  historyIndex.value = editHistory.value.length - 1;
+}
+
+async function restoreHistory(direction: number) {
+  recordHistory();
+  const index = historyIndex.value + direction;
+  if (index < 0 || index >= editHistory.value.length) return;
+  restoringHistory = true;
+  closeConveyorEditor();
+  historyIndex.value = index;
+  draft.value = JSON.parse(editHistory.value[index]);
+  selectedWaveId.value = draft.value.waves.some((wave) => wave.id === selectedWaveId.value)
+    ? selectedWaveId.value : draft.value.waves[0]?.id || 1;
+  selectedCell.value = null;
+  expandedWaveActionKey.value = '';
+  await nextTick();
+  restoringHistory = false;
+}
+
+watch(draft, recordHistory, { deep: true, flush: 'post' });
 
 const language = computed<LocaleKey>(() => {
   if (providedLanguage.startsWith('es')) return 'es';
@@ -941,6 +993,14 @@ function clearSelectedAsset() {
 }
 
 function handleKeydown(event: KeyboardEvent) {
+  const target = event.target as HTMLElement;
+  if ((event.metaKey || event.ctrlKey) && !event.altKey && event.key.toLowerCase() === 'z' &&
+      !target.closest('input, textarea, select, [contenteditable="true"]') &&
+      !previewOpen.value && !conveyorEditorOpen.value) {
+    event.preventDefault();
+    void restoreHistory(event.shiftKey ? 1 : -1);
+    return;
+  }
   if (event.key !== 'Escape' || previewOpen.value || !selectedAsset.value) return;
   clearSelectedAsset();
 }
@@ -1098,10 +1158,10 @@ function createDefaultDraft(): LevelDraft {
     flagWaveIntervalDirty: true,
     firstWaveCountdown: -1,
     suppressFlagZombie: false,
-    waveSpendingPointIncrement: 30,
+    waveSpendingPointIncrement: 10,
     waveSpendingPoints: 100,
-    minNextWaveHealthPercentage: 0.55,
-    maxNextWaveHealthPercentage: 0.7,
+    minNextWaveHealthPercentage: 0.5,
+    maxNextWaveHealthPercentage: 0.65,
     waveManagerModuleExtra: {},
     waveManagerExtra: {},
     waveManagerAlias: 'WaveManagerProps',
@@ -1147,10 +1207,12 @@ function resetDraft() {
   nextWaveId.value = 2;
   nextZombieId.value = 2;
   nextWaveActionId.value = 1;
+  resetHistory();
 }
 
 function confirmResetDraft() {
   Modal.confirm({
+    wrapClassName: 'level-editor-modal-root',
     title: t('confirmNewTitle'),
     content: t('confirmNewDescription'),
     okText: t('confirmNewAction'),
@@ -1583,6 +1645,7 @@ function configureDynamicZombieSlot(level = selectedDynamicDifficulty.value) {
 
 function clearDynamicZombieSlot(level = selectedDynamicDifficulty.value) {
   Modal.confirm({
+    wrapClassName: 'level-editor-modal-root',
     title: t('clearDifficulty', { level }),
     content: t('clearDifficultyDescription', { level }),
     okText: t('clearDifficulty', { level }),
@@ -2284,6 +2347,7 @@ function handleUpload(file: File) {
       dynamicZombieActionHint.value = '';
       eventZombieActionHint.value = '';
       selectedCell.value = null;
+      resetHistory();
       message.success(t('imported'));
     } catch (error) {
       message.error(t('importFailed'));
@@ -2568,10 +2632,10 @@ function parseLevel(raw: any): LevelDraft {
     flagWaveIntervalDirty: false,
     firstWaveCountdown: Number(waveProps.ZombieCountdownFirstWaveSecs ?? -1),
     suppressFlagZombie: waveProps.SuppressFlagZombie === true,
-    waveSpendingPointIncrement: Number(waveProps.WaveSpendingPointIncrement ?? 30),
+    waveSpendingPointIncrement: Number(waveProps.WaveSpendingPointIncrement ?? 10),
     waveSpendingPoints: Number(waveProps.WaveSpendingPoints ?? 100),
-    minNextWaveHealthPercentage: Number(waveProps.MinNextWaveHealthPercentage ?? 0.55),
-    maxNextWaveHealthPercentage: Number(waveProps.MaxNextWaveHealthPercentage ?? 0.7),
+    minNextWaveHealthPercentage: Number(waveProps.MinNextWaveHealthPercentage ?? 0.5),
+    maxNextWaveHealthPercentage: Number(waveProps.MaxNextWaveHealthPercentage ?? 0.65),
     waveManagerModuleExtra: omitKeys(waveManagerModule?.objdata || {}, ['WaveManagerProps']),
     waveManagerExtra: omitKeys(waveProps, [
       'FlagWaveInterval',
@@ -3137,7 +3201,7 @@ async function copyPreview() {
 const BasicForm = defineComponent({
   setup() {
     return () =>
-      h('div', { class: 'basic-form' }, [
+      h('div', { class: 'basic-form', id: 'editor-basic' }, [
         h('div', { class: 'field-row name-field' }, [
           h('label', t('levelName')),
           h('input', {
@@ -3590,7 +3654,7 @@ function renderCellEffect(effect: CellEffectEntry) {
 const BoardEditor = defineComponent({
   setup() {
     return () =>
-      h('section', { class: 'board-editor' }, [
+      h('section', { class: 'board-editor', id: 'editor-board' }, [
         h('div', { class: 'board-header' }, [
           h('div', [h('strong', t('board')), selectedAsset.value ? h('span', `${t('selected')}: ${selectedAsset.value.name}`) : null]),
           h('div', { class: 'board-actions' }, [
@@ -6250,7 +6314,7 @@ function renderDynamicPoolWavePreview(waveIndex: number) {
 const WaveTimeline = defineComponent({
   setup() {
     return () =>
-      h('section', { class: 'wave-panel' }, [
+      h('section', { class: 'wave-panel', id: 'editor-waves' }, [
         h('div', { class: 'panel-title row-title' }, [
           h('span', t('waves')),
           h('div', { class: 'wave-header-actions' }, [
@@ -6409,14 +6473,17 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 }
 
 .level-editor-shell {
-  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 95%, #5f9f3f 5%);
-  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 92%, var(--vp-c-bg-soft) 8%);
-  --editor-panel-raised: color-mix(in srgb, var(--vp-c-bg) 96%, #fff 4%);
+  --editor-bg: #f0f7f3;
+  --editor-glass: rgba(255, 255, 255, 0.83);
+  --editor-glass-highlight: #ffffffb3;
+  --editor-panel: #edf3f0;
+  --editor-panel-raised: #fff;
   --editor-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
-  --editor-text: var(--vp-c-text);
-  --editor-muted: var(--vp-c-text-mute);
-  --editor-accent: #5f9f3f;
-  --editor-accent-strong: #3f7f2f;
+  --editor-text: #1b2e29;
+  --editor-muted: #61756d;
+  --editor-accent: #08796a;
+  --editor-on-accent: #fff;
+  --editor-accent-strong: #086658;
   --editor-sun: #f4c84a;
   --editor-soil: #8b6442;
   --editor-shell-width: min(1440px, calc(100vw - 3rem));
@@ -6430,14 +6497,24 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   font-size: 0.95rem;
   font-optical-sizing: auto;
   line-height: 1.45;
+  background: radial-gradient(ellipse at 12% 0%, #77ddba20, transparent 48%), var(--editor-bg);
+  padding: 0.75rem;
+  border-radius: 28px;
   overflow-x: clip;
   overflow-anchor: none;
 }
 
-.dark .level-editor-shell {
-  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 88%, #5f9f3f 8%);
-  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
-  --editor-panel-raised: color-mix(in srgb, var(--vp-c-bg) 91%, #fff 3%);
+[data-theme="dark"] .level-editor-shell {
+  --editor-bg: #101b18;
+  --editor-glass: rgba(22, 35, 29, 0.88);
+  --editor-glass-highlight: #ffffff30;
+  --editor-text: #edf5f0;
+  --editor-muted: #adbbb3;
+  --editor-accent: #77ddba;
+  --editor-on-accent: #10271e;
+  --editor-accent-strong: #77ddba;
+  --editor-panel: #23362f;
+  --editor-panel-raised: #1a2823;
   --editor-border: color-mix(in srgb, var(--vp-c-text) 20%, transparent);
 }
 
@@ -6454,9 +6531,10 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   padding: 0.9rem 1rem;
   border: 1px solid var(--editor-border);
   border-radius: 16px;
-  background: color-mix(in srgb, var(--editor-panel-raised) 92%, transparent);
+  background: var(--editor-glass);
   box-shadow: 0 10px 28px color-mix(in srgb, #172912 9%, transparent);
-  backdrop-filter: blur(16px) saturate(1.12);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
 }
 
 .import-capability-strip {
@@ -6511,7 +6589,9 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 
 .editor-title {
   margin: 0 !important;
-  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif !important;
+  font-family: inherit !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.025em;
   font-size: clamp(1.55rem, 2.2vw, 2.1rem) !important;
   line-height: 1.2 !important;
 }
@@ -6689,7 +6769,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 .desktop-bottom {
   min-width: 0;
   border: 1px solid var(--editor-border);
-  border-radius: 14px;
+  border-radius: 24px;
   background: var(--editor-panel);
 }
 
@@ -7259,7 +7339,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 
 .segmented button.active {
   background: var(--editor-accent);
-  color: #fff;
+  color: var(--editor-on-accent);
 }
 
 .advanced-details {
@@ -7487,7 +7567,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   color: #b94040;
 }
 
-.dark .conveyor-mode-chip.remove {
+[data-theme="dark"] .conveyor-mode-chip.remove {
   color: #ff9a9a;
 }
 
@@ -7508,10 +7588,11 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   --editor-bg: color-mix(in srgb, var(--vp-c-bg) 94%, #5f9f3f 6%);
   --editor-panel: color-mix(in srgb, var(--vp-c-bg) 90%, var(--vp-c-bg-soft) 10%);
   --editor-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
-  --editor-text: var(--vp-c-text);
-  --editor-muted: var(--vp-c-text-mute);
-  --editor-accent: #5f9f3f;
-  --editor-accent-strong: #3f7f2f;
+  --editor-text: #1b2e29;
+  --editor-muted: #61756d;
+  --editor-accent: #08796a;
+  --editor-on-accent: #fff;
+  --editor-accent-strong: #086658;
   position: fixed !important;
   inset: 0 !important;
   width: 100vw !important;
@@ -7519,9 +7600,16 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   overflow: hidden;
 }
 
-.dark .level-editor-drawer-root {
-  --editor-bg: color-mix(in srgb, var(--vp-c-bg) 88%, #5f9f3f 8%);
-  --editor-panel: color-mix(in srgb, var(--vp-c-bg) 86%, var(--vp-c-bg-soft) 14%);
+[data-theme="dark"] .level-editor-drawer-root {
+  --editor-bg: #101b18;
+  --editor-glass: rgba(22, 35, 29, 0.88);
+  --editor-glass-highlight: #ffffff30;
+  --editor-text: #edf5f0;
+  --editor-muted: #adbbb3;
+  --editor-accent: #77ddba;
+  --editor-on-accent: #10271e;
+  --editor-accent-strong: #77ddba;
+  --editor-panel: #23362f;
   --editor-border: color-mix(in srgb, var(--vp-c-text) 20%, transparent);
 }
 
@@ -7593,12 +7681,13 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 
 .level-editor-modal-root {
   --editor-border: color-mix(in srgb, var(--vp-c-text) 14%, transparent);
-  --editor-text: var(--vp-c-text);
-  --editor-muted: var(--vp-c-text-mute);
-  --editor-accent: #5f9f3f;
+  --editor-text: #1b2e29;
+  --editor-muted: #61756d;
+  --editor-accent: #08796a;
+  --editor-on-accent: #fff;
 }
 
-.dark .level-editor-modal-root {
+[data-theme="dark"] .level-editor-modal-root {
   --editor-border: color-mix(in srgb, var(--vp-c-text) 20%, transparent);
 }
 
@@ -7771,16 +7860,16 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   color: #a96328;
 }
 
-.dark .asset-badge.tile {
+[data-theme="dark"] .asset-badge.tile {
   color: #8bbcf0;
 }
 
-.dark .asset-badge.tombstone {
+[data-theme="dark"] .asset-badge.tombstone {
   color: #d5c6b7;
 }
 
-.dark .asset-badge.obstacle,
-.dark .asset-badge.advanced {
+[data-theme="dark"] .asset-badge.obstacle,
+[data-theme="dark"] .asset-badge.advanced {
   color: #f1b77a;
 }
 
@@ -8252,7 +8341,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   outline-offset: 2px;
 }
 
-.dark .cell-detail-remove:hover {
+[data-theme="dark"] .cell-detail-remove:hover {
   background: color-mix(in srgb, #ff7a7a 16%, transparent);
   color: #ff9a9a;
 }
@@ -8557,7 +8646,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 
 .dynamic-difficulty-tabs button.active {
   background: var(--editor-accent);
-  color: #fff;
+  color: var(--editor-on-accent);
   box-shadow: 0 2px 8px color-mix(in srgb, var(--editor-accent) 28%, transparent);
 }
 
@@ -9831,7 +9920,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   color: #c34040;
 }
 
-.dark .text-button.danger {
+[data-theme="dark"] .text-button.danger {
   color: #ff8a8a;
 }
 
@@ -10467,6 +10556,98 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   .board-panel,
   .desktop-bottom {
     border-color: currentColor;
+  }
+}
+
+.workspace-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.15rem 0;
+}
+.workspace-nav a {
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  color: var(--editor-accent-strong);
+  background: var(--editor-panel-raised);
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.workspace-nav a:hover { background: color-mix(in srgb, var(--editor-accent) 12%, var(--editor-panel-raised)); }
+.workspace-nav a:focus-visible { outline: 2px solid var(--editor-accent); outline-offset: 2px; }
+.workspace-summary { margin-left: auto; color: var(--editor-muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+#editor-basic, #editor-board, #editor-waves { scroll-margin-top: calc(var(--navbar-height, 3.75rem) + 10rem); }
+.level-editor-shell .editor-topbar {
+  border-radius: 24px;
+  border-color: color-mix(in srgb, var(--editor-accent) 22%, transparent);
+  box-shadow: 0 8px 24px #102b2426, inset 0 1px 0 var(--editor-glass-highlight);
+}
+.level-editor-shell .board-actions {
+  padding: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--editor-border);
+  background: var(--editor-glass);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+}
+.level-editor-shell .board-actions button { border-radius: 999px; }
+.level-editor-shell .panel-title { font-size: 0.95rem; letter-spacing: -0.01em; }
+.level-editor-shell .ant-btn:not(:disabled) { color: var(--editor-text); }
+.level-editor-shell .ant-btn-primary:not(:disabled) { color: var(--editor-on-accent); }
+[data-theme="dark"] .level-editor-shell .ant-btn-primary:not(:disabled) { color: #10271e; }
+.level-editor-drawer-root, .level-editor-modal-root {
+  --editor-glass: rgba(255, 255, 255, 0.88);
+  --editor-glass-highlight: #ffffffb3;
+}
+[data-theme="dark"] .level-editor-drawer-root, [data-theme="dark"] .level-editor-modal-root {
+  --editor-glass: rgba(22, 35, 29, 0.94);
+  --editor-glass-highlight: #ffffff30;
+  --editor-text: #edf5f0;
+  --editor-muted: #adbbb3;
+  --editor-accent: #77ddba;
+  --editor-on-accent: #10271e;
+  --editor-accent-strong: #77ddba;
+}
+.level-editor-modal-root .ant-modal-content,
+.level-editor-drawer-root .ant-drawer-content {
+  color: var(--editor-text);
+  background: var(--editor-glass);
+  backdrop-filter: blur(32px) saturate(1.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.5);
+  border: 1px solid var(--editor-border);
+  box-shadow: 0 24px 64px #102b2433, inset 0 1px 0 var(--editor-glass-highlight);
+}
+.level-editor-modal-root .ant-modal-content { border-radius: 24px; }
+.level-editor-modal-root .ant-modal-header,
+.level-editor-drawer-root .ant-drawer-header,
+.level-editor-drawer-root .ant-drawer-body { background: transparent; }
+.level-editor-modal-root .ant-modal-title { color: var(--editor-text); }
+@media (max-width: 900px) {
+  .level-editor-shell .action-row-export > * { grid-column: auto; }
+}
+@media (max-width: 760px) {
+  .level-editor-shell { padding: 0.5rem; }
+  .workspace-summary { flex-basis: 100%; margin: 0.2rem 0.5rem; }
+  #editor-basic, #editor-board, #editor-waves { scroll-margin-top: calc(var(--navbar-height, 3.75rem) + 1rem); }
+  .level-editor-shell .board-actions { border-radius: 16px; }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .level-editor-shell .editor-topbar, .level-editor-shell .board-actions {
+    background: var(--editor-panel-raised);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .level-editor-modal-root .ant-modal-content, .level-editor-drawer-root .ant-drawer-content {
+    background: var(--vp-c-bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .level-editor-modal-root .ant-modal-content, .level-editor-drawer-root .ant-drawer-content {
+    border-color: var(--editor-text);
   }
 }
 </style>
