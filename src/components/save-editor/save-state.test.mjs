@@ -15,15 +15,31 @@ test('rejects non-save containers and malformed values without mutating input', 
     input.coin = 1.5; assert.ok(validateSave(input).includes('coin'));
     input.coin = Number.MAX_SAFE_INTEGER + 1; assert.ok(validateSave(input).includes('coin'));
 });
-test('garden positions must exist, be unique and be unlocked', () => {
+test('garden positions must exist and be unique', () => {
     const plant = makeGardenPlant('pea', 0, 0, 100);
     const zen = { plantsInMain: [plant] };
     assert.deepEqual(gardenIssues(zen, layout, features), []);
     zen.plantsInMain.push({ ...plant }); assert.match(gardenIssues(zen, layout, features).join(), /position/);
-    zen.plantsInMain = [{ ...plant, pos: 4 }]; assert.match(gardenIssues(zen, layout, features).join(), /locked/);
+    zen.plantsInMain = [{ ...plant, pos: 4 }];
     zen.slotsInMain = Array.from({ length: 5 }, () => ({ unlocked: true }));
     assert.deepEqual(gardenIssues(zen, layout, features), []);
     zen.plantsInMain[0].pos = 48; assert.match(gardenIssues(zen, layout, features).join(), /position/);
+});
+test('accepts plants in locked slots without changing plants or unlock state', () => {
+    for (const suffix of ['Main', 'Mushroom', 'Beach', 'Night']) {
+        const id = ['Main', 'Mushroom', 'Beach', 'Night'].indexOf(suffix);
+        const pos = layout[id].findIndex(slot => !slot.unlocked);
+        for (const slots of [undefined, [], layout[id].map(() => ({ unlocked: false }))]) {
+            const data = save();
+            data.zengarden['plantsIn' + suffix] = [makeGardenPlant('pea', id, pos, 100)];
+            if (slots !== undefined) data.zengarden['slotsIn' + suffix] = slots;
+            const original = JSON.stringify(data);
+            assert.deepEqual(validateSave(data), []);
+            assert.deepEqual(gardenIssues(data.zengarden, layout, features), []);
+            assert.equal(JSON.stringify(data), original);
+            assert.deepEqual(diffSave(data, JSON.parse(JSON.stringify(data))), []);
+        }
+    }
 });
 test('placement restrictions follow slot ground type and retain unknown mod plants', () => {
     assert.equal(canPlant(features.lily, { groundType: 0 }), true);

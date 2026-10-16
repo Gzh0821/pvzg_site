@@ -90,7 +90,7 @@ export function gardenIssues(zen, layouts, features) {
             const slot = layouts[id][plant.pos];
             if (!slot || !nonnegativeInteger(plant.pos) || plant.inZen !== id || seen.has(plant.pos)) issues.push(`${path}: position`);
             else {
-                if (!(slot.unlocked || slots[plant.pos]?.unlocked)) issues.push(`${path}[${plant.pos}]: locked`);
+                // The game loads plants independently of slot unlock state, including locked slots.
                 // Unknown datapack plants are preserved; their placement cannot be verified here.
                 if (features[plant.plant] && !canPlant(features[plant.plant], slot)) issues.push(`${path}[${plant.pos}]: plant`);
             }
