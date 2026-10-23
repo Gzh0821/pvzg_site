@@ -1,36 +1,58 @@
 {
-    "Name": "PvZ2_Prerelease_MGP",
-    "Version": "v0.15.0",
-    "InsideVersion": "0.15.0",
+    "Name": "PvZ2_Prerelease_GitHubLevels",
+    "Version": "v0.16.0",
+    "InsideVersion": "0.16.0",
     "Updates": [
         {
-            "en": "Modified Recommended & Challenging Card Decks for Epic Levels (by the community).",
-            "zh": "调整部分史诗关卡推荐卡组和挑战卡组（由社区制作）。"
+            "en": "!! ATTENTION !! This update will migrate the save file path. There are two methods as follows:",
+            "zh": "！！注意！！本次更新将要迁移存档路径！！有以下两种方法："
         },
         {
-            "en": "Added Merged Mega Gatling Peas.",
-            "zh": "加入超级机枪射手融合配方。"
+            "en": "\t1. (Recommended) Go to the path: %APPDATA%\\win, and rename this folder to \"pvz2_ge_electron.\"",
+            "zh": "\t1. （推荐）前往路径：%APPDATA%\\win，将这个文件夹重命名为 pvz2_ge_electron。"
+        },
+        {
+            "en": "\t2. Open the old game version and export each save file one by one; then open the new game version and import the exported save files one by one.",
+            "zh": "\t2. 打开旧的游戏版本，将其中的每一个存档一一导出；打开新的游戏版本，将导出的存档一一导入。"
+        },
+        {
+            "en": "Significantly overhauled the backend processes, including certain audio playback. Encountering bugs is normal.",
+            "zh": "本次更新大幅修整了后端进程，包括个别音频播放，如遇漏洞是正常现象。"
+        },
+        {
+            "en": "Added Epic Levels for Mega Gatling Pea(by the community).",
+            "zh": "新增超级机枪史诗任务（由社区制作）。"
+        },
+        {
+            "en": "Added a GitHub Levels window. The levels will be updated frequently and automatically, and you can also go to GitHub to upload levels.",
+            "zh": "加入 Github 关卡窗口，其中的关卡会时常自动更新，亦可前往 GitHub 上传关卡。"
         }
     ],
     "NewFeatures": [
-        "调整部分史诗关卡推荐卡组和挑战卡组（由社区制作）。",
-        "加入超级机枪射手融合配方。"
+        "！！注意！！本次更新将要迁移存档路径！！有以下两种方法：",
+        "\t1. （推荐）前往路径：%APPDATA%\\win，将这个文件夹重命名为 pvz2_ge_electron。",
+        "\t2. 打开旧的游戏版本，将其中的每一个存档一一导出；打开新的游戏版本，将导出的存档一一导入。",
+        "新增超级机枪史诗任务（由社区制作）。",
+        "加入 Github 关卡窗口，其中的关卡会时常自动更新，亦可前往 GitHub 上传关卡。"
     ],
     "EnNewFeatures": [
-        "Modified Recommended & Challenging Card Decks for Epic Levels (by the community).",
-        "Added Merged Mega Gatling Peas."
+        "!! ATTENTION !! This update will migrate the save file path. There are two methods as follows:",
+        "\t1. (Recommended) Go to the path: %APPDATA%\\win, and rename this folder to \"pvz2_ge_electron.\"",
+        "\t2. Open the old game version and export each save file one by one; then open the new game version and import the exported save files one by one.",
+        "Added Epic Levels for Mega Gatling Pea(by the community).",
+        "Added a GitHub Levels window. The levels will be updated frequently and automatically, and you can also go to GitHub to upload levels."
     ],
     "Download": {
         "Quark": "https://pan.quark.cn/s/951455d68f33",
         "QuarkZip": "https://pan.quark.cn/s/171dac7cd707",
         "Baidu": "https://pan.baidu.com/s/1QrwYFZk_W2wlJniE5TyA2Q?pwd=pvz2",
         "Pan123": "https://1835324387.share.123pan.cn/123pan/xUemTd-3MIUh",
-        "Github": "https://github.com/Gzh0821/pvzg_site/releases/tag/0.15.0",
-        "Storage": "https://storage.pvzge.com/pvzge-0.15.0.zip",
-        "StorageLite": "https://storage.pvzge.com/pvzge-lite-0.15.0.zip"
+        "Github": "",
+        "Storage": "https://storage.pvzge.com/pvzge-0.16.0.zip",
+        "StorageLite": "https://storage.pvzge.com/pvzge-lite-0.16.0.zip"
     },
     "MacOSDownload": {
-        "Storage": "https://storage.pvzge.com/macos/pvzge-macos-0.15.0.zip",
-        "StorageLite": "https://storage.pvzge.com/macos/pvzge-lite-macos-0.15.0.zip"
+        "Storage": "https://storage.pvzge.com/macos/pvzge-macos-0.16.0.zip",
+        "StorageLite": "https://storage.pvzge.com/macos/pvzge-lite-macos-0.16.0.zip"
     }
 }

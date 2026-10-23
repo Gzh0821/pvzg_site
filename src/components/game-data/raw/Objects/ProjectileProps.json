@@ -2541,9 +2541,27 @@
 			],
 			"objdata": {
 				"ElectricInterval": 0.1,
-				"ElectricDamage": 40,
+				"ElectricDamage": 80,
 				"ElectricTargetCount": 8,
-				"Damage": 20,
+				"Damage": 80,
+				"DamageType": "electricity",
+				"CannotBeReversedByJester": true,
+				"Size": {
+					"w": 12,
+					"h": 12
+				}
+			}
+		},
+		{
+			"objclass": "ProjectileProperties",
+			"aliases": [
+				"electricpea_mgp_ug"
+			],
+			"objdata": {
+				"ElectricInterval": 0.1,
+				"ElectricDamage": 100,
+				"ElectricTargetCount": 10,
+				"Damage": 100,
 				"DamageType": "electricity",
 				"CannotBeReversedByJester": true,
 				"Size": {
@@ -2612,9 +2630,9 @@
 			],
 			"objdata": {
 				"Damage": 400,
-				"ChildCount": 12,
+				"ChildCount": 6,
 				"ChildSpeedMult": 0.5,
-				"ChildPeaType": "electricpea_mgp",
+				"ChildPeaType": "electricpea_mgp_ug",
 				"DamageType": "electricity",
 				"CannotBeReversedByJester": true,
 				"Size": {
