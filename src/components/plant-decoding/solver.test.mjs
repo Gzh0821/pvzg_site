@@ -144,7 +144,7 @@ function findGameDecodingData(buildRoot) {
             function walk(value) {
                 if (found) return;
                 if (Array.isArray(value)) {
-                    if (value[0] === 20 && value[1] === 'DecodingPlants' && value[2]?.BASES && value[2]?.MERGES) {
+                    if (value[1] === 'DecodingPlants' && value[2]?.BASES && value[2]?.MERGES) {
                         found = value[2];
                         return;
                     }

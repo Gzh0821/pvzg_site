@@ -19,6 +19,8 @@ export interface ArchiveData {
     arcade_plant_decoding?: ArcadePlantDecodingData;
     yeti_spawned_today?: boolean;
     worldProps?: { [key: string]: any };
+    player_dangerroom?: { [key: string]: DangerRoomProps };
+    player_dangerroom_minigame?: { [key: string]: { level: number; [key: string]: any } };
     player_upgrades?: { [key: string]: UpgradeData };
     tutorial?: { [key: string]: boolean };
     features?: { [key: string]: boolean };
@@ -61,6 +63,16 @@ export interface EndlessProps {
     initialPlants: string[];
     plantChosen: boolean;
     plantsToChoose: null | any;
+    [key: string]: any;
+}
+
+export interface DangerRoomProps {
+    level: number;
+    plants: string[];
+    plants_choice: string[] | null;
+    plantfood: number;
+    mower: boolean[];
+    plantChosen: boolean;
     [key: string]: any;
 }
 

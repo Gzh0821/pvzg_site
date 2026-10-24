@@ -12,7 +12,7 @@ export function validateSave(data) {
         if (data[field] !== undefined && !nonnegativeInteger(data[field])) errors.push(field);
     }
     if (data.version !== undefined && typeof data.version !== 'string') errors.push('version');
-    for (const field of ['tutorial', 'features', 'date', 'zombieProps', 'player_upgrades', 'player_trophies', 'zengarden']) {
+    for (const field of ['tutorial', 'features', 'date', 'zombieProps', 'player_upgrades', 'player_trophies', 'zengarden', 'player_dangerroom', 'player_dangerroom_minigame']) {
         if (data[field] !== undefined && !isRecord(data[field])) errors.push(field);
     }
     for (const field of ['worldProgress', 'cardDecks', 'memoryPlantChoose']) {

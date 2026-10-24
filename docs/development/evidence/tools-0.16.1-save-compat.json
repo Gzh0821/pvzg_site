@@ -1,0 +1,205 @@
+{
+  "version": "0.16.1",
+  "date": "2026-10-24",
+  "runtime": {
+    "surface": "isolated Chromium browser running the shipped game JavaScript",
+    "web": {
+      "status": 200,
+      "mainSha256": "f48e550d7a7f0845651e59e7d2dbe3d7ccc0eefbd326fdf742c5709fcdfc8e22",
+      "version": "0.16.1"
+    },
+    "windowsNativeTested": false
+  },
+  "checks": {
+    "gameJsonMirrors": 40,
+    "keybindActions": 57,
+    "officialLevels": 1323,
+    "boardObjects": 51,
+    "gardenSlots": [
+      48,
+      24,
+      14,
+      48
+    ]
+  },
+  "nativeGamePlayerSelector": {
+    "results": [
+      {
+        "name": "New Player'''",
+        "version": "0.16.1",
+        "coin": 0,
+        "players": 5,
+        "endlessLevel": 1
+      },
+      {
+        "name": "Compatibility 0.16.1'",
+        "version": "0.16.1",
+        "coin": 1234556789,
+        "players": 6,
+        "endlessLevel": 7,
+        "unknown": {
+          "platforms": [
+            "Windows",
+            "macOS"
+          ],
+          "nested": {
+            "keep": true
+          }
+        }
+      }
+    ],
+    "errors": [],
+    "labelCount": 6
+  },
+  "editedSave": {
+    "scene": "zenGardenScene",
+    "errors": [],
+    "version": "0.16.1",
+    "coin": 1234556789,
+    "ticket": 7,
+    "experience": 120,
+    "endlessLevel": 7,
+    "githubLevels": {
+      "community/兼容性.json": {
+        "last_played_time": 1700000000000,
+        "last_victory": true,
+        "comment": 1
+      }
+    },
+    "unknown": {
+      "platforms": [
+        "Windows",
+        "macOS"
+      ],
+      "nested": {
+        "keep": true
+      }
+    },
+    "gardenPlantData": [
+      {
+        "plant": "peashooter",
+        "inZen": 0,
+        "pos": 0,
+        "grownTime": 86400001,
+        "oldTime": 1792841276311,
+        "stuck": false,
+        "waterCD": 0,
+        "waterLeftTime": 0,
+        "requirement": 0
+      }
+    ],
+    "renderedPlantSlots": 1,
+    "upgrade": {
+      "progress": 2,
+      "enabled": false
+    }
+  },
+  "fileEncoding": {
+    "cases": [
+      {
+        "label": "CRLF",
+        "accepted": true,
+        "version": "0.16.1",
+        "unicodeName": true,
+        "coin": 1234556789,
+        "unknownPreserved": true
+      },
+      {
+        "label": "UTF8-BOM",
+        "accepted": true,
+        "version": "0.16.1",
+        "unicodeName": true,
+        "coin": 1234556789,
+        "unknownPreserved": true
+      }
+    ],
+    "errors": []
+  },
+  "endlessEditing": {
+  "current": {
+    "version": "0.16.1",
+    "endless": {
+      "level": 12,
+      "plants": [],
+      "plantfood": 0,
+      "mower": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "plantChosen": false
+    },
+    "legacy": null,
+    "unknown": {
+      "platforms": [
+        "Windows",
+        "macOS"
+      ],
+      "nested": {
+        "keep": true
+      }
+    },
+    "errors": []
+  },
+  "legacyAndNew": {
+    "results": [
+      {
+        "name": "Legacy Endless",
+        "version": "0.16.1",
+        "endless": {
+          "level": 14,
+          "plantfood": 0,
+          "mower": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "plantChosen": false,
+          "plants": []
+        },
+        "mini": {
+          "level": 3
+        },
+        "legacy": null,
+        "unknown": {
+          "platforms": [
+            "Windows",
+            "macOS"
+          ],
+          "nested": {
+            "keep": true
+          }
+        }
+      },
+      {
+        "name": "New Player'",
+        "version": "0.16.1",
+        "endless": {
+          "level": 1,
+          "plants": [],
+          "plantfood": 0,
+          "mower": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "plantChosen": false
+        },
+        "mini": {
+          "level": 1
+        },
+        "legacy": null,
+        "unknown": null
+      }
+    ],
+    "errors": []
+  }
+},
+  "reportedPlayerFailureReproduced": false
+}

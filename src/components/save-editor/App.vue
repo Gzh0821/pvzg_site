@@ -164,15 +164,15 @@
                         </section>
                         <section v-if="activeSection === 'worlds'" class="editor-section" id="save-section-worlds">
                             <a-row v-if="archiveData.worldProps" :gutter="[12, 12]">
-                                <template v-for="([worldID, world]) in worldEntries" :key="worldID">
+                                <template v-for="([worldID, world, endless]) in worldEntries" :key="worldID">
                                     <a-col :xs="24" :sm="12" :lg="12">
                                         <div class="world-card">
                                             <a-checkbox v-model:checked="archiveData.worldProps[worldID]['unlocked']">
                                                 {{ t('world ' + worldID) }}
                                             </a-checkbox>
-                                            <div v-if="world.endlessProps" style="margin-top:6px">
+                                            <div v-if="endless" style="margin-top:6px">
                                                 <a-input-number size="small" :addon-before="t('endless level')"
-                                                    v-model:value="archiveData.worldProps[worldID].endlessProps.level"
+                                                    v-model:value="endless.level"
                                                     :min="1" style="width:100%" />
                                             </div>
                                         </div>
@@ -385,14 +385,13 @@ const { t, locale } = useI18n({
 locale.value = i18nLanguage;
 
 // 默认无尽关卡数据工厂（避免对象共享引用）
-const makeEndlessProps = () => ({
+const makeDangerRoomProps = () => ({
     level: 1,
-    obtainedPlants: [] as string[],
+    plants: [] as string[],
     plantfood: 0,
     mower: [true, true, true, true, true],
-    initialPlants: [] as string[],
     plantChosen: false,
-    plantsToChoose: null
+    plants_choice: null
 });
 
 const makeArcadePlantDecoding = () => ({
@@ -442,13 +441,13 @@ const defaultArchive = {
     zengarden: makeZenGardenState(),
     arcade_plant_decoding: makeArcadePlantDecoding(),
     yeti_spawned_today: false,
+    player_dangerroom: Object.fromEntries(worldCodenames.map(world => [world, makeDangerRoomProps()])),
+    player_dangerroom_minigame: Object.fromEntries(worldCodenames.map(world => [world, { level: 1 }])),
     worldProps: {
         ...Object.fromEntries(
             Array.from({ length: worldAmount }, (_, i) => [i, {
                 unlocked: i === 1,
-                wmx: 0,
-                endlessProps: makeEndlessProps(),
-                endlessMiniGameProps: { level: 1 }
+                wmx: 0
             }])
         ),
         currentWM: 0,
@@ -542,10 +541,10 @@ const undo = () => {
 const finalData = computed(() => ({ ...otherData.value, ...archiveData.value }));
 const changes = computed(() => diffSave(originalData.value, finalData.value));
 const displayValue = (value: any) => value === undefined ? '—' : JSON.stringify(value);
-const gardenEditable = computed(() => archiveData.value.version === gardenLayout.version);
+const gardenEditable = computed(() => gardenLayout.compatibleVersions.includes(archiveData.value.version ?? ''));
 const checkSave = (data: Record<string, any>) => {
     const errors = validateSave(data);
-    if (!errors.length && data.version === gardenLayout.version) errors.push(...gardenIssues(data.zengarden, gardenLayout.slots, gardenFeatures));
+    if (!errors.length && gardenLayout.compatibleVersions.includes(data.version)) errors.push(...gardenIssues(data.zengarden, gardenLayout.slots, gardenFeatures));
     return errors;
 };
 
@@ -653,6 +652,8 @@ const normalizeArchive = (data: Record<string, any> = {}) => {
         ...currentData,
         plantProps: { ...(base.plantProps || {}), ...(data.plantProps || {}) },
         worldProps: { ...(base.worldProps || {}), ...(data.worldProps || {}) },
+        player_dangerroom: data.player_dangerroom,
+        player_dangerroom_minigame: data.player_dangerroom_minigame,
         player_upgrades: normalizePlayerUpgrades(data),
         tutorial: { ...(base.tutorial || {}), ...(data.tutorial || {}) },
         features: { ...(base.features || {}), ...(data.features || {}) },
@@ -696,6 +697,9 @@ const upgradeEntries = computed(() => {
 const worldEntries = computed(() =>
     Object.entries(archiveData.value.worldProps || {})
         .filter(([, world]) => world && Object.prototype.hasOwnProperty.call(world, 'unlocked'))
+        .map(([id, world]) => [id, world,
+            world.endlessProps ?? archiveData.value.player_dangerroom?.[worldCodenames[Number(id)]]
+        ] as const)
 );
 
 const featureEntries = computed(() => Object.entries(archiveData.value.features || {}));

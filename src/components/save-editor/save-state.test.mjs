@@ -15,6 +15,20 @@ test('rejects non-save containers and malformed values without mutating input', 
     input.coin = 1.5; assert.ok(validateSave(input).includes('coin'));
     input.coin = Number.MAX_SAFE_INTEGER + 1; assert.ok(validateSave(input).includes('coin'));
 });
+test('accepts legacy and current endless saves and rejects malformed root containers', () => {
+    const data = save();
+    data.worldProps[1] = { unlocked: true, endlessProps: { level: 7, obtainedPlants: [0] } };
+    assert.deepEqual(validateSave(data), []);
+    delete data.worldProps[1].endlessProps;
+    data.player_dangerroom = { egypt: { level: 12, plants: ['peashooter'], custom: { keep: true } } };
+    data.player_dangerroom_minigame = { egypt: { level: 3 } };
+    const original = JSON.stringify(data);
+    assert.deepEqual(validateSave(data), []);
+    assert.equal(JSON.stringify(data), original);
+    data.player_dangerroom = [];
+    data.player_dangerroom_minigame = 'invalid';
+    assert.deepEqual(validateSave(data), ['player_dangerroom', 'player_dangerroom_minigame']);
+});
 test('garden positions must exist and be unique', () => {
     const plant = makeGardenPlant('pea', 0, 0, 100);
     const zen = { plantsInMain: [plant] };
