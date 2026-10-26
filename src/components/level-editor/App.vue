@@ -169,6 +169,7 @@ import { plantFeaturesJson as plantFeatures } from '../game-data/plants';
 import { zombieFeaturesJson as zombieFeatures } from '../game-data/zombies';
 import localeMessages from './i18n.json';
 import { createProjectState, readProjectState, getNextProjectIds, DRAFT_STORAGE_KEY, PROJECT_KIND } from './project-state.mjs';
+import { addCardDeck, getCardDecks, getCardDeckIssues, removeCardDeckPlant } from './card-deck-codec.mjs';
 import ObjectivesPanel from './objectives-panel';
 import BoardRulesPanel from './board-rules-panel';
 import {
@@ -635,10 +636,13 @@ const newGravestoneType = ref('gravestone_egypt');
 const newGridItemSpawnType = ref('gravestone_egypt');
 const expandedWaveActionKey = ref('zombies');
 const selectedDynamicDifficulty = ref(4);
-const dynamicDifficultyOpen = ref(false);
+const seedListTarget = ref<PlantListKey | 'Recommended' | 'Challenging'>('seedPlants');
+const selectedDeckIndex = ref(0);
+const deckNameLanguage = ref<LocaleKey>(providedLanguage.startsWith('en') ? 'en' : providedLanguage.startsWith('es') ? 'es' : providedLanguage.startsWith('ru') ? 'ru' : 'zh');
+const eventPickerOpen = ref(false);
 const nextItemId = ref(1);
 const nextWaveId = ref(2);
-const nextZombieId = ref(1);
+const nextZombieId = ref(2);
 const nextWaveActionId = ref(1);
 let importedLevelSnapshot: any = null;
 const importCapability = ref<ImportCapabilitySummary | null>(null);
@@ -706,17 +710,22 @@ async function restoreHistory(direction: number) {
   closeConveyorEditor();
   historyIndex.value = index;
   draft.value = JSON.parse(editHistory.value[index]);
+  if (draft.value.seedMode === 'preset') seedListTarget.value = 'seedPlants';
+  if (seedListTarget.value === 'Recommended' || seedListTarget.value === 'Challenging') {
+    selectedDeckIndex.value = Math.min(selectedDeckIndex.value, Math.max(0, getCardDecks(draft.value.seedBankExtra, seedListTarget.value).length - 1));
+  }
   selectedWaveId.value = draft.value.waves.some((wave) => wave.id === selectedWaveId.value)
     ? selectedWaveId.value : draft.value.waves[0]?.id || 1;
   const wave = selectedWave.value;
   const entries = wave ? getEffectiveWaveActionOrder(wave, draft.value.waves.indexOf(wave) + 1) : [];
   const keys = entries.map(getWaveActionKey);
-  if (!keys.includes(expandedWaveActionKey.value)) expandedWaveActionKey.value = keys[0] || '';
+  if (!['settings', 'difficulty', ...keys].includes(expandedWaveActionKey.value)) expandedWaveActionKey.value = keys[0] || '';
   await nextTick();
   restoringHistory = false;
 }
 
 watch(draft, () => { recordHistory(); if (draftReady) draftDirty = true; scheduleDraftSave(); }, { deep: true, flush: 'post' });
+watch([seedListTarget, selectedDeckIndex, deckNameLanguage, expandedWaveActionKey, selectedSpawnRow], scheduleDraftSave, { flush: 'post' });
 
 const language = computed<LocaleKey>(() => {
   if (providedLanguage.startsWith('es')) return 'es';
@@ -777,19 +786,8 @@ const selectedAssetAlmanacPath = computed(() => {
   if (!asset || asset.kind === 'object') return null;
   return getAlmanacEntityPath(asset.kind, asset.code, language.value);
 });
-const seedPlantAlreadyAdded = computed(
-  () =>
-    draft.value.seedMode !== 'preset' &&
-    !!selectedPlantAsset.value &&
-    draft.value.seedPlants.includes(selectedPlantAsset.value.code)
-);
 const seedPlantLimit = computed(() => draft.value.overrideSeedSlots ? draft.value.seedSlots : MAX_SEED_PLANTS);
-const canAddSelectedSeedPlant = computed(
-  () => !!selectedPlantAsset.value && !seedPlantAlreadyAdded.value && draft.value.seedPlants.length < seedPlantLimit.value
-);
-const canAddSelectedZombie = computed(() => !!selectedZombieAsset.value && !!selectedWave.value);
 const seedActionHint = ref('');
-const zombieActionHint = ref('');
 const eventZombieActionHint = ref('');
 const dynamicZombieActionHint = ref('');
 const conveyorActionHint = ref('');
@@ -800,6 +798,12 @@ const conveyorEditorReturnFocus = ref<HTMLElement | null>(null);
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
+  const originalSeed = getImportedObjectsByClass(importedLevelSnapshot, 'SeedBankProperties')[0]?.objdata;
+  if (!draft.value.conveyor.enabled && draft.value.seedMode === 'chooser') getCardDeckIssues(draft.value.seedBankExtra, originalSeed).forEach((issue) => {
+    items.push({ type: issue.inherited ? 'warning' : 'error', text: t(issue.reason === 'empty' ? 'deckEmptyError' : 'deckLeaderError', {
+      kind: t(issue.kind === 'Recommended' ? 'recommendedDecks' : 'challengingDecks'), index: issue.index + 1
+    }) });
+  });
   if (!draft.value.name.trim()) {
     items.push({ type: 'error', text: t('validationNameRequired') });
   }
@@ -980,7 +984,8 @@ function handleKeydown(event: KeyboardEvent) {
       !previewOpen.value && !validationOpen.value && !conveyorEditorOpen.value) {
     const index = '1234567890qw'.indexOf(event.key.toLowerCase());
     const code = recentZombieCodes.value[index];
-    if (index >= 0 && code) { event.preventDefault(); addZombieToWave(code, selectedSpawnRow.value); return; }
+    const asset = code ? zombieOptions.value.find((item) => item.code === code) : null;
+    if (asset) { event.preventDefault(); addZombieToTarget(asset); return; }
   }
   if (event.key !== 'Escape' || previewOpen.value || !selectedAsset.value) return;
   clearSelectedAsset();
@@ -1185,8 +1190,10 @@ function resetDraft() {
   newGravestoneType.value = 'gravestone_egypt';
   newGridItemSpawnType.value = 'gravestone_egypt';
   expandedWaveActionKey.value = 'zombies';
+  eventPickerOpen.value = false;
+  seedListTarget.value = 'seedPlants';
+  selectedDeckIndex.value = 0;
   selectedDynamicDifficulty.value = 4;
-  dynamicDifficultyOpen.value = false;
   dynamicZombieActionHint.value = '';
   eventZombieActionHint.value = '';
   selectedCell.value = null;
@@ -1243,7 +1250,9 @@ function selectObjectiveCell(cell: { row: number; col: number }) {
 function captureProject() {
   return createProjectState(draft.value, importedLevelSnapshot, {
     activeWorkspace: activeWorkspace.value, selectedWaveId: selectedWaveId.value,
-    recentZombieCodes: recentZombieCodes.value
+    recentZombieCodes: recentZombieCodes.value, seedListTarget: seedListTarget.value,
+    selectedDeckIndex: selectedDeckIndex.value, deckNameLanguage: deckNameLanguage.value,
+    selectedSpawnRow: selectedSpawnRow.value, expandedWaveActionKey: expandedWaveActionKey.value
   });
 }
 
@@ -1264,6 +1273,16 @@ function restoreProject(project: ReturnType<typeof readProjectState>) {
     ? project.editor.selectedWaveId : draft.value.waves[0]?.id || 1;
   recentZombieCodes.value = Array.isArray(project.editor.recentZombieCodes)
     ? project.editor.recentZombieCodes.filter((code: unknown) => typeof code === 'string').slice(0, 12) : [];
+  seedListTarget.value = draft.value.seedMode !== 'preset' && ['seedPlants', 'includePlants', 'excludePlants', 'Recommended', 'Challenging'].includes(project.editor.seedListTarget)
+    ? project.editor.seedListTarget : 'seedPlants';
+  selectedDeckIndex.value = Math.max(0, Number(project.editor.selectedDeckIndex) || 0);
+  deckNameLanguage.value = ['zh', 'en', 'es', 'ru'].includes(project.editor.deckNameLanguage) ? project.editor.deckNameLanguage : language.value;
+  selectedSpawnRow.value = typeof project.editor.selectedSpawnRow === 'string' ? project.editor.selectedSpawnRow : '';
+  const wave = selectedWave.value;
+  const keys = wave ? getEffectiveWaveActionOrder(wave, draft.value.waves.indexOf(wave) + 1).map(getWaveActionKey) : [];
+  expandedWaveActionKey.value = ['settings', 'difficulty', ...keys].includes(project.editor.expandedWaveActionKey)
+    ? project.editor.expandedWaveActionKey : keys[0] || 'zombies';
+  eventPickerOpen.value = false;
   selectedCell.value = null;
   selectedAsset.value = null;
   assetTab.value = activeWorkspace.value === 'waves' ? 'zombie' : 'plant';
@@ -1305,7 +1324,27 @@ function closeProjectMenu() {
   document.querySelector('.level-editor-shell .project-menu')?.removeAttribute('open');
 }
 
+function addZombieToTarget(asset: AssetOption) {
+  selectedAsset.value = asset;
+  const action = selectedWave.value?.rawActions.find((item) => `raw:${item.id}` === expandedWaveActionKey.value);
+  if (expandedWaveActionKey.value === 'difficulty') addSelectedZombieToDynamicPool();
+  else if (action && isZombiePoolEvent(action)) addSelectedZombieToEvent(action);
+  else addZombieToWave(asset.code);
+}
+
 function chooseAsset(asset: AssetOption) {
+  if ((activeWorkspace.value === 'waves' && asset.kind === 'zombie') || (activeWorkspace.value === 'seed' && asset.kind === 'plant')) {
+    selectedAsset.value = asset;
+    assetLibraryOpen.value = false;
+    if (asset.kind === 'zombie') {
+      addZombieToTarget(asset);
+    } else if (draft.value.conveyor.enabled) addSelectedConveyorPlant();
+    else if (seedListTarget.value === 'Recommended' || seedListTarget.value === 'Challenging') {
+      const deck = getCardDecks(draft.value.seedBankExtra, seedListTarget.value)[selectedDeckIndex.value];
+      if (deck && Array.isArray(deck.Plants)) deck.Plants.push(asset.code);
+    } else addSelectedPlantToList(seedListTarget.value);
+    return;
+  }
   if (selectedAsset.value?.kind === asset.kind && selectedAsset.value?.code === asset.code) {
     clearSelectedAsset();
     return;
@@ -1318,7 +1357,7 @@ function chooseAsset(asset: AssetOption) {
     seedActionHint.value = '';
     conveyorActionHint.value = '';
   }
-  if (asset.kind === 'zombie') { zombieActionHint.value = ''; rememberZombie(asset.code); }
+  if (asset.kind === 'zombie') rememberZombie(asset.code);
 }
 
 function showMoreAssets() {
@@ -1424,29 +1463,6 @@ function formatPlacementExtraValue(value: unknown) {
   if (typeof value === 'number' || typeof value === 'boolean') return String(value);
   if (value == null) return String(value);
   return JSON.stringify(value);
-}
-
-function addSeedPlant(code: string) {
-  const plantCode = code;
-  if (!plantCode || (draft.value.seedMode !== 'preset' && draft.value.seedPlants.includes(plantCode))) return;
-  if (draft.value.seedPlants.length >= seedPlantLimit.value) {
-    message.warning(t('seedLimit', { count: seedPlantLimit.value }));
-    return;
-  }
-  draft.value.seedPlants.push(plantCode);
-}
-
-function addSelectedSeedPlant() {
-  if (!selectedPlantAsset.value) {
-    seedActionHint.value = 'selectPlantFirst';
-    return;
-  }
-  if (seedPlantAlreadyAdded.value) {
-    seedActionHint.value = 'plantAlreadyAdded';
-    return;
-  }
-  seedActionHint.value = '';
-  addSeedPlant(selectedPlantAsset.value.code);
 }
 
 function addSelectedPlantToList(listKey: PlantListKey) {
@@ -1709,7 +1725,7 @@ function configureDynamicZombieSlot(level = selectedDynamicDifficulty.value) {
       ZombiePool: []
     };
   });
-  dynamicDifficultyOpen.value = true;
+  expandedWaveActionKey.value = 'difficulty';
 }
 
 function clearDynamicZombieSlot(level = selectedDynamicDifficulty.value) {
@@ -1800,7 +1816,7 @@ function addSelectedZombieToDynamicPool() {
 
 function selectDynamicDifficulty(level: number, shouldOpen = true) {
   selectedDynamicDifficulty.value = Math.min(7, Math.max(1, level));
-  if (shouldOpen) dynamicDifficultyOpen.value = true;
+  if (shouldOpen) expandedWaveActionKey.value = 'difficulty';
 }
 
 function handleDynamicDifficultyKeydown(event: KeyboardEvent, level: number) {
@@ -1987,14 +2003,6 @@ function addZombieToWave(code: string, row = selectedSpawnRow.value) {
   expandedWaveActionKey.value = 'zombies';
 }
 
-function addSelectedZombieToWave() {
-  if (!selectedZombieAsset.value) {
-    zombieActionHint.value = 'selectZombieFirst';
-    return;
-  }
-  zombieActionHint.value = '';
-  addZombieToWave(selectedZombieAsset.value.code);
-}
 
 function rememberZombie(code: string) {
   if (!recentZombieCodes.value.includes(code)) recentZombieCodes.value = [...recentZombieCodes.value, code].slice(-12);
@@ -2402,11 +2410,12 @@ function selectWave(id: number) {
   const wave = draft.value.waves[index];
   const firstEntry = wave ? getEffectiveWaveActionOrder(wave, index + 1)[0] : undefined;
   expandedWaveActionKey.value = firstEntry ? getWaveActionKey(firstEntry) : '';
+  eventPickerOpen.value = false;
 }
 
 function toggleWaveAction(entry: WaveActionOrderEntry) {
   const key = getWaveActionKey(entry);
-  expandedWaveActionKey.value = expandedWaveActionKey.value === key ? '' : key;
+  expandedWaveActionKey.value = key;
 }
 
 function handleUpload(file: File) {
@@ -2433,8 +2442,11 @@ function handleUpload(file: File) {
       importedLevelSnapshot = createLevelImportSnapshot(parsed, importedDraft);
       importCapability.value = analyzeLevelCapabilities(parsed) as ImportCapabilitySummary;
       selectedWaveId.value = draft.value.waves[0]?.id || 1;
+      expandedWaveActionKey.value = 'zombies';
+      eventPickerOpen.value = false;
+      seedListTarget.value = 'seedPlants';
+      selectedDeckIndex.value = 0;
       selectedDynamicDifficulty.value = 4;
-      dynamicDifficultyOpen.value = false;
       dynamicZombieActionHint.value = '';
       eventZombieActionHint.value = '';
       selectedCell.value = null;
@@ -3372,8 +3384,7 @@ const BasicForm = defineComponent({
                   })
                 ]),
         expertMode.value
-          ? h('details', { class: 'advanced-details wide' }, [
-              h('summary', t('advancedLevel')),
+          ? h('section', { class: 'advanced-level-fields wide' }, [
               h('div', { class: 'advanced-grid' }, [
                 h('div', { class: 'field-row' }, [
                   h('label', t('mower')),
@@ -3434,7 +3445,7 @@ const AssetLibrary = defineComponent({
     return () =>
         h('aside', { class: 'asset-library' }, [
         h('div', { class: 'panel-title' }, [
-          h('span', t('chooseAsset')),
+          h('span', t(activeWorkspace.value === 'waves' ? 'addZombie' : activeWorkspace.value === 'seed' ? 'addPlants' : 'chooseAsset')),
           selectedAssetAlmanacPath.value
             ? h(
                 'a',
@@ -3448,11 +3459,11 @@ const AssetLibrary = defineComponent({
               )
             : null
         ]),
-        h('div', { class: 'segmented', role: 'group', 'aria-label': t('assetType') }, [
+        activeWorkspace.value === 'board' ? h('div', { class: 'segmented', role: 'group', 'aria-label': t('assetType') }, [
           h('button', { type: 'button', class: assetTab.value === 'plant' ? 'active' : '', 'aria-pressed': assetTab.value === 'plant', onClick: () => (assetTab.value = 'plant') }, t('plants')),
           h('button', { type: 'button', class: assetTab.value === 'zombie' ? 'active' : '', 'aria-pressed': assetTab.value === 'zombie', onClick: () => (assetTab.value = 'zombie') }, t('zombies')),
           h('button', { type: 'button', class: assetTab.value === 'object' ? 'active' : '', 'aria-pressed': assetTab.value === 'object', onClick: () => (assetTab.value = 'object') }, t('objects'))
-        ]),
+        ]) : null,
         assetTab.value === 'object'
           ? h('div', { class: 'object-category-tabs', role: 'group', 'aria-label': t('objectCategory') }, [
               h('button', { type: 'button', class: objectCategory.value === 'all' ? 'active' : '', 'aria-pressed': objectCategory.value === 'all', onClick: () => (objectCategory.value = 'all') }, t('objectCategoryAll')),
@@ -3789,12 +3800,6 @@ const BoardEditor = defineComponent({
             ])
           ])
         ]),
-        h(BoardRulesPanel, {
-          system: draft.value.boardRules,
-          selectedCell: selectedCell.value,
-          expertMode: expertMode.value,
-          translate: t
-        }),
         h(
           'div',
           { class: `lawn-grid stage-${draft.value.stage.toLowerCase()}`, 'aria-label': t('board') },
@@ -3882,6 +3887,12 @@ const BoardEditor = defineComponent({
               : []
           )
         ),
+        h(BoardRulesPanel, {
+          system: draft.value.boardRules,
+          selectedCell: selectedCell.value,
+          expertMode: expertMode.value,
+          translate: t
+        }),
         selectedCell.value
           ? h('div', { class: 'cell-detail-panel' }, [
               h('div', { class: 'cell-detail-title' }, t('selectedCellTitle', { col: selectedCell.value.col + 1, row: selectedCell.value.row + 1 })),
@@ -4165,123 +4176,109 @@ function renderConveyorControls() {
 }
 
 function renderSeedSupplyModeSelector() {
-  return h('div', { class: 'segmented stacked supply-mode-selector' }, [
-    h(
-      'button',
-      {
-        class: !draft.value.conveyor.enabled ? 'active' : '',
-        'aria-pressed': !draft.value.conveyor.enabled ? 'true' : 'false',
-        onClick: () => setSeedSupplyMode('seedBank')
-      },
-      t('seedBank')
-    ),
-    h(
-      'button',
-      {
-        class: draft.value.conveyor.enabled ? 'active' : '',
-        'aria-pressed': draft.value.conveyor.enabled ? 'true' : 'false',
-        onClick: () => setSeedSupplyMode('conveyor')
-      },
-      t('conveyor')
-    )
-  ]);
+  return h('select', { class: 'seed-supply-select', 'aria-label': t('seedSupply'),
+    value: draft.value.conveyor.enabled ? 'conveyor' : draft.value.seedMode,
+    onChange: (event: Event) => {
+      const value = (event.target as HTMLSelectElement).value;
+      if (value === 'conveyor') setSeedSupplyMode('conveyor');
+      else {
+        if (draft.value.conveyor.enabled) setSeedSupplyMode('seedBank');
+        draft.value.hasSeedBank = true;
+        draft.value.seedMode = value as SeedMode;
+        seedListTarget.value = 'seedPlants';
+        selectedDeckIndex.value = 0;
+      }
+    }
+  }, [h('option', { value: 'chooser' }, t('seedChooser')), h('option', { value: 'preset' }, t('seedPreset')), h('option', { value: 'conveyor' }, t('conveyor'))]);
+}
+
+function selectSeedTarget(target: typeof seedListTarget.value) {
+  seedListTarget.value = target;
+  selectedDeckIndex.value = 0;
+  seedActionHint.value = '';
 }
 
 function renderSeedBankControls() {
-  return [
-    h('strong', `${t('seedBank')} ${draft.value.seedPlants.length}/${seedPlantLimit.value}`),
-    h('div', { class: 'segmented stacked' }, [
-      h(
-        'button',
-        {
-          class: draft.value.seedMode === 'chooser' ? 'active' : '',
-          'aria-pressed': draft.value.seedMode === 'chooser' ? 'true' : 'false',
-          onClick: () => (draft.value.seedMode = 'chooser')
-        },
-        t('seedChooser')
-      ),
-      h(
-        'button',
-        {
-          class: draft.value.seedMode === 'preset' ? 'active' : '',
-          'aria-pressed': draft.value.seedMode === 'preset' ? 'true' : 'false',
-          onClick: () => (draft.value.seedMode = 'preset')
-        },
-        t('seedPreset')
-      )
+  const target = seedListTarget.value;
+  const kind = target === 'Recommended' || target === 'Challenging' ? target : null;
+  const decks = kind ? getCardDecks(draft.value.seedBankExtra, kind) : [];
+  const deck = decks[selectedDeckIndex.value];
+  const targets = [
+    ['seedPlants', draft.value.seedMode === 'preset' ? 'seedPreset' : 'lockedPlants'],
+    ['includePlants', 'includePlants'], ['excludePlants', 'excludePlants'],
+    ['Recommended', 'recommendedDecks'], ['Challenging', 'challengingDecks']
+  ] as const;
+  const visibleTargets = draft.value.seedMode === 'preset' ? targets.slice(0, 1) : targets;
+  const body = kind ? [
+    h('div', { class: 'deck-list-toolbar' }, [
+      h('select', { 'aria-label': t('selectDeck'), value: selectedDeckIndex.value,
+        onChange: (event: Event) => { selectedDeckIndex.value = Number((event.target as HTMLSelectElement).value); }
+      }, decks.map((item: any, index: number) => h('option', { value: index },
+        item.Name?.[deckNameLanguage.value] || item.Name?.zh || item.Name?.en || t('deckNumber', { index: index + 1 })))),
+      h('button', { type: 'button', class: 'add-button small', 'aria-label': t('addDeck'), onClick: () => {
+        selectedDeckIndex.value = addCardDeck(draft.value.seedBankExtra, kind, deckNameLanguage.value, t('newDeck'));
+      } }, [h(PlusOutlined), t('addDeck')]),
+      deck ? h('button', { type: 'button', class: 'text-button danger', 'aria-label': t('removeDeck'), onClick: () => {
+        decks.splice(selectedDeckIndex.value, 1); selectedDeckIndex.value = Math.max(0, selectedDeckIndex.value - 1);
+      } }, h(DeleteOutlined)) : null
     ]),
-    renderPlantPills('seedPlants'),
-    h('div', { class: 'action-row' }, [
-      h(
-        'button',
-        {
-          class: ['add-button', !canAddSelectedSeedPlant.value ? 'is-disabled' : ''],
-          'aria-disabled': !canAddSelectedSeedPlant.value ? 'true' : 'false',
-          onClick: addSelectedSeedPlant
-        },
-        [h(PlusOutlined), t('addSelectedPlant')]
-      ),
-      seedActionHint.value ? h('small', { class: 'action-hint' }, t(seedActionHint.value)) : null
-    ]),
-    expertMode.value
-      ? h('section', { class: 'seed-bank-options' }, [
-          h('label', { class: 'check-row' }, [
-            h('input', {
-              type: 'checkbox',
-              checked: draft.value.overrideSeedSlots,
-              onChange: (event: Event) => (draft.value.overrideSeedSlots = (event.target as HTMLInputElement).checked)
-            }),
-            t('overrideSeedSlots')
-          ]),
-          h('div', { class: 'advanced-grid single' }, [
-            h('div', { class: 'field-row compact' }, [
-              h('label', t('seedSlots')),
-              h('input', {
-                type: 'number',
-                min: 0,
-                max: MAX_SEED_PLANTS,
-                value: draft.value.seedSlots,
-                disabled: !draft.value.overrideSeedSlots,
-                onInput: (event: Event) => {
-                  draft.value.seedSlots = normalizeSeedSlots((event.target as HTMLInputElement).value, draft.value.seedPlants.length);
-                  draft.value.seedPlants = normalizeSeedPlants(
-                    draft.value.seedPlants,
-                    draft.value.seedSlots,
-                    draft.value.seedMode === 'preset'
-                  );
-                }
-              })
-            ]),
-            h('label', { class: 'check-row' }, [
-              h('input', {
-                type: 'checkbox',
-                checked: draft.value.unlockAll,
-                onChange: (event: Event) => {
-                  draft.value.unlockAll = (event.target as HTMLInputElement).checked;
-                }
-              }),
-              t('unlockAll')
-            ]),
-            h('div', { class: 'plant-list-block' }, [
-              h('strong', t('includePlants')),
-              renderPlantPills('includePlants'),
-              h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('includePlants') }, [
-                h(PlusOutlined),
-                t('addSelectedPlant')
-              ])
-            ]),
-            h('div', { class: 'plant-list-block' }, [
-              h('strong', t('excludePlants')),
-              renderPlantPills('excludePlants'),
-              h('button', { class: 'add-button small', onClick: () => addSelectedPlantToList('excludePlants') }, [
-                h(PlusOutlined),
-                t('addSelectedPlant')
-              ])
-            ])
-          ])
-        ])
-      : null
+    deck ? h('div', { class: 'deck-name-row' }, [
+      h('label', { class: 'field-row' }, [h('span', t('deckName')), h('input', {
+        value: deck.Name?.[deckNameLanguage.value] || '', 'aria-label': t('deckName'),
+        onInput: (event: Event) => { deck.Name ??= {}; deck.Name[deckNameLanguage.value] = (event.target as HTMLInputElement).value; }
+      })]),
+      h('select', { 'aria-label': t('nameLanguage'), value: deckNameLanguage.value,
+        onChange: (event: Event) => { deckNameLanguage.value = (event.target as HTMLSelectElement).value as LocaleKey; }
+      }, [['zh', '中文'], ['en', 'English'], ['es', 'Español'], ['ru', 'Русский']].map(([value, label]) => h('option', { value }, label)))
+    ]) : null,
+    deck && Array.isArray(deck.Plants) ? h('div', { class: 'deck-plants' }, [
+      ...deck.Plants.map((code: string, index: number) => {
+        const plant = plantOptions.value.find((item) => item.code === code);
+        return h('div', { class: ['deck-plant-row', Number(deck.Leader) === index ? 'leader' : ''] }, [
+          plant?.image ? h('img', { src: plant.image, alt: '' }) : null,
+          h('strong', plant?.name || code),
+          h('button', { type: 'button', class: 'text-button', 'aria-pressed': Number(deck.Leader) === index,
+            onClick: () => { deck.Leader = index; }
+          }, t('deckLeader')),
+          h('button', { type: 'button', class: 'text-button danger', 'aria-label': t('remove'),
+            onClick: () => removeCardDeckPlant(deck, index)
+          }, h(DeleteOutlined))
+        ]);
+      }),
+      !deck.Plants.length ? h('p', { class: 'editor-empty-action' }, t('pickPlantForDeck')) : null
+    ]) : !deck ? h('p', { class: 'editor-empty-action' }, t('createDeckFirst')) : null,
+    kind === 'Challenging' && deck ? renderActionNumberField('hugeWaveGem', Number(deck.HugeWaveGem) || 0, (value) => { deck.HugeWaveGem = Math.max(0, value); }) : null,
+    kind === 'Challenging' ? h('div', { class: 'deck-challenge-options' }, [
+      ...(['ChallengingLocked', 'SuppressChallengingHugeWaveGems'] as const).map((key) => h('label', { class: 'check-row' }, [
+        h('input', { type: 'checkbox', checked: draft.value.seedBankExtra.CardDecks?.[key] === true,
+          onChange: (event: Event) => { draft.value.seedBankExtra.CardDecks ??= {}; draft.value.seedBankExtra.CardDecks[key] = (event.target as HTMLInputElement).checked; }
+        }), t(key === 'ChallengingLocked' ? 'challengeLocked' : 'suppressChallengeGems')
+      ]))
+    ]) : null
+  ] : [
+    renderPlantPills(target as PlantListKey),
+    !draft.value[target as PlantListKey].length ? h('p', { class: 'editor-empty-action' }, t('pickPlantForDeck')) : null,
+    target === 'seedPlants' ? h('div', { class: 'seed-inline-options' }, [
+      h('label', { class: 'check-row' }, [h('input', { type: 'checkbox', checked: draft.value.overrideSeedSlots,
+        onChange: (event: Event) => { draft.value.overrideSeedSlots = (event.target as HTMLInputElement).checked; }
+      }), t('overrideSeedSlots')]),
+      draft.value.overrideSeedSlots ? renderActionNumberField('seedSlots', draft.value.seedSlots, (value) => {
+        draft.value.seedSlots = normalizeSeedSlots(value, draft.value.seedPlants.length);
+        draft.value.seedPlants = normalizeSeedPlants(draft.value.seedPlants, draft.value.seedSlots, draft.value.seedMode === 'preset');
+      }) : null,
+      h('label', { class: 'check-row' }, [h('input', { type: 'checkbox', checked: draft.value.unlockAll,
+        onChange: (event: Event) => { draft.value.unlockAll = (event.target as HTMLInputElement).checked; }
+      }), t('unlockAll')])
+    ]) : null,
+    seedActionHint.value ? h('p', { class: 'action-hint', role: 'status' }, t(seedActionHint.value)) : null
   ];
+  return [h('div', { class: ['seed-target-workspace', visibleTargets.length === 1 ? 'single-target' : ''] }, [
+    visibleTargets.length > 1 ? h('nav', { class: 'seed-target-list', 'aria-label': t('seedBank') }, visibleTargets.map(([key, label]) => h('button', {
+      type: 'button', 'aria-pressed': target === key, onClick: () => selectSeedTarget(key)
+    }, [h('span', t(label)), h('span', String(key === 'Recommended' || key === 'Challenging'
+      ? getCardDecks(draft.value.seedBankExtra, key).length : draft.value[key].length))]))) : null,
+    h('section', { class: 'seed-target-editor' }, [h('h3', t(targets.find(([key]) => key === target)![1])), ...body])
+  ])];
 }
 
 function renderConveyorEditorGroup(titleKey: string, children: Array<ReturnType<typeof h> | null>) {
@@ -4513,8 +4510,7 @@ const PropertyPanel = defineComponent({
     return () =>
       h('aside', { class: 'property-panel-inner' }, [
         h('div', { class: 'property-section' }, [
-          h('strong', t('seedSupply')),
-          renderSeedSupplyModeSelector(),
+          h('div', { class: 'seed-supply-header' }, [h('strong', t('seedSupply')), renderSeedSupplyModeSelector()]),
           ...(draft.value.conveyor.enabled ? renderConveyorControls() : renderSeedBankControls())
         ])
       ]);
@@ -5654,7 +5650,7 @@ function renderKnownWaveActionFields(action: WaveActionDraft, schedulerPath = ne
               });
             }
           },
-          [h('option', { value: 'sandstorm' }, 'sandstorm'), h('option', { value: 'snowstorm' }, 'snowstorm')]
+          [h('option', { value: 'sandstorm' }, t('styleSandstorm')), h('option', { value: 'snowstorm' }, t('styleSnowstorm'))]
         )
       ]),
       renderActionNumberField('columnStart', data.ColumnStart, (value) => {
@@ -5828,41 +5824,50 @@ function renderEventZombiePoolEditor(action: WaveActionDraft) {
 
 function renderLanePreview(wave: WaveDraft) {
   const rows = ['1', '2', '3', '4', '5', ''];
-  const special = wave.zombies.filter((zombie) => zombie.row !== '' && !rows.includes(zombie.row));
-  return h('div', { class: 'lane-preview', 'aria-label': t('lanePreview') }, [
-    ...rows.map((row) => {
-      const zombies = wave.zombies.filter((zombie) => zombie.row === row);
+  const extraRows = [...new Set(wave.zombies.map((zombie) => zombie.row).filter((row) => !rows.includes(row)))];
+  return h('div', { class: 'lane-preview direct-wave-board', 'aria-label': t('lanePreview') },
+    [...rows, ...extraRows].map((row) => {
       const label = row ? t('rowNumber', { row }) : t('randomRow');
-      return h('div', { class: ['lane-preview-row', selectedSpawnRow.value === row ? 'selected-lane' : ''] }, [
-        h('button', { type: 'button', class: 'lane-number', title: label,
-          'aria-pressed': selectedSpawnRow.value === row,
-          onClick: () => { selectedSpawnRow.value = row; }
+      return h('div', {
+        class: ['lane-preview-row', selectedSpawnRow.value === row ? 'selected-lane' : ''],
+        onDragover: (event: DragEvent) => { if (event.dataTransfer?.types.includes('application/x-pvzge-zombie')) event.preventDefault(); },
+        onDrop: (event: DragEvent) => {
+          const id = Number(event.dataTransfer?.getData('application/x-pvzge-zombie'));
+          const zombie = wave.zombies.find((item) => item.id === id);
+          if (zombie) { event.preventDefault(); setWaveZombieRow(zombie, row); selectedSpawnRow.value = row; }
+        }
+      }, [
+        h('button', { type: 'button', class: 'lane-number', title: label, 'aria-label': label,
+          'aria-pressed': selectedSpawnRow.value === row, onClick: () => { selectedSpawnRow.value = row; }
         }, row || t('randomRowShort')),
-        h('div', { class: 'lane-zombies' }, zombies.map((zombie) =>
-          h('span', { class: 'lane-zombie-chip' }, [
-            getZombieDisplayName(zombie.code, zombie.label), h('strong', `×${zombie.count}`)
-          ]))),
+        h('div', { class: 'lane-zombies' }, wave.zombies.filter((zombie) => zombie.row === row).map((zombie) => {
+          const asset = zombieOptions.value.find((item) => item.code === zombie.code);
+          const name = getZombieDisplayName(zombie.code, zombie.label);
+          return h('div', { key: zombie.id, class: 'wave-zombie-token', draggable: true,
+            onDragstart: (event: DragEvent) => event.dataTransfer?.setData('application/x-pvzge-zombie', String(zombie.id))
+          }, [
+            asset?.image ? h('img', { src: asset.image, alt: '', draggable: false }) : null,
+            h('strong', { title: name }, name),
+            h('input', { type: 'number', min: 1, value: zombie.count, 'aria-label': t('zombieCount', { name }),
+              onInput: (event: Event) => { markWaveSystemEdited(); zombie.count = Math.max(1, Math.round(Number((event.target as HTMLInputElement).value)) || 1); }
+            }),
+            h('select', { value: row, title: t('zombieRow', { name }), 'aria-label': t('zombieRow', { name }),
+              onChange: (event: Event) => setWaveZombieRow(zombie, (event.target as HTMLSelectElement).value)
+            }, [...rows, ...extraRows].map((value) => h('option', { value }, value || t('randomRowShort')))),
+            h('button', { type: 'button', class: 'remove-token', 'aria-label': t('removeZombie', { name }), onClick: () => removeZombieFromWave(zombie.id) }, h(DeleteOutlined))
+          ]);
+        })),
         h('button', { type: 'button', class: 'lane-add', disabled: !selectedZombieAsset.value,
           title: t('addToLane', { row: label }), 'aria-label': t('addToLane', { row: label }),
-          onClick: () => {
-            selectedSpawnRow.value = row;
-            if (selectedZombieAsset.value) addZombieToWave(selectedZombieAsset.value.code, row);
-          }
+          onClick: () => { selectedSpawnRow.value = row; if (selectedZombieAsset.value) addZombieToWave(selectedZombieAsset.value.code, row); }
         }, h(PlusOutlined))
       ]);
-    }),
-    special.length ? h('div', { class: 'lane-preview-row' }, [
-      h('span', t('specialRowShort')),
-      h('div', { class: 'lane-zombies' }, special.map((zombie) =>
-        h('span', { class: 'lane-zombie-chip' }, `${getZombieDisplayName(zombie.code, zombie.label)} ×${zombie.count} · ${zombie.row}`)))
-    ]) : null
-  ]);
+    })
+  );
 }
 
 function renderWaveSpawnAdvancedFields(wave: WaveDraft) {
-  if (!expertMode.value) return null;
-  return h('details', { class: 'advanced-details wave-spawn-advanced' }, [
-    h('summary', t('advancedCurrentWave')),
+  return h('section', { class: 'wave-spawn-options' }, [
     h('div', { class: 'advanced-grid' }, [
       renderActionNumberField('additionalPlantfood', wave.additionalPlantfood, (value) => {
         markWaveSystemEdited();
@@ -5881,13 +5886,13 @@ function renderWaveSpawnAdvancedFields(wave: WaveDraft) {
           },
           [
             h('option', { value: '' }, t('styleDefault')),
-            h('option', { value: 'appear' }, 'appear'),
-            h('option', { value: 'sandstorm' }, 'sandstorm'),
-            h('option', { value: 'snowstorm' }, 'snowstorm')
+            h('option', { value: 'appear' }, t('styleAppear')),
+            h('option', { value: 'sandstorm' }, t('styleSandstorm')),
+            h('option', { value: 'snowstorm' }, t('styleSnowstorm'))
           ]
         )
       ]),
-      h('div', { class: 'field-row compact' }, [
+      expertMode.value ? h('div', { class: 'field-row compact' }, [
         h('label', t('dynamicPlantfood')),
         h('input', {
           value: wave.dynamicPlantfood,
@@ -5897,7 +5902,7 @@ function renderWaveSpawnAdvancedFields(wave: WaveDraft) {
             wave.dynamicPlantfood = (event.target as HTMLInputElement).value;
           }
         })
-      ]),
+      ]) : null,
       h('label', { class: 'check-row advanced-check' }, [
         h('input', {
           type: 'checkbox',
@@ -5971,31 +5976,7 @@ function renderZombieGroupList(
 }
 
 function renderZombieSpawnEditor(wave: WaveDraft) {
-  return h('div', { class: 'wave-action-editor-body' }, [
-    renderLanePreview(wave),
-    h('div', { class: 'zombie-list' }, renderZombieGroupList(wave.zombies, {
-      showRows: true,
-      onRow: (zombie, value) => setWaveZombieRow(zombie, value),
-      onCount: (zombie, value) => {
-        markWaveSystemEdited();
-        zombie.count = Math.max(1, Math.round(value) || 1);
-      },
-      onRemove: (zombie) => removeZombieFromWave(zombie.id)
-    })),
-    h('div', { class: 'wave-actions' }, [
-      h(
-        'button',
-        {
-          class: ['add-button', !canAddSelectedZombie.value ? 'is-disabled' : ''],
-          'aria-disabled': !canAddSelectedZombie.value ? 'true' : 'false',
-          onClick: addSelectedZombieToWave
-        },
-        [h(PlusOutlined), t('addZombie')]
-      ),
-      zombieActionHint.value ? h('small', { class: 'action-hint' }, t(zombieActionHint.value)) : null
-    ]),
-    renderWaveSpawnAdvancedFields(wave)
-  ]);
+  return renderWaveSpawnAdvancedFields(wave);
 }
 
 function renderConveyorWaveActionEditor(waveIndex: number, entry: WaveActionOrderEntry) {
@@ -6088,7 +6069,7 @@ function renderRawWaveActionEditor(wave: WaveDraft, action: WaveActionDraft) {
         ])
       : null,
     h('div', { class: 'wave-action-editor-footer' }, [
-      h('code', action.alias),
+      expertMode.value ? h('code', action.alias) : null,
       h('button', { class: 'text-button danger', onClick: () => removeWaveAction(wave, action.id) }, [
         h(DeleteOutlined),
         t('remove')
@@ -6106,63 +6087,44 @@ function renderWaveActionEditor(wave: WaveDraft, waveIndex: number, entry: WaveA
 
 function renderWaveActionSequence(wave: WaveDraft, waveIndex: number) {
   const order = getEffectiveWaveActionOrder(wave, waveIndex);
-  return h(
-    'div',
-    { class: 'wave-action-sequence' },
-    order.map((entry, entryIndex) => {
-      const key = getWaveActionKey(entry);
-      const expanded = expandedWaveActionKey.value === key;
-      return h('div', { class: ['wave-action-entry', expanded ? 'expanded' : ''] }, [
-        h('div', { class: 'wave-action-entry-header' }, [
-          h('button', { class: 'wave-action-entry-main', 'aria-expanded': expanded, onClick: () => toggleWaveAction(entry) }, [
-            h('span', { class: ['wave-action-index', entry.kind] }, String(entryIndex + 1)),
-            h('span', { class: 'wave-action-entry-copy' }, [
-              h('strong', getWaveActionEntryLabel(wave, entry)),
-              h('small', getWaveActionEntrySummary(wave, waveIndex, entry))
-            ]),
-            h('span', { class: 'wave-action-chevron', 'aria-hidden': 'true' }, '›')
-          ]),
-          h('div', { class: 'wave-action-order-controls' }, [
-            h(
-              'button',
-              {
-                type: 'button',
-                disabled: entryIndex === 0,
-                title: t('moveEarlier'),
-                'aria-label': t('moveEarlier'),
-                onClick: () => moveWaveAction(wave, entryIndex, -1)
-              },
-              '↑'
-            ),
-            h(
-              'button',
-              {
-                type: 'button',
-                disabled: entryIndex === order.length - 1,
-                title: t('moveLater'),
-                'aria-label': t('moveLater'),
-                onClick: () => moveWaveAction(wave, entryIndex, 1)
-              },
-              '↓'
-            )
-          ])
-        ]),
-        expanded ? renderWaveActionEditor(wave, waveIndex, entry) : null
-      ]);
-    })
-  );
+  return h('div', { class: 'wave-event-list', role: 'list', 'aria-label': t('waveEventType') }, order.map((entry, index) => {
+    const selected = expandedWaveActionKey.value === getWaveActionKey(entry);
+    return h('div', { class: ['wave-event-row', selected ? 'selected' : ''], role: 'listitem' }, [
+      h('button', { type: 'button', class: 'wave-event-select', 'aria-pressed': selected, onClick: () => toggleWaveAction(entry) }, [
+        h('span', { class: 'wave-action-index' }, String(index + 1)),
+        h('span', [h('strong', getWaveActionEntryLabel(wave, entry)), h('small', getWaveActionEntrySummary(wave, waveIndex, entry))])
+      ]),
+      h('button', { type: 'button', disabled: index === 0, 'aria-label': t('moveEarlier'), onClick: () => moveWaveAction(wave, index, -1) }, '↑'),
+      h('button', { type: 'button', disabled: index === order.length - 1, 'aria-label': t('moveLater'), onClick: () => moveWaveAction(wave, index, 1) }, '↓')
+    ]);
+  }));
 }
 
 function renderWaveAddMenu() {
-  return h('details', { class: 'wave-add-menu' }, [
-    h('summary', [h(PlusOutlined), t('addSpecialAction')]),
-    h('div', { class: 'wave-event-menu', role: 'group', 'aria-label': t('waveEventType') },
-      ADDABLE_WAVE_ACTIONS.map((definition: any) => h('button', {
-        type: 'button', onClick: (event: MouseEvent) => {
-          addWaveAction(definition.kind);
-          (event.currentTarget as HTMLElement).closest('details')?.removeAttribute('open');
-        }
-      }, t(definition.labelKey))))
+  return h('button', { type: 'button', class: 'add-button', 'aria-pressed': eventPickerOpen.value,
+    onClick: () => { eventPickerOpen.value = !eventPickerOpen.value; }
+  }, [h(PlusOutlined), t('addSpecialAction')]);
+}
+
+function renderWaveInspector(wave: WaveDraft, waveIndex: number) {
+  if (eventPickerOpen.value) return h('aside', { class: 'wave-inspector' }, [
+    h('h3', t('addSpecialAction')),
+    h('div', { class: 'event-catalog' }, ADDABLE_WAVE_ACTIONS.map((definition: any) => h('button', {
+      type: 'button', onClick: () => { addWaveAction(definition.kind); eventPickerOpen.value = false; }
+    }, t(definition.labelKey))))
+  ]);
+  const order = getEffectiveWaveActionOrder(wave, waveIndex);
+  const entry = order.find((item) => getWaveActionKey(item) === expandedWaveActionKey.value);
+  const difficulty = expandedWaveActionKey.value === 'difficulty';
+  return h('aside', { class: 'wave-inspector' }, [
+    h('h3', difficulty ? t('dynamicDifficulty') : entry ? getWaveActionEntryLabel(wave, entry) : t('advancedWaveSettings')),
+    difficulty ? renderDynamicDifficultyEditor()
+      : expandedWaveActionKey.value === 'settings' ? h('div', { class: 'inspector-fields' }, [
+          renderActionNumberField('firstWaveCountdown', draft.value.firstWaveCountdown, (value) => { markWaveSystemEdited(); draft.value.firstWaveCountdown = value; }),
+          h('label', { class: 'check-row' }, [h('input', { type: 'checkbox', checked: draft.value.suppressFlagZombie,
+            onChange: (event: Event) => { markWaveSystemEdited(); draft.value.suppressFlagZombie = (event.target as HTMLInputElement).checked; }
+          }), t('suppressFlagZombie')])
+        ]) : entry ? renderWaveActionEditor(wave, waveIndex, entry) : null
   ]);
 }
 
@@ -6210,25 +6172,9 @@ function renderDynamicDifficultyEditor() {
   if (!draft.value.supportsDynamicZombies) return null;
   const selectedLevel = selectedDynamicDifficulty.value;
   const configured = isDynamicZombieSlotConfigured(selectedLevel);
-  return h('section', { class: ['dynamic-difficulty', dynamicDifficultyOpen.value ? 'expanded' : ''] }, [
+  return h('section', { class: 'dynamic-difficulty' }, [
     h('div', { class: 'dynamic-difficulty-bar' }, [
       h(
-        'button',
-        {
-          type: 'button',
-          class: 'dynamic-difficulty-toggle',
-          'aria-expanded': dynamicDifficultyOpen.value,
-          'aria-controls': 'dynamic-difficulty-panel',
-          onClick: () => {
-            dynamicDifficultyOpen.value = !dynamicDifficultyOpen.value;
-          }
-        },
-        [
-          h('strong', t('dynamicDifficulty')),
-          h('span', { class: 'dynamic-difficulty-chevron', 'aria-hidden': 'true' }, '›')
-        ]
-      ),
-      dynamicDifficultyOpen.value ? h(
         'div',
         { class: 'dynamic-difficulty-tabs', role: 'tablist', 'aria-label': t('dynamicDifficulty') },
         Array.from({ length: 7 }, (_, index) => {
@@ -6252,10 +6198,9 @@ function renderDynamicDifficultyEditor() {
             [String(level), slotConfigured ? h('span', { class: 'difficulty-status-dot', 'aria-hidden': 'true' }) : null]
           );
         })
-      ) : null
+      )
     ]),
-    dynamicDifficultyOpen.value
-      ? h(
+    h(
           'div',
           {
             id: 'dynamic-difficulty-panel',
@@ -6291,7 +6236,7 @@ function renderDynamicDifficultyEditor() {
                 ])
               ]
         )
-      : null
+
   ]);
 }
 
@@ -6325,129 +6270,50 @@ function renderDynamicPoolWavePreview(waveIndex: number) {
 
 const WaveTimeline = defineComponent({
   setup() {
-    return () =>
-      h('section', { class: 'wave-panel', id: 'editor-waves' }, [
-        h('div', { class: 'panel-title row-title' }, [
-          h('span', t('waves')),
-          h('div', { class: 'wave-header-actions' }, [
-            h('label', { class: 'flag-interval-control' }, [
-              h('span', t('flagWaveInterval')),
-              h('input', {
-                type: 'number',
-                min: 1,
-                value: draft.value.flagWaveInterval,
-                disabled: draft.value.preserveGeneratorWaves || draft.value.preserveCustomWaveManager,
-                onInput: (event: Event) => setFlagWaveInterval((event.target as HTMLInputElement).value)
-              })
-            ]),
-            h('button', { class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')])
-          ])
-        ]),
-        h(
-          'div',
-          { class: 'wave-strip' },
-          draft.value.waves.map((wave, index) => {
-            const zombieCount = wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0);
-            const actionCount = getEffectiveWaveActionOrder(wave, index + 1).filter((entry) => entry.kind !== 'zombies').length;
-            return h(
-              'button',
-              {
-                class: ['wave-card', selectedWaveId.value === wave.id ? 'active' : '', wave.flag ? 'flag' : ''],
-                'aria-pressed': selectedWaveId.value === wave.id,
-                onClick: () => selectWave(wave.id)
-              },
-              [
-                h('strong', `#${index + 1}`),
-                h('span', t('waveZombieTotal', { count: zombieCount })),
-                actionCount ? h('span', t('waveEventTotal', { count: actionCount })) : null,
-                wave.zombies.length ? h('span', { class: 'wave-overview-types' }, [...new Set(wave.zombies.map((zombie) => getZombieDisplayName(zombie.code, zombie.label)))].slice(0, 3).join(' · ')) : null,
-                wave.flag ? h('span', { class: 'wave-flag-badge' }, t('flagWave')) : null
-              ]
-            );
-          })
-        ),
-        renderDynamicDifficultyEditor(),
-        expertMode.value
-          ? h('details', { class: 'advanced-details' }, [
-              h('summary', t('advancedWaveSettings')),
-              h('div', { class: 'advanced-grid' }, [
-                h('div', { class: 'field-row compact' }, [
-                  h('label', t('firstWaveCountdown')),
-                  h('input', {
-                    type: 'number',
-                    min: -1,
-                    value: draft.value.firstWaveCountdown,
-                    onInput: (event: Event) => {
-                      markWaveSystemEdited();
-                      draft.value.firstWaveCountdown = Number((event.target as HTMLInputElement).value);
-                    }
-                  })
-                ]),
-                h('label', { class: 'check-row advanced-check' }, [
-                  h('input', {
-                    type: 'checkbox',
-                    checked: draft.value.suppressFlagZombie,
-                    onChange: (event: Event) => {
-                      markWaveSystemEdited();
-                      draft.value.suppressFlagZombie = (event.target as HTMLInputElement).checked;
-                    }
-                  }),
-                  t('suppressFlagZombie')
-                ])
-              ])
-            ])
-          : null,
-        selectedWave.value
-          ? (() => {
-              const wave = selectedWave.value;
-              const waveIndex = draft.value.waves.findIndex((item) => item.id === wave.id);
-              return h('div', { class: 'wave-detail' }, [
-                h('div', { class: 'selected-wave-toolbar' }, [
-                  h('strong', t('selectedWaveNumber', { wave: waveIndex + 1 })),
-                  h('div', { class: 'selected-wave-actions' }, [
-                    h(
-                      'button',
-                      {
-                        type: 'button',
-                        disabled: waveIndex === 0,
-                        title: t('moveWaveEarlier'),
-                        onClick: () => moveWave(wave.id, -1)
-                      },
-                      ['←', t('moveEarlier')]
-                    ),
-                    h(
-                      'button',
-                      {
-                        type: 'button',
-                        disabled: waveIndex === draft.value.waves.length - 1,
-                        title: t('moveWaveLater'),
-                        onClick: () => moveWave(wave.id, 1)
-                      },
-                      [t('moveLater'), '→']
-                    ),
-                    h('button', { type: 'button', title: t('duplicateWave'), onClick: () => duplicateWave(wave.id) }, [
-                      h(CopyOutlined),
-                      t('duplicate')
-                    ]),
-                    h('button', { type: 'button', title: t('insertWaveAfter'), onClick: () => insertWaveAfter(wave.id) }, [
-                      h(PlusOutlined),
-                      t('insert')
-                    ]),
-                    draft.value.waves.length > 1
-                      ? h('button', { type: 'button', class: 'danger', onClick: () => removeWave(wave.id) }, [
-                          h(DeleteOutlined),
-                          t('remove')
-                        ])
-                      : null
-                  ])
-                ]),
-                renderDynamicPoolWavePreview(waveIndex + 1),
-                renderWaveActionSequence(wave, waveIndex + 1),
-                renderWaveAddMenu()
-              ]);
-            })()
-          : null
-      ]);
+    return () => h('section', { class: 'wave-panel', id: 'editor-waves' }, [
+      h('div', { class: 'panel-title row-title' }, [
+        h('span', t('waves')),
+        h('div', { class: 'wave-header-actions' }, [
+          h('label', { class: 'flag-interval-control' }, [h('span', t('flagWaveInterval')),
+            h('input', { type: 'number', min: 1, value: draft.value.flagWaveInterval,
+              disabled: draft.value.preserveGeneratorWaves || draft.value.preserveCustomWaveManager,
+              onInput: (event: Event) => setFlagWaveInterval((event.target as HTMLInputElement).value) })]),
+          draft.value.supportsDynamicZombies ? h('button', { type: 'button', class: 'text-button',
+            onClick: () => { expandedWaveActionKey.value = 'difficulty'; eventPickerOpen.value = false; }
+          }, t('dynamicDifficulty')) : null,
+          h('button', { type: 'button', class: 'text-button',
+            onClick: () => { expandedWaveActionKey.value = 'settings'; eventPickerOpen.value = false; }
+          }, t('waveSettings')),
+          h('button', { type: 'button', class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')])
+        ])
+      ]),
+      h('div', { class: 'wave-strip' }, draft.value.waves.map((wave, index) => h('button', {
+        type: 'button', class: ['wave-card', selectedWaveId.value === wave.id ? 'active' : '', wave.flag ? 'flag' : ''],
+        'aria-pressed': selectedWaveId.value === wave.id, onClick: () => selectWave(wave.id)
+      }, [h('strong', `#${index + 1}`), h('span', t('waveZombieTotal', { count: wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0) })),
+        wave.flag ? h('span', { class: 'wave-flag-badge' }, t('flagWave')) : null]))),
+      selectedWave.value ? (() => {
+        const wave = selectedWave.value;
+        const index = draft.value.waves.findIndex((item) => item.id === wave.id);
+        return h('div', { class: 'wave-composition' }, [
+          h('div', { class: 'wave-canvas' }, [
+            h('div', { class: 'selected-wave-toolbar' }, [h('h3', t('selectedWaveNumber', { wave: index + 1 })),
+              h('div', { class: 'selected-wave-actions' }, [
+                h('button', { type: 'button', disabled: index === 0, 'aria-label': t('moveWaveEarlier'), onClick: () => moveWave(wave.id, -1) }, '←'),
+                h('button', { type: 'button', disabled: index === draft.value.waves.length - 1, 'aria-label': t('moveWaveLater'), onClick: () => moveWave(wave.id, 1) }, '→'),
+                h('button', { type: 'button', onClick: () => duplicateWave(wave.id) }, [h(CopyOutlined), t('duplicate')]),
+                h('button', { type: 'button', onClick: () => insertWaveAfter(wave.id) }, [h(PlusOutlined), t('insert')]),
+                draft.value.waves.length > 1 ? h('button', { type: 'button', class: 'danger', onClick: () => removeWave(wave.id) }, [h(DeleteOutlined), t('remove')]) : null
+              ])]),
+            renderLanePreview(wave),
+            renderDynamicPoolWavePreview(index + 1),
+            h('div', { class: 'event-list-heading' }, [h('h3', t('waveEventType')), renderWaveAddMenu()]),
+            renderWaveActionSequence(wave, index + 1)
+          ]),
+          renderWaveInspector(wave, index + 1)
+        ]);
+      })() : null
+    ]);
   }
 });
 
@@ -6558,7 +6424,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   align-items: center;
   margin-top: 0.65rem;
   padding: 0.55rem 0.8rem;
-  border-left: 4px solid var(--editor-accent);
   border-radius: 8px;
   background: color-mix(in srgb, var(--editor-accent) 7%, var(--editor-panel));
   color: var(--editor-muted);
@@ -6974,7 +6839,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 .board-rules-panel {
   margin-bottom: 0.7rem;
   padding: 0.65rem;
-  border-left: 3px solid color-mix(in srgb, var(--editor-soil) 72%, var(--editor-border));
   border-radius: 8px;
   background: color-mix(in srgb, var(--editor-soil) 6%, transparent);
 }
@@ -8679,7 +8543,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   align-items: center;
   min-height: 2.75rem;
   padding: 0.45rem 0.65rem;
-  border-left: 3px solid var(--editor-sun);
   border-radius: 6px;
   background: color-mix(in srgb, var(--editor-sun) 7%, transparent);
 }
@@ -8747,8 +8610,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 
 .selected-wave-toolbar,
 .selected-wave-actions,
-.wave-action-entry-header,
-.wave-action-order-controls,
 .zombie-row-controls,
 .wave-action-editor-footer {
   display: flex;
@@ -8773,8 +8634,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   justify-content: flex-end;
 }
 
-.selected-wave-actions button,
-.wave-action-order-controls button {
+.selected-wave-actions button {
   display: inline-flex;
   gap: 0.3rem;
   align-items: center;
@@ -8791,8 +8651,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   cursor: pointer;
 }
 
-.selected-wave-actions button:not(:disabled):hover,
-.wave-action-order-controls button:not(:disabled):hover {
+.selected-wave-actions button:not(:disabled):hover {
   background: color-mix(in srgb, var(--editor-accent) 11%, var(--vp-c-bg));
   color: var(--editor-accent-strong);
 }
@@ -8801,8 +8660,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   color: #c74747;
 }
 
-.selected-wave-actions button:disabled,
-.wave-action-order-controls button:disabled {
+.selected-wave-actions button:disabled {
   opacity: 0.35;
   cursor: default;
 }
@@ -8811,34 +8669,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   overflow: hidden;
   border-top: 1px solid var(--editor-border);
   border-bottom: 1px solid var(--editor-border);
-}
-
-.wave-action-entry + .wave-action-entry {
-  border-top: 1px solid color-mix(in srgb, var(--editor-border) 70%, transparent);
-}
-
-.wave-action-entry-header {
-  min-width: 0;
-}
-
-.wave-action-entry-main {
-  display: grid;
-  flex: 1 1 auto;
-  grid-template-columns: 1.8rem minmax(0, 1fr) 1.2rem;
-  gap: 0.6rem;
-  align-items: center;
-  min-width: 0;
-  min-height: 3.45rem;
-  padding: 0.55rem 0.4rem;
-  border: 0;
-  background: transparent;
-  color: var(--editor-text);
-  text-align: left;
-  cursor: pointer;
-}
-
-.wave-action-entry-main:hover {
-  background: color-mix(in srgb, var(--editor-accent) 5%, transparent);
 }
 
 .wave-action-index {
@@ -8861,45 +8691,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 .wave-action-index.conveyor {
   background: color-mix(in srgb, var(--editor-soil) 15%, var(--vp-c-bg));
   color: var(--editor-soil);
-}
-
-.wave-action-entry-copy {
-  display: grid;
-  min-width: 0;
-}
-
-.wave-action-entry-copy strong,
-.wave-action-entry-copy small {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.wave-action-entry-copy small {
-  color: var(--editor-muted);
-  font-size: 0.74rem;
-}
-
-.wave-action-chevron {
-  color: var(--editor-muted);
-  font-size: 1.25rem;
-  transition: transform 0.18s ease;
-}
-
-.wave-action-entry.expanded .wave-action-chevron {
-  transform: rotate(90deg);
-}
-
-.wave-action-order-controls {
-  flex: 0 0 auto;
-  gap: 0.15rem;
-  padding-right: 0.25rem;
-}
-
-.wave-action-order-controls button {
-  width: 2rem;
-  min-width: 2rem;
-  padding: 0;
 }
 
 .wave-action-editor-body {
@@ -9776,49 +9567,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   color: var(--editor-muted);
 }
 
-.wave-add-menu {
-  justify-self: start;
-}
-
-.wave-add-menu > summary {
-  display: inline-flex;
-  gap: 0.4rem;
-  align-items: center;
-  min-height: 2.25rem;
-  padding: 0.3rem 0.65rem;
-  border-radius: 9px;
-  background: color-mix(in srgb, var(--editor-accent) 10%, var(--vp-c-bg));
-  color: var(--editor-accent-strong);
-  font-size: 0.8rem;
-  font-weight: 750;
-  cursor: pointer;
-  list-style: none;
-}
-
-.wave-add-menu > summary::-webkit-details-marker {
-  display: none;
-}
-
-.wave-add-menu-controls {
-  display: grid;
-  grid-template-columns: auto minmax(12rem, 1fr) auto;
-  gap: 0.4rem;
-  align-items: center;
-  margin-top: 0.5rem;
-}
-
-.wave-add-menu-controls select {
-  min-width: 0;
-  min-height: 2.3rem;
-  padding: 0.25rem 0.45rem;
-  border: 1px solid var(--editor-border);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
-  color: var(--editor-text);
-  font: inherit;
-  font-size: 0.78rem;
-}
-
 .wave-actions {
   display: flex;
   flex-wrap: wrap;
@@ -10192,8 +9940,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
     width: 100%;
   }
 
-  .selected-wave-actions button,
-  .wave-action-order-controls button {
+  .selected-wave-actions button {
     min-height: 2.75rem;
   }
 
@@ -10354,20 +10101,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   .chi-hole-lane-buttons {
     grid-template-columns: repeat(5, minmax(2.75rem, 1fr));
     width: 100%;
-  }
-
-  .wave-add-menu-controls {
-    grid-template-columns: minmax(0, 1fr) auto;
-    width: 100%;
-  }
-
-  .wave-add-menu-controls > button:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .wave-add-menu {
-    width: 100%;
-    justify-self: stretch;
   }
 
   .unsupported-object-card {

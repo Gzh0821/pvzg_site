@@ -34,6 +34,16 @@ test('new IDs are above recovered IDs, including support actions and deleted his
   assert.deepEqual(getNextProjectIds(fixture()), { item: 10, wave: 9, zombie: 13, action: 32 });
 });
 
+test('older template drafts with duplicate zombie IDs recover without merging or deleting entries', () => {
+  const draft = fixture();
+  draft.waves[0].zombies.push({ id: 12, code: 'sun', count: 5, row: '2' });
+  const project = readProjectState(createProjectState(draft, null, {}));
+  assert.deepEqual(project.draft.waves[0].zombies.map((zombie) => zombie.id), [12, 13]);
+  assert.equal(project.draft.waves[0].zombies[1].count, 5);
+  assert.deepEqual(project.draft.waves[0].zombies[0].entries, draft.waves[0].zombies[0].entries);
+  assert.equal(draft.waves[0].zombies[1].id, 12);
+});
+
 test('generator module and unknown fields survive project save and recovery', () => {
   const draft = fixture();
   draft.waves = [];

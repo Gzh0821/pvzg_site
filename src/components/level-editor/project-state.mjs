@@ -47,7 +47,16 @@ export function readProjectState(value) {
   }
   if (draft.preserveGeneratorWaves && !draft.preservedWaveManagerModule) throw new Error('Missing generator snapshot');
   if (draft.preserveCustomWaveManager && !draft.preservedWaveManagerObject) throw new Error('Missing wave manager snapshot');
-  return JSON.parse(JSON.stringify(project));
+  const result = JSON.parse(JSON.stringify(project));
+  if (!result.importedLevelSnapshot) {
+    const seen = new Set();
+    let next = getNextProjectIds(result.draft).zombie;
+    for (const zombie of result.draft.waves.flatMap((wave) => wave.zombies)) {
+      if (seen.has(zombie.id)) zombie.id = next++;
+      seen.add(zombie.id);
+    }
+  }
+  return result;
 }
 
 export function getNextProjectIds(draft) {
