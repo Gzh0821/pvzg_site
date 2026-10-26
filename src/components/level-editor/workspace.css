@@ -95,9 +95,7 @@
 .level-editor-shell button:active:not(:disabled), .project-menu > summary:active { transform: scale(.98); }
 .level-editor-shell button:focus-visible, .project-menu > summary:focus-visible { outline: 2px solid var(--editor-accent); outline-offset: 3px; }
 .level-editor-modal-root .ant-modal-content, .level-editor-drawer-root .ant-drawer-content { backdrop-filter: blur(28px) saturate(160%); }
-.level-editor-ad { margin: 4rem 0; padding: 1.5rem 0; border-block: 1px solid var(--vp-c-divider); text-align: center; }
-.level-editor-ad-label { display: block; margin-bottom: .75rem; color: var(--vp-c-text-mute); font: .8125rem system-ui, sans-serif; }
-.level-editor-ad .adsbygoogle { display: block; min-height: 90px; }
+.level-editor-ad { display: block; min-height: 90px; margin: 4rem 0; }
 @media (max-width: 900px) {
   .level-editor-shell .editor-topbar { grid-template-columns: minmax(0, 1fr); }
   .level-editor-shell .top-actions { justify-items: start; }
