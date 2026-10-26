@@ -5,11 +5,10 @@
       algorithm: $isDarkMode ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm
     }"
   >
-    <section class="level-editor-shell">
+    <section id="level-editor-workspace" class="level-editor-shell">
       <header class="editor-topbar">
         <div class="title-block">
           <div class="title-row">
-            <span class="title-sun" aria-hidden="true"></span>
             <a-typography-title :level="1" class="editor-title">{{ t('title') }}</a-typography-title>
           </div>
         </div>
@@ -34,16 +33,16 @@
               <span class="expert-mode-switch" aria-hidden="true"></span>
               <span class="expert-mode-label">{{ t('expertMode') }}</span>
             </label>
-            <a-upload :before-upload="handleUpload" accept=".json,.json5" :show-upload-list="false">
-              <a-button>
-                <template #icon><upload-outlined /></template>
-                {{ t('importLevel') }}
-              </a-button>
-            </a-upload>
-            <a-button @click="confirmResetDraft">
-              <template #icon><file-add-outlined /></template>
-              {{ t('newLevel') }}
-            </a-button>
+            <details class="project-menu">
+              <summary>{{ t('projectMenu') }}</summary>
+              <div class="project-menu-content" @click="closeProjectMenu">
+                <a-upload :before-upload="handleUpload" accept=".json,.json5" :show-upload-list="false">
+                  <a-button>{{ t('importLevel') }}</a-button>
+                </a-upload>
+                <a-button @click="exportProject">{{ t('backupProject') }}</a-button>
+                <a-button @click="confirmResetDraft">{{ t('newLevel') }}</a-button>
+              </div>
+            </details>
           </div>
           <div class="top-action-row action-row-export">
             <a-button :aria-label="t('undo')" :disabled="!canUndo" :title="`${t('undo')} · ⌘/Ctrl Z`" @click="restoreHistory(-1)">
@@ -52,11 +51,11 @@
             <a-button :aria-label="t('redo')" :disabled="!canRedo" :title="`${t('redo')} · ⌘/Ctrl ⇧ Z`" @click="restoreHistory(1)">
               <template #icon><redo-outlined /></template>{{ t('redo') }}
             </a-button>
-            <a-button @click="openPreview">
+            <a-button :aria-label="t('previewJson')" @click="openPreview">
               <template #icon><eye-outlined /></template>
               {{ t('previewJson') }}
             </a-button>
-            <a-button type="primary" @click="exportLevel">
+            <a-button type="primary" :aria-label="t('exportLevel')" @click="exportLevel">
               <template #icon><download-outlined /></template>
               {{ t('exportLevel') }}
             </a-button>
@@ -64,86 +63,56 @@
         </div>
       </header>
 
-      <nav class="workspace-nav" :aria-label="t('workspaceNavigation')">
-        <a href="#editor-basic">{{ t('importSectionBasic') }}</a>
-        <a href="#editor-board">{{ t('importSectionBoard') }}</a>
-        <a href="#editor-waves">{{ t('importSectionWaves') }}</a>
-        <span class="workspace-summary">{{ t('summaryWaves', { count: draft.waves.length }) }} · {{ t('summaryPlacements', { count: draft.boardItems.length }) }}</span>
+      <nav class="workspace-nav" role="tablist" :aria-label="t('workspaceNavigation')">
+        <button v-for="view in workspaceViews" :id="`level-tab-${view.id}`" :key="view.id"
+          type="button" role="tab" :aria-selected="activeWorkspace === view.id"
+          :aria-controls="`level-workspace-${view.id}`" :tabindex="activeWorkspace === view.id ? 0 : -1"
+          :class="{ active: activeWorkspace === view.id }" @click="switchWorkspace(view.id)"
+          @keydown="handleWorkspaceKeydown($event, view.id)">{{ t(view.label) }}</button>
+        <span class="workspace-summary">{{ t('summaryWaves', { count: draft.waves.length }) }}</span>
       </nav>
 
-      <div v-if="importCapability" class="import-capability-strip" role="status">
-        <strong>{{ t('importCheck') }}</strong>
-        <span class="capability-chip visual">
-          {{ t('importVisual', { sections: importVisualSectionLabels }) }}
-        </span>
-        <span v-if="importCapability.advancedActions" class="capability-chip advanced">
-          {{ t('importAdvancedActions', { count: importCapability.advancedActions }) }}
-        </span>
-        <span v-if="importCapability.preservedObjects" class="capability-chip preserved">
-          {{ t('importPreservedObjects', { count: importCapability.preservedObjects }) }}
-        </span>
-        <span v-if="importCapability.waveMode === 'generator'" class="capability-chip preserved">
-          {{ t('importGeneratorWaves') }}
-        </span>
+      <div v-if="importCapability?.preservedObjects || draft.preserveGeneratorWaves" class="import-capability-strip" role="status">
+        <span v-if="draft.preserveGeneratorWaves">{{ t('importGeneratorWaves') }}</span>
+        <span v-if="importCapability?.preservedObjects">{{ t('importPreservedObjects', { count: importCapability.preservedObjects }) }}</span>
+      </div>
+      <div v-if="draftSaveError || draftRestoreError" class="project-save-error" role="alert">
+        {{ t(draftRestoreError ? 'draftRestoreFailed' : 'draftSaveFailed') }}
+        <button type="button" @click="exportProject">{{ t('backupProject') }}</button>
       </div>
 
-      <div v-if="!isMobileViewport" class="desktop-layout">
-        <AssetLibrary class="panel library-panel" />
-        <main class="board-panel">
+      <section :id="`level-workspace-${activeWorkspace}`" class="workspace-content" role="tabpanel"
+        :aria-labelledby="`level-tab-${activeWorkspace}`">
+        <div v-if="activeWorkspace === 'basic'" class="basic-workspace glass-panel">
           <BasicForm />
-          <ObjectivesPanel
-            :system="draft.objectives"
-            :plant-options="plantOptions"
-            :selected-cell="selectedCell"
-            :selected-cell-items="selectedCellItems"
+          <ObjectivesPanel :system="draft.objectives" :plant-options="plantOptions"
+            :selected-cell="selectedCell" :selected-cell-items="selectedCellItems"
             :selected-plant-code="selectedPlantAsset ? selectedPlantAsset.code : ''"
-            :resolve-mold-locations="resolveBoardGridMapSquares"
-            :expert-mode="expertMode"
-            :translate="t"
-            @select-cell="selectedCell = $event"
-          />
-          <BoardEditor />
-        </main>
-        <PropertyPanel class="panel property-panel" />
-      </div>
+            :resolve-mold-locations="resolveBoardGridMapSquares" :expert-mode="expertMode" :translate="t"
+            @select-cell="selectObjectiveCell" />
+        </div>
+        <div v-else class="editing-workspace" :class="`workspace-${activeWorkspace}`">
+          <button type="button" class="mobile-asset-picker" @click="assetLibraryOpen = true">
+            {{ selectedAsset?.name || t('chooseAsset') }}
+          </button>
+          <AssetLibrary class="workspace-library glass-panel" />
+          <main class="workspace-main glass-panel">
+            <BoardEditor v-if="activeWorkspace === 'board'" />
+            <WaveTimeline v-else-if="activeWorkspace === 'waves'" />
+            <PropertyPanel v-else />
+          </main>
+        </div>
+      </section>
 
-      <div v-else class="mobile-layout">
-        <section class="mobile-section-stack">
-          <BasicForm />
-          <ObjectivesPanel
-            :system="draft.objectives"
-            :plant-options="plantOptions"
-            :selected-cell="selectedCell"
-            :selected-cell-items="selectedCellItems"
-            :selected-plant-code="selectedPlantAsset ? selectedPlantAsset.code : ''"
-            :resolve-mold-locations="resolveBoardGridMapSquares"
-            :expert-mode="expertMode"
-            :translate="t"
-            @select-cell="selectedCell = $event"
-          />
-        </section>
-        <section class="mobile-section-stack">
-          <AssetLibrary />
-        </section>
-        <section class="mobile-section-stack">
-          <BoardEditor />
-        </section>
-        <section class="mobile-section-stack">
-          <PropertyPanel />
-        </section>
-        <section class="mobile-section-stack">
-          <WaveTimeline />
-        </section>
-        <section v-if="validationItems.length" class="mobile-section-stack">
-          <ValidationPanel />
-        </section>
-      </div>
+      <a-drawer v-model:open="assetLibraryOpen" :title="t('chooseAsset')" placement="bottom"
+        height="min(70dvh, 600px)" root-class-name="level-editor-drawer-root">
+        <AssetLibrary v-if="assetLibraryOpen" />
+      </a-drawer>
 
-      <div v-if="!isMobileViewport" class="desktop-bottom" :class="{ 'without-validation': !validationItems.length }">
-        <PropertyPanel class="panel seedbank-fallback-panel" />
-        <WaveTimeline />
-        <ValidationPanel v-if="validationItems.length" compact />
-      </div>
+      <a-modal v-model:open="validationOpen" :title="t('validation')" :footer="null"
+        width="min(720px, 96vw)" wrap-class-name="level-editor-modal-root">
+        <ValidationPanel />
+      </a-modal>
 
       <a-modal
         v-model:open="previewOpen"
@@ -188,9 +157,7 @@ import {
   DownloadOutlined,
   EditOutlined,
   EyeOutlined,
-  FileAddOutlined,
   PlusOutlined,
-  UploadOutlined,
   UndoOutlined,
   RedoOutlined
 } from '@ant-design/icons-vue';
@@ -201,6 +168,7 @@ import { resolveBoardGridMapSquares } from '../game-data/board-grid-maps';
 import { plantFeaturesJson as plantFeatures } from '../game-data/plants';
 import { zombieFeaturesJson as zombieFeatures } from '../game-data/zombies';
 import localeMessages from './i18n.json';
+import { createProjectState, readProjectState, getNextProjectIds, DRAFT_STORAGE_KEY, PROJECT_KIND } from './project-state.mjs';
 import ObjectivesPanel from './objectives-panel';
 import BoardRulesPanel from './board-rules-panel';
 import {
@@ -211,6 +179,8 @@ import {
   getImportedObjectsByClass,
   getLevelRootExtra,
   getUnchangedImportedLevel,
+  getDefinitionEditedImportedLevel,
+  preserveUneditedDefinitionFields,
   isImportedDomainUnchanged,
   normalizePlantCodes,
   normalizeSeedPlants,
@@ -634,9 +604,23 @@ interface ImportCapabilitySummary {
 const messages = localeMessages as Record<string, Record<LocaleKey, string>>;
 const providedLanguage = inject<string>('i18nLanguage', 'zh');
 const previewOpen = ref(false);
-const isMobileViewport = ref(false);
-let mobileViewportQuery: MediaQueryList | null = null;
 const EXPERT_MODE_STORAGE_KEY = 'pvzg-level-editor-expert-mode';
+type WorkspaceId = 'basic' | 'board' | 'waves' | 'seed';
+const workspaceViews: { id: WorkspaceId; label: string }[] = [
+  { id: 'basic', label: 'importSectionBasic' }, { id: 'board', label: 'importSectionBoard' },
+  { id: 'waves', label: 'importSectionWaves' }, { id: 'seed', label: 'importSectionSeed' }
+];
+const activeWorkspace = ref<WorkspaceId>('basic');
+const validationOpen = ref(false);
+const assetLibraryOpen = ref(false);
+const draftSaveError = ref(false);
+const draftRestoreError = ref(false);
+let unreadableDraft: string | null = null;
+let draftReady = false;
+let draftDirty = false;
+let draftSaveTimer: ReturnType<typeof setTimeout> | undefined;
+const recentZombieCodes = ref<string[]>([]);
+const selectedSpawnRow = ref('');
 const expertMode = ref(false);
 const assetTab = ref<AssetKind>('plant');
 const objectCategory = ref<ObjectCategoryFilter>('all');
@@ -645,7 +629,6 @@ const assetVisibleLimit = ref(ASSET_PAGE_SIZE);
 const selectedAsset = ref<AssetOption | null>(null);
 const selectedCell = ref<{ row: number; col: number } | null>(null);
 const selectedWaveId = ref(1);
-const newWaveActionKind = ref<AddableWaveActionKind>('tide');
 const newSchedulerChildKind = ref<AddableWaveActionKind>('storm');
 const selectedSchedulerChildAliases = ref<Record<number, string>>({});
 const newGravestoneType = ref('gravestone_egypt');
@@ -725,30 +708,21 @@ async function restoreHistory(direction: number) {
   draft.value = JSON.parse(editHistory.value[index]);
   selectedWaveId.value = draft.value.waves.some((wave) => wave.id === selectedWaveId.value)
     ? selectedWaveId.value : draft.value.waves[0]?.id || 1;
-  selectedCell.value = null;
-  expandedWaveActionKey.value = '';
+  const wave = selectedWave.value;
+  const entries = wave ? getEffectiveWaveActionOrder(wave, draft.value.waves.indexOf(wave) + 1) : [];
+  const keys = entries.map(getWaveActionKey);
+  if (!keys.includes(expandedWaveActionKey.value)) expandedWaveActionKey.value = keys[0] || '';
   await nextTick();
   restoringHistory = false;
 }
 
-watch(draft, recordHistory, { deep: true, flush: 'post' });
+watch(draft, () => { recordHistory(); if (draftReady) draftDirty = true; scheduleDraftSave(); }, { deep: true, flush: 'post' });
 
 const language = computed<LocaleKey>(() => {
   if (providedLanguage.startsWith('es')) return 'es';
   if (providedLanguage.startsWith('ru')) return 'ru';
   if (providedLanguage.startsWith('en')) return 'en';
   return 'zh';
-});
-
-const importVisualSectionLabels = computed(() => {
-  const sectionKeys: Record<string, string> = {
-    basic: 'importSectionBasic',
-    seed: 'importSectionSeed',
-    board: 'importSectionBoard',
-    waves: 'importSectionWaves',
-    objectives: 'importSectionObjectives'
-  };
-  return (importCapability.value?.visualSections || []).map((section) => t(sectionKeys[section] || section)).join(' · ');
 });
 
 const availableStageOptions = computed(() => {
@@ -1001,33 +975,46 @@ function handleKeydown(event: KeyboardEvent) {
     void restoreHistory(event.shiftKey ? 1 : -1);
     return;
   }
+  if (activeWorkspace.value === 'waves' && !event.ctrlKey && !event.metaKey && !event.altKey &&
+      !target.closest('input, textarea, select, [contenteditable="true"], .ant-modal, .ant-drawer') &&
+      !previewOpen.value && !validationOpen.value && !conveyorEditorOpen.value) {
+    const index = '1234567890qw'.indexOf(event.key.toLowerCase());
+    const code = recentZombieCodes.value[index];
+    if (index >= 0 && code) { event.preventDefault(); addZombieToWave(code, selectedSpawnRow.value); return; }
+  }
   if (event.key !== 'Escape' || previewOpen.value || !selectedAsset.value) return;
   clearSelectedAsset();
 }
 
-function updateMobileViewport(event: MediaQueryListEvent | MediaQueryList) {
-  isMobileViewport.value = event.matches;
-}
-
 onMounted(() => {
-  expertMode.value = window.localStorage.getItem(EXPERT_MODE_STORAGE_KEY) === '1';
+  try {
+    expertMode.value = window.localStorage.getItem(EXPERT_MODE_STORAGE_KEY) === '1';
+    const saved = window.localStorage.getItem(DRAFT_STORAGE_KEY);
+    if (saved) {
+      try { restoreProject(readProjectState(saved)); }
+      catch { unreadableDraft = saved; draftRestoreError.value = true; }
+    }
+  } catch {
+    draftSaveError.value = true;
+  }
+  draftReady = true;
+  window.addEventListener('pagehide', saveDraftNow);
+  document.addEventListener('visibilitychange', saveHiddenDraft);
   window.addEventListener('keydown', handleKeydown);
-  mobileViewportQuery = window.matchMedia('(max-width: 760px)');
-  updateMobileViewport(mobileViewportQuery);
-  mobileViewportQuery.addEventListener('change', updateMobileViewport);
 });
 
 onBeforeUnmount(() => {
+  saveDraftNow();
+  clearTimeout(draftSaveTimer);
+  window.removeEventListener('pagehide', saveDraftNow);
+  document.removeEventListener('visibilitychange', saveHiddenDraft);
   window.removeEventListener('keydown', handleKeydown);
-  if (mobileViewportQuery) {
-    mobileViewportQuery.removeEventListener('change', updateMobileViewport);
-  }
 });
 
 watch(expertMode, (enabled) => {
   if (typeof window === 'undefined') return;
   if (!enabled && selectedAsset.value?.advanced) clearSelectedAsset();
-  window.localStorage.setItem(EXPERT_MODE_STORAGE_KEY, enabled ? '1' : '0');
+  try { window.localStorage.setItem(EXPERT_MODE_STORAGE_KEY, enabled ? '1' : '0'); } catch { draftSaveError.value = true; }
 });
 
 watch([assetTab, objectCategory, assetSearch, expertMode], () => {
@@ -1186,12 +1173,13 @@ function createDefaultDraft(): LevelDraft {
 }
 
 function resetDraft() {
+  unreadableDraft = null;
+  draftRestoreError.value = false;
   closeConveyorEditor();
   importedLevelSnapshot = null;
   importCapability.value = null;
   draft.value = createDefaultDraft();
   selectedWaveId.value = 1;
-  newWaveActionKind.value = 'tide';
   newSchedulerChildKind.value = 'storm';
   selectedSchedulerChildAliases.value = {};
   newGravestoneType.value = 'gravestone_egypt';
@@ -1223,14 +1211,98 @@ function confirmResetDraft() {
   });
 }
 
-async function openValidation() {
-  const isMobile = window.matchMedia('(max-width: 760px)').matches;
-  await nextTick();
-  const selector = isMobile ? '.mobile-layout .validation-panel' : '.desktop-bottom .validation-panel';
-  document.querySelector(selector)?.scrollIntoView({
-    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-    block: 'center'
+function openValidation() {
+  validationOpen.value = true;
+}
+
+function switchWorkspace(id: WorkspaceId) {
+  activeWorkspace.value = id;
+  if (id === 'waves') assetTab.value = 'zombie';
+  if (id === 'seed') assetTab.value = 'plant';
+  closeConveyorEditor();
+  closeProjectMenu();
+  scheduleDraftSave();
+}
+
+function handleWorkspaceKeydown(event: KeyboardEvent, id: WorkspaceId) {
+  const index = workspaceViews.findIndex((view) => view.id === id);
+  const next = event.key === 'ArrowRight' ? (index + 1) % workspaceViews.length
+    : event.key === 'ArrowLeft' ? (index + workspaceViews.length - 1) % workspaceViews.length
+      : event.key === 'Home' ? 0 : event.key === 'End' ? workspaceViews.length - 1 : -1;
+  if (next < 0) return;
+  event.preventDefault();
+  switchWorkspace(workspaceViews[next].id);
+  nextTick(() => document.getElementById(`level-tab-${workspaceViews[next].id}`)?.focus());
+}
+
+function selectObjectiveCell(cell: { row: number; col: number }) {
+  selectedCell.value = cell;
+  switchWorkspace('board');
+}
+
+function captureProject() {
+  return createProjectState(draft.value, importedLevelSnapshot, {
+    activeWorkspace: activeWorkspace.value, selectedWaveId: selectedWaveId.value,
+    recentZombieCodes: recentZombieCodes.value
   });
+}
+
+function restoreProject(project: ReturnType<typeof readProjectState>) {
+  unreadableDraft = null;
+  draftRestoreError.value = false;
+  closeConveyorEditor();
+  importedLevelSnapshot = project.importedLevelSnapshot;
+  draft.value = project.draft;
+  importCapability.value = importedLevelSnapshot ? analyzeLevelCapabilities(importedLevelSnapshot.source) as ImportCapabilitySummary : null;
+  const ids = getNextProjectIds(draft.value);
+  nextItemId.value = ids.item;
+  nextWaveId.value = ids.wave;
+  nextZombieId.value = ids.zombie;
+  nextWaveActionId.value = ids.action;
+  activeWorkspace.value = workspaceViews.some((view) => view.id === project.editor.activeWorkspace) ? project.editor.activeWorkspace : 'basic';
+  selectedWaveId.value = draft.value.waves.some((wave) => wave.id === project.editor.selectedWaveId)
+    ? project.editor.selectedWaveId : draft.value.waves[0]?.id || 1;
+  recentZombieCodes.value = Array.isArray(project.editor.recentZombieCodes)
+    ? project.editor.recentZombieCodes.filter((code: unknown) => typeof code === 'string').slice(0, 12) : [];
+  selectedCell.value = null;
+  selectedAsset.value = null;
+  assetTab.value = activeWorkspace.value === 'waves' ? 'zombie' : 'plant';
+  resetHistory();
+}
+
+function saveDraftNow() {
+  if (!draftReady || !draftDirty || draftRestoreError.value) return;
+  clearTimeout(draftSaveTimer);
+  try {
+    window.localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(captureProject()));
+    draftSaveError.value = false;
+    draftDirty = false;
+  } catch { draftSaveError.value = true; }
+}
+
+function saveHiddenDraft() {
+  if (document.visibilityState === 'hidden') saveDraftNow();
+}
+
+function scheduleDraftSave() {
+  if (!draftReady) return;
+  draftDirty = true;
+  clearTimeout(draftSaveTimer);
+  draftSaveTimer = setTimeout(saveDraftNow, 350);
+}
+
+function exportProject() {
+  const blob = new Blob([unreadableDraft || JSON.stringify(captureProject(), null, 2)], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${draft.value.name || 'custom_level'}.project.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function closeProjectMenu() {
+  document.querySelector('.level-editor-shell .project-menu')?.removeAttribute('open');
 }
 
 function chooseAsset(asset: AssetOption) {
@@ -1239,13 +1311,14 @@ function chooseAsset(asset: AssetOption) {
     return;
   }
   selectedAsset.value = asset;
+  assetLibraryOpen.value = false;
   assetTab.value = asset.kind;
   if (asset.kind === 'object') objectCategory.value = asset.category || 'all';
   if (asset.kind === 'plant') {
     seedActionHint.value = '';
     conveyorActionHint.value = '';
   }
-  if (asset.kind === 'zombie') zombieActionHint.value = '';
+  if (asset.kind === 'zombie') { zombieActionHint.value = ''; rememberZombie(asset.code); }
 }
 
 function showMoreAssets() {
@@ -1599,10 +1672,6 @@ function isDynamicZombieSlotConfigured(level: number) {
   return Object.keys(getDynamicZombieSlot(level)).length > 0;
 }
 
-function getConfiguredDynamicDifficultyCount() {
-  return Array.from({ length: 7 }, (_, index) => index + 1).filter(isDynamicZombieSlotConfigured).length;
-}
-
 function commitDynamicZombieSlots(slots: Record<string, any>[]) {
   if (!draft.value.supportsDynamicZombies) return;
   draft.value.waveManagerModuleExtra = {
@@ -1766,6 +1835,17 @@ function normalizeFlagWaveIntervalMagnitude(value: unknown, fallback = 5) {
 }
 
 function addWave() {
+  if (draft.value.preserveGeneratorWaves || draft.value.preserveCustomWaveManager) {
+    Modal.confirm({
+      wrapClassName: 'level-editor-modal-root', title: t('replaceWaveSystem'),
+      content: t('replaceWaveSystemDescription'), okText: t('replaceWaveSystem'), cancelText: t('cancel'),
+      onOk: () => {
+        markWaveSystemEdited();
+        addWave();
+      }
+    });
+    return;
+  }
   markWaveSystemEdited();
   const wave = createEmptyWave(draft.value.waves.length + 1);
   draft.value.waves.push(wave);
@@ -1894,7 +1974,7 @@ function removeWave(id: number) {
   pruneWaveSupportObjects();
 }
 
-function addZombieToWave(code: string) {
+function addZombieToWave(code: string, row = selectedSpawnRow.value) {
   if (!selectedWave.value) return;
   markWaveSystemEdited();
   const zombie = zombieOptions.value.find((item) => item.code === code);
@@ -1902,7 +1982,8 @@ function addZombieToWave(code: string) {
   if (!selectedWave.value.actionOrder.some((entry) => entry.kind === 'zombies')) {
     selectedWave.value.actionOrder.push({ kind: 'zombies' });
   }
-  selectedWave.value.zombies.push({ id: nextZombieId.value++, code: zombie.code, label: zombie.name, count: 1, row: '' });
+  selectedWave.value.zombies.push({ id: nextZombieId.value++, code: zombie.code, label: zombie.name, count: 1, row });
+  rememberZombie(code);
   expandedWaveActionKey.value = 'zombies';
 }
 
@@ -1913,6 +1994,10 @@ function addSelectedZombieToWave() {
   }
   zombieActionHint.value = '';
   addZombieToWave(selectedZombieAsset.value.code);
+}
+
+function rememberZombie(code: string) {
+  if (!recentZombieCodes.value.includes(code)) recentZombieCodes.value = [...recentZombieCodes.value, code].slice(-12);
 }
 
 function getZombieDisplayName(code: string, fallback: string) {
@@ -2328,7 +2413,13 @@ function handleUpload(file: File) {
   const reader = new FileReader();
   reader.onload = () => {
     try {
-      const parsed = JSON5.parse(String(reader.result || '{}'));
+      const parsed = JSON5.parse(String(reader.result || '{}').replace(/^\uFEFF/, ''));
+      if (parsed?.kind === PROJECT_KIND) {
+        restoreProject(readProjectState(parsed));
+        scheduleDraftSave();
+        message.success(t('imported'));
+        return;
+      }
       if (!validateLevelDocument(parsed)) {
         message.error(t('importInvalidStructure'));
         return;
@@ -2348,6 +2439,7 @@ function handleUpload(file: File) {
       eventZombieActionHint.value = '';
       selectedCell.value = null;
       resetHistory();
+      scheduleDraftSave();
       message.success(t('imported'));
     } catch (error) {
       message.error(t('importFailed'));
@@ -2807,7 +2899,9 @@ function buildModuleRefs(
   shouldReferenceWaveManager: boolean,
   generatedBoardRefs: string[],
   shouldEmitSeedBank: boolean,
-  shouldEmitConveyor: boolean
+  shouldEmitConveyor: boolean,
+  waveModuleRef = NEW_WAVES_REF,
+  seedBankRef = 'RTID(SeedBank@CurrentLevel)'
 ) {
   const mowerRefs = new Set(
     mowerOptions
@@ -2820,8 +2914,8 @@ function buildModuleRefs(
   let refs = [...draft.value.moduleRefs];
   refs = replaceModuleGroup(refs, sunDropperRefs, sunDropperModule !== NO_MODULE ? `RTID(${sunDropperModule}@LevelModules)` : null);
   refs = replaceModuleGroup(refs, mowerRefs, mowerModule !== NO_MODULE ? `RTID(${mowerModule}@LevelModules)` : null);
-  refs = setModuleRef(refs, NEW_WAVES_REF, shouldReferenceWaveManager);
-  refs = setModuleRef(refs, 'RTID(SeedBank@CurrentLevel)', shouldEmitSeedBank && !shouldEmitConveyor);
+  refs = setModuleRef(refs, waveModuleRef, shouldReferenceWaveManager);
+  refs = setModuleRef(refs, seedBankRef, shouldEmitSeedBank && !shouldEmitConveyor);
   refs = replaceModuleGroup(
     refs,
     new Set([
@@ -2852,7 +2946,15 @@ function buildModuleRefs(
 function serializeLevel() {
   const unchangedImportedLevel = getUnchangedImportedLevel(importedLevelSnapshot, draft.value);
   if (unchangedImportedLevel) return unchangedImportedLevel;
+  const metadataEditedLevel = getDefinitionEditedImportedLevel(importedLevelSnapshot, draft.value);
+  if (metadataEditedLevel) return metadataEditedLevel;
 
+  const importedWaveModule = getImportedObjectsByClass(importedLevelSnapshot, 'WaveManagerModuleProperties')[0];
+  const waveModuleAliases = importedWaveModule?.aliases?.length ? importedWaveModule.aliases : ['NewWaves'];
+  const waveModuleRef = `RTID(${waveModuleAliases[0]}@CurrentLevel)`;
+  const importedSeedBankObjects = getImportedObjectsByClass(importedLevelSnapshot, 'SeedBankProperties');
+  const seedBankAliases = importedSeedBankObjects[0]?.aliases?.length ? importedSeedBankObjects[0].aliases : ['SeedBank'];
+  const seedBankRef = `RTID(${seedBankAliases[0]}@CurrentLevel)`;
   const stage = stageOptions.find((item) => item.value === draft.value.stage) || stageOptions[2];
   const mowerModule = draft.value.mower === STAGE_DEFAULT_MOWER ? stage.mower : draft.value.mower;
   const sunDropperModule = draft.value.sunDropper;
@@ -2867,11 +2969,11 @@ function serializeLevel() {
   const shouldPreserveConveyor = shouldEmitConveyor && draft.value.conveyor.preserveOriginal && !draft.value.conveyor.dirty && draft.value.conveyor.originalObject;
   const shouldEmitWaveManager =
     !!preserveGeneratorWaveSystem || !!preserveCustomWaveManager || draft.value.hasWaveManager || draft.value.waves.length > 0;
-  const shouldReferenceWaveManager = draft.value.moduleRefs.includes(NEW_WAVES_REF) || (draft.value.waveSystemDirty && draft.value.waves.length > 0);
+  const shouldReferenceWaveManager = draft.value.moduleRefs.includes(waveModuleRef) || (draft.value.waveSystemDirty && draft.value.waves.length > 0);
   const shouldEmitSeedBank =
     !shouldEmitConveyor &&
     (draft.value.hasSeedBank ||
-      draft.value.moduleRefs.includes('RTID(SeedBank@CurrentLevel)') ||
+      draft.value.moduleRefs.includes(seedBankRef) ||
       normalizedSeedPlants.length > 0 ||
       draft.value.includePlants.length > 0 ||
       draft.value.excludePlants.length > 0 ||
@@ -2879,17 +2981,16 @@ function serializeLevel() {
       draft.value.seedMode === 'preset' ||
       draft.value.overrideSeedSlots ||
       Object.keys(draft.value.seedBankExtra || {}).length > 0);
-  const importedSeedBankObjects = getImportedObjectsByClass(importedLevelSnapshot, 'SeedBankProperties');
   const shouldPreserveImportedSeedBank =
     shouldEmitSeedBank &&
     importedSeedBankObjects.length > 0 &&
     isImportedDomainUnchanged(importedLevelSnapshot, draft.value, 'seed');
   const usedActionAliases = new Set<string>([
-    'SeedBank',
+    ...seedBankAliases,
     'Conveyor',
     'ConveyorBelt',
     draft.value.conveyor.alias || 'ConveyorBelt',
-    'NewWaves',
+    ...waveModuleAliases,
     draft.value.waveManagerAlias,
     'InitialGridItems',
     'Gravestones',
@@ -3057,7 +3158,9 @@ function serializeLevel() {
           shouldReferenceWaveManager,
           generatedBoardRefs,
           shouldEmitSeedBank,
-          shouldEmitConveyor
+          shouldEmitConveyor,
+          waveModuleRef,
+          seedBankRef
         ),
         ...(draft.value.author.trim() ? { WrittenBy: draft.value.author.trim() } : {})
       }
@@ -3072,7 +3175,8 @@ function serializeLevel() {
       shouldPreserveImportedSeedBank
         ? importedSeedBankObjects[0]
         : {
-            aliases: ['SeedBank'],
+            ...cloneJson(importedSeedBankObjects[0] || {}),
+            aliases: seedBankAliases,
             objclass: 'SeedBankProperties',
             objdata: seedBankData
           },
@@ -3103,7 +3207,8 @@ function serializeLevel() {
   } else if (shouldEmitWaveManager) {
     objects.push(
       {
-        aliases: ['NewWaves'],
+        ...cloneJson(importedWaveModule || {}),
+        aliases: waveModuleAliases,
         objclass: 'WaveManagerModuleProperties',
         objdata: {
           ...draft.value.waveManagerModuleExtra,
@@ -3157,8 +3262,15 @@ function serializeLevel() {
 
   objects.push(...draft.value.unsupportedRawObjects);
 
+  const definition = objects.find((object) => object.objclass === 'LevelDefinition');
+  if (definition) definition.objdata = preserveUneditedDefinitionFields(importedLevelSnapshot, draft.value, definition.objdata);
   const reconciledObjects = reconcileLevelObjects(importedLevelSnapshot?.source?.objects, objects);
-  return buildLevelDocument(draft.value.rootExtra, draft.value.name, reconciledObjects);
+  const result = buildLevelDocument(draft.value.rootExtra, draft.value.name, reconciledObjects);
+  if (importedLevelSnapshot) {
+    if (Object.hasOwn(importedLevelSnapshot.source, '#comment')) result['#comment'] = cloneJson(importedLevelSnapshot.source['#comment']);
+    else delete result['#comment'];
+  }
+  return result;
 }
 
 function uniqueRefs(refs: string[]) {
@@ -3249,10 +3361,6 @@ const BasicForm = defineComponent({
             }
           })
         ]),
-        expertMode.value
-          ? h('details', { class: 'advanced-details wide' }, [
-              h('summary', t('advancedLevel')),
-              h('div', { class: 'advanced-grid' }, [
                 h('div', { class: 'field-row' }, [
                   h('label', t('author')),
                   h('input', {
@@ -3263,6 +3371,10 @@ const BasicForm = defineComponent({
                     }
                   })
                 ]),
+        expertMode.value
+          ? h('details', { class: 'advanced-details wide' }, [
+              h('summary', t('advancedLevel')),
+              h('div', { class: 'advanced-grid' }, [
                 h('div', { class: 'field-row' }, [
                   h('label', t('mower')),
                   h(
@@ -3357,6 +3469,16 @@ const AssetLibrary = defineComponent({
               )
             ])
           : null,
+        activeWorkspace.value === 'waves' && recentZombieCodes.value.length
+          ? h('div', { class: 'recent-zombies', role: 'group', 'aria-label': t('recentZombies') },
+              recentZombieCodes.value.map((code, index) => {
+                const zombie = zombieOptions.value.find((item) => item.code === code);
+                return zombie ? h('button', {
+                  type: 'button', title: `${zombie.name} · ${'1234567890QW'[index]}`,
+                  'aria-label': t('quickAddZombie', { name: zombie.name, key: '1234567890QW'[index] }),
+                  onClick: () => addZombieToWave(code)
+                }, [h('img', { src: zombie.image, alt: '' }), h('kbd', '1234567890QW'[index])]) : null;
+              })) : null,
         h('input', {
           class: 'asset-search',
           placeholder: t('search'),
@@ -3803,23 +3925,6 @@ function renderPlantPills(listKey: PlantListKey) {
   );
 }
 
-function renderConveyorPlantPills() {
-  return h(
-    'div',
-    { class: 'seed-list' },
-    draft.value.conveyor.initialPlants.length
-      ? draft.value.conveyor.initialPlants.map((entry, index) => {
-          const plant = plantOptions.value.find((item) => item.code === entry.PlantType);
-          return h('span', { class: 'seed-pill' }, [
-            plant?.image ? h('img', { src: plant.image, alt: plant.name, loading: 'lazy' }) : null,
-            h('span', plant?.name || entry.PlantType),
-            h('button', { 'aria-label': t('remove'), onClick: () => removeConveyorPlant(index) }, 'x')
-          ]);
-        })
-      : h('small', { class: 'seed-mode-hint' }, t('emptyList'))
-  );
-}
-
 function renderPlantSelect(value: string, onChange: (code: string) => void) {
   const knownPlant = plantOptions.value.some((plant) => plant.code === value);
   return h(
@@ -4004,18 +4109,6 @@ function renderConveyorWaveModifications() {
   ]);
 }
 
-function renderConveyorSummary() {
-  const rulesCount = draft.value.conveyor.dropDelayConditions.length + draft.value.conveyor.speedConditions.length;
-  return h('div', { class: 'conveyor-summary-grid' }, [
-    h('div', { class: 'conveyor-summary-card' }, [h('strong', String(draft.value.conveyor.initialPlants.length)), h('span', t('conveyorSummaryPlants'))]),
-    h('div', { class: 'conveyor-summary-card' }, [h('strong', String(rulesCount)), h('span', t('conveyorSummaryRules'))]),
-    h('div', { class: 'conveyor-summary-card' }, [
-      h('strong', String(draft.value.conveyor.waveModifications.length)),
-      h('span', t('conveyorSummaryWaveMods'))
-    ])
-  ]);
-}
-
 function renderConveyorAdvancedTabs() {
   const tabs: Array<{ key: ConveyorAdvancedTab; label: string }> = [
     { key: 'plants', label: t('conveyorTabPlants') },
@@ -4065,49 +4158,10 @@ function renderConveyorAdvancedTabPanel() {
 }
 
 function renderConveyorControls() {
-  const children = [
-    h('strong', `${t('conveyor')} ${draft.value.conveyor.initialPlants.length}`),
-    renderConveyorPlantPills(),
-    h('div', { class: 'action-row' }, [
-      h(
-        'button',
-        {
-          class: ['add-button', !selectedPlantAsset.value ? 'is-disabled' : ''],
-          'aria-disabled': !selectedPlantAsset.value ? 'true' : 'false',
-          onClick: addSelectedConveyorPlant
-        },
-        [h(PlusOutlined), t('addSelectedPlant')]
-      ),
-      conveyorActionHint.value ? h('small', { class: 'action-hint' }, t(conveyorActionHint.value)) : null
-    ])
-  ];
-  if (!expertMode.value) return children;
-  const enabledChildren = [
-    h('small', { class: 'seed-mode-hint' }, t('conveyorSeedBankNotice')),
-    draft.value.conveyor.originalObject
-      ? h('div', { class: 'advanced-grid single' }, [
-          h('label', { class: 'check-row advanced-check' }, [
-            h('input', {
-              type: 'checkbox',
-              checked: draft.value.conveyor.preserveOriginal && !draft.value.conveyor.dirty,
-              onChange: (event: Event) => {
-                draft.value.conveyor.preserveOriginal = (event.target as HTMLInputElement).checked;
-                draft.value.conveyor.dirty = !(event.target as HTMLInputElement).checked;
-              }
-            }),
-            t('conveyorPreserveOriginal')
-          ])
-        ])
-      : null,
-    renderConveyorSummary(),
+  return [
     renderConveyorAdvancedTabs(),
     renderConveyorAdvancedTabPanel()
   ];
-  children.push(h('details', { class: 'advanced-details conveyor-details' }, [
-    h('summary', t('advancedConveyor')),
-    h('div', { class: 'conveyor-body' }, enabledChildren)
-  ]));
-  return children;
 }
 
 function renderSeedSupplyModeSelector() {
@@ -4170,8 +4224,7 @@ function renderSeedBankControls() {
       seedActionHint.value ? h('small', { class: 'action-hint' }, t(seedActionHint.value)) : null
     ]),
     expertMode.value
-      ? h('details', { class: 'advanced-details' }, [
-          h('summary', t('advancedSeedBank')),
+      ? h('section', { class: 'seed-bank-options' }, [
           h('label', { class: 'check-row' }, [
             h('input', {
               type: 'checkbox',
@@ -5774,63 +5827,35 @@ function renderEventZombiePoolEditor(action: WaveActionDraft) {
 }
 
 function renderLanePreview(wave: WaveDraft) {
-  const rows = [1, 2, 3, 4, 5].map((row) => ({
-    row: String(row),
-    zombies: wave.zombies.filter((zombie) => zombie.row === String(row))
-  }));
-  const random = wave.zombies.filter((zombie) => zombie.row === '');
-  const special = wave.zombies.filter((zombie) => zombie.row !== '' && !['1', '2', '3', '4', '5'].includes(zombie.row));
+  const rows = ['1', '2', '3', '4', '5', ''];
+  const special = wave.zombies.filter((zombie) => zombie.row !== '' && !rows.includes(zombie.row));
   return h('div', { class: 'lane-preview', 'aria-label': t('lanePreview') }, [
-    ...rows.map((lane) =>
-      h('div', { class: 'lane-preview-row' }, [
-        h('span', { class: 'lane-number' }, lane.row),
-        h(
-          'div',
-          { class: 'lane-zombies' },
-          lane.zombies.length
-            ? lane.zombies.map((zombie) =>
-                h('span', { class: 'lane-zombie-chip', title: getZombieDisplayName(zombie.code, zombie.label) }, [
-                  h('span', { class: 'lane-zombie-dot', 'aria-hidden': 'true' }),
-                  getZombieDisplayName(zombie.code, zombie.label),
-                  h('strong', `×${zombie.count}`)
-                ])
-              )
-            : h('span', { class: 'lane-empty' }, '—')
-        )
-      ])
-    ),
-    random.length
-      ? h('div', { class: 'lane-preview-row random' }, [
-          h('span', { class: 'lane-number' }, t('randomRowShort')),
-          h(
-            'div',
-            { class: 'lane-zombies' },
-            random.map((zombie) =>
-              h('span', { class: 'lane-zombie-chip', title: getZombieDisplayName(zombie.code, zombie.label) }, [
-                h('span', { class: 'lane-zombie-dot', 'aria-hidden': 'true' }),
-                getZombieDisplayName(zombie.code, zombie.label),
-                h('strong', `×${zombie.count}`)
-              ])
-            )
-          )
-        ])
-      : null,
-    special.length
-      ? h('div', { class: 'lane-preview-row random' }, [
-          h('span', { class: 'lane-number' }, t('specialRowShort')),
-          h(
-            'div',
-            { class: 'lane-zombies' },
-            special.map((zombie) =>
-              h('span', { class: 'lane-zombie-chip', title: `${getZombieDisplayName(zombie.code, zombie.label)} · ${zombie.row}` }, [
-                h('span', { class: 'lane-zombie-dot', 'aria-hidden': 'true' }),
-                getZombieDisplayName(zombie.code, zombie.label),
-                h('strong', `×${zombie.count} · ${zombie.row}`)
-              ])
-            )
-          )
-        ])
-      : null
+    ...rows.map((row) => {
+      const zombies = wave.zombies.filter((zombie) => zombie.row === row);
+      const label = row ? t('rowNumber', { row }) : t('randomRow');
+      return h('div', { class: ['lane-preview-row', selectedSpawnRow.value === row ? 'selected-lane' : ''] }, [
+        h('button', { type: 'button', class: 'lane-number', title: label,
+          'aria-pressed': selectedSpawnRow.value === row,
+          onClick: () => { selectedSpawnRow.value = row; }
+        }, row || t('randomRowShort')),
+        h('div', { class: 'lane-zombies' }, zombies.map((zombie) =>
+          h('span', { class: 'lane-zombie-chip' }, [
+            getZombieDisplayName(zombie.code, zombie.label), h('strong', `×${zombie.count}`)
+          ]))),
+        h('button', { type: 'button', class: 'lane-add', disabled: !selectedZombieAsset.value,
+          title: t('addToLane', { row: label }), 'aria-label': t('addToLane', { row: label }),
+          onClick: () => {
+            selectedSpawnRow.value = row;
+            if (selectedZombieAsset.value) addZombieToWave(selectedZombieAsset.value.code, row);
+          }
+        }, h(PlusOutlined))
+      ]);
+    }),
+    special.length ? h('div', { class: 'lane-preview-row' }, [
+      h('span', t('specialRowShort')),
+      h('div', { class: 'lane-zombies' }, special.map((zombie) =>
+        h('span', { class: 'lane-zombie-chip' }, `${getZombieDisplayName(zombie.code, zombie.label)} ×${zombie.count} · ${zombie.row}`)))
+    ]) : null
   ]);
 }
 
@@ -5947,7 +5972,7 @@ function renderZombieGroupList(
 
 function renderZombieSpawnEditor(wave: WaveDraft) {
   return h('div', { class: 'wave-action-editor-body' }, [
-    wave.zombies.length ? renderLanePreview(wave) : null,
+    renderLanePreview(wave),
     h('div', { class: 'zombie-list' }, renderZombieGroupList(wave.zombies, {
       showRows: true,
       onRow: (zombie, value) => setWaveZombieRow(zombie, value),
@@ -6131,26 +6156,13 @@ function renderWaveActionSequence(wave: WaveDraft, waveIndex: number) {
 function renderWaveAddMenu() {
   return h('details', { class: 'wave-add-menu' }, [
     h('summary', [h(PlusOutlined), t('addSpecialAction')]),
-    h('div', { class: 'wave-add-menu-controls' }, [
-      h('button', { class: 'add-button small', onClick: addSelectedZombieToWave }, t('addZombie')),
-      h(
-        'select',
-        {
-          value: newWaveActionKind.value,
-          'aria-label': t('waveEventType'),
-          onChange: (event: Event) => {
-            newWaveActionKind.value = (event.target as HTMLSelectElement).value as AddableWaveActionKind;
-          }
-        },
-        ADDABLE_WAVE_ACTIONS.map((definition: any) =>
-          h('option', { value: definition.kind }, t(definition.labelKey))
-        )
-      ),
-      h('button', { class: 'add-button small', onClick: () => addWaveAction(newWaveActionKind.value) }, [
-        h(PlusOutlined),
-        t('addWaveEvent')
-      ])
-    ])
+    h('div', { class: 'wave-event-menu', role: 'group', 'aria-label': t('waveEventType') },
+      ADDABLE_WAVE_ACTIONS.map((definition: any) => h('button', {
+        type: 'button', onClick: (event: MouseEvent) => {
+          addWaveAction(definition.kind);
+          (event.currentTarget as HTMLElement).closest('details')?.removeAttribute('open');
+        }
+      }, t(definition.labelKey))))
   ]);
 }
 
@@ -6212,11 +6224,11 @@ function renderDynamicDifficultyEditor() {
           }
         },
         [
-          h('span', [h('strong', t('dynamicDifficulty')), h('small', t('dynamicDifficultySummary', { count: getConfiguredDynamicDifficultyCount() }))]),
+          h('strong', t('dynamicDifficulty')),
           h('span', { class: 'dynamic-difficulty-chevron', 'aria-hidden': 'true' }, '›')
         ]
       ),
-      h(
+      dynamicDifficultyOpen.value ? h(
         'div',
         { class: 'dynamic-difficulty-tabs', role: 'tablist', 'aria-label': t('dynamicDifficulty') },
         Array.from({ length: 7 }, (_, index) => {
@@ -6240,7 +6252,7 @@ function renderDynamicDifficultyEditor() {
             [String(level), slotConfigured ? h('span', { class: 'difficulty-status-dot', 'aria-hidden': 'true' }) : null]
           );
         })
-      )
+      ) : null
     ]),
     dynamicDifficultyOpen.value
       ? h(
@@ -6324,6 +6336,7 @@ const WaveTimeline = defineComponent({
                 type: 'number',
                 min: 1,
                 value: draft.value.flagWaveInterval,
+                disabled: draft.value.preserveGeneratorWaves || draft.value.preserveCustomWaveManager,
                 onInput: (event: Event) => setFlagWaveInterval((event.target as HTMLInputElement).value)
               })
             ]),
@@ -6345,7 +6358,9 @@ const WaveTimeline = defineComponent({
               },
               [
                 h('strong', `#${index + 1}`),
-                h('span', actionCount ? `${zombieCount} Z + ${actionCount} A` : `${zombieCount} Z`),
+                h('span', t('waveZombieTotal', { count: zombieCount })),
+                actionCount ? h('span', t('waveEventTotal', { count: actionCount })) : null,
+                wave.zombies.length ? h('span', { class: 'wave-overview-types' }, [...new Set(wave.zombies.map((zombie) => getZombieDisplayName(zombie.code, zombie.label)))].slice(0, 3).join(' · ')) : null,
                 wave.flag ? h('span', { class: 'wave-flag-badge' }, t('flagWave')) : null
               ]
             );
@@ -6577,15 +6592,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   min-width: 0;
 }
 
-.title-sun {
-  flex: 0 0 auto;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background: var(--editor-sun);
-  box-shadow: 0 0 0 0.28rem color-mix(in srgb, var(--editor-sun) 22%, transparent);
-}
-
 .editor-title {
   margin: 0 !important;
   font-family: inherit !important;
@@ -6750,42 +6756,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 .level-editor-shell .expert-mode-toggle:active {
   transform: scale(0.98);
   opacity: 0.88;
-}
-
-.mobile-layout {
-  display: none;
-}
-
-.desktop-layout {
-  display: grid;
-  grid-template-columns: minmax(240px, 0.72fr) minmax(520px, 1.7fr) minmax(270px, 0.82fr);
-  gap: 0.9rem;
-  margin-top: 0.9rem;
-}
-
-.panel,
-.board-panel,
-.desktop-bottom {
-  min-width: 0;
-  border: 1px solid var(--editor-border);
-  border-radius: 24px;
-  background: var(--editor-panel);
-}
-
-.board-panel {
-  padding: 1rem;
-  min-width: 0;
-  overflow: hidden;
-}
-
-.panel,
-.desktop-bottom {
-  box-shadow: 0 2px 10px color-mix(in srgb, #172912 5%, transparent);
-}
-
-.board-panel {
-  background: var(--editor-panel-raised);
-  box-shadow: 0 10px 26px color-mix(in srgb, #172912 8%, transparent);
 }
 
 .asset-library,
@@ -8507,21 +8477,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   cursor: pointer;
 }
 
-.desktop-bottom {
-  display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.8fr);
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-}
-
-.desktop-bottom.without-validation {
-  grid-template-columns: 1fr;
-}
-
-.seedbank-fallback-panel {
-  display: none;
-}
-
 .wave-header-actions,
 .flag-interval-control {
   display: flex;
@@ -9985,9 +9940,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
     --editor-shell-width: calc(100vw - 2rem);
   }
 
-  .desktop-layout {
-    grid-template-columns: minmax(220px, 0.68fr) minmax(460px, 1.6fr) minmax(250px, 0.78fr);
-  }
 }
 
 @media (max-width: 1120px) and (min-width: 761px) {
@@ -9995,28 +9947,9 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
     --editor-shell-width: calc(100vw - 2rem);
   }
 
-  .desktop-layout {
-    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.5fr);
-  }
-
-  .property-panel {
-    display: none;
-  }
-
-  .seedbank-fallback-panel {
-    display: block;
-  }
-
-  .desktop-bottom {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 920px) and (min-width: 761px) {
-  .desktop-layout {
-    grid-template-columns: 1fr;
-  }
-
   .asset-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-height: 14rem;
@@ -10110,29 +10043,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   .validation-summary-control {
     justify-content: center;
     white-space: normal;
-  }
-
-  .mobile-layout {
-    display: grid;
-    gap: 0.9rem;
-    margin-top: 0.9rem;
-  }
-
-  .mobile-section-stack {
-    display: grid;
-    gap: 0.9rem;
-    min-width: 0;
-  }
-
-  .mobile-section-stack > * {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .desktop-layout,
-  .desktop-bottom {
-    display: none;
   }
 
   .basic-form {
@@ -10550,10 +10460,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 }
 
 @media (prefers-contrast: more) {
-  .editor-topbar,
-  .panel,
-  .board-panel,
-  .desktop-bottom {
+  .editor-topbar {
     border-color: currentColor;
   }
 }
@@ -10565,17 +10472,6 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   gap: 0.35rem;
   padding: 0.65rem 0.15rem 0;
 }
-.workspace-nav a {
-  padding: 0.5rem 0.85rem;
-  border-radius: 999px;
-  color: var(--editor-accent-strong);
-  background: var(--editor-panel-raised);
-  font-size: 0.85rem;
-  font-weight: 650;
-  text-decoration: none;
-}
-.workspace-nav a:hover { background: color-mix(in srgb, var(--editor-accent) 12%, var(--editor-panel-raised)); }
-.workspace-nav a:focus-visible { outline: 2px solid var(--editor-accent); outline-offset: 2px; }
 .workspace-summary { margin-left: auto; color: var(--editor-muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
 #editor-basic, #editor-board, #editor-waves { scroll-margin-top: calc(var(--navbar-height, 3.75rem) + 10rem); }
 .level-editor-shell .editor-topbar {
@@ -10646,3 +10542,5 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
   }
 }
 </style>
+
+<style src="./workspace.css"></style>

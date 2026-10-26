@@ -84,10 +84,10 @@
     "ru": "Только сохранено: {count}"
   },
   "importGeneratorWaves": {
-    "zh": "生成式波次仅保留",
-    "en": "Generated waves preserved only",
-    "es": "Oleadas generadas solo conservadas",
-    "ru": "Генерируемые волны только сохраняются"
+    "zh": "出怪配置来自引用模块，已保留",
+    "en": "Wave configuration uses referenced modules; preserved",
+    "es": "Configuración de oleadas mediante módulos; conservada",
+    "ru": "Настройки волн из модулей сохранены"
   },
   "importSectionBasic": {
     "zh": "基础",
@@ -96,10 +96,10 @@
     "ru": "Основное"
   },
   "importSectionSeed": {
-    "zh": "种子",
-    "en": "Seeds",
-    "es": "Semillas",
-    "ru": "Семена"
+    "zh": "卡组",
+    "en": "Seed supply",
+    "es": "Suministro",
+    "ru": "Карты"
   },
   "importSectionBoard": {
     "zh": "棋盘",
@@ -2572,5 +2572,71 @@
     "en": "Editor sections",
     "es": "Secciones del editor",
     "ru": "Разделы редактора"
+  },
+  "projectMenu": {
+    "zh": "文件",
+    "en": "File",
+    "es": "Archivo",
+    "ru": "Файл"
+  },
+  "backupProject": {
+    "zh": "备份工程",
+    "en": "Back up project",
+    "es": "Guardar proyecto",
+    "ru": "Сохранить проект"
+  },
+  "draftSaveFailed": {
+    "zh": "草稿未能保存，请备份工程。",
+    "en": "Draft could not be saved. Back up your project.",
+    "es": "No se pudo guardar el borrador. Guarda el proyecto.",
+    "ru": "Не удалось сохранить черновик. Сохраните проект в файл."
+  },
+  "recentZombies": {
+    "zh": "常用僵尸",
+    "en": "Recent zombies",
+    "es": "Zombis recientes",
+    "ru": "Недавние зомби"
+  },
+  "quickAddZombie": {
+    "zh": "添加 {name} · {key}",
+    "en": "Add {name} · {key}",
+    "es": "Añadir {name} · {key}",
+    "ru": "Добавить {name} · {key}"
+  },
+  "addToLane": {
+    "zh": "添加到{row}",
+    "en": "Add to {row}",
+    "es": "Añadir a {row}",
+    "ru": "Добавить: {row}"
+  },
+  "waveZombieTotal": {
+    "zh": "{count} 只僵尸",
+    "en": "{count} zombies",
+    "es": "{count} zombis",
+    "ru": "Зомби: {count}"
+  },
+  "waveEventTotal": {
+    "zh": "{count} 个事件",
+    "en": "{count} events",
+    "es": "{count} eventos",
+    "ru": "Событий: {count}"
+  },
+  "replaceWaveSystem": {
+    "zh": "改为静态波次",
+    "en": "Switch to static waves",
+    "es": "Cambiar a oleadas estáticas",
+    "ru": "Перейти к статическим волнам"
+  },
+  "replaceWaveSystemDescription": {
+    "zh": "这会替换原有出怪配置。可以撤销。",
+    "en": "This replaces the existing wave configuration. You can undo it.",
+    "es": "Esto reemplaza la configuración de oleadas actual. Puedes deshacerlo.",
+    "ru": "Текущая настройка волн будет заменена. Изменение можно отменить."
+  },
+  "draftRestoreFailed": {
+    "zh": "草稿无法恢复，原数据未覆盖。请先备份，再导入或新建。",
+    "en": "Draft recovery failed. The saved data is unchanged. Back it up before importing or starting over.",
+    "es": "No se pudo recuperar el borrador. Los datos siguen intactos. Guárdalos antes de importar o empezar de nuevo.",
+    "ru": "Не удалось восстановить черновик. Исходные данные сохранены. Скачайте копию перед импортом или созданием нового проекта."
   }
 }

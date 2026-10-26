@@ -189,6 +189,43 @@ export function getUnchangedImportedLevel(snapshot, draft) {
   return cloneLevelValue(snapshot.source);
 }
 
+export function getDefinitionEditedImportedLevel(snapshot, draft) {
+  if (!snapshot?.draftFingerprint) return null;
+  const baseline = JSON.parse(snapshot.draftFingerprint);
+  const metadataKeys = ['name', 'description', 'author', 'startingSun'];
+  const normalized = { ...draft };
+  metadataKeys.forEach((key) => { normalized[key] = baseline[key]; });
+  if (fingerprint(normalized) !== snapshot.draftFingerprint) return null;
+  const source = cloneLevelValue(snapshot.source);
+  const definition = source.objects.find((object) => object?.objclass === 'LevelDefinition')?.objdata;
+  if (!definition) return null;
+  if (draft.name !== baseline.name) definition.Name = draft.name;
+  if (draft.description !== baseline.description) definition.Description = draft.description;
+  if (draft.startingSun !== baseline.startingSun) definition.StartingSun = Number(draft.startingSun) || 0;
+  if (draft.author !== baseline.author) {
+    const key = Object.hasOwn(definition, 'WritenBy') && !Object.hasOwn(definition, 'WrittenBy') ? 'WritenBy' : 'WrittenBy';
+    definition[key] = draft.author;
+  }
+  return source;
+}
+
+export function preserveUneditedDefinitionFields(snapshot, draft, data) {
+  if (!snapshot?.draftFingerprint) return data;
+  const baseline = JSON.parse(snapshot.draftFingerprint);
+  const original = snapshot.source.objects.find((object) => object?.objclass === 'LevelDefinition')?.objdata;
+  if (!original) return data;
+  const result = { ...data };
+  for (const [field, keys] of [
+    ['Name', ['name']], ['Description', ['description']], ['StartingSun', ['startingSun']],
+    ['StageModule', ['stage', 'stageSource']], ['WrittenBy', ['author']], ['WritenBy', ['author']]
+  ]) {
+    if (!keys.every((key) => draft[key] === baseline[key])) continue;
+    if (Object.hasOwn(original, field)) result[field] = cloneLevelValue(original[field]);
+    else delete result[field];
+  }
+  return result;
+}
+
 export function isImportedDomainUnchanged(snapshot, draft, domain) {
   const select = DOMAIN_SELECTORS[domain];
   if (!snapshot || !select) return false;

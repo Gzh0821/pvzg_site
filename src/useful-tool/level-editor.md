@@ -22,9 +22,12 @@ sidebar: false
     })
 </script>
 
-> [!warning]
-> 编辑器仍在测试。导出后请先在本地测试。
 
+
+<Editor />
+
+<div class="level-editor-ad">
+<span class="level-editor-ad-label">广告</span>
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-2336226859954206"
@@ -32,8 +35,7 @@ sidebar: false
      data-ad-format="auto"
      data-full-width-responsive="true">
 </ins>
-
-<Editor />
+</div>
 
 ## 相关工具与教程
 

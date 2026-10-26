@@ -22,9 +22,12 @@ sidebar: false
     })
 </script>
 
-> [!warning]
-> Редактор всё ещё тестируется. Сначала проверяйте экспорт локально.
 
+
+<Editor />
+
+<div class="level-editor-ad">
+<span class="level-editor-ad-label">Реклама</span>
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-2336226859954206"
@@ -32,8 +35,7 @@ sidebar: false
      data-ad-format="auto"
      data-full-width-responsive="true">
 </ins>
-
-<Editor />
+</div>
 
 ## Связанные инструменты и руководства
 

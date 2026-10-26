@@ -22,9 +22,12 @@ sidebar: false
     })
 </script>
 
-> [!warning]
-> The editor is still in testing. Test exports locally first.
 
+
+<Editor />
+
+<div class="level-editor-ad">
+<span class="level-editor-ad-label">Advertisements</span>
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-2336226859954206"
@@ -32,8 +35,7 @@ sidebar: false
      data-ad-format="auto"
      data-full-width-responsive="true">
 </ins>
-
-<Editor />
+</div>
 
 ## Related Tools and Guides
 
