@@ -1,0 +1,171 @@
+{
+  "#comment": "Sky City Danger Room",
+  "version": 1,
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Name": "[DANGER_ROOM_SKYCITY_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "StageModule": "RTID(SkyStage@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(SkyCityShipDefault@LevelModules)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ]
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(SkyDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(SkyDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(LightningDesigner@CurrentLevel)",
+          "RTID(DropShipDesigner@CurrentLevel)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "skyshooter",
+          "bonkchoy",
+          "pineapple",
+          "anthurium"
+        ],
+        "ExcludePlants": [
+          "gravebuster",
+          "lilypad",
+          "tanglekelp",
+          "hotpotato"
+        ]
+      }
+    },
+    {
+      "objclass": "DangerRoomLevelIntroProperties",
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "SeedBankProperties",
+      "aliases": [
+        "SeedBank"
+      ],
+      "objdata": {
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true,
+        "PlantBlackList": []
+      }
+    },
+    {
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "aliases": [
+        "SkyDangerRoomWaveGenerator"
+      ],
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MinDynamicZombieType": 4,
+        "MustContainZombie": [
+          "RTID(sky@ZombieTypes)"
+        ],
+        "ZombiePool": [
+          "RTID(sky_armor1@ZombieTypes)",
+          "RTID(sky_armor2@ZombieTypes)",
+          "RTID(sky_electric@ZombieTypes)",
+          "RTID(sky_arbiterx@ZombieTypes)",
+          "RTID(sky_battleplane@ZombieTypes)",
+          "RTID(sky_dronemaker@ZombieTypes)",
+          "RTID(sky_gargantuar@ZombieTypes)",
+          "RTID(sky_twin@ZombieTypes)"
+        ]
+      }
+    },
+    {
+      "objclass": "DangerRoomLightningDesigner",
+      "aliases": [
+        "LightningDesigner"
+      ],
+      "objdata": {
+        "LevelRange": {
+          "Min": 5,
+          "Max": 30
+        },
+        "LinkedPlantCountMin": {
+          "Min": 1,
+          "Max": 4
+        },
+        "LinkedPlantCountMax": {
+          "Min": 3,
+          "Max": 5
+        },
+        "ThunderCountMin": {
+          "Min": 1,
+          "Max": 2
+        },
+        "ThunderCountMax": {
+          "Min": 2,
+          "Max": 3
+        },
+        "WaveLightningChance": {
+          "Min": 10,
+          "Max": 33
+        }
+      }
+    },
+    {
+      "objclass": "DangerRoomDropShipDesigner",
+      "aliases": [
+        "DropShipDesigner"
+      ],
+      "objdata": {
+        "LevelRange": {
+          "Min": 3,
+          "Max": 15
+        },
+        "ImpColumnMin": {
+          "Min": 3,
+          "Max": 0
+        },
+        "ImpColumnMax": {
+          "Min": 2,
+          "Max": 2
+        },
+        "ImpCountMin": {
+          "Min": 1,
+          "Max": 2
+        },
+        "ImpCountMax": {
+          "Min": 2,
+          "Max": 3
+        },
+        "WaveDropShipChance": {
+          "Min": 3,
+          "Max": 10
+        }
+      }
+    }
+  ]
+}

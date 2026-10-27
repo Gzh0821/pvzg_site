@@ -1,0 +1,111 @@
+{
+  "#comment": "Eighties Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(EightiesMowers@LevelModules)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ],
+        "Name": "[DANGER_ROOM_EIGHTIES_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "SuppressAwardScreen": true,
+        "MusicType": "Normal",
+        "StageModule": "RTID(EightiesStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(EightiesDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(EightiesDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(JamDesigner@LevelModules)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "peashooter",
+          "wallnut",
+          "phatbeet"
+        ],
+        "SuppressMiniGameMusic": true,
+        "ExcludePlants": [
+          "lilypad",
+          "tanglekelp",
+          "floawerPot",
+          "gravebuster",
+          "hotpotato",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "EightiesDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(eighties@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(eighties_armor1@ZombieTypes)",
+          "RTID(eighties_armor2@ZombieTypes)",
+          "RTID(eighties_punk@ZombieTypes)",
+          "RTID(eighties_mc@ZombieTypes)",
+          "RTID(eighties_glitter@ZombieTypes)",
+          "RTID(eighties_imp@ZombieTypes)",
+          "RTID(eighties_gargantuar@ZombieTypes)",
+          "RTID(eighties_breakdancer@ZombieTypes)",
+          "RTID(eighties_arcade@ZombieTypes)",
+          "RTID(eighties_boombox@ZombieTypes)"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

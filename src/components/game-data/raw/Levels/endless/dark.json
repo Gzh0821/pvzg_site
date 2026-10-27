@@ -1,0 +1,120 @@
+{
+  "#comment": "DarkAges Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(DarkMowers@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(Gravestones@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ],
+        "Name": "[DANGER_ROOM_DARKAGES_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "StageModule": "RTID(DarkStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(DarkDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(DarkDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(DarkGravestoneGenerator@LevelModules)",
+          "RTID(DarkWaveGravestoneEventGenerator@LevelModules)",
+          "RTID(DarkWaveNecromancyEventGenerator@LevelModules)"
+        ],
+        "InitialPlants": [
+          "sunshroom",
+          "puffshroom",
+          "fumeshroom",
+          "wallnut",
+          "magnetshroom"
+        ],
+        "ExcludePlants": [
+          "lilypad",
+          "tanglekelp",
+          "empea",
+          "hotpotato",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "Gravestones"
+      ],
+      "objclass": "GravestoneProperties",
+      "objdata": {
+        "GravestoneCount": 0,
+        "SpawnColumnEnd": 0,
+        "SpawnColumnStart": 0
+      }
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "PlantBlackList": [],
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "DarkDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(dark@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(dark_armor1@ZombieTypes)",
+          "RTID(dark_armor2@ZombieTypes)",
+          "RTID(dark_armor3@ZombieTypes)",
+          "RTID(dark_wizard@ZombieTypes)",
+          "RTID(dark_juggler@ZombieTypes)",
+          "RTID(dark_king@ZombieTypes)",
+          "RTID(dark_imp_dragon@ZombieTypes)",
+          "RTID(dark_gargantuar@ZombieTypes)"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

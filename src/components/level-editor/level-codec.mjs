@@ -15,7 +15,10 @@ const CORE_OBJECT_CLASSES = new Set([
   'GravestoneProperties',
   'NarrativeProperties',
   'LevelOfTheDayModuleProperties',
-  'DangerRoomJitteredWaveGenerator'
+  'DangerRoomJitteredWaveGenerator',
+  'DangerRoomLevelIntroProperties',
+  'DangerRoomModuleProperties',
+  'DangerRoomMiniGameModuleProperties'
 ]);
 
 const DOMAIN_SELECTORS = {

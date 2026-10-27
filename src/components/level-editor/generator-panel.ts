@@ -8,6 +8,7 @@ export default defineComponent({
     objects: { type: Array as PropType<any[]>, required: true },
     selectedAlias: { type: String, required: true },
     poolTarget: { type: String, required: true },
+    allowCreate: { type: Boolean, default: true },
     zombieOptions: { type: Array as PropType<any[]>, required: true },
     translate: { type: Function as PropType<(key: string, params?: Record<string, unknown>) => string>, required: true }
   },
@@ -29,7 +30,7 @@ export default defineComponent({
           generators.length > 1 ? h('select', { value: props.selectedAlias, 'aria-label': t('generatorSelect'),
             onChange: (event: Event) => emit('select', (event.target as HTMLSelectElement).value)
           }, generators.map((object: any, index: number) => h('option', { value: object.aliases?.[0] }, `${t(object.objclass === 'LevelOfTheDayModuleProperties' ? 'generatorPoints' : 'generatorEndless')} #${index + 1}`))) : null,
-          h('button', { type: 'button', class: 'add-button', onClick: () => emit('create') }, [h(PlusOutlined), t('generatorCreate')])
+          props.allowCreate ? h('button', { type: 'button', class: 'add-button', onClick: () => emit('create') }, [h(PlusOutlined), t('generatorCreate')]) : null
         ]),
         data ? h('div', { class: 'generator-fields' }, fields.map((key) => h('label', { class: 'field-row' }, [
           h('span', t(`generatorField_${key}`)), h('input', { type: 'number', value: data[key] ?? '',
@@ -53,7 +54,7 @@ export default defineComponent({
           ]);
         })) : null,
         data && !pool.length ? h('p', { class: 'editor-empty-action' }, t('generatorAddZombies')) : null,
-        endless ? h('label', { class: 'check-row' }, [h('input', { type: 'checkbox', checked: data.SuppressPlantfood === true,
+        data && endless ? h('label', { class: 'check-row' }, [h('input', { type: 'checkbox', checked: data.SuppressPlantfood === true,
           onChange: (event: Event) => { data.SuppressPlantfood = (event.target as HTMLInputElement).checked; }
         }), t('generatorSuppressPlantfood')]) : null
       ]);

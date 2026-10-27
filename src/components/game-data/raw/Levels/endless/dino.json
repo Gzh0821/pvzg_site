@@ -1,0 +1,106 @@
+{
+  "#comment": "Dino Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceNextLevel": "dino_dangerroom",
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(DinoMowers@LevelModules)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ],
+        "Name": "[DANGER_ROOM_DINO_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "SuppressAwardScreen": true,
+        "StageModule": "RTID(DinoStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(DinoDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(DinoDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(DinosaurDesigner@LevelModules)"
+        ],
+        "InitialPlants": [
+          "primalsunflower",
+          "primalpeashooter",
+          "primalwallnut",
+          "perfumeshroom"
+        ],
+        "ExcludePlants": [
+          "gravebuster",
+          "lilypad",
+          "tanglekelp",
+          "empea",
+          "floawerPot",
+          "hotpotato"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "PlantBlackList": [],
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "DinoDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(dino@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(dino_armor1@ZombieTypes)",
+          "RTID(dino_armor2@ZombieTypes)",
+          "RTID(dino_armor3@ZombieTypes)",
+          "RTID(dino_imp@ZombieTypes)",
+          "RTID(dino_gargantuar@ZombieTypes)",
+          "RTID(dino_bully@ZombieTypes)"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

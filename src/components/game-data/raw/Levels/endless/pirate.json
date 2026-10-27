@@ -1,0 +1,140 @@
+{
+  "#comment": "Pirate Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(PirateMowers@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(PiratePlanks@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ],
+        "Name": "[DANGER_ROOM_PIRATE_LEVEL_NAME]",
+        "SuppressAwardScreen": true,
+        "StageModule": "RTID(PirateStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(PirateDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(PirateDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(PlankDesigner@CurrentLevel)",
+          "RTID(RaidingPartyGenerator@LevelModules)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "peashooter",
+          "wallnut"
+        ],
+        "ExcludePlants": [
+          "lilypad",
+          "floawerPot",
+          "gravebuster",
+          "tanglekelp",
+          "empea",
+          "hotpotato",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "PiratePlanks"
+      ],
+      "objclass": "PiratePlankProperties",
+      "objdata": {
+        "PlankRows": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "PirateDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(pirate@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(barrelroller@ZombieTypes)",
+          "RTID(cannon@ZombieTypes)",
+          "RTID(pirate_armor1@ZombieTypes)",
+          "RTID(pirate_armor2@ZombieTypes)",
+          "RTID(pirate_captain@ZombieTypes)",
+          "RTID(seagull@ZombieTypes)",
+          "RTID(swashbuckler@ZombieTypes)",
+          "RTID(pirate_gargantuar@ZombieTypes)"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "PlankDesigner"
+      ],
+      "objclass": "DangerRoomPlankDesigner",
+      "objdata": {
+        "PlankLayouts": [
+          "11110",
+          "11011",
+          "01111",
+          "11100",
+          "01110",
+          "00111",
+          "11000",
+          "01100",
+          "00110",
+          "00011",
+          "10101"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

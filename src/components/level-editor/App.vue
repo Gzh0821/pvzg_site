@@ -41,6 +41,7 @@
                 </a-upload>
                 <a-button @click="exportProject">{{ t('backupProject') }}</a-button>
                 <a-button @click="confirmResetDraft">{{ t('newLevel') }}</a-button>
+                <a-button :loading="endlessCatalogLoading" @click="openEndlessTemplate">{{ t('endlessCreate') }}</a-button>
               </div>
             </details>
           </div>
@@ -69,11 +70,11 @@
           :aria-controls="`level-workspace-${view.id}`" :tabindex="activeWorkspace === view.id ? 0 : -1"
           :class="{ active: activeWorkspace === view.id }" @click="switchWorkspace(view.id)"
           @keydown="handleWorkspaceKeydown($event, view.id)">{{ t(view.label) }}</button>
-        <span class="workspace-summary">{{ t('summaryWaves', { count: draft.waves.length }) }}</span>
+        <span class="workspace-summary">{{ isEndlessMode ? t('endlessAutomaticWaves') : t('summaryWaves', { count: draft.waves.length }) }}</span>
       </nav>
 
-      <div v-if="importCapability?.preservedObjects || draft.preserveGeneratorWaves" class="import-capability-strip" role="status">
-        <span v-if="draft.preserveGeneratorWaves">{{ t('importGeneratorWaves') }}</span>
+      <div v-if="importCapability?.preservedObjects || (draft.preserveGeneratorWaves && !isEndlessMode)" class="import-capability-strip" role="status">
+        <span v-if="draft.preserveGeneratorWaves && !isEndlessMode">{{ t('importGeneratorWaves') }}</span>
         <span v-if="importCapability?.preservedObjects">{{ t('importPreservedObjects', { count: importCapability.preservedObjects }) }}</span>
       </div>
       <div v-if="draftSaveError || draftRestoreError" class="project-save-error" role="alert">
@@ -132,6 +133,23 @@
         <pre class="json-preview">{{ previewJson }}</pre>
       </a-modal>
 
+      <a-modal v-model:open="endlessTemplateOpen" :title="t('endlessCreate')" :ok-text="t('endlessCreate')"
+        :cancel-text="t('cancel')" wrap-class-name="level-editor-modal-root" @ok="createEndlessDraft">
+        <label class="field-row endless-template-field">
+          <span>{{ t('endlessTemplateWorld') }}</span>
+          <select v-model="newEndlessWorld" :aria-label="t('endlessTemplateWorld')">
+            <option v-for="world in endlessWorldOptions" :key="world" :value="world">{{ t(`endlessWorld_${world}`) }}</option>
+          </select>
+        </label>
+        <p>{{ t('endlessTemplateNotice') }}</p>
+      </a-modal>
+      <a-drawer v-model:open="endlessSettingsOpen" :title="t('endlessSettings')" placement="right"
+        :mask="false" width="min(560px, 96vw)" root-class-name="level-editor-drawer-root">
+        <EndlessSettingsPanel v-if="endlessSettingsOpen && activeEndlessModule" :module="activeEndlessModule"
+          :objects="draft.unsupportedRawObjects" :shared-objects="endlessSharedObjects"
+          :progress-options="endlessProgressOptions" :plant-options="plantOptions" :translate="t" />
+      </a-drawer>
+
       <a-drawer
         :open="conveyorEditorOpen"
         :title="conveyorEditorTitle"
@@ -175,6 +193,8 @@ import { addCardDeck, getCardDecks, getCardDeckIssues, removeCardDeckPlant } fro
 import { getAuthoredContentEditedLevel, getGeneratorObjects, getGeneratorWaveBudget, getGeneratorIssues } from './authored-content-codec.mjs';
 import { getNarrativeWarnings } from './narrative-codec.mjs';
 import GeneratorPanel from './generator-panel';
+import EndlessSettingsPanel from './endless-settings-panel';
+import { createEndlessLevel, getEndlessModule, getEndlessWaveLimit, getEndlessWaveBudget, getEndlessIssues, ENDLESS_MODULE_CLASSES } from './endless-codec.mjs';
 const NarrativePanel = defineAsyncComponent(() => import('./narrative-panel'));
 import ObjectivesPanel from './objectives-panel';
 import BoardRulesPanel from './board-rules-panel';
@@ -657,6 +677,15 @@ const sharedNarrativeCatalog = ref<any[] | null>(null);
 const generatorEditorOpen = ref(false);
 const selectedGeneratorAlias = ref('');
 const generatorPoolTarget = ref('ZombiePool');
+const endlessTemplateOpen = ref(false);
+const endlessSettingsOpen = ref(false);
+const endlessCatalogLoading = ref(false);
+const newEndlessWorld = ref('egypt');
+const endlessWorldOptions = ref<string[]>([]);
+const endlessSharedObjects = ref<any[]>([]);
+const endlessProgressOptions = ref<any[]>([]);
+const endlessPreviewFloor = ref(1);
+let endlessTemplates: any[] = [];
 const nextItemId = ref(1);
 const nextWaveId = ref(2);
 const nextZombieId = ref(2);
@@ -743,7 +772,7 @@ async function restoreHistory(direction: number) {
 
 watch(draft, () => { recordHistory(); if (draftReady) draftDirty = true; scheduleDraftSave(); }, { deep: true, flush: 'post' });
 watch([seedListTarget, selectedDeckIndex, deckNameLanguage, expandedWaveActionKey, selectedSpawnRow,
-  generatorEditorOpen, selectedGeneratorAlias, generatorPoolTarget, boardTool, selectedBoardTargetId, boardPowerGroup, boardPowerDelay], scheduleDraftSave, { flush: 'post' });
+  generatorEditorOpen, selectedGeneratorAlias, generatorPoolTarget, endlessPreviewFloor, boardTool, selectedBoardTargetId, boardPowerGroup, boardPowerDelay], scheduleDraftSave, { flush: 'post' });
 
 const language = computed<LocaleKey>(() => {
   if (providedLanguage.startsWith('es')) return 'es';
@@ -824,8 +853,17 @@ const boardReservedAliases = computed(() => [...narrativeReservedAliases.value,
   ...draft.value.boardRules.modules.map((rule) => rule.alias),
   ...draft.value.objectives.starObjectives.map((objective) => objective.alias), draft.value.objectives.protect?.alias].filter(Boolean));
 
+const isEndlessMode = computed(() => !!(draft.value.levelExtra.IsDangerRoom || draft.value.levelExtra.IsDangerRoomMiniGame));
+const activeEndlessModule = computed(() => getEndlessModule(draft.value.unsupportedRawObjects, draft.value.levelExtra));
+const opaqueRawObjects = computed(() => draft.value.unsupportedRawObjects.filter((object: any) =>
+  !['NarrativeProperties', 'DangerRoomLevelIntroProperties'].includes(object?.objclass) && !getGeneratorObjects([object]).length && !ENDLESS_MODULE_CLASSES.includes(object?.objclass)));
+
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
+  const originalDefinition = importedLevelSnapshot?.source.objects.find((object: any) => object.objclass === 'LevelDefinition')?.objdata || {};
+  getEndlessIssues(draft.value.unsupportedRawObjects, draft.value.levelExtra, importedLevelSnapshot?.source.objects || [], originalDefinition).forEach((issue) => {
+    items.push({ type: issue.inherited ? 'warning' : 'error', text: t('endlessInvalidField', { field: t(`endlessField_${issue.field}`) }) });
+  });
   getGeneratorIssues(draft.value.unsupportedRawObjects, importedLevelSnapshot?.source.objects || []).forEach((issue) => {
     items.push({ type: issue.inherited ? 'warning' : 'error', text: t('generatorInvalidField', {
       alias: issue.alias, field: t(`generatorField_${issue.field}`)
@@ -982,10 +1020,10 @@ const validationItems = computed<ValidationItem[]>(() => {
       }
     });
   }
-  if (draft.value.unsupportedObjects > 0) {
+  if (opaqueRawObjects.value.length > 0) {
     items.push({
       type: 'warning',
-      text: t('validationUnsupported', { count: draft.value.unsupportedObjects })
+      text: t('validationUnsupported', { count: opaqueRawObjects.value.length })
     });
   }
   return items;
@@ -1231,6 +1269,8 @@ function resetDraft() {
   eventPickerOpen.value = false;
   seedListTarget.value = 'seedPlants';
   selectedDeckIndex.value = 0;
+  endlessSettingsOpen.value = false;
+  endlessPreviewFloor.value = 1;
   generatorEditorOpen.value = false;
   selectedGeneratorAlias.value = '';
   generatorPoolTarget.value = 'ZombiePool';
@@ -1245,6 +1285,39 @@ function resetDraft() {
   nextZombieId.value = 2;
   nextWaveActionId.value = 1;
   resetHistory();
+}
+
+async function loadEndlessCatalog() {
+  if (endlessTemplates.length) return true;
+  if (endlessCatalogLoading.value) return false;
+  endlessCatalogLoading.value = true;
+  try {
+    const data = await import('../game-data/endless');
+    endlessTemplates = data.endlessTemplates;
+    endlessWorldOptions.value = data.endlessTemplates.map((template) => template.world);
+    endlessSharedObjects.value = data.endlessSharedObjects;
+    endlessProgressOptions.value = data.endlessProgressOptions;
+    return true;
+  } catch {
+    message.error(t('endlessTemplatesFailed'));
+    return false;
+  } finally { endlessCatalogLoading.value = false; }
+}
+
+async function openEndlessTemplate() {
+  if (await loadEndlessCatalog()) endlessTemplateOpen.value = true;
+}
+
+async function openEndlessSettings() {
+  if (await loadEndlessCatalog()) endlessSettingsOpen.value = true;
+}
+
+function createEndlessDraft() {
+  const template = endlessTemplates.find((item) => item.world === newEndlessWorld.value);
+  if (!template) return;
+  loadLevelDocument(createEndlessLevel(template.level, 'custom_endless_1', t('endlessDefaultDescription')));
+  switchWorkspace('waves');
+  endlessTemplateOpen.value = false;
 }
 
 function confirmResetDraft() {
@@ -1265,6 +1338,7 @@ function openValidation() {
 }
 
 function switchWorkspace(id: WorkspaceId) {
+  endlessSettingsOpen.value = false;
   activeWorkspace.value = id;
   if (id === 'waves') assetTab.value = 'zombie';
   if (id === 'seed') assetTab.value = 'plant';
@@ -1342,7 +1416,7 @@ function captureProject() {
     selectedSpawnRow: selectedSpawnRow.value, expandedWaveActionKey: expandedWaveActionKey.value,
     generatorEditorOpen: generatorEditorOpen.value, selectedGeneratorAlias: selectedGeneratorAlias.value,
     generatorPoolTarget: generatorPoolTarget.value, boardTool: boardTool.value, selectedBoardTargetId: selectedBoardTargetId.value,
-    boardPowerGroup: boardPowerGroup.value, boardPowerDelay: boardPowerDelay.value
+    boardPowerGroup: boardPowerGroup.value, boardPowerDelay: boardPowerDelay.value, endlessPreviewFloor: endlessPreviewFloor.value
   });
 }
 
@@ -1377,7 +1451,9 @@ function restoreProject(project: ReturnType<typeof readProjectState>) {
   selectedGeneratorAlias.value = generators.some((object: any) => object.aliases?.includes(project.editor.selectedGeneratorAlias))
     ? project.editor.selectedGeneratorAlias : generators[0]?.aliases?.[0] || '';
   generatorPoolTarget.value = project.editor.generatorPoolTarget === 'MustContainZombie' ? 'MustContainZombie' : 'ZombiePool';
-  generatorEditorOpen.value = project.editor.generatorEditorOpen ?? generators.length > 0;
+  generatorEditorOpen.value = isEndlessMode.value || (project.editor.generatorEditorOpen ?? generators.length > 0);
+  endlessPreviewFloor.value = Math.max(1, Math.floor(Number(project.editor.endlessPreviewFloor)) || 1);
+  if (!isEndlessMode.value) endlessSettingsOpen.value = false;
   boardTool.value = BOARD_TOOLS.includes(project.editor.boardTool) ? project.editor.boardTool : 'place';
   selectedBoardTargetId.value = project.editor.selectedBoardTargetId || '';
   boardPowerGroup.value = POWER_TILE_GROUPS.includes(project.editor.boardPowerGroup) ? project.editor.boardPowerGroup : 'alpha';
@@ -2570,6 +2646,39 @@ function toggleWaveAction(entry: WaveActionOrderEntry) {
   expandedWaveActionKey.value = key;
 }
 
+function loadLevelDocument(parsed: any) {
+  unreadableDraft = null;
+  draftRestoreError.value = false;
+  closeConveyorEditor();
+  endlessSettingsOpen.value = false;
+  endlessPreviewFloor.value = 1;
+  selectedAsset.value = null;
+  nextItemId.value = 1;
+  nextWaveId.value = 1;
+  nextZombieId.value = 1;
+  nextWaveActionId.value = 1;
+  const importedDraft = parseLevel(parsed);
+  draft.value = importedDraft;
+  importedLevelSnapshot = createLevelImportSnapshot(parsed, importedDraft);
+  importCapability.value = analyzeLevelCapabilities(parsed) as ImportCapabilitySummary;
+  selectedWaveId.value = draft.value.waves[0]?.id || 1;
+  expandedWaveActionKey.value = 'zombies';
+  eventPickerOpen.value = false;
+  seedListTarget.value = 'seedPlants';
+  selectedDeckIndex.value = 0;
+  const generators = getGeneratorObjects(draft.value.unsupportedRawObjects);
+  selectedGeneratorAlias.value = generators[0]?.aliases?.[0] || '';
+  generatorPoolTarget.value = 'ZombiePool';
+  generatorEditorOpen.value = isEndlessMode.value || generators.length > 0;
+  selectedDynamicDifficulty.value = 4;
+  dynamicZombieActionHint.value = '';
+  eventZombieActionHint.value = '';
+  resetBoardTools();
+  selectedCell.value = null;
+  resetHistory();
+  scheduleDraftSave();
+}
+
 function handleUpload(file: File) {
   const reader = new FileReader();
   reader.onload = () => {
@@ -2585,30 +2694,7 @@ function handleUpload(file: File) {
         message.error(t('importInvalidStructure'));
         return;
       }
-      nextItemId.value = 1;
-      nextWaveId.value = 1;
-      nextZombieId.value = 1;
-      nextWaveActionId.value = 1;
-      const importedDraft = parseLevel(parsed);
-      draft.value = importedDraft;
-      importedLevelSnapshot = createLevelImportSnapshot(parsed, importedDraft);
-      importCapability.value = analyzeLevelCapabilities(parsed) as ImportCapabilitySummary;
-      selectedWaveId.value = draft.value.waves[0]?.id || 1;
-      expandedWaveActionKey.value = 'zombies';
-      eventPickerOpen.value = false;
-      seedListTarget.value = 'seedPlants';
-      selectedDeckIndex.value = 0;
-      const generators = getGeneratorObjects(draft.value.unsupportedRawObjects);
-      selectedGeneratorAlias.value = generators[0]?.aliases?.[0] || '';
-      generatorPoolTarget.value = 'ZombiePool';
-      generatorEditorOpen.value = generators.length > 0;
-      selectedDynamicDifficulty.value = 4;
-      dynamicZombieActionHint.value = '';
-      eventZombieActionHint.value = '';
-      resetBoardTools();
-      selectedCell.value = null;
-      resetHistory();
-      scheduleDraftSave();
+      loadLevelDocument(parsed);
       message.success(t('imported'));
     } catch (error) {
       message.error(t('importFailed'));
@@ -4664,14 +4750,14 @@ const ConveyorEditorPanel = defineComponent({
 });
 
 function renderUnsupportedObjectsSummary() {
-  if (!expertMode.value || !draft.value.unsupportedRawObjects.length) return null;
+  if (!expertMode.value || !opaqueRawObjects.value.length) return null;
 
   return h('details', { class: 'unsupported-summary' }, [
-    h('summary', `${t('unsupported')}: ${draft.value.unsupportedObjects}`),
+    h('summary', `${t('unsupported')}: ${opaqueRawObjects.value.length}`),
     h(
       'div',
       { class: 'unsupported-object-list' },
-      draft.value.unsupportedRawObjects.map((object: any, index) => {
+      opaqueRawObjects.value.map((object: any, index) => {
         const aliases = Array.isArray(object?.aliases) ? object.aliases.join(', ') : '';
         return h('div', { class: 'unsupported-object-card' }, [
           h('strong', object?.objclass || t('unknownObjclass')),
@@ -6446,6 +6532,25 @@ function renderDynamicPoolWavePreview(waveIndex: number) {
   ]);
 }
 
+function renderEndlessPreview() {
+  const module = activeEndlessModule.value;
+  if (!module) return null;
+  const generator = getGeneratorObjects(draft.value.unsupportedRawObjects).find((object: any) => object.aliases?.includes(selectedGeneratorAlias.value));
+  const count = getEndlessWaveLimit(module.objdata, endlessPreviewFloor.value, !!draft.value.levelExtra.IsDangerRoomMiniGame);
+  const indices = [0, 9, count - 1].filter((index, position, all) => all.indexOf(index) === position);
+  return h('section', { class: 'endless-preview' }, [
+    h('label', { class: 'field-row' }, [h('span', t('endlessPreviewFloor')), h('input', {
+      type: 'number', min: 1, step: 1, value: endlessPreviewFloor.value,
+      onInput: (event: Event) => { endlessPreviewFloor.value = Math.max(1, Math.floor(Number((event.target as HTMLInputElement).value)) || 1); }
+    })]),
+    h('span', t('endlessWaveLimit', { count })),
+    generator?.objclass === 'DangerRoomJitteredWaveGenerator' ? h('div', { class: 'endless-budget-list' }, indices.map((index) => {
+      const points = getEndlessWaveBudget(generator.objdata, endlessPreviewFloor.value, index);
+      return points == null ? null : h('span', t('endlessWaveBudget', { wave: index + 1, points }));
+    })) : null
+  ]);
+}
+
 const WaveTimeline = defineComponent({
   setup() {
     const pointBudget = (index: number) => {
@@ -6456,27 +6561,28 @@ const WaveTimeline = defineComponent({
       h('div', { class: 'panel-title row-title' }, [
         h('span', t('waves')),
         h('div', { class: 'wave-header-actions' }, [
-          h('button', { type: 'button', class: 'text-button', 'aria-pressed': generatorEditorOpen.value, onClick: toggleGeneratorEditor }, t(generatorEditorOpen.value ? 'generatorBackToWaves' : 'waveGenerators')),
-          h('label', { class: 'flag-interval-control' }, [h('span', t('flagWaveInterval')),
+          !isEndlessMode.value ? h('button', { type: 'button', class: 'text-button', 'aria-pressed': generatorEditorOpen.value, onClick: toggleGeneratorEditor }, t(generatorEditorOpen.value ? 'generatorBackToWaves' : 'waveGenerators')) : null,
+          activeEndlessModule.value ? h('button', { type: 'button', class: 'text-button', disabled: endlessCatalogLoading.value, onClick: openEndlessSettings }, t('endlessSettings')) : null,
+          !isEndlessMode.value ? h('label', { class: 'flag-interval-control' }, [h('span', t('flagWaveInterval')),
             h('input', { type: 'number', min: 1, value: draft.value.flagWaveInterval,
               disabled: draft.value.preserveGeneratorWaves || draft.value.preserveCustomWaveManager,
-              onInput: (event: Event) => setFlagWaveInterval((event.target as HTMLInputElement).value) })]),
-          !generatorEditorOpen.value && draft.value.supportsDynamicZombies ? h('button', { type: 'button', class: 'text-button',
+              onInput: (event: Event) => setFlagWaveInterval((event.target as HTMLInputElement).value) })]) : null,
+          !isEndlessMode.value && !generatorEditorOpen.value && draft.value.supportsDynamicZombies ? h('button', { type: 'button', class: 'text-button',
             onClick: () => { expandedWaveActionKey.value = 'difficulty'; eventPickerOpen.value = false; }
           }, t('dynamicDifficulty')) : null,
-          !generatorEditorOpen.value ? h('button', { type: 'button', class: 'text-button',
+          !isEndlessMode.value && !generatorEditorOpen.value ? h('button', { type: 'button', class: 'text-button',
             onClick: () => { expandedWaveActionKey.value = 'settings'; eventPickerOpen.value = false; }
           }, t('waveSettings')) : null,
-          !generatorEditorOpen.value ? h('button', { type: 'button', class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')]) : null
+          !isEndlessMode.value && !generatorEditorOpen.value ? h('button', { type: 'button', class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')]) : null
         ])
       ]),
-      generatorEditorOpen.value ? h('div', [
+      generatorEditorOpen.value || isEndlessMode.value ? h('div', [
         h(GeneratorPanel, { objects: draft.value.unsupportedRawObjects, selectedAlias: selectedGeneratorAlias.value,
-          poolTarget: generatorPoolTarget.value, zombieOptions: zombieOptions.value, translate: t,
+          poolTarget: generatorPoolTarget.value, zombieOptions: zombieOptions.value, translate: t, allowCreate: !isEndlessMode.value,
           onSelect: (alias: string) => { selectedGeneratorAlias.value = alias; generatorPoolTarget.value = 'ZombiePool'; },
           onPoolTarget: (key: string) => { generatorPoolTarget.value = key; }, onCreate: createPointGenerator
         }),
-        draft.value.waves.length ? h('label', { class: 'field-row generator-wave-count' }, [h('span', t('generatorWaveCount')),
+        !isEndlessMode.value && draft.value.waves.length ? h('label', { class: 'field-row generator-wave-count' }, [h('span', t('generatorWaveCount')),
           h('input', { type: 'number', min: 1, max: 200, value: draft.value.waves.length, 'aria-label': t('generatorWaveCount'),
             onChange: (event: Event) => {
               const count = Math.max(1, Math.min(200, Math.round(Number((event.target as HTMLInputElement).value)) || 1));
@@ -6494,12 +6600,13 @@ const WaveTimeline = defineComponent({
             }
           })]) : null
       ]) : null,
-      h('div', { class: 'wave-strip' }, draft.value.waves.map((wave, index) => h('button', {
+      !isEndlessMode.value ? h('div', { class: 'wave-strip' }, draft.value.waves.map((wave, index) => h('button', {
         type: 'button', class: ['wave-card', selectedWaveId.value === wave.id ? 'active' : '', wave.flag ? 'flag' : ''],
         'aria-pressed': selectedWaveId.value === wave.id, onClick: () => selectWave(wave.id)
       }, [h('strong', `#${index + 1}`), h('span', pointBudget(index) == null ? t('waveZombieTotal', { count: wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0) }) : t('generatorPointBudget', { count: pointBudget(index) })),
-        wave.flag ? h('span', { class: 'wave-flag-badge' }, t('flagWave')) : null]))),
-      !generatorEditorOpen.value && selectedWave.value ? (() => {
+        wave.flag ? h('span', { class: 'wave-flag-badge' }, t('flagWave')) : null]))) : null,
+      isEndlessMode.value ? renderEndlessPreview() : null,
+      !isEndlessMode.value && !generatorEditorOpen.value && selectedWave.value ? (() => {
         const wave = selectedWave.value;
         const index = draft.value.waves.findIndex((item) => item.id === wave.id);
         return h('div', { class: 'wave-composition' }, [

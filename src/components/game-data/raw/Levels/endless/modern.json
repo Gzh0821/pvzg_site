@@ -1,0 +1,106 @@
+{
+  "#comment": "Modern Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(ModernMowers@LevelModules)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ],
+        "Name": "[DANGER_ROOM_MODERN_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "SuppressAwardScreen": true,
+        "StageModule": "RTID(ModernStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(ModernDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(ModernDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(PortalDesigner@LevelModules)"
+        ],
+        "InitialPlants": [
+          "moonflower",
+          "nightshade",
+          "shadowshroom"
+        ],
+        "ExcludePlants": [
+          "lilypad",
+          "floawerPot",
+          "tanglekelp",
+          "empea",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "PlantBlackList": [],
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "ModernDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 20,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(tutorial@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(tutorial_armor1@ZombieTypes)",
+          "RTID(tutorial_armor2@ZombieTypes)",
+          "RTID(tutorial_imp@ZombieTypes)",
+          "RTID(tutorial_gargantuar@ZombieTypes)",
+          "RTID(modern_newspaper@ZombieTypes)",
+          "RTID(modern_balloon@ZombieTypes)",
+          "RTID(modern_allstar@ZombieTypes)",
+          "RTID(modern_superfanimp@ZombieTypes)"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,117 @@
+{
+  "#comment": "Future Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(FutureMowers@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(DefaultZombieWinCondition@LevelModules)",
+          "RTID(FutureLinkedTileGroups@CurrentLevel)"
+        ],
+        "Name": "[DANGER_ROOM_FUTURE_LEVEL_NAME]",
+        "NormalPresentTable": "future_normal_01",
+        "ShinyPresentTable": "future_shiny_01",
+        "SuppressAwardScreen": true,
+        "StageModule": "RTID(FutureStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(FutureDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(FutureDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(SpiderRainDesigner@LevelModules)",
+          "RTID(PowerTileDesigner@LevelModules)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "peashooter",
+          "wallnut"
+        ],
+        "ExcludePlants": [
+          "lilypad",
+          "gravebuster",
+          "tanglekelp",
+          "floawerPot",
+          "hotpotato",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "FutureLinkedTileGroups"
+      ],
+      "objclass": "PowerTileProperties",
+      "objdata": {
+        "LinkedTiles": []
+      }
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "FutureDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(future@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(mech_cone@ZombieTypes)",
+          "RTID(future_protector@ZombieTypes)",
+          "RTID(future_armor1@ZombieTypes)",
+          "RTID(future_jetpack@ZombieTypes)",
+          "RTID(future_armor2@ZombieTypes)",
+          "RTID(football_mech@ZombieTypes)",
+          "RTID(disco_mech@ZombieTypes)",
+          "RTID(future_gargantuar@ZombieTypes)"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

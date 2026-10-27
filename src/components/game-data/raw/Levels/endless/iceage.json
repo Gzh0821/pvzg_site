@@ -1,0 +1,108 @@
+{
+  "#comment": "Ice Age Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(IceageMowers@LevelModules)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ],
+        "Name": "[DANGER_ROOM_ICEAGE_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "StageModule": "RTID(IceageStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(IceageDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(IceageDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(SliderTileDesigner@LevelModules)",
+          "RTID(FreezingWindDesigner@LevelModules)",
+          "RTID(IceBlockDesigner@LevelModules)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "peashooter",
+          "wallnut",
+          "hotpotato"
+        ],
+        "ExcludePlants": [
+          "lilypad",
+          "tanglekelp",
+          "empea",
+          "floawerPot",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "PlantBlackList": [],
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "IceageDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(iceage@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(iceage_armor1@ZombieTypes)",
+          "RTID(iceage_armor2@ZombieTypes)",
+          "RTID(iceage_armor3@ZombieTypes)",
+          "RTID(iceage_hunter@ZombieTypes)",
+          "RTID(iceage_dodo@ZombieTypes)",
+          "RTID(iceage_troglobite@ZombieTypes)",
+          "RTID(iceage_weaselhoarder@ZombieTypes)",
+          "RTID(iceage_gargantuar@ZombieTypes)"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

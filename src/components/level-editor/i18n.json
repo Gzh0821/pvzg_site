@@ -3120,10 +3120,10 @@
     "ru": "Максимум динамических типов"
   },
   "generatorField_MaxPointPerWave": {
-    "zh": "单波点数上限",
-    "en": "Maximum points per wave",
-    "es": "Máximo de puntos por oleada",
-    "ru": "Максимум очков за волну"
+    "zh": "基础点数上限（巨浪倍率前）",
+    "en": "Base point cap (before flag multiplier)",
+    "es": "Límite base (antes del multiplicador de bandera)",
+    "ru": "Предел базовых очков (до множителя флага)"
   },
   "generatorField_WavesPerFlag": {
     "zh": "旗帜波间隔",
@@ -3268,5 +3268,407 @@
     "en": "Click the board to set the tide boundary.",
     "es": "Haz clic en el tablero para fijar el límite de la marea.",
     "ru": "Нажмите на поле, чтобы задать границу прилива."
+  },
+  "endlessCreate": {
+    "zh": "新建无尽关卡",
+    "en": "New endless level",
+    "es": "Nuevo nivel infinito",
+    "ru": "Новый бесконечный уровень"
+  },
+  "endlessSettings": {
+    "zh": "无尽设置",
+    "en": "Endless settings",
+    "es": "Ajustes del modo infinito",
+    "ru": "Настройки бесконечного режима"
+  },
+  "endlessTemplateWorld": {
+    "zh": "世界模板",
+    "en": "World template",
+    "es": "Plantilla de mundo",
+    "ru": "Шаблон мира"
+  },
+  "endlessTemplateNotice": {
+    "zh": "使用对应世界的游戏内无尽进度；创建会替换当前关卡。",
+    "en": "Uses the selected world’s in-game endless progress. Creating replaces the current level.",
+    "es": "Usa el progreso infinito del mundo elegido. Al crear, se sustituye el nivel actual.",
+    "ru": "Используется игровой прогресс выбранного мира. Создание заменит текущий уровень."
+  },
+  "endlessSharedProgress": {
+    "zh": "使用该世界的游戏内无尽进度，已获得的植物会保留。",
+    "en": "Uses this world’s in-game endless progress, retaining obtained plants.",
+    "es": "Usa el progreso infinito de este mundo y conserva las plantas obtenidas.",
+    "ru": "Используется прогресс этого мира с сохранением полученных растений."
+  },
+  "endlessDefaultDescription": {
+    "zh": "自定义无尽关卡",
+    "en": "Custom endless level",
+    "es": "Nivel infinito personalizado",
+    "ru": "Свой бесконечный уровень"
+  },
+  "endlessTemplatesFailed": {
+    "zh": "无尽模板加载失败，请重试。",
+    "en": "Could not load endless templates. Try again.",
+    "es": "No se pudieron cargar las plantillas. Inténtalo de nuevo.",
+    "ru": "Не удалось загрузить шаблоны. Повторите попытку."
+  },
+  "endlessAutomaticWaves": {
+    "zh": "本体自动编排",
+    "en": "Waves generated in game",
+    "es": "Oleadas generadas por el juego",
+    "ru": "Волны генерирует игра"
+  },
+  "endlessPreviewFloor": {
+    "zh": "预览层数",
+    "en": "Preview floor",
+    "es": "Piso de vista previa",
+    "ru": "Уровень для предпросмотра"
+  },
+  "endlessWaveLimit": {
+    "zh": "每巨浪 10 波；本层最多 {count} 波",
+    "en": "10 waves per flag; up to {count} waves on this floor",
+    "es": "10 oleadas por bandera; hasta {count} en este piso",
+    "ru": "10 волн на флаг; до {count} волн на этом уровне"
+  },
+  "endlessWaveBudget": {
+    "zh": "第 {wave} 波：{points} 点",
+    "en": "Wave {wave}: {points} points",
+    "es": "Oleada {wave}: {points} puntos",
+    "ru": "Волна {wave}: {points} очков"
+  },
+  "endlessField_module": {
+    "zh": "无尽配置模块",
+    "en": "Endless configuration module",
+    "es": "Módulo de configuración infinita",
+    "ru": "Модуль бесконечного режима"
+  },
+  "endlessField_WorldSpecificProperties": {
+    "zh": "进度所属世界",
+    "en": "Progress world",
+    "es": "Mundo del progreso",
+    "ru": "Мир прогресса"
+  },
+  "endlessField_MaxFlagWave": {
+    "zh": "每层最多巨浪数",
+    "en": "Maximum flags per floor",
+    "es": "Banderas máximas por piso",
+    "ru": "Максимум флагов на уровень"
+  },
+  "endlessField_SuppressMiniGameMusic": {
+    "zh": "禁用小游戏音乐",
+    "en": "Disable minigame music",
+    "es": "Desactivar música de minijuegos",
+    "ru": "Отключить музыку мини-игр"
+  },
+  "endlessField_InitialPlants": {
+    "zh": "初始植物",
+    "en": "Initial plants",
+    "es": "Plantas iniciales",
+    "ru": "Начальные растения"
+  },
+  "endlessField_ExcludePlants": {
+    "zh": "排除植物",
+    "en": "Excluded plants",
+    "es": "Plantas excluidas",
+    "ru": "Исключённые растения"
+  },
+  "endlessField_LevelDesigners": {
+    "zh": "生成规则",
+    "en": "Generation rules",
+    "es": "Reglas de generación",
+    "ru": "Правила генерации"
+  },
+  "endlessInvalidField": {
+    "zh": "无尽配置需检查：{field}",
+    "en": "Check endless configuration: {field}",
+    "es": "Revisa la configuración infinita: {field}",
+    "ru": "Проверьте настройку режима: {field}"
+  },
+  "endlessCustomDesigner": {
+    "zh": "自定义规则",
+    "en": "Custom rule",
+    "es": "Regla personalizada",
+    "ru": "Своё правило"
+  },
+  "endlessCustomProgress": {
+    "zh": "自定义进度配置",
+    "en": "Custom progress configuration",
+    "es": "Configuración de progreso personalizada",
+    "ru": "Своя настройка прогресса"
+  },
+  "endlessChooseWorld": {
+    "zh": "选择世界",
+    "en": "Choose a world",
+    "es": "Elegir mundo",
+    "ru": "Выберите мир"
+  },
+  "endlessMoveEarlier": {
+    "zh": "前移规则",
+    "en": "Move rule earlier",
+    "es": "Mover regla antes",
+    "ru": "Переместить правило выше"
+  },
+  "endlessMoveLater": {
+    "zh": "后移规则",
+    "en": "Move rule later",
+    "es": "Mover regla después",
+    "ru": "Переместить правило ниже"
+  },
+  "endlessAddDesigner": {
+    "zh": "添加生成规则",
+    "en": "Add generation rule",
+    "es": "Añadir regla de generación",
+    "ru": "Добавить правило генерации"
+  },
+  "endlessInvalidConfig": {
+    "zh": "配置数据无法编辑，请检查原始文件或新建模板。",
+    "en": "Configuration is not editable. Check the source file or create a template.",
+    "es": "No se puede editar esta configuración. Revisa el archivo o crea una plantilla.",
+    "ru": "Настройка недоступна для редактирования. Проверьте файл или создайте шаблон."
+  },
+  "endlessWorld_egypt": {
+    "zh": "神秘埃及",
+    "en": "Ancient Egypt",
+    "es": "Antiguo Egipto",
+    "ru": "Древний Египет"
+  },
+  "endlessWorld_pirate": {
+    "zh": "海盗港湾",
+    "en": "Pirate Seas",
+    "es": "Mares piratas",
+    "ru": "Пиратские моря"
+  },
+  "endlessWorld_cowboy": {
+    "zh": "狂野西部",
+    "en": "Wild West",
+    "es": "Salvaje Oeste",
+    "ru": "Дикий Запад"
+  },
+  "endlessWorld_future": {
+    "zh": "遥远未来",
+    "en": "Far Future",
+    "es": "Futuro lejano",
+    "ru": "Далёкое будущее"
+  },
+  "endlessWorld_dark": {
+    "zh": "黑暗时代",
+    "en": "Dark Ages",
+    "es": "Edad Oscura",
+    "ru": "Тёмные века"
+  },
+  "endlessWorld_beach": {
+    "zh": "巨浪沙滩",
+    "en": "Big Wave Beach",
+    "es": "Playa de la Gran Ola",
+    "ru": "Пляж Большой волны"
+  },
+  "endlessWorld_iceage": {
+    "zh": "冰河世界",
+    "en": "Frostbite Caves",
+    "es": "Cuevas Congeladas",
+    "ru": "Морозные пещеры"
+  },
+  "endlessWorld_lostcity": {
+    "zh": "失落之城",
+    "en": "Lost City",
+    "es": "Ciudad Perdida",
+    "ru": "Затерянный город"
+  },
+  "endlessWorld_eighties": {
+    "zh": "复古舞会",
+    "en": "Neon Mixtape Tour",
+    "es": "Gira de neón",
+    "ru": "Неоновый микстейп"
+  },
+  "endlessWorld_dino": {
+    "zh": "恐龙危机",
+    "en": "Jurassic Marsh",
+    "es": "Pantano Jurásico",
+    "ru": "Юрское болото"
+  },
+  "endlessWorld_modern": {
+    "zh": "摩登时代",
+    "en": "Modern Day",
+    "es": "Tiempos modernos",
+    "ru": "Современность"
+  },
+  "endlessWorld_kongfu": {
+    "zh": "功夫世界",
+    "en": "Kung-Fu World",
+    "es": "Mundo del kung-fu",
+    "ru": "Мир кунг-фу"
+  },
+  "endlessWorld_sky": {
+    "zh": "天空之城",
+    "en": "Sky City",
+    "es": "Ciudad del Cielo",
+    "ru": "Небесный город"
+  },
+  "endlessDesigner_DangerRoomJitteredWaveGenerator": {
+    "zh": "点数出怪",
+    "en": "Point spawning",
+    "es": "Apariciones por puntos",
+    "ru": "Появление по очкам"
+  },
+  "endlessDesigner_DangerRoomKongfuRackGenerator": {
+    "zh": "初始武器架",
+    "en": "Initial weapon racks",
+    "es": "Armeros iniciales",
+    "ru": "Начальные стойки оружия"
+  },
+  "endlessDesigner_DangerRoomGravestoneGenerator": {
+    "zh": "初始墓碑",
+    "en": "Initial gravestones",
+    "es": "Lápidas iniciales",
+    "ru": "Начальные могилы"
+  },
+  "endlessDesigner_DangerRoomKongfuRackEventGenerator": {
+    "zh": "武器架事件",
+    "en": "Weapon rack events",
+    "es": "Eventos de armeros",
+    "ru": "События стоек оружия"
+  },
+  "endlessDesigner_DangerRoomGravestoneEventGenerator": {
+    "zh": "降墓事件",
+    "en": "Gravestone events",
+    "es": "Eventos de lápidas",
+    "ru": "События могил"
+  },
+  "endlessDesigner_DangerRoomNecromancyEventGenerator": {
+    "zh": "墓碑召唤",
+    "en": "Necromancy",
+    "es": "Nigromancia",
+    "ru": "Некромантия"
+  },
+  "endlessDesigner_DangerRoomSandstormDesigner": {
+    "zh": "沙尘暴",
+    "en": "Sandstorms",
+    "es": "Tormentas de arena",
+    "ru": "Песчаные бури"
+  },
+  "endlessDesigner_DangerRoomSnowstormDesigner": {
+    "zh": "暴风雪",
+    "en": "Snowstorms",
+    "es": "Tormentas de nieve",
+    "ru": "Снежные бури"
+  },
+  "endlessDesigner_DangerRoomPlankDesigner": {
+    "zh": "海盗木板",
+    "en": "Pirate planks",
+    "es": "Tablones piratas",
+    "ru": "Пиратские доски"
+  },
+  "endlessDesigner_DangerRoomRaidingPartyDesigner": {
+    "zh": "飞索突袭",
+    "en": "Raiding parties",
+    "es": "Incursiones piratas",
+    "ru": "Пиратские налёты"
+  },
+  "endlessDesigner_DangerRoomRailcartDesigner": {
+    "zh": "轨道矿车",
+    "en": "Rails and minecarts",
+    "es": "Rieles y vagonetas",
+    "ru": "Рельсы и вагонетки"
+  },
+  "endlessDesigner_DangerRoomSpiderRainDesigner": {
+    "zh": "蜘蛛雨",
+    "en": "Spider rain",
+    "es": "Lluvia de arañas",
+    "ru": "Дождь пауков"
+  },
+  "endlessDesigner_DangerRoomParachuteRainDesigner": {
+    "zh": "空降",
+    "en": "Parachute drops",
+    "es": "Paracaidistas",
+    "ru": "Парашютисты"
+  },
+  "endlessDesigner_DangerRoomParachuteVeteranRainDesigner": {
+    "zh": "资深空降",
+    "en": "Veteran parachute drops",
+    "es": "Paracaidistas veteranos",
+    "ru": "Ветераны-парашютисты"
+  },
+  "endlessDesigner_DangerRoomPowerTileDesigner": {
+    "zh": "能量瓷砖",
+    "en": "Power tiles",
+    "es": "Baldosas de poder",
+    "ru": "Энергоплитки"
+  },
+  "endlessDesigner_DangerRoomBeachTideChanger": {
+    "zh": "潮水",
+    "en": "Tides",
+    "es": "Mareas",
+    "ru": "Приливы"
+  },
+  "endlessDesigner_DangerRoomBeachLilypadPlacer": {
+    "zh": "莲叶",
+    "en": "Lily pads",
+    "es": "Nenúfares",
+    "ru": "Кувшинки"
+  },
+  "endlessDesigner_DangerRoomSliderTileDesigner": {
+    "zh": "浮冰",
+    "en": "Ice floes",
+    "es": "Témpanos",
+    "ru": "Льдины"
+  },
+  "endlessDesigner_GridItemPatternPlacer": {
+    "zh": "地形图案",
+    "en": "Board patterns",
+    "es": "Patrones del tablero",
+    "ru": "Шаблоны поля"
+  },
+  "endlessDesigner_DangerRoomConveyorDesignerProperties": {
+    "zh": "传送带",
+    "en": "Conveyor",
+    "es": "Cinta transportadora",
+    "ru": "Конвейер"
+  },
+  "endlessDesigner_DangerRoomFreezingWindDesigner": {
+    "zh": "冰风",
+    "en": "Freezing winds",
+    "es": "Vientos helados",
+    "ru": "Ледяные ветры"
+  },
+  "endlessDesigner_DangerRoomLightningDesigner": {
+    "zh": "雷电",
+    "en": "Lightning",
+    "es": "Rayos",
+    "ru": "Молнии"
+  },
+  "endlessDesigner_DangerRoomDropShipDesigner": {
+    "zh": "飞船运兵",
+    "en": "Drop ships",
+    "es": "Naves de transporte",
+    "ru": "Десантные корабли"
+  },
+  "endlessDesigner_DangerRoomIceBlockDesigner": {
+    "zh": "冰块",
+    "en": "Ice blocks",
+    "es": "Bloques de hielo",
+    "ru": "Ледяные блоки"
+  },
+  "endlessDesigner_DangerRoomJamDesigner": {
+    "zh": "音乐节奏",
+    "en": "Music jams",
+    "es": "Sesiones musicales",
+    "ru": "Музыкальные джемы"
+  },
+  "endlessDesigner_DangerRoomQigongStrikeDesigner": {
+    "zh": "气功炮",
+    "en": "Qigong strikes",
+    "es": "Ataques de qigong",
+    "ru": "Удары цигун"
+  },
+  "endlessDesigner_DangerRoomPortalDesigner": {
+    "zh": "时空传送门",
+    "en": "Time portals",
+    "es": "Portales temporales",
+    "ru": "Порталы времени"
+  },
+  "endlessDesigner_DangerRoomDinoDesigner": {
+    "zh": "恐龙",
+    "en": "Dinosaurs",
+    "es": "Dinosaurios",
+    "ru": "Динозавры"
   }
 }

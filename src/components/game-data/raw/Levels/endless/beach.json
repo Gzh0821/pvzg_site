@@ -1,0 +1,127 @@
+{
+  "#comment": "Beach Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(BeachMowers@LevelModules)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)",
+          "RTID(LilypadPlacement@CurrentLevel)",
+          "RTID(Tide@CurrentLevel)"
+        ],
+        "Name": "[DANGER_ROOM_BEACH_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "StageModule": "RTID(BeachStage@LevelModules)"
+      }
+    },
+    {
+      "aliases": [
+        "LilypadPlacement"
+      ],
+      "objclass": "InitialGridItemProperties",
+      "objdata": {
+        "InitialGridItemPlacements": []
+      }
+    },
+    {
+      "aliases": [
+        "Tide"
+      ],
+      "objclass": "TideProperties",
+      "objdata": {
+        "StartingWaveLocation": 3
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(BeachDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(BeachDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(BeachTideChanger@LevelModules)",
+          "RTID(BeachLilypadPlacer@LevelModules)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "peashooter",
+          "wallnut",
+          "lilypad"
+        ],
+        "ExcludePlants": [
+          "empea",
+          "hotpotato",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "PlantBlackList": [],
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "BeachDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(beach@ZombieTypes)",
+          "RTID(beach_fem@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(beach_armor1@ZombieTypes)",
+          "RTID(beach_armor2@ZombieTypes)",
+          "RTID(beach_fem_armor1@ZombieTypes)",
+          "RTID(beach_fem_armor2@ZombieTypes)",
+          "RTID(beach_snorkel@ZombieTypes)",
+          "RTID(beach_surfer@ZombieTypes)",
+          "RTID(beach_octopus@ZombieTypes)",
+          "RTID(beach_fisherman@ZombieTypes)",
+          "RTID(beach_gargantuar@ZombieTypes)"
+        ]
+      }
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,111 @@
+{
+  "#comment": "Lost City Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(LostCityMowers@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(NewWaves@CurrentLevel)"
+        ],
+        "Name": "[DANGER_ROOM_LOSTCITY_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "StageModule": "RTID(LostCityStage@LevelModules)"
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "SelectionMethod": "chooser"
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objclass": "DangerRoomModuleProperties",
+      "objdata": {
+        "WorldSpecificProperties": "RTID(LostcityDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(LostCityDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(DangerRoomGoldTilePlacer@LevelModules)",
+          "RTID(DangerRoomParachuteRainDesigner@LevelModules)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "peashooter",
+          "cabbagepult",
+          "wallnut"
+        ],
+        "ExcludePlants": [
+          "gravebuster",
+          "lilypad",
+          "tanglekelp",
+          "empea",
+          "floawerPot",
+          "hotpotato",
+          "perfumeshroom"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "LostCityDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(lostcity@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(lostcity_armor1@ZombieTypes)",
+          "RTID(lostcity_armor2@ZombieTypes)",
+          "RTID(lostcity_imp@ZombieTypes)",
+          "RTID(lostcity_excavator@ZombieTypes)",
+          "RTID(lostcity_jane@ZombieTypes)",
+          "RTID(lostcity_bug@ZombieTypes)",
+          "RTID(lostcity_bug_armor1@ZombieTypes)",
+          "RTID(lostcity_bug_armor2@ZombieTypes)",
+          "RTID(lostcity_impporter@ZombieTypes)",
+          "RTID(lostcity_relichunter@ZombieTypes)",
+          "RTID(lostcity_crystalskull@ZombieTypes)",
+          "RTID(lostcity_gargantuar@ZombieTypes)"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "NewWaves"
+      ],
+      "objclass": "WaveManagerModuleProperties",
+      "objdata": {}
+    }
+  ],
+  "version": 1
+}

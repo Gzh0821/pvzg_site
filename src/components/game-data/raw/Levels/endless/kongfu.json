@@ -1,0 +1,182 @@
+{
+  "#comment": "Kongfu Danger Room",
+  "objects": [
+    {
+      "objclass": "LevelDefinition",
+      "objdata": {
+        "Description": "[PLAYERS_TRIP_TO_DANGER_ROOM]",
+        "ForceToRestart": true,
+        "IsDangerRoom": true,
+        "LevelNumber": 666,
+        "Loot": "RTID(DangerRoomLoot@LevelModules)",
+        "Modules": [
+          "RTID(DangerRoomIntro@CurrentLevel)",
+          "RTID(DangerRoomModule@CurrentLevel)",
+          "RTID(KongfuMowers@LevelModules)",
+          "RTID(NewWaves@CurrentLevel)",
+          "RTID(SeedBank@CurrentLevel)",
+          "RTID(DefaultSunDropper@LevelModules)",
+          "RTID(ZombiesDeadWinCon@LevelModules)",
+          "RTID(DefaultZombieWinCondition@LevelModules)"
+        ],
+        "Name": "[DANGER_ROOM_KONGFU_LEVEL_NAME]",
+        "NormalPresentTable": "egypt_normal_01",
+        "ShinyPresentTable": "egypt_shiny_01",
+        "StageModule": "RTID(KongfuStage@LevelModules)"
+      }
+    },
+    {
+      "objclass": "WaveManagerModuleProperties",
+      "aliases": [
+        "NewWaves"
+      ],
+      "objdata": {}
+    },
+    {
+      "objclass": "DangerRoomModuleProperties",
+      "aliases": [
+        "DangerRoomModule"
+      ],
+      "objdata": {
+        "WorldSpecificProperties": "RTID(KongfuDangerRoomProps@PropertySheets)",
+        "LevelDesigners": [
+          "RTID(KongfuDangerRoomWaveGenerator@CurrentLevel)",
+          "RTID(KongfuRackGenerator@CurrentLevel)",
+          "RTID(KongfuWaveRackEventGenerator@CurrentLevel)",
+          "RTID(KongfuRocketStrikeGenerator@CurrentLevel)"
+        ],
+        "InitialPlants": [
+          "sunflower",
+          "firegourd",
+          "cabbagepult",
+          "peashooter",
+          "turnip"
+        ],
+        "ExcludePlants": [
+          "gravebuster",
+          "lilypad",
+          "tanglekelp",
+          "empea",
+          "hotpotato"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "DangerRoomIntro"
+      ],
+      "objclass": "DangerRoomLevelIntroProperties",
+      "objdata": {}
+    },
+    {
+      "aliases": [
+        "SeedBank"
+      ],
+      "objclass": "SeedBankProperties",
+      "objdata": {
+        "PlantBlackList": [],
+        "SelectionMethod": "chooser",
+        "AlwaysUseChooser": true
+      }
+    },
+    {
+      "aliases": [
+        "KongfuDangerRoomWaveGenerator"
+      ],
+      "objclass": "DangerRoomJitteredWaveGenerator",
+      "objdata": {
+        "StartingPoints": 100,
+        "BasePointIncrementPerWave": 30,
+        "BasePointIncrementPerLevel": 5,
+        "MustContainZombie": [
+          "RTID(kongfu@ZombieTypes)"
+        ],
+        "MinDynamicZombieType": 4,
+        "ZombiePool": [
+          "RTID(kongfu_armor1@ZombieTypes)",
+          "RTID(kongfu_armor2@ZombieTypes)",
+          "RTID(kongfu_gong@ZombieTypes)",
+          "RTID(kongfu_bomb@ZombieTypes)",
+          "RTID(kongfu_hammer@ZombieTypes)",
+          "RTID(kongfu_torch@ZombieTypes)",
+          "RTID(kongfu_drink@ZombieTypes)",
+          "RTID(kongfu_chi@ZombieTypes)",
+          "RTID(kongfu_bronze_strong@ZombieTypes)"
+        ]
+      }
+    },
+    {
+      "aliases": [
+        "KongfuRackGenerator"
+      ],
+      "objclass": "DangerRoomKongfuRackGenerator",
+      "objdata": {
+        "Types": [
+          "kongfu_rack_torch",
+          "kongfu_rack_flag",
+          "kongfu_rack_bomb",
+          "kongfu_rack_hammer",
+          "kongfu_rack_helmet"
+        ],
+        "MinGravestoneCount": 3,
+        "BaseGravestoneCountPerLevel": 1,
+        "MaxGeneratedGravestones": 12,
+        "MinStartingGravestoneSpawnCol": 5,
+        "MaxStartingGravestoneSpawnCol": 4,
+        "MaxStartingGravestoneSpawnColOffsetPerLevel": -0.25,
+        "MinEndingGravestoneSpawnCol": 7,
+        "MaxEndingGravestoneSpawnCol": 6,
+        "MaxEndingGravestoneSpawnColOffsetPerLevel": 0
+      }
+    },
+    {
+      "aliases": [
+        "KongfuWaveRackEventGenerator"
+      ],
+      "objclass": "DangerRoomKongfuRackEventGenerator",
+      "objdata": {
+        "Types": [
+          "kongfu_rack_torch",
+          "kongfu_rack_bomb",
+          "kongfu_rack_flag",
+          "kongfu_rack_hammer",
+          "kongfu_rack_helmet"
+        ],
+        "WaveMinPerFlag": 0,
+        "WaveMaxPerFlagBase": 0,
+        "WaveMaxPerFlagIncrementPerLevel": 0.5,
+        "WaveMaxPerFlagSlope": 3,
+        "GravestonesMinPerSpawnEvent": 1,
+        "GravestonesMaxPerSpawnEventBase": 1,
+        "GravestonesMaxPerSpawnEventIncrementPerLevel": 0.5,
+        "GravestonesMaxPerSpawnEventSlope": 10,
+        "BeneficialGravestonesPerSpawnEventMin": 0,
+        "BeneficialGravestonesPerSpawnEventMax": 0,
+        "ChanceThatBeneficialGravestoneIsPlantfoodNotSun": 0,
+        "GravestoneSpawnColumnMax": 7,
+        "GravestoneSpawnColumnMinBase": 6,
+        "GravestoneSpawnColumnMinIncrementPerLevel": -0.2,
+        "GravestoneSpawnColumnMinLowerLimit": 4,
+        "GravestoneSpawnColumnMinUpperLimit": 6
+      }
+    },
+    {
+      "aliases": [
+        "KongfuRocketStrikeGenerator"
+      ],
+      "objclass": "DangerRoomRaidingPartyDesigner",
+      "objdata": {
+        "ZombieType": "RTID(kongfu_rocket_imp@ZombieTypes)",
+        "BasePartyCount": 0,
+        "BasePartyCountPerLevel": 0.5,
+        "BasePartyZombiesCount": 1,
+        "BasePartyZombiesCountPerLevel": 0.4,
+        "MaxPartyZombies": 10,
+        "MaxPartyCount": 5,
+        "BasePartyStartWave": 5,
+        "WaveStartMessage": "[WARNING_ROCKET_STRIKE]"
+      }
+    }
+  ],
+  "version": 1
+}

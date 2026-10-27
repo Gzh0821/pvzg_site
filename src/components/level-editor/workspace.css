@@ -307,3 +307,34 @@
 .board-canvas-layout .lawn-cell:focus-visible { outline: 2px solid var(--editor-accent-strong); outline-offset: -3px; }
 
 .board-tool-properties .cell-detail-main { padding-inline-end: 44px; }
+
+.endless-template-field select, .endless-preview input { min-height: 44px; padding: .5rem .65rem; border: 1px solid var(--editor-border); border-radius: 10px; background: var(--editor-panel-raised); color: var(--editor-text); font: inherit; }
+.endless-preview { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--editor-border); }
+.endless-preview .field-row { max-width: 160px; margin: 0; }
+.endless-preview > span { padding-block: .6rem; }
+.endless-budget-list { display: flex; flex-wrap: wrap; gap: 1rem; width: 100%; font-variant-numeric: tabular-nums; }
+.endless-settings { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; min-width: 0; color: var(--editor-text); }
+.endless-settings > * { min-width: 0; }
+.endless-settings > .field-row { margin: 0; }
+.endless-settings :is(input[type="number"], select) { min-width: 0; max-width: 100%; min-height: 44px; padding: .5rem .65rem; border: 1px solid var(--editor-border); border-radius: 10px; background: var(--editor-panel); color: var(--editor-text); font: inherit; }
+.endless-settings input[type="checkbox"] { accent-color: var(--editor-accent); }
+.endless-settings h3 { margin: 0 0 .75rem; padding: 0; border: 0; font-size: 1rem; }
+.endless-progress-notice { margin: -.75rem 0 0; line-height: 1.6; }
+.endless-plant-list { display: flex; flex-wrap: wrap; gap: .35rem .75rem; margin-bottom: .75rem; }
+.endless-plant-chip { display: inline-flex; gap: .35rem; align-items: center; }
+.endless-plant-chip img { width: 40px; height: 34px; object-fit: contain; }
+.endless-add-row { display: flex; gap: .5rem; align-items: center; }
+.endless-add-row .ant-select { flex: 1; min-width: 0; }
+.endless-add-row :is(.ant-select-selector, .ant-btn) { min-height: 44px; }
+.endless-icon-button.ant-btn { min-width: 44px; min-height: 44px; padding: 0; color: var(--editor-text); }
+.endless-designer-list { margin: 0 0 .75rem; padding: 0; list-style: none; }
+.endless-designer-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; padding: .75rem 0; border-bottom: 1px solid var(--editor-border); }
+.endless-designer-list li > div:first-child { display: grid; gap: .25rem; min-width: 0; }
+.endless-designer-list code { overflow-wrap: anywhere; color: var(--editor-muted); }
+.endless-rule-actions { display: flex; }
+.level-editor-select-popup.ant-select-dropdown { background: color-mix(in srgb, var(--vp-c-bg) 88%, transparent); backdrop-filter: blur(24px) saturate(150%); }
+@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+  .level-editor-select-popup.ant-select-dropdown, .level-editor-modal-root .ant-modal-content, .level-editor-drawer-root .ant-drawer-content { background: var(--vp-c-bg); backdrop-filter: none; }
+}
+.endless-add-row .ant-select-selection-placeholder { color: var(--editor-muted); }
+.endless-settings :is(input, select, button):focus-visible, .endless-template-field select:focus-visible { outline: 2px solid var(--editor-accent); outline-offset: 2px; }
