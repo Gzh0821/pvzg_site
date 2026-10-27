@@ -570,10 +570,10 @@
     "ru": "Данные динамических вагонеток сохраняются"
   },
   "boardRuleStartingTide": {
-    "zh": "起始潮线列（0–9）",
-    "en": "Starting tide column (0–9)",
-    "es": "Columna inicial de marea (0–9)",
-    "ru": "Начальный столбец прилива (0–9)"
+    "zh": "初始淹没列数（0–9）",
+    "en": "Initially flooded columns (0–9)",
+    "es": "Columnas inundadas al inicio (0–9)",
+    "ru": "Затопленных столбцов в начале (0–9)"
   },
   "boardRulePlankRows": {
     "zh": "木板所在行",
@@ -3202,5 +3202,71 @@
     "en": "This action cannot be edited. Its original data is preserved.",
     "es": "Esta acción no se puede editar. Se conservan sus datos originales.",
     "ru": "Это действие нельзя изменить. Исходные данные сохранены."
+  },
+  "boardTools": {
+    "zh": "棋盘工具",
+    "en": "Board tools",
+    "es": "Herramientas del tablero",
+    "ru": "Инструменты поля"
+  },
+  "boardSelectTool": {
+    "zh": "选择",
+    "en": "Select",
+    "es": "Seleccionar",
+    "ru": "Выбрать"
+  },
+  "boardPlaceTool": {
+    "zh": "摆放素材",
+    "en": "Place assets",
+    "es": "Colocar elementos",
+    "ru": "Разместить объекты"
+  },
+  "boardRuleEditTarget": {
+    "zh": "编辑哪组规则",
+    "en": "Rule to edit",
+    "es": "Regla a editar",
+    "ru": "Редактируемое правило"
+  },
+  "boardRuleNewGroup": {
+    "zh": "新增一组",
+    "en": "New group",
+    "es": "Nuevo grupo",
+    "ru": "Новая группа"
+  },
+  "boardRuleRemoveGroup": {
+    "zh": "删除整组",
+    "en": "Delete group",
+    "es": "Eliminar grupo",
+    "ru": "Удалить группу"
+  },
+  "boardToolClickToAdd": {
+    "zh": "点击棋盘添加，再点一次移除。",
+    "en": "Click the board to add; click again to remove.",
+    "es": "Haz clic en el tablero para añadir; repite para quitar.",
+    "ru": "Нажмите на поле для добавления, ещё раз — для удаления."
+  },
+  "objectiveEditTarget": {
+    "zh": "编辑哪个目标",
+    "en": "Objective to edit",
+    "es": "Objetivo a editar",
+    "ru": "Редактируемая цель"
+  },
+  "objectiveEditOnBoard": {
+    "zh": "在棋盘编辑",
+    "en": "Edit on board",
+    "es": "Editar en el tablero",
+    "ru": "Изменить на поле"
+  },
+  "objectiveProtectedPlant": {
+    "zh": "保护的植物",
+    "en": "Protected plant",
+    "es": "Planta protegida",
+    "ru": "Защищаемое растение"
+  },
+  "boardToolTideHint": {
+    "zh": "点击棋盘设置潮水边界。",
+    "en": "Click the board to set the tide boundary.",
+    "es": "Haz clic en el tablero para fijar el límite de la marea.",
+    "ru": "Нажмите на поле, чтобы задать границу прилива."
   }
 }

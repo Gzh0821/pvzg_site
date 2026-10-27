@@ -86,10 +86,8 @@
         <div v-if="activeWorkspace === 'basic'" class="basic-workspace glass-panel">
           <BasicForm />
           <ObjectivesPanel :system="draft.objectives" :plant-options="plantOptions"
-            :selected-cell="selectedCell" :selected-cell-items="selectedCellItems"
-            :selected-plant-code="selectedPlantAsset ? selectedPlantAsset.code : ''"
             :resolve-mold-locations="resolveBoardGridMapSquares" :expert-mode="expertMode" :translate="t"
-            @select-cell="selectObjectiveCell" />
+            :reserved-aliases="boardReservedAliases" @edit-board="editObjectiveOnBoard" />
         </div>
         <div v-else-if="activeWorkspace === 'narrative'" class="basic-workspace glass-panel">
           <NarrativePanel :objects="draft.unsupportedRawObjects" :definition="draft.levelExtra"
@@ -180,8 +178,10 @@ import GeneratorPanel from './generator-panel';
 const NarrativePanel = defineAsyncComponent(() => import('./narrative-panel'));
 import ObjectivesPanel from './objectives-panel';
 import BoardRulesPanel from './board-rules-panel';
+import { BOARD_TOOLS, applyBoardTool, getBoardToolKind, getBoardToolTarget } from './board-editing.mjs';
 import {
   analyzeLevelCapabilities,
+  appendPreservedLevelObjects,
   buildLevelDocument,
   buildSeedPresetPlants,
   createLevelImportSnapshot,
@@ -638,6 +638,10 @@ const assetSearch = ref('');
 const assetVisibleLimit = ref(ASSET_PAGE_SIZE);
 const selectedAsset = ref<AssetOption | null>(null);
 const selectedCell = ref<{ row: number; col: number } | null>(null);
+const boardTool = ref('place');
+const selectedBoardTargetId = ref('');
+const boardPowerGroup = ref('alpha');
+const boardPowerDelay = ref(0.25);
 const selectedWaveId = ref(1);
 const newSchedulerChildKind = ref<AddableWaveActionKind>('storm');
 const selectedSchedulerChildAliases = ref<Record<number, string>>({});
@@ -739,7 +743,7 @@ async function restoreHistory(direction: number) {
 
 watch(draft, () => { recordHistory(); if (draftReady) draftDirty = true; scheduleDraftSave(); }, { deep: true, flush: 'post' });
 watch([seedListTarget, selectedDeckIndex, deckNameLanguage, expandedWaveActionKey, selectedSpawnRow,
-  generatorEditorOpen, selectedGeneratorAlias, generatorPoolTarget], scheduleDraftSave, { flush: 'post' });
+  generatorEditorOpen, selectedGeneratorAlias, generatorPoolTarget, boardTool, selectedBoardTargetId, boardPowerGroup, boardPowerDelay], scheduleDraftSave, { flush: 'post' });
 
 const language = computed<LocaleKey>(() => {
   if (providedLanguage.startsWith('es')) return 'es';
@@ -814,6 +818,11 @@ const activePointGenerator = computed(() => getGeneratorObjects(draft.value.unsu
 const narrativeReservedAliases = computed(() => [draft.value.waveManagerAlias,
   ...draft.value.waves.flatMap((wave) => [wave.zombieActionAlias || '', ...wave.rawActions.map((action) => action.alias)]),
   ...(importedLevelSnapshot?.source.objects || []).flatMap((object: any) => object?.aliases || [])]);
+
+const boardReservedAliases = computed(() => [...narrativeReservedAliases.value,
+  ...draft.value.unsupportedRawObjects.flatMap((object: any) => object?.aliases || []),
+  ...draft.value.boardRules.modules.map((rule) => rule.alias),
+  ...draft.value.objectives.starObjectives.map((objective) => objective.alias), draft.value.objectives.protect?.alias].filter(Boolean));
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
@@ -1228,6 +1237,7 @@ function resetDraft() {
   selectedDynamicDifficulty.value = 4;
   dynamicZombieActionHint.value = '';
   eventZombieActionHint.value = '';
+  resetBoardTools();
   selectedCell.value = null;
   selectedAsset.value = null;
   nextItemId.value = 1;
@@ -1274,9 +1284,54 @@ function handleWorkspaceKeydown(event: KeyboardEvent, id: WorkspaceId) {
   nextTick(() => document.getElementById(`level-tab-${workspaceViews[next].id}`)?.focus());
 }
 
+function resetBoardTools() {
+  boardTool.value = 'place';
+  selectedBoardTargetId.value = '';
+  boardPowerGroup.value = 'alpha';
+  boardPowerDelay.value = 0.25;
+}
+
+function selectBoardTool(tool: string, id = '') {
+  boardTool.value = tool;
+  const target = getBoardToolTarget(draft.value, tool, id);
+  selectedBoardTargetId.value = target?.id || '';
+  if (tool === 'powerTiles') selectBoardPowerGroup(boardPowerGroup.value);
+  if (tool === 'protect') assetTab.value = 'plant';
+}
+
+function selectBoardPowerGroup(group: string) {
+  boardPowerGroup.value = group;
+  const target = getBoardToolTarget(draft.value, 'powerTiles', selectedBoardTargetId.value);
+  const delay = Number(getRulePowerTiles(target).find((tile: any) => tile.Group === group)?.PropagationDelay);
+  boardPowerDelay.value = Number.isFinite(delay) ? delay : 0.25;
+}
+
+function editObjectiveOnBoard(target: { tool: string; id: string }) {
+  selectBoardTool(target.tool, target.id);
+  switchWorkspace('board');
+}
+
 function selectObjectiveCell(cell: { row: number; col: number }) {
   selectedCell.value = cell;
-  switchWorkspace('board');
+}
+
+function boardToolLabel(tool: string) {
+  const labels: Record<string, string> = { select: 'boardSelectTool', place: 'boardPlaceTool', rails: 'boardRuleRails', railcarts: 'boardRuleRailcarts',
+    powerTiles: 'boardRuleKind_powerTiles', tide: 'boardRuleKind_tide', planks: 'boardRuleKind_planks',
+    mold: 'objectiveKind_mold', protect: 'objectiveKind_protect' };
+  return t(labels[tool]);
+}
+
+function editBoardCell(row: number, col: number) {
+  selectedCell.value = { row, col };
+  if (boardTool.value === 'select') return;
+  if (boardTool.value === 'place') { placeAsset(row, col); return; }
+  const result = applyBoardTool(draft.value, boardTool.value, selectedBoardTargetId.value, row, col, {
+    powerGroup: boardPowerGroup.value, powerDelay: boardPowerDelay.value, plantCode: selectedPlantAsset.value?.code,
+    reservedAliases: boardReservedAliases.value, resolveMoldLocations: resolveBoardGridMapSquares
+  });
+  if (result.targetId) selectedBoardTargetId.value = result.targetId;
+  if (result.error === 'plant') message.warning(t('objectiveSelectCellPlant'));
 }
 
 function captureProject() {
@@ -1286,7 +1341,8 @@ function captureProject() {
     selectedDeckIndex: selectedDeckIndex.value, deckNameLanguage: deckNameLanguage.value,
     selectedSpawnRow: selectedSpawnRow.value, expandedWaveActionKey: expandedWaveActionKey.value,
     generatorEditorOpen: generatorEditorOpen.value, selectedGeneratorAlias: selectedGeneratorAlias.value,
-    generatorPoolTarget: generatorPoolTarget.value
+    generatorPoolTarget: generatorPoolTarget.value, boardTool: boardTool.value, selectedBoardTargetId: selectedBoardTargetId.value,
+    boardPowerGroup: boardPowerGroup.value, boardPowerDelay: boardPowerDelay.value
   });
 }
 
@@ -1322,6 +1378,10 @@ function restoreProject(project: ReturnType<typeof readProjectState>) {
     ? project.editor.selectedGeneratorAlias : generators[0]?.aliases?.[0] || '';
   generatorPoolTarget.value = project.editor.generatorPoolTarget === 'MustContainZombie' ? 'MustContainZombie' : 'ZombiePool';
   generatorEditorOpen.value = project.editor.generatorEditorOpen ?? generators.length > 0;
+  boardTool.value = BOARD_TOOLS.includes(project.editor.boardTool) ? project.editor.boardTool : 'place';
+  selectedBoardTargetId.value = project.editor.selectedBoardTargetId || '';
+  boardPowerGroup.value = POWER_TILE_GROUPS.includes(project.editor.boardPowerGroup) ? project.editor.boardPowerGroup : 'alpha';
+  boardPowerDelay.value = Number.isFinite(project.editor.boardPowerDelay) ? project.editor.boardPowerDelay : 0.25;
   selectedCell.value = null;
   selectedAsset.value = null;
   assetTab.value = activeWorkspace.value === 'waves' ? 'zombie' : 'plant';
@@ -1399,6 +1459,7 @@ function chooseAsset(asset: AssetOption) {
     return;
   }
   selectedAsset.value = asset;
+  if (activeWorkspace.value === 'board' && boardTool.value !== 'protect') boardTool.value = 'place';
   assetLibraryOpen.value = false;
   assetTab.value = asset.kind;
   if (asset.kind === 'object') objectCategory.value = asset.category || 'all';
@@ -2544,6 +2605,7 @@ function handleUpload(file: File) {
       selectedDynamicDifficulty.value = 4;
       dynamicZombieActionHint.value = '';
       eventZombieActionHint.value = '';
+      resetBoardTools();
       selectedCell.value = null;
       resetHistory();
       scheduleDraftSave();
@@ -2864,7 +2926,7 @@ function parseLevel(raw: any): LevelDraft {
     preservedPlacementObjects,
     unsupportedObjects: unsupportedRawObjects.length,
     unsupportedRawObjects,
-    moduleRefs: uniqueRefs(levelModules)
+    moduleRefs: [...levelModules]
   };
 }
 
@@ -2977,6 +3039,8 @@ function serializeConveyorData() {
 }
 
 function replaceModuleGroup(refs: string[], group: Set<string>, selectedRef: string | null) {
+  const current = refs.filter((ref) => group.has(ref));
+  if (current.length && current.every((ref) => ref === selectedRef)) return [...refs];
   const result: string[] = [];
   let inserted = false;
   let foundGroup = false;
@@ -2992,7 +3056,7 @@ function replaceModuleGroup(refs: string[], group: Set<string>, selectedRef: str
     }
   });
   if (!foundGroup && selectedRef) result.push(selectedRef);
-  return uniqueRefs(result);
+  return result;
 }
 
 function setModuleRef(refs: string[], ref: string, enabled: boolean) {
@@ -3018,24 +3082,28 @@ function buildModuleRefs(
   const sunDropperRefs = new Set(
     sunDropperOptions.filter((option) => option.value !== NO_MODULE).map((option) => `RTID(${option.value}@LevelModules)`)
   );
+  const baseline = importedLevelSnapshot?.draftFingerprint ? JSON.parse(importedLevelSnapshot.draftFingerprint) : null;
   let refs = [...draft.value.moduleRefs];
-  refs = replaceModuleGroup(refs, sunDropperRefs, sunDropperModule !== NO_MODULE ? `RTID(${sunDropperModule}@LevelModules)` : null);
-  refs = replaceModuleGroup(refs, mowerRefs, mowerModule !== NO_MODULE ? `RTID(${mowerModule}@LevelModules)` : null);
+  if (!baseline || baseline.sunDropper !== draft.value.sunDropper) {
+    refs = replaceModuleGroup(refs, sunDropperRefs, sunDropperModule !== NO_MODULE ? `RTID(${sunDropperModule}@LevelModules)` : null);
+  }
+  if (!baseline || (['mower', 'stage', 'stageSource'] as const).some((key) => baseline[key] !== draft.value[key])) {
+    refs = replaceModuleGroup(refs, mowerRefs, mowerModule !== NO_MODULE ? `RTID(${mowerModule}@LevelModules)` : null);
+  }
   refs = setModuleRef(refs, waveModuleRef, shouldReferenceWaveManager);
-  refs = setModuleRef(refs, seedBankRef, shouldEmitSeedBank && !shouldEmitConveyor);
-  refs = replaceModuleGroup(
-    refs,
-    new Set([
-      'RTID(Conveyor@CurrentLevel)',
-      'RTID(ConveyorBelt@CurrentLevel)',
-      `RTID(${draft.value.conveyor.alias || 'ConveyorBelt'}@CurrentLevel)`
-    ]),
-    shouldEmitConveyor ? `RTID(${draft.value.conveyor.alias || 'ConveyorBelt'}@CurrentLevel)` : null
-  );
+  if (!isImportedDomainUnchanged(importedLevelSnapshot, draft.value, 'seed') ||
+    baseline?.conveyor.enabled !== draft.value.conveyor.enabled || baseline?.conveyor.alias !== draft.value.conveyor.alias) {
+    refs = setModuleRef(refs, seedBankRef, shouldEmitSeedBank && !shouldEmitConveyor);
+    refs = replaceModuleGroup(
+      refs,
+      new Set(['RTID(Conveyor@CurrentLevel)', 'RTID(ConveyorBelt@CurrentLevel)', `RTID(${draft.value.conveyor.alias || 'ConveyorBelt'}@CurrentLevel)`]),
+      shouldEmitConveyor ? `RTID(${draft.value.conveyor.alias || 'ConveyorBelt'}@CurrentLevel)` : null
+    );
+  }
   refs = updateObjectiveModuleRefs(refs, draft.value.objectives);
   refs = updateBoardRuleModuleRefs(refs, draft.value.boardRules);
 
-  if (!draft.value.preserveBoardModules) {
+  if (!draft.value.preserveBoardModules && !isImportedDomainUnchanged(importedLevelSnapshot, draft.value, 'placements')) {
     const boardRefs = new Set([
       'RTID(InitialGridItems@CurrentLevel)',
       'RTID(Gravestones@CurrentLevel)',
@@ -3047,7 +3115,7 @@ function buildModuleRefs(
     refs.push(...generatedBoardRefs);
   }
 
-  return uniqueRefs(refs);
+  return refs;
 }
 
 function serializeLevel() {
@@ -3083,7 +3151,6 @@ function serializeLevel() {
   const shouldEmitSeedBank =
     !shouldEmitConveyor &&
     (draft.value.hasSeedBank ||
-      draft.value.moduleRefs.includes(seedBankRef) ||
       normalizedSeedPlants.length > 0 ||
       draft.value.includePlants.length > 0 ||
       draft.value.excludePlants.length > 0 ||
@@ -3370,7 +3437,7 @@ function serializeLevel() {
     });
   }
 
-  objects.push(...draft.value.unsupportedRawObjects);
+  appendPreservedLevelObjects(objects, draft.value.unsupportedRawObjects, importedLevelSnapshot?.source.objects);
 
   const definition = objects.find((object) => object.objclass === 'LevelDefinition');
   if (definition) definition.objdata = preserveUneditedDefinitionFields(importedLevelSnapshot, draft.value, definition.objdata);
@@ -3758,7 +3825,7 @@ function isPiratePlankRow(row: number) {
 
 function getStartingTideLocation() {
   const tide = boardRuleEntries.value.find((rule) => rule.kind === 'tide');
-  return tide ? normalizeBoardCoordinate(tide.objdata?.StartingWaveLocation, 9) : null;
+  return tide ? 9 - normalizeBoardCoordinate(tide.objdata?.StartingWaveLocation, 9) : null;
 }
 
 function getPowerTileAtCell(row: number, col: number) {
@@ -3887,7 +3954,7 @@ const BoardEditor = defineComponent({
     return () =>
       h('section', { class: 'board-editor', id: 'editor-board' }, [
         h('div', { class: 'board-header' }, [
-          h('div', [h('strong', t('board')), selectedAsset.value ? h('span', `${t('selected')}: ${selectedAsset.value.name}`) : null]),
+          h('div', [h('strong', t('board')), selectedAsset.value && (boardTool.value === 'place' || boardTool.value === 'protect') ? h('span', `${t('selected')}: ${selectedAsset.value.name}`) : null]),
           h('div', { class: 'board-actions' }, [
             selectedCell.value && selectedCellItems.value.length
               ? h('button', { class: 'text-button', onClick: clearSelectedCell }, [h(DeleteOutlined), t('clearCell')])
@@ -3898,7 +3965,11 @@ const BoardEditor = defineComponent({
             ])
           ])
         ]),
-        h(
+        h('div', { class: 'board-tool-strip', role: 'group', 'aria-label': t('boardTools') }, BOARD_TOOLS.map((tool) => h('button', {
+          type: 'button', 'aria-pressed': boardTool.value === tool, onClick: () => selectBoardTool(tool)
+        }, boardToolLabel(tool)))),
+        h('div', { class: 'board-canvas-layout' }, [
+          h('div', { class: 'board-canvas-scroller' }, [h(
           'div',
           { class: `lawn-grid stage-${draft.value.stage.toLowerCase()}`, 'aria-label': t('board') },
           Array.from({ length: 5 }, (_, row) =>
@@ -3926,7 +3997,7 @@ const BoardEditor = defineComponent({
                     plankRow ? 'pirate-plank-row' : '',
                     selectedCell.value?.row === row && selectedCell.value?.col === col ? 'selected' : ''
                   ],
-                  onClick: () => placeAsset(row, col)
+                  onClick: () => editBoardCell(row, col)
                 },
                 [
                   powerTile
@@ -3984,13 +4055,20 @@ const BoardEditor = defineComponent({
                 ]
               : []
           )
-        ),
-        h(BoardRulesPanel, {
-          system: draft.value.boardRules,
-          selectedCell: selectedCell.value,
-          expertMode: expertMode.value,
-          translate: t
-        }),
+        )]),
+          h('div', { class: 'board-tool-properties' }, [
+        getBoardToolKind(boardTool.value) ? h(BoardRulesPanel, {
+          system: draft.value.boardRules, tool: boardTool.value, selectedId: selectedBoardTargetId.value,
+          powerGroup: boardPowerGroup.value, powerDelay: boardPowerDelay.value, reservedAliases: boardReservedAliases.value,
+          expertMode: expertMode.value, translate: t,
+          onSelect: (id: string) => selectBoardTool(boardTool.value, id),
+          onPowerGroup: selectBoardPowerGroup, onPowerDelay: (value: number) => { boardPowerDelay.value = value; }
+        }) : boardTool.value === 'mold' || boardTool.value === 'protect' ? h(ObjectivesPanel, {
+          system: draft.value.objectives, plantOptions: plantOptions.value, context: 'board', tool: boardTool.value,
+          selectedId: selectedBoardTargetId.value, resolveMoldLocations: resolveBoardGridMapSquares,
+          expertMode: expertMode.value, translate: t, reservedAliases: boardReservedAliases.value,
+          onSelect: (id: string) => { selectedBoardTargetId.value = id; }, onSelectCell: selectObjectiveCell
+        }) : null,
         selectedCell.value
           ? h('div', { class: 'cell-detail-panel' }, [
               h('div', { class: 'cell-detail-title' }, t('selectedCellTitle', { col: selectedCell.value.col + 1, row: selectedCell.value.row + 1 })),
@@ -4012,6 +4090,8 @@ const BoardEditor = defineComponent({
                   : h('div', { class: 'cell-detail-empty' }, t('selectedCellEmpty'))
             ])
           : null
+          ])
+        ])
       ]);
   }
 });

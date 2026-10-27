@@ -105,7 +105,7 @@ export function parseBoardRuleSystem(raw) {
     const alias = parseCurrentLevelAlias(reference);
     const match = alias ? aliasIndex.get(alias) : null;
     const kind = match ? RULE_KIND_BY_CLASS[match.object?.objclass] : '';
-    if (!kind) return;
+    if (!kind || system.ownedObjectIndexes.includes(match.objectIndex)) return;
     system.ownedObjectIndexes.push(match.objectIndex);
     system.modules.push({
       id: `board-rule:${refIndex}:${alias}`,
@@ -162,10 +162,10 @@ export function updateBoardRuleModuleRefs(refs, system) {
   return result;
 }
 
-export function createBoardRule(system, kind) {
+export function createBoardRule(system, kind, reservedAliases = []) {
   const definition = RULE_DEFINITIONS[kind];
   if (!definition) return null;
-  const usedAliases = new Set((system.modules || []).map((module) => module.alias));
+  const usedAliases = new Set([...reservedAliases, ...(system.modules || []).map((module) => module.alias)]);
   const alias = uniqueAlias(definition.alias, usedAliases);
   return {
     id: `board-rule:new:${alias}`,

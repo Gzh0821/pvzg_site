@@ -262,3 +262,46 @@
   .narrative-editor :is(input, select, textarea), .generator-editor :is(input, select) { min-height: 44px; }
   .generator-fields, .generator-pool { grid-template-columns: minmax(0, 1fr); }
 }
+
+.inline-objectives .objective-rows { margin-top: .75rem; }
+.inline-objectives .objective-row { display: grid; grid-template-columns: minmax(150px, .7fr) minmax(0, 1.5fr) 44px; gap: 1rem; align-items: center; padding: .85rem 0; border-top: 1px solid var(--editor-border); }
+.inline-objectives .objective-inspector-body { margin: 0; }
+.objective-board-link { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.objective-board-link > span { color: var(--editor-muted); }
+.inline-objectives :is(input, select), .board-tool-properties :is(input, select) { min-height: 44px; min-width: 0; max-width: 100%; padding: .5rem .65rem; border: 1px solid var(--editor-border); border-radius: 10px; background: var(--editor-panel-raised); color: var(--editor-text); font: inherit; }
+.inline-objectives .objective-row > button, .board-tool-properties button { min-height: 44px; }
+.inline-objectives .objective-row > button { width: 44px; padding: 0; }
+.board-tool-strip { display: flex; flex-wrap: wrap; gap: .35rem; margin: 1rem 0; }
+.board-tool-strip button { min-height: 44px; padding: .55rem .75rem; border: 0; border-radius: 10px; background: transparent; color: var(--editor-text); font: inherit; cursor: pointer; }
+.board-tool-strip button[aria-pressed="true"] { background: var(--editor-accent); color: var(--editor-on-accent); }
+.board-canvas-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 280px); gap: 1rem; align-items: start; }
+.board-canvas-scroller { min-width: 0; overflow-x: auto; border-radius: 12px; }
+.board-canvas-layout .lawn-grid { min-width: 432px; margin: 0; }
+.board-canvas-layout .lawn-cell { min-height: 44px; }
+.board-tool-properties { min-width: 0; padding-inline-start: 1rem; border-inline-start: 1px solid var(--editor-border); }
+.board-tool-properties :is(.board-rules-panel, .objectives-panel, .cell-detail-panel) { padding: 0; margin: 0; border: 0; background: transparent; }
+.board-tool-properties .cell-detail-panel { margin-top: 1rem; }
+.board-tool-properties .board-rule-entry-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.board-tool-properties .board-rule-entry-row > button { justify-self: end; grid-column: -2; }
+.board-tool-properties .cart-entry { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.direct-board-rules .power-tile-groups { grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); }
+.direct-board-rules .power-tile-groups button { grid-template-columns: 32px minmax(0, 1fr); grid-template-rows: auto; gap: .35rem; padding: .35rem; }
+.direct-board-rules .power-tile-groups img { width: 32px; height: 32px; grid-row: auto; }
+.direct-board-rules .power-tile-groups button.active { box-shadow: none; }
+.direct-board-objectives .protected-plant-row { grid-template-columns: minmax(0, 1fr) 44px; }
+.direct-board-objectives .protected-cell-link { grid-column: 1 / -1; text-align: start; }
+@media (max-width: 1250px) {
+  .board-canvas-layout { grid-template-columns: minmax(0, 1fr); }
+  .board-tool-properties { border-inline-start: 0; padding-inline-start: 0; border-top: 1px solid var(--editor-border); padding-top: 1rem; }
+}
+@media (max-width: 600px) {
+  .inline-objectives .objective-row { grid-template-columns: minmax(0, 1fr) 44px; gap: .65rem; }
+  .inline-objectives .objective-row > strong { grid-column: 1; }
+  .inline-objectives .objective-row > button { grid-column: 2; grid-row: 1; }
+  .inline-objectives .objective-row > :is(.objective-inspector-body, .objective-board-link) { grid-column: 1 / -1; }
+  .board-tool-strip { flex-wrap: nowrap; overflow-x: auto; padding: .25rem 0; }
+  .board-tool-strip button { flex: 0 0 auto; }
+}
+.board-tool-properties .board-coordinate-field { font-size: .875rem; gap: .35rem; }
+
+.board-canvas-layout .lawn-cell:focus-visible { outline: 2px solid var(--editor-accent-strong); outline-offset: -3px; }

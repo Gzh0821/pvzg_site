@@ -95,7 +95,10 @@ export function setMoldedSquares(objdata, squares) {
   delete objdata.Locations;
   delete objdata.MoldMatrix;
   delete objdata._MoldMatrix;
-  objdata.MoldedSquares = getMoldedSquares({ MoldedSquares: squares });
+  const original = Array.isArray(objdata.MoldedSquares) ? objdata.MoldedSquares : [];
+  objdata.MoldedSquares = getMoldedSquares({ MoldedSquares: squares }).map((square) => ({
+    ...original.find((entry) => Number(entry?.GridX) === square.GridX && Number(entry?.GridY) === square.GridY), ...square
+  }));
 }
 
 function clone(value) {
@@ -341,7 +344,6 @@ export function updateObjectiveModuleRefs(refs, system) {
     [original.protect, desired.protect]
   ].filter(([reference]) => Boolean(reference)));
   const result = [];
-  const inserted = new Set();
 
   (refs || []).forEach((reference) => {
     if (!replacements.has(reference)) {
@@ -349,10 +351,7 @@ export function updateObjectiveModuleRefs(refs, system) {
       return;
     }
     const replacement = replacements.get(reference);
-    if (replacement && !inserted.has(replacement)) {
-      result.push(replacement);
-      inserted.add(replacement);
-    }
+    if (replacement) result.push(replacement);
   });
 
   ['star', 'protect'].forEach((kind) => {
@@ -362,14 +361,20 @@ export function updateObjectiveModuleRefs(refs, system) {
   return result;
 }
 
-export function createStarObjective(system, kind) {
+export function createStarObjective(system, kind, reservedAliases = []) {
   const definition = STAR_DEFINITIONS[kind];
   if (!definition) return null;
   const usedAliases = new Set([
+    ...reservedAliases,
     ...(system.starObjectives || []).map((objective) => objective.alias),
     ...(system.opaqueStarObjects || []).flatMap((object) => object?.aliases || []),
     system.protect?.alias
   ].filter(Boolean));
+  if (!system.starModule) {
+    const moduleAlias = uniqueAlias('ChallengeModule', usedAliases);
+    system.starModule = { alias: moduleAlias, originalObject: null, extra: { ChallengesAlwaysAvailable: true } };
+    usedAliases.add(moduleAlias);
+  }
   const alias = uniqueAlias(definition.alias, usedAliases);
   return {
     id: `star:new:${alias}`,
@@ -384,8 +389,9 @@ export function createStarObjective(system, kind) {
   };
 }
 
-export function createProtectObjective(system) {
+export function createProtectObjective(system, reservedAliases = []) {
   const usedAliases = new Set([
+    ...reservedAliases,
     ...(system.starObjectives || []).map((objective) => objective.alias),
     ...(system.opaqueStarObjects || []).flatMap((object) => object?.aliases || [])
   ]);

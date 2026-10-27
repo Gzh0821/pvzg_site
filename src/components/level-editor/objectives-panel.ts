@@ -1,5 +1,4 @@
-import { computed, defineComponent, h, type PropType, ref, watch } from 'vue';
-import { message } from 'ant-design-vue';
+import { computed, defineComponent, h, type PropType, ref } from 'vue';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons-vue';
 import {
   STAR_OBJECTIVE_KINDS,
@@ -32,33 +31,24 @@ export default defineComponent({
   props: {
     system: { type: Object as PropType<any>, required: true },
     plantOptions: { type: Array as PropType<any[]>, default: () => [] },
-    selectedCell: { type: Object as PropType<{ row: number; col: number } | null>, default: null },
-    selectedCellItems: { type: Array as PropType<any[]>, default: () => [] },
-    selectedPlantCode: { type: String, default: '' },
     resolveMoldLocations: {
       type: Function as PropType<(reference: unknown) => Array<{ GridX: number; GridY: number }>>,
       default: () => []
     },
     expertMode: Boolean,
+    context: { type: String, default: 'basic' },
+    tool: { type: String, default: '' },
+    selectedId: { type: String, default: '' },
+    reservedAliases: { type: Array as PropType<string[]>, default: () => [] },
     translate: { type: Function as PropType<(key: string, params?: Record<string, unknown>) => string>, required: true }
   },
-  emits: ['select-cell'],
+  emits: ['select-cell', 'edit-board', 'select'],
   setup(props, { emit }) {
-    const selectedObjectiveId = ref('');
     const newObjectiveKind = ref('beat');
     const entries = computed(() => [
       ...(props.system.starObjectives || []).map((objective: any) => ({ id: objective.id, type: 'star' as const, objective })),
       ...(props.system.protect ? [{ id: 'protect', type: 'protect' as const, objective: props.system.protect }] : [])
     ]);
-
-    watch(
-      () => props.system,
-      () => {
-        selectedObjectiveId.value = props.system.starObjectives?.[0]?.id || (props.system.protect ? 'protect' : '');
-        newObjectiveKind.value = 'beat';
-      },
-      { immediate: true }
-    );
 
     function t(key: string, params?: Record<string, unknown>) {
       return props.translate(key, params);
@@ -90,17 +80,17 @@ export default defineComponent({
     function addObjective() {
       if (newObjectiveKind.value === 'protect') {
         if (!props.system.protect) {
-          props.system.protect = createProtectObjective(props.system);
+          props.system.protect = createProtectObjective(props.system, props.reservedAliases);
           markProtectObjectiveEdited();
         }
-        selectedObjectiveId.value = 'protect';
+        emit('edit-board', { tool: 'protect', id: 'protect' });
         return;
       }
-      const objective = createStarObjective(props.system, newObjectiveKind.value);
+      const objective = createStarObjective(props.system, newObjectiveKind.value, props.reservedAliases);
       if (!objective) return;
       props.system.starObjectives.push(objective);
       markStarObjectivesEdited();
-      selectedObjectiveId.value = objective.id;
+      if (objective.kind === 'mold') emit('edit-board', { tool: 'mold', id: objective.id });
     }
 
     function removeObjective(entry: any) {
@@ -111,44 +101,12 @@ export default defineComponent({
         props.system.starObjectives = props.system.starObjectives.filter((objective: any) => objective.id !== entry.objective.id);
         markStarObjectivesEdited();
       }
-      selectedObjectiveId.value = entries.value.find((item) => item.id !== entry.id)?.id || '';
+      emit('select', entries.value.find((item) => item.id !== entry.id)?.id || '');
     }
 
     function getProtectPlants() {
       const plants = props.system.protect?.objdata?.Plants;
       return Array.isArray(plants) ? plants : [];
-    }
-
-    function addSelectedCellToProtection() {
-      const protect = props.system.protect;
-      if (!protect || !props.selectedCell) {
-        message.warning(t('objectiveSelectCellPlant'));
-        return;
-      }
-      const cellPlant = props.selectedCellItems.find((item) => item.kind === 'plant');
-      const plantCode = cellPlant?.code || props.selectedPlantCode;
-      if (!plantCode) {
-        message.warning(t('objectiveSelectCellPlant'));
-        return;
-      }
-      const plants = getProtectPlants();
-      const existing = plants.find(
-        (entry: any) => Number(entry.GridX) === props.selectedCell?.col && Number(entry.GridY) === props.selectedCell?.row
-      );
-      if (existing) {
-        existing.PlantType = plantCode;
-        markProtectObjectiveEdited();
-        return;
-      }
-      const previousLength = plants.length;
-      protect.objdata.Plants = [
-        ...plants,
-        { GridX: props.selectedCell.col, GridY: props.selectedCell.row, PlantType: plantCode }
-      ];
-      if (Number(protect.objdata.MustProtectCount ?? previousLength) === previousLength) {
-        protect.objdata.MustProtectCount = previousLength + 1;
-      }
-      markProtectObjectiveEdited();
     }
 
     function removeProtectedPlant(index: number) {
@@ -167,7 +125,7 @@ export default defineComponent({
       const knownPlant = props.plantOptions.some((plant) => plant.code === value);
       return h(
         'select',
-        { value, onChange: (event: Event) => onChange((event.target as HTMLSelectElement).value) },
+        { value, 'aria-label': t('objectiveProtectedPlant'), onChange: (event: Event) => onChange((event.target as HTMLSelectElement).value) },
         [
           !knownPlant && value ? h('option', { value }, value) : null,
           ...props.plantOptions.map((plant) => h('option', { value: plant.code }, `${plant.name} (${plant.code})`))
@@ -185,8 +143,8 @@ export default defineComponent({
               'div',
               { class: 'objective-field-grid' },
               fields.map((field) =>
-                h('div', { class: 'field-row compact' }, [
-                  h('label', t(field.labelKey)),
+                h('label', { class: 'field-row compact' }, [
+                  h('span', t(field.labelKey)),
                   h('input', {
                     type: 'number',
                     min: field.min,
@@ -200,68 +158,19 @@ export default defineComponent({
                 ])
               )
             )
-          : h('span', { class: 'objective-complete-mark' }, t('objectiveBeatReady')),
+          : null,
         props.expertMode ? h('code', { class: 'objective-alias' }, objective.alias) : null
       ]);
     }
 
     function renderMoldObjectiveInspector(objective: any) {
       const squares = getMoldedSquares(objective.objdata, props.resolveMoldLocations);
-      const selectedSquare = props.selectedCell
-        ? squares.find((square: any) => square.GridX === props.selectedCell?.col && square.GridY === props.selectedCell?.row)
-        : null;
-
-      function updateSelectedCell() {
-        if (!props.selectedCell) {
-          message.warning(t('objectiveMoldSelectCell'));
-          return;
-        }
-        const nextSquares = selectedSquare
-          ? squares.filter((square: any) => square !== selectedSquare)
-          : [...squares, { GridX: props.selectedCell.col, GridY: props.selectedCell.row }];
-        setMoldedSquares(objective.objdata, nextSquares);
-        markStarObjectivesEdited();
-      }
-
       return h('div', { class: 'objective-inspector-body mold-objective-body' }, [
-        h('div', { class: 'mold-control-strip' }, [
-          h('div', { class: 'mold-selection-status' }, [
-            h('span', { class: 'mold-status-dot', 'aria-hidden': 'true' }),
-            h(
-              'span',
-              props.selectedCell
-                ? t(selectedSquare ? 'objectiveMoldSelectedBlocked' : 'objectiveMoldSelectedOpen', {
-                    col: props.selectedCell.col + 1,
-                    row: props.selectedCell.row + 1
-                  })
-                : t('objectiveMoldSelectCell')
-            )
-          ]),
-          h('div', { class: 'mold-actions' }, [
-            h(
-              'button',
-              {
-                type: 'button',
-                class: selectedSquare ? 'text-button danger' : 'add-button small',
-                onClick: updateSelectedCell
-              },
-              [h(selectedSquare ? DeleteOutlined : PlusOutlined), t(selectedSquare ? 'objectiveMoldRemoveSelected' : 'objectiveMoldAddSelected')]
-            ),
-            h(
-              'button',
-              {
-                type: 'button',
-                class: 'text-button danger',
-                disabled: !squares.length,
-                onClick: () => {
-                  setMoldedSquares(objective.objdata, []);
-                  markStarObjectivesEdited();
-                }
-              },
-              t('objectiveMoldClear')
-            )
-          ])
-        ]),
+        h('span', t('objectiveMoldCount', { count: squares.length })),
+        h('button', { type: 'button', class: 'text-button danger', disabled: !squares.length, onClick: () => {
+          setMoldedSquares(objective.objdata, []);
+          markStarObjectivesEdited();
+        } }, t('objectiveMoldClear')),
         props.expertMode ? h('code', { class: 'objective-alias' }, objective.alias) : null
       ]);
     }
@@ -271,8 +180,8 @@ export default defineComponent({
       const plants = getProtectPlants();
       return h('div', { class: 'objective-inspector-body protect-objective-body' }, [
         h('div', { class: 'objective-field-grid protect-count-grid' }, [
-          h('div', { class: 'field-row compact' }, [
-            h('label', t('objectiveMustProtectCount')),
+          h('label', { class: 'field-row compact' }, [
+            h('span', t('objectiveMustProtectCount')),
             h('input', {
               type: 'number',
               min: 0,
@@ -282,10 +191,6 @@ export default defineComponent({
                 markProtectObjectiveEdited();
               }
             })
-          ]),
-          h('button', { type: 'button', class: 'add-button', onClick: addSelectedCellToProtection }, [
-            h(PlusOutlined),
-            t('objectiveProtectSelectedCell')
           ])
         ]),
         plants.length
@@ -326,62 +231,42 @@ export default defineComponent({
     }
 
     return () => {
-      const selected = entries.value.find((entry) => entry.id === selectedObjectiveId.value) || entries.value[0];
-      return h('section', { class: 'objectives-panel' }, [
+      if (props.context === 'board') {
+        const candidates = entries.value.filter((entry) => props.tool === 'protect' ? entry.type === 'protect' : entry.objective.kind === 'mold');
+        const selected = candidates.find((entry) => entry.id === props.selectedId) || candidates[0];
+        return h('section', { class: 'objectives-panel direct-board-objectives' }, [
+          selected ? h('div', [
+            h('div', { class: 'objective-inspector-header' }, [
+              candidates.length > 1 ? h('select', { value: selected.id, 'aria-label': t('objectiveEditTarget'),
+                onChange: (event: Event) => emit('select', (event.target as HTMLSelectElement).value)
+              }, candidates.map((entry, index) => h('option', { value: entry.id }, `${t('objectiveKind_mold')} #${index + 1}`))) : null,
+              h('button', { type: 'button', class: 'text-button danger', onClick: () => removeObjective(selected) }, [h(DeleteOutlined), t('remove')])
+            ]),
+            selected.type === 'protect' ? renderProtectObjectiveInspector(selected) : renderMoldObjectiveInspector(selected.objective)
+          ]) : h('p', { class: 'editor-empty-action' }, t('boardToolClickToAdd'))
+        ]);
+      }
+      return h('section', { class: 'objectives-panel inline-objectives' }, [
         h('div', { class: 'objectives-header' }, [
-          h('div', { class: 'objectives-title' }, [
-            h('strong', t('objectives')),
-            h('span', t('objectiveCount', { count: entries.value.length }))
-          ]),
+          h('div', { class: 'objectives-title' }, [h('strong', t('objectives')), h('span', t('objectiveCount', { count: entries.value.length }))]),
           h('div', { class: 'objective-add-controls' }, [
-            h(
-              'select',
-              {
-                'aria-label': t('objectiveAddType'),
-                value: newObjectiveKind.value,
-                onChange: (event: Event) => (newObjectiveKind.value = (event.target as HTMLSelectElement).value)
-              },
-              objectiveKindOptions.map((option) =>
-                h('option', { value: option.value, disabled: option.value === 'protect' && !!props.system.protect }, t(option.labelKey))
-              )
-            ),
+            h('select', { 'aria-label': t('objectiveAddType'), value: newObjectiveKind.value,
+              onChange: (event: Event) => (newObjectiveKind.value = (event.target as HTMLSelectElement).value)
+            }, objectiveKindOptions.map((option) => h('option', { value: option.value, disabled: option.value === 'protect' && !!props.system.protect }, t(option.labelKey)))),
             h('button', { type: 'button', class: 'add-button small', onClick: addObjective }, [h(PlusOutlined), t('add')])
           ])
         ]),
-        entries.value.length
-          ? h(
-              'div',
-              { class: 'objective-tabs', role: 'tablist' },
-              entries.value.map((entry) =>
-                h(
-                  'button',
-                  {
-                    type: 'button',
-                    role: 'tab',
-                    class: selected?.id === entry.id ? 'active' : '',
-                    'aria-selected': selected?.id === entry.id,
-                    onClick: () => (selectedObjectiveId.value = entry.id)
-                  },
-                  [
-                    h('strong', entry.type === 'protect' ? t('objectiveKind_protect') : t(`objectiveKind_${entry.objective.kind}`)),
-                    getObjectiveSummary(entry) ? h('small', getObjectiveSummary(entry)) : null
-                  ]
-                )
-              )
-            )
-          : null,
-        selected
-          ? h('div', { class: 'objective-inspector' }, [
-              h('div', { class: 'objective-inspector-header' }, [
-                h('strong', selected.type === 'protect' ? t('objectiveKind_protect') : t(`objectiveKind_${selected.objective.kind}`)),
-                h('button', { type: 'button', class: 'text-button danger', onClick: () => removeObjective(selected) }, [
-                  h(DeleteOutlined),
-                  t('remove')
-                ])
-              ]),
-              selected.type === 'protect' ? renderProtectObjectiveInspector(selected) : renderStarObjectiveInspector(selected)
-            ])
-          : null
+        h('div', { class: 'objective-rows' }, entries.value.map((entry) => {
+          const spatial = entry.type === 'protect' || entry.objective.kind === 'mold';
+          const title = entry.type === 'protect' ? t('objectiveKind_protect') : t(`objectiveKind_${entry.objective.kind}`);
+          return h('div', { class: 'objective-row' }, [
+            h('strong', title),
+            spatial ? h('div', { class: 'objective-board-link' }, [h('span', getObjectiveSummary(entry)),
+              h('button', { type: 'button', class: 'text-button', onClick: () => emit('edit-board', { tool: entry.type === 'protect' ? 'protect' : 'mold', id: entry.id }) }, t('objectiveEditOnBoard'))
+            ]) : renderStarObjectiveInspector(entry),
+            h('button', { type: 'button', class: 'text-button danger', 'aria-label': `${t('remove')} ${title}`, onClick: () => removeObjective(entry) }, h(DeleteOutlined))
+          ]);
+        }))
       ]);
     };
   }

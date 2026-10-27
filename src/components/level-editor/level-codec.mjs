@@ -56,6 +56,9 @@ const DOMAIN_SELECTORS = {
       conveyor: draft.conveyor
     };
   },
+  placements(draft) {
+    return { boardItems: draft.boardItems, preserveBoardModules: draft.preserveBoardModules, preservedPlacementObjects: draft.preservedPlacementObjects };
+  },
   objectives(draft) {
     return draft.objectives;
   }
@@ -150,6 +153,24 @@ export function reconcileLevelObjects(originalObjects, generatedObjects) {
   ];
 }
 
+// Static wave snapshots and opaque objects can own the same original occurrence.
+// Keep original duplicate objects, but do not emit overlapping snapshots twice.
+export function appendPreservedLevelObjects(generated, preserved, originals = []) {
+  const counts = (objects) => objects.reduce((map, object) => {
+    const key = fingerprint(object);
+    map.set(key, (map.get(key) || 0) + 1);
+    return map;
+  }, new Map());
+  const originalCounts = counts(originals), emittedCounts = counts(generated);
+  for (const object of preserved) {
+    const key = fingerprint(object), limit = originalCounts.get(key);
+    if (limit && (emittedCounts.get(key) || 0) >= limit) continue;
+    generated.push(cloneLevelValue(object));
+    emittedCounts.set(key, (emittedCounts.get(key) || 0) + 1);
+  }
+  return generated;
+}
+
 function fingerprint(value) {
   return JSON.stringify(value);
 }
@@ -232,7 +253,9 @@ export function preserveUneditedDefinitionFields(snapshot, draft, data) {
 export function isImportedDomainUnchanged(snapshot, draft, domain) {
   const select = DOMAIN_SELECTORS[domain];
   if (!snapshot || !select) return false;
-  return snapshot.domainFingerprints?.[domain] === fingerprint(select(draft));
+  const original = snapshot.domainFingerprints?.[domain] ??
+    (snapshot.draftFingerprint ? fingerprint(select(JSON.parse(snapshot.draftFingerprint))) : undefined);
+  return original === fingerprint(select(draft));
 }
 
 export function getImportedObjectsByClass(snapshot, objclass) {

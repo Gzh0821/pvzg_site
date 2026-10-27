@@ -1,18 +1,15 @@
-import { defineComponent, h, type PropType, ref, watch } from 'vue';
-import { message } from 'ant-design-vue';
+import { defineComponent, h, type PropType } from 'vue';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons-vue';
 import {
-  BOARD_RULE_KINDS,
   POWER_TILE_GROUPS,
   createBoardRule,
-  getPowerTileAt,
   getRulePowerTiles,
   getRuleRailcarts,
   getRuleRails,
   normalizeBoardCoordinate
 } from './board-rule-codec.mjs';
 
-const boardRuleKindOptions = BOARD_RULE_KINDS.map((kind) => ({ value: kind, labelKey: `boardRuleKind_${kind}` }));
+import { getBoardToolKind } from './board-editing.mjs';
 const railcartTypeOptions = [
   'railcart_cowboy',
   'railcart_egypt',
@@ -31,39 +28,18 @@ export default defineComponent({
   name: 'BoardRulesPanel',
   props: {
     system: { type: Object as PropType<any>, required: true },
-    selectedCell: { type: Object as PropType<{ row: number; col: number } | null>, default: null },
     expertMode: Boolean,
+    tool: { type: String, required: true },
+    selectedId: { type: String, default: '' },
+    powerGroup: { type: String, default: 'alpha' },
+    powerDelay: { type: Number, default: 0.25 },
+    reservedAliases: { type: Array as PropType<string[]>, default: () => [] },
     translate: { type: Function as PropType<(key: string, params?: Record<string, unknown>) => string>, required: true }
   },
-  setup(props) {
-    const selectedBoardRuleId = ref('');
-    const newBoardRuleKind = ref('railcart');
-    const selectedPowerTileGroup = ref('alpha');
-    const powerTileGroupDelays = ref<Record<string, number>>({});
-
-    watch(
-      () => props.system,
-      () => {
-        selectedBoardRuleId.value = props.system.modules?.[0]?.id || '';
-        newBoardRuleKind.value = 'railcart';
-        selectedPowerTileGroup.value = 'alpha';
-        powerTileGroupDelays.value = {};
-      },
-      { immediate: true }
-    );
-
+  emits: ['select', 'power-group', 'power-delay'],
+  setup(props, { emit }) {
     function t(key: string, params?: Record<string, unknown>) {
       return props.translate(key, params);
-    }
-
-    function getBoardRuleSummary(rule: any) {
-      if (rule.kind === 'railcart') {
-        return t('boardRuleRailSummary', { rails: getRuleRails(rule).length, carts: getRuleRailcarts(rule).length });
-      }
-      if (rule.kind === 'tide') return t('boardRuleTideSummary', { column: Number(rule.objdata?.StartingWaveLocation ?? 0) });
-      if (rule.kind === 'powerTiles') return t('boardRulePowerTileSummary', { count: getRulePowerTiles(rule).length });
-      const rows = Array.isArray(rule.objdata?.PlankRows) ? rule.objdata.PlankRows.length : 0;
-      return t('boardRulePlankSummary', { count: rows });
     }
 
     function markBoardRuleEdited(rule: any) {
@@ -72,35 +48,17 @@ export default defineComponent({
     }
 
     function addBoardRule() {
-      const rule = createBoardRule(props.system, newBoardRuleKind.value);
+      const rule = createBoardRule(props.system, getBoardToolKind(props.tool), props.reservedAliases);
       if (!rule) return;
       props.system.modules.push(rule);
       props.system.dirty = true;
-      selectedBoardRuleId.value = rule.id;
+      emit('select', rule.id);
     }
 
     function removeBoardRule(rule: any) {
       props.system.modules = props.system.modules.filter((entry: any) => entry.id !== rule.id);
       props.system.dirty = true;
-      selectedBoardRuleId.value = props.system.modules[0]?.id || '';
-    }
-
-    function addRailAtSelectedColumn(rule: any) {
-      if (!props.selectedCell) {
-        message.warning(t('boardRuleSelectCell'));
-        return;
-      }
-      rule.objdata.Rails = [...getRuleRails(rule), { Column: props.selectedCell.col, RowStart: 0, RowEnd: 4 }];
-      markBoardRuleEdited(rule);
-    }
-
-    function addRailcartAtSelectedCell(rule: any) {
-      if (!props.selectedCell) {
-        message.warning(t('boardRuleSelectCell'));
-        return;
-      }
-      rule.objdata.Railcarts = [...getRuleRailcarts(rule), { Column: props.selectedCell.col, Row: props.selectedCell.row }];
-      markBoardRuleEdited(rule);
+      emit('select', props.system.modules.find((entry: any) => entry.kind === rule.kind)?.id || '');
     }
 
     function removeRailEntry(rule: any, listKey: 'Rails' | 'Railcarts', index: number) {
@@ -114,10 +72,10 @@ export default defineComponent({
         h('span', label),
         h('input', {
           type: 'number',
-          min: 0,
-          max: maximum,
-          value,
-          onInput: (event: Event) => onValue(normalizeBoardCoordinate((event.target as HTMLInputElement).value, maximum))
+          min: 1,
+          max: maximum + 1,
+          value: Number(value) + 1,
+          onInput: (event: Event) => onValue(normalizeBoardCoordinate(Number((event.target as HTMLInputElement).value) - 1, maximum))
         })
       ]);
     }
@@ -129,11 +87,11 @@ export default defineComponent({
       const carts = getRuleRailcarts(rule);
       return h('div', { class: 'board-rule-inspector-body' }, [
         h('div', { class: 'field-row compact board-rule-type' }, [
-          h('label', t('boardRuleRailcartType')),
+          h('label', { for: 'board-railcart-type' }, t('boardRuleRailcartType')),
           h(
             'select',
             {
-              value: railType,
+              id: 'board-railcart-type', value: railType,
               onChange: (event: Event) => {
                 rule.objdata.RailcartType = (event.target as HTMLSelectElement).value;
                 markBoardRuleEdited(rule);
@@ -142,13 +100,9 @@ export default defineComponent({
             [h('option', { value: '' }, t('stageDefault')), ...types.map((type) => h('option', { value: type }, type))]
           )
         ]),
-        h('div', { class: 'board-rule-subsection' }, [
+        props.tool === 'rails' ? h('div', { class: 'board-rule-subsection' }, [
           h('div', { class: 'board-rule-subheading' }, [
-            h('strong', t('boardRuleRails')),
-            h('button', { type: 'button', class: 'add-button small', onClick: () => addRailAtSelectedColumn(rule) }, [
-              h(PlusOutlined),
-              t('boardRuleAddRail')
-            ])
+            h('strong', t('boardRuleRails'))
           ]),
           rails.length
             ? h(
@@ -177,14 +131,10 @@ export default defineComponent({
                 )
               )
             : h('small', { class: 'seed-mode-hint' }, t('boardRuleNoRails'))
-        ]),
-        h('div', { class: 'board-rule-subsection' }, [
+        ]) : null,
+        props.tool === 'railcarts' ? h('div', { class: 'board-rule-subsection' }, [
           h('div', { class: 'board-rule-subheading' }, [
-            h('strong', t('boardRuleRailcarts')),
-            h('button', { type: 'button', class: 'add-button small', onClick: () => addRailcartAtSelectedCell(rule) }, [
-              h(PlusOutlined),
-              t('boardRuleAddRailcart')
-            ])
+            h('strong', t('boardRuleRailcarts'))
           ]),
           carts.length
             ? h(
@@ -209,7 +159,7 @@ export default defineComponent({
                 )
               )
             : h('small', { class: 'seed-mode-hint' }, t('boardRuleNoRailcarts'))
-        ]),
+        ]) : null,
         props.expertMode && Array.isArray(rule.objdata?.DynamicRailCarts)
           ? h('small', { class: 'seed-mode-hint' }, t('boardRuleDynamicRailPreserved'))
           : null
@@ -219,11 +169,11 @@ export default defineComponent({
     function renderTideRule(rule: any) {
       return h('div', { class: 'board-rule-inspector-body' }, [
         h('div', { class: 'field-row compact' }, [
-          h('label', t('boardRuleStartingTide')),
+          h('label', { for: 'board-starting-tide' }, t('boardRuleStartingTide')),
           h('input', {
             type: 'number',
             min: 0,
-            max: 9,
+            max: 9, id: 'board-starting-tide',
             value: rule.objdata?.StartingWaveLocation ?? 5,
             onInput: (event: Event) => {
               rule.objdata.StartingWaveLocation = normalizeBoardCoordinate((event.target as HTMLInputElement).value, 9);
@@ -261,16 +211,10 @@ export default defineComponent({
       ]);
     }
 
-    function getPowerTileDelay(rule: any, group: string) {
-      const key = `${rule.id}:${group}`;
-      if (Number.isFinite(powerTileGroupDelays.value[key])) return powerTileGroupDelays.value[key];
-      const importedDelay = Number(getRulePowerTiles(rule).find((tile: any) => tile.Group === group)?.PropagationDelay);
-      return Number.isFinite(importedDelay) ? importedDelay : 0.25;
-    }
-
     function setPowerTileDelay(rule: any, group: string, value: unknown) {
       const numericValue = Math.max(0, Number(value) || 0);
-      powerTileGroupDelays.value[`${rule.id}:${group}`] = numericValue;
+      emit('power-delay', numericValue);
+      if (!rule) return;
       let changed = false;
       rule.objdata.LinkedTiles = getRulePowerTiles(rule).map((tile: any) => {
         if (tile.Group !== group) return tile;
@@ -280,40 +224,7 @@ export default defineComponent({
       if (changed) markBoardRuleEdited(rule);
     }
 
-    function setSelectedPowerTile(rule: any) {
-      if (!props.selectedCell) {
-        message.warning(t('boardRuleSelectCell'));
-        return;
-      }
-      const tiles = getRulePowerTiles(rule);
-      const existing = getPowerTileAt(rule, props.selectedCell.row, props.selectedCell.col);
-      const replacement = {
-        ...(existing || {}),
-        Group: selectedPowerTileGroup.value,
-        Location: { ...(existing?.Location || {}), mX: props.selectedCell.col, mY: props.selectedCell.row },
-        PropagationDelay: getPowerTileDelay(rule, selectedPowerTileGroup.value)
-      };
-      rule.objdata.LinkedTiles = existing
-        ? tiles.map((tile: any) => (tile === existing ? replacement : tile))
-        : [...tiles, replacement];
-      markBoardRuleEdited(rule);
-    }
-
-    function removeSelectedPowerTile(rule: any) {
-      if (!props.selectedCell) {
-        message.warning(t('boardRuleSelectCell'));
-        return;
-      }
-      const tiles = getRulePowerTiles(rule);
-      rule.objdata.LinkedTiles = tiles.filter(
-        (tile: any) => Number(tile?.Location?.mX) !== props.selectedCell?.col || Number(tile?.Location?.mY) !== props.selectedCell?.row
-      );
-      if (rule.objdata.LinkedTiles.length !== tiles.length) markBoardRuleEdited(rule);
-    }
-
     function renderPowerTileRule(rule: any) {
-      const tiles = getRulePowerTiles(rule);
-      const selectedTile = props.selectedCell ? getPowerTileAt(rule, props.selectedCell.row, props.selectedCell.col) : null;
       return h('div', { class: 'board-rule-inspector-body power-tile-editor' }, [
         h(
           'div',
@@ -323,14 +234,13 @@ export default defineComponent({
               'button',
               {
                 type: 'button',
-                class: selectedPowerTileGroup.value === group ? `power-group-${group} active` : `power-group-${group}`,
-                'aria-pressed': selectedPowerTileGroup.value === group,
-                onClick: () => (selectedPowerTileGroup.value = group)
+                class: props.powerGroup === group ? `power-group-${group} active` : `power-group-${group}`,
+                'aria-pressed': props.powerGroup === group,
+                onClick: () => emit('power-group', group)
               },
               [
                 h('img', { src: `/assets/image/objects/object_powertile_${group}.png`, alt: '', loading: 'lazy' }),
-                h('span', t(`boardRulePowerGroup_${group}`)),
-                h('small', t('boardRulePowerGroupCount', { count: tiles.filter((tile: any) => tile.Group === group).length }))
+                h('span', t(`boardRulePowerGroup_${group}`))
               ]
             )
           )
@@ -342,96 +252,32 @@ export default defineComponent({
               type: 'number',
               min: 0,
               step: 0.05,
-              value: getPowerTileDelay(rule, selectedPowerTileGroup.value),
+              value: props.powerDelay,
               onInput: (event: Event) =>
-                setPowerTileDelay(rule, selectedPowerTileGroup.value, (event.target as HTMLInputElement).value)
+                setPowerTileDelay(rule, props.powerGroup, (event.target as HTMLInputElement).value)
             })
-          ]),
-          h('div', { class: 'power-selected-cell' }, [
-            h('span',
-              props.selectedCell
-                ? t(selectedTile ? 'boardRulePowerSelectedFilled' : 'boardRulePowerSelectedEmpty', {
-                    col: props.selectedCell.col + 1,
-                    row: props.selectedCell.row + 1
-                  })
-                : t('boardRuleSelectCell')
-            ),
-            h('div', { class: 'power-tile-actions' }, [
-              h('button', { type: 'button', class: 'add-button small', onClick: () => setSelectedPowerTile(rule) }, [
-                h(PlusOutlined),
-                t(selectedTile ? 'boardRulePowerUpdateSelected' : 'boardRulePowerAddSelected')
-              ]),
-              selectedTile
-                ? h('button', { type: 'button', class: 'text-button danger', onClick: () => removeSelectedPowerTile(rule) }, [
-                    h(DeleteOutlined),
-                    t('remove')
-                  ])
-                : null
-            ])
           ])
         ])
       ]);
     }
 
     return () => {
-      const entries = props.system.modules || [];
-      const selected = entries.find((rule: any) => rule.id === selectedBoardRuleId.value) || entries[0];
-      return h('section', { class: 'board-rules-panel' }, [
+      const kind = getBoardToolKind(props.tool);
+      const entries = (props.system.modules || []).filter((rule: any) => rule.kind === kind);
+      const selected = entries.find((rule: any) => rule.id === props.selectedId) || entries[0];
+      return h('section', { class: 'board-rules-panel direct-board-rules' }, [
         h('div', { class: 'board-rules-header' }, [
-          h('div', { class: 'board-rules-title' }, [
-            h('strong', t('boardRules')),
-            h('span', t('objectiveCount', { count: entries.length }))
-          ]),
-          h('div', { class: 'board-rule-add-controls' }, [
-            h(
-              'select',
-              {
-                'aria-label': t('boardRuleAddType'),
-                value: newBoardRuleKind.value,
-                onChange: (event: Event) => (newBoardRuleKind.value = (event.target as HTMLSelectElement).value)
-              },
-              boardRuleKindOptions.map((option) => h('option', { value: option.value }, t(option.labelKey)))
-            ),
-            h('button', { type: 'button', class: 'add-button small', onClick: addBoardRule }, [h(PlusOutlined), t('add')])
-          ])
+          entries.length > 1 ? h('select', { value: selected?.id, 'aria-label': t('boardRuleEditTarget'),
+            onChange: (event: Event) => emit('select', (event.target as HTMLSelectElement).value)
+          }, entries.map((rule: any, index: number) => h('option', { value: rule.id }, `${t(`boardRuleKind_${rule.kind}`)} #${index + 1}`))) : null,
+          props.expertMode && selected ? h('code', selected.alias) : null,
+          h('button', { type: 'button', class: 'add-button small', onClick: addBoardRule }, [h(PlusOutlined), t('boardRuleNewGroup')]),
+          selected ? h('button', { type: 'button', class: 'text-button danger', onClick: () => removeBoardRule(selected) }, [h(DeleteOutlined), t('boardRuleRemoveGroup')]) : null
         ]),
-        entries.length
-          ? h(
-              'div',
-              { class: 'board-rule-tabs', role: 'tablist' },
-              entries.map((rule: any) =>
-                h(
-                  'button',
-                  {
-                    type: 'button',
-                    role: 'tab',
-                    class: selected?.id === rule.id ? 'active' : '',
-                    'aria-selected': selected?.id === rule.id,
-                    onClick: () => (selectedBoardRuleId.value = rule.id)
-                  },
-                  [h('strong', t(`boardRuleKind_${rule.kind}`)), h('small', getBoardRuleSummary(rule))]
-                )
-              )
-            )
-          : null,
-        selected
-          ? h('div', { class: 'board-rule-inspector' }, [
-              h('div', { class: 'board-rule-inspector-header' }, [
-                h('div', [h('strong', t(`boardRuleKind_${selected.kind}`)), props.expertMode ? h('code', selected.alias) : null]),
-                h('button', { type: 'button', class: 'text-button danger', onClick: () => removeBoardRule(selected) }, [
-                  h(DeleteOutlined),
-                  t('remove')
-                ])
-              ]),
-              selected.kind === 'railcart'
-                ? renderRailcartRule(selected)
-                : selected.kind === 'tide'
-                  ? renderTideRule(selected)
-                  : selected.kind === 'powerTiles'
-                    ? renderPowerTileRule(selected)
-                    : renderPlankRule(selected)
-            ])
-          : null
+        selected ? selected.kind === 'railcart' ? renderRailcartRule(selected)
+          : selected.kind === 'tide' ? renderTideRule(selected)
+            : selected.kind === 'powerTiles' ? renderPowerTileRule(selected) : renderPlankRule(selected)
+          : h('div', [kind === 'powerTiles' ? renderPowerTileRule(null) : null, h('p', { class: 'editor-empty-action' }, t(kind === 'tide' ? 'boardToolTideHint' : 'boardToolClickToAdd'))])
       ]);
     };
   }
