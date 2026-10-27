@@ -98,6 +98,7 @@
   .workspace-main .wave-panel, .workspace-main .board-editor { padding: .75rem; }
 }
 @media (max-width: 600px) {
+  .narrative-editor .narrative-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .level-editor-shell { --editor-shell-width: calc(100vw - 1rem); padding: .5rem; border-radius: 24px; }
   .level-editor-shell .editor-topbar { padding: .85rem; gap: .75rem; }
   .level-editor-shell .top-action-row > .ant-btn,
@@ -224,3 +225,40 @@
 .level-editor-shell :is(.seed-supply-select, .deck-list-toolbar select, .deck-name-row > select, .wave-zombie-token input, .wave-zombie-token select) { border: 1px solid var(--editor-border); border-radius: 10px; background: var(--editor-panel-raised); color: var(--editor-text); font: inherit; min-height: 36px; }
 .level-editor-shell .seed-supply-select { width: auto; max-width: 70%; padding: .5rem .7rem; margin: 0; }
 @media (max-width: 900px) { .level-editor-shell .top-actions { justify-content: flex-start; } }
+
+.narrative-toolbar, .narrative-source-row, .narrative-step-heading, .generator-toolbar { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.narrative-toolbar { justify-content: space-between; margin-bottom: 1rem; }
+.narrative-toolbar h2, .generator-toolbar h3 { margin: 0; padding: 0; border: 0; font: 650 1.125rem/1.4 system-ui, sans-serif; }
+.narrative-slots, .generator-pool-targets { display: flex; flex-wrap: wrap; gap: .35rem; margin: 1rem 0; }
+.narrative-slots button, .generator-pool-targets button { min-height: 44px; border: 0; border-radius: 10px; padding: .55rem .75rem; background: transparent; color: var(--editor-text); font: inherit; cursor: pointer; }
+.narrative-slots button[aria-pressed="true"], .generator-pool-targets button[aria-pressed="true"] { background: color-mix(in srgb, var(--editor-accent) 12%, transparent); color: var(--editor-accent-strong); font-weight: 650; }
+.narrative-editor .field-row, .generator-editor .field-row { display: grid; gap: .4rem; min-width: 0; margin: 0; }
+.narrative-editor :is(input, select, textarea), .generator-editor :is(input, select), .generator-wave-count input { min-height: 42px; max-width: 100%; min-width: 0; box-sizing: border-box; padding: .5rem .65rem; border: 1px solid var(--editor-border); border-radius: 10px; background: var(--editor-panel-raised); color: var(--editor-text); font: inherit; }
+.narrative-editor textarea { width: 100%; min-height: 84px; resize: vertical; line-height: 1.6; }
+.narrative-editor :is(select, textarea):disabled { opacity: .8; cursor: default; }
+.narrative-source-row > .field-row { flex: 1; min-width: min(220px, 100%); }
+.narrative-flow { margin: 1.25rem 0; padding: 0; list-style: none; }
+.narrative-step { display: grid; gap: .75rem; padding: 1rem 0; border-bottom: 1px solid var(--editor-border); }
+.narrative-preview-step > div { display: flex; gap: 1rem; flex-wrap: wrap; }
+.narrative-preview-step p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.narrative-step-heading > strong { flex: 0 0 1.5rem; font-variant-numeric: tabular-nums; }
+.narrative-step-heading > .field-row { flex: 1; min-width: min(150px, 100%); }
+.narrative-step-actions { display: flex; gap: .25rem; margin-inline-start: auto; }
+.narrative-step-actions button { width: 44px; min-height: 44px; padding: 0; }
+.generator-toolbar { justify-content: space-between; margin: 1.25rem 0; }
+.generator-toolbar select { flex: 1; min-width: min(200px, 100%); }
+.generator-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.generator-pool { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem 1rem; }
+.generator-pool-row { display: flex; gap: .75rem; align-items: center; min-width: 0; padding: .4rem 0; border-bottom: 1px solid var(--editor-border); }
+.generator-pool-row img { width: 44px; height: 34px; object-fit: contain; }
+.generator-pool-row strong { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.generator-pool-row button { min-width: 44px; min-height: 44px; }
+.generator-wave-count { margin: 1.25rem 0; max-width: 200px; }
+@media (max-width: 600px) {
+  .narrative-toolbar { align-items: flex-start; }
+  .narrative-source-row > .field-row { flex-basis: 100%; }
+  .narrative-step-heading > .field-row { flex-basis: calc(50% - 2.5rem); min-width: 0; }
+  .narrative-step-actions { flex-basis: 100%; justify-content: flex-end; }
+  .narrative-editor :is(input, select, textarea), .generator-editor :is(input, select) { min-height: 44px; }
+  .generator-fields, .generator-pool { grid-template-columns: minmax(0, 1fr); }
+}

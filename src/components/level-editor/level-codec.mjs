@@ -12,7 +12,10 @@ const CORE_OBJECT_CLASSES = new Set([
   'InitialGridItemProperties',
   'InitialPlantProperties',
   'InitialZombieProperties',
-  'GravestoneProperties'
+  'GravestoneProperties',
+  'NarrativeProperties',
+  'LevelOfTheDayModuleProperties',
+  'DangerRoomJitteredWaveGenerator'
 ]);
 
 const DOMAIN_SELECTORS = {
@@ -307,7 +310,9 @@ export function analyzeLevelCapabilities(raw) {
   ) {
     visualSections.push('board');
   }
-  if (Array.isArray(waves)) visualSections.push('waves');
+  const hasGenerator = objects.some((object) => ['LevelOfTheDayModuleProperties', 'DangerRoomJitteredWaveGenerator'].includes(object?.objclass));
+  if (Array.isArray(waves) || hasGenerator) visualSections.push('waves');
+  if (objects.some((object) => object?.objclass === 'NarrativeProperties')) visualSections.push('narrative');
   if (objectiveSystem.starModule || objectiveSystem.protect) visualSections.push('objectives');
 
   const advancedActions = [...referencedWaveObjects].filter(
@@ -324,7 +329,7 @@ export function analyzeLevelCapabilities(raw) {
     advancedActions,
     preservedObjects: preservedObjects.length,
     preservedClasses: [...new Set(preservedObjects.map((object) => object?.objclass || 'Unknown'))],
-    waveMode: Array.isArray(waves)
+    waveMode: hasGenerator ? 'generator' : Array.isArray(waves)
       ? 'static'
       : objects.some((object) => object?.objclass === 'WaveManagerModuleProperties')
         ? 'generator'

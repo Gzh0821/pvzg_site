@@ -91,6 +91,10 @@
             :resolve-mold-locations="resolveBoardGridMapSquares" :expert-mode="expertMode" :translate="t"
             @select-cell="selectObjectiveCell" />
         </div>
+        <div v-else-if="activeWorkspace === 'narrative'" class="basic-workspace glass-panel">
+          <NarrativePanel :objects="draft.unsupportedRawObjects" :definition="draft.levelExtra"
+            :language="language" :reserved-aliases="narrativeReservedAliases" :translate="t" @catalog-ready="sharedNarrativeCatalog = $event" />
+        </div>
         <div v-else class="editing-workspace" :class="`workspace-${activeWorkspace}`">
           <button type="button" class="mobile-asset-picker" @click="assetLibraryOpen = true">
             {{ selectedAsset?.name || t('chooseAsset') }}
@@ -147,7 +151,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, h, inject, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, defineAsyncComponent, defineComponent, h, inject, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import JSON5 from 'json5';
 import { message, Modal, theme as antdTheme } from 'ant-design-vue';
 import {
@@ -170,6 +174,10 @@ import { zombieFeaturesJson as zombieFeatures } from '../game-data/zombies';
 import localeMessages from './i18n.json';
 import { createProjectState, readProjectState, getNextProjectIds, DRAFT_STORAGE_KEY, PROJECT_KIND } from './project-state.mjs';
 import { addCardDeck, getCardDecks, getCardDeckIssues, removeCardDeckPlant } from './card-deck-codec.mjs';
+import { getAuthoredContentEditedLevel, getGeneratorObjects, getGeneratorWaveBudget, getGeneratorIssues } from './authored-content-codec.mjs';
+import { getNarrativeWarnings } from './narrative-codec.mjs';
+import GeneratorPanel from './generator-panel';
+const NarrativePanel = defineAsyncComponent(() => import('./narrative-panel'));
 import ObjectivesPanel from './objectives-panel';
 import BoardRulesPanel from './board-rules-panel';
 import {
@@ -606,10 +614,11 @@ const messages = localeMessages as Record<string, Record<LocaleKey, string>>;
 const providedLanguage = inject<string>('i18nLanguage', 'zh');
 const previewOpen = ref(false);
 const EXPERT_MODE_STORAGE_KEY = 'pvzg-level-editor-expert-mode';
-type WorkspaceId = 'basic' | 'board' | 'waves' | 'seed';
+type WorkspaceId = 'basic' | 'board' | 'waves' | 'seed' | 'narrative';
 const workspaceViews: { id: WorkspaceId; label: string }[] = [
   { id: 'basic', label: 'importSectionBasic' }, { id: 'board', label: 'importSectionBoard' },
-  { id: 'waves', label: 'importSectionWaves' }, { id: 'seed', label: 'importSectionSeed' }
+  { id: 'waves', label: 'importSectionWaves' }, { id: 'seed', label: 'importSectionSeed' },
+  { id: 'narrative', label: 'narrative' }
 ];
 const activeWorkspace = ref<WorkspaceId>('basic');
 const validationOpen = ref(false);
@@ -640,6 +649,10 @@ const seedListTarget = ref<PlantListKey | 'Recommended' | 'Challenging'>('seedPl
 const selectedDeckIndex = ref(0);
 const deckNameLanguage = ref<LocaleKey>(providedLanguage.startsWith('en') ? 'en' : providedLanguage.startsWith('es') ? 'es' : providedLanguage.startsWith('ru') ? 'ru' : 'zh');
 const eventPickerOpen = ref(false);
+const sharedNarrativeCatalog = ref<any[] | null>(null);
+const generatorEditorOpen = ref(false);
+const selectedGeneratorAlias = ref('');
+const generatorPoolTarget = ref('ZombiePool');
 const nextItemId = ref(1);
 const nextWaveId = ref(2);
 const nextZombieId = ref(2);
@@ -725,7 +738,8 @@ async function restoreHistory(direction: number) {
 }
 
 watch(draft, () => { recordHistory(); if (draftReady) draftDirty = true; scheduleDraftSave(); }, { deep: true, flush: 'post' });
-watch([seedListTarget, selectedDeckIndex, deckNameLanguage, expandedWaveActionKey, selectedSpawnRow], scheduleDraftSave, { flush: 'post' });
+watch([seedListTarget, selectedDeckIndex, deckNameLanguage, expandedWaveActionKey, selectedSpawnRow,
+  generatorEditorOpen, selectedGeneratorAlias, generatorPoolTarget], scheduleDraftSave, { flush: 'post' });
 
 const language = computed<LocaleKey>(() => {
   if (providedLanguage.startsWith('es')) return 'es';
@@ -795,9 +809,24 @@ const conveyorAdvancedTab = ref<ConveyorAdvancedTab>('plants');
 const conveyorEditorOpen = ref(false);
 const conveyorEditorTarget = ref<ConveyorEditorTarget | null>(null);
 const conveyorEditorReturnFocus = ref<HTMLElement | null>(null);
+const activePointGenerator = computed(() => getGeneratorObjects(draft.value.unsupportedRawObjects).find((object: any) =>
+  object.objclass === 'LevelOfTheDayModuleProperties' && (object.aliases || []).some((alias: string) => draft.value.moduleRefs.includes(`RTID(${alias}@CurrentLevel)`))));
+const narrativeReservedAliases = computed(() => [draft.value.waveManagerAlias,
+  ...draft.value.waves.flatMap((wave) => [wave.zombieActionAlias || '', ...wave.rawActions.map((action) => action.alias)]),
+  ...(importedLevelSnapshot?.source.objects || []).flatMap((object: any) => object?.aliases || [])]);
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
+  getGeneratorIssues(draft.value.unsupportedRawObjects, importedLevelSnapshot?.source.objects || []).forEach((issue) => {
+    items.push({ type: issue.inherited ? 'warning' : 'error', text: t('generatorInvalidField', {
+      alias: issue.alias, field: t(`generatorField_${issue.field}`)
+    }) });
+  });
+  getNarrativeWarnings(draft.value.unsupportedRawObjects, draft.value.levelExtra, sharedNarrativeCatalog.value).forEach((issue) => {
+    items.push({ type: 'warning', text: t(`narrativeWarning_${issue.reason}`, {
+      slot: t(`narrativeSlot_${issue.slot}`), index: (issue.index ?? 0) + 1
+    }) });
+  });
   const originalSeed = getImportedObjectsByClass(importedLevelSnapshot, 'SeedBankProperties')[0]?.objdata;
   if (!draft.value.conveyor.enabled && draft.value.seedMode === 'chooser') getCardDeckIssues(draft.value.seedBankExtra, originalSeed).forEach((issue) => {
     items.push({ type: issue.inherited ? 'warning' : 'error', text: t(issue.reason === 'empty' ? 'deckEmptyError' : 'deckLeaderError', {
@@ -817,7 +846,7 @@ const validationItems = computed<ValidationItem[]>(() => {
   draft.value.waves.forEach((wave, index) => {
     const hasConveyorWaveMod =
       draft.value.conveyor.enabled && draft.value.conveyor.waveModifications.some((modification) => modification.waveIndex === index + 1);
-    if (!wave.zombies.length && !wave.rawActions.length && !hasConveyorWaveMod) {
+    if (!wave.zombies.length && !wave.rawActions.length && !hasConveyorWaveMod && !activePointGenerator.value) {
       items.push({
         type: 'warning',
         text: t('validationWaveEmpty', { wave: index + 1 })
@@ -1193,6 +1222,9 @@ function resetDraft() {
   eventPickerOpen.value = false;
   seedListTarget.value = 'seedPlants';
   selectedDeckIndex.value = 0;
+  generatorEditorOpen.value = false;
+  selectedGeneratorAlias.value = '';
+  generatorPoolTarget.value = 'ZombiePool';
   selectedDynamicDifficulty.value = 4;
   dynamicZombieActionHint.value = '';
   eventZombieActionHint.value = '';
@@ -1252,7 +1284,9 @@ function captureProject() {
     activeWorkspace: activeWorkspace.value, selectedWaveId: selectedWaveId.value,
     recentZombieCodes: recentZombieCodes.value, seedListTarget: seedListTarget.value,
     selectedDeckIndex: selectedDeckIndex.value, deckNameLanguage: deckNameLanguage.value,
-    selectedSpawnRow: selectedSpawnRow.value, expandedWaveActionKey: expandedWaveActionKey.value
+    selectedSpawnRow: selectedSpawnRow.value, expandedWaveActionKey: expandedWaveActionKey.value,
+    generatorEditorOpen: generatorEditorOpen.value, selectedGeneratorAlias: selectedGeneratorAlias.value,
+    generatorPoolTarget: generatorPoolTarget.value
   });
 }
 
@@ -1283,6 +1317,11 @@ function restoreProject(project: ReturnType<typeof readProjectState>) {
   expandedWaveActionKey.value = ['settings', 'difficulty', ...keys].includes(project.editor.expandedWaveActionKey)
     ? project.editor.expandedWaveActionKey : keys[0] || 'zombies';
   eventPickerOpen.value = false;
+  const generators = getGeneratorObjects(draft.value.unsupportedRawObjects);
+  selectedGeneratorAlias.value = generators.some((object: any) => object.aliases?.includes(project.editor.selectedGeneratorAlias))
+    ? project.editor.selectedGeneratorAlias : generators[0]?.aliases?.[0] || '';
+  generatorPoolTarget.value = project.editor.generatorPoolTarget === 'MustContainZombie' ? 'MustContainZombie' : 'ZombiePool';
+  generatorEditorOpen.value = project.editor.generatorEditorOpen ?? generators.length > 0;
   selectedCell.value = null;
   selectedAsset.value = null;
   assetTab.value = activeWorkspace.value === 'waves' ? 'zombie' : 'plant';
@@ -1326,6 +1365,16 @@ function closeProjectMenu() {
 
 function addZombieToTarget(asset: AssetOption) {
   selectedAsset.value = asset;
+  if (generatorEditorOpen.value) {
+    const generator = getGeneratorObjects(draft.value.unsupportedRawObjects).find((object: any) => object.aliases?.includes(selectedGeneratorAlias.value));
+    if (generator) {
+      const key = generatorPoolTarget.value;
+      generator.objdata[key] ??= [];
+      generator.objdata[key].push(toZombieTypeReference(asset.code));
+      rememberZombie(asset.code);
+      return;
+    }
+  }
   const action = selectedWave.value?.rawActions.find((item) => `raw:${item.id}` === expandedWaveActionKey.value);
   if (expandedWaveActionKey.value === 'difficulty') addSelectedZombieToDynamicPool();
   else if (action && isZombiePoolEvent(action)) addSelectedZombieToEvent(action);
@@ -1672,6 +1721,47 @@ function markWaveSystemEdited() {
     draft.value.conveyor.preserveOriginal = false;
     draft.value.conveyor.dirty = true;
   }
+}
+
+function toggleGeneratorEditor() {
+  const generators = getGeneratorObjects(draft.value.unsupportedRawObjects);
+  if (!generators.some((object: any) => object.aliases?.includes(selectedGeneratorAlias.value))) selectedGeneratorAlias.value = generators[0]?.aliases?.[0] || '';
+  generatorEditorOpen.value = !generatorEditorOpen.value;
+  generatorPoolTarget.value = 'ZombiePool';
+}
+
+function createPointGenerator() {
+  if (draft.value.levelExtra.IsDangerRoom || draft.value.levelExtra.IsDangerRoomMiniGame) {
+    message.warning(t('generatorNewNormalLevel'));
+    return;
+  }
+  Modal.confirm({
+    wrapClassName: 'level-editor-modal-root', title: t('generatorCreate'), content: t('generatorReplaceDescription'),
+    okText: t('generatorCreate'), cancelText: t('cancel'),
+    onOk: () => {
+      const oldGenerators = getGeneratorObjects(draft.value.unsupportedRawObjects).filter((object: any) => object.objclass === 'LevelOfTheDayModuleProperties');
+      const aliases = [...oldGenerators.flatMap((object: any) => object.aliases || []),
+        ...(getImportedObjectsByClass(importedLevelSnapshot, 'WaveManagerModuleProperties')[0]?.aliases || ['NewWaves'])];
+      draft.value.moduleRefs = draft.value.moduleRefs.filter((reference) => !aliases.some((alias: string) => reference === `RTID(${alias}@CurrentLevel)`));
+      draft.value.unsupportedRawObjects = draft.value.unsupportedRawObjects.filter((object) => !oldGenerators.includes(object));
+      markWaveSystemEdited();
+      draft.value.preservedStaticWaveObjects = [];
+      draft.value.waveSupportObjects = [];
+      draft.value.waves = Array.from({ length: 10 }, (_, index) => createEmptyWave(index + 1));
+      delete draft.value.waveManagerModuleExtra.DynamicZombies;
+      const alias = createUniqueWaveActionAlias('EditorPointWaveGenerator');
+      draft.value.unsupportedRawObjects.push({ aliases: [alias], objclass: 'LevelOfTheDayModuleProperties', objdata: {
+        WaveManagerProps: `RTID(${draft.value.waveManagerAlias}@CurrentLevel)`, StartingPoints: 100, PointIncrementPerWave: 30,
+        WavesPerFlag: draft.value.flagWaveInterval, PlantfoodToSpawnCount: 2, ZombiePool: ['RTID(mummy@ZombieTypes)']
+      } });
+      draft.value.moduleRefs.push(`RTID(${alias}@CurrentLevel)`);
+      selectedGeneratorAlias.value = alias;
+      generatorPoolTarget.value = 'ZombiePool';
+      generatorEditorOpen.value = true;
+      selectedWaveId.value = draft.value.waves[0].id;
+      syncWaveFlags();
+    }
+  });
 }
 
 function getDynamicZombieSlots() {
@@ -2405,6 +2495,7 @@ function getWaveActionKey(entry: WaveActionOrderEntry) {
 }
 
 function selectWave(id: number) {
+  generatorEditorOpen.value = false;
   selectedWaveId.value = id;
   const index = draft.value.waves.findIndex((wave) => wave.id === id);
   const wave = draft.value.waves[index];
@@ -2446,6 +2537,10 @@ function handleUpload(file: File) {
       eventPickerOpen.value = false;
       seedListTarget.value = 'seedPlants';
       selectedDeckIndex.value = 0;
+      const generators = getGeneratorObjects(draft.value.unsupportedRawObjects);
+      selectedGeneratorAlias.value = generators[0]?.aliases?.[0] || '';
+      generatorPoolTarget.value = 'ZombiePool';
+      generatorEditorOpen.value = generators.length > 0;
       selectedDynamicDifficulty.value = 4;
       dynamicZombieActionHint.value = '';
       eventZombieActionHint.value = '';
@@ -2960,6 +3055,8 @@ function serializeLevel() {
   if (unchangedImportedLevel) return unchangedImportedLevel;
   const metadataEditedLevel = getDefinitionEditedImportedLevel(importedLevelSnapshot, draft.value);
   if (metadataEditedLevel) return metadataEditedLevel;
+  const authoredContentEditedLevel = getAuthoredContentEditedLevel(importedLevelSnapshot, draft.value);
+  if (authoredContentEditedLevel) return authoredContentEditedLevel;
 
   const importedWaveModule = getImportedObjectsByClass(importedLevelSnapshot, 'WaveManagerModuleProperties')[0];
   const waveModuleAliases = importedWaveModule?.aliases?.length ? importedWaveModule.aliases : ['NewWaves'];
@@ -2981,7 +3078,8 @@ function serializeLevel() {
   const shouldPreserveConveyor = shouldEmitConveyor && draft.value.conveyor.preserveOriginal && !draft.value.conveyor.dirty && draft.value.conveyor.originalObject;
   const shouldEmitWaveManager =
     !!preserveGeneratorWaveSystem || !!preserveCustomWaveManager || draft.value.hasWaveManager || draft.value.waves.length > 0;
-  const shouldReferenceWaveManager = draft.value.moduleRefs.includes(waveModuleRef) || (draft.value.waveSystemDirty && draft.value.waves.length > 0);
+  const hasPointGenerator = !!activePointGenerator.value;
+  const shouldReferenceWaveManager = draft.value.moduleRefs.includes(waveModuleRef) || (!hasPointGenerator && draft.value.waveSystemDirty && draft.value.waves.length > 0);
   const shouldEmitSeedBank =
     !shouldEmitConveyor &&
     (draft.value.hasSeedBank ||
@@ -6270,29 +6368,58 @@ function renderDynamicPoolWavePreview(waveIndex: number) {
 
 const WaveTimeline = defineComponent({
   setup() {
+    const pointBudget = (index: number) => {
+      const generator = activePointGenerator.value;
+      return generator ? getGeneratorWaveBudget(generator.objdata, index, Math.min(draft.value.waves.length, draft.value.flagWaveInterval)) : null;
+    };
     return () => h('section', { class: 'wave-panel', id: 'editor-waves' }, [
       h('div', { class: 'panel-title row-title' }, [
         h('span', t('waves')),
         h('div', { class: 'wave-header-actions' }, [
+          h('button', { type: 'button', class: 'text-button', 'aria-pressed': generatorEditorOpen.value, onClick: toggleGeneratorEditor }, t(generatorEditorOpen.value ? 'generatorBackToWaves' : 'waveGenerators')),
           h('label', { class: 'flag-interval-control' }, [h('span', t('flagWaveInterval')),
             h('input', { type: 'number', min: 1, value: draft.value.flagWaveInterval,
               disabled: draft.value.preserveGeneratorWaves || draft.value.preserveCustomWaveManager,
               onInput: (event: Event) => setFlagWaveInterval((event.target as HTMLInputElement).value) })]),
-          draft.value.supportsDynamicZombies ? h('button', { type: 'button', class: 'text-button',
+          !generatorEditorOpen.value && draft.value.supportsDynamicZombies ? h('button', { type: 'button', class: 'text-button',
             onClick: () => { expandedWaveActionKey.value = 'difficulty'; eventPickerOpen.value = false; }
           }, t('dynamicDifficulty')) : null,
-          h('button', { type: 'button', class: 'text-button',
+          !generatorEditorOpen.value ? h('button', { type: 'button', class: 'text-button',
             onClick: () => { expandedWaveActionKey.value = 'settings'; eventPickerOpen.value = false; }
-          }, t('waveSettings')),
-          h('button', { type: 'button', class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')])
+          }, t('waveSettings')) : null,
+          !generatorEditorOpen.value ? h('button', { type: 'button', class: 'add-button small', onClick: addWave }, [h(PlusOutlined), t('addWave')]) : null
         ])
       ]),
+      generatorEditorOpen.value ? h('div', [
+        h(GeneratorPanel, { objects: draft.value.unsupportedRawObjects, selectedAlias: selectedGeneratorAlias.value,
+          poolTarget: generatorPoolTarget.value, zombieOptions: zombieOptions.value, translate: t,
+          onSelect: (alias: string) => { selectedGeneratorAlias.value = alias; generatorPoolTarget.value = 'ZombiePool'; },
+          onPoolTarget: (key: string) => { generatorPoolTarget.value = key; }, onCreate: createPointGenerator
+        }),
+        draft.value.waves.length ? h('label', { class: 'field-row generator-wave-count' }, [h('span', t('generatorWaveCount')),
+          h('input', { type: 'number', min: 1, max: 200, value: draft.value.waves.length, 'aria-label': t('generatorWaveCount'),
+            onChange: (event: Event) => {
+              const count = Math.max(1, Math.min(200, Math.round(Number((event.target as HTMLInputElement).value)) || 1));
+              if (count < draft.value.waves.length) {
+                Modal.confirm({ wrapClassName: 'level-editor-modal-root', title: t('generatorRemoveWaves', { count: draft.value.waves.length - count }),
+                  okText: t('remove'), cancelText: t('cancel'), onOk: () => {
+                    while (draft.value.waves.length > count) removeWave(draft.value.waves[draft.value.waves.length - 1].id);
+                  }
+                });
+                return;
+              }
+              markWaveSystemEdited();
+              while (draft.value.waves.length < count) draft.value.waves.push(createEmptyWave(draft.value.waves.length + 1));
+              syncWaveFlags();
+            }
+          })]) : null
+      ]) : null,
       h('div', { class: 'wave-strip' }, draft.value.waves.map((wave, index) => h('button', {
         type: 'button', class: ['wave-card', selectedWaveId.value === wave.id ? 'active' : '', wave.flag ? 'flag' : ''],
         'aria-pressed': selectedWaveId.value === wave.id, onClick: () => selectWave(wave.id)
-      }, [h('strong', `#${index + 1}`), h('span', t('waveZombieTotal', { count: wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0) })),
+      }, [h('strong', `#${index + 1}`), h('span', pointBudget(index) == null ? t('waveZombieTotal', { count: wave.zombies.reduce((sum, zombie) => sum + zombie.count, 0) }) : t('generatorPointBudget', { count: pointBudget(index) })),
         wave.flag ? h('span', { class: 'wave-flag-badge' }, t('flagWave')) : null]))),
-      selectedWave.value ? (() => {
+      !generatorEditorOpen.value && selectedWave.value ? (() => {
         const wave = selectedWave.value;
         const index = draft.value.waves.findIndex((item) => item.id === wave.id);
         return h('div', { class: 'wave-composition' }, [
