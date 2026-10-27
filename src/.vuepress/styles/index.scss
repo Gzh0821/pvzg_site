@@ -41,6 +41,10 @@
     font-family: 'pvzgeFontEN', 'pvzgFont', serif;
 }
 
+#main-content:has(.level-editor-shell, .save-editor-shell, .keybind-editor-container, .decoding-shell, .pq-shell, .pqr-shell) > .vp-page-title h1 {
+    font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
+}
+
 div.video-container {
     position: relative;
     width: 100%;

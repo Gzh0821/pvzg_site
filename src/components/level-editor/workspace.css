@@ -17,7 +17,6 @@
   border-radius: 20px;
   box-shadow: var(--workspace-shadow);
 }
-.level-editor-shell .editor-title { font-size: 1.5rem !important; letter-spacing: -.025em; font-weight: 650 !important; }
 .level-editor-shell .title-row { gap: 0; }
 .level-editor-shell .top-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .5rem; }
 .level-editor-shell .workspace-nav {
@@ -101,7 +100,6 @@
 @media (max-width: 600px) {
   .level-editor-shell { --editor-shell-width: calc(100vw - 1rem); padding: .5rem; border-radius: 24px; }
   .level-editor-shell .editor-topbar { padding: .85rem; gap: .75rem; }
-  .level-editor-shell .editor-title { font-size: 1.25rem !important; }
   .level-editor-shell .top-action-row > .ant-btn,
   .level-editor-shell .expert-mode-toggle,
   .level-editor-shell .validation-summary-control { width: auto; min-width: 0; flex: 1; }

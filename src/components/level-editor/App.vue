@@ -6459,9 +6459,7 @@ main#main-content:has(.level-editor-shell) > .vp-page-title {
 
 .editor-title {
   margin: 0 !important;
-  font-family: inherit !important;
-  font-weight: 750 !important;
-  letter-spacing: -0.025em;
+  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif !important;
   font-size: clamp(1.55rem, 2.2vw, 2.1rem) !important;
   line-height: 1.2 !important;
 }
