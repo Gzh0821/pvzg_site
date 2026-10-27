@@ -10,7 +10,7 @@ heroImageStyle:
   box-shadow: "0 0 12px rgba(0, 0, 0, 0.2)"
   backdrop-filter: "blur(10px)"
   background: "rgba(255, 255, 255, 0.1)"
-bgImage: /assets/image/background.webp
+bgImage: /assets/image/background-halloween.webp
 bgImageStyle:
   background-attachment: fixed
   filter: brightness(60%)
@@ -37,7 +37,7 @@ actions:
     link: ./contribution/Sponsor
 
 highlights:
-  - bgImage: /assets/image/background.webp
+  - bgImage: /assets/image/background-halloween.webp
     bgImageStyle:
       background-attachment: fixed
       opacity: 0.5

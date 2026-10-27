@@ -80,26 +80,26 @@ iframe.youtube-video {
     max-width: 100%;
 }
 
-// Summer navbar
+// Halloween navbar
 
 .vp-navbar {
     background:
         linear-gradient(90deg,
-            rgba(74, 188, 181, 0.34) 0%,
-            rgba(241, 207, 78, 0.34) 50%,
-            rgba(115, 205, 211, 0.36) 100%),
-        rgba(247, 252, 250, 0.92);
-    box-shadow: 0 1px 0 rgba(8, 105, 99, 0.24);
+            rgba(132, 87, 170, 0.24) 0%,
+            rgba(239, 151, 57, 0.3) 50%,
+            rgba(132, 87, 170, 0.24) 100%),
+        rgba(252, 247, 242, 0.96);
+    box-shadow: 0 1px 0 rgba(112, 63, 139, 0.24);
 }
 
 [data-theme="dark"] .vp-navbar {
     background:
         linear-gradient(90deg,
-            rgba(20, 133, 127, 0.42) 0%,
-            rgba(171, 139, 31, 0.3) 50%,
-            rgba(27, 126, 145, 0.4) 100%),
-        #061a1c;
-    box-shadow: 0 1px 0 rgba(89, 230, 219, 0.3);
+            rgba(102, 57, 143, 0.42) 0%,
+            rgba(170, 85, 24, 0.3) 50%,
+            rgba(102, 57, 143, 0.42) 100%),
+        #191120;
+    box-shadow: 0 1px 0 rgba(242, 163, 77, 0.3);
 }
 
 .vp-navbar::before {
@@ -108,7 +108,7 @@ iframe.youtube-video {
     inset-inline: 0;
     inset-block-end: 0;
     height: 2px;
-    background: linear-gradient(90deg, #2aa9a2, #e7c84b, #54c4c6);
+    background: linear-gradient(90deg, #9361b5, #ed963b, #9361b5);
     opacity: 0.8;
     pointer-events: none;
 }
