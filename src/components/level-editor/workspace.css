@@ -269,7 +269,7 @@
 .objective-board-link { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
 .objective-board-link > span { color: var(--editor-muted); }
 .inline-objectives :is(input, select), .board-tool-properties :is(input, select) { min-height: 44px; min-width: 0; max-width: 100%; padding: .5rem .65rem; border: 1px solid var(--editor-border); border-radius: 10px; background: var(--editor-panel-raised); color: var(--editor-text); font: inherit; }
-.inline-objectives .objective-row > button, .board-tool-properties button { min-height: 44px; }
+.inline-objectives .objective-row > button, .board-tool-properties button { min-width: 44px; min-height: 44px; }
 .inline-objectives .objective-row > button { width: 44px; padding: 0; }
 .board-tool-strip { display: flex; flex-wrap: wrap; gap: .35rem; margin: 1rem 0; }
 .board-tool-strip button { min-height: 44px; padding: .55rem .75rem; border: 0; border-radius: 10px; background: transparent; color: var(--editor-text); font: inherit; cursor: pointer; }
@@ -305,3 +305,5 @@
 .board-tool-properties .board-coordinate-field { font-size: .875rem; gap: .35rem; }
 
 .board-canvas-layout .lawn-cell:focus-visible { outline: 2px solid var(--editor-accent-strong); outline-offset: -3px; }
+
+.board-tool-properties .cell-detail-main { padding-inline-end: 44px; }
