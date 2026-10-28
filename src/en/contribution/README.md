@@ -41,10 +41,10 @@ Welcome to join our community and contribute to the development of "PvZ2 Gardend
   />
 
   <VPCard
-    title="QQ Announcement Group-6"
-    desc="Group Number:1022799196, for getting the latest information"
+    title="QQ Announcement Group-7"
+    desc="Group Number:1045572524, for getting the latest information"
     logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/cgi-bin/qm/qr?k=rYECBLqDrqVG6p1MY2YeVd9TkkTBWI36&jump_from=webapi&authKey=/ro2FD+hdoARQYdsqzx/fSBseCiaGDEdnJVP9ODBdXM3gQXux/c/f0OOkLwNDK3/"
+    link="https://qm.qq.com/q/G1HzBFI8Ew"
     background="rgba(228, 0, 54, 0.15)"
   />
   <VPCard

@@ -40,10 +40,10 @@ pageInfo: false
   />
 
   <VPCard
-    title="QQ公告群-6"
-    desc="群号：1022799196，适合潜水和获取最新版本的信息"
+    title="QQ公告群-7"
+    desc="群号：1045572524，适合潜水和获取最新版本的信息"
     logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/cgi-bin/qm/qr?k=rYECBLqDrqVG6p1MY2YeVd9TkkTBWI36&jump_from=webapi&authKey=/ro2FD+hdoARQYdsqzx/fSBseCiaGDEdnJVP9ODBdXM3gQXux/c/f0OOkLwNDK3/"
+    link="https://qm.qq.com/q/G1HzBFI8Ew"
     background="rgba(228, 0, 54, 0.15)"
   />
   <VPCard

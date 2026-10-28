@@ -40,10 +40,10 @@ Te invitamos a unirte a nuestra comunidad y contribuir al desarrollo de "PvZ2 Ga
   />
 
   <VPCard
-    title="Grupo de anuncios QQ-6"
-    desc="Numero de grupo: 1022799196, para recibir la informacion mas reciente"
+    title="Grupo de anuncios QQ-7"
+    desc="Numero de grupo: 1045572524, para recibir la informacion mas reciente"
     logo="/assets/image/qq.svg"
-    link="https://qm.qq.com/cgi-bin/qm/qr?k=rYECBLqDrqVG6p1MY2YeVd9TkkTBWI36&jump_from=webapi&authKey=/ro2FD+hdoARQYdsqzx/fSBseCiaGDEdnJVP9ODBdXM3gQXux/c/f0OOkLwNDK3/"
+    link="https://qm.qq.com/q/G1HzBFI8Ew"
     background="rgba(228, 0, 54, 0.15)"
   />
   <VPCard
