@@ -1,9 +1,10 @@
 import { reconcileLevelObjects } from './level-codec.mjs';
+import { SPECIAL_MODE_CLASSES } from './special-mode-codec.mjs';
 import { ENDLESS_MODULE_CLASSES } from './endless-codec.mjs';
 import { NARRATIVE_SLOTS } from './narrative-codec.mjs';
 
 export const GENERATOR_CLASSES = ['LevelOfTheDayModuleProperties', 'DangerRoomJitteredWaveGenerator'];
-const EDITABLE_CLASSES = new Set(['NarrativeProperties', ...GENERATOR_CLASSES, ...ENDLESS_MODULE_CLASSES]);
+const EDITABLE_CLASSES = new Set(['NarrativeProperties', ...GENERATOR_CLASSES, ...ENDLESS_MODULE_CLASSES, ...Object.values(SPECIAL_MODE_CLASSES)]);
 const fingerprint = (value) => JSON.stringify(value);
 const clone = (value) => JSON.parse(JSON.stringify(value));
 
@@ -11,7 +12,7 @@ const clone = (value) => JSON.parse(JSON.stringify(value));
 export function getAuthoredContentEditedLevel(snapshot, draft) {
   if (!snapshot?.draftFingerprint) return null;
   const baseline = JSON.parse(snapshot.draftFingerprint);
-  const normalized = { ...draft, levelExtra: baseline.levelExtra, unsupportedRawObjects: baseline.unsupportedRawObjects };
+  const normalized = { ...draft, levelExtra: baseline.levelExtra, unsupportedRawObjects: baseline.unsupportedRawObjects, moduleRefs: baseline.moduleRefs };
   if (fingerprint(normalized) !== snapshot.draftFingerprint) return null;
   const withoutStory = (extra) => Object.fromEntries(Object.entries(extra || {}).filter(([key]) => !NARRATIVE_SLOTS.includes(key)));
   if (fingerprint(withoutStory(draft.levelExtra)) !== fingerprint(withoutStory(baseline.levelExtra))) return null;
@@ -19,6 +20,7 @@ export function getAuthoredContentEditedLevel(snapshot, draft) {
   if (fingerprint(opaque(draft.unsupportedRawObjects)) !== fingerprint(opaque(baseline.unsupportedRawObjects))) return null;
   const source = clone(snapshot.source);
   const definition = source.objects.find((object) => object.objclass === 'LevelDefinition').objdata;
+  if (fingerprint(draft.moduleRefs) !== fingerprint(baseline.moduleRefs)) definition.Modules = clone(draft.moduleRefs);
   for (const key of NARRATIVE_SLOTS) {
     if (fingerprint(draft.levelExtra?.[key]) === fingerprint(baseline.levelExtra?.[key])) continue;
     if (Object.hasOwn(draft.levelExtra, key)) definition[key] = clone(draft.levelExtra[key]);

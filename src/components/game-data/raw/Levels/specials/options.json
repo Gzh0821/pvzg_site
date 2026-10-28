@@ -1,0 +1,1772 @@
+{
+  "gameVersion": "0.16.1",
+  "bossTypes": [
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_egypt"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_egypt@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_egypt"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_egypt"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_egypt@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_egypt"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_egypt2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_egypt2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_egypt2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_sky"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_sky@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_sky"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_pirate"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_pirate@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_pirate"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_pirate"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_pirate@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_pirate"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_pirate2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_pirate2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_pirate2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_cowboy"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_cowboy@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_cowboy"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_cowboy"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_cowboy@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_cowboy"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_cowboy2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_cowboy2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_cowboy2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "kongfu_boss_explode"
+      ],
+      "objdata": {
+        "Properties": "RTID(kongfu_boss_explode@ZombieProps)",
+        "ZombieBasedOn": "kongfu_boss_explode"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "kongfu_boss_blade"
+      ],
+      "objdata": {
+        "Properties": "RTID(kongfu_boss_blade@ZombieProps)",
+        "ZombieBasedOn": "kongfu_boss_blade"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "kongfu_boss_chi"
+      ],
+      "objdata": {
+        "Properties": "RTID(kongfu_boss_chi@ZombieProps)",
+        "ZombieBasedOn": "kongfu_boss_chi"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_future"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_future@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_future"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_future"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_future@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_future"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern1"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern1@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_modern1"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_future2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_future2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_future2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_dark"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_dark@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_dark"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_dark"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_dark@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_dark"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_dark2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_dark2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_dark2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_beach"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_beach@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_beach"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_beach"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_beach@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_beach"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_beach2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_beach2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_beach2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_iceage"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_iceage@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_iceage"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_iceage"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_iceage@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_iceage"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_iceage2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_iceage2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_iceage2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_lostcity"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_lostcity@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_lostcity"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_lostcity2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_lostcity2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_lostcity2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_lostcity"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_lostcity@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_lostcity"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_eighties"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_eighties@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_eighties"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_eighties2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_eighties2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_eighties2"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_eighties"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_eighties@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_eighties"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_dino"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_dino@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_dino"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_modern_dino"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_modern_dino@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_dino"
+      }
+    },
+    {
+      "objclass": "ZombieType",
+      "aliases": [
+        "zombossmech_dino2"
+      ],
+      "objdata": {
+        "Properties": "RTID(zombossmech_dino2@ZombieProps)",
+        "ZombieBasedOn": "zombossmech_dino2"
+      }
+    }
+  ],
+  "plantTypes": [
+    {
+      "aliases": [
+        "peashooter"
+      ],
+      "base": "peashooter"
+    },
+    {
+      "aliases": [
+        "seashooter"
+      ],
+      "base": "seashooter"
+    },
+    {
+      "aliases": [
+        "seashooter_mgp"
+      ],
+      "base": "seashooter_mgp"
+    },
+    {
+      "aliases": [
+        "blastberry"
+      ],
+      "base": "blastberry"
+    },
+    {
+      "aliases": [
+        "stickybombrice"
+      ],
+      "base": "stickybombrice"
+    },
+    {
+      "aliases": [
+        "lotorpedo"
+      ],
+      "base": "lotorpedo"
+    },
+    {
+      "aliases": [
+        "turkeypult"
+      ],
+      "base": "turkeypult"
+    },
+    {
+      "aliases": [
+        "darkmatterdragonfruit"
+      ],
+      "base": "darkmatterdragonfruit"
+    },
+    {
+      "aliases": [
+        "sunflower"
+      ],
+      "base": "sunflower"
+    },
+    {
+      "aliases": [
+        "wallnut"
+      ],
+      "base": "wallnut"
+    },
+    {
+      "aliases": [
+        "mirrornut"
+      ],
+      "base": "mirrornut"
+    },
+    {
+      "aliases": [
+        "potatomine"
+      ],
+      "base": "potatomine"
+    },
+    {
+      "aliases": [
+        "cabbagepult"
+      ],
+      "base": "cabbagepult"
+    },
+    {
+      "aliases": [
+        "bloomerang"
+      ],
+      "base": "bloomerang"
+    },
+    {
+      "aliases": [
+        "iceburg"
+      ],
+      "base": "iceburg"
+    },
+    {
+      "aliases": [
+        "bonkchoy"
+      ],
+      "base": "bonkchoy"
+    },
+    {
+      "aliases": [
+        "wasabiwhip"
+      ],
+      "base": "wasabiwhip"
+    },
+    {
+      "aliases": [
+        "poisonpeashooter"
+      ],
+      "base": "poisonpeashooter"
+    },
+    {
+      "aliases": [
+        "poisonpeashooter_mgp"
+      ],
+      "base": "poisonpeashooter_mgp"
+    },
+    {
+      "aliases": [
+        "repeater"
+      ],
+      "base": "repeater"
+    },
+    {
+      "aliases": [
+        "repeater_mgp"
+      ],
+      "base": "repeater_mgp"
+    },
+    {
+      "aliases": [
+        "megagatling"
+      ],
+      "base": "megagatling"
+    },
+    {
+      "aliases": [
+        "chillypepper"
+      ],
+      "base": "chillypepper"
+    },
+    {
+      "aliases": [
+        "witchhazel"
+      ],
+      "base": "witchhazel"
+    },
+    {
+      "aliases": [
+        "scaredyshroom"
+      ],
+      "base": "scaredyshroom"
+    },
+    {
+      "aliases": [
+        "fumeshroom"
+      ],
+      "base": "fumeshroom"
+    },
+    {
+      "aliases": [
+        "gravebuster"
+      ],
+      "base": "gravebuster"
+    },
+    {
+      "aliases": [
+        "pumpkin"
+      ],
+      "base": "pumpkin"
+    },
+    {
+      "aliases": [
+        "pvine"
+      ],
+      "base": "pvine"
+    },
+    {
+      "aliases": [
+        "floawerPot"
+      ],
+      "base": "floawerPot"
+    },
+    {
+      "aliases": [
+        "murkadamia"
+      ],
+      "base": "murkadamia"
+    },
+    {
+      "aliases": [
+        "noctarine"
+      ],
+      "base": "noctarine"
+    },
+    {
+      "aliases": [
+        "shadowpeashooter"
+      ],
+      "base": "shadowpeashooter"
+    },
+    {
+      "aliases": [
+        "shadowpeashooter_mgp"
+      ],
+      "base": "shadowpeashooter_mgp"
+    },
+    {
+      "aliases": [
+        "firepeashooter"
+      ],
+      "base": "firepeashooter"
+    },
+    {
+      "aliases": [
+        "firepeashooter_mgp"
+      ],
+      "base": "firepeashooter_mgp"
+    },
+    {
+      "aliases": [
+        "threepeater"
+      ],
+      "base": "threepeater"
+    },
+    {
+      "aliases": [
+        "threepeater_mgp"
+      ],
+      "base": "threepeater_mgp"
+    },
+    {
+      "aliases": [
+        "primalpeashooter"
+      ],
+      "base": "primalpeashooter"
+    },
+    {
+      "aliases": [
+        "primalpeashooter_mgp"
+      ],
+      "base": "primalpeashooter_mgp"
+    },
+    {
+      "aliases": [
+        "xshot"
+      ],
+      "base": "xshot"
+    },
+    {
+      "aliases": [
+        "homingthistle"
+      ],
+      "base": "homingthistle"
+    },
+    {
+      "aliases": [
+        "starfruit"
+      ],
+      "base": "starfruit"
+    },
+    {
+      "aliases": [
+        "shootingstarfruit"
+      ],
+      "base": "shootingstarfruit"
+    },
+    {
+      "aliases": [
+        "lilypad"
+      ],
+      "base": "lilypad"
+    },
+    {
+      "aliases": [
+        "atombomb"
+      ],
+      "base": "atombomb"
+    },
+    {
+      "aliases": [
+        "atombomb_seedling"
+      ],
+      "base": "atombomb_seedling"
+    },
+    {
+      "aliases": [
+        "seedling"
+      ],
+      "base": "seedling"
+    },
+    {
+      "aliases": [
+        "sunshroom"
+      ],
+      "base": "sunshroom"
+    },
+    {
+      "aliases": [
+        "twinsunflower"
+      ],
+      "base": "twinsunflower"
+    },
+    {
+      "aliases": [
+        "dragonbruit"
+      ],
+      "base": "dragonbruit"
+    },
+    {
+      "aliases": [
+        "moonflower"
+      ],
+      "base": "moonflower"
+    },
+    {
+      "aliases": [
+        "snowpea"
+      ],
+      "base": "snowpea"
+    },
+    {
+      "aliases": [
+        "snowpea_mgp"
+      ],
+      "base": "snowpea_mgp"
+    },
+    {
+      "aliases": [
+        "lightningreed"
+      ],
+      "base": "lightningreed"
+    },
+    {
+      "aliases": [
+        "kernelpult"
+      ],
+      "base": "kernelpult"
+    },
+    {
+      "aliases": [
+        "snappea"
+      ],
+      "base": "snappea"
+    },
+    {
+      "aliases": [
+        "snappea_mgp"
+      ],
+      "base": "snappea_mgp"
+    },
+    {
+      "aliases": [
+        "meteorflower"
+      ],
+      "base": "meteorflower"
+    },
+    {
+      "aliases": [
+        "springbean"
+      ],
+      "base": "springbean"
+    },
+    {
+      "aliases": [
+        "umbrellaleaf"
+      ],
+      "base": "umbrellaleaf"
+    },
+    {
+      "aliases": [
+        "melonpult"
+      ],
+      "base": "melonpult"
+    },
+    {
+      "aliases": [
+        "wintermelon"
+      ],
+      "base": "wintermelon"
+    },
+    {
+      "aliases": [
+        "blover"
+      ],
+      "base": "blover"
+    },
+    {
+      "aliases": [
+        "spikeweed"
+      ],
+      "base": "spikeweed"
+    },
+    {
+      "aliases": [
+        "spikerock"
+      ],
+      "base": "spikerock"
+    },
+    {
+      "aliases": [
+        "chomper"
+      ],
+      "base": "chomper"
+    },
+    {
+      "aliases": [
+        "glaciershroom"
+      ],
+      "base": "glaciershroom"
+    },
+    {
+      "aliases": [
+        "primalwallnut"
+      ],
+      "base": "primalwallnut"
+    },
+    {
+      "aliases": [
+        "buttercup"
+      ],
+      "base": "buttercup"
+    },
+    {
+      "aliases": [
+        "banana"
+      ],
+      "base": "banana"
+    },
+    {
+      "aliases": [
+        "missiletoe"
+      ],
+      "base": "missiletoe"
+    },
+    {
+      "aliases": [
+        "cherry_bomb"
+      ],
+      "base": "cherry_bomb"
+    },
+    {
+      "aliases": [
+        "armamint"
+      ],
+      "base": "armamint"
+    },
+    {
+      "aliases": [
+        "containmint"
+      ],
+      "base": "containmint"
+    },
+    {
+      "aliases": [
+        "filamint"
+      ],
+      "base": "filamint"
+    },
+    {
+      "aliases": [
+        "reinforcemint"
+      ],
+      "base": "reinforcemint"
+    },
+    {
+      "aliases": [
+        "bombardmint"
+      ],
+      "base": "bombardmint"
+    },
+    {
+      "aliases": [
+        "enchantmint"
+      ],
+      "base": "enchantmint"
+    },
+    {
+      "aliases": [
+        "ailmint"
+      ],
+      "base": "ailmint"
+    },
+    {
+      "aliases": [
+        "concealmint"
+      ],
+      "base": "concealmint"
+    },
+    {
+      "aliases": [
+        "peppermint"
+      ],
+      "base": "peppermint"
+    },
+    {
+      "aliases": [
+        "enforcemint"
+      ],
+      "base": "enforcemint"
+    },
+    {
+      "aliases": [
+        "enlightenmint"
+      ],
+      "base": "enlightenmint"
+    },
+    {
+      "aliases": [
+        "wintermint"
+      ],
+      "base": "wintermint"
+    },
+    {
+      "aliases": [
+        "spearmint"
+      ],
+      "base": "spearmint"
+    },
+    {
+      "aliases": [
+        "appeasemint"
+      ],
+      "base": "appeasemint"
+    },
+    {
+      "aliases": [
+        "doomshroom"
+      ],
+      "base": "doomshroom"
+    },
+    {
+      "aliases": [
+        "cranjelly"
+      ],
+      "base": "cranjelly"
+    },
+    {
+      "aliases": [
+        "dragonbabybruit"
+      ],
+      "base": "dragonbabybruit"
+    },
+    {
+      "aliases": [
+        "torchwood"
+      ],
+      "base": "torchwood"
+    },
+    {
+      "aliases": [
+        "jalapeno"
+      ],
+      "base": "jalapeno"
+    },
+    {
+      "aliases": [
+        "puffshroom"
+      ],
+      "base": "puffshroom"
+    },
+    {
+      "aliases": [
+        "gloomvine"
+      ],
+      "base": "gloomvine"
+    },
+    {
+      "aliases": [
+        "vamporcini"
+      ],
+      "base": "vamporcini"
+    },
+    {
+      "aliases": [
+        "primalpotatomine"
+      ],
+      "base": "primalpotatomine"
+    },
+    {
+      "aliases": [
+        "cactus"
+      ],
+      "base": "cactus"
+    },
+    {
+      "aliases": [
+        "powerlily"
+      ],
+      "base": "powerlily"
+    },
+    {
+      "aliases": [
+        "coconutcannon"
+      ],
+      "base": "coconutcannon"
+    },
+    {
+      "aliases": [
+        "peapod"
+      ],
+      "base": "peapod"
+    },
+    {
+      "aliases": [
+        "peapod_mgp"
+      ],
+      "base": "peapod_mgp"
+    },
+    {
+      "aliases": [
+        "snapdragon"
+      ],
+      "base": "snapdragon"
+    },
+    {
+      "aliases": [
+        "gatling"
+      ],
+      "base": "gatling"
+    },
+    {
+      "aliases": [
+        "gatling_mgp"
+      ],
+      "base": "gatling_mgp"
+    },
+    {
+      "aliases": [
+        "splitpea"
+      ],
+      "base": "splitpea"
+    },
+    {
+      "aliases": [
+        "splitpea_mgp"
+      ],
+      "base": "splitpea_mgp"
+    },
+    {
+      "aliases": [
+        "chilibean"
+      ],
+      "base": "chilibean"
+    },
+    {
+      "aliases": [
+        "tallnut"
+      ],
+      "base": "tallnut"
+    },
+    {
+      "aliases": [
+        "hurrikale"
+      ],
+      "base": "hurrikale"
+    },
+    {
+      "aliases": [
+        "stallia"
+      ],
+      "base": "stallia"
+    },
+    {
+      "aliases": [
+        "electricpeashooter"
+      ],
+      "base": "electricpeashooter"
+    },
+    {
+      "aliases": [
+        "electricpeashooter_mgp"
+      ],
+      "base": "electricpeashooter_mgp"
+    },
+    {
+      "aliases": [
+        "squash"
+      ],
+      "base": "squash"
+    },
+    {
+      "aliases": [
+        "gloomshroom"
+      ],
+      "base": "gloomshroom"
+    },
+    {
+      "aliases": [
+        "magnifyinggrass"
+      ],
+      "base": "magnifyinggrass"
+    },
+    {
+      "aliases": [
+        "celerystalker"
+      ],
+      "base": "celerystalker"
+    },
+    {
+      "aliases": [
+        "sapfling"
+      ],
+      "base": "sapfling"
+    },
+    {
+      "aliases": [
+        "parsnip"
+      ],
+      "base": "parsnip"
+    },
+    {
+      "aliases": [
+        "explodeonut"
+      ],
+      "base": "explodeonut"
+    },
+    {
+      "aliases": [
+        "grapeshot"
+      ],
+      "base": "grapeshot"
+    },
+    {
+      "aliases": [
+        "plantern"
+      ],
+      "base": "plantern"
+    },
+    {
+      "aliases": [
+        "bulbkekengi"
+      ],
+      "base": "bulbkekengi"
+    },
+    {
+      "aliases": [
+        "loquat"
+      ],
+      "base": "loquat"
+    },
+    {
+      "aliases": [
+        "peacommando"
+      ],
+      "base": "peacommando"
+    },
+    {
+      "aliases": [
+        "peacommando_mgp"
+      ],
+      "base": "peacommando_mgp"
+    },
+    {
+      "aliases": [
+        "peach"
+      ],
+      "base": "peach"
+    },
+    {
+      "aliases": [
+        "jackolantern"
+      ],
+      "base": "jackolantern"
+    },
+    {
+      "aliases": [
+        "pyrevine"
+      ],
+      "base": "pyrevine"
+    },
+    {
+      "aliases": [
+        "shinevine"
+      ],
+      "base": "shinevine"
+    },
+    {
+      "aliases": [
+        "dandelion"
+      ],
+      "base": "dandelion"
+    },
+    {
+      "aliases": [
+        "chardguard"
+      ],
+      "base": "chardguard"
+    },
+    {
+      "aliases": [
+        "hypnoshroom"
+      ],
+      "base": "hypnoshroom"
+    },
+    {
+      "aliases": [
+        "electriccurrant"
+      ],
+      "base": "electriccurrant"
+    },
+    {
+      "aliases": [
+        "escaperoot"
+      ],
+      "base": "escaperoot"
+    },
+    {
+      "aliases": [
+        "imitater"
+      ],
+      "base": "imitater"
+    },
+    {
+      "aliases": [
+        "shadowshroom"
+      ],
+      "base": "shadowshroom"
+    },
+    {
+      "aliases": [
+        "magnetshroom"
+      ],
+      "base": "magnetshroom"
+    },
+    {
+      "aliases": [
+        "turnip"
+      ],
+      "base": "turnip"
+    },
+    {
+      "aliases": [
+        "empea"
+      ],
+      "base": "empea"
+    },
+    {
+      "aliases": [
+        "citron"
+      ],
+      "base": "citron"
+    },
+    {
+      "aliases": [
+        "laser_bean"
+      ],
+      "base": "laser_bean"
+    },
+    {
+      "aliases": [
+        "solartomato"
+      ],
+      "base": "solartomato"
+    },
+    {
+      "aliases": [
+        "powerplant_alpha"
+      ],
+      "base": "powerplant_alpha"
+    },
+    {
+      "aliases": [
+        "powerplant_beta"
+      ],
+      "base": "powerplant_beta"
+    },
+    {
+      "aliases": [
+        "powerplant_gamma"
+      ],
+      "base": "powerplant_gamma"
+    },
+    {
+      "aliases": [
+        "powerplant_delta"
+      ],
+      "base": "powerplant_delta"
+    },
+    {
+      "aliases": [
+        "powerplant_epsilon"
+      ],
+      "base": "powerplant_epsilon"
+    },
+    {
+      "aliases": [
+        "holonut"
+      ],
+      "base": "holonut"
+    },
+    {
+      "aliases": [
+        "powerplant"
+      ],
+      "base": "powerplant"
+    },
+    {
+      "aliases": [
+        "marigold"
+      ],
+      "base": "marigold"
+    },
+    {
+      "aliases": [
+        "marigold_red"
+      ],
+      "base": "marigold_red"
+    },
+    {
+      "aliases": [
+        "marigold_orange"
+      ],
+      "base": "marigold_orange"
+    },
+    {
+      "aliases": [
+        "marigold_yellow"
+      ],
+      "base": "marigold_yellow"
+    },
+    {
+      "aliases": [
+        "marigold_green"
+      ],
+      "base": "marigold_green"
+    },
+    {
+      "aliases": [
+        "marigold_blue"
+      ],
+      "base": "marigold_blue"
+    },
+    {
+      "aliases": [
+        "marigold_pink"
+      ],
+      "base": "marigold_pink"
+    },
+    {
+      "aliases": [
+        "marigold_purple"
+      ],
+      "base": "marigold_purple"
+    },
+    {
+      "aliases": [
+        "applemortar"
+      ],
+      "base": "applemortar"
+    },
+    {
+      "aliases": [
+        "redstinger"
+      ],
+      "base": "redstinger"
+    },
+    {
+      "aliases": [
+        "skyshooter"
+      ],
+      "base": "skyshooter"
+    },
+    {
+      "aliases": [
+        "skyshooter_mgp"
+      ],
+      "base": "skyshooter_mgp"
+    },
+    {
+      "aliases": [
+        "sunbean"
+      ],
+      "base": "sunbean"
+    },
+    {
+      "aliases": [
+        "peanut"
+      ],
+      "base": "peanut"
+    },
+    {
+      "aliases": [
+        "zombiepotion_speed"
+      ],
+      "base": "zombiepotion_speed"
+    },
+    {
+      "aliases": [
+        "zombiepotion_toughness"
+      ],
+      "base": "zombiepotion_toughness"
+    },
+    {
+      "aliases": [
+        "zombiepotion_invisibility"
+      ],
+      "base": "zombiepotion_invisibility"
+    },
+    {
+      "aliases": [
+        "tanglekelp"
+      ],
+      "base": "tanglekelp"
+    },
+    {
+      "aliases": [
+        "bowlingbulb"
+      ],
+      "base": "bowlingbulb"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowlingbulb1"
+      ],
+      "base": "tool_projectile_bowlingbulb1"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowlingbulb2"
+      ],
+      "base": "tool_projectile_bowlingbulb2"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowlingbulb3"
+      ],
+      "base": "tool_projectile_bowlingbulb3"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowlingbulb_explode"
+      ],
+      "base": "tool_projectile_bowlingbulb_explode"
+    },
+    {
+      "aliases": [
+        "guacodile"
+      ],
+      "base": "guacodile"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowling_wallnut"
+      ],
+      "base": "tool_projectile_bowling_wallnut"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowling_explodeonut"
+      ],
+      "base": "tool_projectile_bowling_explodeonut"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowling_holonut"
+      ],
+      "base": "tool_projectile_bowling_holonut"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowling_primalwallnut"
+      ],
+      "base": "tool_projectile_bowling_primalwallnut"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowlingbulb_iceburg"
+      ],
+      "base": "tool_projectile_bowlingbulb_iceburg"
+    },
+    {
+      "aliases": [
+        "tool_projectile_bowling_tallnut"
+      ],
+      "base": "tool_projectile_bowling_tallnut"
+    },
+    {
+      "aliases": [
+        "ghostpepper"
+      ],
+      "base": "ghostpepper"
+    },
+    {
+      "aliases": [
+        "sweetpotato"
+      ],
+      "base": "sweetpotato"
+    },
+    {
+      "aliases": [
+        "pepperpult"
+      ],
+      "base": "pepperpult"
+    },
+    {
+      "aliases": [
+        "hotpotato"
+      ],
+      "base": "hotpotato"
+    },
+    {
+      "aliases": [
+        "stunion"
+      ],
+      "base": "stunion"
+    },
+    {
+      "aliases": [
+        "goldleaf"
+      ],
+      "base": "goldleaf"
+    },
+    {
+      "aliases": [
+        "akee"
+      ],
+      "base": "akee"
+    },
+    {
+      "aliases": [
+        "endurian"
+      ],
+      "base": "endurian"
+    },
+    {
+      "aliases": [
+        "toadstool"
+      ],
+      "base": "toadstool"
+    },
+    {
+      "aliases": [
+        "lavaguava"
+      ],
+      "base": "lavaguava"
+    },
+    {
+      "aliases": [
+        "phatbeet"
+      ],
+      "base": "phatbeet"
+    },
+    {
+      "aliases": [
+        "strawburst"
+      ],
+      "base": "strawburst"
+    },
+    {
+      "aliases": [
+        "thymewarp"
+      ],
+      "base": "thymewarp"
+    },
+    {
+      "aliases": [
+        "phatbeet_rhythm"
+      ],
+      "base": "phatbeet_rhythm"
+    },
+    {
+      "aliases": [
+        "seashroom"
+      ],
+      "base": "seashroom"
+    },
+    {
+      "aliases": [
+        "garlic"
+      ],
+      "base": "garlic"
+    },
+    {
+      "aliases": [
+        "electricblueberry"
+      ],
+      "base": "electricblueberry"
+    },
+    {
+      "aliases": [
+        "caulipower"
+      ],
+      "base": "caulipower"
+    },
+    {
+      "aliases": [
+        "gumnut"
+      ],
+      "base": "gumnut"
+    },
+    {
+      "aliases": [
+        "sporeshroom"
+      ],
+      "base": "sporeshroom"
+    },
+    {
+      "aliases": [
+        "intensivecarrot"
+      ],
+      "base": "intensivecarrot"
+    },
+    {
+      "aliases": [
+        "primalsunflower"
+      ],
+      "base": "primalsunflower"
+    },
+    {
+      "aliases": [
+        "moonbean"
+      ],
+      "base": "moonbean"
+    },
+    {
+      "aliases": [
+        "coldsnapdragon"
+      ],
+      "base": "coldsnapdragon"
+    },
+    {
+      "aliases": [
+        "nightshade"
+      ],
+      "base": "nightshade"
+    },
+    {
+      "aliases": [
+        "asparagus"
+      ],
+      "base": "asparagus"
+    },
+    {
+      "aliases": [
+        "anthurium"
+      ],
+      "base": "anthurium"
+    },
+    {
+      "aliases": [
+        "pineapple"
+      ],
+      "base": "pineapple"
+    },
+    {
+      "aliases": [
+        "dusklobber"
+      ],
+      "base": "dusklobber"
+    },
+    {
+      "aliases": [
+        "grimrose"
+      ],
+      "base": "grimrose"
+    },
+    {
+      "aliases": [
+        "goldbloom"
+      ],
+      "base": "goldbloom"
+    },
+    {
+      "aliases": [
+        "bloominghearts"
+      ],
+      "base": "bloominghearts"
+    },
+    {
+      "aliases": [
+        "shrinkingviolet"
+      ],
+      "base": "shrinkingviolet"
+    },
+    {
+      "aliases": [
+        "hotdate"
+      ],
+      "base": "hotdate"
+    },
+    {
+      "aliases": [
+        "firegourd"
+      ],
+      "base": "firegourd"
+    },
+    {
+      "aliases": [
+        "slingpea"
+      ],
+      "base": "slingpea"
+    },
+    {
+      "aliases": [
+        "slingpea_mgp"
+      ],
+      "base": "slingpea_mgp"
+    },
+    {
+      "aliases": [
+        "bambooshoot"
+      ],
+      "base": "bambooshoot"
+    },
+    {
+      "aliases": [
+        "inferno"
+      ],
+      "base": "inferno"
+    },
+    {
+      "aliases": [
+        "snowdrop"
+      ],
+      "base": "snowdrop"
+    },
+    {
+      "aliases": [
+        "lychee"
+      ],
+      "base": "lychee"
+    },
+    {
+      "aliases": [
+        "perfumeshroom"
+      ],
+      "base": "perfumeshroom"
+    },
+    {
+      "aliases": [
+        "solarsage"
+      ],
+      "base": "solarsage"
+    },
+    {
+      "aliases": [
+        "bamboozle"
+      ],
+      "base": "bamboozle"
+    },
+    {
+      "aliases": [
+        "aloe"
+      ],
+      "base": "aloe"
+    },
+    {
+      "aliases": [
+        "hollyknight"
+      ],
+      "base": "hollyknight"
+    },
+    {
+      "aliases": [
+        "hollybarrierleaf"
+      ],
+      "base": "hollybarrierleaf"
+    },
+    {
+      "aliases": [
+        "hollybarrierleafplantfood"
+      ],
+      "base": "hollybarrierleafplantfood"
+    },
+    {
+      "aliases": [
+        "bamboobusket"
+      ],
+      "base": "bamboobusket"
+    },
+    {
+      "aliases": [
+        "cantaloupe"
+      ],
+      "base": "cantaloupe"
+    },
+    {
+      "aliases": [
+        "iceweed"
+      ],
+      "base": "iceweed"
+    },
+    {
+      "aliases": [
+        "pinkstarfruit"
+      ],
+      "base": "pinkstarfruit"
+    },
+    {
+      "aliases": [
+        "icebloom"
+      ],
+      "base": "icebloom"
+    },
+    {
+      "aliases": [
+        "zoybeanpod"
+      ],
+      "base": "zoybeanpod"
+    }
+  ],
+  "sharedObjects": [
+    {
+      "objclass": "SkyCityShipProperties",
+      "aliases": [
+        "SkyCityShipDefault"
+      ],
+      "objdata": {
+        "Toughness": 20000,
+        "ToughnessShield": 10000,
+        "ForceShielded": false,
+        "ForceUnshielded": false,
+        "BloverDPS": 3500,
+        "BloverSPS": 3,
+        "EdgeX": 2.5
+      }
+    }
+  ]
+}

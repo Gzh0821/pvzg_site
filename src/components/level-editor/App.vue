@@ -42,6 +42,8 @@
                 <a-button @click="exportProject">{{ t('backupProject') }}</a-button>
                 <a-button @click="confirmResetDraft">{{ t('newLevel') }}</a-button>
                 <a-button :loading="endlessCatalogLoading" @click="openEndlessTemplate">{{ t('endlessCreate') }}</a-button>
+                <a-button :loading="specialTemplatesLoading" @click="openSpecialTemplate('boss')">{{ t('specialCreate_boss') }}</a-button>
+                <a-button :loading="specialTemplatesLoading" @click="openSpecialTemplate('airRaid')">{{ t('specialCreate_airRaid') }}</a-button>
               </div>
             </details>
           </div>
@@ -72,6 +74,11 @@
           @keydown="handleWorkspaceKeydown($event, view.id)">{{ t(view.label) }}</button>
         <span class="workspace-summary">{{ isEndlessMode ? t('endlessAutomaticWaves') : t('summaryWaves', { count: draft.waves.length }) }}</span>
       </nav>
+
+      <div v-if="specialKinds.length" class="special-mode-shortcuts">
+        <button v-for="kind in specialKinds" :key="kind" type="button" class="text-button"
+          :aria-pressed="specialModeEditorOpen && specialModeState.kind === kind" @click="openSpecialMode(kind)">{{ t(`specialKind_${kind}`) }}</button>
+      </div>
 
       <div v-if="importCapability?.preservedObjects || (draft.preserveGeneratorWaves && !isEndlessMode)" class="import-capability-strip" role="status">
         <span v-if="draft.preserveGeneratorWaves && !isEndlessMode">{{ t('importGeneratorWaves') }}</span>
@@ -143,6 +150,21 @@
         </label>
         <p>{{ t('endlessTemplateNotice') }}</p>
       </a-modal>
+      <a-modal v-model:open="specialTemplateOpen" :title="t(`specialCreate_${newSpecialKind}`)"
+        :ok-text="t(`specialCreate_${newSpecialKind}`)" :cancel-text="t('cancel')" wrap-class-name="level-editor-modal-root" @ok="createSpecialDraft">
+        <label class="field-row special-template-field"><span>{{ t('specialTemplate') }}</span>
+          <select v-model="newSpecialTemplateId" :aria-label="t('specialTemplate')">
+            <option v-for="template in specialTemplates.filter(item => item.kind === newSpecialKind)" :key="template.id" :value="template.id">{{ specialTemplateLabel(template) }}</option>
+          </select>
+        </label>
+        <p>{{ t('specialTemplateNotice') }}</p>
+      </a-modal>
+      <a-drawer v-model:open="specialModeEditorOpen" :title="t(`specialKind_${specialModeState.kind}`)" placement="right"
+        :mask="false" width="min(640px, 96vw)" root-class-name="level-editor-drawer-root">
+        <SpecialModePanel v-if="specialModeEditorOpen" :bindings="specialBindings" :objects="draft.unsupportedRawObjects"
+          :options="specialModeOptions" :state="specialModeState" :plant-options="plantOptions" :zombie-options="zombieOptions"
+          :translate="t" @localize="localizeSpecial" @remove="removeSpecialMode" />
+      </a-drawer>
       <a-drawer v-model:open="endlessSettingsOpen" :title="t('endlessSettings')" placement="right"
         :mask="false" width="min(560px, 96vw)" root-class-name="level-editor-drawer-root">
         <EndlessSettingsPanel v-if="endlessSettingsOpen && activeEndlessModule" :module="activeEndlessModule"
@@ -194,6 +216,9 @@ import { getAuthoredContentEditedLevel, getGeneratorObjects, getGeneratorWaveBud
 import { getNarrativeWarnings } from './narrative-codec.mjs';
 import GeneratorPanel from './generator-panel';
 import EndlessSettingsPanel from './endless-settings-panel';
+import SpecialModePanel from './special-mode-panel';
+import { specialModeOptions } from '../game-data/special-modes';
+import { SPECIAL_MODE_CLASSES, getSpecialBindings, localizeSpecialModule, createSpecialLevel, getSpecialModeIssues } from './special-mode-codec.mjs';
 import { createEndlessLevel, getEndlessModule, getEndlessWaveLimit, getEndlessWaveBudget, getEndlessIssues, ENDLESS_MODULE_CLASSES } from './endless-codec.mjs';
 const NarrativePanel = defineAsyncComponent(() => import('./narrative-panel'));
 import ObjectivesPanel from './objectives-panel';
@@ -685,6 +710,13 @@ const endlessWorldOptions = ref<string[]>([]);
 const endlessSharedObjects = ref<any[]>([]);
 const endlessProgressOptions = ref<any[]>([]);
 const endlessPreviewFloor = ref(1);
+const specialModeEditorOpen = ref(false);
+const specialModeState = ref({ kind: 'boss', reference: '', teamIndex: 0, nameLanguage: providedLanguage.startsWith('en') ? 'en' : providedLanguage.startsWith('es') ? 'es' : providedLanguage.startsWith('ru') ? 'ru' : 'zh' });
+const specialTemplateOpen = ref(false);
+const specialTemplatesLoading = ref(false);
+const specialTemplates = ref<any[]>([]);
+const newSpecialKind = ref('boss');
+const newSpecialTemplateId = ref('');
 let endlessTemplates: any[] = [];
 const nextItemId = ref(1);
 const nextWaveId = ref(2);
@@ -771,6 +803,7 @@ async function restoreHistory(direction: number) {
 }
 
 watch(draft, () => { recordHistory(); if (draftReady) draftDirty = true; scheduleDraftSave(); }, { deep: true, flush: 'post' });
+watch(specialModeState, scheduleDraftSave, { deep: true, flush: 'post' });
 watch([seedListTarget, selectedDeckIndex, deckNameLanguage, expandedWaveActionKey, selectedSpawnRow,
   generatorEditorOpen, selectedGeneratorAlias, generatorPoolTarget, endlessPreviewFloor, boardTool, selectedBoardTargetId, boardPowerGroup, boardPowerDelay], scheduleDraftSave, { flush: 'post' });
 
@@ -853,14 +886,19 @@ const boardReservedAliases = computed(() => [...narrativeReservedAliases.value,
   ...draft.value.boardRules.modules.map((rule) => rule.alias),
   ...draft.value.objectives.starObjectives.map((objective) => objective.alias), draft.value.objectives.protect?.alias].filter(Boolean));
 
+const specialBindings = computed(() => getSpecialBindings(draft.value, specialModeOptions.sharedObjects));
+const specialKinds = computed(() => [...new Set(specialBindings.value.map((binding: any) => binding.kind))]);
 const isEndlessMode = computed(() => !!(draft.value.levelExtra.IsDangerRoom || draft.value.levelExtra.IsDangerRoomMiniGame));
 const activeEndlessModule = computed(() => getEndlessModule(draft.value.unsupportedRawObjects, draft.value.levelExtra));
 const opaqueRawObjects = computed(() => draft.value.unsupportedRawObjects.filter((object: any) =>
-  !['NarrativeProperties', 'DangerRoomLevelIntroProperties'].includes(object?.objclass) && !getGeneratorObjects([object]).length && !ENDLESS_MODULE_CLASSES.includes(object?.objclass)));
+  !['NarrativeProperties', 'DangerRoomLevelIntroProperties'].includes(object?.objclass) && !getGeneratorObjects([object]).length && !ENDLESS_MODULE_CLASSES.includes(object?.objclass) && !Object.values(SPECIAL_MODE_CLASSES).includes(object?.objclass)));
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
   const originalDefinition = importedLevelSnapshot?.source.objects.find((object: any) => object.objclass === 'LevelDefinition')?.objdata || {};
+  getSpecialModeIssues(draft.value, importedLevelSnapshot?.source.objects || [], specialModeOptions).forEach((issue) => {
+    items.push({ type: issue.inherited ? 'warning' : 'error', text: t('specialInvalidField', { mode: t(`specialKind_${issue.kind}`), field: t(`specialField_${issue.field}`) }) });
+  });
   getEndlessIssues(draft.value.unsupportedRawObjects, draft.value.levelExtra, importedLevelSnapshot?.source.objects || [], originalDefinition).forEach((issue) => {
     items.push({ type: issue.inherited ? 'warning' : 'error', text: t('endlessInvalidField', { field: t(`endlessField_${issue.field}`) }) });
   });
@@ -887,7 +925,7 @@ const validationItems = computed<ValidationItem[]>(() => {
     (draft.value.hasWaveManager && !draft.value.preserveCustomWaveManager) ||
     draft.value.preserveGeneratorWaves ||
     draft.value.moduleRefs.includes(NEW_WAVES_REF);
-  if (!draft.value.waves.length && expectsWaveSystem && !draft.value.preserveGeneratorWaves) {
+  if (!draft.value.waves.length && expectsWaveSystem && !draft.value.preserveGeneratorWaves && !specialKinds.value.includes('boss')) {
     items.push({ type: 'error', text: t('validationWaveRequired') });
   }
   draft.value.waves.forEach((wave, index) => {
@@ -1270,6 +1308,8 @@ function resetDraft() {
   seedListTarget.value = 'seedPlants';
   selectedDeckIndex.value = 0;
   endlessSettingsOpen.value = false;
+  specialModeEditorOpen.value = false;
+  specialModeState.value = { kind: 'boss', reference: '', teamIndex: 0, nameLanguage: language.value };
   endlessPreviewFloor.value = 1;
   generatorEditorOpen.value = false;
   selectedGeneratorAlias.value = '';
@@ -1309,6 +1349,7 @@ async function openEndlessTemplate() {
 }
 
 async function openEndlessSettings() {
+  specialModeEditorOpen.value = false;
   if (await loadEndlessCatalog()) endlessSettingsOpen.value = true;
 }
 
@@ -1318,6 +1359,52 @@ function createEndlessDraft() {
   loadLevelDocument(createEndlessLevel(template.level, 'custom_endless_1', t('endlessDefaultDescription')));
   switchWorkspace('waves');
   endlessTemplateOpen.value = false;
+}
+
+function openSpecialMode(kind: string) {
+  const bindings = specialBindings.value.filter((binding: any) => binding.kind === kind);
+  if (!bindings.length) return;
+  endlessSettingsOpen.value = false;
+  closeConveyorEditor();
+  const previous = specialModeState.value;
+  const reference = previous.kind === kind && bindings.some((binding: any) => binding.reference === previous.reference) ? previous.reference : bindings[0].reference;
+  specialModeState.value = { ...previous, kind, reference, teamIndex: previous.kind === kind ? previous.teamIndex : 0 };
+  specialModeEditorOpen.value = true;
+}
+
+function localizeSpecial(binding: any) {
+  const local = localizeSpecialModule(draft.value, binding, boardReservedAliases.value);
+  specialModeState.value.reference = local.reference;
+}
+
+function removeSpecialMode(binding: any) {
+  draft.value.moduleRefs = draft.value.moduleRefs.filter((reference) => reference !== binding.reference);
+  specialModeEditorOpen.value = false;
+}
+
+async function openSpecialTemplate(kind: string) {
+  if (!specialTemplates.value.length) {
+    specialTemplatesLoading.value = true;
+    try { specialTemplates.value = (await import('../game-data/special-templates')).specialTemplates; }
+    catch { message.error(t('specialTemplatesFailed')); return; }
+    finally { specialTemplatesLoading.value = false; }
+  }
+  newSpecialKind.value = kind;
+  newSpecialTemplateId.value = specialTemplates.value.find((template) => template.kind === kind)?.id || '';
+  specialTemplateOpen.value = true;
+}
+
+function specialTemplateLabel(template: any) {
+  return template.kind === 'boss' ? `${getZombieDisplayName(template.type, template.type)} · ${template.id.replace('.json', '')}` : template.id.replace('.json', '');
+}
+
+function createSpecialDraft() {
+  const template = specialTemplates.value.find((template) => template.kind === newSpecialKind.value && template.id === newSpecialTemplateId.value);
+  if (!template) return;
+  loadLevelDocument(createSpecialLevel(template.level, `custom_${template.kind === 'boss' ? 'boss' : 'airraid'}_1`, t(`specialDefault_${template.kind}`)));
+  specialTemplateOpen.value = false;
+  switchWorkspace(template.kind === 'boss' ? 'board' : 'waves');
+  openSpecialMode(template.kind);
 }
 
 function confirmResetDraft() {
@@ -1338,6 +1425,7 @@ function openValidation() {
 }
 
 function switchWorkspace(id: WorkspaceId) {
+  specialModeEditorOpen.value = false;
   endlessSettingsOpen.value = false;
   activeWorkspace.value = id;
   if (id === 'waves') assetTab.value = 'zombie';
@@ -1416,7 +1504,7 @@ function captureProject() {
     selectedSpawnRow: selectedSpawnRow.value, expandedWaveActionKey: expandedWaveActionKey.value,
     generatorEditorOpen: generatorEditorOpen.value, selectedGeneratorAlias: selectedGeneratorAlias.value,
     generatorPoolTarget: generatorPoolTarget.value, boardTool: boardTool.value, selectedBoardTargetId: selectedBoardTargetId.value,
-    boardPowerGroup: boardPowerGroup.value, boardPowerDelay: boardPowerDelay.value, endlessPreviewFloor: endlessPreviewFloor.value
+    boardPowerGroup: boardPowerGroup.value, boardPowerDelay: boardPowerDelay.value, endlessPreviewFloor: endlessPreviewFloor.value, specialMode: { ...specialModeState.value }
   });
 }
 
@@ -1454,6 +1542,13 @@ function restoreProject(project: ReturnType<typeof readProjectState>) {
   generatorEditorOpen.value = isEndlessMode.value || (project.editor.generatorEditorOpen ?? generators.length > 0);
   endlessPreviewFloor.value = Math.max(1, Math.floor(Number(project.editor.endlessPreviewFloor)) || 1);
   if (!isEndlessMode.value) endlessSettingsOpen.value = false;
+  const savedSpecial = project.editor.specialMode;
+  if (savedSpecial && Object.hasOwn(SPECIAL_MODE_CLASSES, savedSpecial.kind)) specialModeState.value = {
+    kind: savedSpecial.kind, reference: typeof savedSpecial.reference === 'string' ? savedSpecial.reference : '',
+    teamIndex: Number.isInteger(savedSpecial.teamIndex) && savedSpecial.teamIndex >= 0 ? savedSpecial.teamIndex : 0,
+    nameLanguage: ['zh', 'en', 'es', 'ru'].includes(savedSpecial.nameLanguage) ? savedSpecial.nameLanguage : language.value
+  };
+  if (!specialBindings.value.some((binding: any) => binding.kind === specialModeState.value.kind)) specialModeEditorOpen.value = false;
   boardTool.value = BOARD_TOOLS.includes(project.editor.boardTool) ? project.editor.boardTool : 'place';
   selectedBoardTargetId.value = project.editor.selectedBoardTargetId || '';
   boardPowerGroup.value = POWER_TILE_GROUPS.includes(project.editor.boardPowerGroup) ? project.editor.boardPowerGroup : 'alpha';
@@ -2271,8 +2366,17 @@ function getBoardItemTypeLabel(item: BoardItem) {
   return getObjectCategoryLabel(item.category);
 }
 
+function getBossAtCell(row: number, col: number) {
+  const binding = specialBindings.value.find((binding: any) => binding.kind === 'boss' &&
+    Number(binding.object.objdata?.ZombossSpawnGridPosition?.mX) === col && Number(binding.object.objdata?.ZombossSpawnGridPosition?.mY) === row);
+  if (!binding) return null;
+  return { binding, asset: zombieOptions.value.find((asset) => asset.code === binding.object.objdata.ZombossMechType) };
+}
+
 function getCellAriaLabel(row: number, col: number, items: BoardItem[]) {
   const labels = [...items.map((item) => item.label), ...getCellEffects(row, col).map((effect) => effect.label)];
+  const boss = getBossAtCell(row, col);
+  if (boss) labels.push(boss.asset?.name || t('specialBossMarker'));
   const content = labels.length ? labels.join(', ') : t('selectedCellEmpty');
   return t('cellAria', { col: col + 1, row: row + 1, content });
 }
@@ -2647,6 +2751,8 @@ function toggleWaveAction(entry: WaveActionOrderEntry) {
 }
 
 function loadLevelDocument(parsed: any) {
+  specialModeEditorOpen.value = false;
+  specialModeState.value = { kind: 'boss', reference: '', teamIndex: 0, nameLanguage: language.value };
   unreadableDraft = null;
   draftRestoreError.value = false;
   closeConveyorEditor();
@@ -4061,6 +4167,7 @@ const BoardEditor = defineComponent({
           Array.from({ length: 5 }, (_, row) =>
             Array.from({ length: 9 }, (_, col) => {
               const items = itemsAt(row, col);
+              const boss = getBossAtCell(row, col);
               const protectedTarget = getProtectedTarget(row, col);
               const moldedTarget = getMoldedTarget(row, col);
               const powerTile = getPowerTileAtCell(row, col);
@@ -4125,6 +4232,8 @@ const BoardEditor = defineComponent({
                   moldedTarget
                     ? h('span', { class: 'mold-target-badge', title: t('objectiveMoldCell') }, '✕')
                     : null,
+                  boss ? h('span', { class: 'boss-spawn-marker', 'aria-hidden': 'true', title: boss.asset?.name || t('specialBossMarker') },
+                    boss.asset?.image ? h('img', { src: boss.asset.image, alt: '' }) : t('specialBossMarker')) : null,
                   railcart ? h('span', { class: 'railcart-badge', title: t('boardRuleRailcart') }, '▣') : null,
                   plankRow && col === 0 ? h('span', { class: 'plank-row-badge', title: t('boardRulePlankRow') }, '≋') : null
                 ]

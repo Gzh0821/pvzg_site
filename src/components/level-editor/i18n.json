@@ -3670,5 +3670,299 @@
     "en": "Dinosaurs",
     "es": "Dinosaurios",
     "ru": "Динозавры"
+  },
+  "specialCreate_boss": {
+    "zh": "新建僵王关卡",
+    "en": "New boss level",
+    "es": "Nuevo nivel de jefe",
+    "ru": "Новый уровень с боссом"
+  },
+  "specialCreate_airRaid": {
+    "zh": "新建空袭关卡",
+    "en": "New air raid level",
+    "es": "Nuevo ataque aéreo",
+    "ru": "Новый воздушный бой"
+  },
+  "specialKind_boss": {
+    "zh": "僵王设置",
+    "en": "Boss settings",
+    "es": "Ajustes del jefe",
+    "ru": "Настройки босса"
+  },
+  "specialKind_airRaid": {
+    "zh": "空袭编队",
+    "en": "Air raid teams",
+    "es": "Equipos aéreos",
+    "ru": "Воздушные отряды"
+  },
+  "specialKind_ship": {
+    "zh": "飞船设置",
+    "en": "Ship settings",
+    "es": "Ajustes de la nave",
+    "ru": "Настройки корабля"
+  },
+  "specialTemplate": {
+    "zh": "原生关卡模板",
+    "en": "Native level template",
+    "es": "Plantilla original",
+    "ru": "Шаблон игры"
+  },
+  "specialTemplateNotice": {
+    "zh": "创建会替换当前关卡，并保留原生玩法依赖。",
+    "en": "Creating replaces this level and keeps its native mode dependencies.",
+    "es": "Se sustituirá este nivel conservando las dependencias del modo original.",
+    "ru": "Текущий уровень будет заменён с сохранением зависимостей режима."
+  },
+  "specialDefault_boss": {
+    "zh": "自定义僵王关卡",
+    "en": "Custom boss level",
+    "es": "Nivel de jefe personalizado",
+    "ru": "Свой уровень с боссом"
+  },
+  "specialDefault_airRaid": {
+    "zh": "自定义空袭关卡",
+    "en": "Custom air raid level",
+    "es": "Ataque aéreo personalizado",
+    "ru": "Свой воздушный бой"
+  },
+  "specialTemplatesFailed": {
+    "zh": "模板加载失败，请重试",
+    "en": "Could not load templates. Try again.",
+    "es": "No se pudieron cargar las plantillas. Reinténtalo.",
+    "ru": "Не удалось загрузить шаблоны. Повторите попытку."
+  },
+  "specialModule": {
+    "zh": "当前配置",
+    "en": "Configuration",
+    "es": "Configuración",
+    "ru": "Конфигурация"
+  },
+  "specialSharedConfig": {
+    "zh": "当前使用游戏共享配置。复制为本关配置后可编辑。",
+    "en": "This uses a shared game configuration. Make a local copy to edit it.",
+    "es": "Se usa una configuración compartida. Crea una copia local para editarla.",
+    "ru": "Используется общая конфигурация. Создайте локальную копию для правки."
+  },
+  "specialLocalize": {
+    "zh": "改为本关配置",
+    "en": "Make local copy",
+    "es": "Crear copia local",
+    "ru": "Создать локальную копию"
+  },
+  "specialRemoveMode": {
+    "zh": "移除本关玩法",
+    "en": "Remove this mode",
+    "es": "Quitar este modo",
+    "ru": "Убрать этот режим"
+  },
+  "specialField_ZombossMechType": {
+    "zh": "僵王类型",
+    "en": "Boss type",
+    "es": "Tipo de jefe",
+    "ru": "Тип босса"
+  },
+  "specialField_ReservedColumnCount": {
+    "zh": "右侧保留列数",
+    "en": "Reserved columns on the right",
+    "es": "Columnas reservadas a la derecha",
+    "ru": "Зарезервированные столбцы справа"
+  },
+  "specialField_ZombossSpawnGridPosition": {
+    "zh": "僵王出生位置",
+    "en": "Boss spawn position",
+    "es": "Posición inicial del jefe",
+    "ru": "Позиция появления босса"
+  },
+  "specialBoss_row": {
+    "zh": "出生行",
+    "en": "Spawn row",
+    "es": "Fila inicial",
+    "ru": "Строка появления"
+  },
+  "specialBoss_column": {
+    "zh": "出生列",
+    "en": "Spawn column",
+    "es": "Columna inicial",
+    "ru": "Столбец появления"
+  },
+  "specialBossMusic": {
+    "zh": "入场音乐",
+    "en": "Intro music",
+    "es": "Música de entrada",
+    "ru": "Музыка вступления"
+  },
+  "specialBossMusic_boss": {
+    "zh": "僵王入场",
+    "en": "Boss intro",
+    "es": "Entrada del jefe",
+    "ru": "Вступление босса"
+  },
+  "specialBossMusic_kongfu": {
+    "zh": "功夫僵王入场",
+    "en": "Kongfu boss intro",
+    "es": "Entrada del jefe kung-fu",
+    "ru": "Вступление босса кунг-фу"
+  },
+  "specialBossMusic_keep": {
+    "zh": "保留关卡音乐",
+    "en": "Keep level music",
+    "es": "Mantener música del nivel",
+    "ru": "Оставить музыку уровня"
+  },
+  "specialField_Toughness": {
+    "zh": "飞船生命",
+    "en": "Ship health",
+    "es": "Vida de la nave",
+    "ru": "Здоровье корабля"
+  },
+  "specialField_ToughnessShield": {
+    "zh": "护盾生命",
+    "en": "Shield health",
+    "es": "Vida del escudo",
+    "ru": "Прочность щита"
+  },
+  "specialField_BloverSPS": {
+    "zh": "三叶草推进速度",
+    "en": "Blover push speed",
+    "es": "Velocidad de empuje de Trébol",
+    "ru": "Скорость отталкивания клевером"
+  },
+  "specialField_BloverDPS": {
+    "zh": "三叶草每秒伤害",
+    "en": "Blover damage per second",
+    "es": "Daño por segundo de Trébol",
+    "ru": "Урон клевера в секунду"
+  },
+  "specialField_EdgeX": {
+    "zh": "甲板右边界（列）",
+    "en": "Deck right edge (column)",
+    "es": "Borde derecho (columna)",
+    "ru": "Правая граница палубы (столбец)"
+  },
+  "specialShipShield": {
+    "zh": "护盾状态",
+    "en": "Shield state",
+    "es": "Estado del escudo",
+    "ru": "Состояние щита"
+  },
+  "specialShipShield_game": {
+    "zh": "跟随游戏设置",
+    "en": "Use game setting",
+    "es": "Usar ajuste del juego",
+    "ru": "По настройкам игры"
+  },
+  "specialShipShield_on": {
+    "zh": "强制开启",
+    "en": "Force on",
+    "es": "Forzar activado",
+    "ru": "Всегда включён"
+  },
+  "specialShipShield_off": {
+    "zh": "强制关闭",
+    "en": "Force off",
+    "es": "Forzar desactivado",
+    "ru": "Всегда выключен"
+  },
+  "specialField_TargetPoint": {
+    "zh": "目标分数（0 为仅通关）",
+    "en": "Target score (0: survive only)",
+    "es": "Puntuación objetivo (0: solo sobrevivir)",
+    "ru": "Цель по очкам (0: только выжить)"
+  },
+  "specialField_Teams": {
+    "zh": "空袭编队配置",
+    "en": "Air raid team configuration",
+    "es": "Configuración de equipos aéreos",
+    "ru": "Настройки воздушных отрядов"
+  },
+  "specialTeams": {
+    "zh": "编队",
+    "en": "Teams",
+    "es": "Equipos",
+    "ru": "Отряды"
+  },
+  "specialAddTeam": {
+    "zh": "添加编队",
+    "en": "Add team",
+    "es": "Añadir equipo",
+    "ru": "Добавить отряд"
+  },
+  "specialTeamNumber": {
+    "zh": "编队 {count}",
+    "en": "Team {count}",
+    "es": "Equipo {count}",
+    "ru": "Отряд {count}"
+  },
+  "specialTeamName": {
+    "zh": "编队名称",
+    "en": "Team name",
+    "es": "Nombre del equipo",
+    "ru": "Название отряда"
+  },
+  "specialTeamDifficulty": {
+    "zh": "难度（0–5）",
+    "en": "Difficulty (0–5)",
+    "es": "Dificultad (0–5)",
+    "ru": "Сложность (0–5)"
+  },
+  "specialTeamEarlier": {
+    "zh": "编队前移",
+    "en": "Move team earlier",
+    "es": "Mover equipo antes",
+    "ru": "Сдвинуть отряд выше"
+  },
+  "specialTeamLater": {
+    "zh": "编队后移",
+    "en": "Move team later",
+    "es": "Mover equipo después",
+    "ru": "Сдвинуть отряд ниже"
+  },
+  "specialRemoveTeam": {
+    "zh": "删除编队",
+    "en": "Remove team",
+    "es": "Eliminar equipo",
+    "ru": "Удалить отряд"
+  },
+  "specialAirStages": {
+    "zh": "按分数升级",
+    "en": "Score progression",
+    "es": "Mejoras por puntuación",
+    "ru": "Улучшения по очкам"
+  },
+  "specialAirPlant": {
+    "zh": "植物类型",
+    "en": "Plant type",
+    "es": "Tipo de planta",
+    "ru": "Тип растения"
+  },
+  "specialAirUpgrade": {
+    "zh": "升级分数（0 为最终阶段）",
+    "en": "Upgrade score (0: final stage)",
+    "es": "Puntos de mejora (0: etapa final)",
+    "ru": "Очки улучшения (0: последний этап)"
+  },
+  "specialAddStage": {
+    "zh": "添加阶段",
+    "en": "Add stage",
+    "es": "Añadir etapa",
+    "ru": "Добавить этап"
+  },
+  "specialInvalidConfig": {
+    "zh": "配置格式异常；原数据已保留，请通过 JSON 检查。",
+    "en": "Invalid configuration. Original data is preserved; inspect the JSON.",
+    "es": "Formato inválido. Se conservan los datos; revisa el JSON.",
+    "ru": "Неверная конфигурация. Данные сохранены; проверьте JSON."
+  },
+  "specialInvalidField": {
+    "zh": "{mode}：请检查{field}",
+    "en": "{mode}: check {field}",
+    "es": "{mode}: revisa {field}",
+    "ru": "{mode}: проверьте {field}"
+  },
+  "specialBossMarker": {
+    "zh": "僵王",
+    "en": "Boss",
+    "es": "Jefe",
+    "ru": "Босс"
   }
 }

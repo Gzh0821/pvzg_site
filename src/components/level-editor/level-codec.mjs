@@ -17,6 +17,9 @@ const CORE_OBJECT_CLASSES = new Set([
   'LevelOfTheDayModuleProperties',
   'DangerRoomJitteredWaveGenerator',
   'DangerRoomLevelIntroProperties',
+  'ZombossBattleModuleProperties',
+  'SkyMiniGameProperties',
+  'SkyCityShipProperties',
   'DangerRoomModuleProperties',
   'DangerRoomMiniGameModuleProperties'
 ]);

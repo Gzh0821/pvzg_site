@@ -338,3 +338,46 @@
 }
 .endless-add-row .ant-select-selection-placeholder { color: var(--editor-muted); }
 .endless-settings :is(input, select, button):focus-visible, .endless-template-field select:focus-visible { outline: 2px solid var(--editor-accent); outline-offset: 2px; }
+
+.special-mode-shortcuts { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 .75rem; }
+.special-mode-shortcuts button { min-height: 44px; padding: .5rem .85rem; border-radius: 12px; background: var(--editor-glass); color: var(--editor-text); }
+.special-mode-shortcuts button[aria-pressed="true"] { color: var(--editor-accent-strong); background: color-mix(in srgb, var(--editor-accent) 12%, var(--editor-glass)); }
+.special-mode-panel, .special-air-editor, .special-team-editor { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; min-width: 0; color: var(--editor-text); }
+.special-mode-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+.special-field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.special-field-grid > .field-row:has(.ant-select) { grid-column: 1 / -1; }
+.special-mode-panel .field-row { display: grid; gap: .4rem; min-width: 0; margin: 0; }
+.special-mode-panel :is(input, select), .special-template-field select { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; min-height: 44px; padding: .5rem .65rem; border: 1px solid var(--editor-border); border-radius: 10px; background: var(--vp-c-bg); color: var(--editor-text); font: inherit; }
+.special-mode-panel .ant-select { width: 100%; min-width: 0; }
+.special-mode-panel .ant-select-selector { min-height: 44px; }
+.special-mode-panel .ant-select-selection-placeholder { color: var(--editor-muted); }
+.special-mode-panel input:disabled, .special-mode-panel select:disabled { opacity: .75; cursor: default; }
+.special-team-switcher { display: flex; flex-wrap: wrap; gap: .4rem; }
+.special-team-switcher button { min-height: 44px; padding: .5rem .65rem; border: 0; border-radius: 10px; background: transparent; color: var(--editor-text); font: inherit; cursor: pointer; overflow-wrap: anywhere; }
+.special-team-switcher button[aria-pressed="true"] { background: color-mix(in srgb, var(--editor-accent) 12%, transparent); color: var(--editor-accent-strong); font-weight: 650; }
+.special-team-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+.special-team-toolbar > div { display: flex; }
+.special-mode-panel h3 { padding: 0; border: 0; margin: 0; font-size: 1rem; line-height: 1.5; overflow-wrap: anywhere; }
+.special-air-members { display: grid; gap: .75rem; min-width: 0; }
+.special-air-member { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px; align-items: end; gap: .65rem; padding-block-end: .75rem; border-bottom: 1px solid var(--editor-border); }
+.special-icon-button { min-width: 44px; min-height: 44px; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--editor-text); cursor: pointer; }
+.special-mode-panel button:disabled { opacity: .45; cursor: default; }
+.special-shared-source { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.special-shared-source p { margin: 0; line-height: 1.6; }
+.special-add-stage, .special-remove-mode { justify-self: start; min-height: 44px; }
+.special-mode-panel :is(input, select, button):focus-visible, .special-template-field select:focus-visible { outline: 2px solid var(--editor-accent); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .special-field-grid { grid-template-columns: minmax(0, 1fr); }
+  .special-air-member { grid-template-columns: minmax(0, 1fr) 44px; }
+  .special-air-member > .field-row:first-child { grid-column: 1 / -1; }
+}
+.boss-spawn-marker { position: absolute; inset: 4px; display: grid; place-items: center; pointer-events: none; color: var(--editor-accent-strong); font-weight: 650; overflow-wrap: anywhere; }
+.boss-spawn-marker img { width: 100%; height: 100%; max-height: 48px; object-fit: contain; }
+.special-air-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px; gap: .65rem; }
+.special-air-heading + .special-air-members { margin-top: -.75rem; }
+.special-air-member > .field-row > span { display: none; }
+@media (max-width: 600px) {
+  .special-air-heading { display: none; }
+  .special-air-heading + .special-air-members { margin-top: 0; }
+  .special-air-member > .field-row > span { display: block; }
+}

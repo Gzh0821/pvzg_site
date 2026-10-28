@@ -4,6 +4,8 @@
 
 参考：[NLM 在线工具](https://osamah2004.github.io/nlm/)、[NLM 源码](https://github.com/Osamah2004/nlm)。Nest 样式依据社区仓库 `apps/web/app/assets/community.css` 的当前配色和玻璃材质变量。
 
+当前完成情况见 [P0–P2 状态](./level-editor-optimization-status.md)。以下为当时的对照基线。
+
 ## 功能差距与建议
 
 | 优先级 | 功能 | 官网当前情况 | 建议 |
