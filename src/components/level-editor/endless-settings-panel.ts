@@ -1,19 +1,27 @@
 import { defineComponent, h, ref, type PropType } from 'vue';
 import { Button, Select } from 'ant-design-vue';
-import { ArrowUpOutlined, ArrowDownOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons-vue';
+import { ArrowUpOutlined, ArrowDownOutlined, DeleteOutlined, PlusOutlined, EditOutlined } from '@ant-design/icons-vue';
 import { ENDLESS_DESIGNER_CLASSES, resolveEndlessDesigner } from './endless-codec.mjs';
+import { localizeEndlessRule } from './endless-rule-codec.mjs';
+import EndlessRulePanel from './endless-rule-panel';
 
 export default defineComponent({
   name: 'EndlessSettingsPanel',
   props: {
+    previewFloor: { type: Number, required: true },
     module: { type: Object as PropType<any>, required: true },
     objects: { type: Array as PropType<any[]>, required: true },
     sharedObjects: { type: Array as PropType<any[]>, required: true },
     progressOptions: { type: Array as PropType<any[]>, required: true },
     plantOptions: { type: Array as PropType<any[]>, required: true },
+    zombieOptions: { type: Array as PropType<any[]>, required: true },
+    objectOptions: { type: Array as PropType<any[]>, required: true },
+    reservedAliases: { type: Array as PropType<string[]>, required: true },
     translate: { type: Function as PropType<(key: string, params?: Record<string, unknown>) => string>, required: true }
   },
-  setup(props) {
+  emits: ['floor-change'],
+  setup(props, { emit }) {
+    const selectedRule = ref('');
     const chosen = ref<Record<string, string>>({ InitialPlants: '', ExcludePlants: '', designer: '' });
     const t = (key: string) => props.translate(key);
     const control = (label: string, content: any) => h('label', { class: 'field-row' }, [h('span', label), content]);
@@ -49,6 +57,12 @@ export default defineComponent({
     return () => {
       const data = props.module.objdata;
       if (!data || typeof data !== 'object' || Array.isArray(data)) return h('p', t('endlessInvalidConfig'));
+      const selected = resolveEndlessDesigner(selectedRule.value, props.objects, props.sharedObjects);
+      if (selected) return h(EndlessRulePanel, { object: selected, shared: selectedRule.value.endsWith('@LevelModules)'),
+        objects: props.objects, sharedObjects: props.sharedObjects, plantOptions: props.plantOptions, zombieOptions: props.zombieOptions,
+        objectOptions: props.objectOptions, previewFloor: props.previewFloor, onFloorChange: (value: number) => emit('floor-change', value), translate: props.translate, onBack: () => { selectedRule.value = ''; },
+        onLocalize: () => { selectedRule.value = localizeEndlessRule(props.module, selectedRule.value, props.objects, props.sharedObjects, props.reservedAliases); }
+      });
       const mini = props.module.objclass === 'DangerRoomMiniGameModuleProperties';
       const worlds = props.progressOptions.filter((option) => option.mini === mini);
       const refs = Array.isArray(data.LevelDesigners) ? data.LevelDesigners : [];
@@ -86,6 +100,7 @@ export default defineComponent({
             const nextMain = index + 1 < refs.length && resolveEndlessDesigner(refs[index + 1], props.objects, props.sharedObjects)?.objclass === 'DangerRoomJitteredWaveGenerator';
             return h('li', [h('div', [h('strong', name(reference)), h('code', alias(reference))]),
               !main ? h('div', { class: 'endless-rule-actions' }, [
+                iconButton(t('endlessRuleEdit'), EditOutlined, () => { selectedRule.value = reference; }),
                 iconButton(t('endlessMoveEarlier'), ArrowUpOutlined, () => { [refs[index - 1], refs[index]] = [refs[index], refs[index - 1]]; }, index === 0 || previousMain),
                 iconButton(t('endlessMoveLater'), ArrowDownOutlined, () => { [refs[index + 1], refs[index]] = [refs[index], refs[index + 1]]; }, index === refs.length - 1 || nextMain),
                 iconButton(t('remove'), DeleteOutlined, () => refs.splice(index, 1))

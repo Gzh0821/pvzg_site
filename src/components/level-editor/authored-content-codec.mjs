@@ -1,10 +1,10 @@
 import { reconcileLevelObjects } from './level-codec.mjs';
 import { SPECIAL_MODE_CLASSES } from './special-mode-codec.mjs';
-import { ENDLESS_MODULE_CLASSES } from './endless-codec.mjs';
+import { ENDLESS_MODULE_CLASSES, ENDLESS_DESIGNER_CLASSES } from './endless-codec.mjs';
 import { NARRATIVE_SLOTS } from './narrative-codec.mjs';
 
 export const GENERATOR_CLASSES = ['LevelOfTheDayModuleProperties', 'DangerRoomJitteredWaveGenerator'];
-const EDITABLE_CLASSES = new Set(['NarrativeProperties', ...GENERATOR_CLASSES, ...ENDLESS_MODULE_CLASSES, ...Object.values(SPECIAL_MODE_CLASSES)]);
+const EDITABLE_CLASSES = new Set(['NarrativeProperties', ...GENERATOR_CLASSES, ...ENDLESS_MODULE_CLASSES, ...ENDLESS_DESIGNER_CLASSES, ...Object.values(SPECIAL_MODE_CLASSES)]);
 const fingerprint = (value) => JSON.stringify(value);
 const clone = (value) => JSON.parse(JSON.stringify(value));
 

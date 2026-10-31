@@ -169,7 +169,9 @@
         :mask="false" width="min(560px, 96vw)" root-class-name="level-editor-drawer-root">
         <EndlessSettingsPanel v-if="endlessSettingsOpen && activeEndlessModule" :module="activeEndlessModule"
           :objects="draft.unsupportedRawObjects" :shared-objects="endlessSharedObjects"
-          :progress-options="endlessProgressOptions" :plant-options="plantOptions" :translate="t" />
+          :progress-options="endlessProgressOptions" :plant-options="plantOptions" :zombie-options="zombieOptions"
+          :object-options="objectOptions" :reserved-aliases="boardReservedAliases" :translate="t"
+          :preview-floor="endlessPreviewFloor" @floor-change="endlessPreviewFloor = $event" />
       </a-drawer>
 
       <a-drawer
@@ -216,10 +218,11 @@ import { getAuthoredContentEditedLevel, getGeneratorObjects, getGeneratorWaveBud
 import { getNarrativeWarnings } from './narrative-codec.mjs';
 import GeneratorPanel from './generator-panel';
 import EndlessSettingsPanel from './endless-settings-panel';
+import { getEndlessRuleIssues } from './endless-rule-codec.mjs';
 import SpecialModePanel from './special-mode-panel';
 import { specialModeOptions } from '../game-data/special-modes';
 import { SPECIAL_MODE_CLASSES, getSpecialBindings, localizeSpecialModule, createSpecialLevel, getSpecialModeIssues } from './special-mode-codec.mjs';
-import { createEndlessLevel, getEndlessModule, getEndlessWaveLimit, getEndlessWaveBudget, getEndlessIssues, ENDLESS_MODULE_CLASSES } from './endless-codec.mjs';
+import { createEndlessLevel, getEndlessModule, getEndlessWaveLimit, getEndlessWaveBudget, getEndlessIssues, ENDLESS_MODULE_CLASSES, ENDLESS_DESIGNER_CLASSES } from './endless-codec.mjs';
 const NarrativePanel = defineAsyncComponent(() => import('./narrative-panel'));
 import ObjectivesPanel from './objectives-panel';
 import BoardRulesPanel from './board-rules-panel';
@@ -891,7 +894,7 @@ const specialKinds = computed(() => [...new Set(specialBindings.value.map((bindi
 const isEndlessMode = computed(() => !!(draft.value.levelExtra.IsDangerRoom || draft.value.levelExtra.IsDangerRoomMiniGame));
 const activeEndlessModule = computed(() => getEndlessModule(draft.value.unsupportedRawObjects, draft.value.levelExtra));
 const opaqueRawObjects = computed(() => draft.value.unsupportedRawObjects.filter((object: any) =>
-  !['NarrativeProperties', 'DangerRoomLevelIntroProperties'].includes(object?.objclass) && !getGeneratorObjects([object]).length && !ENDLESS_MODULE_CLASSES.includes(object?.objclass) && !Object.values(SPECIAL_MODE_CLASSES).includes(object?.objclass)));
+  !['NarrativeProperties', 'DangerRoomLevelIntroProperties'].includes(object?.objclass) && !getGeneratorObjects([object]).length && !ENDLESS_MODULE_CLASSES.includes(object?.objclass) && !ENDLESS_DESIGNER_CLASSES.includes(object?.objclass) && !Object.values(SPECIAL_MODE_CLASSES).includes(object?.objclass)));
 
 const validationItems = computed<ValidationItem[]>(() => {
   const items: ValidationItem[] = [];
@@ -901,6 +904,10 @@ const validationItems = computed<ValidationItem[]>(() => {
   });
   getEndlessIssues(draft.value.unsupportedRawObjects, draft.value.levelExtra, importedLevelSnapshot?.source.objects || [], originalDefinition).forEach((issue) => {
     items.push({ type: issue.inherited ? 'warning' : 'error', text: t('endlessInvalidField', { field: t(`endlessField_${issue.field}`) }) });
+  });
+  getEndlessRuleIssues(activeEndlessModule.value, draft.value.unsupportedRawObjects, endlessSharedObjects.value,
+    getEndlessModule(importedLevelSnapshot?.source.objects || [], originalDefinition), importedLevelSnapshot?.source.objects || []).forEach((issue) => {
+    items.push({ type: issue.inherited ? 'warning' : 'error', text: t('endlessRuleInvalid', { alias: issue.alias, field: t(`endlessRuleField_${issue.field}`) }) });
   });
   getGeneratorIssues(draft.value.unsupportedRawObjects, importedLevelSnapshot?.source.objects || []).forEach((issue) => {
     items.push({ type: issue.inherited ? 'warning' : 'error', text: t('generatorInvalidField', {

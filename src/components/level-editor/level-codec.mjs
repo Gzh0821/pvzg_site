@@ -1,5 +1,6 @@
 import { parseObjectiveSystem } from './objective-codec.mjs';
 import { parseBoardRuleSystem } from './board-rule-codec.mjs';
+import { ENDLESS_DESIGNER_CLASSES } from './endless-codec.mjs';
 import { VISUAL_WAVE_ACTION_CLASSES } from './wave-action-codec.mjs';
 
 const CORE_OBJECT_CLASSES = new Set([
@@ -21,7 +22,8 @@ const CORE_OBJECT_CLASSES = new Set([
   'SkyMiniGameProperties',
   'SkyCityShipProperties',
   'DangerRoomModuleProperties',
-  'DangerRoomMiniGameModuleProperties'
+  'DangerRoomMiniGameModuleProperties',
+  ...ENDLESS_DESIGNER_CLASSES
 ]);
 
 const DOMAIN_SELECTORS = {
