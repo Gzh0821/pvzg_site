@@ -2860,7 +2860,7 @@
 			],
 			"ZENGARDEN": {
 				"PlantPlace": "float",
-				"Height": 40
+				"Height": 20
 			},
 			"RES": {
 				"Disabled": "TangleKelp",
@@ -5842,6 +5842,31 @@
 				"Disabled": "PeaCommandoMGP",
 				"Plant": "PeaCommandoMGP"
 			}
+		},
+		{
+			"ID": 233,
+			"_CARDSPRITENAME": "aquavine",
+			"CODENAME": "aquavine",
+			"COSTUME": 0,
+			"OBTAINWORLD": "epic",
+			"BOOST": 3,
+			"ALMANAC": "RTID(aquavine@PlantAlmanac)",
+			"PROPS": "RTID(aquavine@PlantProps)",
+			"NAME": {
+				"en": "Aqua Vine",
+				"zh": "水生藤蔓"
+			},
+			"TAGS": [
+				"vine",
+				"aquavine"
+			],
+			"ZENGARDEN": {
+				"PlantPlace": "any"
+			},
+			"RES": {
+				"Disabled": "AquaVine",
+				"Plant": "AquaVine"
+			}
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -5927,6 +5952,7 @@
 		"ghostpepper",
 		"parsnip",
 		"icebloom",
+		"aquavine",
 		"stickybombrice",
 		"lotorpedo",
 		"blastberry",
@@ -6137,6 +6163,7 @@
 		"ghostpepper",
 		"parsnip",
 		"icebloom",
+		"aquavine",
 		"stickybombrice",
 		"lotorpedo",
 		"blastberry",

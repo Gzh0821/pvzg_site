@@ -1112,6 +1112,60 @@
 		{
 			"objclass": "PlantAlmanacProperties",
 			"aliases": [
+				"aquavine"
+			],
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 30
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Aqua Vines are amphibious vines that can support both ground and water type plants.",
+					"zh": "水生藤蔓是一种两栖的藤蔓，可以容纳陆生或水生植物。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Usage",
+							"zh": "用途"
+						},
+						"DESCRIPTION": {
+							"en": "covered amphibious plants like Seashooters will act like they are in water",
+							"zh": "被包裹的植物，如海豌豆，会发挥水中的能力"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Once during its regular morning jog, Aqua Vine tied a taco to the end of a string in the hopes of getting Dave to exercise. Who knew Dave could be so fast?",
+					"zh": "在一次晨练当中，水生藤蔓用绳子吊着一块玉米卷，希望以这种方式让戴夫锻炼。但谁想得到戴夫可以跑得这么快？"
+				},
+				"BriefIntroduction": {
+					"en": "Supports ground and water type plants",
+					"zh": "容纳陆生或水生植物"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"objclass": "PlantAlmanacProperties",
+			"aliases": [
 				"pumpkin"
 			],
 			"objdata": {

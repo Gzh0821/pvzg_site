@@ -1778,6 +1778,65 @@
 		{
 			"objclass": "ProjectileProperties",
 			"aliases": [
+				"aquavine"
+			],
+			"objdata": {
+				"Damage": 30,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"objclass": "ProjectileProperties",
+			"aliases": [
+				"aquavine1"
+			],
+			"objdata": {
+				"Damage": 90,
+				"SpeedMult": 1.5,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"objclass": "ProjectileProperties",
+			"aliases": [
+				"aquavine2"
+			],
+			"objdata": {
+				"Damage": 150,
+				"SpeedMult": 2,
+				"Size": {
+					"w": 16,
+					"h": 16
+				}
+			}
+		},
+		{
+			"objclass": "ProjectileProperties",
+			"aliases": [
+				"aquavine_pf"
+			],
+			"objdata": {
+				"Size": {
+					"w": 65,
+					"h": 65
+				},
+				"IgnoredBy3SectionStaff": true,
+				"DPS": 50,
+				"ChillDuration": 0,
+				"FreezeDuration": 0,
+				"IceBlockLevel": 0,
+				"CannotBeReversedByJester": true
+			}
+		},
+		{
+			"objclass": "ProjectileProperties",
+			"aliases": [
 				"pea_goo"
 			],
 			"objdata": {

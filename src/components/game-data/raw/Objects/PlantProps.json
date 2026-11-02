@@ -607,7 +607,8 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				}
+				},
+				"AquaVineBuffed": true
 			}
 		},
 		{
@@ -635,7 +636,8 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				}
+				},
+				"AquaVineBuffed": true
 			}
 		},
 		{
@@ -1659,6 +1661,29 @@
 				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Peashooter",
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"aquavine"
+			],
+			"objdata": {
+				"Cooldown": 10,
+				"CooldownFrom": 1,
+				"SunCost": 125,
+				"BeghouledCost": 2000,
+				"Toughness": 300,
+				"Family": "Nope",
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PeaType": "aquavine",
+				"PeaTypePlantfood": "aquavine_pf",
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -5423,7 +5448,8 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				}
+				},
+				"AquaVineBuffed": true
 			}
 		},
 		{
@@ -6069,7 +6095,8 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				}
+				},
+				"AquaVineBuffed": true
 			}
 		},
 		{
@@ -6213,7 +6240,8 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				}
+				},
+				"AquaVineBuffed": true
 			}
 		},
 		{

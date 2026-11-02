@@ -578,6 +578,48 @@
 		{
 			"objclass": "ProjectileType",
 			"aliases": [
+				"aquavine"
+			],
+			"objdata": {
+				"MintBoostedType": "aquavine2",
+				"ProjectileBasedOn": "aquavine",
+				"Props": "RTID(aquavine@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"aquavine1"
+			],
+			"objdata": {
+				"MintBoostedType": "aquavine2",
+				"ProjectileBasedOn": "aquavine1",
+				"Props": "RTID(aquavine1@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"aquavine2"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "aquavine2",
+				"Props": "RTID(aquavine2@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
+				"aquavine_pf"
+			],
+			"objdata": {
+				"ProjectileBasedOn": "aquavine_pf",
+				"Props": "RTID(aquavine_pf@ProjectileProps)"
+			}
+		},
+		{
+			"objclass": "ProjectileType",
+			"aliases": [
 				"pea_goo"
 			],
 			"objdata": {
