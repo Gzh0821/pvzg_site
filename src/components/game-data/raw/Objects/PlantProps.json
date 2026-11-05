@@ -97,6 +97,7 @@
 				"ShroomTypeMint": "fumeshroom",
 				"ShroomTypePlantfood": "toadstool",
 				"ShroomTypePlantfoodMint": "hypnoshroom",
+				"ShroomTypeRetry": "seashroom",
 				"FailedTransDamage": 1200,
 				"FailedTransDamagePlantfood": 2400,
 				"MintDamageFactor": 3,
@@ -119,8 +120,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"ShroomTypeRetry": "seashroom"
+				}
 			}
 		},
 		{
@@ -204,6 +204,7 @@
 				"TornadoTypePlantfood": "inferno_tornado_pf",
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"TornadoInterval": {
 					"Min": 5.95,
 					"Max": 6.05
@@ -222,8 +223,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 3,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -581,6 +581,7 @@
 				"seashooter"
 			],
 			"objdata": {
+				"AquaVineBuffed": true,
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 60,
@@ -607,8 +608,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"AquaVineBuffed": true
+				}
 			}
 		},
 		{
@@ -617,6 +617,7 @@
 				"seashooter_mgp"
 			],
 			"objdata": {
+				"AquaVineBuffed": true,
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 150,
@@ -636,8 +637,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"AquaVineBuffed": true
+				}
 			}
 		},
 		{
@@ -1286,6 +1286,7 @@
 				"Family": "Fire",
 				"MintDamageFactor": 3,
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 6,
@@ -1300,8 +1301,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -1674,16 +1674,16 @@
 				"aquavine"
 			],
 			"objdata": {
+				"ShootInterval": 1.35,
+				"ShootIntervalAdditional": 0.15,
+				"PeaType": "aquavine",
+				"PeaTypePlantfood": "aquavine_pf",
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 125,
 				"BeghouledCost": 2000,
 				"Toughness": 300,
 				"Family": "Nope",
-				"ShootInterval": 1.35,
-				"ShootIntervalAdditional": 0.15,
-				"PeaType": "aquavine",
-				"PeaTypePlantfood": "aquavine_pf",
 				"MintBoostedProps": {
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
@@ -1727,6 +1727,7 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"EvolutionRecipes": [
 					{
 						"Name": "mgp_evolution",
@@ -1750,8 +1751,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 3,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -1777,6 +1777,7 @@
 				"Toughness": 600,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 6,
@@ -1791,8 +1792,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 3,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -2427,6 +2427,7 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 6,
@@ -2441,8 +2442,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 3,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -2912,6 +2912,34 @@
 				"Cooldown": 35,
 				"CooldownFrom": 1,
 				"SunCost": 150,
+				"BeghouledCost": 1000,
+				"Toughness": 300,
+				"Family": "Explosive",
+				"ImmuneToBoomBox": true,
+				"ImmuneToIceblock": true,
+				"MintDamageFactor": 3,
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 1,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
+				"buduhboom"
+			],
+			"objdata": {
+				"CannotBeSheepenedByWizard": true,
+				"Damage": 1000,
+				"ButterCount": 8,
+				"ButterType": "buttercup_butter",
+				"ExplostionButterDuration": 10,
+				"LiquidType": "butter",
+				"Cooldown": 35,
+				"CooldownFrom": 1,
+				"SunCost": 100,
 				"BeghouledCost": 1000,
 				"Toughness": 300,
 				"Family": "Explosive",
@@ -3464,6 +3492,7 @@
 				"torchwood"
 			],
 			"objdata": {
+				"FogLightRadius": 40,
 				"Damage": 6.25,
 				"DamageScale": 2,
 				"DamageScalePlantfooded": 3,
@@ -3492,8 +3521,7 @@
 					"ResistanceMult": 2,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -3766,6 +3794,7 @@
 				"ShootInterval": 1.35,
 				"ShootIntervalAdditional": 0.15,
 				"PlantfoodPeaCount": 5,
+				"HeadSunCost": 125,
 				"Cooldown": 5,
 				"CooldownFrom": 1,
 				"SunCost": 125,
@@ -3785,8 +3814,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"HeadSunCost": 125
+				}
 			}
 		},
 		{
@@ -3795,6 +3823,7 @@
 				"peapod_mgp"
 			],
 			"objdata": {
+				"HeadSunCost": 125,
 				"PeaType": "pea",
 				"PeaTypePlantfood": "pea_mega_mint",
 				"ShootInterval": 1.35,
@@ -3812,8 +3841,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"HeadSunCost": 125
+				}
 			}
 		},
 		{
@@ -4141,6 +4169,7 @@
 			],
 			"objdata": {
 				"PeaType": "electricpea_mgp",
+				"PeaTypeUpgraded": "electricpea_mgp_ug",
 				"PeaTypePlantfood": "electricpea_mgp_pf",
 				"ShootInterval": 2.7,
 				"ShootIntervalAdditional": 0.15,
@@ -4159,8 +4188,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"PeaTypeUpgraded": "electricpea_mgp_ug"
+				}
 			}
 		},
 		{
@@ -4373,6 +4401,8 @@
 				"plantern"
 			],
 			"objdata": {
+				"FogLightRadius": 120,
+				"FogLightRadiusPlantfood": 180,
 				"Cooldown": 10,
 				"CooldownFrom": 1,
 				"SunCost": 75,
@@ -4384,9 +4414,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"FogLightRadius": 120,
-				"FogLightRadiusPlantfood": 180
+				}
 			}
 		},
 		{
@@ -4395,6 +4423,8 @@
 				"bulbkekengi"
 			],
 			"objdata": {
+				"FogLightRadius": 180,
+				"FogLightRadiusPlantfood": 350,
 				"Cooldown": 20,
 				"CooldownFrom": 1,
 				"SunCost": 75,
@@ -4406,9 +4436,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 1,
 					"Plantfood": true
-				},
-				"FogLightRadius": 180,
-				"FogLightRadiusPlantfood": 350
+				}
 			}
 		},
 		{
@@ -4453,6 +4481,7 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"MintDamageFactor": 3,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
@@ -4463,8 +4492,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 3,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -4485,6 +4513,7 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"MintDamageFactor": 4,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
@@ -4495,8 +4524,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 3,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -5431,6 +5459,7 @@
 				"tanglekelp"
 			],
 			"objdata": {
+				"AquaVineBuffed": true,
 				"CannotBeDetectedByCatapult": true,
 				"Cooldown": 20,
 				"CooldownFrom": 0.75,
@@ -5448,8 +5477,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"AquaVineBuffed": true
+				}
 			}
 		},
 		{
@@ -5788,6 +5816,7 @@
 				"Toughness": 300,
 				"Family": "Fire",
 				"ImmuneToIceblock": true,
+				"FogLightRadius": 40,
 				"WarmingRadius": {
 					"PulseInitialDelay": 0.5,
 					"PulseCooldown": 3,
@@ -5797,8 +5826,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 1,
 					"Plantfood": false
-				},
-				"FogLightRadius": 40
+				}
 			}
 		},
 		{
@@ -6077,6 +6105,7 @@
 				"seashroom"
 			],
 			"objdata": {
+				"AquaVineBuffed": true,
 				"PeaType": "seashroom_spore",
 				"PeaTypePlantfood": "seashroom_spore",
 				"ShootInterval": 1.35,
@@ -6095,8 +6124,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"AquaVineBuffed": true
+				}
 			}
 		},
 		{
@@ -6225,6 +6253,7 @@
 				"lotorpedo"
 			],
 			"objdata": {
+				"AquaVineBuffed": true,
 				"CabbageType": "lotus",
 				"CabbageTypeInWater": "lotus_torpedo",
 				"CabbageTypePlantfood": "lotus_torpedo_pf",
@@ -6240,8 +6269,7 @@
 					"ResistanceMult": 1,
 					"SpeedMult": 2,
 					"Plantfood": false
-				},
-				"AquaVineBuffed": true
+				}
 			}
 		},
 		{

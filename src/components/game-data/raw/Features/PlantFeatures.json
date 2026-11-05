@@ -2860,7 +2860,7 @@
 			],
 			"ZENGARDEN": {
 				"PlantPlace": "float",
-				"Height": 20
+				"Height": 0
 			},
 			"RES": {
 				"Disabled": "TangleKelp",
@@ -5867,6 +5867,32 @@
 				"Disabled": "AquaVine",
 				"Plant": "AquaVine"
 			}
+		},
+		{
+			"ID": 234,
+			"_CARDSPRITENAME": "buduhboom",
+			"CODENAME": "buduhboom",
+			"COSTUME": 0,
+			"OBTAINWORLD": "lod",
+			"BOOST": 0,
+			"ALMANAC": "RTID(buduhboom@PlantAlmanac)",
+			"PROPS": "RTID(buduhboom@PlantProps)",
+			"NAME": {
+				"en": "Bud'uh Boom",
+				"zh": "爆浆玉露"
+			},
+			"TAGS": [
+				"plant",
+				"losingPlant",
+				"lastStandDisallowed"
+			],
+			"ZENGARDEN": {
+				"PlantPlace": "solid"
+			},
+			"RES": {
+				"Disabled": "BuduhBoom",
+				"Plant": "BuduhBoom"
+			}
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -6040,6 +6066,7 @@
 		"umbrellaleaf",
 		"cranjelly",
 		"slingpea",
+		"buduhboom",
 		"darkmatterdragonfruit",
 		"appeasemint",
 		"enlightenmint",
@@ -6280,6 +6307,7 @@
 		"gloomvine",
 		"cranjelly",
 		"slingpea",
+		"buduhboom",
 		"darkmatterdragonfruit",
 		"appeasemint",
 		"enlightenmint",
