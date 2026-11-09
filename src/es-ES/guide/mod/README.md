@@ -28,6 +28,8 @@ order: 0
 
 ## API y campos
 
+Al actualizar un mod, revisa la [migración de hooks de propiedades (inglés)](/en/guide/mod/gp-next-api.md#property-hooks-and-migration). Desde GP-Next 1.5.6 los getters usan `callNext()` en lugar del campo `value`; devolver un valor desde un setter no realiza la escritura. `apiVersion: 2` no restaura el comportamiento anterior.
+
 - [Guía API (inglés)](/en/guide/mod/gp-next-api.md)
 - [Tipos API (inglés)](/en/guide/mod/gp-next-api-reference.md)
 - [Datos originales](./gp-next-json.md)

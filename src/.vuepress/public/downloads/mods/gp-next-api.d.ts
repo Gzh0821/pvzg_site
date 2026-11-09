@@ -1,4 +1,39 @@
 export type MaybePromise<T> = T | Promise<T>
+
+/** Unsafe call shape only; target/receiver structures remain game-build dependent. */
+export interface UnsafePropertyHookContext {
+    readonly owner: string
+    readonly target: object
+    readonly key: string
+    readonly thisArg: object
+}
+export interface UnsafePropertyGetContext<Value> extends UnsafePropertyHookContext {
+    callNext(): Value
+    callBase(): Value
+}
+export interface UnsafePropertySetContext<Value> extends UnsafePropertyHookContext {
+    readonly nextValue: Value | undefined
+    /** Read the baseline at call time; undefined when it has no getter. */
+    getBase(): Value | undefined
+    /** Read getters after this registration in the current access snapshot. */
+    getNext(): Value | undefined
+    callNext(): void
+    callNext(value: Value | undefined): void
+    callBase(): void
+    callBase(value: Value | undefined): void
+}
+export type UnsafePropertyHookSpec<Value> = {
+    target: object
+    key: string
+    priority?: number
+} & (
+    { get(context: UnsafePropertyGetContext<Value>): Value; set?(context: UnsafePropertySetContext<Value>): void }
+    | { get?(context: UnsafePropertyGetContext<Value>): Value; set(context: UnsafePropertySetContext<Value>): void }
+)
+export interface UnsafeHooksApi extends Record<string, unknown> {
+    /** Synchronous callbacks only. Setter return values are ignored; call a continuation to write. */
+    wrapProperty<Value = unknown>(spec: UnsafePropertyHookSpec<Value>): () => boolean
+}
 export interface SubscriptionOptions {
     label?: string
     signal?: AbortSignal
@@ -1307,7 +1342,7 @@ export interface ModContext {
     
     readonly advanced: Record<string, unknown>
     
-    readonly unsafe: Record<string, unknown>
+    readonly unsafe: Record<string, unknown> & { readonly hooks: UnsafeHooksApi }
 }
 
 

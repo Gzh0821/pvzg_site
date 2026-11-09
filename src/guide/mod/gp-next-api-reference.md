@@ -22,6 +22,7 @@ order: 11
 | 定时与清理 | [RuntimeApi](#runtimeapi)、[GameClockApi](#gameclockapi) |
 | 数据、文件与前置服务 | [ContentApi](#contentapi)、[PackFilesApi](#packfilesapi)、[ServicesApi](#servicesapi) |
 | 启动资源与内容 | [StartupRegistration](#startupregistration)、[StartupContext](#startupcontext) |
+| 属性 Hook 与迁移 | [UnsafeHooksApi](#unsafehooksapi) |
 
 ### 先读懂签名
 
@@ -37,6 +38,47 @@ order: 11
 
 ```ts
 export type MaybePromise<T> = T | Promise<T>
+```
+
+## UnsafeHooksApi
+
+属性 Hook 使用同步 continuation 调用链：getter 返回属性值，setter 必须显式调用 continuation 才会写入。没有预读的 `value` 字段，也没有 `setNext/setBase`。先阅读[旧写法迁移](./gp-next-api.md#属性-hook-与旧写法迁移)；`target` 和 `thisArg` 的游戏对象结构仍需按本体版本确认。
+
+```ts
+/** Unsafe call shape only; target/receiver structures remain game-build dependent. */
+export interface UnsafePropertyHookContext {
+    readonly owner: string
+    readonly target: object
+    readonly key: string
+    readonly thisArg: object
+}
+export interface UnsafePropertyGetContext<Value> extends UnsafePropertyHookContext {
+    callNext(): Value
+    callBase(): Value
+}
+export interface UnsafePropertySetContext<Value> extends UnsafePropertyHookContext {
+    readonly nextValue: Value | undefined
+    /** Read the baseline at call time; undefined when it has no getter. */
+    getBase(): Value | undefined
+    /** Read getters after this registration in the current access snapshot. */
+    getNext(): Value | undefined
+    callNext(): void
+    callNext(value: Value | undefined): void
+    callBase(): void
+    callBase(value: Value | undefined): void
+}
+export type UnsafePropertyHookSpec<Value> = {
+    target: object
+    key: string
+    priority?: number
+} & (
+    { get(context: UnsafePropertyGetContext<Value>): Value; set?(context: UnsafePropertySetContext<Value>): void }
+    | { get?(context: UnsafePropertyGetContext<Value>): Value; set(context: UnsafePropertySetContext<Value>): void }
+)
+export interface UnsafeHooksApi extends Record<string, unknown> {
+    /** Synchronous callbacks only. Setter return values are ignored; call a continuation to write. */
+    wrapProperty<Value = unknown>(spec: UnsafePropertyHookSpec<Value>): () => boolean
+}
 ```
 
 ## SubscriptionOptions
@@ -2438,7 +2480,7 @@ export interface ModContext {
     
     readonly advanced: Record<string, unknown>
     
-    readonly unsafe: Record<string, unknown>
+    readonly unsafe: Record<string, unknown> & { readonly hooks: UnsafeHooksApi }
 }
 ```
 

@@ -70,6 +70,22 @@ ctx.controls.definePanel({
 
 ## 多文件和 TypeScript
 
+升级已有模组前，检查[属性 Hook 的旧写法迁移](./gp-next-api.md#属性-hook-与旧写法迁移)。GP-Next 1.5.6 不再向 getter 提供预读 `value`，需要显式调用 `callNext()`；setter 返回值也不会自动写入。`apiVersion: 2` 不会恢复旧行为。
+
+下载[最新类型声明](/downloads/mods/gp-next-api.d.ts)，放在入口文件旁。JavaScript 可在文件顶部启用 `// @ts-check`，并为 `setup` 标注上下文，让编辑器检查回调参数：
+
+```js
+// @ts-check
+export default {
+  /** @param {import('./gp-next-api').ModContext} ctx */
+  setup(ctx) {
+    ctx.ui.toast('模组已加载', 'success')
+  }
+}
+```
+
+类型声明仅用于开发时检查，不是运行时模块；升级后重新检查源码并重新打包，不能只更改清单版本。
+
 已写成单个入口的 JS 不需要构建工具。使用 TypeScript、多个源码文件或 npm 库时，由作者把它们打包成一个自包含的 ES module，再交付 ZIP。玩家不需要 Node.js 或编译器。
 
 [API 用法](./gp-next-api.md) · [完整参数类型](./gp-next-api-reference.md) · [资源与前置](./gp-next-resources.md)

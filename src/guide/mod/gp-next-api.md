@@ -10,6 +10,8 @@ API 版本为 **2**。以下 `ctx` 来自 `setup(ctx)`。从控制台输入这�
 
 [完整参数、回调和返回类型](./gp-next-api-reference.md) · [下载类型声明](/downloads/mods/gp-next-api.d.ts)
 
+从旧版升级的作者先检查[属性 Hook 迁移](#属性-hook-与旧写法迁移)。`apiVersion: 2` 不会选择旧接口行为；GP-Next 1.5.6 的属性 Hook 已改用显式调用链。
+
 ## 先选需要的接口
 
 | 需求 | 接口 |
@@ -174,6 +176,49 @@ const shot = await ctx.spawns.spawn({
 优先使用上述接口。`advanced` 和 `unsafe` 用于必须接触游戏对象的作者；它们依赖具体游戏版本，需要作者自行测试。
 
 `unsafe.hooks.wrapMethod({ target, methodName, handler, priority })` 的 handler 接收 `args`、`thisArg`、`callNext`、`callBase`。一般调用 `callNext()` 保留其他模组的修改；`callBase()` 会跳过其他包装。还提供 `wrapProperty`、`wrapModuleExport` 和 `defineCleanup`。停止模组会撤销登记的包装，但不自动撤销已写入的存档或任意外部变化。
+
+## 属性 Hook 与旧写法迁移
+
+`ctx.unsafe.hooks.wrapProperty({ target, key, get?, set?, priority? })` 包装已有属性。至少提供 `get` 或 `set`，返回取消函数；目标必须允许安装访问器。它依赖具体游戏对象，修改后按提示重启。
+
+| 回调 | 当前参数与行为 |
+| --- | --- |
+| `get` | `callNext()` 读取下一层，`callBase()` 读取基线；必须返回希望提供的属性值 |
+| `set` | `nextValue` 是本次写入值；`callNext(value?)` 转交下一层，`callBase(value?)` 写入基线；返回值不触发写入 |
+| `set` 中读取 | `getNext()` 读取当前 Hook 之后的 getter 链，`getBase()` 读取基线；两者都不写入 |
+
+公共参数还有 `owner`、`target`、`key`、`thisArg`。`thisArg` 是本次读写的对象，可能与安装 Hook 的原型 `target` 不同。
+
+```js
+const counter = { amount: 5 }
+ctx.unsafe.hooks.wrapProperty({
+  target: counter,
+  key: 'amount',
+  get({ callNext }) {
+    return callNext() * 2
+  },
+  set({ nextValue, callNext }) {
+    callNext(Math.max(0, nextValue ?? 0))
+  }
+})
+counter.amount = 12
+ctx.log.info(counter.amount) // 24
+```
+
+迁移时替换以下旧写法：
+
+| 旧写法／错误假设 | 当前写法 |
+| --- | --- |
+| getter 解构 `value`，直接返回或加工它 | 显式调用并返回 `callNext()` 的结果；当前没有预读 `value` |
+| setter 返回新值就会写入 | 显式调用 `callNext(nextValue)`；返回值被忽略 |
+| getter 使用 `getNext/getBase`，或 setter 使用 `setNext/setBase` | getter 使用 `callNext/callBase`；setter 读取使用 `getNext/getBase`，写入使用 `callNext/callBase` |
+| 把回调写成 `async`，或保存 continuation 以后再调用 | 回调必须同步；continuation 仅在当前回调内有效 |
+
+未调用写入 continuation 的 setter 会阻止写入。`callNext()` 沿用当前 `nextValue`，`callNext(undefined)` 则明确写入 `undefined`；`callBase` 同理。不要在 getter 内读取 `thisArg[key]` 来获取原值，这会重新进入完整调用链。高 `priority` 在外层，同优先级按注册顺序；重复调用 continuation 也会重复产生副作用。
+
+使用这套属性 Hook 时，在清单中填写实际测试过的 GP-Next 范围，下限至少为 `1.5.6`。`gpNextVersion` 只提供兼容性警告，不会适配旧回调或代替实测。API v2 的编号本身不能证明跨 GP-Next 版本兼容。
+
+TypeScript 作者请重新下载类型声明，并使用 `ctx.unsafe.hooks.wrapProperty<number>(...)` 获得回调参数检查。类型能发现旧 `value` 字段等用法，但不能验证原生对象结构或保证同步副作用安全。[完整签名](./gp-next-api-reference.md#unsafehooksapi)
 
 ## 可直接使用的写法
 

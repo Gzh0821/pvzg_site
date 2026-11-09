@@ -22,6 +22,7 @@ Start with the [author guide](./gp-next-js.md). These declarations are a referen
 | Timing and cleanup | [RuntimeApi](#runtimeapi), [GameClockApi](#gameclockapi) |
 | Data, files, dependencies | [ContentApi](#contentapi), [PackFilesApi](#packfilesapi), [ServicesApi](#servicesapi) |
 | Startup content | [StartupRegistration](#startupregistration), [StartupContext](#startupcontext) |
+| Property hooks | [UnsafeHooksApi](#unsafehooksapi) |
 
 ### Reading a signature
 
@@ -37,6 +38,47 @@ A callback may return a value immediately or a Promise. Use `async` / `await` fo
 
 ```ts
 export type MaybePromise<T> = T | Promise<T>
+```
+
+## UnsafeHooksApi
+
+Property hooks use synchronous continuations. Getter callbacks return the property value; setters must call a continuation to write. No pre-read `value` field or `setNext/setBase` methods exist. See the [migration guide](./gp-next-api.md#property-hooks-and-migration). `target` and `thisArg` remain game-build-dependent objects.
+
+```ts
+/** Unsafe call shape only; target/receiver structures remain game-build dependent. */
+export interface UnsafePropertyHookContext {
+    readonly owner: string
+    readonly target: object
+    readonly key: string
+    readonly thisArg: object
+}
+export interface UnsafePropertyGetContext<Value> extends UnsafePropertyHookContext {
+    callNext(): Value
+    callBase(): Value
+}
+export interface UnsafePropertySetContext<Value> extends UnsafePropertyHookContext {
+    readonly nextValue: Value | undefined
+    /** Read the baseline at call time; undefined when it has no getter. */
+    getBase(): Value | undefined
+    /** Read getters after this registration in the current access snapshot. */
+    getNext(): Value | undefined
+    callNext(): void
+    callNext(value: Value | undefined): void
+    callBase(): void
+    callBase(value: Value | undefined): void
+}
+export type UnsafePropertyHookSpec<Value> = {
+    target: object
+    key: string
+    priority?: number
+} & (
+    { get(context: UnsafePropertyGetContext<Value>): Value; set?(context: UnsafePropertySetContext<Value>): void }
+    | { get?(context: UnsafePropertyGetContext<Value>): Value; set(context: UnsafePropertySetContext<Value>): void }
+)
+export interface UnsafeHooksApi extends Record<string, unknown> {
+    /** Synchronous callbacks only. Setter return values are ignored; call a continuation to write. */
+    wrapProperty<Value = unknown>(spec: UnsafePropertyHookSpec<Value>): () => boolean
+}
 ```
 
 ## SubscriptionOptions
@@ -2438,7 +2480,7 @@ export interface ModContext {
     
     readonly advanced: Record<string, unknown>
     
-    readonly unsafe: Record<string, unknown>
+    readonly unsafe: Record<string, unknown> & { readonly hooks: UnsafeHooksApi }
 }
 ```
 

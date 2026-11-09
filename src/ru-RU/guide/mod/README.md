@@ -28,6 +28,8 @@ order: 0
 
 ## API и поля
 
+При обновлении мода проверьте [миграцию перехватчиков свойств (английский)](/en/guide/mod/gp-next-api.md#property-hooks-and-migration). Начиная с GP-Next 1.5.6 геттеры используют `callNext()` вместо поля `value`; возвращаемое сеттером значение не выполняет запись. `apiVersion: 2` не восстанавливает прежнее поведение.
+
 - [Руководство API (английский)](/en/guide/mod/gp-next-api.md)
 - [Типы API (английский)](/en/guide/mod/gp-next-api-reference.md)
 - [Исходные данные](./gp-next-json.md)

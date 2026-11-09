@@ -10,6 +10,8 @@ API version **2**. `ctx` is provided to `setup(ctx)` inside your mod; these exam
 
 [Complete parameters, callbacks and return types](./gp-next-api-reference.md) · [Download type declarations](/downloads/mods/gp-next-api.d.ts)
 
+Authors updating an existing mod should read [property hook migration](#property-hooks-and-migration). `apiVersion: 2` does not select legacy behavior: GP-Next 1.5.6 changed property hooks to explicit continuation chains.
+
 | Task | API |
 | --- | --- |
 | Mod identity and compatibility | `meta`, `compat` |
@@ -135,6 +137,49 @@ Use events.on/once to subscribe and emit/emitAsync for custom events. Names with
 Use ui.toast for brief feedback and log.info/warn/error for diagnostics. compat checks features and versions. gpn.reload is not a promise of arbitrary asset hot replacement.
 
 advanced and unsafe access version-dependent game objects. Method hooks use `unsafe.hooks.wrapMethod({ target, methodName, handler, priority })`; handlers receive args, thisArg, callNext and callBase. callNext preserves other hooks, while callBase skips them. wrapProperty, wrapModuleExport and defineCleanup are also available. Unloading removes registered hooks, not arbitrary persistent changes. Test these mods against each supported game version.
+
+## Property hooks and migration
+
+`ctx.unsafe.hooks.wrapProperty({ target, key, get?, set?, priority? })` wraps an existing property. Supply at least `get` or `set`; the result is a cancellation function. The target must permit installing accessors. Native targets depend on the game build; restart when prompted after changes.
+
+| Callback | Current arguments and behavior |
+| --- | --- |
+| `get` | `callNext()` reads the next getter; `callBase()` reads the baseline. Return the property value you want to expose |
+| `set` | `nextValue` is the incoming value. `callNext(value?)` forwards the write; `callBase(value?)` writes to the baseline. Returning a value does not write |
+| Reading inside `set` | `getNext()` reads getters after this hook; `getBase()` reads the baseline. Neither writes |
+
+Shared arguments are `owner`, `target`, `key`, and `thisArg`. The receiver `thisArg` may differ from the prototype used as `target`.
+
+```js
+const counter = { amount: 5 }
+ctx.unsafe.hooks.wrapProperty({
+  target: counter,
+  key: 'amount',
+  get({ callNext }) {
+    return callNext() * 2
+  },
+  set({ nextValue, callNext }) {
+    callNext(Math.max(0, nextValue ?? 0))
+  }
+})
+counter.amount = 12
+ctx.log.info(counter.amount) // 24
+```
+
+Replace these legacy patterns or assumptions:
+
+| Legacy pattern or assumption | Current contract |
+| --- | --- |
+| Destructure `value` in a getter and return or transform it | Explicitly call and return the result of `callNext()`; there is no pre-read `value` field |
+| Return a replacement value from a setter to write it | Call `callNext(nextValue)` explicitly; the return value is ignored |
+| Use `getNext/getBase` in a getter, or `setNext/setBase` in a setter | Getters use `callNext/callBase`. Setters read with `getNext/getBase` and write with `callNext/callBase` |
+| Make the callback `async`, or keep a continuation to invoke later | Callbacks must be synchronous; continuations expire when the callback returns |
+
+A setter that does not call a write continuation blocks the write. `callNext()` forwards the current `nextValue`; `callNext(undefined)` explicitly writes `undefined`. The same distinction applies to `callBase`. Do not read `thisArg[key]` inside a getter to obtain the original value: that reenters the entire chain. Higher priority runs outside lower priority; equal priority follows registration order. Repeated continuation calls repeat side effects.
+
+When using these property hooks, declare the GP-Next range you actually tested, with a minimum of `1.5.6`. `gpNextVersion` produces compatibility warnings; it neither adapts old callbacks nor replaces testing. The API v2 number alone does not prove compatibility across GP-Next releases.
+
+TypeScript authors should download the updated declarations and use `ctx.unsafe.hooks.wrapProperty<number>(...)` for callback argument checking. Types can catch uses of the old `value` field, but cannot verify native object layouts or guarantee safe synchronous side effects. [Complete signatures](./gp-next-api-reference.md#unsafehooksapi)
 
 ## Practical patterns
 
