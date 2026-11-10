@@ -28,3 +28,11 @@
 本轮先部署并检查静态关卡源的 `catalog.json`，再上线官网浏览／下载；沿用现有服务器每半小时同步 fork 和 Pages 分发。含 GitHub 关卡协议的兼容客户端公开后，再将 `App.vue` 的 `GAME_LAUNCH_ENABLED` 改为 `true` 并发布官网。本轮不发布客户端，不更新游戏版本元数据或安装包。
 
 游戏更新时应同步审阅 `../pvzge_github_levels/scripts/level-text.mjs` 中提取自 0.16.15 `MultiLanguage.LevelName` 的官方文本。
+
+## 网页先行发布（2026-11-10）
+
+- 按用户要求仅发布网页和静态摘要接口，客户端保留源码，未构建或发布安装包。
+- 静态关卡源提交 `828d4b6`、标题键显示修正 `1fe2b36` 已推送并由既有 Pages 自动部署。正式域名与默认 Pages 域名的 `catalog.json` 均为 200、版本 1、789 关；最终 tree 为 `8f70ead62b89f81e19fb934b458e46fbc189aa56`。全部记录的路径／大小／SHA 与游戏目录逐项一致，三份实际关卡的字节长度和 Git blob SHA 抽检通过。
+- 官网提交 `4f3b5b1c9b` 已推送，GitHub 构建／部署 `42838123629` 成功；既有 `pvzge-site-workers` 部署成功，版本 ID `3965d4f0-4a85-4b39-9146-b94ee4e72348`。
+- 正式入口：`https://pvzge.com/creator-garden/community-level.html`，英文、西班牙文、俄文页面均返回 200。真实浏览器确认 789 关列表、搜索返回 7 个 Morticulturalist 关卡、详情内容和原文件 Blob 下载（`Morticulturalist7.json`，19,410 字节）正常；页面没有 `pvzge:` 启动链接。列表读取一次摘要、详情读取摘要及单关正文，不预先下载整个关卡库。
+- 原服务器半小时定时器仍为 active，最近运行 success；未新增付费服务，未操作 R2 或更改客户端更新信息。
