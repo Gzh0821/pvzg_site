@@ -2,7 +2,7 @@
 
 ## 当前状态
 
-四语言的 `/creator-garden/community-level.html` 已恢复。本轮用户授权先发布静态关卡源与官网浏览／下载，客户端由用户之后单独发布。因此 `App.vue` 的 `GAME_LAUNCH_ENABLED` 暂为 `false`，线上不显示游戏启动按钮。旧 `level-list` 与 `levelapi.pvzge.com` 不恢复。
+四语言的 `/creator-garden/community-level.html` 已恢复。GitHub 关卡启动要求 GP-Next 1.5.10；客户端四包公开发布、线上验证及 R2 清理于 2026-11-11 22:09:52（北京时间）完成后，再将 `App.vue` 的 `GAME_LAUNCH_ENABLED` 开启。旧 `level-list` 与 `levelapi.pvzge.com` 不恢复。
 
 创意花园的结构导航自动加入社区关卡入口。列表支持名称／作者／说明／路径搜索、作者／目录筛选和每页 24 关；同页 `?path=<关卡路径>` 显示详情。详情包含原文件中的名称、作者、说明、场景、可确定的波次／初始阳光／供给、植物和僵尸引用，以及原文件下载；游戏启动链接按上述发布开关隐藏。
 
@@ -23,7 +23,7 @@
 - 隔离 macOS Tauri 诊断 bundle 中，实际通过公网读取并校验 `AbsurdLach/Errors/ACT4_PirateSea_Night/4_1.JSON`，从 `mainScene` 进入 `inGameScene`，状态 `launched`。随后通过 Tauri `deep-link://new-url` 事件再次发送链接，收到 `in-game` 拒绝和先退出当前关卡提示。
 - macOS 测试调用接收函数及原生事件，不代表操作系统从浏览器冷启动已验收；Windows 桌面未实测。未发布的新客户端代码不能视为现有安装包已支持。
 
-## 发布顺序
+## 初次网页先行发布顺序（历史）
 
 本轮先部署并检查静态关卡源的 `catalog.json`，再上线官网浏览／下载；沿用现有服务器每半小时同步 fork 和 Pages 分发。含 GitHub 关卡协议的兼容客户端公开后，再将 `App.vue` 的 `GAME_LAUNCH_ENABLED` 改为 `true` 并发布官网。本轮不发布客户端，不更新游戏版本元数据或安装包。
 

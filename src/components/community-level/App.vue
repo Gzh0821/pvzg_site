@@ -76,8 +76,8 @@ import messages from './i18n.json';
 import { API_BASE, parseCatalog, localizedText, githubLevelLink, rawLevelUrl, verifyLevelBytes, levelReferences } from './catalog.mjs';
 
 type Entry = { path: string; sha: string; size: number; title: Record<string, string>; description: Record<string, string>; author: string; folder: string; stage: string; waveCount: number | null; startingSun: number | null; seedMode: string };
-// Enable after a public desktop release supports pvzge://github-level/open.
-const GAME_LAUNCH_ENABLED = false;
+// Public since GP-Next 1.5.10, after the compatible desktop release was verified.
+const GAME_LAUNCH_ENABLED = true;
 const injectedLanguage = String(inject('i18nLanguage', 'en'));
 const language = (injectedLanguage.startsWith('zh') ? 'zh' : injectedLanguage.startsWith('es') ? 'es' : injectedLanguage.startsWith('ru') ? 'ru' : 'en') as keyof typeof messages;
 const t = messages[language];
