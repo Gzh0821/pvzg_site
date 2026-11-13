@@ -2,9 +2,7 @@
   <main ref="shellElement" class="pq-shell" :lang="localeMeta.htmlLang" @pointerdown="lastInputWasPointer = true">
     <section v-if="stage === 'intro'" class="pq-panel pq-intro" aria-labelledby="pq-title">
       <div>
-        <p class="pq-eyebrow">{{ copy.eyebrow }}</p>
         <h1 id="pq-title">{{ copy.title }}</h1>
-        <p class="pq-lede">{{ copy.intro }}</p>
         <div class="pq-actions">
           <button class="pq-button pq-primary" type="button" @click="startQuiz">
             {{ copy.start }} <span aria-hidden="true">→</span>
@@ -25,10 +23,6 @@
 
     <section v-else-if="stage === 'quiz' || stage === 'tie'" class="pq-panel pq-question-panel" aria-labelledby="pq-question-title">
       <header class="pq-question-header">
-        <div>
-          <p class="pq-eyebrow">{{ stage === 'tie' ? copy.tieEyebrow : copy.eyebrow }}</p>
-          <p v-if="stage === 'tie'" class="pq-tie-intro">{{ copy.tieIntro }}</p>
-        </div>
         <p class="pq-progress-label">{{ progressLabel }}</p>
       </header>
 
@@ -280,15 +274,6 @@ onBeforeUnmount(() => { window.clearTimeout(advanceTimer); window.removeEventLis
   background: repeating-linear-gradient(90deg, #58823e 0 42px, #6e954d 42px 84px);
 }
 
-.pq-eyebrow {
-  margin: 0 0 .85rem;
-  color: var(--pq-leaf);
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
 .pq-intro h1,
 .pq-question-body h2,
 .pq-calculating h2 {
@@ -301,14 +286,6 @@ onBeforeUnmount(() => { window.clearTimeout(advanceTimer); window.removeEventLis
   max-width: 12ch;
   font-size: clamp(2.6rem, 5vw, 4.3rem);
   line-height: 1.02;
-}
-
-.pq-lede {
-  max-width: 36rem;
-  margin: 1.35rem 0 0;
-  color: var(--pq-muted);
-  font-size: clamp(1rem, 1.55vw, 1.12rem);
-  line-height: 1.75;
 }
 
 .pq-actions {
@@ -417,11 +394,9 @@ onBeforeUnmount(() => { window.clearTimeout(advanceTimer); window.removeEventLis
   gap: 1rem;
 }
 
-.pq-question-header .pq-eyebrow { margin-bottom: .2rem; }
-.pq-tie-intro,
 .pq-progress-label,
 .pq-keyboard-hint { margin: 0; color: var(--pq-muted); font-size: .86rem; }
-.pq-progress-label { flex: none; font-variant-numeric: tabular-nums; }
+.pq-progress-label { margin-inline-start: auto; flex: none; font-variant-numeric: tabular-nums; }
 
 .pq-wave-track {
   height: 3px;

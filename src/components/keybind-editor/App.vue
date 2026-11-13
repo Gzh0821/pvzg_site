@@ -27,9 +27,6 @@
                 </div>
             </div>
         </div>
-        <a-typography-paragraph class="instructions">
-            <span v-html="t('instructions')"></span>
-        </a-typography-paragraph>
 
         <a-form :model="keybinds" layout="vertical">
             <div class="toolbar">
@@ -562,10 +559,6 @@ onBeforeUnmount(() => {
 
 .stat-pill.warning strong {
     color: #cf6b22;
-}
-
-.instructions {
-    margin-bottom: 18px;
 }
 
 .toolbar {

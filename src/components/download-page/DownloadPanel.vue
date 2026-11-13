@@ -107,7 +107,7 @@
             </span>
             <span class="download-option__body">
               <strong>{{ option.title }}</strong>
-              <small>{{ option.description }}</small>
+              <small v-if="option.description">{{ option.description }}</small>
             </span>
             <span class="download-option__action">{{ option.action }}</span>
           </a>
@@ -193,7 +193,7 @@ type GpNextInfo = {
 
 type DownloadOption = {
   title: string;
-  description: string;
+  description?: string;
   action: string;
   href: string;
   icon: string;
@@ -295,7 +295,6 @@ const activeOptions = computed<DownloadOption[]>(() => {
       }),
       optionFromHref({
         title: t('githubTitle'),
-        description: t('githubDescription'),
         action: t('open'),
         href: gameInfo.value.Download?.Github,
         icon: 'brands:github'
@@ -335,35 +334,30 @@ const activeOptions = computed<DownloadOption[]>(() => {
     }),
     optionFromHref({
       title: t('githubTitle'),
-      description: t('githubDescription'),
       action: t('open'),
       href: links.Github,
       icon: 'brands:github'
     }),
     optionFromHref({
       title: t('quarkTitle'),
-      description: t('quarkDescription'),
       action: t('open'),
       href: links.Quark,
       icon: 'cloud'
     }),
     optionFromHref({
       title: t('quarkZipTitle'),
-      description: t('quarkDescription'),
       action: t('download'),
       href: links.QuarkZip,
       icon: 'file-zipper'
     }),
     optionFromHref({
       title: t('baiduTitle'),
-      description: t('baiduDescription'),
       action: t('open'),
       href: links.Baidu,
       icon: 'cloud'
     }),
     optionFromHref({
       title: t('pan123Title'),
-      description: t('pan123Description'),
       action: t('open'),
       href: links.Pan123,
       icon: 'cloud'

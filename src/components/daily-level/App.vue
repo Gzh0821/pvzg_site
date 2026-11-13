@@ -4,7 +4,6 @@
       <header class="daily-archive-header">
         <div>
           <h2>{{ t('archiveTitle') }}</h2>
-          <p>{{ t('archiveDescription', { days: archiveWindowDays }) }}</p>
         </div>
         <a v-if="currentDetailUrl" class="daily-level-button daily-level-button--secondary" :href="currentDetailUrl">
           {{ t('today') }}
@@ -93,7 +92,6 @@
             <span>{{ downloading ? t('downloading') : t('download') }}</span>
           </button>
         </div>
-        <p v-if="deepLinkHintVisible" class="daily-level-deep-link-hint">{{ t('deepLinkHint') }}</p>
       </div>
 
       <div v-if="loading" class="daily-level-state">{{ t('loading') }}</div>
@@ -340,13 +338,11 @@ const error = ref('');
 const archiveLoading = ref(true);
 const archiveError = ref('');
 const downloading = ref(false);
-const deepLinkHintVisible = ref(false);
 const showAllPlants = ref(false);
 const showAllZombies = ref(false);
 const nowTimestamp = ref(Date.now());
 const visibleMonth = ref(startOfUtcMonth(new Date()));
 let countdownTimer: number | undefined;
-let deepLinkHintTimer: number | undefined;
 
 const currentLevel = computed(() => payload.value?.daily.level || null);
 const currentDate = computed(() => payload.value?.daily.date || '');
@@ -511,7 +507,6 @@ onMounted(async () => {
 
 onUnmounted(() => {
   if (countdownTimer !== undefined) window.clearInterval(countdownTimer);
-  if (deepLinkHintTimer !== undefined) window.clearTimeout(deepLinkHintTimer);
 });
 
 function parseUtcDate(dateText: string) {
@@ -677,12 +672,7 @@ function openInGame() {
     level_scope: isTodayDetail.value ? 'current' : 'archive',
     site_locale: language.value
   });
-  deepLinkHintVisible.value = false;
-  if (deepLinkHintTimer !== undefined) window.clearTimeout(deepLinkHintTimer);
   window.location.href = deepLinkUrl.value;
-  deepLinkHintTimer = window.setTimeout(() => {
-    if (document.visibilityState === 'visible') deepLinkHintVisible.value = true;
-  }, 1800);
 }
 
 async function downloadLevel() {
@@ -743,13 +733,6 @@ async function downloadLevel() {
   font-size: clamp(2rem, 3.4vw, 3rem);
   line-height: 1.05;
   letter-spacing: -0.015em;
-}
-
-.daily-archive-header p:last-child {
-  max-width: 660px;
-  margin: 12px 0 0;
-  color: var(--daily-muted);
-  line-height: 1.6;
 }
 
 .daily-archive {
@@ -1080,12 +1063,6 @@ async function downloadLevel() {
   border: 1px solid var(--daily-separator);
   background: var(--daily-soft);
   color: var(--daily-ink);
-}
-
-.daily-level-deep-link-hint {
-  margin: -8px 0 0;
-  color: var(--daily-muted);
-  font-size: 0.9rem;
 }
 
 .daily-level-state {

@@ -15,9 +15,7 @@ const L = (zh, en) => ({ zh, en });
 const O = (id, label, vector) => ({ id, label, vector });
 
 export const UI_COPY = Object.freeze({
-  eyebrow: L('戴夫的植物配对机', "Dave's Plant Matcher"),
   title: L('你是哪株植物？', 'Which Plant Are You?'),
-  intro: L('12 个小场面，凭第一反应选就行。做完看看戴夫会把哪包种子塞给你。', 'Pick whatever feels right in 12 little situations. Then see which seed packet Dave hands you.'),
   start: L('开始测试', 'Start the quiz'),
   resume: L('继续上次进度', 'Resume previous quiz'),
   restart: L('重新开始', 'Start over'),
@@ -25,11 +23,8 @@ export const UI_COPY = Object.freeze({
   reveal: L('看看我是哪株', 'Show me my plant'),
   questionProgress: L('第 {current} / {total} 题', 'Question {current} of {total}'),
   tieProgress: L('加赛题 {current} / 2', 'Tie-breaker {current} of 2'),
-  tieEyebrow: L('戴夫纠结了', "Dave can't decide"),
-  tieIntro: L('这两包种子都挺像你，再选一个。', 'Both seed packets look like you. Pick one more.'),
   keyboardHint: L('可按 1–4 选择答案', 'Press 1–4 to choose'),
   calculating: L('戴夫在种子堆里找结果…', 'Dave is digging through the seed packets…'),
-  resultEyebrow: L('戴夫给你的是', 'Dave picked'),
   whyTitle: L('怎么会是它？', 'Why this one?'),
   mechanicTitle: L('它在游戏里干啥', 'What it does in the game'),
   axisTitle: L('你更偏哪边', 'Which way you lean'),

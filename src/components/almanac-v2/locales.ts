@@ -5,8 +5,6 @@ const text = {
     siteLabel: 'Gardendless 在线图鉴',
     plantTitle: '植物图鉴',
     zombieTitle: '僵尸图鉴',
-    plantDescription: '浏览植物卡包，查看属性、能力和角色资料。',
-    zombieDescription: '浏览僵尸档案，查看强度、速度和角色资料。',
     plants: '植物',
     zombies: '僵尸',
     search: '搜索',
@@ -56,8 +54,6 @@ const text = {
     siteLabel: 'Gardendless Almanac',
     plantTitle: 'Plants Almanac',
     zombieTitle: 'Zombies Almanac',
-    plantDescription: 'Browse plant packets and read their attributes, abilities, and character notes.',
-    zombieDescription: 'Browse zombie records and read their toughness, speed, and character notes.',
     plants: 'Plants',
     zombies: 'Zombies',
     search: 'Search',
@@ -152,10 +148,6 @@ export const getAlmanacText = (locale: AlmanacLocale) => text[locale];
 
 export const getKindTitle = (kind: AlmanacKind, locale: AlmanacLocale) => (
   kind === 'plant' ? text[locale].plantTitle : text[locale].zombieTitle
-);
-
-export const getKindDescription = (kind: AlmanacKind, locale: AlmanacLocale) => (
-  kind === 'plant' ? text[locale].plantDescription : text[locale].zombieDescription
 );
 
 export const getWorldLabel = (world: string, locale: AlmanacLocale) => worlds[locale][world] ?? world;

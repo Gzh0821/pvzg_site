@@ -2,7 +2,6 @@
   <section class="community-levels" :aria-busy="loading">
     <div class="level-toolbar">
       <a v-if="selectedPath" class="level-back" :href="listUrl" @click="navigate($event, listUrl)"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m11.5 4.5-5.5 5.5 5.5 5.5M6 10h10" /></svg>{{ t.back }}</a>
-      <p v-else>{{ t.intro }}</p>
       <button class="level-button level-refresh" type="button" :disabled="loading" @click="loadCatalog"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 7a6 6 0 1 0 .3 5M15.5 3v4h-4" /></svg>{{ t.refresh }}</button>
     </div>
     <p v-if="loading" role="status">{{ t.loading }}</p>
@@ -15,10 +14,9 @@
           <p v-if="description(selected)" class="level-description">{{ description(selected) }}</p>
         </div>
         <div class="level-actions">
-          <a v-if="GAME_LAUNCH_ENABLED" class="level-button level-primary" :href="githubLevelLink(selected)" @click="openHint = true">{{ t.open }}</a>
+          <a v-if="GAME_LAUNCH_ENABLED" class="level-button level-primary" :href="githubLevelLink(selected)">{{ t.open }}</a>
           <button class="level-button" :class="{ 'level-primary': !GAME_LAUNCH_ENABLED }" type="button" :disabled="!rawBytes" @click="download"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9m-4-4 4 4 4-4M4 13v3h12v-3" /></svg>{{ t.download }}</button>
         </div>
-        <p v-if="openHint" class="level-hint" role="status">{{ t.openHint }}</p>
       </header>
       <dl class="level-facts">
         <div v-if="selected.stage"><dt>{{ t.stage }}</dt><dd>{{ stageLabel(selected.stage) }}</dd></div>
@@ -89,7 +87,7 @@ const listUrl = `${prefix}/creator-garden/community-level.html`;
 const hydrated = ref(false);
 const selectedPath = computed(() => hydrated.value && typeof route.query.path === 'string' ? route.query.path : '');
 const entries = ref<Entry[]>([]), query = ref(''), author = ref(''), page = ref(1);
-const loading = ref(true), error = ref(''), detailLoading = ref(false), detailError = ref(''), openHint = ref(false);
+const loading = ref(true), error = ref(''), detailLoading = ref(false), detailError = ref('');
 const rawBytes = ref<Uint8Array | null>(null);
 const references = ref<{ plants: string[]; zombies: string[] }>({ plants: [], zombies: [] });
 const plantMap = computed<Record<string, any>>(() => getPlantMap(language));
@@ -119,7 +117,7 @@ function navigate(event: MouseEvent, target: string) {
 }
 
 function resetDetail() {
-  detailError.value = ''; detailLoading.value = false; rawBytes.value = null; openHint.value = false;
+  detailError.value = ''; detailLoading.value = false; rawBytes.value = null;
   references.value = { plants: [], zombies: [] };
 }
 
@@ -195,7 +193,7 @@ onUnmounted(() => controller?.abort());
 .community-levels p { text-align: start; }
 .community-levels svg { width: 1.125rem; height: 1.125rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 .level-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 1.25rem 0; }
-.level-toolbar p { margin: 0; max-width: 65ch; line-height: 1.6; }
+.level-refresh { margin-inline-start: auto; }
 .level-back { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; font-weight: 600; text-underline-offset: .2em; }
 .level-button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; max-width: 100%; border: 1px solid var(--level-line); border-radius: .75rem; padding: .6rem 1rem; background: var(--level-soft); color: inherit; font: inherit; font-weight: 600; line-height: 1.25; text-align: center; text-decoration: none; cursor: pointer; touch-action: manipulation; transition: background-color .16s ease-out, border-color .16s ease-out, transform .12s ease-out; }
 .level-button:not(:disabled):hover { border-color: var(--level-accent); background: color-mix(in srgb, var(--level-accent) 8%, var(--level-soft)); text-decoration: none; }

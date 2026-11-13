@@ -2,7 +2,6 @@
   <main v-if="result" ref="shellElement" class="pqr-shell" :lang="localeMeta.htmlLang">
     <section class="pqr-hero">
       <div class="pqr-copy">
-        <p class="pqr-eyebrow">{{ copy.resultEyebrow }}</p>
         <p class="pqr-archetype">{{ localize(ARCHETYPE_COPY[result.archetype]) }}</p>
         <h1>{{ localize(result.name) }}</h1>
         <p class="pqr-title">{{ localize(result.title) }}</p>
@@ -362,15 +361,6 @@ onBeforeUnmount(() => window.clearTimeout(toastTimer));
   height: 8px;
   content: "";
   background: repeating-linear-gradient(90deg, #58823e 0 42px, #6e954d 42px 84px);
-}
-
-.pqr-eyebrow {
-  margin: 0 0 .6rem;
-  color: var(--pqr-leaf);
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-  text-transform: uppercase;
 }
 
 .pqr-archetype { margin: 0 0 1rem; color: var(--pqr-muted); font-size: .9rem; }

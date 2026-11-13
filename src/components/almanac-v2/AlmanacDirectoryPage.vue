@@ -2,9 +2,7 @@
   <div class="almanac-shell" :class="`almanac-shell--${directory.kind}`">
     <header class="almanac-hero">
       <div>
-        <p class="almanac-eyebrow">{{ labels.siteLabel }}</p>
         <h1>{{ title }}</h1>
-        <p class="almanac-hero__description">{{ description }}</p>
       </div>
       <nav class="species-switch" :aria-label="labels.siteLabel">
         <RouterLink
@@ -130,7 +128,7 @@ import { computed, ref, watch } from 'vue';
 import { usePageFrontmatter } from 'vuepress/client';
 
 import AdSenseUnit from './AdSenseUnit.vue';
-import { getAlmanacText, getKindDescription, getKindTitle, getWorldLabel } from './locales';
+import { getAlmanacText, getKindTitle, getWorldLabel } from './locales';
 import type { AlmanacDirectoryData, AlmanacDirectoryEntity, AlmanacPageFrontmatter } from './types';
 import { getAlmanacWorldBackground } from './world-backgrounds';
 
@@ -138,7 +136,6 @@ const frontmatter = usePageFrontmatter<AlmanacPageFrontmatter>();
 const directory = computed(() => frontmatter.value.almanacDirectory as AlmanacDirectoryData);
 const labels = computed(() => getAlmanacText(directory.value.locale));
 const title = computed(() => getKindTitle(directory.value.kind, directory.value.locale));
-const description = computed(() => getKindDescription(directory.value.kind, directory.value.locale));
 const localePrefix = computed(() => directory.value.locale === 'en' ? '/en' : '');
 const plantDirectoryPath = computed(() => `${localePrefix.value}/almanac/plants.html`);
 const zombieDirectoryPath = computed(() => `${localePrefix.value}/almanac/zombies.html`);
@@ -255,14 +252,6 @@ const filteredEntities = computed(() => {
   pointer-events: none;
 }
 
-.almanac-eyebrow {
-  margin: 0 0 0.25rem;
-  color: #e8c56a;
-  font-family: 'pvzgeFontEN', 'pvzgFont', 'Noto Sans SC', sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-}
-
 .almanac-hero h1 {
   margin: 0;
   color: #fff8dc;
@@ -270,13 +259,6 @@ const filteredEntities = computed(() => {
   font-size: clamp(2rem, 5vw, 3.75rem);
   line-height: 1;
   text-shadow: 0 3px 0 var(--almanac-wood-dark);
-}
-
-.almanac-hero__description {
-  max-width: 42rem;
-  margin: 0.65rem 0 0;
-  color: #f2e7c4;
-  line-height: 1.55;
 }
 
 .species-switch {
