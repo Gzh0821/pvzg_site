@@ -5,6 +5,320 @@
 		{
 			"objclass": "NarrativeProperties",
 			"aliases": [
+				"AQUAVINE_I"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "crazydave",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "crazydave",
+						"Action": "EXCITED",
+						"Lines": {
+							"en": "These monks are really amazing!",
+							"zh": "这些武僧真是厉害！"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SPECIAL1",
+						"Lines": {
+							"en": "More torches and nunchucks! We still can't get powerful plant partners from this time-space turbulence.",
+							"zh": "又是火棍和双节棍！我们还没办法从这时空乱流中拿到强力的植物伙伴！"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "Don't be discouraged, User Dave — where there's a will, there's a way!",
+							"zh": "不要沮丧，用户戴夫，天无绝人之路！"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Monks aren't good at holding their breath, and Tanglekelps can entangle them in the water cubes of Aqua Vines!",
+							"zh": "武僧们并不擅长憋气，水草可以把他们缠入水生藤蔓的水立方里。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "This way, we can make them lose their fighting ability!!",
+							"zh": "这样就可以让他们丧失战斗能力啦！"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Let those nunchucku-wielding monks who just stepped onto the field taste some 'watery' jelly!",
+							"zh": "让那些刚踏入场地的双截棍武僧们尝尝水果冻的滋味吧！"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"AQUAVINE_H"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Well, a Watery Grave of sorts.",
+							"zh": "好吧，看来是某种意义上的水上坟墓。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Penny, some of my old pals want to assist in this battle, but several can't be planted on Lily Pads due to their deep roots.",
+							"zh": "潘妮，我的一些老伙计想协助这场战斗，但他们中的一些深根扎入地底不能被种植在莲叶上。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Don't worry. This is no longer a problem, User Dave.",
+							"zh": "别为此担心，用户戴夫。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "We know that plants with deep roots like Resistant Radishes cannot be planted on Lily Pads.",
+							"zh": "我们知道，像白萝卜这样的深根植物不能被种植在莲叶上。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "But Aqua Vines enable them to join in aquatic battle.",
+							"zh": "但水生藤蔓可以使他们也能参与水上作战。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "EXCITED",
+						"Lines": {
+							"en": "The same rule applies to our comrade!",
+							"zh": "对我们的老战友同样适用的规则！"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"AQUAVINE_G"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "Aqua Vine's Plant Food effect can push zombies back to the baseline.",
+							"zh": "水生藤蔓发动叶绿素效果可以把僵尸推至底线。"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"AQUAVINE_F"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "crazydave",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "crazydave",
+						"Action": "EXCITED",
+						"Lines": {
+							"en": "Those annoying imps always piss me off!",
+							"zh": "这些小鬼可真够烦人的！"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "SPECIAL1",
+						"Lines": {
+							"en": "They'd ruin everything you appreciate! Especially when there's a whole horde of them!",
+							"zh": "他们会吃掉你珍视的一切！尤其是当他们数量多起来后！"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "That is indeed a common concern, User Dave...",
+							"zh": "这样的顾虑的确很常见，用户戴夫……"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "I would personally suggest *PLANTING GUACODILES* in those Aqua Vines to eliminate some of the imps!",
+							"zh": "我建议「在水藤里种植鳄梨」以消灭这些恼人的小鬼僵尸"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"AQUAVINE_F_SHORT"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "*PLANT GUACODILES* in those endangered Aqua Vines to eliminate some of the imps!",
+							"zh": "「在水藤里种植鳄梨」以消灭这些恼人的小鬼僵尸！"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"AQUAVINE_E"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Lotorpedoes in water can deal with Parasol Zombies, while on land they can handle Excavator Zombies.",
+							"zh": "鱼雷莲蓬在水中可以对付阳伞僵尸，在陆地上可以解决发掘者僵尸。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "Notice: There is a limited supply of Aquatic Vines.",
+							"zh": "注意：水生藤蔓的数量有限。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "You can't cover everything — so take care of the most critical one first.",
+							"zh": "你不可能什么都顾得上——那就先顾最要紧的那个。"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
+				"AQUAVINE_D"
+			],
+			"objdata": {
+				"Flow": [
+					{
+						"Character": "crazydave",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "NPC_ENTER"
+					},
+					{
+						"Character": "winnie",
+						"Action": "TIRED",
+						"Lines": {
+							"en": "The information shows that there is an extreme shortage of water resources here.",
+							"zh": "信息显示这里极度缺乏水资源。"
+						}
+					},
+					{
+						"Character": "crazydave",
+						"Action": "EXCITED",
+						"Lines": {
+							"en": "Without water, our plants can't reach their full potential!",
+							"zh": "没有水，我们的植物无法发挥全部的实力了！"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "Don't worry.",
+							"zh": "不用担心。"
+						}
+					},
+					{
+						"Character": "winnie",
+						"Action": "SAY",
+						"Lines": {
+							"en": "If there's no water, we'll create water!",
+							"zh": "没有水，我们就创造水！"
+						}
+					}
+				]
+			}
+		},
+		{
+			"objclass": "NarrativeProperties",
+			"aliases": [
 				"MEGAGATLING_11_INTRO"
 			],
 			"objdata": {
