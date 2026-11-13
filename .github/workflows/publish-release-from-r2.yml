@@ -8,6 +8,20 @@ on:
         required: true
         type: string
 
+      linux_run_id:
+        description: Optional successful pvzge_build Linux run ID; packages are transferred within Actions
+        required: false
+        type: string
+      release_notes:
+        description: Optional Markdown for a feature release; blank uses the short bug-fix note
+        required: false
+        type: string
+      dry_run:
+        description: Validate packages and notes only; do not create or modify a Release
+        required: true
+        default: false
+        type: boolean
+
 permissions:
   contents: write
 
@@ -22,11 +36,17 @@ jobs:
     timeout-minutes: 120
     env:
       VERSION: ${{ inputs.version }}
+      LINUX_RUN_ID: ${{ inputs.linux_run_id }}
+      RELEASE_NOTES_INPUT: ${{ inputs.release_notes }}
       RELEASE_REPOSITORY: ${{ github.repository }}
       R2_PUBLIC_BASE_URL: https://storage.pvzge.com
       GH_TOKEN: ${{ github.token }}
 
     steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
       - name: Validate version and Release identity
         shell: bash
         run: |
@@ -36,6 +56,18 @@ jobs:
             echo "Invalid version: $VERSION" >&2
             exit 1
           fi
+
+          if [[ -n "$LINUX_RUN_ID" && ! "$LINUX_RUN_ID" =~ ^[0-9]+$ ]]; then
+            echo "linux_run_id must be a numeric workflow run ID" >&2
+            exit 1
+          fi
+          notes_file="$RUNNER_TEMP/release-notes.md"
+          if [[ -n "$RELEASE_NOTES_INPUT" ]]; then
+            printf '%s\n' "$RELEASE_NOTES_INPUT" > "$notes_file"
+          else
+            printf '%s\n' '- Bug fixes.' '---' 'More info see [here](https://pvzge.com/en/download/)' > "$notes_file"
+          fi
+          echo "RELEASE_NOTES_FILE=$notes_file" >> "$GITHUB_ENV"
 
           response_file=$(mktemp)
           trap 'rm -f "$response_file"' EXIT
@@ -214,8 +246,50 @@ jobs:
             echo "Validated $asset_name ($asset_size bytes, sha256:$asset_sha256)"
           done <"$ASSET_MANIFEST"
 
+      - name: Download and validate Linux build artifacts
+        if: inputs.linux_run_id != ''
+        env:
+          GH_TOKEN: ${{ secrets.GAME_WEB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$GH_TOKEN" ]]; then
+            echo "GAME_WEB_TOKEN is required to read private build artifacts" >&2
+            exit 1
+          fi
+          build_repo=Gzh0821/pvzge_build
+          run_file="$RUNNER_TEMP/linux-run.json"
+          gh api "repos/$build_repo/actions/runs/$LINUX_RUN_ID" > "$run_file"
+          jq -e '.status == "completed" and .conclusion == "success" and
+            .event == "workflow_dispatch" and .head_branch == "master" and
+            .path == ".github/workflows/windows-portable-release.yml" and
+            .head_repository.full_name == "Gzh0821/pvzge_build"' "$run_file"
+          build_commit=$(jq -r .head_sha "$run_file")
+          for source_path in package.json src-tauri/tauri.conf.json; do
+            gh api "repos/$build_repo/contents/$source_path?ref=$build_commit" --jq .content \
+              | base64 --decode | jq -e --arg version "$VERSION" '.version == $version'
+          done
+          artifact_root="$RUNNER_TEMP/linux-artifacts"
+          mkdir -p "$artifact_root"
+          gh api --paginate "repos/$build_repo/actions/runs/$LINUX_RUN_ID/artifacts?per_page=100" \
+            --jq '.artifacts[] | select(.expired == false) | .name' > "$RUNNER_TEMP/linux-artifact-names.txt"
+          count=0
+          while IFS= read -r artifact; do
+            if [[ "$artifact" == "linux-standard-x64-$VERSION" || "$artifact" == "linux-standard-arm64-$VERSION" ||
+                  "$artifact" == "linux-lite-x64-$VERSION" || "$artifact" == "linux-lite-arm64-$VERSION" ]]; then
+              gh run download "$LINUX_RUN_ID" --repo "$build_repo" --name "$artifact" --dir "$artifact_root/$artifact"
+              count=$((count + 1))
+            fi
+          done < "$RUNNER_TEMP/linux-artifact-names.txt"
+          if (( count < 1 || count > 2 )); then
+            echo "Expected one or two Linux artifacts for $VERSION" >&2
+            exit 1
+          fi
+          python3 scripts/validate-linux-release.py --root "$artifact_root" \
+            --version "$VERSION" --build-commit "$build_commit" --metadata "$ASSET_METADATA"
+
       - name: Create a draft Release when absent
-        if: env.RELEASE_EXISTS == 'false'
+        if: env.RELEASE_EXISTS == 'false' && !inputs.dry_run
         shell: bash
         run: |
           set -euo pipefail
@@ -224,11 +298,12 @@ jobs:
             --repo "$RELEASE_REPOSITORY" \
             --target main \
             --title "$VERSION" \
-            --generate-notes \
+            --notes-file "$RELEASE_NOTES_FILE" \
             --draft \
             --prerelease
 
       - name: Safely replace all Release assets
+        if: '!inputs.dry_run'
         shell: bash
         run: |
           set -euo pipefail
@@ -261,8 +336,9 @@ jobs:
             set +e
 
             while IFS='|' read -r asset_name _ _; do
-              asset_stem=${asset_name%.zip}
-              temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+              asset_stem=${asset_name%.*}
+              asset_extension=${asset_name##*.}
+              temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.${asset_extension}"
               delete_asset_by_name "$temp_name" || cleanup_failed=1
               rm -f "$temp_name" || cleanup_failed=1
             done <"$ASSET_METADATA"
@@ -275,10 +351,11 @@ jobs:
           trap cleanup_temporary_assets EXIT
 
           # Stage every new asset first. Existing formal assets remain untouched
-          # until all four temporary uploads pass size and SHA-256 validation.
+          # until all selected temporary uploads pass size and SHA-256 validation.
           while IFS='|' read -r asset_name asset_size asset_sha256; do
-            asset_stem=${asset_name%.zip}
-            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+            asset_stem=${asset_name%.*}
+            asset_extension=${asset_name##*.}
+            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.${asset_extension}"
             expected_digest="sha256:${asset_sha256}"
 
             delete_asset_by_name "$temp_name"
@@ -322,8 +399,9 @@ jobs:
 
           # Recheck all temporary assets before replacing any formal name.
           while IFS='|' read -r asset_name asset_size asset_sha256; do
-            asset_stem=${asset_name%.zip}
-            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+            asset_stem=${asset_name%.*}
+            asset_extension=${asset_name##*.}
+            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.${asset_extension}"
             expected_digest="sha256:${asset_sha256}"
             temp_id=$(asset_id_by_name "$temp_name")
             if [[ -z "$temp_id" ]]; then
@@ -343,8 +421,9 @@ jobs:
           done <"$ASSET_METADATA"
 
           while IFS='|' read -r asset_name asset_size asset_sha256; do
-            asset_stem=${asset_name%.zip}
-            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.zip"
+            asset_stem=${asset_name%.*}
+            asset_extension=${asset_name##*.}
+            temp_name="${asset_stem}.gha-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.${asset_extension}"
             expected_digest="sha256:${asset_sha256}"
             temp_id=$(asset_id_by_name "$temp_name")
 
@@ -380,6 +459,8 @@ jobs:
             exit 1
           fi
 
+          gh release edit "$VERSION" --repo "$RELEASE_REPOSITORY" --notes-file "$RELEASE_NOTES_FILE"
+
           if [[ "$RELEASE_WAS_DRAFT" == true ]]; then
             gh release edit "$VERSION" \
               --repo "$RELEASE_REPOSITORY" \
@@ -387,7 +468,17 @@ jobs:
               --prerelease
           fi
 
-          echo "Verified Release $VERSION with all Standard and Lite assets"
+          echo "Verified Release $VERSION with all selected assets and release notes"
+
+      - name: Report validation-only result
+        if: inputs.dry_run
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf 'Validated packages for %s; no Release changes were made.\n\n' "$VERSION" >> "$GITHUB_STEP_SUMMARY"
+          cat "$ASSET_METADATA" >> "$GITHUB_STEP_SUMMARY"
+          printf '\nRelease notes:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat "$RELEASE_NOTES_FILE" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Clean up downloaded files
         if: always()
@@ -403,6 +494,11 @@ jobs:
           if [[ -n "${ASSET_MANIFEST:-}" ]]; then
             rm -f "$ASSET_MANIFEST"
           fi
-          if [[ -n "${ASSET_METADATA:-}" ]]; then
+          if [[ -n "${ASSET_METADATA:-}" && -f "$ASSET_METADATA" ]]; then
+            while IFS='|' read -r asset_name _ _; do
+              rm -f -- "$asset_name"
+            done < "$ASSET_METADATA"
             rm -f "$ASSET_METADATA"
           fi
+          rm -f "$RUNNER_TEMP/release-notes.md" "$RUNNER_TEMP/linux-run.json" "$RUNNER_TEMP/linux-artifact-names.txt"
+          rm -rf "$RUNNER_TEMP/linux-artifacts"
