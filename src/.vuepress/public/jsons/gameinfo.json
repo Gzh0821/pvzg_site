@@ -1,46 +1,42 @@
 {
     "Name": "PvZ2_Prerelease_GitHubLevels",
-    "Version": "v0.16.26",
-    "InsideVersion": "0.16.26",
+    "Version": "v0.16.27",
+    "InsideVersion": "0.16.27",
     "Updates": [
         {
-            "en": "Significantly overhauled the backend processes, including certain audio playback. Encountering bugs is normal.",
-            "zh": "本次更新大幅修整了后端进程，包括个别音频播放，如遇漏洞是正常现象。"
+            "zh": "更新至游戏本体 0.16.27（上游 beta），GP-Next 升级为 1.6.0。",
+            "en": "Updated the game body to upstream 0.16.27 beta and GP-Next to 1.6.0."
         },
         {
-            "en": "Added Epic Levels for Mega Gatling Pea(by the community).",
-            "zh": "新增超级机枪史诗任务（由社区制作）。"
+            "zh": "优化模组管理器启动、资源按需读取和列表更新；支持的变更按运行或场景边界应用，其余内容仍明确要求重启。",
+            "en": "Improved mod manager readiness, on-demand resource reads and list updates. Supported changes apply at runtime or scene boundaries; other content still requires a restart."
         },
         {
-            "en": "Added a GitHub Levels window. The levels will be updated frequently and automatically, and you can also go to GitHub to upload levels.",
-            "zh": "加入 Github 关卡窗口，其中的关卡会时常自动更新，亦可前往 GitHub 上传关卡。"
-        },
-        {
-            "en": "Fixed various bugs in 0.16.0. Thank you all for testing.",
-            "zh": "修复了 0.16.0 的各种已知问题，感谢各位的测试。"
+            "zh": "恢复本地 JSON5 关卡支持，补齐原生社区关卡本地评价，并修正实体代号的 RTID 表示。",
+            "en": "Restored local JSON5 levels, added native local level ratings and normalized RTID entity codenames."
         }
     ],
     "NewFeatures": [
-        "新增超级机枪史诗任务（由社区制作）。",
-        "加入 Github 关卡窗口，其中的关卡会时常自动更新，亦可前往 GitHub 上传关卡。",
-        "修复了 0.16.0 的各种已知问题，感谢各位的测试。"
+        "更新至游戏本体 0.16.27（上游 beta），GP-Next 升级为 1.6.0。",
+        "优化模组管理器启动、资源按需读取和列表更新；支持的变更按运行或场景边界应用，其余内容仍明确要求重启。",
+        "恢复本地 JSON5 关卡支持，补齐原生社区关卡本地评价，并修正实体代号的 RTID 表示。"
     ],
     "EnNewFeatures": [
-        "Added Epic Levels for Mega Gatling Pea(by the community).",
-        "Added a GitHub Levels window. The levels will be updated frequently and automatically, and you can also go to GitHub to upload levels.",
-        "Fixed various bugs in 0.16.0. Thank you all for testing."
+        "Updated the game body to upstream 0.16.27 beta and GP-Next to 1.6.0.",
+        "Improved mod manager readiness, on-demand resource reads and list updates. Supported changes apply at runtime or scene boundaries; other content still requires a restart.",
+        "Restored local JSON5 levels, added native local level ratings and normalized RTID entity codenames."
     ],
     "Download": {
         "Quark": "https://pan.quark.cn/s/b4841889eb10",
         "QuarkZip": "https://pan.quark.cn/s/b4841889eb10",
         "Baidu": "https://pan.baidu.com/s/1_wP66889wfWVczuCTbEfMg?pwd=pvz2",
         "Pan123": "https://1835324387.share.123pan.cn/123pan/xUemTd-aTRUh",
-        "Github": "https://github.com/Gzh0821/pvzg_site/releases/tag/0.16.26",
-        "Storage": "https://storage.pvzge.com/pvzge-0.16.26.zip",
-        "StorageLite": "https://storage.pvzge.com/pvzge-lite-0.16.26.zip"
+        "Github": "https://github.com/Gzh0821/pvzg_site/releases/tag/0.16.27",
+        "Storage": "https://storage.pvzge.com/pvzge-0.16.27.zip",
+        "StorageLite": "https://storage.pvzge.com/pvzge-lite-0.16.27.zip"
     },
     "MacOSDownload": {
-        "Storage": "https://storage.pvzge.com/macos/pvzge-macos-0.16.26.zip",
-        "StorageLite": "https://storage.pvzge.com/macos/pvzge-lite-macos-0.16.26.zip"
+        "Storage": "https://storage.pvzge.com/macos/pvzge-macos-0.16.27.zip",
+        "StorageLite": "https://storage.pvzge.com/macos/pvzge-lite-macos-0.16.27.zip"
     }
 }
