@@ -1578,10 +1578,10 @@
     "ru": "Конечная волна"
   },
   "schedulerEvents": {
-    "zh": "事件顺序",
-    "en": "Event order",
-    "es": "Orden de eventos",
-    "ru": "Порядок событий"
+    "zh": "子事件顺序",
+    "en": "Child event order",
+    "es": "Orden de subeventos",
+    "ru": "Порядок вложенных событий"
   },
   "schedulerEmpty": {
     "zh": "还没有事件。",
@@ -1590,10 +1590,10 @@
     "ru": "Событий пока нет."
   },
   "schedulerAddEvent": {
-    "zh": "添加事件",
-    "en": "Add event",
-    "es": "Añadir evento",
-    "ru": "Добавить событие"
+    "zh": "添加子事件",
+    "en": "Add child event",
+    "es": "Añadir subevento",
+    "ru": "Добавить вложенное событие"
   },
   "schedulerInvalidEvent": {
     "zh": "非标准引用",
@@ -5140,5 +5140,179 @@
     "en": "Plant type",
     "es": "Tipo de planta",
     "ru": "Тип растения"
+  },
+  "workbenchLevel": {
+    "zh": "关卡",
+    "en": "Level",
+    "es": "Nivel",
+    "ru": "Уровень"
+  },
+  "workbenchLocalAssets": {
+    "zh": "本关素材",
+    "en": "Level assets",
+    "es": "Recursos del nivel",
+    "ru": "Ресурсы уровня"
+  },
+  "workbenchLibrary": {
+    "zh": "素材",
+    "en": "Library",
+    "es": "Recursos",
+    "ru": "Ресурсы"
+  },
+  "workbenchProperties": {
+    "zh": "属性",
+    "en": "Properties",
+    "es": "Propiedades",
+    "ru": "Свойства"
+  },
+  "workbenchEdit": {
+    "zh": "编辑",
+    "en": "Edit",
+    "es": "Editar",
+    "ru": "Правка"
+  },
+  "workbenchData": {
+    "zh": "数据",
+    "en": "Data",
+    "es": "Datos",
+    "ru": "Данные"
+  },
+  "noEventResults": {
+    "zh": "没有匹配的事件。试试事件名或原生类名。",
+    "en": "No matching events. Try an event name or native class.",
+    "es": "No hay eventos que coincidan. Prueba el nombre del evento o su clase.",
+    "ru": "События не найдены. Введите название события или его класс."
+  },
+  "waveSequence": {
+    "zh": "事件顺序",
+    "en": "Event order",
+    "es": "Orden de eventos",
+    "ru": "Порядок событий"
+  },
+  "skipToEditor": {
+    "zh": "跳至编辑区",
+    "en": "Skip to editor",
+    "es": "Ir al editor",
+    "ru": "Перейти к редактированию"
+  },
+  "workbenchFocus": {
+    "zh": "专注",
+    "en": "Focus",
+    "es": "Enfoque",
+    "ru": "Фокус"
+  },
+  "workbenchLocal": {
+    "zh": "本关",
+    "en": "Local",
+    "es": "Local",
+    "ru": "Локальный"
+  },
+  "workbenchCreateVariant": {
+    "zh": "创建本关变体",
+    "en": "Create local variant",
+    "es": "Crear variante local",
+    "ru": "Создать локальный вариант"
+  },
+  "workbenchSharedProperties": {
+    "zh": "此变体引用公共属性。",
+    "en": "This variant uses shared properties.",
+    "es": "Esta variante usa propiedades compartidas.",
+    "ru": "Вариант использует общие свойства."
+  },
+  "workbenchNoAlmanac": {
+    "zh": "暂无图鉴内容",
+    "en": "No almanac entry",
+    "es": "Sin entrada de almanaque",
+    "ru": "Нет записи в альманахе"
+  },
+  "workbenchNoUsedAssets": {
+    "zh": "尚未使用素材。从素材栏选择后可创建本关变体。",
+    "en": "No assets used yet. Select an asset to create a local variant.",
+    "es": "Aún no hay recursos. Selecciona uno para crear una variante local.",
+    "ru": "Ресурсы ещё не используются. Выберите ресурс для создания локального варианта."
+  },
+  "workbenchToughness": {
+    "zh": "本体生命",
+    "en": "Core health",
+    "es": "Salud base",
+    "ru": "Основное здоровье"
+  },
+  "workbenchSpeed": {
+    "zh": "移动速度",
+    "en": "Walk speed",
+    "es": "Velocidad",
+    "ru": "Скорость"
+  },
+  "workbenchWaveCost": {
+    "zh": "波次点数",
+    "en": "Wave point cost",
+    "es": "Coste de puntos",
+    "ru": "Стоимость в очках"
+  },
+  "workbenchCooldown": {
+    "zh": "冷却时间",
+    "en": "Cooldown",
+    "es": "Recarga",
+    "ru": "Перезарядка"
+  },
+  "workbenchApply": {
+    "zh": "应用修改",
+    "en": "Apply changes",
+    "es": "Aplicar cambios",
+    "ru": "Применить изменения"
+  },
+  "workbenchInvalidData": {
+    "zh": "请输入有效的 JSON 对象。",
+    "en": "Enter a valid JSON object.",
+    "es": "Introduce un objeto JSON válido.",
+    "ru": "Введите корректный объект JSON."
+  },
+  "workbenchSunCost": {
+    "zh": "阳光消耗",
+    "en": "Sun cost",
+    "es": "Coste de sol",
+    "ru": "Стоимость в солнцах"
+  },
+  "expandEvent": {
+    "zh": "展开编辑",
+    "en": "Expand editor",
+    "es": "Ampliar editor",
+    "ru": "Развернуть редактор"
+  },
+  "collapseEvent": {
+    "zh": "收起编辑",
+    "en": "Collapse editor",
+    "es": "Reducir editor",
+    "ru": "Свернуть редактор"
+  },
+  "dismissPicker": {
+    "zh": "关闭事件选择",
+    "en": "Close event picker",
+    "es": "Cerrar selección de eventos",
+    "ru": "Закрыть выбор события"
+  },
+  "searchWaveEvents": {
+    "zh": "搜索事件名或原生类名",
+    "en": "Search event name or native class",
+    "es": "Buscar evento o clase nativa",
+    "ru": "Поиск по названию или классу события"
+  },
+  "dismissAlmanac": {
+    "zh": "关闭图鉴预览",
+    "en": "Close almanac preview",
+    "es": "Cerrar vista previa del almanaque",
+    "ru": "Закрыть просмотр альманаха"
+  },
+  "fullAlmanac": {
+    "zh": "打开完整图鉴",
+    "en": "Open full almanac entry",
+    "es": "Abrir ficha completa",
+    "ru": "Открыть статью альманаха"
+  },
+  "baseAlmanac": {
+    "zh": "查看基础类型图鉴",
+    "en": "Open base type’s almanac entry",
+    "es": "Ver la ficha del tipo base",
+    "ru": "Открыть статью базового типа"
   }
 }

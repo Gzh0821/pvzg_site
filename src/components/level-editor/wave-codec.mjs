@@ -8,7 +8,7 @@ export function getZombieCode(value) {
 }
 
 export function toZombieTypeReference(code) {
-  return `RTID(${code}@ZombieTypes)`;
+  return /^RTID\(.+@CurrentLevel\)$/.test(code) ? code : `RTID(${code}@ZombieTypes)`;
 }
 
 export function groupZombieEntries(entries = []) {
