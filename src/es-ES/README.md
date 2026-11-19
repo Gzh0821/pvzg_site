@@ -10,11 +10,11 @@ heroImageStyle:
   box-shadow: "0 0 12px rgba(0, 0, 0, 0.2)"
   backdrop-filter: "blur(10px)"
   background: "rgba(255, 255, 255, 0.1)"
-bgImage: /assets/image/background-halloween.webp
+bgImage: /assets/image/background-need-for-speed.webp
 bgImageStyle:
   background-attachment: fixed
-  filter: brightness(60%)
-  opacity: 0.5
+  filter: brightness(86%)
+  opacity: 0.95
 heroFullScreen: true
 heroText: PvZ2 Gardendless
 tagline: Un PvZ2 completamente remasterizado para todas las plataformas de escritorio
@@ -37,7 +37,7 @@ actions:
     link: ./contribution/Sponsor
 
 highlights:
-  - bgImage: /assets/image/background-halloween.webp
+  - bgImage: /assets/image/background-need-for-speed.webp
     bgImageStyle:
       background-attachment: fixed
       opacity: 0.5
