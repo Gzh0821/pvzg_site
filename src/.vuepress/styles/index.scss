@@ -85,21 +85,48 @@ iframe.youtube-video {
 }
 
 // Vice City sunset palette
+.vp-project-home {
+    --hero-tint: 255 242 235;
+    --hero-title-colors: #783311, #812451 52%, #63194e;
+
+    .vp-feature-bg {
+        opacity: 0.28;
+    }
+}
+
+[data-theme="dark"] .vp-project-home {
+    --hero-tint: 23 14 43;
+    --hero-title-colors: #ffdf80, #f5899b 52%, #e963c7;
+
+    .vp-hero-mask {
+        filter: brightness(68%);
+    }
+
+    .vp-feature-bg {
+        opacity: 0.45;
+        filter: brightness(60%);
+    }
+}
+
 .vp-hero-info-wrapper.hero-fullscreen {
-    background-color: #1f1f38;
+    background-color: rgb(var(--hero-tint));
+
+    .vp-hero-mask {
+        opacity: 0.84;
+    }
 
     .vp-hero-mask::after {
-        background: radial-gradient(ellipse at center, rgb(23 14 43 / 78%), rgb(23 14 43 / 42%) 36%, transparent 74%) center / cover fixed;
+        background: radial-gradient(ellipse at center, rgb(var(--hero-tint) / 92%), rgb(var(--hero-tint) / 65%) 36%, transparent 74%) center / cover fixed;
     }
 
     #main-title {
         width: fit-content;
         margin-inline: auto;
-        background-image: linear-gradient(105deg, #ffdf80, #f5899b 52%, #e963c7);
+        background-image: linear-gradient(105deg, var(--hero-title-colors));
     }
 
     #main-description {
-        color: #fff3f7;
+        color: var(--vp-c-text);
     }
 
     .vp-hero-action.primary {

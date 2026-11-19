@@ -13,8 +13,6 @@ heroImageStyle:
 bgImage: /assets/image/background-need-for-speed.webp
 bgImageStyle:
   background-attachment: fixed
-  filter: brightness(86%)
-  opacity: 0.95
 heroFullScreen: true
 heroText: PvZ2 Gardendless
 tagline: Полностью переделанная PvZ2 для всех настольных платформ
@@ -40,8 +38,6 @@ highlights:
   - bgImage: /assets/image/background-need-for-speed.webp
     bgImageStyle:
       background-attachment: fixed
-      opacity: 0.5
-      filter: brightness(60%)
     features:
       - title: Gardenest (Beta)
         icon: seedling

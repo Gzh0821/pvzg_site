@@ -13,8 +13,6 @@ heroImageStyle:
 bgImage: /assets/image/background-need-for-speed.webp
 bgImageStyle:
   background-attachment: fixed
-  filter: brightness(86%)
-  opacity: 0.95
 heroFullScreen: true
 heroText: PvZ2 Gardendless
 tagline: 完全重制的全桌面平台PvZ2
@@ -40,8 +38,6 @@ highlights:
   - bgImage: /assets/image/background-need-for-speed.webp
     bgImageStyle:
       background-attachment: fixed
-      opacity: 0.5
-      filter: brightness(60%)
     features:
     - title: 创意苗圃 (Beta)
       icon: seedling
