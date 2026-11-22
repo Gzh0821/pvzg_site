@@ -1525,6 +1525,67 @@
 		{
 			"objclass": "PlantAlmanacProperties",
 			"aliases": [
+				"headbutter"
+			],
+			"objdata": {
+				"Elements": [
+					{
+						"TYPE": "SUNCOST"
+					},
+					{
+						"TYPE": "RECHARGE"
+					},
+					{
+						"TYPE": "TOUGHNESS"
+					},
+					{
+						"TYPE": "DAMAGE",
+						"VALUE": 100
+					},
+					{
+						"TYPE": "RANGE",
+						"SORT": {
+							"en": "Close",
+							"zh": "接近"
+						}
+					},
+					{
+						"TYPE": "FAMILY"
+					}
+				],
+				"Introduction": {
+					"en": "Headbutter Lettuces bash zombies in front and behind while occasionally buttering zombies.",
+					"zh": "黄油生菜砸击前后的僵尸，有时候能用黄油糊住他们。"
+				},
+				"Special": [
+					{
+						"NAME": {
+							"en": "Special",
+							"zh": "特点"
+						},
+						"DESCRIPTION": {
+							"en": "has chance to fling butters",
+							"zh": "有机会丢出黄油"
+						}
+					}
+				],
+				"Chat": {
+					"en": "Headbutter Lettuce yawns. \"Oh, is it that time? Time to headbutt zombies? Let me put on my butting face and I'll be right out!\" He's a champ.",
+					"zh": "黄油生菜打哈欠道：“哦，现在吗？头槌僵尸？等我把头上的油抹顺滑了就来！”他真邋遢。"
+				},
+				"BriefIntroduction": {
+					"en": "Bashes and butters zombies",
+					"zh": "砸击并丢出黄油"
+				},
+				"DisplayOffset": {
+					"x": 0,
+					"y": 0
+				}
+			}
+		},
+		{
+			"objclass": "PlantAlmanacProperties",
+			"aliases": [
 				"bonkchoy"
 			],
 			"objdata": {

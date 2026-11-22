@@ -1,46 +1,55 @@
 {
     "Name": "PvZ2_Prerelease_GitHubLevels",
-    "Version": "v0.16.24",
-    "InsideVersion": "0.16.24",
+    "Version": "v0.16.31",
+    "InsideVersion": "0.16.31",
     "Updates": [
         {
-            "en": "Significantly overhauled the backend processes, including certain audio playback. Encountering bugs is normal.",
-            "zh": "本次更新大幅修整了后端进程，包括个别音频播放，如遇漏洞是正常现象。"
+            "en": "Optimized the animations for the Peashooters.",
+            "zh": "优化豌豆射手系列动画。"
         },
         {
-            "en": "Added Epic Levels for Mega Gatling Pea(by the community).",
-            "zh": "新增超级机枪史诗任务（由社区制作）。"
+            "en": "Reverted low-frequency calculations.",
+            "zh": "回退低帧计算"
         },
         {
-            "en": "Added a GitHub Levels window. The levels will be updated frequently and automatically, and you can also go to GitHub to upload levels.",
-            "zh": "加入 Github 关卡窗口，其中的关卡会时常自动更新，亦可前往 GitHub 上传关卡。"
+            "en": "Added Headbutter Lettuce.",
+            "zh": "加入黄油生菜。"
         },
         {
-            "en": "Fixed various bugs in 0.16.0. Thank you all for testing.",
-            "zh": "修复了 0.16.0 的各种已知问题，感谢各位的测试。"
+            "en": "Added rating buttons to the GitHub Level window (local only, no online upload).",
+            "zh": "为 GitHub 窗口新增评价功能（仅本地，不会联网上传）。"
+        },
+        {
+            "en": "Fixed the issue where the GitHub window failed to fetch new levels due to the server domain change.",
+            "zh": "修复 GitHub 窗口由于服务器域名更替不获取新关卡的问题。"
         }
     ],
     "NewFeatures": [
-        "新增超级机枪史诗任务（由社区制作）。",
-        "加入 Github 关卡窗口，其中的关卡会时常自动更新，亦可前往 GitHub 上传关卡。",
-        "修复了 0.16.0 的各种已知问题，感谢各位的测试。"
+        "优化豌豆射手系列动画。",
+        "回退低帧计算",
+        "加入黄油生菜。",
+        "为 GitHub 窗口新增评价功能（仅本地，不会联网上传）。",
+        "修复 GitHub 窗口由于服务器域名更替不获取新关卡的问题。"
     ],
     "EnNewFeatures": [
-        "Added Epic Levels for Mega Gatling Pea(by the community).",
-        "Added a GitHub Levels window. The levels will be updated frequently and automatically, and you can also go to GitHub to upload levels.",
-        "Fixed various bugs in 0.16.0. Thank you all for testing."
+        "Optimized the animations for the Peashooters.",
+        "Reverted low-frequency calculations.",
+        "Added Headbutter Lettuce.",
+        "Added rating buttons to the GitHub Level window (local only, no online upload).",
+        "Fixed the issue where the GitHub window failed to fetch new levels due to the server domain change."
     ],
     "Download": {
-        "Quark": "https://pan.quark.cn/s/b4841889eb10",
-        "QuarkZip": "https://pan.quark.cn/s/b4841889eb10",
-        "Baidu": "https://pan.baidu.com/s/1_wP66889wfWVczuCTbEfMg?pwd=pvz2",
-        "Pan123": "https://1835324387.share.123pan.cn/123pan/xUemTd-aTRUh",
-        "Github": "https://github.com/Gzh0821/pvzg_site/releases/tag/0.16.24",
-        "Storage": "https://storage.pvzge.com/pvzge-0.16.24.zip?gp-next=1.6.2&build=win-20261122",
-        "StorageLite": "https://storage.pvzge.com/pvzge-lite-0.16.24.zip?gp-next=1.6.2&build=win-20261122"
+        "Quark": "https://pan.quark.cn/s/4f354b8baa5a",
+        "QuarkZip": "",
+        "Baidu": "https://pan.baidu.com/s/1oINekpnSNYECTkLHjCCe3A?pwd=pvz2",
+        "Pan123": "",
+        "Github": "https://github.com/Gzh0821/pvzg_site/releases/tag/0.16.31",
+        "Storage": "https://storage.pvzge.com/pvzge-0.16.31.zip",
+        "StorageLite": "https://storage.pvzge.com/pvzge-lite-0.16.31.zip"
     },
     "MacOSDownload": {
-        "Storage": "https://storage.pvzge.com/macos/pvzge-macos-0.16.24.zip?gp-next=1.6.2&build=macos-16d73fc6",
-        "StorageLite": "https://storage.pvzge.com/macos/pvzge-lite-macos-0.16.24.zip?gp-next=1.6.2&build=macos-16d73fc6"
-    }
+        "Storage": "https://storage.pvzge.com/macos/pvzge-macos-0.16.31.zip",
+        "StorageLite": "https://storage.pvzge.com/macos/pvzge-lite-macos-0.16.31.zip"
+    },
+    "IsBeta": false
 }

@@ -1242,6 +1242,42 @@
 		{
 			"objclass": "PlantProperties",
 			"aliases": [
+				"headbutter"
+			],
+			"objdata": {
+				"DetectDistance": 1.5,
+				"Damage": 100,
+				"DamagePlantfood": 300,
+				"ChanceToButter": 0.1,
+				"ChanceToButterPlantfood": 1,
+				"AttackInterval": 0.5,
+				"ButterType": "butter",
+				"PlantfoodCount": 3,
+				"Cooldown": 10,
+				"CooldownFrom": 1,
+				"SunCost": 175,
+				"BeghouledCost": 2000,
+				"Toughness": 900,
+				"Family": "Melee",
+				"MintDamageFactor": 3,
+				"ButterQuantity": {
+					"Min": 1,
+					"Max": 1
+				},
+				"ButterQuantityPlantfood": {
+					"Min": 3,
+					"Max": 3
+				},
+				"MintBoostedProps": {
+					"ResistanceMult": 1,
+					"SpeedMult": 2,
+					"Plantfood": false
+				}
+			}
+		},
+		{
+			"objclass": "PlantProperties",
+			"aliases": [
 				"bonkchoy"
 			],
 			"objdata": {

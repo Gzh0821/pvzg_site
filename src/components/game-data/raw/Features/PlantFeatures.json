@@ -414,7 +414,7 @@
 			"CODENAME": "firepeashooter",
 			"OBTAINWORLD": "market",
 			"BOOST": 3,
-			"COSTUME": 1,
+			"COSTUME": 2,
 			"ALMANAC": "RTID(firepeashooter@PlantAlmanac)",
 			"PROPS": "RTID(firepeashooter@PlantProps)",
 			"NAME": {
@@ -4928,7 +4928,7 @@
 			"ID": 195,
 			"_CARDSPRITENAME": "shadowpeashooter",
 			"CODENAME": "shadowpeashooter",
-			"COSTUME": 1,
+			"COSTUME": 2,
 			"OBTAINWORLD": "epic",
 			"BOOST": 2,
 			"ALMANAC": "RTID(shadowpeashooter@PlantAlmanac)",
@@ -5292,7 +5292,7 @@
 			"ID": 210,
 			"_CARDSPRITENAME": "slingpea",
 			"CODENAME": "slingpea",
-			"COSTUME": 1,
+			"COSTUME": 2,
 			"OBTAINWORLD": "lod",
 			"BOOST": 2,
 			"ALMANAC": "RTID(slingpea@PlantAlmanac)",
@@ -5893,6 +5893,30 @@
 				"Disabled": "BuduhBoom",
 				"Plant": "BuduhBoom"
 			}
+		},
+		{
+			"ID": 235,
+			"_CARDSPRITENAME": "headbutterlettuce",
+			"CODENAME": "headbutter",
+			"COSTUME": 2,
+			"OBTAINWORLD": "lod",
+			"BOOST": 3,
+			"ALMANAC": "RTID(headbutter@PlantAlmanac)",
+			"PROPS": "RTID(headbutter@PlantProps)",
+			"NAME": {
+				"en": "Headbutter Lettuce",
+				"zh": "黄油生菜"
+			},
+			"TAGS": [
+				"plant"
+			],
+			"ZENGARDEN": {
+				"PlantPlace": "dirt"
+			},
+			"RES": {
+				"Disabled": "HeadbutterLettuce",
+				"Plant": "HeadbutterLettuce"
+			}
 		}
 	],
 	"SEEDCHOOSERDEFAULTORDER": [
@@ -5921,6 +5945,7 @@
 		"spikerock",
 		"threepeater",
 		"buttercup",
+		"headbutter",
 		"splitpea",
 		"chilibean",
 		"lightningreed",
@@ -6118,6 +6143,7 @@
 		"coconutcannon",
 		"cherry_bomb",
 		"buttercup",
+		"headbutter",
 		"splitpea",
 		"chilibean",
 		"lightningreed",
