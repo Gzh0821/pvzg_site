@@ -49,9 +49,9 @@ Comprime los archivos en ZIP e impórtalos. JSON5 también está admitido. [Guí
 Decláralas con `requiredGpNextFeatures`, por ejemplo:
 
 ```json
-{ "requiredGpNextFeatures": ["experimental.jsModding", "experimental.worldMapJson"] }
+{ "requiredGpNextFeatures": ["experimental.jsModding"] }
 ```
 
-Los ID admitidos incluyen `experimental.jsModding`, `experimental.worldMapJson`, `experimental.plantLevelSystem`, `runtime.dynamicPlantRegistry`, `runtime.shopExtensions` y `runtime.scrollSensitivity`. Una función desactivada o desconocida bloquea la instalación/carga normal. El aviso permite abrir los ajustes de una función desactivada; los ID desconocidos deben corregirlos los autores. No se activan funciones automáticamente.
+Los ID admitidos incluyen `experimental.jsModding`, `experimental.plantLevelSystem`, `runtime.dynamicPlantRegistry`, `runtime.shopExtensions` y `runtime.scrollSensitivity`. Una función desactivada o desconocida bloquea la instalación/carga normal. El aviso permite abrir los ajustes de una función desactivada; los ID desconocidos deben corregirlos los autores. No se activan funciones automáticamente.
 
 `depends` y `optionalDepends` son listas de uuid, no nombres npm ni rangos de versión. `gpNextVersion` corresponde a la plataforma. Usa `js.reloadable: false` solo junto a `js.startup: true`. El uuid no puede llevar espacios al inicio/final ni empezar por `legacy:`; para JS debe tener entre 3 y 128 letras, números, puntos, guiones o guiones bajos, empezando por letra o número.

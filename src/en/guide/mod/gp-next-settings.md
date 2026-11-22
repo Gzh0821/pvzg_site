@@ -10,9 +10,9 @@ Use Settings for the panel language, shortcut and scrolling. The default shortcu
 
 Continuous scrolling changes list speed. The discrete selection interval helps prevent trackpad input from skipping worlds or sandbox cards.
 
-Set FPS only in **Experimental**: enable the experimental scheduler, then select its target (initially 120 FPS). With the scheduler off, the game controls frame rate. Performance is read-only and reports measured engine frame intervals, which may differ from the target. Configure plant, zombie and tomb health display in **Tools**. An additional health line may represent armor or a shell.
+Set FPS only in **Settings**: enable the experimental scheduler, then select its target (initially 120 FPS). With the scheduler off, the game controls frame rate. Performance is read-only and reports measured engine frame intervals, which may differ from the target. Configure plant, zombie and tomb health display in **Tools**. An additional health line may represent armor or a shell.
 
-Open a mod's details to change its settings, then apply or restart as prompted. Enable map or plant-level options when a mod requires them; experimental frame scheduling can be enabled separately. JavaScript is off by default. Enable Experimental → JS Modding after reading and confirming one risk notice; no console is needed. After disabling it, restart as prompted: script mods and their required dependents are suspended while their selection is retained. Re-enabling still runs normal checks. JSON-only packs need no JS unless they depend on a script mod.
+Open a mod's details to change its settings, then apply or restart as prompted. Enable plant levels when a mod requires them; experimental frame scheduling can be enabled separately. JavaScript is off by default. Enable Settings → JS Modding after reading and confirming one risk notice; no console is needed. After disabling it, restart as prompted: script mods and their required dependents are suspended while their selection is retained. Re-enabling still runs normal checks. JSON-only packs need no JS unless they depend on a script mod.
 
 ## Import and export preferences
 

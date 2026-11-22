@@ -6,10 +6,9 @@ index: true
 order: 6
 ---
 
-> [!warning]
-> Esta funcion sigue clasificada en la pestaña **Experimental** de GP-Next.  
-> Antes de usarla, activa `worldmap-json` en la pagina **Experimental** dentro del juego.
-> Las funciones experimentales pueden cambiar en cualquier momento, asi que haz una copia de tu partida antes de usarlas.
+Activa los scripts en **Ajustes → JS Modding**, instala y habilita World Map y el paquete de mapa y reinicia el juego. En **Extensiones** puedes ver las extensiones instaladas o ir a [Nest](https://nest.pvzge.com/discover?type=mod).
+
+Añade `"gp-extension.worldmap"` al array `depends` del `pack.json` del paquete de mapa.
 
 Si quieres personalizar el mapa mundial, puedes usar:
 
@@ -43,7 +42,7 @@ El formato actual requiere `apiVersion` en la raiz, y por ahora solo acepta la v
     "egypt": {
       "map": {
         "mode": "replace",
-        "mainline": []
+        "mainline": [{ "id": "start", "type": "level", "levels": ["egypt1"] }]
       }
     }
   }
@@ -133,7 +132,9 @@ Cuando `map.mode` es `replace`:
 - los nodos dentro de `branches` no aparecen automaticamente en la linea principal; deben conectarse de forma explicita mediante `children` de un nodo principal
 - `children` se usa sobre todo para "conexiones de rama adicionales"
 - los nodos originales del mapa principal se eliminan
-- las islas endless siguen siendo vanilla y no se personalizan aqui
+- Las entradas del modo infinito conservan su posición original. En `endlessLayout.placements` del mundo, usa el ID del nivel de entrada para indicar una `position` o un nodo `follow` con un `offset` opcional. Al reemplazar el mapa, puedes enumerar las entradas que quieres conservar en `endlessLayout.keep`.
+
+Para modificar parte del mapa, omite `map` y usa `nodes`, `addNodes` o `removeNodes` en el mundo para modificar, añadir o eliminar nodos.
 
 ## Posicion de los nodos
 
@@ -256,13 +257,13 @@ Nodo de portal:
     "type": "epicPortal"
   },
   "portalLevels": [
-    "egypt_epic_1",
-    "egypt_epic_2"
+    "squash1",
+    "squash2"
   ]
 },
 ```
 
-Estos nodos estan limitados por las posiciones de los nodos especiales vanilla, asi que evita insertar demasiados de este tipo.
+Los regalos y los portales necesitan una plantilla del mismo tipo en el mundo actual. Usa en `portalLevels` los ID de niveles del mundo de destino.
 
 ## Datos de mundo `data`
 
@@ -284,7 +285,7 @@ Si omites `levels / plants / startingLevels` en el modo `replace`, GP-Next tambi
 
 Si el mapa no se muestra como esperabas despues de escribirlo, revisa primero:
 
-1. Confirma que `worldmap-json` esta activado en la pagina **Experimental**
+1. Comprueba que World Map y el paquete de mapa están activos y que el paquete declara la dependencia `gp-extension.worldmap`
 2. Confirma que el nombre del archivo es `gpn-worldmap.json5` o `gpn-worldmap.json`
 3. Confirma que en la raiz existe `apiVersion: 1`
 4. Confirma que la clave bajo `worlds` es el `CODENAME` correcto del mundo

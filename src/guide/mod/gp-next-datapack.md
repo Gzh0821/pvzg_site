@@ -48,7 +48,7 @@ my-mod/
 | 关卡 | `jsons/levels/关卡名.json` |
 | 翻译 | `jsons/lang/lang.json` |
 | 文件合并方式 | `jsons/config/patching.json` |
-| 实验性地图 | `jsons/worldmap/gpn-worldmap.json` |
+| 世界地图扩展 | `jsons/worldmap/gpn-worldmap.json` |
 | 实验性植物等级 | `jsons/extensions/plant-levels.json` |
 | JS 入口 | `scripts/main.js`，或 `js.entry` 指定的位置 |
 | 封面 | 根目录 `thumbnail.png` 或 `thumbnail.ico` |
@@ -107,9 +107,9 @@ my-mod/
 用 `requiredGpNextFeatures` 声明运行条件，例如：
 
 ```json
-{ "requiredGpNextFeatures": ["experimental.jsModding", "experimental.worldMapJson"] }
+{ "requiredGpNextFeatures": ["experimental.jsModding"] }
 ```
 
-可用 ID 包括 `experimental.jsModding`、`experimental.worldMapJson`、`experimental.plantLevelSystem`、`runtime.dynamicPlantRegistry`、`runtime.shopExtensions`、`runtime.scrollSensitivity`。功能关闭或 ID 未知会阻止正常安装／加载；前者可从错误提示打开相应设置，后者需作者修正。平台不会自动开启功能。
+可用 ID 包括 `experimental.jsModding`、`experimental.plantLevelSystem`、`runtime.dynamicPlantRegistry`、`runtime.shopExtensions`、`runtime.scrollSensitivity`。功能关闭或 ID 未知会阻止正常安装／加载；前者可从错误提示打开相应设置，后者需作者修正。平台不会自动开启功能。
 
 `depends` 和 `optionalDepends` 填 uuid 字符串数组，不是 npm 包名或版本表达式；`gpNextVersion` 约束的是平台版本。`js.reloadable: false` 仅用于同时声明 `js.startup: true` 的启动模组。

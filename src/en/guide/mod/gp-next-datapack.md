@@ -46,7 +46,7 @@ ZIP the manifest and `jsons` together, then import the ZIP. No build tools are n
 | Levels | `jsons/levels/LevelName.json` |
 | Language | `jsons/lang/lang.json` |
 | Merge options | `jsons/config/patching.json` |
-| Experimental world map | `jsons/worldmap/gpn-worldmap.json` |
+| World Map extension | `jsons/worldmap/gpn-worldmap.json` |
 | Experimental plant levels | `jsons/extensions/plant-levels.json` |
 | Cover | `thumbnail.png` or `thumbnail.ico` at the root |
 
@@ -81,9 +81,9 @@ JSON5 is also supported for patches. Asset paths and formats are defined by the 
 Declare required platform features with `requiredGpNextFeatures`, for example:
 
 ```json
-{ "requiredGpNextFeatures": ["experimental.jsModding", "experimental.worldMapJson"] }
+{ "requiredGpNextFeatures": ["experimental.jsModding"] }
 ```
 
-Supported IDs include `experimental.jsModding`, `experimental.worldMapJson`, `experimental.plantLevelSystem`, `runtime.dynamicPlantRegistry`, `runtime.shopExtensions` and `runtime.scrollSensitivity`. Disabled or unknown requirements block normal installation/loading. A disabled feature offers a settings link; an unknown ID needs an author fix. Features are never enabled automatically.
+Supported IDs include `experimental.jsModding`, `experimental.plantLevelSystem`, `runtime.dynamicPlantRegistry`, `runtime.shopExtensions` and `runtime.scrollSensitivity`. Disabled or unknown requirements block normal installation/loading. A disabled feature offers a settings link; an unknown ID needs an author fix. Features are never enabled automatically.
 
 `depends` and `optionalDepends` are arrays of mod UUID strings, not npm names or version expressions. `gpNextVersion` describes the platform version. Use `js.reloadable: false` only with `js.startup: true`.

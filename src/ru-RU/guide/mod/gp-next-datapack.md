@@ -49,9 +49,9 @@ JSON-моду нужен `pack.json` в корне и патчи в `jsons/featu
 Объявляйте их через `requiredGpNextFeatures`, например:
 
 ```json
-{ "requiredGpNextFeatures": ["experimental.jsModding", "experimental.worldMapJson"] }
+{ "requiredGpNextFeatures": ["experimental.jsModding"] }
 ```
 
-Поддерживаются `experimental.jsModding`, `experimental.worldMapJson`, `experimental.plantLevelSystem`, `runtime.dynamicPlantRegistry`, `runtime.shopExtensions` и `runtime.scrollSensitivity`. Выключенная или неизвестная функция блокирует обычную установку/загрузку. Для выключенной функции есть переход в настройки; неизвестный ID должен исправить автор. Функции не включаются автоматически.
+Поддерживаются `experimental.jsModding`, `experimental.plantLevelSystem`, `runtime.dynamicPlantRegistry`, `runtime.shopExtensions` и `runtime.scrollSensitivity`. Выключенная или неизвестная функция блокирует обычную установку/загрузку. Для выключенной функции есть переход в настройки; неизвестный ID должен исправить автор. Функции не включаются автоматически.
 
 `depends` и `optionalDepends` — массивы uuid, а не имена npm или диапазоны версий. `gpNextVersion` задаёт версию платформы. Используйте `js.reloadable: false` только с `js.startup: true`. uuid не должен содержать пробелы по краям или начинаться с `legacy:`; для JS нужны 3–128 букв, цифр, точек, дефисов или подчёркиваний, первый символ — буква или цифра.

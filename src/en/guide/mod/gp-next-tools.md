@@ -24,7 +24,7 @@ For a shareable mod, export reference data and place only the intended changes i
 
 ## Performance and logs
 
-Performance is read-only. Sample ordinary gameplay before saving a report; configure FPS in Experimental. Open Diagnostics → Log to filter messages. Diagnostics also provides mod errors, report export, restart. See [startup recovery](./gp-next-recovery.md).
+Performance is read-only. Sample ordinary gameplay before saving a report; configure FPS in Settings. Open Diagnostics → Log to filter messages. Diagnostics also provides mod errors, report export, restart. See [startup recovery](./gp-next-recovery.md).
 
 ## Cloud saves
 

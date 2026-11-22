@@ -8,7 +8,7 @@ order: 7.5
 
 `jsons/extensions/plant-levels.json` or `.json5` maps a base plant to per-level plant types. It provides badges, an Almanac level page and card substitution, not a complete upgrade economy.
 
-Back up first and enable plant levels in Experimental. New cloned plants also require dynamic plant registration.
+Back up first and enable plant levels in Settings. New cloned plants also require dynamic plant registration.
 
 ## Configuration
 

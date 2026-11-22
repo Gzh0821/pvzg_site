@@ -6,10 +6,9 @@ index: true
 order: 6
 ---
 
-> [!warning]
-> This feature is still classified under the **Experimental** tab in GP-Next.  
-> Before using it, enable `worldmap-json` in the in-game **Experimental** page.
-> Experimental features may change at any time, so please back up your save before using them.
+Enable scripts in **Settings → JS Modding**, install and enable World Map and the map pack, then restart the game. Open **Extensions** to view installed extensions or visit [Nest](https://nest.pvzge.com/discover?type=mod).
+
+Add `"gp-extension.worldmap"` to the `depends` array in the map pack’s `pack.json`.
 
 If you want to customize the world map, you can use:
 
@@ -43,7 +42,7 @@ The current format requires a top-level `apiVersion`, and currently only version
     "egypt": {
       "map": {
         "mode": "replace",
-        "mainline": []
+        "mainline": [{ "id": "start", "type": "level", "levels": ["egypt1"] }]
       }
     }
   }
@@ -133,7 +132,9 @@ When `map.mode` is `replace`:
 - nodes inside `branches` do not automatically appear on the mainline; they must be explicitly connected through a mainline node's `children`
 - `children` mainly handles "extra branch connections"
 - vanilla main-map nodes are removed
-- endless islands are still kept vanilla and are not customized here
+- Endless entrances keep their original positions by default. Under the world’s `endlessLayout.placements`, use the entrance level ID to set a `position` or specify `follow` with an optional `offset`. For a replacement map, list the entrances to retain in `endlessLayout.keep`.
+
+For a partial edit, omit `map` and use `nodes`, `addNodes` or `removeNodes` on the world to edit, add or remove individual nodes.
 
 ## Node Position
 
@@ -256,13 +257,13 @@ Portal node:
     "type": "epicPortal"
   },
   "portalLevels": [
-    "egypt_epic_1",
-    "egypt_epic_2"
+    "squash1",
+    "squash2"
   ]
 },
 ```
 
-These nodes are constrained by the positions of vanilla special nodes, so avoid inserting too many of them.
+Gift boxes and portals need a matching template in the current world. Use level IDs from the destination world in `portalLevels`.
 
 ## World-Level `data`
 
@@ -284,7 +285,7 @@ If you omit `levels / plants / startingLevels` in `replace` mode, GP-Next will a
 
 If the map does not display as expected after you finish writing it, check these first:
 
-1. Confirm that `worldmap-json` is enabled in the **Experimental** page
+1. Check that World Map and the map pack are enabled and that the pack declares `gp-extension.worldmap` as a dependency
 2. Confirm that the filename is `gpn-worldmap.json5` or `gpn-worldmap.json`
 3. Confirm that the top level contains `apiVersion: 1`
 4. Confirm that the key under `worlds` is the correct world `CODENAME`

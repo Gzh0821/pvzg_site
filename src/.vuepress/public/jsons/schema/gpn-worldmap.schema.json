@@ -30,9 +30,8 @@
     "worldPatch": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "map"
-      ],
+      "if": { "properties": { "endlessLayout": { "required": ["keep"] } }, "required": ["endlessLayout"] },
+      "then": { "required": ["map"] },
       "properties": {
         "data": {
           "$ref": "#/$defs/worldData"
@@ -40,8 +39,88 @@
         "map": {
           "$ref": "#/$defs/mapSpec"
         },
+        "sequence": { "type": "array", "items": { "$ref": "#/$defs/templateSelector" } },
+        "keepTail": { "type": "boolean" },
+        "nodes": { "$ref": "#/$defs/nodeEdits" },
+        "addNodes": {
+          "allOf": [
+            { "$ref": "#/$defs/nodeEdits" },
+            { "required": ["type"], "items": { "required": ["type"] } }
+          ]
+        },
+        "removeNodes": {
+          "oneOf": [
+            { "$ref": "#/$defs/removal" },
+            { "type": "array", "items": { "$ref": "#/$defs/removal" } }
+          ]
+        },
+        "endlessLayout": { "$ref": "#/$defs/endlessLayout" },
         "endless": {
           "$ref": "#/$defs/endlessSpec"
+        }
+      }
+    },
+    "nodeEdits": {
+      "oneOf": [
+        { "$ref": "#/$defs/nodeEdit" },
+        { "type": "array", "items": { "$ref": "#/$defs/nodeEdit" } }
+      ]
+    },
+    "nodeEdit": {
+      "type": "object",
+      "properties": {
+        "id": {"$ref": "#/$defs/nodeSpec/properties/id"},
+        "type": {"$ref": "#/$defs/nodeSpec/properties/type"},
+        "appearance": {"$ref": "#/$defs/nodeSpec/properties/appearance"},
+        "title": {"$ref": "#/$defs/nodeSpec/properties/title"},
+        "template": {"$ref": "#/$defs/nodeSpec/properties/template"},
+        "position": {"$ref": "#/$defs/nodeSpec/properties/position"},
+        "relativePosition": {"$ref": "#/$defs/nodeSpec/properties/relativePosition"},
+        "levels": {"$ref": "#/$defs/nodeSpec/properties/levels"},
+        "portalLevels": {"$ref": "#/$defs/nodeSpec/properties/portalLevels"},
+        "plantReward": {"$ref": "#/$defs/nodeSpec/properties/plantReward"},
+        "upgradeReward": {"$ref": "#/$defs/nodeSpec/properties/upgradeReward"},
+        "warnOverlap": {"$ref": "#/$defs/nodeSpec/properties/warnOverlap"},
+        "overlapThreshold": {"$ref": "#/$defs/nodeSpec/properties/overlapThreshold"},
+        "match": {"$ref": "#/$defs/templateSelector"},
+        "selector": {"$ref": "#/$defs/templateSelector"},
+        "parent": {"$ref": "#/$defs/templateSelector"},
+        "primary": {"type": "boolean"},
+        "customId": {"type": "string"},
+        "affectsMaxX": {"type": "boolean"},
+        "children": {"type": "array", "items": {"$ref": "#/$defs/templateSelector"}}
+      }
+    },
+    "removal": {
+      "anyOf": [
+        { "$ref": "#/$defs/templateSelector" },
+        { "type": "object", "required": ["match"], "properties": { "match": { "$ref": "#/$defs/templateSelector" } } },
+        { "type": "object", "required": ["selector"], "properties": { "selector": { "$ref": "#/$defs/templateSelector" } } }
+      ]
+    },
+    "endlessLayout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "keep": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "placements": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              { "const": "original" },
+              {
+                "type": "object", "additionalProperties": false, "required": ["position"],
+                "properties": { "position": { "$ref": "#/$defs/position" } }
+              },
+              {
+                "type": "object", "additionalProperties": false, "required": ["follow"],
+                "properties": {
+                  "follow": { "type": "string", "minLength": 1 },
+                  "offset": { "$ref": "#/$defs/positionOffset" }
+                }
+              }
+            ]
+          }
         }
       }
     },
@@ -350,12 +429,15 @@
       ]
     },
     "templateSelector": {
-      "description": "Selector used only when cloning from existing runtime nodes. `levelId` can match either ordinary levelJsonsID or endless-island entrance levelsID. 仅在从现有运行时节点克隆时使用的模板选择器；其中 `levelId` 既可匹配普通 levelJsonsID，也可匹配无尽岛入口的 levelsID。",
+      "description": "Selector for an existing island. `levelId` can match either ordinary levelJsonsID or endless-island entrance levelsID. 用于匹配现有岛屿的选择器；其中 `levelId` 既可匹配普通 levelJsonsID，也可匹配无尽岛入口的 levelsID。",
       "oneOf": [
+        { "type": "integer", "minimum": 0 },
         {
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "index": { "type": "integer", "minimum": 0 },
+            "levelNodeName": { "type": "string" },
             "id": {
               "type": "string",
               "description": "Match by stable runtime/custom id. 按稳定运行时/custom id 匹配。"

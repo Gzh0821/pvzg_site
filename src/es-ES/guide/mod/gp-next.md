@@ -14,13 +14,13 @@ Abre la barra lateral con **F9** o el botón de la esquina superior izquierda.
 - **Rendimiento**: mediciones reales de FPS e informes.
 - **Diagnóstico**: errores de mods, registro, informes, reinicio.
 - **Ajustes**: idioma del panel, atajo y desplazamiento.
-- **Experimental**: planificador de FPS, mapas y niveles de plantas.
+- **Extensiones**: consulta las extensiones verificadas y sus ajustes o abre Nest.
 
 En Mods, importa el ZIP, confirma la instalación, activa el mod y guarda la selección. Aplica los cambios o reinicia cuando se indique. Instala también todas las dependencias. Los jugadores no necesitan herramientas de programación.
 
 Para actualizar, importa el nuevo ZIP con el mismo uuid. Editar la carpeta original no cambia la copia instalada. Para desactivar, desmarca el mod, guarda y aplica. Si falla el inicio, recupera la configuración anterior desde la pantalla de recuperación.
 
-JavaScript está desactivado por defecto. Actívalo en Experimental → JS Modding tras leer y confirmar un aviso de riesgo; no necesitas la consola. Al desactivarlo, reinicia cuando se indique: los mods JS y los paquetes que dependen obligatoriamente de ellos quedan suspendidos, conservando su selección. Al reactivarlo se repiten las comprobaciones. Un paquete JSON solo necesita JS si depende de un mod con scripts.
+JavaScript está desactivado por defecto. Actívalo en Ajustes → JS Modding tras leer y confirmar un aviso de riesgo; no necesitas la consola. Al desactivarlo, reinicia cuando se indique: los mods JS y los paquetes que dependen obligatoriamente de ellos quedan suspendidos, conservando su selección. Al reactivarlo se repiten las comprobaciones. Un paquete JSON solo necesita JS si depende de un mod con scripts.
 
 [Archivos del mod](./gp-next-datapack.md) · [API y ejemplos en inglés](/en/guide/mod/gp-next-api.md)
 
@@ -32,7 +32,7 @@ Los detalles y la vista previa muestran el estado de las dependencias y funcione
 
 Activa JS Modding antes de importar scripts. Actualizar un paquete de scripts cuyo contenido cambió exige confirmar de nuevo la confianza, aunque conserve nombre o versión. Se admiten ZIP y carpetas; extrae los RAR antes de importar la carpeta.
 
-Selecciona Desinstalar en los detalles, confirma y aplica o reinicia. Solo pueden desinstalarse los mods importados con el nuevo gestor, no los migrados del directorio antiguo. Antes debes resolver los mods activados que dependan de él. La desinstalación retira el mod de la configuración; no borra guardados, datos propios del mod ni todas las copias almacenadas. Se siguen comprobando las dependencias del guardado.
+Selecciona Desinstalar en los detalles, confirma y aplica o reinicia. Solo pueden desinstalarse los mods importados con el nuevo gestor, no los migrados del directorio antiguo. Antes debes resolver los mods activados que dependan de él. La desinstalación elimina el registro, los archivos de origen del mod en `packs/` y sus copias en `installed/`. Se conservan las partidas y los datos del mod. Se siguen comprobando las dependencias del guardado.
 
 ## Obtener contenido de Gardenest
 

@@ -16,7 +16,7 @@ Press **F9** or click the top-left button to open the game sidebar. Change the s
 | Performance | Measure actual FPS and save reports |
 | Diagnostics | Mod errors, logs, reports, restart |
 | Settings | Panel language, shortcut, scrolling and website help |
-| Experimental | Frame scheduling, world maps and plant-level options |
+| Extensions | View verified extensions and their settings, or open Nest |
 
 ## Install and update
 
@@ -31,7 +31,7 @@ Disable a mod by clearing its checkbox, saving and applying. New entities and re
 
 ## JavaScript mods
 
-JavaScript is off by default. Enable Experimental → JS Modding after reading and confirming one risk notice; no console is needed. After disabling it, restart as prompted: script mods and their required dependents are suspended while their selection is retained. Re-enabling still runs normal checks. JSON-only packs need no JS unless they depend on a script mod.
+JavaScript is off by default. Enable Settings → JS Modding after reading and confirming one risk notice; no console is needed. After disabling it, restart as prompted: script mods and their required dependents are suspended while their selection is retained. Re-enabling still runs normal checks. JSON-only packs need no JS unless they depend on a script mod.
 
 Only install scripts you trust. Updating a script package with changed content requires a new trust confirmation. Importing a ZIP never enables JS Modding automatically.
 
@@ -49,7 +49,7 @@ Mod details and import previews show dependency and required-feature status. Imp
 
 Enable JS Modding before importing script packages. Changed script-package content requires renewed trust when updating, even if its name or version is unchanged. ZIP and folder imports are supported; extract RAR files before importing the folder.
 
-Choose Uninstall in mod details, confirm, then apply or restart as prompted. Only mods imported by the new manager support uninstall; migrated legacy entries do not. Resolve enabled dependent mods first. Uninstall removes the mod from configuration; it does not erase saves, mod-owned data or all stored snapshots. Save-content dependencies still need checking.
+Choose Uninstall in mod details, confirm, then apply or restart as prompted. Only mods imported by the new manager support uninstall; migrated legacy entries do not. Resolve enabled dependent mods first. Uninstall removes the installation record, its sources in `packs/` and its copies in `installed/`. Saves and mod-owned data are retained. Save-content dependencies still need checking.
 
 ## Get creations from Gardenest
 

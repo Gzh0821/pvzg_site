@@ -6,10 +6,9 @@ index: true
 order: 6
 ---
 
-> [!warning]
-> 这项能力目前仍归类在 GP-Next 的 **Experimental / 实验性** 页。  
-> 使用前请先在游戏里的 **Experimental** 页启用 `worldmap-json`。
-> 实验性功能可能随时变动，使用前请务必备份存档。
+在 **设置 → JS Modding** 开启脚本，安装并启用 World Map 扩展及地图包，然后重启游戏。可在 **扩展** 页查看已安装的扩展或前往 [Nest](https://nest.pvzge.com/discover?type=mod)。
+
+地图包需在 `pack.json` 的 `depends` 数组中加入 `"gp-extension.worldmap"`。
 
 如果你想自定义世界地图，可以使用：
 
@@ -43,7 +42,7 @@ MyPack/
     "egypt": {
       "map": {
         "mode": "replace",
-        "mainline": []
+        "mainline": [{ "id": "start", "type": "level", "levels": ["egypt1"] }]
       }
     }
   }
@@ -133,7 +132,9 @@ https://pvzge.com/jsons/schema/gpn-worldmap.schema.json
 - `branches` 里的节点不会自动出现在主线里，必须通过主线节点的 `children` 显式连接
 - `children` 主要只负责“额外的支线连接”
 - 原版主图节点会被移除
-- 无尽岛仍然保留原版，不由这里自定义
+- 无尽入口默认保留原位。在世界的 `endlessLayout.placements` 中按入口关卡 ID 指定 `position`，或用 `follow` 和可选的 `offset` 跟随节点。整图替换时可用 `endlessLayout.keep` 列出保留的入口。
+
+若只调整部分地图，省略 `map`，在对应世界下用 `nodes` 修改节点、`addNodes` 添加节点或 `removeNodes` 删除节点。
 
 ## 节点位置
 
@@ -254,13 +255,13 @@ template: { type: 'epicPortal' }
     "type": "epicPortal"
   },
   "portalLevels": [
-    "egypt_epic_1",
-    "egypt_epic_2"
+    "squash1",
+    "squash2"
   ]
 },
 ```
 
-这些节点受原版特殊节点位置的限制，因此，请避免插入过多此类节点。
+礼盒和传送门需要当前世界中同类型的原版模板。传送门的 `portalLevels` 填写目标世界中已有的关卡 ID。
 
 ## 世界级数据 `data`
 
@@ -282,7 +283,7 @@ template: { type: 'epicPortal' }
 
 如果你写完后地图没有按预期显示，优先排查：
 
-1. 确认 **Experimental** 页已经启用 `worldmap-json`
+1. 确认 World Map 和地图包均已启用，且地图包已声明依赖 `gp-extension.worldmap`
 2. 确认文件名是 `gpn-worldmap.json5` 或 `gpn-worldmap.json`
 3. 确认顶层写了 `apiVersion: 1`
 4. 确认 `worlds` 下的 key 是正确的世界 `CODENAME`

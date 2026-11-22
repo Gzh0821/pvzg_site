@@ -8,7 +8,7 @@ order: 7.5
 
 `jsons/extensions/plant-levels.json` o `.json5` relaciona una planta base con tipos de plantas por nivel. Ofrece insignias, página de niveles del almanaque y sustitución de cartas, no una economía completa de mejoras.
 
-Haz una copia y activa los niveles de plantas en Experimental. Los clones nuevos también necesitan el registro dinámico de plantas.
+Haz una copia y activa los niveles de plantas en Ajustes. Los clones nuevos también necesitan el registro dinámico de plantas.
 
 ## Configuración
 

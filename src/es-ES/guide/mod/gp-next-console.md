@@ -6,7 +6,7 @@ index: true
 order: 8
 ---
 
-Puedes activar scripts en Experimental → JS Modding tras confirmar el riesgo, sin consola. Los comandos siguientes siguen disponibles para depuración.
+Puedes activar scripts en Ajustes → JS Modding tras confirmar el riesgo, sin consola. Los comandos siguientes siguen disponibles para depuración.
 
 Después de cargar el juego, abre F12 → Console.
 

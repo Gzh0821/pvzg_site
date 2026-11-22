@@ -8,9 +8,9 @@ order: 7
 
 En Ajustes cambia el idioma del panel, el atajo F9 y el desplazamiento. El idioma del juego se elige en los ajustes del propio juego.
 
-Configura los FPS solo en **Experimental**: activa el planificador experimental y elige su objetivo, inicialmente 120 FPS. Al desactivarlo, el juego controla la frecuencia. Rendimiento es de solo lectura y mide los intervalos de fotogramas del motor; el resultado puede diferir del objetivo. La salud de plantas, zombis y tumbas se configura en **Herramientas**. Dos líneas de salud pueden indicar cuerpo y armadura.
+Configura los FPS solo en **Ajustes**: activa el planificador experimental y elige su objetivo, inicialmente 120 FPS. Al desactivarlo, el juego controla la frecuencia. Rendimiento es de solo lectura y mide los intervalos de fotogramas del motor; el resultado puede diferir del objetivo. La salud de plantas, zombis y tumbas se configura en **Herramientas**. Dos líneas de salud pueden indicar cuerpo y armadura.
 
-Abre los detalles de cada mod para cambiar sus opciones; guarda y aplica o reinicia cuando se indique. Activa mapas y niveles de plantas según los requisitos del mod; el planificador de FPS se puede activar por separado. JavaScript está desactivado por defecto. Actívalo en Experimental → JS Modding tras leer y confirmar un aviso de riesgo; no necesitas la consola. Al desactivarlo, reinicia cuando se indique: los mods JS y los paquetes que dependen obligatoriamente de ellos quedan suspendidos, conservando su selección. Al reactivarlo se repiten las comprobaciones. Un paquete JSON solo necesita JS si depende de un mod con scripts.
+Abre los detalles de cada mod para cambiar sus opciones; guarda y aplica o reinicia cuando se indique. Activa los niveles de plantas según los requisitos del mod; el planificador de FPS se puede activar por separado. JavaScript está desactivado por defecto. Actívalo en Ajustes → JS Modding tras leer y confirmar un aviso de riesgo; no necesitas la consola. Al desactivarlo, reinicia cuando se indique: los mods JS y los paquetes que dependen obligatoriamente de ellos quedan suspendidos, conservando su selección. Al reactivarlo se repiten las comprobaciones. Un paquete JSON solo necesita JS si depende de un mod con scripts.
 
 ## Importar y exportar preferencias
 
