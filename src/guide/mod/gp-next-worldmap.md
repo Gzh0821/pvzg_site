@@ -6,7 +6,7 @@ index: true
 order: 6
 ---
 
-在 **设置 → JS Modding** 开启脚本，安装并启用 World Map 扩展及地图包，然后重启游戏。可在 **扩展** 页查看已安装的扩展或前往 [Nest](https://nest.pvzge.com/discover?type=mod)。
+在 **设置 → JS Modding** 开启脚本，安装并启用 [World Map](https://nest.pvzge.com/projects/gp-extension-worldmap) 扩展及地图包，然后重启游戏。可在 **扩展** 页查看已安装的扩展。
 
 地图包需在 `pack.json` 的 `depends` 数组中加入 `"gp-extension.worldmap"`。
 

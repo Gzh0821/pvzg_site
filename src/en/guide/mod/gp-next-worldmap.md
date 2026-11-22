@@ -1,12 +1,12 @@
 ---
-title: World Map
+title: [World Map](https://nest.pvzge.com/projects/gp-extension-worldmap)
 icon: map-location-dot
 pageInfo: false
 index: true
 order: 6
 ---
 
-Enable scripts in **Settings → JS Modding**, install and enable World Map and the map pack, then restart the game. Open **Extensions** to view installed extensions or visit [Nest](https://nest.pvzge.com/discover?type=mod).
+Enable scripts in **Settings → JS Modding**, install and enable World Map and the map pack, then restart the game. Open **Extensions** to view installed extensions.
 
 Add `"gp-extension.worldmap"` to the `depends` array in the map pack’s `pack.json`.
 
