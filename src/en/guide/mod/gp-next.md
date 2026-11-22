@@ -31,7 +31,7 @@ Disable a mod by clearing its checkbox, saving and applying. New entities and re
 
 ## JavaScript mods
 
-JavaScript is off by default. Enable Settings → JS Modding after reading and confirming one risk notice; no console is needed. After disabling it, restart as prompted: script mods and their required dependents are suspended while their selection is retained. Re-enabling still runs normal checks. JSON-only packs need no JS unless they depend on a script mod.
+JavaScript is off by default. Enable Settings → Experimental features → JS Modding after reading and confirming one risk notice; no console is needed. After disabling it, restart as prompted: script mods and their required dependents are suspended while their selection is retained. Re-enabling still runs normal checks. JSON-only packs need no JS unless they depend on a script mod.
 
 Only install scripts you trust. Updating a script package with changed content requires a new trust confirmation. Importing a ZIP never enables JS Modding automatically.
 

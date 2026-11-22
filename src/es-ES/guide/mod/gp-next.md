@@ -20,7 +20,7 @@ En Mods, importa el ZIP, confirma la instalación, activa el mod y guarda la sel
 
 Para actualizar, importa el nuevo ZIP con el mismo uuid. Editar la carpeta original no cambia la copia instalada. Para desactivar, desmarca el mod, guarda y aplica. Si falla el inicio, recupera la configuración anterior desde la pantalla de recuperación.
 
-JavaScript está desactivado por defecto. Actívalo en Ajustes → JS Modding tras leer y confirmar un aviso de riesgo; no necesitas la consola. Al desactivarlo, reinicia cuando se indique: los mods JS y los paquetes que dependen obligatoriamente de ellos quedan suspendidos, conservando su selección. Al reactivarlo se repiten las comprobaciones. Un paquete JSON solo necesita JS si depende de un mod con scripts.
+JavaScript está desactivado por defecto. Actívalo en Ajustes → Funciones experimentales → JS Modding tras leer y confirmar un aviso de riesgo; no necesitas la consola. Al desactivarlo, reinicia cuando se indique: los mods JS y los paquetes que dependen obligatoriamente de ellos quedan suspendidos, conservando su selección. Al reactivarlo se repiten las comprobaciones. Un paquete JSON solo necesita JS si depende de un mod con scripts.
 
 [Archivos del mod](./gp-next-datapack.md) · [API y ejemplos en inglés](/en/guide/mod/gp-next-api.md)
 

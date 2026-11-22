@@ -6,7 +6,7 @@ index: true
 order: 8
 ---
 
-Players can enable scripts in Settings → JS Modding after confirming the risk notice, without console commands. The commands below remain available for debugging.
+Players can enable scripts in Settings → Experimental features → JS Modding after confirming the risk notice, without console commands. The commands below remain available for debugging.
 
 After the game loads, press F12 and select Console. JSON-only mod installation does not need console commands.
 

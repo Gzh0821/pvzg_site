@@ -6,7 +6,7 @@ index: true
 order: 6
 ---
 
-Activa los scripts en **Ajustes → JS Modding**, instala y habilita [World Map](https://nest.pvzge.com/projects/gp-extension-worldmap) y el paquete de mapa y reinicia el juego. En **Extensiones** puedes ver las extensiones instaladas.
+Activa los scripts en **Ajustes → Funciones experimentales → JS Modding**, instala y habilita [World Map](https://nest.pvzge.com/projects/gp-extension-worldmap) y el paquete de mapa y reinicia el juego. En **Extensiones** puedes ver las extensiones instaladas.
 
 Añade `"gp-extension.worldmap"` al array `depends` del `pack.json` del paquete de mapa.
 
