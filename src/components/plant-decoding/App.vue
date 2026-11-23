@@ -12,11 +12,13 @@
             <div class="control-band">
                 <label class="number-control">
                     <span>{{ t('baseCount') }}</span>
-                    <a-input-number v-model:value="baseCount" :min="3" :max="10" />
+                    <a-input-number :value="baseCount" :min="3" :max="10" :precision="0"
+                        @update:value="value => baseCount = normalizeCount(value, 5)" />
                 </label>
                 <label class="number-control">
                     <span>{{ t('codeCount') }}</span>
-                    <a-input-number v-model:value="codeCount" :min="3" :max="10" />
+                    <a-input-number :value="codeCount" :min="3" :max="10" :precision="0"
+                        @update:value="value => codeCount = normalizeCount(value, 4)" />
                 </label>
                 <div class="quick-stats" aria-live="polite">
                     <span><strong>{{ availableRules.length }}</strong>{{ t('availableMerges') }}</span>
@@ -494,6 +496,11 @@ const ruleScope = ref<RuleScope>('current');
 const recommendationMode = ref<RecommendationMode>('balanced');
 const baseCount = ref(5);
 const codeCount = ref(4);
+
+function normalizeCount(value: number | string | null, defaultCount: number) {
+    return Math.min(10, Math.max(3, Math.round(Number(value) || defaultCount)));
+}
+
 const activeBasePlants = computed(() => basePool.slice(0, baseCount.value));
 const availableRules = computed(() => allRules.filter(rule => activeBasePlants.value.includes(rule.PlantA) && activeBasePlants.value.includes(rule.PlantB)));
 const actualCodeCount = computed(() => Math.min(codeCount.value, availableRules.value.length));
@@ -808,8 +815,6 @@ function confirmPractice() {
 }
 
 watch([baseCount, codeCount], () => {
-    baseCount.value = Math.min(10, Math.max(3, Number(baseCount.value) || 5));
-    codeCount.value = Math.min(10, Math.max(3, Number(codeCount.value) || 4));
     resetAssistant();
     startPractice();
 });

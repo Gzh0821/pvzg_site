@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { runInNewContext } from 'node:vm';
 
 import decodingData from './decoding-plants.json' with { type: 'json' };
 import {
@@ -160,24 +161,69 @@ function findGameDecodingData(buildRoot) {
     return null;
 }
 
+// Evaluate only the requested Cocos module. The shared chunk wraps its named
+// registrations in an anonymous System.register entry.
+function loadGameModule(filename, name, imports = {}) {
+    const exports = {};
+    let found = false;
+    const System = {
+        register(id, dependencies, declare) {
+            if (Array.isArray(id)) {
+                dependencies().execute();
+            } else if (id === `chunks:///_virtual/${name}`) {
+                found = true;
+                const module = declare((key, value) => {
+                    if (typeof key === 'string') return exports[key] = value;
+                    Object.assign(exports, key);
+                });
+                module.setters?.forEach((set, i) => set(imports[dependencies[i]] || {}));
+                module.execute();
+            }
+        }
+    };
+    runInNewContext(fs.readFileSync(filename, 'utf8'), { System }, { filename });
+    assert.ok(found, `game bundle must register ${name}`);
+    return exports;
+}
+
 function verifyCurrentGameBody() {
     const defaultBuildRoot = path.resolve(currentDir, '../../../../pvzge_build');
     const buildRoot = process.env.PVZGE_BUILD_ROOT || defaultBuildRoot;
     const gameBundlePath = path.join(buildRoot, 'src/public/assets/main/index.js');
     if (!fs.existsSync(gameBundlePath)) return false;
 
-    const gameBundle = fs.readFileSync(gameBundlePath, 'utf8');
-    const moduleStart = gameBundle.indexOf('System.register("chunks:///_virtual/ArcadeDecodingPlants.ts"');
-    const moduleEnd = gameBundle.indexOf('System.register("chunks:///_virtual/', moduleStart + 20);
-    assert.ok(moduleStart >= 0 && moduleEnd > moduleStart, 'current game body must contain ArcadeDecodingPlants.ts');
-    const moduleSource = gameBundle.slice(moduleStart, moduleEnd);
-    assert.ok(moduleSource.includes('if(this.CodePlants[t]==e)return ht.correct'), 'game must judge same-slot targets first');
-    assert.ok(moduleSource.includes('r==e&&(null==a||!a.isCorrect())'), 'game must judge other unsolved slots second');
-    assert.ok(moduleSource.includes('return i.judgeHalf(l)?ht.half:ht.fault'), 'game must judge half before fault');
-
     const gameData = findGameDecodingData(buildRoot);
     assert.ok(gameData, 'current game body must expose embedded DecodingPlants data');
     assert.deepEqual(gameData, decodingData, 'website DecodingPlants data must match the current game body exactly');
+
+    const helpers = 'rollupPluginModLoBabelHelpers.js';
+    const { ArcadeDecodingPlants, ArcadeDecodingMatchingResultEnum } = loadGameModule(gameBundlePath, 'ArcadeDecodingPlants.ts', {
+        [`./${helpers}`]: loadGameModule(path.join(buildRoot, 'src/public/src/chunks/bundle.js'), helpers),
+        './ArcadeGame.ts': { ArcadeGame: class {} },
+        cc: {
+            cclegacy: { _RF: { push() {}, pop() {} } },
+            _decorator: { ccclass: () => target => target, property: () => () => {} },
+            dragonBones: {}
+        }
+    });
+    const game = Object.create(ArcadeDecodingPlants.prototype);
+    Object.assign(game, { FeatureJson: { json: gameData }, confirmButton: {}, MouseOn() {} });
+    game.specialArcadeOnLoad();
+    const ruleMap = new Map(gameData.MERGES.map(rule => [rule.Target, rule]));
+    for (const real of ruleMap.keys()) {
+        for (const guess of ruleMap.keys()) {
+            // The second target can be guessed elsewhere until its slot locks.
+            game.CodePlants = real === guess ? [real] : [real, guess];
+            for (const locked of [false, true]) {
+                game.MergedCards = game.CodePlants.map((_, i) => ({ isCorrect: () => i === 1 && locked }));
+                const guesses = game.CodePlants.map(() => guess);
+                const locks = game.MergedCards.map(card => card.isCorrect());
+                const expected = ArcadeDecodingMatchingResultEnum[game.judgeTarget(guess, 0)];
+                assert.equal(judgeAttempt(game.CodePlants, guesses, ruleMap, locks).feedback[0], expected,
+                    `game feedback for ${real} / ${guess}, second slot locked: ${locked}`);
+            }
+        }
+    }
     return true;
 }
 
