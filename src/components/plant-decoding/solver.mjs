@@ -11,14 +11,14 @@ const PROBE_CONFIG = {
         sampleLimit: 256,
         seedLimit: 32,
         passes: 1,
-        minimumOutcomeRatio: 1.5
+        minimumOutcomePercent: 150
     },
     balanced: {
         bitsPerRound: 12,
         sampleLimit: 512,
         seedLimit: 64,
         passes: 1,
-        minimumOutcomeRatio: 1.25,
+        minimumOutcomePercent: 125,
         latestProbeRound: 4
     },
     'low-rounds': {
@@ -26,7 +26,7 @@ const PROBE_CONFIG = {
         sampleLimit: 1024,
         seedLimit: 128,
         passes: 2,
-        minimumOutcomeRatio: 1.2
+        minimumOutcomePercent: 120
     }
 };
 
@@ -803,7 +803,7 @@ function makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config) {
         : createFeedbackStatsEvaluator(analysis.samples, rules, lockedBefore);
     const baselineFull = evaluateFullFeedback(baseline);
     const suggestionFull = evaluateFullFeedback(suggestion);
-    const requiredOutcomes = Math.ceil(baselineFull.outcomeCount * config.minimumOutcomeRatio);
+    const requiredOutcomes = Math.ceil(baselineFull.outcomeCount * config.minimumOutcomePercent / 100);
     return suggestionFull.outcomeCount > baselineFull.outcomeCount
         && suggestionFull.outcomeCount >= requiredOutcomes
         ? suggestion
@@ -822,13 +822,17 @@ export function makeSuggestionPlan(rules, analysis, lockedBefore = [], options =
         return { guesses: baseline, probe: false };
     }
 
-    const config = PROBE_CONFIG[mode];
+    let config = PROBE_CONFIG[mode];
     const earliestRound = recommendationProbeRound(rules.length, analysis.domains.length, mode);
     const round = Math.max(1, Number(options.round) || 1);
     if (options.probeUsed || round < earliestRound || round > (config.latestProbeRound || Infinity)) {
         return { guesses: baseline, probe: false };
     }
 
+    if (mode === 'balanced' && round === 4 && analysis.domains.length === 10
+        && new Set(rules.flatMap(rule => [rule.PlantA, rule.PlantB])).size === 10) {
+        config = { ...config, minimumOutcomePercent: 105 };
+    }
     const probe = makeOutcomeProbe(rules, analysis, lockedBefore, baseline, config);
     const probeSlots = probe.map((target, slot) => target !== baseline[slot]);
     return { guesses: probe, probe: probeSlots.some(Boolean), probeSlots };

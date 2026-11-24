@@ -339,6 +339,34 @@ assert.equal(makeSuggestionPlan(decodingData.MERGES, probeAnalysis, probeLocked,
     probeUsed: true
 }).probe, false);
 
+// Round-four fixtures bracket the balanced 10×10 threshold and cover both neighboring difficulties.
+for (const [baseCount, secret, expectedProbe] of [
+    [10, ['hotdate', 'plantern', 'bulbkekengi', 'spikerock', 'pepperpult',
+        'ghostpepper', 'vamporcini', 'endurian', 'sporeshroom', 'twinsunflower'], true],
+    [10, ['firegourd', 'fumeshroom', 'gloomshroom', 'melonpult', 'loquat',
+        'plantern', 'snowpea', 'tallnut', 'hotdate', 'starfruit'], false],
+    [9, ['iceweed', 'stallia', 'lychee', 'primalpotatomine', 'vamporcini',
+        'fumeshroom', 'plantern', 'snowdrop', 'snowpea', 'sweetpotato'], false],
+    [10, ['hotdate', 'solartomato', 'sweetpotato', 'iceweed', 'repeater',
+        'explodeonut', 'peanut', 'dandelion', 'cactus'], false]
+]) {
+    const bases = decodingData.BASES.slice(0, baseCount);
+    const rules = decodingData.MERGES.filter(rule => bases.includes(rule.PlantA) && bases.includes(rule.PlantB));
+    const history = [];
+    let locked = Array(secret.length).fill(false);
+    for (let round = 1; round <= 4; round += 1) {
+        const analysis = analyzePuzzle(rules, secret.length, history);
+        const plan = makeSuggestionPlan(rules, analysis, locked, { mode: 'balanced', round });
+        if (round === 4) {
+            assert.equal(plan.probe, expectedProbe, `balanced round four: ${baseCount} bases, ${secret.length} slots, ${secret[0]}`);
+        } else {
+            const judged = gameJudgeAttempt(secret, plan.guesses, fullRulesByTarget, locked);
+            history.push({ guesses: plan.guesses, feedback: judged.feedback });
+            locked = judged.correct;
+        }
+    }
+}
+
 const defaultBases = new Set(decodingData.BASES.slice(0, 5));
 const defaultRules = decodingData.MERGES.filter(rule => (
     defaultBases.has(rule.PlantA) && defaultBases.has(rule.PlantB)
