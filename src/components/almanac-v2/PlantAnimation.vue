@@ -2,9 +2,9 @@
   <div class="animation" :style="{ backgroundImage: `url(${getAlmanacWorldBackground(background)})` }">
     <div ref="host" class="canvas-host" role="img" :aria-label="name" />
     <template v-if="status === 'ready'">
-      <div class="clips">
+      <div v-if="actions.length" class="clips">
         <button
-          v-for="clip in config.actions" :key="clip" type="button"
+          v-for="clip in actions" :key="clip" type="button"
           :aria-label="clipControls[clip].label" :data-playing="action === clip"
           @click="player?.play(clip)"
         >
@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { getAlmanacText, getWorldLabel } from './locales';
-import { plantAnimations, type AnimatedPlant } from './plant-animations';
+import { plantAnimations, type AnimatedPlant, type PlantAction, type PlantAnimationConfig } from './plant-animations';
 import { mountPlantAnimation } from './plant-animation-player';
 import type { AlmanacLocale } from './types';
 import { almanacBackgrounds, getAlmanacWorldBackground } from './world-backgrounds';
@@ -48,7 +48,8 @@ const props = defineProps<{
   world: string;
   displayOffset?: { x: number; y: number };
 }>();
-const config = plantAnimations[props.code];
+const config: PlantAnimationConfig = plantAnimations[props.code];
+const actions = Object.keys(config.actions) as PlantAction[];
 const labels = computed(() => getAlmanacText(props.locale));
 const controlsPath = '/assets/almanac-animation/controls/';
 const clipControls = computed(() => ({
@@ -57,6 +58,10 @@ const clipControls = computed(() => ({
   Lob_Butter: { label: labels.value.lobButter, icon: 'butter.webp' },
   Produce: { label: labels.value.produceSun, icon: 'sun.webp' },
   Water: { label: labels.value.water, icon: 'watering-can.webp' },
+  Freeze: { label: labels.value.lobFreeze, icon: 'freeze.webp' },
+  Coin: { label: labels.value.produceCoin, icon: 'coin.webp' },
+  Attack: { label: labels.value.attack, icon: 'attack.webp' },
+  Block: { label: labels.value.block, icon: 'block.webp' },
   Food: { label: labels.value.plantFood, icon: 'plant-food.webp' },
 }));
 const background = ref(almanacBackgrounds.includes(props.world) ? props.world : 'default');
@@ -118,7 +123,7 @@ onBeforeUnmount(() => controller?.abort());
 .canvas-host :deep(canvas) {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  display: block;
 }
 
 .clips {
