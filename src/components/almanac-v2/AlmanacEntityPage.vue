@@ -65,11 +65,8 @@
           <div class="entity-identity__copy">
             <h1>{{ entity.name }}</h1>
             <p class="entity-codename">{{ labels.codename }}: {{ entity.codename }}</p>
-            <p v-if="entity.world || entity.summary" class="entity-summary">
-              <template v-if="entity.world">{{ worldLabel }}</template>
-              <template v-if="entity.world && entity.summary"> · </template>
-              {{ entity.summary }}
-            </p>
+            <p v-if="entity.world" class="entity-world">{{ labels.world }}{{ entity.locale === 'zh' ? '：' : ': ' }}{{ worldLabel }}</p>
+            <p v-if="entity.summary" class="entity-summary">{{ entity.summary }}</p>
           </div>
 
           <div v-if="entity.family" class="family-mark">
@@ -405,6 +402,7 @@ watch(() => route.query.view, syncViewFromRoute);
   overflow-wrap: anywhere;
 }
 
+.entity-world,
 .entity-summary {
   margin: 0.65rem 0 0;
   color: #f0e3c2;

@@ -162,17 +162,16 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     }
     const frame = { bodyBounds, effectBounds };
     if (config.framing === 'flight') {
-      frame.center = {
-        idlePose, poseWidth, poseHeight,
-        slots: parts.filter(part => part.body).map(part => armature.getSlot(part.slot.name)),
-      };
+      frame.center = { idlePose, poseWidth, poseHeight };
+    }
+    if (frame.center || config.previewLift) {
+      frame.slots = parts.filter(part => part.body).map(part => armature.getSlot(part.slot.name));
     }
     frames.set(costume, frame);
     return frame;
   }
 
-  // Keep the resting pose centered. During flight only pan as far as the
-  // visible pose needs, without changing the scale or chasing emitted effects.
+  // Only move away from the resting anchor when the visible body needs room.
   function fitCurrentPose(returnFraction = 1) {
     if (!centeredView) return;
     const { slots, x, y, margin, pose, rect } = centeredView;
@@ -193,30 +192,30 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     const w = host.clientWidth, h = host.clientHeight;
     if (!w || !h) return;
     if (app.screen.width !== w || app.screen.height !== h) app.renderer.resize(w, h);
-    const { bodyBounds, effectBounds, center } = measureFrame();
+    const { bodyBounds, effectBounds, center, slots } = measureFrame();
     const margin = 6;
-    if (center) {
-      const { idlePose, poseWidth, poseHeight, slots } = center;
-      const scale = Math.min(w / gameFrame.width, h / gameFrame.height,
-        w / (poseWidth + 2 * margin), h / (poseHeight + 2 * margin));
-      const x = (w - (idlePose.minX + idlePose.maxX) * scale) / 2;
-      const y = (h - (idlePose.minY + idlePose.maxY) * scale) / 2;
-      centeredView = { slots, x, y, margin: margin * scale, pose: new PIXI.Bounds(), rect: new PIXI.Bounds() };
-      app.stage.scale.set(scale);
-      app.stage.position.set(x, y);
-      fitCurrentPose();
-      return;
-    }
     const scale = Math.min(w / gameFrame.width, h / gameFrame.height,
-      w / (bodyBounds.width + 2 * margin), h / (bodyBounds.height + 2 * margin));
-    // Use spare space for effects without letting a large blast shrink the plant.
-    const bounds = (effectBounds.width + 2 * margin) * scale <= w &&
-      (effectBounds.height + 2 * margin) * scale <= h ? effectBounds : bodyBounds;
-    const offset = (size, nativeSize, min, max) => Math.max((margin - min) * scale,
-      Math.min((size - nativeSize * scale) / 2, size - (max + margin) * scale));
+      w / ((center?.poseWidth ?? bodyBounds.width) + 2 * margin),
+      h / ((center?.poseHeight ?? bodyBounds.height) + 2 * margin));
+    let x, y;
+    if (center) {
+      const { idlePose } = center;
+      x = (w - (idlePose.minX + idlePose.maxX) * scale) / 2;
+      y = (h - (idlePose.minY + idlePose.maxY) * scale) / 2;
+    } else {
+      // Use spare space for effects without letting a large blast shrink the plant.
+      const bounds = (effectBounds.width + 2 * margin) * scale <= w &&
+        (effectBounds.height + 2 * margin) * scale <= h ? effectBounds : bodyBounds;
+      const offset = (size, nativeSize, min, max) => Math.max((margin - min) * scale,
+        Math.min((size - nativeSize * scale) / 2, size - (max + margin) * scale));
+      x = offset(w, gameFrame.width, bounds.minX, bounds.maxX);
+      y = offset(h, gameFrame.height, bounds.minY, bounds.maxY) - h * (config.previewLift ?? 0);
+    }
     app.stage.scale.set(scale);
-    app.stage.position.set(offset(w, gameFrame.width, bounds.minX, bounds.maxX),
-      offset(h, gameFrame.height, bounds.minY, bounds.maxY));
+    app.stage.position.set(x, y);
+    const needsPan = center || (config.previewLift && y + bodyBounds.minY * scale < margin * scale);
+    centeredView = needsPan ? { slots, x, y, margin: margin * scale, pose: new PIXI.Bounds(), rect: new PIXI.Bounds() } : undefined;
+    fitCurrentPose();
   }
 
   function setCostume(index) {

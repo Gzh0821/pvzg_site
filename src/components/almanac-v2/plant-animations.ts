@@ -18,6 +18,8 @@ export interface PlantAnimationConfig {
   actions: ActionClips;
   bodySlots?: readonly string[];
   framing?: 'flight';
+  /** Upward preview offset as a fraction of card height. */
+  previewLift?: number;
   bodyOffset?: readonly [number, number];
   hiddenSlots?: readonly string[];
   effects?: Partial<Record<PlantAction, readonly EffectCue[]>>;
@@ -54,10 +56,10 @@ const mine = {
 };
 
 export const plantAnimations = {
-  spikeweed: { armature: 'Spikeweed', idle: 'Idle', costumes: 4, actions: spikes, effects: { Food: groundSpikes } },
-  spikerock: { armature: 'Spikerock', idle: 'Idle', costumes: 3, actions: spikes, effects: { Food: groundSpikes } },
+  spikeweed: { armature: 'Spikeweed', idle: 'Idle', costumes: 4, previewLift: 0.045, actions: spikes, effects: { Food: groundSpikes } },
+  spikerock: { armature: 'Spikerock', idle: 'Idle', costumes: 3, previewLift: 0.045, actions: spikes, effects: { Food: groundSpikes } },
   iceweed: {
-    armature: 'Iceweed', idle: 'Idle', costumes: 1,
+    armature: 'Iceweed', idle: 'Idle', costumes: 1, previewLift: 0.045,
     foodSlots: {
       spks_lit_S2: 1, spk_R4_S1: 1, spk_L4_S1: 1, spk_L3_S1: 1,
       spk_R3_S1: 1, spk_R0_S1: 1, spk_R1_S1: 1, spk_L1_S1: 1,
@@ -70,8 +72,8 @@ export const plantAnimations = {
   },
   snapdragon: { armature: 'SnapDragon', idle: 'Idle', costumes: 5, bodySlots: wings, framing: 'flight', actions: dragon, effects: snapdragonEffects },
   coldsnapdragon: { armature: 'ColdSnapdragon', idle: 'Idle', costumes: 2, bodySlots: wings, framing: 'flight', actions: dragon, effects: coldSnapdragonEffects },
-  potatomine: { armature: 'PotatoMine', idle: 'Idle', costumes: 3, actions: mine, effects: mineEffects('PotatoMine', 0.9) },
-  primalpotatomine: { armature: 'PotatoMinePrimal', idle: 'Idle', costumes: 2, actions: mine, effects: mineEffects('PotatoMinePrimal', 0.4) },
+  potatomine: { armature: 'PotatoMine', idle: 'Idle', costumes: 3, previewLift: 0.075, actions: mine, effects: mineEffects('PotatoMine', 0.9) },
+  primalpotatomine: { armature: 'PotatoMinePrimal', idle: 'Idle', costumes: 2, previewLift: 0.09, actions: mine, effects: mineEffects('PotatoMinePrimal', 0.4) },
   sunflower: { armature: 'Sunflower', idle: 'Idle', costumes: 8, actions: sunRepeatedFood },
   peashooter: { armature: 'Peashooter', idle: 'Idle', costumes: 10, actions: shootLoopFood },
   wallnut: { armature: 'Wall-nut', idle: 'Idle1', costumes: 9, foodSlots: armor, actions: wearArmor },
@@ -92,7 +94,7 @@ export const plantAnimations = {
   dandelion: { armature: 'Dandelion', idle: 'Idle', costumes: 2, actions: shoot },
   pvine: { armature: 'PeaVine', idle: 'Idle', costumes: 1, actions: shootLoopFood },
   kernelpult: {
-    armature: 'KernelPult', idle: 'Idle', costumes: 5,
+    armature: 'KernelPult', idle: 'Idle', costumes: 5, previewLift: 0.09,
     actions: { Food: 'Food', Water: 'Water', Lob: 'Lob', Lob_Butter: 'Lob_Butter' },
   },
   coconutcannon: { armature: 'CoconutCannon', idle: 'Idle', costumes: 3, actions: shoot },
@@ -122,7 +124,9 @@ export const plantAnimations = {
     actions: { Food: 'Attack', Water: 'Water', Coin: 'Produce' },
   },
   laser_bean: {
-    armature: 'LaserBean', idle: 'Idle', costumes: 3, bodyOffset: [3.652, 0], hiddenSlots: ['foodBeam_FS', 'foodHit_FS', 'foodBeamFront_FS', 'foodHitFront_FS'],
+    armature: 'LaserBean', idle: 'Idle', costumes: 3, previewLift: 0.17, bodyOffset: [3.652, 0],
+    bodySlots: ['eyes_lit', 'eyeR_lit', 'eyeL_lit', 'teeth_U', 'teeth_D'],
+    hiddenSlots: ['foodBeam_FS', 'foodHit_FS', 'foodBeamFront_FS', 'foodHitFront_FS'],
     actions: { Food: ['FoodStart', 'Food', 'FoodEnd'], Water: 'Water', Shoot: 'Shoot' },
   },
   citron: {
@@ -141,17 +145,17 @@ export const plantAnimations = {
     actions: { Food: stagedFood, Water: 'Water', Shoot: 'Shoot0' },
   },
   applemortar: {
-    armature: 'AppleMortar', idle: 'Idle', costumes: 1,
+    armature: 'AppleMortar', idle: 'Idle', costumes: 1, previewLift: 0.09,
     actions: { Food: 'Food', Water: 'Water', Lob: 'Shoot' },
   },
-  pumpkin: { armature: 'PumpkinHead', idle: 'Idle1', costumes: 1, foodSlots: armor, actions: { Food: showArmor } },
+  pumpkin: { armature: 'PumpkinHead', idle: 'Idle1', costumes: 1, previewLift: 0.11, foodSlots: armor, actions: { Food: showArmor } },
   hollyknight: {
-    armature: 'HollyKnight', idle: 'Idle', costumes: 1,
+    armature: 'HollyKnight', idle: 'Idle', costumes: 1, previewLift: 0.09,
     actions: { Food: 'Food', Water: 'Water', Shoot: ['Ready', 'Shoot'] },
   },
   sunshroom: { armature: 'SunShroom', idle: 'Idle', costumes: 4, actions: sun },
   puffshroom: { armature: 'PuffShroom', idle: 'Idle', costumes: 2, actions: shootStagedFood },
-  fumeshroom: { armature: 'FumeShroom', idle: 'Idle', costumes: 2, bodyOffset: [3.652, 0], actions: shoot },
+  fumeshroom: { armature: 'FumeShroom', idle: 'Idle', costumes: 2, previewLift: 0.09, bodyOffset: [3.652, 0], actions: shoot },
   peanut: {
     armature: 'Peanut', idle: 'Idle0', costumes: 1,
     actions: { Food: ['FoodStart', { clip: 'FoodLoop', seconds: 1.5 }, 'FoodEnd'], Water: 'Water', Shoot: ['Shoot00', 'Shoot01'] },
@@ -165,21 +169,21 @@ export const plantAnimations = {
   },
   seashroom: { armature: 'SeaShroom', idle: 'Idle', costumes: 0, actions: shootStagedFood },
   seashooter: { armature: 'SeaShooter', idle: 'Idle', costumes: 0, actions: shootLoopFood },
-  aquavine: { armature: 'Aquavine', idle: 'Idle', costumes: 0, actions: shoot },
+  aquavine: { armature: 'Aquavine', idle: 'Idle', costumes: 0, previewLift: 0.045, actions: shoot },
   stickybombrice: {
     armature: 'StickyBombRice', idle: 'Idle', costumes: 1,
     actions: { Food: 'Food', Water: 'Water', Lob: ['ShootR', 'ShootL'] },
   },
   lotorpedo: { armature: 'Lotus', idle: 'Idle', costumes: 1, actions: shoot },
   blastberry: {
-    armature: 'BlastBerryVine', idle: 'Idle', costumes: 0,
+    armature: 'BlastBerryVine', idle: 'Idle', costumes: 0, previewLift: 0.055,
     actions: { Food: 'Food', Water: 'Water', Lob: 'Shoot' },
   },
   pepperpult: { armature: 'PepperPult', idle: 'Idle', costumes: 4, actions: lob },
   firepeashooter: { armature: 'FirePeashooter', idle: 'Idle', costumes: 2, actions: shootStartFood },
   xshot: { armature: 'Rotobaga', idle: 'Idle', costumes: 2, actions: shoot },
   sweetpotato: { armature: 'SweetPotato', idle: 'Idle0', costumes: 1, actions: defend },
-  hotdate: { armature: 'HotDate', idle: 'Idle0', costumes: 1, actions: defend },
+  hotdate: { armature: 'HotDate', idle: 'Idle0', costumes: 1, previewLift: 0.09, actions: defend },
   gatling: { armature: 'GatlingPea', idle: 'Idle', costumes: 1, actions: shootStartFood },
   redstinger: {
     armature: 'RedStinger', idle: 'Idle', costumes: 2,
@@ -208,7 +212,7 @@ export const plantAnimations = {
   cantaloupe: { armature: 'Melon-pult', idle: 'Idle', costumes: 2, actions: lob },
   cactus: { armature: 'Cactus', idle: 'Idle', costumes: 2, actions: shoot },
   garlic: { armature: 'Garlic', idle: 'Idle00', costumes: 2, actions: defend },
-  sporeshroom: { armature: 'SporeShroom', idle: 'Idle', costumes: 2, actions: shoot },
+  sporeshroom: { armature: 'SporeShroom', idle: 'Idle', costumes: 2, previewLift: 0.09, actions: shoot },
   bloominghearts: { armature: 'BloomingHearts', idle: 'Idle', costumes: 2, actions: lob },
   mirrornut: {
     armature: 'MirrorNut', idle: 'Idle00', costumes: 0,
@@ -227,7 +231,7 @@ export const plantAnimations = {
   megagatling: { armature: 'MegaGatlingPea', idle: 'Idle', costumes: 1, actions: shootLoopFood },
   moonflower: { armature: 'Moonflower', idle: 'Idle', costumes: 1, actions: sun },
   dusklobber: { armature: 'DuskLobber', idle: 'Idle', costumes: 2, actions: lob },
-  murkadamia: { armature: 'MurkamadiaNut', idle: 'Idle00', costumes: 0, actions: defend },
+  murkadamia: { armature: 'MurkamadiaNut', idle: 'Idle00', costumes: 0, previewLift: 0.09, actions: defend },
   shadowpeashooter: { armature: 'ShadowPeashooter', idle: 'Idle', costumes: 2, actions: shoot },
   slingpea: {
     armature: 'SlingPea', idle: 'Idle', costumes: 2,
