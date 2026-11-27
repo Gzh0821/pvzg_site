@@ -118,8 +118,13 @@ export function createPlantEffects({ PIXI, dragonBones, factory, screen, code, p
 
   function play(action, formTracks) {
     clear();
-    const cues = formTracks?.[action] ?? tracks[action] ?? [];
-    const rightEdge = layer.toLocal({ x: screen.width, y: 0 }).x;
+    const track = formTracks?.[action] ?? tracks[action] ?? [];
+    const { x: rightEdge, y: bottom } = layer.toLocal({ x: screen.width, y: screen.height });
+    let cues = track;
+    if (typeof track === 'function') {
+      const { x: left, y: top } = layer.toLocal({ x: 0, y: 0 });
+      cues = track({ left, right: rightEdge, top, bottom });
+    }
     const resolveX = x => typeof x === 'object' ? x.rightEdgeFraction * rightEdge : x;
     pending = cues.map(cue => ({ ...cue, x: resolveX(cue.x), toX: resolveX(cue.toX) }))
       .sort((a, b) => a.frame - b.frame);

@@ -25,6 +25,11 @@ export interface EffectCue {
   hidePlant?: boolean;
 }
 
+// Per-play volleys generate cues using the already loaded plant atlas.
+export type LocalEffectCue = EffectCue & { pack?: never };
+export interface PreviewBounds { left: number; top: number; right: number; bottom: number }
+export type EffectTrack = readonly EffectCue[] | ((bounds: PreviewBounds) => readonly LocalEffectCue[]);
+
 // Frame numbers follow the shipped armatures. Positions are in plant-local
 // coordinates, with neighboring tiles brought inside the almanac viewport.
 export const groundSpikes: EffectCue[] = [-150, 150].flatMap(x => [

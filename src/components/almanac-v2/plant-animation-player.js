@@ -35,6 +35,7 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   const packs = new Set();
   for (const tracks of [config.effects, ...forms.map(form => form.effects)]) {
     for (const cues of Object.values(tracks ?? {})) {
+      if (typeof cues === 'function') continue;
       for (const cue of cues) if (cue.pack) packs.add(cue.pack);
     }
   }

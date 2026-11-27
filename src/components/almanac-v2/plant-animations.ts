@@ -5,7 +5,7 @@ import { firePeashooterFood, pyreVineEffects } from './ground-fire-cues';
 import {
   anthuriumBolt, coldSnapdragonEffects, darkMatter, duskBud, gloomShroomEffects, groundSpikes,
   infernoEffects, lightningReedAttack, mineEffects, parsnipFood, redStingerShots, shadowPea,
-  snapdragonEffects, type EffectCue,
+  snapdragonEffects, type EffectTrack,
 } from './plant-effect-cues';
 
 export type PlantAction = 'Food' | 'Water' | 'Shoot' | 'Lob' | 'Lob_Butter' | 'Produce' | 'Freeze' | 'Coin' | 'Attack' | 'Block' | 'ChargedShot';
@@ -33,7 +33,7 @@ export interface PlantAnimationConfig {
   previewLift?: number;
   bodyOffset?: readonly [number, number];
   foodShield?: { frame: number; positions: readonly number[]; scale: number };
-  effects?: Partial<Record<PlantAction, readonly EffectCue[]>>;
+  effects?: Partial<Record<PlantAction, EffectTrack>>;
   foodSlots?: Readonly<Record<string, number>> | ((slot: string) => number | undefined);
 }
 
