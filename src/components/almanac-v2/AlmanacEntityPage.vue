@@ -36,13 +36,28 @@
           class="entity-stage__visual"
           :style="{ backgroundImage: `url(${worldBackground})` }"
         >
+          <button
+            v-if="animatedPlant" class="stage-switch" :class="{ 'stage-switch--play': !showAnimation }" type="button"
+            :aria-label="modeAction" :title="modeAction" @click="showAnimation = !showAnimation"
+          >
+            <img
+              :src="showAnimation ? '/assets/almanac-animation/controls/preview.webp' : '/assets/almanac-animation/controls/play.webp'"
+              alt=""
+            >
+          </button>
           <img
+            :class="{ 'card-hidden': showAnimation && animatedPlant }"
+            :aria-hidden="showAnimation && animatedPlant ? true : undefined"
             :src="entity.image"
             :alt="entity.name"
             width="420"
             height="330"
             fetchpriority="high"
           >
+          <PlantAnimation
+            v-if="showAnimation && animatedPlant" :key="animatedPlant"
+            :code="animatedPlant" :locale="entity.locale" :name="entity.name" :world="entity.world"
+          />
         </div>
 
         <header class="entity-identity">
@@ -217,6 +232,8 @@ import {
 import { usePageFrontmatter, useRoute, useRouter } from 'vuepress/client';
 
 import AdSenseUnit from './AdSenseUnit.vue';
+import PlantAnimation from './PlantAnimation.vue';
+import { supportsPlantAnimation } from './plant-animations';
 import { getAlmanacText, getWorldLabel } from './locales';
 import type { AlmanacEntity, AlmanacPageFrontmatter } from './types';
 import { getAlmanacWorldBackground } from './world-backgrounds';
@@ -229,7 +246,13 @@ const route = useRoute();
 const router = useRouter();
 const activeView = ref<AlmanacView>('user');
 const entity = computed(() => frontmatter.value.almanacEntity as AlmanacEntity);
+const animatedPlant = computed(() => entity.value.kind === 'plant' && supportsPlantAnimation(entity.value.codename)
+  ? entity.value.codename : null);
+const showAnimation = ref(false);
+onMounted(() => { showAnimation.value = Boolean(animatedPlant.value); });
+watch(animatedPlant, plant => { showAnimation.value = Boolean(plant); });
 const labels = computed(() => getAlmanacText(entity.value.locale));
+const modeAction = computed(() => showAnimation.value ? labels.value.preview : labels.value.animation);
 const worldLabel = computed(() => getWorldLabel(entity.value.world, entity.value.locale));
 const worldBackground = computed(() => getAlmanacWorldBackground(entity.value.world));
 const hasRelations = computed(() => (
@@ -454,6 +477,43 @@ watch(() => route.query.view, syncViewFromRoute);
   object-fit: contain;
   filter: drop-shadow(0 13px 7px rgb(38 27 18 / 42%));
 }
+
+.entity-stage__visual > .card-hidden { visibility: hidden; }
+
+.stage-switch {
+  position: absolute;
+  z-index: 2;
+  top: 0.55rem;
+  left: 0.55rem;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.stage-switch img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px #352713);
+}
+.stage-switch--play {
+  border: 2px solid #483218;
+  border-radius: 50%;
+  background: url('/assets/almanac-animation/controls/action-ring.webp') center / 100% 100%,
+    radial-gradient(ellipse at 40% 25%, #8e9d42, #4b652c 60%, #293b1a 90%);
+  box-shadow: 0 2px 1px #382812b3;
+}
+.stage-switch--play img {
+  width: 19px;
+  height: 19px;
+  transform: translateX(1px);
+}
+.stage-switch:active { transform: translateY(1px); }
+.stage-switch:focus-visible { outline: 3px solid #fff1a0; outline-offset: 2px; }
 
 .stat-panel {
   overflow: hidden;
