@@ -1,4 +1,6 @@
-export type PlantAction = 'Food' | 'Water' | 'Shoot' | 'Lob' | 'Lob_Butter' | 'Produce' | 'Freeze' | 'Coin' | 'Attack' | 'Block';
+import { coldSnapdragonEffects, groundSpikes, mineEffects, snapdragonEffects, type EffectCue } from './plant-effect-cues';
+
+export type PlantAction = 'Food' | 'Water' | 'Shoot' | 'Lob' | 'Lob_Butter' | 'Produce' | 'Freeze' | 'Coin' | 'Attack' | 'Block' | 'Grow';
 export type ClipStep = string | {
   clip: string;
   repeats?: number;
@@ -14,8 +16,11 @@ export interface PlantAnimationConfig {
   idle: string;
   costumes: number;
   actions: ActionClips;
+  bodySlots?: readonly string[];
+  framing?: 'flight';
   bodyOffset?: readonly [number, number];
   hiddenSlots?: readonly string[];
+  effects?: Partial<Record<PlantAction, readonly EffectCue[]>>;
   foodSlots?: Readonly<Record<string, number>>;
 }
 
@@ -39,7 +44,34 @@ const shootStartFood = { Food: ['FoodStart', loopFood], Water: 'Water', Shoot: '
 const shootStagedFood = { Food: stagedFood, Water: 'Water', Shoot: 'Shoot' } as const;
 const sunRepeatedFood = { Food: { clip: 'Food', repeats: 3 }, Water: 'Water', Produce: 'Produce' } as const;
 
+const spikes = { Food: { clip: 'Food', seconds: 5 }, Water: 'Water', Attack: 'Attack' };
+// Both wings unfold only during Plant Food, but belong in the fixed camera bounds.
+const wings = ['wingL', 'wingR'];
+const dragon = { Food: 'Food', Water: 'Water', Attack: 'Attack' };
+const mine = {
+  Food: 'Food', Water: 'Water', Attack: 'Charging',
+  Grow: ['Spawn_Baby', { clip: 'Idle_Baby', seconds: 0.65 }, 'Grow'],
+};
+
 export const plantAnimations = {
+  spikeweed: { armature: 'Spikeweed', idle: 'Idle', costumes: 4, actions: spikes, effects: { Food: groundSpikes } },
+  spikerock: { armature: 'Spikerock', idle: 'Idle', costumes: 3, actions: spikes, effects: { Food: groundSpikes } },
+  iceweed: {
+    armature: 'Iceweed', idle: 'Idle', costumes: 1,
+    foodSlots: {
+      spks_lit_S2: 1, spk_R4_S1: 1, spk_L4_S1: 1, spk_L3_S1: 1,
+      spk_R3_S1: 1, spk_R0_S1: 1, spk_R1_S1: 1, spk_L1_S1: 1,
+      spk_L0_S1: 1, face_S1: 1, eyeR_S1: 1, eyeheartR_S1: 1,
+      eyebrowR_S1: 1, eyeL_S1: 1, eyeheartL_S1: 1, eyebrowL_S1: 1,
+      spk_R2_S1: 1, spk_L2_S1: 1, mouth_S1: 1,
+    },
+    actions: { Food: { clip: 'Food', foodAppearance: true }, Water: 'Water', Attack: 'Attack' },
+    effects: { Food: [{ frame: 29, armature: 'Saw', clip: 'Idle', x: 47, y: -14, scale: 0.33, frames: 24, toX: 240 }] },
+  },
+  snapdragon: { armature: 'SnapDragon', idle: 'Idle', costumes: 5, bodySlots: wings, framing: 'flight', actions: dragon, effects: snapdragonEffects },
+  coldsnapdragon: { armature: 'ColdSnapdragon', idle: 'Idle', costumes: 2, bodySlots: wings, framing: 'flight', actions: dragon, effects: coldSnapdragonEffects },
+  potatomine: { armature: 'PotatoMine', idle: 'Idle', costumes: 3, actions: mine, effects: mineEffects('PotatoMine', 0.9) },
+  primalpotatomine: { armature: 'PotatoMinePrimal', idle: 'Idle', costumes: 2, actions: mine, effects: mineEffects('PotatoMinePrimal', 0.4) },
   sunflower: { armature: 'Sunflower', idle: 'Idle', costumes: 8, actions: sunRepeatedFood },
   peashooter: { armature: 'Peashooter', idle: 'Idle', costumes: 10, actions: shootLoopFood },
   wallnut: { armature: 'Wall-nut', idle: 'Idle1', costumes: 9, foodSlots: armor, actions: wearArmor },

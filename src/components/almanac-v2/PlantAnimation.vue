@@ -61,6 +61,7 @@ const clipControls = computed(() => ({
   Freeze: { label: labels.value.lobFreeze, icon: 'freeze.webp' },
   Coin: { label: labels.value.produceCoin, icon: 'coin.webp' },
   Attack: { label: labels.value.attack, icon: 'attack.webp' },
+  Grow: { label: labels.value.grow, icon: 'grow.webp' },
   Block: { label: labels.value.block, icon: 'block.webp' },
   Food: { label: labels.value.plantFood, icon: 'plant-food.webp' },
 }));

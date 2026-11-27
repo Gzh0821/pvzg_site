@@ -31,7 +31,7 @@
       :class="{ 'showcase--single': !entity.stats.length }"
       :aria-label="entity.name"
     >
-      <div class="entity-stage">
+      <div class="entity-stage" :class="{ 'entity-stage--flight': animationConfig?.framing === 'flight' }">
         <div
           class="entity-stage__visual"
           :style="{ backgroundImage: `url(${worldBackground})` }"
@@ -234,7 +234,7 @@ import { usePageFrontmatter, useRoute, useRouter } from 'vuepress/client';
 
 import AdSenseUnit from './AdSenseUnit.vue';
 import PlantAnimation from './PlantAnimation.vue';
-import { supportsPlantAnimation } from './plant-animations';
+import { plantAnimations, supportsPlantAnimation, type PlantAnimationConfig } from './plant-animations';
 import { getAlmanacText, getWorldLabel } from './locales';
 import type { AlmanacEntity, AlmanacPageFrontmatter } from './types';
 import { getAlmanacWorldBackground } from './world-backgrounds';
@@ -249,6 +249,8 @@ const activeView = ref<AlmanacView>('user');
 const entity = computed(() => frontmatter.value.almanacEntity as AlmanacEntity);
 const animatedPlant = computed(() => entity.value.kind === 'plant' && supportsPlantAnimation(entity.value.codename)
   ? entity.value.codename : null);
+const animationConfig = computed<PlantAnimationConfig | undefined>(() =>
+  animatedPlant.value ? plantAnimations[animatedPlant.value] : undefined);
 const showAnimation = ref(false);
 onMounted(() => { showAnimation.value = Boolean(animatedPlant.value); });
 watch(animatedPlant, plant => { showAnimation.value = Boolean(plant); });
@@ -469,6 +471,13 @@ watch(() => route.query.view, syncViewFromRoute);
   background-position: center;
   background-size: cover;
   isolation: isolate;
+}
+
+.entity-stage--flight .entity-stage__visual {
+  width: 100%;
+  aspect-ratio: 555 / 470;
+  min-height: min(380px, 100vw);
+  max-height: 460px;
 }
 
 .entity-stage__visual > img {
