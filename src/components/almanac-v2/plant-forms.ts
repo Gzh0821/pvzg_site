@@ -1,4 +1,5 @@
-import { darkMatter, duskBud } from './plant-effect-cues';
+import { peaPodShots } from './plant-pea-projectiles';
+import { darkMatter, duskBud, gloomShroomEffects, redStingerShots } from './plant-effect-cues';
 import type { AnimatedPlant, PlantAction, PlantAnimationConfig } from './plant-animations';
 
 type Form = {
@@ -28,6 +29,7 @@ const mine = [
 ];
 
 const forms: Partial<Record<AnimatedPlant, Form[]>> = {
+  gloomshroom: [shadow[0], { ...shadow[1], effects: gloomShroomEffects('PlayDark') }],
   moonflower: shadow,
   dusklobber: [shadow[0], { ...shadow[1], effects: {
     Lob: [-63, -15, 33].map(toY => ({ ...duskBud, toY })),
@@ -46,10 +48,10 @@ const forms: Partial<Record<AnimatedPlant, Form[]>> = {
   ],
   potatomine: mine,
   primalpotatomine: mine,
-  peapod: [1, 2, 3, 4, 5].map(heads => ({ zh: `${heads} 个头`, en: `${heads} ${heads === 1 ? 'head' : 'heads'}`, heads })),
+  peapod: [1, 2, 3, 4, 5].map(heads => ({ zh: `${heads} 个头`, en: `${heads} ${heads === 1 ? 'head' : 'heads'}`, heads, effects: { Shoot: peaPodShots(heads) } })),
   redstinger: [
     { zh: '展开', en: 'Open' },
-    { zh: '半收拢', en: 'Partly closed', idle: 'Idle_Scared', actions: { Shoot: 'Shoot_Scared', Water: null } },
+    { zh: '半收拢', en: 'Partly closed', idle: 'Idle_Scared', effects: { Shoot: redStingerShots(true) }, actions: { Shoot: 'Shoot_Scared', Water: null } },
     { zh: '收拢', en: 'Closed', idle: 'Idle_Hide_0', actions: { Shoot: null, Water: null } },
   ],
   cactus: [

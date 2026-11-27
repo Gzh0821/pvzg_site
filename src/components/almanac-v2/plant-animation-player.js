@@ -1,5 +1,6 @@
 import lightTextureUrl from './assets/plant-food-light/texture.png';
 import { createPlantEffects, createPlantFoodLight } from './plant-animation-effects';
+import { createSnowPeaIce, loadSnowPeaIce } from './plant-snow-pea-ice';
 import { formActions, plantForms } from './plant-forms';
 import { plantAnimations } from './plant-animations';
 
@@ -29,26 +30,44 @@ async function readImage(url, signal) {
 }
 
 export async function mountPlantAnimation(host, code, displayOffset, signal, onAction, onForm, onFoodUpgrade) {
-  const folder = `${assetRoot}/${code}`;
-  const [{ PIXI, dragonBones }, skeleton, atlas, image, lightImage] = await Promise.all([
+  const config = plantAnimations[code];
+  const forms = plantForms(code);
+  const packs = new Set();
+  for (const tracks of [config.effects, ...forms.map(form => form.effects)]) {
+    for (const cues of Object.values(tracks ?? {})) {
+      for (const cue of cues) if (cue.pack) packs.add(cue.pack);
+    }
+  }
+  function loadRigAssets(name) {
+    const folder = `${assetRoot}/${name}`;
+    return Promise.all([
+      readAsset(`${folder}/skeleton.json`, signal, 'json'),
+      readAsset(`${folder}/atlas.json`, signal, 'json'),
+      readImage(`${folder}/texture.png`, signal),
+    ]);
+  }
+  const [{ PIXI, dragonBones }, plantAssets, effectAssets, lightImage, iceImages] = await Promise.all([
     import('./vendor/pixi-8.9.2-dragonbones-5.7.mjs'),
-    readAsset(`${folder}/skeleton.json`, signal, 'json'),
-    readAsset(`${folder}/atlas.json`, signal, 'json'),
-    readImage(`${folder}/texture.png`, signal),
+    loadRigAssets(code),
+    Promise.all([...packs].map(async name => [name, await loadRigAssets(name)])),
     readImage(lightTextureUrl, signal),
+    code === 'snowpea' && loadSnowPeaIce(readImage, signal),
   ]);
   signal.throwIfAborted();
 
-  const config = plantAnimations[code];
   const foodSlots = new Map();
   const app = new PIXI.Application();
-  let factory, armature, probe, texture, observer, resizeObserver;
+  const textures = [];
+  const clock = new dragonBones.WorldClock();
+  const probeClock = new dragonBones.WorldClock();
+  let factory, armature, probe, observer, resizeObserver;
   let frame;
-  const forms = plantForms(code);
   let formIndex = 0;
   let form = forms[0];
   let actions = formActions(config, form);
   let jellySpikes;
+  const shields = [];
+  let shieldPending = false;
   let fullJelly = false;
   let growth;
   let hasFoodAppearance = false;
@@ -57,20 +76,22 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   let action = config.idle;
   let pendingClips = [];
   let secondsLeft = null;
-  let effects, foodLight;
+  let effects;
+  const foodEffects = [];
 
   function destroy() {
     observer?.disconnect();
     resizeObserver?.disconnect();
     effects?.clear();
-    foodLight?.destroy();
+    for (const effect of foodEffects) effect.destroy();
+    for (const shield of shields) shield.dispose();
     jellySpikes?.dispose();
     probe?.dispose();
     armature?.dispose();
     factory?.clear(true);
     if (factory) dragonBones.PixiFactory.advanceTime(0);
     if (app.renderer) app.destroy(true, { children: true });
-    texture?.destroy();
+    for (const texture of textures) texture.destroy();
   }
 
   function applyCostume(rig) {
@@ -105,18 +126,12 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     }
     if (rig === armature && step?.speed) playback.timeScale = step.speed;
     playback.fadeInTime = 0;
-    // Root timeline actions can otherwise skip the preview's ending or idle.
-    playback.actionEnabled = false;
     const state = rig.animation.playConfig(playback);
     for (const [name, index] of foodSlots) {
       const slot = rig.getSlot(name);
       slot.displayIndex = (upgraded || step?.foodAppearance) ? index : slot.slotData.displayIndex;
     }
     applyCostume(rig);
-    for (const slotName of config.hiddenSlots ?? []) {
-      const slot = rig.getSlot(slotName);
-      if (slot) slot.displayIndex = -1;
-    }
     if (poseForm) {
       // Murkadamia's initial 60% jelly uses display 1. Plant Food fills it (display 0).
       const jellyIndex = (rig === probe ? upgraded : fullJelly) ? 0 : 1;
@@ -193,7 +208,7 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
         const deltas = [epsilon, dt / 2 - epsilon, dt / 2 - epsilon, epsilon];
         for (let i = 0; i < count; i++) {
           for (const delta of deltas) {
-            probe.advanceTime(delta);
+            probeClock.advanceTime(delta);
             recordPose(isRest, idleBounds);
           }
         }
@@ -241,7 +256,6 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   }
 
   function selectForm(index) {
-    effects?.clear();
     recovery = undefined;
     formIndex = index;
     form = forms[index];
@@ -255,7 +269,9 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   }
 
   function setForm(index) {
-    foodLight.clear();
+    shieldPending = false;
+    for (const effect of foodEffects) effect.clear();
+    effects?.clear();
     selectForm(index);
     action = 'Form';
     onAction(action);
@@ -266,7 +282,9 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   function playNextClip() {
     let step = pendingClips.shift();
     const result = !step ? form?.afterAction?.[action] : undefined;
-    if (!step && action === 'Food') foodLight.end();
+    if (!step && action === 'Food') {
+      for (const effect of foodEffects) effect.end();
+    }
     if (!step && config.recoverAfter?.[action]) {
       pendingClips = [...config.recoverAfter[action]];
       step = pendingClips.shift();
@@ -289,7 +307,38 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     startClip(armature, step);
   }
 
+  // Only the shields on the displayed row fit the almanac card. Keep them
+  // alive across actions and forms until the player restores the plant.
+  function updateFoodShields() {
+    const setup = config.foodShield;
+    const state = armature.animation.lastAnimationState;
+    if (shieldPending && state.currentTime * armature.armatureData.frameRate >= setup.frame - 1e-6) {
+      if (!shields.length) {
+        for (const x of setup.positions) {
+          const shield = factory.buildArmature('Shield', code);
+          const size = setup.scale * armature.display.scale.x;
+          shield.display.position.set(armature.display.x + x * armature.display.scale.x, armature.display.y);
+          shield.display.scale.set(x < 0 ? -size : size, size);
+          app.stage.addChild(shield.display);
+          clock.add(shield);
+          shields.push(shield);
+        }
+      }
+      for (const shield of shields) {
+        shield.display.visible = true;
+        shield.animation.play('Spawn', 1);
+      }
+      hasFoodAppearance = true;
+      shieldPending = false;
+      onFoodUpgrade(true);
+    }
+    for (const shield of shields) {
+      if (shield.display.visible && shield.animation.isCompleted) shield.animation.play('Idle', 0);
+    }
+  }
+
   function resetFoodUpgrade() {
+    for (const shield of shields) shield.display.visible = false;
     hasFoodAppearance = false;
     fullJelly = false;
     onFoodUpgrade(false);
@@ -297,15 +346,16 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   }
 
   function play(name) {
+    shieldPending = Boolean(config.foodShield && name === 'Food');
     if (name === 'Food') {
       if (form?.jelly) {
         fullJelly = true;
         onFoodUpgrade(true);
       }
       recovery = undefined;
-      foodLight.start();
+      for (const effect of foodEffects) effect.start();
     } else {
-      foodLight.clear();
+      for (const effect of foodEffects) effect.clear();
     }
     effects?.play(name, form?.effects);
     action = name;
@@ -322,11 +372,23 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     });
     signal.throwIfAborted();
     factory = new dragonBones.PixiFactory(undefined, false);
-    texture = new PIXI.ImageSource({ resource: image });
-    factory.parseDragonBonesData(skeleton, code);
-    factory.parseTextureAtlasData(atlas, texture, code);
+    // The preview sequences the plant's clips itself. Retain slot-level play
+    // actions, which start nested animations such as Bonk Choy's punches.
+    const body = plantAssets[0].armature.find(rig => rig.name === config.armature);
+    for (const clip of body.animation) {
+      for (const frame of clip.frame ?? []) delete frame.action;
+    }
+    function registerRig(name, [skeleton, atlas, image]) {
+      const texture = new PIXI.ImageSource({ resource: image });
+      textures.push(texture);
+      factory.parseDragonBonesData(skeleton, name);
+      factory.parseTextureAtlasData(atlas, texture, name);
+    }
+    registerRig(code, plantAssets);
+    for (const [name, assets] of effectAssets) registerRig(name, assets);
     // Use the rig's own atlas. An override would also bind textures to same-named child armatures.
     armature = factory.buildArmature(config.armature, code);
+    clock.add(armature);
     if (config.foodSlots) {
       for (const { name } of armature.getSlots()) {
         const index = typeof config.foodSlots === 'function' ? config.foodSlots(name) : config.foodSlots[name];
@@ -344,12 +406,15 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
       height / 2 - originY - (y + bodyY * prefabScale) * displayScale,
     );
     probe = factory.buildArmature(config.armature, code);
+    probeClock.add(probe);
     probe.display.scale.copyFrom(display.scale);
     probe.display.position.copyFrom(display.position);
     // foodLightPAR is a 0.7× prefab placed at the plant's tile, behind its body.
-    foodLight = createPlantFoodLight(PIXI, factory, app.stage, lightImage, display.position, displayScale * 0.7);
+    foodEffects.push(createPlantFoodLight(PIXI, factory, app.stage, lightImage, display.position, displayScale * 0.7));
+    if (iceImages) foodEffects.push(createSnowPeaIce(PIXI, app.stage, display, iceImages));
     if (forms.some(entry => entry.jelly)) {
       jellySpikes = factory.buildArmature('_spikes', code, '', code);
+      clock.add(jellySpikes);
       jellySpikes.display.position.copyFrom(display.position);
       jellySpikes.display.scale.copyFrom(display.scale);
       jellySpikes.animation.play('Idle', 0);
@@ -358,7 +423,7 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     }
     app.stage.addChild(display);
     if (config.effects) {
-      effects = createPlantEffects({ PIXI, dragonBones, factory, code, plant: armature, tracks: config.effects, applyCostume });
+      effects = createPlantEffects({ PIXI, dragonBones, factory, screen: app.screen, code, plant: armature, tracks: config.effects, applyCostume });
     }
     host.appendChild(app.canvas);
     layout();
@@ -370,9 +435,12 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
         display.scale.set(size);
         if (size === growth.target) growth = undefined;
       }
-      armature.advanceTime(dt);
-      foodLight.advance(dt);
-      if (jellySpikes?.display.visible) jellySpikes.advanceTime(dt);
+      // Drain DragonBones' shared event and disposal queues. Each card advances
+      // its own armatures on the local clock, including nested slot animations.
+      dragonBones.PixiFactory.advanceTime(0);
+      clock.advanceTime(dt);
+      for (const effect of foodEffects) effect.advance(dt);
+      if (config.foodShield) updateFoodShields();
       if (recovery) {
         recovery.seconds -= dt;
         if (recovery.seconds <= 0) {
@@ -380,11 +448,11 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
           return;
         }
       }
-      if (action === config.idle) return;
       effects?.advance(dt);
+      if (action === config.idle) return;
       if (secondsLeft !== null) secondsLeft = Math.max(0, secondsLeft - dt);
       const done = secondsLeft === null ? armature.animation.isCompleted : secondsLeft === 0;
-      if (done && (pendingClips.length || !effects?.playing)) playNextClip();
+      if (done && (pendingClips.length || !effects?.holdsAction)) playNextClip();
     });
     observer = new IntersectionObserver(([entry]) => {
       if (signal.aborted) return;

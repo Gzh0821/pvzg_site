@@ -42,8 +42,8 @@ export function createPlantFoodLight(PIXI, factory, stage, image, position, scal
   };
 }
 
-// These armatures share the plant's already loaded atlas and manual clock.
-export function createPlantEffects({ PIXI, dragonBones, factory, code, plant, tracks, applyCostume }) {
+// Each cue uses its own clock so nested rigs start at the scheduled frame.
+export function createPlantEffects({ PIXI, dragonBones, factory, screen, code, plant, tracks, applyCostume }) {
   const layer = new PIXI.Container();
   layer.position.copyFrom(plant.display.position);
   layer.scale.copyFrom(plant.display.scale);
@@ -53,14 +53,17 @@ export function createPlantEffects({ PIXI, dragonBones, factory, code, plant, tr
   let pending = [];
   let time = 0;
 
-  function dispose(rig) {
+  function dispose(rig, mask) {
+    if (mask) {
+      rig.display.mask = null;
+      mask.destroy();
+    }
     layer.removeChild(rig.display);
     rig.dispose();
   }
 
   function clear() {
-    for (const { rig } of active) dispose(rig);
-    if (active.length) dragonBones.PixiFactory.advanceTime(0);
+    for (const { rig, mask } of active) dispose(rig, mask);
     active.length = 0;
     pending = [];
     plant.display.visible = true;
@@ -68,42 +71,58 @@ export function createPlantEffects({ PIXI, dragonBones, factory, code, plant, tr
   }
 
   function advance(dt) {
+    if (!active.length && !pending.length) return;
     const previous = time;
     time += dt;
     while (pending.length && pending[0].frame / fps <= time + 1e-8) {
       const cue = pending.shift();
-      const rig = factory.buildArmature(cue.armature, code, '', code);
+      const rig = factory.buildArmature(cue.armature, cue.pack ?? code);
+      const clock = new dragonBones.WorldClock();
+      clock.add(rig);
       const state = rig.animation.play(cue.clip, cue.frames ? 0 : 1);
       if (cue.armature === plant.name) applyCostume(rig);
-      rig.display.scale.set(cue.scale);
+      rig.display.scale.set(cue.scaleX ?? cue.scale, cue.scaleY ?? cue.scale);
+      rig.display.angle = cue.angle ?? 0;
       layer.addChild(rig.display);
-      active.push({ cue, rig, duration: cue.frames ? cue.frames / fps : state.totalTime });
+      let mask;
+      if (cue.clipWidth !== undefined) {
+        const bounds = rig.armatureData.aabb;
+        mask = new PIXI.Graphics().rect(0, bounds.y, cue.clipWidth, bounds.height).fill(0xffffff);
+        mask.scale.copyFrom(rig.display.scale);
+        mask.angle = rig.display.angle;
+        layer.addChild(mask);
+        rig.display.mask = mask;
+      }
+      const socket = cue.bone ? plant.getBone(cue.bone).globalTransformMatrix : null;
+      active.push({ cue, rig, clock, mask, x: socket?.tx ?? 0, y: socket?.ty ?? 0, duration: cue.frames ? cue.frames / fps : state.totalTime });
     }
-    let disposed = false;
     for (let i = active.length - 1; i >= 0; i--) {
-      const { cue, rig, duration } = active[i];
+      const { cue, rig, clock, mask, x, y, duration } = active[i];
       const start = cue.frame / fps;
       const age = Math.max(0, time - start);
       if (age + 1e-8 >= duration) {
-        dispose(rig);
+        dispose(rig, mask);
         active.splice(i, 1);
-        disposed = true;
         continue;
       }
-      rig.advanceTime(Math.max(0, time - Math.max(previous, start)));
+      clock.advanceTime(Math.max(0, time - Math.max(previous, start)));
       const progress = age / duration;
       rig.display.position.set(
-        cue.x + ((cue.toX ?? cue.x) - cue.x) * progress,
-        cue.y + ((cue.toY ?? cue.y) - cue.y) * progress - (cue.arc ?? 0) * 4 * progress * (1 - progress),
+        x + cue.x + ((cue.toX ?? cue.x) - cue.x) * progress,
+        y + cue.y + ((cue.toY ?? cue.y) - cue.y) * progress - (cue.arc ?? 0) * 4 * progress * (1 - progress),
       );
+      if (mask) mask.position.copyFrom(rig.display.position);
     }
-    if (disposed) dragonBones.PixiFactory.advanceTime(0);
     plant.display.visible = !active.some(({ cue }) => cue.hidePlant);
   }
 
   function play(action, formTracks) {
     clear();
-    pending = [...(formTracks?.[action] ?? tracks[action] ?? [])].sort((a, b) => a.frame - b.frame);
+    const cues = formTracks?.[action] ?? tracks[action] ?? [];
+    const rightEdge = layer.toLocal({ x: screen.width, y: 0 }).x;
+    const resolveX = x => typeof x === 'object' ? x.rightEdgeFraction * rightEdge : x;
+    pending = cues.map(cue => ({ ...cue, x: resolveX(cue.x), toX: resolveX(cue.toX) }))
+      .sort((a, b) => a.frame - b.frame);
     advance(0);
   }
 
@@ -113,5 +132,10 @@ export function createPlantEffects({ PIXI, dragonBones, factory, code, plant, tr
     }
   }
 
-  return { play, advance, clear, updateCostume, get playing() { return pending.length > 0 || active.length > 0; } };
+  return {
+    play, advance, clear, updateCostume,
+    get holdsAction() {
+      return pending.some(cue => !cue.projectile) || active.some(({ cue }) => !cue.projectile);
+    },
+  };
 }
