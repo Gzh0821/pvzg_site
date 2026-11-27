@@ -1,9 +1,11 @@
-import { coldSnapdragonEffects, groundSpikes, mineEffects, snapdragonEffects, type EffectCue } from './plant-effect-cues';
+import { anthuriumBolt, darkMatter, duskBud, shadowPea, coldSnapdragonEffects, groundSpikes, mineEffects, snapdragonEffects, type EffectCue } from './plant-effect-cues';
 
-export type PlantAction = 'Food' | 'Water' | 'Shoot' | 'Lob' | 'Lob_Butter' | 'Produce' | 'Freeze' | 'Coin' | 'Attack' | 'Block' | 'Grow';
+export type PlantAction = 'Food' | 'Water' | 'Shoot' | 'Lob' | 'Lob_Butter' | 'Produce' | 'Freeze' | 'Coin' | 'Attack' | 'Block' | 'ChargedShot';
 export type ClipStep = string | {
   clip: string;
   repeats?: number;
+  speed?: number;
+  scale?: number;
   seconds?: number;
   fromFrame?: number;
   toFrame?: number;
@@ -16,6 +18,7 @@ export interface PlantAnimationConfig {
   idle: string;
   costumes: number;
   actions: ActionClips;
+  recoverAfter?: Partial<Record<PlantAction, readonly ClipStep[]>>;
   bodySlots?: readonly string[];
   framing?: 'flight';
   /** Upward preview offset as a fraction of card height. */
@@ -23,7 +26,7 @@ export interface PlantAnimationConfig {
   bodyOffset?: readonly [number, number];
   hiddenSlots?: readonly string[];
   effects?: Partial<Record<PlantAction, readonly EffectCue[]>>;
-  foodSlots?: Readonly<Record<string, number>>;
+  foodSlots?: Readonly<Record<string, number>> | ((slot: string) => number | undefined);
 }
 
 const shoot = { Food: 'Food', Water: 'Water', Shoot: 'Shoot' };
@@ -31,13 +34,14 @@ const lob = { Food: 'Food', Water: 'Water', Lob: 'Lob' };
 const sun = { Food: 'Food', Water: 'Water', Produce: 'Produce' };
 const defend = { Food: 'Food', Water: 'Water' };
 
+// Citron shrinks after firing and finishes recharging at frame 210.
+const citronRecharge = [{ clip: 'Shrink', toFrame: 32 }, { clip: 'Charge', toFrame: 210, speed: 5 }];
 const armor = { ARMOR: 0 };
-const showArmor = { clip: 'Idle1', seconds: 1.5, foodAppearance: true };
-// wearArmor is at frame 12 in both Wall-nut Food timelines.
-const wearArmor = {
-  Food: [{ clip: 'Food', toFrame: 12 }, { clip: 'Food', fromFrame: 12, foodAppearance: true }, showArmor],
-  Water: 'Water',
-};
+// Apply the upgrade at the frame where the game changes the plant's slots.
+function upgradeAt(frame: number) {
+  return [{ clip: 'Food', toFrame: frame }, { clip: 'Food', fromFrame: frame, foodAppearance: true }];
+}
+const wearArmor = { Food: upgradeAt(12), Water: 'Water' };
 
 const loopFood = { clip: 'Food', seconds: 2 } as const;
 const stagedFood = ['FoodStart', { clip: 'Fooding', seconds: 1.5 }, 'FoodEnd'] as const;
@@ -52,7 +56,6 @@ const wings = ['wingL', 'wingR'];
 const dragon = { Food: 'Food', Water: 'Water', Attack: 'Attack' };
 const mine = {
   Food: 'Food', Water: 'Water', Attack: 'Charging',
-  Grow: ['Spawn_Baby', { clip: 'Idle_Baby', seconds: 0.65 }, 'Grow'],
 };
 
 export const plantAnimations = {
@@ -112,7 +115,7 @@ export const plantAnimations = {
     actions: { Food: { clip: 'Idle0', seconds: 1.5, foodAppearance: true }, Water: 'Water' },
   },
   peapod: {
-    armature: 'Peapod', idle: 'Idle', costumes: 2, hiddenSlots: ['HEAD1', 'HEAD2', 'HEAD3', 'HEAD4'],
+    armature: 'Peapod', idle: 'Idle', costumes: 2,
     actions: { Food: ['FoodStart', { clip: 'FoodShoot', repeats: 5 }, 'FoodEnd'], Water: 'Water', Shoot: 'Shoot' },
   },
   melonpult: { armature: 'Melon-pult', idle: 'Idle', costumes: 4, actions: lob },
@@ -130,8 +133,9 @@ export const plantAnimations = {
     actions: { Food: ['FoodStart', 'Food', 'FoodEnd'], Water: 'Water', Shoot: 'Shoot' },
   },
   citron: {
-    armature: 'Citron', idle: 'Idle', costumes: 3,
-    actions: { Food: 'Food', Water: 'Water', Shoot: ['Ready', 'Shoot'] },
+    armature: 'Citron', idle: 'Ready', costumes: 3,
+    actions: { Food: { clip: 'Food', toFrame: 43 }, Water: 'Water', Shoot: { clip: 'Shoot', toFrame: 34 } },
+    recoverAfter: { Shoot: citronRecharge, Food: citronRecharge },
   },
   starfruit: { armature: 'StarFruit', idle: 'Idle', costumes: 2, actions: shootStagedFood },
   pinkstarfruit: {
@@ -148,7 +152,7 @@ export const plantAnimations = {
     armature: 'AppleMortar', idle: 'Idle', costumes: 1, previewLift: 0.09,
     actions: { Food: 'Food', Water: 'Water', Lob: 'Shoot' },
   },
-  pumpkin: { armature: 'PumpkinHead', idle: 'Idle1', costumes: 1, previewLift: 0.11, foodSlots: armor, actions: { Food: showArmor } },
+  pumpkin: { armature: 'PumpkinHead', idle: 'Idle1', costumes: 1, previewLift: 0.11, foodSlots: armor, actions: { Food: { clip: 'Idle1', seconds: 1.5, foodAppearance: true } } },
   hollyknight: {
     armature: 'HollyKnight', idle: 'Idle', costumes: 1, previewLift: 0.09,
     actions: { Food: 'Food', Water: 'Water', Shoot: ['Ready', 'Shoot'] },
@@ -157,8 +161,8 @@ export const plantAnimations = {
   puffshroom: { armature: 'PuffShroom', idle: 'Idle', costumes: 2, actions: shootStagedFood },
   fumeshroom: { armature: 'FumeShroom', idle: 'Idle', costumes: 2, previewLift: 0.09, bodyOffset: [3.652, 0], actions: shoot },
   peanut: {
-    armature: 'Peanut', idle: 'Idle0', costumes: 1,
-    actions: { Food: ['FoodStart', { clip: 'FoodLoop', seconds: 1.5 }, 'FoodEnd'], Water: 'Water', Shoot: ['Shoot00', 'Shoot01'] },
+    armature: 'Peanut', idle: 'Idle0', costumes: 1, foodSlots: armor,
+    actions: { Food: [{ clip: 'FoodStart', foodAppearance: true }, { clip: 'FoodLoop', seconds: 1.5 }, 'FoodEnd'], Water: 'Water', Shoot: ['Shoot00', 'Shoot01'] },
   },
   poisonpeashooter: { armature: 'GooPea', idle: 'Idle', costumes: 1, actions: shoot },
   scaredyshroom: { armature: 'ScaredyShroom', idle: 'Idle', costumes: 2, actions: shootLoopFood },
@@ -192,7 +196,8 @@ export const plantAnimations = {
   akee: { armature: 'AKEE', idle: 'Idle', costumes: 2, actions: lob },
   endurian: {
     armature: 'Endurian', idle: 'Idle00', costumes: 2,
-    actions: { Food: 'Food', Water: 'Water', Attack: ['AttackStart0', { clip: 'AttackLoop0', repeats: 3 }, 'AttackEnd0'] },
+    foodSlots: slot => slot.endsWith('ARMOR0') ? 0 : undefined,
+    actions: { Food: upgradeAt(12), Water: 'Water', Attack: ['AttackStart0', { clip: 'AttackLoop0', repeats: 3 }, 'AttackEnd0'] },
   },
   shinevine: {
     armature: 'ShineVine', idle: 'Idle', costumes: 0, bodyOffset: [3.652, 0],
@@ -210,7 +215,11 @@ export const plantAnimations = {
     actions: { Food: { clip: 'Idle', seconds: 1.5, foodAppearance: true }, Water: 'Water', Shoot: 'Shoot' },
   },
   cantaloupe: { armature: 'Melon-pult', idle: 'Idle', costumes: 2, actions: lob },
-  cactus: { armature: 'Cactus', idle: 'Idle', costumes: 2, actions: shoot },
+  cactus: {
+    armature: 'Cactus', idle: 'Idle', costumes: 2,
+    foodSlots: slot => slot.includes('stab') ? 1 : slot.includes('Light') ? 0 : undefined,
+    actions: { ...shoot, Food: upgradeAt(17) },
+  },
   garlic: { armature: 'Garlic', idle: 'Idle00', costumes: 2, actions: defend },
   sporeshroom: { armature: 'SporeShroom', idle: 'Idle', costumes: 2, previewLift: 0.09, actions: shoot },
   bloominghearts: { armature: 'BloomingHearts', idle: 'Idle', costumes: 2, actions: lob },
@@ -221,18 +230,25 @@ export const plantAnimations = {
   primalpeashooter: { armature: 'PrimalPeashooter', idle: 'Idle', costumes: 2, actions: shootLoopFood },
   primalwallnut: { armature: 'Wall-nut', idle: 'Idle1', costumes: 2, foodSlots: armor, actions: wearArmor },
   primalsunflower: { armature: 'PrimalSunflower', idle: 'Idle', costumes: 2, actions: sun },
-  explodeonut: { armature: 'ExplodeONut', idle: 'Idle1', costumes: 1, actions: defend },
+  explodeonut: { armature: 'ExplodeONut', idle: 'Idle1', costumes: 1, foodSlots: armor, actions: { Food: upgradeAt(13), Water: 'Water' } },
   skyshooter: { armature: 'Skyshooter', idle: 'Idle', costumes: 1, actions: shootLoopFood },
-  anthurium: { armature: 'Anthurium', idle: 'Idle', costumes: 1, actions: shoot },
+  anthurium: {
+    armature: 'Anthurium', idle: 'Idle', costumes: 1, actions: { ...shoot, ChargedShot: 'Shoot2' },
+    effects: { Shoot: [anthuriumBolt], ChargedShot: [{ ...anthuriumBolt, frame: 25, armature: 'Prj1' }] },
+  },
   asparagus: {
     armature: 'Asparagus', idle: 'Idle', costumes: 1,
     actions: { Food: 'Food', Water: 'Water', Shoot: ['ShootM', 'Reload'] },
   },
   megagatling: { armature: 'MegaGatlingPea', idle: 'Idle', costumes: 1, actions: shootLoopFood },
   moonflower: { armature: 'Moonflower', idle: 'Idle', costumes: 1, actions: sun },
-  dusklobber: { armature: 'DuskLobber', idle: 'Idle', costumes: 2, actions: lob },
-  murkadamia: { armature: 'MurkamadiaNut', idle: 'Idle00', costumes: 0, previewLift: 0.09, actions: defend },
-  shadowpeashooter: { armature: 'ShadowPeashooter', idle: 'Idle', costumes: 2, actions: shoot },
+  dusklobber: { armature: 'DuskLobber', idle: 'Idle', costumes: 2, actions: lob, effects: { Lob: [duskBud] } },
+  murkadamia: {
+    armature: 'MurkamadiaNut', idle: 'Idle00', costumes: 0, previewLift: 0.09,
+    foodSlots: { SHIELD: 0 },
+    actions: { ...defend, Food: upgradeAt(14) },
+  },
+  shadowpeashooter: { armature: 'ShadowPeashooter', idle: 'Idle', costumes: 2, actions: shoot, effects: { Shoot: [shadowPea] } },
   slingpea: {
     armature: 'SlingPea', idle: 'Idle', costumes: 2,
     actions: {
@@ -242,7 +258,7 @@ export const plantAnimations = {
     },
   },
   darkmatterdragonfruit: {
-    armature: 'Dragonfruit', idle: 'Idle', costumes: 0,
+    armature: 'Dragonfruit', idle: 'Idle', costumes: 0, effects: { Shoot: [darkMatter] },
     actions: { Food: ['FoodStart', { clip: 'FoodLoop', seconds: 1.5 }, 'FoodEnd'], Water: 'Water', Shoot: 'Shoot' },
   },
 } as const satisfies Record<string, PlantAnimationConfig>;

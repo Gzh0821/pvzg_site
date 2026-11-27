@@ -7,6 +7,7 @@ export interface EffectCue {
   scale: number;
   frames?: number;
   toX?: number;
+  toY?: number;
   arc?: number;
   hidePlant?: boolean;
 }
@@ -42,3 +43,10 @@ export function mineEffects(armature: string, explosionScale: number) {
     ]),
   };
 }
+
+// Attack event frames come from the plant timelines. Keep the three lane
+// destinations close enough to distinguish them inside a single preview card.
+export const duskBud: EffectCue = { frame: 12, armature: 'Prj0', clip: 'idle', x: -41, y: -131, toX: 190, toY: -15, arc: 52, scale: 0.75, frames: 23 };
+export const shadowPea: EffectCue = { frame: 14, armature: 'Prj0', clip: 'i', x: 80, y: -88, toX: 240, scale: 0.55, frames: 10 };
+export const darkMatter: EffectCue = { frame: 37, armature: 'Prj', clip: 'idle', x: 67, y: -79, toX: 220, scale: 0.28, frames: 17 };
+export const anthuriumBolt: EffectCue = { frame: 17, armature: 'Prj0', clip: 'i', x: 0, y: -80, toX: 225, scale: 0.7, frames: 14 };

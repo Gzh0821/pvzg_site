@@ -1,4 +1,6 @@
-import { createPlantEffects } from './plant-animation-effects';
+import lightTextureUrl from './assets/plant-food-light/texture.png';
+import { createPlantEffects, createPlantFoodLight } from './plant-animation-effects';
+import { formActions, plantForms } from './plant-forms';
 import { plantAnimations } from './plant-animations';
 
 // Almanac.prefab uses a 555 × 470 backdrop. plantDisplayer is 133.578 units
@@ -13,15 +15,8 @@ async function readAsset(url, signal, format) {
   return response[format]();
 }
 
-export async function mountPlantAnimation(host, code, displayOffset, signal, onAction) {
-  const folder = `${assetRoot}/${code}`;
-  const [{ PIXI, dragonBones }, skeleton, atlas, png] = await Promise.all([
-    import('./vendor/pixi-8.9.2-dragonbones-5.7.mjs'),
-    readAsset(`${folder}/skeleton.json`, signal, 'json'),
-    readAsset(`${folder}/atlas.json`, signal, 'json'),
-    readAsset(`${folder}/texture.png`, signal, 'blob'),
-  ]);
-  signal.throwIfAborted();
+async function readImage(url, signal) {
+  const png = await readAsset(url, signal, 'blob');
   const image = new Image();
   const objectUrl = URL.createObjectURL(png);
   try {
@@ -30,24 +25,44 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   } finally {
     URL.revokeObjectURL(objectUrl);
   }
+  return image;
+}
+
+export async function mountPlantAnimation(host, code, displayOffset, signal, onAction, onForm, onFoodUpgrade) {
+  const folder = `${assetRoot}/${code}`;
+  const [{ PIXI, dragonBones }, skeleton, atlas, image, lightImage] = await Promise.all([
+    import('./vendor/pixi-8.9.2-dragonbones-5.7.mjs'),
+    readAsset(`${folder}/skeleton.json`, signal, 'json'),
+    readAsset(`${folder}/atlas.json`, signal, 'json'),
+    readImage(`${folder}/texture.png`, signal),
+    readImage(lightTextureUrl, signal),
+  ]);
   signal.throwIfAborted();
 
   const config = plantAnimations[code];
-  const foodSlots = Object.entries(config.foodSlots ?? {});
+  const foodSlots = new Map();
   const app = new PIXI.Application();
   let factory, armature, probe, texture, observer, resizeObserver;
-  const frames = new Map();
+  let frame;
+  const forms = plantForms(code);
+  let formIndex = 0;
+  let form = forms[0];
+  let actions = formActions(config, form);
+  let jellySpikes;
+  let hasFoodAppearance = false;
+  let recovery;
   let costume = -1;
   let action = config.idle;
   let pendingClips = [];
   let secondsLeft = null;
-  let effects;
-  let centeredView;
+  let effects, foodLight;
 
   function destroy() {
     observer?.disconnect();
     resizeObserver?.disconnect();
     effects?.clear();
+    foodLight?.destroy();
+    jellySpikes?.dispose();
     probe?.dispose();
     armature?.dispose();
     factory?.clear(true);
@@ -59,14 +74,16 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   function applyCostume(rig) {
     for (const slot of rig.getSlots()) {
       if (slot.name.includes('COS')) {
-        slot.displayIndex = costume >= 0 && slot.name.includes(`COS${costume}`) ? 0 : -1;
+        slot.displayIndex = rig === probe || (costume >= 0 && slot.name.includes(`COS${costume}`)) ? 0 : -1;
       }
     }
     rig.advanceTime(0);
   }
 
-  function startClip(rig, step) {
-    const clip = typeof step === 'string' ? step : step?.clip ?? config.idle;
+  function startClip(rig, step, poseForm = form, upgraded = hasFoodAppearance) {
+    const clip = typeof step === 'string' ? step : step?.clip ?? poseForm?.idle ?? config.idle;
+    const size = step?.scale ?? poseForm?.scale ?? 1;
+    rig.display.scale.set(gameFrame.displayScale * gameFrame.prefabScale * size);
     rig.animation.reset();
     const playback = rig.animation.animationConfig;
     playback.animation = clip;
@@ -77,40 +94,33 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
       const end = step.toFrame === undefined ? rig.animation.animations[clip].duration : step.toFrame / fps;
       playback.duration = end - playback.position;
     }
+    if (rig === armature && step?.speed) playback.timeScale = step.speed;
     playback.fadeInTime = 0;
     // Root timeline actions can otherwise skip the preview's ending or idle.
     playback.actionEnabled = false;
     const state = rig.animation.playConfig(playback);
     for (const [name, index] of foodSlots) {
       const slot = rig.getSlot(name);
-      slot.displayIndex = step?.foodAppearance ? index : slot.slotData.displayIndex;
+      slot.displayIndex = (upgraded || step?.foodAppearance) ? index : slot.slotData.displayIndex;
     }
     applyCostume(rig);
     for (const slotName of config.hiddenSlots ?? []) {
       const slot = rig.getSlot(slotName);
       if (slot) slot.displayIndex = -1;
     }
+    if (poseForm) {
+      for (const slot of rig.getSlots()) {
+        if (poseForm.powered !== undefined && slot.displayFrameCount > 1 && slot.name.includes('_DARK')) slot.displayIndex = Number(poseForm.powered);
+        if (poseForm.heads && /_HEAD[0-4]$/.test(slot.name)) slot.displayIndex = Number(slot.name.at(-1)) < poseForm.heads ? 0 : -1;
+        if (poseForm.jelly !== undefined && slot.name.startsWith('JELLY')) slot.displayIndex = poseForm.jelly ? 0 : -1;
+      }
+      rig.advanceTime(0);
+    }
     return state;
   }
 
-  function clipSteps(name) {
-    const clips = config.actions[name];
-    return Array.isArray(clips) ? clips : [clips];
-  }
-
   function measureFrame() {
-    if (frames.has(costume)) return frames.get(costume);
-    startClip(probe);
-    // Follow the plant and equipped costume through the motion. Detached
-    // projectiles can travel thousands of units beyond an almanac card.
-    const visible = slot => slot.displayIndex >= 0 && slot.display?.visible && slot.display.alpha > 0;
-    const parts = probe.getSlots().map(slot => ({
-      slot,
-      body: slot.name.includes('COS') || config.bodySlots?.includes(slot.name) ||
-        Object.hasOwn(config.foodSlots ?? {}, slot.name) || (slot.displayIndex >= 0 && slot.display?.visible),
-      rect: new PIXI.Bounds(),
-    }));
-    const idleBounds = probe.display.getBounds();
+    // Measure in card coordinates once. All outfits, forms and actions share this camera.
     const bodyBounds = new PIXI.Bounds();
     const effectBounds = new PIXI.Bounds();
     const pose = new PIXI.Bounds();
@@ -118,7 +128,11 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     let poseWidth = 0, poseHeight = 0;
     const extras = [];
 
-    function recordPose(isIdle) {
+    const parts = probe.getSlots().map(slot => ({
+      slot, body: false, rect: new PIXI.Bounds(),
+    }));
+    const visible = slot => slot.displayIndex >= 0 && slot.display?.visible && slot.display.alpha > 0;
+    function recordPose(isRest, idleBounds) {
       pose.clear();
       extras.length = 0;
       for (const { slot, body, rect } of parts) {
@@ -129,7 +143,7 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
       }
       const anchor = pose.isValid ? pose : idleBounds;
       if (config.framing === 'flight') {
-        if (isIdle) idlePose.addBounds(anchor);
+        if (isRest) idlePose.addBounds(anchor);
         poseWidth = Math.max(poseWidth, anchor.width);
         poseHeight = Math.max(poseHeight, anchor.height);
       }
@@ -141,58 +155,48 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
       }
     }
 
-    // Reserve one camera for idle and every action in this outfit.
-    const steps = [undefined, ...Object.keys(config.actions).flatMap(clipSteps)];
-    for (const step of steps) {
-      const state = startClip(probe, step);
-      const duration = Math.min(state.totalTime, step?.seconds ?? Infinity);
-      const count = Math.ceil(duration * probe.armatureData.frameRate);
-      recordPose(step === undefined);
-      // A throwing hand can change displays at a keyframe. Measure both
-      // sides of that switch as well as the interpolated pose between keys.
-      const dt = duration / count;
-      const epsilon = 1e-6;
-      const deltas = [epsilon, dt / 2 - epsilon, dt / 2 - epsilon, epsilon];
-      for (let frame = 0; frame < count; frame++) {
-        for (const delta of deltas) {
-          probe.advanceTime(delta);
-          recordPose(step === undefined);
+    function measureForm(poseForm, upgraded) {
+      startClip(probe, undefined, poseForm, upgraded);
+      const idleBounds = probe.display.getBounds();
+      for (const part of parts) {
+        const { slot } = part;
+        part.body = !slot.name.includes('COS') &&
+          (config.bodySlots?.includes(slot.name) || foodSlots.has(slot.name) || visible(slot));
+      }
+      const steps = Object.values(formActions(config, poseForm)).filter(Boolean).flat();
+      steps.push(...Object.values(config.recoverAfter ?? {}).flat());
+      if (poseForm?.enter) steps.push(poseForm.enter);
+      for (const step of [undefined, ...steps]) {
+        const state = startClip(probe, step, poseForm, upgraded);
+        const duration = Math.min(state.totalTime, step?.seconds ?? Infinity);
+        const count = Math.ceil(duration * probe.armatureData.frameRate);
+        const isRest = !step && poseForm === forms[0] && !upgraded;
+        recordPose(isRest, idleBounds);
+        // Include both sides of display switches and the interpolation between keys.
+        const dt = duration / count;
+        const epsilon = 1e-6;
+        const deltas = [epsilon, dt / 2 - epsilon, dt / 2 - epsilon, epsilon];
+        for (let i = 0; i < count; i++) {
+          for (const delta of deltas) {
+            probe.advanceTime(delta);
+            recordPose(isRest, idleBounds);
+          }
         }
       }
     }
-    const frame = { bodyBounds, effectBounds };
-    if (config.framing === 'flight') {
-      frame.center = { idlePose, poseWidth, poseHeight };
+    for (const poseForm of forms.length ? forms : [undefined]) {
+      measureForm(poseForm, false);
+      if (foodSlots.size) measureForm(poseForm, true);
     }
-    if (frame.center || config.previewLift) {
-      frame.slots = parts.filter(part => part.body).map(part => armature.getSlot(part.slot.name));
-    }
-    frames.set(costume, frame);
-    return frame;
-  }
-
-  // Only move away from the resting anchor when the visible body needs room.
-  function fitCurrentPose(returnFraction = 1) {
-    if (!centeredView) return;
-    const { slots, x, y, margin, pose, rect } = centeredView;
-    pose.clear();
-    for (const slot of slots) {
-      if (slot.displayIndex < 0 || !slot.display?.visible || slot.display.alpha <= 0) continue;
-      slot.display.getBounds(false, rect);
-      pose.addBounds(rect);
-    }
-    const stage = app.stage;
-    if (!pose.isValid) return;
-    const dx = Math.max(margin - pose.minX, Math.min((x - stage.x) * returnFraction, app.screen.width - margin - pose.maxX));
-    const dy = Math.max(margin - pose.minY, Math.min((y - stage.y) * returnFraction, app.screen.height - margin - pose.maxY));
-    stage.position.set(stage.x + dx, stage.y + dy);
+    return { bodyBounds, effectBounds,
+      center: config.framing === 'flight' ? { idlePose, poseWidth, poseHeight } : undefined };
   }
 
   function layout() {
     const w = host.clientWidth, h = host.clientHeight;
     if (!w || !h) return;
     if (app.screen.width !== w || app.screen.height !== h) app.renderer.resize(w, h);
-    const { bodyBounds, effectBounds, center, slots } = measureFrame();
+    const { bodyBounds, effectBounds, center } = frame ??= measureFrame();
     const margin = 6;
     const scale = Math.min(w / gameFrame.width, h / gameFrame.height,
       w / ((center?.poseWidth ?? bodyBounds.width) + 2 * margin),
@@ -213,34 +217,76 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     }
     app.stage.scale.set(scale);
     app.stage.position.set(x, y);
-    const needsPan = center || (config.previewLift && y + bodyBounds.minY * scale < margin * scale);
-    centeredView = needsPan ? { slots, x, y, margin: margin * scale, pose: new PIXI.Bounds(), rect: new PIXI.Bounds() } : undefined;
-    fitCurrentPose();
   }
 
   function setCostume(index) {
     costume = index;
     applyCostume(armature);
     effects?.updateCostume();
-    layout();
+  }
+
+  function selectForm(index) {
+    effects?.clear();
+    recovery = undefined;
+    formIndex = index;
+    form = forms[index];
+    actions = formActions(config, form);
+    if (jellySpikes) jellySpikes.display.visible = Boolean(form.jelly);
+    onForm(index);
+  }
+
+  function setForm(index) {
+    foodLight.clear();
+    selectForm(index);
+    action = 'Form';
+    onAction(action);
+    pendingClips = form.enter ? [form.enter] : [];
+    playNextClip();
   }
 
   function playNextClip() {
-    const step = pendingClips.shift();
+    let step = pendingClips.shift();
+    const result = !step ? form?.afterAction?.[action] : undefined;
+    if (!step && action === 'Food') foodLight.end();
+    if (!step && config.recoverAfter?.[action]) {
+      pendingClips = [...config.recoverAfter[action]];
+      step = pendingClips.shift();
+      action = 'Recover';
+      onAction(action);
+    }
+    if (result) {
+      selectForm(result.index);
+      if (result.recovery) recovery = { ...result.recovery };
+    }
+    if (step?.foodAppearance && !hasFoodAppearance) {
+      hasFoodAppearance = true;
+      onFoodUpgrade(true);
+    }
     if (!step) {
       action = config.idle;
       onAction(action);
     }
     secondsLeft = step?.seconds ?? null;
     startClip(armature, step);
-    fitCurrentPose();
+  }
+
+  function resetFoodUpgrade() {
+    hasFoodAppearance = false;
+    onFoodUpgrade(false);
+    play(config.idle);
   }
 
   function play(name) {
-    effects?.play(name);
+    if (name === 'Food') {
+      recovery = undefined;
+      foodLight.start();
+    } else {
+      foodLight.clear();
+    }
+    effects?.play(name, form?.effects);
     action = name;
-    const clips = config.actions[name];
-    pendingClips = clips ? [...clipSteps(name)] : [];
+    const clips = actions[name];
+    pendingClips = Array.isArray(clips) ? [...clips] : clips ? [clips] : [];
     if (clips) onAction(name);
     playNextClip();
   }
@@ -255,7 +301,14 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     texture = new PIXI.ImageSource({ resource: image });
     factory.parseDragonBonesData(skeleton, code);
     factory.parseTextureAtlasData(atlas, texture, code);
-    armature = factory.buildArmature(config.armature, code, '', code);
+    // Use the rig's own atlas. An override would also bind textures to same-named child armatures.
+    armature = factory.buildArmature(config.armature, code);
+    if (config.foodSlots) {
+      for (const { name } of armature.getSlots()) {
+        const index = typeof config.foodSlots === 'function' ? config.foodSlots(name) : config.foodSlots[name];
+        if (index !== undefined) foodSlots.set(name, index);
+      }
+    }
     const display = armature.display;
     const { width, height, originY, displayScale, prefabScale } = gameFrame;
     const { x, y } = displayOffset ?? { x: 0, y: 0 };
@@ -266,9 +319,19 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
       width / 2 + (x + bodyX * prefabScale) * displayScale,
       height / 2 - originY - (y + bodyY * prefabScale) * displayScale,
     );
-    probe = factory.buildArmature(config.armature, code, '', code);
+    probe = factory.buildArmature(config.armature, code);
     probe.display.scale.copyFrom(display.scale);
     probe.display.position.copyFrom(display.position);
+    // foodLightPAR is a 0.7× prefab placed at the plant's tile, behind its body.
+    foodLight = createPlantFoodLight(PIXI, factory, app.stage, lightImage, display.position, displayScale * 0.7);
+    if (forms.some(entry => entry.jelly)) {
+      jellySpikes = factory.buildArmature('_spikes', code, '', code);
+      jellySpikes.display.position.copyFrom(display.position);
+      jellySpikes.display.scale.copyFrom(display.scale);
+      jellySpikes.animation.play('Idle', 0);
+      jellySpikes.display.visible = false;
+      app.stage.addChild(jellySpikes.display);
+    }
     app.stage.addChild(display);
     if (config.effects) {
       effects = createPlantEffects({ PIXI, dragonBones, factory, code, plant: armature, tracks: config.effects, applyCostume });
@@ -279,8 +342,16 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     app.ticker.add(ticker => {
       const dt = Math.min(ticker.deltaMS / 1000, 0.1);
       armature.advanceTime(dt);
+      foodLight.advance(dt);
+      if (jellySpikes?.display.visible) jellySpikes.advanceTime(dt);
+      if (recovery) {
+        recovery.seconds -= dt;
+        if (recovery.seconds <= 0) {
+          setForm(recovery.index);
+          return;
+        }
+      }
       if (action === config.idle) return;
-      if (centeredView) fitCurrentPose(1 - Math.exp(-12 * dt));
       effects?.advance(dt);
       if (secondsLeft !== null) secondsLeft = Math.max(0, secondsLeft - dt);
       const done = secondsLeft === null ? armature.animation.isCompleted : secondsLeft === 0;
@@ -296,7 +367,7 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     resizeObserver.observe(host);
     app.render();
     signal.addEventListener('abort', destroy, { once: true });
-    return { play, setCostume };
+    return { play, setCostume, setForm, resetFoodUpgrade };
   } catch (error) {
     destroy();
     throw error;

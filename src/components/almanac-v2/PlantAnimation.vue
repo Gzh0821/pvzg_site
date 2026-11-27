@@ -3,15 +3,23 @@
     <div ref="host" class="canvas-host" role="img" :aria-label="name" />
     <template v-if="status === 'ready'">
       <div v-if="actions.length" class="clips">
-        <button
-          v-for="clip in actions" :key="clip" type="button"
-          :aria-label="clipControls[clip].label" :data-playing="action === clip"
-          @click="player?.play(clip)"
-        >
-          <img :src="controlsPath + clipControls[clip].icon" alt="">
-          <span class="action-hint" aria-hidden="true">{{ clipControls[clip].label }}</span>
-        </button>
+        <template v-for="clip in actions" :key="clip">
+          <button v-if="clip === 'Food' && foodUpgraded" type="button" :aria-label="labels.resetFood" @click="player?.resetFoodUpgrade()">
+            <img :src="controlsPath + 'reset-food.png'" alt="">
+            <span class="action-hint" aria-hidden="true">{{ labels.resetFood }}</span>
+          </button>
+          <button
+            type="button" :aria-label="clipControls[clip].label" :data-playing="action === clip"
+            @click="player?.play(clip)"
+          >
+            <img :src="clipControls[clip].icon" alt="">
+            <span class="action-hint" aria-hidden="true">{{ clipControls[clip].label }}</span>
+          </button>
+        </template>
       </div>
+      <button v-if="form" type="button" class="form-cycle" :aria-label="formLabel" @click="nextForm">
+        <img :src="controlsPath + 'change-form.png'" alt="">
+      </button>
       <button
         v-if="config.costumes > 0" class="costume-cycle" type="button"
         :aria-label="`${costumeLabel} · ${labels.nextCostume}`" :title="labels.nextCostume"
@@ -37,6 +45,7 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { getAlmanacText, getWorldLabel } from './locales';
 import { plantAnimations, type AnimatedPlant, type PlantAction, type PlantAnimationConfig } from './plant-animations';
+import { formActions, plantForms } from './plant-forms';
 import { mountPlantAnimation } from './plant-animation-player';
 import type { AlmanacLocale } from './types';
 import { almanacBackgrounds, getAlmanacWorldBackground } from './world-backgrounds';
@@ -49,21 +58,26 @@ const props = defineProps<{
   displayOffset?: { x: number; y: number };
 }>();
 const config: PlantAnimationConfig = plantAnimations[props.code];
-const actions = Object.keys(config.actions) as PlantAction[];
+const forms = plantForms(props.code);
+const formIndex = ref(0);
+const form = computed(() => forms[formIndex.value]);
+const actions = computed(() => Object.entries(formActions(config, form.value))
+  .filter(([, clip]) => clip).map(([name]) => name as PlantAction));
 const labels = computed(() => getAlmanacText(props.locale));
+const foodUpgraded = ref(false);
 const controlsPath = '/assets/almanac-animation/controls/';
 const clipControls = computed(() => ({
-  Shoot: { label: labels.value.shoot, icon: 'attack.webp' },
-  Lob: { label: labels.value.lob, icon: 'attack.webp' },
-  Lob_Butter: { label: labels.value.lobButter, icon: 'butter.webp' },
-  Produce: { label: labels.value.produceSun, icon: 'sun.webp' },
-  Water: { label: labels.value.water, icon: 'watering-can.webp' },
-  Freeze: { label: labels.value.lobFreeze, icon: 'freeze.webp' },
-  Coin: { label: labels.value.produceCoin, icon: 'coin.webp' },
-  Attack: { label: labels.value.attack, icon: 'attack.webp' },
-  Grow: { label: labels.value.grow, icon: 'grow.webp' },
-  Block: { label: labels.value.block, icon: 'block.webp' },
-  Food: { label: labels.value.plantFood, icon: 'plant-food.webp' },
+  ChargedShot: { label: labels.value.chargedShot, icon: '/assets/wikicon/Fila-mint_familyicon.webp' },
+  Shoot: { label: labels.value.shoot, icon: controlsPath + 'attack.webp' },
+  Lob: { label: labels.value.lob, icon: controlsPath + 'attack.webp' },
+  Lob_Butter: { label: labels.value.lobButter, icon: controlsPath + 'butter.webp' },
+  Produce: { label: labels.value.produceSun, icon: controlsPath + 'sun.webp' },
+  Water: { label: labels.value.water, icon: controlsPath + 'watering-can.webp' },
+  Freeze: { label: labels.value.lobFreeze, icon: controlsPath + 'freeze.webp' },
+  Coin: { label: labels.value.produceCoin, icon: controlsPath + 'coin.webp' },
+  Attack: { label: labels.value.attack, icon: controlsPath + 'attack.webp' },
+  Block: { label: labels.value.block, icon: controlsPath + 'block.webp' },
+  Food: { label: labels.value.plantFood, icon: controlsPath + 'plant-food.webp' },
 }));
 const background = ref(almanacBackgrounds.includes(props.world) ? props.world : 'default');
 const backgroundLabel = computed(() => labels.value.background + ' · ' + getWorldLabel(background.value, props.locale));
@@ -75,6 +89,12 @@ const host = ref<HTMLDivElement>();
 const status = ref<'loading' | 'error' | 'ready'>('loading');
 let controller: AbortController;
 let player: Awaited<ReturnType<typeof mountPlantAnimation>>;
+
+const formLabel = computed(() => form.value ? `${labels.value.nextForm} · ${form.value[props.locale]}` : '');
+
+function nextForm() {
+  player?.setForm((formIndex.value + 1) % forms.length);
+}
 
 function nextBackground() {
   const index = almanacBackgrounds.indexOf(background.value);
@@ -92,7 +112,11 @@ async function load() {
   controller = request;
   status.value = 'loading';
   try {
-    player = await mountPlantAnimation(host.value, props.code, props.displayOffset, request.signal, (clip: string) => { action.value = clip; });
+    foodUpgraded.value = false;
+    player = await mountPlantAnimation(host.value, props.code, props.displayOffset, request.signal,
+      (clip: string) => { action.value = clip; },
+      (index: number) => { formIndex.value = index; },
+      (upgraded: boolean) => { foodUpgraded.value = upgraded; });
     if (!request.signal.aborted) status.value = 'ready';
   } catch (error) {
     if (request.signal.aborted) return;
@@ -194,6 +218,13 @@ onBeforeUnmount(() => controller?.abort());
   .clips button:hover .action-hint { visibility: visible; }
 }
 
+.form-cycle {
+  top: var(--tools-inset);
+  right: var(--tools-inset);
+}
+.animation:has(.costume-cycle) .form-cycle {
+  right: calc(var(--tools-inset) + 49px);
+}
 .scene-cycle {
   left: var(--tools-inset);
   bottom: var(--tools-inset);
@@ -202,6 +233,7 @@ onBeforeUnmount(() => controller?.abort());
   top: var(--tools-inset);
   right: var(--tools-inset);
 }
+.form-cycle,
 .scene-cycle,
 .costume-cycle {
   position: absolute;
@@ -214,12 +246,14 @@ onBeforeUnmount(() => controller?.abort());
   background: transparent;
   cursor: pointer;
 }
+.form-cycle img,
 .scene-cycle img,
 .costume-cycle img {
   width: 40px;
   max-height: 40px;
   object-fit: contain;
 }
+.form-cycle:active,
 .scene-cycle:active,
 .costume-cycle:active { transform: translateY(1px); }
 .animation :focus-visible { outline: 3px solid #fff1a0; outline-offset: 2px; }
