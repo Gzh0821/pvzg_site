@@ -49,6 +49,8 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   let form = forms[0];
   let actions = formActions(config, form);
   let jellySpikes;
+  let fullJelly = false;
+  let growth;
   let hasFoodAppearance = false;
   let recovery;
   let costume = -1;
@@ -83,7 +85,14 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
   function startClip(rig, step, poseForm = form, upgraded = hasFoodAppearance) {
     const clip = typeof step === 'string' ? step : step?.clip ?? poseForm?.idle ?? config.idle;
     const size = step?.scale ?? poseForm?.scale ?? 1;
-    rig.display.scale.set(gameFrame.displayScale * gameFrame.prefabScale * size);
+    const target = gameFrame.displayScale * gameFrame.prefabScale * size;
+    if (rig === armature && target > rig.display.scale.x) {
+      // Sun-shroom grows from its current size to the next stage over one second.
+      if (growth?.target !== target) growth = { target, rate: target - rig.display.scale.x };
+    } else {
+      rig.display.scale.set(target);
+      if (rig === armature) growth = undefined;
+    }
     rig.animation.reset();
     const playback = rig.animation.animationConfig;
     playback.animation = clip;
@@ -109,10 +118,16 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
       if (slot) slot.displayIndex = -1;
     }
     if (poseForm) {
+      // Murkadamia's initial 60% jelly uses display 1. Plant Food fills it (display 0).
+      const jellyIndex = (rig === probe ? upgraded : fullJelly) ? 0 : 1;
       for (const slot of rig.getSlots()) {
-        if (poseForm.powered !== undefined && slot.displayFrameCount > 1 && slot.name.includes('_DARK')) slot.displayIndex = Number(poseForm.powered);
+        if (poseForm.powered !== undefined && slot.name.includes('_DARK')) {
+          const index = Number(poseForm.powered);
+          // Cocos hides a missing display. The web runtime clamps to the last texture.
+          slot.displayIndex = index < slot.displayFrameCount ? index : -1;
+        }
         if (poseForm.heads && /_HEAD[0-4]$/.test(slot.name)) slot.displayIndex = Number(slot.name.at(-1)) < poseForm.heads ? 0 : -1;
-        if (poseForm.jelly !== undefined && slot.name.startsWith('JELLY')) slot.displayIndex = poseForm.jelly ? 0 : -1;
+        if (poseForm.jelly !== undefined && slot.name.startsWith('JELLY')) slot.displayIndex = poseForm.jelly ? jellyIndex : -1;
       }
       rig.advanceTime(0);
     }
@@ -231,7 +246,11 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     formIndex = index;
     form = forms[index];
     actions = formActions(config, form);
-    if (jellySpikes) jellySpikes.display.visible = Boolean(form.jelly);
+    if (jellySpikes) {
+      fullJelly = false;
+      jellySpikes.display.visible = form.jelly;
+      onFoodUpgrade(hasFoodAppearance);
+    }
     onForm(index);
   }
 
@@ -272,12 +291,17 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
 
   function resetFoodUpgrade() {
     hasFoodAppearance = false;
+    fullJelly = false;
     onFoodUpgrade(false);
     play(config.idle);
   }
 
   function play(name) {
     if (name === 'Food') {
+      if (form?.jelly) {
+        fullJelly = true;
+        onFoodUpgrade(true);
+      }
       recovery = undefined;
       foodLight.start();
     } else {
@@ -341,6 +365,11 @@ export async function mountPlantAnimation(host, code, displayOffset, signal, onA
     play(config.idle);
     app.ticker.add(ticker => {
       const dt = Math.min(ticker.deltaMS / 1000, 0.1);
+      if (growth) {
+        const size = Math.min(growth.target, display.scale.x + growth.rate * dt);
+        display.scale.set(size);
+        if (size === growth.target) growth = undefined;
+      }
       armature.advanceTime(dt);
       foodLight.advance(dt);
       if (jellySpikes?.display.visible) jellySpikes.advanceTime(dt);
