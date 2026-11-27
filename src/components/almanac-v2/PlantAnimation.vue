@@ -13,7 +13,7 @@
         </button>
       </div>
       <button
-        class="costume-cycle" type="button"
+        v-if="config.costumes > 0" class="costume-cycle" type="button"
         :aria-label="`${costumeLabel} · ${labels.nextCostume}`" :title="labels.nextCostume"
         @click="nextCostume"
       >
@@ -39,19 +39,27 @@ import { getAlmanacText, getWorldLabel } from './locales';
 import { plantAnimations, type AnimatedPlant } from './plant-animations';
 import { mountPlantAnimation } from './plant-animation-player';
 import type { AlmanacLocale } from './types';
-import { getAlmanacWorldBackground } from './world-backgrounds';
+import { almanacBackgrounds, getAlmanacWorldBackground } from './world-backgrounds';
 
-const props = defineProps<{ code: AnimatedPlant; locale: AlmanacLocale; name: string; world: string }>();
+const props = defineProps<{
+  code: AnimatedPlant;
+  locale: AlmanacLocale;
+  name: string;
+  world: string;
+  displayOffset?: { x: number; y: number };
+}>();
 const config = plantAnimations[props.code];
 const labels = computed(() => getAlmanacText(props.locale));
 const controlsPath = '/assets/almanac-animation/controls/';
 const clipControls = computed(() => ({
   Shoot: { label: labels.value.shoot, icon: 'attack.webp' },
+  Lob: { label: labels.value.lob, icon: 'attack.webp' },
+  Lob_Butter: { label: labels.value.lobButter, icon: 'butter.webp' },
+  Produce: { label: labels.value.produceSun, icon: 'sun.webp' },
   Water: { label: labels.value.water, icon: 'watering-can.webp' },
   Food: { label: labels.value.plantFood, icon: 'plant-food.webp' },
 }));
-const backgrounds = [...new Set(['frontyard', 'egypt', 'pirate', 'dark', 'future', 'ice', props.world])];
-const background = ref(props.world);
+const background = ref(almanacBackgrounds.includes(props.world) ? props.world : 'default');
 const backgroundLabel = computed(() => labels.value.background + ' · ' + getWorldLabel(background.value, props.locale));
 const costume = ref(-1);
 const costumeLabel = computed(() => costume.value === -1
@@ -63,8 +71,8 @@ let controller: AbortController;
 let player: Awaited<ReturnType<typeof mountPlantAnimation>>;
 
 function nextBackground() {
-  const index = backgrounds.indexOf(background.value);
-  background.value = backgrounds[(index + 1) % backgrounds.length];
+  const index = almanacBackgrounds.indexOf(background.value);
+  background.value = almanacBackgrounds[(index + 1) % almanacBackgrounds.length];
 }
 
 function nextCostume() {
@@ -78,7 +86,7 @@ async function load() {
   controller = request;
   status.value = 'loading';
   try {
-    player = await mountPlantAnimation(host.value, props.code, request.signal, (clip: string) => { action.value = clip; });
+    player = await mountPlantAnimation(host.value, props.code, props.displayOffset, request.signal, (clip: string) => { action.value = clip; });
     if (!request.signal.aborted) status.value = 'ready';
   } catch (error) {
     if (request.signal.aborted) return;
@@ -105,7 +113,7 @@ onBeforeUnmount(() => controller?.abort());
 
 .canvas-host {
   position: absolute;
-  inset: 8px var(--tools-inset);
+  inset: 0;
 }
 .canvas-host :deep(canvas) {
   width: 100%;
@@ -115,14 +123,17 @@ onBeforeUnmount(() => controller?.abort());
 
 .clips {
   position: absolute;
-  top: 50%;
   right: var(--tools-inset);
-  transform: translateY(-50%);
-  display: grid;
+  bottom: var(--tools-inset);
+  max-width: calc(100% - 44px - 3 * var(--tools-inset));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 5px;
 }
 .clips button {
   position: relative;
+  flex: none;
   display: grid;
   place-items: center;
   width: var(--action-size);
@@ -160,7 +171,7 @@ onBeforeUnmount(() => controller?.abort());
 .clips button:active { transform: translateY(1px); }
 .action-hint {
   position: absolute;
-  right: calc(100% + 7px);
+  bottom: calc(100% + 5px);
   padding: 3px 8px;
   border-radius: 5px;
   color: #fff3c8;
@@ -170,6 +181,7 @@ onBeforeUnmount(() => controller?.abort());
   visibility: hidden;
   pointer-events: none;
 }
+.clips button:last-child .action-hint { right: 0; }
 .clips button:focus-visible .action-hint { visibility: visible; }
 @media (hover: hover) {
   .clips button:hover { filter: brightness(1.12); }

@@ -1,5 +1,9 @@
 import { plantAnimations } from './plant-animations';
 
+// Almanac.prefab uses a 555 × 470 backdrop. plantDisplayer is 133.578 units
+// below its center at 3× scale. The six supported DIS prefabs have a 0.5× root.
+const gameFrame = { width: 555, height: 470, originY: -133.578, displayScale: 3, prefabScale: 0.5 };
+
 const assetRoot = '/assets/almanac-animation';
 
 async function readAsset(url, signal, format) {
@@ -8,7 +12,7 @@ async function readAsset(url, signal, format) {
   return response[format]();
 }
 
-export async function mountPlantAnimation(host, code, signal, onAction) {
+export async function mountPlantAnimation(host, code, displayOffset, signal, onAction) {
   const folder = `${assetRoot}/${code}`;
   const [{ PIXI, dragonBones }, skeleton, atlas, png] = await Promise.all([
     import('./vendor/pixi-8.9.2-dragonbones-5.7.mjs'),
@@ -64,7 +68,7 @@ export async function mountPlantAnimation(host, code, signal, onAction) {
 
   try {
     await app.init({
-      width: 480, height: 350, resolution: Math.min(window.devicePixelRatio || 1, 2),
+      width: gameFrame.width, height: gameFrame.height, resolution: Math.min(window.devicePixelRatio || 1, 2),
       preference: 'webgl', backgroundAlpha: 0, antialias: true, autoStart: false,
     });
     signal.throwIfAborted();
@@ -74,14 +78,11 @@ export async function mountPlantAnimation(host, code, signal, onAction) {
     factory.parseTextureAtlasData(atlas, texture, code);
     armature = factory.buildArmature(config.armature, code, '', code);
     const display = armature.display;
-    const [x, y, width, height] = config.bounds;
-    const [centerX, centerY] = config.idleCenter;
-    // Fit every costume and action around the same resting position.
-    const halfWidth = Math.max(centerX - x, x + width - centerX);
-    const halfHeight = Math.max(centerY - y, y + height - centerY);
-    const scale = Math.min(230 / halfWidth, 167.5 / halfHeight);
-    display.scale.set(scale);
-    display.position.set(240 - centerX * scale, 175 - centerY * scale);
+    const { width, height, originY, displayScale, prefabScale } = gameFrame;
+    const { x, y } = displayOffset ?? { x: 0, y: 0 };
+    display.scale.set(displayScale * prefabScale);
+    // Cocos positions increase upward, Pixi screen coordinates downward.
+    display.position.set(width / 2 + x * displayScale, height / 2 - originY - y * displayScale);
     app.stage.addChild(display);
     host.appendChild(app.canvas);
     play(config.idle);

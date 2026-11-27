@@ -1,18 +1,33 @@
-// Display armatures and framing for the validated 0.16.31 plant previews.
-// idleCenter is the visual center of the uncostumed idle loop in armature coordinates.
-// Bounds include the costumes and effects that extend beyond the idle pose.
 export const plantAnimations = {
   peashooter: {
     armature: 'Peashooter', idle: 'Idle', costumes: 10,
-    idleCenter: [27, -54],
-    bounds: [-134, -201, 330, 234], actions: ['Food', 'Water', 'Shoot'],
+    actions: ['Food', 'Water', 'Shoot'],
     foodLoopSeconds: 2,
   },
   wallnut: {
     armature: 'Wall-nut', idle: 'Idle1', costumes: 9,
-    idleCenter: [-1, -58],
-    bounds: [-118, -194, 228, 264], actions: ['Food', 'Water'],
+    actions: ['Food', 'Water'],
     foodLoopSeconds: 0,
+  },
+  pvine: {
+    armature: 'PeaVine', idle: 'Idle', costumes: 1,
+    actions: ['Food', 'Water', 'Shoot'],
+    foodLoopSeconds: 2,
+  },
+  cabbagepult: {
+    armature: 'Cabbage-Pult', idle: 'Idle', costumes: 6,
+    actions: ['Food', 'Water', 'Lob'],
+    foodLoopSeconds: 0,
+  },
+  kernelpult: {
+    armature: 'KernelPult', idle: 'Idle', costumes: 5,
+    actions: ['Food', 'Water', 'Lob', 'Lob_Butter'],
+    foodLoopSeconds: 0,
+  },
+  sunflower: {
+    armature: 'Sunflower', idle: 'Idle', costumes: 8,
+    actions: ['Food', 'Water', 'Produce'],
+    foodLoopSeconds: 0.8,
   },
 } as const;
 

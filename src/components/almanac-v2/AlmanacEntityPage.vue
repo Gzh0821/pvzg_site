@@ -57,6 +57,7 @@
           <PlantAnimation
             v-if="showAnimation && animatedPlant" :key="animatedPlant"
             :code="animatedPlant" :locale="entity.locale" :name="entity.name" :world="entity.world"
+            :display-offset="entity.displayOffset"
           />
         </div>
 

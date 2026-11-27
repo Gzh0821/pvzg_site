@@ -352,6 +352,7 @@ const resolveBaseEntity = (kind, codename, locale, catalogRole = 'official') => 
     numericId: kind === 'plant' ? feature.ID ?? null : null,
     catalogRole,
     developerPayloadUrl: developerPayload.url,
+    ...(kind === 'plant' && almanacData.DisplayOffset && { displayOffset: almanacData.DisplayOffset }),
     hasAlmanac: Boolean(almanacEntry),
     hasProps: Boolean(propsEntry),
     name,

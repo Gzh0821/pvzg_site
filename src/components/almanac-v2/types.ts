@@ -48,6 +48,7 @@ export interface AlmanacEntity extends AlmanacDirectoryEntity {
   locale: AlmanacLocale;
   catalogRole: AlmanacCatalogRole;
   developerPayloadUrl: string;
+  displayOffset?: { x: number; y: number };
   hasAlmanac: boolean;
   hasProps: boolean;
   directoryPath: string;
